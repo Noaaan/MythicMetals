@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:gold_ingot"
+    },
+    "addition": {
+        "item": "mythicmetals:zinc_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:electrum_alloy"
+    }
+}

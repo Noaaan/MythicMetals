@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","pattern":["mm ","m/ "," / "],"key":{"m":{"item": "mythicmetals:argonium_ingot"},"/": {"item": "minecraft:stick"}},"result":{"item": "mythicmetals:argonium_axe","count":1}}

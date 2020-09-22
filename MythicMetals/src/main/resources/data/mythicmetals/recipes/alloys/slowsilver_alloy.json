@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "mythicmetals:lutetium_ingot"
+    },
+    "addition": {
+        "item": "minecraft:gravel"
+    },
+    "result": {
+        "item": "mythicmetals:slowsilver_alloy"
+    }
+}

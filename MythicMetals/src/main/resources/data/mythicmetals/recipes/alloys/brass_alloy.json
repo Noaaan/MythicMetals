@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "mythicmetals:copper_ingot"
+    },
+    "addition": {
+        "item": "mythicmetals:zinc_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:brass_alloy"
+    }
+}

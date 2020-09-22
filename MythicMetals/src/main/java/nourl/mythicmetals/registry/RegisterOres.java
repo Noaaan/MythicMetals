@@ -1,0 +1,98 @@
+package nourl.mythicmetals.registry;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import nourl.mythicmetals.MythicMetalsMain;
+import nourl.mythicmetals.ores.MythicMetalsOres;
+import nourl.mythicmetals.ores.OreGenerator;
+
+public class RegisterOres {
+	
+	public static void register() {
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "adamantite_ore"), new BlockItem(MythicMetalsOres.ADAMANTITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "aetherium_ore"), new BlockItem(MythicMetalsOres.AETHERIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "aquarium_ore"), new BlockItem(MythicMetalsOres.AQUARIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "banglum_ore"), new BlockItem(MythicMetalsOres.BANGLUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "carmot_ore"), new BlockItem(MythicMetalsOres.CARMOT_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "copper_ore"), new BlockItem(MythicMetalsOres.COPPER_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "kyber_ore"), new BlockItem(MythicMetalsOres.KYBER_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "lutetium_ore"), new BlockItem(MythicMetalsOres.LUTETIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "manganese_ore"), new BlockItem(MythicMetalsOres.MANGANESE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "midas_gold_ore"), new BlockItem(MythicMetalsOres.MIDAS_GOLD_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "mythril_ore"), new BlockItem(MythicMetalsOres.MYTHRIL_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "orichalcum_ore"), new BlockItem(MythicMetalsOres.ORICHALCUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "osmium_ore"), new BlockItem(MythicMetalsOres.OSMIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "platinum_ore"), new BlockItem(MythicMetalsOres.PLATINUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "prometheum_ore"), new BlockItem(MythicMetalsOres.PROMETHEUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "quadrillum_ore"), new BlockItem(MythicMetalsOres.QUADRILLUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "runite_ore"), new BlockItem(MythicMetalsOres.RUNITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "silver_ore"), new BlockItem(MythicMetalsOres.SILVER_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "starrite_ore"), new BlockItem(MythicMetalsOres.STARRITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "stormyx_ore"), new BlockItem(MythicMetalsOres.STORMYX_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "tantalite_ore"), new BlockItem(MythicMetalsOres.TANTALITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "tin_ore"), new BlockItem(MythicMetalsOres.TIN_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "truesilver_ore"), new BlockItem(MythicMetalsOres.TRUESILVER_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "unobtainium_ore"), new BlockItem(MythicMetalsOres.UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "ur_ore"), new BlockItem(MythicMetalsOres.UR_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "vermiculite_ore"), new BlockItem(MythicMetalsOres.VERMICULITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "zinc_ore"), new BlockItem(MythicMetalsOres.ZINC_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+				
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "adamantite_ore"), MythicMetalsOres.ADAMANTITE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "aetherium_ore"), MythicMetalsOres.AETHERIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "aquarium_ore"), MythicMetalsOres.AQUARIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "banglum_ore"), MythicMetalsOres.BANGLUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "carmot_ore"), MythicMetalsOres.CARMOT_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "copper_ore"), MythicMetalsOres.COPPER_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "kyber_ore"), MythicMetalsOres.KYBER_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "lutetium_ore"), MythicMetalsOres.LUTETIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "manganese_ore"), MythicMetalsOres.MANGANESE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "midas_gold_ore"), MythicMetalsOres.MIDAS_GOLD_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "mythril_ore"), MythicMetalsOres.MYTHRIL_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "orichalcum_ore"), MythicMetalsOres.ORICHALCUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "osmium_ore"), MythicMetalsOres.OSMIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "platinum_ore"), MythicMetalsOres.PLATINUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "prometheum_ore"), MythicMetalsOres.PROMETHEUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "quadrillum_ore"), MythicMetalsOres.QUADRILLUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "runite_ore"), MythicMetalsOres.RUNITE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "silver_ore"), MythicMetalsOres.SILVER_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "starrite_ore"), MythicMetalsOres.STARRITE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "stormyx_ore"), MythicMetalsOres.STORMYX_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "tantalite_ore"), MythicMetalsOres.TANTALITE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "tin_ore"), MythicMetalsOres.TIN_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "truesilver_ore"), MythicMetalsOres.TRUESILVER_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "unobtainium_ore"), MythicMetalsOres.UNOBTAINIUM_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "ur_ore"), MythicMetalsOres.UR_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "vermiculite_ore"), MythicMetalsOres.VERMICULITE_ORE);
+		Registry.register(Registry.BLOCK, new Identifier("mythicmetals", "zinc_ore"), MythicMetalsOres.ZINC_ORE);
+        
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "adamantite_ore"), OreGenerator.ORE_ADAMANTITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "aetherium_ore"), OreGenerator.ORE_AETHERIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "aquarium_ore"), OreGenerator.ORE_AQUARIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "banglum_ore"), OreGenerator.ORE_BANGLUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "carmot_ore"), OreGenerator.ORE_CARMOT);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "copper_ore"), OreGenerator.ORE_COPPER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "kyber_ore"), OreGenerator.ORE_KYBER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "lutetium_ore"), OreGenerator.ORE_LUTETIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "manganese_ore"), OreGenerator.ORE_MANGANESE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "midas_gold_ore"), OreGenerator.ORE_MIDAS_GOLD);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "mythril_ore"), OreGenerator.ORE_MYTHRIL);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "orichalcum_ore"), OreGenerator.ORE_ORICHALCUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "osmium_ore"), OreGenerator.ORE_OSMIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "platinum_ore"), OreGenerator.ORE_PLATINUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "prometheum_ore"), OreGenerator.ORE_PROMETHEUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "quadrillum_ore"), OreGenerator.ORE_QUADRILLUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "runite_ore"), OreGenerator.ORE_RUNITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "silver_ore"), OreGenerator.ORE_SILVER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "starrite_ore"), OreGenerator.ORE_STARRITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "stormyx_ore"), OreGenerator.ORE_STORMYX);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "tantalite_ore"), OreGenerator.ORE_TANTALITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "tin_ore"), OreGenerator.ORE_TIN);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "truesilver_ore"), OreGenerator.ORE_TRUESILVER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "unobtainium_ore"), OreGenerator.ORE_UNOBTAINIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "ur_ore"), OreGenerator.ORE_UR);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "vermiculite_ore"), OreGenerator.ORE_VERMICULITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier("mythicmetals", "zinc_ore"), OreGenerator.ORE_ZINC);	
+	}
+}

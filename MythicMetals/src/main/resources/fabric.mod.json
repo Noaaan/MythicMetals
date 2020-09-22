@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "mythicmetals",
+  "version": "${version}",
+
+  "name": "Mythic Metals",
+  "description": "Adds many new ores, tools and armorsets to the game. Currently in Beta!",
+  "authors": [
+    "Noaaan"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "GPLv3",
+  "icon": "assets/mythicmetals/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "nourl.mythicmetals.MythicMetalsMain"
+    ]
+  },
+  "mixins": [
+    "mythicmetals.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.3"
+  }
+}

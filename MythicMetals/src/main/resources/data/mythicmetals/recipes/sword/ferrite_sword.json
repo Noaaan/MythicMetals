@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","pattern":[" m "," m "," / "],"key":{"m":{"item": "mythicmetals:ferrite_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:ferrite_sword","count":1}}

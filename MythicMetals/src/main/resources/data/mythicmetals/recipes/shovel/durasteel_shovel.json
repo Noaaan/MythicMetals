@@ -1,0 +1,1 @@
+{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"item": "mythicmetals:durasteel_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:durasteel_shovel","count":1}}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:iron_ingot"
+    },
+    "addition": {
+        "item": "mythicmetals:manganese_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:steel_alloy"
+    }
+}

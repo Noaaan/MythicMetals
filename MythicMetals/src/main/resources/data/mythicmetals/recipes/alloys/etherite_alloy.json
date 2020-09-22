@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "mythicmetals:aetherium_ingot"
+    },
+    "addition": {
+        "item": "mythicmetals:vermiculite_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:etherite_alloy"
+    }
+}
