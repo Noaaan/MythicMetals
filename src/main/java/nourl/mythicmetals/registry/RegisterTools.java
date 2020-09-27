@@ -23,7 +23,6 @@ public class RegisterTools {
 	public static final Item CARMOT_SWORD = new SwordItem(MythicMetalsToolMaterials.CARMOT, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item CELESTIUM_SWORD = new SwordItem(MythicMetalsToolMaterials.CELESTIUM, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item COPPER_SWORD = new SwordItem(MythicMetalsToolMaterials.COPPER, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
-	public static final Item DAMASCUS_STEEL_SWORD = new SwordItem(MythicMetalsToolMaterials.DAMASCUS_STEEL, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DISCORDIUM_SWORD = new SwordItem(MythicMetalsToolMaterials.DISCORDIUM, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DURASTEEL_SWORD = new SwordItem(MythicMetalsToolMaterials.DURASTEEL, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item ELECTRUM_SWORD = new SwordItem(MythicMetalsToolMaterials.ELECTRUM, 3, -2.4F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
@@ -60,7 +59,6 @@ public class RegisterTools {
 	public static final Item CARMOT_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.CARMOT, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item CELESTIUM_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.CELESTIUM, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item COPPER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.COPPER, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
-	public static final Item DAMASCUS_STEEL_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.DAMASCUS_STEEL, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DISCORDIUM_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.DISCORDIUM, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DURASTEEL_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.DURASTEEL, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item ELECTRUM_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.ELECTRUM, 2, -2.8F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
@@ -97,7 +95,6 @@ public class RegisterTools {
 	public static final Item CARMOT_AXE = new AxeBase(MythicMetalsToolMaterials.CARMOT, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item CELESTIUM_AXE = new AxeBase(MythicMetalsToolMaterials.CELESTIUM, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item COPPER_AXE = new AxeBase(MythicMetalsToolMaterials.COPPER, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
-	public static final Item DAMASCUS_STEEL_AXE = new AxeBase(MythicMetalsToolMaterials.DAMASCUS_STEEL, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DISCORDIUM_AXE = new AxeBase(MythicMetalsToolMaterials.DISCORDIUM, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DURASTEEL_AXE = new AxeBase(MythicMetalsToolMaterials.DURASTEEL, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item ELECTRUM_AXE = new AxeBase(MythicMetalsToolMaterials.ELECTRUM, 4, -3.1F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
@@ -134,7 +131,6 @@ public class RegisterTools {
 	public static final Item CARMOT_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.CARMOT, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item CELESTIUM_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.CELESTIUM, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item COPPER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.COPPER, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
-	public static final Item DAMASCUS_STEEL_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.DAMASCUS_STEEL, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DISCORDIUM_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.DISCORDIUM, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DURASTEEL_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.DURASTEEL, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item ELECTRUM_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.ELECTRUM, 1, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
@@ -171,7 +167,6 @@ public class RegisterTools {
 	public static final Item CARMOT_HOE = new HoeBase(MythicMetalsToolMaterials.CARMOT, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item CELESTIUM_HOE = new HoeBase(MythicMetalsToolMaterials.CELESTIUM, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item COPPER_HOE = new HoeBase(MythicMetalsToolMaterials.COPPER, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
-	public static final Item DAMASCUS_STEEL_HOE = new HoeBase(MythicMetalsToolMaterials.DAMASCUS_STEEL, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DISCORDIUM_HOE = new HoeBase(MythicMetalsToolMaterials.DISCORDIUM, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item DURASTEEL_HOE = new HoeBase(MythicMetalsToolMaterials.DURASTEEL, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
 	public static final Item ELECTRUM_HOE = new HoeBase(MythicMetalsToolMaterials.ELECTRUM, 0, -3.0F, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_TOOLS));
@@ -251,11 +246,6 @@ public class RegisterTools {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","copper_pickaxe"),COPPER_PICKAXE);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","copper_shovel"),COPPER_SHOVEL);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","copper_sword"),COPPER_SWORD);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals","damascus_steel_axe"),DAMASCUS_STEEL_AXE);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals","damascus_steel_hoe"),DAMASCUS_STEEL_HOE);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals","damascus_steel_pickaxe"),DAMASCUS_STEEL_PICKAXE);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals","damascus_steel_shovel"),DAMASCUS_STEEL_SHOVEL);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals","damascus_steel_sword"),DAMASCUS_STEEL_SWORD);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","discordium_axe"),DISCORDIUM_AXE);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","discordium_hoe"),DISCORDIUM_HOE);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals","discordium_pickaxe"),DISCORDIUM_PICKAXE);

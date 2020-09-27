@@ -38,9 +38,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	COPPER(1, 100, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(RegisterIngots.Copper_Ingot);
     }),
-	DAMASCUS_STEEL(2, 350, 6.0F, 3.0F, 15, () -> {
-        return Ingredient.ofItems(RegisterIngots.Damascus_Steel_Ingot);
-    }),
 	DISCORDIUM(3, 666, 5.0F, 3.0F, 15, () -> {
         return Ingredient.ofItems(RegisterIngots.Discordium_Ingot);
     }),
