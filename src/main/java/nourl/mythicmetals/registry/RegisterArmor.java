@@ -49,10 +49,6 @@ public class RegisterArmor {
     public static final Item COPPER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.COPPER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item COPPER_LEGGINGS = new ArmorItem(MythicArmorMaterials.COPPER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item COPPER_BOOTS = new ArmorItem(MythicArmorMaterials.COPPER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-	public static final Item DAMASCUS_STEEL_HELMET = new ArmorItem(MythicArmorMaterials.DAMASCUS_STEEL, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item DAMASCUS_STEEL_CHESTPLATE = new ArmorItem(MythicArmorMaterials.DAMASCUS_STEEL, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item DAMASCUS_STEEL_LEGGINGS = new ArmorItem(MythicArmorMaterials.DAMASCUS_STEEL, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item DAMASCUS_STEEL_BOOTS = new ArmorItem(MythicArmorMaterials.DAMASCUS_STEEL, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
 	public static final Item DISCORDIUM_HELMET = new ArmorItem(MythicArmorMaterials.DISCORDIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item DISCORDIUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.DISCORDIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item DISCORDIUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.DISCORDIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
@@ -198,10 +194,6 @@ public class RegisterArmor {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "copper_chestplate"),  COPPER_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "copper_leggings"),  COPPER_LEGGINGS);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "copper_boots"),  COPPER_BOOTS);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_helmet"), DAMASCUS_STEEL_HELMET);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_chestplate"), DAMASCUS_STEEL_CHESTPLATE);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_leggings"), DAMASCUS_STEEL_LEGGINGS);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_boots"), DAMASCUS_STEEL_BOOTS);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "discordium_helmet"),  DISCORDIUM_HELMET);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "discordium_chestplate"),  DISCORDIUM_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "discordium_leggings"),  DISCORDIUM_LEGGINGS);

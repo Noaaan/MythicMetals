@@ -17,7 +17,6 @@ public class RegisterIngots {
 	public static final Item Carmot_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Celestium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Copper_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Damascus_Steel_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Discordium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Durasteel_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Electrum_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
@@ -54,7 +53,6 @@ public class RegisterIngots {
 	public static final Item Brass_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Bronze_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Celestium_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Damascus_Steel_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Discordium_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Durasteel_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Electrum_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
@@ -82,7 +80,6 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "carmot_ingot"), Carmot_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "celestium_ingot"), Celestium_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "copper_ingot"), Copper_Ingot);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_ingot"), Damascus_Steel_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "discordium_ingot"), Discordium_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "durasteel_ingot"), Durasteel_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "electrum_ingot"), Electrum_Ingot);
@@ -118,7 +115,6 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "brass_alloy"), Brass_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "bronze_alloy"), Bronze_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "celestium_alloy"), Celestium_Alloy);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "damascus_steel_alloy"), Damascus_Steel_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "discordium_alloy"), Discordium_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "durasteel_alloy"), Durasteel_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "electrum_alloy"), Electrum_Alloy);
