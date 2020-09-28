@@ -29,9 +29,9 @@ Updated Mod Icon
 
 ## Download
 
-There will eventually be a download link, as I will put this mod up on CurseForge.  
-
-Current Version: 0.7.3
+You can download the mod from CurseForge, or build it yourself.  
+CurseForge link:
+https://www.curseforge.com/minecraft/mc-mods/mythicmetals
 
 ## License
 
@@ -50,5 +50,5 @@ BoogieMonster1O1, for giving me pointers about Mixins.
 misode, for his loot table generator.  
 Shadowclaimer, for creating Metallurgy in the first place.  
 My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
-My friend Revanitez, who contributed to the assets of the mod.
+My friend Revanitez, who contributed to the assets of the mod.  
 And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
