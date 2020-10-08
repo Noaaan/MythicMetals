@@ -3,29 +3,12 @@
 Mythic Metals is a Fabric based Minecraft mod, that adds over 30 new axes, swords, hoes, pickaxes, shovels, ores, ingots, and sets of armor. 
 The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally intended as a port. After being denied the privilege to do so this mod was created from the ground up as my first proper Minecraft mod.  
 
-Current Version: 0.8.0
+This is the update branch, and it will see changes over time.
 
 ## Patchnotes
-This patch sees the final version of the placeholder textures. I am not a texture artist, so making textures is very time consuming for me. Here are all the changes made:  
-Added yellow hue to Slowsilver Ingot  
-Fixed Copper and Bronze Ingot colors  
-Fixed Ur Ingot color  
-Fixed armor item models  
-Made Custom Runite Textures  
-Made Orichalcum consistent  
-Made Prometheum darker  
-Made Silver shinier  
-Made Steel darker  
-Made Tin brighter  
-Recolored Aetherium Textures  
-Recolored Banglum textures  
-Recolored Celestium textures  
-Recolored Metallurgium Armor  
-Recolored Quicksilver  
-Recolored Stormyx  
-Removed Damascus Steel  
-Reworked Midas Gold Textures  
-Updated Mod Icon  
+Changed gitignore for IntelliJ
+Added main code for storage blocks
+Added registry code for storage blocks
 
 ## Download
 
