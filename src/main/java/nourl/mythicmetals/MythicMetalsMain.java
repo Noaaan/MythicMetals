@@ -1,5 +1,6 @@
 package nourl.mythicmetals;
 
+import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,10 +10,6 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.registry.RegisterArmor;
-import nourl.mythicmetals.registry.RegisterIngots;
-import nourl.mythicmetals.registry.RegisterOres;
-import nourl.mythicmetals.registry.RegisterTools;
 
 public class MythicMetalsMain implements ModInitializer {
 	public static Logger LOGGER = LogManager.getLogger();
@@ -30,6 +27,7 @@ public class MythicMetalsMain implements ModInitializer {
 			RegisterOres.register();
 		  	RegisterTools.register();
 		  	RegisterArmor.register();
+		  	RegisterBlocks.register();
 
 		 }
 
