@@ -9,6 +9,7 @@ eclipse
 
 # IntelliJ IDEA
 
+.idea
 .idea/
 *.iml
 *.iws
