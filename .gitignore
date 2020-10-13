@@ -25,3 +25,4 @@ run
 !README.*
 !.gitignore
 *.DS_Store*
+/.idea/

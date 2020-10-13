@@ -6,9 +6,11 @@ The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally int
 This is the update branch, and it will see changes over time.
 
 ## Patchnotes
-Changed gitignore for IntelliJ
-Added main code for storage blocks
-Added registry code for storage blocks
+Changed .gitignore for IntelliJ  
+Added main code for storage blocks  
+Added registry code for storage blocks  
+Added common tags for ores, tools, and ingots  
+
 
 ## Download
 
