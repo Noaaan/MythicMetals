@@ -11,7 +11,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ADAMANTITE(4, 1573, 8.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterIngots.Adamantite_Ingot);
     }),
-	AETHERIUM(4, 1585, 8.0F, 3.0F, 13, () -> {
+	AETHERIUM(4, 1601, 8.0F, 3.0F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.Aetherium_Ingot);
     }),
 	AQUARIUM(2, 300, 6.5F, 2.0F, 16, () -> {
@@ -53,7 +53,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	FERRITE(2, 261, 6.5F, 2.0F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.Ferrite_Ingot);
     }),
-	KYBER(2, 1797, 9.0F, 3.0F, 20, () -> {
+	KYBER(2, 1297, 9.0F, 3.0F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.Kyber_Ingot);
     }),
 	METALLURGIUM(5, 3000, 15.0F, 6.0F, 30, () -> {
@@ -80,7 +80,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	QUADRILLUM(2, 531, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterIngots.Quadrillum_Ingot);
     }),
-	QUICKSILVER(3, 1652, 7.5F, 2.5F, 21, () -> {
+	QUICKSILVER(3, 1652, 10.0F, 2.5F, 25, () -> {
         return Ingredient.ofItems(RegisterIngots.Quicksilver_Ingot);
     }),
 	RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
