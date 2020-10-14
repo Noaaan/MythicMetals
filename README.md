@@ -6,10 +6,12 @@ The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally int
 This is the update branch, and it will see changes over time.
 
 ## Patchnotes
-Changed .gitignore for IntelliJ  
-Added main code for storage blocks  
-Added registry code for storage blocks  
 Added common tags for ores, tools, and ingots  
+Added storage blocks for all ingots  
+Removed True Alloy  
+Metallurgium now requires to be upgraded onto Netherite armor with a smithing table  
+
+Currently there is one addon being worked on for this mod by the user DH (Fabricord), and a link will be added to the page once it is completed!
 
 
 ## Download
