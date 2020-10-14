@@ -1,1 +1,12 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"item":"mythicmetals:metallurgium_ingot"}},"result":{"item":"mythicmetals:metallurgium_leggings","count":1}}
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:netherite_chestplate"
+    },
+    "addition": {
+        "item": "mythicmetals:metallurgium_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:metallurgium_chestplate"
+    }
+}

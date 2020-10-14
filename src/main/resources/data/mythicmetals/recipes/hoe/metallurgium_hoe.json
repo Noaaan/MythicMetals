@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"item": "mythicmetals:metallurgium_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:metallurgium_hoe","count":1}}
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:netherite_hoe"
+    },
+    "addition": {
+        "item": "mythicmetals:metallurgium_ingot"
+    },
+    "result": {
+        "item": "mythicmetals:metallurgium_hoe"
+    }
+}

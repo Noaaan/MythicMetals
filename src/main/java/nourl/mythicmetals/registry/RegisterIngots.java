@@ -65,7 +65,6 @@ public class RegisterIngots {
 	//The Metallurgium Alloy tree
 	public static final Item Adamanthril_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Hallowed_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item True_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Metallurgium_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	
 	public static void register() {
@@ -125,7 +124,6 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "quicksilver_alloy"), Quicksilver_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "adamanthril_alloy"), Adamanthril_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "hallowed_alloy"), Hallowed_Alloy);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "true_alloy"), True_Alloy);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "metallurgium_alloy"), Metallurgium_Alloy);
 		
 	}
