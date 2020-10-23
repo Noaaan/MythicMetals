@@ -44,8 +44,7 @@ public class RegisterIngots {
 	public static final Item Tin_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Truesilver_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Unobtainium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Ur_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));	
-	public static final Item Vermiculite_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
+	public static final Item Ur_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Zinc_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	
 	//Alloys
@@ -107,7 +106,6 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "truesilver_ingot"), Truesilver_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "unobtainium_ingot"), Unobtainium_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "ur_ingot"),Ur_Ingot);
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "vermiculite_ingot"), Vermiculite_Ingot);
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "zinc_ingot"), Zinc_Ingot);
 		//Register Alloys
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "argonium_alloy"), Argonium_Alloy);

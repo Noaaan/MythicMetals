@@ -28,6 +28,7 @@ public class MythicMetalsMain implements ModInitializer {
 		  	RegisterTools.register();
 		  	RegisterArmor.register();
 		  	RegisterBlocks.register();
+		  	RegisterItems.register();
 
 		 }
 
