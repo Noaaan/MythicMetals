@@ -4,7 +4,7 @@
         "item": "mythicmetals:aetherium_ingot"
     },
     "addition": {
-        "item": "mythicmetals:vermiculite_ingot"
+        "item": "mythicmetals:vermiculite"
     },
     "result": {
         "item": "mythicmetals:etherite_alloy"
