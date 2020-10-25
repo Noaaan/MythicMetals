@@ -1,6 +1,7 @@
 package nourl.mythicmetals.ores;
 
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.DepthAverageDecoratorConfig;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
@@ -36,7 +37,7 @@ public class OreGenerator{
 	public static ConfiguredFeature<?, ?> ORE_TANTALITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TANTALITE_ORE.getDefaultState(), 12)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,6,48))).spreadHorizontally().repeat(3);
 	public static ConfiguredFeature<?, ?> ORE_TIN = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TIN_ORE.getDefaultState(), 8)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,6,128))).spreadHorizontally().repeat(4);
 	public static ConfiguredFeature<?, ?> ORE_TRUESILVER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), 2)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,6,128))).spreadHorizontally().repeat(6);
-	public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.UNOBTAINIUM_ORE.getDefaultState(), 1)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,5,9))).spreadHorizontally().repeat(1);
+	public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.NO_SURFACE_ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.UNOBTAINIUM_ORE.getDefaultState(), 2)).decorate(Decorator.DEPTH_AVERAGE.configure(new DepthAverageDecoratorConfig(7, 24)).spreadHorizontally());
 	public static ConfiguredFeature<?, ?> ORE_UR = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.UR_ORE.getDefaultState(), 8)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,10,70))).spreadHorizontally().repeat(5);
 	public static ConfiguredFeature<?, ?> ORE_VERMICULITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), 8)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,6,128))).spreadHorizontally().repeat(8);
 	public static ConfiguredFeature<?, ?> ORE_ZINC = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ZINC_ORE.getDefaultState(), 6)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,40,128))).spreadHorizontally().repeat(6);

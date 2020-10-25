@@ -33,9 +33,9 @@ public class MythicMetalsMixin {
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_STARRITE);
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_TANTALITE );
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_TIN);
-	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_UNOBTAINIUM );
+	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_UNOBTAINIUM);
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_VERMICULITE);
-	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_ZINC );
+	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_ZINC);
 	  };
 	  @Inject(method = "Lnet/minecraft/world/gen/feature/DefaultBiomeFeatures;addNetherMineables(Lnet/minecraft/world/biome/GenerationSettings$Builder;)V", at = @At("TAIL"))
 	  		  private static void addNetherMinables(GenerationSettings.Builder builder, CallbackInfo ci) {
