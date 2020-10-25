@@ -15,7 +15,6 @@ public class MythicMetalsMixin {
 	@Inject(method = "addDefaultOres(Lnet/minecraft/world/biome/GenerationSettings$Builder;)V", at = @At("TAIL"))
 	  private static void addDefaultOres(GenerationSettings.Builder builder, CallbackInfo ci) {
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_ADAMANTITE);
-	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_AETHERIUM );
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_AQUARIUM);
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_BANGLUM);
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_COPPER);
@@ -43,5 +42,9 @@ public class MythicMetalsMixin {
 			    builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, OreGenerator.ORE_STORMYX);
 			    builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, OreGenerator.ORE_TRUESILVER);
 			    builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, OreGenerator.ORE_UR);
+	};
+	@Inject(method = "Lnet/minecraft/world/gen/feature/DefaultBiomeFeatures;addEmeraldOre(Lnet/minecraft/world/biome/GenerationSettings$Builder;)V", at = @At("TAIL"))
+	private static void addEmeraldOre(GenerationSettings.Builder builder, CallbackInfo ci) {
+		builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_AETHERIUM);
 	}
 	}
