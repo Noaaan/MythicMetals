@@ -18,6 +18,8 @@ You can find older patch notes in the PATCHNOTES.md
 
 Currently there is one addon being worked on for this mod by the user DH (Fabricord), and a link will be added to the page once it is completed!
 
+Latest Version: 0.9.0  
+
 
 ## Download
 
