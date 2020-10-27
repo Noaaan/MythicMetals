@@ -10,6 +10,11 @@ Added common tags for ores, tools, and ingots
 Added storage blocks for all ingots  
 Removed True Alloy  
 Metallurgium now requires to be upgraded onto Netherite armor with a smithing table  
+Updated textures for some ingots and alloys  
+Fixed unobtainium being way too rare  
+Changed vermiculite into a drop instead of an ingot based catalyst
+
+You can find older patch notes in the PATCHNOTES.md  
 
 Currently there is one addon being worked on for this mod by the user DH (Fabricord), and a link will be added to the page once it is completed!
 
