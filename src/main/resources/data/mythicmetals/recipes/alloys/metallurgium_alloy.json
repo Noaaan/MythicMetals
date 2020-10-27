@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smithing",
     "base": {
-        "item": "mythicmetals:true_alloy"
+        "item": "mythicmetals:hallowed_alloy"
     },
     "addition": {
         "item": "mythicmetals:unobtainium_ingot"

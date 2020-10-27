@@ -1,0 +1,31 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# eclipse
+bin
+eclipse
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# IntelliJ IDEA
+
+.idea
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# gradle
+build
+.gradle
+
+# other
+run
+!LICENSE
+!README.*
+!.gitignore
+*.DS_Store*

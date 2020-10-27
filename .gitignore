@@ -7,6 +7,14 @@ eclipse
 .classpath
 .project
 
+# IntelliJ IDEA
+
+.idea
+.idea/
+*.iml
+*.iws
+*.ipr
+
 # gradle
 build
 .gradle
@@ -17,3 +25,4 @@ run
 !README.*
 !.gitignore
 *.DS_Store*
+/.idea/
