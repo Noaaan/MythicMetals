@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smithing",
     "base": {
-        "item": "minecraft:netherite_chestplate"
+        "item": "minecraft:netherite_boots"
     },
     "addition": {
         "item": "mythicmetals:metallurgium_ingot"
