@@ -1,3 +1,21 @@
+# 0.9.4
+Added recipes for converting storage blocks back into ingots  
+Updated all recipes to use tags instead of items. This makes the mod cross-compatible with other mods using the same tags, similar to Forges ore dictionary.  
+Updated the vermiculite loot table in order to suppress an error  
+Updated patch notes and credits  
+
+
+# 0.9.3
+Bumped version so it now supports 1.16.3 and 1.16.4  
+Changed Kyber Ore to spawn a bit higher up  
+
+# 0.9.2
+Metallurgium Armor has been given its intended recipes (thanks to Ackman3121)  
+Vermiculite has a new loot table, dropping similar to lapis/redstone ore  
+
+# 0.9.1
+Attempted to hotfix Metallurgium armor recipes  
+
 # 0.9
 Added common tags for ores, tools, and ingots  
 Added storage blocks for all ingots  
