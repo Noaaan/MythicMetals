@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm"," / "," / "],"key":{"m":{"item": "mythicmetals:discordium_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:discordium_pickaxe","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mmm"," / "," / "],"key":{"m":{"tag": "c:discordium_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:discordium_pickaxe","count":1}}

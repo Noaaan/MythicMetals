@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"item":"mythicmetals:durasteel_ingot"}},"result":{"item":"mythicmetals:durasteel_helmet","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"tag":"c:durasteel_ingots"}},"result":{"item":"mythicmetals:durasteel_helmet","count":1}}

@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"item":"mythicmetals:discordium_ingot"}},"result":{"item":"mythicmetals:discordium_leggings","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"tag":"c:discordium_ingots"}},"result":{"item":"mythicmetals:discordium_leggings","count":1}}

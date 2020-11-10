@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"item":"mythicmetals:starrite_ingot"}},"result":{"item":"mythicmetals:starrite_helmet","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"tag":"c:starrite_ingots"}},"result":{"item":"mythicmetals:starrite_helmet","count":1}}

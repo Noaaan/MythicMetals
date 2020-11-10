@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","ingredient":{"item": "mythicmetals:zinc_ore"},"result":"mythicmetals:zinc_ingot","experience": 0.2,"cookingtime": 200}
+{"type":"minecraft:smelting","ingredient":{"tag": "c:zinc_ores"},"result":"mythicmetals:zinc_ingot","experience": 0.2,"cookingtime": 200}

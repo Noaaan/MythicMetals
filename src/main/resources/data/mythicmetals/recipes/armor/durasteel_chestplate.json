@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:durasteel_ingot"}},"result":{"item":"mythicmetals:durasteel_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:durasteel_ingots"}},"result":{"item":"mythicmetals:durasteel_chestplate","count":1}}

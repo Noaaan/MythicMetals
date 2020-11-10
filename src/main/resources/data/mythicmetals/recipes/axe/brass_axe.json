@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm ","m/ "," / "],"key":{"m":{"item": "mythicmetals:brass_ingot"},"/": {"item": "minecraft:stick"}},"result":{"item": "mythicmetals:brass_axe","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mm ","m/ "," / "],"key":{"m":{"tag": "c:brass_ingots"},"/": {"item": "minecraft:stick"}},"result":{"item": "mythicmetals:brass_axe","count":1}}

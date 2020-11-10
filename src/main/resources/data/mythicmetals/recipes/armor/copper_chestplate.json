@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:copper_ingot"}},"result":{"item":"mythicmetals:copper_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:copper_ingots"}},"result":{"item":"mythicmetals:copper_chestplate","count":1}}

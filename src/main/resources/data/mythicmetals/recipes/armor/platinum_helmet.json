@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"item":"mythicmetals:platinum_ingot"}},"result":{"item":"mythicmetals:platinum_helmet","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"tag":"c:platinum_ingots"}},"result":{"item":"mythicmetals:platinum_helmet","count":1}}

@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:platinum_ingot"}},"result":{"item":"mythicmetals:platinum_boots","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"tag":"c:platinum_ingots"}},"result":{"item":"mythicmetals:platinum_boots","count":1}}

@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"item":"mythicmetals:tantalite_ingot"}},"result":{"item":"mythicmetals:tantalite_leggings","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"tag":"c:tantalite_ingots"}},"result":{"item":"mythicmetals:tantalite_leggings","count":1}}

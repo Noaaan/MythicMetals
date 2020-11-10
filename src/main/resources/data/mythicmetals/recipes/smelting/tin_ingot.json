@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","ingredient":{"item": "mythicmetals:tin_ore"},"result":"mythicmetals:tin_ingot","experience": 0.2,"cookingtime": 200}
+{"type":"minecraft:smelting","ingredient":{"tag": "c:tin_ores"},"result":"mythicmetals:tin_ingot","experience": 0.2,"cookingtime": 200}

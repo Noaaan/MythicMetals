@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:ferrite_ingot"}},"result":{"item":"mythicmetals:ferrite_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:ferrite_ingots"}},"result":{"item":"mythicmetals:ferrite_chestplate","count":1}}

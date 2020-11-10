@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:quadrillum_ingot"}},"result":{"item":"mythicmetals:quadrillum_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:quadrillum_ingots"}},"result":{"item":"mythicmetals:quadrillum_chestplate","count":1}}

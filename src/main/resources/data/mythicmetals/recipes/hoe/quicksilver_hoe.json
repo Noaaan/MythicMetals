@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"item": "mythicmetals:quicksilver_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:quicksilver_hoe","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"tag": "c:quicksilver_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:quicksilver_hoe","count":1}}

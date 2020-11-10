@@ -4,9 +4,9 @@
         "item": "mythicmetals:hallowed_alloy"
     },
     "addition": {
-        "item": "mythicmetals:unobtainium_ingot"
+        "tag": "c:unobtainium_ingots"
     },
-    "result": {
+        "result": {
         "item": "mythicmetals:metallurgium_alloy"
     }
 }

@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","ingredient":{"item": "mythicmetals:copper_ore"},"result":"mythicmetals:copper_ingot","experience": 0.2,"cookingtime": 200}
+{"type":"minecraft:smelting","ingredient":{"tag": "c:copper_ores"},"result":"mythicmetals:copper_ingot","experience": 0.2,"cookingtime": 200}

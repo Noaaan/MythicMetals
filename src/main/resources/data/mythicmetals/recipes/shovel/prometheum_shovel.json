@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"item": "mythicmetals:prometheum_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:prometheum_shovel","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"tag": "c:prometheum_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:prometheum_shovel","count":1}}

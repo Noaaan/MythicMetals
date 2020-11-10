@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"item": "mythicmetals:etherite_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:etherite_shovel","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"tag": "c:etherite_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:etherite_shovel","count":1}}

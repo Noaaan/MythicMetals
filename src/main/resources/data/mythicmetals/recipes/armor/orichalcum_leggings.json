@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"item":"mythicmetals:orichalcum_ingot"}},"result":{"item":"mythicmetals:orichalcum_leggings","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m","m m"],"key":{"m": {"tag":"c:orichalcum_ingots"}},"result":{"item":"mythicmetals:orichalcum_leggings","count":1}}

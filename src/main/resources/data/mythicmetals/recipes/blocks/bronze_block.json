@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"item": "mythicmetals:bronze_ingot"}},     "result":{"item": "mythicmetals:bronze_block","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"tag": "c:bronze_ingots"}},     "result":{"item": "mythicmetals:bronze_block","count":1}}

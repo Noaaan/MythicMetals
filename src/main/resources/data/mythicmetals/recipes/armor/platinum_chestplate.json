@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:platinum_ingot"}},"result":{"item":"mythicmetals:platinum_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:platinum_ingots"}},"result":{"item":"mythicmetals:platinum_chestplate","count":1}}

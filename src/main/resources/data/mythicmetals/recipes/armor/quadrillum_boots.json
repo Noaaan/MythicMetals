@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:quadrillum_ingot"}},"result":{"item":"mythicmetals:quadrillum_boots","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"tag":"c:quadrillum_ingots"}},"result":{"item":"mythicmetals:quadrillum_boots","count":1}}
