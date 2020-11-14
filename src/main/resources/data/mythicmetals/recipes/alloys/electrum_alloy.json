@@ -4,7 +4,7 @@
         "item": "minecraft:gold_ingot"
     },
     "addition": {
-        "item": "mythicmetals:zinc_ingot"
+        "item": "mythicmetals:silver_ingot"
     },
     "result": {
         "item": "mythicmetals:electrum_alloy"
