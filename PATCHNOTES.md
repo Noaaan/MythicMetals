@@ -1,3 +1,7 @@
+# 0.9.5
+Updated textures for ores  
+Fixed a few recipe issues with silver and electrum
+
 # 0.9.4
 Added recipes for converting storage blocks back into ingots  
 Updated all recipes to use tags instead of items. This makes the mod cross-compatible with other mods using the same tags, similar to Forges ore dictionary.  
