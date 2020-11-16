@@ -33,5 +33,11 @@ BoogieMonster1O1, for giving me pointers about Mixins.
 misode, for his loot table generator.  
 Shadowclaimer, for creating Metallurgy in the first place.  
 My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
-My friend Revanitez, who contributed to the assets of the mod.  
+My friend Revanitez, drakath9 and realspectr3x who contributed to the assets of the mod.  
 And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
+### Translations  
+These people have helped translating the mod into different languages. Thank you to:  
+
+Oscienet for the russian translation.  
+
+Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.

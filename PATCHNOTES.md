@@ -1,3 +1,8 @@
+# 0.9.6  
+Updated storage block mining levels  
+Made Metallurgium and Unobtainium fireproof  
+Added russian translations (Thanks Oscienet!)  
+
 # 0.9.5
 Updated textures for ores  
 Fixed a few recipe issues with silver and electrum
