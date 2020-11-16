@@ -27,7 +27,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "kyber_block"), new BlockItem(MythicMetalsBlocks.KYBER_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "lutetium_block"), new BlockItem(MythicMetalsBlocks.LUTETIUM_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "manganese_block"), new BlockItem(MythicMetalsBlocks.MANGANESE_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "metallurgium_block"), new BlockItem(MythicMetalsBlocks.METALLURGIUM_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "metallurgium_block"), new BlockItem(MythicMetalsBlocks.METALLURGIUM_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "midas_gold_block"), new BlockItem(MythicMetalsBlocks.MIDAS_GOLD_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "mythril_block"), new BlockItem(MythicMetalsBlocks.MYTHRIL_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "orichalcum_block"), new BlockItem(MythicMetalsBlocks.ORICHALCUM_BLOCK, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));

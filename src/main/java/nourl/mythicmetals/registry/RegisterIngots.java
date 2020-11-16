@@ -25,7 +25,7 @@ public class RegisterIngots {
 	public static final Item Kyber_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Lutetium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Manganese_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Metallurgium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
+	public static final Item Metallurgium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS).fireproof());
 	public static final Item Midas_Gold_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Mythril_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Orichalcum_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
@@ -43,7 +43,7 @@ public class RegisterIngots {
 	public static final Item Tantalite_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Tin_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Truesilver_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Unobtainium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
+	public static final Item Unobtainium_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS).fireproof());
 	public static final Item Ur_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Zinc_Ingot = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	
@@ -64,7 +64,7 @@ public class RegisterIngots {
 	//The Metallurgium Alloy tree
 	public static final Item Adamanthril_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
 	public static final Item Hallowed_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
-	public static final Item Metallurgium_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS));
+	public static final Item Metallurgium_Alloy = new Item(new Item.Settings().group(MythicMetalsMain.MYTHICMETALS).fireproof());
 	
 	public static void register() {
 		//Register Ingots

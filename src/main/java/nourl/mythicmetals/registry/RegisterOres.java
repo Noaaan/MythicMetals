@@ -34,7 +34,7 @@ public class RegisterOres {
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "tantalite_ore"), new BlockItem(MythicMetalsOres.TANTALITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "tin_ore"), new BlockItem(MythicMetalsOres.TIN_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "truesilver_ore"), new BlockItem(MythicMetalsOres.TRUESILVER_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
-		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "unobtainium_ore"), new BlockItem(MythicMetalsOres.UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "unobtainium_ore"), new BlockItem(MythicMetalsOres.UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "ur_ore"), new BlockItem(MythicMetalsOres.UR_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "vermiculite_ore"), new BlockItem(MythicMetalsOres.VERMICULITE_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier("mythicmetals", "zinc_ore"), new BlockItem(MythicMetalsOres.ZINC_ORE, new Item.Settings().group(MythicMetalsMain.MYTHICMETALS)));

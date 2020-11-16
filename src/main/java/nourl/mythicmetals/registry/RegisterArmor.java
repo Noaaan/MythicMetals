@@ -73,10 +73,10 @@ public class RegisterArmor {
     public static final Item KYBER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_LEGGINGS = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_BOOTS = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-	public static final Item METALLURGIUM_HELMET = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item METALLURGIUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item METALLURGIUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
-    public static final Item METALLURGIUM_BOOTS = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
+	public static final Item METALLURGIUM_HELMET = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR).fireproof()));
+    public static final Item METALLURGIUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR).fireproof()));
+    public static final Item METALLURGIUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR).fireproof()));
+    public static final Item METALLURGIUM_BOOTS = new ArmorItem(MythicArmorMaterials.METALLURGIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR).fireproof()));
 	public static final Item MIDAS_GOLD_HELMET = new ArmorItem(MythicArmorMaterials.MIDAS_GOLD, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item MIDAS_GOLD_CHESTPLATE = new ArmorItem(MythicArmorMaterials.MIDAS_GOLD, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
     public static final Item MIDAS_GOLD_LEGGINGS = new ArmorItem(MythicArmorMaterials.MIDAS_GOLD, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetalsMain.MYTHICMETALS_ARMOR)));
