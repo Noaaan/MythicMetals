@@ -21,6 +21,8 @@ public class MythicMetalsMixin {
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_AQUARIUM); }
 		if(MythicConfig.banglumGeneration) {
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_BANGLUM); }
+		if(MythicConfig.carmotGeneration) {
+		builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_CARMOT); }
 		if(MythicConfig.copperGeneration) {
 	    builder.feature(GenerationStep.Feature.UNDERGROUND_ORES, OreGenerator.ORE_COPPER); }
 		if(MythicConfig.kyberGeneration) {
