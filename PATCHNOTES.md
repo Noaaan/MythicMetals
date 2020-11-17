@@ -2,6 +2,12 @@
 Updated storage block mining levels  
 Made Metallurgium and Unobtainium fireproof  
 Added russian translations (Thanks Oscienet!)  
+Added a configuration file, making all of the ores configurable  
+* You can  find the configuration file in the config/mythicmetals folder
+ 
+Fixed an issue where Carmot would not spawn  
+Changed Starrite, making it only spawn in mountains  
+
 
 # 0.9.5
 Updated textures for ores  
