@@ -181,64 +181,64 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumGeneration", comment = "Generate Orichalcum Ore")
     public static boolean orichalcumGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumVeinSize", comment = "Set Max Orichalcum Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumVeinSize", comment = "Set Max Orichalcum Vein Size (Default: 5)")
     public static int orichalcumVeinSize = 5;
 
-    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumPerChunk", comment = "Set Orichalcum Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumPerChunk", comment = "Set Orichalcum Spawn Chance (Default: 1)")
     public static int orichalcumPerChunk = 1;
 
-    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumMinHeight", comment = "Set Orichalcum Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumMinHeight", comment = "Set Orichalcum Min Spawn Height (Default: 4)")
     public static int orichalcumMinHeight = 4;
 
-    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumMaxHeight", comment = "Set Orichalcum Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumMaxHeight", comment = "Set Orichalcum Max Spawn Height (Default: 24)")
     public static int orichalcumMaxHeight = 24;
 
     //Osmium Ore Settings
     @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumGeneration", comment = "Generate Osmium Ore")
     public static boolean osmiumGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumVeinSize", comment = "Set Max Osmium Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumVeinSize", comment = "Set Max Osmium Vein Size (Default: 9)")
     public static int osmiumVeinSize = 9;
 
-    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumPerChunk", comment = "Set Osmium Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumPerChunk", comment = "Set Osmium Spawn Chance (Default: 6)")
     public static int osmiumPerChunk = 6;
 
-    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumMinHeight", comment = "Set Osmium Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumMinHeight", comment = "Set Osmium Min Spawn Height (Default: 6)")
     public static int osmiumMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumMaxHeight", comment = "Set Osmium Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumMaxHeight", comment = "Set Osmium Max Spawn Height (Default: 48)")
     public static int osmiumMaxHeight = 48;
 
     //Platinum Ore Settings
     @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumGeneration", comment = "Generate Platinum Ore")
     public static boolean platinumGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumVeinSize", comment = "Set Max Platinum Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumVeinSize", comment = "Set Max Platinum Vein Size (Default: 6)")
     public static int platinumVeinSize = 6;
 
-    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumPerChunk", comment = "Set Platinum Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumPerChunk", comment = "Set Platinum Spawn Chance (Default: 2)")
     public static int platinumPerChunk = 2;
 
-    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumMinHeight", comment = "Set Platinum Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumMinHeight", comment = "Set Platinum Min Spawn Height (Default: 6)")
     public static int platinumMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumMaxHeight", comment = "Set Platinum Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumMaxHeight", comment = "Set Platinum Max Spawn Height (Default: 24)")
     public static int platinumMaxHeight = 24;
 
     //Prometheum Ore Settings
     @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumGeneration", comment = "Generate Prometheum Ore")
     public static boolean prometheumGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumVeinSize", comment = "Set Max Prometheum Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumVeinSize", comment = "Set Max Prometheum Vein Size (Default: 5)")
     public static int prometheumVeinSize = 5;
 
-    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumPerChunk", comment = "Set Prometheum Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumPerChunk", comment = "Set Prometheum Spawn Chance (Default: 2)")
     public static int prometheumPerChunk = 2;
 
-    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumMinHeight", comment = "Set Prometheum Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumMinHeight", comment = "Set Prometheum Min Spawn Height (Default: 6)")
     public static int prometheumMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumMaxHeight", comment = "Set Prometheum Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumMaxHeight", comment = "Set Prometheum Max Spawn Height (Default: 24)")
     public static int prometheumMaxHeight = 24;
 
     //Quadrillum Ore Settings
@@ -251,58 +251,58 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumPerChunk", comment = "Set Quadrillum Spawn Chance (Default: 8)")
     public static int quadrillumPerChunk = 8;
 
-    @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumMinHeight", comment = "Set Quadrillum Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumMinHeight", comment = "Set Quadrillum Min Spawn Height (Default: 6)")
     public static int quadrillumMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumMaxHeight", comment = "Set Quadrillum Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumMaxHeight", comment = "Set Quadrillum Max Spawn Height (Default: 56)")
     public static int quadrillumMaxHeight = 56;
 
     //Runite Ore Settings
     @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteGeneration", comment = "Generate Runite Ore")
     public static boolean runiteGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteVeinSize", comment = "Set Max Runite Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteVeinSize", comment = "Set Max Runite Vein Size (Default: 3)")
     public static int runiteVeinSize = 3;
 
-    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runitePerChunk", comment = "Set Runite Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runitePerChunk", comment = "Set Runite Spawn Chance (Default: 5)")
     public static int runitePerChunk = 5;
 
-    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteMinHeight", comment = "Set Runite Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteMinHeight", comment = "Set Runite Min Spawn Height (Default: 6)")
     public static int runiteMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteMaxHeight", comment = "Set Runite Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteMaxHeight", comment = "Set Runite Max Spawn Height (Default: 32)")
     public static int runiteMaxHeight = 32;
 
     //Silver Ore Settings
     @IConfig(config = "mythicconfig", category = "silverOre", key = "silverGeneration", comment = "Generate Silver Ore")
     public static boolean silverGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverVeinSize", comment = "Set Max Silver Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverVeinSize", comment = "Set Max Silver Vein Size (Default: 6)")
     public static int silverVeinSize = 6;
 
-    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverPerChunk", comment = "Set Silver Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverPerChunk", comment = "Set Silver Spawn Chance (Default: 5)")
     public static int silverPerChunk = 5;
 
-    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverMinHeight", comment = "Set Silver Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverMinHeight", comment = "Set Silver Min Spawn Height (Default: 6)")
     public static int silverMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverMaxHeight", comment = "Set Silver Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "silverOre", key = "silverMaxHeight", comment = "Set Silver Max Spawn Height (Default: 48)")
     public static int silverMaxHeight = 48;
 
     //Starrite Ore Settings
     @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteGeneration", comment = "Generate Starrite Ore")
     public static boolean starriteGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteVeinSize", comment = "Set Max Starrite Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteVeinSize", comment = "Set Max Starrite Vein Size (Default: 5)")
     public static int starriteVeinSize = 5;
 
-    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starritePerChunk", comment = "Set Starrite Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starritePerChunk", comment = "Set Starrite Spawn Chance (Default: 2)")
     public static int starritePerChunk = 2;
 
-    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteMinHeight", comment = "Set Starrite Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteMinHeight", comment = "Set Starrite Min Spawn Height (Default: 150)")
     public static int starriteMinHeight = 150;
 
-    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteMaxHeight", comment = "Set Starrite Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteMaxHeight", comment = "Set Starrite Max Spawn Height (Default: 200)")
     public static int starriteMaxHeight = 200;
 
     //Stormyx Ore Settings
@@ -312,29 +312,29 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxVeinSize", comment = "Set Max Stormyx Vein Size (Default: 8)")
     public static int stormyxVeinSize = 8;
 
-    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxPerChunk", comment = "Set Stormyx Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxPerChunk", comment = "Set Stormyx Spawn Chance (Default: 2)")
     public static int stormyxPerChunk = 2;
 
-    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxMinHeight", comment = "Set Stormyx Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxMinHeight", comment = "Set Stormyx Min Spawn Height (Default: 6)")
     public static int stormyxMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxMaxHeight", comment = "Set Stormyx Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxMaxHeight", comment = "Set Stormyx Max Spawn Height (Default: 54)")
     public static int stormyxMaxHeight = 54;
 
     //Tantalite Ore Settings
     @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteGeneration", comment = "Generate Tantalite Ore")
     public static boolean tantaliteGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteVeinSize", comment = "Set Max Tantalite Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteVeinSize", comment = "Set Max Tantalite Vein Size (Default: 12)")
     public static int tantaliteVeinSize = 12;
 
-    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantalitePerChunk", comment = "Set Tantalite Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantalitePerChunk", comment = "Set Tantalite Spawn Chance (Default: 3)")
     public static int tantalitePerChunk = 3;
 
-    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteMinHeight", comment = "Set Tantalite Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteMinHeight", comment = "Set Tantalite Min Spawn Height (Default: 6)")
     public static int tantaliteMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteMaxHeight", comment = "Set Tantalite Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteMaxHeight", comment = "Set Tantalite Max Spawn Height (Default: 48)")
     public static int tantaliteMaxHeight = 48;
 
     //Tin Ore Settings
@@ -344,58 +344,58 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "tinOre", key = "tinVeinSize", comment = "Set Max Tin Vein Size (Default: 8)")
     public static int tinVeinSize = 8;
 
-    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinPerChunk", comment = "Set Tin Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinPerChunk", comment = "Set Tin Spawn Chance (Default: 4)")
     public static int tinPerChunk = 4;
 
-    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinMinHeight", comment = "Set Tin Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinMinHeight", comment = "Set Tin Min Spawn Height (Default: 6)")
     public static int tinMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinMaxHeight", comment = "Set Tin Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "tinOre", key = "tinMaxHeight", comment = "Set Tin Max Spawn Height (Default: 128)")
     public static int tinMaxHeight = 128;
 
     //Truesilver Ore Settings
     @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverGeneration", comment = "Generate Truesilver Ore")
     public static boolean truesilverGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverVeinSize", comment = "Set Max Truesilver Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverVeinSize", comment = "Set Max Truesilver Vein Size (Default: 2)")
     public static int truesilverVeinSize = 2;
 
-    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverPerChunk", comment = "Set Truesilver Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverPerChunk", comment = "Set Truesilver Spawn Chance (Default: 6)")
     public static int truesilverPerChunk = 6;
 
-    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverMinHeight", comment = "Set Truesilver Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverMinHeight", comment = "Set Truesilver Min Spawn Height (Default: 10)")
     public static int truesilverMinHeight = 10;
 
-    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverMaxHeight", comment = "Set Truesilver Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverMaxHeight", comment = "Set Truesilver Max Spawn Height (Default: 100)")
     public static int truesilverMaxHeight = 100;
 
     //Unobtainium Ore Settings
     @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumGeneration", comment = "Generate Unobtainium Ore")
     public static boolean unobtainiumGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumVeinSize", comment = "Set Max Unobtainium Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumVeinSize", comment = "Set Max Unobtainium Vein Size (Default: 2)")
     public static int unobtainiumVeinSize = 2;
 
-    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumMinHeight", comment = "Set Unobtainium Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumMinHeight", comment = "Set Unobtainium Min Spawn Height (Default: 7)")
     public static int unobtainiumAverageHeight = 7;
 
-    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumMaxHeight", comment = "Set Unobtainium Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumMaxHeight", comment = "Set Unobtainium Max Spawn Height (Default: 24)")
     public static int unobtainiumSpread = 24;
 
     //Ur Ore Settings
     @IConfig(config = "mythicconfig", category = "urOre", key = "urGeneration", comment = "Generate Ur Ore")
     public static boolean urGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "urOre", key = "urVeinSize", comment = "Set Max Ur Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "urOre", key = "urVeinSize", comment = "Set Max Ur Vein Size (Default: 2)")
     public static int urVeinSize = 2;
 
-    @IConfig(config = "mythicconfig", category = "urOre", key = "urPerChunk", comment = "Set Ur Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "urOre", key = "urPerChunk", comment = "Set Ur Spawn Chance (Default: 1)")
     public static int urPerChunk = 1;
 
-    @IConfig(config = "mythicconfig", category = "urOre", key = "urMinHeight", comment = "Set Ur Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "urOre", key = "urMinHeight", comment = "Set Ur Min Spawn Height (Default: 10)")
     public static int urMinHeight = 10;
 
-    @IConfig(config = "mythicconfig", category = "urOre", key = "urMaxHeight", comment = "Set Ur Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "urOre", key = "urMaxHeight", comment = "Set Ur Max Spawn Height (Default: 70)")
     public static int urMaxHeight = 70;
 
     //Vermiculite Ore Settings
@@ -408,25 +408,25 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculitePerChunk", comment = "Set Vermiculite Spawn Chance (Default: 8)")
     public static int vermiculitePerChunk = 8;
 
-    @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteMinHeight", comment = "Set Vermiculite Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteMinHeight", comment = "Set Vermiculite Min Spawn Height (Default: 6)")
     public static int vermiculiteMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteMaxHeight", comment = "Set Vermiculite Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteMaxHeight", comment = "Set Vermiculite Max Spawn Height (Default: 128)")
     public static int vermiculiteMaxHeight = 128;
 
     //Zinc Ore Settings
     @IConfig(config = "mythicconfig", category = "zincOre", key = "zincGeneration", comment = "Generate Zinc Ore")
     public static boolean zincGeneration = true;
 
-    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincVeinSize", comment = "Set Max Zinc Vein Size (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincVeinSize", comment = "Set Max Zinc Vein Size (Default: 6)")
     public static int zincVeinSize = 6;
 
-    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincPerChunk", comment = "Set Zinc Spawn Chance (Default: 8)")
+    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincPerChunk", comment = "Set Zinc Spawn Chance (Default: 6)")
     public static int zincPerChunk = 6;
 
-    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincMinHeight", comment = "Set Zinc Min Spawn Height (Default: 30)")
+    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincMinHeight", comment = "Set Zinc Min Spawn Height (Default: 6)")
     public static int zincMinHeight = 6;
 
-    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincMaxHeight", comment = "Set Zinc Max Spawn Height (Default: 75)")
+    @IConfig(config = "mythicconfig", category = "zincOre", key = "zincMaxHeight", comment = "Set Zinc Max Spawn Height (Default: 128)")
     public static int zincMaxHeight = 128;
 }

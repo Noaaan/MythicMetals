@@ -23,7 +23,7 @@ public class MythicMetalsMain implements ModInitializer {
 	public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
 			new Identifier("mythicmetals", "armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
 
-	public static ConfigHandler MYTHICCONFIG = new ConfigHandler(MythicConfig.class, MOD_ID);
+	public static final ConfigHandler MYTHICHANDLER = new ConfigHandler(MythicConfig.class, MOD_ID);
 
 				
 		@Override
