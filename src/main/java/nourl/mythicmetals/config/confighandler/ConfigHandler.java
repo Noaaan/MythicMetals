@@ -6,7 +6,7 @@
  * Developer Note:  This appears to be the most comprehensive and flexible option to establish configuration files for a mod
  */
 
-package nourl.mythicmetals.config;
+package nourl.mythicmetals.config.confighandler;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +37,7 @@ public class ConfigHandler
     }
 
     private void setup() {
-        final File configDir = new File(FabricLoader.getInstance().getConfigDir().toFile(), "MythicMetals");
+        final File configDir = new File(FabricLoader.getInstance().getConfigDir().toFile(), modId);
 
         if (!configDir.exists()) {
             configDir.mkdirs();
@@ -129,9 +129,7 @@ public class ConfigHandler
         return configs;
     }
 
-
-    private void readFromJson(HashMap<String, JsonObject> configs)
-    {
+    public void readFromJson(HashMap<String, JsonObject> configs) {
         final HashMap<Field, IConfig> fieldMap = getConfigFields();
 
         for (Map.Entry<Field, IConfig> entry : fieldMap.entrySet()) {
@@ -141,7 +139,7 @@ public class ConfigHandler
             final JsonObject config = configs.get(annotation.config());
 
             if (config == null) {
-                continue;
+                continue; //Could be possible if a new config is added
             }
 
             JsonObject categoryObject = config.getAsJsonObject(annotation.category());
@@ -170,6 +168,5 @@ public class ConfigHandler
             }
         }
     }
-
 
 }

@@ -6,7 +6,7 @@
  * Developer Note:  This appears to be the most comprehensive and flexible option to establish configuration files for a mod
  */
 
-package nourl.mythicmetals.config;
+package nourl.mythicmetals.config.confighandler;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -39,9 +39,10 @@ public @interface IConfig
     String comment() default "";
 
     /**
-     * this is the config file name, the default is just config.cgf, use this is you wish to split the config into more than one file.
+     * this is the config file name, the default is just config.cgf, use this is you whish to split the config into more than one file.
      *
      * @return
      */
     String config() default "config";
+
 }

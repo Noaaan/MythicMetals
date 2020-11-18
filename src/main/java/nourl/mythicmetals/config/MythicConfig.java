@@ -1,5 +1,7 @@
 package nourl.mythicmetals.config;
 
+import nourl.mythicmetals.config.confighandler.IConfig;
+
 public class MythicConfig {
     //Adamantite Ore Settings
     @IConfig(config = "mythicconfig", category = "adamantiteOre", key = "adamantiteGeneration", comment = "Generate Adamantite Ore")
@@ -17,6 +19,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "adamantiteOre", key = "adamantiteMaxHeight", comment = "Set Adamantite Max Spawn Height (Default: 24)")
     public static int adamantiteMaxHeight = 24;
 
+
     //Aetherium Ore Settings
     @IConfig(config = "mythicconfig", category = "aetheriumOre", key = "aetheriumGeneration", comment = "Generate Aetherium Ore")
     public static boolean aetheriumGeneration = true;
@@ -32,6 +35,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "aetheriumOre", key = "aetheriumMaxHeight", comment = "Set Aetherium Max Spawn Height (Default: 180)")
     public static int aetheriumMaxHeight = 180;
+
 
     //Aquarium Ore Settings
     @IConfig(config = "mythicconfig", category = "aquariumOre", key = "aquariumGeneration", comment = "Generate Aquarium Ore (Default: False)")
@@ -49,6 +53,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "aquariumOre", key = "aquariumMaxHeight", comment = "Set Aquarium Max Spawn Height (Default: 63)")
     public static int aquariumMaxHeight = 63;
 
+
     //Banglum Ore Settings
     @IConfig(config = "mythicconfig", category = "banglumOre", key = "banglumGeneration", comment = "Generate Banglum Ore")
     public static boolean banglumGeneration = true;
@@ -65,6 +70,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "banglumOre", key = "banglumMaxHeight", comment = "Set Banglum Max Spawn Height (Default: 32)")
     public static int banglumMaxHeight = 32;
 
+
     //Carmot Ore Settings
     @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotGeneration", comment = "Generate Carmot Ore")
     public static boolean carmotGeneration = true;
@@ -72,14 +78,15 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotVeinSize", comment = "Set Max Carmot Vein Size (Default: 2)")
     public static int carmotVeinSize = 2;
 
-    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotPerChunk", comment = "Set Carmot Spawn Chance (Default: 3)")
-    public static int carmotPerChunk = 3;
+    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotPerChunk", comment = "Set Carmot Spawn Chance (Default: 4)")
+    public static int carmotPerChunk = 4;
 
-    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotMinHeight", comment = "Set Carmot Min Spawn Height (Default: 6)")
-    public static int carmotMinHeight = 6;
+    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotMinHeight", comment = "Set Carmot Min Spawn Height (Default: 8)")
+    public static int carmotMinHeight = 8;
 
-    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotMaxHeight", comment = "Set Carmot Max Spawn Height (Default: 64)")
-    public static int carmotMaxHeight = 64;
+    @IConfig(config = "mythicconfig", category = "carmotOre", key = "carmotMaxHeight", comment = "Set Carmot Max Spawn Height (Default: 48)")
+    public static int carmotMaxHeight = 48;
+
 
     //Copper Ore Settings
     @IConfig(config = "mythicconfig", category = "copperOre", key = "copperGeneration", comment = "Generate Copper Ore")
@@ -97,6 +104,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "copperOre", key = "copperMaxHeight", comment = "Set Copper Max Spawn Height (Default: 128)")
     public static int copperMaxHeight = 128;
 
+
     //Kyber Ore Settings
     @IConfig(config = "mythicconfig", category = "kyberOre", key = "kyberGeneration", comment = "Generate Kyber Ore")
     public static boolean kyberGeneration = true;
@@ -112,6 +120,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "kyberOre", key = "kyberMaxHeight", comment = "Set Kyber Max Spawn Height (Default: 18)")
     public static int kyberMaxHeight = 18;
+
 
     //Lutetium Ore Settings
     @IConfig(config = "mythicconfig", category = "lutetiumOre", key = "lutetiumGeneration", comment = "Generate Lutetium Ore")
@@ -129,6 +138,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "lutetiumOre", key = "lutetiumMaxHeight", comment = "Set Lutetium Max Spawn Height (Default: 64)")
     public static int lutetiumMaxHeight = 64;
 
+
     //Manganese Ore Settings
     @IConfig(config = "mythicconfig", category = "manganeseOre", key = "manganeseGeneration", comment = "Generate Manganese Ore")
     public static boolean manganeseGeneration = true;
@@ -144,6 +154,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "manganeseOre", key = "manganeseMaxHeight", comment = "Set Manganese Max Spawn Height (Default: 48)")
     public static int manganeseMaxHeight = 48;
+
 
     //Midas Gold Ore Settings
     @IConfig(config = "mythicconfig", category = "midasgoldOre", key = "midasgoldGeneration", comment = "Generate Midas Gold Ore")
@@ -161,6 +172,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "midasgoldOre", key = "midasgoldMaxHeight", comment = "Set Midas Gold Max Spawn Height (Default: 128)")
     public static int midasgoldMaxHeight = 128;
 
+
     //Mythril Ore Settings
     @IConfig(config = "mythicconfig", category = "mythrilOre", key = "mythrilGeneration", comment = "Generate Mythril Ore")
     public static boolean mythrilGeneration = true;
@@ -176,6 +188,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "mythrilOre", key = "mythrilMaxHeight", comment = "Set Mythril Max Spawn Height (Default: 24)")
     public static int mythrilMaxHeight = 24;
+
 
     //Orichalcum Ore Settings
     @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumGeneration", comment = "Generate Orichalcum Ore")
@@ -193,6 +206,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "orichalcumOre", key = "orichalcumMaxHeight", comment = "Set Orichalcum Max Spawn Height (Default: 24)")
     public static int orichalcumMaxHeight = 24;
 
+
     //Osmium Ore Settings
     @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumGeneration", comment = "Generate Osmium Ore")
     public static boolean osmiumGeneration = true;
@@ -208,6 +222,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "osmiumOre", key = "osmiumMaxHeight", comment = "Set Osmium Max Spawn Height (Default: 48)")
     public static int osmiumMaxHeight = 48;
+
 
     //Platinum Ore Settings
     @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumGeneration", comment = "Generate Platinum Ore")
@@ -225,6 +240,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "platinumOre", key = "platinumMaxHeight", comment = "Set Platinum Max Spawn Height (Default: 24)")
     public static int platinumMaxHeight = 24;
 
+
     //Prometheum Ore Settings
     @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumGeneration", comment = "Generate Prometheum Ore")
     public static boolean prometheumGeneration = true;
@@ -240,6 +256,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "prometheumOre", key = "prometheumMaxHeight", comment = "Set Prometheum Max Spawn Height (Default: 24)")
     public static int prometheumMaxHeight = 24;
+
 
     //Quadrillum Ore Settings
     @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumGeneration", comment = "Generate Quadrillum Ore")
@@ -257,6 +274,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "quadrillumOre", key = "quadrillumMaxHeight", comment = "Set Quadrillum Max Spawn Height (Default: 56)")
     public static int quadrillumMaxHeight = 56;
 
+
     //Runite Ore Settings
     @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteGeneration", comment = "Generate Runite Ore")
     public static boolean runiteGeneration = true;
@@ -272,6 +290,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "runiteOre", key = "runiteMaxHeight", comment = "Set Runite Max Spawn Height (Default: 32)")
     public static int runiteMaxHeight = 32;
+
 
     //Silver Ore Settings
     @IConfig(config = "mythicconfig", category = "silverOre", key = "silverGeneration", comment = "Generate Silver Ore")
@@ -289,6 +308,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "silverOre", key = "silverMaxHeight", comment = "Set Silver Max Spawn Height (Default: 48)")
     public static int silverMaxHeight = 48;
 
+
     //Starrite Ore Settings
     @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteGeneration", comment = "Generate Starrite Ore")
     public static boolean starriteGeneration = true;
@@ -304,6 +324,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "starriteOre", key = "starriteMaxHeight", comment = "Set Starrite Max Spawn Height (Default: 200)")
     public static int starriteMaxHeight = 200;
+
 
     //Stormyx Ore Settings
     @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxGeneration", comment = "Generate Stormyx Ore")
@@ -321,6 +342,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "stormyxOre", key = "stormyxMaxHeight", comment = "Set Stormyx Max Spawn Height (Default: 54)")
     public static int stormyxMaxHeight = 54;
 
+
     //Tantalite Ore Settings
     @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteGeneration", comment = "Generate Tantalite Ore")
     public static boolean tantaliteGeneration = true;
@@ -336,6 +358,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "tantaliteOre", key = "tantaliteMaxHeight", comment = "Set Tantalite Max Spawn Height (Default: 48)")
     public static int tantaliteMaxHeight = 48;
+
 
     //Tin Ore Settings
     @IConfig(config = "mythicconfig", category = "tinOre", key = "tinGeneration", comment = "Generate Tin Ore")
@@ -353,6 +376,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "tinOre", key = "tinMaxHeight", comment = "Set Tin Max Spawn Height (Default: 128)")
     public static int tinMaxHeight = 128;
 
+
     //Truesilver Ore Settings
     @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverGeneration", comment = "Generate Truesilver Ore")
     public static boolean truesilverGeneration = true;
@@ -369,6 +393,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "truesilverOre", key = "truesilverMaxHeight", comment = "Set Truesilver Max Spawn Height (Default: 100)")
     public static int truesilverMaxHeight = 100;
 
+
     //Unobtainium Ore Settings
     @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumGeneration", comment = "Generate Unobtainium Ore")
     public static boolean unobtainiumGeneration = true;
@@ -381,6 +406,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "unobtainiumOre", key = "unobtainiumMaxHeight", comment = "Set Unobtainium Max Spawn Height (Default: 24)")
     public static int unobtainiumSpread = 24;
+
 
     //Ur Ore Settings
     @IConfig(config = "mythicconfig", category = "urOre", key = "urGeneration", comment = "Generate Ur Ore")
@@ -398,6 +424,7 @@ public class MythicConfig {
     @IConfig(config = "mythicconfig", category = "urOre", key = "urMaxHeight", comment = "Set Ur Max Spawn Height (Default: 70)")
     public static int urMaxHeight = 70;
 
+
     //Vermiculite Ore Settings
     @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteGeneration", comment = "Generate Vermiculite Ore")
     public static boolean vermiculiteGeneration = true;
@@ -413,6 +440,7 @@ public class MythicConfig {
 
     @IConfig(config = "mythicconfig", category = "vermiculiteOre", key = "vermiculiteMaxHeight", comment = "Set Vermiculite Max Spawn Height (Default: 128)")
     public static int vermiculiteMaxHeight = 128;
+
 
     //Zinc Ore Settings
     @IConfig(config = "mythicconfig", category = "zincOre", key = "zincGeneration", comment = "Generate Zinc Ore")
