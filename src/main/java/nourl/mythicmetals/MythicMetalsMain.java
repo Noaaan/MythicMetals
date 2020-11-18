@@ -3,7 +3,6 @@ package nourl.mythicmetals;
 import nourl.mythicmetals.config.ConfigHandler;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.registry.*;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,18 +28,13 @@ public class MythicMetalsMain implements ModInitializer {
 		@Override
 		public void onInitialize() {
 			RegisterIngots.register();
-			RegisterOres.register();
 		  	RegisterTools.register();
-		  	RegisterArmor.register();
-		  	RegisterBlocks.register();
-		  	RegisterItems.register();
+			RegisterArmor.register();
+			RegisterBlocks.register();
+			RegisterItems.register();
+			RegisterOres.register();
 
 		  	LOGGER.info("Mythic Metals is now initialized");
 
 		 }
-
-		public static void log(Level level, String message){
-	        LOGGER.log(level, "[MYTHICMETALS] " + message);
-
-	    }
 	}
