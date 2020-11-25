@@ -9,7 +9,9 @@
     "Noaaan"
   ],
   "contact": {
-    "sources": "https://github.com/Noaaan/MythicMetals"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/mythicmetals",
+    "sources": "https://github.com/Noaaan/MythicMetals",
+    "issues": "https://github.com/Noaaan/MythicMetals/issues"
   },
 
   "license": "GPLv3",
@@ -19,11 +21,15 @@
   "entrypoints": {
     "main": [
       "nourl.mythicmetals.MythicMetalsMain"
+    ],
+    "modmenu": [
+      "nourl.mythicmetals.config.MythicModMenu"
     ]
   },
   "mixins": [
     "mythicmetals.mixins.json"
   ],
+
 
   "depends": {
     "fabricloader": ">=0.7.4",

@@ -3,10 +3,13 @@ Updated storage block mining levels
 Made Metallurgium and Unobtainium fireproof  
 Added russian translations (Thanks Oscienet!)  
 Added a configuration file, making all of the ores configurable  
-* You can  find the configuration file in the config/mythicmetals folder
- 
+* You can find the configuration file in the config/mythic_metals folder in your .minecraft folder or your main directory
+
 Fixed an issue where Carmot would not spawn  
-Changed Starrite, making it only spawn in mountains  
+Made Starrite only spawn in mountains  
+Made Aquarium only spawn in ocean type biomes
+Made Aetherium only spawn in The End (experimental)
+Added ModMenu support for configuration
 
 
 # 0.9.5

@@ -19,7 +19,13 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	include("me.shedaniel.cloth:config-2:${project.cloth_version}")
+	include("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}")
+
 	modApi("me.shedaniel.cloth:config-2:${project.cloth_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modApi("io.github.prospector:modmenu:${project.modmenu_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
@@ -43,9 +49,8 @@ dependencies {
 		options.encoding = "UTF-8"
 	}
 
-	task sourcesJar(type: Jar, dependsOn: classes) {
-		classifier = "sources"
-		from sourceSets.main.allSource
+	java {
+		withSourcesJar()
 	}
 
 	jar {
