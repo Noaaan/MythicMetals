@@ -30,7 +30,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	BRASS("brass", 5, new int[]{2, 4, 5, 2}, 18, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Brass_Ingot);
     }),
-	BRONZE("bronze", 19, new int[]{2, 6, 7, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	BRONZE("bronze", 19, new int[]{2, 6, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Bronze_Ingot);
     }),
 	CARMOT("carmot", 8, new int[]{2, 4, 5, 2}, 40, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
@@ -39,7 +39,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	CELESTIUM("celestium", 40, new int[]{4, 8, 9, 4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Celestium_Ingot);
     }),
-	COPPER("copper", 4, new int[]{2, 2, 2, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	COPPER("copper", 5, new int[]{1, 4, 5, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Copper_Ingot);
     }),
 	DISCORDIUM("discordium", 27, new int[]{3, 6, 7, 3}, 19, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
@@ -48,7 +48,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	DURASTEEL("durasteel", 38, new int[]{3, 8, 9, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Durasteel_Ingot);
     }),
-	ELECTRUM("electrum", 9, new int[]{2, 3, 4, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	ELECTRUM("electrum", 10, new int[]{2, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Electrum_Ingot);
     }),
 	ETHERITE("etherite", 39, new int[]{4, 7, 9, 4}, 17, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
@@ -96,7 +96,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	STARRITE("starrite", 28, new int[]{3, 7, 8, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.5F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Starrite_Ingot);
     }),
-	SILVER("silver", 5, new int[]{1, 2, 2, 1}, 6, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	SILVER("silver", 8, new int[]{2, 4, 6, 2}, 6, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Silver_Ingot);
     }),
 	STEEL("steel", 22, new int[]{2, 6, 7, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.1F, () -> {
@@ -108,13 +108,13 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	TANTALITE("tantalite", 21, new int[]{2, 6, 7, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Tantalite_Ingot);
     }),
-	TIN("tin", 2, new int[]{1, 1, 2, 1}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	TIN("tin", 3, new int[]{1, 3, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Tin_Ingot);
     }),
 	TRUESILVER("truesilver", 28, new int[]{3, 7, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.5F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Truesilver_Ingot);
     }),
-	UR("ur", 20, new int[]{3, 6, 8, 3}, 3, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	UR("ur", 20, new int[]{2, 6, 7, 2}, 3, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Ur_Ingot);
     });
 
