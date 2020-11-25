@@ -17,8 +17,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Adamantite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean adamantiteGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int adamantiteVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int adamantitePerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
@@ -29,8 +31,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Aetherium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean aetheriumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int aetheriumVeinSize = 2;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int aetheriumPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -42,8 +46,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Aquarium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean aquariumGeneration = false;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int aquariumVeinSize = 16;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int aquariumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
@@ -55,8 +61,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Banglum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean banglumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int banglumVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int banglumPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -68,8 +76,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Carmot Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean carmotGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int carmotVeinSize = 2;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int carmotPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
@@ -81,8 +91,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Copper Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean copperGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int copperVeinSize = 12;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int copperPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -94,8 +106,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Kyber Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean kyberGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int kyberVeinSize = 14;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int kyberPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -107,8 +121,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Lutetium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean lutetiumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int lutetiumVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int lutetiumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
@@ -120,8 +136,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Manganese Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean manganeseGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int manganeseVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int manganesePerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
@@ -133,8 +151,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Midas Gold Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean midasgoldGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int midasgoldVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int midasgoldPerChunk = 10;
         @ConfigEntry.Gui.RequiresRestart
@@ -146,8 +166,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Mythril Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean mythrilGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int mythrilVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int mythrilPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
@@ -159,8 +181,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Orichalcum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean orichalcumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int orichalcumVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int orichalcumPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
@@ -172,8 +196,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Osmium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean osmiumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int osmiumVeinSize = 9;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int osmiumPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -185,8 +211,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Platinum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean platinumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int platinumVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int platinumPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -198,8 +226,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Prometheum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean prometheumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int prometheumVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int prometheumPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -211,8 +241,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Quadrillum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean quadrillumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int quadrillumVeinSize = 8;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int quadrillumPerChunk = 8;
         @ConfigEntry.Gui.RequiresRestart
@@ -224,8 +256,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Runite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean runiteGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int runiteVeinSize = 3;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int runitePerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
@@ -237,8 +271,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Silver Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean silverGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int silverVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int silverPerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
@@ -250,8 +286,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Starrite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean starriteGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int starriteVeinSize = 5;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int starritePerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -263,8 +301,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Stormyx Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean stormyxGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int stormyxVeinSize = 8;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int stormyxPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
@@ -276,8 +316,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Tantalite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean tantaliteGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int tantaliteVeinSize = 12;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int tantalitePerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
@@ -289,8 +331,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Tin Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean tinGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int tinVeinSize = 8;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int tinPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
@@ -302,8 +346,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Truesilver Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean truesilverGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int truesilverVeinSize = 2;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int truesilverPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -315,10 +361,12 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Unobtainium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean unobtainiumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int unobtainiumVeinSize = 2;
         @ConfigEntry.Gui.RequiresRestart
         public int unobtainiumAverageHeight = 7;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int unobtainiumSpread = 24;
 
@@ -326,8 +374,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Ur Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean urGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int urVeinSize = 2;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int urPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
@@ -339,8 +389,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Vermiculite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean vermiculiteGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int vermiculiteVeinSize = 8;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int vermiculitePerChunk = 8;
         @ConfigEntry.Gui.RequiresRestart
@@ -352,8 +404,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         //Zinc Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean zincGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int zincVeinSize = 6;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int zincPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
