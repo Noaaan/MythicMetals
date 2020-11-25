@@ -10,6 +10,12 @@ Made Starrite only spawn in mountains
 Made Aquarium only spawn in ocean type biomes
 Made Aetherium only spawn in The End (experimental)
 Added ModMenu support for configuration
+Minor balancing tweaks
+*Buffed copper, tin and silver armor  
+*Buffed copper, tin, silver, brass and electrum tool durability  
+*Slight nerf to Ur armor  
+*Rebalanced Bronze armor  
+
 
 
 # 0.9.5
