@@ -1,7 +1,9 @@
 package nourl.mythicmetals;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import nourl.mythicmetals.config.*;
-import nourl.mythicmetals.config.confighandler.*;
 import nourl.mythicmetals.registry.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -14,12 +16,10 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import java.io.File;
-
 public class MythicMetalsMain implements ModInitializer {
-	public static File configDir;
 	public static Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "mythicmetals";
+	public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
 
 	public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
 					new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterIngots.Adamantite_Ingot)).build();
@@ -31,8 +31,6 @@ public class MythicMetalsMain implements ModInitializer {
 				
 		@Override
 		public void onInitialize() {
-			new ConfigHandler(MythicConfig.class, MOD_ID);
-
 			RegisterIngots.register();
 		  	RegisterTools.register();
 			RegisterArmor.register();
