@@ -3,9 +3,7 @@
   "minVersion": "0.8",
   "package": "nourl.mythicmetals.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-      "MythicMetalsMixin"
-  ],
+  "mixins": [],
   "client": [],
   "injectors": {
     "defaultRequire": 1

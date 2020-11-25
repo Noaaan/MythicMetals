@@ -4,6 +4,7 @@ import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import nourl.mythicmetals.config.*;
+import nourl.mythicmetals.ores.OreGenerator;
 import nourl.mythicmetals.registry.*;
 
 import org.apache.logging.log4j.LogManager;
@@ -36,9 +37,10 @@ public class MythicMetalsMain implements ModInitializer {
 			RegisterArmor.register();
 			RegisterBlocks.register();
 			RegisterItems.register();
-			RegisterOres.register();
+			OreGenerator.init();
+			OreGenerator.generate();
 
-		  	LOGGER.info("Mythic Metals is now initialized");
+		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 
 		 }
 	}

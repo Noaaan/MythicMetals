@@ -3,6 +3,7 @@ package nourl.mythicmetals.ores;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;
@@ -16,7 +17,6 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 import nourl.mythicmetals.MythicMetalsMain;
 import nourl.mythicmetals.config.MythicConfig;
-import nourl.mythicmetals.registry.RegisterOres;
 
 public class OreGenerator {
 	public static final MythicConfig.MythicOreConfig CONFIG = MythicMetalsMain.CONFIG.mythores;
@@ -53,38 +53,67 @@ public class OreGenerator {
 	public static ConfiguredFeature<?, ?> ORE_VERMICULITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.vermiculiteVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.vermiculiteMinHeight,CONFIG.vermiculiteMaxHeight))).spreadHorizontally().repeat(CONFIG.vermiculitePerChunk);
 	public static ConfiguredFeature<?, ?> ORE_ZINC = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ZINC_ORE.getDefaultState(), CONFIG.zincVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.zincMinHeight,CONFIG.zincMaxHeight))).spreadHorizontally().repeat(CONFIG.zincPerChunk);
 
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_adamantite"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_aetherium"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_aquarium"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_banglum"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_carmot"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreCopper = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_copper"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_kyber"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreLutetium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_lutetium"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_manganese"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_midas_gold"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_mythril"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_orichalcum"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreOsmium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_osmium"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> orePlatinum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_platinum"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> orePrometheum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_prometheum"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreQuadrillum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_quadrillum"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreRunite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_runite"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_silver"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_starrite"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_stormyx"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreTantalite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_tantalite"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_tin"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_truesilver"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_unobtainium"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreUr = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_ur"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_vermiculite"));
+	public static RegistryKey<ConfiguredFeature<?, ?>> oreZinc = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_zinc"));
+
 	public static final MythicConfig.MythicOreConfig CONFIG2 = MythicMetalsMain.CONFIG.mythores;
 
-	public static void init() {}
+	public static void init() {
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAdamantite.getValue(), OreGenerator.ORE_ADAMANTITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAetherium.getValue(), OreGenerator.ORE_AETHERIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAquarium.getValue(), OreGenerator.ORE_AQUARIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreBanglum.getValue(), OreGenerator.ORE_BANGLUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreCarmot.getValue(), OreGenerator.ORE_CARMOT);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreCopper.getValue(), OreGenerator.ORE_COPPER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreKyber.getValue(), OreGenerator.ORE_KYBER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreLutetium.getValue(), OreGenerator.ORE_LUTETIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreManganese.getValue(), OreGenerator.ORE_MANGANESE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreMidasGold.getValue(), OreGenerator.ORE_MIDAS_GOLD);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreMythril.getValue(), OreGenerator.ORE_MYTHRIL);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreOrichalcum.getValue(), OreGenerator.ORE_ORICHALCUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreOsmium.getValue(), OreGenerator.ORE_OSMIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, orePlatinum.getValue(), OreGenerator.ORE_PLATINUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, orePrometheum.getValue(), OreGenerator.ORE_PROMETHEUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreQuadrillum.getValue(), OreGenerator.ORE_QUADRILLUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreRunite.getValue(), OreGenerator.ORE_RUNITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreSilver.getValue(), OreGenerator.ORE_SILVER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreStarrite.getValue(), OreGenerator.ORE_STARRITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreStormyx.getValue(), OreGenerator.ORE_STORMYX);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreTantalite.getValue(), OreGenerator.ORE_TANTALITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreTin.getValue(), OreGenerator.ORE_TIN);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreTruesilver.getValue(), OreGenerator.ORE_TRUESILVER);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreUnobtainium.getValue(), OreGenerator.ORE_UNOBTAINIUM);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreUr.getValue(), OreGenerator.ORE_UR);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreVermiculite.getValue(), OreGenerator.ORE_VERMICULITE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreZinc.getValue(), OreGenerator.ORE_ZINC);
+	}
 
 	public static void generate() {
-		RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_adamantite"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_aetherium"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_aquarium"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_banglum"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_carmot"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreCopper = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_copper"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_kyber"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreLutetium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_lutetium"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_manganese"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_midas_gold"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_mythril"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_orichalcum"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreOsmium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_osmium"));
-		RegistryKey<ConfiguredFeature<?, ?>> orePlatinum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_platinum"));
-		RegistryKey<ConfiguredFeature<?, ?>> orePrometheum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_prometheum"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreQuadrillum = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_quadrillum"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreRunite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_runite"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_silver"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_starrite"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_stormyx"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreTantalite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_tantalite"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_tin"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_truesilver"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_unobtainium"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreUr = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_ur"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_vermiculite"));
-		RegistryKey<ConfiguredFeature<?, ?>> oreZinc = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetalsMain.MOD_ID, "ore_zinc"));
 
 		//Overworld Ores
 		if(CONFIG2.adamantiteGeneration) {
