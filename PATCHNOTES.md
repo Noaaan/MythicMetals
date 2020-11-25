@@ -16,6 +16,8 @@ Minor balancing tweaks
 * Slight nerf to Ur armor  
 * Rebalanced Bronze armor  
 
+Minor change to the Stormyx armor textures 
+Updated Metallurgium Armor Textures  
 
 
 # 0.9.5
