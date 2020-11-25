@@ -23,7 +23,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	BANGLUM(2, 251, 12.0F, 2.5F, 1, () -> {
         return Ingredient.ofItems(RegisterIngots.Banglum_Ingot);
     }),
-	BRASS(1, 69, 10.0F, 1.0F, 18, () -> {
+	BRASS(1, 100, 10.0F, 1.0F, 18, () -> {
         return Ingredient.ofItems(RegisterIngots.Brass_Ingot);
     }),
 	BRONZE(2, 400, 7.0F, 2.0F, 14, () -> {
@@ -35,7 +35,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	CELESTIUM(4, 1977, 9.0F, 4.0F, 24, () -> {
         return Ingredient.ofItems(RegisterIngots.Celestium_Ingot);
     }),
-	COPPER(1, 100, 5.0F, 1.0F, 8, () -> {
+	COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(RegisterIngots.Copper_Ingot);
     }),
 	DISCORDIUM(3, 666, 5.0F, 3.0F, 15, () -> {
@@ -44,7 +44,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	DURASTEEL(3, 1300, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterIngots.Durasteel_Ingot);
     }),
-	ELECTRUM(1, 100, 16.0F, 1.0F, 25, () -> {
+	ELECTRUM(1, 200, 16.0F, 1.0F, 25, () -> {
         return Ingredient.ofItems(RegisterIngots.Electrum_Ingot);
     }),
 	ETHERITE(4, 1969, 8.5F, 3.5F, 17, () -> {
@@ -92,7 +92,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	STARRITE(3, 1000, 9.9F, 3.5F, 18, () -> {
         return Ingredient.ofItems(RegisterIngots.Starrite_Ingot);
     }),
-	SILVER(1, 64, 4.0F, 1.0F, 20, () -> {
+	SILVER(1, 127, 4.0F, 1.0F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.Silver_Ingot);
     }),
 	STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
