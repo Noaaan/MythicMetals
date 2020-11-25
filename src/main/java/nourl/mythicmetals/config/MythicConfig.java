@@ -45,13 +45,13 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
 
         //Aquarium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean aquariumGeneration = false;
+        public boolean aquariumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumVeinSize = 16;
+        public int aquariumVeinSize = 12;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumPerChunk = 3;
+        public int aquariumPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
         public int aquariumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
