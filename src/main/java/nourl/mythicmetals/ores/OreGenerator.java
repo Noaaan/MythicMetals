@@ -112,7 +112,7 @@ public class OreGenerator {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreVermiculite.getValue(), OreGenerator.ORE_VERMICULITE);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreZinc.getValue(), OreGenerator.ORE_ZINC);
 	}
-
+	@SuppressWarnings("deprecation")
 	public static void generate() {
 
 		//Overworld Ores
