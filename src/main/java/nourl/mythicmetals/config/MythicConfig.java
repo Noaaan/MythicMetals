@@ -63,10 +63,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean banglumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumVeinSize = 8;
+        public int banglumVeinSize = 7;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumPerChunk = 2;
+        public int banglumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
         public int banglumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -231,11 +231,11 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int prometheumVeinSize = 5;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumPerChunk = 2;
+        public int prometheumPerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
         public int prometheumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumMaxHeight = 24;
+        public int prometheumMaxHeight = 48;
 
 
         //Quadrillum Ore Settings
@@ -246,7 +246,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int quadrillumVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumPerChunk = 5;
+        public int quadrillumPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
         public int quadrillumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -293,7 +293,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.Gui.RequiresRestart
         public int starritePerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
-        public int starriteMinHeight = 150;
+        public int starriteMinHeight = 80;
         @ConfigEntry.Gui.RequiresRestart
         public int starriteMaxHeight = 200;
 
