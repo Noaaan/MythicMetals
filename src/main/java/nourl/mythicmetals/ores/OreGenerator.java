@@ -118,6 +118,8 @@ public class OreGenerator {
 		//Overworld Ores
 		if(CONFIG2.adamantiteGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreAdamantite);}
+		if(CONFIG2.aetheriumGeneration) {
+			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreAetherium); }
 		if(CONFIG2.banglumGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreBanglum); }
 		if(CONFIG2.carmotGeneration) {
@@ -167,8 +169,6 @@ public class OreGenerator {
 			BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreUr); }
 
 		//Biome based generation
-		if(CONFIG2.aetheriumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, oreAetherium); }
 		if(CONFIG2.aquariumGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, oreAquarium); }
 		if(CONFIG2.starriteGeneration) {
