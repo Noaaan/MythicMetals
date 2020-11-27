@@ -348,12 +348,12 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean truesilverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverVeinSize = 2;
+        public int truesilverVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int truesilverPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverMinHeight = 10;
+        public int truesilverMinHeight = 8;
         @ConfigEntry.Gui.RequiresRestart
         public int truesilverMaxHeight = 100;
 
