@@ -48,7 +48,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean aquariumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumVeinSize = 12;
+        public int aquariumVeinSize = 10;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int aquariumPerChunk = 4;
@@ -63,7 +63,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean banglumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumVeinSize = 6;
+        public int banglumVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int banglumPerChunk = 2;
@@ -78,7 +78,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean carmotGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int carmotVeinSize = 2;
+        public int carmotVeinSize = 3;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int carmotPerChunk = 4;
@@ -156,7 +156,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int midasgoldVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int midasgoldPerChunk = 10;
+        public int midasgoldPerChunk = 7;
         @ConfigEntry.Gui.RequiresRestart
         public int midasgoldMinHeight = 10;
         @ConfigEntry.Gui.RequiresRestart
@@ -246,7 +246,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int quadrillumVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumPerChunk = 8;
+        public int quadrillumPerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
         public int quadrillumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -318,10 +318,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean tantaliteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tantaliteVeinSize = 12;
+        public int tantaliteVeinSize = 10;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tantalitePerChunk = 3;
+        public int tantalitePerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
         public int tantaliteMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
