@@ -1,3 +1,11 @@
+# 0.9.7  
+Reverted Aetherium change, it now spawns in the overworld  
+Tweaked config files with new default values  
+Expanded on biome specific ores.  
+* Prometheum now spawns all jungle biome variants  
+* Aetherium and Starrite now spawn in all mountain variants  
+Added nuggets to all ingots thanks to LordDeatHunter!
+
 # 0.9.6  
 Updated storage block mining levels  
 Made Metallurgium and Unobtainium fireproof  
