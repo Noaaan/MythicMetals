@@ -33,6 +33,7 @@ public class MythicMetalsMain implements ModInitializer {
 		@Override
 		public void onInitialize() {
 			RegisterIngots.register();
+			RegisterNuggets.register();
 		  	RegisterTools.register();
 			RegisterArmor.register();
 			RegisterBlocks.register();

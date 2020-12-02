@@ -9,18 +9,19 @@ eclipse
 
 # IntelliJ IDEA
 
-.idea
 .idea/
 *.iml
-*.iws
 *.ipr
+*.iws
 
 # gradle
-build
-.gradle
+.gradle/
+build/
+out/
+classes/
 
 # other
-run
+run/
 !LICENSE
 !README.*
 !.gitignore
