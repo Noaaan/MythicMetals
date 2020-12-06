@@ -1,10 +1,19 @@
 # 0.9.7  
+Added nuggets from all ingots, thanks to LordDeatHunter!
 Reverted Aetherium change, it now spawns in the overworld  
-Tweaked config files with new default values  
 Expanded on biome specific ores.  
 * Prometheum now spawns all jungle biome variants  
 * Aetherium and Starrite now spawn in all mountain variants  
-Added nuggets to all ingots thanks to LordDeatHunter!
+
+Minor tweaks to configs/tools:  
+* Tweaked Tantalite vein chance and ores per vein
+* Reduced default vein chance of Quadrillum and Midas Gold  
+* Slightly reduced ores per vein of Aquarium  
+* Increased Banglum vein size  
+* Slightly increased Carmot vein size  
+* Increased Truesilver vein size  
+* Increased speed of Quicksilver tools
+* Increased speed of Slowsilver tools
 
 # 0.9.6  
 Updated storage block mining levels  

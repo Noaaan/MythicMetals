@@ -80,13 +80,13 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	QUADRILLUM(2, 531, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterIngots.Quadrillum_Ingot);
     }),
-	QUICKSILVER(3, 1652, 10.0F, 2.5F, 25, () -> {
+	QUICKSILVER(3, 1652, 13.0F, 2.5F, 25, () -> {
         return Ingredient.ofItems(RegisterIngots.Quicksilver_Ingot);
     }),
 	RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.Runite_Ingot);
     }),
-	SLOWSILVER(2, 800, 4.0F, 2.0F, 14, () -> {
+	SLOWSILVER(2, 800, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterIngots.Slowsilver_Ingot);
     }),
 	STARRITE(3, 1000, 9.9F, 3.5F, 18, () -> {
