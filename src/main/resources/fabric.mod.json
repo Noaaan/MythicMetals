@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "nourl.mythicmetals.MythicMetalsMain"
+      "nourl.mythicmetals.MythicMetals"
     ],
     "modmenu": [
       "nourl.mythicmetals.config.MythicModMenu"

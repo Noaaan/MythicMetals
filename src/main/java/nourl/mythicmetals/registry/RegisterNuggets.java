@@ -6,7 +6,6 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 
 public class RegisterNuggets {
-    //Normal Ingots
     public static final Item Adamantite_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Aetherium_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Aquarium_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -48,7 +47,6 @@ public class RegisterNuggets {
     public static final Item Zinc_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
     public static void register() {
-        //Register Ingots
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_nugget"), Adamantite_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_nugget"), Aetherium_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_nugget"), Aquarium_Nugget);
