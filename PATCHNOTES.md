@@ -2,6 +2,8 @@
 Added nuggets from all ingots, thanks to LordDeatHunter!
 Reverted Aetherium change, it now spawns in the overworld  
 Expanded on biome specific ores.  
+Adjusted Copper ingot texture.  
+Reduced blasting time of regular ores (thanks m3talflame!)  
 * Prometheum now spawns all jungle biome variants  
 * Aetherium and Starrite now spawn in all mountain variants  
 
