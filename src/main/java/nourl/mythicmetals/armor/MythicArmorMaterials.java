@@ -1,6 +1,5 @@
 package nourl.mythicmetals.armor;
 
-import java.util.function.Supplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,6 +9,8 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 import nourl.mythicmetals.registry.RegisterIngots;
+
+import java.util.function.Supplier;
 
 public enum MythicArmorMaterials implements ArmorMaterial {
 	ADAMANTITE("adamantite", 35, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
@@ -171,4 +172,5 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	   public float getKnockbackResistance() {
 	      return this.knockbackResistance;
 	   }
+
 	}

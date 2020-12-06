@@ -17,7 +17,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class MythicMetalsMain implements ModInitializer {
+public class MythicMetals implements ModInitializer {
 	public static Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "mythicmetals";
 	public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
