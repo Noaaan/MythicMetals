@@ -8,6 +8,6 @@ import nourl.mythicmetals.MythicMetals;
 public class RegisterItems {
     public static final Item Vermiculite = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static void register() {
-        Registry.register(Registry.ITEM, new Identifier("mythicmetals", "vermiculite"), Vermiculite);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "vermiculite"), Vermiculite);
     }
 }
