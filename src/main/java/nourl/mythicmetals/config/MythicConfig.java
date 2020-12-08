@@ -123,10 +123,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean lutetiumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumVeinSize = 5;
+        public int lutetiumVeinSize = 7;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumPerChunk = 3;
+        public int lutetiumPerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
         public int lutetiumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -273,10 +273,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean silverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int silverVeinSize = 6;
+        public int silverVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int silverPerChunk = 5;
+        public int silverPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
         public int silverMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
