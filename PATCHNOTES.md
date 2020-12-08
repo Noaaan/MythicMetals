@@ -14,8 +14,9 @@ Minor tweaks to configs/tools:
 * Increased Banglum vein size  
 * Slightly increased Carmot vein size  
 * Increased Truesilver vein size  
-* Increased speed of Quicksilver tools
-* Increased speed of Slowsilver tools
+* Increased speed of Quicksilver tools  
+* Increased speed of Slowsilver tools  
+* Buffed Carmot  
 
 # 0.9.6  
 Updated storage block mining levels  

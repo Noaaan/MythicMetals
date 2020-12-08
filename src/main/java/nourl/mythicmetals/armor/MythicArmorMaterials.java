@@ -35,7 +35,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	BRONZE("bronze", 19, new int[]{2, 6, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Bronze_Ingot);
     }),
-	CARMOT("carmot", 8, new int[]{2, 4, 5, 2}, 40, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
+	CARMOT("carmot", 8, new int[]{2, 6, 7, 2}, 40, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Carmot_Ingot);
     }),
 	CELESTIUM("celestium", 40, new int[]{4, 8, 9, 4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, 0.1F, () -> {
