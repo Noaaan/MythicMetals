@@ -7,7 +7,7 @@ This is the master branch. I usually push updates once i intend to create a new 
 
 You can find the patch notes in the PATCHNOTES.md, on the release page, or on the files themselves on CurseForge.
 
-Currently there is one addon being worked on for this mod by the user DH (Fabricord), and a link will be added to the page once it is completed!
+Currently there are a couple of implementations in the works for Mythic Metals. The first is a mod called Starry Skies, featuring the ores in their dimension. The second one is compatability with Smithee, by LordDeatHunter, which is a tool construction mod. Expect links to them once they are released here, and on CF.
 
 
 ## Download
@@ -34,7 +34,9 @@ misode, for his loot table generator.
 Shadowclaimer, for creating Metallurgy in the first place.  
 My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
 My friend Revanitez, drakath9 and realspectr3x who contributed to the assets of the mod.  
+LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
+
 ### Translations  
 These people have helped translating the mod into different languages. Thank you to:  
 
