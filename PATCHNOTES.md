@@ -17,6 +17,7 @@ Minor tweaks to configs/tools:
 * Increased speed of Quicksilver tools  
 * Increased speed of Slowsilver tools  
 * Buffed Carmot  
+* Changed spawnrate of silver and lutetium  
 
 # 0.9.6  
 Updated storage block mining levels  
