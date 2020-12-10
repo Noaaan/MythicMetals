@@ -12,6 +12,10 @@ group = project.maven_group
 
 repositories {
 	jcenter()
+	maven {
+		url = "https://jitpack.io"
+		name = "Jitpack"
+	}
 }
 
 dependencies {
@@ -31,6 +35,8 @@ dependencies {
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+	modApi "com.github.Shnupbups:Piglib:1.0"
+	include "com.github.Shnupbups:Piglib:1.0"
 
 	processResources {
 		inputs.property "version", project.version

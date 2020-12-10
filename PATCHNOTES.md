@@ -1,3 +1,5 @@
+# 0.9.8  
+Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
 # 0.9.7  
 Added nuggets from all ingots, thanks to LordDeatHunter!
 Reverted Aetherium change, it now spawns in the overworld  
