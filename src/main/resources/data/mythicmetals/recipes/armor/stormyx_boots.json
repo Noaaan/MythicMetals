@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"tag":"c:stormyx_ingots"}},"result":{"item":"mythicmetals:stormyx_boots","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:stormyx_ingot"}},"result":{"item":"mythicmetals:stormyx_boots","count":1}}

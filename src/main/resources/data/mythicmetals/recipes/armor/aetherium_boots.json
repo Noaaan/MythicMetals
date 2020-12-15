@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"tag":"c:aetherium_ingots"}},"result":{"item":"mythicmetals:aetherium_boots","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:aetherium_ingot"}},"result":{"item":"mythicmetals:aetherium_boots","count":1}}

@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":[" m "," m "," / "],"key":{"m":{"tag": "c:quadrillum_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:quadrillum_sword","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":[" m "," m "," / "],"key":{"m":{"tag": "mythicmetals:quadrillum_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:quadrillum_sword","count":1}}

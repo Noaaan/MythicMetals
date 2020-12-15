@@ -4,7 +4,7 @@
         "item": "minecraft:netherite_chestplate"
     },
     "addition": {
-        "tag": "c:metallurgium_ingots"
+        "item": "mythicmetals:metallurgium_ingot"
     },
     "result": {
         "item": "mythicmetals:metallurgium_chestplate"

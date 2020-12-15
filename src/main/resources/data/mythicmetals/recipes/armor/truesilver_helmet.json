@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"tag":"c:truesilver_ingots"}},"result":{"item":"mythicmetals:truesilver_helmet","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"item":"mythicmetals:truesilver_ingot"}},"result":{"item":"mythicmetals:truesilver_helmet","count":1}}

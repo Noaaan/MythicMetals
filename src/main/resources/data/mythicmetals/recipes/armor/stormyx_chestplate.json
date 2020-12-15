@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:stormyx_ingots"}},"result":{"item":"mythicmetals:stormyx_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:stormyx_ingot"}},"result":{"item":"mythicmetals:stormyx_chestplate","count":1}}

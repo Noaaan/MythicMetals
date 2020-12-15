@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"tag": "c:runite_nuggets"}},"result":{"item": "mythicmetals:runite_ingot","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"item": "mythicmetals:runite_nugget"}},"result":{"item": "mythicmetals:runite_ingot","count":1}}

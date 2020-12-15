@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"tag": "c:carmot_nuggets"}},"result":{"item": "mythicmetals:carmot_ingot","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"item": "mythicmetals:carmot_nugget"}},"result":{"item": "mythicmetals:carmot_ingot","count":1}}

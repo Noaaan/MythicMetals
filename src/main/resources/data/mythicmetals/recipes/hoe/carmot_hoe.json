@@ -1,1 +1,1 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"tag": "c:carmot_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:carmot_hoe","count":1}}
+{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"item": "mythicmetals:carmot_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:carmot_hoe","count":1}}

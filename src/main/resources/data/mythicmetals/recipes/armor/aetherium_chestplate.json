@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:aetherium_ingots"}},"result":{"item":"mythicmetals:aetherium_chestplate","count":1}}
+{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"item":"mythicmetals:aetherium_ingot"}},"result":{"item":"mythicmetals:aetherium_chestplate","count":1}}
