@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "tag": "c:vermiculite_ores"
+    },
+    {
+      "item": "mythicmetals:aetherium_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:etherite_ingot",
+      "count": 2
+    }
+  ]
+}

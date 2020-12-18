@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "tag": "c:gold_ores"
+    },
+    {
+      "item": "mythicmetals:midas_gold_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:argonium_ingot",
+      "count": 2
+    }
+  ]
+}

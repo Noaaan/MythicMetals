@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "tag": "c:iron_ingots"
+    },
+    {
+      "tag": "c:zinc_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:ferrite_ingot",
+      "count": 1
+    }
+  ]
+}

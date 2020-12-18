@@ -1,0 +1,20 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "tag": "c:gravel",
+	  "count": 8
+    },
+    {
+      "tag": "c:lutetium_dusts"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:slowsilver_ingot",
+      "count": 1
+    }
+  ]
+}

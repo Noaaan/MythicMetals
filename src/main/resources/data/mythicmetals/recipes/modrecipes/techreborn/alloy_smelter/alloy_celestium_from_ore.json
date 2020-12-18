@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "item": "mythicmetals:quadrillum_ore"
+    },
+    {
+      "item": "mythicmetals:starrite_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:celestium_ingot",
+      "count": 2
+    }
+  ]
+}

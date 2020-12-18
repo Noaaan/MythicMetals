@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "tag": "c:ferrite_ingots"
+    },
+    {
+      "tag": "c:manganese_ingots"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:durasteel_ingot",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "techreborn:alloy_smelter",
+  "power": 6,
+  "time": 200,
+  "ingredients": [
+    {
+      "item": "mythicmetals:banglum_dust"
+    },
+    {
+      "item": "mythicmetals:prometheum_dust"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:discordium_ingot",
+      "count": 1
+    }
+  ]
+}
