@@ -28,7 +28,6 @@ public class RegisterItems {
     public static final Item Metallurgium_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item Midas_Gold_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Mythril_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item Netherite_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item Orichalcum_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Osmium_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Platinum_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -71,7 +70,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_dust"), Metallurgium_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_dust"), Midas_Gold_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "mythril_dust"), Mythril_Dust);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "netherite_dust"), Netherite_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "orichalcum_dust"), Orichalcum_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_dust"), Osmium_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "platinum_dust"), Platinum_Dust);
