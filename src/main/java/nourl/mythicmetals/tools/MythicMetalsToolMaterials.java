@@ -65,7 +65,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	MYTHRIL(4, 1573, 11.0F, 4.0F, 22, () -> {
         return Ingredient.ofItems(RegisterIngots.Mythril_Ingot);
     }),
-	ORICHALCUM(4, 2048, 9.0F, 4.0F, 16, () -> {
+	ORICHALCUM(4, 2048, 8.0F, 4.0F, 16, () -> {
         return Ingredient.ofItems(RegisterIngots.Orichalcum_Ingot);
     }),
 	OSMIUM(3, 1111, 8.0F, 3.0F, 13, () -> {
