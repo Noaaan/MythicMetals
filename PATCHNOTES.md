@@ -1,7 +1,8 @@
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
 Added TechReborn Integration, letting you use their machines to possibly automate alloy creation!  
-Updated tag conventions, moving a lot of tags out of the common directory.  
+Updated tag conventions: moved a lot of tags out of the common directory, and added a few tags for mod compat.  
+Added netherite and hallowed dust, allowing for better automation of metallurgium.  
 
 # 0.9.7  
 Added nuggets from all ingots, thanks to LordDeatHunter!
