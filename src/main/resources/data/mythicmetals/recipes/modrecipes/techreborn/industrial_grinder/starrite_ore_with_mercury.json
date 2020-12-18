@@ -1,0 +1,1 @@
+{"type": "techreborn:industrial_grinder","power": 64,"time": 100,"tank":{"fluid":"techreborn:mercury","amount": 1000},"ingredients": [{"item": "mythicmetals:starrite_ore"}],"results":[{"item": "mythicmetals:starrite_dust", 	"count": 3}]}
