@@ -47,7 +47,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	DISCORDIUM("discordium", 27, new int[]{3, 6, 7, 3}, 19, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Discordium_Ingot);
     }),
-	DURASTEEL("durasteel", 38, new int[]{3, 8, 9, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
+	DURASTEEL("durasteel", 38, new int[]{3, 7, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Durasteel_Ingot);
     }),
 	ELECTRUM("electrum", 10, new int[]{2, 3, 5, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
