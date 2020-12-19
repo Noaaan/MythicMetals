@@ -20,7 +20,6 @@ public class RegisterNuggets {
     public static final Item Durasteel_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Electrum_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Etherite_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item Ferrite_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Kyber_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Lutetium_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Manganese_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -61,7 +60,6 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_nugget"), Durasteel_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_nugget"), Electrum_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_nugget"), Etherite_Nugget);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_nugget"), Ferrite_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_nugget"), Kyber_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_nugget"), Lutetium_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_nugget"), Manganese_Nugget);

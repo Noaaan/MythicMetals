@@ -65,10 +65,6 @@ public class RegisterArmor {
     public static final Item ETHERITE_CHESTPLATE = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item ETHERITE_LEGGINGS = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item ETHERITE_BOOTS = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-	public static final Item FERRITE_HELMET = new ArmorItem(MythicArmorMaterials.FERRITE, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item FERRITE_CHESTPLATE = new ArmorItem(MythicArmorMaterials.FERRITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item FERRITE_LEGGINGS = new ArmorItem(MythicArmorMaterials.FERRITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item FERRITE_BOOTS = new ArmorItem(MythicArmorMaterials.FERRITE, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
 	public static final Item KYBER_HELMET = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_LEGGINGS = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -210,10 +206,6 @@ public class RegisterArmor {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_chestplate"),  ETHERITE_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_leggings"),  ETHERITE_LEGGINGS);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_boots"),  ETHERITE_BOOTS);
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_helmet"),  FERRITE_HELMET);
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_chestplate"),  FERRITE_CHESTPLATE);
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_leggings"),  FERRITE_LEGGINGS);
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_boots"),  FERRITE_BOOTS);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_helmet"),  KYBER_HELMET);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_chestplate"),  KYBER_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_leggings"),  KYBER_LEGGINGS);

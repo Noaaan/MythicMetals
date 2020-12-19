@@ -56,9 +56,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	ETHERITE("etherite", 39, new int[]{4, 7, 9, 4}, 17, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Etherite_Ingot);
     }),
-	FERRITE("ferrite", 19, new int[]{2, 6, 6, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
-        return Ingredient.ofItems(RegisterIngots.Ferrite_Ingot);
-    }),
 	KYBER("kyber", 15, new int[]{2, 5, 7, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.Kyber_Ingot);
     }),
