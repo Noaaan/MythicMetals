@@ -4,7 +4,7 @@
   "time": 200,
   "ingredients": [
     {
-      "tag": "c:ferrite_ores"
+      "item": "mythicmetals:quadrillum_ore"
     },
     {
       "tag": "c:manganese_ores"
