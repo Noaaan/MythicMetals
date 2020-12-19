@@ -4,9 +4,10 @@ Added TechReborn Integration, letting you use their machines to possibly automat
 Updated tag conventions: moved a lot of tags out of the common directory, and added a few tags for mod compat.  
 Added netherite and hallowed dust, allowing for better automation of metallurgium.  
 Changed Durasteel to require Quadrillum instead of Ferrite.  
-Minor changes to tool materials  
+Balancing changes:  
 * Minor nerf to Oricalcums mining speed  
 * Nerf to Starrite  
+* Nerf to Kyber
 
 # 0.9.7  
 Added nuggets from all ingots, thanks to LordDeatHunter!

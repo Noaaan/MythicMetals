@@ -53,7 +53,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	FERRITE(2, 261, 6.5F, 2.0F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.Ferrite_Ingot);
     }),
-	KYBER(2, 1297, 9.0F, 3.0F, 20, () -> {
+	KYBER(2, 800, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.Kyber_Ingot);
     }),
 	METALLURGIUM(5, 3000, 15.0F, 6.0F, 30, () -> {
