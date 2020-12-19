@@ -8,7 +8,8 @@ Speaking of Ferrite, it has been removed. It had a brick-like color and conflict
 Balancing changes:  
 * Minor nerf to Oricalcums mining speed  
 * Nerf to Starrite  
-* Nerf to Kyber
+* Nerf to Kyber  
+* Slight nerf to Durasteel armor  
 
 # 0.9.7  
 Added nuggets from all ingots, thanks to LordDeatHunter!
