@@ -3,12 +3,12 @@ Added PigLib Integration. If installed Piglins will let you trade with Midas Gol
 Added TechReborn Integration, letting you use their machines to possibly automate alloy creation!  
 Updated tag conventions: moved a lot of tags out of the common directory, and added a few tags for mod compat.  
 Added netherite and hallowed dust, allowing for better automation of metallurgium.  
-Changed Durasteel to require Quadrillum instead of Ferrite.  
+Changed Durasteel recipe to require Quadrillum instead of Ferrite.  
 Speaking of Ferrite, it has been removed. It had a brick-like color and conflicted in purpose with other ores.    
 Balancing changes:  
 * Minor nerf to Oricalcums mining speed  
 * Nerf to Starrite  
-* Nerf to Kyber  
+* Nerfed Kyber tools
 * Slight nerf to Durasteel armor  
 
 # 0.9.7  
