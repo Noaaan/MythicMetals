@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smithing",
     "base": {
-        "item": "mythicmetals:ferrite_ingot"
+        "item": "mythicmetals:quadrillum_ingot"
     },
     "addition": {
         "item": "mythicmetals:manganese_ingot"

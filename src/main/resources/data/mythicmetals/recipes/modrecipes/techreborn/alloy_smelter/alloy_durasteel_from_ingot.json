@@ -4,7 +4,7 @@
   "time": 200,
   "ingredients": [
     {
-      "tag": "c:ferrite_ingots"
+      "item": "mythicmetals:quadrillum_ingot"
     },
     {
       "tag": "c:manganese_ingots"

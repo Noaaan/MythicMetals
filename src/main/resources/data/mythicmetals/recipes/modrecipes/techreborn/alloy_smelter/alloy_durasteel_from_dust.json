@@ -4,7 +4,7 @@
   "time": 200,
   "ingredients": [
     {
-      "tag": "c:ferrite_dusts"
+      "item": "mythicmetals:quadrillum_dust"
     },
     {
       "tag": "c:manganese_dusts"
