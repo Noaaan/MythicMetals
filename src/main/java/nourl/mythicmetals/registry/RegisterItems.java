@@ -20,7 +20,6 @@ public class RegisterItems {
     public static final Item Durasteel_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Electrum_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Etherite_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item Ferrite_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Hallowed_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Kyber_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Lutetium_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -62,7 +61,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_dust"), Durasteel_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_dust"), Electrum_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_dust"), Etherite_Dust);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_dust"), Ferrite_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_dust"), Hallowed_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_dust"), Kyber_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_dust"), Lutetium_Dust);

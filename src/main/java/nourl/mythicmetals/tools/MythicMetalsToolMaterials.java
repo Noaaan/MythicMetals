@@ -50,9 +50,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ETHERITE(4, 1969, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterIngots.Etherite_Ingot);
     }),
-	FERRITE(2, 261, 6.5F, 2.0F, 13, () -> {
-        return Ingredient.ofItems(RegisterIngots.Ferrite_Ingot);
-    }),
 	KYBER(2, 800, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.Kyber_Ingot);
     }),

@@ -82,7 +82,6 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_block"), new BlockItem(MythicMetalsBlocks.DURASTEEL_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_block"), new BlockItem(MythicMetalsBlocks.ELECTRUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_block"), new BlockItem(MythicMetalsBlocks.ETHERITE_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_block"), new BlockItem(MythicMetalsBlocks.FERRITE_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_block"), new BlockItem(MythicMetalsBlocks.KYBER_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_block"), new BlockItem(MythicMetalsBlocks.LUTETIUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_block"), new BlockItem(MythicMetalsBlocks.MANGANESE_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
@@ -123,7 +122,6 @@ public class RegisterBlocks {
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "durasteel_block"), MythicMetalsBlocks.DURASTEEL_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "electrum_block"), MythicMetalsBlocks.ELECTRUM_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "etherite_block"), MythicMetalsBlocks.ETHERITE_BLOCK);
-		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "ferrite_block"), MythicMetalsBlocks.FERRITE_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "kyber_block"), MythicMetalsBlocks.KYBER_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "lutetium_block"),MythicMetalsBlocks.LUTETIUM_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "manganese_block"),MythicMetalsBlocks.MANGANESE_BLOCK);
