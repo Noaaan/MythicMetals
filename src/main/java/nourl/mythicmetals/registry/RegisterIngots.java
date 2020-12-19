@@ -55,7 +55,6 @@ public class RegisterIngots {
 	public static final Item Durasteel_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Electrum_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Etherite_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-	public static final Item Ferrite_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Slowsilver_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Steel_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Quicksilver_Alloy = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -114,7 +113,6 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_alloy"), Durasteel_Alloy);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_alloy"), Electrum_Alloy);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_alloy"), Etherite_Alloy);
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ferrite_alloy"), Ferrite_Alloy);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_alloy"), Slowsilver_Alloy);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_alloy"), Steel_Alloy);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "quicksilver_alloy"), Quicksilver_Alloy);
