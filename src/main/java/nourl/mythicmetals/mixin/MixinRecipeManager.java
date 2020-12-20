@@ -31,6 +31,12 @@ public class MixinRecipeManager {
                     iterator.remove();
                 }
             }
+            if (!FabricLoader.getInstance().isModLoaded("mechanix")) {
+                String string = JsonHelper.getString(json, "type");
+                if (string.contains("mechanix")) {
+                    iterator.remove();
+                }
+            }
         }
     }
 }
