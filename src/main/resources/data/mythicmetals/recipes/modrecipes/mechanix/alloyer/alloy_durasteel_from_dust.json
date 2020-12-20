@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "item": "mythicmetals:quadrillum_dust"
+    },
+    {
+      "tag": "c:manganese_dusts"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:durasteel_ingot",
+      "count": 1
+    }
+}

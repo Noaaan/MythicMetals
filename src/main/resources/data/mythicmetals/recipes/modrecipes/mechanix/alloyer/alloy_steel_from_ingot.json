@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:iron_dusts"
+    },
+    {
+      "tag": "c:manganese_dusts"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:steel_ingot",
+      "count": 1
+    }
+}

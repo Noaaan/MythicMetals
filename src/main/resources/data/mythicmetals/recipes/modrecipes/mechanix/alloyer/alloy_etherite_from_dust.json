@@ -1,0 +1,18 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:vermiculite",
+	  "count": 8
+    },
+    {
+      "item": "mythicmetals:aetherium_dust"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:etherite_ingot",
+      "count": 1
+    }
+}

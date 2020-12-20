@@ -1,0 +1,18 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:gravel",
+	  "count": 8
+    },
+    {
+      "tag": "c:lutetium_ores"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:slowsilver_ingot",
+      "count": 2
+    }
+}

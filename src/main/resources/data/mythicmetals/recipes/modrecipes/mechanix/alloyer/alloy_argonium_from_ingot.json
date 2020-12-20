@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:gold_ingots"
+    },
+    {
+      "item": "mythicmetals:midas_gold_ingot"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:argonium_ingot",
+      "count": 1
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:iron_ores"
+    },
+    {
+      "tag": "c:manganese_ores"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:steel_ingot",
+      "count": 2
+    }
+}

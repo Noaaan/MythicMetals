@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "item": "mythicmetals:quadrillum_ingot"
+    },
+    {
+      "item": "mythicmetals:starrite_ingot"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:celestium_ingot",
+      "count": 1
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mechanix:alloying",
+
+  "ingredients": [
+    {
+      "tag": "c:mythril_ingots"
+    },
+    {
+      "tag": "c:silver_ingots"
+    }
+  ],
+  "result": 
+    {
+      "item": "mythicmetals:quicksilver_ingot",
+      "count": 1
+    }
+}
