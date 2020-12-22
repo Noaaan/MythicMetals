@@ -7,9 +7,6 @@ This is the master branch. I usually push updates once i intend to create a new 
 
 You can find the patch notes in the PATCHNOTES.md, on the release page, or on the files themselves on CurseForge.
 
-Currently there are a couple of implementations in the works for Mythic Metals. The first is a mod called Starry Skies, featuring the ores in their dimension. The second one is compatability with Smithee, by LordDeatHunter, which is a tool construction mod. Expect links to them once they are released here, and on CF.
-
-
 ## Download
 
 You can download the mod from CurseForge, or build it yourself.  
@@ -35,11 +32,24 @@ Shadowclaimer, for creating Metallurgy in the first place.
 My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
 My friend Revanitez, drakath9 and realspectr3x who contributed to the assets of the mod.  
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
+Flytre, for helping with the RecipeManager Mixin.  
 And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
 
-### Translations  
+## Translations  
 These people have helped translating the mod into different languages. Thank you to:  
 
 Oscienet for the russian translation.  
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
+  
+
+
+## Compatability  
+Mythic Metals is compatible with multiple mods. It uses common tag conventions which automatically lets materials from this mod be used in others.  
+Currently we actively support these mods:  
+TechReborn: https://github.com/TechReborn/TechReborn  
+Starry Skies: https://github.com/DaFuqs/StarrySky  
+Mechanix: https://github.com/Flytre/Mechanix  
+Modern Industrialization: https://github.com/AztechMC/Modern-Industrialization  
+Smithee (MOD IN DEVELOPMENT)  
+Feel free to suggest any mods that could work with Mythic Metals.  
