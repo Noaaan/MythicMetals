@@ -4,7 +4,7 @@ Added TechReborn Integration, letting you use their machines to possibly automat
 Added Mechanix Integration, letting you double ores through their methods.  
 Added Modern Industrialization integration. You can now use the dust mixer for higher alloy yields.  
 Updated tag conventions: moved a lot of tags out of the common directory, and added dust tags for mod compat.  
-Added netherite and hallowed dust, allowing for better automation of metallurgium.  
+Added hallowed dust, allowing for better automation of metallurgium.  
 Changed Durasteel recipe to require Quadrillum instead of Ferrite.  
 Speaking of Ferrite, it has been removed. It had a brick-like color and conflicted in purpose with other ores.    
 Added Hallowed Dust for mod compatability.  
