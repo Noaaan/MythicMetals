@@ -13,6 +13,7 @@ Balancing changes:
 * Nerf to Starrite  
 * Nerfed Kyber tools  
 * Slight nerf to Durasteel armor  
+* Reduced the max vein size of adamantite, mythril, and orichalcum ores
 
 # 0.9.7  
 Added nuggets from all ingots, thanks to LordDeatHunter!

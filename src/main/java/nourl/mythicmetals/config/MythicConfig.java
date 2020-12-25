@@ -19,7 +19,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean adamantiteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int adamantiteVeinSize = 5;
+        public int adamantiteVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int adamantitePerChunk = 1;
@@ -168,7 +168,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean mythrilGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int mythrilVeinSize = 5;
+        public int mythrilVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int mythrilPerChunk = 1;
@@ -183,7 +183,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean orichalcumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int orichalcumVeinSize = 5;
+        public int orichalcumVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int orichalcumPerChunk = 1;
