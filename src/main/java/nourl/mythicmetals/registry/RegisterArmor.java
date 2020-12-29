@@ -65,6 +65,10 @@ public class RegisterArmor {
     public static final Item ETHERITE_CHESTPLATE = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item ETHERITE_LEGGINGS = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item ETHERITE_BOOTS = new ArmorItem(MythicArmorMaterials.ETHERITE, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+	public static final Item HALLOWED_HELMET = new ArmorItem(MythicArmorMaterials.HALLOWED, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+	public static final Item HALLOWED_CHESTPLATE = new ArmorItem(MythicArmorMaterials.HALLOWED, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+	public static final Item HALLOWED_LEGGINGS = new ArmorItem(MythicArmorMaterials.HALLOWED, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+	public static final Item HALLOWED_BOOTS = new ArmorItem(MythicArmorMaterials.HALLOWED, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
 	public static final Item KYBER_HELMET = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item KYBER_LEGGINGS = new ArmorItem(MythicArmorMaterials.KYBER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -206,6 +210,10 @@ public class RegisterArmor {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_chestplate"),  ETHERITE_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_leggings"),  ETHERITE_LEGGINGS);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_boots"),  ETHERITE_BOOTS);
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_helmet"), HALLOWED_HELMET);
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_chestplate"), HALLOWED_CHESTPLATE);
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_leggings"), HALLOWED_LEGGINGS);
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_boots"), HALLOWED_BOOTS);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_helmet"),  KYBER_HELMET);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_chestplate"),  KYBER_CHESTPLATE);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_leggings"),  KYBER_LEGGINGS);

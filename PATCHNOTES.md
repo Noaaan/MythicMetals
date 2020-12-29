@@ -1,5 +1,6 @@
 # 0.9.9
 Added new anvils!  
+Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  

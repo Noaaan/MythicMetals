@@ -3,6 +3,7 @@ package nourl.mythicmetals;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
+import net.fabricmc.loader.api.FabricLoader;
 import nourl.mythicmetals.config.*;
 import nourl.mythicmetals.ores.OreGenerator;
 import nourl.mythicmetals.registry.*;
@@ -42,6 +43,8 @@ public class MythicMetals implements ModInitializer {
 			OreGenerator.generate();
 
 		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
-
+			if (FabricLoader.getInstance().isModLoaded("modern_industrialization")) {
+				LOGGER.info("[Mythic Metals] Hey, Smithee is around. Be sure to say hi to DH for me!");
+			}
 		 }
 	}

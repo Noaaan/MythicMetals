@@ -21,6 +21,7 @@ public class RegisterIngots {
 	public static final Item Durasteel_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Electrum_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Etherite_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+	public static final Item Hallowed_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Kyber_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Lutetium_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 	public static final Item Manganese_Ingot = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -80,6 +81,7 @@ public class RegisterIngots {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_ingot"), Durasteel_Ingot);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_ingot"), Electrum_Ingot);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_ingot"), Etherite_Ingot);
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_ingot"), Hallowed_Ingot);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_ingot"), Kyber_Ingot);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_ingot"), Lutetium_Ingot);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_ingot"), Manganese_Ingot);
