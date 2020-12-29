@@ -37,6 +37,12 @@ public class MixinRecipeManager {
                     iterator.remove();
                 }
             }
+            if (!FabricLoader.getInstance().isModLoaded("modern_industrialization")) {
+                String string = JsonHelper.getString(json, "type");
+                if (string.contains("modern_industrialization")) {
+                    iterator.remove();
+                }
+            }
         }
     }
 }
