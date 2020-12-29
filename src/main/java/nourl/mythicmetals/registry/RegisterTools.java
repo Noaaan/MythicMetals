@@ -43,7 +43,7 @@ public class RegisterTools {
 	public static final Item STARRITE_SWORD = new SwordItem(MythicMetalsToolMaterials.STARRITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STEEL_SWORD = new SwordItem(MythicMetalsToolMaterials.STEEL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STORMYX_SWORD = new SwordItem(MythicMetalsToolMaterials.STORMYX, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item TANTALITE_SWORD = new SwordItem(MythicMetalsToolMaterials.TANTALUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+	public static final Item TANTALITE_SWORD = new SwordItem(MythicMetalsToolMaterials.TANTALITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TIN_SWORD = new SwordItem(MythicMetalsToolMaterials.TIN, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TRUESILVER_SWORD = new SwordItem(MythicMetalsToolMaterials.TRUESILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item UR_SWORD = new SwordItem(MythicMetalsToolMaterials.UR, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -78,7 +78,7 @@ public class RegisterTools {
 	public static final Item STARRITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STARRITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STEEL_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STORMYX_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STORMYX, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item TANTALITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TANTALUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+	public static final Item TANTALITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TANTALITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TIN_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TIN, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TRUESILVER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TRUESILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item UR_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.UR, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -113,7 +113,7 @@ public class RegisterTools {
 	public static final Item STARRITE_AXE = new AxeBase(MythicMetalsToolMaterials.STARRITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STEEL_AXE = new AxeBase(MythicMetalsToolMaterials.STEEL, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STORMYX_AXE = new AxeBase(MythicMetalsToolMaterials.STORMYX, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item TANTALITE_AXE = new AxeBase(MythicMetalsToolMaterials.TANTALUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+	public static final Item TANTALITE_AXE = new AxeBase(MythicMetalsToolMaterials.TANTALITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TIN_AXE = new AxeBase(MythicMetalsToolMaterials.TIN, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TRUESILVER_AXE = new AxeBase(MythicMetalsToolMaterials.TRUESILVER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item UR_AXE = new AxeBase(MythicMetalsToolMaterials.UR, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -148,7 +148,7 @@ public class RegisterTools {
 	public static final Item STARRITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STARRITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STEEL_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STORMYX_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STORMYX, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item TANTALITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TANTALUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+	public static final Item TANTALITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TANTALITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TIN_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TIN, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TRUESILVER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TRUESILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item UR_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.UR, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -183,7 +183,7 @@ public class RegisterTools {
 	public static final Item STARRITE_HOE = new HoeBase(MythicMetalsToolMaterials.STARRITE, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STEEL_HOE = new HoeBase(MythicMetalsToolMaterials.STEEL, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item STORMYX_HOE = new HoeBase(MythicMetalsToolMaterials.STORMYX, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item TANTALITE_HOE = new HoeBase(MythicMetalsToolMaterials.TANTALUM, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+	public static final Item TANTALITE_HOE = new HoeBase(MythicMetalsToolMaterials.TANTALITE, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TIN_HOE = new HoeBase(MythicMetalsToolMaterials.TIN, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item TRUESILVER_HOE = new HoeBase(MythicMetalsToolMaterials.TRUESILVER, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item UR_HOE = new HoeBase(MythicMetalsToolMaterials.UR, 0, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
