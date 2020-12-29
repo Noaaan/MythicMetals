@@ -35,8 +35,8 @@ dependencies {
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modApi "com.github.Shnupbups:Piglib:1.0"
-	include "com.github.Shnupbups:Piglib:1.0"
+	modApi "com.github.Shnupbups:Piglib:1.0.2"
+	include "com.github.Shnupbups:Piglib:1.0.2"
 
 	processResources {
 		inputs.property "version", project.version
