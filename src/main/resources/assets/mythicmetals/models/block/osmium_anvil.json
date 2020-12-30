@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/osmium_anvil_top",
+    "body": "mythicmetals:blocks/osmium_anvil",
+    "particle": "mythicmetals:blocks/osmium_anvil"
+  }
+}

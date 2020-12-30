@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/carmot_anvil_top",
+    "body": "mythicmetals:blocks/carmot_anvil",
+    "particle": "mythicmetals:blocks/carmot_anvil"
+  }
+}

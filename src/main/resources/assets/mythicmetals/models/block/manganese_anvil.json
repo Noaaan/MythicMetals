@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/manganese_anvil_top",
+    "body": "mythicmetals:blocks/manganese_anvil",
+    "particle": "mythicmetals:blocks/manganese_anvil"
+  }
+}

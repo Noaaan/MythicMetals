@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/lutetium_anvil_top",
+    "body": "mythicmetals:blocks/lutetium_anvil",
+    "particle": "mythicmetals:blocks/lutetium_anvil"
+  }
+}

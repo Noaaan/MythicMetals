@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/kyber_anvil_top",
+    "body": "mythicmetals:blocks/kyber_anvil",
+    "particle": "mythicmetals:blocks/kyber_anvil"
+  }
+}
