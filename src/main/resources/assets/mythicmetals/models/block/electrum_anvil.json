@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/electrum_anvil_top",
+    "body": "mythicmetals:blocks/electrum_anvil",
+    "particle": "mythicmetals:blocks/electrum_anvil"
+  }
+}

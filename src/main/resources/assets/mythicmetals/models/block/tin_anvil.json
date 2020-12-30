@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "top": "mythicmetals:blocks/tin_anvil_top",
+    "body": "mythicmetals:blocks/tin_anvil",
+    "particle": "mythicmetals:blocks/tin_anvil"
+  }
+}

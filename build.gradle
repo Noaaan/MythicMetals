@@ -16,6 +16,9 @@ repositories {
 		url = "https://jitpack.io"
 		name = "Jitpack"
 	}
+	maven {
+		url = "https://www.cursemaven.com"
+	}
 }
 
 dependencies {
@@ -35,8 +38,8 @@ dependencies {
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modApi "com.github.Shnupbups:Piglib:1.0.2"
-	include "com.github.Shnupbups:Piglib:1.0.2"
+	modApi "curse.maven:piglib-410302:3137353"
+	include "curse.maven:piglib-410302:3137353"
 
 	processResources {
 		inputs.property "version", project.version
