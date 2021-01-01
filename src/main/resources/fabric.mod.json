@@ -22,6 +22,9 @@
     "main": [
       "nourl.mythicmetals.MythicMetals"
     ],
+    "client": [
+      "nourl.mythicmetals.MythicMetalsClient"
+    ],
     "modmenu": [
       "nourl.mythicmetals.config.MythicModMenu"
     ]

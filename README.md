@@ -23,7 +23,7 @@ Feel free to use this in any modpack you wish for. I might feature them on this 
 
 Hugman76, for inspiring me to use Fabric.  
 Daveleo and matpac, for creating Metallurgy Reforged 4.  
-Brandcraf06, for his Blockus code, helping creating blocks for the mod.  
+Brandcraf06, for his Blockus code, helping creating blocks, chains, and iron bars for the mod.  
 supersaiyansubtlety, for helping me with Mixin.  
 LambdAurora, for her readme on how to use Gradle.  
 BoogieMonster1O1, for giving me pointers about Mixins.  
