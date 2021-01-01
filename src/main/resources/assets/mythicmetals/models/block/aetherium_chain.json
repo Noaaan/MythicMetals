@@ -1,0 +1,7 @@
+{
+  "parent": "mythicmetals:block/chain_base",
+  "textures": {
+    "all": "mythicmetals:blocks/aetherium_chain",
+	"particle": "mythicmetals:blocks/aetherium_chain"
+  }
+}

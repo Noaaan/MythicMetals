@@ -22,7 +22,6 @@ public class RegisterNuggets {
     public static final Item Etherite_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Hallowed_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Kyber_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item Lutetium_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Manganese_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Metallurgium_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item Midas_Gold_Nugget = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -63,7 +62,6 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_nugget"), Etherite_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_nugget"), Hallowed_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_nugget"), Kyber_Nugget);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_nugget"), Lutetium_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_nugget"), Manganese_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_nugget"), Metallurgium_Nugget);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_nugget"), Midas_Gold_Nugget);

@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/chain_base",
+  "textures": {
+    "all": "mythicmetals:blocks/manganese_chain",
+    
+    "particle": "mythicmetals:blocks/manganese_chain"
+  }
+}

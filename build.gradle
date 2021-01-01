@@ -38,8 +38,8 @@ dependencies {
 	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modApi "curse.maven:piglib-410302:3137353"
-	include "curse.maven:piglib-410302:3137353"
+	modApi "curse.maven:piglib-410302:3137352"
+	include "curse.maven:piglib-410302:3137352"
 
 	processResources {
 		inputs.property "version", project.version

@@ -13,7 +13,6 @@ public class MythicMetalsOres {
 	public static final Block CARMOT_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block COPPER_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(2.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
 	public static final Block KYBER_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-	public static final Block LUTETIUM_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block MANGANESE_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block MIDAS_GOLD_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block MYTHRIL_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(5.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());

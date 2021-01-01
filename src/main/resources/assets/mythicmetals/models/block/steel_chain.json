@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/chain_base",
+  "textures": {
+    "all": "mythicmetals:blocks/steel_chain",
+    
+    "particle": "mythicmetals:blocks/steel_chain"
+  }
+}
