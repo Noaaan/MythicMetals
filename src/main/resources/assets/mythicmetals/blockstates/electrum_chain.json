@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mythicmetals:block/electrum_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mythicmetals:block/electrum_chain"
+    },
+    "axis=z": {
+      "model": "mythicmetals:block/electrum_chain",
+      "x": 90
+    }
+  }
+}

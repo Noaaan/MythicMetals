@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/chain_base",
+  "textures": {
+    "all": "mythicmetals:blocks/carmot_chain",
+    
+    "particle": "mythicmetals:blocks/carmot_chain"
+  }
+}
