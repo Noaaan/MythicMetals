@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/anvil_base",
-  "textures": {
-    "top": "mythicmetals:blocks/zinc_anvil_top",
-    "body": "mythicmetals:blocks/zinc_anvil",
-    "particle": "mythicmetals:blocks/zinc_anvil"
-  }
-}
