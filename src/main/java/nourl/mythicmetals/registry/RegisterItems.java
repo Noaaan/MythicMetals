@@ -22,7 +22,6 @@ public class RegisterItems {
     public static final Item Etherite_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Hallowed_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Kyber_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item Lutetium_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Manganese_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item Metallurgium_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item Midas_Gold_Dust = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -63,7 +62,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_dust"), Etherite_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_dust"), Hallowed_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_dust"), Kyber_Dust);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "lutetium_dust"), Lutetium_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_dust"), Manganese_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_dust"), Metallurgium_Dust);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_dust"), Midas_Gold_Dust);

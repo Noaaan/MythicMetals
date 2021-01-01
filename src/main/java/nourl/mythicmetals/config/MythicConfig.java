@@ -118,21 +118,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int kyberMaxHeight = 18;
 
 
-        //Lutetium Ore Settings
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean lutetiumGeneration = true;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumVeinSize = 7;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumPerChunk = 5;
-        @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumMinHeight = 6;
-        @ConfigEntry.Gui.RequiresRestart
-        public int lutetiumMaxHeight = 64;
-
-
         //Manganese Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean manganeseGeneration = true;

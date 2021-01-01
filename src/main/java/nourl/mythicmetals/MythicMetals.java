@@ -43,8 +43,8 @@ public class MythicMetals implements ModInitializer {
 			OreGenerator.generate();
 
 		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
-			if (FabricLoader.getInstance().isModLoaded("modern_industrialization")) {
-				LOGGER.info("[Mythic Metals] Hey, Smithee is around. Be sure to say hi to DH for me!");
+			if (FabricLoader.getInstance().isModLoaded("smithee")) {
+				LOGGER.info("[Mythic Metals] Hey, Smithee is around. Be sure to say hi to LordDeatHunter for me!");
 			}
 		 }
 	}

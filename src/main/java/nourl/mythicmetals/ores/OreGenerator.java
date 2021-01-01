@@ -32,7 +32,6 @@ public class OreGenerator {
 	public static ConfiguredFeature<?, ?> ORE_CARMOT = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.CARMOT_ORE.getDefaultState(), CONFIG.carmotVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.carmotMinHeight,CONFIG.carmotMaxHeight))).spreadHorizontally().repeat(CONFIG.carmotPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_COPPER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.COPPER_ORE.getDefaultState(), CONFIG.copperVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.copperMinHeight,CONFIG.copperMaxHeight))).spreadHorizontally().repeat(CONFIG.copperPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_KYBER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.KYBER_ORE.getDefaultState(), CONFIG.kyberVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.kyberMinHeight,CONFIG.kyberMaxHeight))).spreadHorizontally().repeat(CONFIG.kyberPerChunk);
-	public static ConfiguredFeature<?, ?> ORE_LUTETIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.LUTETIUM_ORE.getDefaultState(), CONFIG.lutetiumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.lutetiumMinHeight,CONFIG.lutetiumMaxHeight))).spreadHorizontally().repeat(CONFIG.lutetiumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_MANGANESE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MANGANESE_ORE.getDefaultState(), CONFIG.manganeseVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.manganeseMinHeight,CONFIG.manganeseMaxHeight))).spreadHorizontally().repeat(CONFIG.manganesePerChunk);
 	public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.midasgoldVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.midasgoldMinHeight,CONFIG.midasgoldMaxHeight))).spreadHorizontally().repeat(CONFIG.midasgoldPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_MYTHRIL = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MYTHRIL_ORE.getDefaultState(), CONFIG.mythrilVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.mythrilMinHeight,CONFIG.mythrilMaxHeight))).spreadHorizontally().repeat(CONFIG.mythrilPerChunk);
@@ -60,7 +59,6 @@ public class OreGenerator {
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_carmot"));
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreCopper = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_copper"));
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_kyber"));
-	public static RegistryKey<ConfiguredFeature<?, ?>> oreLutetium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_lutetium"));
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_manganese"));
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_midas_gold"));
 	public static RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_mythril"));
@@ -91,7 +89,6 @@ public class OreGenerator {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreCarmot.getValue(), OreGenerator.ORE_CARMOT);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreCopper.getValue(), OreGenerator.ORE_COPPER);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreKyber.getValue(), OreGenerator.ORE_KYBER);
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreLutetium.getValue(), OreGenerator.ORE_LUTETIUM);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreManganese.getValue(), OreGenerator.ORE_MANGANESE);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreMidasGold.getValue(), OreGenerator.ORE_MIDAS_GOLD);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreMythril.getValue(), OreGenerator.ORE_MYTHRIL);
@@ -128,8 +125,6 @@ public class OreGenerator {
 			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreCopper); }
 		if(CONFIG2.kyberGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreKyber ); }
-		if(CONFIG2.lutetiumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreLutetium); }
 		if(CONFIG2.manganeseGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, oreManganese); }
 		if(CONFIG2.mythrilGeneration) {
