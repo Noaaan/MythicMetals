@@ -39,7 +39,6 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 	modApi "curse.maven:piglib-410302:3137352"
-	include "curse.maven:piglib-410302:3137352"
 
 	processResources {
 		inputs.property "version", project.version
