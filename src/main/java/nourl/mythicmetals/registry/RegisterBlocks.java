@@ -161,6 +161,8 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_anvil"), new BlockItem(MythicMetalsAnvils.DURASTEEL_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_anvil"), new BlockItem(MythicMetalsAnvils.ELECTRUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_anvil"), new BlockItem(MythicMetalsAnvils.ETHERITE_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_anvil"), new BlockItem(MythicMetalsAnvils.MIDAS_GOLD_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "mythril_anvil"), new BlockItem(MythicMetalsAnvils.MYTHRIL_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
@@ -193,6 +195,8 @@ public class RegisterBlocks {
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "durasteel_anvil"), MythicMetalsAnvils.DURASTEEL_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "electrum_anvil"), MythicMetalsAnvils.ELECTRUM_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "etherite_anvil"), MythicMetalsAnvils.ETHERITE_ANVIL);
+		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"),MythicMetalsAnvils.KYBER_ANVIL);
+		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"),MythicMetalsAnvils.MANGANESE_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "metallurgium_anvil"),MythicMetalsAnvils.METALLURGIUM_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "midas_gold_anvil"), MythicMetalsAnvils.MIDAS_GOLD_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "mythril_anvil"), MythicMetalsAnvils.MYTHRIL_ANVIL);
@@ -224,6 +228,8 @@ public class RegisterBlocks {
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.DURASTEEL_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.ELECTRUM_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.ETHERITE_ANVIL);
+		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.KYBER_ANVIL);
+		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.MANGANESE_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.METALLURGIUM_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.MIDAS_GOLD_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.MYTHRIL_ANVIL);
