@@ -4,6 +4,7 @@ import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import net.fabricmc.loader.api.FabricLoader;
+import nourl.mythicmetals.blocks.MythicMetalsChains;
 import nourl.mythicmetals.config.*;
 import nourl.mythicmetals.ores.OreGenerator;
 import nourl.mythicmetals.registry.*;
@@ -29,6 +30,8 @@ public class MythicMetals implements ModInitializer {
 			new Identifier("mythicmetals", "tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE_PICKAXE)).build();
 	public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
 			new Identifier("mythicmetals", "armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
+	public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
+			new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicMetalsChains.ADAMANTITE_CHAIN)).build();
 
 				
 		@Override
