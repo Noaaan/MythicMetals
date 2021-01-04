@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 //import net.minecraft.structure.rule.RuleTest;
 //import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.fabricmc.loader.api.FabricLoader;
+//import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -29,6 +30,7 @@ public class OreGenerator {
 			CONFIG.adamantiteMinHeight, // MIN y level
 			CONFIG.adamantiteMaxHeight))) // MAX y level
 			.spreadHorizontally().repeat(CONFIG.adamantitePerChunk); // number of veins per chunk
+	// public static ConfiguredFeature<?, ?> ORE_AETHERIUM2 = CreateOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE, CONFIG.aetheriumVeinSize, CONFIG.aetheriumMinHeight, CONFIG.aetheriumMaxHeight, CONFIG.aetheriumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_AETHERIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE.getDefaultState(), CONFIG.aetheriumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.aetheriumMinHeight,CONFIG.aetheriumMaxHeight))).spreadHorizontally().repeat(CONFIG.aetheriumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_AQUARIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AQUARIUM_ORE.getDefaultState(), CONFIG.aquariumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.aquariumMinHeight,CONFIG.aquariumMaxHeight))).spreadHorizontally().repeat(CONFIG.aquariumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_BANGLUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.BANGLUM_ORE.getDefaultState(), CONFIG.banglumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.banglumMinHeight,CONFIG.banglumMaxHeight))).spreadHorizontally().repeat(CONFIG.banglumPerChunk);
@@ -82,11 +84,8 @@ public class OreGenerator {
 	public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
 	public static final RegistryKey<ConfiguredFeature<?, ?>> oreZinc = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_zinc"));
 
-	public static final MythicConfig.MythicOreConfig CONFIG2 = MythicMetals.CONFIG.mythores;
-	// public static final RuleTest RULE_NETHERRACK = new TagMatchRuleTest();
 
 	public static void init() {
-
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAdamantite.getValue(), OreGenerator.ORE_ADAMANTITE);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAetherium.getValue(), OreGenerator.ORE_AETHERIUM);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAquarium.getValue(), OreGenerator.ORE_AQUARIUM);
@@ -120,65 +119,110 @@ public class OreGenerator {
 	public static void generate() {
 
 		//Overworld Ores
-		if(CONFIG2.adamantiteGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreAdamantite);}
-		if(CONFIG2.aetheriumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreAetherium); }
-		if(CONFIG2.banglumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreBanglum); }
-		if(CONFIG2.carmotGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreCarmot); }
-		if(CONFIG2.copperGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreCopper); }
-		if(CONFIG2.kyberGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreKyber ); }
-		if(CONFIG2.manganeseGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreManganese); }
-		if(CONFIG2.mythrilGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreMythril); }
-		if(CONFIG2.orichalcumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreOrichalcum); }
-		if(CONFIG2.osmiumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreOsmium); }
-		if(CONFIG2.platinumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, orePlatinum); }
-		if(CONFIG2.quadrillumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreQuadrillum); }
-		if(CONFIG2.runiteGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreRunite); }
-		if(CONFIG2.silverGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreSilver); }
-		if(CONFIG2.tantaliteGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreTantalite); }
-		if(CONFIG2.tinGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreTin); }
-		if(CONFIG2.unobtainiumGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreUnobtainium); }
-		if(CONFIG2.vermiculiteGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreVermiculite); }
-		if(CONFIG2.zincGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, oreZinc); }
+		if(CONFIG.adamantiteGeneration) {
+			AddUOre(oreAdamantite);}
+		if(CONFIG.aetheriumGeneration) {
+			AddUOre(oreAetherium); }
+		if(CONFIG.banglumGeneration) {
+			AddUOre(oreBanglum); }
+		if(CONFIG.carmotGeneration) {
+			AddUOre(oreCarmot); }
+		if(CONFIG.copperGeneration) {
+			AddUOre(oreCopper); }
+		if(CONFIG.kyberGeneration) {
+			AddUOre(oreKyber ); }
+		if(CONFIG.manganeseGeneration) {
+			AddUOre(oreManganese); }
+		if(CONFIG.mythrilGeneration) {
+			AddUOre(oreMythril); }
+		if(CONFIG.orichalcumGeneration) {
+			AddUOre(oreOrichalcum); }
+		if(CONFIG.osmiumGeneration) {
+			AddUOre(oreOsmium); }
+		if(CONFIG.platinumGeneration) {
+			AddUOre(orePlatinum); }
+		if(CONFIG.quadrillumGeneration) {
+			AddUOre(oreQuadrillum); }
+		if(CONFIG.runiteGeneration) {
+			AddUOre(oreRunite); }
+		if(CONFIG.silverGeneration) {
+			AddUOre(oreSilver); }
+		if(CONFIG.tantaliteGeneration) {
+			AddUOre(oreTantalite); }
+		if(CONFIG.tinGeneration) {
+			AddUOre(oreTin); }
+		if(CONFIG.unobtainiumGeneration) {
+			AddUOre(oreUnobtainium); }
+		if(CONFIG.vermiculiteGeneration) {
+			AddUOre(oreVermiculite); }
+		if(CONFIG.zincGeneration) {
+			AddUOre(oreZinc); }
 		//Nether Ores
-		if(CONFIG2.midasgoldGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreMidasGold); }
-		if(CONFIG2.stormyxGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreStormyx); }
-		if(CONFIG2.truesilverGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreTruesilver); }
-		if(CONFIG2.urGeneration) {
-			BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreUr); }
+		if(CONFIG.midasgoldGeneration) {
+			AddUDecoration(oreMidasGold); }
+		if(CONFIG.stormyxGeneration) {
+			AddUDecoration(oreStormyx); }
+		if(CONFIG.truesilverGeneration) {
+			AddUDecoration(oreTruesilver); }
+		if(CONFIG.urGeneration) {
+			AddUDecoration(oreUr); }
 
 		//Ocean only ores
-		if(CONFIG2.aquariumGeneration) {
+		if(CONFIG.aquariumGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_COLD_OCEAN, BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.FROZEN_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.OCEAN, BiomeKeys.WARM_OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, oreAquarium); }
 		//Jungle only ores
-		if(CONFIG2.prometheumGeneration) {
+		if(CONFIG.prometheumGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.BAMBOO_JUNGLE_HILLS, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE_EDGE, BiomeKeys.JUNGLE_HILLS, BiomeKeys.MODIFIED_JUNGLE, BiomeKeys.MODIFIED_JUNGLE_EDGE), GenerationStep.Feature.UNDERGROUND_ORES, orePrometheum); }
 		//Mountain only ores
-		if(CONFIG2.starriteGeneration) {
+		if(CONFIG.starriteGeneration) {
 			BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.GRAVELLY_MOUNTAINS, BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.MOUNTAINS, BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU, BiomeKeys.SNOWY_MOUNTAINS, BiomeKeys.SNOWY_TAIGA_MOUNTAINS, BiomeKeys.TAIGA_MOUNTAINS), GenerationStep.Feature.UNDERGROUND_ORES, oreStarrite); }
+		// Biomes You'll Go support
 		if (FabricLoader.getInstance().isModLoaded("byg")) {
-			BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("byg", "alps"))), GenerationStep.Feature.UNDERGROUND_ORES, oreStarrite);
+			//Oceans
+			BYGGen("tropical_islands", oreAquarium);
+			//Jungle
+			BYGGen("araucaria_forest", orePrometheum);
+			BYGGen("cherry_blossom_forest", orePrometheum);
+			BYGGen("ebony_woods", orePrometheum);
+			BYGGen("jacaranda_forest", orePrometheum);
+			BYGGen("redwood_tropics", orePrometheum);
+			BYGGen("tropical_islands", orePrometheum);
+			BYGGen("tropical_fungal_rainforest", orePrometheum);
+			BYGGen("tropical_rainforest", orePrometheum);
+			//Mountains
+			BYGGen("alpine_foothills", oreStarrite);
+			BYGGen("alps", oreStarrite);
+			BYGGen("black_forest_hills", oreStarrite);
+			BYGGen("blue_taiga_hills", oreStarrite);
+			BYGGen("bluff_peaks", oreStarrite);
+			BYGGen("bluff_steeps", oreStarrite);
+			BYGGen("boreal_forest_hills", oreStarrite);
+			BYGGen("cika_mountains", oreStarrite);
+			BYGGen("coniferous_forest_hills", oreStarrite);
+			BYGGen("dover_mountains", oreStarrite);
+			BYGGen("ebony_hills", oreStarrite);
+			BYGGen("enchatned_forest_hills", oreStarrite);
+			BYGGen("evergreen_hills", oreStarrite);
+			BYGGen("grassland_plateau", oreStarrite);
+			BYGGen("guiana_clearing", oreStarrite);
+			BYGGen("guiana_shield", oreStarrite);
+			BYGGen("jacaranda_forest_hills", oreStarrite);
+			BYGGen("redwood_mountians", oreStarrite);
+			BYGGen("skyris_highlands", oreStarrite);
+			BYGGen("wooded_grassland_plateau", oreStarrite);
+
 		}
+	}
+//	public static void CreateOre(RuleTest rule, Block ore, Integer veinsize, Integer minheight, Integer maxheight, Integer perchunk) {
+//		Feature.ORE.configure(new OreFeatureConfig(rule, ore.getDefaultState(), veinsize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,minheight,maxheight))).spreadHorizontally().repeat(perchunk);
+//	}
+	public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
+		BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+	}
+	public static void AddUDecoration(RegistryKey<ConfiguredFeature<?, ?>> ore) {
+		BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
+	}
+	public static void BYGGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
+		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("byg", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
 	}
 }

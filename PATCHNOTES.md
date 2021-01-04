@@ -3,6 +3,7 @@ Added new anvils! These can be made from a selection of the metals, and will not
 Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
 Unembedded PigLib. You will now have to install it manually, to prevent version issues.  
+Added experimental BYG support. Possibly unstable.  
 Balancing changes:  
 * Quicksilver now has a higher mining level  
 * Carmot has recieved a major buff  
