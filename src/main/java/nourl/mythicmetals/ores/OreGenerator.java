@@ -2,10 +2,7 @@ package nourl.mythicmetals.ores;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-//import net.minecraft.structure.rule.RuleTest;
-//import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.fabricmc.loader.api.FabricLoader;
-//import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -30,7 +27,6 @@ public class OreGenerator {
 			CONFIG.adamantiteMinHeight, // MIN y level
 			CONFIG.adamantiteMaxHeight))) // MAX y level
 			.spreadHorizontally().repeat(CONFIG.adamantitePerChunk); // number of veins per chunk
-	// public static ConfiguredFeature<?, ?> ORE_AETHERIUM2 = CreateOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE, CONFIG.aetheriumVeinSize, CONFIG.aetheriumMinHeight, CONFIG.aetheriumMaxHeight, CONFIG.aetheriumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_AETHERIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE.getDefaultState(), CONFIG.aetheriumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.aetheriumMinHeight,CONFIG.aetheriumMaxHeight))).spreadHorizontally().repeat(CONFIG.aetheriumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_AQUARIUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AQUARIUM_ORE.getDefaultState(), CONFIG.aquariumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.aquariumMinHeight,CONFIG.aquariumMaxHeight))).spreadHorizontally().repeat(CONFIG.aquariumPerChunk);
 	public static ConfiguredFeature<?, ?> ORE_BANGLUM = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.BANGLUM_ORE.getDefaultState(), CONFIG.banglumVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.banglumMinHeight,CONFIG.banglumMaxHeight))).spreadHorizontally().repeat(CONFIG.banglumPerChunk);
@@ -213,9 +209,6 @@ public class OreGenerator {
 
 		}
 	}
-//	public static void CreateOre(RuleTest rule, Block ore, Integer veinsize, Integer minheight, Integer maxheight, Integer perchunk) {
-//		Feature.ORE.configure(new OreFeatureConfig(rule, ore.getDefaultState(), veinsize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,minheight,maxheight))).spreadHorizontally().repeat(perchunk);
-//	}
 	public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
 		BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
 	}
