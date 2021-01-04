@@ -1,6 +1,8 @@
 # 0.9.9
-Added new anvils!  
+Added new anvils! These can be made from a selection of the metals, and will not break!  
+Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
+Unembedded PigLib. You will now have to install it manually, to prevent version issues.  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
