@@ -29,7 +29,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	BRONZE(2, 400, 7.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterIngots.Bronze_Ingot);
     }),
-	CARMOT(2, 220, 11.0F, 2.0F, 40, () -> {
+	CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
         return Ingredient.ofItems(RegisterIngots.Carmot_Ingot);
     }),
 	CELESTIUM(4, 1977, 9.0F, 4.0F, 24, () -> {
