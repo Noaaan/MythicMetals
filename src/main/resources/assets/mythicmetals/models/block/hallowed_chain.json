@@ -1,0 +1,8 @@
+{
+  "parent": "mythicmetals:block/chain_base",
+  "textures": {
+    "all": "mythicmetals:blocks/hallowed_chain",
+    
+    "particle": "mythicmetals:blocks/hallowed_chain"
+  }
+}

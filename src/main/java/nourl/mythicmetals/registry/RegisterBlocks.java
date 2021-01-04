@@ -83,6 +83,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_block"), new BlockItem(MythicMetalsBlocks.DURASTEEL_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_block"), new BlockItem(MythicMetalsBlocks.ELECTRUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_block"), new BlockItem(MythicMetalsBlocks.ETHERITE_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_block"), new BlockItem(MythicMetalsBlocks.HALLOWED_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_block"), new BlockItem(MythicMetalsBlocks.KYBER_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_block"), new BlockItem(MythicMetalsBlocks.MANGANESE_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_block"), new BlockItem(MythicMetalsBlocks.METALLURGIUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
@@ -122,6 +123,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "durasteel_block"), MythicMetalsBlocks.DURASTEEL_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "electrum_block"), MythicMetalsBlocks.ELECTRUM_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "etherite_block"), MythicMetalsBlocks.ETHERITE_BLOCK);
+		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "hallowed_block"), MythicMetalsBlocks.HALLOWED_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "kyber_block"), MythicMetalsBlocks.KYBER_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "manganese_block"),MythicMetalsBlocks.MANGANESE_BLOCK);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "metallurgium_block"),MythicMetalsBlocks.METALLURGIUM_BLOCK);
@@ -161,7 +163,8 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_anvil"), new BlockItem(MythicMetalsAnvils.DURASTEEL_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_anvil"), new BlockItem(MythicMetalsAnvils.ELECTRUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_anvil"), new BlockItem(MythicMetalsAnvils.ETHERITE_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"), new BlockItem(MythicMetalsAnvils.KYBER_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_anvil"), new BlockItem(MythicMetalsAnvils.HALLOWED_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"), new BlockItem(MythicMetalsAnvils.KYBER_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"), new BlockItem(MythicMetalsAnvils.MANGANESE_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_anvil"), new BlockItem(MythicMetalsAnvils.MIDAS_GOLD_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
@@ -195,6 +198,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "durasteel_anvil"), MythicMetalsAnvils.DURASTEEL_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "electrum_anvil"), MythicMetalsAnvils.ELECTRUM_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "etherite_anvil"), MythicMetalsAnvils.ETHERITE_ANVIL);
+		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "hallowed_anvil"),MythicMetalsAnvils.HALLOWED_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"),MythicMetalsAnvils.KYBER_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"),MythicMetalsAnvils.MANGANESE_ANVIL);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "metallurgium_anvil"),MythicMetalsAnvils.METALLURGIUM_ANVIL);
@@ -228,6 +232,7 @@ public class RegisterBlocks {
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.DURASTEEL_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.ELECTRUM_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.ETHERITE_ANVIL);
+		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.HALLOWED_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.KYBER_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.MANGANESE_ANVIL);
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.METALLURGIUM_ANVIL);
@@ -263,6 +268,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_chain"), new BlockItem(MythicMetalsChains.DURASTEEL_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_chain"), new BlockItem(MythicMetalsChains.ELECTRUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_chain"), new BlockItem(MythicMetalsChains.ETHERITE_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_chain"), new BlockItem(MythicMetalsChains.HALLOWED_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_chain"), new BlockItem(MythicMetalsChains.KYBER_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_chain"), new BlockItem(MythicMetalsChains.MANGANESE_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_chain"), new BlockItem(MythicMetalsChains.METALLURGIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
@@ -297,6 +303,7 @@ public class RegisterBlocks {
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "durasteel_chain"), MythicMetalsChains.DURASTEEL_CHAIN);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "electrum_chain"), MythicMetalsChains.ELECTRUM_CHAIN);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "etherite_chain"), MythicMetalsChains.ETHERITE_CHAIN);
+		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "hallowed_chain"), MythicMetalsChains.HALLOWED_CHAIN);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "kyber_chain"), MythicMetalsChains.KYBER_CHAIN);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "manganese_chain"),MythicMetalsChains.MANGANESE_CHAIN);
 		Registry.register(Registry.BLOCK, new Identifier(MythicMetals.MOD_ID, "metallurgium_chain"),MythicMetalsChains.METALLURGIUM_CHAIN);

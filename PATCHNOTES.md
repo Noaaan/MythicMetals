@@ -7,6 +7,7 @@ Added experimental BYG support. Possibly unstable.
 Balancing changes:  
 * Quicksilver now has a higher mining level  
 * Carmot has recieved a major buff  
+* Quadrillum can now be smelted with a normal furnace  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  

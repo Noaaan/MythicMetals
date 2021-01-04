@@ -24,6 +24,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicMetalsChains.ELECTRUM_CHAIN,
                 MythicMetalsChains.ETHERITE_CHAIN,
                 MythicMetalsChains.KYBER_CHAIN,
+                MythicMetalsChains.HALLOWED_CHAIN,
                 MythicMetalsChains.MANGANESE_CHAIN,
                 MythicMetalsChains.METALLURGIUM_CHAIN,
                 MythicMetalsChains.MIDAS_GOLD_CHAIN,
