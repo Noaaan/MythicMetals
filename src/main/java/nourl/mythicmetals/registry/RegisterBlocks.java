@@ -161,8 +161,8 @@ public class RegisterBlocks {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_anvil"), new BlockItem(MythicMetalsAnvils.DURASTEEL_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_anvil"), new BlockItem(MythicMetalsAnvils.ELECTRUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_anvil"), new BlockItem(MythicMetalsAnvils.ETHERITE_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
-		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_anvil"), new BlockItem(MythicMetalsAnvils.KYBER_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "manganese_anvil"), new BlockItem(MythicMetalsAnvils.MANGANESE_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_anvil"), new BlockItem(MythicMetalsAnvils.METALLURGIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "midas_gold_anvil"), new BlockItem(MythicMetalsAnvils.MIDAS_GOLD_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "mythril_anvil"), new BlockItem(MythicMetalsAnvils.MYTHRIL_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS)));
