@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:tantalite_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:tantalite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:tantalite_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

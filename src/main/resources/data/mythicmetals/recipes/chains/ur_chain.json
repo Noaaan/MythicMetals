@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:ur_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:ur_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:ur_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

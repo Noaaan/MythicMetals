@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:quicksilver_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:quicksilver_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:quicksilver_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

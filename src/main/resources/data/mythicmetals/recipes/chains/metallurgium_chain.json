@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:metallurgium_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:metallurgium_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:metallurgium_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

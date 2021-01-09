@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:orichalcum_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:orichalcum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:orichalcum_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

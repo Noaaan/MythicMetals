@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:discordium_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:discordium_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:discordium_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

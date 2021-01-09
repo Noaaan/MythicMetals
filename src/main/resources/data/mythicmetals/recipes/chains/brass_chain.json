@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:brass_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:brass_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:brass_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

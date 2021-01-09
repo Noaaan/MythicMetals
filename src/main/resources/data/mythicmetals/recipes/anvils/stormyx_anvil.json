@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:stormyx_block"
+        },
+        "R": {
+            "item": "mythicmetals:stormyx_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:stormyx_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

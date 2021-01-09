@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:bronze_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:bronze_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:bronze_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

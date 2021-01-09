@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:truesilver_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:truesilver_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:truesilver_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

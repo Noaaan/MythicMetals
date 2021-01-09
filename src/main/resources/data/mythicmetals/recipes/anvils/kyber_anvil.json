@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:kyber_block"
+        },
+        "R": {
+            "item": "mythicmetals:kyber_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:kyber_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

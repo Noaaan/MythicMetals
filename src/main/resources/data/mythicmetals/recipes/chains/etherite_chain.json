@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:etherite_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:etherite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:etherite_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

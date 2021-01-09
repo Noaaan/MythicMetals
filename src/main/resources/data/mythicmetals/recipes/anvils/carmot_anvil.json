@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:carmot_block"
+        },
+        "R": {
+            "item": "mythicmetals:carmot_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:carmot_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

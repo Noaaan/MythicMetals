@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:aquarium_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:aquarium_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:aquarium_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

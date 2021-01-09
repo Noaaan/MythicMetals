@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:prometheum_block"
+        },
+        "R": {
+            "item": "mythicmetals:prometheum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:prometheum_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

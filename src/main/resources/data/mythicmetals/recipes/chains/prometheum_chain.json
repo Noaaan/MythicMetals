@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:prometheum_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:prometheum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:prometheum_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

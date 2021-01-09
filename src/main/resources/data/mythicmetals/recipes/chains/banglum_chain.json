@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:banglum_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:banglum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:banglum_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

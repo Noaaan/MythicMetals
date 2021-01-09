@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:starrite_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:starrite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:starrite_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

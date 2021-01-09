@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:manganese_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:manganese_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:manganese_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

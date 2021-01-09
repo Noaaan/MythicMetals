@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:electrum_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:electrum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:electrum_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

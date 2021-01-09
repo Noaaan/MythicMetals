@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " R ",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:adamantite_nugget"
+        },
+        "R": {
+            "item": "mythicmetals:adamantite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:adamantite_chain",
+        "count": 1
+    },
+    "group": "mm_chains"
+}

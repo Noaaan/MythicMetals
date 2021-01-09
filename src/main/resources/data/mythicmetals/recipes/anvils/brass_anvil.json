@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:brass_block"
+        },
+        "R": {
+            "item": "mythicmetals:brass_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:brass_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

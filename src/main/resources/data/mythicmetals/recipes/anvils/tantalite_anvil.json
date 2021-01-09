@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:tantalite_block"
+        },
+        "R": {
+            "item": "mythicmetals:tantalite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:tantalite_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

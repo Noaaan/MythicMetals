@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:orichalcum_block"
+        },
+        "R": {
+            "item": "mythicmetals:orichalcum_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:orichalcum_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

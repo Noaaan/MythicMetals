@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:manganese_block"
+        },
+        "R": {
+            "item": "mythicmetals:manganese_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:manganese_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

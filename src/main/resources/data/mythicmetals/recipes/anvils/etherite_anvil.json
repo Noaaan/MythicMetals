@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:etherite_block"
+        },
+        "R": {
+            "item": "mythicmetals:etherite_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:etherite_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

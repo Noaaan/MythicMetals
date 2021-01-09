@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:osmium_block"
+        },
+        "R": {
+            "item": "mythicmetals:osmium_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:osmium_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}

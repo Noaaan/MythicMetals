@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        " R ",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "mythicmetals:steel_block"
+        },
+        "R": {
+            "item": "mythicmetals:steel_ingot"
+        }
+    },
+    "result": {
+        "item": "mythicmetals:steel_anvil",
+        "count": 1
+    },
+    "group": "mm_anvils"
+}
