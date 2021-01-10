@@ -206,7 +206,41 @@ public class OreGenerator {
 			BYGGen("redwood_mountians", oreStarrite);
 			BYGGen("skyris_highlands", oreStarrite);
 			BYGGen("wooded_grassland_plateau", oreStarrite);
+		}
+		// Terrestria Support
+		if (FabricLoader.getInstance().isModLoaded("terrestria")) {
+			// Water
+			TSGen("caldera", oreAquarium);
+			TSGen("rainbow_rainforest_lake", oreAquarium);
+			TSGen("volcanic_island", oreAquarium);
+			TSGen("volcanic_island_shore", oreAquarium);
+			// Jungle
+			TSGen("oasis", orePrometheum);
+			TSGen("hemlock_rainforest", orePrometheum);
+			TSGen("hemlock_clearing", orePrometheum);
+			TSGen("lush_redwood_forest", orePrometheum);
+			TSGen("rainbow_rainforest", orePrometheum);
+			TSGen("rainbow_rainforest_lake", orePrometheum);
+			TSGen("volcanic_island", orePrometheum);
+			// Mountains
+			TSGen("caldera_foothills", oreStarrite);
+			TSGen("caldera_ridge", oreStarrite);
+			TSGen("outback_uluru", oreStarrite);
+			TSGen("rainbow_rainforest", oreStarrite);
+			TSGen("rainbow_rainforest_mountains", oreStarrite);
+		}
 
+		// Traverse Support
+		if (FabricLoader.getInstance().isModLoaded("traverse")) {
+			// Water
+			TVGen("wooded_island", oreAquarium);
+			// Jungle-ish
+			TVGen("lush_swamp", orePrometheum);
+			TVGen("mini_jungle", orePrometheum);
+			// Mountains
+			TVGen("arid_highlands", oreStarrite);
+			TVGen("cliffs", oreStarrite);
+			TVGen("rolling_hills", oreStarrite);
 		}
 	}
 	public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
@@ -217,5 +251,11 @@ public class OreGenerator {
 	}
 	public static void BYGGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
 		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("byg", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+	}
+	public static void TSGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
+		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("terrestria", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+	}
+	public static void TVGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
+		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("traverse", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
 	}
 }
