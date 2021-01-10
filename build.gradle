@@ -28,11 +28,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// enchant helper
-	compile "curse.maven:enchanthelper-434579:3161655"
+	modApi "curse.maven:enchanthelper-434579:3161655"
 	include "curse.maven:enchanthelper-434579:3161655"
-
-	compile "com.udojava:EvalEx:2.5"
-	include "com.udojava:EvalEx:2.5"
 
 	// config
 	include("me.shedaniel.cloth:config-2:${project.cloth_version}")
