@@ -115,7 +115,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.Gui.RequiresRestart
         public int kyberMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberMaxHeight = 18;
+        public int kyberMaxHeight = 24;
 
 
         //Manganese Ore Settings
