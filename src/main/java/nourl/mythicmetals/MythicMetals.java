@@ -44,7 +44,7 @@ public class MythicMetals implements ModInitializer {
 			RegisterItems.register();
 			OreGenerator.init();
 			OreGenerator.generate();
-			//MythicEnchantConfig.createConfig();
+			MythicEnchantConfig.createConfig();
 
 		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 			if (FabricLoader.getInstance().isModLoaded("smithee")) {

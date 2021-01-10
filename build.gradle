@@ -28,8 +28,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// enchant helper
-	modApi "curse.maven:enchanthelper-434579:3161655"
-	include "curse.maven:enchanthelper-434579:3161655"
+	//modApi "curse.maven:enchanthelper-434579:3164342"
+	//include "curse.maven:enchanthelper-434579:3164342"
+	modApi("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}") {
+		exclude(group: "net.fabricmc.fabric-api")}
 
 	// config
 	include("me.shedaniel.cloth:config-2:${project.cloth_version}")
