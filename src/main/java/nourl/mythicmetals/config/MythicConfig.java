@@ -303,7 +303,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean tantaliteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tantaliteVeinSize = 10;
+        public int tantaliteVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int tantalitePerChunk = 4;
@@ -361,14 +361,14 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean urGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int urVeinSize = 2;
+        public int urVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int urPerChunk = 1;
+        public int urPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
         public int urMinHeight = 10;
         @ConfigEntry.Gui.RequiresRestart
-        public int urMaxHeight = 70;
+        public int urMaxHeight = 80;
 
 
         //Vermiculite Ore Settings
