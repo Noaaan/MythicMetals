@@ -26,19 +26,27 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// enchant helper
+	compile "curse.maven:enchanthelper-434579:3161655"
+	include "curse.maven:enchanthelper-434579:3161655"
+
+	compile "com.udojava:EvalEx:2.5"
+	include "com.udojava:EvalEx:2.5"
+
+	// config
 	include("me.shedaniel.cloth:config-2:${project.cloth_version}")
 	include("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}")
 
 	modApi("me.shedaniel.cloth:config-2:${project.cloth_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+		exclude(group: "net.fabricmc.fabric-api")}
+	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
+		exclude(group: "net.fabricmc.fabric-api")}
+
+	// modmenu
 	modApi("io.github.prospector:modmenu:${project.modmenu_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	modApi "curse.maven:piglib-410302:3137352"
 
 	processResources {
 		inputs.property "version", project.version
