@@ -14,6 +14,8 @@ Balancing changes:
 * Slightly buffed hallowed  
 * Made Kyber slightly easier to find  
 * Increased Ur spawn rate  
+* Buffed Banglum, Discordium, and Durasteel
+* Nerfed Prometheum and Kyber
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  

@@ -20,7 +20,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ARGONIUM(3, 210, 14.0F, 1.5F, 44, () -> {
         return Ingredient.ofItems(RegisterIngots.Argonium_Ingot);
     }),
-	BANGLUM(2, 251, 12.0F, 2.5F, 1, () -> {
+	BANGLUM(2, 301, 12.0F, 2.5F, 1, () -> {
         return Ingredient.ofItems(RegisterIngots.Banglum_Ingot);
     }),
 	BRASS(1, 100, 10.0F, 1.0F, 18, () -> {
@@ -38,10 +38,10 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(RegisterIngots.Copper_Ingot);
     }),
-	DISCORDIUM(3, 666, 5.0F, 3.0F, 15, () -> {
+	DISCORDIUM(3, 1666, 9.0F, 3.0F, 15, () -> {
         return Ingredient.ofItems(RegisterIngots.Discordium_Ingot);
     }),
-	DURASTEEL(3, 1300, 7.0F, 2.0F, 10, () -> {
+	DURASTEEL(3, 1300, 8.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(RegisterIngots.Durasteel_Ingot);
     }),
 	ELECTRUM(1, 200, 16.0F, 1.0F, 25, () -> {
@@ -53,7 +53,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
     HALLOWED(4, 2048, 12.0F, 5.5F, 25, () -> {
         return Ingredient.ofItems(RegisterIngots.Hallowed_Ingot);
     }),
-	KYBER(2, 800, 7.0F, 2.5F, 20, () -> {
+	KYBER(2, 450, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.Kyber_Ingot);
     }),
 	METALLURGIUM(5, 3000, 15.0F, 6.0F, 30, () -> {
@@ -71,7 +71,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	OSMIUM(3, 1111, 8.0F, 3.0F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.Osmium_Ingot);
     }),
-	PROMETHEUM(3, 2001, 8.5F, 3.5F, 17, () -> {
+	PROMETHEUM(3, 1601, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterIngots.Prometheum_Ingot);
     }),
 	PLATINUM(2, 300, 7.0F, 3.0F, 20, () -> {
