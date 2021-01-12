@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "AnvilScreenHandlerMixin",
-    "MixinRecipeManager"
+    "MixinRecipeManager",
+    "MythicLivingEntityMixin"
   ],
   "client": [],
   "injectors": {

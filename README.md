@@ -33,6 +33,7 @@ My friend SnifferProduct, who helped in designing the first iteration of tool st
 My friend Revanitez, drakath9 and realspectr3x who contributed to the assets of the mod.  
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 Flytre, for helping with the RecipeManager Mixin.  
+Spxtreofficial, for his LivingEntityMixin.
 And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
 
 ## Translations  
