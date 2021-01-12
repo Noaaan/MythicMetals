@@ -27,7 +27,7 @@ public class MythicEnchantConfig {
                 put(new Identifier("minecraft:mending"), 1);
             }});
             put(Registry.ITEM.getId(RegisterArmor.PROMETHEUM_CHESTPLATE), new HashMap<Identifier, Integer>() {{
-                put(new Identifier("minecraft:mending"), 2);
+                put(new Identifier("minecraft:mending"), 1);
             }});
             put(Registry.ITEM.getId(RegisterArmor.PROMETHEUM_HELMET), new HashMap<Identifier, Integer>() {{
                 put(new Identifier("minecraft:mending"), 1);
