@@ -7,7 +7,7 @@ import nourl.mythicmetals.registry.RegisterArmor;
 
 import java.util.HashMap;
 
-// Most cursed shit I have ever seen
+// Most cursed code I have ever seen
 public class MythicEnchantConfig {
     public static void createConfig() {
         HashMap<Identifier, HashMap<Identifier, Integer>> cursedconfig = new HashMap<Identifier, HashMap <Identifier, Integer>>() {{
