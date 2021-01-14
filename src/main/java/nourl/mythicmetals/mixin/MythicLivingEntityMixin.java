@@ -23,24 +23,25 @@ public abstract class MythicLivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
     private void tick(CallbackInfo info) {
-        carmotParticle();
+        addCarmotParticle();
     }
 
-    private void carmotParticle() {
+    private void addCarmotParticle() {
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.getItem().isIn(RegisterTags.CARMOT_ARMOR)) {
-                addParticle();
+                carmotParticle();
             }
         }
     }
     Random r = new Random();
-    private void addParticle() {
-        int g = r.nextInt(3) * 2 - 2;
-        int j = r.nextInt(3) * 2 - 2;
+    private void carmotParticle() {
+        int k = r.nextInt(2) * 2 - 1;
+        int j = r.nextInt(2) * 2 - 1;
         double x = this.getPos().getX();
         double y = this.getPos().getY();
         double z = this.getPos().getZ();
         ParticleEffect p = ParticleTypes.ENCHANT;
-        this.getEntityWorld().addParticle(p, x, y + 1.2, z, r.nextDouble() * j, (0.2), r.nextDouble() * g);
+        this.world.addParticle(p, x, y+1.75, z, k*1D, -0.8, j*1D);
+
     }
 }
