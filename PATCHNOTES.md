@@ -3,9 +3,14 @@ Added new anvils! These can be made from a selection of the metals, and will not
 Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
 Unembedded PigLib. You will now have to install it manually, to prevent version issues.  
+Added a new library: EnchantGiver.  
+This lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
 Added experimental BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
-Adjusted many of the textures of the mod, as well as adding some new models (Thanks you to DH for a lot of the textures, and thank you to Temreno for the armor item models!)  
-Added innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, and will not disappear even when a grindstone is used.  
+Adjusted many of the textures of the mod, as well as adding some new models. Thank you to:
+* DH(LordDeatHunter), for a lot of the re-colours and animated textures.  
+* Temreno, for the new armour and tool models.  
+* Tector, for the new ore and ingot textures.  
+
 
 Balancing changes:  
 * Quicksilver now has a higher mining level  
