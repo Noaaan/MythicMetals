@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/aquarium_anvil_top",
     "body": "mythicmetals:blocks/aquarium_anvil",
-    "particle": "mythicmetals:blocks/aquarium_anvil"
+    "particle": "mythicmetals:blocks/aquarium_block"
   }
 }

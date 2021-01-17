@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/ur_anvil_top",
     "body": "mythicmetals:blocks/ur_anvil",
-    "particle": "mythicmetals:blocks/ur_anvil"
+    "particle": "mythicmetals:blocks/ur_block"
   }
 }

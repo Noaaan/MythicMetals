@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/truesilver_anvil_top",
     "body": "mythicmetals:blocks/truesilver_anvil",
-    "particle": "mythicmetals:blocks/truesilver_anvil"
+    "particle": "mythicmetals:blocks/truesilver_block"
   }
 }

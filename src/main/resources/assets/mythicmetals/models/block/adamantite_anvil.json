@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/adamantite_anvil_top",
     "body": "mythicmetals:blocks/adamantite_anvil",
-    "particle": "mythicmetals:blocks/adamantite_anvil"
+    "particle": "mythicmetals:blocks/adamantite_block"
   }
 }

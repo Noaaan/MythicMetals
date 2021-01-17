@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/tantalite_anvil_top",
     "body": "mythicmetals:blocks/tantalite_anvil",
-    "particle": "mythicmetals:blocks/tantalite_anvil"
+    "particle": "mythicmetals:blocks/tantalite_block"
   }
 }

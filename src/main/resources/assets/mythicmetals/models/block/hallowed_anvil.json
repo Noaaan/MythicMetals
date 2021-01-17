@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/hallowed_anvil_top",
     "body": "mythicmetals:blocks/hallowed_anvil",
-    "particle": "mythicmetals:blocks/hallowed_anvil"
+    "particle": "mythicmetals:blocks/hallowed_block"
   }
 }

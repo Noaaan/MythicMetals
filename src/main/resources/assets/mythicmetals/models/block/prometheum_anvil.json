@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/prometheum_anvil_top",
     "body": "mythicmetals:blocks/prometheum_anvil",
-    "particle": "mythicmetals:blocks/prometheum_anvil"
+    "particle": "mythicmetals:blocks/prometheum_block"
   }
 }

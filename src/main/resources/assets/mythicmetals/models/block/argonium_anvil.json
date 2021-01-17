@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/argonium_anvil_top",
     "body": "mythicmetals:blocks/argonium_anvil",
-    "particle": "mythicmetals:blocks/argonium_anvil"
+    "particle": "mythicmetals:blocks/argonium_block"
   }
 }

@@ -1,8 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "top": "mythicmetals:blocks/orichalcum_anvil_top",
+    
     "body": "mythicmetals:blocks/orichalcum_anvil",
-    "particle": "mythicmetals:blocks/orichalcum_anvil"
-  }
+    "particle": "mythicmetals:blocks/orichalcum_block" }
 }
