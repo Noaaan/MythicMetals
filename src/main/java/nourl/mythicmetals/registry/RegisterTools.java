@@ -101,7 +101,7 @@ public class RegisterTools {
 	public static final Item ETHERITE_AXE = new AxeBase(MythicMetalsToolMaterials.ETHERITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item HALLOWED_AXE = new SwordItem(MythicMetalsToolMaterials.HALLOWED, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item KYBER_AXE = new AxeBase(MythicMetalsToolMaterials.KYBER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-	public static final Item METALLURGIUM_AXE = new AxeBase(MythicMetalsToolMaterials.METALLURGIUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
+	public static final Item METALLURGIUM_AXE = new AxeBase(MythicMetalsToolMaterials.METALLURGIUM, 5, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
 	public static final Item MIDAS_GOLD_AXE = new AxeBase(MythicMetalsToolMaterials.MIDAS_GOLD, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item MYTHRIL_AXE = new AxeBase(MythicMetalsToolMaterials.MYTHRIL, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 	public static final Item ORICHALCUM_AXE = new AxeBase(MythicMetalsToolMaterials.ORICHALCUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));

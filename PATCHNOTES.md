@@ -6,10 +6,12 @@ Unembedded PigLib. You will now have to install it manually, to prevent version 
 Added a new library: EnchantGiver.  
 This lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
 Added experimental BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
-Adjusted many of the textures of the mod, as well as adding some new models. Thank you to:
+Squashed a couple of bugs related to Harvest Scythes and Charm.  
+Adjusted most of the textures, as well as adding some new models. Thank you to:
 * DH(LordDeatHunter), for a lot of the re-colours and animated textures.  
 * Temreno, for the new armour and tool models.  
 * Tector, for the new ore and ingot textures.  
+* Pois1x, for the new anvil model + texture.  
 
 
 Balancing changes:  
@@ -20,7 +22,8 @@ Balancing changes:
 * Made Kyber slightly easier to find  
 * Increased Ur spawn rate  
 * Buffed Banglum, Discordium, and Durasteel
-* Nerfed Prometheum and Kyber
+* Nerfed Prometheum and Kyber  
+* Buffed Metallurguim tools (not sword)  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
