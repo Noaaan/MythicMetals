@@ -7,12 +7,13 @@ Added a new library: EnchantGiver.
 This lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
 Added experimental BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
 Squashed a couple of bugs related to Harvest Scythes and Charm.  
+Removed Lutetium, as it only served as a worse silver alternative.  
+
 Adjusted most of the textures, as well as adding some new models. Thank you to:
 * DH(LordDeatHunter), for a lot of the re-colours and animated textures.  
 * Temreno, for the new armour and tool models.  
 * Tector, for the new ore and ingot textures.  
 * Pois1x, for the new anvil model + texture.  
-
 
 Balancing changes:  
 * Quicksilver now has a higher mining level  
