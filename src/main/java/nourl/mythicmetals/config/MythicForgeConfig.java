@@ -1,5 +1,6 @@
 package nourl.mythicmetals.config;
 
+import wraith.alloy_forgery.MaterialWorth;
 import wraith.alloy_forgery.RecipeOutput;
 import wraith.alloy_forgery.api.ForgeRecipes;
 import wraith.alloy_forgery.api.MaterialWorths;
@@ -17,56 +18,63 @@ public class MythicForgeConfig {
     }
 
     public static void createMaterialWorths() {
-        MaterialWorths.addMaterials(new HashMap<String, HashMap<String, Integer>>(){{
-            put("copper", new HashMap<String, Integer>(){{
-                put("#c:copper_blocks", 81);
-                put("#c:copper_ingots", 9);
-                put("#c:copper_dusts", 9);
-                put("#c:copper_nuggets", 1);
+        // Creates new materials. They are shaped so:
+        // First line is the material name, also defines a new hashmap for its contents
+        // Following lines are what is considered to be the material, their worth, and whether they can be returned upon providing too much of the material.
+        MaterialWorths.addMaterials(new HashMap<String, HashMap<String, MaterialWorth>>(){{
+            put("copper", new HashMap<String, MaterialWorth>(){{
+                put("#c:copper_blocks", new MaterialWorth(81, true));
+                put("#c:copper_ingots", new MaterialWorth(9, true));
+                put("#c:copper_dusts", new MaterialWorth(9, false));
+                put("#c:copper_nuggets", new MaterialWorth(1, true));
             }});
-            put("tin", new HashMap<String, Integer>(){{
-                put("#c:tin_blocks", 81);
-                put("#c:tin_ingots", 9);
-                put("#c:tin_dusts", 9);
-                put("#c:tin_nuggets", 1);
+            put("tin", new HashMap<String, MaterialWorth>(){{
+                put("#c:tin_blocks", new MaterialWorth(81, true));
+                put("#c:tin_ingots", new MaterialWorth(9, true));
+                put("#c:tin_dusts", new MaterialWorth(9, false));
+                put("#c:tin_nuggets", new MaterialWorth(1, true));
             }});
-            put("brass", new HashMap<String, Integer>(){{
-                put("#c:brass_blocks", 81);
-                put("#c:brass_ingots", 9);
-                put("#c:brass_dusts", 9);
-                put("#c:brass_nuggets", 1);
+            put("brass", new HashMap<String, MaterialWorth>(){{
+                put("#c:brass_blocks", new MaterialWorth( 81, true));
+                put("#c:brass_ingots", new MaterialWorth( 9, true));
+                put("#c:brass_dusts", new MaterialWorth( 9, false));
+                put("#c:brass_nuggets", new MaterialWorth( 1, true));
             }});
-            put("zinc", new HashMap<String, Integer>(){{
-                put("#c:zinc_blocks", 81);
-                put("#c:zinc_ingots", 9);
-                put("#c:zinc_dusts", 9);
-                put("#c:zinc_nuggets", 1);
+            put("zinc", new HashMap<String, MaterialWorth>(){{
+                put("#c:zinc_blocks", new MaterialWorth(81, true));
+                put("#c:zinc_ingots", new MaterialWorth(9, true));
+                put("#c:zinc_dusts", new MaterialWorth(9, false));
+                put("#c:zinc_nuggets", new MaterialWorth(1, true));
             }});
-            put("silver", new HashMap<String, Integer>(){{
-                put("#c:silver_blocks", 81);
-                put("#c:silver_ingots", 9);
-                put("#c:silver_dusts", 9);
-                put("#c:silver_nuggets", 1);
+            put("silver", new HashMap<String, MaterialWorth>(){{
+                put("#c:silver_blocks", new MaterialWorth(81, true));
+                put("#c:silver_ingots", new MaterialWorth(9, true));
+                put("#c:silver_dusts",  new MaterialWorth(9, false));
+                put("#c:silver_nuggets", new MaterialWorth(1, true));
             }});
-            put("electrum", new HashMap<String, Integer>(){{
-                put("#c:electrum_blocks", 81);
-                put("#c:electrum_ingots", 9);
-                put("#c:electrum_dusts", 9);
-                put("#c:electrum_nuggets", 1);
+            put("electrum", new HashMap<String, MaterialWorth>(){{
+                put("#c:electrum_blocks", new MaterialWorth(81, true));
+                put("#c:electrum_ingots", new MaterialWorth(9, true));
+                put("#c:electrum_dusts", new MaterialWorth(9, false));
+                put("#c:electrum_nuggets", new MaterialWorth(1, true));
             }});
         }}, false);
     }
 
     public static void createAlloyRecipes() {
+        // Output is shaped like this:
+        // Item name, item amount, heat required, smeltery tier required
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>(){{
             put(new HashMap<String, Integer>(){{
-                put("copper", 27);
+                put("copper", 18);
                 put("tin", 9);
             }}, new RecipeOutput("#c:bronze_ingots", 2, 10, 1));
+
             put(new HashMap<String, Integer>(){{
-                put("copper", 27);
+                put("copper", 18);
                 put("zinc", 9);
             }}, new RecipeOutput("#c:brass_ingots", 2, 10, 1));
+
             put(new HashMap<String, Integer>(){{
                 put("silver", 9);
                 put("gold", 9);
@@ -77,8 +85,8 @@ public class MythicForgeConfig {
     private static void createOreRecipes() {
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>(){{
             put(new HashMap<String, Integer>(){{
-                put("#c:copper_ores", 3);
-            }}, new RecipeOutput("#c:copper_ingots", 2, 8, 1));
+                put("#c:copper_ores", 2);
+            }}, new RecipeOutput("#c:copper_ingots", 3, 8, 1));
         }}, false);
     }
 
