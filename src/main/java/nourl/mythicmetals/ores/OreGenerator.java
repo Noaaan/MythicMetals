@@ -8,6 +8,7 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;
+import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.DepthAverageDecoratorConfig;
@@ -17,6 +18,9 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @SuppressWarnings("deprecation")
 public class OreGenerator {
@@ -244,10 +248,10 @@ public class OreGenerator {
 		}
 	}
 	public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-		BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
 	}
 	public static void AddUDecoration(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-		BiomeModifications.addFeature(BiomeSelectors.builtIn(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
+		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
 	}
 	public static void BYGGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
 		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("byg", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);

@@ -36,6 +36,7 @@
 
   "depends": {
     "fabricloader": ">=0.7.4",
+    "alloy_forgery": ">=1.0.0",
     "fabric": ">=0.26.0",
     "minecraft": ">=1.16.3"
   }
