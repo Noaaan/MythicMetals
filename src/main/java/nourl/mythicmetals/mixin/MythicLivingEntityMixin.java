@@ -10,6 +10,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -18,6 +19,8 @@ import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public abstract class MythicLivingEntityMixin extends Entity {
+
+    @Shadow private float movementSpeed;
 
     public MythicLivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -49,11 +52,14 @@ public abstract class MythicLivingEntityMixin extends Entity {
         Vec3d velocity = this.getVelocity();
 
         ParticleEffect p = ParticleTypes.ENCHANT;
-        // Add four particles if standing still
-        if (velocity == Vec3d.ZERO) {
+        // Add four particles around player
+
+        if (velocity.length() <= 0.1) {
             this.world.addParticle(p, x, y + 1.75, z, k * 1D, -0.8, j * 1D);
         }
-        // Particle trail
-        this.world.addParticle(p, x, y, z, 0, 0.25, 0);
+        // Particle trail if moving
+        if (velocity.length() >= 0.1) {
+            this.world.addParticle(p, x, y, z, 0, 0.25, 0);
+        }
     }
 }
