@@ -39,21 +39,6 @@
 "item.mythicmetals.vermiculite": "Кусок вермикулита",
 "item.mythicmetals.zinc_ingot": "Цинковый слиток",
 
-"item.mythicmetals.argonium_alloy": "Аргониевая подмесь",
-"item.mythicmetals.brass_alloy": "Латунная подмесь",
-"item.mythicmetals.bronze_alloy": "Бронзовая подмесь",
-"item.mythicmetals.celestium_alloy": "Целестиевая подмесь",
-"item.mythicmetals.discordium_alloy": "Дискордиевая подмесь",
-"item.mythicmetals.durasteel_alloy": "Дюрастальная подмесь",
-"item.mythicmetals.electrum_alloy": "Электровая подмесь",
-"item.mythicmetals.etherite_alloy": "Эзеритовая подмесь",
-"item.mythicmetals.slowsilver_alloy": "Подмесь вялого серебра",
-"item.mythicmetals.steel_alloy": "Стальная подмесь",
-"item.mythicmetals.quicksilver_alloy": "Подмесь текучего серебра",
-"item.mythicmetals.adamanthril_alloy": " Подмесь адаманфрила",
-"item.mythicmetals.hallowed_alloy": "Подмесь священного сплава",
-"item.mythicmetals.metallurgium_alloy": "Металлургиевая подмесь",
-
 "item.mythicmetals.adamantite_sword": "Адамантиевый меч",
 "item.mythicmetals.aetherium_sword": "Этерийный меч",
 "item.mythicmetals.aquarium_sword": "Акварийный меч",
@@ -634,7 +619,7 @@
 "item.mythicmetals.truesilver_dust": "Истинносеребряная пыль",
 "item.mythicmetals.unobtainium_dust": "Анобтаниевая пыль",
 "item.mythicmetals.ur_dust": "Уриевая пыль",
-"item.mythicmetals.vermiculite_dust": "Измельчённый вермикулит",
+"item.mythicmetals.vermiculite": "Измельчённый вермикулит",
 "item.mythicmetals.zinc_dust": "Цинковая пыль",
 
 "block.mythicmetals.adamantite_block": "Адамантиевый блок",
@@ -810,5 +795,7 @@
 
 "itemGroup.mythicmetals.main": "Материалы Mythic Metals",
 "itemGroup.mythicmetals.tools": "Инструменты Mythic Metals",
-"itemGroup.mythicmetals.armor": "Броня Mythic Metals"
+"itemGroup.mythicmetals.armor": "Броня Mythic Metals",
+"item.mythic_metals.gold_dust": "Gold Dust",
+"itemGroup.mythicmetals.decorations": "Mythic Metals Decorations"
 }
