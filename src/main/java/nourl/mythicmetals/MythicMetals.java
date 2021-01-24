@@ -46,6 +46,7 @@ public class MythicMetals implements ModInitializer {
 			OreGenerator.generate();
 
 			MythicEnchantConfig.createConfig();
+			MythicForgeConfig.createAlloys();
 
 			if (FabricLoader.getInstance().isModLoaded("alloy_forgery")) {
 				MythicForgeConfig.createAlloys();

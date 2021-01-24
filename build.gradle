@@ -34,7 +34,9 @@ dependencies {
 	include "curse.maven:enchantgiver-430733:3166443"
 
 	// Alloy forgery
-	modApi "alloy_forgery:wraith-alloy_forgery:${project.alloyforgery_version}"
+	modApi ("curse.maven:alloy_forgery-438718:3177975") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
 	
 	// config
 	include("me.shedaniel.cloth:config-2:${project.cloth_version}")
