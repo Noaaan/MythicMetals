@@ -1,10 +1,14 @@
 # 0.9.9
+### Note!
+You will need to download Alloy Forgery in order to use Mythic Metals! Link: https://www.curseforge.com/minecraft/mc-mods/alloy-forgery
+
 Added new anvils! These can be made from a selection of the metals, and will not break!  
 Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
 Unembedded PigLib. You will now have to install it manually, to prevent version issues.  
-Added a new library: EnchantGiver.  
-This lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
+Added two new libraries: EnchantGiver and Alloy Forgery.    
+EnchantGiver lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
+Alloy Forgery is a new mod that lets you build a multiblock alloy smelter. This smeltery replaces the old alloy system, making alloy smelting require lava and different tiers of smelters (currently only 2 tiers are in place, with nothing more planned).  
 Added experimental BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
 Squashed a couple of bugs related to Harvest Scythes and Charm.  
 Removed Lutetium, as it only served as a worse silver alternative.  
