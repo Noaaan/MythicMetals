@@ -50,7 +50,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ETHERITE(4, 1969, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterIngots.ETHERITE_INGOT);
     }),
-    HALLOWED(4, 2048, 12.0F, 5.5F, 25, () -> {
+    HALLOWED(4, 2048, 12.0F, 5.5F, 24, () -> {
         return Ingredient.ofItems(RegisterIngots.HALLOWED_INGOT);
     }),
 	KYBER(2, 450, 7.0F, 2.5F, 20, () -> {
@@ -68,7 +68,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ORICHALCUM(4, 2048, 8.0F, 4.0F, 16, () -> {
         return Ingredient.ofItems(RegisterIngots.ORICHALCUM_INGOT);
     }),
-	OSMIUM(3, 1111, 8.0F, 3.0F, 13, () -> {
+	OSMIUM(3, 784, 8.0F, 3.0F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.OSMIUM_INGOT);
     }),
 	PROMETHEUM(3, 1601, 8.5F, 3.5F, 17, () -> {

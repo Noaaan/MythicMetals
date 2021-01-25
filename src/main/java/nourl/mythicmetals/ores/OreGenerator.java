@@ -20,6 +20,7 @@ import nourl.mythicmetals.config.MythicConfig;
 
 @SuppressWarnings("deprecation")
 public class OreGenerator {
+	// Defines the features that represents the ores, being fully configurable
 	public static final MythicConfig.MythicOreConfig CONFIG = MythicMetals.CONFIG.mythores;
 	public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ADAMANTITE_ORE.getDefaultState(),
 		    CONFIG.adamantiteVeinSize)) //Vein Size
@@ -53,6 +54,7 @@ public class OreGenerator {
 	public static ConfiguredFeature<?, ?> ORE_VERMICULITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.vermiculiteVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.vermiculiteMinHeight,CONFIG.vermiculiteMaxHeight))).spreadHorizontally().repeat(CONFIG.vermiculitePerChunk);
 	public static ConfiguredFeature<?, ?> ORE_ZINC = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ZINC_ORE.getDefaultState(), CONFIG.zincVeinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0,CONFIG.zincMinHeight,CONFIG.zincMaxHeight))).spreadHorizontally().repeat(CONFIG.zincPerChunk);
 
+	// Add keys for features
 	public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_adamantite"));
 	public static final RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_aetherium"));
 	public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier(MythicMetals.MOD_ID, "ore_aquarium"));
@@ -82,6 +84,7 @@ public class OreGenerator {
 
 
 	public static void init() {
+		//Register keys on init
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAdamantite.getValue(), OreGenerator.ORE_ADAMANTITE);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAetherium.getValue(), OreGenerator.ORE_AETHERIUM);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, oreAquarium.getValue(), OreGenerator.ORE_AQUARIUM);
@@ -244,10 +247,10 @@ public class OreGenerator {
 		}
 	}
 	public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+		BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
 	}
 	public static void AddUDecoration(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
+		BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
 	}
 	public static void BYGGen(String path, RegistryKey<ConfiguredFeature<?, ?>> ore) {
 		BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier("byg", path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);

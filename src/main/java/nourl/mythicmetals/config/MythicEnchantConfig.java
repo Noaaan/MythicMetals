@@ -7,10 +7,10 @@ import nourl.mythicmetals.registry.RegisterArmor;
 
 import java.util.HashMap;
 
-// Most cursed code I have ever seen
+// Hardcodes enchantments onto armour into a JSON file
 public class MythicEnchantConfig {
     public static void createConfig() {
-        HashMap<Identifier, HashMap<Identifier, Integer>> cursedconfig = new HashMap<Identifier, HashMap <Identifier, Integer>>() {{
+        HashMap<Identifier, HashMap<Identifier, Integer>> enchantMap = new HashMap<Identifier, HashMap <Identifier, Integer>>() {{
             put(Registry.ITEM.getId(RegisterArmor.AQUARIUM_BOOTS), new HashMap<Identifier, Integer>() {{
                 put(new Identifier("minecraft:depth_strider"), 2);
             }});
@@ -33,6 +33,6 @@ public class MythicEnchantConfig {
                 put(new Identifier("minecraft:mending"), 1);
             }});
         }};
-        wraith.enchant_giver.EnchantsList.createConfig(MythicMetals.MOD_ID, cursedconfig, false);
+        wraith.enchant_giver.EnchantsList.createConfig(MythicMetals.MOD_ID, enchantMap, false);
     }
 }

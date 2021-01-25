@@ -266,7 +266,7 @@ public class MythicForgeConfig {
             put(new HashMap<String, Integer>() {{
                 put("gold", 9);
                 put("midas_gold", 9);
-            }}, new RecipeOutput("#c:bronze_ingots", 2, 10, 1));
+            }}, new RecipeOutput("mythicmetals:argonium_ingot", 1, 9, 1));
             // Bronze
             put(new HashMap<String, Integer>() {{
                 put("copper", 18);
