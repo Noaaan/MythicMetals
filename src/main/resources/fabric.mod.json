@@ -14,7 +14,7 @@
     "issues": "https://github.com/Noaaan/MythicMetals/issues"
   },
 
-  "license": "GPLv3",
+  "license": "MIT",
   "icon": "assets/mythicmetals/icon.png",
 
   "environment": "*",
