@@ -54,10 +54,10 @@ public class MythicMetals implements ModInitializer {
 
 		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 			if (FabricLoader.getInstance().isModLoaded("smithee")) {
-				LOGGER.info("[Mythic Metals] Hey, Smithee is around. Be sure to say hi to LordDeatHunter for me!");
+				LOGGER.info("[Mythic Metals] Hey, Smithee is around. That's.");
 			}
 			if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
-				LOGGER.info("[Mythic Metals] Oh, if you ever see Spxtre, the EnhancedCraft dev, tell him I said hi!");
+				LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxtre tell him I said hi!");
 			}
 		 }
 	}
