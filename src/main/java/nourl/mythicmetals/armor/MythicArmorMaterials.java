@@ -104,7 +104,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
 	STEEL("steel", 22, new int[]{2, 6, 7, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.STEEL_INGOT);
     }),
-	STORMYX("stormyx", 24, new int[]{2, 6, 8, 2}, 17, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.1F, () -> {
+	STORMYX("stormyx", 32, new int[]{3, 6, 8, 3}, 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterIngots.STORMYX_INGOT);
     }),
 	TANTALITE("tantalite", 21, new int[]{2, 6, 7, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 0.0F, 0.1F, () -> {

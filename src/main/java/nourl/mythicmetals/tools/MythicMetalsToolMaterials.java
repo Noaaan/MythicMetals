@@ -98,7 +98,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
         return Ingredient.ofItems(RegisterIngots.STEEL_INGOT);
     }),
-	STORMYX(2, 905, 7.0F, 2.5F, 17, () -> {
+	STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.STORMYX_INGOT);
     }),
 	TANTALITE(2, 689, 7.0F, 2.0F, 10, () -> {

@@ -14,7 +14,7 @@ Squashed a couple of bugs related to Harvest Scythes and Charm.
 Removed Lutetium, as it only served as a worse silver alternative.  
 
 Adjusted most of the textures, as well as adding some new models. Thank you to:
-* DH(LordDeatHunter), for a lot of the re-colours and animated textures.  
+* DH(LordDeatHunter), for a lot of the re-colours, item models and animated textures.  
 * Temreno, for the new armour and tool models.  
 * Tector, for the new ore and ingot textures.  
 * Pois1x, for the new anvil model + texture.  
@@ -28,7 +28,8 @@ Balancing changes:
 * Increased Ur spawn rate  
 * Buffed Banglum, Discordium, and Durasteel
 * Nerfed Prometheum and Kyber  
-* Buffed Metallurguim tools (not sword)  
+* Buffed Metallurgium tools 
+* Major Stormyx buff
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
