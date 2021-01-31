@@ -20,7 +20,7 @@ Adjusted most of the textures, as well as adding some new models. Thank you to:
 * Pois1x, for the new anvil model + texture.  
 
 Balancing changes:  
-* Quicksilver now has a higher mining level  
+* Quicksilver now has a higher mining level, higher dmg and speed, but less durability  
 * Carmot has recieved a major buff  
 * Quadrillum can now be smelted with a normal furnace  
 * Slightly buffed hallowed  
@@ -28,8 +28,9 @@ Balancing changes:
 * Increased Ur spawn rate  
 * Buffed Banglum, Discordium, and Durasteel
 * Nerfed Prometheum and Kyber  
-* Buffed Metallurgium tools 
-* Major Stormyx buff
+* Buffed Metallurgium tools & weapons
+* Major Stormyx buff  
+* Slowsilver armor has been nerfed, as well as small tool nerf  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  

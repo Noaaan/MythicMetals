@@ -56,7 +56,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	KYBER(2, 450, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.KYBER_INGOT);
     }),
-	METALLURGIUM(5, 3000, 15.0F, 6.0F, 30, () -> {
+	METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
         return Ingredient.ofItems(RegisterIngots.METALLURGIUM_INGOT);
     }),
 	MIDAS_GOLD(1, 178, 12.0F, 1.0F, 22, () -> {
@@ -80,13 +80,13 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	QUADRILLUM(2, 531, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterIngots.QUADRILLUM_INGOT);
     }),
-	QUICKSILVER(4, 1652, 13.0F, 2.5F, 25, () -> {
+	QUICKSILVER(4, 1452, 13.0F, 2.5F, 25, () -> {
         return Ingredient.ofItems(RegisterIngots.QUICKSILVER_INGOT);
     }),
 	RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(RegisterIngots.RUNITE_INGOT);
     }),
-	SLOWSILVER(2, 800, 6.0F, 2.0F, 14, () -> {
+	SLOWSILVER(2, 700, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterIngots.SLOWSILVER_INGOT);
     }),
 	STARRITE(3, 1000, 9.9F, 3.5F, 18, () -> {
