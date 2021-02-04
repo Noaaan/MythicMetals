@@ -26,12 +26,14 @@ public class MythicForgeConfig {
                 put("#c:copper_blocks", new MaterialWorth(81, true));
                 put("#c:copper_ingots", new MaterialWorth(9, true));
                 put("#c:copper_dusts", new MaterialWorth(9, false));
+                put("#c:copper_ores", new MaterialWorth(9, false));
                 put("#c:copper_nuggets", new MaterialWorth(1, true));
             }});
             put("tin", new HashMap<String, MaterialWorth>() {{
                 put("#c:tin_blocks", new MaterialWorth(81, true));
                 put("#c:tin_ingots", new MaterialWorth(9, true));
                 put("#c:tin_dusts", new MaterialWorth(9, false));
+                put("#c:tin_ores", new MaterialWorth(9, false));
                 put("#c:tin_nuggets", new MaterialWorth(1, true));
             }});
             put("brass", new HashMap<String, MaterialWorth>() {{
@@ -44,12 +46,14 @@ public class MythicForgeConfig {
                 put("#c:zinc_blocks", new MaterialWorth(81, true));
                 put("#c:zinc_ingots", new MaterialWorth(9, true));
                 put("#c:zinc_dusts", new MaterialWorth(9, false));
+                put("#c:zinc_ores", new MaterialWorth(9, false));
                 put("#c:zinc_nuggets", new MaterialWorth(1, true));
             }});
             put("silver", new HashMap<String, MaterialWorth>() {{
                 put("#c:silver_blocks", new MaterialWorth(81, true));
                 put("#c:silver_ingots", new MaterialWorth(9, true));
                 put("#c:silver_dusts", new MaterialWorth(9, false));
+                put("#c:silver_ores", new MaterialWorth(9, false));
                 put("#c:silver_nuggets", new MaterialWorth(1, true));
             }});
             put("electrum", new HashMap<String, MaterialWorth>() {{
@@ -63,62 +67,67 @@ public class MythicForgeConfig {
             }});
             put("adamantite", new HashMap<String, MaterialWorth>() {{
                 put("#c:adamantite_blocks", new MaterialWorth(81, true));
-                put("#c:adamantite_dusts", new MaterialWorth(9, false));
                 put("#c:adamantite_ingots", new MaterialWorth(9, true));
+                put("#c:adamantite_dusts", new MaterialWorth(9, false));
+                put("#c:adamantite_ores", new MaterialWorth(9, false));
                 put("#c:adamantite_nuggets", new MaterialWorth(1, true));
             }});
             put("aetherium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:aetherium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:aetherium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:aetherium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:aetherium_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:aetherium_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:aetherium_nuggets", new MaterialWorth(1, true));
             }});
             put("aquarium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:aquarium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:aquarium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:aquarium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:aquarium_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:aquarium_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:aquarium_nuggets", new MaterialWorth(1, true));
             }});
             put("argonium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:argonium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:argonium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:argonium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:argonium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:argonium_nuggets", new MaterialWorth(1, true));
             }});
             put("banglum", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:banglum_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:banglum_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:banglum_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:banglum_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:banglum_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:banglum_nuggets", new MaterialWorth(1, true));
             }});
             put("carmot", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:carmot_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:carmot_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:carmot_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:carmot_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:carmot_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:carmot_nuggets", new MaterialWorth(1, true));
             }});
             put("celestium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:celestium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:celestium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:celestium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:celestium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:celestium_nuggets", new MaterialWorth(1, true));
             }});
             put("discordium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:discordium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:discordium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:discordium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:discordium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:discordium_nuggets", new MaterialWorth(1, true));
             }});
             put("durasteel", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:durasteel_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:durasteel_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:durasteel_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:durasteel_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:durasteel_nuggets", new MaterialWorth(1, true));
             }});
             put("etherite", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:etherite_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:etherite_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:etherite_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:etherite_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:etherite_nuggets", new MaterialWorth(1, true));
             }});
             put("gravel", new HashMap<String, MaterialWorth>() {{
@@ -126,128 +135,144 @@ public class MythicForgeConfig {
             }});
             put("hallowed", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:hallowed_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:hallowed_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:hallowed_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:hallowed_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:hallowed_nuggets", new MaterialWorth(1, true));
             }});
             put("kyber", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:kyber_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:kyber_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:kyber_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:kyber_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:kyber_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:kyber_nuggets", new MaterialWorth(1, true));
             }});
             put("manganese", new HashMap<String, MaterialWorth>() {{
                 put("#c:manganese_blocks", new MaterialWorth(81, true));
-                put("#c:manganese_dusts", new MaterialWorth(9, false));
                 put("#c:manganese_ingots", new MaterialWorth(9, true));
+                put("#c:manganese_dusts", new MaterialWorth(9, false));
+                put("#c:manganese_ores", new MaterialWorth(9, false));
                 put("#c:manganese_nuggets", new MaterialWorth(1, true));
             }});
             put("metallurgium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:metallurgium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:metallurgium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:metallurgium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:metallurgium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:metallurgium_nuggets", new MaterialWorth(1, true));
             }});
             put("midas_gold", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:midas_gold_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:midas_gold_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:midas_gold_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:midas_gold_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:midas_gold_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:midas_gold_nuggets", new MaterialWorth(1, true));
             }});
             put("mythril", new HashMap<String, MaterialWorth>() {{
                 put("#c:mythril_blocks", new MaterialWorth(81, true));
-                put("#c:mythril_dusts", new MaterialWorth(9, false));
                 put("#c:mythril_ingots", new MaterialWorth(9, true));
+                put("#c:mythril_dusts", new MaterialWorth(9, false));
+                put("#c:mythril_ores", new MaterialWorth(9, false));
                 put("#c:mythril_nuggets", new MaterialWorth(1, true));
             }});
             put("orichalcum", new HashMap<String, MaterialWorth>() {{
                 put("#c:orichalcum_blocks", new MaterialWorth(81, true));
-                put("#c:orichalcum_dusts", new MaterialWorth(9, false));
                 put("#c:orichalcum_ingots", new MaterialWorth(9, true));
+                put("#c:orichalcum_dusts", new MaterialWorth(9, false));
+                put("#c:orichalcum_ores", new MaterialWorth(9, false));
                 put("#c:orichalcum_nuggets", new MaterialWorth(1, true));
             }});
             put("osmium", new HashMap<String, MaterialWorth>() {{
                 put("#c:osmium_blocks", new MaterialWorth(81, true));
-                put("#c:osmium_dusts", new MaterialWorth(9, false));
                 put("#c:osmium_ingots", new MaterialWorth(9, true));
+                put("#c:osmium_dusts", new MaterialWorth(9, false));
+                put("#c:osmium_ores", new MaterialWorth(9, false));
                 put("#c:osmium_nuggets", new MaterialWorth(1, true));
             }});
             put("platinum", new HashMap<String, MaterialWorth>() {{
                 put("#c:platinum_blocks", new MaterialWorth(81, true));
-                put("#c:platinum_dusts", new MaterialWorth(9, false));
                 put("#c:platinum_ingots", new MaterialWorth(9, true));
+                put("#c:platinum_dusts", new MaterialWorth(9, false));
+                put("#c:platinum_ores", new MaterialWorth(9, false));
                 put("#c:platinum_nuggets", new MaterialWorth(1, true));
             }});
             put("prometheum", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:prometheum_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:prometheum_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:prometheum_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:prometheum_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:prometheum_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:prometheum_nuggets", new MaterialWorth(1, true));
             }});
             put("quadrillum", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:quadrillum_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:quadrillum_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:quadrillum_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:quadrillum_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:quadrillum_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:quadrillum_nuggets", new MaterialWorth(1, true));
             }});
             put("quicksilver", new HashMap<String, MaterialWorth>() {{
                 put("#c:quicksilver_blocks", new MaterialWorth(81, true));
-                put("#c:quicksilver_dusts", new MaterialWorth(9, false));
                 put("#c:quicksilver_ingots", new MaterialWorth(9, true));
+                put("#c:quicksilver_dusts", new MaterialWorth(9, false));
                 put("#c:quicksilver_nuggets", new MaterialWorth(1, true));
             }});
             put("runite", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:runite_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:runite_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:runite_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:runite_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:runite_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:runite_nuggets", new MaterialWorth(1, true));
             }});
             put("slowsilver", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:slowsilver_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:slowsilver_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:slowsilver_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:slowsilver_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:slowsilver_nuggets", new MaterialWorth(1, true));
             }});
             put("starrite", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:starrite_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:starrite_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:starrite_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:starrite_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:starrite_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:starrite_nuggets", new MaterialWorth(1, true));
             }});
             put("steel", new HashMap<String, MaterialWorth>() {{
                 put("#c:steel_blocks", new MaterialWorth(81, true));
-                put("#c:steel_dusts", new MaterialWorth(9, false));
                 put("#c:steel_ingots", new MaterialWorth(9, true));
+                put("#c:steel_dusts", new MaterialWorth(9, false));
                 put("#c:steel_nuggets", new MaterialWorth(1, true));
             }});
             put("stormyx", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:stormyx_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:stormyx_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:stormyx_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:stormyx_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:stormyx_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:stormyx_nuggets", new MaterialWorth(1, true));
             }});
             put("tantalite", new HashMap<String, MaterialWorth>() {{
                 put("#c:tantalite_blocks", new MaterialWorth(81, true));
-                put("#c:tantalite_dusts", new MaterialWorth(9, false));
                 put("#c:tantalite_ingots", new MaterialWorth(9, true));
+                put("#c:tantalite_dusts", new MaterialWorth(9, false));
+                put("#c:tantalite_ores", new MaterialWorth(9, false));
                 put("#c:tantalite_nuggets", new MaterialWorth(1, true));
             }});
             put("truesilver", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:truesilver_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:truesilver_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:truesilver_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:truesilver_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:truesilver_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:truesilver_nuggets", new MaterialWorth(1, true));
             }});
             put("unobtainium", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:unobtainium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:unobtainium_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:unobtainium_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:unobtainium_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:unobtainium_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:unobtainium_nuggets", new MaterialWorth(1, true));
             }});
             put("ur", new HashMap<String, MaterialWorth>() {{
                 put("#mythicmetals:ur_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:ur_dusts", new MaterialWorth(9, false));
                 put("#mythicmetals:ur_ingots", new MaterialWorth(9, true));
+                put("#mythicmetals:ur_dusts", new MaterialWorth(9, false));
+                put("#mythicmetals:ur_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:ur_nuggets", new MaterialWorth(1, true));
             }});
             put("vermiculite", new HashMap<String, MaterialWorth>() {{
@@ -335,7 +360,7 @@ public class MythicForgeConfig {
                 put("silver", 9);
                 put("mythril", 9);
             }}, new RecipeOutput("mythicmetals:quicksilver_ingot", 2, 10, 2));
-        }}, false);
+        }}, true);
     }
 
     private static void createOreRecipes() {
@@ -439,7 +464,7 @@ public class MythicForgeConfig {
         // Silver
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
             put(new HashMap<String, Integer>() {{
-                put("c#:silver_ores", 2);
+                put("#c:silver_ores", 2);
             }}, new RecipeOutput("#c:silver_ingots", 3, 8, 1));
         }}, false);
         // Starrite
