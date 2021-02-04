@@ -33,10 +33,10 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean aetheriumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumVeinSize = 2;
+        public int aetheriumVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumPerChunk = 2;
+        public int aetheriumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
         public int aetheriumMinHeight = 70;
         @ConfigEntry.Gui.RequiresRestart
