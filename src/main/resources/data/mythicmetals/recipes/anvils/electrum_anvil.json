@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:electrum_block"
+            "tag": "c:electrum_blocks"
         },
         "R": {
-            "item": "mythicmetals:electrum_ingot"
+            "tag": "c:electrum_ingots"
         }
     },
     "result": {

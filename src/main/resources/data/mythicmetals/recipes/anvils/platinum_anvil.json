@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:platinum_block"
+            "tag": "c:platinum_blocks"
         },
         "R": {
-            "item": "mythicmetals:platinum_ingot"
+            "tag": "c:platinum_ingots"
         }
     },
     "result": {

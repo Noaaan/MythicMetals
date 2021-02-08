@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:silver_block"
+            "tag": "c:silver_blocks"
         },
         "R": {
-            "item": "mythicmetals:silver_ingot"
+            "tag": "c:silver_ingots"
         }
     },
     "result": {

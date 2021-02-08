@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:brass_block"
+            "tag": "c:brass_blocks"
         },
         "R": {
-            "item": "mythicmetals:brass_ingot"
+            "tag": "c:brass_ingots"
         }
     },
     "result": {

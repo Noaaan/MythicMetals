@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:mythril_block"
+            "tag": "c:mythril_blocks"
         },
         "R": {
-            "item": "mythicmetals:mythril_ingot"
+            "tag": "c:mythril_ingots"
         }
     },
     "result": {

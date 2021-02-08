@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:steel_block"
+            "tag": "c:steel_blocks"
         },
         "R": {
-            "item": "mythicmetals:steel_ingot"
+            "tag": "c:steel_ingots"
         }
     },
     "result": {

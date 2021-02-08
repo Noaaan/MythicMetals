@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:orichalcum_block"
+            "tag": "c:orichalcum_blocks"
         },
         "R": {
-            "item": "mythicmetals:orichalcum_ingot"
+            "tag": "c:orichalcum_ingots"
         }
     },
     "result": {

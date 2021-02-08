@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:osmium_block"
+            "tag": "c:osmium_blocks"
         },
         "R": {
-            "item": "mythicmetals:osmium_ingot"
+            "tag": "c:osmium_ingots"
         }
     },
     "result": {

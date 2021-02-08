@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:manganese_block"
+            "tag": "c:manganese_blocks"
         },
         "R": {
-            "item": "mythicmetals:manganese_ingot"
+            "tag": "c:manganese_ingots"
         }
     },
     "result": {

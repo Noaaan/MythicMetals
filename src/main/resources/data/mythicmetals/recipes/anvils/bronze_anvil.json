@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:bronze_block"
+            "tag": "c:bronze_blocks"
         },
         "R": {
-            "item": "mythicmetals:bronze_ingot"
+            "tag": "c:bronze_ingots"
         }
     },
     "result": {

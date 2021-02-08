@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "mythicmetals:adamantite_block"
+            "tag": "c:adamantite_blocks"
         },
         "R": {
-            "item": "mythicmetals:adamantite_ingot"
+            "tag": "c:adamantite_ingots"
         }
     },
     "result": {
