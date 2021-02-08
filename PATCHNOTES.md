@@ -1,18 +1,21 @@
 # 0.9.9
 ### Note!
+Added two new libraries: EnchantGiver and Alloy Forgery. 
 You will need to download Alloy Forgery in order to use Mythic Metals! Link: https://www.curseforge.com/minecraft/mc-mods/alloy-forgery
 
+EnchantGiver lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but they will not disappear even if a grindstone is used.  
+Alloy Forgery is a new mod that lets you build a multiblock alloy smelter. This smeltery replaces the old alloy system. Making alloys require lava and different tiers of smelters (currently only 2 tiers are in place, with nothing more planned).  
+A tutorial will be available on the upcoming Mythic Metals Wiki! Once it's ready a link will be available.  
+
+### Whats new?
 Added new anvils! These can be made from a selection of the metals, and will not break!  
 Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
 Unembedded PigLib. You will now have to install it manually, to prevent version issues.  
-Added two new libraries: EnchantGiver and Alloy Forgery.    
-EnchantGiver lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but will not disappear even if a grindstone is used.  
-Alloy Forgery is a new mod that lets you build a multiblock alloy smelter. This smeltery replaces the old alloy system, making alloy smelting require lava and different tiers of smelters (currently only 2 tiers are in place, with nothing more planned).  
-Added experimental BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
+Added BYG, Terrestria and Traverse support! You will now find biome specific ores such as Starrite in their biomes.  
+The ore generator has been changed internally so that it actually generates ores in their defined ranges. This means that worldgen has changed, and upgrading might cause funky chunk borders.  
 Squashed a couple of bugs related to Harvest Scythes and Charm.  
 Removed Lutetium, as it only served as a worse silver alternative.    
-The ore generator has been changed internally so that it actually generates ores in their defined ranges. This means that worldgen has changed, and upgrading might cause bad chunk borders.  
 
 Adjusted most of the textures, as well as adding some new models. Thank you to:
 * DH(LordDeatHunter), for a lot of the re-colours, item models and animated textures.  
@@ -20,7 +23,7 @@ Adjusted most of the textures, as well as adding some new models. Thank you to:
 * Tector, for the new ore and ingot textures.  
 * Pois1x, for the new anvil model + texture.  
 
-Balancing changes:  
+### Balancing changes:  
 * Quicksilver now has a higher mining level, higher dmg and speed, but less durability  
 * Carmot has recieved a major buff  
 * Quadrillum can now be smelted with a normal furnace  
