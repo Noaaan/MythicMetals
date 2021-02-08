@@ -29,7 +29,7 @@ public class MythicMetalsOres {
 	public static final Block TANTALITE_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block TIN_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(2.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
 	public static final Block TRUESILVER_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-	public static final Block UNOBTAINIUM_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
+	public static final Block UNOBTAINIUM_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f,  12000.0f).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
 	public static final Block UR_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
 	public static final Block VERMICULITE_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
 	public static final Block ZINC_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(2.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
