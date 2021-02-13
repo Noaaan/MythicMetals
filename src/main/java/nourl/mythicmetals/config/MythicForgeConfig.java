@@ -368,8 +368,8 @@ public class MythicForgeConfig {
         // Adamantite
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
             put(new HashMap<String, Integer>() {{
-                put("#c:adamantite_ores", 2);
-            }}, new RecipeOutput("#c:adamantite_ingots", 3, 16, 2));
+                put("mythicmetals:adamantite_ore", 2);
+            }}, new RecipeOutput("mythicmetals:adamantite_ingot", 3, 16, 2));
         }}, false);
         // Aetherium
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
@@ -422,13 +422,13 @@ public class MythicForgeConfig {
         // Mythril
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
             put(new HashMap<String, Integer>() {{
-                put("#c:mythril_ores", 2);
+                put("mythicmetals:mythril_ore", 2);
             }}, new RecipeOutput("#c:mythril_ingots", 3, 16, 2));
         }}, false);
         // Orichalcum
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
             put(new HashMap<String, Integer>() {{
-                put("#c:orichalcum_ores", 2);
+                put("mythicmetals:orichalcum_ore", 2);
             }}, new RecipeOutput("#c:orichalcum_ingots", 3, 16, 2));
         }}, false);
         // Osmium
