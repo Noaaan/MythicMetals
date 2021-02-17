@@ -50,7 +50,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	ETHERITE(4, 1969, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterIngots.ETHERITE_INGOT);
     }),
-    HALLOWED(4, 2048, 12.0F, 5.5F, 24, () -> {
+    HALLOWED(4, 2048, 11.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(RegisterIngots.HALLOWED_INGOT);
     }),
 	KYBER(2, 450, 7.0F, 2.5F, 20, () -> {
