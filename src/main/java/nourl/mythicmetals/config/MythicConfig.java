@@ -291,7 +291,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int stormyxVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int stormyxPerChunk = 2;
+        public int stormyxPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
         public int stormyxMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
@@ -323,7 +323,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.Gui.RequiresRestart
         public int tinPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int tinMinHeight = 6;
+        public int tinMinHeight = 18;
         @ConfigEntry.Gui.RequiresRestart
         public int tinMaxHeight = 128;
 
@@ -381,7 +381,7 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.Gui.RequiresRestart
         public int vermiculitePerChunk = 8;
         @ConfigEntry.Gui.RequiresRestart
-        public int vermiculiteMinHeight = 6;
+        public int vermiculiteMinHeight = 20;
         @ConfigEntry.Gui.RequiresRestart
         public int vermiculiteMaxHeight = 128;
 

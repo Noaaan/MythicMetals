@@ -34,8 +34,9 @@ Adjusted most of the textures, as well as adding some new models. Thank you to:
 * Buffed Banglum, Discordium, and Durasteel
 * Nerfed Prometheum and Kyber  
 * Buffed Metallurgium tools & weapons
-* Major Stormyx buff  
+* Major Stormyx buff, made it slightly easier to find  
 * Slowsilver armor has been nerfed, as well as small tool nerf  
+* Made tin and vermiculite spawn higher up  
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  
