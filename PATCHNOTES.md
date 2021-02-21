@@ -22,6 +22,7 @@ Adjusted most of the textures, as well as adding some new models. Thank you to:
 * Temreno, for the new armour and tool models.  
 * Tector, for the new ore and ingot textures.  
 * Pois1x, for the new anvil model + texture.  
+* Henchman, for new low-tier textures (copper, tin, bronze, and ur).  
 
 ### Balancing changes:  
 * Quicksilver now has a higher mining level, higher dmg and speed, but less durability  
