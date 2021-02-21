@@ -63,7 +63,11 @@ public class MythicForgeConfig {
                 put("#c:electrum_nuggets", new MaterialWorth(1, true));
             }});
             put("gold", new HashMap<String, MaterialWorth>() {{
+                put("#c:gold_blocks", new MaterialWorth(81, true));
+                put("#c:gold_ingots", new MaterialWorth(9, true));
+                put("#c:gold_ores", new MaterialWorth(9, false));
                 put("#c:gold_dusts", new MaterialWorth(9, false));
+                put("#c:gold_nuggets", new MaterialWorth(9, true));
             }});
             put("adamantite", new HashMap<String, MaterialWorth>() {{
                 put("#c:adamantite_blocks", new MaterialWorth(81, true));
@@ -352,9 +356,9 @@ public class MythicForgeConfig {
             }}, new RecipeOutput("mythicmetals:slowsilver_ingot", 1, 5, 1));
             // Steel
             put(new HashMap<String, Integer>() {{
-                put("silver", 9);
-                put("gravel", 72);
-            }}, new RecipeOutput("mythicmetals:slowsilver_ingot", 1, 5, 1));
+                put("iron", 9);
+                put("manganese", 9);
+            }}, new RecipeOutput("mythicmetals:steel_ingot", 2, 5, 1));
             // Quicksilver
             put(new HashMap<String, Integer>() {{
                 put("silver", 9);

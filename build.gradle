@@ -37,11 +37,11 @@ dependencies {
 	//modApi(("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}"))
 
 	// Alloy Forgery
-	//modApi ("curse.maven:alloy_forgery-438718:3183419") {
-	//	exclude(group: "net.fabricmc.fabric-api")
-	//}
-	include("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
-	modApi(("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}"))
+	modApi ("curse.maven:alloy_forgery-438718:3211099") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	//include("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
+	//modApi(("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}"))
 	
 	// config
 	include("me.shedaniel.cloth:config-2:${project.cloth_version}")

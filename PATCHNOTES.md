@@ -1,9 +1,9 @@
 # 0.9.9
 ### Note!
-Added two new libraries: EnchantGiver and Alloy Forgery. 
+Added two new libraries: Enchant Giver and Alloy Forgery. 
 You will need to download Alloy Forgery in order to use Mythic Metals! Link: https://www.curseforge.com/minecraft/mc-mods/alloy-forgery
 
-EnchantGiver lets me add innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but they will not disappear even if a grindstone is used.  
+EnchantGiver adds innate enchantments to aquarium and prometheum. They can be overridden with higher enchantments, but they will not disappear even if a grindstone is used.  
 Alloy Forgery is a new mod that lets you build a multiblock alloy smelter. This smeltery replaces the old alloy system. Making alloys require lava and different tiers of smelters (currently only 2 tiers are in place, with nothing more planned).  
 A tutorial will be available on the upcoming Mythic Metals Wiki! Once it's ready a link will be available.  
 
