@@ -596,6 +596,7 @@
 "item.mythicmetals.durasteel_dust": "Дюрастальная пыль",
 "item.mythicmetals.electrum_dust": "Электровая пыль",
 "item.mythicmetals.etherite_dust": "Эзеритовая пыль",
+"item.mythicmetals.gold_dust": "Gold Dust",
 "item.mythicmetals.hallowed_dust":"Пыль священного сплава",
 "item.mythicmetals.kyber_dust": "Кайберовая пыль",
 "item.mythicmetals.manganese_dust": "Марганцевая пыль",
@@ -693,10 +694,10 @@
 "text.autoconfig.mythic_metals.option.mythores.copperMinHeight": "Установить минимальную высоту спавна медной руды (По умолчанию: 32)",
 "text.autoconfig.mythic_metals.option.mythores.copperMaxHeight": "Установить максимальную высоту спавна медной руды (По умолчанию: 128)",
 "text.autoconfig.mythic_metals.option.mythores.kyberGeneration": "Генерация киберовой руды",
-"text.autoconfig.mythic_metals.option.mythores.kyberVeinSize": " Установить максимальный размер жилы кайберовой руды (По умолчанию: 14)",
-"text.autoconfig.mythic_metals.option.mythores.kyberPerChunk": "Установить вероятность спавна кайберовой руды (По умолчанию: 2)",
-"text.autoconfig.mythic_metals.option.mythores.kyberMinHeight": "Установить минимальную высоту спавна кайберовой руды (По умолчанию: 6)",
-"text.autoconfig.mythic_metals.option.mythores.kyberMaxHeight": "Установить максимальную высоту спавна кайберовой руды (По умолчанию: 24)",
+"text.autoconfig.mythic_metals.option.mythores.kyberVeinSize": " Установить максимальный размер жилы кайберовой руды (По умолчанию: 10)",
+"text.autoconfig.mythic_metals.option.mythores.kyberPerChunk": "Установить вероятность спавна кайберовой руды (По умолчанию: 1)",
+"text.autoconfig.mythic_metals.option.mythores.kyberMinHeight": "Установить минимальную высоту спавна кайберовой руды (По умолчанию: 4)",
+"text.autoconfig.mythic_metals.option.mythores.kyberMaxHeight": "Установить максимальную высоту спавна кайберовой руды (По умолчанию: 28)",
 "text.autoconfig.mythic_metals.option.mythores.manganeseGeneration": "Генерация марганцевой руды",
 "text.autoconfig.mythic_metals.option.mythores.manganeseVeinSize": "Установить максимальный размер жилы марганцевой руды (По умолчанию: 6)",
 "text.autoconfig.mythic_metals.option.mythores.manganesePerChunk": "Установить вероятность спавна марганцевой руды (По умолчанию: 4)",
@@ -796,6 +797,6 @@
 "itemGroup.mythicmetals.main": "Материалы Mythic Metals",
 "itemGroup.mythicmetals.tools": "Инструменты Mythic Metals",
 "itemGroup.mythicmetals.armor": "Броня Mythic Metals",
-"item.mythic_metals.gold_dust": "Gold Dust",
+
 "itemGroup.mythicmetals.decorations": "Mythic Metals Decorations"
 }

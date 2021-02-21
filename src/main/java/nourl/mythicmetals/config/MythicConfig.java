@@ -108,14 +108,14 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public boolean kyberGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberVeinSize = 14;
+        public int kyberVeinSize = 10;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberPerChunk = 2;
+        public int kyberPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberMinHeight = 6;
+        public int kyberMinHeight = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberMaxHeight = 24;
+        public int kyberMaxHeight = 28;
 
 
         //Manganese Ore Settings
