@@ -1,5 +1,5 @@
 # 0.9.9
-### Note!
+### Note!  
 Added two new libraries: Enchant Giver and Alloy Forgery. 
 You will need to download Alloy Forgery in order to use Mythic Metals! Link: https://www.curseforge.com/minecraft/mc-mods/alloy-forgery
 
@@ -7,7 +7,7 @@ EnchantGiver adds innate enchantments to aquarium and prometheum. They can be ov
 Alloy Forgery is a new mod that lets you build a multiblock alloy smelter. This smeltery replaces the old alloy system. Making alloys require lava and different tiers of smelters (currently only 2 tiers are in place, with nothing more planned).  
 A tutorial will be available on the upcoming Mythic Metals Wiki! Once it's ready a link will be available.  
 
-### Whats new?
+### What's new?
 Added new anvils! These can be made from a selection of the metals, and will not break!  
 Added new chains! These can be crafted from a selection of metals and nuggets.  
 Added a new material: Hallowed. Made from the hallowed ores (adamantite, mythril and orichalcum).  
@@ -36,7 +36,15 @@ Adjusted most of the textures, as well as adding some new models. Thank you to:
 * Buffed Metallurgium tools & weapons
 * Major Stormyx buff, made it slightly easier to find  
 * Slowsilver armor has been nerfed, as well as small tool nerf  
-* Made tin and vermiculite spawn higher up  
+* Made tin and vermiculite spawn higher up   
+* Celestium and Starrite have swapped mining speeds  
+
+## What's next?  
+Next update is mostly cleaning up before the final major release of Mythic Metals. I want to focus making addons for the mod over adding a lot more content, since I believe Mythic Metals serves the scope of adding more ores.  
+Main focus will be getting even better textures for the rest of the items, ores and blocks. The first addon I wish to make is a decorations addon which would mean the chains will be moved to another mod eventually.  
+There will be a few more features added, but after then the mod will mainly be maintained. I will be adding support for other mods though, but in the form extra mods.  
+Thank you all for showing interest in this mod!  
+
 
 # 0.9.8  
 Added PigLib Integration. If installed Piglins will let you trade with Midas Gold, and ignore you wearing Midas Gold and Argonium armor.  

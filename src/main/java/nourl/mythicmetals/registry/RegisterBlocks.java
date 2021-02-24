@@ -257,40 +257,40 @@ public class RegisterBlocks {
 		MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.UR_ANVIL);
 
 		// Chains
-		RegisterItem("adamantite_chain",MythicMetalsChains.ADAMANTITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("aetherium_chain",MythicMetalsChains.AETHERIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("aquarium_chain",MythicMetalsChains.AQUARIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("argonium_chain",MythicMetalsChains.ARGONIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("banglum_chain",MythicMetalsChains.BANGLUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("brass_chain",MythicMetalsChains.BRASS_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("bronze_chain",MythicMetalsChains.BRONZE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("carmot_chain",MythicMetalsChains.CARMOT_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("celestium_chain",MythicMetalsChains.CELESTIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("discordium_chain",MythicMetalsChains.DISCORDIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("durasteel_chain",MythicMetalsChains.DURASTEEL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("electrum_chain",MythicMetalsChains.ELECTRUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("etherite_chain",MythicMetalsChains.ETHERITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("hallowed_chain",MythicMetalsChains.HALLOWED_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("kyber_chain",MythicMetalsChains.KYBER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("manganese_chain",MythicMetalsChains.MANGANESE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("adamantite_chain",MythicMetalsChains.ADAMANTITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("aetherium_chain",MythicMetalsChains.AETHERIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("aquarium_chain",MythicMetalsChains.AQUARIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("argonium_chain",MythicMetalsChains.ARGONIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("banglum_chain",MythicMetalsChains.BANGLUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("brass_chain",MythicMetalsChains.BRASS_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("bronze_chain",MythicMetalsChains.BRONZE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("carmot_chain",MythicMetalsChains.CARMOT_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("celestium_chain",MythicMetalsChains.CELESTIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("discordium_chain",MythicMetalsChains.DISCORDIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("durasteel_chain",MythicMetalsChains.DURASTEEL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("electrum_chain",MythicMetalsChains.ELECTRUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("etherite_chain",MythicMetalsChains.ETHERITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("hallowed_chain",MythicMetalsChains.HALLOWED_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("kyber_chain",MythicMetalsChains.KYBER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("manganese_chain",MythicMetalsChains.MANGANESE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "metallurgium_chain"), new BlockItem(MythicMetalsChains.METALLURGIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
-		RegisterItem("midas_gold_chain",MythicMetalsChains.MIDAS_GOLD_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("mythril_chain",MythicMetalsChains.MYTHRIL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("orichalcum_chain",MythicMetalsChains.ORICHALCUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("osmium_chain",MythicMetalsChains.OSMIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("platinum_chain",MythicMetalsChains.PLATINUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("prometheum_chain",MythicMetalsChains.PROMETHEUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("quadrillum_chain",MythicMetalsChains.QUADRILLUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("quicksilver_chain",MythicMetalsChains.QUICKSILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("runite_chain",MythicMetalsChains.RUNITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("silver_chain",MythicMetalsChains.SILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("slowsilver_chain",MythicMetalsChains.SLOWSILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("starrite_chain",MythicMetalsChains.STARRITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("steel_chain",MythicMetalsChains.STEEL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("stormyx_chain",MythicMetalsChains.STORMYX_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("tantalite_chain",MythicMetalsChains.TANTALITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("truesilver_chain",MythicMetalsChains.TRUESILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
-		RegisterItem("ur_chain", MythicMetalsChains.UR_CHAIN, MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("midas_gold_chain",MythicMetalsChains.MIDAS_GOLD_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("mythril_chain",MythicMetalsChains.MYTHRIL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("orichalcum_chain",MythicMetalsChains.ORICHALCUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("osmium_chain",MythicMetalsChains.OSMIUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("platinum_chain",MythicMetalsChains.PLATINUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("prometheum_chain",MythicMetalsChains.PROMETHEUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("quadrillum_chain",MythicMetalsChains.QUADRILLUM_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("quicksilver_chain",MythicMetalsChains.QUICKSILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("runite_chain",MythicMetalsChains.RUNITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("silver_chain",MythicMetalsChains.SILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("slowsilver_chain",MythicMetalsChains.SLOWSILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("starrite_chain",MythicMetalsChains.STARRITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("steel_chain",MythicMetalsChains.STEEL_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("stormyx_chain",MythicMetalsChains.STORMYX_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("tantalite_chain",MythicMetalsChains.TANTALITE_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("truesilver_chain",MythicMetalsChains.TRUESILVER_CHAIN,MythicMetals.MYTHICMETALS_DECOR);
+		RegisterChainItem("ur_chain", MythicMetalsChains.UR_CHAIN, MythicMetals.MYTHICMETALS_DECOR);
 
 		RegisterBlock("adamantite_chain", MythicMetalsChains.ADAMANTITE_CHAIN);
 		RegisterBlock("aetherium_chain", MythicMetalsChains.AETHERIUM_CHAIN);
@@ -332,5 +332,8 @@ public class RegisterBlocks {
 	}
 	private static void RegisterItem(String path, Block block, ItemGroup group) {
 		Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, path), new BlockItem(block, new Item.Settings().group(group)));
+	}
+	private static void RegisterChainItem(String path, Block block, ItemGroup group) {
+		Registry.register(Registry.ITEM, new Identifier(MythicMetals.CHAIN_ID, path), new BlockItem(block, new Item.Settings().group(group)));
 	}
 }

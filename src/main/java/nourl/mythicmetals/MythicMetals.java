@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 public class MythicMetals implements ModInitializer {
 	public static Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "mythicmetals";
+	public static final String CHAIN_ID = "mm_decorations";
 	public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
 
 	public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(

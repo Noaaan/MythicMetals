@@ -32,7 +32,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
         return Ingredient.ofItems(RegisterIngots.CARMOT_INGOT);
     }),
-	CELESTIUM(4, 1977, 9.0F, 4.0F, 24, () -> {
+	CELESTIUM(4, 1977, 9.9F, 4.0F, 24, () -> {
         return Ingredient.ofItems(RegisterIngots.CELESTIUM_INGOT);
     }),
 	COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
@@ -89,7 +89,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
 	SLOWSILVER(2, 700, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterIngots.SLOWSILVER_INGOT);
     }),
-	STARRITE(3, 1000, 9.9F, 3.5F, 18, () -> {
+	STARRITE(3, 1000, 9.0F, 3.5F, 18, () -> {
         return Ingredient.ofItems(RegisterIngots.STARRITE_INGOT);
     }),
 	SILVER(1, 127, 4.0F, 1.0F, 20, () -> {
