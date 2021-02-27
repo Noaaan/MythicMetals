@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/slowsilver_chain",
-    
-    "particle": "mythicmetals:blocks/slowsilver_chain"
-  }
-}

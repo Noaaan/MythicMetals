@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mm_decorations:block/osmium_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mm_decorations:block/osmium_chain"
+    },
+    "axis=z": {
+      "model": "mm_decorations:block/osmium_chain",
+      "x": 90
+    }
+  }
+}

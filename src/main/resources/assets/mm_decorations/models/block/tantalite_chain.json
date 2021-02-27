@@ -1,0 +1,8 @@
+{
+  "parent": "mm_decorations:block/chain_base",
+  "textures": {
+    "all": "mm_decorations:blocks/tantalite_chain",
+    
+    "particle": "mm_decorations:blocks/tantalite_chain"
+  }
+}

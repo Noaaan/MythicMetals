@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/bronze_chain",
-    
-    "particle": "mythicmetals:blocks/bronze_chain"
-  }
-}

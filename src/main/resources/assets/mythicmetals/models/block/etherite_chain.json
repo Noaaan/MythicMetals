@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/etherite_chain",
-    
-    "particle": "mythicmetals:blocks/etherite_chain"
-  }
-}

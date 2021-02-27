@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/prometheum_chain",
-    
-    "particle": "mythicmetals:blocks/prometheum_chain"
-  }
-}

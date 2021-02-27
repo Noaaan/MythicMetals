@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/tantalite_chain",
-    
-    "particle": "mythicmetals:blocks/tantalite_chain"
-  }
-}

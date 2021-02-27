@@ -1,8 +1,0 @@
-{
-  "parent": "mythicmetals:block/chain_base",
-  "textures": {
-    "all": "mythicmetals:blocks/midas_gold_chain",
-    
-    "particle": "mythicmetals:blocks/midas_gold_chain"
-  }
-}
