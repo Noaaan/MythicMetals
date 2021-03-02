@@ -486,13 +486,13 @@ public class MythicForgeConfig {
         // Tantalite
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
                 put(new HashMap<String, Integer>() {{
-                    put("c#:tantalite_ores", 2);
+                    put("#c:tantalite_ores", 2);
                 }}, new RecipeOutput("#c:tantalite_ingots", 3, 8, 1));
         }}, false);
         // Tin
         ForgeRecipes.addRecipes(new HashMap<HashMap<String, Integer>, RecipeOutput>() {{
             put(new HashMap<String, Integer>() {{
-                put("c#:tin_ores", 2);
+                put("#c:tin_ores", 2);
             }}, new RecipeOutput("#c:tin_ingots", 3, 8, 1));
         }}, false);
         // Truesilver
