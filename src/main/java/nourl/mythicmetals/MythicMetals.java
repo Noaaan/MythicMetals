@@ -49,10 +49,6 @@ public class MythicMetals implements ModInitializer {
 			MythicEnchantConfig.appendEnchants();
 			MythicForgeConfig.createAlloys();
 
-			if (FabricLoader.getInstance().isModLoaded("alloy_forgery")) {
-				MythicForgeConfig.createAlloys();
-			}
-
 		  	LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 			if (FabricLoader.getInstance().isModLoaded("smithee")) {
 				LOGGER.info("[Mythic Metals] Hey, Smithee is around. That's.");
