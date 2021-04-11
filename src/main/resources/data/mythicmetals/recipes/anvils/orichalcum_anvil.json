@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:orichalcum_blocks"
-        },
-        "R": {
-            "tag": "c:orichalcum_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:orichalcum_blocks"
     },
-    "result": {
-        "item": "mythicmetals:orichalcum_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:orichalcum_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:orichalcum_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

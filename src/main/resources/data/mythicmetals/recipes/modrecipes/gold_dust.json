@@ -1,1 +1,15 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:midas_gold_dust"},{"tag": "c:dusts"}],"result":{"item": "mythicmetals:gold_dust","count":1}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:midas_gold_dust"
+    },
+    {
+      "tag": "c:dusts"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:gold_dust",
+    "count": 1
+  }
+}

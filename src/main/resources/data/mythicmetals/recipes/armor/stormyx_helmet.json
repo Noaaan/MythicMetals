@@ -1,1 +1,16 @@
-{"type": "minecraft:crafting_shaped","pattern":["mmm","m m"],"key":{"m": {"item":"mythicmetals:stormyx_ingot"}},"result":{"item":"mythicmetals:stormyx_helmet","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:stormyx_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:stormyx_helmet",
+    "count": 1
+  }
+}

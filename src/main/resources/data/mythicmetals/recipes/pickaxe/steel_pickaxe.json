@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm"," / "," / "],"key":{"m":{"tag": "c:steel_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:steel_pickaxe","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "tag": "c:steel_ingots"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:steel_pickaxe",
+    "count": 1
+  }
+}

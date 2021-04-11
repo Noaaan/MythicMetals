@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:quicksilver_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:quicksilver_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:quicksilver_nugget"
     },
-    "result": {
-        "item": "mm_decorations:quicksilver_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:quicksilver_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:quicksilver_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

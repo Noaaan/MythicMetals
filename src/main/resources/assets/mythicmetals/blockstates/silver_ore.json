@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/silver_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/silver_ore"
+    }
+  }
+}

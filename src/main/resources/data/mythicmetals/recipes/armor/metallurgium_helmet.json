@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:smithing",
-    "base": {
-        "item": "minecraft:netherite_helmet"
-    },
-    "addition": {
-        "item": "mythicmetals:metallurgium_ingot"
-    },
-    "result": {
-        "item": "mythicmetals:metallurgium_helmet"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "addition": {
+    "item": "mythicmetals:metallurgium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:metallurgium_helmet"
+  }
 }

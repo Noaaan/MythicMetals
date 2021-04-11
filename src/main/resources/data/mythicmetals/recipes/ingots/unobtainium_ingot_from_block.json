@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:unobtainium_block"}],"result":{"item": "mythicmetals:unobtainium_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:unobtainium_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:unobtainium_ingot",
+    "count": 9
+  }
+}

@@ -1,1 +1,20 @@
-{"type": "techreborn:industrial_grinder","power": 64,"time": 100,"tank":{"fluid":"minecraft:water","amount": 1000},"ingredients": [{"item": "mythicmetals:truesilver_ore"}],"results":[{"item": "mythicmetals:truesilver_dust", 	"count": 2}]}
+{
+  "type": "techreborn:industrial_grinder",
+  "power": 64,
+  "time": 100,
+  "tank": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "ingredients": [
+    {
+      "item": "mythicmetals:truesilver_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:truesilver_dust",
+      "count": 2
+    }
+  ]
+}

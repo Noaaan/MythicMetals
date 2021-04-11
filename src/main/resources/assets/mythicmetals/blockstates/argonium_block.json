@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/argonium_block"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/argonium_block"
+    }
+  }
+}

@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"tag": "c:tin_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:tin_hoe","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mm ",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "tag": "c:tin_ingots"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:tin_hoe",
+    "count": 1
+  }
+}

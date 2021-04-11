@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:adamantite_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:adamantite_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:adamantite_nugget"
     },
-    "result": {
-        "item": "mm_decorations:adamantite_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:adamantite_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:adamantite_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

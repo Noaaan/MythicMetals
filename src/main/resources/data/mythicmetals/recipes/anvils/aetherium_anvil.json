@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:aetherium_block"
-        },
-        "R": {
-            "item": "mythicmetals:aetherium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:aetherium_block"
     },
-    "result": {
-        "item": "mythicmetals:aetherium_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "item": "mythicmetals:aetherium_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:aetherium_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:runite_ingot"}],"result":{"item": "mythicmetals:runite_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:runite_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:runite_nugget",
+    "count": 9
+  }
+}

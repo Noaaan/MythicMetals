@@ -1,1 +1,9 @@
-{"type":"minecraft:smelting","ingredient":{"tag": "c:tantalite_ores"},"result":"mythicmetals:tantalite_ingot","experience": 0.2,"cookingtime": 200}
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "c:tantalite_ores"
+  },
+  "result": "mythicmetals:tantalite_ingot",
+  "experience": 0.2,
+  "cookingtime": 200
+}

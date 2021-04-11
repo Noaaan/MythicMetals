@@ -2,7 +2,6 @@
   "parent": "mm_decorations:block/chain_base",
   "textures": {
     "all": "mm_decorations:blocks/stormyx_chain",
-    
     "particle": "mm_decorations:blocks/stormyx_chain"
   }
 }

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:adamantite_ingot"},"result":{"item": "mythicmetals:adamantite_dust", 	"count": 1}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:adamantite_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:adamantite_dust",
+    "count": 1
+  }
+}

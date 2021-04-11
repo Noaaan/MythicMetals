@@ -1,1 +1,6 @@
-{"parent":"block/cube_all","textures":{"all": "mythicmetals:blocks/quadrillum_block"}}
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "mythicmetals:blocks/quadrillum_block"
+  }
+}

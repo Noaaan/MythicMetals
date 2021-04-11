@@ -5,16 +5,15 @@
   "item_inputs": [
     {
       "item": "mythicmetals:banglum_dust",
-	  "amount": 1
+      "amount": 1
     },
     {
       "item": "mythicmetals:prometheum_dust",
-	  "amount": 1
+      "amount": 1
     }
   ],
-  "item_outputs":
-    {
-      "item": "mythicmetals:discordium_dust",
-      "amount": 2
-    }
- }
+  "item_outputs": {
+    "item": "mythicmetals:discordium_dust",
+    "amount": 2
+  }
+}

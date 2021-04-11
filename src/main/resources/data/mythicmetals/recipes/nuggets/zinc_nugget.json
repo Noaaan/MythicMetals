@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:zinc_ingot"}],"result":{"item": "mythicmetals:zinc_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:zinc_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:zinc_nugget",
+    "count": 9
+  }
+}

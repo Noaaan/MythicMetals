@@ -5,7 +5,7 @@
       "x": 90,
       "y": 90
     },
-"axis=y": {
+    "axis=y": {
       "model": "mm_decorations:block/ur_chain"
     },
     "axis=z": {

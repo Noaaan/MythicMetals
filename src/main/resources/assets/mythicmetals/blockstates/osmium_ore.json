@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/osmium_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/osmium_ore"
+    }
+  }
+}

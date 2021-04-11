@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:platinum_blocks"
-        },
-        "R": {
-            "tag": "c:platinum_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:platinum_blocks"
     },
-    "result": {
-        "item": "mythicmetals:platinum_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:platinum_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:platinum_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

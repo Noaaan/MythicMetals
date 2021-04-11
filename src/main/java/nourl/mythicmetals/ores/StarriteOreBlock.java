@@ -28,6 +28,6 @@ public class StarriteOreBlock extends Block {
         double z = pos.getZ();
 
         // Add dust particle. Starrite RGB = 245, 108, 227
-            world.addParticle(new DustParticleEffect(245.0F/256.0F, 108.0F/256.0F, 227.0F/256.0F, 1F), x + 0.25D + (j * 0.75D), y + 0.5D +  (0.5D*l), z + 0.25D + (k * 0.75D), 1.5D*k, 0.25D*l, 1.5D*j);
+        world.addParticle(new DustParticleEffect(245.0F / 256.0F, 108.0F / 256.0F, 227.0F / 256.0F, 1F), x + 0.25D + (j * 0.75D), y + 0.5D + (0.5D * l), z + 0.25D + (k * 0.75D), 1.5D * k, 0.25D * l, 1.5D * j);
     }
 }

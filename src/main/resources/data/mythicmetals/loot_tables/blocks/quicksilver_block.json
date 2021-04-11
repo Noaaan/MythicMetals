@@ -1,1 +1,13 @@
-{"pools":[{"rolls": 1,"entries": [{"type": "minecraft:item","name":"mythicmetals:quicksilver_block"}]}]}
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mythicmetals:quicksilver_block"
+        }
+      ]
+    }
+  ]
+}

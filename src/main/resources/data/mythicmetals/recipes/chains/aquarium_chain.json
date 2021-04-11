@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:aquarium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:aquarium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:aquarium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:aquarium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:aquarium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:aquarium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

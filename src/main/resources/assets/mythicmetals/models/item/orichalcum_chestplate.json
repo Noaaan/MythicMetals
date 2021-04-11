@@ -1,1 +1,6 @@
-{"parent": "item/generated","textures": {"layer0": "mythicmetals:items/armor/orichalcum_chestplate"}}
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mythicmetals:items/armor/orichalcum_chestplate"
+  }
+}

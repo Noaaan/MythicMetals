@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:durasteel_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:durasteel_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:durasteel_nugget"
     },
-    "result": {
-        "item": "mm_decorations:durasteel_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:durasteel_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:durasteel_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:platinum_ore"},"result":{"item": "mythicmetals:platinum_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:platinum_ore"
+  },
+  "result": {
+    "item": "mythicmetals:platinum_dust",
+    "count": 2
+  }
+}

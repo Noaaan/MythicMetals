@@ -1,6 +1,5 @@
 {
   "type": "mechanix:alloying",
-
   "ingredients": [
     {
       "tag": "c:vermiculite_ores"
@@ -9,9 +8,8 @@
       "item": "mythicmetals:aetherium_ore"
     }
   ],
-  "result": 
-    {
-      "item": "mythicmetals:etherite_ingot",
-      "count": 2
-    }
+  "result": {
+    "item": "mythicmetals:etherite_ingot",
+    "count": 2
+  }
 }

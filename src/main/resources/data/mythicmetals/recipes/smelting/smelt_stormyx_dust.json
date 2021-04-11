@@ -1,1 +1,9 @@
-{"type":"minecraft:smelting","ingredient":{"item": "mythicmetals:stormyx_dust"},"result":"mythicmetals:stormyx_ingot","experience": 0.2,"cookingtime": 200}
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mythicmetals:stormyx_dust"
+  },
+  "result": "mythicmetals:stormyx_ingot",
+  "experience": 0.2,
+  "cookingtime": 200
+}

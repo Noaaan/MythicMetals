@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:carmot_ore"},"result":{"item": "mythicmetals:carmot_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:carmot_ore"
+  },
+  "result": {
+    "item": "mythicmetals:carmot_dust",
+    "count": 2
+  }
+}

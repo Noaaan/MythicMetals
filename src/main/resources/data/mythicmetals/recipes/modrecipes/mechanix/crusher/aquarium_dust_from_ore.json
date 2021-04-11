@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:aquarium_ore"},"result":{"item": "mythicmetals:aquarium_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:aquarium_ore"
+  },
+  "result": {
+    "item": "mythicmetals:aquarium_dust",
+    "count": 2
+  }
+}

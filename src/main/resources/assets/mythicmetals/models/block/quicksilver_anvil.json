@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    
     "body": "mythicmetals:blocks/quicksilver_anvil",
-    "particle": "mythicmetals:blocks/quicksilver_block" }
+    "particle": "mythicmetals:blocks/quicksilver_block"
+  }
 }

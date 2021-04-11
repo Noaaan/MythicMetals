@@ -1,1 +1,17 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:orichalcum_ingots"}},"result":{"item":"mythicmetals:orichalcum_chestplate","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "tag": "c:orichalcum_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:orichalcum_chestplate",
+    "count": 1
+  }
+}

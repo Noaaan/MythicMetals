@@ -4,17 +4,16 @@
   "duration": 200,
   "item_inputs": [
     {
-		"item": "mythicmetals:aetherium_dust",
-		"amount": 1
+      "item": "mythicmetals:aetherium_dust",
+      "amount": 1
     },
     {
       "tag": "c:vermiculite",
-	  "amount": 8
+      "amount": 8
     }
   ],
-  "item_outputs":
-    {
-      "item": "mythicmetals:etherite_dust",
-      "amount": 2
-    }
- }
+  "item_outputs": {
+    "item": "mythicmetals:etherite_dust",
+    "amount": 2
+  }
+}

@@ -1,6 +1,5 @@
 {
   "type": "mechanix:alloying",
-
   "ingredients": [
     {
       "item": "mythicmetals:banglum_ingot"
@@ -9,9 +8,8 @@
       "item": "mythicmetals:prometheum_ingot"
     }
   ],
-  "result": 
-    {
-      "item": "mythicmetals:discordium_ingot",
-      "count": 1
-    }
+  "result": {
+    "item": "mythicmetals:discordium_ingot",
+    "count": 1
+  }
 }

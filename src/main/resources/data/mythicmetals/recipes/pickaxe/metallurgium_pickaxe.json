@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:smithing",
-    "base": {
-        "item": "minecraft:netherite_pickaxe"
-    },
-    "addition": {
-        "item": "mythicmetals:metallurgium_ingot"
-    },
-    "result": {
-        "item": "mythicmetals:metallurgium_pickaxe"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_pickaxe"
+  },
+  "addition": {
+    "item": "mythicmetals:metallurgium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:metallurgium_pickaxe"
+  }
 }

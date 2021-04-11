@@ -1,1 +1,6 @@
-{"parent":"item/handheld","textures":{"layer0":"mythicmetals:items/tools/banglum_sword"}}
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "mythicmetals:items/tools/banglum_sword"
+  }
+}

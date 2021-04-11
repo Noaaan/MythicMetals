@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":[" m "," m "," / "],"key":{"m":{"item": "mythicmetals:midas_gold_ingot"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:midas_gold_sword","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " m ",
+    " m ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:midas_gold_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:midas_gold_sword",
+    "count": 1
+  }
+}

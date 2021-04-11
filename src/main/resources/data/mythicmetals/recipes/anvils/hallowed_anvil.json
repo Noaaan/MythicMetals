@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:hallowed_block"
-        },
-        "R": {
-            "item": "mythicmetals:hallowed_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:hallowed_block"
     },
-    "result": {
-        "item": "mythicmetals:hallowed_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "item": "mythicmetals:hallowed_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:hallowed_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

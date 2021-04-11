@@ -1,1 +1,11 @@
-{"type":"mechanicaltech:grinding","time": 400,"ingredient": {"item": "mythicmetals:carmot_ore"},"result":{"item": "mythicmetals:carmot_dust", 	"count": 2}}
+{
+  "type": "mechanicaltech:grinding",
+  "time": 400,
+  "ingredient": {
+    "item": "mythicmetals:carmot_ore"
+  },
+  "result": {
+    "item": "mythicmetals:carmot_dust",
+    "count": 2
+  }
+}

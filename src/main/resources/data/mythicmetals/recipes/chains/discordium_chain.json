@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:discordium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:discordium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:discordium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:discordium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:discordium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:discordium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

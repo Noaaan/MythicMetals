@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"tag": "c:copper_ore"},"result":{"item": "mythicmetals:copper_dust", "count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "tag": "c:copper_ore"
+  },
+  "result": {
+    "item": "mythicmetals:copper_dust",
+    "count": 2
+  }
+}

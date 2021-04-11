@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":["mm "," / "," / "],"key":{"m":{"tag": "c:tantalite_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:tantalite_hoe","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mm ",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "tag": "c:tantalite_ingots"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:tantalite_hoe",
+    "count": 1
+  }
+}

@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:orichalcum_ingot"}],"result":{"item": "mythicmetals:orichalcum_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:orichalcum_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:orichalcum_nugget",
+    "count": 9
+  }
+}

@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:slowsilver_block"
-        },
-        "R": {
-            "item": "mythicmetals:slowsilver_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:slowsilver_block"
     },
-    "result": {
-        "item": "mythicmetals:slowsilver_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "item": "mythicmetals:slowsilver_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:slowsilver_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

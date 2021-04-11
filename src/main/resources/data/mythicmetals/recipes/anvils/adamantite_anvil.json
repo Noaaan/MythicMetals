@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:adamantite_blocks"
-        },
-        "R": {
-            "tag": "c:adamantite_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:adamantite_blocks"
     },
-    "result": {
-        "item": "mythicmetals:adamantite_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:adamantite_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:adamantite_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

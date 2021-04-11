@@ -38,7 +38,6 @@
   "item.mythicmetals.ur_ingot": "Ur Ingot",
   "item.mythicmetals.vermiculite": "Vermiculite",
   "item.mythicmetals.zinc_ingot": "Zinc Ingot",
-
   "item.mythicmetals.adamantite_sword": "Adamantite Sword",
   "item.mythicmetals.aetherium_sword": "Aetherium Sword",
   "item.mythicmetals.aquarium_sword": "Aquarium Sword",
@@ -74,7 +73,6 @@
   "item.mythicmetals.tin_sword": "Tin Sword",
   "item.mythicmetals.truesilver_sword": "Truesilver Sword",
   "item.mythicmetals.ur_sword": "Ur Sword",
-
   "item.mythicmetals.adamantite_pickaxe": "Adamantite Pickaxe",
   "item.mythicmetals.aetherium_pickaxe": "Aetherium Pickaxe",
   "item.mythicmetals.aquarium_pickaxe": "Aquarium Pickaxe",
@@ -110,7 +108,6 @@
   "item.mythicmetals.tin_pickaxe": "Tin Pickaxe",
   "item.mythicmetals.truesilver_pickaxe": "Truesilver Pickaxe",
   "item.mythicmetals.ur_pickaxe": "Ur Pickaxe",
-
   "item.mythicmetals.adamantite_axe": "Adamantite Axe",
   "item.mythicmetals.aetherium_axe": "Aetherium Axe",
   "item.mythicmetals.aquarium_axe": "Aquarium Axe",
@@ -146,7 +143,6 @@
   "item.mythicmetals.tin_axe": "Tin Axe",
   "item.mythicmetals.truesilver_axe": "Truesilver Axe",
   "item.mythicmetals.ur_axe": "Ur Axe",
-
   "item.mythicmetals.adamantite_shovel": "Adamantite Shovel",
   "item.mythicmetals.aetherium_shovel": "Aetherium Shovel",
   "item.mythicmetals.aquarium_shovel": "Aquarium Shovel",
@@ -182,7 +178,6 @@
   "item.mythicmetals.tin_shovel": "Tin Shovel",
   "item.mythicmetals.truesilver_shovel": "Truesilver Shovel",
   "item.mythicmetals.ur_shovel": "Ur Shovel",
-
   "item.mythicmetals.adamantite_hoe": "Adamantite Hoe",
   "item.mythicmetals.aetherium_hoe": "Aetherium Hoe",
   "item.mythicmetals.aquarium_hoe": "Aquarium Hoe",
@@ -218,7 +213,6 @@
   "item.mythicmetals.tin_hoe": "Tin Hoe",
   "item.mythicmetals.truesilver_hoe": "Truesilver Hoe",
   "item.mythicmetals.ur_hoe": "Ur Hoe",
-
   "item.mythicmetals.adamantite_helmet": "Adamantite Helmet",
   "item.mythicmetals.adamantite_chestplate": "Adamantite Chestplate",
   "item.mythicmetals.adamantite_leggings": "Adamantite Leggings",
@@ -359,7 +353,6 @@
   "item.mythicmetals.ur_chestplate": "Ur Chestplate",
   "item.mythicmetals.ur_leggings": "Ur Leggings",
   "item.mythicmetals.ur_boots": "Ur Boots",
-
   "block.mythicmetals.adamantite_anvil": "Adamantite Anvil",
   "block.mythicmetals.aetherium_anvil": "Aetherium Anvil",
   "block.mythicmetals.aquarium_anvil": "Aquarium Anvil",
@@ -398,7 +391,6 @@
   "block.mythicmetals.unobtainium_anvil": "Unobtainium Anvil",
   "block.mythicmetals.ur_anvil": "Ur Anvil",
   "block.mythicmetals.zinc_anvil": "Zinc Anvil",
-
   "item.mythicmetals.adamantite_anvil": "Adamantite Anvil",
   "item.mythicmetals.aetherium_anvil": "Aetherium Anvil",
   "item.mythicmetals.aquarium_anvil": "Aquarium Anvil",
@@ -437,7 +429,6 @@
   "item.mythicmetals.unobtainium_anvil": "Unobtainium Anvil",
   "item.mythicmetals.ur_anvil": "Ur Anvil",
   "item.mythicmetals.zinc_anvil": "Zinc Anvil",
-
   "block.mm_decorations.adamantite_chain": "Adamantite Chain",
   "block.mm_decorations.aetherium_chain": "Aetherium Chain",
   "block.mm_decorations.aquarium_chain": "Aquarium Chain",
@@ -476,7 +467,6 @@
   "block.mm_decorations.unobtainium_chain": "Unobtainium Chain",
   "block.mm_decorations.ur_chain": "Ur Chain",
   "block.mm_decorations.zinc_chain": "Zinc Chain",
-
   "item.mm_decorations.adamantite_chain": "Adamantite Chain",
   "item.mm_decorations.aetherium_chain": "Aetherium Chain",
   "item.mm_decorations.aquarium_chain": "Aquarium Chain",
@@ -515,7 +505,6 @@
   "item.mm_decorations.unobtainium_chain": "Unobtainium Chain",
   "item.mm_decorations.ur_chain": "Ur Chain",
   "item.mm_decorations.zinc_chain": "Zinc Chain",
-
   "block.mythicmetals.adamantite_ore": "Adamantite Ore",
   "block.mythicmetals.aetherium_ore": "Aetherium Ore",
   "block.mythicmetals.aquarium_ore": "Aquarium Ore",
@@ -542,7 +531,6 @@
   "block.mythicmetals.ur_ore": "Ur Ore",
   "block.mythicmetals.vermiculite_ore": "Vermiculite Ore",
   "block.mythicmetals.zinc_ore": "Zinc Ore",
-
   "item.mythicmetals.adamantite_nugget": "Adamantite Nugget",
   "item.mythicmetals.aetherium_nugget": "Aetherium Nugget",
   "item.mythicmetals.aquarium_nugget": "Aquarium Nugget",
@@ -581,7 +569,6 @@
   "item.mythicmetals.unobtainium_nugget": "Unobtainium Nugget",
   "item.mythicmetals.ur_nugget": "Ur Nugget",
   "item.mythicmetals.zinc_nugget": "Zinc Nugget",
-
   "item.mythicmetals.adamantite_dust": "Adamantite Dust",
   "item.mythicmetals.aetherium_dust": "Aetherium Dust",
   "item.mythicmetals.aquarium_dust": "Aquarium Dust",
@@ -597,7 +584,7 @@
   "item.mythicmetals.electrum_dust": "Electrum Dust",
   "item.mythicmetals.etherite_dust": "Etherite Dust",
   "item.mythicmetals.gold_dust": "Gold Dust",
-  "item.mythicmetals.hallowed_dust":"Hallowed Dust",
+  "item.mythicmetals.hallowed_dust": "Hallowed Dust",
   "item.mythicmetals.kyber_dust": "Kyber Dust",
   "item.mythicmetals.manganese_dust": "Manganese Dust",
   "item.mythicmetals.metallurgium_dust": "Metallurgium Dust",
@@ -621,7 +608,6 @@
   "item.mythicmetals.unobtainium_dust": "Unobtainium Dust",
   "item.mythicmetals.ur_dust": "Ur Dust",
   "item.mythicmetals.zinc_dust": "Zinc Dust",
-
   "block.mythicmetals.adamantite_block": "Adamantite Block",
   "block.mythicmetals.aetherium_block": "Aetherium Block",
   "block.mythicmetals.aquarium_block": "Aquarium Block",
@@ -636,7 +622,6 @@
   "block.mythicmetals.durasteel_block": "Durasteel Block",
   "block.mythicmetals.electrum_block": "Electrum Block",
   "block.mythicmetals.etherite_block": "Etherite Block",
- 
   "block.mythicmetals.hallowed_block": "Hallowed Block",
   "block.mythicmetals.kyber_block": "Kyber Block",
   "block.mythicmetals.manganese_block": "Manganese Block",
@@ -662,7 +647,6 @@
   "block.mythicmetals.ur_block": "Ur Block",
   "block.mythicmetals.vermiculite_block": "Vermiculite Block",
   "block.mythicmetals.zinc_block": "Zinc Block",
-
   "text.autoconfig.mythic_metals.option.mythores.adamantiteGeneration": "Enable Adamantite Generation",
   "text.autoconfig.mythic_metals.option.mythores.adamantiteVeinSize": "Sets Max Adamantite Vein Size (Default: 4)",
   "text.autoconfig.mythic_metals.option.mythores.adamantitePerChunk": "Adamantite Spawn Chance (Default: 1)",
@@ -793,11 +777,8 @@
   "text.autoconfig.mythic_metals.option.mythores.zincMinHeight": "Sets Zinc Minimum Spawn Height (Default: 6)",
   "text.autoconfig.mythic_metals.option.mythores.zincMaxHeight": "Sets Zinc Max Spawn Height (Default: 128)",
   "text.autoconfig.mythic_metals.title": "Mythic Metals Configuration",
-
   "itemGroup.mythicmetals.main": "Mythic Metals",
   "itemGroup.mythicmetals.tools": "Mythic Metals Tools",
   "itemGroup.mythicmetals.armor": "Mythic Metals Armor",
   "itemGroup.mythicmetals.decorations": "Mythic Metals Decorations"
-
-
 }

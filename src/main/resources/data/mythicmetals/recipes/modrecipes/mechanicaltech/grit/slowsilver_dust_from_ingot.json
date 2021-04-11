@@ -1,1 +1,11 @@
-{"type":"mechanicaltech:grinding","time": 400,"ingredient": {"item": "mythicmetals:slowsilver_ingot"},"result":{"item": "mythicmetals:slowsilver_dust", 	"count": 1}}
+{
+  "type": "mechanicaltech:grinding",
+  "time": 400,
+  "ingredient": {
+    "item": "mythicmetals:slowsilver_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:slowsilver_dust",
+    "count": 1
+  }
+}

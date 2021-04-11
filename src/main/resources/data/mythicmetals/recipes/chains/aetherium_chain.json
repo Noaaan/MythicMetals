@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:aetherium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:aetherium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:aetherium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:aetherium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:aetherium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:aetherium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

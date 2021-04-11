@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/orichalcum_block"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/orichalcum_block"
+    }
+  }
+}

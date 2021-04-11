@@ -1,1 +1,17 @@
-{"type":"minecraft:crafting_shaped","pattern":["mmm","mmm","mmm"],"key":{"m":{"item": "mythicmetals:truesilver_nugget"}},"result":{"item": "mythicmetals:truesilver_ingot","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:truesilver_nugget"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:truesilver_ingot",
+    "count": 1
+  }
+}

@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:prometheum_ingot"}],"result":{"item": "mythicmetals:prometheum_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:prometheum_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:prometheum_nugget",
+    "count": 9
+  }
+}

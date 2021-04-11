@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:silver_blocks"
-        },
-        "R": {
-            "tag": "c:silver_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:silver_blocks"
     },
-    "result": {
-        "item": "mythicmetals:silver_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:silver_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:silver_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

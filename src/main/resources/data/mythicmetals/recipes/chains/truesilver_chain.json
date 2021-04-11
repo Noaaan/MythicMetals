@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:truesilver_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:truesilver_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:truesilver_nugget"
     },
-    "result": {
-        "item": "mm_decorations:truesilver_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:truesilver_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:truesilver_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

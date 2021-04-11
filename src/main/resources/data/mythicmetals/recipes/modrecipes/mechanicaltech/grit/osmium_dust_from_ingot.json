@@ -1,1 +1,11 @@
-{"type":"mechanicaltech:grinding","time": 400,"ingredient": {"item": "mythicmetals:osmium_ingot"},"result":{"item": "mythicmetals:osmium_dust", 	"count": 1}}
+{
+  "type": "mechanicaltech:grinding",
+  "time": 400,
+  "ingredient": {
+    "item": "mythicmetals:osmium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:osmium_dust",
+    "count": 1
+  }
+}

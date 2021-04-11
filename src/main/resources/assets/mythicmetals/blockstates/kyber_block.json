@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/kyber_block"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/kyber_block"
+    }
+  }
+}

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:manganese_ingot"},"result":{"item": "mythicmetals:manganese_dust", 	"count": 1}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:manganese_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:manganese_dust",
+    "count": 1
+  }
+}

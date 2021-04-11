@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:copper_ingot"}],"result":{"item": "mythicmetals:copper_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:copper_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:copper_nugget",
+    "count": 9
+  }
+}

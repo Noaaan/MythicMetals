@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:manganese_blocks"
-        },
-        "R": {
-            "tag": "c:manganese_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:manganese_blocks"
     },
-    "result": {
-        "item": "mythicmetals:manganese_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:manganese_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:manganese_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

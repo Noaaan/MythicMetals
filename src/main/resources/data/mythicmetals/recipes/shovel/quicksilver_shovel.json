@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":["m","/","/"],"key":{"m":{"tag": "c:quicksilver_ingots"},"/": {"item": "minecraft:stick"}},     "result":{"item": "mythicmetals:quicksilver_shovel","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m",
+    "/",
+    "/"
+  ],
+  "key": {
+    "m": {
+      "tag": "c:quicksilver_ingots"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:quicksilver_shovel",
+    "count": 1
+  }
+}

@@ -1,1 +1,13 @@
-{"pools":[{"rolls": 1,"entries": [{"type": "minecraft:item","name":"mythicmetals:truesilver_ore"}]}]}
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mythicmetals:truesilver_ore"
+        }
+      ]
+    }
+  ]
+}

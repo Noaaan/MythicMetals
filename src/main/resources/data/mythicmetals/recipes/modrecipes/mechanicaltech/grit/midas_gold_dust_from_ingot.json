@@ -1,1 +1,11 @@
-{"type":"mechanicaltech:grinding","time": 400,"ingredient": {"item": "mythicmetals:midas_gold_ingot"},"result":{"item": "mythicmetals:midas_gold_dust", 	"count": 1}}
+{
+  "type": "mechanicaltech:grinding",
+  "time": 400,
+  "ingredient": {
+    "item": "mythicmetals:midas_gold_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:midas_gold_dust",
+    "count": 1
+  }
+}

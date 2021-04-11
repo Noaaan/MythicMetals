@@ -1,1 +1,20 @@
-{"type":"minecraft:crafting_shaped","pattern":["gvg","vgv","gvg"],"key":{"v":{"item": "mythicmetals:vermiculite"},"g": {"item": "minecraft:gunpowder"}},     "result":{"item": "minecraft:tnt","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gvg",
+    "vgv",
+    "gvg"
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:vermiculite"
+    },
+    "g": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "minecraft:tnt",
+    "count": 1
+  }
+}

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:quadrillum_ore"},"result":{"item": "mythicmetals:quadrillum_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:quadrillum_ore"
+  },
+  "result": {
+    "item": "mythicmetals:quadrillum_dust",
+    "count": 2
+  }
+}

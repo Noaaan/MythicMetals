@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:smithing",
-    "base": {
-        "item": "minecraft:netherite_axe"
-    },
-    "addition": {
-        "item": "mythicmetals:metallurgium_ingot"
-    },
-    "result": {
-        "item": "mythicmetals:metallurgium_axe"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_axe"
+  },
+  "addition": {
+    "item": "mythicmetals:metallurgium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:metallurgium_axe"
+  }
 }

@@ -1,1 +1,13 @@
-{"pools":[{"rolls": 1,"entries": [{"type": "minecraft:item","name":"mm_decorations:discordium_chain"}]}]}
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mm_decorations:discordium_chain"
+        }
+      ]
+    }
+  ]
+}

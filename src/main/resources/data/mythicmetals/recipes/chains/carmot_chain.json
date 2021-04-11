@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:carmot_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:carmot_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:carmot_nugget"
     },
-    "result": {
-        "item": "mm_decorations:carmot_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:carmot_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:carmot_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

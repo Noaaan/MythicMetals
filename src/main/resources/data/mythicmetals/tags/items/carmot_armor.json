@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-	"mythicmetals:carmot_helmet",
+    "mythicmetals:carmot_helmet",
     "mythicmetals:carmot_chestplate",
-	"mythicmetals:carmot_leggings",
-	"mythicmetals:carmot_boots"
+    "mythicmetals:carmot_leggings",
+    "mythicmetals:carmot_boots"
   ]
 }

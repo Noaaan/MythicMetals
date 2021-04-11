@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:tantalite_ore"},"result":{"item": "mythicmetals:tantalite_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:tantalite_ore"
+  },
+  "result": {
+    "item": "mythicmetals:tantalite_dust",
+    "count": 2
+  }
+}

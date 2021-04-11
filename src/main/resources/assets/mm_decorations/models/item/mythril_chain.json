@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "mm_decorations:items/chain/mythril_chain"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mm_decorations:items/chain/mythril_chain"
+  }
 }

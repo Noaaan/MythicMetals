@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "tag": "c:bronze_blocks"
-        },
-        "R": {
-            "tag": "c:bronze_ingots"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "tag": "c:bronze_blocks"
     },
-    "result": {
-        "item": "mythicmetals:bronze_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "tag": "c:bronze_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:bronze_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

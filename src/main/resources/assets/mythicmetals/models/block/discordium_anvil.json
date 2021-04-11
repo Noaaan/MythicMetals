@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    
     "body": "mythicmetals:blocks/discordium_anvil",
-    "particle": "mythicmetals:blocks/discordium_block" }
+    "particle": "mythicmetals:blocks/discordium_block"
+  }
 }

@@ -1,12 +1,12 @@
 {
-    "type": "minecraft:smithing",
-    "base": {
-        "item": "minecraft:netherite_hoe"
-    },
-    "addition": {
-        "item": "mythicmetals:metallurgium_ingot"
-    },
-    "result": {
-        "item": "mythicmetals:metallurgium_hoe"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:netherite_hoe"
+  },
+  "addition": {
+    "item": "mythicmetals:metallurgium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:metallurgium_hoe"
+  }
 }

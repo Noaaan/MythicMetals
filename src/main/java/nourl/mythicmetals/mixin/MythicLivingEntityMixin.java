@@ -55,7 +55,7 @@ public abstract class MythicLivingEntityMixin extends Entity {
         double z = this.getPos().getZ();
         Vec3d velocity = this.getVelocity();
 
-        ParticleEffect p = new DustParticleEffect(230.0F/256.0F, 62.0F/256.0F, 115.0F/256.0F, 1F);
+        ParticleEffect p = new DustParticleEffect(230.0F / 256.0F, 62.0F / 256.0F, 115.0F / 256.0F, 1F);
         ParticleEffect p2 = ParticleTypes.END_ROD;
 
         // Add particles around the entity when standing still
@@ -64,7 +64,7 @@ public abstract class MythicLivingEntityMixin extends Entity {
         }
         // Particle trail if entity is moving
         if (velocity.length() >= 0.1 && r.nextInt(10) < 7) {
-            this.world.addParticle(p2, x+l, y, z+m, 0.1*k, 0.05, 0.1*j);
+            this.world.addParticle(p2, x + l, y, z + m, 0.1 * k, 0.05, 0.1 * j);
         }
     }
 }

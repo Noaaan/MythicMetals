@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:aquarium_block"}],"result":{"item": "mythicmetals:aquarium_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:aquarium_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:aquarium_ingot",
+    "count": 9
+  }
+}

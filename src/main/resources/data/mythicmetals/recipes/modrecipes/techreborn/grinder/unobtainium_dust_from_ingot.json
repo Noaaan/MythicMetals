@@ -1,1 +1,16 @@
-{"type":"techreborn:grinder","power": 2,"time": 270,"ingredients": [{"item": "mythicmetals:unobtainium_ingot"}],"results":[{"item": "mythicmetals:unobtainium_dust", 	"count": 1}]}
+{
+  "type": "techreborn:grinder",
+  "power": 2,
+  "time": 270,
+  "ingredients": [
+    {
+      "item": "mythicmetals:unobtainium_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:unobtainium_dust",
+      "count": 1
+    }
+  ]
+}

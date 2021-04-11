@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:osmium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:osmium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:osmium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:osmium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:osmium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:osmium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

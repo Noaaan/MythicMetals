@@ -1,1 +1,16 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:hallowed_ingot"}},"result":{"item":"mythicmetals:hallowed_boots","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:hallowed_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:hallowed_boots",
+    "count": 1
+  }
+}

@@ -1,1 +1,6 @@
-{"parent":"item/handheld","textures":{"layer0":"mythicmetals:items/tools/osmium_pickaxe"}}
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "mythicmetals:items/tools/osmium_pickaxe"
+  }
+}

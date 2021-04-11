@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/celestium_block"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/celestium_block"
+    }
+  }
+}

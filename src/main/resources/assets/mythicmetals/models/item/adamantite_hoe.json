@@ -1,1 +1,6 @@
-{"parent":"item/handheld","textures":{"layer0":"mythicmetals:items/tools/adamantite_hoe"}}
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "mythicmetals:items/tools/adamantite_hoe"
+  }
+}

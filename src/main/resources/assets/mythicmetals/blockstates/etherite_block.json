@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/etherite_block"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/etherite_block"
+    }
+  }
+}

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:banglum_ore"},"result":{"item": "mythicmetals:banglum_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:banglum_ore"
+  },
+  "result": {
+    "item": "mythicmetals:banglum_dust",
+    "count": 2
+  }
+}

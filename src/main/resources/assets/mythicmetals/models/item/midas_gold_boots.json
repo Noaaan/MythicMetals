@@ -1,6 +1,6 @@
 {
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "mythicmetals:items/armor/midas_gold_boots"
-	}
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mythicmetals:items/armor/midas_gold_boots"
+  }
 }

@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:vermiculite_ore"},"result":{"item": "mythicmetals:vermiculite", 	"count": 8}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:vermiculite_ore"
+  },
+  "result": {
+    "item": "mythicmetals:vermiculite",
+    "count": 8
+  }
+}

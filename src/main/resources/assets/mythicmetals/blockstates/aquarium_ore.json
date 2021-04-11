@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/aquarium_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/aquarium_ore"
+    }
+  }
+}

@@ -1,1 +1,20 @@
-{"type": "techreborn:industrial_grinder","power": 64,"time": 100,"tank":{"fluid":"techreborn:mercury","amount": 500},"ingredients": [{"item": "mythicmetals:vermiculite_ore"}],"results":[{"item": "mythicmetals:vermiculite", 	"count": 12}]}
+{
+  "type": "techreborn:industrial_grinder",
+  "power": 64,
+  "time": 100,
+  "tank": {
+    "fluid": "techreborn:mercury",
+    "amount": 500
+  },
+  "ingredients": [
+    {
+      "item": "mythicmetals:vermiculite_ore"
+    }
+  ],
+  "results": [
+    {
+      "item": "mythicmetals:vermiculite",
+      "count": 12
+    }
+  ]
+}

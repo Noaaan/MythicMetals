@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/banglum_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/banglum_ore"
+    }
+  }
+}

@@ -1,1 +1,17 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:bronze_ingots"}},"result":{"item":"mythicmetals:bronze_chestplate","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "tag": "c:bronze_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:bronze_chestplate",
+    "count": 1
+  }
+}

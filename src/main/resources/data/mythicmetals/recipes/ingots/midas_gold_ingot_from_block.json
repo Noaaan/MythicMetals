@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:midas_gold_block"}],"result":{"item": "mythicmetals:midas_gold_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:midas_gold_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:midas_gold_ingot",
+    "count": 9
+  }
+}

@@ -1,6 +1,5 @@
 {
   "type": "mechanix:alloying",
-
   "ingredients": [
     {
       "item": "mythicmetals:quadrillum_ore"
@@ -9,9 +8,8 @@
       "item": "mythicmetals:starrite_ore"
     }
   ],
-  "result": 
-    {
-      "item": "mythicmetals:celestium_ingot",
-      "count": 2
-    }
+  "result": {
+    "item": "mythicmetals:celestium_ingot",
+    "count": 2
+  }
 }

@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:osmium_block"}],"result":{"item": "mythicmetals:osmium_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:osmium_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:osmium_ingot",
+    "count": 9
+  }
+}

@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:hallowed_block"}],"result":{"item": "mythicmetals:hallowed_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:hallowed_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:hallowed_ingot",
+    "count": 9
+  }
+}

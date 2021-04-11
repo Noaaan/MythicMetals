@@ -1,1 +1,11 @@
-{"type":"mechanicaltech:grinding","time": 400,"ingredient": {"item": "mythicmetals:adamantite_ingot"},"result":{"item": "mythicmetals:adamantite_dust", 	"count": 1}}
+{
+  "type": "mechanicaltech:grinding",
+  "time": 400,
+  "ingredient": {
+    "item": "mythicmetals:adamantite_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:adamantite_dust",
+    "count": 1
+  }
+}

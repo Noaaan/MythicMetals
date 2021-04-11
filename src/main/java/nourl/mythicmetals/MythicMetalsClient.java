@@ -2,13 +2,31 @@ package nourl.mythicmetals;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderingRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
+import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.MythicMetalsChains;
+import nourl.mythicmetals.registry.RegisterArmor;
 
 public class MythicMetalsClient implements ClientModInitializer {
-    // Makes custom model blocks see trough, like chains
     @Override
     public void onInitializeClient() {
+        makeOpaque();
+
+        ArmorRenderingRegistry.ModelProvider p = (entity, stack, slot, original) -> ((HallowedArmor) stack.getItem()).getArmorModel(entity, stack, slot, original);
+        ArmorRenderingRegistry.TextureProvider t = (entity, stack, slot, secondLayer, suffix, original) -> new Identifier(((HallowedArmor) stack.getItem()).getArmorTexture(stack, slot));
+        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_HELMET);
+        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_HELMET);
+        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_CHESTPLATE);
+        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_CHESTPLATE);
+        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_LEGGINGS);
+        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_LEGGINGS);
+
+    }
+
+    // Makes custom model blocks see trough, like chains
+    public void makeOpaque() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MythicMetalsChains.ADAMANTITE_CHAIN,
                 MythicMetalsChains.AETHERIUM_CHAIN,

@@ -1,1 +1,9 @@
-{"type":"minecraft:smelting","ingredient":{"item": "mythicmetals:silver_dust"},"result":"mythicmetals:silver_ingot","experience": 0.2,"cookingtime": 200}
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mythicmetals:silver_dust"
+  },
+  "result": "mythicmetals:silver_ingot",
+  "experience": 0.2,
+  "cookingtime": 200
+}

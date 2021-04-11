@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:aetherium_block"}],"result":{"item": "mythicmetals:aetherium_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:aetherium_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:aetherium_ingot",
+    "count": 9
+  }
+}

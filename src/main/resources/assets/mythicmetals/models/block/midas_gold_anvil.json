@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    
     "body": "mythicmetals:blocks/midas_gold_anvil",
-    "particle": "mythicmetals:blocks/midas_gold_block" }
+    "particle": "mythicmetals:blocks/midas_gold_block"
+  }
 }

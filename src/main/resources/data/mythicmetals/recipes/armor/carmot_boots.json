@@ -1,1 +1,16 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","m m"],"key":{"m": {"item":"mythicmetals:carmot_ingot"}},"result":{"item":"mythicmetals:carmot_boots","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:carmot_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:carmot_boots",
+    "count": 1
+  }
+}

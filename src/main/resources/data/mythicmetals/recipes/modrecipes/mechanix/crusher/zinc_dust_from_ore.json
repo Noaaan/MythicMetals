@@ -1,1 +1,11 @@
-{"type":"mechanix:crushing","time": 200,"ingredient": {"item": "mythicmetals:zinc_ore"},"result":{"item": "mythicmetals:zinc_dust", 	"count": 2}}
+{
+  "type": "mechanix:crushing",
+  "time": 200,
+  "ingredient": {
+    "item": "mythicmetals:zinc_ore"
+  },
+  "result": {
+    "item": "mythicmetals:zinc_dust",
+    "count": 2
+  }
+}

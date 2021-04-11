@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:mythril_ingot"}],"result":{"item": "mythicmetals:mythril_nugget","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:mythril_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:mythril_nugget",
+    "count": 9
+  }
+}

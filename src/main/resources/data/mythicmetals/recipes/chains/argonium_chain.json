@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:argonium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:argonium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:argonium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:argonium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:argonium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:argonium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

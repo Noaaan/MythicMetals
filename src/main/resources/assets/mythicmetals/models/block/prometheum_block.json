@@ -1,1 +1,6 @@
-{"parent":"block/cube_all","textures":{"all": "mythicmetals:blocks/prometheum_block"}}
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "mythicmetals:blocks/prometheum_block"
+  }
+}

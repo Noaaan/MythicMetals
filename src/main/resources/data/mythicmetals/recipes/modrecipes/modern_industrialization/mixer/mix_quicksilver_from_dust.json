@@ -10,9 +10,8 @@
       "tag": "c:silver_dusts"
     }
   ],
-  "item_outputs":
-    {
-      "item": "mythicmetals:quicksilver_dust",
-      "amount": 2
-    }
- }
+  "item_outputs": {
+    "item": "mythicmetals:quicksilver_dust",
+    "amount": 2
+  }
+}

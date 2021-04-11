@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:quadrillum_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:quadrillum_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:quadrillum_nugget"
     },
-    "result": {
-        "item": "mm_decorations:quadrillum_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:quadrillum_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:quadrillum_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

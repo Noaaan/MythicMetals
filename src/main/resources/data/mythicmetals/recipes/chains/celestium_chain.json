@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        " # ",
-        " R ",
-        " # "
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:celestium_nugget"
-        },
-        "R": {
-            "item": "mythicmetals:celestium_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:celestium_nugget"
     },
-    "result": {
-        "item": "mm_decorations:celestium_chain",
-        "count": 1
-    },
-    "group": "mm_chains"
+    "R": {
+      "item": "mythicmetals:celestium_ingot"
+    }
+  },
+  "result": {
+    "item": "mm_decorations:celestium_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
 }

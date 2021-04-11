@@ -1,21 +1,21 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "###",
-        " R ",
-        "RRR"
-    ],
-    "key": {
-        "#": {
-            "item": "mythicmetals:quadrillum_block"
-        },
-        "R": {
-            "item": "mythicmetals:quadrillum_ingot"
-        }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:quadrillum_block"
     },
-    "result": {
-        "item": "mythicmetals:quadrillum_anvil",
-        "count": 1
-    },
-    "group": "mm_anvils"
+    "R": {
+      "item": "mythicmetals:quadrillum_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:quadrillum_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
 }

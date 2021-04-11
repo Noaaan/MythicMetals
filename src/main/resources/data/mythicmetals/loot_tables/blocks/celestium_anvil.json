@@ -1,1 +1,13 @@
-{"pools":[{"rolls": 1,"entries": [{"type": "minecraft:item","name":"mythicmetals:celestium_anvil"}]}]}
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mythicmetals:celestium_anvil"
+        }
+      ]
+    }
+  ]
+}

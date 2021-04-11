@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    
     "body": "mythicmetals:blocks/durasteel_anvil",
-    "particle": "mythicmetals:blocks/durasteel_block" }
+    "particle": "mythicmetals:blocks/durasteel_block"
+  }
 }

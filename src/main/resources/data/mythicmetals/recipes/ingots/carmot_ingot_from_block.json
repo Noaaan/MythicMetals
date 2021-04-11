@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:carmot_block"}],"result":{"item": "mythicmetals:carmot_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:carmot_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:carmot_ingot",
+    "count": 9
+  }
+}

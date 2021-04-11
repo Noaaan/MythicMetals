@@ -1,1 +1,17 @@
-{"type": "minecraft:crafting_shaped","pattern":["m m","mmm","mmm"],"key":{"m": {"tag":"c:steel_ingots"}},"result":{"item":"mythicmetals:steel_chestplate","count":1}}
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "tag": "c:steel_ingots"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:steel_chestplate",
+    "count": 1
+  }
+}

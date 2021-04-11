@@ -46,6 +46,7 @@ public class RegisterItems {
     public static final Item UR_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item VERMICULITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ZINC_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_dust"), ADAMANTITE_DUST);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_dust"), AETHERIUM_DUST);

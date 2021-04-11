@@ -1,1 +1,12 @@
-{"type":"minecraft:crafting_shapeless","ingredients":[{"item": "mythicmetals:electrum_block"}],"result":{"item": "mythicmetals:electrum_ingot","count":9}}
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:electrum_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:electrum_ingot",
+    "count": 9
+  }
+}

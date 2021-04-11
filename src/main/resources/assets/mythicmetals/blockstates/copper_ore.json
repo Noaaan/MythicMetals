@@ -1,1 +1,7 @@
-{"variants":{"":{ "model":"mythicmetals:block/copper_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "mythicmetals:block/copper_ore"
+    }
+  }
+}
