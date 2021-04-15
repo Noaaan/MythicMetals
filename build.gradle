@@ -11,7 +11,6 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	jcenter()
 	maven {
 		url = "https://jitpack.io"
 		name = "Jitpack"
@@ -19,6 +18,7 @@ repositories {
 	maven {
 		url = "https://www.cursemaven.com"
 	}
+	maven { url "https://maven.shedaniel.me/" }
 }
 
 dependencies {
@@ -60,13 +60,8 @@ dependencies {
 	processResources {
 		inputs.property "version", project.version
 
-		from(sourceSets.main.resources.srcDirs) {
-			include "fabric.mod.json"
+		filesMatching("fabric.mod.json") {
 			expand "version": project.version
-		}
-
-		from(sourceSets.main.resources.srcDirs) {
-			exclude "fabric.mod.json"
 		}
 	}
 
