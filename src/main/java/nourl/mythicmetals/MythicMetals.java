@@ -13,7 +13,7 @@ import nourl.mythicmetals.blocks.MythicMetalsChains;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.MythicEnchantConfig;
 import nourl.mythicmetals.config.MythicForgeConfig;
-import nourl.mythicmetals.ores.OreGenerator;
+import nourl.mythicmetals.world.OreGenerator;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

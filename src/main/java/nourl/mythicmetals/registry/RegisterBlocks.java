@@ -10,7 +10,7 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicMetalsAnvils;
 import nourl.mythicmetals.blocks.MythicMetalsBlocks;
 import nourl.mythicmetals.blocks.MythicMetalsChains;
-import nourl.mythicmetals.ores.MythicMetalsOres;
+import nourl.mythicmetals.blocks.MythicMetalsOres;
 
 public class RegisterBlocks {
 

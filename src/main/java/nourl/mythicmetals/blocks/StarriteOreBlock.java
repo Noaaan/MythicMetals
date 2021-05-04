@@ -1,16 +1,17 @@
-package nourl.mythicmetals.ores;
+package nourl.mythicmetals.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.OreBlock;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class StarriteOreBlock extends Block {
+public class StarriteOreBlock extends OreBlock {
     public StarriteOreBlock(Settings settings) {
         super(settings);
     }
