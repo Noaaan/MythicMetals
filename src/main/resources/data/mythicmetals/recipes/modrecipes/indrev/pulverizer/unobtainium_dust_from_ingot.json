@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:unobtainium_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:unobtainium_dust",
+    "count": 1
+  }
+}

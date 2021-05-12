@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:stormyx_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:stormyx_dust",
+    "count": 1
+  }
+}

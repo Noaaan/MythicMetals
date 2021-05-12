@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:celestium_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:celestium_dust",
+    "count": 1
+  }
+}

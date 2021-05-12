@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:truesilver_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:truesilver_dust",
+    "count": 1
+  }
+}

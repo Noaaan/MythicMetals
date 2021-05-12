@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:osmium_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:osmium_dust",
+    "count": 1
+  }
+}

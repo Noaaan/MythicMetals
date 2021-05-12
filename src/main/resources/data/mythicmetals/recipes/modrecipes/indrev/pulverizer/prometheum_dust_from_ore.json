@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:prometheum_ore"
+  },
+  "output": {
+    "item": "mythicmetals:prometheum_dust",
+    "count": 2
+  }
+}

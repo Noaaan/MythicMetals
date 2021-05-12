@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:aquarium_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:aquarium_dust",
+    "count": 1
+  }
+}

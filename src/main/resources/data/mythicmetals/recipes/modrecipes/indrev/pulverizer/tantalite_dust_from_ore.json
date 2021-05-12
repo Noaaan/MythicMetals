@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:tantalite_ore"
+  },
+  "output": {
+    "item": "mythicmetals:tantalite_dust",
+    "count": 2
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:runite_ore"
+  },
+  "output": {
+    "item": "mythicmetals:runite_dust",
+    "count": 2
+  }
+}

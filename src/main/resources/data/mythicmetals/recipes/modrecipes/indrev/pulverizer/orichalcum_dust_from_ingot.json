@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:orichalcum_ingot"
+  },
+  "output": {
+    "item": "mythicmetals:orichalcum_dust",
+    "count": 1
+  }
+}

@@ -20,6 +20,7 @@ public class MixinRecipeManager {
 
     @Inject(method = "apply", at = @At("HEAD"), cancellable = true)
     private void deserialize(Map<Identifier, JsonObject> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
+        // Removes recipes from the recipe map if a mod is not present
         Iterator<Map.Entry<Identifier, JsonObject>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<Identifier, JsonObject> entry = iterator.next();
@@ -46,6 +47,12 @@ public class MixinRecipeManager {
             if (!FabricLoader.getInstance().isModLoaded("mechanicaltech")) {
                 String string = JsonHelper.getString(json, "type");
                 if (string.contains("mechanicaltech")) {
+                    iterator.remove();
+                }
+            }
+            if (!FabricLoader.getInstance().isModLoaded("indrev")) {
+                String string = JsonHelper.getString(json, "type");
+                if (string.contains("indrev")) {
                     iterator.remove();
                 }
             }

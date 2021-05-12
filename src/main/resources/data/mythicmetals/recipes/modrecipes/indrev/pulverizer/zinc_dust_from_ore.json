@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:zinc_ore"
+  },
+  "output": {
+    "item": "mythicmetals:zinc_dust",
+    "count": 2
+  }
+}

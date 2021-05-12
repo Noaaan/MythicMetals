@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:carmot_ore"
+  },
+  "output": {
+    "item": "mythicmetals:carmot_dust",
+    "count": 2
+  }
+}

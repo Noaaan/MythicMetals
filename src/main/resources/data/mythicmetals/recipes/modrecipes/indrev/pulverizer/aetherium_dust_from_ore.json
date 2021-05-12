@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:aetherium_ore"
+  },
+  "output": {
+    "item": "mythicmetals:aetherium_dust",
+    "count": 2
+  }
+}

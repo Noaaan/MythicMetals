@@ -1,0 +1,11 @@
+{
+  "type": "indrev:pulverize",
+  "processTime": 200,
+  "ingredients": {
+    "item": "mythicmetals:ur_ore"
+  },
+  "output": {
+    "item": "mythicmetals:ur_dust",
+    "count": 2
+  }
+}
