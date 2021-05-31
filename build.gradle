@@ -23,7 +23,7 @@ dependencies {
 	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}"){
 		exclude(group: "net.fabricmc.fabric-api")
 	}
-	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_id}")
+	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
 
 	// Alloy Forgery
 	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}") {
