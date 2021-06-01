@@ -200,10 +200,10 @@ public class OreGenerator {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.BAMBOO_JUNGLE_HILLS, BiomeKeys.JUNGLE, BiomeKeys.JUNGLE_EDGE, BiomeKeys.JUNGLE_HILLS, BiomeKeys.MODIFIED_JUNGLE, BiomeKeys.MODIFIED_JUNGLE_EDGE), GenerationStep.Feature.UNDERGROUND_ORES, orePrometheum);
         }
         //Mountain only ores
-        if (CONFIG.starriteGeneration) {
+        if (CONFIG.aetheriumGeneration) {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.GRAVELLY_MOUNTAINS, BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.MOUNTAINS, BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU, BiomeKeys.SNOWY_MOUNTAINS, BiomeKeys.SNOWY_TAIGA_MOUNTAINS, BiomeKeys.TAIGA_MOUNTAINS), GenerationStep.Feature.UNDERGROUND_ORES, oreAetherium);
         }
-        if (CONFIG.aetheriumGeneration) {
+        if (CONFIG.starriteGeneration) {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.GRAVELLY_MOUNTAINS, BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS, BiomeKeys.MOUNTAINS, BiomeKeys.MOUNTAIN_EDGE, BiomeKeys.SHATTERED_SAVANNA, BiomeKeys.SHATTERED_SAVANNA_PLATEAU, BiomeKeys.SNOWY_MOUNTAINS, BiomeKeys.SNOWY_TAIGA_MOUNTAINS, BiomeKeys.TAIGA_MOUNTAINS), GenerationStep.Feature.UNDERGROUND_ORES, oreStarrite);
         }
 
