@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderingRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.armor.MetallurgiumArmor;
 import nourl.mythicmetals.blocks.MythicMetalsChains;
 import nourl.mythicmetals.registry.RegisterArmor;
 
@@ -13,16 +14,8 @@ public class MythicMetalsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         makeOpaque();
-
-        ArmorRenderingRegistry.ModelProvider p = (entity, stack, slot, original) -> ((HallowedArmor) stack.getItem()).getArmorModel(entity, stack, slot, original);
-        ArmorRenderingRegistry.TextureProvider t = (entity, stack, slot, secondLayer, suffix, original) -> new Identifier(((HallowedArmor) stack.getItem()).getArmorTexture(stack, slot));
-        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_HELMET);
-        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_HELMET);
-        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_CHESTPLATE);
-        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_CHESTPLATE);
-        ArmorRenderingRegistry.registerModel(p, RegisterArmor.HALLOWED_LEGGINGS);
-        ArmorRenderingRegistry.registerTexture(t, RegisterArmor.HALLOWED_LEGGINGS);
-
+        renderHallowedArmorModel();
+        renderMetallurgiumArmorModel();
     }
 
     // Makes custom model blocks see trough, like chains
@@ -64,4 +57,23 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicMetalsChains.UR_CHAIN
         );
     }
+    // Adds custom entity models to hallowed and metallurgium armor
+    public void renderHallowedArmorModel() {
+        ArmorRenderingRegistry.ModelProvider modelProvider = (entity, stack, slot, original) -> ((HallowedArmor) stack.getItem()).getArmorModel(entity, stack, slot, original);
+        ArmorRenderingRegistry.TextureProvider textureProvider = (entity, stack, slot, secondLayer, suffix, original) -> new Identifier(((HallowedArmor) stack.getItem()).getArmorTexture(stack, slot));
+        ArmorRenderingRegistry.registerModel(modelProvider, RegisterArmor.HALLOWED_HELMET);
+        ArmorRenderingRegistry.registerTexture(textureProvider, RegisterArmor.HALLOWED_HELMET);
+        ArmorRenderingRegistry.registerModel(modelProvider, RegisterArmor.HALLOWED_CHESTPLATE);
+        ArmorRenderingRegistry.registerTexture(textureProvider, RegisterArmor.HALLOWED_CHESTPLATE);
+        ArmorRenderingRegistry.registerModel(modelProvider, RegisterArmor.HALLOWED_LEGGINGS);
+        ArmorRenderingRegistry.registerTexture(textureProvider, RegisterArmor.HALLOWED_LEGGINGS);
+    }
+
+    public void renderMetallurgiumArmorModel() {
+        ArmorRenderingRegistry.ModelProvider modelProvider = (entity, stack, slot, original) -> ((MetallurgiumArmor) stack.getItem()).getArmorModel(entity, stack, slot, original);
+        ArmorRenderingRegistry.TextureProvider textureProvider = (entity, stack, slot, secondLayer, suffix, original) -> new Identifier(((MetallurgiumArmor) stack.getItem()).getArmorTexture(stack, slot));
+        ArmorRenderingRegistry.registerModel(modelProvider, RegisterArmor.METALLURGIUM_HELMET);
+        ArmorRenderingRegistry.registerTexture(textureProvider, RegisterArmor.METALLURGIUM_HELMET);
+    }
+
 }
