@@ -16,388 +16,390 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
     public static class MythicOreConfig implements ConfigData {
         //Adamantite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean adamantiteGeneration = true;
+        public boolean oreAdamantiteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int adamantiteVeinSize = 4;
+        public int oreAdamantiteVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int adamantitePerChunk = 1;
+        public int oreAdamantitePerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int adamantiteMinHeight = 4;
+        public int oreAdamantiteMinHeight = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int adamantiteMaxHeight = 24;
+        public int oreAdamantiteMaxHeight = 24;
+
+        //HashMap<ConfiguredFeature<?,?>, Boolean, Integer> adamantiteConfig = new HashMap<>();
 
         //Aetherium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean aetheriumGeneration = true;
+        public boolean oreAetheriumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumVeinSize = 4;
+        public int oreAetheriumVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumPerChunk = 3;
+        public int oreAetheriumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumMinHeight = 70;
+        public int oreAetheriumMinHeight = 70;
         @ConfigEntry.Gui.RequiresRestart
-        public int aetheriumMaxHeight = 180;
+        public int oreAetheriumMaxHeight = 180;
 
 
         //Aquarium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean aquariumGeneration = true;
+        public boolean oreAquariumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumVeinSize = 10;
+        public int oreAquariumVeinSize = 10;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumPerChunk = 4;
+        public int oreAquariumPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumMinHeight = 6;
+        public int oreAquariumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int aquariumMaxHeight = 63;
+        public int oreAquariumMaxHeight = 63;
 
 
         //Banglum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean banglumGeneration = true;
+        public boolean oreBanglumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumVeinSize = 7;
+        public int oreBanglumVeinSize = 7;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumPerChunk = 3;
+        public int oreBanglumPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumMinHeight = 6;
+        public int oreBanglumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int banglumMaxHeight = 32;
+        public int oreBanglumMaxHeight = 32;
 
 
         //Carmot Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean carmotGeneration = true;
+        public boolean oreCarmotGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int carmotVeinSize = 3;
+        public int oreCarmotVeinSize = 3;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int carmotPerChunk = 4;
+        public int oreCarmotPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int carmotMinHeight = 8;
+        public int oreCarmotMinHeight = 8;
         @ConfigEntry.Gui.RequiresRestart
-        public int carmotMaxHeight = 48;
+        public int oreCarmotMaxHeight = 48;
 
 
         //Copper Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean copperGeneration = true;
+        public boolean oreCopperGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int copperVeinSize = 12;
+        public int oreCopperVeinSize = 12;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int copperPerChunk = 6;
+        public int oreCopperPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int copperMinHeight = 32;
+        public int oreCopperMinHeight = 32;
         @ConfigEntry.Gui.RequiresRestart
-        public int copperMaxHeight = 128;
+        public int oreCopperMaxHeight = 128;
 
 
         //Kyber Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean kyberGeneration = true;
+        public boolean oreKyberGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberVeinSize = 10;
+        public int oreKyberVeinSize = 10;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberPerChunk = 1;
+        public int oreKyberPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberMinHeight = 4;
+        public int oreKyberMinHeight = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int kyberMaxHeight = 28;
+        public int oreKyberMaxHeight = 28;
 
 
         //Manganese Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean manganeseGeneration = true;
+        public boolean oreManganeseGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int manganeseVeinSize = 6;
+        public int oreManganeseVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int manganesePerChunk = 4;
+        public int oreManganesePerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int manganeseMinHeight = 6;
+        public int oreManganeseMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int manganeseMaxHeight = 48;
+        public int oreManganeseMaxHeight = 48;
 
 
         //Midas Gold Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean midasgoldGeneration = true;
+        public boolean oreMidasGoldGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int midasgoldVeinSize = 6;
+        public int oreMidasgoldVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int midasgoldPerChunk = 7;
+        public int oreMidasgoldPerChunk = 7;
         @ConfigEntry.Gui.RequiresRestart
-        public int midasgoldMinHeight = 10;
+        public int oreMidasgoldMinHeight = 10;
         @ConfigEntry.Gui.RequiresRestart
-        public int midasgoldMaxHeight = 128;
+        public int oreMidasgoldMaxHeight = 128;
 
 
         //Mythril Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean mythrilGeneration = true;
+        public boolean oreMythrilGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int mythrilVeinSize = 4;
+        public int oreMythrilVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int mythrilPerChunk = 1;
+        public int oreMythrilPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int mythrilMinHeight = 4;
+        public int oreMythrilMinHeight = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int mythrilMaxHeight = 24;
+        public int oreMythrilMaxHeight = 24;
 
 
         //Orichalcum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean orichalcumGeneration = true;
+        public boolean oreOrichalcumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int orichalcumVeinSize = 4;
+        public int oreOrichalcumVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int orichalcumPerChunk = 1;
+        public int oreOrichalcumPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int orichalcumMinHeight = 4;
+        public int oreOrichalcumMinHeight = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int orichalcumMaxHeight = 24;
+        public int oreOrichalcumMaxHeight = 24;
 
 
         //Osmium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean osmiumGeneration = true;
+        public boolean oreOsmiumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int osmiumVeinSize = 9;
+        public int oreOsmiumVeinSize = 9;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int osmiumPerChunk = 6;
+        public int oreOsmiumPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int osmiumMinHeight = 6;
+        public int oreOsmiumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int osmiumMaxHeight = 48;
+        public int oreOsmiumMaxHeight = 48;
 
 
         //Platinum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean platinumGeneration = true;
+        public boolean orePlatinumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int platinumVeinSize = 6;
+        public int orePlatinumVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int platinumPerChunk = 2;
+        public int orePlatinumPerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
-        public int platinumMinHeight = 6;
+        public int orePlatinumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int platinumMaxHeight = 24;
+        public int orePlatinumMaxHeight = 24;
 
 
         //Prometheum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean prometheumGeneration = true;
+        public boolean orePrometheumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumVeinSize = 5;
+        public int orePrometheumVeinSize = 5;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumPerChunk = 5;
+        public int orePrometheumPerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumMinHeight = 6;
+        public int orePrometheumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int prometheumMaxHeight = 48;
+        public int orePrometheumMaxHeight = 48;
 
 
         //Quadrillum Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean quadrillumGeneration = true;
+        public boolean oreQuadrillumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumVeinSize = 8;
+        public int oreQuadrillumVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumPerChunk = 4;
+        public int oreQuadrillumPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumMinHeight = 6;
+        public int oreQuadrillumMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int quadrillumMaxHeight = 56;
+        public int oreQuadrillumMaxHeight = 56;
 
 
         //Runite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean runiteGeneration = true;
+        public boolean oreRuniteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int runiteVeinSize = 3;
+        public int oreRuniteVeinSize = 3;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int runitePerChunk = 5;
+        public int oreRunitePerChunk = 5;
         @ConfigEntry.Gui.RequiresRestart
-        public int runiteMinHeight = 6;
+        public int oreRuniteMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int runiteMaxHeight = 32;
+        public int oreRuniteMaxHeight = 32;
 
 
         //Silver Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean silverGeneration = true;
+        public boolean oreSilverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int silverVeinSize = 8;
+        public int oreSilverVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int silverPerChunk = 4;
+        public int oreSilverPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int silverMinHeight = 6;
+        public int oreSilverMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int silverMaxHeight = 48;
+        public int oreSilverMaxHeight = 48;
 
 
         //Starrite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean starriteGeneration = true;
+        public boolean oreStarriteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int starriteVeinSize = 5;
+        public int oreStarriteVeinSize = 5;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int starritePerChunk = 2;
+        public int oreStarritePerChunk = 2;
         @ConfigEntry.Gui.RequiresRestart
-        public int starriteMinHeight = 80;
+        public int oreStarriteMinHeight = 80;
         @ConfigEntry.Gui.RequiresRestart
-        public int starriteMaxHeight = 200;
+        public int oreStarriteMaxHeight = 200;
 
 
         //Stormyx Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean stormyxGeneration = true;
+        public boolean oreStormyxGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int stormyxVeinSize = 8;
+        public int oreStormyxVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int stormyxPerChunk = 3;
+        public int oreStormyxPerChunk = 3;
         @ConfigEntry.Gui.RequiresRestart
-        public int stormyxMinHeight = 6;
+        public int oreStormyxMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int stormyxMaxHeight = 54;
+        public int oreStormyxMaxHeight = 54;
 
 
         //Tantalite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean tantaliteGeneration = true;
+        public boolean oreTantaliteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tantaliteVeinSize = 8;
+        public int oreTantaliteVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tantalitePerChunk = 4;
+        public int oreTantalitePerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int tantaliteMinHeight = 6;
+        public int oreTantaliteMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int tantaliteMaxHeight = 48;
+        public int oreTantaliteMaxHeight = 48;
 
 
         //Tin Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean tinGeneration = true;
+        public boolean oreTinGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tinVeinSize = 8;
+        public int oreTinVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int tinPerChunk = 4;
+        public int oreTinPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int tinMinHeight = 18;
+        public int oreTinMinHeight = 18;
         @ConfigEntry.Gui.RequiresRestart
-        public int tinMaxHeight = 128;
+        public int oreTinMaxHeight = 128;
 
 
         //Truesilver Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean truesilverGeneration = true;
+        public boolean oreTruesilverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverVeinSize = 4;
+        public int oreTruesilverVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverPerChunk = 6;
+        public int oreTruesilverPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverMinHeight = 8;
+        public int oreTruesilverMinHeight = 8;
         @ConfigEntry.Gui.RequiresRestart
-        public int truesilverMaxHeight = 100;
+        public int oreTruesilverMaxHeight = 100;
 
 
         //Unobtainium Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean unobtainiumGeneration = true;
+        public boolean oreUnobtainiumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int unobtainiumVeinSize = 2;
+        public int oreUnobtainiumVeinSize = 2;
         @ConfigEntry.Gui.RequiresRestart
-        public int unobtainiumAverageHeight = 7;
+        public int oreUnobtainiumAverageHeight = 7;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int unobtainiumSpread = 24;
+        public int oreUnobtainiumSpread = 24;
 
 
         //Ur Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean urGeneration = true;
+        public boolean oreUrGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int urVeinSize = 6;
+        public int oreUrVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int urPerChunk = 4;
+        public int oreUrPerChunk = 4;
         @ConfigEntry.Gui.RequiresRestart
-        public int urMinHeight = 10;
+        public int oreUrMinHeight = 10;
         @ConfigEntry.Gui.RequiresRestart
-        public int urMaxHeight = 80;
+        public int oreUrMaxHeight = 80;
 
 
         //Vermiculite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean vermiculiteGeneration = true;
+        public boolean oreVermiculiteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int vermiculiteVeinSize = 8;
+        public int oreVermiculiteVeinSize = 8;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int vermiculitePerChunk = 8;
+        public int oreVermiculitePerChunk = 8;
         @ConfigEntry.Gui.RequiresRestart
-        public int vermiculiteMinHeight = 20;
+        public int oreVermiculiteMinHeight = 20;
         @ConfigEntry.Gui.RequiresRestart
-        public int vermiculiteMaxHeight = 128;
+        public int oreVermiculiteMaxHeight = 128;
 
 
         //Zinc Ore Settings
         @ConfigEntry.Gui.RequiresRestart
-        public boolean zincGeneration = true;
+        public boolean oreZincGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int zincVeinSize = 6;
+        public int oreZincVeinSize = 6;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int zincPerChunk = 6;
+        public int oreZincPerChunk = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int zincMinHeight = 6;
+        public int oreZincMinHeight = 6;
         @ConfigEntry.Gui.RequiresRestart
-        public int zincMaxHeight = 128;
+        public int oreZincMaxHeight = 128;
     }
 }
