@@ -311,7 +311,7 @@ public class OreGenerator {
     }
 
     public static ConfiguredFeature<?, ?> configureUOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer baseline, Integer spread) {
-        return Feature.NO_SURFACE_ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize)).decorate(Decorator.DEPTH_AVERAGE.configure(new DepthAverageDecoratorConfig(baseline, spread)).spreadHorizontally());
+        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize)).decorate(Decorator.DEPTH_AVERAGE.configure(new DepthAverageDecoratorConfig(baseline, spread)).spreadHorizontally());
     }
     public static void registerFeature(Identifier identifier, ConfiguredFeature<?,?> feature) {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, feature);
