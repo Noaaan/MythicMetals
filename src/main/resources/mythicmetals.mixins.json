@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "nourl.mythicmetals.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_8",
   "mixins": [
     "AnvilScreenHandlerMixin",
     "MixinRecipeManager",

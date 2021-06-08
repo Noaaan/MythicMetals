@@ -35,5 +35,9 @@
     "fabric": ">=0.26.0",
     "minecraft": ">=1.16.3",
     "cloth-config2": ">=4.11.26"
+
+  },
+  "suggests": {
+    "modmenu": ">=1.16.0"
   }
 }

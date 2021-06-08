@@ -6,7 +6,7 @@
  * Botania is Open Source and distributed under the
  * Botania License: http://botaniamod.net/license.php
  *
- * Slighlty edited for Mythic Metals
+ * Slightly edited for Mythic Metals
  */
 package nourl.mythicmetals.armor;
 
@@ -27,11 +27,12 @@ public class MythicArmorModel extends BipedEntityModel<LivingEntity> {
 
     @Override
     public void setAngles(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (!(entity instanceof ArmorStandEntity entityIn)) {
+
+        if (!(entity instanceof ArmorStandEntity)) {
             super.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             return;
         }
-
+        ArmorStandEntity entityIn = (ArmorStandEntity) entity;
         this.head.pitch = ((float) Math.PI / 180F) * entityIn.getHeadRotation().getPitch();
         this.head.yaw = ((float) Math.PI / 180F) * entityIn.getHeadRotation().getYaw();
         this.head.roll = ((float) Math.PI / 180F) * entityIn.getHeadRotation().getRoll();
