@@ -1,3 +1,15 @@
+# 0.9.10
+### Note!
+Unembedded Cloth Config from the mod, you now have to download it yourself.  
+
+Added dust support for Indrev and Mechanical Tech.  
+Unobtainium can now spawn exposed in caves and similar, making it easier to find.  
+SLightly buffed hoes and high-tier axes.  
+Major interal refactors of the code.  
+Added new hallowed and metallurgium armor models, as well as changing aetherium, adamantite, mythril and orichalcum ones.  
+Various re-colours and texture changes.  
+Added missing tags for gold and hallowed dusts.  
+
 # 0.9.9
 ### Note!  
 Added two new libraries: Enchant Giver and Alloy Forgery. 
