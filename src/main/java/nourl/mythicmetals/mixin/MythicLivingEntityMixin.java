@@ -8,6 +8,7 @@ import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
 import org.spongepowered.asm.mixin.Mixin;
@@ -31,7 +32,7 @@ public abstract class MythicLivingEntityMixin extends Entity {
 
     private void addCarmotParticle() {
         for (ItemStack armorItems : getArmorItems()) {
-            if (armorItems.getItem().isIn(RegisterTags.CARMOT_ARMOR)) {
+            if (RegisterTags.CARMOT_ARMOR.contains(armorItems.getItem())) {
                 carmotParticle();
             }
         }
@@ -54,8 +55,8 @@ public abstract class MythicLivingEntityMixin extends Entity {
         double y = this.getPos().getY();
         double z = this.getPos().getZ();
         Vec3d velocity = this.getVelocity();
-
-        ParticleEffect p = new DustParticleEffect(230.0F / 256.0F, 62.0F / 256.0F, 115.0F / 256.0F, 1F);
+        Vec3f carmot_colour = new Vec3f(Vec3d.unpackRgb(0xE63E73));
+        ParticleEffect p = new DustParticleEffect(carmot_colour, 1.0F);
         ParticleEffect p2 = ParticleTypes.END_ROD;
 
         // Add particles around the entity when standing still

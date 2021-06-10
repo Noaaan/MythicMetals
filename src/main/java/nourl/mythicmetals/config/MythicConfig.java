@@ -352,10 +352,12 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.Gui.RequiresRestart
         public int oreUnobtainiumVeinSize = 2;
         @ConfigEntry.Gui.RequiresRestart
-        public int oreUnobtainiumAverageHeight = 7;
+        public int oreUnobtainiumMinHeight = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int oreUnobtainiumSpread = 24;
+        public int oreUnobtainiumMaxHeight = 10;
+        @ConfigEntry.Gui.RequiresRestart
+        public float oreUnobtainiumDiscardChance = 0.8F;
 
 
         //Ur Ore Settings

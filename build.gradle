@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.6-SNAPSHOT'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,6 +11,7 @@ repositories {
 	maven {url = "https://jitpack.io"}
 	maven {url = "https://www.cursemaven.com"}
 	maven {url = "https://maven.shedaniel.me/"}
+	maven {url = "https://maven.terraformersmc.com/"}
 }
 
 dependencies {
@@ -20,15 +21,20 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Enchant Giver
-	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}"){
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
+//	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}"){
+//		exclude(group: "net.fabricmc.fabric-api")
+//	}
+//	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
+
+	modApi("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
+	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
 
 	// Alloy Forgery
-	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+//	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}") {
+//		exclude(group: "net.fabricmc.fabric-api")
+//	}
+	modApi("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
+	include("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
 	
 	// config
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}") {
@@ -39,7 +45,7 @@ dependencies {
 	}
 
 	// modmenu
-	modApi("io.github.prospector:modmenu:${project.modmenu_version}") {
+	modApi("com.terraformersmc:modmenu:${project.modmenu_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
