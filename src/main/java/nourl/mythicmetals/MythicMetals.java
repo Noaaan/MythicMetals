@@ -23,6 +23,7 @@ public class MythicMetals implements ModInitializer {
     public static final String MOD_ID = "mythicmetals";
     public static final String CHAIN_ID = "mm_decorations";
     public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
+    public static final MythicConfig.MythicGeneralConfig LOAD_CONFIG = MythicMetals.CONFIG.mythgeneral;
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
             new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
@@ -36,12 +37,14 @@ public class MythicMetals implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RegisterIngots.register();
+        RegisterItems.registerItems();
         RegisterNuggets.register();
+        if (LOAD_CONFIG.enableDusts) {
+            RegisterItems.registerDusts();
+        }
         RegisterTools.register();
         RegisterArmor.register();
         RegisterBlocks.register();
-        RegisterItems.register();
         OreGenerator.init();
         OreGenerator.generate();
 

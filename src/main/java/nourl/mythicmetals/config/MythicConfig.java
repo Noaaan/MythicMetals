@@ -8,9 +8,20 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 @Config(name = "mythic_metals")
 public class MythicConfig extends PartitioningSerializer.GlobalData {
 
+    @ConfigEntry.Category("general")
+    @ConfigEntry.Gui.TransitiveObject
+    public MythicGeneralConfig mythgeneral = new MythicGeneralConfig();
+
     @ConfigEntry.Category("ores")
     @ConfigEntry.Gui.TransitiveObject
     public MythicOreConfig mythores = new MythicOreConfig();
+
+
+    @Config(name = "general")
+    public static class MythicGeneralConfig implements ConfigData {
+        @ConfigEntry.Gui.RequiresRestart
+        public boolean enableDusts = false;
+    }
 
     @Config(name = "ores")
     public static class MythicOreConfig implements ConfigData {

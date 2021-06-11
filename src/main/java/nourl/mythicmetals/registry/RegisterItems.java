@@ -125,7 +125,8 @@ public class RegisterItems {
     public static final Item RAW_UR = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_ZINC = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
-public static void register() {
+
+public static void registerDusts() {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_dust"), ADAMANTITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_dust"), AETHERIUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_dust"), AQUARIUM_DUST);
@@ -166,7 +167,8 @@ public static void register() {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_dust"), UR_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "vermiculite"), VERMICULITE);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_dust"), ZINC_DUST);
-
+}
+public static void registerItems() {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_adamantite"), RAW_ADAMANTITE);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_aetherium"), RAW_AETHERIUM);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_aquarium"), RAW_AQUARIUM);
