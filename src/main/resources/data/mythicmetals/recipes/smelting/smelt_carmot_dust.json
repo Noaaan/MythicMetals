@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:carmot_dust"
-  },
-  "result": "mythicmetals:carmot_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

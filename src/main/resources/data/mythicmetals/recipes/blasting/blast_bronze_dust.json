@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "mythicmetals:bronze_dust"
-  },
-  "result": "mythicmetals:bronze_ingot",
-  "experience": 0.1,
-  "cookingtime": 100
-}

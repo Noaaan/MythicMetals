@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "mythicmetals:banglum_dust"
-  },
-  "result": "mythicmetals:banglum_ingot",
-  "experience": 0.1,
-  "cookingtime": 100
-}

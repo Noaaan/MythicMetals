@@ -86,9 +86,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
     RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(RegisterItems.RUNITE_INGOT);
     }),
-    SLOWSILVER(2, 700, 6.0F, 2.0F, 14, () -> {
-        return Ingredient.ofItems(RegisterItems.SLOWSILVER_INGOT);
-    }),
     STARRITE(3, 1000, 9.0F, 3.5F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.STARRITE_INGOT);
     }),

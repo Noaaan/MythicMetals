@@ -92,9 +92,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     RUNITE("runite", 33, new int[]{3, 7, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.RUNITE_INGOT);
     }),
-    SLOWSILVER("slowsilver", 20, new int[]{2, 4, 4, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F, 0.2F, () -> {
-        return Ingredient.ofItems(RegisterItems.SLOWSILVER_INGOT);
-    }),
     STARRITE("starrite", 28, new int[]{3, 7, 8, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.STARRITE_INGOT);
     }),

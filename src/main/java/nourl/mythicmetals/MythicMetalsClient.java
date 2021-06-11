@@ -2,14 +2,14 @@ package nourl.mythicmetals;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.model.ModelProviderContext;
+//import net.fabricmc.fabric.api.client.model.ModelProviderContext;
 //import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderingRegistry;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.util.Identifier;
-import nourl.mythicmetals.armor.HallowedArmor;
-import nourl.mythicmetals.armor.MetallurgiumArmor;
+//import net.minecraft.util.Identifier;
 import nourl.mythicmetals.blocks.MythicMetalsChains;
-import nourl.mythicmetals.registry.RegisterArmor;
+//import nourl.mythicmetals.armor.HallowedArmor;
+//import nourl.mythicmetals.armor.MetallurgiumArmor;
+//import nourl.mythicmetals.registry.RegisterArmor;
 
 public class MythicMetalsClient implements ClientModInitializer {
     @Override
@@ -49,7 +49,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicMetalsChains.QUICKSILVER_CHAIN,
                 MythicMetalsChains.RUNITE_CHAIN,
                 MythicMetalsChains.SILVER_CHAIN,
-                MythicMetalsChains.SLOWSILVER_CHAIN,
                 MythicMetalsChains.STARRITE_CHAIN,
                 MythicMetalsChains.STEEL_CHAIN,
                 MythicMetalsChains.STORMYX_CHAIN,

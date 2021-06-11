@@ -34,14 +34,12 @@ public class RegisterNuggets {
     public static final Item QUICKSILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RUNITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item SILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item SLOWSILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STARRITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STEEL_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STORMYX_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TANTALITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item UNOBTAINIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item UR_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ZINC_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
@@ -74,14 +72,12 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "quicksilver_nugget"), QUICKSILVER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "runite_nugget"), RUNITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_nugget"), SILVER_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_nugget"), SLOWSILVER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_nugget"), STARRITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_nugget"), STEEL_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_nugget"), STORMYX_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_nugget"), TANTALITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_nugget"), TIN_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_nugget"), TRUESILVER_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium_nugget"), UNOBTAINIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_nugget"), UR_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_nugget"), ZINC_NUGGET);
     }

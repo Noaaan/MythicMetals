@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "mythicmetals:orichalcum_dust"
-  },
-  "result": "mythicmetals:orichalcum_ingot",
-  "experience": 0.1,
-  "cookingtime": 100
-}

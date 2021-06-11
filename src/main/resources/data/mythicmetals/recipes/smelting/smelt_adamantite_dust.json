@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:adamantite_dust"
-  },
-  "result": "mythicmetals:adamantite_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

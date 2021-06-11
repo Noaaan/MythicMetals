@@ -40,7 +40,6 @@ public class RegisterTools {
     public static final Item QUICKSILVER_SWORD = new SwordItem(MythicMetalsToolMaterials.QUICKSILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_SWORD = new SwordItem(MythicMetalsToolMaterials.RUNITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_SWORD = new SwordItem(MythicMetalsToolMaterials.SILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item SLOWSILVER_SWORD = new SwordItem(MythicMetalsToolMaterials.SLOWSILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STARRITE_SWORD = new SwordItem(MythicMetalsToolMaterials.STARRITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SWORD = new SwordItem(MythicMetalsToolMaterials.STEEL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SWORD = new SwordItem(MythicMetalsToolMaterials.STORMYX, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -76,7 +75,6 @@ public class RegisterTools {
     public static final Item QUICKSILVER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.QUICKSILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.RUNITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.SILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item SLOWSILVER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.SLOWSILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STARRITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STARRITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STORMYX, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -112,7 +110,6 @@ public class RegisterTools {
     public static final Item QUICKSILVER_AXE = new AxeBase(MythicMetalsToolMaterials.QUICKSILVER, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_AXE = new AxeBase(MythicMetalsToolMaterials.RUNITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_AXE = new AxeBase(MythicMetalsToolMaterials.SILVER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item SLOWSILVER_AXE = new AxeBase(MythicMetalsToolMaterials.SLOWSILVER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STARRITE_AXE = new AxeBase(MythicMetalsToolMaterials.STARRITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_AXE = new AxeBase(MythicMetalsToolMaterials.STEEL, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_AXE = new AxeBase(MythicMetalsToolMaterials.STORMYX, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -148,7 +145,6 @@ public class RegisterTools {
     public static final Item QUICKSILVER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.QUICKSILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.RUNITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.SILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item SLOWSILVER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.SLOWSILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STARRITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STARRITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STORMYX, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -184,7 +180,6 @@ public class RegisterTools {
     public static final Item QUICKSILVER_HOE = new HoeBase(MythicMetalsToolMaterials.QUICKSILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_HOE = new HoeBase(MythicMetalsToolMaterials.RUNITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_HOE = new HoeBase(MythicMetalsToolMaterials.SILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item SLOWSILVER_HOE = new HoeBase(MythicMetalsToolMaterials.SLOWSILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STARRITE_HOE = new HoeBase(MythicMetalsToolMaterials.STARRITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_HOE = new HoeBase(MythicMetalsToolMaterials.STEEL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_HOE = new HoeBase(MythicMetalsToolMaterials.STORMYX, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -330,11 +325,6 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_pickaxe"), SILVER_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_shovel"), SILVER_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_sword"), SILVER_SWORD);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_axe"), SLOWSILVER_AXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_hoe"), SLOWSILVER_HOE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_pickaxe"), SLOWSILVER_PICKAXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_shovel"), SLOWSILVER_SHOVEL);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_sword"), SLOWSILVER_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_axe"), STARRITE_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_hoe"), STARRITE_HOE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_pickaxe"), STARRITE_PICKAXE);

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "mythicmetals:stormyx_dust"
-  },
-  "result": "mythicmetals:stormyx_ingot",
-  "experience": 0.1,
-  "cookingtime": 100
-}

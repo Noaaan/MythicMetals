@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:manganese_dust"
-  },
-  "result": "mythicmetals:manganese_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

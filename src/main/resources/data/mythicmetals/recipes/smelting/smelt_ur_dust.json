@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:ur_dust"
-  },
-  "result": "mythicmetals:ur_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

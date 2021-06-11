@@ -119,10 +119,6 @@ public class RegisterArmor {
     public static final Item SILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.SILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item SILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.SILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item SILVER_BOOTS = new ArmorItem(MythicArmorMaterials.SILVER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item SLOWSILVER_HELMET = new ArmorItem(MythicArmorMaterials.SLOWSILVER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item SLOWSILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.SLOWSILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item SLOWSILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.SLOWSILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item SLOWSILVER_BOOTS = new ArmorItem(MythicArmorMaterials.SLOWSILVER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STARRITE_HELMET = new ArmorItem(MythicArmorMaterials.STARRITE, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STARRITE_CHESTPLATE = new ArmorItem(MythicArmorMaterials.STARRITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STARRITE_LEGGINGS = new ArmorItem(MythicArmorMaterials.STARRITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -263,10 +259,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_chestplate"), SILVER_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_leggings"), SILVER_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_boots"), SILVER_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_helmet"), SLOWSILVER_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_chestplate"), SLOWSILVER_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_leggings"), SLOWSILVER_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "slowsilver_boots"), SLOWSILVER_BOOTS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_helmet"), STARRITE_HELMET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_chestplate"), STARRITE_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_leggings"), STARRITE_LEGGINGS);

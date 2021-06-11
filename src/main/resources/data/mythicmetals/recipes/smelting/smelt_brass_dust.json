@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:brass_dust"
-  },
-  "result": "mythicmetals:brass_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

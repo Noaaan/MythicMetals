@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:electrum_dust"
-  },
-  "result": "mythicmetals:electrum_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

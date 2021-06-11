@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "mythicmetals:aetherium_dust"
-  },
-  "result": "mythicmetals:aetherium_ingot",
-  "experience": 0.1,
-  "cookingtime": 100
-}
