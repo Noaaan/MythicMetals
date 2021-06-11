@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:unobtainium_ore"
-  },
-  "result": "mythicmetals:unobtainium_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

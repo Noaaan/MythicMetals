@@ -31,7 +31,7 @@ public class StarriteOreBlock extends OreBlock {
         double y = pos.getY();
         double z = pos.getZ();
 
-        Vec3f starriteColour = new Vec3f(Vec3d.unpackRgb(16711680));
+        Vec3f starriteColour = new Vec3f(Vec3d.unpackRgb(0xF56CE3));
         // Add dust particle. Starrite RGB = 245, 108, 227
         world.addParticle(new DustParticleEffect(starriteColour, 1F), x + 0.25D + (j * 0.75D), y + 0.5D + (0.5D * l), z + 0.25D + (k * 0.75D), 1.5D * k, 0.25D * l, 1.5D * j);
     }

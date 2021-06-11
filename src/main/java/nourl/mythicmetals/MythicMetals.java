@@ -25,7 +25,7 @@ public class MythicMetals implements ModInitializer {
     public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterIngots.ADAMANTITE_INGOT)).build();
+            new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
     public static final ItemGroup MYTHICMETALS_TOOLS = FabricItemGroupBuilder.create(
             new Identifier("mythicmetals", "tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE_PICKAXE)).build();
     public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(

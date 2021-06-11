@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "mythicmetals:unobtainium_ore"
   },
-  "result": "mythicmetals:unobtainium_ingot",
+  "result": "mythicmetals:unobtainium",
   "experience": 0.1,
   "cookingtime": 100
 }
