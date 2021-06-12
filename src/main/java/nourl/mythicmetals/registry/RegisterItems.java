@@ -87,8 +87,6 @@ public class RegisterItems {
     public static final Item RAW_AQUARIUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_BANGLUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_CARMOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item RAW_COPPER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item RAW_GOLD = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_KYBER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_MANGANESE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_MIDAS_GOLD = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -154,8 +152,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_aquarium"), RAW_AQUARIUM);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_banglum"), RAW_BANGLUM);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_carmot"), RAW_CARMOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_copper"), RAW_COPPER);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_gold"), RAW_GOLD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_kyber"), RAW_KYBER);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_manganese"), RAW_MANGANESE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_midas_gold"), RAW_MIDAS_GOLD);

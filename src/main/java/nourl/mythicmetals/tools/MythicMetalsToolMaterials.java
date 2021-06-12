@@ -101,9 +101,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
     TANTALITE(2, 689, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterItems.TANTALITE_INGOT);
     }),
-    TIN(1, 95, 5.0F, 1.0F, 8, () -> {
-        return Ingredient.ofItems(RegisterItems.TIN_INGOT);
-    }),
     TRUESILVER(3, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.TRUESILVER_INGOT);
     });

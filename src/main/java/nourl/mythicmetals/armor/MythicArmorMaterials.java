@@ -107,9 +107,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     TANTALITE("tantalite", 21, new int[]{2, 6, 7, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.TANTALITE_INGOT);
     }),
-    TIN("tin", 3, new int[]{1, 3, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.1F, () -> {
-        return Ingredient.ofItems(RegisterItems.TIN_INGOT);
-    }),
     TRUESILVER("truesilver", 28, new int[]{3, 7, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.5F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.TRUESILVER_INGOT);
     });

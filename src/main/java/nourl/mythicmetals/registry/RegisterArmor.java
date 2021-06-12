@@ -6,8 +6,8 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.armor.HallowedArmor;
-import nourl.mythicmetals.armor.MetallurgiumArmor;
+//import nourl.mythicmetals.armor.HallowedArmor;
+//import nourl.mythicmetals.armor.MetallurgiumArmor;
 import nourl.mythicmetals.armor.MythicArmorMaterials;
 
 public class RegisterArmor {
@@ -135,10 +135,6 @@ public class RegisterArmor {
     public static final Item TANTALUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TANTALUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TANTALUM_BOOTS = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TIN_HELMET = new ArmorItem(MythicArmorMaterials.TIN, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TIN_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TIN, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TIN_LEGGINGS = new ArmorItem(MythicArmorMaterials.TIN, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TIN_BOOTS = new ArmorItem(MythicArmorMaterials.TIN, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_HELMET = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -270,10 +266,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_chestplate"), TANTALUM_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_leggings"), TANTALUM_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_boots"), TANTALUM_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_helmet"), TIN_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_chestplate"), TIN_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_leggings"), TIN_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_boots"), TIN_BOOTS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_helmet"), TRUESILVER_HELMET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_chestplate"), TRUESILVER_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_leggings"), TRUESILVER_LEGGINGS);
