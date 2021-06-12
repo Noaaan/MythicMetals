@@ -227,12 +227,6 @@ public class MythicForgeConfig {
                 put("#mythicmetals:unobtainium_ores", new MaterialWorth(9, false));
 
             }});
-            put("ur", new HashMap<>() {{
-                put("#mythicmetals:ur_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:ur_ingots", new MaterialWorth(9, true));
-                put("#mythicmetals:ur_ores", new MaterialWorth(9, false));
-                put("#mythicmetals:ur_nuggets", new MaterialWorth(1, true));
-            }});
             put("vermiculite", new HashMap<>() {{
                 put("#c:vermiculite_blocks", new MaterialWorth(81, false));
                 put("#c:vermiculite", new MaterialWorth(9, false));
@@ -455,12 +449,6 @@ public class MythicForgeConfig {
             put(new HashMap<>() {{
                 put("mythicmetals:unobtainium_ore", 2);
             }}, new RecipeOutput("mythicmetals:unobtainium_ingot", 3, 16, 2));
-        }}, false);
-        // Ur
-        ForgeRecipes.addRecipes(new HashMap<>() {{
-            put(new HashMap<>() {{
-                put("mythicmetals:ur_ore", 2);
-            }}, new RecipeOutput("mythicmetals:ur_ingot", 3, 8, 2));
         }}, false);
         // Zinc
         ForgeRecipes.addRecipes(new HashMap<>() {{

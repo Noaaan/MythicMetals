@@ -15,7 +15,6 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.heightprovider.TrapezoidHeightProvider;
@@ -55,8 +54,7 @@ public class OreGenerator {
     public static ConfiguredFeature<?, ?> ORE_TIN = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk);
     public static ConfiguredFeature<?, ?> ORE_TRUESILVER = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), CONFIG.oreTruesilverVeinSize,CONFIG.oreTruesilverMinHeight, CONFIG.oreTruesilverMaxHeight,CONFIG.oreTruesilverPerChunk);
     public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = configureUOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumMinHeight, CONFIG.oreUnobtainiumMaxHeight, CONFIG.oreUnobtainiumDiscardChance);
-    public static ConfiguredFeature<?, ?> ORE_UR = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.UR_ORE.getDefaultState(), CONFIG.oreUrVeinSize,CONFIG.oreUrMinHeight, CONFIG.oreUrMaxHeight,CONFIG.oreUrPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk);
+     public static ConfiguredFeature<?, ?> ORE_VERMICULITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk);
     public static ConfiguredFeature<?, ?> ORE_ZINC = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ZINC_ORE.getDefaultState(), CONFIG.oreZincVeinSize,CONFIG.oreZincMinHeight, CONFIG.oreZincMaxHeight,CONFIG.oreZincPerChunk);
 
     // Add keys for features
@@ -83,7 +81,6 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_truesilver"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_unobtainium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreUr = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_ur"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreZinc = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_zinc"));
 
@@ -113,7 +110,6 @@ public class OreGenerator {
         registerFeature(oreTin.getValue(), ORE_TIN);
         registerFeature(oreTruesilver.getValue(), ORE_TRUESILVER);
         registerFeature(oreUnobtainium.getValue(), ORE_UNOBTAINIUM);
-        registerFeature(oreUr.getValue(), ORE_UR);
         registerFeature(oreVermiculite.getValue(), ORE_VERMICULITE);
         registerFeature(oreZinc.getValue(), ORE_ZINC);
 
@@ -146,7 +142,6 @@ public class OreGenerator {
         if (CONFIG.oreMidasGoldGeneration) { AddUDecoration(oreMidasGold); }
         if (CONFIG.oreStormyxGeneration) { AddUDecoration(oreStormyx); }
         if (CONFIG.oreTruesilverGeneration) { AddUDecoration(oreTruesilver); }
-        if (CONFIG.oreUrGeneration) { AddUDecoration(oreUr); }
 
         //Ocean only ores
         if (CONFIG.oreAquariumGeneration) {

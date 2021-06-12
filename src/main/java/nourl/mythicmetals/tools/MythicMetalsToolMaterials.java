@@ -106,9 +106,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
     }),
     TRUESILVER(3, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.TRUESILVER_INGOT);
-    }),
-    UR(3, 600, 8.1F, 3.0F, 3, () -> {
-        return Ingredient.ofItems(RegisterItems.UR_INGOT);
     });
 
     private final int miningLevel;

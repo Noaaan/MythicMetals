@@ -371,21 +371,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public float oreUnobtainiumDiscardChance = 0.8F;
 
 
-        //Ur Ore Settings
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean oreUrGeneration = true;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreUrVeinSize = 6;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreUrPerChunk = 4;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreUrMinHeight = 10;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreUrMaxHeight = 80;
-
-
         //Vermiculite Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean oreVermiculiteGeneration = true;

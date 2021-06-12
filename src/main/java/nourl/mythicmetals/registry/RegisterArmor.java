@@ -143,11 +143,6 @@ public class RegisterArmor {
     public static final Item TRUESILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_BOOTS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item UR_HELMET = new ArmorItem(MythicArmorMaterials.UR, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item UR_CHESTPLATE = new ArmorItem(MythicArmorMaterials.UR, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item UR_LEGGINGS = new ArmorItem(MythicArmorMaterials.UR, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item UR_BOOTS = new ArmorItem(MythicArmorMaterials.UR, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-
 
     public static void register() {
         //Register Armor
@@ -283,10 +278,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_chestplate"), TRUESILVER_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_leggings"), TRUESILVER_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_boots"), TRUESILVER_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_helmet"), UR_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_chestplate"), UR_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_leggings"), UR_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_boots"), UR_BOOTS);
 
     }
 }

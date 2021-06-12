@@ -42,7 +42,6 @@ public class RegisterItems {
     public static final Item TIN_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item UNOBTAINIUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
-    public static final Item UR_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item VERMICULITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ZINC_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
@@ -81,7 +80,6 @@ public class RegisterItems {
     public static final Item TANTALITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item UR_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ZINC_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
     public static final Item RAW_ADAMANTITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -107,7 +105,6 @@ public class RegisterItems {
     public static final Item RAW_TANTALITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_TIN = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_TRUESILVER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item RAW_UR = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_ZINC = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
 
@@ -148,7 +145,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_ingot"), TIN_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_ingot"), TRUESILVER_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium"), UNOBTAINIUM);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_ingot"), UR_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "vermiculite"), VERMICULITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_ingot"), ZINC_INGOT);
 
@@ -176,7 +172,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_tantalite"), RAW_TANTALITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_tin"), RAW_TIN);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_truesilver"), RAW_TRUESILVER);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_ur"), RAW_UR);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_zinc"), RAW_ZINC);
     }
     public static void registerDusts() {
@@ -215,7 +210,6 @@ public class RegisterItems {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_dust"), TANTALITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_dust"), TIN_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_dust"), TRUESILVER_DUST);
-    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_dust"), UR_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_dust"), ZINC_DUST);
 }
 }

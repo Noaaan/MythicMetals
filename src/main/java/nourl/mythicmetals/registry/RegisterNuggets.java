@@ -40,7 +40,6 @@ public class RegisterNuggets {
     public static final Item TANTALITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item UR_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ZINC_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
     public static void register() {
@@ -78,7 +77,6 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_nugget"), TANTALITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_nugget"), TIN_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_nugget"), TRUESILVER_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "ur_nugget"), UR_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_nugget"), ZINC_NUGGET);
     }
 }

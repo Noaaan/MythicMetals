@@ -112,9 +112,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     }),
     TRUESILVER("truesilver", 28, new int[]{3, 7, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.5F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.TRUESILVER_INGOT);
-    }),
-    UR("ur", 20, new int[]{2, 6, 7, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.1F, () -> {
-        return Ingredient.ofItems(RegisterItems.UR_INGOT);
     });
 
     private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 11};
