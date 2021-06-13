@@ -27,7 +27,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicMetalsChains.AQUARIUM_CHAIN,
                 MythicMetalsChains.ARGONIUM_CHAIN,
                 MythicMetalsChains.BANGLUM_CHAIN,
-                MythicMetalsChains.BRASS_CHAIN,
                 MythicMetalsChains.BRONZE_CHAIN,
                 MythicMetalsChains.CARMOT_CHAIN,
                 MythicMetalsChains.CELESTIUM_CHAIN,

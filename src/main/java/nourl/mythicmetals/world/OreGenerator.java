@@ -36,7 +36,6 @@ public class OreGenerator {
     public static ConfiguredFeature<?, ?> ORE_AQUARIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk);
     public static ConfiguredFeature<?, ?> ORE_BANGLUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk);
     public static ConfiguredFeature<?, ?> ORE_CARMOT = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_COPPER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.COPPER_ORE.getDefaultState(), CONFIG.oreCopperVeinSize,CONFIG.oreCopperMinHeight, CONFIG.oreCopperMaxHeight,CONFIG.oreCopperPerChunk);
     public static ConfiguredFeature<?, ?> ORE_KYBER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.KYBER_ORE.getDefaultState(), CONFIG.oreKyberVeinSize,CONFIG.oreKyberMinHeight, CONFIG.oreKyberMaxHeight,CONFIG.oreKyberPerChunk);
     public static ConfiguredFeature<?, ?> ORE_MANGANESE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MANGANESE_ORE.getDefaultState(), CONFIG.oreManganeseVeinSize,CONFIG.oreManganeseMinHeight, CONFIG.oreManganeseMaxHeight,CONFIG.oreManganesePerChunk);
     public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk);
@@ -55,7 +54,6 @@ public class OreGenerator {
     public static ConfiguredFeature<?, ?> ORE_TRUESILVER = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), CONFIG.oreTruesilverVeinSize,CONFIG.oreTruesilverMinHeight, CONFIG.oreTruesilverMaxHeight,CONFIG.oreTruesilverPerChunk);
     public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = configureUOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumMinHeight, CONFIG.oreUnobtainiumMaxHeight, CONFIG.oreUnobtainiumDiscardChance);
      public static ConfiguredFeature<?, ?> ORE_VERMICULITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk);
-    public static ConfiguredFeature<?, ?> ORE_ZINC = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ZINC_ORE.getDefaultState(), CONFIG.oreZincVeinSize,CONFIG.oreZincMinHeight, CONFIG.oreZincMaxHeight,CONFIG.oreZincPerChunk);
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_adamantite"));
@@ -63,7 +61,6 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_aquarium"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_banglum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_carmot"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCopper = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_copper"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_kyber"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_manganese"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_midas_gold"));
@@ -82,7 +79,6 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_truesilver"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_unobtainium"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreZinc = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_zinc"));
 
 
     public static void init() {
@@ -92,7 +88,6 @@ public class OreGenerator {
         registerFeature(oreAquarium.getValue(), ORE_AQUARIUM);
         registerFeature(oreBanglum.getValue(), ORE_BANGLUM);
         registerFeature(oreCarmot.getValue(), ORE_CARMOT);
-        registerFeature(oreCopper.getValue(), ORE_COPPER);
         registerFeature(oreKyber.getValue(), ORE_KYBER);
         registerFeature(oreManganese.getValue(), ORE_MANGANESE);
         registerFeature(oreMidasGold.getValue(), ORE_MIDAS_GOLD);
@@ -111,7 +106,6 @@ public class OreGenerator {
         registerFeature(oreTruesilver.getValue(), ORE_TRUESILVER);
         registerFeature(oreUnobtainium.getValue(), ORE_UNOBTAINIUM);
         registerFeature(oreVermiculite.getValue(), ORE_VERMICULITE);
-        registerFeature(oreZinc.getValue(), ORE_ZINC);
 
     }
 
@@ -122,7 +116,6 @@ public class OreGenerator {
         if (CONFIG.oreAetheriumGeneration) { AddUOre(oreAetherium); }
         if (CONFIG.oreBanglumGeneration) { AddUOre(oreBanglum); }
         if (CONFIG.oreCarmotGeneration) { AddUOre(oreCarmot); }
-        if (CONFIG.oreCopperGeneration) { AddUOre(oreCopper); }
         if (CONFIG.oreKyberGeneration) { AddUOre(oreKyber); }
         if (CONFIG.oreManganeseGeneration) { AddUOre(oreManganese); }
         if (CONFIG.oreMythrilGeneration) { AddUOre(oreMythril); }
@@ -136,7 +129,6 @@ public class OreGenerator {
         if (CONFIG.oreTinGeneration) { AddUOre(oreTin); }
         if (CONFIG.oreUnobtainiumGeneration) { AddUOre(oreUnobtainium); }
         if (CONFIG.oreVermiculiteGeneration) { AddUOre(oreVermiculite); }
-        if (CONFIG.oreZincGeneration) { AddUOre(oreZinc); }
 
         //Nether Ores
         if (CONFIG.oreMidasGoldGeneration) { AddUDecoration(oreMidasGold); }

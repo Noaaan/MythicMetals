@@ -11,7 +11,6 @@ public class RegisterNuggets {
     public static final Item AQUARIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ARGONIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BANGLUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item BRASS_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BRONZE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CARMOT_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CELESTIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -40,7 +39,6 @@ public class RegisterNuggets {
     public static final Item TANTALITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ZINC_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_nugget"), ADAMANTITE_NUGGET);
@@ -48,7 +46,6 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_nugget"), AQUARIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_nugget"), ARGONIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_nugget"), BANGLUM_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "brass_nugget"), BRASS_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_nugget"), BRONZE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "carmot_nugget"), CARMOT_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "celestium_nugget"), CELESTIUM_NUGGET);
@@ -77,6 +74,5 @@ public class RegisterNuggets {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_nugget"), TANTALITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_nugget"), TIN_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_nugget"), TRUESILVER_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "zinc_nugget"), ZINC_NUGGET);
     }
 }

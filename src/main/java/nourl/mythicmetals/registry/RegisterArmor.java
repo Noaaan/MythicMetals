@@ -31,10 +31,6 @@ public class RegisterArmor {
     public static final Item BANGLUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.BANGLUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item BANGLUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.BANGLUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item BANGLUM_BOOTS = new ArmorItem(MythicArmorMaterials.BANGLUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item BRASS_HELMET = new ArmorItem(MythicArmorMaterials.BRASS, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item BRASS_CHESTPLATE = new ArmorItem(MythicArmorMaterials.BRASS, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item BRASS_LEGGINGS = new ArmorItem(MythicArmorMaterials.BRASS, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item BRASS_BOOTS = new ArmorItem(MythicArmorMaterials.BRASS, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item BRONZE_HELMET = new ArmorItem(MythicArmorMaterials.BRONZE, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item BRONZE_CHESTPLATE = new ArmorItem(MythicArmorMaterials.BRONZE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item BRONZE_LEGGINGS = new ArmorItem(MythicArmorMaterials.BRONZE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -162,10 +158,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_chestplate"), BANGLUM_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_leggings"), BANGLUM_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_boots"), BANGLUM_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "brass_helmet"), BRASS_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "brass_chestplate"), BRASS_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "brass_leggings"), BRASS_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "brass_boots"), BRASS_BOOTS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_helmet"), BRONZE_HELMET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_chestplate"), BRONZE_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_leggings"), BRONZE_LEGGINGS);

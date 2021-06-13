@@ -30,9 +30,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     BANGLUM("banglum", 16, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.BANGLUM_INGOT);
     }),
-    BRASS("brass", 5, new int[]{2, 4, 5, 2}, 18, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.1F, () -> {
-        return Ingredient.ofItems(RegisterItems.BRASS_INGOT);
-    }),
     BRONZE("bronze", 19, new int[]{2, 6, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.BRONZE_INGOT);
     }),

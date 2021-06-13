@@ -34,17 +34,6 @@ public class MythicForgeConfig {
                 put("#c:tin_ores", new MaterialWorth(9, false));
                 put("#c:tin_nuggets", new MaterialWorth(1, true));
             }});
-            put("brass", new HashMap<>() {{
-                put("#c:brass_blocks", new MaterialWorth(81, true));
-                put("#c:brass_ingots", new MaterialWorth(9, true));
-                put("#c:brass_nuggets", new MaterialWorth(1, true));
-            }});
-            put("zinc", new HashMap<>() {{
-                put("#c:zinc_blocks", new MaterialWorth(81, true));
-                put("#c:zinc_ingots", new MaterialWorth(9, true));
-                put("#c:zinc_ores", new MaterialWorth(9, false));
-                put("#c:zinc_nuggets", new MaterialWorth(1, true));
-            }});
             put("silver", new HashMap<>() {{
                 put("#c:silver_blocks", new MaterialWorth(81, true));
                 put("#c:silver_ingots", new MaterialWorth(9, true));
@@ -249,11 +238,6 @@ public class MythicForgeConfig {
                 put("copper", 18);
                 put("tin", 9);
             }}, new RecipeOutput("#c:bronze_ingots", 2, 10, 1));
-            // Brass
-            put(new HashMap<>() {{
-                put("copper", 18);
-                put("zinc", 9);
-            }}, new RecipeOutput("#c:brass_ingots", 2, 10, 1));
             // Celestium
             put(new HashMap<>() {{
                 put("starrite", 9);

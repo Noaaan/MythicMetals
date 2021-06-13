@@ -24,9 +24,6 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
     BANGLUM(2, 301, 12.0F, 2.5F, 1, () -> {
         return Ingredient.ofItems(RegisterItems.BANGLUM_INGOT);
     }),
-    BRASS(1, 100, 10.0F, 1.0F, 18, () -> {
-        return Ingredient.ofItems(RegisterItems.BRASS_INGOT);
-    }),
     BRONZE(2, 400, 7.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterItems.BRONZE_INGOT);
     }),
