@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/manganese_chain",
+    "particle": "mythicaddons:blocks/manganese_chain"
+  }
+}

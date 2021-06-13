@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/silver_chain",
+    "particle": "mythicaddons:blocks/silver_chain"
+  }
+}

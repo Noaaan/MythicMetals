@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/adamantite_chain",
+    "particle": "mythicaddons:blocks/adamantite_chain"
+  }
+}

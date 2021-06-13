@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mythicaddons:block/truesilver_chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mythicaddons:block/truesilver_chain"
+    },
+    "axis=z": {
+      "model": "mythicaddons:block/truesilver_chain",
+      "x": 90
+    }
+  }
+}

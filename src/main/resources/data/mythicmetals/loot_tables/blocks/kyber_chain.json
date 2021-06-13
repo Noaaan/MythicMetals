@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:kyber_chain"
+          "name": "mythicaddons:kyber_chain"
         }
       ]
     }

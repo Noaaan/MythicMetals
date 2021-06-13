@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/prometheum_chain",
+    "particle": "mythicaddons:blocks/prometheum_chain"
+  }
+}

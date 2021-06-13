@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/kyber_chain",
+    "particle": "mythicaddons:blocks/kyber_chain"
+  }
+}

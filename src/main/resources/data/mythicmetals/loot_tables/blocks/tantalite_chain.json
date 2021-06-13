@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:tantalite_chain"
+          "name": "mythicaddons:tantalite_chain"
         }
       ]
     }

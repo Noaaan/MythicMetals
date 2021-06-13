@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:quicksilver_chain"
+          "name": "mythicaddons:quicksilver_chain"
         }
       ]
     }

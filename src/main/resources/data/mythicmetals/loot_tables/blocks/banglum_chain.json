@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:banglum_chain"
+          "name": "mythicaddons:banglum_chain"
         }
       ]
     }

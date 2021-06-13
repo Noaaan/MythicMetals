@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:argonium_chain"
+          "name": "mythicaddons:argonium_chain"
         }
       ]
     }

@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:orichalcum_chain"
+          "name": "mythicaddons:orichalcum_chain"
         }
       ]
     }

@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:adamantite_chain"
+          "name": "mythicaddons:adamantite_chain"
         }
       ]
     }

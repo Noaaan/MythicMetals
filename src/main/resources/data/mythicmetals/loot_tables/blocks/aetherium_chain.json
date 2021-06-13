@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:aetherium_chain"
+          "name": "mythicaddons:aetherium_chain"
         }
       ]
     }

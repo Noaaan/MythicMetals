@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:runite_chain"
+          "name": "mythicaddons:runite_chain"
         }
       ]
     }

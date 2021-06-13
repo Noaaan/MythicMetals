@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:prometheum_chain"
+          "name": "mythicaddons:prometheum_chain"
         }
       ]
     }

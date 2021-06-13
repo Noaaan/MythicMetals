@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:carmot_chain"
+          "name": "mythicaddons:carmot_chain"
         }
       ]
     }

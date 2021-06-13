@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/durasteel_chain",
+    "particle": "mythicaddons:blocks/durasteel_chain"
+  }
+}

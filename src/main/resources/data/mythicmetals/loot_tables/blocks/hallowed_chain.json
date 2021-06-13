@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:hallowed_chain"
+          "name": "mythicaddons:hallowed_chain"
         }
       ]
     }

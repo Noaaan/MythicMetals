@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:platinum_chain"
+          "name": "mythicaddons:platinum_chain"
         }
       ]
     }

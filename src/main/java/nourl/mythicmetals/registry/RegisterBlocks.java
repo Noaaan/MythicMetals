@@ -78,7 +78,6 @@ public class RegisterBlocks {
         RegisterItem("bronze_block", MythicMetalsBlocks.BRONZE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("carmot_block", MythicMetalsBlocks.CARMOT_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("celestium_block", MythicMetalsBlocks.CELESTIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegisterItem("copper_block", MythicMetalsBlocks.COPPER_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("discordium_block", MythicMetalsBlocks.DISCORDIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("durasteel_block", MythicMetalsBlocks.DURASTEEL_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("electrum_block", MythicMetalsBlocks.ELECTRUM_BLOCK, MythicMetals.MYTHICMETALS);
@@ -116,7 +115,6 @@ public class RegisterBlocks {
         RegisterBlock("bronze_block", MythicMetalsBlocks.BRONZE_BLOCK);
         RegisterBlock("carmot_block", MythicMetalsBlocks.CARMOT_BLOCK);
         RegisterBlock("celestium_block", MythicMetalsBlocks.CELESTIUM_BLOCK);
-        RegisterBlock("copper_block", MythicMetalsBlocks.COPPER_BLOCK);
         RegisterBlock("discordium_block", MythicMetalsBlocks.DISCORDIUM_BLOCK);
         RegisterBlock("durasteel_block", MythicMetalsBlocks.DURASTEEL_BLOCK);
         RegisterBlock("electrum_block", MythicMetalsBlocks.ELECTRUM_BLOCK);

@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:durasteel_chain"
+          "name": "mythicaddons:durasteel_chain"
         }
       ]
     }

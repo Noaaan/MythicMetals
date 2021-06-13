@@ -5,7 +5,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mm_decorations:discordium_chain"
+          "name": "mythicaddons:discordium_chain"
         }
       ]
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "mythicaddons:block/chain_base",
+  "textures": {
+    "all": "mythicaddons:blocks/hallowed_chain",
+    "particle": "mythicaddons:blocks/hallowed_chain"
+  }
+}
