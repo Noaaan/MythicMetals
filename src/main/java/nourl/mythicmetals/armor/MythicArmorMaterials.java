@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -42,7 +43,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
         return Ingredient.ofItems(RegisterItems.CELESTIUM_INGOT);
     }),
     COPPER("copper", 5, new int[]{1, 4, 5, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.1F, () -> {
-        return Ingredient.ofItems(RegisterItems.COPPER_INGOT);
+        return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
     DISCORDIUM("discordium", 27, new int[]{3, 6, 7, 3}, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(RegisterItems.DISCORDIUM_INGOT);

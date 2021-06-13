@@ -16,7 +16,6 @@ public class RegisterItems {
     public static final Item BRONZE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CARMOT_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CELESTIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item COPPER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DISCORDIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DURASTEEL_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ELECTRUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -117,7 +116,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "carmot_ingot"), CARMOT_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "celestium_ingot"), CELESTIUM_INGOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "copper_ingot"), COPPER_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "discordium_ingot"), DISCORDIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_ingot"), DURASTEEL_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_ingot"), ELECTRUM_INGOT);

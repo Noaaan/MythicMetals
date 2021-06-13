@@ -1,5 +1,6 @@
 package nourl.mythicmetals.tools;
 
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
@@ -36,7 +37,7 @@ public enum MythicMetalsToolMaterials implements ToolMaterial {
         return Ingredient.ofItems(RegisterItems.CELESTIUM_INGOT);
     }),
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
-        return Ingredient.ofItems(RegisterItems.COPPER_INGOT);
+        return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
     DISCORDIUM(3, 1666, 9.0F, 3.0F, 15, () -> {
         return Ingredient.ofItems(RegisterItems.DISCORDIUM_INGOT);

@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
         @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0)
         Identifier fixMissingFromRegistry(@Nullable Identifier id) {
             if(id != null) {
-                if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.MOD_ID);
+                if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.MOD_ID, id.getPath());
             }
             return id;
         }
