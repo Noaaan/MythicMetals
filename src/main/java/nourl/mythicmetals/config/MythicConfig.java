@@ -101,34 +101,19 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreCarmotMaxHeight = 48;
 
 
-        //Copper Ore Settings
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean oreCopperGeneration = true;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreCopperVeinSize = 12;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreCopperPerChunk = 6;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreCopperMinHeight = 32;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreCopperMaxHeight = 128;
-
-
         //Kyber Ore Settings
         @ConfigEntry.Gui.RequiresRestart
         public boolean oreKyberGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
-        public int oreKyberVeinSize = 10;
+        public int oreKyberVeinSize = 3;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         @ConfigEntry.Gui.RequiresRestart
         public int oreKyberPerChunk = 1;
         @ConfigEntry.Gui.RequiresRestart
-        public int oreKyberMinHeight = 4;
+        public int oreKyberMinHeight = 5;
         @ConfigEntry.Gui.RequiresRestart
-        public int oreKyberMaxHeight = 28;
+        public int oreKyberMaxHeight = 70;
 
 
         //Manganese Ore Settings
@@ -384,20 +369,5 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreVermiculiteMinHeight = 20;
         @ConfigEntry.Gui.RequiresRestart
         public int oreVermiculiteMaxHeight = 128;
-
-
-        //Zinc Ore Settings
-        @ConfigEntry.Gui.RequiresRestart
-        public boolean oreZincGeneration = true;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreZincVeinSize = 6;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreZincPerChunk = 6;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreZincMinHeight = 6;
-        @ConfigEntry.Gui.RequiresRestart
-        public int oreZincMaxHeight = 128;
     }
 }
