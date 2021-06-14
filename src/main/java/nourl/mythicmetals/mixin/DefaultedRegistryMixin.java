@@ -12,11 +12,17 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
     public class DefaultedRegistryMixin {
         @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0)
         Identifier fixMissingFromRegistry(@Nullable Identifier id) {
-            Identifier copper = new Identifier(MythicMetals.MOD_ID, "copper_ore");
+            Identifier mythicCopperOre = new Identifier(MythicMetals.MOD_ID, "copper_ore");
+            Identifier mythicCopperIngot = new Identifier(MythicMetals.MOD_ID, "copper_ingot");
+            Identifier mythicUr = new Identifier(MythicMetals.MOD_ID, "ur_ore");
+            Identifier mythicZinc = new Identifier(MythicMetals.MOD_ID, "zinc_ore");
             if(id != null) {
                 if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.MOD_ID, id.getPath());
                 if(id.getPath().equals("unobtainium_dust")) return new Identifier(MythicMetals.MOD_ID, "unobtainium");
-                if(id.equals(copper)) return new Identifier("minecraft","copper_ore");
+                if(id.equals(mythicCopperOre)) return new Identifier("minecraft","copper_ore");
+                if(id.equals(mythicCopperIngot)) return new Identifier("minecraft","copper_ingot");
+                if(id.equals(mythicUr)) return new Identifier("minecraft","netherrack");
+                if(id.equals(mythicZinc)) return new Identifier("minecraft","stone");
             }
             return id;
         }
