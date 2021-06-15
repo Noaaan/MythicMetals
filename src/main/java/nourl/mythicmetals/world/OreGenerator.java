@@ -29,37 +29,43 @@ import nourl.mythicmetals.config.MythicConfig;
 public class OreGenerator {
     // Defines the features that represents the ores, being fully configurable
     public static final MythicConfig.MythicOreConfig CONFIG = MythicMetals.CONFIG.mythores;
-    // Defines new RuleTest, which check where a block can spawn
+
+    // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest CALCITE_RULE = new BlockMatchRuleTest(Blocks.CALCITE);
+    public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
+
     // Template for a new ore
     public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ADAMANTITE_ORE.getDefaultState(),
-            CONFIG.oreAdamantiteVeinSize)) //Vein Size
+            CONFIG.oreAdamantiteVeinSize, 0.5F)) //Vein Size and discard chance (chance that ore is deleted if exposed to air)
             .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(CONFIG.oreAdamantiteMinHeight), // Bottom offset, minimum height
             YOffset.fixed(CONFIG.oreAdamantiteMaxHeight))))) // Top offset, max height
             .spreadHorizontally().repeat(CONFIG.oreAdamantitePerChunk); // Number of veins per chunk
-    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumMaxHeight, CONFIG.oreAetheriumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_BANGLUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_CARMOT = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_KYBER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.KYBER_ORE.getDefaultState(), CONFIG.oreKyberVeinSize, CONFIG.oreKyberMinHeight, CONFIG.oreKyberMaxHeight,CONFIG.oreKyberPerChunk);
+    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumMaxHeight, CONFIG.oreAetheriumPerChunk, 0.25F);
+    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_BANGLUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_CARMOT = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_KYBER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.KYBER_ORE.getDefaultState(), CONFIG.oreKyberVeinSize, CONFIG.oreKyberMinHeight, CONFIG.oreKyberMaxHeight,CONFIG.oreKyberPerChunk, 0.3F);
     public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = Feature.ORE.configure(new OreFeatureConfig(CALCITE_RULE, MythicMetalsOres.CALCITE_KYBER_ORE.getDefaultState(), 18)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(70))))).spreadHorizontally().repeat(40);
-    public static ConfiguredFeature<?, ?> ORE_MANGANESE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MANGANESE_ORE.getDefaultState(), CONFIG.oreManganeseVeinSize,CONFIG.oreManganeseMinHeight, CONFIG.oreManganeseMaxHeight,CONFIG.oreManganesePerChunk);
-    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_MYTHRIL = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MYTHRIL_ORE.getDefaultState(), CONFIG.oreMythrilVeinSize,CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight,CONFIG.oreMythrilPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ORICHALCUM_ORE.getDefaultState(), CONFIG.oreOrichalcumVeinSize,CONFIG.oreOrichalcumMinHeight, CONFIG.oreOrichalcumMaxHeight,CONFIG.oreOrichalcumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_OSMIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.OSMIUM_ORE.getDefaultState(), CONFIG.oreOsmiumVeinSize,CONFIG.oreOsmiumMinHeight, CONFIG.oreOsmiumMaxHeight,CONFIG.oreOsmiumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_PLATINUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.PLATINUM_ORE.getDefaultState(), CONFIG.orePlatinumVeinSize,CONFIG.orePlatinumMinHeight, CONFIG.orePlatinumMaxHeight,CONFIG.orePlatinumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.PROMETHEUM_ORE.getDefaultState(), CONFIG.orePrometheumVeinSize,CONFIG.orePrometheumMinHeight, CONFIG.orePrometheumMaxHeight,CONFIG.orePrometheumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.QUADRILLUM_ORE.getDefaultState(), CONFIG.oreQuadrillumVeinSize,CONFIG.oreQuadrillumMinHeight, CONFIG.oreQuadrillumMaxHeight,CONFIG.oreQuadrillumPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_RUNITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.RUNITE_ORE.getDefaultState(), CONFIG.oreRuniteVeinSize,CONFIG.oreRuniteMinHeight, CONFIG.oreRuniteMaxHeight,CONFIG.oreRunitePerChunk);
-    public static ConfiguredFeature<?, ?> ORE_SILVER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.SILVER_ORE.getDefaultState(), CONFIG.oreSilverVeinSize,CONFIG.oreSilverMinHeight, CONFIG.oreSilverMaxHeight,CONFIG.oreSilverPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_STARRITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.STARRITE_ORE.getDefaultState(), CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteMinHeight, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk);
-    public static ConfiguredFeature<?, ?> ORE_STORMYX = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.STORMYX_ORE.getDefaultState(), CONFIG.oreStormyxVeinSize,CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight,CONFIG.oreStormyxPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_TANTALITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TANTALITE_ORE.getDefaultState(), CONFIG.oreTantaliteVeinSize,CONFIG.oreTantaliteMinHeight, CONFIG.oreTantaliteMaxHeight,CONFIG.oreTantalitePerChunk);
-    public static ConfiguredFeature<?, ?> ORE_TIN = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk);
-    public static ConfiguredFeature<?, ?> ORE_TRUESILVER = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), CONFIG.oreTruesilverVeinSize,CONFIG.oreTruesilverMinHeight, CONFIG.oreTruesilverMaxHeight,CONFIG.oreTruesilverPerChunk);
+    public static ConfiguredFeature<?, ?> ORE_DEEPSLATE_ADAMANTITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES, MythicMetalsOres.DEEPSLATE_ADAMANTITE_ORE.getDefaultState(), 5, 0.2F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(5), YOffset.fixed(16))))).spreadHorizontally().repeat(1);
+    public static ConfiguredFeature<?, ?> ORE_DEEPSLATE_MYTHRIL = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES, MythicMetalsOres.DEEPSLATE_MYTHRIL_ORE.getDefaultState(), 5, 0.2F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(5), YOffset.fixed(16))))).spreadHorizontally().repeat(1);
+    public static ConfiguredFeature<?, ?> ORE_MANGANESE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MANGANESE_ORE.getDefaultState(), CONFIG.oreManganeseVeinSize,CONFIG.oreManganeseMinHeight, CONFIG.oreManganeseMaxHeight,CONFIG.oreManganesePerChunk, 0.15F);
+    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_MYTHRIL = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.MYTHRIL_ORE.getDefaultState(), CONFIG.oreMythrilVeinSize,CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight,CONFIG.oreMythrilPerChunk, 0.5F);
+    public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.ORICHALCUM_ORE.getDefaultState(), CONFIG.oreOrichalcumVeinSize,CONFIG.oreOrichalcumMinHeight, CONFIG.oreOrichalcumMaxHeight,CONFIG.oreOrichalcumPerChunk, 0.5F);
+    public static ConfiguredFeature<?, ?> ORE_OSMIUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.OSMIUM_ORE.getDefaultState(), CONFIG.oreOsmiumVeinSize,CONFIG.oreOsmiumMinHeight, CONFIG.oreOsmiumMaxHeight,CONFIG.oreOsmiumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_PLATINUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.PLATINUM_ORE.getDefaultState(), CONFIG.orePlatinumVeinSize,CONFIG.orePlatinumMinHeight, CONFIG.orePlatinumMaxHeight,CONFIG.orePlatinumPerChunk, 0.3F);
+    public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.PROMETHEUM_ORE.getDefaultState(), CONFIG.orePrometheumVeinSize,CONFIG.orePrometheumMinHeight, CONFIG.orePrometheumMaxHeight,CONFIG.orePrometheumPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.QUADRILLUM_ORE.getDefaultState(), CONFIG.oreQuadrillumVeinSize,CONFIG.oreQuadrillumMinHeight, CONFIG.oreQuadrillumMaxHeight,CONFIG.oreQuadrillumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_RUNITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.RUNITE_ORE.getDefaultState(), CONFIG.oreRuniteVeinSize,CONFIG.oreRuniteMinHeight, CONFIG.oreRuniteMaxHeight,CONFIG.oreRunitePerChunk, 0.0F);
+    public static ConfiguredFeature<?, ?> ORE_SILVER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.SILVER_ORE.getDefaultState(), CONFIG.oreSilverVeinSize,CONFIG.oreSilverMinHeight, CONFIG.oreSilverMaxHeight,CONFIG.oreSilverPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_STARRITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.STARRITE_ORE.getDefaultState(), CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteMinHeight, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.6F);
+    public static ConfiguredFeature<?, ?> ORE_STORMYX = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.STORMYX_ORE.getDefaultState(), CONFIG.oreStormyxVeinSize,CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight,CONFIG.oreStormyxPerChunk, 0.0F);
+    public static ConfiguredFeature<?, ?> ORE_TANTALITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TANTALITE_ORE.getDefaultState(), CONFIG.oreTantaliteVeinSize,CONFIG.oreTantaliteMinHeight, CONFIG.oreTantaliteMaxHeight,CONFIG.oreTantalitePerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_TIN = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk, 0.3F);
+    public static ConfiguredFeature<?, ?> ORE_TUFF_ORICHALCUM = Feature.ORE.configure(new OreFeatureConfig(TUFF_RULE, MythicMetalsOres.TUFF_ORICHALCUM_ORE.getDefaultState(), 5, 0.1F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(17))))).spreadHorizontally().repeat(2);
+    public static ConfiguredFeature<?, ?> ORE_TRUESILVER = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), CONFIG.oreTruesilverVeinSize,CONFIG.oreTruesilverMinHeight, CONFIG.oreTruesilverMaxHeight,CONFIG.oreTruesilverPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = configureUOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumMinHeight, CONFIG.oreUnobtainiumMaxHeight, CONFIG.oreUnobtainiumDiscardChance);
-    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk);
+    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk, 0.3F);
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_adamantite"));
@@ -68,6 +74,8 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_banglum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_carmot"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_calcite_kyber"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreDeepslateAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_deepslate_adamantite"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreDeepslateMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_deepslate_mythril"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_kyber"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_manganese"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_midas_gold"));
@@ -83,6 +91,7 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_stormyx"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTantalite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tantalite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTuffOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tuff_orichalcum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_truesilver"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_unobtainium"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
@@ -97,6 +106,8 @@ public class OreGenerator {
         registerFeature(oreBanglum.getValue(), ORE_BANGLUM);
         registerFeature(oreCarmot.getValue(), ORE_CARMOT);
         registerFeature(oreCalciteKyber.getValue(), ORE_CALCITE_KYBER);
+        registerFeature(oreDeepslateAdamantite.getValue(), ORE_DEEPSLATE_ADAMANTITE);
+        registerFeature(oreDeepslateMythril.getValue(), ORE_DEEPSLATE_MYTHRIL);
         registerFeature(oreKyber.getValue(), ORE_KYBER);
         registerFeature(oreManganese.getValue(), ORE_MANGANESE);
         registerFeature(oreMidasGold.getValue(), ORE_MIDAS_GOLD);
@@ -112,6 +123,7 @@ public class OreGenerator {
         registerFeature(oreStormyx.getValue(), ORE_STORMYX);
         registerFeature(oreTantalite.getValue(), ORE_TANTALITE);
         registerFeature(oreTin.getValue(), ORE_TIN);
+        registerFeature(oreTuffOrichalcum.getValue(), ORE_TUFF_ORICHALCUM);
         registerFeature(oreTruesilver.getValue(), ORE_TRUESILVER);
         registerFeature(oreUnobtainium.getValue(), ORE_UNOBTAINIUM);
         registerFeature(oreVermiculite.getValue(), ORE_VERMICULITE);
@@ -121,14 +133,14 @@ public class OreGenerator {
     @SuppressWarnings("deprecation")
     public static void generate() {
         //Overworld Ores
-        if (CONFIG.oreAdamantiteGeneration) { AddUOre(oreAdamantite); }
+        if (CONFIG.oreAdamantiteGeneration) { AddUOre(oreAdamantite); AddUOre(oreDeepslateAdamantite);}
         if (CONFIG.oreAetheriumGeneration) { AddUOre(oreAetherium); }
         if (CONFIG.oreBanglumGeneration) { AddUOre(oreBanglum); }
         if (CONFIG.oreCarmotGeneration) { AddUOre(oreCarmot); }
         if (CONFIG.oreKyberGeneration) { AddUOre(oreKyber); AddUOre(oreCalciteKyber); }
         if (CONFIG.oreManganeseGeneration) { AddUOre(oreManganese); }
-        if (CONFIG.oreMythrilGeneration) { AddUOre(oreMythril); }
-        if (CONFIG.oreOrichalcumGeneration) { AddUOre(oreOrichalcum); }
+        if (CONFIG.oreMythrilGeneration) { AddUOre(oreMythril); AddUOre(oreDeepslateMythril);}
+        if (CONFIG.oreOrichalcumGeneration) { AddUOre(oreOrichalcum); AddUOre(oreTuffOrichalcum);}
         if (CONFIG.oreOsmiumGeneration) { AddUOre(oreOsmium); }
         if (CONFIG.orePlatinumGeneration) { AddUOre(orePlatinum); }
         if (CONFIG.oreQuadrillumGeneration) { AddUOre(oreQuadrillum); }
@@ -303,8 +315,8 @@ public class OreGenerator {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier(modId, path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
         }
     }
-    public static ConfiguredFeature<?, ?> configureOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate) {
-        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
+    public static ConfiguredFeature<?, ?> configureOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
     }
 
     public static ConfiguredFeature<?, ?> configureUOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Float discardChance) {

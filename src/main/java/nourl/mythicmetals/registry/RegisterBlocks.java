@@ -22,6 +22,8 @@ public class RegisterBlocks {
         RegisterItem("banglum_ore", MythicMetalsOres.BANGLUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("calcite_kyber_ore", MythicMetalsOres.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("carmot_ore", MythicMetalsOres.CARMOT_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("deepslate_adamantite_ore", MythicMetalsOres.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("deepslate_mythril_ore", MythicMetalsOres.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("kyber_ore", MythicMetalsOres.KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("manganese_ore", MythicMetalsOres.MANGANESE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("midas_gold_ore", MythicMetalsOres.MIDAS_GOLD_ORE, MythicMetals.MYTHICMETALS);
@@ -37,6 +39,7 @@ public class RegisterBlocks {
         RegisterItem("stormyx_ore", MythicMetalsOres.STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tantalite_ore", MythicMetalsOres.TANTALITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_ore", MythicMetalsOres.TIN_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("tuff_orichalcum_ore", MythicMetalsOres.TUFF_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("truesilver_ore", MythicMetalsOres.TRUESILVER_ORE, MythicMetals.MYTHICMETALS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium_ore"), new BlockItem(MythicMetalsOres.UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
         RegisterItem("vermiculite_ore", MythicMetalsOres.VERMICULITE_ORE, MythicMetals.MYTHICMETALS);
@@ -47,6 +50,8 @@ public class RegisterBlocks {
         RegisterBlock("banglum_ore", MythicMetalsOres.BANGLUM_ORE);
         RegisterBlock("calcite_kyber_ore", MythicMetalsOres.CALCITE_KYBER_ORE);
         RegisterBlock("carmot_ore", MythicMetalsOres.CARMOT_ORE);
+        RegisterBlock("deepslate_adamantite_ore", MythicMetalsOres.DEEPSLATE_ADAMANTITE_ORE);
+        RegisterBlock("deepslate_mythril_ore", MythicMetalsOres.DEEPSLATE_MYTHRIL_ORE);
         RegisterBlock("kyber_ore", MythicMetalsOres.KYBER_ORE);
         RegisterBlock("manganese_ore", MythicMetalsOres.MANGANESE_ORE);
         RegisterBlock("midas_gold_ore", MythicMetalsOres.MIDAS_GOLD_ORE);
@@ -62,6 +67,7 @@ public class RegisterBlocks {
         RegisterBlock("stormyx_ore", MythicMetalsOres.STORMYX_ORE);
         RegisterBlock("tantalite_ore", MythicMetalsOres.TANTALITE_ORE);
         RegisterBlock("tin_ore", MythicMetalsOres.TIN_ORE);
+        RegisterBlock("tuff_orichalcum_ore", MythicMetalsOres.TUFF_ORICHALCUM_ORE);
         RegisterBlock("truesilver_ore", MythicMetalsOres.TRUESILVER_ORE);
         RegisterBlock("unobtainium_ore", MythicMetalsOres.UNOBTAINIUM_ORE);
         RegisterBlock("vermiculite_ore", MythicMetalsOres.VERMICULITE_ORE);

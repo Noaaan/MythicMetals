@@ -41,7 +41,7 @@ public class RegisterItems {
     public static final Item TRUESILVER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item UNOBTAINIUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof());
     public static final Item VERMICULITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-
+    // Dusts
     public static final Item ADAMANTITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AETHERIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AQUARIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -76,7 +76,7 @@ public class RegisterItems {
     public static final Item TANTALITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-
+    // Raw Ores
     public static final Item RAW_ADAMANTITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_AETHERIUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_AQUARIUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
