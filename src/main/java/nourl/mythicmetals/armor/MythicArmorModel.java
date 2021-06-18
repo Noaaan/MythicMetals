@@ -29,10 +29,4 @@ public class MythicArmorModel extends BipedEntityModel<LivingEntity> {
     public void setAngles(LivingEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
             super.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
     }
-
-    protected void setRotationAngle(ModelPart modelPart, float x, float y, float z) {
-        modelPart.pitch = x;
-        modelPart.yaw = y;
-        modelPart.roll = z;
-    }
 }
