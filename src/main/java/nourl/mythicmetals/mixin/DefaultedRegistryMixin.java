@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
         Identifier fixMissingFromRegistry(@Nullable Identifier id) {
             Identifier mythicCopperOre = new Identifier(MythicMetals.MOD_ID, "copper_ore");
             Identifier mythicCopperIngot = new Identifier(MythicMetals.MOD_ID, "copper_ingot");
+            Identifier mythicTantalite = new Identifier(MythicMetals.MOD_ID, "tantalite_ore");
             Identifier mythicUr = new Identifier(MythicMetals.MOD_ID, "ur_ore");
             Identifier mythicZinc = new Identifier(MythicMetals.MOD_ID, "zinc_ore");
             if(id != null) {
@@ -22,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
                 if(id.equals(mythicCopperOre)) return new Identifier("minecraft","copper_ore");
                 if(id.equals(mythicCopperIngot)) return new Identifier("minecraft","copper_ingot");
                 if(id.equals(mythicUr)) return new Identifier("minecraft","netherrack");
-                if(id.equals(mythicZinc)) return new Identifier("minecraft","stone");
+                if(id.equals(mythicZinc) || id.equals(mythicTantalite)) return new Identifier("minecraft","stone");
             }
             return id;
         }

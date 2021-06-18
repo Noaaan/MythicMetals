@@ -37,7 +37,6 @@ public class RegisterBlocks {
         RegisterItem("silver_ore", MythicMetalsOres.SILVER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("starrite_ore", MythicMetalsOres.STARRITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("stormyx_ore", MythicMetalsOres.STORMYX_ORE, MythicMetals.MYTHICMETALS);
-        RegisterItem("tantalite_ore", MythicMetalsOres.TANTALITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_ore", MythicMetalsOres.TIN_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tuff_orichalcum_ore", MythicMetalsOres.TUFF_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("truesilver_ore", MythicMetalsOres.TRUESILVER_ORE, MythicMetals.MYTHICMETALS);
@@ -65,7 +64,6 @@ public class RegisterBlocks {
         RegisterBlock("silver_ore", MythicMetalsOres.SILVER_ORE);
         RegisterBlock("starrite_ore", MythicMetalsOres.STARRITE_ORE);
         RegisterBlock("stormyx_ore", MythicMetalsOres.STORMYX_ORE);
-        RegisterBlock("tantalite_ore", MythicMetalsOres.TANTALITE_ORE);
         RegisterBlock("tin_ore", MythicMetalsOres.TIN_ORE);
         RegisterBlock("tuff_orichalcum_ore", MythicMetalsOres.TUFF_ORICHALCUM_ORE);
         RegisterBlock("truesilver_ore", MythicMetalsOres.TRUESILVER_ORE);
@@ -102,7 +100,6 @@ public class RegisterBlocks {
         RegisterItem("starrite_block", MythicMetalsBlocks.STARRITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("steel_block", MythicMetalsBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("stormyx_block", MythicMetalsBlocks.STORMYX_BLOCK, MythicMetals.MYTHICMETALS);
-        RegisterItem("tantalite_block", MythicMetalsBlocks.TANTALITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_block", MythicMetalsBlocks.TIN_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("truesilver_block", MythicMetalsBlocks.TRUESILVER_BLOCK, MythicMetals.MYTHICMETALS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium_block"), new BlockItem(MythicMetalsBlocks.UNOBTAINIUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
@@ -136,7 +133,6 @@ public class RegisterBlocks {
         RegisterBlock("starrite_block", MythicMetalsBlocks.STARRITE_BLOCK);
         RegisterBlock("steel_block", MythicMetalsBlocks.STEEL_BLOCK);
         RegisterBlock("stormyx_block", MythicMetalsBlocks.STORMYX_BLOCK);
-        RegisterBlock("tantalite_block", MythicMetalsBlocks.TANTALITE_BLOCK);
         RegisterBlock("tin_block", MythicMetalsBlocks.TIN_BLOCK);
         RegisterBlock("truesilver_block", MythicMetalsBlocks.TRUESILVER_BLOCK);
         RegisterBlock("unobtainium_block", MythicMetalsBlocks.UNOBTAINIUM_BLOCK);
@@ -172,7 +168,6 @@ public class RegisterBlocks {
         RegisterItem("starrite_anvil", MythicMetalsAnvils.STARRITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("steel_anvil", MythicMetalsAnvils.STEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("stormyx_anvil", MythicMetalsAnvils.STORMYX_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegisterItem("tantalite_anvil", MythicMetalsAnvils.TANTALITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("truesilver_anvil", MythicMetalsAnvils.TRUESILVER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
 
         RegisterBlock("adamantite_anvil", MythicMetalsAnvils.ADAMANTITE_ANVIL);
@@ -204,7 +199,6 @@ public class RegisterBlocks {
         RegisterBlock("starrite_anvil", MythicMetalsAnvils.STARRITE_ANVIL);
         RegisterBlock("steel_anvil", MythicMetalsAnvils.STEEL_ANVIL);
         RegisterBlock("stormyx_anvil", MythicMetalsAnvils.STORMYX_ANVIL);
-        RegisterBlock("tantalite_anvil", MythicMetalsAnvils.TANTALITE_ANVIL);
         RegisterBlock("truesilver_anvil", MythicMetalsAnvils.TRUESILVER_ANVIL);
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.ADAMANTITE_ANVIL);
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.AETHERIUM_ANVIL);
@@ -235,7 +229,6 @@ public class RegisterBlocks {
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.STARRITE_ANVIL);
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.STEEL_ANVIL);
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.STORMYX_ANVIL);
-        MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.TANTALITE_ANVIL);
         MythicMetalsAnvils.ANVILS.add(MythicMetalsAnvils.TRUESILVER_ANVIL);
 
         // Chains
@@ -268,7 +261,6 @@ public class RegisterBlocks {
         RegisterChainItem("starrite_chain", MythicMetalsChains.STARRITE_CHAIN);
         RegisterChainItem("steel_chain", MythicMetalsChains.STEEL_CHAIN);
         RegisterChainItem("stormyx_chain", MythicMetalsChains.STORMYX_CHAIN);
-        RegisterChainItem("tantalite_chain", MythicMetalsChains.TANTALITE_CHAIN);
         RegisterChainItem("truesilver_chain", MythicMetalsChains.TRUESILVER_CHAIN);
 
         RegisterChainBlock("adamantite_chain", MythicMetalsChains.ADAMANTITE_CHAIN);
@@ -300,7 +292,6 @@ public class RegisterBlocks {
         RegisterChainBlock("starrite_chain", MythicMetalsChains.STARRITE_CHAIN);
         RegisterChainBlock("steel_chain", MythicMetalsChains.STEEL_CHAIN);
         RegisterChainBlock("stormyx_chain", MythicMetalsChains.STORMYX_CHAIN);
-        RegisterChainBlock("tantalite_chain", MythicMetalsChains.TANTALITE_CHAIN);
         RegisterChainBlock("truesilver_chain", MythicMetalsChains.TRUESILVER_CHAIN);
     }
 

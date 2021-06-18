@@ -42,7 +42,6 @@ public class RegisterTools {
     public static final Item STARRITE_SWORD = new SwordItem(MythicMetalsToolMaterials.STARRITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SWORD = new SwordItem(MythicMetalsToolMaterials.STEEL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SWORD = new SwordItem(MythicMetalsToolMaterials.STORMYX, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item TANTALITE_SWORD = new SwordItem(MythicMetalsToolMaterials.TANTALITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item TRUESILVER_SWORD = new SwordItem(MythicMetalsToolMaterials.TRUESILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //PICKAXES
     public static final Item ADAMANTITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.ADAMANTITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -74,7 +73,6 @@ public class RegisterTools {
     public static final Item STARRITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STARRITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.STORMYX, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item TANTALITE_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TANTALITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item TRUESILVER_PICKAXE = new PickaxeBase(MythicMetalsToolMaterials.TRUESILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //AXES
     public static final Item ADAMANTITE_AXE = new AxeBase(MythicMetalsToolMaterials.ADAMANTITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -106,7 +104,6 @@ public class RegisterTools {
     public static final Item STARRITE_AXE = new AxeBase(MythicMetalsToolMaterials.STARRITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_AXE = new AxeBase(MythicMetalsToolMaterials.STEEL, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_AXE = new AxeBase(MythicMetalsToolMaterials.STORMYX, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item TANTALITE_AXE = new AxeBase(MythicMetalsToolMaterials.TANTALITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item TRUESILVER_AXE = new AxeBase(MythicMetalsToolMaterials.TRUESILVER, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //SHOVELS
     public static final Item ADAMANTITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.ADAMANTITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -138,7 +135,6 @@ public class RegisterTools {
     public static final Item STARRITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STARRITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.STORMYX, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item TANTALITE_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TANTALITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item TRUESILVER_SHOVEL = new ShovelItem(MythicMetalsToolMaterials.TRUESILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //HOES
     public static final Item ADAMANTITE_HOE = new HoeBase(MythicMetalsToolMaterials.ADAMANTITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -170,7 +166,6 @@ public class RegisterTools {
     public static final Item STARRITE_HOE = new HoeBase(MythicMetalsToolMaterials.STARRITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_HOE = new HoeBase(MythicMetalsToolMaterials.STEEL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_HOE = new HoeBase(MythicMetalsToolMaterials.STORMYX, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item TANTALITE_HOE = new HoeBase(MythicMetalsToolMaterials.TANTALITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item TRUESILVER_HOE = new HoeBase(MythicMetalsToolMaterials.TRUESILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 
 
@@ -320,11 +315,6 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_pickaxe"), STORMYX_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_shovel"), STORMYX_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_sword"), STORMYX_SWORD);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_axe"), TANTALITE_AXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_hoe"), TANTALITE_HOE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_pickaxe"), TANTALITE_PICKAXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_shovel"), TANTALITE_SHOVEL);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_sword"), TANTALITE_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_axe"), TRUESILVER_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_hoe"), TRUESILVER_HOE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_pickaxe"), TRUESILVER_PICKAXE);

@@ -198,12 +198,6 @@ public class MythicForgeConfig {
                 put("#mythicmetals:stormyx_ores", new MaterialWorth(9, false));
                 put("#mythicmetals:stormyx_nuggets", new MaterialWorth(1, true));
             }});
-            put("tantalite", new HashMap<>() {{
-                put("#c:tantalite_blocks", new MaterialWorth(81, true));
-                put("#c:tantalite_ingots", new MaterialWorth(9, true));
-                put("#c:tantalite_ores", new MaterialWorth(9, false));
-                put("#c:tantalite_nuggets", new MaterialWorth(1, true));
-            }});
             put("truesilver", new HashMap<>() {{
                 put("#mythicmetals:truesilver_blocks", new MaterialWorth(81, true));
                 put("#mythicmetals:truesilver_ingots", new MaterialWorth(9, true));

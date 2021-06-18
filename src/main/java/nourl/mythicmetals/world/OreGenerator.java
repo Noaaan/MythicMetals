@@ -60,7 +60,6 @@ public class OreGenerator {
     public static ConfiguredFeature<?, ?> ORE_SILVER = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.SILVER_ORE.getDefaultState(), CONFIG.oreSilverVeinSize,CONFIG.oreSilverMinHeight, CONFIG.oreSilverMaxHeight,CONFIG.oreSilverPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_STARRITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.STARRITE_ORE.getDefaultState(), CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteMinHeight, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.7F);
     public static ConfiguredFeature<?, ?> ORE_STORMYX = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.STORMYX_ORE.getDefaultState(), CONFIG.oreStormyxVeinSize,CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight,CONFIG.oreStormyxPerChunk, 0.0F);
-    public static ConfiguredFeature<?, ?> ORE_TANTALITE = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TANTALITE_ORE.getDefaultState(), CONFIG.oreTantaliteVeinSize,CONFIG.oreTantaliteMinHeight, CONFIG.oreTantaliteMaxHeight,CONFIG.oreTantalitePerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_TIN = configureOre(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicMetalsOres.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk, 0.3F);
     public static ConfiguredFeature<?, ?> ORE_TUFF_ORICHALCUM = Feature.ORE.configure(new OreFeatureConfig(TUFF_RULE, MythicMetalsOres.TUFF_ORICHALCUM_ORE.getDefaultState(), 5, 0.1F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(17))))).spreadHorizontally().repeat(2);
     public static ConfiguredFeature<?, ?> ORE_TRUESILVER = configureOre(OreFeatureConfig.Rules.NETHERRACK, MythicMetalsOres.TRUESILVER_ORE.getDefaultState(), CONFIG.oreTruesilverVeinSize,CONFIG.oreTruesilverMinHeight, CONFIG.oreTruesilverMaxHeight,CONFIG.oreTruesilverPerChunk, 0.1F);
@@ -89,7 +88,6 @@ public class OreGenerator {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_silver"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_starrite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_stormyx"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTantalite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tantalite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTuffOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tuff_orichalcum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTruesilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_truesilver"));
@@ -121,7 +119,6 @@ public class OreGenerator {
         registerFeature(oreSilver.getValue(), ORE_SILVER);
         registerFeature(oreStarrite.getValue(), ORE_STARRITE);
         registerFeature(oreStormyx.getValue(), ORE_STORMYX);
-        registerFeature(oreTantalite.getValue(), ORE_TANTALITE);
         registerFeature(oreTin.getValue(), ORE_TIN);
         registerFeature(oreTuffOrichalcum.getValue(), ORE_TUFF_ORICHALCUM);
         registerFeature(oreTruesilver.getValue(), ORE_TRUESILVER);
@@ -146,7 +143,6 @@ public class OreGenerator {
         if (CONFIG.oreQuadrillumGeneration) { AddUOre(oreQuadrillum); }
         if (CONFIG.oreRuniteGeneration) { AddUOre(oreRunite); }
         if (CONFIG.oreSilverGeneration) { AddUOre(oreSilver); }
-        if (CONFIG.oreTantaliteGeneration) { AddUOre(oreTantalite); }
         if (CONFIG.oreTinGeneration) { AddUOre(oreTin); }
         if (CONFIG.oreUnobtainiumGeneration) { AddUOre(oreUnobtainium); }
         if (CONFIG.oreVermiculiteGeneration) { AddUOre(oreVermiculite); }

@@ -51,7 +51,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicMetalsChains.STARRITE_CHAIN,
                 MythicMetalsChains.STEEL_CHAIN,
                 MythicMetalsChains.STORMYX_CHAIN,
-                MythicMetalsChains.TANTALITE_CHAIN,
                 MythicMetalsChains.TRUESILVER_CHAIN
         );
     }

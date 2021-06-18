@@ -73,7 +73,6 @@ public class RegisterItems {
     public static final Item STARRITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STEEL_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STORMYX_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item TANTALITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TRUESILVER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     // Raw Ores
@@ -95,7 +94,6 @@ public class RegisterItems {
     public static final Item RAW_SILVER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_STARRITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_STORMYX = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item RAW_TANTALITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_TIN = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_TRUESILVER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
@@ -131,7 +129,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_ingot"), STARRITE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_ingot"), STEEL_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_ingot"), STORMYX_INGOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_ingot"), TANTALITE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_ingot"), TIN_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_ingot"), TRUESILVER_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium"), UNOBTAINIUM);
@@ -156,7 +153,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_silver"), RAW_SILVER);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_starrite"), RAW_STARRITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_stormyx"), RAW_STORMYX);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_tantalite"), RAW_TANTALITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_tin"), RAW_TIN);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_truesilver"), RAW_TRUESILVER);
     }
@@ -192,7 +188,6 @@ public class RegisterItems {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_dust"), STARRITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_dust"), STEEL_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_dust"), STORMYX_DUST);
-    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_dust"), TANTALITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_dust"), TIN_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_dust"), TRUESILVER_DUST);
     }

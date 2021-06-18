@@ -127,10 +127,6 @@ public class RegisterArmor {
     public static final Item STORMYX_CHESTPLATE = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STORMYX_LEGGINGS = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STORMYX_BOOTS = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TANTALUM_HELMET = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TANTALUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TANTALUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TANTALUM_BOOTS = new ArmorItem(MythicArmorMaterials.TANTALITE, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_HELMET = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item TRUESILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -254,10 +250,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_chestplate"), STORMYX_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_leggings"), STORMYX_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_boots"), STORMYX_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_helmet"), TANTALUM_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_chestplate"), TANTALUM_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_leggings"), TANTALUM_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tantalite_boots"), TANTALUM_BOOTS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_helmet"), TRUESILVER_HELMET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_chestplate"), TRUESILVER_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_leggings"), TRUESILVER_LEGGINGS);
