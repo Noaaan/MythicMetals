@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:aquarium_ore"
+    "mythicmetals:aquarium_ore",
+    "mythicmetals:raw_aquarium"
   ]
 }

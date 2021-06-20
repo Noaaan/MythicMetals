@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "mythicmetals:calcite_kyber_ore"
-  },
-  "result": "mythicmetals:kyber_ingot",
-  "experience": 0.2,
-  "cookingtime": 200
-}

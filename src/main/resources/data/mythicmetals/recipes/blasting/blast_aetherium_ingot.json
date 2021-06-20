@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:aetherium_ore"
+    "tag": "mythicmetals:aetherium_ores"
   },
   "result": "mythicmetals:aetherium_ingot",
   "experience": 0.1,

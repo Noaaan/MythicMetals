@@ -20,6 +20,7 @@ public class RegisterBlocks {
         RegisterItem("aetherium_ore", MythicMetalsOres.AETHERIUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("aquarium_ore", MythicMetalsOres.AQUARIUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("banglum_ore", MythicMetalsOres.BANGLUM_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("blackstone_stormyx_ore", MythicMetalsOres.BLACKSTONE_STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("calcite_kyber_ore", MythicMetalsOres.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("carmot_ore", MythicMetalsOres.CARMOT_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_adamantite_ore", MythicMetalsOres.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
@@ -47,6 +48,7 @@ public class RegisterBlocks {
         RegisterBlock("aetherium_ore", MythicMetalsOres.AETHERIUM_ORE);
         RegisterBlock("aquarium_ore", MythicMetalsOres.AQUARIUM_ORE);
         RegisterBlock("banglum_ore", MythicMetalsOres.BANGLUM_ORE);
+        RegisterBlock("blackstone_stormyx_ore", MythicMetalsOres.BLACKSTONE_STORMYX_ORE);
         RegisterBlock("calcite_kyber_ore", MythicMetalsOres.CALCITE_KYBER_ORE);
         RegisterBlock("carmot_ore", MythicMetalsOres.CARMOT_ORE);
         RegisterBlock("deepslate_adamantite_ore", MythicMetalsOres.DEEPSLATE_ADAMANTITE_ORE);

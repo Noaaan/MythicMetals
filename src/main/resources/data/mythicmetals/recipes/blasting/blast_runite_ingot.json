@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:runite_ore"
+    "tag": "mythicmetals:runite_ores"
   },
   "result": "mythicmetals:runite_ingot",
   "experience": 0.1,

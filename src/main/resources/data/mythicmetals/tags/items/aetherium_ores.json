@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:aetherium_ore"
+    "mythicmetals:aetherium_ore",
+    "mythicmetals:raw_aetherium"
   ]
 }

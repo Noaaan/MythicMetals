@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:midas_gold_ore"
+    "mythicmetals:midas_gold_ore",
+    "mythicmetals:raw_midas_gold"
   ]
 }

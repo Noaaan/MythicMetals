@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:manganese_ore"
+    "mythicmetals:manganese_ore",
+    "mythicmetals:raw_manganese"
   ]
 }

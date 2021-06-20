@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:platinum_ore"
+    "tag": "c:platinum_ores"
   },
   "result": "mythicmetals:platinum_ingot",
   "experience": 0.1,

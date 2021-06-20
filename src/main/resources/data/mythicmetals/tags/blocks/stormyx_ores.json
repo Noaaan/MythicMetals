@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:stormyx_ore"
+    "mythicmetals:stormyx_ore",
+    "mythicmetals:blackstone_stormyx_ore"
   ]
 }

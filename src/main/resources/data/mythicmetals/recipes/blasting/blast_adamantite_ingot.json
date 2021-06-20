@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:adamantite_ore"
+    "tag": "c:adamantite_ores"
   },
   "result": "mythicmetals:adamantite_ingot",
   "experience": 0.1,

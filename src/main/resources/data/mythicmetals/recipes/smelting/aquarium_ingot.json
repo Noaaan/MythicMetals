@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "mythicmetals:aquarium_ore"
+    "tag": "mythicmetals:aquarium_ores"
   },
   "result": "mythicmetals:aquarium_ingot",
   "experience": 0.2,

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:carmot_ore"
+    "mythicmetals:carmot_ore",
+    "mythicmetals:raw_carmot"
   ]
 }

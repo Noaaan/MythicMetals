@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "mythicmetals:prometheum_ore"
+    "tag": "mythicmetals:prometheum_ores"
   },
   "result": "mythicmetals:prometheum_ingot",
   "experience": 0.2,

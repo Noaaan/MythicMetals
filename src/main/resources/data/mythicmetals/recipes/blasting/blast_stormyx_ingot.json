@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:stormyx_ore"
+    "tag": "mythicmetals:stormyx_ores"
   },
   "result": "mythicmetals:stormyx_ingot",
   "experience": 0.1,

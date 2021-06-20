@@ -35,7 +35,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreAdamantiteMinHeight = 4;
         public int oreAdamantiteMaxHeight = 24;
 
-
         //Aetherium Ore Settings
         public boolean oreAetheriumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -54,7 +53,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreAquariumMinHeight = 6;
         public int oreAquariumMaxHeight = 63;
 
-
         //Banglum Ore Settings
         public boolean oreBanglumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -63,7 +61,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreBanglumPerChunk = 3;
         public int oreBanglumMinHeight = 6;
         public int oreBanglumMaxHeight = 32;
-
 
         //Carmot Ore Settings
         public boolean oreCarmotGeneration = true;
@@ -74,7 +71,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreCarmotMinHeight = 8;
         public int oreCarmotMaxHeight = 48;
 
-
         //Kyber Ore Settings
         public boolean oreKyberGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -83,7 +79,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreKyberPerChunk = 1;
         public int oreKyberMinHeight = 5;
         public int oreKyberMaxHeight = 70;
-
 
         //Manganese Ore Settings
         public boolean oreManganeseGeneration = true;
@@ -94,7 +89,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreManganeseMinHeight = 6;
         public int oreManganeseMaxHeight = 48;
 
-
         //Midas Gold Ore Settings
         public boolean oreMidasGoldGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -103,7 +97,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreMidasgoldPerChunk = 7;
         public int oreMidasgoldMinHeight = 10;
         public int oreMidasgoldMaxHeight = 128;
-
 
         //Mythril Ore Settings
         public boolean oreMythrilGeneration = true;
@@ -114,7 +107,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreMythrilMinHeight = 4;
         public int oreMythrilMaxHeight = 24;
 
-
         //Orichalcum Ore Settings
         public boolean oreOrichalcumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -123,7 +115,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreOrichalcumPerChunk = 1;
         public int oreOrichalcumMinHeight = 4;
         public int oreOrichalcumMaxHeight = 24;
-
 
         //Osmium Ore Settings
         public boolean oreOsmiumGeneration = true;
@@ -134,7 +125,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreOsmiumMinHeight = 6;
         public int oreOsmiumMaxHeight = 48;
 
-
         //Platinum Ore Settings
         public boolean orePlatinumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -143,7 +133,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int orePlatinumPerChunk = 2;
         public int orePlatinumMinHeight = 6;
         public int orePlatinumMaxHeight = 24;
-
 
         //Prometheum Ore Settings
         public boolean orePrometheumGeneration = true;
@@ -154,7 +143,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int orePrometheumMinHeight = 6;
         public int orePrometheumMaxHeight = 48;
 
-
         //Quadrillum Ore Settings
         public boolean oreQuadrillumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -163,7 +151,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreQuadrillumPerChunk = 4;
         public int oreQuadrillumMinHeight = 6;
         public int oreQuadrillumMaxHeight = 56;
-
 
         //Runite Ore Settings
         public boolean oreRuniteGeneration = true;
@@ -174,7 +161,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreRuniteMinHeight = 6;
         public int oreRuniteMaxHeight = 32;
 
-
         //Silver Ore Settings
         public boolean oreSilverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -183,7 +169,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreSilverPerChunk = 4;
         public int oreSilverMinHeight = 6;
         public int oreSilverMaxHeight = 48;
-
 
         //Starrite Ore Settings
         public boolean oreStarriteGeneration = true;
@@ -194,7 +179,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreStarriteMinHeight = 80;
         public int oreStarriteMaxHeight = 200;
 
-
         //Stormyx Ore Settings
         public boolean oreStormyxGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -203,7 +187,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreStormyxPerChunk = 3;
         public int oreStormyxMinHeight = 6;
         public int oreStormyxMaxHeight = 54;
-
 
         //Tin Ore Settings
         public boolean oreTinGeneration = true;
@@ -214,7 +197,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreTinMinHeight = 18;
         public int oreTinMaxHeight = 128;
 
-
         //Truesilver Ore Settings
         public boolean oreTruesilverGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -224,16 +206,14 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreTruesilverMinHeight = 8;
         public int oreTruesilverMaxHeight = 100;
 
-
         //Unobtainium Ore Settings
         public boolean oreUnobtainiumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreUnobtainiumVeinSize = 2;
+        public int oreUnobtainiumVeinSize = 3;
         public int oreUnobtainiumMinHeight = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreUnobtainiumMaxHeight = 10;
-        public float oreUnobtainiumDiscardChance = 0.8F;
-
+        public int oreUnobtainiumMaxHeight = 12;
+        public float oreUnobtainiumDiscardChance = 0.75F;
 
         //Vermiculite Ore Settings
         public boolean oreVermiculiteGeneration = true;

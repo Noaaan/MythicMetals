@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:osmium_ore"
+    "tag": "mythicmetals:osmium_ores"
   },
   "result": "mythicmetals:osmium_ingot",
   "experience": 0.1,

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:quadrillum_ore"
+    "tag": "mythicmetals:quadrillum_ores"
   },
   "result": "mythicmetals:quadrillum_ingot",
   "experience": 0.1,

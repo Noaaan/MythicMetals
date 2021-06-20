@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:midas_gold_ore"
+    "tag": "mythicmetals:midas_gold_ores"
   },
   "result": "mythicmetals:midas_gold_ingot",
   "experience": 0.1,
