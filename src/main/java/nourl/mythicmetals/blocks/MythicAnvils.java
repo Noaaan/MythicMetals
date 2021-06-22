@@ -9,7 +9,7 @@ import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.HashSet;
 
-public class MythicMetalsAnvils {
+public class MythicAnvils {
 
     public static HashSet<Block> ANVILS = new HashSet<>();
 

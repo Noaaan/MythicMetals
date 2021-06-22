@@ -21,24 +21,19 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Enchant Giver
-//	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}"){
-//		exclude(group: "net.fabricmc.fabric-api")
-//	}
-//	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
+	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
+	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
 
-	modApi("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
-	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
+//	modApi("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
+//	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
 
 	// Alloy Forgery
-//	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}") {
-//		exclude(group: "net.fabricmc.fabric-api")
-//	}
-	modApi("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
-	include("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
-	
+	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}")
+//	modApi("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
+//	include("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
+//
 	// config
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")
-	modImplementation("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}")
 
 	// modmenu
 	modApi("com.terraformersmc:modmenu:${project.modmenu_version}")

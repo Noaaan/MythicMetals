@@ -6,7 +6,7 @@
   "mixins": [
     "AnvilScreenHandlerMixin",
     "MixinRecipeManager",
-    "MythicLivingEntityMixin",
+    "LivingEntityMixin",
     "DefaultedRegistryMixin"
   ],
   "client": [],

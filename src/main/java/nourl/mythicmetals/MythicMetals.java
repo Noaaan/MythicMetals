@@ -1,19 +1,20 @@
 package nourl.mythicmetals;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
-import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
+
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.blocks.MythicMetalsChains;
+import nourl.mythicmetals.blocks.MythicChains;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.MythicEnchantConfig;
 import nourl.mythicmetals.config.MythicForgeConfig;
-import nourl.mythicmetals.world.OreGenerator;
+import nourl.mythicmetals.world.MythicOreFeatures;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,21 +33,23 @@ public class MythicMetals implements ModInitializer {
     public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
             new Identifier("mythicmetals", "armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicMetalsChains.ADAMANTITE_CHAIN)).build();
+            new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicChains.ADAMANTITE_CHAIN)).build();
 
 
     @Override
     public void onInitialize() {
         RegisterItems.registerItems();
-        RegisterNuggets.register();
+        if (LOAD_CONFIG.enableNuggets) {
+            RegisterItems.registerNuggets();
+        }
         if (LOAD_CONFIG.enableDusts) {
             RegisterItems.registerDusts();
         }
         RegisterTools.register();
         RegisterArmor.register();
         RegisterBlocks.register();
-        OreGenerator.init();
-        OreGenerator.generate();
+        MythicOreFeatures.init();
+        MythicOreFeatures.generate();
 
         MythicEnchantConfig.appendEnchants();
         MythicForgeConfig.createAlloys();

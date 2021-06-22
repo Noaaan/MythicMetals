@@ -19,10 +19,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
-public abstract class MythicLivingEntityMixin extends Entity {
+public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
-    public MythicLivingEntityMixin(EntityType<?> type, World world) {
+    public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
     Random r = new Random();
