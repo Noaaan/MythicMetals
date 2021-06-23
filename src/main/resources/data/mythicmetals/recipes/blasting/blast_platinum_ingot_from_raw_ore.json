@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mythicmetals:raw_platinum"
+  },
+  "result": "mythicmetals:platinum_ingot",
+  "experience": 0.1,
+  "cookingtime": 100
+}

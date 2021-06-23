@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:quadrillum_ore",
-    "mythicmetals:raw_quadrillum"
+    "mythicmetals:quadrillum_ore"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mythicmetals:raw_aquarium"
+  },
+  "result": "mythicmetals:aquarium_ingot",
+  "experience": 0.2,
+  "cookingtime": 200
+}

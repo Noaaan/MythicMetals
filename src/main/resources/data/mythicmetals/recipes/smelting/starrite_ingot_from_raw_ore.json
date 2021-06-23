@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mythicmetals:raw_starrite"
+  },
+  "result": "mythicmetals:starrite_ingot",
+  "experience": 0.2,
+  "cookingtime": 200
+}

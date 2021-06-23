@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:orichalcum_ore",
-    "mythicmetals:tuff_orichalcum_ore",
-    "mythicmetals:raw_orichalcum"
+    "mythicmetals:tuff_orichalcum_ore"
   ]
 }

@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:kyber_ore",
-    "mythicmetals:calcite_kyber_ore",
-    "mythicmetals:raw_kyber"
+    "mythicmetals:calcite_kyber_ore"
   ]
 }

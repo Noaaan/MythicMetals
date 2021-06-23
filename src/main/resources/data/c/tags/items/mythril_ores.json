@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:mythril_ore",
-    "mythicmetals:deepslate_mythril_ore",
-    "mythicmetals:raw_mythril"
+    "mythicmetals:deepslate_mythril_ore"
   ]
 }

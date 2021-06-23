@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:silver_ore",
-    "mythicmetals:raw_silver"
+    "mythicmetals:silver_ore"
   ]
 }

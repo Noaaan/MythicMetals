@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:adamantite_ore",
-    "mythicmetals:deepslate_adamantite_ore",
-    "mythicmetals:raw_adamantite"
+    "mythicmetals:deepslate_adamantite_ore"
   ]
 }

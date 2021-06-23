@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:platinum_ore",
-    "mythicmetals:raw_platinum"
+    "mythicmetals:platinum_ore"
   ]
 }

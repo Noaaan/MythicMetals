@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:starrite_ore",
-    "mythicmetals:raw_starrite"
+    "mythicmetals:starrite_ore"
   ]
 }

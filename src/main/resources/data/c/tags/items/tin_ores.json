@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:tin_ore",
-    "mythicmetals:raw_tin"
+    "mythicmetals:tin_ore"
   ]
 }
