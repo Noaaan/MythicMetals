@@ -3,6 +3,7 @@ This update probably contains the most changes done to Mythic Metals ever.
 A lot has been removed from the mod, which includes:
 * Tin equipment
 * All of Brass
+* All of Electrum
 * All of Tantalite  
 * Truesilver, which has been replaced in favor of Palladium
 * All of Ur  

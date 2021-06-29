@@ -42,9 +42,6 @@ public enum MythicToolMaterials implements ToolMaterial {
     DURASTEEL(3, 800, 6.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
-    ELECTRUM(1, 200, 16.0F, 1.0F, 25, () -> {
-        return Ingredient.ofItems(RegisterItems.ELECTRUM_INGOT);
-    }),
     ETHERITE(4, 1969, 10.0F, 3.5F, 19, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
@@ -56,9 +53,6 @@ public enum MythicToolMaterials implements ToolMaterial {
     }),
     METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
         return Ingredient.ofItems(RegisterItems.METALLURGIUM_INGOT);
-    }),
-    MIDAS_GOLD(1, 178, 12.0F, 1.0F, 22, () -> {
-        return Ingredient.ofItems(RegisterItems.MIDAS_GOLD_INGOT);
     }),
     MYTHRIL(4, 1573, 11.0F, 4.0F, 22, () -> {
         return Ingredient.ofItems(RegisterItems.MYTHRIL_INGOT);
@@ -74,9 +68,6 @@ public enum MythicToolMaterials implements ToolMaterial {
     }),
     PROMETHEUM(3, 1601, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
-    }),
-    PLATINUM(2, 300, 7.0F, 3.0F, 20, () -> {
-        return Ingredient.ofItems(RegisterItems.PLATINUM_INGOT);
     }),
     QUADRILLUM(2, 531, 7.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterItems.QUADRILLUM_INGOT);

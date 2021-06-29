@@ -48,9 +48,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     DURASTEEL("durasteel", 28, new int[]{3, 6, 7, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
-    ELECTRUM("electrum", 14, new int[]{2, 4, 6, 2}, 25, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(RegisterItems.ELECTRUM_INGOT);
-    }),
     ETHERITE("etherite", 36, new int[]{4, 8, 9, 4}, 17, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
@@ -80,12 +77,6 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     }),
     PROMETHEUM("prometheum", 39, new int[]{3, 7, 8, 3}, 17, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
-    }),
-    PLATINUM("platinum", 9, new int[]{3, 4, 4, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(RegisterItems.PLATINUM_INGOT);
-    }),
-    QUADRILLUM("quadrillum", 20, new int[]{3, 6, 7, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5F, 0.0F, () -> {
-        return Ingredient.ofItems(RegisterItems.QUADRILLUM_INGOT);
     }),
     QUICKSILVER("quicksilver", 37, new int[]{4, 8, 8, 4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.QUICKSILVER_INGOT);

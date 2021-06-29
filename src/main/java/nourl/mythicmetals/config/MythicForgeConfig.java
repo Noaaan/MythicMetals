@@ -43,11 +43,6 @@ public class MythicForgeConfig {
                 put("mythicmetals:raw_silver", new MaterialWorth(9, true));
                 put("#c:silver_nuggets", new MaterialWorth(1, true));
             }});
-            put("electrum", new HashMap<>() {{
-                put("#c:electrum_blocks", new MaterialWorth(81, true));
-                put("#c:electrum_ingots", new MaterialWorth(9, true));
-                put("#c:electrum_nuggets", new MaterialWorth(1, true));
-            }});
             put("gold", new HashMap<>() {{
                 put("#c:gold_blocks", new MaterialWorth(81, true));
                 put("#c:gold_ingots", new MaterialWorth(9, true));
@@ -268,11 +263,6 @@ public class MythicForgeConfig {
                 put("quadrillum", 18);
                 put("manganese", 9);
             }}, new RecipeOutput("mythicmetals:durasteel_ingot", 4, 15, 1));
-            // Electrum
-            put(new HashMap<>() {{
-                put("silver", 9);
-                put("gold", 9);
-            }}, new RecipeOutput("#c:electrum_ingots", 1, 10, 1));
             // Etherite
             put(new HashMap<>() {{
                 put("aetherium", 9);

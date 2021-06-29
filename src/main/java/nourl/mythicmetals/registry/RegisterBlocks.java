@@ -25,6 +25,7 @@ public class RegisterBlocks {
         RegisterItem("carmot_ore", MythicOres.CARMOT_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_adamantite_ore", MythicOres.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_mythril_ore", MythicOres.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("deepslate_orichalcum_ore", MythicOres.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("kyber_ore", MythicOres.KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("manganese_ore", MythicOres.MANGANESE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("midas_gold_ore", MythicOres.MIDAS_GOLD_ORE, MythicMetals.MYTHICMETALS);
@@ -36,6 +37,7 @@ public class RegisterBlocks {
         RegisterItem("quadrillum_ore", MythicOres.QUADRILLUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("runite_ore", MythicOres.RUNITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("silver_ore", MythicOres.SILVER_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("smooth_basalt_orichalcum_ore", MythicOres.SMOOTH_BASALT_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("starrite_ore", MythicOres.STARRITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("stormyx_ore", MythicOres.STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_ore", MythicOres.TIN_ORE, MythicMetals.MYTHICMETALS);
@@ -53,6 +55,7 @@ public class RegisterBlocks {
         RegisterBlock("carmot_ore", MythicOres.CARMOT_ORE);
         RegisterBlock("deepslate_adamantite_ore", MythicOres.DEEPSLATE_ADAMANTITE_ORE);
         RegisterBlock("deepslate_mythril_ore", MythicOres.DEEPSLATE_MYTHRIL_ORE);
+        RegisterBlock("deepslate_orichalcum_ore", MythicOres.DEEPSLATE_ORICHALCUM_ORE);
         RegisterBlock("kyber_ore", MythicOres.KYBER_ORE);
         RegisterBlock("manganese_ore", MythicOres.MANGANESE_ORE);
         RegisterBlock("midas_gold_ore", MythicOres.MIDAS_GOLD_ORE);
@@ -64,6 +67,7 @@ public class RegisterBlocks {
         RegisterBlock("quadrillum_ore", MythicOres.QUADRILLUM_ORE);
         RegisterBlock("runite_ore", MythicOres.RUNITE_ORE);
         RegisterBlock("silver_ore", MythicOres.SILVER_ORE);
+        RegisterBlock("smooth_basalt_orichalcum_ore", MythicOres.SMOOTH_BASALT_ORICHALCUM_ORE);
         RegisterBlock("starrite_ore", MythicOres.STARRITE_ORE);
         RegisterBlock("stormyx_ore", MythicOres.STORMYX_ORE);
         RegisterBlock("tin_ore", MythicOres.TIN_ORE);
@@ -83,7 +87,6 @@ public class RegisterBlocks {
         RegisterItem("celestium_block", MythicBlocks.CELESTIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("discordium_block", MythicBlocks.DISCORDIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("durasteel_block", MythicBlocks.DURASTEEL_BLOCK, MythicMetals.MYTHICMETALS);
-        RegisterItem("electrum_block", MythicBlocks.ELECTRUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("etherite_block", MythicBlocks.ETHERITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("hallowed_block", MythicBlocks.HALLOWED_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("kyber_block", MythicBlocks.KYBER_BLOCK, MythicMetals.MYTHICMETALS);
@@ -116,7 +119,6 @@ public class RegisterBlocks {
         RegisterBlock("celestium_block", MythicBlocks.CELESTIUM_BLOCK);
         RegisterBlock("discordium_block", MythicBlocks.DISCORDIUM_BLOCK);
         RegisterBlock("durasteel_block", MythicBlocks.DURASTEEL_BLOCK);
-        RegisterBlock("electrum_block", MythicBlocks.ELECTRUM_BLOCK);
         RegisterBlock("etherite_block", MythicBlocks.ETHERITE_BLOCK);
         RegisterBlock("hallowed_block", MythicBlocks.HALLOWED_BLOCK);
         RegisterBlock("kyber_block", MythicBlocks.KYBER_BLOCK);
@@ -151,7 +153,6 @@ public class RegisterBlocks {
         RegisterItem("celestium_anvil", MythicAnvils.CELESTIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("discordium_anvil", MythicAnvils.DISCORDIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("durasteel_anvil", MythicAnvils.DURASTEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegisterItem("electrum_anvil", MythicAnvils.ELECTRUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("etherite_anvil", MythicAnvils.ETHERITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("hallowed_anvil", MythicAnvils.HALLOWED_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("kyber_anvil", MythicAnvils.KYBER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
@@ -182,7 +183,6 @@ public class RegisterBlocks {
         RegisterBlock("celestium_anvil", MythicAnvils.CELESTIUM_ANVIL);
         RegisterBlock("discordium_anvil", MythicAnvils.DISCORDIUM_ANVIL);
         RegisterBlock("durasteel_anvil", MythicAnvils.DURASTEEL_ANVIL);
-        RegisterBlock("electrum_anvil", MythicAnvils.ELECTRUM_ANVIL);
         RegisterBlock("etherite_anvil", MythicAnvils.ETHERITE_ANVIL);
         RegisterBlock("hallowed_anvil", MythicAnvils.HALLOWED_ANVIL);
         RegisterBlock("kyber_anvil", MythicAnvils.KYBER_ANVIL);
@@ -212,7 +212,6 @@ public class RegisterBlocks {
         MythicAnvils.ANVILS.add(MythicAnvils.CELESTIUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.DISCORDIUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.DURASTEEL_ANVIL);
-        MythicAnvils.ANVILS.add(MythicAnvils.ELECTRUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.ETHERITE_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.HALLOWED_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.KYBER_ANVIL);
@@ -244,7 +243,6 @@ public class RegisterBlocks {
         RegisterChainItem("celestium_chain", MythicChains.CELESTIUM_CHAIN);
         RegisterChainItem("discordium_chain", MythicChains.DISCORDIUM_CHAIN);
         RegisterChainItem("durasteel_chain", MythicChains.DURASTEEL_CHAIN);
-        RegisterChainItem("electrum_chain", MythicChains.ELECTRUM_CHAIN);
         RegisterChainItem("etherite_chain", MythicChains.ETHERITE_CHAIN);
         RegisterChainItem("hallowed_chain", MythicChains.HALLOWED_CHAIN);
         RegisterChainItem("kyber_chain", MythicChains.KYBER_CHAIN);
@@ -275,7 +273,6 @@ public class RegisterBlocks {
         RegisterChainBlock("celestium_chain", MythicChains.CELESTIUM_CHAIN);
         RegisterChainBlock("discordium_chain", MythicChains.DISCORDIUM_CHAIN);
         RegisterChainBlock("durasteel_chain", MythicChains.DURASTEEL_CHAIN);
-        RegisterChainBlock("electrum_chain", MythicChains.ELECTRUM_CHAIN);
         RegisterChainBlock("etherite_chain", MythicChains.ETHERITE_CHAIN);
         RegisterChainBlock("hallowed_chain", MythicChains.HALLOWED_CHAIN);
         RegisterChainBlock("kyber_chain", MythicChains.KYBER_CHAIN);

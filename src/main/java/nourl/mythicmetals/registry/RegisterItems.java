@@ -17,7 +17,6 @@ public class RegisterItems {
     public static final Item CELESTIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DISCORDIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DURASTEEL_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ELECTRUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ETHERITE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item HALLOWED_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item KYBER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -75,7 +74,6 @@ public class RegisterItems {
     public static final Item COPPER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DISCORDIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DURASTEEL_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ELECTRUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ETHERITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item HALLOWED_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item KYBER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -109,7 +107,6 @@ public class RegisterItems {
     public static final Item COPPER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DISCORDIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item DURASTEEL_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ELECTRUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item ETHERITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item GOLD_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item HALLOWED_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -145,7 +142,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "celestium_ingot"), CELESTIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "discordium_ingot"), DISCORDIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_ingot"), DURASTEEL_INGOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_ingot"), ELECTRUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_ingot"), ETHERITE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_ingot"), HALLOWED_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_ingot"), KYBER_INGOT);
@@ -203,7 +199,6 @@ public class RegisterItems {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "copper_dust"), COPPER_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "discordium_dust"), DISCORDIUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_dust"), DURASTEEL_DUST);
-    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_dust"), ELECTRUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_dust"), ETHERITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "gold_dust"), GOLD_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_dust"), HALLOWED_DUST);
@@ -239,7 +234,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "copper_nugget"), COPPER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "discordium_nugget"), DISCORDIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_nugget"), DURASTEEL_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "electrum_nugget"), ELECTRUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_nugget"), ETHERITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "hallowed_nugget"), HALLOWED_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_nugget"), KYBER_NUGGET);
