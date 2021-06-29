@@ -21,6 +21,7 @@
     "mythicmetals:mythril_pickaxe",
     "mythicmetals:orichalcum_pickaxe",
     "mythicmetals:osmium_pickaxe",
+    "mythicmetals:palladium_pickaxe",
     "mythicmetals:platinum_pickaxe",
     "mythicmetals:prometheum_pickaxe",
     "mythicmetals:quadrillum_pickaxe",
@@ -29,7 +30,6 @@
     "mythicmetals:silver_pickaxe",
     "mythicmetals:starrite_pickaxe",
     "mythicmetals:steel_pickaxe",
-    "mythicmetals:stormyx_pickaxe",
-    "mythicmetals:truesilver_pickaxe"
+    "mythicmetals:stormyx_pickaxe"
   ]
 }

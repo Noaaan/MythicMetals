@@ -1,0 +1,7 @@
+{
+  "parent": "mythicmetals:block/anvil_base",
+  "textures": {
+    "body": "mythicmetals:blocks/palladium_anvil",
+    "particle": "mythicmetals:blocks/palladium_block"
+  }
+}

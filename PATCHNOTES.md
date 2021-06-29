@@ -1,3 +1,29 @@
+# 0.10.0 - Caves and Cliffs  
+This update probably contains the most changes done to Mythic Metals ever.  
+A lot has been removed from the mod, which includes:
+* Tin equipment
+* All of Brass
+* All of Tantalite  
+* Truesilver, which has been replaced in favor of Palladium
+* All of Ur  
+* Zinc ingots and ores  
+* Copper Ingots/Blocks, which have been replaced by vanilla variants  
+
+Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds. This is experimental, so 
+**please make a backup before installing this update!**  
+A lot of the ore generation has been changed:  
+* Added deepslate variants of Adamantite, Mythril and Orichalcum
+* Added a tuff and smooth basalt variant of Orichalcum
+* Added a calcite variant of Kyber. Normal Kyber spawns rarely in the world, but it spawns in large veins in calcite (amethyst geodes)
+* Added a blackstone variant of Stormyx
+* Tweaked Unobtainium spawn rates (it is now more common to find per-world, but will be VERY hard to find in caves)
+
+There are also a lot of new things to talk about, starting with XXX  
+
+
+To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list:  
+
+
 # 0.9.10
 ### Note!
 Unembedded Cloth Config from the mod, you now have to download it yourself.  

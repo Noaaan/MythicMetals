@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:palladium_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:palladium_helmet",
+    "count": 1
+  }
+}

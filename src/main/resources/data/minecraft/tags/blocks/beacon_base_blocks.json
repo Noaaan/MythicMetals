@@ -21,6 +21,7 @@
     "mythicmetals:mythril_block",
     "mythicmetals:orichalcum_block",
     "mythicmetals:osmium_block",
+    "mythicmetals:palladium_block",
     "mythicmetals:platinum_block",
     "mythicmetals:prometheum_block",
     "mythicmetals:quadrillum_block",
@@ -30,7 +31,6 @@
     "mythicmetals:starrite_block",
     "mythicmetals:steel_block",
     "mythicmetals:stormyx_block",
-    "mythicmetals:truesilver_block",
     "mythicmetals:unobtainium_block"
   ]
 }

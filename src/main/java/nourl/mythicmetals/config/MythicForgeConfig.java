@@ -27,7 +27,6 @@ public class MythicForgeConfig {
                 put("#c:copper_ingots", new MaterialWorth(9, true));
                 put("#c:copper_ores", new MaterialWorth(27, true));
                 put("minecraft:raw_copper", new MaterialWorth(9, true));
-                put("mythicmetals:raw_copper", new MaterialWorth(9, true));
                 put("#c:copper_nuggets", new MaterialWorth(1, true));
             }});
             put("tin", new HashMap<>() {{
@@ -179,14 +178,14 @@ public class MythicForgeConfig {
                 put("#mythicmetals:prometheum_blocks", new MaterialWorth(81, true));
                 put("#mythicmetals:prometheum_ingots", new MaterialWorth(9, true));
                 put("#mythicmetals:prometheum_ores", new MaterialWorth(27, true));
-                put("mythicmetals:raw_prometheum", new MaterialWorth(27, true));
+                put("mythicmetals:raw_prometheum", new MaterialWorth(9, true));
                 put("#mythicmetals:prometheum_nuggets", new MaterialWorth(1, true));
             }});
             put("quadrillum", new HashMap<>() {{
                 put("#mythicmetals:quadrillum_blocks", new MaterialWorth(81, true));
                 put("#mythicmetals:quadrillum_ingots", new MaterialWorth(9, true));
                 put("#mythicmetals:quadrillum_ores", new MaterialWorth(27, true));
-                put("mythicmetals:raw_quadrillum", new MaterialWorth(27, true));
+                put("mythicmetals:raw_quadrillum", new MaterialWorth(9, true));
                 put("#mythicmetals:quadrillum_nuggets", new MaterialWorth(1, true));
             }});
             put("quicksilver", new HashMap<>() {{
@@ -268,7 +267,7 @@ public class MythicForgeConfig {
             put(new HashMap<>() {{
                 put("quadrillum", 18);
                 put("manganese", 9);
-            }}, new RecipeOutput("mythicmetals:durasteel_ingot", 3, 15, 1));
+            }}, new RecipeOutput("mythicmetals:durasteel_ingot", 4, 15, 1));
             // Electrum
             put(new HashMap<>() {{
                 put("silver", 9);

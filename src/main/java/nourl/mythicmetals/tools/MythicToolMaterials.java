@@ -12,7 +12,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1573, 8.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
-    AETHERIUM(4, 1601, 8.0F, 3.0F, 13, () -> {
+    AETHERIUM(4, 1601, 9.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
     }),
     AQUARIUM(2, 300, 6.5F, 2.0F, 16, () -> {
@@ -39,13 +39,13 @@ public enum MythicToolMaterials implements ToolMaterial {
     DISCORDIUM(3, 1666, 9.0F, 3.0F, 15, () -> {
         return Ingredient.ofItems(RegisterItems.DISCORDIUM_INGOT);
     }),
-    DURASTEEL(3, 1300, 8.0F, 3.0F, 12, () -> {
+    DURASTEEL(3, 800, 6.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
     ELECTRUM(1, 200, 16.0F, 1.0F, 25, () -> {
         return Ingredient.ofItems(RegisterItems.ELECTRUM_INGOT);
     }),
-    ETHERITE(4, 1969, 8.5F, 3.5F, 17, () -> {
+    ETHERITE(4, 1969, 10.0F, 3.5F, 19, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
     HALLOWED(4, 2048, 11.0F, 5.0F, 20, () -> {
@@ -66,8 +66,11 @@ public enum MythicToolMaterials implements ToolMaterial {
     ORICHALCUM(4, 2048, 8.0F, 4.0F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ORICHALCUM_INGOT);
     }),
-    OSMIUM(3, 784, 8.0F, 3.0F, 13, () -> {
+    OSMIUM(2, 584, 7.0F, 2.0F, 13, () -> {
         return Ingredient.ofItems(RegisterItems.OSMIUM_INGOT);
+    }),
+    PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
+        return Ingredient.ofItems(RegisterItems.PALLADIUM_INGOT);
     }),
     PROMETHEUM(3, 1601, 8.5F, 3.5F, 17, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
@@ -95,10 +98,8 @@ public enum MythicToolMaterials implements ToolMaterial {
     }),
     STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.STORMYX_INGOT);
-    }),
-    TRUESILVER(3, 1234, 8.0F, 3.5F, 16, () -> {
-        return Ingredient.ofItems(RegisterItems.TRUESILVER_INGOT);
     });
+
 
     private final int miningLevel;
     private final int itemDurability;

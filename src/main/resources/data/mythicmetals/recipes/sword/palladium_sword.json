@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " m ",
+    " m ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:palladium_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:palladium_sword",
+    "count": 1
+  }
+}

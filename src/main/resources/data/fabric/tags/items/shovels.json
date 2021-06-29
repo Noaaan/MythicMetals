@@ -21,6 +21,7 @@
     "mythicmetals:mythril_shovel",
     "mythicmetals:orichalcum_shovel",
     "mythicmetals:osmium_shovel",
+    "mythicmetals:palladium_shovel",
     "mythicmetals:platinum_shovel",
     "mythicmetals:prometheum_shovel",
     "mythicmetals:quadrillum_shovel",
@@ -29,7 +30,6 @@
     "mythicmetals:silver_shovel",
     "mythicmetals:starrite_shovel",
     "mythicmetals:steel_shovel",
-    "mythicmetals:stormyx_shovel",
-    "mythicmetals:truesilver_shovel"
+    "mythicmetals:stormyx_shovel"
   ]
 }

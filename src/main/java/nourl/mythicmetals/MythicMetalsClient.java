@@ -51,7 +51,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicChains.STARRITE_CHAIN,
                 MythicChains.STEEL_CHAIN,
                 MythicChains.STORMYX_CHAIN,
-                MythicChains.TRUESILVER_CHAIN
+                MythicChains.PALLADIUM_CHAIN
         );
     }
     // Adds custom entity models to hallowed and metallurgium armor, currently deprecated

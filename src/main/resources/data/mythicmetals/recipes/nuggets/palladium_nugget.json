@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:palladium_ingot"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:palladium_nugget",
+    "count": 9
+  }
+}

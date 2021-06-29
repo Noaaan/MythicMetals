@@ -91,6 +91,10 @@ public class RegisterArmor {
     public static final Item OSMIUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.OSMIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item OSMIUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.OSMIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item OSMIUM_BOOTS = new ArmorItem(MythicArmorMaterials.OSMIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+    public static final Item PALLADIUM_HELMET = new ArmorItem(MythicArmorMaterials.PALLADIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+    public static final Item PALLADIUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.PALLADIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+    public static final Item PALLADIUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.PALLADIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+    public static final Item PALLADIUM_BOOTS = new ArmorItem(MythicArmorMaterials.PALLADIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item PLATINUM_HELMET = new ArmorItem(MythicArmorMaterials.PLATINUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item PLATINUM_CHESTPLATE = new ArmorItem(MythicArmorMaterials.PLATINUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item PLATINUM_LEGGINGS = new ArmorItem(MythicArmorMaterials.PLATINUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
@@ -127,10 +131,6 @@ public class RegisterArmor {
     public static final Item STORMYX_CHESTPLATE = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STORMYX_LEGGINGS = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item STORMYX_BOOTS = new ArmorItem(MythicArmorMaterials.STORMYX, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TRUESILVER_HELMET = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TRUESILVER_CHESTPLATE = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TRUESILVER_LEGGINGS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item TRUESILVER_BOOTS = new ArmorItem(MythicArmorMaterials.TRUESILVER, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
 
     public static void register() {
         //Register Armor
@@ -214,6 +214,10 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_chestplate"), OSMIUM_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_leggings"), OSMIUM_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_boots"), OSMIUM_BOOTS);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_helmet"), PALLADIUM_HELMET);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_chestplate"), PALLADIUM_CHESTPLATE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_leggings"), PALLADIUM_LEGGINGS);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_boots"), PALLADIUM_BOOTS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "platinum_helmet"), PLATINUM_HELMET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "platinum_chestplate"), PLATINUM_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "platinum_leggings"), PLATINUM_LEGGINGS);
@@ -250,10 +254,6 @@ public class RegisterArmor {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_chestplate"), STORMYX_CHESTPLATE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_leggings"), STORMYX_LEGGINGS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_boots"), STORMYX_BOOTS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_helmet"), TRUESILVER_HELMET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_chestplate"), TRUESILVER_CHESTPLATE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_leggings"), TRUESILVER_LEGGINGS);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "truesilver_boots"), TRUESILVER_BOOTS);
 
     }
 }

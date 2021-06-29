@@ -127,6 +127,15 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreOsmiumMinHeight = 6;
         public int oreOsmiumMaxHeight = 48;
 
+        //Palladium Ore Settings
+        public boolean orePalladiumGeneration = true;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        public int orePalladiumVeinSize = 4;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
+        public int orePalladiumPerChunk = 6;
+        public int orePalladiumMinHeight = 8;
+        public int orePalladiumMaxHeight = 100;
+
         //Platinum Ore Settings
         public boolean orePlatinumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
@@ -199,14 +208,6 @@ public class MythicConfig extends PartitioningSerializer.GlobalData {
         public int oreTinMinHeight = 18;
         public int oreTinMaxHeight = 128;
 
-        //Truesilver Ore Settings
-        public boolean oreTruesilverGeneration = true;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreTruesilverVeinSize = 4;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreTruesilverPerChunk = 6;
-        public int oreTruesilverMinHeight = 8;
-        public int oreTruesilverMaxHeight = 100;
 
         //Unobtainium Ore Settings
         public boolean oreUnobtainiumGeneration = true;
