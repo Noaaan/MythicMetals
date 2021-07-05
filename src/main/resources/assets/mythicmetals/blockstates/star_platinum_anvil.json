@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mythicmetals:block/star_platinum_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "mythicmetals:block/star_platinum_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "mythicmetals:block/star_platinum_anvil"
+    },
+    "facing=west": {
+      "model": "mythicmetals:block/star_platinum_anvil",
+      "y": 90
+    }
+  }
+}

@@ -10,7 +10,6 @@ public class RegisterItems {
     public static final Item ADAMANTITE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AETHERIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AQUARIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ARGONIUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BANGLUM_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BRONZE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CARMOT_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -33,7 +32,8 @@ public class RegisterItems {
     public static final Item QUICKSILVER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RUNITE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item SILVER_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item STARRITE_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+    public static final Item STARRITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+    public static final Item STAR_PLATINUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STEEL_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STORMYX_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_INGOT = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -58,7 +58,6 @@ public class RegisterItems {
     public static final Item RAW_QUADRILLUM = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_RUNITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_SILVER = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item RAW_STARRITE = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_STORMYX = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RAW_TIN = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
 
@@ -66,7 +65,6 @@ public class RegisterItems {
     public static final Item ADAMANTITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AETHERIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AQUARIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ARGONIUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BANGLUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BRONZE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CARMOT_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -90,7 +88,7 @@ public class RegisterItems {
     public static final Item QUICKSILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RUNITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item SILVER_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item STARRITE_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+    public static final Item STAR_PLATINUM_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STEEL_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STORMYX_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_NUGGET = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -99,7 +97,6 @@ public class RegisterItems {
     public static final Item ADAMANTITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AETHERIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item AQUARIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item ARGONIUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BANGLUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item BRONZE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item CARMOT_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -124,7 +121,7 @@ public class RegisterItems {
     public static final Item QUICKSILVER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item RUNITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item SILVER_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
-    public static final Item STARRITE_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
+    public static final Item STAR_PLATINUM_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STEEL_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item STORMYX_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
     public static final Item TIN_DUST = new Item(new Item.Settings().group(MythicMetals.MYTHICMETALS));
@@ -135,7 +132,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_ingot"), ADAMANTITE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_ingot"), AETHERIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_ingot"), AQUARIUM_INGOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_ingot"), ARGONIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_ingot"), BANGLUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_ingot"), BRONZE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "carmot_ingot"), CARMOT_INGOT);
@@ -157,7 +153,8 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "quicksilver_ingot"), QUICKSILVER_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "runite_ingot"), RUNITE_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_ingot"), SILVER_INGOT);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_ingot"), STARRITE_INGOT);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite"), STARRITE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum"), STAR_PLATINUM);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_ingot"), STEEL_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_ingot"), STORMYX_INGOT);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_ingot"), TIN_INGOT);
@@ -182,7 +179,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_quadrillum"), RAW_QUADRILLUM);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_runite"), RAW_RUNITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_silver"), RAW_SILVER);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_starrite"), RAW_STARRITE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_stormyx"), RAW_STORMYX);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_tin"), RAW_TIN);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "raw_palladium"), RAW_PALLADIUM);
@@ -191,7 +187,6 @@ public class RegisterItems {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_dust"), ADAMANTITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_dust"), AETHERIUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_dust"), AQUARIUM_DUST);
-    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_dust"), ARGONIUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_dust"), BANGLUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_dust"), BRONZE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "carmot_dust"), CARMOT_DUST);
@@ -215,7 +210,7 @@ public class RegisterItems {
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "quicksilver_dust"), QUICKSILVER_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "runite_dust"), RUNITE_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_dust"), SILVER_DUST);
-    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_dust"), STARRITE_DUST);
+    Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_dust"), STAR_PLATINUM_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_dust"), STEEL_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_dust"), STORMYX_DUST);
     Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_dust"), TIN_DUST);
@@ -226,7 +221,6 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_nugget"), ADAMANTITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aetherium_nugget"), AETHERIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_nugget"), AQUARIUM_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_nugget"), ARGONIUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_nugget"), BANGLUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "bronze_nugget"), BRONZE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "carmot_nugget"), CARMOT_NUGGET);
@@ -249,7 +243,7 @@ public class RegisterItems {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "quicksilver_nugget"), QUICKSILVER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "runite_nugget"), RUNITE_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_nugget"), SILVER_NUGGET);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_nugget"), STARRITE_NUGGET);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_nugget"), STAR_PLATINUM_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_nugget"), STEEL_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "stormyx_nugget"), STORMYX_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "tin_nugget"), TIN_NUGGET);

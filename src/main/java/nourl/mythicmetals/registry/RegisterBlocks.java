@@ -80,7 +80,6 @@ public class RegisterBlocks {
         RegisterItem("adamantite_block", MythicBlocks.ADAMANTITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("aetherium_block", MythicBlocks.AETHERIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("aquarium_block", MythicBlocks.AQUARIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegisterItem("argonium_block", MythicBlocks.ARGONIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("banglum_block", MythicBlocks.BANGLUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("bronze_block", MythicBlocks.BRONZE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("carmot_block", MythicBlocks.CARMOT_BLOCK, MythicMetals.MYTHICMETALS);
@@ -103,6 +102,7 @@ public class RegisterBlocks {
         RegisterItem("runite_block", MythicBlocks.RUNITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("silver_block", MythicBlocks.SILVER_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("starrite_block", MythicBlocks.STARRITE_BLOCK, MythicMetals.MYTHICMETALS);
+        RegisterItem("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("steel_block", MythicBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("stormyx_block", MythicBlocks.STORMYX_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_block", MythicBlocks.TIN_BLOCK, MythicMetals.MYTHICMETALS);
@@ -112,7 +112,6 @@ public class RegisterBlocks {
         RegisterBlock("adamantite_block", MythicBlocks.ADAMANTITE_BLOCK);
         RegisterBlock("aetherium_block", MythicBlocks.AETHERIUM_BLOCK);
         RegisterBlock("aquarium_block", MythicBlocks.AQUARIUM_BLOCK);
-        RegisterBlock("argonium_block", MythicBlocks.ARGONIUM_BLOCK);
         RegisterBlock("banglum_block", MythicBlocks.BANGLUM_BLOCK);
         RegisterBlock("bronze_block", MythicBlocks.BRONZE_BLOCK);
         RegisterBlock("carmot_block", MythicBlocks.CARMOT_BLOCK);
@@ -135,6 +134,7 @@ public class RegisterBlocks {
         RegisterBlock("runite_block", MythicBlocks.RUNITE_BLOCK);
         RegisterBlock("silver_block", MythicBlocks.SILVER_BLOCK);
         RegisterBlock("starrite_block", MythicBlocks.STARRITE_BLOCK);
+        RegisterBlock("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK);
         RegisterBlock("steel_block", MythicBlocks.STEEL_BLOCK);
         RegisterBlock("stormyx_block", MythicBlocks.STORMYX_BLOCK);
         RegisterBlock("tin_block", MythicBlocks.TIN_BLOCK);
@@ -146,7 +146,6 @@ public class RegisterBlocks {
         RegisterItem("adamantite_anvil", MythicAnvils.ADAMANTITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("aetherium_anvil", MythicAnvils.AETHERIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("aquarium_anvil", MythicAnvils.AQUARIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegisterItem("argonium_anvil", MythicAnvils.ARGONIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("banglum_anvil", MythicAnvils.BANGLUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("bronze_anvil", MythicAnvils.BRONZE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("carmot_anvil", MythicAnvils.CARMOT_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
@@ -168,7 +167,7 @@ public class RegisterBlocks {
         RegisterItem("quicksilver_anvil", MythicAnvils.QUICKSILVER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("runite_anvil", MythicAnvils.RUNITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("silver_anvil", MythicAnvils.SILVER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegisterItem("starrite_anvil", MythicAnvils.STARRITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
+        RegisterItem("star_platinum_anvil", MythicAnvils.STAR_PLATINUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("steel_anvil", MythicAnvils.STEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("stormyx_anvil", MythicAnvils.STORMYX_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("palladium_anvil", MythicAnvils.PALLADIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
@@ -176,7 +175,6 @@ public class RegisterBlocks {
         RegisterBlock("adamantite_anvil", MythicAnvils.ADAMANTITE_ANVIL);
         RegisterBlock("aetherium_anvil", MythicAnvils.AETHERIUM_ANVIL);
         RegisterBlock("aquarium_anvil", MythicAnvils.AQUARIUM_ANVIL);
-        RegisterBlock("argonium_anvil", MythicAnvils.ARGONIUM_ANVIL);
         RegisterBlock("banglum_anvil", MythicAnvils.BANGLUM_ANVIL);
         RegisterBlock("bronze_anvil", MythicAnvils.BRONZE_ANVIL);
         RegisterBlock("carmot_anvil", MythicAnvils.CARMOT_ANVIL);
@@ -198,14 +196,13 @@ public class RegisterBlocks {
         RegisterBlock("quicksilver_anvil", MythicAnvils.QUICKSILVER_ANVIL);
         RegisterBlock("runite_anvil", MythicAnvils.RUNITE_ANVIL);
         RegisterBlock("silver_anvil", MythicAnvils.SILVER_ANVIL);
-        RegisterBlock("starrite_anvil", MythicAnvils.STARRITE_ANVIL);
+        RegisterBlock("star_platinum_anvil", MythicAnvils.STAR_PLATINUM_ANVIL);
         RegisterBlock("steel_anvil", MythicAnvils.STEEL_ANVIL);
         RegisterBlock("stormyx_anvil", MythicAnvils.STORMYX_ANVIL);
         RegisterBlock("palladium_anvil", MythicAnvils.PALLADIUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.ADAMANTITE_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.AETHERIUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.AQUARIUM_ANVIL);
-        MythicAnvils.ANVILS.add(MythicAnvils.ARGONIUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.BANGLUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.BRONZE_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.CARMOT_ANVIL);
@@ -227,7 +224,7 @@ public class RegisterBlocks {
         MythicAnvils.ANVILS.add(MythicAnvils.QUICKSILVER_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.RUNITE_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.SILVER_ANVIL);
-        MythicAnvils.ANVILS.add(MythicAnvils.STARRITE_ANVIL);
+        MythicAnvils.ANVILS.add(MythicAnvils.STAR_PLATINUM_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.STEEL_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.STORMYX_ANVIL);
         MythicAnvils.ANVILS.add(MythicAnvils.PALLADIUM_ANVIL);
@@ -236,7 +233,6 @@ public class RegisterBlocks {
         RegisterChainItem("adamantite_chain", MythicChains.ADAMANTITE_CHAIN);
         RegisterChainItem("aetherium_chain", MythicChains.AETHERIUM_CHAIN);
         RegisterChainItem("aquarium_chain", MythicChains.AQUARIUM_CHAIN);
-        RegisterChainItem("argonium_chain", MythicChains.ARGONIUM_CHAIN);
         RegisterChainItem("banglum_chain", MythicChains.BANGLUM_CHAIN);
         RegisterChainItem("bronze_chain", MythicChains.BRONZE_CHAIN);
         RegisterChainItem("carmot_chain", MythicChains.CARMOT_CHAIN);
@@ -258,7 +254,7 @@ public class RegisterBlocks {
         RegisterChainItem("quicksilver_chain", MythicChains.QUICKSILVER_CHAIN);
         RegisterChainItem("runite_chain", MythicChains.RUNITE_CHAIN);
         RegisterChainItem("silver_chain", MythicChains.SILVER_CHAIN);
-        RegisterChainItem("starrite_chain", MythicChains.STARRITE_CHAIN);
+        RegisterChainItem("star_platinum_chain", MythicChains.STAR_PLATINUM_CHAIN);
         RegisterChainItem("steel_chain", MythicChains.STEEL_CHAIN);
         RegisterChainItem("stormyx_chain", MythicChains.STORMYX_CHAIN);
         RegisterChainItem("palladium_chain", MythicChains.PALLADIUM_CHAIN);
@@ -266,7 +262,6 @@ public class RegisterBlocks {
         RegisterChainBlock("adamantite_chain", MythicChains.ADAMANTITE_CHAIN);
         RegisterChainBlock("aetherium_chain", MythicChains.AETHERIUM_CHAIN);
         RegisterChainBlock("aquarium_chain", MythicChains.AQUARIUM_CHAIN);
-        RegisterChainBlock("argonium_chain", MythicChains.ARGONIUM_CHAIN);
         RegisterChainBlock("banglum_chain", MythicChains.BANGLUM_CHAIN);
         RegisterChainBlock("bronze_chain", MythicChains.BRONZE_CHAIN);
         RegisterChainBlock("carmot_chain", MythicChains.CARMOT_CHAIN);
@@ -288,7 +283,7 @@ public class RegisterBlocks {
         RegisterChainBlock("quicksilver_chain", MythicChains.QUICKSILVER_CHAIN);
         RegisterChainBlock("runite_chain", MythicChains.RUNITE_CHAIN);
         RegisterChainBlock("silver_chain", MythicChains.SILVER_CHAIN);
-        RegisterChainBlock("starrite_chain", MythicChains.STARRITE_CHAIN);
+        RegisterChainBlock("star_platinum_chain", MythicChains.STAR_PLATINUM_CHAIN);
         RegisterChainBlock("steel_chain", MythicChains.STEEL_CHAIN);
         RegisterChainBlock("stormyx_chain", MythicChains.STORMYX_CHAIN);
         RegisterChainBlock("palladium_chain", MythicChains.PALLADIUM_CHAIN);

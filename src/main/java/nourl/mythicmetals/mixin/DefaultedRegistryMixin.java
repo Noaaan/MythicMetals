@@ -23,6 +23,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
             Identifier mythicTruesilverBlock = new Identifier(MythicMetals.MOD_ID, "truesilver_block");
             Identifier mythicUr = new Identifier(MythicMetals.MOD_ID, "ur_ore");
             Identifier mythicZinc = new Identifier(MythicMetals.MOD_ID, "zinc_ore");
+            Identifier mythicRawStarrite = new Identifier(MythicMetals.MOD_ID, "raw_starrite");
+            Identifier mythicStarriteIngot = new Identifier(MythicMetals.MOD_ID, "starrite_ingot");
+
             if(id != null) {
                 if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.MOD_ID, id.getPath());
                 if(id.getPath().equals("unobtainium_dust")) return new Identifier(MythicMetals.MOD_ID, "unobtainium");
@@ -33,6 +36,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
                 if(id.equals(mythicTruesilverOre)) return new Identifier(MythicMetals.MOD_ID, "palladium_ore");
                 if(id.equals(mythicTruesilverIngot)) return new Identifier(MythicMetals.MOD_ID, "palladium_ingot");
                 if(id.equals(mythicTruesilverBlock)) return new Identifier(MythicMetals.MOD_ID, "palladium_block");
+                if(id.equals(mythicStarriteIngot) || id.equals(mythicRawStarrite)) return new Identifier(MythicMetals.MOD_ID, "starrite");
             }
             return id;
         }

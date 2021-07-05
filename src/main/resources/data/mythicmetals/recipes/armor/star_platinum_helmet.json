@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:star_platinum"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:star_platinum_helmet",
+    "count": 1
+  }
+}

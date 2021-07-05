@@ -71,11 +71,6 @@ public class MythicForgeConfig {
                 put("mythicmetals:raw_aquarium", new MaterialWorth(9, true));
                 put("#mythicmetals:aquarium_nuggets", new MaterialWorth(1, true));
             }});
-            put("argonium", new HashMap<>() {{
-                put("#mythicmetals:argonium_blocks", new MaterialWorth(81, true));
-                put("#mythicmetals:argonium_ingots", new MaterialWorth(9, true));
-                put("#mythicmetals:argonium_nuggets", new MaterialWorth(1, true));
-            }});
             put("banglum", new HashMap<>() {{
                 put("#mythicmetals:banglum_blocks", new MaterialWorth(81, true));
                 put("#mythicmetals:banglum_ingots", new MaterialWorth(9, true));
@@ -238,11 +233,6 @@ public class MythicForgeConfig {
         // Item name, item amount, heat required, smeltery tier required
         // Final boolean is whether or not to overwrite existing recipes
         ForgeRecipes.addRecipes(new HashMap<>() {{
-            // Argonium
-            put(new HashMap<>() {{
-                put("gold", 9);
-                put("midas_gold", 9);
-            }}, new RecipeOutput("mythicmetals:argonium_ingot", 1, 10, 1));
             // Bronze
             put(new HashMap<>() {{
                 put("copper", 18);

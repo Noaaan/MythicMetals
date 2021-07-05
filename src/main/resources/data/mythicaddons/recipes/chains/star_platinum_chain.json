@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " R ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "mythicmetals:star_platinum_nuggets"
+    },
+    "R": {
+      "item": "mythicmetals:star_platinum"
+    }
+  },
+  "result": {
+    "item": "mythicaddons:star_platinum_chain",
+    "count": 1
+  },
+  "group": "mm_chains"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " R ",
+    "RRR"
+  ],
+  "key": {
+    "#": {
+      "item": "mythicmetals:star_platinum_block"
+    },
+    "R": {
+      "item": "mythicmetals:star_platinum"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:star_platinum_anvil",
+    "count": 1
+  },
+  "group": "mm_anvils"
+}

@@ -16,7 +16,6 @@ public class RegisterTools {
     public static final Item ADAMANTITE_SWORD = new SwordItem(MythicToolMaterials.ADAMANTITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_SWORD = new SwordItem(MythicToolMaterials.AETHERIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_SWORD = new SwordItem(MythicToolMaterials.AQUARIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ARGONIUM_SWORD = new SwordItem(MythicToolMaterials.ARGONIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_SWORD = new SwordItem(MythicToolMaterials.BANGLUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BRONZE_SWORD = new SwordItem(MythicToolMaterials.BRONZE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item CARMOT_SWORD = new SwordItem(MythicToolMaterials.CARMOT, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -28,7 +27,7 @@ public class RegisterTools {
     public static final Item HALLOWED_SWORD = new SwordItem(MythicToolMaterials.HALLOWED, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_SWORD = new SwordItem(MythicToolMaterials.KYBER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_SWORD = new SwordItem(MythicToolMaterials.METALLURGIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
-    public static final Item MYTHRIL_SWORD = new SwordItem(MythicToolMaterials.MYTHRIL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item MYTHRIL_SWORD = new SwordItem(MythicToolMaterials.MYTHRIL, 3, -2.2F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item ORICHALCUM_SWORD = new SwordItem(MythicToolMaterials.ORICHALCUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item OSMIUM_SWORD = new SwordItem(MythicToolMaterials.OSMIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item PALLADIUM_SWORD = new SwordItem(MythicToolMaterials.PALLADIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -37,14 +36,13 @@ public class RegisterTools {
     public static final Item QUICKSILVER_SWORD = new SwordItem(MythicToolMaterials.QUICKSILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_SWORD = new SwordItem(MythicToolMaterials.RUNITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_SWORD = new SwordItem(MythicToolMaterials.SILVER, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item STARRITE_SWORD = new SwordItem(MythicToolMaterials.STARRITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item STAR_PLATINUM_SWORD = new SwordItem(MythicToolMaterials.STAR_PLATINUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SWORD = new SwordItem(MythicToolMaterials.STEEL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SWORD = new SwordItem(MythicToolMaterials.STORMYX, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //PICKAXES
     public static final Item ADAMANTITE_PICKAXE = new PickaxeBase(MythicToolMaterials.ADAMANTITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.AETHERIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.AQUARIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ARGONIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.ARGONIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_PICKAXE = new PickaxeBase(MythicToolMaterials.BANGLUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BRONZE_PICKAXE = new PickaxeBase(MythicToolMaterials.BRONZE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item CARMOT_PICKAXE = new PickaxeBase(MythicToolMaterials.CARMOT, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -56,7 +54,7 @@ public class RegisterTools {
     public static final Item HALLOWED_PICKAXE = new PickaxeBase(MythicToolMaterials.HALLOWED, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_PICKAXE = new PickaxeBase(MythicToolMaterials.KYBER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.METALLURGIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
-    public static final Item MYTHRIL_PICKAXE = new PickaxeBase(MythicToolMaterials.MYTHRIL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item MYTHRIL_PICKAXE = new PickaxeBase(MythicToolMaterials.MYTHRIL, 2, -2.6F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item ORICHALCUM_PICKAXE = new PickaxeBase(MythicToolMaterials.ORICHALCUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item OSMIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.OSMIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item PALLADIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.PALLADIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -65,14 +63,13 @@ public class RegisterTools {
     public static final Item QUICKSILVER_PICKAXE = new PickaxeBase(MythicToolMaterials.QUICKSILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_PICKAXE = new PickaxeBase(MythicToolMaterials.RUNITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_PICKAXE = new PickaxeBase(MythicToolMaterials.SILVER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item STARRITE_PICKAXE = new PickaxeBase(MythicToolMaterials.STARRITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item STAR_PLATINUM_PICKAXE = new PickaxeBase(MythicToolMaterials.STAR_PLATINUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_PICKAXE = new PickaxeBase(MythicToolMaterials.STEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_PICKAXE = new PickaxeBase(MythicToolMaterials.STORMYX, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //AXES
     public static final Item ADAMANTITE_AXE = new AxeBase(MythicToolMaterials.ADAMANTITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_AXE = new AxeBase(MythicToolMaterials.AETHERIUM, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_AXE = new AxeBase(MythicToolMaterials.AQUARIUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ARGONIUM_AXE = new AxeBase(MythicToolMaterials.ARGONIUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_AXE = new AxeBase(MythicToolMaterials.BANGLUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BRONZE_AXE = new AxeBase(MythicToolMaterials.BRONZE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item CARMOT_AXE = new AxeBase(MythicToolMaterials.CARMOT, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -93,14 +90,13 @@ public class RegisterTools {
     public static final Item QUICKSILVER_AXE = new AxeBase(MythicToolMaterials.QUICKSILVER, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_AXE = new AxeBase(MythicToolMaterials.RUNITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_AXE = new AxeBase(MythicToolMaterials.SILVER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item STARRITE_AXE = new AxeBase(MythicToolMaterials.STARRITE, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item STAR_PLATINUM_AXE = new AxeBase(MythicToolMaterials.STAR_PLATINUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_AXE = new AxeBase(MythicToolMaterials.STEEL, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_AXE = new AxeBase(MythicToolMaterials.STORMYX, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //SHOVELS
     public static final Item ADAMANTITE_SHOVEL = new ShovelItem(MythicToolMaterials.ADAMANTITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_SHOVEL = new ShovelItem(MythicToolMaterials.AETHERIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_SHOVEL = new ShovelItem(MythicToolMaterials.AQUARIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ARGONIUM_SHOVEL = new ShovelItem(MythicToolMaterials.ARGONIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_SHOVEL = new ShovelItem(MythicToolMaterials.BANGLUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BRONZE_SHOVEL = new ShovelItem(MythicToolMaterials.BRONZE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item CARMOT_SHOVEL = new ShovelItem(MythicToolMaterials.CARMOT, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -112,7 +108,7 @@ public class RegisterTools {
     public static final Item HALLOWED_SHOVEL = new ShovelItem(MythicToolMaterials.HALLOWED, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_SHOVEL = new ShovelItem(MythicToolMaterials.KYBER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_SHOVEL = new ShovelItem(MythicToolMaterials.METALLURGIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
-    public static final Item MYTHRIL_SHOVEL = new ShovelItem(MythicToolMaterials.MYTHRIL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item MYTHRIL_SHOVEL = new ShovelItem(MythicToolMaterials.MYTHRIL, 1, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item ORICHALCUM_SHOVEL = new ShovelItem(MythicToolMaterials.ORICHALCUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item OSMIUM_SHOVEL = new ShovelItem(MythicToolMaterials.OSMIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item PALLADIUM_SHOVEL = new ShovelItem(MythicToolMaterials.PALLADIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -121,14 +117,13 @@ public class RegisterTools {
     public static final Item QUICKSILVER_SHOVEL = new ShovelItem(MythicToolMaterials.QUICKSILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_SHOVEL = new ShovelItem(MythicToolMaterials.RUNITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_SHOVEL = new ShovelItem(MythicToolMaterials.SILVER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item STARRITE_SHOVEL = new ShovelItem(MythicToolMaterials.STARRITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item STAR_PLATINUM_SHOVEL = new ShovelItem(MythicToolMaterials.STAR_PLATINUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SHOVEL = new ShovelItem(MythicToolMaterials.STEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SHOVEL = new ShovelItem(MythicToolMaterials.STORMYX, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //HOES
     public static final Item ADAMANTITE_HOE = new HoeBase(MythicToolMaterials.ADAMANTITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_HOE = new HoeBase(MythicToolMaterials.AETHERIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_HOE = new HoeBase(MythicToolMaterials.AQUARIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ARGONIUM_HOE = new HoeBase(MythicToolMaterials.ARGONIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_HOE = new HoeBase(MythicToolMaterials.BANGLUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BRONZE_HOE = new HoeBase(MythicToolMaterials.BRONZE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item CARMOT_HOE = new HoeBase(MythicToolMaterials.CARMOT, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -140,7 +135,7 @@ public class RegisterTools {
     public static final Item HALLOWED_HOE = new HoeBase(MythicToolMaterials.HALLOWED, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_HOE = new HoeBase(MythicToolMaterials.KYBER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_HOE = new HoeBase(MythicToolMaterials.METALLURGIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
-    public static final Item MYTHRIL_HOE = new HoeBase(MythicToolMaterials.MYTHRIL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item MYTHRIL_HOE = new HoeBase(MythicToolMaterials.MYTHRIL, 0, -2.5F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item ORICHALCUM_HOE = new HoeBase(MythicToolMaterials.ORICHALCUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item OSMIUM_HOE = new HoeBase(MythicToolMaterials.OSMIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item PALLADIUM_HOE = new HoeBase(MythicToolMaterials.PALLADIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -149,7 +144,7 @@ public class RegisterTools {
     public static final Item QUICKSILVER_HOE = new HoeBase(MythicToolMaterials.QUICKSILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item RUNITE_HOE = new HoeBase(MythicToolMaterials.RUNITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item SILVER_HOE = new HoeBase(MythicToolMaterials.SILVER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item STARRITE_HOE = new HoeBase(MythicToolMaterials.STARRITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item STAR_PLATINUM_HOE = new HoeBase(MythicToolMaterials.STAR_PLATINUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_HOE = new HoeBase(MythicToolMaterials.STEEL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_HOE = new HoeBase(MythicToolMaterials.STORMYX, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 
@@ -170,11 +165,6 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_pickaxe"), AQUARIUM_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_shovel"), AQUARIUM_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "aquarium_sword"), AQUARIUM_SWORD);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_axe"), ARGONIUM_AXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_hoe"), ARGONIUM_HOE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_pickaxe"), ARGONIUM_PICKAXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_shovel"), ARGONIUM_SHOVEL);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "argonium_sword"), ARGONIUM_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_axe"), BANGLUM_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_hoe"), BANGLUM_HOE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "banglum_pickaxe"), BANGLUM_PICKAXE);
@@ -275,11 +265,11 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_pickaxe"), SILVER_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_shovel"), SILVER_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "silver_sword"), SILVER_SWORD);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_axe"), STARRITE_AXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_hoe"), STARRITE_HOE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_pickaxe"), STARRITE_PICKAXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_shovel"), STARRITE_SHOVEL);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "starrite_sword"), STARRITE_SWORD);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_axe"), STAR_PLATINUM_AXE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_hoe"), STAR_PLATINUM_HOE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_pickaxe"), STAR_PLATINUM_PICKAXE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_shovel"), STAR_PLATINUM_SHOVEL);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "star_platinum_sword"), STAR_PLATINUM_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_axe"), STEEL_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_hoe"), STEEL_HOE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "steel_pickaxe"), STEEL_PICKAXE);

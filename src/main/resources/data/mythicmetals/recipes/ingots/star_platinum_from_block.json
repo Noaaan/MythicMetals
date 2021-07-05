@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:star_platinum_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:star_platinum",
+    "count": 9
+  }
+}

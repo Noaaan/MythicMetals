@@ -9,40 +9,37 @@ import nourl.mythicmetals.registry.RegisterItems;
 import java.util.function.Supplier;
 
 public enum MythicToolMaterials implements ToolMaterial {
-    ADAMANTITE(4, 1573, 8.0F, 5F, 16, () -> {
+    ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
-    AETHERIUM(4, 1601, 9.0F, 4.0F, 18, () -> {
+    AETHERIUM(4, 1607, 8.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
     }),
     AQUARIUM(2, 300, 6.5F, 2.0F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.AQUARIUM_INGOT);
     }),
-    ARGONIUM(3, 210, 14.0F, 1.5F, 44, () -> {
-        return Ingredient.ofItems(RegisterItems.ARGONIUM_INGOT);
-    }),
-    BANGLUM(2, 301, 12.0F, 2.5F, 1, () -> {
+    BANGLUM(2, 260, 7.0F, 2.0F, 1, () -> {
         return Ingredient.ofItems(RegisterItems.BANGLUM_INGOT);
     }),
-    BRONZE(2, 400, 7.0F, 2.0F, 14, () -> {
+    BRONZE(2, 500, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterItems.BRONZE_INGOT);
     }),
     CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
         return Ingredient.ofItems(RegisterItems.CARMOT_INGOT);
     }),
-    CELESTIUM(4, 1977, 9.9F, 4.0F, 24, () -> {
+    CELESTIUM(4, 1977, 9.9F, 5.0F, 24, () -> {
         return Ingredient.ofItems(RegisterItems.CELESTIUM_INGOT);
     }),
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
-    DISCORDIUM(3, 1666, 9.0F, 3.0F, 15, () -> {
+    DISCORDIUM(3, 1666, 8.0F, 3.0F, 15, () -> {
         return Ingredient.ofItems(RegisterItems.DISCORDIUM_INGOT);
     }),
     DURASTEEL(3, 800, 6.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
-    ETHERITE(4, 1969, 10.0F, 3.5F, 19, () -> {
+    ETHERITE(4, 1869, 10.0F, 5.0F, 19, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
     HALLOWED(4, 2048, 11.0F, 5.0F, 20, () -> {
@@ -54,10 +51,10 @@ public enum MythicToolMaterials implements ToolMaterial {
     METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
         return Ingredient.ofItems(RegisterItems.METALLURGIUM_INGOT);
     }),
-    MYTHRIL(4, 1573, 11.0F, 4.0F, 22, () -> {
+    MYTHRIL(4, 1024, 11.0F, 3.0F, 22, () -> {
         return Ingredient.ofItems(RegisterItems.MYTHRIL_INGOT);
     }),
-    ORICHALCUM(4, 2048, 8.0F, 4.0F, 16, () -> {
+    ORICHALCUM(4, 2048, 6.0F, 3.0F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ORICHALCUM_INGOT);
     }),
     OSMIUM(2, 584, 7.0F, 2.0F, 13, () -> {
@@ -66,22 +63,22 @@ public enum MythicToolMaterials implements ToolMaterial {
     PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.PALLADIUM_INGOT);
     }),
-    PROMETHEUM(3, 1601, 8.5F, 3.5F, 17, () -> {
+    PROMETHEUM(2, 742, 6.0F, 2.5F, 17, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
     }),
-    QUADRILLUM(2, 531, 7.0F, 2.0F, 10, () -> {
+    QUADRILLUM(2, 324, 5.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterItems.QUADRILLUM_INGOT);
     }),
-    QUICKSILVER(4, 1452, 13.0F, 2.5F, 25, () -> {
+    QUICKSILVER(4, 952, 16.0F, 3.0F, 25, () -> {
         return Ingredient.ofItems(RegisterItems.QUICKSILVER_INGOT);
     }),
     RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(RegisterItems.RUNITE_INGOT);
     }),
-    STARRITE(3, 1000, 9.0F, 3.5F, 18, () -> {
-        return Ingredient.ofItems(RegisterItems.STARRITE_INGOT);
+    STAR_PLATINUM(3, 800, 7.0F, 3.0F, 18, () -> {
+        return Ingredient.ofItems(RegisterItems.STAR_PLATINUM);
     }),
-    SILVER(1, 127, 4.0F, 1.0F, 20, () -> {
+    SILVER(1, 79, 10.0F, 1.0F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.SILVER_INGOT);
     }),
     STEEL(3, 600, 7.0F, 2.5F, 11, () -> {

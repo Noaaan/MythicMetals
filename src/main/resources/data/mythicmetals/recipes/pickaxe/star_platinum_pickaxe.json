@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    " / ",
+    " / "
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:star_platinum"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:star_platinum_pickaxe",
+    "count": 1
+  }
+}

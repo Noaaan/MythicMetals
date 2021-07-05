@@ -5,9 +5,10 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "AnvilScreenHandlerMixin",
-    "MixinRecipeManager",
+    "ArmorItemMixin",
+    "DefaultedRegistryMixin",
     "LivingEntityMixin",
-    "DefaultedRegistryMixin"
+    "MixinRecipeManager"
   ],
   "client": [],
   "injectors": {

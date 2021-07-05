@@ -10,6 +10,7 @@ import wraith.enchant_giver.EnchantsList;
 public class MythicEnchantConfig {
     public static void appendEnchants() {
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_HELMET), new Identifier("minecraft:aqua_affinity"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_CHESTPLATE), new Identifier("minecraft:luck_of_the_sea"), 2, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_LEGGINGS), new Identifier("minecraft:respiration"), 2, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_BOOTS), new Identifier("minecraft:depth_strider"), 2, true);
 

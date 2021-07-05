@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "m m",
+    "m m"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:star_platinum"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:star_platinum_boots",
+    "count": 1
+  }
+}

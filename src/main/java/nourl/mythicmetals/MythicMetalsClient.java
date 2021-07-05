@@ -25,7 +25,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicChains.ADAMANTITE_CHAIN,
                 MythicChains.AETHERIUM_CHAIN,
                 MythicChains.AQUARIUM_CHAIN,
-                MythicChains.ARGONIUM_CHAIN,
                 MythicChains.BANGLUM_CHAIN,
                 MythicChains.BRONZE_CHAIN,
                 MythicChains.CARMOT_CHAIN,
@@ -47,7 +46,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicChains.QUICKSILVER_CHAIN,
                 MythicChains.RUNITE_CHAIN,
                 MythicChains.SILVER_CHAIN,
-                MythicChains.STARRITE_CHAIN,
+                MythicChains.STAR_PLATINUM_CHAIN,
                 MythicChains.STEEL_CHAIN,
                 MythicChains.STORMYX_CHAIN,
                 MythicChains.PALLADIUM_CHAIN

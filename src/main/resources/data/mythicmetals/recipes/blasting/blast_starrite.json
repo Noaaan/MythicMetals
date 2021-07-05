@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "mythicmetals:starrite_ores"
+  },
+  "result": "mythicmetals:starrite",
+  "experience": 0.1,
+  "cookingtime": 100
+}
