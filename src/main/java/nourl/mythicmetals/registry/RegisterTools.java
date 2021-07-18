@@ -1,9 +1,12 @@
 package nourl.mythicmetals.registry;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.tools.AxeBase;
@@ -50,7 +53,6 @@ public class RegisterTools {
     public static final Item COPPER_PICKAXE = new PickaxeBase(MythicToolMaterials.COPPER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DISCORDIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.DISCORDIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DURASTEEL_PICKAXE = new PickaxeBase(MythicToolMaterials.DURASTEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ETHERITE_PICKAXE = new PickaxeBase(MythicToolMaterials.ETHERITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item HALLOWED_PICKAXE = new PickaxeBase(MythicToolMaterials.HALLOWED, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_PICKAXE = new PickaxeBase(MythicToolMaterials.KYBER, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_PICKAXE = new PickaxeBase(MythicToolMaterials.METALLURGIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -77,7 +79,6 @@ public class RegisterTools {
     public static final Item COPPER_AXE = new AxeBase(MythicToolMaterials.COPPER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DISCORDIUM_AXE = new AxeBase(MythicToolMaterials.DISCORDIUM, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DURASTEEL_AXE = new AxeBase(MythicToolMaterials.DURASTEEL, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ETHERITE_AXE = new AxeBase(MythicToolMaterials.ETHERITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item HALLOWED_AXE = new AxeBase(MythicToolMaterials.HALLOWED, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_AXE = new AxeBase(MythicToolMaterials.KYBER, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_AXE = new AxeBase(MythicToolMaterials.METALLURGIUM, 5, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -104,7 +105,6 @@ public class RegisterTools {
     public static final Item COPPER_SHOVEL = new ShovelItem(MythicToolMaterials.COPPER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DISCORDIUM_SHOVEL = new ShovelItem(MythicToolMaterials.DISCORDIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DURASTEEL_SHOVEL = new ShovelItem(MythicToolMaterials.DURASTEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ETHERITE_SHOVEL = new ShovelItem(MythicToolMaterials.ETHERITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item HALLOWED_SHOVEL = new ShovelItem(MythicToolMaterials.HALLOWED, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_SHOVEL = new ShovelItem(MythicToolMaterials.KYBER, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_SHOVEL = new ShovelItem(MythicToolMaterials.METALLURGIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -131,7 +131,6 @@ public class RegisterTools {
     public static final Item COPPER_HOE = new HoeBase(MythicToolMaterials.COPPER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DISCORDIUM_HOE = new HoeBase(MythicToolMaterials.DISCORDIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item DURASTEEL_HOE = new HoeBase(MythicToolMaterials.DURASTEEL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item ETHERITE_HOE = new HoeBase(MythicToolMaterials.ETHERITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item HALLOWED_HOE = new HoeBase(MythicToolMaterials.HALLOWED, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item KYBER_HOE = new HoeBase(MythicToolMaterials.KYBER, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item METALLURGIUM_HOE = new HoeBase(MythicToolMaterials.METALLURGIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS).fireproof());
@@ -148,6 +147,9 @@ public class RegisterTools {
     public static final Item STEEL_HOE = new HoeBase(MythicToolMaterials.STEEL, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_HOE = new HoeBase(MythicToolMaterials.STORMYX, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 
+    public static class Frogery {
+        public static final Item FROGE = new Item(new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD));
+    }
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "adamantite_axe"), ADAMANTITE_AXE);
@@ -200,10 +202,6 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_pickaxe"), DURASTEEL_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_shovel"), DURASTEEL_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "durasteel_sword"), DURASTEEL_SWORD);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_axe"), ETHERITE_AXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_hoe"), ETHERITE_HOE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_pickaxe"), ETHERITE_PICKAXE);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_shovel"), ETHERITE_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "etherite_sword"), ETHERITE_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_axe"), KYBER_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "kyber_hoe"), KYBER_HOE);
@@ -232,6 +230,7 @@ public class RegisterTools {
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "orichalcum_sword"), ORICHALCUM_SWORD);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_axe"), OSMIUM_AXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_hoe"), OSMIUM_HOE);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "froge_ingot"), Frogery.FROGE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_pickaxe"), OSMIUM_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_shovel"), OSMIUM_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "osmium_sword"), OSMIUM_SWORD);

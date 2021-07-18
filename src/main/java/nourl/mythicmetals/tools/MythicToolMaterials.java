@@ -39,7 +39,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     DURASTEEL(3, 800, 6.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
-    ETHERITE(4, 1869, 10.0F, 5.0F, 19, () -> {
+    ETHERITE(3, 2017, 8.0F, 5.0F, 19, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
     HALLOWED(4, 2048, 11.0F, 5.0F, 20, () -> {
@@ -84,7 +84,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
         return Ingredient.ofItems(RegisterItems.STEEL_INGOT);
     }),
-    STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> {
+    STORMYX(3, 1405, 8.0F, 3.5F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.STORMYX_INGOT);
     });
 

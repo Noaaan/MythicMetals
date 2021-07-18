@@ -1,6 +1,5 @@
 package nourl.mythicmetals;
 
-
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
@@ -13,7 +12,6 @@ import net.minecraft.util.Identifier;
 import nourl.mythicmetals.blocks.MythicChains;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.MythicEnchantConfig;
-import nourl.mythicmetals.config.MythicForgeConfig;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
@@ -52,7 +50,6 @@ public class MythicMetals implements ModInitializer {
         MythicOreFeatures.generate();
 
         MythicEnchantConfig.appendEnchants();
-        MythicForgeConfig.createAlloys();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
         if (FabricLoader.getInstance().isModLoaded("smithee")) {

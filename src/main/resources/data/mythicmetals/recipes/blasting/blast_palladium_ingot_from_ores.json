@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "tag": "mythicmetals:palladium_ores"
+    "tag": "c:palladium_ores"
   },
   "result": "mythicmetals:palladium_ingot",
   "experience": 0.1,

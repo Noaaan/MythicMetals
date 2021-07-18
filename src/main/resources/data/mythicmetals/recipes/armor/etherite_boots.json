@@ -1,16 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "m m",
-    "m m"
-  ],
-  "key": {
-    "m": {
-      "item": "mythicmetals:etherite_ingot"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mythicmetals:aetherium_boots"
+  },
+  "addition": {
+    "item": "mythicmetals:etherite_ingot"
   },
   "result": {
-    "item": "mythicmetals:etherite_boots",
-    "count": 1
+    "item": "mythicmetals:etherite_boots"
   }
 }

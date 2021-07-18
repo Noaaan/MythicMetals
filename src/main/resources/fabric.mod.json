@@ -22,6 +22,9 @@
     "client": [
       "nourl.mythicmetals.MythicMetalsClient"
     ],
+    "rei_plugins": [
+      "nourl.mythicmetals.compat.MythicMetalsPlugin"
+    ],
     "modmenu": [
       "nourl.mythicmetals.config.MythicModMenu"
     ]
@@ -31,9 +34,9 @@
   ],
   "depends": {
     "fabricloader": ">=0.11.3",
-    "alloy_forgery": ">=1.3.0",
+    "alloy_forgery": "*",
     "fabric": ">=0.35.2",
-    "minecraft": ">=1.17",
+    "minecraft": "*",
     "cloth-config2": ">=5.0.30"
 
   },

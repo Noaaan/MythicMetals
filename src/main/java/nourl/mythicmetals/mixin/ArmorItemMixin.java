@@ -46,8 +46,22 @@ public abstract class ArmorItemMixin {
                             "Armor knockback resistance",
                             this.knockbackResistance,
                             EntityAttributeModifier.Operation.ADDITION
-                    )
-            );
+                    ));
+
+            this.attributeModifiers = builder.build();
+        }
+        if (material == MythicArmorMaterials.ETHERITE) {
+            ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
+
+            this.attributeModifiers.forEach(builder::put);
+
+            builder.put(
+                    EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                    new EntityAttributeModifier(uUID,
+                            "Armor attack bonus",
+                            0.5F,
+                            EntityAttributeModifier.Operation.ADDITION
+                    ));
 
             this.attributeModifiers = builder.build();
         }
