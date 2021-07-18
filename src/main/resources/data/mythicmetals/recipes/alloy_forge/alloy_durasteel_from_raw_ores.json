@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_quadrillum"
+    },
+	{
+      "item": "mythicmetals:raw_manganese"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:durasteel_ingot",
+    "count": 3
+  },
+  "overrides": {
+	"2+": {
+      "id": "mythicmetals:durasteel_ingot",
+      "count": 4
+    }
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}

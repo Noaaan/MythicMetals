@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_stormyx"
+    },
+    {
+      "item": "mythicmetals:raw_stormyx"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:stormyx_ingot",
+    "count": 2
+  },
+  "overrides": {
+    "3+": {
+      "id": "mythicmetals:stormyx_ingot",
+      "count": 3
+    }
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}

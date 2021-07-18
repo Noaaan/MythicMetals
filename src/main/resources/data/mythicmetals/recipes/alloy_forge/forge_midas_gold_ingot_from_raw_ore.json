@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_midas_gold"
+    },
+    {
+      "item": "mythicmetals:raw_midas_gold"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:midas_gold_ingot",
+    "count": 3
+  },
+  "overrides": {
+    "2+": {
+      "id": "mythicmetals:midas_gold_ingot",
+      "count": 4
+    }
+  },
+  "min_forge_tier": 1,
+  "fuel_per_tick": 5
+}

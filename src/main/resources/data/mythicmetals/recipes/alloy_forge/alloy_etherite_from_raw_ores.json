@@ -1,0 +1,32 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_aetherium"
+    },
+	{
+      "item": "mythicmetals:vermiculite"
+    },
+	{
+      "item": "mythicmetals:vermiculite"
+    },
+	{
+      "item": "mythicmetals:vermiculite"
+    },
+	{
+      "item": "mythicmetals:vermiculite"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:etherite_ingot",
+    "count": 1
+  },
+  "overrides": {
+	"3+": {
+      "id": "mythicmetals:etherite_ingot",
+      "count": 2
+    }
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}

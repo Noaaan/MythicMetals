@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:prometheum_ore"
+    },
+	{
+      "item": "mythicmetals:banglum_ore"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:discordium_ingot",
+    "count": 2
+  },
+  "overrides": {
+	"3+": {
+      "id": "mythicmetals:discordium_ingot",
+      "count": 3
+    }
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}

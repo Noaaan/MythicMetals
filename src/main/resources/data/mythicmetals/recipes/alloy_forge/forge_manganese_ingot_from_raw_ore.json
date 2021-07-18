@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_manganese"
+    },
+    {
+      "item": "mythicmetals:raw_manganese"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:manganese_ingot",
+    "count": 3
+  },
+  "overrides": {
+    "2+": {
+      "id": "mythicmetals:manganese_ingot",
+      "count": 4
+    }
+  },
+  "min_forge_tier": 1,
+  "fuel_per_tick": 5
+}

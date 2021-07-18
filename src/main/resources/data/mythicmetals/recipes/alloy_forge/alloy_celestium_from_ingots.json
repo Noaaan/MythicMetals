@@ -1,0 +1,20 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:starrite"
+    },
+	    {
+      "tag": "c:platinum_ingots"
+    },
+	{
+      "item": "mythicmetals:kyber_ingot"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:celestium_ingot",
+    "count": 1
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}

@@ -1,0 +1,29 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "tag": "c:adamantite_ores"
+    },
+	{
+      "tag": "c:mythril_ores"
+    },
+	{
+      "tag": "c:orichalcum_ores"
+    },
+	{
+      "tag": "c:palladium_ores"
+    },
+	{
+      "tag": "mythicmetals:aetherium_ores"
+    },
+	{
+	  "item": "mythicmetals:unobtainium"
+	}
+  ],
+  "output": {
+    "id": "mythicmetals:metallurgium_ingot",
+    "count": 2
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 50
+}
