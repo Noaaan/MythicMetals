@@ -16,11 +16,11 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class MythicArmorModel extends BipedEntityModel<LivingEntity> {
+public class ArmorModel extends BipedEntityModel<LivingEntity> {
 
     protected final EquipmentSlot slot;
 
-    public MythicArmorModel(EquipmentSlot slot, ModelPart root) {
+    public ArmorModel(EquipmentSlot slot, ModelPart root) {
         super(root);
         this.slot = slot;
     }

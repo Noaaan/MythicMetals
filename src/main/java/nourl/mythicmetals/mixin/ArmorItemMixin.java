@@ -9,7 +9,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
-import nourl.mythicmetals.armor.MythicArmorMaterials;
+import nourl.mythicmetals.armor.ArmorMaterials;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 @Mixin(ArmorItem.class)
@@ -35,7 +34,7 @@ public abstract class ArmorItemMixin {
     private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
-        if (MythicArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
+        if (ArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
             ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
 
             this.attributeModifiers.forEach(builder::put);
@@ -50,7 +49,7 @@ public abstract class ArmorItemMixin {
 
             this.attributeModifiers = builder.build();
         }
-        if (material == MythicArmorMaterials.ETHERITE) {
+        if (material == ArmorMaterials.ETHERITE) {
             ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
 
             this.attributeModifiers.forEach(builder::put);

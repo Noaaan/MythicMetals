@@ -1,14 +1,18 @@
 # 0.10.0 - Caves and Cliffs  
-This update probably contains the most changes done to Mythic Metals ever.  
-A lot has been removed from the mod, which includes:
-* Tin equipment
+This update contains the biggest changes in the history of Mythic Metals.  
+A lot has been removed from the mod, which includes:  
+* All of Argonium
 * All of Brass
 * All of Electrum
-* All of Tantalite  
+* All of Tantalite
+* All of Ur
+* Copper Ingots/Blocks, which have been replaced by vanilla variants
+* Etherite Tools
+* Starrite gear, replaced for Star Platinum
+* Tin equipment
 * Truesilver, which has been replaced in favor of Palladium
-* All of Ur  
-* Zinc ingots and ores  
-* Copper Ingots/Blocks, which have been replaced by vanilla variants  
+* Quadrillum armour
+* Zinc ingots and ores
 
 Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds. This is experimental, so 
 **please make a backup before installing this update!**  
@@ -19,10 +23,8 @@ A lot of the ore generation has been changed:
 * Added a blackstone variant of Stormyx
 * Tweaked Unobtainium spawn rates (it is now more common to find per-world, but will be VERY hard to find in caves)
 
-There are also a lot of new things to talk about, starting with XXX  
+To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list. Unfortunately they are not finished yet :/ 
 
-
-To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list:  
 
 
 # 0.9.10

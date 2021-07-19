@@ -7,7 +7,7 @@ import nourl.mythicmetals.registry.RegisterTools;
 import wraith.enchant_giver.EnchantsList;
 
 // Hardcodes enchantments onto armour into the Enchant Giver config
-public class MythicEnchantConfig {
+public class EnchantConfig {
     public static void appendEnchants() {
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_HELMET), new Identifier("minecraft:aqua_affinity"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_CHESTPLATE), new Identifier("minecraft:luck_of_the_sea"), 2, true);

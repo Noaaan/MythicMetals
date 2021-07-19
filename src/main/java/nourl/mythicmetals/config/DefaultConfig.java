@@ -7,7 +7,7 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
 @Config(name = "mythic_metals")
-public class MythicConfig extends PartitioningSerializer.GlobalData {
+public class DefaultConfig extends PartitioningSerializer.GlobalData {
 
     @ConfigEntry.Category("general")
     @ConfigEntry.Gui.TransitiveObject

@@ -26,21 +26,21 @@
       "nourl.mythicmetals.compat.MythicMetalsPlugin"
     ],
     "modmenu": [
-      "nourl.mythicmetals.config.MythicModMenu"
+      "nourl.mythicmetals.compat.MythicMetalsModMenu"
     ]
   },
   "mixins": [
     "mythicmetals.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
-    "alloy_forgery": "*",
-    "fabric": ">=0.35.2",
-    "minecraft": "*",
+    "fabricloader": ">=0.11.6",
+    "alloy_forgery": "2.0.x",
+    "fabric": ">=0.36.0",
+    "minecraft": "1.17.x",
     "cloth-config2": ">=5.0.30"
 
   },
   "suggests": {
-    "modmenu": ">=1.16.0"
+    "modmenu": ">=2.0.0"
   }
 }

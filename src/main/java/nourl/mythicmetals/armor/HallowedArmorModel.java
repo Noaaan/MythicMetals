@@ -5,7 +5,7 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 
-public class HallowedArmorModel /*extends MythicArmorModel*/ {
+public class HallowedArmorModel /*extends ArmorModel*/ {
 //    private final ModelPart HEAD;
 //    private final ModelPart BODY;
 //    private final ModelPart RIGHTARM;

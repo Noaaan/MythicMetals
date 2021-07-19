@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 //import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderingRegistry;
 import net.minecraft.client.render.RenderLayer;
 //import net.minecraft.util.Identifier;
-import nourl.mythicmetals.blocks.MythicChains;
+import nourl.mythicmetals.blocks.MythicBlocks;
 //import nourl.mythicmetals.armor.HallowedArmor;
 //import nourl.mythicmetals.armor.MetallurgiumArmor;
 //import nourl.mythicmetals.registry.RegisterArmor;
@@ -22,34 +22,34 @@ public class MythicMetalsClient implements ClientModInitializer {
     // Makes custom model blocks see trough, like chains
     public void makeOpaque() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
-                MythicChains.ADAMANTITE_CHAIN,
-                MythicChains.AETHERIUM_CHAIN,
-                MythicChains.AQUARIUM_CHAIN,
-                MythicChains.BANGLUM_CHAIN,
-                MythicChains.BRONZE_CHAIN,
-                MythicChains.CARMOT_CHAIN,
-                MythicChains.CELESTIUM_CHAIN,
-                MythicChains.DISCORDIUM_CHAIN,
-                MythicChains.DURASTEEL_CHAIN,
-                MythicChains.ETHERITE_CHAIN,
-                MythicChains.KYBER_CHAIN,
-                MythicChains.HALLOWED_CHAIN,
-                MythicChains.MANGANESE_CHAIN,
-                MythicChains.METALLURGIUM_CHAIN,
-                MythicChains.MIDAS_GOLD_CHAIN,
-                MythicChains.MYTHRIL_CHAIN,
-                MythicChains.ORICHALCUM_CHAIN,
-                MythicChains.OSMIUM_CHAIN,
-                MythicChains.PLATINUM_CHAIN,
-                MythicChains.PROMETHEUM_CHAIN,
-                MythicChains.QUADRILLUM_CHAIN,
-                MythicChains.QUICKSILVER_CHAIN,
-                MythicChains.RUNITE_CHAIN,
-                MythicChains.SILVER_CHAIN,
-                MythicChains.STAR_PLATINUM_CHAIN,
-                MythicChains.STEEL_CHAIN,
-                MythicChains.STORMYX_CHAIN,
-                MythicChains.PALLADIUM_CHAIN
+                MythicBlocks.ADAMANTITE_CHAIN,
+                MythicBlocks.AETHERIUM_CHAIN,
+                MythicBlocks.AQUARIUM_CHAIN,
+                MythicBlocks.BANGLUM_CHAIN,
+                MythicBlocks.BRONZE_CHAIN,
+                MythicBlocks.CARMOT_CHAIN,
+                MythicBlocks.CELESTIUM_CHAIN,
+                MythicBlocks.DISCORDIUM_CHAIN,
+                MythicBlocks.DURASTEEL_CHAIN,
+                MythicBlocks.ETHERITE_CHAIN,
+                MythicBlocks.KYBER_CHAIN,
+                MythicBlocks.HALLOWED_CHAIN,
+                MythicBlocks.MANGANESE_CHAIN,
+                MythicBlocks.METALLURGIUM_CHAIN,
+                MythicBlocks.MIDAS_GOLD_CHAIN,
+                MythicBlocks.MYTHRIL_CHAIN,
+                MythicBlocks.ORICHALCUM_CHAIN,
+                MythicBlocks.OSMIUM_CHAIN,
+                MythicBlocks.PLATINUM_CHAIN,
+                MythicBlocks.PROMETHEUM_CHAIN,
+                MythicBlocks.QUADRILLUM_CHAIN,
+                MythicBlocks.QUICKSILVER_CHAIN,
+                MythicBlocks.RUNITE_CHAIN,
+                MythicBlocks.SILVER_CHAIN,
+                MythicBlocks.STAR_PLATINUM_CHAIN,
+                MythicBlocks.STEEL_CHAIN,
+                MythicBlocks.STORMYX_CHAIN,
+                MythicBlocks.PALLADIUM_CHAIN
         );
     }
     // Adds custom entity models to hallowed and metallurgium armor, currently deprecated

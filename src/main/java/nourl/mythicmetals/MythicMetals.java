@@ -9,9 +9,9 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.blocks.MythicChains;
-import nourl.mythicmetals.config.MythicConfig;
-import nourl.mythicmetals.config.MythicEnchantConfig;
+import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.config.DefaultConfig;
+import nourl.mythicmetals.config.EnchantConfig;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
@@ -21,8 +21,8 @@ public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final String CHAIN_ID = "mythicaddons";
-    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
-    public static final MythicConfig.MythicGeneralConfig LOAD_CONFIG = MythicMetals.CONFIG.mythgeneral;
+    public static final DefaultConfig CONFIG = AutoConfig.register(DefaultConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new)).getConfig();
+    public static final DefaultConfig.MythicGeneralConfig LOAD_CONFIG = MythicMetals.CONFIG.mythgeneral;
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
             new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
@@ -31,7 +31,7 @@ public class MythicMetals implements ModInitializer {
     public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
             new Identifier("mythicmetals", "armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicChains.ADAMANTITE_CHAIN)).build();
+            new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
 
     @Override
@@ -49,7 +49,7 @@ public class MythicMetals implements ModInitializer {
         MythicOreFeatures.init();
         MythicOreFeatures.generate();
 
-        MythicEnchantConfig.appendEnchants();
+        EnchantConfig.appendEnchants();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
         if (FabricLoader.getInstance().isModLoaded("smithee")) {
