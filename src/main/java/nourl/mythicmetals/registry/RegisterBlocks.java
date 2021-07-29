@@ -19,16 +19,20 @@ public class RegisterBlocks {
         RegisterItem("banglum_ore", MythicBlocks.BANGLUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("blackstone_stormyx_ore", MythicBlocks.BLACKSTONE_STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("calcite_kyber_ore", MythicBlocks.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("calcite_starrite_ore", MythicBlocks.CALCITE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("carmot_ore", MythicBlocks.CARMOT_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_adamantite_ore", MythicBlocks.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
+        RegisterItem("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("kyber_ore", MythicBlocks.KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("manganese_ore", MythicBlocks.MANGANESE_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("midas_gold_ore", MythicBlocks.MIDAS_GOLD_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("mythril_ore", MythicBlocks.MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("orichalcum_ore", MythicBlocks.ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("osmium_ore", MythicBlocks.OSMIUM_ORE, MythicMetals.MYTHICMETALS);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_ore"), new BlockItem(MythicBlocks.PALLADIUM_ORE, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "deepslate_unobtainium_ore"), new BlockItem(MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
         RegisterItem("platinum_ore", MythicBlocks.PLATINUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("prometheum_ore", MythicBlocks.PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("quadrillum_ore", MythicBlocks.QUADRILLUM_ORE, MythicMetals.MYTHICMETALS);
@@ -39,7 +43,6 @@ public class RegisterBlocks {
         RegisterItem("stormyx_ore", MythicBlocks.STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_ore", MythicBlocks.TIN_ORE, MythicMetals.MYTHICMETALS);
         RegisterItem("tuff_orichalcum_ore", MythicBlocks.TUFF_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegisterItem("palladium_ore", MythicBlocks.PALLADIUM_ORE, MythicMetals.MYTHICMETALS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium_ore"), new BlockItem(MythicBlocks.UNOBTAINIUM_ORE, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
         RegisterItem("vermiculite_ore", MythicBlocks.VERMICULITE_ORE, MythicMetals.MYTHICMETALS);
 
@@ -49,16 +52,20 @@ public class RegisterBlocks {
         RegisterBlock("banglum_ore", MythicBlocks.BANGLUM_ORE);
         RegisterBlock("blackstone_stormyx_ore", MythicBlocks.BLACKSTONE_STORMYX_ORE);
         RegisterBlock("calcite_kyber_ore", MythicBlocks.CALCITE_KYBER_ORE);
+        RegisterBlock("calcite_starrite_ore", MythicBlocks.CALCITE_STARRITE_ORE);
         RegisterBlock("carmot_ore", MythicBlocks.CARMOT_ORE);
         RegisterBlock("deepslate_adamantite_ore", MythicBlocks.DEEPSLATE_ADAMANTITE_ORE);
         RegisterBlock("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE);
         RegisterBlock("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE);
+        RegisterBlock("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE);
+        RegisterBlock("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE);
         RegisterBlock("kyber_ore", MythicBlocks.KYBER_ORE);
         RegisterBlock("manganese_ore", MythicBlocks.MANGANESE_ORE);
         RegisterBlock("midas_gold_ore", MythicBlocks.MIDAS_GOLD_ORE);
         RegisterBlock("mythril_ore", MythicBlocks.MYTHRIL_ORE);
         RegisterBlock("orichalcum_ore", MythicBlocks.ORICHALCUM_ORE);
         RegisterBlock("osmium_ore", MythicBlocks.OSMIUM_ORE);
+        RegisterBlock("palladium_ore", MythicBlocks.PALLADIUM_ORE);
         RegisterBlock("platinum_ore", MythicBlocks.PLATINUM_ORE);
         RegisterBlock("prometheum_ore", MythicBlocks.PROMETHEUM_ORE);
         RegisterBlock("quadrillum_ore", MythicBlocks.QUADRILLUM_ORE);
@@ -69,7 +76,6 @@ public class RegisterBlocks {
         RegisterBlock("stormyx_ore", MythicBlocks.STORMYX_ORE);
         RegisterBlock("tin_ore", MythicBlocks.TIN_ORE);
         RegisterBlock("tuff_orichalcum_ore", MythicBlocks.TUFF_ORICHALCUM_ORE);
-        RegisterBlock("palladium_ore", MythicBlocks.PALLADIUM_ORE);
         RegisterBlock("unobtainium_ore", MythicBlocks.UNOBTAINIUM_ORE);
         RegisterBlock("vermiculite_ore", MythicBlocks.VERMICULITE_ORE);
 
@@ -92,6 +98,7 @@ public class RegisterBlocks {
         RegisterItem("mythril_block", MythicBlocks.MYTHRIL_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("orichalcum_block", MythicBlocks.ORICHALCUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("osmium_block", MythicBlocks.OSMIUM_BLOCK, MythicMetals.MYTHICMETALS);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_block"), new BlockItem(MythicBlocks.PALLADIUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
         RegisterItem("platinum_block", MythicBlocks.PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("prometheum_block", MythicBlocks.PROMETHEUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("quadrillum_block", MythicBlocks.QUADRILLUM_BLOCK, MythicMetals.MYTHICMETALS);
@@ -103,7 +110,6 @@ public class RegisterBlocks {
         RegisterItem("steel_block", MythicBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("stormyx_block", MythicBlocks.STORMYX_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterItem("tin_block", MythicBlocks.TIN_BLOCK, MythicMetals.MYTHICMETALS);
-        RegisterItem("palladium_block", MythicBlocks.PALLADIUM_BLOCK, MythicMetals.MYTHICMETALS);
         Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "unobtainium_block"), new BlockItem(MythicBlocks.UNOBTAINIUM_BLOCK, new Item.Settings().group(MythicMetals.MYTHICMETALS).fireproof()));
         RegisterItem("vermiculite_block", MythicBlocks.VERMICULITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegisterBlock("adamantite_block", MythicBlocks.ADAMANTITE_BLOCK);
@@ -124,6 +130,7 @@ public class RegisterBlocks {
         RegisterBlock("mythril_block", MythicBlocks.MYTHRIL_BLOCK);
         RegisterBlock("orichalcum_block", MythicBlocks.ORICHALCUM_BLOCK);
         RegisterBlock("osmium_block", MythicBlocks.OSMIUM_BLOCK);
+        RegisterBlock("palladium_block", MythicBlocks.PALLADIUM_BLOCK);
         RegisterBlock("platinum_block", MythicBlocks.PLATINUM_BLOCK);
         RegisterBlock("prometheum_block", MythicBlocks.PROMETHEUM_BLOCK);
         RegisterBlock("quadrillum_block", MythicBlocks.QUADRILLUM_BLOCK);
@@ -135,7 +142,6 @@ public class RegisterBlocks {
         RegisterBlock("steel_block", MythicBlocks.STEEL_BLOCK);
         RegisterBlock("stormyx_block", MythicBlocks.STORMYX_BLOCK);
         RegisterBlock("tin_block", MythicBlocks.TIN_BLOCK);
-        RegisterBlock("palladium_block", MythicBlocks.PALLADIUM_BLOCK);
         RegisterBlock("unobtainium_block", MythicBlocks.UNOBTAINIUM_BLOCK);
         RegisterBlock("vermiculite_block", MythicBlocks.VERMICULITE_BLOCK);
 
@@ -158,6 +164,7 @@ public class RegisterBlocks {
         RegisterItem("mythril_anvil", MythicBlocks.MYTHRIL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("orichalcum_anvil", MythicBlocks.ORICHALCUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("osmium_anvil", MythicBlocks.OSMIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.MOD_ID, "palladium_anvil"), new BlockItem(MythicBlocks.PALLADIUM_ANVIL, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
         RegisterItem("platinum_anvil", MythicBlocks.PLATINUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("prometheum_anvil", MythicBlocks.PROMETHEUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("quadrillum_anvil", MythicBlocks.QUADRILLUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
@@ -167,7 +174,6 @@ public class RegisterBlocks {
         RegisterItem("star_platinum_anvil", MythicBlocks.STAR_PLATINUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("steel_anvil", MythicBlocks.STEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
         RegisterItem("stormyx_anvil", MythicBlocks.STORMYX_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegisterItem("palladium_anvil", MythicBlocks.PALLADIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
 
         RegisterBlock("adamantite_anvil", MythicBlocks.ADAMANTITE_ANVIL);
         RegisterBlock("aetherium_anvil", MythicBlocks.AETHERIUM_ANVIL);
@@ -187,6 +193,7 @@ public class RegisterBlocks {
         RegisterBlock("mythril_anvil", MythicBlocks.MYTHRIL_ANVIL);
         RegisterBlock("orichalcum_anvil", MythicBlocks.ORICHALCUM_ANVIL);
         RegisterBlock("osmium_anvil", MythicBlocks.OSMIUM_ANVIL);
+        RegisterBlock("palladium_anvil", MythicBlocks.PALLADIUM_ANVIL);
         RegisterBlock("platinum_anvil", MythicBlocks.PLATINUM_ANVIL);
         RegisterBlock("prometheum_anvil", MythicBlocks.PROMETHEUM_ANVIL);
         RegisterBlock("quadrillum_anvil", MythicBlocks.QUADRILLUM_ANVIL);
@@ -196,7 +203,6 @@ public class RegisterBlocks {
         RegisterBlock("star_platinum_anvil", MythicBlocks.STAR_PLATINUM_ANVIL);
         RegisterBlock("steel_anvil", MythicBlocks.STEEL_ANVIL);
         RegisterBlock("stormyx_anvil", MythicBlocks.STORMYX_ANVIL);
-        RegisterBlock("palladium_anvil", MythicBlocks.PALLADIUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.ADAMANTITE_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.AETHERIUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.AQUARIUM_ANVIL);
@@ -215,6 +221,7 @@ public class RegisterBlocks {
         MythicBlocks.ANVILS.add(MythicBlocks.MYTHRIL_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.ORICHALCUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.OSMIUM_ANVIL);
+        MythicBlocks.ANVILS.add(MythicBlocks.PALLADIUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.PLATINUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.PROMETHEUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.QUADRILLUM_ANVIL);
@@ -224,7 +231,6 @@ public class RegisterBlocks {
         MythicBlocks.ANVILS.add(MythicBlocks.STAR_PLATINUM_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.STEEL_ANVIL);
         MythicBlocks.ANVILS.add(MythicBlocks.STORMYX_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.PALLADIUM_ANVIL);
 
         // Chains
         RegisterChainItem("adamantite_chain", MythicBlocks.ADAMANTITE_CHAIN);
@@ -245,6 +251,7 @@ public class RegisterBlocks {
         RegisterChainItem("mythril_chain", MythicBlocks.MYTHRIL_CHAIN);
         RegisterChainItem("orichalcum_chain", MythicBlocks.ORICHALCUM_CHAIN);
         RegisterChainItem("osmium_chain", MythicBlocks.OSMIUM_CHAIN);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.CHAIN_ID, "palladium_chain"), new BlockItem(MythicBlocks.PALLADIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
         RegisterChainItem("platinum_chain", MythicBlocks.PLATINUM_CHAIN);
         RegisterChainItem("prometheum_chain", MythicBlocks.PROMETHEUM_CHAIN);
         RegisterChainItem("quadrillum_chain", MythicBlocks.QUADRILLUM_CHAIN);
@@ -254,7 +261,6 @@ public class RegisterBlocks {
         RegisterChainItem("star_platinum_chain", MythicBlocks.STAR_PLATINUM_CHAIN);
         RegisterChainItem("steel_chain", MythicBlocks.STEEL_CHAIN);
         RegisterChainItem("stormyx_chain", MythicBlocks.STORMYX_CHAIN);
-        RegisterChainItem("palladium_chain", MythicBlocks.PALLADIUM_CHAIN);
 
         RegisterChainBlock("adamantite_chain", MythicBlocks.ADAMANTITE_CHAIN);
         RegisterChainBlock("aetherium_chain", MythicBlocks.AETHERIUM_CHAIN);
@@ -274,6 +280,7 @@ public class RegisterBlocks {
         RegisterChainBlock("mythril_chain", MythicBlocks.MYTHRIL_CHAIN);
         RegisterChainBlock("orichalcum_chain", MythicBlocks.ORICHALCUM_CHAIN);
         RegisterChainBlock("osmium_chain", MythicBlocks.OSMIUM_CHAIN);
+        RegisterChainBlock("palladium_chain", MythicBlocks.PALLADIUM_CHAIN);
         RegisterChainBlock("platinum_chain", MythicBlocks.PLATINUM_CHAIN);
         RegisterChainBlock("prometheum_chain", MythicBlocks.PROMETHEUM_CHAIN);
         RegisterChainBlock("quadrillum_chain", MythicBlocks.QUADRILLUM_CHAIN);
@@ -283,7 +290,6 @@ public class RegisterBlocks {
         RegisterChainBlock("star_platinum_chain", MythicBlocks.STAR_PLATINUM_CHAIN);
         RegisterChainBlock("steel_chain", MythicBlocks.STEEL_CHAIN);
         RegisterChainBlock("stormyx_chain", MythicBlocks.STORMYX_CHAIN);
-        RegisterChainBlock("palladium_chain", MythicBlocks.PALLADIUM_CHAIN);
     }
 
     private static void RegisterBlock(String path, Block block) {

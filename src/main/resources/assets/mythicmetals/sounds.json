@@ -1,0 +1,13 @@
+{
+  "equip_runite": {
+    "subtitle": "subtitles.mythicmetals.equip_runite",
+    "sounds": [
+      "mythicmetals:equip_runite1",
+      "mythicmetals:equip_runite2",
+      "mythicmetals:equip_runite3",
+      "mythicmetals:equip_runite4",
+      "mythicmetals:equip_runite5",
+      "mythicmetals:equip_runite6"
+    ]
+  }
+}

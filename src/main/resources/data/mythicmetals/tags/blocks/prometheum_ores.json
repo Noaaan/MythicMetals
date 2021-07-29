@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:prometheum_ore"
+    "mythicmetals:prometheum_ore",
+    "mythicmetals:deepslate_prometheum_ore"
   ]
 }
