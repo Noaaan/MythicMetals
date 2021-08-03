@@ -32,44 +32,45 @@ public class MythicOreFeatures {
 
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest CALCITE_RULE = new BlockMatchRuleTest(Blocks.CALCITE);
-    public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
+    public static final RuleTest DEEPSLATE_RULE = OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES;
     public static final RuleTest SMOOTH_BASALT_RULE = new BlockMatchRuleTest(Blocks.SMOOTH_BASALT);
-    // Defines a target, which can check for multiple blocks and dynamically replace it
-    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX_ORE.getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
+    public static final RuleTest STONE_RULE = OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES;
+    public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
 
-    // Template for a new ore
-    public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.ADAMANTITE_ORE.getDefaultState(),
-            CONFIG.oreAdamantiteVeinSize, 0.4F)) //Vein Size and discard chance (chance that ore is deleted if exposed to air)
-            .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(CONFIG.oreAdamantiteMinHeight), // Bottom offset, minimum height
-            YOffset.fixed(CONFIG.oreAdamantiteMaxHeight))))) // Top offset, max height
-            .spreadHorizontally().repeat(CONFIG.oreAdamantitePerChunk); // Number of veins per chunk
-    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumMaxHeight, CONFIG.oreAetheriumPerChunk, 0.25F);
-    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk, 0.1F);
-    public static ConfiguredFeature<?, ?> ORE_BANGLUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk, 0.2F);
-    public static ConfiguredFeature<?, ?> ORE_CARMOT = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk, 0.1F);
-    public static ConfiguredFeature<?, ?> ORE_KYBER = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.KYBER_ORE.getDefaultState(), CONFIG.oreKyberVeinSize, CONFIG.oreKyberMinHeight, CONFIG.oreKyberMaxHeight,CONFIG.oreKyberPerChunk, 0.3F);
-    public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = Feature.ORE.configure(new OreFeatureConfig(CALCITE_RULE, MythicBlocks.CALCITE_KYBER_ORE.getDefaultState(), 18)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(70))))).spreadHorizontally().repeat(40);
-    public static ConfiguredFeature<?, ?> ORE_DEEP_ADAMANTITE = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState(), 5, 0.2F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(17))))).spreadHorizontally().repeat(1);
-    public static ConfiguredFeature<?, ?> ORE_DEEP_MYTHRIL = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES, MythicBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState(), 5, 0.2F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(17))))).spreadHorizontally().repeat(1);
-    public static ConfiguredFeature<?, ?> ORE_DEEP_ORICHALCUM = Feature.ORE.configure(new OreFeatureConfig(ORICHALCUM_TARGETS, 4, 0.15F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(4), YOffset.fixed(17))))).spreadHorizontally().repeat(2);
-    public static ConfiguredFeature<?, ?> ORE_MANGANESE = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.MANGANESE_ORE.getDefaultState(), CONFIG.oreManganeseVeinSize,CONFIG.oreManganeseMinHeight, CONFIG.oreManganeseMaxHeight,CONFIG.oreManganesePerChunk, 0.15F);
-    public static ConfiguredFeature<?, ?> ORE_MYTHRIL = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.MYTHRIL_ORE.getDefaultState(), CONFIG.oreMythrilVeinSize,CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight,CONFIG.oreMythrilPerChunk, 0.4F);
-    public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.ORICHALCUM_ORE.getDefaultState(), CONFIG.oreOrichalcumVeinSize,CONFIG.oreOrichalcumMinHeight, CONFIG.oreOrichalcumMaxHeight,CONFIG.oreOrichalcumPerChunk, 0.4F);
-    public static ConfiguredFeature<?, ?> ORE_OSMIUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.OSMIUM_ORE.getDefaultState(), CONFIG.oreOsmiumVeinSize,CONFIG.oreOsmiumMinHeight, CONFIG.oreOsmiumMaxHeight,CONFIG.oreOsmiumPerChunk, 0.2F);
-    public static ConfiguredFeature<?, ?> ORE_PLATINUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.PLATINUM_ORE.getDefaultState(), CONFIG.orePlatinumVeinSize,CONFIG.orePlatinumMinHeight, CONFIG.orePlatinumMaxHeight,CONFIG.orePlatinumPerChunk, 0.3F);
-    public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.PROMETHEUM_ORE.getDefaultState(), CONFIG.orePrometheumVeinSize,CONFIG.orePrometheumMinHeight, CONFIG.orePrometheumMaxHeight,CONFIG.orePrometheumPerChunk, 0.1F);
-    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.QUADRILLUM_ORE.getDefaultState(), CONFIG.oreQuadrillumVeinSize,CONFIG.oreQuadrillumMinHeight, CONFIG.oreQuadrillumMaxHeight,CONFIG.oreQuadrillumPerChunk, 0.2F);
-    public static ConfiguredFeature<?, ?> ORE_RUNITE = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.RUNITE_ORE.getDefaultState(), CONFIG.oreRuniteVeinSize,CONFIG.oreRuniteMinHeight, CONFIG.oreRuniteMaxHeight,CONFIG.oreRunitePerChunk, 0.0F);
-    public static ConfiguredFeature<?, ?> ORE_SILVER = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.SILVER_ORE.getDefaultState(), CONFIG.oreSilverVeinSize,CONFIG.oreSilverMinHeight, CONFIG.oreSilverMaxHeight,CONFIG.oreSilverPerChunk, 0.1F);
-    public static ConfiguredFeature<?, ?> ORE_STARRITE = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.STARRITE_ORE.getDefaultState(), CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteMinHeight, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.7F);
-    public static ConfiguredFeature<?, ?> ORE_TIN = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk, 0.3F);
-    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = unobtainiumFeature(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumMinHeight, CONFIG.oreUnobtainiumMaxHeight, CONFIG.oreUnobtainiumDiscardChance);
-    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = fixedOre(OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES, MythicBlocks.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk, 0.3F);
+    // Defines a list of targets, which can check for multiple blocks and dynamically replace them when generating ore
+    public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> MYTHRIL_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.MYTHRIL_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> PROMETHEUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.PROMETHEUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_PROMETHEUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> STARRITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.STARRITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(CALCITE_RULE, MythicBlocks.CALCITE_STARRITE_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX_ORE.getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE.getDefaultState()));
+
+    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumTopOffset, CONFIG.oreAetheriumPerChunk, 0.25F);
+    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = fixedOre(STONE_RULE, MythicBlocks.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk, 0.0F);
+    public static ConfiguredFeature<?, ?> ORE_BANGLUM = fixedOre(STONE_RULE, MythicBlocks.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_CARMOT = fixedOre(STONE_RULE, MythicBlocks.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk, 0.0F);
+    public static ConfiguredFeature<?, ?> ORE_KYBER = fixedOre(STONE_RULE, MythicBlocks.KYBER_ORE.getDefaultState(), CONFIG.oreKyberVeinSize, CONFIG.oreKyberMinHeight, CONFIG.oreKyberMaxHeight,CONFIG.oreKyberPerChunk, 0.6F);
+    public static ConfiguredFeature<?, ?> ORE_MANGANESE = fixedOre(STONE_RULE, MythicBlocks.MANGANESE_ORE.getDefaultState(), CONFIG.oreManganeseVeinSize,CONFIG.oreManganeseMinHeight, CONFIG.oreManganeseMaxHeight,CONFIG.oreManganesePerChunk, 0.15F);
+    public static ConfiguredFeature<?, ?> ORE_OSMIUM = fixedOre(STONE_RULE, MythicBlocks.OSMIUM_ORE.getDefaultState(), CONFIG.oreOsmiumVeinSize,CONFIG.oreOsmiumMinHeight, CONFIG.oreOsmiumMaxHeight,CONFIG.oreOsmiumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_PLATINUM = triangleOre(STONE_RULE, MythicBlocks.PLATINUM_ORE.getDefaultState(), CONFIG.orePlatinumVeinSize, CONFIG.orePlatinumMinHeight, CONFIG.orePlatinumMaxHeight, CONFIG.orePlatinumPerChunk, 0.0F);
+    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = fixedOre(STONE_RULE, MythicBlocks.QUADRILLUM_ORE.getDefaultState(), CONFIG.oreQuadrillumVeinSize,CONFIG.oreQuadrillumMinHeight, CONFIG.oreQuadrillumMaxHeight,CONFIG.oreQuadrillumPerChunk, 0.25F);
+    public static ConfiguredFeature<?, ?> ORE_RUNITE = triangleOre(STONE_RULE, MythicBlocks.RUNITE_ORE.getDefaultState(), CONFIG.oreRuniteVeinSize,CONFIG.oreRuniteMinHeight, CONFIG.oreRuniteMaxHeight,CONFIG.oreRunitePerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_SILVER = fixedOre(STONE_RULE, MythicBlocks.SILVER_ORE.getDefaultState(), CONFIG.oreSilverVeinSize,CONFIG.oreSilverMinHeight, CONFIG.oreSilverMaxHeight,CONFIG.oreSilverPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_TIN = fixedOre(STONE_RULE, MythicBlocks.TIN_ORE.getDefaultState(), CONFIG.oreTinVeinSize,CONFIG.oreTinMinHeight, CONFIG.oreTinMaxHeight,CONFIG.oreTinPerChunk, 0.3F);
+    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = fixedOre(STONE_RULE, MythicBlocks.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk, 0.3F);
+    // Ores below zero - Reaches Deep Dark
+    public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = triangleOre(ADAMANTITE_TARGETS, CONFIG.oreAdamantiteVeinSize, CONFIG.oreAdamantiteMinHeight, CONFIG.oreAdamantiteMaxHeight, CONFIG.oreAdamantitePerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = bottomOffsetOre(CALCITE_RULE, MythicBlocks.CALCITE_KYBER_ORE.getDefaultState(), 18, 4, 70, 40, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_MYTHRIL = triangleOre(MYTHRIL_TARGETS, CONFIG.oreMythrilVeinSize, CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight, CONFIG.oreMythrilPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.oreOrichalcumVeinSize, CONFIG.oreOrichalcumBottomOffset, CONFIG.oreOrichalcumMaxHeight, CONFIG.oreOrichalcumPerChunk, 0.15F);
+    public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.orePrometheumVeinSize, CONFIG.orePrometheumBottomOffset, CONFIG.orePrometheumMaxHeight, CONFIG.orePrometheumPerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_STARRITE = bottomOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteBottomOffset, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.5F);
+    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(STONE_RULE, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(2);
     // Nether Ores
-    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
+    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_PALLADIUM = fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM_ORE.getDefaultState(), CONFIG.orePalladiumVeinSize,CONFIG.orePalladiumMinHeight, CONFIG.orePalladiumMaxHeight,CONFIG.orePalladiumPerChunk, 0.1F);
-    public static ConfiguredFeature<?, ?> ORE_STORMYX = Feature.ORE.configure(new OreFeatureConfig(STORMYX_TARGETS, CONFIG.oreStormyxVeinSize, 0.1F)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(CONFIG.oreStormyxMinHeight), YOffset.fixed(CONFIG.oreStormyxMaxHeight)))).repeat(CONFIG.oreStormyxPerChunk));
+    public static ConfiguredFeature<?, ?> ORE_STORMYX = bottomOffsetOre(STORMYX_TARGETS, CONFIG.oreStormyxVeinSize, CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight, CONFIG.oreStormyxPerChunk, 0.1F);
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_adamantite"));
@@ -78,8 +79,6 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_banglum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_carmot"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_calcite_kyber"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreDeepslateAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_deepslate_adamantite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreDeepslateMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_deepslate_mythril"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_kyber"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_manganese"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_midas_gold"));
@@ -94,7 +93,6 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_starrite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_stormyx"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTuffOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tuff_orichalcum"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_palladium"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_unobtainium"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
@@ -107,8 +105,6 @@ public class MythicOreFeatures {
         registerFeature(oreBanglum.getValue(), ORE_BANGLUM);
         registerFeature(oreCarmot.getValue(), ORE_CARMOT);
         registerFeature(oreCalciteKyber.getValue(), ORE_CALCITE_KYBER);
-        registerFeature(oreDeepslateAdamantite.getValue(), ORE_DEEP_ADAMANTITE);
-        registerFeature(oreDeepslateMythril.getValue(), ORE_DEEP_MYTHRIL);
         registerFeature(oreKyber.getValue(), ORE_KYBER);
         registerFeature(oreManganese.getValue(), ORE_MANGANESE);
         registerFeature(oreMidasGold.getValue(), ORE_MIDAS_GOLD);
@@ -123,7 +119,6 @@ public class MythicOreFeatures {
         registerFeature(oreStarrite.getValue(), ORE_STARRITE);
         registerFeature(oreStormyx.getValue(), ORE_STORMYX);
         registerFeature(oreTin.getValue(), ORE_TIN);
-        registerFeature(oreTuffOrichalcum.getValue(), ORE_DEEP_ORICHALCUM);
         registerFeature(orePalladium.getValue(), ORE_PALLADIUM);
         registerFeature(oreUnobtainium.getValue(), ORE_UNOBTAINIUM);
         registerFeature(oreVermiculite.getValue(), ORE_VERMICULITE);
@@ -132,19 +127,20 @@ public class MythicOreFeatures {
     @SuppressWarnings("deprecation")
     public static void generate() {
         //Overworld Ores
-        if (CONFIG.oreAdamantiteGeneration) { AddUOre(oreAdamantite); AddUOre(oreDeepslateAdamantite);}
+        if (CONFIG.oreAdamantiteGeneration) { AddUOre(oreAdamantite);}
         if (CONFIG.oreAetheriumGeneration) { AddUOre(oreAetherium); }
         if (CONFIG.oreBanglumGeneration) { AddUOre(oreBanglum); }
         if (CONFIG.oreCarmotGeneration) { AddUOre(oreCarmot); }
         if (CONFIG.oreKyberGeneration) { AddUOre(oreKyber); AddUOre(oreCalciteKyber); }
         if (CONFIG.oreManganeseGeneration) { AddUOre(oreManganese); }
-        if (CONFIG.oreMythrilGeneration) { AddUOre(oreMythril); AddUOre(oreDeepslateMythril);}
-        if (CONFIG.oreOrichalcumGeneration) { AddUOre(oreOrichalcum); AddUOre(oreTuffOrichalcum);}
+        if (CONFIG.oreMythrilGeneration) { AddUOre(oreMythril); }
+        if (CONFIG.oreOrichalcumGeneration) { AddUOre(oreOrichalcum); }
         if (CONFIG.oreOsmiumGeneration) { AddUOre(oreOsmium); }
         if (CONFIG.orePlatinumGeneration) { AddUOre(orePlatinum); }
         if (CONFIG.oreQuadrillumGeneration) { AddUOre(oreQuadrillum); }
         if (CONFIG.oreRuniteGeneration) { AddUOre(oreRunite); }
         if (CONFIG.oreSilverGeneration) { AddUOre(oreSilver); }
+        if (CONFIG.oreStarriteGeneration) { AddUOre(oreStarrite); }
         if (CONFIG.oreTinGeneration) { AddUOre(oreTin); }
         if (CONFIG.oreUnobtainiumGeneration) { AddUOre(oreUnobtainium); }
         if (CONFIG.oreVermiculiteGeneration) { AddUOre(oreVermiculite); }
@@ -186,7 +182,8 @@ public class MythicOreFeatures {
                     BiomeKeys.JUNGLE_EDGE,
                     BiomeKeys.JUNGLE_HILLS,
                     BiomeKeys.MODIFIED_JUNGLE,
-                    BiomeKeys.MODIFIED_JUNGLE_EDGE
+                    BiomeKeys.MODIFIED_JUNGLE_EDGE,
+                    BiomeKeys.LUSH_CAVES
             ), GenerationStep.Feature.UNDERGROUND_ORES, orePrometheum);
 
             addUOreToModBiomes("byg","araucaria_forest", orePrometheum);
@@ -254,49 +251,7 @@ public class MythicOreFeatures {
             addUOreToModBiomes("traverse","cliffs", oreAetherium);
             addUOreToModBiomes("traverse","rolling_hills", oreAetherium);
         }
-        if (CONFIG.oreStarriteGeneration) {
-            BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.GRAVELLY_MOUNTAINS,
-                    BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS,
-                    BiomeKeys.MOUNTAINS,
-                    BiomeKeys.MOUNTAIN_EDGE,
-                    BiomeKeys.SHATTERED_SAVANNA,
-                    BiomeKeys.SHATTERED_SAVANNA_PLATEAU,
-                    BiomeKeys.SNOWY_MOUNTAINS,
-                    BiomeKeys.SNOWY_TAIGA_MOUNTAINS,
-                    BiomeKeys.TAIGA_MOUNTAINS
-            ), GenerationStep.Feature.UNDERGROUND_ORES, oreStarrite);
 
-            addUOreToModBiomes("byg","alpine_foothills", oreStarrite);
-            addUOreToModBiomes("byg","alps", oreStarrite);
-            addUOreToModBiomes("byg","black_forest_hills", oreStarrite);
-            addUOreToModBiomes("byg","blue_taiga_hills", oreStarrite);
-            addUOreToModBiomes("byg","bluff_peaks", oreStarrite);
-            addUOreToModBiomes("byg","bluff_steeps", oreStarrite);
-            addUOreToModBiomes("byg","boreal_forest_hills", oreStarrite);
-            addUOreToModBiomes("byg","cika_mountains", oreStarrite);
-            addUOreToModBiomes("byg","coniferous_forest_hills", oreStarrite);
-            addUOreToModBiomes("byg","dover_mountains", oreStarrite);
-            addUOreToModBiomes("byg","ebony_hills", oreStarrite);
-            addUOreToModBiomes("byg","enchatned_forest_hills", oreStarrite);
-            addUOreToModBiomes("byg","evergreen_hills", oreStarrite);
-            addUOreToModBiomes("byg","grassland_plateau", oreStarrite);
-            addUOreToModBiomes("byg","guiana_clearing", oreStarrite);
-            addUOreToModBiomes("byg","guiana_shield", oreStarrite);
-            addUOreToModBiomes("byg","jacaranda_forest_hills", oreStarrite);
-            addUOreToModBiomes("byg","redwood_mountians", oreStarrite);
-            addUOreToModBiomes("byg","skyris_highlands", oreStarrite);
-
-            addUOreToModBiomes("terrestria","caldera_foothills", oreStarrite);
-            addUOreToModBiomes("terrestria","caldera_ridge", oreStarrite);
-            addUOreToModBiomes("terrestria","outback_uluru", oreStarrite);
-            addUOreToModBiomes("terrestria","rainbow_rainforest", oreStarrite);
-            addUOreToModBiomes("terrestria","rainbow_rainforest_mountains", oreStarrite);
-
-            addUOreToModBiomes("traverse","arid_highlands", oreStarrite);
-            addUOreToModBiomes("traverse","cliffs", oreStarrite);
-            addUOreToModBiomes("traverse","rolling_hills", oreStarrite);
-        }
     }
 
     public static void AddUOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
@@ -315,13 +270,22 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> fixedOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> offsetOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer bottomOffset, Integer topOffset, Integer spawnRate, Float discardChance) {
-        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(bottomOffset), YOffset.belowTop(topOffset))))).spreadHorizontally().repeat(spawnRate);
+    public static ConfiguredFeature<?, ?> bottomOffsetOre(RuleTest rule, BlockState state, Integer veinSize, Integer bottomOffset, Integer maxHeight, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(rule, state, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(bottomOffset), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
+    }
+    public static ConfiguredFeature<?, ?> bottomOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, Integer veinSize, Integer bottomOffset, Integer maxHeight, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(bottomOffset), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
+    }
+    public static ConfiguredFeature<?, ?> topOffsetOre(RuleTest rule, BlockState state, Integer veinSize, Integer minHeight, Integer topOffset, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(rule, state, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.belowTop(topOffset))))).spreadHorizontally().repeat(spawnRate);
+    }
+    public static ConfiguredFeature<?, ?> triangleOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
+    }
+    public static ConfiguredFeature<?, ?> triangleOre(ImmutableList<OreFeatureConfig.Target> targets, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
     }
 
-    public static ConfiguredFeature<?, ?> unobtainiumFeature(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Float discardChance) {
-        return Feature.SCATTERED_ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).triangleRange(YOffset.aboveBottom(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().applyChance(2);
-    }
     public static void registerFeature(Identifier identifier, ConfiguredFeature<?,?> feature) {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, feature);
     }

@@ -6,24 +6,33 @@ A lot has been removed from the mod, which includes:
 * All of Electrum
 * All of Tantalite
 * All of Ur
+* All of Zinc
 * Copper Ingots/Blocks, which have been replaced by vanilla variants
 * Etherite Tools
 * Starrite gear, replaced for Star Platinum
 * Tin equipment
 * Truesilver, which has been replaced in favor of Palladium
 * Quadrillum armour
-* Zinc ingots and ores
 
 Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds. This is experimental, so 
 **please make a backup before installing this update!**  
-A lot of the ore generation has been changed:  
-* Added deepslate variants of Adamantite, Mythril and Orichalcum
-* Added a tuff and smooth basalt variant of Orichalcum
-* Added a calcite variant of Kyber. Normal Kyber spawns rarely in the world, but it spawns in large veins in calcite (amethyst geodes)
-* Added a blackstone variant of Stormyx
-* Tweaked Unobtainium spawn rates (it is now more common to find per-world, but will be VERY hard to find in caves)
+A lot of new ore variants have been added:  
+* Added deepslate variants of Adamantite, Mythril and Orichalcum.
+* Added a tuff and smooth basalt variant of Orichalcum.
+* Added a calcite variant of Kyber. Normal Kyber spawns rarely in the world, but it spawns in large veins in calcite (amethyst geodes).
+* Added a blackstone variant of Stormyx.
+* Added a calcite variant of Starrite. Starrite now spawns rarely anywhere in the world. 
+* Added a deepslate variant of Prometheum, since it can now be found in Lush Caves. 
+* Tweaked Unobtainium spawn rates (it is now more common to find per-world, but will be VERY hard to find in caves).  
 
-To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list. Unfortunately they are not finished yet :/ 
+The ore generation itself has also changed, which can be viewed on the wiki: WIKI LINK HERE.  
+The world-gen is mainly balanced around the Caves and Cliffs Datapack, fully utilizing the new height range from 320 to -64. For the optimal experience I recommend using this alongside it, though worlds not using it should still be playable. 
+
+To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list.  
+
+Star Platinum is an alloy from Starrite, Platinum, and Osmium. It provides protection similar to Diamond, and is required for Celestium. 
+
+This list is work-in-progress.
 
 
 

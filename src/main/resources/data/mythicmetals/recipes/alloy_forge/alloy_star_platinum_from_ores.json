@@ -6,6 +6,9 @@
     },
 	{
       "tag": "c:platinum_ores"
+    },
+    {
+      "tag": "c:osmium_ores"
     }
   ],
   "output": {
@@ -14,7 +17,7 @@
   },
   "overrides": {
 	"3+": {
-      "id": "mythicmetals:steel_ingot",
+      "id": "mythicmetals:star_platinum",
       "count": 3
     }
   },

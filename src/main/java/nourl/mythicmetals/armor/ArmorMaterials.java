@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
 import nourl.mythicmetals.registry.RegisterItems;
+import nourl.mythicmetals.registry.RegisterSounds;
 
 import java.util.Arrays;
 import java.util.List;
@@ -80,7 +81,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     QUICKSILVER("quicksilver", 37, new int[]{4, 6, 8, 4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 2.5F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.QUICKSILVER_INGOT);
     }),
-    RUNITE("runite", 27, new int[]{3, 6, 7, 3}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
+    RUNITE("runite", 27, new int[]{3, 6, 7, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.RUNITE_INGOT);
     }),
     SILVER("silver", 8, new int[]{2, 3, 5, 2}, 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {

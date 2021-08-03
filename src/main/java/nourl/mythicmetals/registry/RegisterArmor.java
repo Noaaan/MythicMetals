@@ -83,10 +83,10 @@ public class RegisterArmor {
     public static final Item OSMIUM_CHESTPLATE = new ArmorItem(ArmorMaterials.OSMIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item OSMIUM_LEGGINGS = new ArmorItem(ArmorMaterials.OSMIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item OSMIUM_BOOTS = new ArmorItem(ArmorMaterials.OSMIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item PALLADIUM_HELMET = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item PALLADIUM_CHESTPLATE = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item PALLADIUM_LEGGINGS = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
-    public static final Item PALLADIUM_BOOTS = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
+    public static final Item PALLADIUM_HELMET = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)).fireproof());
+    public static final Item PALLADIUM_CHESTPLATE = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)).fireproof());
+    public static final Item PALLADIUM_LEGGINGS = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)).fireproof());
+    public static final Item PALLADIUM_BOOTS = new ArmorItem(ArmorMaterials.PALLADIUM, EquipmentSlot.FEET, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)).fireproof());
     public static final Item PROMETHEUM_HELMET = new ArmorItem(ArmorMaterials.PROMETHEUM, EquipmentSlot.HEAD, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item PROMETHEUM_CHESTPLATE = new ArmorItem(ArmorMaterials.PROMETHEUM, EquipmentSlot.CHEST, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));
     public static final Item PROMETHEUM_LEGGINGS = new ArmorItem(ArmorMaterials.PROMETHEUM, EquipmentSlot.LEGS, (new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR)));

@@ -6,6 +6,9 @@
     },
 	{
       "item": "mythicmetals:raw_platinum"
+    },
+    {
+      "item": "mythicmetals:raw_osmium"
     }
   ],
   "output": {
@@ -14,7 +17,7 @@
   },
   "overrides": {
 	"3+": {
-      "id": "mythicmetals:steel_ingot",
+      "id": "mythicmetals:star_platinum",
       "count": 2
     }
   },

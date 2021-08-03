@@ -44,6 +44,7 @@ public class MythicMetals implements ModInitializer {
             RegisterItems.registerDusts();
         }
         RegisterTools.register();
+        RegisterSounds.register();
         RegisterArmor.register();
         RegisterBlocks.register();
         MythicOreFeatures.init();
@@ -52,14 +53,11 @@ public class MythicMetals implements ModInitializer {
         EnchantConfig.appendEnchants();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
-        if (FabricLoader.getInstance().isModLoaded("smithee")) {
-            LOGGER.info("[Mythic Metals] Hey, Smithee is around. Rewrite should be coming this summer.");
-        }
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
             LOGGER.info("[Mythic Metals] Eyo, Harvest Scythes is enabled. Give DH a thank for the textures!");
         }
         if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
-            LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxtre tell him I said hi!");
+            LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");
         }
     }
 }

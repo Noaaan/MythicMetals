@@ -6,6 +6,9 @@
     },
 	{
       "tag": "c:platinum_ingots"
+    },
+    {
+      "tag": "c:osmium_ingots"
     }
   ],
   "output": {
