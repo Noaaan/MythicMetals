@@ -21,21 +21,23 @@ Feel free to use this in any modpack you wish for. I might feature them on this 
 
 ## Credits
 
-Hugman76, for inspiring me to use Fabric.  
-Shadowclaimer, for creating Metallurgy in the first place.  
-Daveleo and matpac, for creating Metallurgy Reforged 4.  
-Brandcraf06, for his Blockus code, helping creating blocks, chains, and anvils for the mod.  
-supersaiyansubtlety, for helping me with Mixin.  
-LambdAurora, for her readme on how to use Gradle.  
-BoogieMonster1O1, for giving me pointers about Mixins.  
-misode, for his loot table generator.  
-My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
-My friends Revanitez, drakath9 and Spxtreofficial who contributed to the original assets of the mod.  
-LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
-Flytre, for helping with the RecipeManager Mixin.  
+Hugman76, for inspiring me to use Fabric.
+Shadowclaimer, for creating Metallurgy in the first place.
+Daveleo and matpac, for creating Metallurgy Reforged 4.
+Brandcraf06, for his Blockus code, helping creating blocks, chains, and anvils for the mod.
+supersaiyansubtlety, for helping me with Mixin.
+LambdAurora, for her readme on how to use Gradle.
+BoogieMonster1O1, for giving me pointers about Mixins.
+misode, for his loot table generator.
+My friend SnifferProduct, who helped in designing the first iteration of tool stats.
+My friends revanitez, drakath9, glisco and Spxtreofficial who have contributed to the original assets and supported me with the mod.
+LordDeatHunter, for his helpful scripts and direct contributions to the mod.
+Flytre, for helping with the RecipeManager Mixin.
 Spxtreofficial, for his LivingEntityMixin.
-Temreno and Tector, for making awesome new textures for the mod.
-And a final thanks to the Fabric Project Discord, who have all been very nice and helpful while developing this mod.  
+The artists:
+DH, Temreno, Tector, Pois1x, Henchman, RGBeet, and Windy for making awesome new textures for the mod.
+Thank you to Matpac for new ingot textures!
+And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.
 
 ## Translations  
 These people have helped translating the mod into different languages. Thank you to:  
