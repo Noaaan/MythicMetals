@@ -1,3 +1,6 @@
+# 0.9.11
+Hotfix - Fixes a config loading issue with old Autoconfig and Cloth2
+
 # 0.9.10
 ### Note!
 Unembedded Cloth Config from the mod, you now have to download it yourself.  
