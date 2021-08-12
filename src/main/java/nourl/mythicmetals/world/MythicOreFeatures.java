@@ -66,7 +66,7 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.oreOrichalcumVeinSize, CONFIG.oreOrichalcumBottomOffset, CONFIG.oreOrichalcumMaxHeight, CONFIG.oreOrichalcumPerChunk, 0.15F);
     public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.orePrometheumVeinSize, CONFIG.orePrometheumBottomOffset, CONFIG.orePrometheumMaxHeight, CONFIG.orePrometheumPerChunk, 0.2F);
     public static ConfiguredFeature<?, ?> ORE_STARRITE = bottomOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteBottomOffset, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.5F);
-    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(STONE_RULE, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState(), CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(2);
+    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(UNOBTAINIUM_TARGETS, CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(2);
     // Nether Ores
     public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_PALLADIUM = fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM_ORE.getDefaultState(), CONFIG.orePalladiumVeinSize,CONFIG.orePalladiumMinHeight, CONFIG.orePalladiumMaxHeight,CONFIG.orePalladiumPerChunk, 0.1F);
@@ -267,22 +267,22 @@ public class MythicOreFeatures {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier(modId, path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
         }
     }
-    public static ConfiguredFeature<?, ?> fixedOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> fixedOre(RuleTest rule, BlockState defaultState, int veinSize, int minHeight, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> bottomOffsetOre(RuleTest rule, BlockState state, Integer veinSize, Integer bottomOffset, Integer maxHeight, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> bottomOffsetOre(RuleTest rule, BlockState state, int veinSize, int bottomOffset, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, state, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(bottomOffset), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> bottomOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, Integer veinSize, Integer bottomOffset, Integer maxHeight, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> bottomOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, int veinSize, int bottomOffset, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(bottomOffset), YOffset.fixed(maxHeight))))).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> topOffsetOre(RuleTest rule, BlockState state, Integer veinSize, Integer minHeight, Integer topOffset, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> topOffsetOre(RuleTest rule, BlockState state, int veinSize, int minHeight, int topOffset, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, state, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.belowTop(topOffset))))).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> triangleOre(RuleTest rule, BlockState defaultState, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> triangleOre(RuleTest rule, BlockState defaultState, int veinSize, int minHeight, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
     }
-    public static ConfiguredFeature<?, ?> triangleOre(ImmutableList<OreFeatureConfig.Target> targets, Integer veinSize, Integer minHeight, Integer maxHeight, Integer spawnRate, Float discardChance) {
+    public static ConfiguredFeature<?, ?> triangleOre(ImmutableList<OreFeatureConfig.Target> targets, int veinSize, int minHeight, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
     }
 
