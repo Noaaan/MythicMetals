@@ -14,6 +14,8 @@ public class EnchantConfig {
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_LEGGINGS), new Identifier("minecraft:respiration"), 2, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.AQUARIUM_BOOTS), new Identifier("minecraft:depth_strider"), 2, true);
 
+        EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.BANGLUM_HELMET), new Identifier("minecraft:projectile_protection"), 3, true);
+
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.PROMETHEUM_HELMET), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.PROMETHEUM_CHESTPLATE), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.PROMETHEUM_LEGGINGS), new Identifier("minecraft:mending"), 1, true);

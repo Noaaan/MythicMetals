@@ -3,6 +3,7 @@ package nourl.mythicmetals.mixin;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.DefaultedRegistry;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.registry.RegistryHelper;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,30 +15,30 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
     public class DefaultedRegistryMixin {
         // All the identifiers of removed stuff
         private static final String AF_ID = "alloy_forgery";
-        Identifier mythicCopperOre = new Identifier(MythicMetals.MOD_ID, "copper_ore");
-        Identifier mythicCopperIngot = new Identifier(MythicMetals.MOD_ID, "copper_ingot");
-        Identifier mythicTantalite = new Identifier(MythicMetals.MOD_ID, "tantalite_ore");
-        Identifier mythicTruesilverOre = new Identifier(MythicMetals.MOD_ID, "truesilver_ore");
-        Identifier mythicTruesilverIngot = new Identifier(MythicMetals.MOD_ID, "truesilver_ingot");
-        Identifier mythicTruesilverBlock = new Identifier(MythicMetals.MOD_ID, "truesilver_block");
-        Identifier mythicUr = new Identifier(MythicMetals.MOD_ID, "ur_ore");
-        Identifier mythicZinc = new Identifier(MythicMetals.MOD_ID, "zinc_ore");
-        Identifier mythicRawStarrite = new Identifier(MythicMetals.MOD_ID, "raw_starrite");
-        Identifier mythicStarriteIngot = new Identifier(MythicMetals.MOD_ID, "starrite_ingot");
+        Identifier mythicCopperOre = RegistryHelper.id("copper_ore");
+        Identifier mythicCopperIngot = RegistryHelper.id( "copper_ingot");
+        Identifier mythicTantalite = RegistryHelper.id( "tantalite_ore");
+        Identifier mythicTruesilverOre = RegistryHelper.id( "truesilver_ore");
+        Identifier mythicTruesilverIngot = RegistryHelper.id( "truesilver_ingot");
+        Identifier mythicTruesilverBlock = RegistryHelper.id( "truesilver_block");
+        Identifier mythicUr = RegistryHelper.id( "ur_ore");
+        Identifier mythicZinc = RegistryHelper.id( "zinc_ore");
+        Identifier mythicRawStarrite = RegistryHelper.id( "raw_starrite");
+        Identifier mythicStarriteIngot = RegistryHelper.id( "starrite_ingot");
 
         @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0)
         Identifier fixMissingFromRegistry(@Nullable Identifier id) {
             if(id != null) {
                 if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.CHAIN_ID, id.getPath());
-                if(id.getPath().equals("unobtainium_dust")) return new Identifier(MythicMetals.MOD_ID, "unobtainium");
+                if(id.getPath().equals("unobtainium_dust")) return RegistryHelper.id( "unobtainium");
                 if(id.equals(mythicCopperOre)) return new Identifier("minecraft","copper_ore");
                 if(id.equals(mythicCopperIngot)) return new Identifier("minecraft","copper_ingot");
                 if(id.equals(mythicUr)) return new Identifier("minecraft","netherrack");
                 if(id.equals(mythicZinc) || id.equals(mythicTantalite)) return new Identifier("minecraft","stone");
-                if(id.equals(mythicTruesilverOre)) return new Identifier(MythicMetals.MOD_ID, "palladium_ore");
-                if(id.equals(mythicTruesilverIngot)) return new Identifier(MythicMetals.MOD_ID, "palladium_ingot");
-                if(id.equals(mythicTruesilverBlock)) return new Identifier(MythicMetals.MOD_ID, "palladium_block");
-                if(id.equals(mythicStarriteIngot) || id.equals(mythicRawStarrite)) return new Identifier(MythicMetals.MOD_ID, "starrite");
+                if(id.equals(mythicTruesilverOre)) return RegistryHelper.id( "palladium_ore");
+                if(id.equals(mythicTruesilverIngot)) return RegistryHelper.id( "palladium_ingot");
+                if(id.equals(mythicTruesilverBlock)) return RegistryHelper.id( "palladium_block");
+                if(id.equals(mythicStarriteIngot) || id.equals(mythicRawStarrite)) return RegistryHelper.id( "starrite");
             }
             return id;
         }

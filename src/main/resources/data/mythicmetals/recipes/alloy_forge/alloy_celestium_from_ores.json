@@ -4,11 +4,17 @@
     {
       "tag": "mythicmetals:starrite_ores"
     },
-	    {
+    {
       "tag": "c:platinum_ores"
+    },
+    {
+      "tag": "c:osmium_ores"
     },
 	{
       "tag": "mythicmetals:kyber_ores"
+    },
+    {
+      "tag": "mythicmetals:unobtainium_ores"
     }
   ],
   "output": {

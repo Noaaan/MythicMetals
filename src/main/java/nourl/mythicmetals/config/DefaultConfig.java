@@ -186,9 +186,9 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         public int oreStarriteVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreStarritePerChunk = 1;
+        public int oreStarritePerChunk = 2;
         public int oreStarriteBottomOffset = 8;
-        public int oreStarriteMaxHeight = 160;
+        public int oreStarriteMaxHeight = 100;
 
         //Stormyx Ore Settings
         public boolean oreStormyxGeneration = true;

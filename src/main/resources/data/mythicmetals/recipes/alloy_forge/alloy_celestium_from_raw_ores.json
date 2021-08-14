@@ -7,8 +7,14 @@
 	{
       "item": "mythicmetals:raw_platinum"
     },
+    {
+      "item": "mythicmetals:raw_osmium"
+    },
 	{
       "item": "mythicmetals:raw_kyber"
+    },
+    {
+      "item": "mythicmetals:unobtainium"
     }
   ],
   "output": {

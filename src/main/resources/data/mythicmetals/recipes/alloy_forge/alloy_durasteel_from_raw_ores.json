@@ -13,11 +13,11 @@
     "count": 3
   },
   "overrides": {
-	"2+": {
+	"3+": {
       "id": "mythicmetals:durasteel_ingot",
       "count": 4
     }
   },
-  "min_forge_tier": 2,
+  "min_forge_tier": 1,
   "fuel_per_tick": 10
 }

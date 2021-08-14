@@ -12,6 +12,9 @@ public enum ToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
+    AEGIS(4, 2400, 8.0F, 6.0F, 18, () -> {
+        return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
+    }),
     AETHERIUM(4, 1607, 8.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
     }),

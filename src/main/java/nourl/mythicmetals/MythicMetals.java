@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.DefaultConfig;
 import nourl.mythicmetals.config.EnchantConfig;
@@ -25,18 +24,18 @@ public class MythicMetals implements ModInitializer {
     public static final DefaultConfig.MythicGeneralConfig LOAD_CONFIG = MythicMetals.CONFIG.mythgeneral;
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
+            RegistryHelper.id("main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
     public static final ItemGroup MYTHICMETALS_TOOLS = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE_PICKAXE)).build();
+            RegistryHelper.id("tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE_PICKAXE)).build();
     public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
+            RegistryHelper.id("armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
-            new Identifier("mythicmetals", "decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
+            RegistryHelper.id("decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
 
     @Override
     public void onInitialize() {
-        RegisterItems.registerItems();
+        RegisterItems.register();
         if (LOAD_CONFIG.enableNuggets) {
             RegisterItems.registerNuggets();
         }
@@ -60,4 +59,6 @@ public class MythicMetals implements ModInitializer {
             LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");
         }
     }
+
+
 }

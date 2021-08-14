@@ -2,13 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:starrite"
-    },
-    {
-      "tag": "c:platinum_ingots"
-    },
-    {
-      "tag": "c:osmium_ingots"
+      "item": "mythicmetals:star_platinum"
     },
 	{
       "item": "mythicmetals:kyber_ingot"

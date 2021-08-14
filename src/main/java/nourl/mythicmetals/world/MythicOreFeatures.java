@@ -65,7 +65,8 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_MYTHRIL = triangleOre(MYTHRIL_TARGETS, CONFIG.oreMythrilVeinSize, CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight, CONFIG.oreMythrilPerChunk, 0.2F);
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.oreOrichalcumVeinSize, CONFIG.oreOrichalcumBottomOffset, CONFIG.oreOrichalcumMaxHeight, CONFIG.oreOrichalcumPerChunk, 0.15F);
     public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.orePrometheumVeinSize, CONFIG.orePrometheumBottomOffset, CONFIG.orePrometheumMaxHeight, CONFIG.orePrometheumPerChunk, 0.2F);
-    public static ConfiguredFeature<?, ?> ORE_STARRITE = bottomOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteBottomOffset, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.5F);
+    public static ConfiguredFeature<?, ?> ORE_STARRITE = bottomOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteBottomOffset, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.4F);
+    public static ConfiguredFeature<?, ?> ORE_HIGH_STARRITE = topOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize, 100, 50, CONFIG.oreStarritePerChunk, 0.3F);
     public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(UNOBTAINIUM_TARGETS, CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(2);
     // Nether Ores
     public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
@@ -91,6 +92,7 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreRunite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_runite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_silver"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_starrite"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreHighStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_high_starrite"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_stormyx"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
     public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_palladium"));
@@ -117,6 +119,7 @@ public class MythicOreFeatures {
         registerFeature(oreRunite.getValue(), ORE_RUNITE);
         registerFeature(oreSilver.getValue(), ORE_SILVER);
         registerFeature(oreStarrite.getValue(), ORE_STARRITE);
+        registerFeature(oreHighStarrite.getValue(), ORE_HIGH_STARRITE);
         registerFeature(oreStormyx.getValue(), ORE_STORMYX);
         registerFeature(oreTin.getValue(), ORE_TIN);
         registerFeature(orePalladium.getValue(), ORE_PALLADIUM);
@@ -140,7 +143,7 @@ public class MythicOreFeatures {
         if (CONFIG.oreQuadrillumGeneration) { AddUOre(oreQuadrillum); }
         if (CONFIG.oreRuniteGeneration) { AddUOre(oreRunite); }
         if (CONFIG.oreSilverGeneration) { AddUOre(oreSilver); }
-        if (CONFIG.oreStarriteGeneration) { AddUOre(oreStarrite); }
+        if (CONFIG.oreStarriteGeneration) { AddUOre(oreStarrite); AddUOre(oreHighStarrite);}
         if (CONFIG.oreTinGeneration) { AddUOre(oreTin); }
         if (CONFIG.oreUnobtainiumGeneration) { AddUOre(oreUnobtainium); }
         if (CONFIG.oreVermiculiteGeneration) { AddUOre(oreVermiculite); }
@@ -278,6 +281,9 @@ public class MythicOreFeatures {
     }
     public static ConfiguredFeature<?, ?> topOffsetOre(RuleTest rule, BlockState state, int veinSize, int minHeight, int topOffset, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, state, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.belowTop(topOffset))))).spreadHorizontally().repeat(spawnRate);
+    }
+    public static ConfiguredFeature<?, ?> topOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, int veinSize, int minHeight, int topOffset, int spawnRate, float discardChance) {
+        return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(minHeight), YOffset.belowTop(topOffset))))).spreadHorizontally().repeat(spawnRate);
     }
     public static ConfiguredFeature<?, ?> triangleOre(RuleTest rule, BlockState defaultState, int veinSize, int minHeight, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
