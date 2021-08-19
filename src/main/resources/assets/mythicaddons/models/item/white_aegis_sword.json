@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench, tanks Iffy!",
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "mythicmetals:items/tools/white_aegis_sword"
+		"layer0": "mythicaddons:items/weapons/white_aegis_sword"
 	},
 	"display": {
 		"thirdperson_righthand": {

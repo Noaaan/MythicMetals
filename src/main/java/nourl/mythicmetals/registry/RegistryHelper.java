@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 
+// Contains helper methods for registering items and blocks
 public class RegistryHelper {
 
     public static Identifier id(String path) {

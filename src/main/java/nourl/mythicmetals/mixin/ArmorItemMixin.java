@@ -24,11 +24,15 @@ import java.util.UUID;
 public abstract class ArmorItemMixin {
 
     @Shadow
-    @Final private static UUID[] MODIFIERS;
-    @Shadow @Final
+    @Final
+    private static UUID[] MODIFIERS;
+    @Shadow
+    @Final
+    protected float knockbackResistance;
+    @Shadow
+    @Final
     @Mutable
     private Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
-    @Shadow @Final protected float knockbackResistance;
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
@@ -39,8 +43,7 @@ public abstract class ArmorItemMixin {
 
             this.attributeModifiers.forEach(builder::put);
 
-            builder.put(
-                    EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
+            builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
                     new EntityAttributeModifier(uUID,
                             "Armor knockback resistance",
                             this.knockbackResistance,
@@ -54,8 +57,7 @@ public abstract class ArmorItemMixin {
 
             this.attributeModifiers.forEach(builder::put);
 
-            builder.put(
-                    EntityAttributes.GENERIC_ATTACK_DAMAGE,
+            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                     new EntityAttributeModifier(uUID,
                             "Armor attack bonus",
                             0.5F,

@@ -19,7 +19,6 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Gui.RequiresRestart
     public MythicOreConfig mythores = new MythicOreConfig();
 
-
     @Config(name = "general")
     public static class MythicGeneralConfig implements ConfigData {
         public boolean enableDusts = false;

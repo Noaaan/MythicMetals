@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 @SuppressWarnings("ALL")
 public enum ArmorMaterials implements ArmorMaterial {
-    ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+    ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
     AETHERIUM("aetherium", 33, new int[]{4, 6, 8, 4}, 18, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.5F, 0.0F, () -> {
@@ -45,7 +45,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     DISCORDIUM("discordium", 27, new int[]{3, 6, 8, 3}, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.DISCORDIUM_INGOT);
     }),
-    DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+    DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 8, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.DURASTEEL_INGOT);
     }),
     ETHERITE("etherite", 37, new int[]{4, 6, 8, 4}, 21, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
@@ -63,7 +63,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     MIDAS_GOLD("midas_gold", 10, new int[]{1, 3, 5, 2}, 24, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.MIDAS_GOLD_INGOT);
     }),
-    MYTHRIL("mythril", 28, new int[]{4, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+    MYTHRIL("mythril", 28, new int[]{3, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.MYTHRIL_INGOT);
     }),
     ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
@@ -78,7 +78,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     PROMETHEUM("prometheum", 18, new int[]{3, 6, 8, 3}, 14, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
     }),
-    QUICKSILVER("quicksilver", 37, new int[]{4, 6, 8, 4}, 15, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 2.5F, 0.0F, () -> {
+    QUICKSILVER("quicksilver", 26, new int[]{4, 6, 8, 4}, 23, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 2.5F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.QUICKSILVER_INGOT);
     }),
     RUNITE("runite", 27, new int[]{3, 6, 7, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {

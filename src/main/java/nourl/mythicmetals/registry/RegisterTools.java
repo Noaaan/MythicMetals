@@ -5,7 +5,9 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.tools.AxeBase;
 import nourl.mythicmetals.tools.HoeBase;
@@ -40,8 +42,10 @@ public class RegisterTools {
     public static final Item STAR_PLATINUM_SWORD = new SwordItem(ToolMaterials.STAR_PLATINUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STEEL_SWORD = new SwordItem(ToolMaterials.STEEL, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SWORD = new SwordItem(ToolMaterials.STORMYX, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 4, -2.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 3, -2.2F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+
+    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 5, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 3, -2.5F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+
     //PICKAXES
     public static final Item ADAMANTITE_PICKAXE = new PickaxeBase(ToolMaterials.ADAMANTITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_PICKAXE = new PickaxeBase(ToolMaterials.AETHERIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -279,7 +283,8 @@ public class RegisterTools {
         RegistryHelper.registerItem("stormyx_pickaxe", STORMYX_PICKAXE);
         RegistryHelper.registerItem("stormyx_shovel", STORMYX_SHOVEL);
         RegistryHelper.registerItem("stormyx_sword", STORMYX_SWORD);
-        RegistryHelper.registerItem("white_aegis_sword", WHITE_AEGIS_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("mythicaddons","white_aegis_sword"), WHITE_AEGIS_SWORD);
+        Registry.register(Registry.ITEM, new Identifier("mythicaddons","red_aegis_sword"), RED_AEGIS_SWORD);
 
     }
 }

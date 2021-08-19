@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mythicmetals:etherite_sword"
+  },
+  "addition": {
+    "item": "mythicmetals:adamantite_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:red_aegis_sword"
+  }
+}

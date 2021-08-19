@@ -30,5 +30,8 @@ public class EnchantConfig {
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.DISCORDIUM_CHESTPLATE), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.DISCORDIUM_LEGGINGS), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(RegisterArmor.DISCORDIUM_BOOTS), new Identifier("minecraft:mending"), 1, true);
+
+        EnchantsList.addEnchant(Registry.ITEM.getId(RegisterTools.WHITE_AEGIS_SWORD), new Identifier("minecraft:smite"), 6, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(RegisterTools.RED_AEGIS_SWORD), new Identifier("minecraft:fire_aspect"), 3, true);
     }
 }

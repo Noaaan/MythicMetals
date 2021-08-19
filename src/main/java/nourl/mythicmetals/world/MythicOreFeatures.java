@@ -24,6 +24,7 @@ import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.DefaultConfig;
+import nourl.mythicmetals.registry.RegistryHelper;
 
 @SuppressWarnings("deprecation")
 public class MythicOreFeatures {
@@ -38,9 +39,9 @@ public class MythicOreFeatures {
     public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
 
     // Defines a list of targets, which can check for multiple blocks and dynamically replace them when generating ore
-    public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> MYTHRIL_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.MYTHRIL_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> PROMETHEUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.PROMETHEUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_PROMETHEUM_ORE.getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> STARRITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.STARRITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(CALCITE_RULE, MythicBlocks.CALCITE_STARRITE_ORE.getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX_ORE.getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
@@ -74,30 +75,30 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_STORMYX = bottomOffsetOre(STORMYX_TARGETS, CONFIG.oreStormyxVeinSize, CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight, CONFIG.oreStormyxPerChunk, 0.1F);
 
     // Add keys for features
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_adamantite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_aetherium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_aquarium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_banglum"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_carmot"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_calcite_kyber"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_kyber"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_manganese"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_midas_gold"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_mythril"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOrichalcum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_orichalcum"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOsmium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_osmium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePlatinum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_platinum"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePrometheum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_prometheum"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreQuadrillum = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_quadrillum"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreRunite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_runite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_silver"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_starrite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreHighStarrite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_high_starrite"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_stormyx"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_tin"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_palladium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_unobtainium"));
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MythicMetals.MOD_ID, "ore_vermiculite"));
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = registerKey("ore_adamantite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = registerKey("ore_aetherium");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = registerKey("ore_aquarium");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = registerKey("ore_banglum");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = registerKey("ore_carmot");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = registerKey("ore_calcite_kyber");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = registerKey("ore_kyber");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = registerKey("ore_manganese");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = registerKey("ore_midas_gold");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMythril = registerKey("ore_mythril");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOrichalcum = registerKey("ore_orichalcum");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOsmium = registerKey("ore_osmium");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> orePlatinum = registerKey("ore_platinum");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> orePrometheum = registerKey("ore_prometheum");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreQuadrillum = registerKey("ore_quadrillum");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreRunite = registerKey("ore_runite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = registerKey("ore_silver");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = registerKey("ore_starrite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreHighStarrite = registerKey("ore_high_starrite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = registerKey("ore_stormyx");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = registerKey("ore_tin");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = registerKey("ore_palladium");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = registerKey("ore_unobtainium");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = registerKey("ore_vermiculite");
 
     public static void init() {
         //Register keys on init
@@ -292,6 +293,10 @@ public class MythicOreFeatures {
         return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
     }
 
+    public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String string) {
+        return RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, RegistryHelper.id(string));
+    }
+    
     public static void registerFeature(Identifier identifier, ConfiguredFeature<?,?> feature) {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, feature);
     }

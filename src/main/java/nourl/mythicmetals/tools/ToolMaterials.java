@@ -24,7 +24,7 @@ public enum ToolMaterials implements ToolMaterial {
     BANGLUM(2, 260, 7.0F, 2.0F, 1, () -> {
         return Ingredient.ofItems(RegisterItems.BANGLUM_INGOT);
     }),
-    BRONZE(2, 500, 6.0F, 2.0F, 14, () -> {
+    BRONZE(2, 524, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterItems.BRONZE_INGOT);
     }),
     CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
@@ -45,10 +45,10 @@ public enum ToolMaterials implements ToolMaterial {
     ETHERITE(3, 2017, 8.0F, 5.0F, 19, () -> {
         return Ingredient.ofItems(RegisterItems.ETHERITE_INGOT);
     }),
-    HALLOWED(4, 2048, 11.0F, 5.0F, 20, () -> {
+    HALLOWED(4, 1848, 11.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.HALLOWED_INGOT);
     }),
-    KYBER(2, 450, 7.0F, 2.5F, 20, () -> {
+    KYBER(2, 950, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.KYBER_INGOT);
     }),
     METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
@@ -72,7 +72,7 @@ public enum ToolMaterials implements ToolMaterial {
     QUADRILLUM(2, 324, 5.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(RegisterItems.QUADRILLUM_INGOT);
     }),
-    QUICKSILVER(4, 952, 16.0F, 3.0F, 25, () -> {
+    QUICKSILVER(4, 952, 16.0F, 3.5F, 25, () -> {
         return Ingredient.ofItems(RegisterItems.QUICKSILVER_INGOT);
     }),
     RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {

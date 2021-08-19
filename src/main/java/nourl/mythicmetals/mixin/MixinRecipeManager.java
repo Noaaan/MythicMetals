@@ -26,35 +26,16 @@ public class MixinRecipeManager {
             Map.Entry<Identifier, JsonObject> entry = iterator.next();
             JsonObject json = entry.getValue();
 
-            if (!FabricLoader.getInstance().isModLoaded("techreborn")) {
-                String string = JsonHelper.getString(json, "type");
-                if (string.contains("techreborn")) {
-                    iterator.remove();
-                }
-            }
-            if (!FabricLoader.getInstance().isModLoaded("mechanix")) {
-                String string = JsonHelper.getString(json, "type");
-                if (string.contains("mechanix")) {
-                    iterator.remove();
-                }
-            }
-            if (!FabricLoader.getInstance().isModLoaded("modern_industrialization")) {
-                String string = JsonHelper.getString(json, "type");
-                if (string.contains("modern_industrialization")) {
-                    iterator.remove();
-                }
-            }
-            if (!FabricLoader.getInstance().isModLoaded("mechanicaltech")) {
-                String string = JsonHelper.getString(json, "type");
-                if (string.contains("mechanicaltech")) {
-                    iterator.remove();
-                }
-            }
-            if (!FabricLoader.getInstance().isModLoaded("indrev")) {
-                String string = JsonHelper.getString(json, "type");
-                if (string.contains("indrev")) {
-                    iterator.remove();
-                }
+            isModLoaded("techreborn", json, iterator);
+            isModLoaded("modern_industrialization", json, iterator);
+        }
+    }
+
+    private void isModLoaded(String string, JsonObject json, Iterator<Map.Entry<Identifier, JsonObject>> iterator) {
+        if (!FabricLoader.getInstance().isModLoaded(string)) {
+            String type = JsonHelper.getString(json, "type");
+            if (type.contains(string)) {
+                iterator.remove();
             }
         }
     }
