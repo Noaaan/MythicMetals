@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
     @Mixin(DefaultedRegistry.class)
     public class DefaultedRegistryMixin {
         // All the identifiers of removed stuff
-        private static final String AF_ID = "alloy_forgery";
         Identifier mythicCopperOre = RegistryHelper.id("copper_ore");
         Identifier mythicCopperIngot = RegistryHelper.id( "copper_ingot");
         Identifier mythicTantalite = RegistryHelper.id( "tantalite_ore");

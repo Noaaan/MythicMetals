@@ -80,8 +80,7 @@
   "item.mythicmetals.steel_sword": "Steel Sword",
   "item.mythicmetals.stormyx_sword": "Stormyx Sword",
   "item.mythicmetals.palladium_sword": "Palladium Sword",
-  "item.mythicmetals.white_aegis_sword": "Sword of the Aegis",
-  "item.mythicmetals.red_aegis_sword": "Blade of the Aegis",
+
   "item.mythicmetals.adamantite_pickaxe": "Adamantite Pickaxe",
   "item.mythicmetals.aetherium_pickaxe": "Aetherium Pickaxe",
   "item.mythicmetals.aquarium_pickaxe": "Aquarium Pickaxe",
@@ -369,6 +368,7 @@
   "item.mythicmetals.steel_anvil": "Steel Anvil",
   "item.mythicmetals.stormyx_anvil": "Stormyx Anvil",
   "item.mythicmetals.palladium_anvil": "Palladium Anvil",
+
   "block.mythicaddons.adamantite_chain": "Adamantite Chain",
   "block.mythicaddons.aetherium_chain": "Aetherium Chain",
   "block.mythicaddons.aquarium_chain": "Aquarium Chain",
@@ -427,6 +427,10 @@
   "item.mythicaddons.steel_chain": "Steel Chain",
   "item.mythicaddons.stormyx_chain": "Stormyx Chain",
   "item.mythicaddons.palladium_chain": "Palladium Chain",
+
+  "item.mythicaddons.white_aegis_sword": "Sword of the Aegis",
+  "item.mythicaddons.red_aegis_sword": "Blade of the Aegis",
+
   "block.mythicmetals.adamantite_ore": "Adamantite Ore",
   "block.mythicmetals.aetherium_ore": "Aetherium Ore",
   "block.mythicmetals.aquarium_ore": "Aquarium Ore",
