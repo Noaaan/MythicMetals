@@ -2,20 +2,20 @@ package nourl.mythicmetals.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
 public class StarriteOreBlock extends OreBlock {
-    public StarriteOreBlock(Settings settings) {
-        super(settings);
+    public StarriteOreBlock(Settings settings, UniformIntProvider uniformIntProvider) {
+        super(settings, uniformIntProvider);
     }
 
 

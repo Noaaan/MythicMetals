@@ -34,6 +34,7 @@ public class MythicOreFeatures {
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest CALCITE_RULE = new BlockMatchRuleTest(Blocks.CALCITE);
     public static final RuleTest DEEPSLATE_RULE = OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES;
+    public static final RuleTest END_STONE_RULE = new BlockMatchRuleTest(Blocks.END_STONE);
     public static final RuleTest SMOOTH_BASALT_RULE = new BlockMatchRuleTest(Blocks.SMOOTH_BASALT);
     public static final RuleTest STONE_RULE = OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES;
     public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
@@ -66,13 +67,14 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_MYTHRIL = triangleOre(MYTHRIL_TARGETS, CONFIG.oreMythrilVeinSize, CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight, CONFIG.oreMythrilPerChunk, 0.2F);
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.oreOrichalcumVeinSize, CONFIG.oreOrichalcumBottomOffset, CONFIG.oreOrichalcumMaxHeight, CONFIG.oreOrichalcumPerChunk, 0.15F);
     public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.orePrometheumVeinSize, CONFIG.orePrometheumBottomOffset, CONFIG.orePrometheumMaxHeight, CONFIG.orePrometheumPerChunk, 0.2F);
-    public static ConfiguredFeature<?, ?> ORE_STARRITE = bottomOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize,CONFIG.oreStarriteBottomOffset, CONFIG.oreStarriteMaxHeight,CONFIG.oreStarritePerChunk, 0.4F);
-    public static ConfiguredFeature<?, ?> ORE_HIGH_STARRITE = topOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize, 100, 50, CONFIG.oreStarritePerChunk, 0.3F);
-    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(UNOBTAINIUM_TARGETS, CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(2);
+    public static ConfiguredFeature<?, ?> ORE_STARRITE = topOffsetOre(STARRITE_TARGETS, CONFIG.oreStarriteVeinSize, CONFIG.oreStarriteMinHeight, CONFIG.oreStarriteTopOffset, CONFIG.oreStarritePerChunk, 0.3F);
+    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = Feature.SCATTERED_ORE.configure(new OreFeatureConfig(UNOBTAINIUM_TARGETS, CONFIG.oreUnobtainiumVeinSize, CONFIG.oreUnobtainiumDiscardChance)).triangleRange(YOffset.aboveBottom(CONFIG.oreUnobtainiumMinHeight), YOffset.fixed(CONFIG.oreUnobtainiumMaxHeight)).spreadHorizontally().applyChance(3);
     // Nether Ores
     public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.oreMidasgoldVeinSize,CONFIG.oreMidasgoldMinHeight, CONFIG.oreMidasgoldMaxHeight,CONFIG.oreMidasgoldPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_PALLADIUM = fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM_ORE.getDefaultState(), CONFIG.orePalladiumVeinSize,CONFIG.orePalladiumMinHeight, CONFIG.orePalladiumMaxHeight,CONFIG.orePalladiumPerChunk, 0.1F);
     public static ConfiguredFeature<?, ?> ORE_STORMYX = bottomOffsetOre(STORMYX_TARGETS, CONFIG.oreStormyxVeinSize, CONFIG.oreStormyxMinHeight, CONFIG.oreStormyxMaxHeight, CONFIG.oreStormyxPerChunk, 0.1F);
+    // End Ores
+    public static ConfiguredFeature<?, ?> ORE_END_STARRITE = fixedOre(END_STONE_RULE, MythicBlocks.END_STONE_STARRITE_ORE.getDefaultState(), 7, 10, 60, 2, 0.0f);
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = registerKey("ore_adamantite");
@@ -93,7 +95,7 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreRunite = registerKey("ore_runite");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = registerKey("ore_silver");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = registerKey("ore_starrite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreHighStarrite = registerKey("ore_high_starrite");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> oreEndStarrite = registerKey("ore_end_starrite");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = registerKey("ore_stormyx");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = registerKey("ore_tin");
     public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = registerKey("ore_palladium");
@@ -120,7 +122,7 @@ public class MythicOreFeatures {
         registerFeature(oreRunite.getValue(), ORE_RUNITE);
         registerFeature(oreSilver.getValue(), ORE_SILVER);
         registerFeature(oreStarrite.getValue(), ORE_STARRITE);
-        registerFeature(oreHighStarrite.getValue(), ORE_HIGH_STARRITE);
+        registerFeature(oreEndStarrite.getValue(), ORE_END_STARRITE);
         registerFeature(oreStormyx.getValue(), ORE_STORMYX);
         registerFeature(oreTin.getValue(), ORE_TIN);
         registerFeature(orePalladium.getValue(), ORE_PALLADIUM);
@@ -144,7 +146,10 @@ public class MythicOreFeatures {
         if (CONFIG.oreQuadrillumGeneration) { AddUOre(oreQuadrillum); }
         if (CONFIG.oreRuniteGeneration) { AddUOre(oreRunite); }
         if (CONFIG.oreSilverGeneration) { AddUOre(oreSilver); }
-        if (CONFIG.oreStarriteGeneration) { AddUOre(oreStarrite); AddUOre(oreHighStarrite);}
+        if (CONFIG.oreStarriteGeneration) {
+            AddUOre(oreStarrite);
+            BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_DECORATION, oreEndStarrite);
+            }
         if (CONFIG.oreTinGeneration) { AddUOre(oreTin); }
         if (CONFIG.oreUnobtainiumGeneration) { AddUOre(oreUnobtainium); }
         if (CONFIG.oreVermiculiteGeneration) { AddUOre(oreVermiculite); }
@@ -176,6 +181,11 @@ public class MythicOreFeatures {
             addUOreToModBiomes("terrestria","volcanic_island_shore", oreAquarium);
 
             addUOreToModBiomes("traverse","wooded_island", oreAquarium);
+
+            addUOreToModBiomes("lakeside", "warm_lake", oreAquarium);
+            addUOreToModBiomes("lakeside", "jungle_lake", oreAquarium);
+            addUOreToModBiomes("lakeside", "cold_lake", oreAquarium);
+            addUOreToModBiomes("lakeside", "mountain_lake", oreAquarium);
         }
         //Jungle only ores
         if (CONFIG.orePrometheumGeneration) {
@@ -209,6 +219,9 @@ public class MythicOreFeatures {
 
             addUOreToModBiomes("traverse","lush_swamp", orePrometheum);
             addUOreToModBiomes("traverse","mini_jungle", orePrometheum);
+
+            addUOreToModBiomes("lakeside", "jungle_lake", orePrometheum);
+            addUOreToModBiomes("lakeside", "jungle_island", orePrometheum);
         }
         //Mountain only ores
         if (CONFIG.oreAetheriumGeneration) {
@@ -254,6 +267,8 @@ public class MythicOreFeatures {
             addUOreToModBiomes("traverse","arid_highlands", oreAetherium);
             addUOreToModBiomes("traverse","cliffs", oreAetherium);
             addUOreToModBiomes("traverse","rolling_hills", oreAetherium);
+
+            addUOreToModBiomes("lakeside", "mountain_lake", oreAetherium);
         }
 
     }

@@ -23,6 +23,8 @@ public class RegisterBlocks {
         RegistryHelper.registerBlockItem("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
+        RegistryHelper.registerFireproofBlockItem("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE, MythicMetals.MYTHICMETALS);
+        RegistryHelper.registerBlockItem("end_stone_starrite_ore", MythicBlocks.END_STONE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("kyber_ore", MythicBlocks.KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("manganese_ore", MythicBlocks.MANGANESE_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("midas_gold_ore", MythicBlocks.MIDAS_GOLD_ORE, MythicMetals.MYTHICMETALS);
@@ -30,7 +32,6 @@ public class RegisterBlocks {
         RegistryHelper.registerBlockItem("orichalcum_ore", MythicBlocks.ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("osmium_ore", MythicBlocks.OSMIUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerFireproofBlockItem("palladium_ore", MythicBlocks.PALLADIUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.registerFireproofBlockItem("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("platinum_ore", MythicBlocks.PLATINUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("prometheum_ore", MythicBlocks.PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("quadrillum_ore", MythicBlocks.QUADRILLUM_ORE, MythicMetals.MYTHICMETALS);
@@ -57,6 +58,7 @@ public class RegisterBlocks {
         RegistryHelper.registerBlock("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE);
         RegistryHelper.registerBlock("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE);
         RegistryHelper.registerBlock("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE);
+        RegistryHelper.registerBlock("end_stone_starrite_ore", MythicBlocks.END_STONE_STARRITE_ORE);
         RegistryHelper.registerBlock("kyber_ore", MythicBlocks.KYBER_ORE);
         RegistryHelper.registerBlock("manganese_ore", MythicBlocks.MANGANESE_ORE);
         RegistryHelper.registerBlock("midas_gold_ore", MythicBlocks.MIDAS_GOLD_ORE);
@@ -110,6 +112,7 @@ public class RegisterBlocks {
         RegistryHelper.registerBlockItem("tin_block", MythicBlocks.TIN_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerFireproofBlockItem("unobtainium_block", MythicBlocks.UNOBTAINIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.registerBlockItem("vermiculite_block", MythicBlocks.VERMICULITE_BLOCK, MythicMetals.MYTHICMETALS);
+
         RegistryHelper.registerBlock("adamantite_block", MythicBlocks.ADAMANTITE_BLOCK);
         RegistryHelper.registerBlock("aetherium_block", MythicBlocks.AETHERIUM_BLOCK);
         RegistryHelper.registerBlock("aquarium_block", MythicBlocks.AQUARIUM_BLOCK);

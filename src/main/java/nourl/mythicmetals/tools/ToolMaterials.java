@@ -12,9 +12,6 @@ public enum ToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
-    AEGIS(4, 2400, 8.0F, 6.0F, 18, () -> {
-        return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
-    }),
     AETHERIUM(4, 1607, 8.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
     }),
@@ -30,7 +27,7 @@ public enum ToolMaterials implements ToolMaterial {
     CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
         return Ingredient.ofItems(RegisterItems.CARMOT_INGOT);
     }),
-    CELESTIUM(4, 1977, 9.9F, 5.0F, 24, () -> {
+    CELESTIUM(4, 1977, 9.9F, 6.0F, 24, () -> {
         return Ingredient.ofItems(RegisterItems.CELESTIUM_INGOT);
     }),
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {

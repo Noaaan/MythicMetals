@@ -30,7 +30,7 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
         //Adamantite Ore Settings
         public boolean oreAdamantiteGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreAdamantiteVeinSize = 4;
+        public int oreAdamantiteVeinSize = 5;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         public int oreAdamantitePerChunk = 1;
         public int oreAdamantiteMinHeight = -56;
@@ -186,8 +186,8 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
         public int oreStarriteVeinSize = 4;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         public int oreStarritePerChunk = 2;
-        public int oreStarriteBottomOffset = 8;
-        public int oreStarriteMaxHeight = 100;
+        public int oreStarriteMinHeight = 50;
+        public int oreStarriteTopOffset = 50;
 
         //Stormyx Ore Settings
         public boolean oreStormyxGeneration = true;
@@ -215,7 +215,7 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
         public int oreUnobtainiumMinHeight = -60;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
         public int oreUnobtainiumMaxHeight = 12;
-        public float oreUnobtainiumDiscardChance = 0.75F;
+        public float oreUnobtainiumDiscardChance = 0.5F;
 
         //Vermiculite Ore Settings
         public boolean oreVermiculiteGeneration = true;

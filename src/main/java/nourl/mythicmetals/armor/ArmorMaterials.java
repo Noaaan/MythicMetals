@@ -60,7 +60,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.2F, () -> {
         return Ingredient.ofItems(RegisterItems.METALLURGIUM_INGOT);
     }),
-    MIDAS_GOLD("midas_gold", 10, new int[]{1, 3, 5, 2}, 24, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
+    MIDAS_GOLD("midas_gold", 12, new int[]{1, 3, 5, 2}, 24, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(RegisterItems.MIDAS_GOLD_INGOT);
     }),
     MYTHRIL("mythril", 28, new int[]{3, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {

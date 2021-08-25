@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "mythicmetals:calcite_starrite_ore"
+              "name": "mythicmetals:end_stone_starrite_ore"
             },
             {
               "type": "minecraft:item",
@@ -33,7 +33,7 @@
                   "function": "minecraft:set_count",
                   "count": {
                     "min": 1.0,
-                    "max": 1.0,
+                    "max": 2.0,
                     "type": "minecraft:uniform"
                   }
                 },

@@ -39,33 +39,26 @@ public abstract class ArmorItemMixin {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
         if (ArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
-            ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-
-            this.attributeModifiers.forEach(builder::put);
-
-            builder.put(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
-                    new EntityAttributeModifier(uUID,
-                            "Armor knockback resistance",
-                            this.knockbackResistance,
-                            EntityAttributeModifier.Operation.ADDITION
-                    ));
-
-            this.attributeModifiers = builder.build();
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "Knockback resistance", this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION);
+        }
+        if (material == ArmorMaterials.CELESTIUM) {
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.05f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
         if (material == ArmorMaterials.ETHERITE) {
-            ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-
-            this.attributeModifiers.forEach(builder::put);
-
-            builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(uUID,
-                            "Armor attack bonus",
-                            0.5F,
-                            EntityAttributeModifier.Operation.ADDITION
-                    ));
-
-            this.attributeModifiers = builder.build();
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack damage bonus", 0.5f, EntityAttributeModifier.Operation.ADDITION);
         }
+        if (material == ArmorMaterials.MIDAS_GOLD) {
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0f, EntityAttributeModifier.Operation.ADDITION);
+        }
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {
+        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
+        this.attributeModifiers.forEach(builder::put);
+        builder.put(attributes,
+                new EntityAttributeModifier(uUID, name, value, operation));
+        this.attributeModifiers = builder.build();
     }
 
 }
