@@ -156,11 +156,11 @@ public class DefaultConfig extends PartitioningSerializer.GlobalData {
         //Quadrillum Ore Settings
         public boolean oreQuadrillumGeneration = true;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreQuadrillumVeinSize = 8;
+        public int oreQuadrillumVeinSize = 7;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-        public int oreQuadrillumPerChunk = 3;
-        public int oreQuadrillumMinHeight = 9;
-        public int oreQuadrillumMaxHeight = 56;
+        public int oreQuadrillumPerChunk = 2;
+        public int oreQuadrillumMinHeight = 16;
+        public int oreQuadrillumMaxHeight = 44;
 
         //Runite Ore Settings
         public boolean oreRuniteGeneration = true;
