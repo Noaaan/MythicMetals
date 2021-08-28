@@ -23,13 +23,13 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.config.DefaultConfig;
+import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.registry.RegistryHelper;
 
 @SuppressWarnings("deprecation")
 public class MythicOreFeatures {
     // Defines the config that applies to the ore features
-    public static final DefaultConfig.MythicOreConfig CONFIG = MythicMetals.CONFIG.mythores;
+    public static final MythicConfig CONFIG = MythicMetals.CONFIG;
 
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest BLACKSTONE_RULE = new BlockMatchRuleTest(Blocks.BLACKSTONE);

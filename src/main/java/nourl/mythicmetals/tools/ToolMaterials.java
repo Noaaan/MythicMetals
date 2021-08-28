@@ -12,7 +12,7 @@ public enum ToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ADAMANTITE_INGOT);
     }),
-    AETHERIUM(4, 1607, 8.0F, 4.0F, 18, () -> {
+    AETHERIUM(4, 1307, 8.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(RegisterItems.AETHERIUM_INGOT);
     }),
     AQUARIUM(2, 300, 6.5F, 2.0F, 16, () -> {
@@ -24,10 +24,10 @@ public enum ToolMaterials implements ToolMaterial {
     BRONZE(2, 524, 6.0F, 2.0F, 14, () -> {
         return Ingredient.ofItems(RegisterItems.BRONZE_INGOT);
     }),
-    CARMOT(3, 880, 11.0F, 2.0F, 40, () -> {
+    CARMOT(3, 730, 11.0F, 2.0F, 40, () -> {
         return Ingredient.ofItems(RegisterItems.CARMOT_INGOT);
     }),
-    CELESTIUM(4, 1977, 9.9F, 6.0F, 24, () -> {
+    CELESTIUM(4, 2270, 9.9F, 6.0F, 24, () -> {
         return Ingredient.ofItems(RegisterItems.CELESTIUM_INGOT);
     }),
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
@@ -45,7 +45,7 @@ public enum ToolMaterials implements ToolMaterial {
     HALLOWED(4, 1848, 11.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.HALLOWED_INGOT);
     }),
-    KYBER(2, 950, 7.0F, 2.5F, 20, () -> {
+    KYBER(2, 889, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.KYBER_INGOT);
     }),
     METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
@@ -57,13 +57,13 @@ public enum ToolMaterials implements ToolMaterial {
     ORICHALCUM(4, 2048, 6.0F, 3.0F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.ORICHALCUM_INGOT);
     }),
-    OSMIUM(2, 584, 7.0F, 2.0F, 13, () -> {
+    OSMIUM(2, 484, 7.0F, 2.0F, 13, () -> {
         return Ingredient.ofItems(RegisterItems.OSMIUM_INGOT);
     }),
     PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(RegisterItems.PALLADIUM_INGOT);
     }),
-    PROMETHEUM(2, 742, 6.0F, 2.5F, 17, () -> {
+    PROMETHEUM(2, 672, 6.0F, 2.5F, 17, () -> {
         return Ingredient.ofItems(RegisterItems.PROMETHEUM_INGOT);
     }),
     QUADRILLUM(2, 324, 5.0F, 2.0F, 10, () -> {
@@ -84,7 +84,7 @@ public enum ToolMaterials implements ToolMaterial {
     STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
         return Ingredient.ofItems(RegisterItems.STEEL_INGOT);
     }),
-    STORMYX(3, 1405, 8.0F, 3.5F, 20, () -> {
+    STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> {
         return Ingredient.ofItems(RegisterItems.STORMYX_INGOT);
     });
 

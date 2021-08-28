@@ -6,12 +6,12 @@ import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
-import nourl.mythicmetals.config.DefaultConfig;
+import nourl.mythicmetals.config.MythicConfig;
 
 @Environment(EnvType.CLIENT)
 public class MythicMetalsModMenu implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> (Screen) AutoConfig.getConfigScreen(DefaultConfig.class, parent).get();
+        return parent -> (Screen) AutoConfig.getConfigScreen(MythicConfig.class, parent).get();
     }
 }
