@@ -1,17 +1,17 @@
 package nourl.mythicmetals;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.YamlConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.EnchantConfig;
-import nourl.mythicmetals.world.MythicOreFeatures;
+import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.registry.*;
+import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +19,7 @@ public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final String CHAIN_ID = "mythicaddons";
-    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class,GsonConfigSerializer::new).getConfig();
+    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, YamlConfigSerializer::new).getConfig();
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
             RegistryHelper.id("main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();

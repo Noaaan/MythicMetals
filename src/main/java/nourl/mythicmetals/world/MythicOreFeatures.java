@@ -51,7 +51,7 @@ public class MythicOreFeatures {
     public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE.getDefaultState()));
 
     // Configured ore features
-    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumTopOffset, CONFIG.oreAetheriumPerChunk, 0.25F);
+    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM_ORE.getDefaultState(), CONFIG.oreAetheriumVeinSize, CONFIG.oreAetheriumMinHeight, CONFIG.oreAetheriumTopOffset, CONFIG.oreAetheriumPerChunk, 0.15F);
     public static ConfiguredFeature<?, ?> ORE_AQUARIUM = fixedOre(STONE_RULE, MythicBlocks.AQUARIUM_ORE.getDefaultState(), CONFIG.oreAquariumVeinSize,CONFIG.oreAquariumMinHeight, CONFIG.oreAquariumMaxHeight,CONFIG.oreAquariumPerChunk, 0.0F);
     public static ConfiguredFeature<?, ?> ORE_BANGLUM = fixedOre(STONE_RULE, MythicBlocks.BANGLUM_ORE.getDefaultState(), CONFIG.oreBanglumVeinSize,CONFIG.oreBanglumMinHeight, CONFIG.oreBanglumMaxHeight,CONFIG.oreBanglumPerChunk, 0.2F);
     public static ConfiguredFeature<?, ?> ORE_CARMOT = fixedOre(STONE_RULE, MythicBlocks.CARMOT_ORE.getDefaultState(), CONFIG.oreCarmotVeinSize,CONFIG.oreCarmotMinHeight, CONFIG.oreCarmotMaxHeight,CONFIG.oreCarmotPerChunk, 0.0F);

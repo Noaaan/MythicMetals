@@ -14,7 +14,6 @@ public class MythicConfig implements ConfigData {
     public boolean enableNuggets = true;
 
     public int configVersion = 0;
-
     //Adamantite Ore Settings
     public boolean oreAdamantiteGeneration = true;
     @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
