@@ -24,9 +24,9 @@ public class MythicMetals implements ModInitializer {
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
             RegistryHelper.id("main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
     public static final ItemGroup MYTHICMETALS_TOOLS = FabricItemGroupBuilder.create(
-            RegistryHelper.id("tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE_PICKAXE)).build();
+            RegistryHelper.id("tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE.getPickaxe())).build();
     public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
-            RegistryHelper.id("armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE_HELMET)).build();
+            RegistryHelper.id("armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE.getHelmet())).build();
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
             RegistryHelper.id("decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
@@ -51,7 +51,7 @@ public class MythicMetals implements ModInitializer {
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
-            LOGGER.info("[Mythic Metals] Eyo, Harvest Scythes is enabled. Give DH a thank for the textures!");
+            LOGGER.info("[Mythic Metals] Eyo, Harvest Scythes is enabled. Punish DH for being extremely based!");
         }
         if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
             LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");

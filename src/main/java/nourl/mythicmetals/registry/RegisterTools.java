@@ -9,14 +9,15 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.tools.AxeBase;
-import nourl.mythicmetals.tools.HoeBase;
-import nourl.mythicmetals.tools.PickaxeBase;
-import nourl.mythicmetals.tools.ToolMaterials;
+import nourl.mythicmetals.tools.*;
 
 public class RegisterTools {
+
+    public static final int [] DEFAULT_DAMAGE = new int[]{3, 2, 4, 1, 0};
+
+    public static final ToolSet ADAMANTITE = new ToolSet(ToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, new float[]{-2.4f, -2.8f, -3f, -3f, -2.9f});
+
     //SWORDS
-    public static final Item ADAMANTITE_SWORD = new SwordItem(ToolMaterials.ADAMANTITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_SWORD = new SwordItem(ToolMaterials.AETHERIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_SWORD = new SwordItem(ToolMaterials.AQUARIUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_SWORD = new SwordItem(ToolMaterials.BANGLUM, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -47,7 +48,6 @@ public class RegisterTools {
     public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 3, -2.5F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
 
     //PICKAXES
-    public static final Item ADAMANTITE_PICKAXE = new PickaxeBase(ToolMaterials.ADAMANTITE, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_PICKAXE = new PickaxeBase(ToolMaterials.AETHERIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_PICKAXE = new PickaxeBase(ToolMaterials.AQUARIUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_PICKAXE = new PickaxeBase(ToolMaterials.BANGLUM, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -73,7 +73,6 @@ public class RegisterTools {
     public static final Item STEEL_PICKAXE = new PickaxeBase(ToolMaterials.STEEL, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_PICKAXE = new PickaxeBase(ToolMaterials.STORMYX, 2, -2.8F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //AXES
-    public static final Item ADAMANTITE_AXE = new AxeBase(ToolMaterials.ADAMANTITE, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_AXE = new AxeBase(ToolMaterials.AETHERIUM, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_AXE = new AxeBase(ToolMaterials.AQUARIUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_AXE = new AxeBase(ToolMaterials.BANGLUM, 4, -3.1F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -99,7 +98,6 @@ public class RegisterTools {
     public static final Item STEEL_AXE = new AxeBase(ToolMaterials.STEEL, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_AXE = new AxeBase(ToolMaterials.STORMYX, 4, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //SHOVELS
-    public static final Item ADAMANTITE_SHOVEL = new ShovelItem(ToolMaterials.ADAMANTITE, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_SHOVEL = new ShovelItem(ToolMaterials.AETHERIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_SHOVEL = new ShovelItem(ToolMaterials.AQUARIUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_SHOVEL = new ShovelItem(ToolMaterials.BANGLUM, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -125,7 +123,6 @@ public class RegisterTools {
     public static final Item STEEL_SHOVEL = new ShovelItem(ToolMaterials.STEEL, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item STORMYX_SHOVEL = new ShovelItem(ToolMaterials.STORMYX, 1, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     //HOES
-    public static final Item ADAMANTITE_HOE = new HoeBase(ToolMaterials.ADAMANTITE, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AETHERIUM_HOE = new HoeBase(ToolMaterials.AETHERIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item AQUARIUM_HOE = new HoeBase(ToolMaterials.AQUARIUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final Item BANGLUM_HOE = new HoeBase(ToolMaterials.BANGLUM, 0, -2.9F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
@@ -156,11 +153,8 @@ public class RegisterTools {
     }
 
     public static void register() {
-        RegistryHelper.item("adamantite_axe", ADAMANTITE_AXE);
-        RegistryHelper.item("adamantite_hoe", ADAMANTITE_HOE);
-        RegistryHelper.item("adamantite_pickaxe", ADAMANTITE_PICKAXE);
-        RegistryHelper.item("adamantite_shovel", ADAMANTITE_SHOVEL);
-        RegistryHelper.item("adamantite_sword", ADAMANTITE_SWORD);
+        ADAMANTITE.register("adamantite");
+
         RegistryHelper.item("aetherium_axe", AETHERIUM_AXE);
         RegistryHelper.item("aetherium_hoe", AETHERIUM_HOE);
         RegistryHelper.item("aetherium_pickaxe", AETHERIUM_PICKAXE);
