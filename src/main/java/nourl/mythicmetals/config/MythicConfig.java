@@ -15,13 +15,8 @@ public class MythicConfig implements ConfigData {
 
     public int configVersion = 0;
     //Adamantite Ore Settings
-    public boolean oreAdamantiteGeneration = true;
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-    public int oreAdamantiteVeinSize = 5;
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-    public int oreAdamantitePerChunk = 1;
-    public int oreAdamantiteMinHeight = -56;
-    public int oreAdamantiteMaxHeight = 8;
+    @ConfigEntry.Gui.CollapsibleObject
+    public OreConfig adamantite = new OreConfig(true, 5, 1, -56, 8, .2f);
 
     //Aetherium Ore Settings
     public boolean oreAetheriumGeneration = true;

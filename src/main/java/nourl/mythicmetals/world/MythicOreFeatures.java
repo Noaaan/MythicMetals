@@ -24,6 +24,7 @@ import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.registry.RegistryHelper;
 
 @SuppressWarnings("deprecation")
@@ -66,7 +67,7 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_VERMICULITE = fixedOre(STONE_RULE, MythicBlocks.VERMICULITE_ORE.getDefaultState(), CONFIG.oreVermiculiteVeinSize,CONFIG.oreVermiculiteMinHeight, CONFIG.oreVermiculiteMaxHeight,CONFIG.oreVermiculitePerChunk, 0.3F);
 
     // Ores below zero - Reaches Deep Dark
-    public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = triangleOre(ADAMANTITE_TARGETS, CONFIG.oreAdamantiteVeinSize, CONFIG.oreAdamantiteMinHeight, CONFIG.oreAdamantiteMaxHeight, CONFIG.oreAdamantitePerChunk, 0.2F);
+    public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = triangleOre(ADAMANTITE_TARGETS, CONFIG.adamantite);
     public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = bottomOffsetOre(CALCITE_RULE, MythicBlocks.CALCITE_KYBER_ORE.getDefaultState(), 15, 4, 56, 40, 0.4F);
     public static ConfiguredFeature<?, ?> ORE_MYTHRIL = triangleOre(MYTHRIL_TARGETS, CONFIG.oreMythrilVeinSize, CONFIG.oreMythrilMinHeight, CONFIG.oreMythrilMaxHeight, CONFIG.oreMythrilPerChunk, 0.2F);
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.oreOrichalcumVeinSize, CONFIG.oreOrichalcumBottomOffset, CONFIG.oreOrichalcumMaxHeight, CONFIG.oreOrichalcumPerChunk, 0.15F);
@@ -142,7 +143,7 @@ public class MythicOreFeatures {
     @SuppressWarnings("deprecation")
     public static void generate() {
         //Overworld Ores
-        if (CONFIG.oreAdamantiteGeneration) { addOre(oreAdamantite);}
+        if (CONFIG.adamantite.enabled) { addOre(oreAdamantite);}
         if (CONFIG.oreAetheriumGeneration) { addOre(oreAetherium); }
         if (CONFIG.oreBanglumGeneration) { addOre(oreBanglum); }
         if (CONFIG.oreCarmotGeneration) { addOre(oreCarmot); }
@@ -353,6 +354,10 @@ public class MythicOreFeatures {
 
     public static ConfiguredFeature<?, ?> triangleOre(ImmutableList<OreFeatureConfig.Target> targets, int veinSize, int minHeight, int maxHeight, int spawnRate, float discardChance) {
         return Feature.ORE.configure(new OreFeatureConfig(targets, veinSize, discardChance)).triangleRange(YOffset.fixed(minHeight), YOffset.fixed(maxHeight)).spreadHorizontally().repeat(spawnRate);
+    }
+
+    public static ConfiguredFeature<?, ?> triangleOre(ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
+        return Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance)).triangleRange(YOffset.fixed(config.minHeight), YOffset.fixed(config.maxHeight)).spreadHorizontally().repeat(config.perChunk);
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String string) {
