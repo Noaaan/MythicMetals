@@ -6,6 +6,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterBlocks {
 
@@ -152,12 +153,12 @@ public class RegisterBlocks {
         RegistryHelper.chainItem("hallowed_chain", MythicBlocks.HALLOWED_CHAIN);
         RegistryHelper.chainItem("kyber_chain", MythicBlocks.KYBER_CHAIN);
         RegistryHelper.chainItem("manganese_chain", MythicBlocks.MANGANESE_CHAIN);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.CHAIN_ID, "metallurgium_chain"), new BlockItem(MythicBlocks.METALLURGIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, "metallurgium_chain"), new BlockItem(MythicBlocks.METALLURGIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
         RegistryHelper.chainItem("midas_gold_chain", MythicBlocks.MIDAS_GOLD_CHAIN);
         RegistryHelper.chainItem("mythril_chain", MythicBlocks.MYTHRIL_CHAIN);
         RegistryHelper.chainItem("orichalcum_chain", MythicBlocks.ORICHALCUM_CHAIN);
         RegistryHelper.chainItem("osmium_chain", MythicBlocks.OSMIUM_CHAIN);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.CHAIN_ID, "palladium_chain"), new BlockItem(MythicBlocks.PALLADIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, "palladium_chain"), new BlockItem(MythicBlocks.PALLADIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
         RegistryHelper.chainItem("platinum_chain", MythicBlocks.PLATINUM_CHAIN);
         RegistryHelper.chainItem("prometheum_chain", MythicBlocks.PROMETHEUM_CHAIN);
         RegistryHelper.chainItem("quadrillum_chain", MythicBlocks.QUADRILLUM_CHAIN);

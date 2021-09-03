@@ -4,7 +4,6 @@ import com.google.common.base.Suppliers;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
 import nourl.mythicmetals.registry.RegisterItems;
 
 import java.util.function.Supplier;

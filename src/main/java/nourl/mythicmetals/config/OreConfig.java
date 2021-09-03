@@ -9,16 +9,16 @@ public class OreConfig {
     public int veinSize;
     @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
     public int perChunk;
-    public int minHeight;
-    public int maxHeight;
+    public int bottom;
+    public int top;
     public float discardChance;
 
-    public OreConfig(boolean enabled, int veinSize, int perChunk, int minHeight, int maxHeight, float discardChance) {
+    public OreConfig(boolean enabled, int veinSize, int perChunk, int bottom, int top, float discardChance) {
         this.enabled = enabled;
         this.veinSize = veinSize;
         this.perChunk = perChunk;
-        this.minHeight = minHeight;
-        this.maxHeight = maxHeight;
+        this.bottom = bottom;
+        this.top = top;
         this.discardChance = discardChance;
     }
 }

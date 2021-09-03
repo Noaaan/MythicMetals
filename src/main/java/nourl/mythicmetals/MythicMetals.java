@@ -1,7 +1,7 @@
 package nourl.mythicmetals;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.YamlConfigSerializer;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -11,6 +11,7 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.EnchantConfig;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.registry.*;
+import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +19,8 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final String CHAIN_ID = "mythicaddons";
-    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, YamlConfigSerializer::new).getConfig();
+    public static final String ADDON_ID = "mythicaddons";
+    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, JanksonConfigSerializer::new).getConfig();
 
     public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
             RegistryHelper.id("main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
@@ -45,7 +46,6 @@ public class MythicMetals implements ModInitializer {
         RegisterSounds.register();
         RegisterArmor.register();
         MythicOreFeatures.init();
-        MythicOreFeatures.generate();
         EnchantConfig.appendEnchants();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");

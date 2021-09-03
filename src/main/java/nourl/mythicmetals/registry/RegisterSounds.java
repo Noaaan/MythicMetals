@@ -2,6 +2,7 @@ package nourl.mythicmetals.registry;
 
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.registry.Registry;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterSounds {
 

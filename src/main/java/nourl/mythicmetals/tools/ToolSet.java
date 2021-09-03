@@ -3,7 +3,7 @@ package nourl.mythicmetals.tools;
 import net.minecraft.item.*;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegistryHelper;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
 

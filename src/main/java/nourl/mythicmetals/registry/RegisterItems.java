@@ -2,6 +2,7 @@ package nourl.mythicmetals.registry;
 
 import net.minecraft.item.Item;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterItems {
     //Normal Ingots

@@ -6,7 +6,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegistryHelper;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
 

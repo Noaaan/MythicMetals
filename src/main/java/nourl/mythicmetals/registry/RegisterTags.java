@@ -1,10 +1,11 @@
 package nourl.mythicmetals.registry;
 
-import net.fabricmc.fabric.api.tag.TagRegistry;
+import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterTags {
-    public static final Tag<Item> CARMOT_ARMOR = TagRegistry.item(RegistryHelper.id("carmot_armor"));
-    public static final Tag<Item> COPPER_ARMOR = TagRegistry.item(RegistryHelper.id("copper_armor"));
+    public static final Tag<Item> CARMOT_ARMOR = TagFactory.ITEM.create(RegistryHelper.id("carmot_armor"));
+    public static final Tag<Item> COPPER_ARMOR = TagFactory.ITEM.create(RegistryHelper.id("copper_armor"));
 }
