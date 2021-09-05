@@ -9,38 +9,52 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import java.util.HashSet;
 
 public class MythicBlocks {
-    public static final Block ADAMANTITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block AETHERIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block AQUARIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final Block BANGLUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.COPPER).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
+
+    // Resistance arrays for block sets
+    public static final float[] SOFT_STONE = new float[]{3.0F, 4.0F, 5.0F};
+    public static final float[] HARD_STONE = new float[]{4.0F, 5.0F, 5.0F};
+    public static final float[] EXPLOSIVEPROOF = new float[]{12000.0F, 13000F, 15000F};
+
+    // Mining level tiers
+    public static final int[] LOW_TIER = new int[]{1, 2};
+    public static final int[] MID_TIER = new int[]{2, 3};
+    public static final int[] HIGH_TIER = new int[]{3, 4};
+    public static final int[] TOP_TIER = new int[]{4, 5};
+
+    public static final BlockSet ADAMANTITE = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet AETHERIUM = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet AQUARIUM = new BlockSet(4.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet BANGLUM = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, LOW_TIER);
+    public static final BlockSet CARMOT = new BlockSet(4.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet KYBER = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet MANGANESE = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, LOW_TIER);
+    public static final BlockSet MIDAS_GOLD = new BlockSet(4.0F, HARD_STONE, BlockSoundGroup.NETHER_GOLD_ORE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet MYTHRIL = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.GILDED_BLACKSTONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet ORICHALCUM = new BlockSet(5.5F, HARD_STONE, BlockSoundGroup.GILDED_BLACKSTONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet OSMIUM = new BlockSet(4.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet PALLADIUM = new BlockSet(4.5F, HARD_STONE, BlockSoundGroup.GILDED_BLACKSTONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet PLATINUM = new BlockSet(4.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet PROMETHEUM = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet QUADRILLUM = new BlockSet(4.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet RUNITE = new BlockSet(4.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet SILVER = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, LOW_TIER);
+    public static final BlockSet STORMYX = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.NETHER_ORE, BlockSoundGroup.METAL, MID_TIER);
+    public static final BlockSet TIN = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, LOW_TIER);
+    public static final BlockSet UNOBTAINIUM = new BlockSet(6.0F, EXPLOSIVEPROOF, BlockSoundGroup.LODESTONE, BlockSoundGroup.LODESTONE, TOP_TIER);
+
     public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.COPPER).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block CARMOT_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
     public static final Block CELESTIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final Block DISCORDIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final Block DURASTEEL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final Block ETHERITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
     public static final Block HALLOWED_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block KYBER_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block MANGANESE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
     public static final Block METALLURGIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
-    public static final Block MIDAS_GOLD_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block MYTHRIL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block ORICHALCUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block OSMIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block PALLADIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block PLATINUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block PROMETHEUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block QUADRILLUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
     public static final Block QUICKSILVER_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block RUNITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block SILVER_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final Block STARRITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.AMETHYST_BLOCK).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
+    public static final Block STARRITE_BLOCK = new Block(FabricBlockSettings.of(Material.AMETHYST).strength(5.0F, 6.0F).sounds(BlockSoundGroup.LARGE_AMETHYST_BUD).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final Block STAR_PLATINUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final Block STEEL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block STORMYX_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block TIN_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final Block UNOBTAINIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.LODESTONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
     public static final Block VERMICULITE_BLOCK = new FallingBlock(FabricBlockSettings.of(Material.AGGREGATE).strength(3.0F, 4.0F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS, 1).requiresTool());
+
     // Chains
     public static final ChainBlock ADAMANTITE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock AETHERIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
@@ -70,40 +84,22 @@ public class MythicBlocks {
     public static final ChainBlock STAR_PLATINUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock STEEL_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock STORMYX_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
-    // Ore Blocks
-    public static final OreBlock ADAMANTITE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.GILDED_BLACKSTONE));
-    public static final OreBlock AETHERIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.GILDED_BLACKSTONE));
-    public static final OreBlock AQUARIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final OreBlock BANGLUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
+
+    // Ore Variants
     public static final OreBlock BLACKSTONE_STORMYX_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().sounds(BlockSoundGroup.NETHER_ORE));
-    public static final OreBlock CARMOT_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
     public static final OreBlock CALCITE_KYBER_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 3.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().sounds(BlockSoundGroup.CALCITE));
     public static final OreBlock CALCITE_STARRITE_ORE = new StarriteOreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 3.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.CALCITE), UniformIntProvider.create(3, 6));
-    public static final OreBlock DEEPSLATE_ADAMANTITE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
-    public static final OreBlock DEEPSLATE_MYTHRIL_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
-    public static final OreBlock DEEPSLATE_ORICHALCUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
-    public static final OreBlock DEEPSLATE_PROMETHEUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
-    public static final OreBlock DEEPSLATE_UNOBTAINIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
-    public static final OreBlock END_STONE_STARRITE_ORE = new StarriteOreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 10.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool(), UniformIntProvider.create(3, 6));
-    public static final OreBlock KYBER_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final OreBlock MANGANESE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final OreBlock MIDAS_GOLD_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().sounds(BlockSoundGroup.NETHER_GOLD_ORE));
-    public static final OreBlock MYTHRIL_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.GILDED_BLACKSTONE));
-    public static final OreBlock ORICHALCUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.GILDED_BLACKSTONE));
-    public static final OreBlock OSMIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final OreBlock PALLADIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.GILDED_BLACKSTONE));
-    public static final OreBlock PLATINUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final OreBlock PROMETHEUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final OreBlock QUADRILLUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final OreBlock RUNITE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final OreBlock SILVER_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(3.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
+    public static final OreBlock DEEPSLATE_ADAMANTITE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 12.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+    public static final OreBlock DEEPSLATE_MYTHRIL_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 12.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+    public static final OreBlock DEEPSLATE_ORICHALCUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 12.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+    public static final OreBlock DEEPSLATE_PROMETHEUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 12.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+    public static final OreBlock DEEPSLATE_UNOBTAINIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(7.0f, 13000.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.DEEPSLATE));
+    public static final OreBlock END_STONE_STARRITE_ORE = new StarriteOreBlock(FabricBlockSettings.of(Material.STONE).strength(9.0f, 10.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool(), UniformIntProvider.create(3, 6));
     public static final OreBlock SMOOTH_BASALT_ORICHALCUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(5.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.BASALT));
     public static final OreBlock STARRITE_ORE = new StarriteOreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 5.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool(), UniformIntProvider.create(3, 6));
-    public static final OreBlock STORMYX_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().sounds(BlockSoundGroup.NETHER_ORE));
-    public static final OreBlock TIN_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(2.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
     public static final OreBlock TUFF_ORICHALCUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 6.0f).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().sounds(BlockSoundGroup.TUFF));
-    public static final OreBlock UNOBTAINIUM_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 12000.0f).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().sounds(BlockSoundGroup.LODESTONE), UniformIntProvider.create(5, 10));
     public static final OreBlock VERMICULITE_ORE = new OreBlock(FabricBlockSettings.of(Material.STONE).strength(2.0f, 4.0f).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool(), UniformIntProvider.create(0, 2));
+
     // Anvils
     public static HashSet<Block> ANVILS = new HashSet<>();
     public static final AnvilBlock ADAMANTITE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());

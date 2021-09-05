@@ -44,10 +44,15 @@ public class RegistryHelper {
 
     public static void chain(String path, Block block) {
         Registry.register(Registry.BLOCK, new Identifier(MythicMetals.ADDON_ID, path), block);
+        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), new BlockItem(block, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
     }
 
-    public static void chainItem(String path, Block block) {
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), new BlockItem(block, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
+    public static void chain(String path, Block block, boolean fireproof) {
+        if (fireproof) {
+            Registry.register(Registry.BLOCK, new Identifier(MythicMetals.ADDON_ID, path), block);
+            Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), new BlockItem(block, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
+        }
+        else chain(path, block);
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String string) {

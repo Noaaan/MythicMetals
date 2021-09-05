@@ -1,9 +1,5 @@
 package nourl.mythicmetals.registry;
 
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -12,72 +8,53 @@ public class RegisterBlocks {
 
     public static void register() {
         // Ores
-        RegistryHelper.block("adamantite_ore", MythicBlocks.ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("aetherium_ore", MythicBlocks.AETHERIUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("aquarium_ore", MythicBlocks.AQUARIUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("banglum_ore", MythicBlocks.BANGLUM_ORE, MythicMetals.MYTHICMETALS);
+        MythicBlocks.ADAMANTITE.register("adamantite");
+        MythicBlocks.AETHERIUM.register("aetherium");
+        MythicBlocks.AQUARIUM.register("aquarium");
+        MythicBlocks.BANGLUM.register("banglum");
+        MythicBlocks.CARMOT.register("carmot");
+        MythicBlocks.KYBER.register("kyber");
+        MythicBlocks.MANGANESE.register("manganese");
+        MythicBlocks.MIDAS_GOLD.register("midas_gold");
+        MythicBlocks.MYTHRIL.register("mythril");
+        MythicBlocks.ORICHALCUM.register("orichalcum");
+        MythicBlocks.OSMIUM.register("osmium");
+        MythicBlocks.PALLADIUM.register("palladium");
+        MythicBlocks.PLATINUM.register("platinum");
+        MythicBlocks.PROMETHEUM.register("prometheum");
+        MythicBlocks.QUADRILLUM.register("quadrillum");
+        MythicBlocks.RUNITE.register("runite");
+        MythicBlocks.SILVER.register("silver");
+        MythicBlocks.STORMYX.register("stormyx");
+        MythicBlocks.TIN.register("tin");
+        MythicBlocks.UNOBTAINIUM.register("unobtainium");
+
         RegistryHelper.block("blackstone_stormyx_ore", MythicBlocks.BLACKSTONE_STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("calcite_kyber_ore", MythicBlocks.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("calcite_starrite_ore", MythicBlocks.CALCITE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("carmot_ore", MythicBlocks.CARMOT_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_adamantite_ore", MythicBlocks.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE, MythicMetals.MYTHICMETALS, true);
         RegistryHelper.block("end_stone_starrite_ore", MythicBlocks.END_STONE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("kyber_ore", MythicBlocks.KYBER_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("manganese_ore", MythicBlocks.MANGANESE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("midas_gold_ore", MythicBlocks.MIDAS_GOLD_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("mythril_ore", MythicBlocks.MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("orichalcum_ore", MythicBlocks.ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("osmium_ore", MythicBlocks.OSMIUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("palladium_ore", MythicBlocks.PALLADIUM_ORE, MythicMetals.MYTHICMETALS, true);
-        RegistryHelper.block("platinum_ore", MythicBlocks.PLATINUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("prometheum_ore", MythicBlocks.PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("quadrillum_ore", MythicBlocks.QUADRILLUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("runite_ore", MythicBlocks.RUNITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("silver_ore", MythicBlocks.SILVER_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("smooth_basalt_orichalcum_ore", MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("starrite_ore", MythicBlocks.STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("stormyx_ore", MythicBlocks.STORMYX_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("tin_ore", MythicBlocks.TIN_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("tuff_orichalcum_ore", MythicBlocks.TUFF_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("unobtainium_ore", MythicBlocks.UNOBTAINIUM_ORE, MythicMetals.MYTHICMETALS, true);
         RegistryHelper.block("vermiculite_ore", MythicBlocks.VERMICULITE_ORE, MythicMetals.MYTHICMETALS);
 
         // Storage Blocks
-        RegistryHelper.block("adamantite_block", MythicBlocks.ADAMANTITE_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("aetherium_block", MythicBlocks.AETHERIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("aquarium_block", MythicBlocks.AQUARIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("banglum_block", MythicBlocks.BANGLUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("bronze_block", MythicBlocks.BRONZE_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("carmot_block", MythicBlocks.CARMOT_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("celestium_block", MythicBlocks.CELESTIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("discordium_block", MythicBlocks.DISCORDIUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("durasteel_block", MythicBlocks.DURASTEEL_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("etherite_block", MythicBlocks.ETHERITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("hallowed_block", MythicBlocks.HALLOWED_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("kyber_block", MythicBlocks.KYBER_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("manganese_block", MythicBlocks.MANGANESE_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("metallurgium_block", MythicBlocks.METALLURGIUM_BLOCK, MythicMetals.MYTHICMETALS, true);
-        RegistryHelper.block("midas_gold_block", MythicBlocks.MIDAS_GOLD_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("mythril_block", MythicBlocks.MYTHRIL_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("orichalcum_block", MythicBlocks.ORICHALCUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("osmium_block", MythicBlocks.OSMIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("palladium_block", MythicBlocks.PALLADIUM_BLOCK, MythicMetals.MYTHICMETALS, true);
-        RegistryHelper.block("platinum_block", MythicBlocks.PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("prometheum_block", MythicBlocks.PROMETHEUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("quadrillum_block", MythicBlocks.QUADRILLUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("quicksilver_block", MythicBlocks.QUICKSILVER_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("runite_block", MythicBlocks.RUNITE_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("silver_block", MythicBlocks.SILVER_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("starrite_block", MythicBlocks.STARRITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("steel_block", MythicBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("stormyx_block", MythicBlocks.STORMYX_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("tin_block", MythicBlocks.TIN_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("unobtainium_block", MythicBlocks.UNOBTAINIUM_BLOCK, MythicMetals.MYTHICMETALS, true);
         RegistryHelper.block("vermiculite_block", MythicBlocks.VERMICULITE_BLOCK, MythicMetals.MYTHICMETALS);
 
         // Anvils
@@ -140,35 +117,6 @@ public class RegisterBlocks {
         MythicBlocks.ANVILS.add(MythicBlocks.STORMYX_ANVIL);
 
         // Chains
-        RegistryHelper.chainItem("adamantite_chain", MythicBlocks.ADAMANTITE_CHAIN);
-        RegistryHelper.chainItem("aetherium_chain", MythicBlocks.AETHERIUM_CHAIN);
-        RegistryHelper.chainItem("aquarium_chain", MythicBlocks.AQUARIUM_CHAIN);
-        RegistryHelper.chainItem("banglum_chain", MythicBlocks.BANGLUM_CHAIN);
-        RegistryHelper.chainItem("bronze_chain", MythicBlocks.BRONZE_CHAIN);
-        RegistryHelper.chainItem("carmot_chain", MythicBlocks.CARMOT_CHAIN);
-        RegistryHelper.chainItem("celestium_chain", MythicBlocks.CELESTIUM_CHAIN);
-        RegistryHelper.chainItem("discordium_chain", MythicBlocks.DISCORDIUM_CHAIN);
-        RegistryHelper.chainItem("durasteel_chain", MythicBlocks.DURASTEEL_CHAIN);
-        RegistryHelper.chainItem("etherite_chain", MythicBlocks.ETHERITE_CHAIN);
-        RegistryHelper.chainItem("hallowed_chain", MythicBlocks.HALLOWED_CHAIN);
-        RegistryHelper.chainItem("kyber_chain", MythicBlocks.KYBER_CHAIN);
-        RegistryHelper.chainItem("manganese_chain", MythicBlocks.MANGANESE_CHAIN);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, "metallurgium_chain"), new BlockItem(MythicBlocks.METALLURGIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
-        RegistryHelper.chainItem("midas_gold_chain", MythicBlocks.MIDAS_GOLD_CHAIN);
-        RegistryHelper.chainItem("mythril_chain", MythicBlocks.MYTHRIL_CHAIN);
-        RegistryHelper.chainItem("orichalcum_chain", MythicBlocks.ORICHALCUM_CHAIN);
-        RegistryHelper.chainItem("osmium_chain", MythicBlocks.OSMIUM_CHAIN);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, "palladium_chain"), new BlockItem(MythicBlocks.PALLADIUM_CHAIN, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
-        RegistryHelper.chainItem("platinum_chain", MythicBlocks.PLATINUM_CHAIN);
-        RegistryHelper.chainItem("prometheum_chain", MythicBlocks.PROMETHEUM_CHAIN);
-        RegistryHelper.chainItem("quadrillum_chain", MythicBlocks.QUADRILLUM_CHAIN);
-        RegistryHelper.chainItem("quicksilver_chain", MythicBlocks.QUICKSILVER_CHAIN);
-        RegistryHelper.chainItem("runite_chain", MythicBlocks.RUNITE_CHAIN);
-        RegistryHelper.chainItem("silver_chain", MythicBlocks.SILVER_CHAIN);
-        RegistryHelper.chainItem("star_platinum_chain", MythicBlocks.STAR_PLATINUM_CHAIN);
-        RegistryHelper.chainItem("steel_chain", MythicBlocks.STEEL_CHAIN);
-        RegistryHelper.chainItem("stormyx_chain", MythicBlocks.STORMYX_CHAIN);
-
         RegistryHelper.chain("adamantite_chain", MythicBlocks.ADAMANTITE_CHAIN);
         RegistryHelper.chain("aetherium_chain", MythicBlocks.AETHERIUM_CHAIN);
         RegistryHelper.chain("aquarium_chain", MythicBlocks.AQUARIUM_CHAIN);
@@ -182,12 +130,12 @@ public class RegisterBlocks {
         RegistryHelper.chain("hallowed_chain", MythicBlocks.HALLOWED_CHAIN);
         RegistryHelper.chain("kyber_chain", MythicBlocks.KYBER_CHAIN);
         RegistryHelper.chain("manganese_chain", MythicBlocks.MANGANESE_CHAIN);
-        RegistryHelper.chain("metallurgium_chain", MythicBlocks.METALLURGIUM_CHAIN);
+        RegistryHelper.chain("metallurgium_chain", MythicBlocks.METALLURGIUM_CHAIN, true);
         RegistryHelper.chain("midas_gold_chain", MythicBlocks.MIDAS_GOLD_CHAIN);
         RegistryHelper.chain("mythril_chain", MythicBlocks.MYTHRIL_CHAIN);
         RegistryHelper.chain("orichalcum_chain", MythicBlocks.ORICHALCUM_CHAIN);
         RegistryHelper.chain("osmium_chain", MythicBlocks.OSMIUM_CHAIN);
-        RegistryHelper.chain("palladium_chain", MythicBlocks.PALLADIUM_CHAIN);
+        RegistryHelper.chain("palladium_chain", MythicBlocks.PALLADIUM_CHAIN, true);
         RegistryHelper.chain("platinum_chain", MythicBlocks.PLATINUM_CHAIN);
         RegistryHelper.chain("prometheum_chain", MythicBlocks.PROMETHEUM_CHAIN);
         RegistryHelper.chain("quadrillum_chain", MythicBlocks.QUADRILLUM_CHAIN);

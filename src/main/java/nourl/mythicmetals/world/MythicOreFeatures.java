@@ -31,28 +31,28 @@ public class MythicOreFeatures {
     public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
 
     // Defines a list of targets, which can check for multiple blocks and dynamically replace them when generating ore
-    public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> MYTHRIL_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.MYTHRIL_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> PROMETHEUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.PROMETHEUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_PROMETHEUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ADAMANTITE_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> MYTHRIL_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.MYTHRIL.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_MYTHRIL_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ORICHALCUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.TUFF_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_ORICHALCUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> PROMETHEUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.PROMETHEUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_PROMETHEUM_ORE.getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> STARRITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.STARRITE_ORE.getDefaultState()), OreFeatureConfig.createTarget(CALCITE_RULE, MythicBlocks.CALCITE_STARRITE_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX_ORE.getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> OVERWORLD_NETHER_ORE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState()), OreFeatureConfig.createTarget(BLACKSTONE_RULE, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM_ORE.getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX.getOre().getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> OVERWORLD_NETHER_ORE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState()), OreFeatureConfig.createTarget(BLACKSTONE_RULE, MythicBlocks.BLACKSTONE_STORMYX_ORE.getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE.getDefaultState()));
 
     // Configured ore features
-    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = OreFeatureHelper.topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM_ORE.getDefaultState(), CONFIG.aetherium);
-    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.AQUARIUM_ORE.getDefaultState(), CONFIG.aquarium);
-    public static ConfiguredFeature<?, ?> ORE_BANGLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.BANGLUM_ORE.getDefaultState(), CONFIG.banglum);
-    public static ConfiguredFeature<?, ?> ORE_CARMOT = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.CARMOT_ORE.getDefaultState(), CONFIG.carmot);
-    public static ConfiguredFeature<?, ?> ORE_KYBER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.KYBER_ORE.getDefaultState(), CONFIG.kyber);
-    public static ConfiguredFeature<?, ?> ORE_MANGANESE = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.MANGANESE_ORE.getDefaultState(), CONFIG.manganese);
-    public static ConfiguredFeature<?, ?> ORE_OSMIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.OSMIUM_ORE.getDefaultState(), CONFIG.osmium);
-    public static ConfiguredFeature<?, ?> ORE_PLATINUM = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.PLATINUM_ORE.getDefaultState(), CONFIG.platinum);
-    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.QUADRILLUM_ORE.getDefaultState(), CONFIG.quadrillum);
-    public static ConfiguredFeature<?, ?> ORE_RUNITE = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.RUNITE_ORE.getDefaultState(), CONFIG.runite);
-    public static ConfiguredFeature<?, ?> ORE_SILVER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.SILVER_ORE.getDefaultState(), CONFIG.silver);
-    public static ConfiguredFeature<?, ?> ORE_TIN = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.TIN_ORE.getDefaultState(), CONFIG.tin);
+    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = OreFeatureHelper.topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM.getOre().getDefaultState(), CONFIG.aetherium);
+    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.AQUARIUM.getOre().getDefaultState(), CONFIG.aquarium);
+    public static ConfiguredFeature<?, ?> ORE_BANGLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.BANGLUM.getOre().getDefaultState(), CONFIG.banglum);
+    public static ConfiguredFeature<?, ?> ORE_CARMOT = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.CARMOT.getOre().getDefaultState(), CONFIG.carmot);
+    public static ConfiguredFeature<?, ?> ORE_KYBER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.KYBER.getOre().getDefaultState(), CONFIG.kyber);
+    public static ConfiguredFeature<?, ?> ORE_MANGANESE = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.MANGANESE.getOre().getDefaultState(), CONFIG.manganese);
+    public static ConfiguredFeature<?, ?> ORE_OSMIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.OSMIUM.getOre().getDefaultState(), CONFIG.osmium);
+    public static ConfiguredFeature<?, ?> ORE_PLATINUM = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.PLATINUM.getOre().getDefaultState(), CONFIG.platinum);
+    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.QUADRILLUM.getOre().getDefaultState(), CONFIG.quadrillum);
+    public static ConfiguredFeature<?, ?> ORE_RUNITE = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.RUNITE.getOre().getDefaultState(), CONFIG.runite);
+    public static ConfiguredFeature<?, ?> ORE_SILVER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.SILVER.getOre().getDefaultState(), CONFIG.silver);
+    public static ConfiguredFeature<?, ?> ORE_TIN = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.TIN.getOre().getDefaultState(), CONFIG.tin);
     public static ConfiguredFeature<?, ?> ORE_VERMICULITE = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.VERMICULITE_ORE.getDefaultState(), CONFIG.vermiculite);
 
     // Ores below zero - Reaches Deep Dark
@@ -65,8 +65,8 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = OreFeatureHelper.scatteredOre(UNOBTAINIUM_TARGETS, CONFIG.unobtainium, 4);
 
     // Nether Ores
-    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = OreFeatureHelper.triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD_ORE.getDefaultState(), CONFIG.midas_gold);
-    public static ConfiguredFeature<?, ?> ORE_PALLADIUM = OreFeatureHelper.fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM_ORE.getDefaultState(), CONFIG.palladium);
+    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = OreFeatureHelper.triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState(), CONFIG.midas_gold);
+    public static ConfiguredFeature<?, ?> ORE_PALLADIUM = OreFeatureHelper.fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM.getOre().getDefaultState(), CONFIG.palladium);
     public static ConfiguredFeature<?, ?> ORE_STORMYX = OreFeatureHelper.bottomOffsetOre(STORMYX_TARGETS, CONFIG.stormyx);
     public static ConfiguredFeature<?, ?> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.scatteredOre(OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
 
