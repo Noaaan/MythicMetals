@@ -21,7 +21,14 @@ public class MythicBlocks {
     public static final int[] HIGH_TIER = new int[]{3, 4};
     public static final int[] TOP_TIER = new int[]{4, 5};
 
-    public static final BlockSet ADAMANTITE = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
+    public static final BlockSet ADAMANTITE = BlockSet.Builder.begin("adamantite", false)
+            .createDefaultSet(4 ,3 ,5 ,4)
+            .strength(6, 12)
+            .sounds(BlockSoundGroup.DEEPSLATE)
+            .createOreVariant("deepslate", 3)
+            .finish();
+
+    //public static final BlockSet ADAMANTITE = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
     public static final BlockSet AETHERIUM = new BlockSet(5.0F, HARD_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, HIGH_TIER);
     public static final BlockSet AQUARIUM = new BlockSet(4.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, MID_TIER);
     public static final BlockSet BANGLUM = new BlockSet(3.0F, SOFT_STONE, BlockSoundGroup.STONE, BlockSoundGroup.METAL, LOW_TIER);

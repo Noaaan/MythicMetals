@@ -1,6 +1,7 @@
 package nourl.mythicmetals.registry;
 
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.utils.RegistryHelper;
 
@@ -8,31 +9,11 @@ public class RegisterBlocks {
 
     public static void register() {
         // Ores
-        MythicBlocks.ADAMANTITE.register("adamantite");
-        MythicBlocks.AETHERIUM.register("aetherium");
-        MythicBlocks.AQUARIUM.register("aquarium");
-        MythicBlocks.BANGLUM.register("banglum");
-        MythicBlocks.CARMOT.register("carmot");
-        MythicBlocks.KYBER.register("kyber");
-        MythicBlocks.MANGANESE.register("manganese");
-        MythicBlocks.MIDAS_GOLD.register("midas_gold");
-        MythicBlocks.MYTHRIL.register("mythril");
-        MythicBlocks.ORICHALCUM.register("orichalcum");
-        MythicBlocks.OSMIUM.register("osmium");
-        MythicBlocks.PALLADIUM.register("palladium");
-        MythicBlocks.PLATINUM.register("platinum");
-        MythicBlocks.PROMETHEUM.register("prometheum");
-        MythicBlocks.QUADRILLUM.register("quadrillum");
-        MythicBlocks.RUNITE.register("runite");
-        MythicBlocks.SILVER.register("silver");
-        MythicBlocks.STORMYX.register("stormyx");
-        MythicBlocks.TIN.register("tin");
-        MythicBlocks.UNOBTAINIUM.register("unobtainium");
+        BlockSet.Builder.register();
 
         RegistryHelper.block("blackstone_stormyx_ore", MythicBlocks.BLACKSTONE_STORMYX_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("calcite_kyber_ore", MythicBlocks.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("calcite_starrite_ore", MythicBlocks.CALCITE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("deepslate_adamantite_ore", MythicBlocks.DEEPSLATE_ADAMANTITE_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
