@@ -1,6 +1,7 @@
 package nourl.mythicmetals.registry;
 
 import net.minecraft.item.Item;
+import net.minecraft.util.Rarity;
 import nourl.mythicmetals.armor.ArmorMaterials;
 import nourl.mythicmetals.armor.ArmorSet;
 
@@ -13,19 +14,19 @@ public class RegisterArmor {
     public static final ArmorSet BANGLUM = new ArmorSet(ArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(ArmorMaterials.BRONZE);
     public static final ArmorSet CARMOT = new ArmorSet(ArmorMaterials.CARMOT);
-    public static final ArmorSet CELESTIUM = new ArmorSet(ArmorMaterials.CELESTIUM);
+    public static final ArmorSet CELESTIUM = new ArmorSet(ArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final ArmorSet COPPER = new ArmorSet(ArmorMaterials.COPPER);
     public static final ArmorSet DISCORDIUM = new ArmorSet(ArmorMaterials.DISCORDIUM);
     public static final ArmorSet DURASTEEL = new ArmorSet(ArmorMaterials.DURASTEEL);
     public static final ArmorSet ETHERITE = new ArmorSet(ArmorMaterials.ETHERITE);
     public static final ArmorSet HALLOWED = new ArmorSet(ArmorMaterials.HALLOWED);
     public static final ArmorSet KYBER = new ArmorSet(ArmorMaterials.KYBER);
-    public static final ArmorSet METALLURGIUM = new ArmorSet(ArmorMaterials.METALLURGIUM, Item.Settings::fireproof);
+    public static final ArmorSet METALLURGIUM = new ArmorSet(ArmorMaterials.METALLURGIUM, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ArmorSet MIDAS_GOLD = new ArmorSet(ArmorMaterials.MIDAS_GOLD);
     public static final ArmorSet MYTHRIL = new ArmorSet(ArmorMaterials.MYTHRIL);
     public static final ArmorSet ORICHALCUM = new ArmorSet(ArmorMaterials.ORICHALCUM);
     public static final ArmorSet OSMIUM = new ArmorSet(ArmorMaterials.OSMIUM);
-    public static final ArmorSet PALLADIUM = new ArmorSet(ArmorMaterials.PALLADIUM, Item.Settings::fireproof);
+    public static final ArmorSet PALLADIUM = new ArmorSet(ArmorMaterials.PALLADIUM, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ArmorSet PROMETHEUM = new ArmorSet(ArmorMaterials.PROMETHEUM);
     public static final ArmorSet QUICKSILVER = new ArmorSet(ArmorMaterials.QUICKSILVER);
     public static final ArmorSet RUNITE = new ArmorSet(ArmorMaterials.RUNITE);

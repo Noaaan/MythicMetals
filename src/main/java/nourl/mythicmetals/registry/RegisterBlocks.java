@@ -8,22 +8,6 @@ import nourl.mythicmetals.utils.RegistryHelper;
 public class RegisterBlocks {
 
     public static void register() {
-        // Ores
-        BlockSet.Builder.register();
-
-        RegistryHelper.block("blackstone_stormyx_ore", MythicBlocks.BLACKSTONE_STORMYX_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("calcite_kyber_ore", MythicBlocks.CALCITE_KYBER_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("calcite_starrite_ore", MythicBlocks.CALCITE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("deepslate_mythril_ore", MythicBlocks.DEEPSLATE_MYTHRIL_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("deepslate_orichalcum_ore", MythicBlocks.DEEPSLATE_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("deepslate_prometheum_ore", MythicBlocks.DEEPSLATE_PROMETHEUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("deepslate_unobtainium_ore", MythicBlocks.DEEPSLATE_UNOBTAINIUM_ORE, MythicMetals.MYTHICMETALS, true);
-        RegistryHelper.block("end_stone_starrite_ore", MythicBlocks.END_STONE_STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("smooth_basalt_orichalcum_ore", MythicBlocks.SMOOTH_BASALT_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("starrite_ore", MythicBlocks.STARRITE_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("tuff_orichalcum_ore", MythicBlocks.TUFF_ORICHALCUM_ORE, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("vermiculite_ore", MythicBlocks.VERMICULITE_ORE, MythicMetals.MYTHICMETALS);
-
         // Storage Blocks
         RegistryHelper.block("bronze_block", MythicBlocks.BRONZE_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("celestium_block", MythicBlocks.CELESTIUM_BLOCK, MythicMetals.MYTHICMETALS);
@@ -33,10 +17,8 @@ public class RegisterBlocks {
         RegistryHelper.block("hallowed_block", MythicBlocks.HALLOWED_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("metallurgium_block", MythicBlocks.METALLURGIUM_BLOCK, MythicMetals.MYTHICMETALS, true);
         RegistryHelper.block("quicksilver_block", MythicBlocks.QUICKSILVER_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("starrite_block", MythicBlocks.STARRITE_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
         RegistryHelper.block("steel_block", MythicBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("vermiculite_block", MythicBlocks.VERMICULITE_BLOCK, MythicMetals.MYTHICMETALS);
 
         // Anvils
         RegistryHelper.block("adamantite_anvil", MythicBlocks.ADAMANTITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);

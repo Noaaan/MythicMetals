@@ -3,6 +3,7 @@ package nourl.mythicmetals.blocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.FallingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.sound.BlockSoundGroup;
@@ -10,71 +11,88 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class BlockSet {
     private final OreBlock ore;
     private final Block storageBlock;
     private final Block oreStorageBlock;
 
-    private final String baseName;
-    private final boolean fireproof = false;
+    private final String name;
+    private final boolean fireproof;
 
-    private final Map<String, Block> oreVariants;
+    private final Map<String, OreBlock> oreVariants;
 
-    private BlockSet(String baseName, OreBlock ore, Block storageBlock, Block oreStorageBlock, Map<String, Block> oreVariants, boolean fireproof) {
-        this.baseName = baseName;
+    private BlockSet(String name, OreBlock ore, Block storageBlock, Block oreStorageBlock, Map<String, OreBlock> oreVariants, boolean fireproof) {
+        this.name = name;
 
         this.ore = ore;
         this.oreStorageBlock = storageBlock;
         this.storageBlock = oreStorageBlock;
 
         this.oreVariants = oreVariants;
+        this.fireproof = fireproof;
     }
 
     private void register() {
-        RegistryHelper.block(baseName + "_ore", ore, MythicMetals.MYTHICMETALS, fireproof);
-        RegistryHelper.block("raw_" + baseName + "_block", storageBlock, MythicMetals.MYTHICMETALS, fireproof);
-        RegistryHelper.block(baseName + "_block", oreStorageBlock, MythicMetals.MYTHICMETALS, fireproof);
+        if (ore != null)
+            RegistryHelper.block(name + "_ore", ore, MythicMetals.MYTHICMETALS, fireproof);
+        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, MythicMetals.MYTHICMETALS, fireproof));
+        if (storageBlock != null) {
+            RegistryHelper.block("raw_" + name + "_block", storageBlock, MythicMetals.MYTHICMETALS, fireproof);
+        }
+        if (oreStorageBlock != null) {
+            RegistryHelper.block(name + "_block", oreStorageBlock, MythicMetals.MYTHICMETALS, fireproof);
+        }
 
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + baseName + "_ore", block, MythicMetals.MYTHICMETALS, fireproof));
     }
 
     public OreBlock getOre() {
         return ore;
     }
 
+    public OreBlock getOreVariant(String variant) {
+        return oreVariants.get(variant);
+    }
+
     public static class Builder {
 
         private static final List<BlockSet> toBeRegistered = new ArrayList<>();
 
-        private final String baseName;
+        private final String name;
         private final boolean fireproof;
-
+        private final Map<String, OreBlock> oreVariants = new LinkedHashMap<>();
         private OreBlock ore = null;
         private Block storage = null;
         private Block oreStorage = null;
-
         private BlockSoundGroup currentSounds = BlockSoundGroup.STONE;
-
         private float currentHardness = -1;
         private float currentResistance = -1;
+        private Consumer<FabricBlockSettings> settingsProcessor = fabricBlockSettings -> {
+        };
 
-        private Consumer<FabricBlockSettings> settingsProcessor = fabricBlockSettings -> {};
-        private final Map<String, Block> oreVariants = new HashMap<>();
-
-        public static Builder begin(String baseName, boolean fireproof) {
-            return new Builder(baseName, fireproof);
+        private Builder(String name, boolean fireproof) {
+            this.name = name;
+            this.fireproof = fireproof;
         }
 
-        private Builder(String baseName, boolean fireproof) {
-            this.baseName = baseName;
-            this.fireproof = fireproof;
+        public static Builder begin(String name, boolean fireproof) {
+            return new Builder(name, fireproof);
+        }
+
+        public static void register() {
+            toBeRegistered.forEach(BlockSet::register);
+            toBeRegistered.clear();
+        }
+
+        private static FabricBlockSettings blockSettings(Material material, float hardness, float resistance, BlockSoundGroup sounds, int miningLevel) {
+            return FabricBlockSettings.of(material).strength(hardness, resistance).sounds(sounds).breakByTool(FabricToolTags.PICKAXES, miningLevel).requiresTool();
+        }
+
+        public Builder createDefaultSet(float strength, int miningLevel) {
+            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(++miningLevel).createOreStorageBlock(miningLevel);
         }
 
         public Builder createDefaultSet(float oreStrength, int oreMiningLevel, float storageStrength, int storageMiningLevel) {
@@ -101,13 +119,6 @@ public class BlockSet {
             return this;
         }
 
-        public Builder createOre(int miningLevel, UniformIntProvider experience) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
-            settingsProcessor.accept(settings);
-            this.ore = new OreBlock(settings, experience);
-            return this;
-        }
-
         public Builder createOre(int miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
@@ -115,10 +126,24 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createOre(int miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.ore = new OreBlock(settings, experience);
+            return this;
+        }
+
         public Builder createOreVariant(String name, int miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new OreBlock(settings));
+            return this;
+        }
+
+        public Builder createOreVariant(String name, int miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.oreVariants.put(name, new OreBlock(settings, experience));
             return this;
         }
 
@@ -133,6 +158,13 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createFallingStorageBlock(Material material, int miningLevel) {
+            final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.storage = new FallingBlock(settings);
+            return this;
+        }
+
         public Builder createOreStorageBlock(int miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
@@ -141,18 +173,9 @@ public class BlockSet {
         }
 
         public BlockSet finish() {
-            final var set = new BlockSet(baseName, ore, storage, oreStorage, oreVariants, fireproof);
+            final var set = new BlockSet(this.name, this.ore, this.storage, this.oreStorage, this.oreVariants, this.fireproof);
             Builder.toBeRegistered.add(set);
             return set;
-        }
-
-        public static void register() {
-            toBeRegistered.forEach(BlockSet::register);
-            toBeRegistered.clear();
-        }
-
-        private static FabricBlockSettings blockSettings(Material material, float hardness, float resistance, BlockSoundGroup sounds, int miningLevel) {
-            return FabricBlockSettings.of(material).strength(hardness, resistance).sounds(sounds).breakByTool(FabricToolTags.PICKAXES, miningLevel).requiresTool();
         }
 
     }

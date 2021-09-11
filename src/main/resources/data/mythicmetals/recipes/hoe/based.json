@@ -24,16 +24,10 @@
     },
     {
       "item": "mythicmetals:celestium_block"
-    },
-    {
-      "item": "mythicmetals:hallowed_block"
-    },
-    {
-      "item": "mythicmetals:osmium_anvil"
     }
   ],
   "output": {
-    "id": "mythicmetals:froge_ingot",
+    "id": "mythicmetals:froge",
     "count": 1
   },
   "min_forge_tier": 3,

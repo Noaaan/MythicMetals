@@ -27,14 +27,14 @@ public class RegisterTools {
     public static final ToolSet BANGLUM = new ToolSet(ToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BRONZE = new ToolSet(ToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CARMOT = new ToolSet(ToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CELESTIUM = new ToolSet(ToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, Settings -> Settings.rarity(Rarity.RARE));
+    public static final ToolSet CELESTIUM = new ToolSet(ToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
     public static final ToolSet COPPER = new ToolSet(ToolMaterials.COPPER, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet DISCORDIUM = new ToolSet(ToolMaterials.DISCORDIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet DURASTEEL = new ToolSet(ToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final Item ETHERITE_SWORD = new SwordItem(ToolMaterials.ETHERITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
     public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet KYBER = new ToolSet(ToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, Settings -> Settings.fireproof().rarity(Rarity.RARE));
+    public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ToolSet MYTHRIL = new ToolSet(ToolMaterials.MYTHRIL, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet ORICHALCUM = new ToolSet(ToolMaterials.ORICHALCUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);
     public static final ToolSet OSMIUM = new ToolSet(ToolMaterials.ORICHALCUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);

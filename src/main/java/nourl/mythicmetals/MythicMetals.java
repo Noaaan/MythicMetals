@@ -41,6 +41,7 @@ public class MythicMetals implements ModInitializer {
         if (CONFIG.enableDusts) {
             RegisterItems.registerDusts();
         }
+        MythicBlocks.init();
         RegisterBlocks.register();
         RegisterTools.register();
         RegisterSounds.register();
