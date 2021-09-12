@@ -109,9 +109,9 @@ public class MythicBlocks {
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
             .strength(6.0F, 13000F).createOre(4, UniformIntProvider.create(4, 7))
-            .strength(7.0F, 14000F)
+            .strength(7.5F, 14000F)
             .createOreVariant("deepslate", 4)
-            .strength(7.0F, 15000F).createStorageBlock(5)
+            .strength(7.5F, 15000F).createStorageBlock(5)
             .finish();
 
     // Storage Blocks

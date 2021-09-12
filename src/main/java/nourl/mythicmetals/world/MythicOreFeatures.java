@@ -62,7 +62,7 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = OreFeatureHelper.bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.orichalcum);
     public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = OreFeatureHelper.bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.prometheum);
     public static ConfiguredFeature<?, ?> ORE_STARRITE = OreFeatureHelper.topOffsetOre(STARRITE_TARGETS, CONFIG.starrite);
-    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = OreFeatureHelper.scatteredOre(UNOBTAINIUM_TARGETS, CONFIG.unobtainium, 4);
+    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = OreFeatureHelper.scatteredOre(UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
 
     // Nether Ores
     public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = OreFeatureHelper.triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState(), CONFIG.midas_gold);

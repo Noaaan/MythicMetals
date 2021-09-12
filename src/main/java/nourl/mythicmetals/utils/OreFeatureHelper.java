@@ -99,7 +99,4 @@ public class OreFeatureHelper {
         return Feature.SCATTERED_ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance)).triangleRange(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top)).spreadHorizontally();
     }
 
-    public static ConfiguredFeature<?, ?> scatteredOre(ImmutableList<OreFeatureConfig.Target> targets, OreConfig config, int applyChance) {
-        return Feature.SCATTERED_ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance)).triangleRange(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top)).spreadHorizontally().applyChance(applyChance);
-    }
 }
