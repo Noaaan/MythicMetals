@@ -1,9 +1,9 @@
 {
   "type": "minecraft:blasting",
   "ingredient": {
-    "item": "mythicmetals:unobtainium_ore"
+    "tag": "mythicmetals:unobtainium_ores"
   },
   "result": "mythicmetals:unobtainium",
-  "experience": 0.1,
+  "experience": 0.2,
   "cookingtime": 100
 }

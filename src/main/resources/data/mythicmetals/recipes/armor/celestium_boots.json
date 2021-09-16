@@ -1,16 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "m m",
-    "m m"
-  ],
-  "key": {
-    "m": {
-      "item": "mythicmetals:celestium_ingot"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_boots"
+  },
+  "addition": {
+    "item": "mythicmetals:celestium_ingot"
   },
   "result": {
-    "item": "mythicmetals:celestium_boots",
-    "count": 1
+    "item": "mythicmetals:celestium_boots"
   }
 }

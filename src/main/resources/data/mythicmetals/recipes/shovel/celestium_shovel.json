@@ -1,20 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "m",
-    "/",
-    "/"
-  ],
-  "key": {
-    "m": {
-      "item": "mythicmetals:celestium_ingot"
-    },
-    "/": {
-      "item": "minecraft:stick"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:diamond_shovel"
+  },
+  "addition": {
+    "item": "mythicmetals:celestium_ingot"
   },
   "result": {
-    "item": "mythicmetals:celestium_shovel",
-    "count": 1
+    "item": "mythicmetals:celestium_shovel"
   }
 }

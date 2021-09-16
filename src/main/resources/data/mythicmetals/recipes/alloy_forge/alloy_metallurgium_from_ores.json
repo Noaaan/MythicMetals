@@ -17,7 +17,7 @@
       "tag": "mythicmetals:aetherium_ores"
     },
 	{
-	  "item": "mythicmetals:unobtainium"
+	  "tag": "mythicmetals:unobtainium_ores"
 	}
   ],
   "output": {
