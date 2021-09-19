@@ -84,11 +84,11 @@ public class MythicBlocks {
             .createDefaultSet(3.0F, 1).finish();
 
     public static final BlockSet STARRITE = BlockSet.Builder.begin("starrite", false)
-            .strength(3.0F).createOre(3, UniformIntProvider.create(3, 6))
+            .strength(3.0F).createStarriteOre(3, UniformIntProvider.create(3, 6))
             .sounds(BlockSoundGroup.CALCITE)
-            .createOreVariant("calcite", 3, UniformIntProvider.create(3, 6))
+            .createStarriteOreVariant("calcite", 3, UniformIntProvider.create(3, 6))
             .sounds(BlockSoundGroup.STONE).strength(4.0F)
-            .createOreVariant("end_stone", 4, UniformIntProvider.create(3, 6))
+            .createStarriteOreVariant("end_stone", 4, UniformIntProvider.create(3, 6))
             .sounds(BlockSoundGroup.AMETHYST_BLOCK).createStorageBlock(4)
             .finish();
 

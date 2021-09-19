@@ -147,6 +147,20 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createStarriteOre(int miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.ore = new StarriteOreBlock(settings, experience);
+            return this;
+        }
+
+        public Builder createStarriteOreVariant(String name, int miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.oreVariants.put(name, new StarriteOreBlock(settings, experience));
+            return this;
+        }
+
         public Builder createStorageBlock(int miningLevel) {
             return createStorageBlock(Material.METAL, miningLevel);
         }

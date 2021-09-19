@@ -1,6 +1,5 @@
 package nourl.mythicmetals.registry;
 
-import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.armor.ArmorMaterials;
 import nourl.mythicmetals.armor.ArmorSet;
@@ -36,8 +35,7 @@ public class RegisterArmor {
     public static final ArmorSet STORMYX = new ArmorSet(ArmorMaterials.STORMYX);
     
     public static void register() {
-
-        //Register Armor
+        // Register Armor
         ADAMANTITE.register("adamantite");
         AETHERIUM.register("aetherium");
         AQUARIUM.register("aquarium");
