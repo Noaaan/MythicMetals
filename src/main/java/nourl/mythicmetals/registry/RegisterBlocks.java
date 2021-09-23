@@ -1,7 +1,5 @@
 package nourl.mythicmetals.registry;
 
-import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.utils.RegistryHelper;
 
@@ -9,75 +7,46 @@ public class RegisterBlocks {
 
     public static void register() {
         // Storage Blocks
-        RegistryHelper.block("bronze_block", MythicBlocks.BRONZE_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("celestium_block", MythicBlocks.CELESTIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("discordium_block", MythicBlocks.DISCORDIUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("durasteel_block", MythicBlocks.DURASTEEL_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("etherite_block", MythicBlocks.ETHERITE_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("hallowed_block", MythicBlocks.HALLOWED_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("metallurgium_block", MythicBlocks.METALLURGIUM_BLOCK, MythicMetals.MYTHICMETALS, true);
-        RegistryHelper.block("quicksilver_block", MythicBlocks.QUICKSILVER_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK, MythicMetals.MYTHICMETALS);
-        RegistryHelper.block("steel_block", MythicBlocks.STEEL_BLOCK, MythicMetals.MYTHICMETALS);
+        RegistryHelper.block("bronze_block", MythicBlocks.BRONZE_BLOCK);
+        RegistryHelper.block("celestium_block", MythicBlocks.CELESTIUM_BLOCK);
+        RegistryHelper.block("discordium_block", MythicBlocks.DISCORDIUM_BLOCK);
+        RegistryHelper.block("durasteel_block", MythicBlocks.DURASTEEL_BLOCK);
+        RegistryHelper.block("etherite_block", MythicBlocks.ETHERITE_BLOCK);
+        RegistryHelper.block("hallowed_block", MythicBlocks.HALLOWED_BLOCK);
+        RegistryHelper.block("metallurgium_block", MythicBlocks.METALLURGIUM_BLOCK, true);
+        RegistryHelper.block("quicksilver_block", MythicBlocks.QUICKSILVER_BLOCK);
+        RegistryHelper.block("star_platinum_block", MythicBlocks.STAR_PLATINUM_BLOCK);
+        RegistryHelper.block("steel_block", MythicBlocks.STEEL_BLOCK);
 
         // Anvils
-        RegistryHelper.block("adamantite_anvil", MythicBlocks.ADAMANTITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("aetherium_anvil", MythicBlocks.AETHERIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("aquarium_anvil", MythicBlocks.AQUARIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("banglum_anvil", MythicBlocks.BANGLUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("bronze_anvil", MythicBlocks.BRONZE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("carmot_anvil", MythicBlocks.CARMOT_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("celestium_anvil", MythicBlocks.CELESTIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("discordium_anvil", MythicBlocks.DISCORDIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("durasteel_anvil", MythicBlocks.DURASTEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("etherite_anvil", MythicBlocks.ETHERITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("hallowed_anvil", MythicBlocks.HALLOWED_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("kyber_anvil", MythicBlocks.KYBER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("manganese_anvil", MythicBlocks.MANGANESE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("metallurgium_anvil", MythicBlocks.METALLURGIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR, true);
-        RegistryHelper.block("midas_gold_anvil", MythicBlocks.MIDAS_GOLD_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("mythril_anvil", MythicBlocks.MYTHRIL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("orichalcum_anvil", MythicBlocks.ORICHALCUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("osmium_anvil", MythicBlocks.OSMIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("palladium_anvil", MythicBlocks.PALLADIUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR, true);
-        RegistryHelper.block("platinum_anvil", MythicBlocks.PLATINUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("prometheum_anvil", MythicBlocks.PROMETHEUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("quadrillum_anvil", MythicBlocks.QUADRILLUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("quicksilver_anvil", MythicBlocks.QUICKSILVER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("runite_anvil", MythicBlocks.RUNITE_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("silver_anvil", MythicBlocks.SILVER_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("star_platinum_anvil", MythicBlocks.STAR_PLATINUM_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("steel_anvil", MythicBlocks.STEEL_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-        RegistryHelper.block("stormyx_anvil", MythicBlocks.STORMYX_ANVIL, MythicMetals.MYTHICMETALS_DECOR);
-
-        MythicBlocks.ANVILS.add(MythicBlocks.ADAMANTITE_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.AETHERIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.AQUARIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.BANGLUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.BRONZE_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.CARMOT_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.CELESTIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.DISCORDIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.DURASTEEL_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.ETHERITE_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.HALLOWED_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.KYBER_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.MANGANESE_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.METALLURGIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.MIDAS_GOLD_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.MYTHRIL_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.ORICHALCUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.OSMIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.PALLADIUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.PLATINUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.PROMETHEUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.QUADRILLUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.QUICKSILVER_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.RUNITE_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.SILVER_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.STAR_PLATINUM_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.STEEL_ANVIL);
-        MythicBlocks.ANVILS.add(MythicBlocks.STORMYX_ANVIL);
+        RegistryHelper.anvil("adamantite_anvil", MythicBlocks.ADAMANTITE_ANVIL);
+        RegistryHelper.anvil("aetherium_anvil", MythicBlocks.AETHERIUM_ANVIL);
+        RegistryHelper.anvil("aquarium_anvil", MythicBlocks.AQUARIUM_ANVIL);
+        RegistryHelper.anvil("banglum_anvil", MythicBlocks.BANGLUM_ANVIL);
+        RegistryHelper.anvil("bronze_anvil", MythicBlocks.BRONZE_ANVIL);
+        RegistryHelper.anvil("carmot_anvil", MythicBlocks.CARMOT_ANVIL);
+        RegistryHelper.anvil("celestium_anvil", MythicBlocks.CELESTIUM_ANVIL);
+        RegistryHelper.anvil("discordium_anvil", MythicBlocks.DISCORDIUM_ANVIL);
+        RegistryHelper.anvil("durasteel_anvil", MythicBlocks.DURASTEEL_ANVIL);
+        RegistryHelper.anvil("etherite_anvil", MythicBlocks.ETHERITE_ANVIL);
+        RegistryHelper.anvil("hallowed_anvil", MythicBlocks.HALLOWED_ANVIL);
+        RegistryHelper.anvil("kyber_anvil", MythicBlocks.KYBER_ANVIL);
+        RegistryHelper.anvil("manganese_anvil", MythicBlocks.MANGANESE_ANVIL);
+        RegistryHelper.anvil("metallurgium_anvil", MythicBlocks.METALLURGIUM_ANVIL, true);
+        RegistryHelper.anvil("midas_gold_anvil", MythicBlocks.MIDAS_GOLD_ANVIL);
+        RegistryHelper.anvil("mythril_anvil", MythicBlocks.MYTHRIL_ANVIL);
+        RegistryHelper.anvil("orichalcum_anvil", MythicBlocks.ORICHALCUM_ANVIL);
+        RegistryHelper.anvil("osmium_anvil", MythicBlocks.OSMIUM_ANVIL);
+        RegistryHelper.anvil("palladium_anvil", MythicBlocks.PALLADIUM_ANVIL, true);
+        RegistryHelper.anvil("platinum_anvil", MythicBlocks.PLATINUM_ANVIL);
+        RegistryHelper.anvil("prometheum_anvil", MythicBlocks.PROMETHEUM_ANVIL);
+        RegistryHelper.anvil("quadrillum_anvil", MythicBlocks.QUADRILLUM_ANVIL);
+        RegistryHelper.anvil("quicksilver_anvil", MythicBlocks.QUICKSILVER_ANVIL);
+        RegistryHelper.anvil("runite_anvil", MythicBlocks.RUNITE_ANVIL);
+        RegistryHelper.anvil("silver_anvil", MythicBlocks.SILVER_ANVIL);
+        RegistryHelper.anvil("star_platinum_anvil", MythicBlocks.STAR_PLATINUM_ANVIL);
+        RegistryHelper.anvil("steel_anvil", MythicBlocks.STEEL_ANVIL);
+        RegistryHelper.anvil("stormyx_anvil", MythicBlocks.STORMYX_ANVIL);
 
         // Chains
         RegistryHelper.chain("adamantite_chain", MythicBlocks.ADAMANTITE_CHAIN);

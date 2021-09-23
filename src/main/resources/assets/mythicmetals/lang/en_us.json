@@ -763,7 +763,13 @@
   "text.autoconfig.mythicmetals.title": "Mythic Metals Configuration",
   "subtitles.mythicmetals.equip_runite" : "Familiar armor clank",
   "itemGroup.mythicmetals.main": "Mythic Metals",
-  "itemGroup.mythicmetals.tools": "Mythic Metals Tools",
-  "itemGroup.mythicmetals.armor": "Mythic Metals Armor",
+  "itemGroup.mythicmetals.main.button.github": "Mythic Metals Issue Tracker",
+  "itemGroup.mythicmetals.main.button.curseforge": "Mythic Metals CurseForge Page",
+  "itemGroup.mythicmetals.main.button.modrinth": "Mythic Metals Modrinth Page",
+  "itemGroup.mythicmetals.main.button.discord": "Need help? Join the Wraith Coding Sesh Discord Server for support.",
+  "itemGroup.mythicmetals.main.tab.items": "Items",
+  "itemGroup.mythicmetals.main.tab.tools": "Tools",
+  "itemGroup.mythicmetals.main.tab.blocks": "Blocks",
+  "itemGroup.mythicmetals.main.tab.armor": "Armor",
   "itemGroup.mythicmetals.decorations": "Mythic Metals Decorations"
 }

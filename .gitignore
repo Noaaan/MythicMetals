@@ -28,3 +28,4 @@ run/
 *.DS_Store*
 /.idea/
 /remappedSrc/
+/libs/

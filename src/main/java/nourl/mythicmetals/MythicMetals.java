@@ -1,5 +1,6 @@
 package nourl.mythicmetals;
 
+import com.glisco.owo.itemgroup.OwoItemGroup;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
@@ -22,12 +23,7 @@ public class MythicMetals implements ModInitializer {
     public static final String ADDON_ID = "mythicaddons";
     public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, JanksonConfigSerializer::new).getConfig();
 
-    public static final ItemGroup MYTHICMETALS = FabricItemGroupBuilder.create(
-            RegistryHelper.id("main")).icon(() -> new ItemStack(RegisterItems.ADAMANTITE_INGOT)).build();
-    public static final ItemGroup MYTHICMETALS_TOOLS = FabricItemGroupBuilder.create(
-            RegistryHelper.id("tools")).icon(() -> new ItemStack(RegisterTools.ADAMANTITE.getPickaxe())).build();
-    public static final ItemGroup MYTHICMETALS_ARMOR = FabricItemGroupBuilder.create(
-            RegistryHelper.id("armor")).icon(() -> new ItemStack(RegisterArmor.ADAMANTITE.getHelmet())).build();
+    public static final OwoItemGroup MAIN = new MythicItemGroups(RegistryHelper.id("main"));
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
             RegistryHelper.id("decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
@@ -42,12 +38,13 @@ public class MythicMetals implements ModInitializer {
             RegisterItems.registerDusts();
         }
         MythicBlocks.init();
-        RegisterBlocks.register();
-        RegisterTools.register();
         RegisterSounds.register();
+        RegisterTools.register();
         RegisterArmor.register();
+        RegisterBlocks.register();
         MythicOreFeatures.init();
         EnchantConfig.appendEnchants();
+        MAIN.initialize();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 

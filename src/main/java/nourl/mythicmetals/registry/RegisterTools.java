@@ -5,7 +5,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
-import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.tools.ToolMaterials;
 import nourl.mythicmetals.tools.ToolSet;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -31,7 +30,7 @@ public class RegisterTools {
     public static final ToolSet COPPER = new ToolSet(ToolMaterials.COPPER, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet DISCORDIUM = new ToolSet(ToolMaterials.DISCORDIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet DURASTEEL = new ToolSet(ToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final Item ETHERITE_SWORD = new SwordItem(ToolMaterials.ETHERITE, 3, -2.4F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item ETHERITE_SWORD = new SwordItem(ToolMaterials.ETHERITE, 3, -2.4F, new Item.Settings());
     public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet KYBER = new ToolSet(ToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
@@ -48,8 +47,8 @@ public class RegisterTools {
     public static final ToolSet STEEL = new ToolSet(ToolMaterials.STEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STORMYX = new ToolSet(ToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
 
-    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 5, -3.0F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
-    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 3, -2.5F, new Item.Settings().group(MythicMetals.MYTHICMETALS_TOOLS));
+    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 5, -3.0F, new Item.Settings());
+    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 3, -2.5F, new Item.Settings());
 
     public static class Frogery {
         public static final Item FROGE = new Item(new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD));

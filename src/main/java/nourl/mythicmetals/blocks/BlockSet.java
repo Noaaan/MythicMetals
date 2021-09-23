@@ -8,7 +8,6 @@ import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.*;
@@ -29,8 +28,8 @@ public class BlockSet {
         this.name = name;
 
         this.ore = ore;
-        this.oreStorageBlock = storageBlock;
-        this.storageBlock = oreStorageBlock;
+        this.storageBlock = storageBlock;
+        this.oreStorageBlock = oreStorageBlock;
 
         this.oreVariants = oreVariants;
         this.fireproof = fireproof;
@@ -38,19 +37,23 @@ public class BlockSet {
 
     private void register() {
         if (ore != null)
-            RegistryHelper.block(name + "_ore", ore, MythicMetals.MYTHICMETALS, fireproof);
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, MythicMetals.MYTHICMETALS, fireproof));
-        if (storageBlock != null) {
-            RegistryHelper.block("raw_" + name + "_block", storageBlock, MythicMetals.MYTHICMETALS, fireproof);
-        }
+            RegistryHelper.block(name + "_ore", ore, fireproof);
+        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof));
         if (oreStorageBlock != null) {
-            RegistryHelper.block(name + "_block", oreStorageBlock, MythicMetals.MYTHICMETALS, fireproof);
+            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof);
+        }
+        if (storageBlock != null) {
+            RegistryHelper.block(name + "_block", storageBlock, fireproof);
         }
 
     }
 
     public OreBlock getOre() {
         return ore;
+    }
+
+    public Block getStorageBlock() {
+        return storageBlock;
     }
 
     public OreBlock getOreVariant(String variant) {
@@ -65,8 +68,8 @@ public class BlockSet {
         private final boolean fireproof;
         private final Map<String, OreBlock> oreVariants = new LinkedHashMap<>();
         private OreBlock ore = null;
-        private Block storage = null;
-        private Block oreStorage = null;
+        private Block storageBlock = null;
+        private Block oreStorageBlock = null;
         private BlockSoundGroup currentSounds = BlockSoundGroup.STONE;
         private float currentHardness = -1;
         private float currentResistance = -1;
@@ -89,6 +92,10 @@ public class BlockSet {
 
         private static FabricBlockSettings blockSettings(Material material, float hardness, float resistance, BlockSoundGroup sounds, int miningLevel) {
             return FabricBlockSettings.of(material).strength(hardness, resistance).sounds(sounds).breakByTool(FabricToolTags.PICKAXES, miningLevel).requiresTool();
+        }
+
+        public Builder createDefaultSet(float hardness, float resistance, int miningLevel) {
+            return strength(hardness, resistance).createOre(miningLevel).strength(hardness + 1.0F, resistance).createStorageBlock(++miningLevel).createOreStorageBlock(miningLevel);
         }
 
         public Builder createDefaultSet(float strength, int miningLevel) {
@@ -168,26 +175,26 @@ public class BlockSet {
         public Builder createStorageBlock(Material material, int miningLevel) {
             final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
-            this.storage = new Block(settings);
+            this.storageBlock = new Block(settings);
             return this;
         }
 
         public Builder createFallingStorageBlock(Material material, int miningLevel) {
             final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
-            this.storage = new FallingBlock(settings);
+            this.storageBlock = new FallingBlock(settings);
             return this;
         }
 
         public Builder createOreStorageBlock(int miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
             settingsProcessor.accept(settings);
-            this.oreStorage = new Block(settings);
+            this.oreStorageBlock = new Block(settings);
             return this;
         }
 
         public BlockSet finish() {
-            final var set = new BlockSet(this.name, this.ore, this.storage, this.oreStorage, this.oreVariants, this.fireproof);
+            final var set = new BlockSet(this.name, this.ore, this.storageBlock, this.oreStorageBlock, this.oreVariants, this.fireproof);
             Builder.toBeRegistered.add(set);
             return set;
         }

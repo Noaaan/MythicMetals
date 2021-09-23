@@ -18,7 +18,7 @@ public class ArmorSet {
     private final ArmorItem boots;
 
     private static ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new Item.Settings().group(MythicMetals.MYTHICMETALS_ARMOR);
+        final var settings = new Item.Settings();
         settingsProcessor.accept(settings);
         return new ArmorItem(material, slot, settings);
     }

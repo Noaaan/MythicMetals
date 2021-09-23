@@ -12,6 +12,10 @@ repositories {
 	maven {url = "https://www.cursemaven.com"}
 	maven {url = "https://maven.shedaniel.me/"}
 	maven {url = "https://maven.terraformersmc.com/"}
+
+	flatDir {
+		dir('libs')
+	}
 }
 
 dependencies {
@@ -36,7 +40,8 @@ dependencies {
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")
 
 	// OwO
-	modImplementation "com.github.glisco03:owo-lib:1.17-SNAPSHOT"
+	modApi("com.github.glisco03:owo:${project.owo_version}")
+	include("com.github.glisco03:owo:${project.owo_version}")
 
 	// REI
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"

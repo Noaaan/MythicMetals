@@ -30,6 +30,7 @@ public class MythicBlocks {
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
             .createDefaultSet(3.0F, 2)
             .strength(3.0F, 3.0F)
+            .sounds(BlockSoundGroup.CALCITE)
             .createOreVariant("calcite", 2)
             .finish();
 
@@ -89,14 +90,18 @@ public class MythicBlocks {
             .createStarriteOreVariant("calcite", 3, UniformIntProvider.create(3, 6))
             .sounds(BlockSoundGroup.STONE).strength(4.0F)
             .createStarriteOreVariant("end_stone", 4, UniformIntProvider.create(3, 6))
-            .sounds(BlockSoundGroup.AMETHYST_BLOCK).createStorageBlock(4)
+            .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+            .createStorageBlock(4)
             .finish();
 
     public static final BlockSet STORMYX = BlockSet.Builder.begin("stormyx", false)
             .strength(3.5F).sounds(BlockSoundGroup.NETHER_ORE)
             .createOre(2, UniformIntProvider.create(2, 4))
+            .sounds(BlockSoundGroup.GILDED_BLACKSTONE)
             .createOreVariant("blackstone", 2)
-            .strength(4.0F).createOreStorageBlock(3).createStorageBlock(3)
+            .strength(4.0F)
+            .createOreStorageBlock(3)
+            .createStorageBlock(3)
             .finish();
 
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
@@ -104,14 +109,21 @@ public class MythicBlocks {
 
     public static final BlockSet VERMICULITE = BlockSet.Builder.begin("vermiculite", false)
             .strength(3.0F).createOre(1, UniformIntProvider.create(0, 2))
-            .strength(3.0F).createFallingStorageBlock(Material.AGGREGATE, 2)
+            .sounds(BlockSoundGroup.GRAVEL)
+            .strength(3.0F)
+            .createFallingStorageBlock(Material.AGGREGATE, 2)
             .finish();
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
-            .strength(6.0F, 13000F).createOre(4, UniformIntProvider.create(4, 7))
+            .strength(6.0F, 13000F)
+            .sounds(BlockSoundGroup.LODESTONE)
+            .createOre(4, UniformIntProvider.create(4, 7))
             .strength(7.5F, 14000F)
+            .sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", 4)
-            .strength(7.5F, 15000F).createStorageBlock(5)
+            .sounds(BlockSoundGroup.LODESTONE)
+            .strength(7.5F, 15000F)
+            .createStorageBlock(5)
             .finish();
 
     // Storage Blocks
@@ -183,7 +195,7 @@ public class MythicBlocks {
     public static final AnvilBlock STAR_PLATINUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
     public static final AnvilBlock STEEL_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
     public static final AnvilBlock STORMYX_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    // Anvils
+    // Hashset that stores anvils for the AnvilScreenHandlerMixin
     public static HashSet<Block> ANVILS = new HashSet<>();
 
     public static void init() {
