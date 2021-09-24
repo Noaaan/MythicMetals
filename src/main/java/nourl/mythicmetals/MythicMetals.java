@@ -1,6 +1,7 @@
 package nourl.mythicmetals;
 
 import com.glisco.owo.itemgroup.OwoItemGroup;
+import com.glisco.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
@@ -8,10 +9,12 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.EnchantConfig;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.registry.*;
+import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -30,18 +33,12 @@ public class MythicMetals implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RegisterItems.register();
-        if (CONFIG.enableNuggets) {
-            RegisterItems.registerNuggets();
-        }
-        if (CONFIG.enableDusts) {
-            RegisterItems.registerDusts();
-        }
-        MythicBlocks.init();
         RegisterSounds.register();
-        RegisterTools.register();
-        RegisterArmor.register();
-        RegisterBlocks.register();
+        FieldRegistrationHandler.processSimple(MythicTools.class, false);
+        FieldRegistrationHandler.register(RegisterItems.class, MOD_ID, false);
+        FieldRegistrationHandler.processSimple(MythicArmor.class, false);
+        FieldRegistrationHandler.processSimple(MythicBlocks.class, true);
+        //RegisterBlocks.register();
         MythicOreFeatures.init();
         EnchantConfig.appendEnchants();
         MAIN.initialize();

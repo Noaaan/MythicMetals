@@ -15,7 +15,7 @@ public class MythicConfig implements ConfigData {
 
     //Adamantite Ore Settings
     @ConfigEntry.Gui.CollapsibleObject
-    public OreConfig adamantite = new OreConfig(true, 5, 1, -52, 12, .25f);
+    public OreConfig adamantite = new OreConfig(true, 5, 1, -52, 12, .125f);
     @ConfigEntry.Gui.CollapsibleObject
     public OreConfig aetherium = new OreConfig(true, 4, 3, 80, 60, .125f);
     @ConfigEntry.Gui.CollapsibleObject
@@ -35,9 +35,9 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject
     public OreConfig midas_gold = new OreConfig(true,6, 7, 10, 128,.125f);
     @ConfigEntry.Gui.CollapsibleObject
-    public OreConfig mythril = new OreConfig(true, 4, 1, -36, 16, .25f);
+    public OreConfig mythril = new OreConfig(true, 4, 1, -36, 16, .125f);
     @ConfigEntry.Gui.CollapsibleObject
-    public OreConfig orichalcum = new OreConfig(true, 4, 1, 8, 24, .25f);
+    public OreConfig orichalcum = new OreConfig(true, 4, 1, 8, 24, .125f);
     @ConfigEntry.Gui.CollapsibleObject
     public OreConfig osmium = new OreConfig(true, 6, 5, 20, 40, .25f);
     @ConfigEntry.Gui.CollapsibleObject

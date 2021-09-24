@@ -1,16 +1,18 @@
 package nourl.mythicmetals.blocks;
 
+import com.glisco.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.*;
+import net.minecraft.block.ChainBlock;
+import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import nourl.mythicmetals.utils.RegistryHelper;
 
-import java.util.HashSet;
-
-public class MythicBlocks {
+@SuppressWarnings("unused")
+public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final BlockSet ADAMANTITE = BlockSet.Builder.begin("adamantite", false)
-            .createDefaultSet(4, 3, 5, 4)
+            .createDefaultSet(4, 3)
             .strength(6, 12).sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", 3)
             .finish();
@@ -24,8 +26,28 @@ public class MythicBlocks {
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
             .createDefaultSet(3, 1).finish();
 
+    public static final BlockSet BRONZE = BlockSet.Builder.begin("bronze", false)
+            .createAnvilSet(5, 2).finish();
+
+
     public static final BlockSet CARMOT = BlockSet.Builder.begin("carmot", false)
-            .createDefaultSet(4.0F, 2).finish();
+            .createDefaultSet(4, 2).finish();
+
+    public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
+            .createAnvilSet(5, 4).finish();
+
+    public static final BlockSet DISCORDIUM = BlockSet.Builder.begin("discordium", false)
+            .createAnvilSet(5, 3).finish();
+
+    public static final BlockSet DURASTEEL = BlockSet.Builder.begin("durasteel", false)
+            .createAnvilSet(5, 3).finish();
+
+    public static final BlockSet ETHERITE = BlockSet.Builder.begin("etherite", false)
+            .createAnvilSet(5,3).finish();
+
+    public static final BlockSet HALLOWED = BlockSet.Builder.begin("hallowed", false)
+            .createAnvilSet(5, 4).finish();
+
 
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
             .createDefaultSet(3.0F, 2)
@@ -42,6 +64,12 @@ public class MythicBlocks {
             .createOre(2)
             .strength(4.5F).sounds(BlockSoundGroup.METAL)
             .createOreStorageBlock(3).createStorageBlock(3)
+            .createAnvil(2)
+            .finish();
+
+    public static final BlockSet METALLURGIUM = BlockSet.Builder.begin("metallurgium", true)
+            .sounds(BlockSoundGroup.NETHERITE)
+            .createAnvilSet(6.0F, 4)
             .finish();
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)
@@ -78,11 +106,19 @@ public class MythicBlocks {
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
             .createDefaultSet(4.0F, 2).finish();
 
+    public static final BlockSet QUICKSILVER = BlockSet.Builder.begin("quicksilver", false)
+            .createAnvilSet(5, 3).finish();
+
+
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
             .createDefaultSet(4.0F, 2).finish();
 
     public static final BlockSet SILVER = BlockSet.Builder.begin("silver", false)
             .createDefaultSet(3.0F, 1).finish();
+
+    public static final BlockSet STAR_PLATINUM = BlockSet.Builder.begin("star_platinum", false)
+            .createAnvilSet(5, 3).finish();
+
 
     public static final BlockSet STARRITE = BlockSet.Builder.begin("starrite", false)
             .strength(3.0F).createStarriteOre(3, UniformIntProvider.create(3, 6))
@@ -94,6 +130,9 @@ public class MythicBlocks {
             .createStorageBlock(4)
             .finish();
 
+    public static final BlockSet STEEL = BlockSet.Builder.begin("steel", false)
+            .createAnvilSet(5, 2).finish();
+
     public static final BlockSet STORMYX = BlockSet.Builder.begin("stormyx", false)
             .strength(3.5F).sounds(BlockSoundGroup.NETHER_ORE)
             .createOre(2, UniformIntProvider.create(2, 4))
@@ -102,10 +141,11 @@ public class MythicBlocks {
             .strength(4.0F)
             .createOreStorageBlock(3)
             .createStorageBlock(3)
+            .createAnvil(3)
             .finish();
 
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
-            .createDefaultSet(3.0F, 1).finish();
+            .createDefaultSet(3.0F, 1, 4.0F, 2).finish();
 
     public static final BlockSet VERMICULITE = BlockSet.Builder.begin("vermiculite", false)
             .strength(3.0F).createOre(1, UniformIntProvider.create(0, 2))
@@ -126,19 +166,6 @@ public class MythicBlocks {
             .createStorageBlock(5)
             .finish();
 
-    // Storage Blocks
-    public static final Block BRONZE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.COPPER).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final Block CELESTIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block DISCORDIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block DURASTEEL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block ETHERITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
-    public static final Block HALLOWED_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block METALLURGIUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.NETHERITE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
-    public static final Block QUICKSILVER_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block STAR_PLATINUM_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final Block STEEL_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-
-    // Chains
     public static final ChainBlock ADAMANTITE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock AETHERIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock AQUARIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool().nonOpaque());
@@ -167,38 +194,20 @@ public class MythicBlocks {
     public static final ChainBlock STAR_PLATINUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock STEEL_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock STORMYX_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
-    public static final AnvilBlock ADAMANTITE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock AETHERIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock AQUARIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final AnvilBlock BANGLUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final AnvilBlock BRONZE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock CARMOT_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock CELESTIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock DISCORDIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock DURASTEEL_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock ETHERITE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
-    public static final AnvilBlock HALLOWED_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock KYBER_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock MANGANESE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock METALLURGIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool());
-    public static final AnvilBlock MIDAS_GOLD_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock MYTHRIL_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock ORICHALCUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock OSMIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock PALLADIUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock PLATINUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock PROMETHEUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock QUADRILLUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final AnvilBlock QUICKSILVER_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock RUNITE_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock SILVER_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool());
-    public static final AnvilBlock STAR_PLATINUM_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool());
-    public static final AnvilBlock STEEL_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    public static final AnvilBlock STORMYX_ANVIL = new AnvilBlock(FabricBlockSettings.of(Material.REPAIR_STATION).strength(5.0F, 15000.0F).sounds(BlockSoundGroup.ANVIL).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool());
-    // Hashset that stores anvils for the AnvilScreenHandlerMixin
-    public static HashSet<Block> ANVILS = new HashSet<>();
 
-    public static void init() {
+
+    @Override
+    public Class<ChainBlock> getTargetFieldType() {
+        return ChainBlock.class;
+    }
+
+    @Override
+    public void afterFieldProcessing() {
         BlockSet.Builder.register();
+    }
+
+    @Override
+    public void processField(ChainBlock chainBlock, String name) {
+        RegistryHelper.chain(name, chainBlock, chainBlock == METALLURGIUM_CHAIN || chainBlock == PALLADIUM_CHAIN);
     }
 }

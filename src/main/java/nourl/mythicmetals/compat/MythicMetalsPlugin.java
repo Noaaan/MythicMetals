@@ -6,7 +6,7 @@ import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.client.registry.entry.EntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.item.ItemStack;
-import nourl.mythicmetals.registry.RegisterTools;
+import nourl.mythicmetals.tools.MythicTools;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class MythicMetalsPlugin implements REIClientPlugin {
     public void registerDisplays(DisplayRegistry registry) {
         registry.registerVisibilityPredicate((category, display) -> {
                 if (display.getOutputEntries().stream().flatMap(List::stream)
-                    .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack && stack.getItem() == RegisterTools.Frogery.FROGE))
+                    .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack && stack.getItem() == MythicTools.Frogery.FROGE))
                 return EventResult.interruptFalse();
                 else return EventResult.pass();
     });
@@ -24,6 +24,6 @@ public class MythicMetalsPlugin implements REIClientPlugin {
 
     @Override
     public void registerEntries(EntryRegistry registry) {
-        registry.removeEntry(EntryStacks.of(RegisterTools.Frogery.FROGE));
+        registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
     }
 }

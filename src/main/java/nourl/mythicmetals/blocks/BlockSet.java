@@ -2,10 +2,7 @@ package nourl.mythicmetals.blocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.FallingBlock;
-import net.minecraft.block.Material;
-import net.minecraft.block.OreBlock;
+import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -18,18 +15,20 @@ public class BlockSet {
     private final OreBlock ore;
     private final Block storageBlock;
     private final Block oreStorageBlock;
+    private final AnvilBlock anvil;
 
     private final String name;
     private final boolean fireproof;
 
     private final Map<String, OreBlock> oreVariants;
 
-    private BlockSet(String name, OreBlock ore, Block storageBlock, Block oreStorageBlock, Map<String, OreBlock> oreVariants, boolean fireproof) {
+    private BlockSet(String name, OreBlock ore, Block storageBlock, Block oreStorageBlock, AnvilBlock anvil, Map<String, OreBlock> oreVariants, boolean fireproof) {
         this.name = name;
 
         this.ore = ore;
         this.storageBlock = storageBlock;
         this.oreStorageBlock = oreStorageBlock;
+        this.anvil = anvil;
 
         this.oreVariants = oreVariants;
         this.fireproof = fireproof;
@@ -44,6 +43,9 @@ public class BlockSet {
         }
         if (storageBlock != null) {
             RegistryHelper.block(name + "_block", storageBlock, fireproof);
+        }
+        if (anvil != null) {
+            RegistryHelper.block(name + "_anvil", anvil, fireproof);
         }
 
     }
@@ -70,6 +72,7 @@ public class BlockSet {
         private OreBlock ore = null;
         private Block storageBlock = null;
         private Block oreStorageBlock = null;
+        private AnvilBlock anvil = null;
         private BlockSoundGroup currentSounds = BlockSoundGroup.STONE;
         private float currentHardness = -1;
         private float currentResistance = -1;
@@ -94,16 +97,20 @@ public class BlockSet {
             return FabricBlockSettings.of(material).strength(hardness, resistance).sounds(sounds).breakByTool(FabricToolTags.PICKAXES, miningLevel).requiresTool();
         }
 
-        public Builder createDefaultSet(float hardness, float resistance, int miningLevel) {
-            return strength(hardness, resistance).createOre(miningLevel).strength(hardness + 1.0F, resistance).createStorageBlock(++miningLevel).createOreStorageBlock(miningLevel);
-        }
-
         public Builder createDefaultSet(float strength, int miningLevel) {
-            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(++miningLevel).createOreStorageBlock(miningLevel);
+            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(miningLevel++).createOreStorageBlock(miningLevel).createAnvil(miningLevel);
         }
 
         public Builder createDefaultSet(float oreStrength, int oreMiningLevel, float storageStrength, int storageMiningLevel) {
             return strength(oreStrength).createOre(oreMiningLevel).strength(storageStrength).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel);
+        }
+
+        public Builder createDefaultSet(float oreStrength, int oreMiningLevel, float storageStrength, int storageMiningLevel, int anvilMiningLevel) {
+            return strength(oreStrength).createOre(oreMiningLevel).strength(storageStrength).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel).createAnvil(anvilMiningLevel);
+        }
+
+        public Builder createAnvilSet(float strength, int miningLevel) {
+            return strength(strength).createStorageBlock(miningLevel).createAnvil(miningLevel);
         }
 
         public Builder settings(Consumer<FabricBlockSettings> processor) {
@@ -193,8 +200,15 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createAnvil(int miningLevel) {
+            final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL, miningLevel);
+            settingsProcessor.accept(settings);
+            this.anvil = new AnvilBlock(settings);
+            return this;
+        }
+
         public BlockSet finish() {
-            final var set = new BlockSet(this.name, this.ore, this.storageBlock, this.oreStorageBlock, this.oreVariants, this.fireproof);
+            final var set = new BlockSet(this.name, this.ore, this.storageBlock, this.oreStorageBlock, this.anvil, this.oreVariants, this.fireproof);
             Builder.toBeRegistered.add(set);
             return set;
         }
