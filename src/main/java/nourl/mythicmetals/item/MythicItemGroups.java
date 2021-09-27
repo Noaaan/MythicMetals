@@ -1,4 +1,4 @@
-package nourl.mythicmetals;
+package nourl.mythicmetals.item;
 
 import com.glisco.owo.itemgroup.Icon;
 import com.glisco.owo.itemgroup.OwoItemGroup;
@@ -10,18 +10,17 @@ import net.minecraft.util.Identifier;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.registry.RegisterItems;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class MythicItemGroups extends OwoItemGroup {
 
-    protected MythicItemGroups(Identifier id) {
+    public MythicItemGroups(Identifier id) {
         super(id);
     }
 
     @Override
     protected void setup() {
-        this.addTab(Icon.of(RegisterItems.ADAMANTITE_INGOT), "items", TagFactory.ITEM.create(RegistryHelper.id("metals")));
+        this.addTab(Icon.of(MythicItems.ADAMANTITE_INGOT), "items", TagFactory.ITEM.create(RegistryHelper.id("metals")));
         this.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", ItemGroupTab.EMPTY);
         this.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagFactory.ITEM.create(RegistryHelper.id("weapons")));
         this.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagFactory.ITEM.create(RegistryHelper.id("gear")));
@@ -34,6 +33,6 @@ public class MythicItemGroups extends OwoItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(RegisterItems.STORMYX_INGOT);
+        return new ItemStack(MythicItems.STORMYX_INGOT);
     }
 }

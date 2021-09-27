@@ -29,7 +29,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final BlockSet BRONZE = BlockSet.Builder.begin("bronze", false)
             .createAnvilSet(5, 2).finish();
 
-
     public static final BlockSet CARMOT = BlockSet.Builder.begin("carmot", false)
             .createDefaultSet(4, 2).finish();
 
@@ -43,11 +42,10 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createAnvilSet(5, 3).finish();
 
     public static final BlockSet ETHERITE = BlockSet.Builder.begin("etherite", false)
-            .createAnvilSet(5,3).finish();
+            .createAnvilSet(5, 3).finish();
 
     public static final BlockSet HALLOWED = BlockSet.Builder.begin("hallowed", false)
             .createAnvilSet(5, 4).finish();
-
 
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
             .createDefaultSet(3.0F, 2)
@@ -118,7 +116,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
 
     public static final BlockSet STAR_PLATINUM = BlockSet.Builder.begin("star_platinum", false)
             .createAnvilSet(5, 3).finish();
-
 
     public static final BlockSet STARRITE = BlockSet.Builder.begin("starrite", false)
             .strength(3.0F).createStarriteOre(3, UniformIntProvider.create(3, 6))
@@ -194,7 +191,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final ChainBlock STAR_PLATINUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock STEEL_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock STORMYX_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
-
 
     @Override
     public Class<ChainBlock> getTargetFieldType() {

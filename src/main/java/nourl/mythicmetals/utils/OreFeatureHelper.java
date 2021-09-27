@@ -18,11 +18,12 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 import nourl.mythicmetals.config.OreConfig;
+import nourl.mythicmetals.config.VariantConfig;
 
 @SuppressWarnings("deprecation, unused")
 public class OreFeatureHelper {
     public static void ore(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.all(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void netherOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {
@@ -44,6 +45,10 @@ public class OreFeatureHelper {
     }
 
     public static ConfiguredFeature<?, ?> fixedOre(RuleTest rule, BlockState defaultState, OreConfig config) {
+        return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, config.veinSize, config.discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(config.bottom), YOffset.fixed(config.top))))).spreadHorizontally().repeat(config.perChunk);
+    }
+
+    public static ConfiguredFeature<?, ?> fixedOre(RuleTest rule, BlockState defaultState, VariantConfig config) {
         return Feature.ORE.configure(new OreFeatureConfig(rule, defaultState, config.veinSize, config.discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(config.bottom), YOffset.fixed(config.top))))).spreadHorizontally().repeat(config.perChunk);
     }
 
@@ -76,6 +81,10 @@ public class OreFeatureHelper {
     }
 
     public static ConfiguredFeature<?, ?> topOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
+        return Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(config.bottom), YOffset.belowTop(config.top))))).spreadHorizontally().repeat(config.perChunk);
+    }
+
+    public static ConfiguredFeature<?, ?> topOffsetOre(ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
         return Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.fixed(config.bottom), YOffset.belowTop(config.top))))).spreadHorizontally().repeat(config.perChunk);
     }
 

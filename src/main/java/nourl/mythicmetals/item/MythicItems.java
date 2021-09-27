@@ -1,4 +1,4 @@
-package nourl.mythicmetals.registry;
+package nourl.mythicmetals.item;
 
 import com.glisco.owo.itemgroup.OwoItemSettings;
 import com.glisco.owo.registration.reflect.ItemRegistryContainer;
@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import nourl.mythicmetals.MythicMetals;
 
 @SuppressWarnings("unused")
-public class RegisterItems implements ItemRegistryContainer {
+public class MythicItems implements ItemRegistryContainer {
     //Normal Ingots
     public static final Item ADAMANTITE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item AETHERIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));

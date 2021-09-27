@@ -13,6 +13,8 @@ import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.EnchantConfig;
 import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.item.MythicItemGroups;
+import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.*;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -24,21 +26,19 @@ public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final String ADDON_ID = "mythicaddons";
-    public static final MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, JanksonConfigSerializer::new).getConfig();
+    public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, JanksonConfigSerializer::new).getConfig();
 
     public static final OwoItemGroup MAIN = new MythicItemGroups(RegistryHelper.id("main"));
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
             RegistryHelper.id("decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
-
     @Override
     public void onInitialize() {
         RegisterSounds.register();
         FieldRegistrationHandler.processSimple(MythicTools.class, false);
-        FieldRegistrationHandler.register(RegisterItems.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.processSimple(MythicBlocks.class, true);
-        //RegisterBlocks.register();
         MythicOreFeatures.init();
         EnchantConfig.appendEnchants();
         MAIN.initialize();

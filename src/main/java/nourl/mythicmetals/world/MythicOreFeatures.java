@@ -57,7 +57,7 @@ public class MythicOreFeatures {
 
     // Ores below zero - Reaches Deep Dark
     public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = OreFeatureHelper.triangleOre(ADAMANTITE_TARGETS, CONFIG.adamantite);
-    public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = OreFeatureHelper.bottomOffsetOre(CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite").getDefaultState(), CONFIG.calcite_kyber);
+    public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = OreFeatureHelper.bottomOffsetOre(CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite").getDefaultState(), CONFIG.kyber.getVariant());
     public static ConfiguredFeature<?, ?> ORE_MYTHRIL = OreFeatureHelper.triangleOre(MYTHRIL_TARGETS, CONFIG.mythril);
     public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = OreFeatureHelper.bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.orichalcum);
     public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = OreFeatureHelper.bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.prometheum);
@@ -71,7 +71,7 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.scatteredOre(OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
 
     // End Ores
-    public static ConfiguredFeature<?, ?> ORE_END_STARRITE = OreFeatureHelper.topOffsetOre(END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone").getDefaultState(), CONFIG.end_starrite);
+    public static ConfiguredFeature<?, ?> ORE_END_STARRITE = OreFeatureHelper.topOffsetOre(END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone").getDefaultState(), CONFIG.starrite.getVariant());
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryHelper.registerKey("ore_adamantite");
@@ -81,7 +81,7 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryHelper.registerKey("ore_carmot");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = RegistryHelper.registerKey("ore_calcite_kyber");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryHelper.registerKey("ore_kyber");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOverworldNetherOres = RegistryHelper.registerKey("ore_overworld_nether_ores");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> overworldNetherOres = RegistryHelper.registerKey("ore_overworld_nether_ores");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryHelper.registerKey("ore_manganese");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryHelper.registerKey("ore_midas_gold");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryHelper.registerKey("ore_mythril");
@@ -115,7 +115,7 @@ public class MythicOreFeatures {
         RegistryHelper.registerFeature(oreMythril.getValue(), ORE_MYTHRIL);
         RegistryHelper.registerFeature(oreOrichalcum.getValue(), ORE_ORICHALCUM);
         RegistryHelper.registerFeature(oreOsmium.getValue(), ORE_OSMIUM);
-        RegistryHelper.registerFeature(oreOverworldNetherOres.getValue(), ORE_OVERWORLD_NETHER_ORES);
+        RegistryHelper.registerFeature(overworldNetherOres.getValue(), ORE_OVERWORLD_NETHER_ORES);
         RegistryHelper.registerFeature(orePlatinum.getValue(), ORE_PLATINUM);
         RegistryHelper.registerFeature(orePrometheum.getValue(), ORE_PROMETHEUM);
         RegistryHelper.registerFeature(oreQuadrillum.getValue(), ORE_QUADRILLUM);
@@ -139,6 +139,7 @@ public class MythicOreFeatures {
         if (CONFIG.mythril.enabled) { OreFeatureHelper.ore(oreMythril); }
         if (CONFIG.orichalcum.enabled) { OreFeatureHelper.ore(oreOrichalcum); }
         if (CONFIG.osmium.enabled) { OreFeatureHelper.ore(oreOsmium); }
+        if (CONFIG.overworld_nether_ores.enabled) { OreFeatureHelper.ore(overworldNetherOres); }
         if (CONFIG.platinum.enabled) { OreFeatureHelper.ore(orePlatinum); }
         if (CONFIG.quadrillum.enabled) { OreFeatureHelper.ore(oreQuadrillum); }
         if (CONFIG.runite.enabled) { OreFeatureHelper.ore(oreRunite); }
@@ -156,7 +157,7 @@ public class MythicOreFeatures {
         if (CONFIG.stormyx.enabled) { OreFeatureHelper.netherOre(oreStormyx); }
         if (CONFIG.prometheum.enabled) { OreFeatureHelper.netherOre(orePalladium); }
         if (CONFIG.midas_gold.enabled & CONFIG.stormyx.enabled) {
-            OreFeatureHelper.netherOre(oreOverworldNetherOres);}
+            OreFeatureHelper.netherOre(overworldNetherOres);}
 
         //Ocean only ores
         if (CONFIG.aquarium.enabled) {
