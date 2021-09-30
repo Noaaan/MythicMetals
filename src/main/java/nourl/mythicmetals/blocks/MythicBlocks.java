@@ -48,26 +48,26 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createAnvilSet(5, 4).finish();
 
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
-            .createDefaultSet(3.0F, 2)
+            .createDefaultSet(3.0F, 2, 4.0F, 2)
             .strength(3.0F, 3.0F)
             .sounds(BlockSoundGroup.CALCITE)
             .createOreVariant("calcite", 2)
             .finish();
 
     public static final BlockSet MANGANESE = BlockSet.Builder.begin("manganese", false)
-            .createDefaultSet(3.0F, 2).finish();
+            .createDefaultSet(3.0F, 2, 2).finish();
 
     public static final BlockSet MIDAS_GOLD = BlockSet.Builder.begin("midas_gold", false)
             .strength(3.5F).sounds(BlockSoundGroup.NETHER_GOLD_ORE)
             .createOre(2)
             .strength(4.5F).sounds(BlockSoundGroup.METAL)
-            .createOreStorageBlock(3).createStorageBlock(3)
+            .createOreStorageBlock(2).createStorageBlock(3)
             .createAnvil(2)
             .finish();
 
     public static final BlockSet METALLURGIUM = BlockSet.Builder.begin("metallurgium", true)
             .sounds(BlockSoundGroup.NETHERITE)
-            .createAnvilSet(6.0F, 4)
+            .createAnvilSet(6.0F, 5)
             .finish();
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)
@@ -96,7 +96,7 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createDefaultSet(3.5F, 2).finish();
 
     public static final BlockSet PROMETHEUM = BlockSet.Builder.begin("prometheum", false)
-            .createDefaultSet(5.0F, 3)
+            .createDefaultSet(5.0F, 2)
             .sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", 3)
             .finish();
@@ -142,13 +142,13 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .finish();
 
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
-            .createDefaultSet(3.0F, 1, 4.0F, 2).finish();
+            .createDefaultSet(3.0F, 1).finish();
 
     public static final BlockSet VERMICULITE = BlockSet.Builder.begin("vermiculite", false)
             .strength(3.0F).createOre(1, UniformIntProvider.create(0, 2))
             .sounds(BlockSoundGroup.GRAVEL)
             .strength(3.0F)
-            .createFallingStorageBlock(Material.AGGREGATE, 2)
+            .createFallingStorageBlock(Material.AGGREGATE, 0)
             .finish();
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)

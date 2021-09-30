@@ -40,9 +40,9 @@ public class MythicConfig implements ConfigData {
     public OreConfig osmium = new OreConfig(true, 6, 5, 20, 40, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     @Comment("Midas Gold + Stormyx in minecraft:overworld")
-    public OreConfig overworld_nether_ores = new OreConfig(true, 4, 1, 40, 70, .125f);
+    public OreConfig overworld_nether_ores = new OreConfig(true, 4, 2, 40, 70, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig palladium = new OreConfig(true, 4, 1, 16, 40, .0f);
+    public OreConfig palladium = new OreConfig(true, 4, 2, 16, 40, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig platinum = new OreConfig(true, 6, 2, 8, 32, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -52,7 +52,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig runite = new OreConfig(true, 3, 2, 9, 39, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig silver = new OreConfig(true,8, 4, 6, 28, .25f);
+    public OreConfig silver = new OreConfig(true,8, 4, 16, 38, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     @Comment("Starrite + End Stone Starrite")
     public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 50, 40, 100, 20, .25f);

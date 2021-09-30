@@ -14,19 +14,22 @@ A lot has been removed from the mod, which includes:
 * Truesilver, which has been replaced in favor of Palladium
 * Quadrillum armour
 
-Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds. This is experimental, so 
-**please make a backup before installing this update!**  
+Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds.  
+
+!!!This is experimental, so **please make a backup before installing this update!!!**  
+
 A lot of new ore variants have been added:  
-* Added deepslate variants of Adamantite, Mythril and Orichalcum.
+* Added deepslate variants of Adamantite, Mythril, Orichalcum and Unobtainium.
 * Added a tuff and smooth basalt variant of Orichalcum.
 * Added a calcite variant of Kyber. Normal Kyber spawns rarely in the world, but it spawns in large veins in calcite (mainly from amethyst geodes).
 * Added a blackstone variant of Stormyx.
 * Nether ores now have their own custom feature for spawning in the overworld (portal remnants and mod compat).
 * Added a calcite variant of Starrite. Starrite now spawns rarely anywhere in the world. 
-* Added an End Stone Ore of Starrite. Starrite spawns much more abundantly here.
+* Added an End Stone Ore of Starrite, which is the main source of Starrite.
 * Added a deepslate variant of Prometheum, since it can now be found in Lush Caves. 
 * Tweaked Unobtainium spawn rates (it is now more common to find per-world, but will be VERY hard to find in caves).  
 * Ores heights have been tweaked, even respecting the max world height/bottom.
+* Added some secrets
 
 The world-gen is mainly balanced around the Caves and Cliffs Datapack, fully utilizing the new height range from 320 to -64. For the optimal experience I recommend using it or any other mod that changes the world height. 
 
@@ -40,11 +43,12 @@ A lot of the artwork has been changed in the mod. Shoutouts to the artists who h
 * Temreno
 * Shiftless
 
+Codewise there has been a lot of internal changes. Re-naming of features, a new solution for configs, and new "sets" which function as bundles for registering items.
 To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list.  
 
-Star Platinum is an alloy from Starrite, Platinum, and Osmium. It provides protection similar to Diamond, and is required for Celestium. 
-Celestium is now an end-game metal, 
-
+Star Platinum is an alloy from Starrite, Platinum, and Osmium. It provides protection similar to Diamond, and is a component for Celestium. 
+Celestium is now an end-game metal, focusing on movement speed.  
+WIP
 
 
 # 0.9.10

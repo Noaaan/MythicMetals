@@ -50,6 +50,11 @@ dependencies {
 	// modmenu
 	modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
+	java {
+		// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+		withSourcesJar()
+	}
+
 	processResources {
 		inputs.property "version", project.version
 

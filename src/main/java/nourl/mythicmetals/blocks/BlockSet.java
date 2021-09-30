@@ -10,7 +10,7 @@ import nourl.mythicmetals.utils.RegistryHelper;
 import java.util.*;
 import java.util.function.Consumer;
 
-@SuppressWarnings("ClassCanBeRecord")
+@SuppressWarnings({"ClassCanBeRecord", "unused"})
 public class BlockSet {
     private final OreBlock ore;
     private final Block storageBlock;
@@ -105,8 +105,8 @@ public class BlockSet {
             return strength(oreStrength).createOre(oreMiningLevel).strength(storageStrength).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel);
         }
 
-        public Builder createDefaultSet(float oreStrength, int oreMiningLevel, float storageStrength, int storageMiningLevel, int anvilMiningLevel) {
-            return strength(oreStrength).createOre(oreMiningLevel).strength(storageStrength).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel).createAnvil(anvilMiningLevel);
+        public Builder createDefaultSet(float strength, int miningLevel, int storageMiningLevel) {
+            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel);
         }
 
         public Builder createAnvilSet(float strength, int miningLevel) {
