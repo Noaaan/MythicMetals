@@ -58,5 +58,6 @@ public class MythicConfig implements ConfigData {
     public OreConfig tin = new OreConfig(true,8, 4, 44, 72, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig vermiculite = new OreConfig(true,8, 4, 64, 108, .25f);
+    @ConfigEntry.Gui.Excluded
     public int configVersion = 0;
 }

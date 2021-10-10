@@ -67,7 +67,7 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
 
     public static final BlockSet METALLURGIUM = BlockSet.Builder.begin("metallurgium", true)
             .sounds(BlockSoundGroup.NETHERITE)
-            .createAnvilSet(6.0F, 5)
+            .createAnvilSet(8.0F, 15000F, 5)
             .finish();
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)

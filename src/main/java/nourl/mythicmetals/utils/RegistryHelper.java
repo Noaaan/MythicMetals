@@ -38,7 +38,7 @@ public class RegistryHelper {
     public static void block(String path, Block block, boolean fireproof) {
         if (fireproof) {
             Registry.register(Registry.BLOCK, id(path), block);
-            Registry.register(Registry.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.MAIN).tab(1)));
+            Registry.register(Registry.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.MAIN).tab(1).fireproof()));
         } else {
             block(path, block);
         }
