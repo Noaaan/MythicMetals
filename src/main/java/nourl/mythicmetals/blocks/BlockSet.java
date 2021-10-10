@@ -22,6 +22,18 @@ public class BlockSet {
 
     private final Map<String, OreBlock> oreVariants;
 
+    /**
+     * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks out of them.
+     * Call {@code public static final BlockSet = new BlockSet.Builder.begin()} to start creating one.
+     *
+     * @param name              Common name for the entire set of blocks, applies to every block created.
+     * @param ore               Contains a vanilla {@link OreBlock}.
+     * @param storageBlock      Contains a {@link Block} which is used as a storage block.
+     * @param oreStorageBlock   Contains a {@link Block} which is used as a ore storage block.
+     * @param anvil             Contains an {@link AnvilBlock}
+     * @param oreVariants       A map of a string and {@link OreBlock} which is used for variant ores.
+     * @param fireproof         Boolean for creating fireproof block sets.
+     */
     private BlockSet(String name, OreBlock ore, Block storageBlock, Block oreStorageBlock, AnvilBlock anvil, Map<String, OreBlock> oreVariants, boolean fireproof) {
         this.name = name;
 
@@ -62,6 +74,9 @@ public class BlockSet {
         return oreVariants.get(variant);
     }
 
+    /**
+     *
+     */
     public static class Builder {
 
         private static final List<BlockSet> toBeRegistered = new ArrayList<>();
@@ -111,6 +126,10 @@ public class BlockSet {
 
         public Builder createAnvilSet(float strength, int miningLevel) {
             return strength(strength).createStorageBlock(miningLevel).createAnvil(miningLevel);
+        }
+
+        public Builder createAnvilSet(float strength, float resistance, int miningLevel) {
+            return strength(strength, resistance).createStorageBlock(miningLevel).createAnvil(miningLevel);
         }
 
         public Builder settings(Consumer<FabricBlockSettings> processor) {
