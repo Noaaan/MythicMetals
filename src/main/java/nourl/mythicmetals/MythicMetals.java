@@ -3,7 +3,9 @@ package nourl.mythicmetals;
 import com.glisco.owo.itemgroup.OwoItemGroup;
 import com.glisco.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.YamlConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
@@ -26,7 +28,7 @@ public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final String ADDON_ID = "mythicaddons";
-    public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, JanksonConfigSerializer::new).getConfig();
+    public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
 
     public static final OwoItemGroup MAIN = new MythicItemGroups(RegistryHelper.id("main"));
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(

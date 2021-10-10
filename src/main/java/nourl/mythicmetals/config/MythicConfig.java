@@ -1,10 +1,8 @@
 package nourl.mythicmetals.config;
 
-
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import nourl.mythicmetals.MythicMetals;
 
 @Config(name = MythicMetals.MOD_ID)
@@ -14,7 +12,6 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart
     public boolean enableNuggets = true;
 
-    //Adamantite Ore Settings
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig adamantite = new OreConfig(true, 5, 1, -52, 12, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -26,7 +23,6 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig carmot = new OreConfig(true,4, 3, 16 ,32, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    @Comment("Kyber + Calcite Kyber")
     public VariantConfig kyber = new VariantConfig(true, 3, 15, 1, 40, 12, 4, 40, 56,.5f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig manganese = new OreConfig(true, 9, 2, 28, 48,.25f);
@@ -39,7 +35,6 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig osmium = new OreConfig(true, 6, 5, 20, 40, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    @Comment("Midas Gold + Stormyx in minecraft:overworld")
     public OreConfig overworld_nether_ores = new OreConfig(true, 4, 2, 40, 70, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig palladium = new OreConfig(true, 4, 2, 16, 40, .0f);
@@ -54,7 +49,6 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 16, 38, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    @Comment("Starrite + End Stone Starrite")
     public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 50, 40, 100, 20, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig stormyx = new OreConfig(true,8, 2, 4, 116, .125f);
