@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:raw_midas_gold"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:raw_midas_gold_block",
+    "count": 1
+  }
+}

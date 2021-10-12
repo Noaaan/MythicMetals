@@ -7,11 +7,11 @@
   ],
   "key": {
     "m": {
-      "tag": "c:copper_ingots"
+      "item": "mythicmetals:raw_stormyx"
     }
   },
   "result": {
-    "item": "minecraft:copper_block",
+    "item": "mythicmetals:raw_stormyx_block",
     "count": 1
   }
 }

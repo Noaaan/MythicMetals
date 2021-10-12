@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "mmm",
+    "mmm",
+    "mmm"
+  ],
+  "key": {
+    "m": {
+      "item": "mythicmetals:raw_platinum"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:raw_platinum_block",
+    "count": 1
+  }
+}
