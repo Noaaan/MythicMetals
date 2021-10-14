@@ -32,7 +32,7 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createAnvilSet(5, 2).finish();
 
     public static final BlockSet CARMOT = BlockSet.Builder.begin("carmot", false)
-            .createDefaultSet(4, 2, 5, 2).finish();
+            .createDefaultSet(4, 2).finish();
 
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
             .createAnvilSet(10, 15, 4).finish();
