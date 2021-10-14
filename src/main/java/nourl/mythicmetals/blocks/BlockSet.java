@@ -32,8 +32,8 @@ public class BlockSet {
 
     /**
      * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks.
-     * Create a new {@link Builder#begin(String, boolean)}, where the string is {@code name},
-     * and the bool is {@code fireproof}, and call {@link Builder#finish()} when you are done.
+     * Use {@link Builder#begin(String, boolean) BlockSet.Builder.begin} to begin,
+     * and call {@link Builder#finish()} when you are done.
      *
      * @param name              Common name for the entire set of blocks, applies to every block created.
      * @param ore               Contains a vanilla {@link OreBlock}.
@@ -175,7 +175,7 @@ public class BlockSet {
          *                          while every other block recieves + 1 to their level.
          */
         public Builder createDefaultSet(float strength, int miningLevel) {
-            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(miningLevel++).createOreStorageBlock(miningLevel).createAnvil(miningLevel);
+            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createOreStorageBlock(miningLevel).createStorageBlock(miningLevel++).createAnvil(miningLevel);
         }
 
         /**
@@ -353,7 +353,7 @@ public class BlockSet {
          * @param miningLevel   The mining level of the storage block.
          */
         public Builder createFallingStorageBlock(Material material, int miningLevel) {
-            final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel);
+            final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel).breakByTool(FabricToolTags.SHOVELS);
             settingsProcessor.accept(settings);
             this.storageBlock = new FallingBlock(settings);
             return this;

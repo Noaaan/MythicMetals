@@ -3,6 +3,7 @@ package nourl.mythicmetals.tools;
 import com.glisco.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.util.registry.Registry;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
@@ -16,7 +17,7 @@ public class ToolSet {
     private final HoeItem hoe;
 
     private static Item.Settings createSettings(Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new OwoItemSettings();
+        final var settings = new OwoItemSettings().group(MythicMetals.MAIN).tab(2);
         settingsProcessor.accept(settings);
         return settings;
     }

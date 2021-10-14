@@ -1,5 +1,6 @@
 package nourl.mythicmetals.armor;
 
+import com.glisco.owo.itemgroup.OwoItemSettings;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -18,7 +19,7 @@ public class ArmorSet {
     private final ArmorItem boots;
 
     private static ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new Item.Settings();
+        final var settings = new OwoItemSettings().group(MythicMetals.MAIN).tab(3);
         settingsProcessor.accept(settings);
         return new ArmorItem(material, slot, settings);
     }
