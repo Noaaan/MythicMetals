@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:raw_mythril_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:raw_mythril",
+    "count": 9
+  }
+}

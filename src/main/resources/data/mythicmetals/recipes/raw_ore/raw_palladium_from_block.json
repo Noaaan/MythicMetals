@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:raw_palladium_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:raw_palladium",
+    "count": 9
+  }
+}

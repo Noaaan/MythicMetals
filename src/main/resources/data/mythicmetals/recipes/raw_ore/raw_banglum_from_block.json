@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mythicmetals:raw_banglum_block"
+    }
+  ],
+  "result": {
+    "item": "mythicmetals:raw_banglum",
+    "count": 9
+  }
+}

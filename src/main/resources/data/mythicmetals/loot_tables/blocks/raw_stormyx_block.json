@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mythicmetals:raw_stormyx_block",
+          "count": 1
+          }
+      ]
+    }
+  ]
+}
