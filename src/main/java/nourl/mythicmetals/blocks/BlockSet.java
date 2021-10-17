@@ -3,7 +3,9 @@ package nourl.mythicmetals.blocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
+import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.utils.RegistryHelper;
 
@@ -352,10 +354,9 @@ public class BlockSet {
          * @param material      Vanilla {@link Material}, determines piston behaviour.
          * @param miningLevel   The mining level of the storage block.
          */
-        public Builder createFallingStorageBlock(Material material, int miningLevel) {
-            final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel).breakByTool(FabricToolTags.SHOVELS);
-            settingsProcessor.accept(settings);
-            this.storageBlock = new FallingBlock(settings);
+        public Builder createFallingStorageBlock(Material material, int miningLevel, Tag<Item> toolTag) {
+
+            this.storageBlock = new FallingBlock(FabricBlockSettings.of(material).strength(currentHardness, currentResistance).sounds(currentSounds).breakByTool(toolTag, miningLevel));
             return this;
         }
 

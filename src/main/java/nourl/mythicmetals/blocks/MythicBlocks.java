@@ -150,13 +150,12 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .finish();
 
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
-            .createDefaultSet(3.0F, 1, 3.5F, 1).finish();
+            .createDefaultSet(2.0F, 1, 2.5F, 1).finish();
 
     public static final BlockSet VERMICULITE = BlockSet.Builder.begin("vermiculite", false)
-            .strength(3.0F).createOre(1, UniformIntProvider.create(0, 2))
+            .strength(1.5F).createOre(1, UniformIntProvider.create(0, 2))
             .sounds(BlockSoundGroup.GRAVEL)
-            .strength(4.0F)
-            .createFallingStorageBlock(Material.AGGREGATE, 0)
+            .createFallingStorageBlock(Material.AGGREGATE, 0, FabricToolTags.SHOVELS)
             .finish();
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
