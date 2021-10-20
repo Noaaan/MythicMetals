@@ -1,11 +1,10 @@
 # Mythic Metals
 
-Mythic Metals is a Fabric based Minecraft mod, that adds over 30 new axes, swords, hoes, pickaxes, shovels, ores, ingots, and sets of armor. 
-The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally intended as a port. After being denied the privilege to do so this mod was created from the ground up as my first proper Minecraft mod.  
+Mythic Metals is a Fabric based Minecraft mod, that adds new ores, materials, tools and sets of armor. 
+The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally intended as a port.  
+After being denied the privilege to do so this mod was created from the ground up as my first proper Minecraft mod.
 
-This is the master branch. I usually push updates once i intend to create a new release.
-
-You can find the patch notes in the PATCHNOTES.md, on the release page, or on the files themselves on CurseForge.
+You can find the patch notes in the PATCHNOTES.md file.
 
 ## Download
 
@@ -21,28 +20,29 @@ Feel free to use this in any modpack you wish for. I might feature them on this 
 
 ## Credits
 
-Hugman76, for inspiring me to use Fabric.
-Shadowclaimer, for creating Metallurgy in the first place.
-Daveleo and matpac, for creating Metallurgy Reforged 4.
-Brandcraf06, for his Blockus code, helping creating blocks, chains, and anvils for the mod.
-supersaiyansubtlety, for helping me with Mixin.
-LambdAurora, for her readme on how to use Gradle.
-BoogieMonster1O1, for giving me pointers about Mixins.
-misode, for his loot table generator.
-My friend SnifferProduct, who helped in designing the first iteration of tool stats.
-My friends revanitez, drakath9, glisco and Spxtreofficial who have contributed to the original assets and supported me with the mod.
-LordDeatHunter, for his helpful scripts and direct contributions to the mod.
-Flytre, for helping with the RecipeManager Mixin.
-Spxtreofficial, for his LivingEntityMixin.
-The artists:
-DH, Temreno, Tector, Pois1x, Henchman, RGBeet, and Windy for making awesome new textures for the mod.
-Thank you to Matpac for new ingot textures!
-And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.
+Hugman76, for inspiring me to use Fabric.  
+Shadowclaimer, for creating Metallurgy in the first place.  
+Daveleo and matpac, for creating Metallurgy Reforged 4.  
+Brandcraf06, for his Blockus code, helping creating blocks, chains, and anvils for the mod.  
+supersaiyansubtlety, for helping me with Mixin.  
+LambdAurora, for her readme on how to use Gradle.  
+BoogieMonster1O1, for giving me pointers about Mixins.  
+misode, for his loot table generator.  
+My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
+My friends revanitez, drakath9, glisco and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
+LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
+Flytre, for helping with the RecipeManager Mixin.  
+Spxtreofficial, for his LivingEntityMixin.  
+
+DH, Temreno, Tector, Pois1x, Henchman, RGBeet, Windy and Shiftless for making awesome new textures for the mod.  
+As well as a special thanks to Matpac for new ingot textures!  
+  
+And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.  
 
 ## Translations  
 These people have helped translating the mod into different languages. Thank you to:  
 
-Oscienet for the russian translation.  
+* Oscienet for the russian translation.  
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
   
@@ -55,6 +55,6 @@ TechReborn: https://github.com/TechReborn/TechReborn
 Starry Skies: https://github.com/DaFuqs/StarrySky  
 Mechanix: https://github.com/Flytre/Mechanix  
 Modern Industrialization: https://github.com/AztechMC/Modern-Industrialization  
-Smithee: https://github.com/LordDeatHunter/Smithee/    
 Alloy Forgery: https://github.com/LordDeatHunter/Alloy-Forgery/  
+
 Feel free to suggest any mods that could work with Mythic Metals.  

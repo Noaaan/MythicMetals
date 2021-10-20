@@ -9,14 +9,14 @@ A lot has been removed from the mod, which includes:
 * All of Zinc
 * Copper Ingots/Blocks, which have been replaced by vanilla variants
 * Etherite Tools
-* Starrite gear, replaced for Star Platinum
 * Tin equipment
+* Starrite gear, which has been replaced in favor of Star Platinum
 * Truesilver, which has been replaced in favor of Palladium
 * Quadrillum armour
 
 Even though this update removes ores I have written a datafixer which should replace all the missing ores with stones, making this version compatible with older worlds.  
 
-!!!This is experimental, so **please make a backup before installing this update!!!**  
+### !!!This is experimental, so **please make a backup before installing this update!!!**  
 
 A lot of new ore variants have been added:  
 * Added deepslate variants of Adamantite, Mythril, Orichalcum and Unobtainium.
@@ -36,12 +36,13 @@ The world-gen is mainly balanced around the Caves and Cliffs Datapack, fully uti
 A lot of the artwork has been changed in the mod. Shoutouts to the artists who have worked on Mythic Metals:
 * Matpac
 * RGBeet
-* RuisZ
 * Amoraire
 * DH
 * Tector
 * Temreno
 * Shiftless
+* Pois1x  
+* Henchman  
 
 Codewise there has been a lot of internal changes. Re-naming of features, a new solution for configs, and new "sets" which function as bundles for registering items.
 To end off these patch notes will be balancing changes. The changes are major, and will be in the form of a list.  
