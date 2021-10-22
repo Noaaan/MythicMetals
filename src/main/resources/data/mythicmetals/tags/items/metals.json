@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:adamantite_ingot",
-    "mythicmetals:aetherium_ingot",
     "mythicmetals:aquarium_ingot",
     "mythicmetals:banglum_ingot",
     "mythicmetals:bronze_ingot",
@@ -10,7 +9,6 @@
     "mythicmetals:celestium_ingot",
     "mythicmetals:discordium_ingot",
     "mythicmetals:durasteel_ingot",
-    "mythicmetals:etherite_ingot",
     "mythicmetals:hallowed_ingot",
     "mythicmetals:kyber_ingot",
     "mythicmetals:manganese_ingot",
@@ -35,7 +33,6 @@
     "mythicmetals:vermiculite",
 
     "mythicmetals:raw_adamantite",
-    "mythicmetals:raw_aetherium",
     "mythicmetals:raw_aquarium",
     "mythicmetals:raw_banglum",
     "mythicmetals:raw_carmot",
@@ -55,7 +52,6 @@
     "mythicmetals:raw_tin",
 
     "mythicmetals:adamantite_nugget",
-    "mythicmetals:aetherium_nugget",
     "mythicmetals:aquarium_nugget",
     "mythicmetals:banglum_nugget",
     "mythicmetals:bronze_nugget",
@@ -64,7 +60,6 @@
     "mythicmetals:copper_nugget",
     "mythicmetals:discordium_nugget",
     "mythicmetals:durasteel_nugget",
-    "mythicmetals:etherite_nugget",
     "mythicmetals:hallowed_nugget",
     "mythicmetals:kyber_nugget",
     "mythicmetals:manganese_nugget",

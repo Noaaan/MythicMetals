@@ -15,7 +15,6 @@ public class MythicMetalsClient implements ClientModInitializer {
     public void makeOpaque() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MythicBlocks.ADAMANTITE_CHAIN,
-                MythicBlocks.AETHERIUM_CHAIN,
                 MythicBlocks.AQUARIUM_CHAIN,
                 MythicBlocks.BANGLUM_CHAIN,
                 MythicBlocks.BRONZE_CHAIN,
@@ -23,7 +22,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 MythicBlocks.CELESTIUM_CHAIN,
                 MythicBlocks.DISCORDIUM_CHAIN,
                 MythicBlocks.DURASTEEL_CHAIN,
-                MythicBlocks.ETHERITE_CHAIN,
                 MythicBlocks.KYBER_CHAIN,
                 MythicBlocks.HALLOWED_CHAIN,
                 MythicBlocks.MANGANESE_CHAIN,

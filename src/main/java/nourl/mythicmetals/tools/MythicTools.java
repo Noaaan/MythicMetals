@@ -21,7 +21,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final float [] HIGHEST_ATTACK_SPEED = new float[]{-2.1F, -2.9F, -2.6F, -2.8F, -2.7F};
 
     public static final ToolSet ADAMANTITE = new ToolSet(ToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet AETHERIUM = new ToolSet(ToolMaterials.AETHERIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(ToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(ToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BRONZE = new ToolSet(ToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
@@ -30,7 +29,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet COPPER = new ToolSet(ToolMaterials.COPPER, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet DISCORDIUM = new ToolSet(ToolMaterials.DISCORDIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet DURASTEEL = new ToolSet(ToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final Item ETHERITE_SWORD = new SwordItem(ToolMaterials.ETHERITE, 3, -2.4F, new Item.Settings());
     public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet KYBER = new ToolSet(ToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
@@ -62,7 +60,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     @Override
     public void afterFieldProcessing() {
-        RegistryHelper.item("etherite_sword", ETHERITE_SWORD);
         RegistryHelper.item("froge", Frogery.FROGE);
         RegistryHelper.addonItem("red_aegis_sword", RED_AEGIS_SWORD);
         RegistryHelper.addonItem("white_aegis_sword", WHITE_AEGIS_SWORD);

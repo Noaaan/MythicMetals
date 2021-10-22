@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smithing",
   "base": {
-    "item": "mythicmetals:etherite_sword"
+    "item": "mythicmetals:palladium_sword"
   },
   "addition": {
-    "item": "mythicmetals:hallowed_ingot"
+    "item": "mythicmetals:hallowed_block"
   },
   "result": {
     "item": "mythicaddons:white_aegis_sword"

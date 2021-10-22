@@ -15,8 +15,6 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig adamantite = new OreConfig(true, 5, 1, -52, 12, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig aetherium = new OreConfig(true, 4, 3, 80, 60, .125f);
-    @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig aquarium = new OreConfig(true, 9, 4, 39, 63, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig banglum = new OreConfig(true, 6, 4, 38, 52, .25f);

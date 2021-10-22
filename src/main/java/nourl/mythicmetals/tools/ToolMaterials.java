@@ -12,9 +12,6 @@ public enum ToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(MythicItems.ADAMANTITE_INGOT);
     }),
-    AETHERIUM(4, 1307, 8.0F, 4.0F, 18, () -> {
-        return Ingredient.ofItems(MythicItems.AETHERIUM_INGOT);
-    }),
     AQUARIUM(2, 300, 6.5F, 2.0F, 12, () -> {
         return Ingredient.ofItems(MythicItems.AQUARIUM_INGOT);
     }),
@@ -38,9 +35,6 @@ public enum ToolMaterials implements ToolMaterial {
     }),
     DURASTEEL(3, 800, 7.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
-    }),
-    ETHERITE(3, 2017, 8.0F, 5.0F, 19, () -> {
-        return Ingredient.ofItems(MythicItems.ETHERITE_INGOT);
     }),
     HALLOWED(4, 1365, 11.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);

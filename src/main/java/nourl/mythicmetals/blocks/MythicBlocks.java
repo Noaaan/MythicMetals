@@ -17,9 +17,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createOreVariant("deepslate", 3)
             .finish();
 
-    public static final BlockSet AETHERIUM = BlockSet.Builder.begin("aetherium", false)
-            .createDefaultSet(5, 3).finish();
-
     public static final BlockSet AQUARIUM = BlockSet.Builder.begin("aquarium", false)
             .createDefaultSet(4F, 2, 4.5F, 2)
             .createAnvil(2)
@@ -41,9 +38,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createAnvilSet(5, 3).finish();
 
     public static final BlockSet DURASTEEL = BlockSet.Builder.begin("durasteel", false)
-            .createAnvilSet(5, 3).finish();
-
-    public static final BlockSet ETHERITE = BlockSet.Builder.begin("etherite", false)
             .createAnvilSet(5, 3).finish();
 
     public static final BlockSet HALLOWED = BlockSet.Builder.begin("hallowed", false)
@@ -171,7 +165,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .finish();
 
     public static final ChainBlock ADAMANTITE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
-    public static final ChainBlock AETHERIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock AQUARIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool().nonOpaque());
     public static final ChainBlock BANGLUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool().nonOpaque());
     public static final ChainBlock BRONZE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
@@ -179,7 +172,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final ChainBlock CELESTIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock DISCORDIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock DURASTEEL_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
-    public static final ChainBlock ETHERITE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().nonOpaque());
     public static final ChainBlock HALLOWED_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock KYBER_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock MANGANESE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());

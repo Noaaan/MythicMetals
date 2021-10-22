@@ -41,7 +41,6 @@ public class MythicOreFeatures {
     public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.UNOBTAINIUM.getOreVariant("deepslate").getDefaultState()));
 
     // Configured ore features
-    public static ConfiguredFeature<?, ?> ORE_AETHERIUM = OreFeatureHelper.topOffsetOre(STONE_RULE, MythicBlocks.AETHERIUM.getOre().getDefaultState(), CONFIG.aetherium);
     public static ConfiguredFeature<?, ?> ORE_AQUARIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.AQUARIUM.getOre().getDefaultState(), CONFIG.aquarium);
     public static ConfiguredFeature<?, ?> ORE_BANGLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.BANGLUM.getOre().getDefaultState(), CONFIG.banglum);
     public static ConfiguredFeature<?, ?> ORE_CARMOT = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.CARMOT.getOre().getDefaultState(), CONFIG.carmot);
@@ -75,7 +74,6 @@ public class MythicOreFeatures {
 
     // Add keys for features
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryHelper.registerKey("ore_adamantite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAetherium = RegistryHelper.registerKey("ore_aetherium");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryHelper.registerKey("ore_aquarium");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryHelper.registerKey("ore_banglum");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryHelper.registerKey("ore_carmot");
@@ -104,7 +102,6 @@ public class MythicOreFeatures {
     public static void init() {
         //Register keys on init
         RegistryHelper.registerFeature(oreAdamantite.getValue(), ORE_ADAMANTITE);
-        RegistryHelper.registerFeature(oreAetherium.getValue(), ORE_AETHERIUM);
         RegistryHelper.registerFeature(oreAquarium.getValue(), ORE_AQUARIUM);
         RegistryHelper.registerFeature(oreBanglum.getValue(), ORE_BANGLUM);
         RegistryHelper.registerFeature(oreCarmot.getValue(), ORE_CARMOT);
@@ -131,7 +128,6 @@ public class MythicOreFeatures {
 
         //Overworld Ores
         if (CONFIG.adamantite.enabled) { OreFeatureHelper.ore(oreAdamantite);}
-        if (CONFIG.aetherium.enabled) { OreFeatureHelper.ore(oreAetherium); }
         if (CONFIG.banglum.enabled) { OreFeatureHelper.ore(oreBanglum); }
         if (CONFIG.carmot.enabled) { OreFeatureHelper.ore(oreCarmot); }
         if (CONFIG.kyber.enabled) { OreFeatureHelper.ore(oreKyber); OreFeatureHelper.ore(oreCalciteKyber); }
@@ -238,7 +234,7 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", orePrometheum);
         }
         //Mountain only ores
-        if (CONFIG.aetherium.enabled) {
+        if (CONFIG.manganese.enabled) {
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.GRAVELLY_MOUNTAINS,
                     BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS,
@@ -249,55 +245,55 @@ public class MythicOreFeatures {
                     BiomeKeys.SNOWY_MOUNTAINS,
                     BiomeKeys.SNOWY_TAIGA_MOUNTAINS,
                     BiomeKeys.TAIGA_MOUNTAINS
-            ), GenerationStep.Feature.UNDERGROUND_ORES, oreAetherium);
+            ), GenerationStep.Feature.UNDERGROUND_ORES, oreManganese);
 
-            OreFeatureHelper.modBiomeOres("byg", "alpine_foothills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "alps", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "black_forest_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "blue_taiga_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "bluff_peaks", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "bluff_steeps", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "boreal_forest_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "cika_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "coniferous_forest_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "dover_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "ebony_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "enchatned_forest_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "evergreen_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "grassland_plateau", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "guiana_clearing", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "guiana_shield", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest_hills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "redwood_mountians", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "skyris_highlands", oreAetherium);
-            OreFeatureHelper.modBiomeOres("byg", "wooded_grassland_plateau", oreAetherium);
+            OreFeatureHelper.modBiomeOres("byg", "alpine_foothills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "alps", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "black_forest_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "blue_taiga_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "bluff_peaks", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "bluff_steeps", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "boreal_forest_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "cika_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "coniferous_forest_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "dover_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "ebony_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "enchatned_forest_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "evergreen_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "grassland_plateau", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "guiana_clearing", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "guiana_shield", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "redwood_mountians", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "skyris_highlands", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "wooded_grassland_plateau", oreManganese);
 
-            OreFeatureHelper.modBiomeOres("terrestria", "caldera_foothills", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terrestria", "caldera_ridge", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terrestria", "outback_uluru", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_mountains", oreAetherium);
+            OreFeatureHelper.modBiomeOres("terrestria", "caldera_foothills", oreManganese);
+            OreFeatureHelper.modBiomeOres("terrestria", "caldera_ridge", oreManganese);
+            OreFeatureHelper.modBiomeOres("terrestria", "outback_uluru", oreManganese);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", oreManganese);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_mountains", oreManganese);
 
-            OreFeatureHelper.modBiomeOres("traverse", "arid_highlands", oreAetherium);
-            OreFeatureHelper.modBiomeOres("traverse", "cliffs", oreAetherium);
-            OreFeatureHelper.modBiomeOres("traverse", "rolling_hills", oreAetherium);
+            OreFeatureHelper.modBiomeOres("traverse", "arid_highlands", oreManganese);
+            OreFeatureHelper.modBiomeOres("traverse", "cliffs", oreManganese);
+            OreFeatureHelper.modBiomeOres("traverse", "rolling_hills", oreManganese);
 
-            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", oreAetherium);
+            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", oreManganese);
 
-            OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "red_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "salt_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley_r", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "savanna_heights", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "stardust_valley", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_volcano", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "yellowstone", oreAetherium);
-            OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", oreAetherium);
+            OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "red_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "salt_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley_r", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "savanna_heights", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "stardust_valley", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "tropical_volcano", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "yellowstone", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", oreManganese);
         }
 
     }

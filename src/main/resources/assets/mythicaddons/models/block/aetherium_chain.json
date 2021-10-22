@@ -1,7 +1,0 @@
-{
-  "parent": "mythicaddons:block/chain_base",
-  "textures": {
-    "all": "mythicaddons:blocks/aetherium_chain",
-    "particle": "mythicaddons:blocks/aetherium_chain"
-  }
-}

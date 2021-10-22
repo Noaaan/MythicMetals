@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "mythicmetals:adamantite_block",
-    "mythicmetals:aetherium_block",
     "mythicmetals:aquarium_block",
     "mythicmetals:banglum_block",
     "mythicmetals:bronze_block",
@@ -10,7 +9,6 @@
     "mythicmetals:celestium_block",
     "mythicmetals:discordium_block",
     "mythicmetals:durasteel_block",
-    "mythicmetals:etherite_block",
     "mythicmetals:hallowed_block",
     "mythicmetals:kyber_block",
     "mythicmetals:manganese_block",

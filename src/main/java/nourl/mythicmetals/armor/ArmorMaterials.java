@@ -21,9 +21,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.ADAMANTITE_INGOT);
     }),
-    AETHERIUM("aetherium", 33, new int[]{4, 6, 8, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.AETHERIUM_INGOT);
-    }),
     AQUARIUM("aquarium", 16, new int[]{2, 5, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.AQUARIUM_INGOT);
     }),
@@ -47,9 +44,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     }),
     DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
-    }),
-    ETHERITE("etherite", 37, new int[]{4, 6, 8, 4}, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.ETHERITE_INGOT);
     }),
     HALLOWED("hallowed", 40, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);
