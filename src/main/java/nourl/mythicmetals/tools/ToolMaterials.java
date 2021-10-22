@@ -30,9 +30,6 @@ public enum ToolMaterials implements ToolMaterial {
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
-    DISCORDIUM(3, 1666, 9.0F, 3.0F, 19, () -> {
-        return Ingredient.ofItems(MythicItems.DISCORDIUM_INGOT);
-    }),
     DURASTEEL(3, 800, 7.0F, 3.0F, 12, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
@@ -48,7 +45,7 @@ public enum ToolMaterials implements ToolMaterial {
     MYTHRIL(4, 1024, 12.0F, 3.0F, 22, () -> {
         return Ingredient.ofItems(MythicItems.MYTHRIL_INGOT);
     }),
-    ORICHALCUM(4, 2048, 6.0F, 3.0F, 16, () -> {
+    ORICHALCUM(4, 2048, 6.0F, 4.0F, 16, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT);
     }),
     OSMIUM(2, 484, 7.0F, 2.0F, 13, () -> {
@@ -57,14 +54,11 @@ public enum ToolMaterials implements ToolMaterial {
     PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(MythicItems.PALLADIUM_INGOT);
     }),
-    PROMETHEUM(3, 672, 6.0F, 3.0F, 17, () -> {
+    PROMETHEUM(3, 1572, 6.0F, 3.0F, 17, () -> {
         return Ingredient.ofItems(MythicItems.PROMETHEUM_INGOT);
     }),
     QUADRILLUM(2, 324, 5.0F, 2.0F, 10, () -> {
         return Ingredient.ofItems(MythicItems.QUADRILLUM_INGOT);
-    }),
-    QUICKSILVER(4, 952, 16.0F, 3.5F, 25, () -> {
-        return Ingredient.ofItems(MythicItems.QUICKSILVER_INGOT);
     }),
     RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(MythicItems.RUNITE_INGOT);

@@ -34,9 +34,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
             .createAnvilSet(10, 15, 4).finish();
 
-    public static final BlockSet DISCORDIUM = BlockSet.Builder.begin("discordium", false)
-            .createAnvilSet(5, 3).finish();
-
     public static final BlockSet DURASTEEL = BlockSet.Builder.begin("durasteel", false)
             .createAnvilSet(5, 3).finish();
 
@@ -106,10 +103,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
             .createDefaultSet(4.0F, 2).finish();
 
-    public static final BlockSet QUICKSILVER = BlockSet.Builder.begin("quicksilver", false)
-            .createAnvilSet(5, 3).finish();
-
-
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
             .createDefaultSet(4.0F, 2).finish();
 
@@ -170,7 +163,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final ChainBlock BRONZE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock CARMOT_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock CELESTIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
-    public static final ChainBlock DISCORDIUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock DURASTEEL_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock HALLOWED_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock KYBER_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
@@ -184,7 +176,6 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
     public static final ChainBlock PLATINUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock PROMETHEUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());
     public static final ChainBlock QUADRILLUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool().nonOpaque());
-    public static final ChainBlock QUICKSILVER_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock RUNITE_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().nonOpaque());
     public static final ChainBlock SILVER_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 1).requiresTool().nonOpaque());
     public static final ChainBlock STAR_PLATINUM_CHAIN = new ChainBlock(FabricBlockSettings.of(Material.METAL).strength(5.0F, 5.0F).sounds(BlockSoundGroup.CHAIN).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().nonOpaque());

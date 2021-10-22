@@ -19,16 +19,11 @@ public class EnchantConfig {
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.PROMETHEUM.getChestplate()), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.PROMETHEUM.getLeggings()), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.PROMETHEUM.getBoots()), new Identifier("minecraft:mending"), 1, true);
-
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.DISCORDIUM.getSword()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.DISCORDIUM.getAxe()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.DISCORDIUM.getPickaxe()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.DISCORDIUM.getShovel()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.DISCORDIUM.getHoe()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.DISCORDIUM.getHelmet()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.DISCORDIUM.getChestplate()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.DISCORDIUM.getLeggings()), new Identifier("minecraft:mending"), 1, true);
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.DISCORDIUM.getBoots()), new Identifier("minecraft:mending"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.PROMETHEUM.getSword()), new Identifier("minecraft:mending"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.PROMETHEUM.getAxe()), new Identifier("minecraft:mending"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.PROMETHEUM.getPickaxe()), new Identifier("minecraft:mending"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.PROMETHEUM.getShovel()), new Identifier("minecraft:mending"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.PROMETHEUM.getHoe()), new Identifier("minecraft:mending"), 1, true);
 
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.WHITE_AEGIS_SWORD), new Identifier("minecraft:smite"), 6, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicTools.RED_AEGIS_SWORD), new Identifier("minecraft:fire_aspect"), 3, true);

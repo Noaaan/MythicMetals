@@ -14,7 +14,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item BRONZE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item CARMOT_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item CELESTIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item DISCORDIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item DURASTEEL_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item HALLOWED_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item KYBER_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
@@ -28,7 +27,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item PLATINUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item PROMETHEUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item QUADRILLUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item QUICKSILVER_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item RUNITE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item SILVER_INGOT = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item STARRITE = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
@@ -67,7 +65,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item CARMOT_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item CELESTIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item COPPER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item DISCORDIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item DURASTEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item HALLOWED_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item KYBER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
@@ -81,7 +78,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item PROMETHEUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item QUADRILLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item QUICKSILVER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item RUNITE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item SILVER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item STAR_PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
@@ -97,7 +93,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item CARMOT_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item CELESTIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item COPPER_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item DISCORDIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item DURASTEEL_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item GOLD_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item HALLOWED_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
@@ -112,7 +107,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item PLATINUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item PROMETHEUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item QUADRILLUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
-    public static final Item QUICKSILVER_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item RUNITE_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item SILVER_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));
     public static final Item STAR_PLATINUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.MAIN));

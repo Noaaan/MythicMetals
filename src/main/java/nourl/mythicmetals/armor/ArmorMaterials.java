@@ -39,9 +39,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     COPPER("copper", 8, new int[]{1, 3, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
-    DISCORDIUM("discordium", 27, new int[]{3, 6, 8, 3}, 19, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.DISCORDIUM_INGOT);
-    }),
     DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
@@ -60,7 +57,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     MYTHRIL("mythril", 28, new int[]{3, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.MYTHRIL_INGOT);
     }),
-    ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
+    ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT);
     }),
     OSMIUM("osmium", 16, new int[]{2, 5, 7, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.05F, () -> {
@@ -71,9 +68,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     }),
     PROMETHEUM("prometheum", 18, new int[]{3, 6, 8, 3}, 17, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.PROMETHEUM_INGOT);
-    }),
-    QUICKSILVER("quicksilver", 26, new int[]{4, 6, 8, 4}, 25, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 2.5F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.QUICKSILVER_INGOT);
     }),
     RUNITE("runite", 27, new int[]{3, 6, 7, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.RUNITE_INGOT);
@@ -147,7 +141,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     }
 
     public static final List KNOCKBACKABLE_ARMOR_MATERIALS = Arrays.asList(new ArmorMaterial[]{
-            OSMIUM, METALLURGIUM
+            ORICHALCUM, OSMIUM, METALLURGIUM
     });
 
 }

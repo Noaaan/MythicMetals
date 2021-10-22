@@ -13,7 +13,6 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet CARMOT = new ArmorSet(ArmorMaterials.CARMOT);
     public static final ArmorSet CELESTIUM = new ArmorSet(ArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final ArmorSet COPPER = new ArmorSet(ArmorMaterials.COPPER);
-    public static final ArmorSet DISCORDIUM = new ArmorSet(ArmorMaterials.DISCORDIUM);
     public static final ArmorSet DURASTEEL = new ArmorSet(ArmorMaterials.DURASTEEL);
     public static final ArmorSet HALLOWED = new ArmorSet(ArmorMaterials.HALLOWED);
     public static final ArmorSet KYBER = new ArmorSet(ArmorMaterials.KYBER);
@@ -24,7 +23,6 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet OSMIUM = new ArmorSet(ArmorMaterials.OSMIUM);
     public static final ArmorSet PALLADIUM = new ArmorSet(ArmorMaterials.PALLADIUM, Item.Settings::fireproof);
     public static final ArmorSet PROMETHEUM = new ArmorSet(ArmorMaterials.PROMETHEUM);
-    public static final ArmorSet QUICKSILVER = new ArmorSet(ArmorMaterials.QUICKSILVER);
     public static final ArmorSet RUNITE = new ArmorSet(ArmorMaterials.RUNITE);
     public static final ArmorSet SILVER = new ArmorSet(ArmorMaterials.SILVER);
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(ArmorMaterials.STAR_PLATINUM);

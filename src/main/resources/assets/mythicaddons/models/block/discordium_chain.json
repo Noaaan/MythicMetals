@@ -1,7 +1,0 @@
-{
-  "parent": "mythicaddons:block/chain_base",
-  "textures": {
-    "all": "mythicaddons:blocks/discordium_chain",
-    "particle": "mythicaddons:blocks/discordium_chain"
-  }
-}

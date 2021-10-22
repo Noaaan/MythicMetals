@@ -1,14 +1,17 @@
 # 0.10.0 - Caves and Cliffs  
 This update contains the biggest changes in the history of Mythic Metals.  
 A lot has been removed from the mod, which includes:  
+* All of Aetherium
 * All of Argonium
 * All of Brass
+* All of Discordium
 * All of Electrum
+* All of Etherite
 * All of Tantalite
+* All of Quicksilver
 * All of Ur
 * All of Zinc
 * Copper Ingots/Blocks, which have been replaced by vanilla variants
-* Etherite Tools
 * Tin equipment
 * Starrite gear, which has been replaced in favor of Star Platinum
 * Truesilver, which has been replaced in favor of Palladium
