@@ -66,9 +66,6 @@ public enum ToolMaterials implements ToolMaterial {
     STAR_PLATINUM(3, 1300, 9F, 3.0F, 18, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
     }),
-    SILVER(1, 79, 10.0F, 1.0F, 20, () -> {
-        return Ingredient.ofItems(MythicItems.SILVER_INGOT);
-    }),
     STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
         return Ingredient.ofItems(MythicItems.STEEL_INGOT);
     }),
