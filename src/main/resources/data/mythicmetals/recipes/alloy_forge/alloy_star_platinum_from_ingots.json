@@ -8,7 +8,7 @@
       "tag": "c:platinum_ingots"
     },
     {
-      "tag": "c:osmium_ingots"
+      "item": "mythicmetals:carmot_ingot"
     }
   ],
   "output": {

@@ -30,7 +30,7 @@ public enum ToolMaterials implements ToolMaterial {
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
         return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
-    DURASTEEL(3, 800, 7.0F, 3.0F, 12, () -> {
+    DURASTEEL(3, 800, 7.0F, 3.5F, 12, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
     HALLOWED(4, 1365, 11.0F, 5.0F, 20, () -> {
@@ -54,7 +54,7 @@ public enum ToolMaterials implements ToolMaterial {
     PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
         return Ingredient.ofItems(MythicItems.PALLADIUM_INGOT);
     }),
-    PROMETHEUM(3, 1572, 6.0F, 3.0F, 17, () -> {
+    PROMETHEUM(3, 1572, 6.0F, 4.0F, 15, () -> {
         return Ingredient.ofItems(MythicItems.PROMETHEUM_INGOT);
     }),
     QUADRILLUM(2, 324, 5.0F, 2.0F, 10, () -> {
