@@ -1,8 +1,6 @@
 package nourl.mythicmetals.armor;
 
 import com.google.common.base.Suppliers;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
@@ -127,7 +125,6 @@ public enum ArmorMaterials implements ArmorMaterial {
         return (Ingredient) this.repairIngredientSupplier.get();
     }
 
-    @Environment(EnvType.CLIENT)
     public String getName() {
         return this.name;
     }
