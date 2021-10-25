@@ -87,7 +87,7 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .strength(5.0F).sounds(BlockSoundGroup.NETHER_ORE)
             .createOre(3)
             .strength(6.0F).sounds(BlockSoundGroup.METAL)
-            .createOreStorageBlock(3).createStorageBlock(3)
+            .createOreStorageBlock(3).createStorageBlock(Material.METAL, 3)
             .createAnvil(3)
             .finish();
 
@@ -132,7 +132,8 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .createOreVariant("blackstone", 2)
             .strength(6.0F)
             .createOreStorageBlock(3)
-            .createStorageBlock(3)
+            .sounds(BlockSoundGroup.METAL)
+            .createStorageBlock(Material.METAL, 3)
             .createAnvil(3)
             .finish();
 
@@ -153,7 +154,7 @@ public class MythicBlocks implements SimpleFieldProcessingSubject<ChainBlock> {
             .sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", 4)
             .sounds(BlockSoundGroup.LODESTONE)
-            .strength(9F, 15000F)
+            .strength(15F, 15000F)
             .createStorageBlock(5)
             .finish();
 

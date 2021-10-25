@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.EnchantConfig;
@@ -32,7 +33,7 @@ public class MythicMetals implements ModInitializer {
 
     public static final OwoItemGroup MAIN = new MythicItemGroups(RegistryHelper.id("main"));
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
-            RegistryHelper.id("decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
+            new Identifier(ADDON_ID, "decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
     @Override
     public void onInitialize() {

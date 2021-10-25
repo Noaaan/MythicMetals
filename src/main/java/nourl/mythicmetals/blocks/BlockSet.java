@@ -210,7 +210,7 @@ public class BlockSet {
          * @see #strength(float)
          */
         public Builder createAnvilSet(float strength, int miningLevel) {
-            return strength(strength).createStorageBlock(miningLevel).createAnvil(miningLevel);
+            return strength(strength).sounds(BlockSoundGroup.METAL).createStorageBlock(miningLevel).createAnvil(miningLevel);
         }
 
         /**
@@ -334,7 +334,7 @@ public class BlockSet {
          * @param miningLevel   The mining level of the storage block.
          */
         public Builder createStorageBlock(int miningLevel) {
-            return createStorageBlock(Material.METAL, miningLevel);
+            return createStorageBlock(BlockSoundGroup.METAL, miningLevel);
         }
 
         /**
@@ -343,7 +343,19 @@ public class BlockSet {
          * @param miningLevel   The mining level of the storage block.
          */
         public Builder createStorageBlock(Material material, int miningLevel) {
-            final var settings = blockSettings(material, currentHardness, currentResistance, currentSounds, miningLevel);
+            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, currentSounds, miningLevel);
+            settingsProcessor.accept(settings);
+            this.storageBlock = new Block(settings);
+            return this;
+        }
+
+        /**
+         * Create a storage block, with a specific sound in mind.
+         * @param sounds        A {@link BlockSoundGroup}, which determines block sounds.
+         * @param miningLevel   The mining level of the storage block.
+         */
+        public Builder createStorageBlock(BlockSoundGroup sounds, int miningLevel) {
+            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, sounds, miningLevel);
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
             return this;

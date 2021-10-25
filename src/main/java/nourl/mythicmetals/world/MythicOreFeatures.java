@@ -45,7 +45,7 @@ public class MythicOreFeatures {
     public static ConfiguredFeature<?, ?> ORE_BANGLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.BANGLUM.getOre().getDefaultState(), CONFIG.banglum);
     public static ConfiguredFeature<?, ?> ORE_CARMOT = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.CARMOT.getOre().getDefaultState(), CONFIG.carmot);
     public static ConfiguredFeature<?, ?> ORE_KYBER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.KYBER.getOre().getDefaultState(), CONFIG.kyber);
-    public static ConfiguredFeature<?, ?> ORE_MANGANESE = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.MANGANESE.getOre().getDefaultState(), CONFIG.manganese);
+    public static ConfiguredFeature<?, ?> ORE_MANGANESE = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.MANGANESE.getOre().getDefaultState(), CONFIG.manganese);
     public static ConfiguredFeature<?, ?> ORE_OSMIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.OSMIUM.getOre().getDefaultState(), CONFIG.osmium);
     public static ConfiguredFeature<?, ?> ORE_PLATINUM = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.PLATINUM.getOre().getDefaultState(), CONFIG.platinum);
     public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.QUADRILLUM.getOre().getDefaultState(), CONFIG.quadrillum);
