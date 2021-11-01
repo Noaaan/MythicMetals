@@ -47,6 +47,9 @@ public abstract class ArmorItemMixin {
         if (material == ArmorMaterials.MIDAS_GOLD) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0f, EntityAttributeModifier.Operation.ADDITION);
         }
+        if (material == ArmorMaterials.STAR_PLATINUM) {
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5f, EntityAttributeModifier.Operation.ADDITION);
+        }
     }
 
     @SuppressWarnings("SameParameterValue")

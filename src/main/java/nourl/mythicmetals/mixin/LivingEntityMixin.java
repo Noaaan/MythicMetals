@@ -27,7 +27,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
     Random r = new Random();
 
-    @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo info) {
         addCarmotParticle();
         addCopperParticle();
@@ -43,7 +43,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void addCopperParticle() {
         for (ItemStack armorItems : getArmorItems()) {
-            if (RegisterTags.COPPER_ARMOR.contains(armorItems.getItem())) {
+            if (RegisterTags.COPPER_ARMOR.contains(armorItems.getItem()) && world.isThundering()) {
                 copperParticle();
                 int i = r.nextInt(500000);
                 if (i == 666 & copperParticle())  {
