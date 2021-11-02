@@ -62,7 +62,7 @@
           "texture": "minecraft:textures/models/armor/carmot_layer_2.png"
         }
       },
-      "material": "lumiext:armor_smooth_transform"
+      "material": "lumiext:armor_metal_transform"
     },
     {
       "predicate": {
