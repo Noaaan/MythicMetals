@@ -24,6 +24,9 @@
     },
     {
       "item": "mythicmetals:celestium_block"
+    },
+	{
+      "item": "mythicmetals:enchanted_golden_apple"
     }
   ],
   "output": {
@@ -31,5 +34,5 @@
     "count": 1
   },
   "min_forge_tier": 3,
-  "fuel_per_tick": 500
+  "fuel_per_tick": 5000
 }

@@ -13,7 +13,10 @@ public class EnchantConfig {
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.AQUARIUM.getLeggings()), new Identifier("minecraft:respiration"), 2, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.AQUARIUM.getBoots()), new Identifier("minecraft:depth_strider"), 2, true);
 
-        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.BANGLUM.getHelmet()), new Identifier("minecraft:projectile_protection"), 3, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.BANGLUM.getHelmet()), new Identifier("minecraft:thorns"), 1, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.BANGLUM.getLeggings()), new Identifier("minecraft:projectile_protection"), 3, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.BANGLUM.getChestplate()), new Identifier("minecraft:blast_protection"), 2, true);
+        EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.BANGLUM.getBoots()), new Identifier("minecraft:feather_falling"), 1, true);
 
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.PROMETHEUM.getHelmet()), new Identifier("minecraft:mending"), 1, true);
         EnchantsList.addEnchant(Registry.ITEM.getId(MythicArmor.PROMETHEUM.getChestplate()), new Identifier("minecraft:mending"), 1, true);

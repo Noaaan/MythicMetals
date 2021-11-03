@@ -43,6 +43,7 @@ And a final thanks to the Fabric Project Discord, who have been supportive while
 These people have helped translating the mod into different languages. Thank you to:  
 
 * Oscienet for the russian translation.  
+* DH for the macedonian translation.
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
   
