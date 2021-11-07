@@ -34,7 +34,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.11.6",
-    "alloy_forgery": "2.0.x",
+    "alloy_forgery": ">=2.0.5",
     "fabric": ">=0.36.0",
     "minecraft": "1.17.x",
     "cloth-config2": ">=5.0.30"
