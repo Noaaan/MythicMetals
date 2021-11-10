@@ -17,7 +17,7 @@ public class ToolSet {
     private final HoeItem hoe;
 
     private static Item.Settings createSettings(Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new OwoItemSettings().group(MythicMetals.MAIN).tab(2);
+        final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2);
         settingsProcessor.accept(settings);
         return settings;
     }

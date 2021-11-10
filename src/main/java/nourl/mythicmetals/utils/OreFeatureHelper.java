@@ -17,13 +17,20 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
+import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.config.VariantConfig;
 
-@SuppressWarnings("deprecation, unused")
+@SuppressWarnings("unused")
 public class OreFeatureHelper {
+    public static final MythicConfig CONFIG = MythicMetals.CONFIG;
+
     public static void ore(RegistryKey<ConfiguredFeature<?, ?>> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+        var blacklist = CONFIG.blacklist.stream()
+                .map(element -> (RegistryKey.of(Registry.BIOME_KEY, new Identifier(element))))
+                .toList();
+        BiomeModifications.addFeature(BiomeSelectors.excludeByKey(blacklist), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void netherOre(RegistryKey<ConfiguredFeature<?, ?>> ore) {

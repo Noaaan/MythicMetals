@@ -5,6 +5,8 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import nourl.mythicmetals.MythicMetals;
 
+import java.util.ArrayList;
+
 @Config(name = MythicMetals.MOD_ID)
 public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart
@@ -58,4 +60,6 @@ public class MythicConfig implements ConfigData {
     public OreConfig vermiculite = new OreConfig(true,8, 4, 64, 108, .25f);
     @ConfigEntry.Gui.Excluded
     public int configVersion = 0;
+
+    public ArrayList<String> blacklist = new ArrayList<>();
 }

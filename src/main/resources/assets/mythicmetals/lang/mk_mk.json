@@ -481,6 +481,7 @@
   "item.mythicmetals.unobtainium_nugget": "Недобивлиумска грутка",
   "item.mythicmetals.vermiculite": "Вермикулит",
 
+  "text.autoconfig.mythicmetals.option.blacklist": "Црна листа на биоми",
   "text.autoconfig.mythicmetals.option.enableDusts": "Вклучи метални прашини",
   "text.autoconfig.mythicmetals.option.enableNuggets": "Вклучи метални грутки",
   "text.autoconfig.mythicmetals.option.configVersion": "Моментална верзија на конфигурација",

@@ -481,6 +481,7 @@
   "item.mythicmetals.unobtainium_nugget": "Unobtainium Nugget",
   "item.mythicmetals.vermiculite": "Vermiculite",
 
+  "text.autoconfig.mythicmetals.option.blacklist": "Biome Blacklist",
   "text.autoconfig.mythicmetals.option.enableDusts": "Enable Dust Items ",
   "text.autoconfig.mythicmetals.option.enableNuggets": "Enable Nuggets",
   "text.autoconfig.mythicmetals.option.configVersion": "Current config version",

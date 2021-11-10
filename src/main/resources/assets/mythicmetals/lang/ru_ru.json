@@ -563,6 +563,8 @@
   "block.mythicmetals.unobtainium_block": "Анобтаниевый блок",
   "block.mythicmetals.vermiculite_block": "Цельный блок вермикулита",
 
+  "text.autoconfig.mythicmetals.option.blacklist": "Biome Blacklist",
+
   "text.autoconfig.mythicmetals.option.adamantite.bottom": "Установить минимальную высоту спавна адамантиевой руды (По умолчанию: 4)",
   "text.autoconfig.mythicmetals.option.adamantite.enabled": "Генерация адамантиевой руды ",
   "text.autoconfig.mythicmetals.option.adamantite.perChunk": "Вероятность спавна адамантиевой руды",
@@ -666,6 +668,6 @@
   "text.autoconfig.mythicmetals.title": "Конфигурация Mythic Metals",
   "itemGroup.mythicmetals.main": "Материалы Mythic Metals",
   "itemGroup.mythicmetals.main.tab.tools": "Инструменты",
-  "itemGroup.mythicmetals.main.tab.armor": "Броня"
+  "itemGroup.mythicmetals.main.tab.armor": "Броня",
 
 }

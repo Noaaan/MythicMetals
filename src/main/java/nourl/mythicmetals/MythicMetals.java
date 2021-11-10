@@ -29,7 +29,7 @@ public class MythicMetals implements ModInitializer {
     public static final String ADDON_ID = "mythicaddons";
     public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
 
-    public static final OwoItemGroup MAIN = new MythicItemGroups(RegistryHelper.id("main"));
+    public static final OwoItemGroup TABBED_GROUP = new MythicItemGroups(RegistryHelper.id("main"));
     public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
             new Identifier(ADDON_ID, "decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
 
@@ -42,7 +42,7 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(MythicBlocks.class, true);
         MythicOreFeatures.init();
         EnchantConfig.appendEnchants();
-        MAIN.initialize();
+        TABBED_GROUP.initialize();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 

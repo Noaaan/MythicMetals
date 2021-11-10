@@ -98,7 +98,6 @@ public class MythicOreFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryHelper.registerKey("ore_unobtainium");
     public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryHelper.registerKey("ore_vermiculite");
 
-    @SuppressWarnings("deprecation")
     public static void init() {
         //Register keys on init
         RegistryHelper.registerFeature(oreAdamantite.getValue(), ORE_ADAMANTITE);

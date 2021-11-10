@@ -19,7 +19,7 @@ public class ArmorSet {
     private final ArmorItem boots;
 
     private static ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new OwoItemSettings().group(MythicMetals.MAIN).tab(3);
+        final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
         return new ArmorItem(material, slot, settings);
     }
