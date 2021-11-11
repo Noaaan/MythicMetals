@@ -1,3 +1,8 @@
+# 0.10.1
+Hotfix!  
+Fixed Osmium tools using the wrong material for stats  
+Fixes broken recipes  
+
 # 0.10.0 - Caves and Cliffs  
 This update contains the biggest changes in the history of Mythic Metals.  
 A lot has been removed from the mod, which includes:  
@@ -58,6 +63,8 @@ A lot of balancing changes have been made, and considering the removal of old ma
 
 There are a lot more minor changes as well, but for now I implore you to check them out for yourself.
 
+# 0.9.11
+Hotfix - Fixes a config loading issue with old Autoconfig and Cloth2
 
 # 0.9.10
 ### Note!
