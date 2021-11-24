@@ -135,6 +135,7 @@ public class MythicOreFeatures {
         if (CONFIG.orichalcum.enabled) { OreFeatureHelper.ore(oreOrichalcum); }
         if (CONFIG.osmium.enabled) { OreFeatureHelper.ore(oreOsmium); }
         if (CONFIG.overworld_nether_ores.enabled) { OreFeatureHelper.ore(overworldNetherOres); }
+        if (CONFIG.palladium.enabled) {OreFeatureHelper.netherOre(orePalladium);}
         if (CONFIG.platinum.enabled) { OreFeatureHelper.ore(orePlatinum); }
         if (CONFIG.quadrillum.enabled) { OreFeatureHelper.ore(oreQuadrillum); }
         if (CONFIG.runite.enabled) { OreFeatureHelper.ore(oreRunite); }

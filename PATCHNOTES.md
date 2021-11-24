@@ -1,3 +1,7 @@
+# 0.10.2
+Another hotfix.  
+Fixes Palladium not generating.  
+
 # 0.10.1
 Hotfix!  
 Fixed Osmium tools using the wrong material for stats  
