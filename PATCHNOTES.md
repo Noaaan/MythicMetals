@@ -1,3 +1,7 @@
+# 0.10.2
+Another hotfix.  
+Fixes Palladium not generating, and an issue with the Starrite height range.  
+
 # 0.10.1
 Hotfix!  
 Fixed Osmium tools using the wrong material for stats  
