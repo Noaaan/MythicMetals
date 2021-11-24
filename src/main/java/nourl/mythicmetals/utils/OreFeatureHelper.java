@@ -35,11 +35,11 @@ public class OreFeatureHelper {
     }
 
     public static void netherOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void endOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void modBiomeOres(String modId, String path, RegistryKey<PlacedFeature> ore) {
@@ -49,7 +49,9 @@ public class OreFeatureHelper {
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
-        return Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance));
+        var feature = Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance));
+        RegistryHelper.configuredFeature(name, feature);
+        return feature;
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, RuleTest rule, Block block, OreConfig config) {

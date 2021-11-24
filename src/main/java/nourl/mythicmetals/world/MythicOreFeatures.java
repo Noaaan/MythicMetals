@@ -106,85 +106,85 @@ public class MythicOreFeatures {
 
         //Overworld Ores
         if (CONFIG.adamantite.enabled) {
-            RegistryHelper.placedFeature(ADAMANTITE.getValue().getPath(), ORE_ADAMANTITE);
+            RegistryHelper.placedFeature(ADAMANTITE.getValue().toString(), ORE_ADAMANTITE);
             OreFeatureHelper.ore(ADAMANTITE);
         }
         if (CONFIG.banglum.enabled) {
-            RegistryHelper.placedFeature(BANGLUM.getValue().getPath(), ORE_BANGLUM);
+            RegistryHelper.placedFeature(BANGLUM.getValue().toString(), ORE_BANGLUM);
             OreFeatureHelper.ore(BANGLUM);
         }
         if (CONFIG.carmot.enabled) {
-            RegistryHelper.placedFeature(CARMOT.getValue().getPath(), ORE_CARMOT);
+            RegistryHelper.placedFeature(CARMOT.getValue().toString(), ORE_CARMOT);
             OreFeatureHelper.ore(CARMOT);
         }
         if (CONFIG.kyber.enabled) {
-            RegistryHelper.placedFeature(KYBER.getValue().getPath(), ORE_KYBER);
-            RegistryHelper.placedFeature(CALCITE_KYBER.getValue().getPath(), ORE_CALCITE_KYBER);
+            RegistryHelper.placedFeature(KYBER.getValue().toString(), ORE_KYBER);
+            RegistryHelper.placedFeature(CALCITE_KYBER.getValue().toString(), ORE_CALCITE_KYBER);
             OreFeatureHelper.ore(KYBER);
             OreFeatureHelper.ore(CALCITE_KYBER);
         }
         if (CONFIG.mythril.enabled) {
-            RegistryHelper.placedFeature(MYTHRIL.getValue().getPath(), ORE_MYTHRIL);
+            RegistryHelper.placedFeature(MYTHRIL.getValue().toString(), ORE_MYTHRIL);
             OreFeatureHelper.ore(MYTHRIL);
         }
         if (CONFIG.orichalcum.enabled) {
-            RegistryHelper.placedFeature(ORICHALCUM.getValue().getPath(), ORE_ORICHALCUM);
+            RegistryHelper.placedFeature(ORICHALCUM.getValue().toString(), ORE_ORICHALCUM);
             OreFeatureHelper.ore(ORICHALCUM);
         }
         if (CONFIG.osmium.enabled) {
-            RegistryHelper.placedFeature(OSMIUM.getValue().getPath(), ORE_OSMIUM);
+            RegistryHelper.placedFeature(OSMIUM.getValue().toString(), ORE_OSMIUM);
             OreFeatureHelper.ore(OSMIUM);
         }
         if (CONFIG.overworld_nether_ores.enabled) {
-            RegistryHelper.placedFeature(OVERWORLD_NETHER_ORES.getValue().getPath(), ORE_OVERWORLD_NETHER_ORES);
+            RegistryHelper.placedFeature(OVERWORLD_NETHER_ORES.getValue().toString(), ORE_OVERWORLD_NETHER_ORES);
             OreFeatureHelper.ore(OVERWORLD_NETHER_ORES);
         }
         if (CONFIG.palladium.enabled) {
-            RegistryHelper.placedFeature(PALLADIUM.getValue().getPath(), ORE_PALLADIUM);
+            RegistryHelper.placedFeature(PALLADIUM.getValue().toString(), ORE_PALLADIUM);
             OreFeatureHelper.netherOre(PALLADIUM);
         }
         if (CONFIG.platinum.enabled) {
-            RegistryHelper.placedFeature(PLATINUM.getValue().getPath(), ORE_PLATINUM);
+            RegistryHelper.placedFeature(PLATINUM.getValue().toString(), ORE_PLATINUM);
             OreFeatureHelper.ore(PLATINUM);
         }
         if (CONFIG.quadrillum.enabled) {
-            RegistryHelper.placedFeature(QUADRILLUM.getValue().getPath(), ORE_QUADRILLUM);
+            RegistryHelper.placedFeature(QUADRILLUM.getValue().toString(), ORE_QUADRILLUM);
             OreFeatureHelper.ore(QUADRILLUM);
         }
         if (CONFIG.runite.enabled) {
-            RegistryHelper.placedFeature(RUNITE.getValue().getPath(), ORE_RUNITE);
+            RegistryHelper.placedFeature(RUNITE.getValue().toString(), ORE_RUNITE);
             OreFeatureHelper.ore(RUNITE);
         }
         if (CONFIG.silver.enabled) {
-            RegistryHelper.placedFeature(SILVER.getValue().getPath(), ORE_SILVER);
+            RegistryHelper.placedFeature(SILVER.getValue().toString(), ORE_SILVER);
             OreFeatureHelper.ore(SILVER);
         }
         if (CONFIG.starrite.enabled) {
-            RegistryHelper.placedFeature(STARRITE.getValue().getPath(), ORE_STARRITE);
-            RegistryHelper.placedFeature(END_STARRITE.getValue().getPath(), ORE_END_STARRITE);
+            RegistryHelper.placedFeature(STARRITE.getValue().toString(), ORE_STARRITE);
+            RegistryHelper.placedFeature(END_STARRITE.getValue().toString(), ORE_END_STARRITE);
             OreFeatureHelper.ore(STARRITE);
             OreFeatureHelper.endOre(END_STARRITE);
         }
         if (CONFIG.tin.enabled) {
-            RegistryHelper.placedFeature(TIN.getValue().getPath(), ORE_TIN);
+            RegistryHelper.placedFeature(TIN.getValue().toString(), ORE_TIN);
             OreFeatureHelper.ore(TIN);
         }
         if (CONFIG.unobtainium.enabled) {
-            RegistryHelper.placedFeature(UNOBTAINIUM.getValue().getPath(), ORE_UNOBTAINIUM);
+            RegistryHelper.placedFeature(UNOBTAINIUM.getValue().toString(), ORE_UNOBTAINIUM);
             OreFeatureHelper.ore(UNOBTAINIUM);
         }
         if (CONFIG.vermiculite.enabled) {
-            RegistryHelper.placedFeature(VERMICULITE.getValue().getPath(), ORE_VERMICULITE);
+            RegistryHelper.placedFeature(VERMICULITE.getValue().toString(), ORE_VERMICULITE);
             OreFeatureHelper.ore(VERMICULITE);
         }
 
         //Nether Ores
         if (CONFIG.midas_gold.enabled) {
-            RegistryHelper.placedFeature(MIDAS_GOLD.getValue().getPath(), ORE_MIDAS_GOLD);
+            RegistryHelper.placedFeature(MIDAS_GOLD.getValue().toString(), ORE_MIDAS_GOLD);
             OreFeatureHelper.netherOre(MIDAS_GOLD);
         }
         if (CONFIG.stormyx.enabled) {
-            RegistryHelper.placedFeature(STORMYX.getValue().getPath(), ORE_STORMYX);
+            RegistryHelper.placedFeature(STORMYX.getValue().toString(), ORE_STORMYX);
             OreFeatureHelper.netherOre(STORMYX);
         }
         if (CONFIG.prometheum.enabled) {
@@ -196,7 +196,7 @@ public class MythicOreFeatures {
 
         //Ocean only ores
         if (CONFIG.aquarium.enabled) {
-            RegistryHelper.placedFeature(AQUARIUM.getValue().getPath(), ORE_AQUARIUM);
+            RegistryHelper.placedFeature(AQUARIUM.getValue().toString(), ORE_AQUARIUM);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.COLD_OCEAN,
                     BiomeKeys.DEEP_COLD_OCEAN,
@@ -229,7 +229,7 @@ public class MythicOreFeatures {
         }
         //Jungle only ores
         if (CONFIG.prometheum.enabled) {
-            RegistryHelper.placedFeature(PROMETHEUM.getValue().getPath(), ORE_PROMETHEUM);
+            RegistryHelper.placedFeature(PROMETHEUM.getValue().toString(), ORE_PROMETHEUM);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.BAMBOO_JUNGLE,
                     BiomeKeys.JUNGLE,
@@ -272,7 +272,7 @@ public class MythicOreFeatures {
         }
         //Mountain only ores
         if (CONFIG.manganese.enabled) {
-            RegistryHelper.placedFeature(MANGANESE.getValue().getPath(), ORE_MANGANESE);
+            RegistryHelper.placedFeature(MANGANESE.getValue().toString(), ORE_MANGANESE);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.SNOWY_SLOPES,
                     BiomeKeys.FROZEN_PEAKS,

@@ -39,7 +39,7 @@ dependencies {
 
 	// OwO
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
-	include "com.github.glisco03:owo-lib:${project.owo_version}"
+	include "io.wispforest:owo-lib:${project.owo_version}"
 
 	// REI
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
