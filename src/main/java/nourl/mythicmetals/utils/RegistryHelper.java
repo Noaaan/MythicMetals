@@ -6,11 +6,11 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.feature.PlacedFeatures;
 import nourl.mythicmetals.MythicMetals;
 
 /*
@@ -71,12 +71,12 @@ public class RegistryHelper {
         else chain(path, block);
     }
 
-    public static void placedFeature(Identifier identifier, PlacedFeature feature) {
-        Registry.register(BuiltinRegistries.PLACED_FEATURE, identifier, feature);
+    public static void placedFeature(String name, PlacedFeature feature) {
+        PlacedFeatures.register(name, feature);
     }
 
-    public static void configuredFeature(Identifier identifier, ConfiguredFeature<?, ?> feature) {
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, feature);
+    public static void configuredFeature(String name, ConfiguredFeature<?, ?> feature) {
+        ConfiguredFeatures.register(name, feature);
     }
 
 }
