@@ -139,10 +139,6 @@ public class MythicOreFeatures {
             RegistryHelper.placedFeature(OVERWORLD_NETHER_ORES.getValue().toString(), ORE_OVERWORLD_NETHER_ORES);
             OreFeatureHelper.ore(OVERWORLD_NETHER_ORES);
         }
-        if (CONFIG.palladium.enabled) {
-            RegistryHelper.placedFeature(PALLADIUM.getValue().toString(), ORE_PALLADIUM);
-            OreFeatureHelper.netherOre(PALLADIUM);
-        }
         if (CONFIG.platinum.enabled) {
             RegistryHelper.placedFeature(PLATINUM.getValue().toString(), ORE_PLATINUM);
             OreFeatureHelper.ore(PLATINUM);
@@ -187,11 +183,9 @@ public class MythicOreFeatures {
             RegistryHelper.placedFeature(STORMYX.getValue().toString(), ORE_STORMYX);
             OreFeatureHelper.netherOre(STORMYX);
         }
-        if (CONFIG.prometheum.enabled) {
+        if (CONFIG.palladium.enabled) {
+            RegistryHelper.placedFeature(PALLADIUM.getValue().toString(), ORE_PALLADIUM);
             OreFeatureHelper.netherOre(PALLADIUM);
-        }
-        if (CONFIG.midas_gold.enabled & CONFIG.stormyx.enabled) {
-            OreFeatureHelper.netherOre(OVERWORLD_NETHER_ORES);
         }
 
         //Ocean only ores

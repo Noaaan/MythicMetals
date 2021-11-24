@@ -47,7 +47,7 @@ public class MythicMetals implements ModInitializer {
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
-            LOGGER.info("[Mythic Metals] Eyo, Harvest Scythes is enabled. Punish DH for being extremely based!");
+            LOGGER.info("[Mythic Metals] I see HarvestScythes. I'll take care of DH so you don't have to");
         }
         if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
             LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");
