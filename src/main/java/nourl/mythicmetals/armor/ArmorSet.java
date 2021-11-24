@@ -1,6 +1,6 @@
 package nourl.mythicmetals.armor;
 
-import com.glisco.owo.itemgroup.OwoItemSettings;
+import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -25,7 +25,8 @@ public class ArmorSet {
     }
 
     public ArmorSet(ArmorMaterial material) {
-        this(material, settings -> {});
+        this(material, settings -> {
+        });
     }
 
     public ArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {

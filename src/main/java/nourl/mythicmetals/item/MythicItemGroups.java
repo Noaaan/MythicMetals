@@ -1,9 +1,9 @@
 package nourl.mythicmetals.item;
 
-import com.glisco.owo.itemgroup.Icon;
-import com.glisco.owo.itemgroup.OwoItemGroup;
-import com.glisco.owo.itemgroup.gui.ItemGroupButton;
-import com.glisco.owo.itemgroup.gui.ItemGroupTab;
+import io.wispforest.owo.itemgroup.Icon;
+import io.wispforest.owo.itemgroup.OwoItemGroup;
+import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
+import io.wispforest.owo.itemgroup.gui.ItemGroupTab;
 import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

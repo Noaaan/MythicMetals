@@ -1,6 +1,6 @@
 package nourl.mythicmetals.blocks;
 
-import com.glisco.owo.particles.ClientParticles;
+import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;

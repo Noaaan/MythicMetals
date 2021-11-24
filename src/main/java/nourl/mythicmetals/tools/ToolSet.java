@@ -1,6 +1,6 @@
 package nourl.mythicmetals.tools;
 
-import com.glisco.owo.itemgroup.OwoItemSettings;
+import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;

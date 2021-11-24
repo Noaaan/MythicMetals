@@ -1,6 +1,6 @@
 package nourl.mythicmetals.blocks;
 
-import com.glisco.owo.registration.reflect.SimpleFieldProcessingSubject;
+import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.ChainBlock;

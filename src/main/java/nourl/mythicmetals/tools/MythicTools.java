@@ -1,6 +1,6 @@
 package nourl.mythicmetals.tools;
 
-import com.glisco.owo.registration.reflect.SimpleFieldProcessingSubject;
+import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;

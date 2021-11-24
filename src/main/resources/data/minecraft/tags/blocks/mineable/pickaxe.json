@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:adamantite_ore",
+    "mythicmetals:aquarium_ore",
+    "mythicmetals:banglum_ore",
+    "mythicmetals:carmot_ore",
+    "mythicmetals:kyber_ore",
+    "mythicmetals:manganese_ore",
+    "mythicmetals:mythril_ore",
+    "mythicmetals:orichalcum_ore",
+    "mythicmetals:osmium_ore",
+    "mythicmetals:platinum_ore",
+    "mythicmetals:prometheum_ore",
+    "mythicmetals:quadrillum_ore",
+    "mythicmetals:runite_ore",
+    "mythicmetals:silver_ore",
+    "mythicmetals:stormyx_ore",
+    "mythicmetals:tin_ore",
+    "mythicmetals:palladium_ore"
+  ]
+}

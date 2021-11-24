@@ -1,6 +1,6 @@
 package nourl.mythicmetals.utils;
 
-import com.glisco.owo.itemgroup.OwoItemSettings;
+import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -10,6 +10,7 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import nourl.mythicmetals.MythicMetals;
 
 /*
@@ -70,11 +71,12 @@ public class RegistryHelper {
         else chain(path, block);
     }
 
-    public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String string) {
-        return RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, id(string));
+    public static void placedFeature(Identifier identifier, PlacedFeature feature) {
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, identifier, feature);
     }
 
-    public static void registerFeature(Identifier identifier, ConfiguredFeature<?, ?> feature) {
+    public static void configuredFeature(Identifier identifier, ConfiguredFeature<?, ?> feature) {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, feature);
     }
+
 }

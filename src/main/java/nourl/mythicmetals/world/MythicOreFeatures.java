@@ -6,11 +6,13 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
+import net.minecraft.structure.rule.TagMatchRuleTest;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
@@ -24,11 +26,13 @@ public class MythicOreFeatures {
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest BLACKSTONE_RULE = new BlockMatchRuleTest(Blocks.BLACKSTONE);
     public static final RuleTest CALCITE_RULE = new BlockMatchRuleTest(Blocks.CALCITE);
-    public static final RuleTest DEEPSLATE_RULE = OreFeatureConfig.Rules.DEEPSLATE_ORE_REPLACEABLES;
+    public static final RuleTest NETHERRACK_RULE = new BlockMatchRuleTest(Blocks.NETHERRACK);
+    public static final RuleTest DEEPSLATE_RULE = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
     public static final RuleTest END_STONE_RULE = new BlockMatchRuleTest(Blocks.END_STONE);
     public static final RuleTest SMOOTH_BASALT_RULE = new BlockMatchRuleTest(Blocks.SMOOTH_BASALT);
-    public static final RuleTest STONE_RULE = OreFeatureConfig.Rules.STONE_ORE_REPLACEABLES;
+    public static final RuleTest STONE_RULE = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
     public static final RuleTest TUFF_RULE = new BlockMatchRuleTest(Blocks.TUFF);
+
 
     // Defines a list of targets, which can check for multiple blocks and dynamically replace them when generating ore
     public static final ImmutableList<OreFeatureConfig.Target> ADAMANTITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ADAMANTITE.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.ADAMANTITE.getOreVariant("deepslate").getDefaultState()));
@@ -36,126 +40,166 @@ public class MythicOreFeatures {
     public static final ImmutableList<OreFeatureConfig.Target> ORICHALCUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.ORICHALCUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(TUFF_RULE, MythicBlocks.ORICHALCUM.getOreVariant("tuff").getDefaultState()), OreFeatureConfig.createTarget(SMOOTH_BASALT_RULE, MythicBlocks.ORICHALCUM.getOreVariant("smooth_basalt").getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.ORICHALCUM.getOreVariant("deepslate").getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> PROMETHEUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.PROMETHEUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.PROMETHEUM.getOreVariant("deepslate").getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> STARRITE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.STARRITE.getOre().getDefaultState()), OreFeatureConfig.createTarget(CALCITE_RULE, MythicBlocks.STARRITE.getOreVariant("calcite").getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.STORMYX.getOre().getDefaultState()), OreFeatureConfig.createTarget(OreFeatureConfig.Rules.BASE_STONE_NETHER, MythicBlocks.STORMYX.getOreVariant("blackstone").getDefaultState()));
-    public static final ImmutableList<OreFeatureConfig.Target> OVERWORLD_NETHER_ORE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState()), OreFeatureConfig.createTarget(BLACKSTONE_RULE, MythicBlocks.STORMYX.getOreVariant("blackstone").getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> STORMYX_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(NETHERRACK_RULE, MythicBlocks.STORMYX.getOre().getDefaultState()), OreFeatureConfig.createTarget(BLACKSTONE_RULE, MythicBlocks.STORMYX.getOreVariant("blackstone").getDefaultState()));
+    public static final ImmutableList<OreFeatureConfig.Target> OVERWORLD_NETHER_ORE_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState()), OreFeatureConfig.createTarget(BLACKSTONE_RULE, MythicBlocks.STORMYX.getOreVariant("blackstone").getDefaultState()));
     public static final ImmutableList<OreFeatureConfig.Target> UNOBTAINIUM_TARGETS = ImmutableList.of(OreFeatureConfig.createTarget(STONE_RULE, MythicBlocks.UNOBTAINIUM.getOre().getDefaultState()), OreFeatureConfig.createTarget(DEEPSLATE_RULE, MythicBlocks.UNOBTAINIUM.getOreVariant("deepslate").getDefaultState()));
 
-    // Configured ore features
-    public static ConfiguredFeature<?, ?> ORE_AQUARIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.AQUARIUM.getOre().getDefaultState(), CONFIG.aquarium);
-    public static ConfiguredFeature<?, ?> ORE_BANGLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.BANGLUM.getOre().getDefaultState(), CONFIG.banglum);
-    public static ConfiguredFeature<?, ?> ORE_CARMOT = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.CARMOT.getOre().getDefaultState(), CONFIG.carmot);
-    public static ConfiguredFeature<?, ?> ORE_KYBER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.KYBER.getOre().getDefaultState(), CONFIG.kyber);
-    public static ConfiguredFeature<?, ?> ORE_MANGANESE = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.MANGANESE.getOre().getDefaultState(), CONFIG.manganese);
-    public static ConfiguredFeature<?, ?> ORE_OSMIUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.OSMIUM.getOre().getDefaultState(), CONFIG.osmium);
-    public static ConfiguredFeature<?, ?> ORE_PLATINUM = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.PLATINUM.getOre().getDefaultState(), CONFIG.platinum);
-    public static ConfiguredFeature<?, ?> ORE_QUADRILLUM = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.QUADRILLUM.getOre().getDefaultState(), CONFIG.quadrillum);
-    public static ConfiguredFeature<?, ?> ORE_RUNITE = OreFeatureHelper.triangleOre(STONE_RULE, MythicBlocks.RUNITE.getOre().getDefaultState(), CONFIG.runite);
-    public static ConfiguredFeature<?, ?> ORE_SILVER = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.SILVER.getOre().getDefaultState(), CONFIG.silver);
-    public static ConfiguredFeature<?, ?> ORE_TIN = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.TIN.getOre().getDefaultState(), CONFIG.tin);
-    public static ConfiguredFeature<?, ?> ORE_VERMICULITE = OreFeatureHelper.fixedOre(STONE_RULE, MythicBlocks.VERMICULITE.getOre().getDefaultState(), CONFIG.vermiculite);
+    // Placed ore features
+    public static PlacedFeature ORE_AQUARIUM = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.AQUARIUM.getOre(), CONFIG.aquarium);
+    public static PlacedFeature ORE_BANGLUM = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.BANGLUM.getOre(), CONFIG.banglum);
+    public static PlacedFeature ORE_CARMOT = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.CARMOT.getOre(), CONFIG.carmot);
+    public static PlacedFeature ORE_KYBER = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.KYBER.getOre(), CONFIG.kyber);
+    public static PlacedFeature ORE_MANGANESE = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.MANGANESE.getOre(), CONFIG.manganese);
+    public static PlacedFeature ORE_OSMIUM = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.OSMIUM.getOre(), CONFIG.osmium);
+    public static PlacedFeature ORE_PLATINUM = OreFeatureHelper.trapezoid("", STONE_RULE, MythicBlocks.PLATINUM.getOre(), CONFIG.platinum);
+    public static PlacedFeature ORE_QUADRILLUM = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.QUADRILLUM.getOre(), CONFIG.quadrillum);
+    public static PlacedFeature ORE_RUNITE = OreFeatureHelper.trapezoid("", STONE_RULE, MythicBlocks.RUNITE.getOre(), CONFIG.runite);
+    public static PlacedFeature ORE_SILVER = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.SILVER.getOre(), CONFIG.silver);
+    public static PlacedFeature ORE_TIN = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.TIN.getOre(), CONFIG.tin);
+    public static PlacedFeature ORE_VERMICULITE = OreFeatureHelper.uniform("", STONE_RULE, MythicBlocks.VERMICULITE.getOre(), CONFIG.vermiculite);
 
     // Ores below zero - Reaches Deep Dark
-    public static ConfiguredFeature<?, ?> ORE_ADAMANTITE = OreFeatureHelper.triangleOre(ADAMANTITE_TARGETS, CONFIG.adamantite);
-    public static ConfiguredFeature<?, ?> ORE_CALCITE_KYBER = OreFeatureHelper.bottomOffsetOre(CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite").getDefaultState(), CONFIG.kyber.getVariant());
-    public static ConfiguredFeature<?, ?> ORE_MYTHRIL = OreFeatureHelper.triangleOre(MYTHRIL_TARGETS, CONFIG.mythril);
-    public static ConfiguredFeature<?, ?> ORE_ORICHALCUM = OreFeatureHelper.bottomOffsetOre(ORICHALCUM_TARGETS, CONFIG.orichalcum);
-    public static ConfiguredFeature<?, ?> ORE_PROMETHEUM = OreFeatureHelper.bottomOffsetOre(PROMETHEUM_TARGETS, CONFIG.prometheum);
-    public static ConfiguredFeature<?, ?> ORE_STARRITE = OreFeatureHelper.topOffsetOre(STARRITE_TARGETS, CONFIG.starrite);
-    public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = OreFeatureHelper.scatteredOre(UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
+    public static PlacedFeature ORE_ADAMANTITE = OreFeatureHelper.trapezoid("ore_adamantite", ADAMANTITE_TARGETS, CONFIG.adamantite);
+    public static PlacedFeature ORE_CALCITE_KYBER = OreFeatureHelper.aboveBottom("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.kyber.getVariant());
+    public static PlacedFeature ORE_MYTHRIL = OreFeatureHelper.trapezoid("ore_mythril", MYTHRIL_TARGETS, CONFIG.mythril);
+    public static PlacedFeature ORE_ORICHALCUM = OreFeatureHelper.aboveBottom("ore_orichalcum", ORICHALCUM_TARGETS, CONFIG.orichalcum);
+    public static PlacedFeature ORE_PROMETHEUM = OreFeatureHelper.aboveBottom("ore_prometheum", PROMETHEUM_TARGETS, CONFIG.prometheum);
+    public static PlacedFeature ORE_STARRITE = OreFeatureHelper.belowTop("ore_starrite", STARRITE_TARGETS, CONFIG.starrite);
+    public static PlacedFeature ORE_UNOBTAINIUM = OreFeatureHelper.trapezoid("ore_unobtainium", UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
 
     // Nether Ores
-    public static ConfiguredFeature<?, ?> ORE_MIDAS_GOLD = OreFeatureHelper.triangleOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.MIDAS_GOLD.getOre().getDefaultState(), CONFIG.midas_gold);
-    public static ConfiguredFeature<?, ?> ORE_PALLADIUM = OreFeatureHelper.fixedOre(OreFeatureConfig.Rules.NETHERRACK, MythicBlocks.PALLADIUM.getOre().getDefaultState(), CONFIG.palladium);
-    public static ConfiguredFeature<?, ?> ORE_STORMYX = OreFeatureHelper.bottomOffsetOre(STORMYX_TARGETS, CONFIG.stormyx);
-    public static ConfiguredFeature<?, ?> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.scatteredOre(OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
+    public static PlacedFeature ORE_MIDAS_GOLD = OreFeatureHelper.trapezoid("ore_midas_gold", NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), CONFIG.midas_gold);
+    public static PlacedFeature ORE_PALLADIUM = OreFeatureHelper.uniform("ore_palladium", NETHERRACK_RULE, MythicBlocks.PALLADIUM.getOre(), CONFIG.palladium);
+    public static PlacedFeature ORE_STORMYX = OreFeatureHelper.belowTop("ore_stormyx", STORMYX_TARGETS, CONFIG.stormyx);
+    public static PlacedFeature ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.uniform("ore_nether_in_overworld", OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
 
     // End Ores
-    public static ConfiguredFeature<?, ?> ORE_END_STARRITE = OreFeatureHelper.topOffsetOre(END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone").getDefaultState(), CONFIG.starrite.getVariant());
+    public static PlacedFeature ORE_END_STARRITE = OreFeatureHelper.belowTop("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.starrite.getVariant());
 
     // Add keys for features
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAdamantite = RegistryHelper.registerKey("ore_adamantite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreAquarium = RegistryHelper.registerKey("ore_aquarium");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreBanglum = RegistryHelper.registerKey("ore_banglum");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCarmot = RegistryHelper.registerKey("ore_carmot");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreCalciteKyber = RegistryHelper.registerKey("ore_calcite_kyber");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreKyber = RegistryHelper.registerKey("ore_kyber");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> overworldNetherOres = RegistryHelper.registerKey("ore_overworld_nether_ores");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreManganese = RegistryHelper.registerKey("ore_manganese");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMidasGold = RegistryHelper.registerKey("ore_midas_gold");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreMythril = RegistryHelper.registerKey("ore_mythril");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOrichalcum = RegistryHelper.registerKey("ore_orichalcum");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreOsmium = RegistryHelper.registerKey("ore_osmium");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePlatinum = RegistryHelper.registerKey("ore_platinum");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePrometheum = RegistryHelper.registerKey("ore_prometheum");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreQuadrillum = RegistryHelper.registerKey("ore_quadrillum");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreRunite = RegistryHelper.registerKey("ore_runite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreSilver = RegistryHelper.registerKey("ore_silver");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStarrite = RegistryHelper.registerKey("ore_starrite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreEndStarrite = RegistryHelper.registerKey("ore_end_starrite");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreStormyx = RegistryHelper.registerKey("ore_stormyx");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreTin = RegistryHelper.registerKey("ore_tin");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> orePalladium = RegistryHelper.registerKey("ore_palladium");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreUnobtainium = RegistryHelper.registerKey("ore_unobtainium");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> oreVermiculite = RegistryHelper.registerKey("ore_vermiculite");
+    public static final RegistryKey<PlacedFeature> ADAMANTITE = OreFeatureHelper.placedFeatureKey("ore_adamantite");
+    public static final RegistryKey<PlacedFeature> AQUARIUM = OreFeatureHelper.placedFeatureKey("ore_aquarium");
+    public static final RegistryKey<PlacedFeature> BANGLUM = OreFeatureHelper.placedFeatureKey("ore_banglum");
+    public static final RegistryKey<PlacedFeature> CARMOT = OreFeatureHelper.placedFeatureKey("ore_carmot");
+    public static final RegistryKey<PlacedFeature> CALCITE_KYBER = OreFeatureHelper.placedFeatureKey("ore_calcite_kyber");
+    public static final RegistryKey<PlacedFeature> KYBER = OreFeatureHelper.placedFeatureKey("ore_kyber");
+    public static final RegistryKey<PlacedFeature> OVERWORLD_NETHER_ORES = OreFeatureHelper.placedFeatureKey("ore_overworld_nether_ores");
+    public static final RegistryKey<PlacedFeature> MANGANESE = OreFeatureHelper.placedFeatureKey("ore_manganese");
+    public static final RegistryKey<PlacedFeature> MIDAS_GOLD = OreFeatureHelper.placedFeatureKey("ore_midas_gold");
+    public static final RegistryKey<PlacedFeature> MYTHRIL = OreFeatureHelper.placedFeatureKey("ore_mythril");
+    public static final RegistryKey<PlacedFeature> ORICHALCUM = OreFeatureHelper.placedFeatureKey("ore_orichalcum");
+    public static final RegistryKey<PlacedFeature> OSMIUM = OreFeatureHelper.placedFeatureKey("ore_osmium");
+    public static final RegistryKey<PlacedFeature> PLATINUM = OreFeatureHelper.placedFeatureKey("ore_platinum");
+    public static final RegistryKey<PlacedFeature> PROMETHEUM = OreFeatureHelper.placedFeatureKey("ore_prometheum");
+    public static final RegistryKey<PlacedFeature> QUADRILLUM = OreFeatureHelper.placedFeatureKey("ore_quadrillum");
+    public static final RegistryKey<PlacedFeature> RUNITE = OreFeatureHelper.placedFeatureKey("ore_runite");
+    public static final RegistryKey<PlacedFeature> SILVER = OreFeatureHelper.placedFeatureKey("ore_silver");
+    public static final RegistryKey<PlacedFeature> STARRITE = OreFeatureHelper.placedFeatureKey("ore_starrite");
+    public static final RegistryKey<PlacedFeature> END_STARRITE = OreFeatureHelper.placedFeatureKey("ore_end_starrite");
+    public static final RegistryKey<PlacedFeature> STORMYX = OreFeatureHelper.placedFeatureKey("ore_stormyx");
+    public static final RegistryKey<PlacedFeature> TIN = OreFeatureHelper.placedFeatureKey("ore_tin");
+    public static final RegistryKey<PlacedFeature> PALLADIUM = OreFeatureHelper.placedFeatureKey("ore_palladium");
+    public static final RegistryKey<PlacedFeature> UNOBTAINIUM = OreFeatureHelper.placedFeatureKey("ore_unobtainium");
+    public static final RegistryKey<PlacedFeature> VERMICULITE = OreFeatureHelper.placedFeatureKey("ore_vermiculite");
 
     public static void init() {
-        //Register keys on init
-        RegistryHelper.registerFeature(oreAdamantite.getValue(), ORE_ADAMANTITE);
-        RegistryHelper.registerFeature(oreAquarium.getValue(), ORE_AQUARIUM);
-        RegistryHelper.registerFeature(oreBanglum.getValue(), ORE_BANGLUM);
-        RegistryHelper.registerFeature(oreCarmot.getValue(), ORE_CARMOT);
-        RegistryHelper.registerFeature(oreCalciteKyber.getValue(), ORE_CALCITE_KYBER);
-        RegistryHelper.registerFeature(oreKyber.getValue(), ORE_KYBER);
-        RegistryHelper.registerFeature(oreManganese.getValue(), ORE_MANGANESE);
-        RegistryHelper.registerFeature(oreMidasGold.getValue(), ORE_MIDAS_GOLD);
-        RegistryHelper.registerFeature(oreMythril.getValue(), ORE_MYTHRIL);
-        RegistryHelper.registerFeature(oreOrichalcum.getValue(), ORE_ORICHALCUM);
-        RegistryHelper.registerFeature(oreOsmium.getValue(), ORE_OSMIUM);
-        RegistryHelper.registerFeature(overworldNetherOres.getValue(), ORE_OVERWORLD_NETHER_ORES);
-        RegistryHelper.registerFeature(orePlatinum.getValue(), ORE_PLATINUM);
-        RegistryHelper.registerFeature(orePrometheum.getValue(), ORE_PROMETHEUM);
-        RegistryHelper.registerFeature(oreQuadrillum.getValue(), ORE_QUADRILLUM);
-        RegistryHelper.registerFeature(oreRunite.getValue(), ORE_RUNITE);
-        RegistryHelper.registerFeature(oreSilver.getValue(), ORE_SILVER);
-        RegistryHelper.registerFeature(oreStarrite.getValue(), ORE_STARRITE);
-        RegistryHelper.registerFeature(oreEndStarrite.getValue(), ORE_END_STARRITE);
-        RegistryHelper.registerFeature(oreStormyx.getValue(), ORE_STORMYX);
-        RegistryHelper.registerFeature(oreTin.getValue(), ORE_TIN);
-        RegistryHelper.registerFeature(orePalladium.getValue(), ORE_PALLADIUM);
-        RegistryHelper.registerFeature(oreUnobtainium.getValue(), ORE_UNOBTAINIUM);
-        RegistryHelper.registerFeature(oreVermiculite.getValue(), ORE_VERMICULITE);
+
+
+
+        RegistryHelper.placedFeature(UNOBTAINIUM.getValue(), ORE_UNOBTAINIUM);
+        RegistryHelper.placedFeature(VERMICULITE.getValue(), ORE_VERMICULITE);
 
         //Overworld Ores
-        if (CONFIG.adamantite.enabled) { OreFeatureHelper.ore(oreAdamantite);}
-        if (CONFIG.banglum.enabled) { OreFeatureHelper.ore(oreBanglum); }
-        if (CONFIG.carmot.enabled) { OreFeatureHelper.ore(oreCarmot); }
-        if (CONFIG.kyber.enabled) { OreFeatureHelper.ore(oreKyber); OreFeatureHelper.ore(oreCalciteKyber); }
-        if (CONFIG.manganese.enabled) { OreFeatureHelper.ore(oreManganese); }
-        if (CONFIG.mythril.enabled) { OreFeatureHelper.ore(oreMythril); }
-        if (CONFIG.orichalcum.enabled) { OreFeatureHelper.ore(oreOrichalcum); }
-        if (CONFIG.osmium.enabled) { OreFeatureHelper.ore(oreOsmium); }
-        if (CONFIG.overworld_nether_ores.enabled) { OreFeatureHelper.ore(overworldNetherOres); }
-        if (CONFIG.platinum.enabled) { OreFeatureHelper.ore(orePlatinum); }
-        if (CONFIG.quadrillum.enabled) { OreFeatureHelper.ore(oreQuadrillum); }
-        if (CONFIG.runite.enabled) { OreFeatureHelper.ore(oreRunite); }
-        if (CONFIG.silver.enabled) { OreFeatureHelper.ore(oreSilver); }
+        if (CONFIG.adamantite.enabled) {
+            RegistryHelper.placedFeature(ADAMANTITE.getValue(), ORE_ADAMANTITE);
+            OreFeatureHelper.ore(ADAMANTITE);
+        }
+        if (CONFIG.banglum.enabled) {
+            RegistryHelper.placedFeature(BANGLUM.getValue(), ORE_BANGLUM);
+            OreFeatureHelper.ore(BANGLUM);
+        }
+        if (CONFIG.carmot.enabled) {
+            RegistryHelper.placedFeature(CARMOT.getValue(), ORE_CARMOT);
+            OreFeatureHelper.ore(CARMOT);
+        }
+        if (CONFIG.kyber.enabled) {
+            RegistryHelper.placedFeature(KYBER.getValue(), ORE_KYBER);
+            RegistryHelper.placedFeature(CALCITE_KYBER.getValue(), ORE_CALCITE_KYBER);
+            OreFeatureHelper.ore(KYBER);
+            OreFeatureHelper.ore(CALCITE_KYBER);
+        }
+        if (CONFIG.mythril.enabled) {
+            RegistryHelper.placedFeature(MYTHRIL.getValue(), ORE_MYTHRIL);
+            OreFeatureHelper.ore(MYTHRIL);
+        }
+        if (CONFIG.orichalcum.enabled) {
+            RegistryHelper.placedFeature(ORICHALCUM.getValue(), ORE_ORICHALCUM);
+            OreFeatureHelper.ore(ORICHALCUM);
+        }
+        if (CONFIG.osmium.enabled) {
+            RegistryHelper.placedFeature(OSMIUM.getValue(), ORE_OSMIUM);
+            OreFeatureHelper.ore(OSMIUM);
+        }
+        if (CONFIG.overworld_nether_ores.enabled) {
+            RegistryHelper.placedFeature(OVERWORLD_NETHER_ORES.getValue(), ORE_OVERWORLD_NETHER_ORES);
+            OreFeatureHelper.ore(OVERWORLD_NETHER_ORES);
+        }
+        if (CONFIG.palladium.enabled) {
+            RegistryHelper.placedFeature(PALLADIUM.getValue(), ORE_PALLADIUM);
+            OreFeatureHelper.netherOre(PALLADIUM);
+        }
+        if (CONFIG.platinum.enabled) {
+            RegistryHelper.placedFeature(PLATINUM.getValue(), ORE_PLATINUM);
+            OreFeatureHelper.ore(PLATINUM);
+        }
+        if (CONFIG.quadrillum.enabled) {
+            RegistryHelper.placedFeature(QUADRILLUM.getValue(), ORE_QUADRILLUM);
+            OreFeatureHelper.ore(QUADRILLUM);
+        }
+        if (CONFIG.runite.enabled) {
+            RegistryHelper.placedFeature(RUNITE.getValue(), ORE_RUNITE);
+            OreFeatureHelper.ore(RUNITE);
+        }
+        if (CONFIG.silver.enabled) {
+            RegistryHelper.placedFeature(SILVER.getValue(), ORE_SILVER);
+            OreFeatureHelper.ore(SILVER);
+        }
         if (CONFIG.starrite.enabled) {
-            OreFeatureHelper.ore(oreStarrite);
-            OreFeatureHelper.endOre(oreEndStarrite);
-            }
-        if (CONFIG.tin.enabled) { OreFeatureHelper.ore(oreTin); }
-        if (CONFIG.unobtainium.enabled) { OreFeatureHelper.ore(oreUnobtainium); }
-        if (CONFIG.vermiculite.enabled) { OreFeatureHelper.ore(oreVermiculite); }
+            RegistryHelper.placedFeature(STARRITE.getValue(), ORE_STARRITE);
+            RegistryHelper.placedFeature(END_STARRITE.getValue(), ORE_END_STARRITE);
+            OreFeatureHelper.ore(STARRITE);
+            OreFeatureHelper.endOre(END_STARRITE);
+        }
+        if (CONFIG.tin.enabled) {
+            RegistryHelper.placedFeature(TIN.getValue(), ORE_TIN);
+            OreFeatureHelper.ore(TIN);
+        }
+        if (CONFIG.unobtainium.enabled) {
+            OreFeatureHelper.ore(UNOBTAINIUM);
+        }
+        if (CONFIG.vermiculite.enabled) {
+            OreFeatureHelper.ore(VERMICULITE);
+        }
 
         //Nether Ores
-        if (CONFIG.midas_gold.enabled) { OreFeatureHelper.netherOre(oreMidasGold); }
-        if (CONFIG.stormyx.enabled) { OreFeatureHelper.netherOre(oreStormyx); }
-        if (CONFIG.prometheum.enabled) { OreFeatureHelper.netherOre(orePalladium); }
+        if (CONFIG.midas_gold.enabled) {
+            RegistryHelper.placedFeature(MIDAS_GOLD.getValue(), ORE_MIDAS_GOLD);
+            OreFeatureHelper.netherOre(MIDAS_GOLD);
+        }
+        if (CONFIG.stormyx.enabled) {
+            RegistryHelper.placedFeature(STORMYX.getValue(), ORE_STORMYX);
+            OreFeatureHelper.netherOre(STORMYX);
+        }
+        if (CONFIG.prometheum.enabled) {
+            OreFeatureHelper.netherOre(PALLADIUM);
+        }
         if (CONFIG.midas_gold.enabled & CONFIG.stormyx.enabled) {
-            OreFeatureHelper.netherOre(overworldNetherOres);}
+            OreFeatureHelper.netherOre(OVERWORLD_NETHER_ORES);
+        }
 
         //Ocean only ores
         if (CONFIG.aquarium.enabled) {
+            RegistryHelper.placedFeature(AQUARIUM.getValue(), ORE_AQUARIUM);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.COLD_OCEAN,
                     BiomeKeys.DEEP_COLD_OCEAN,
@@ -166,133 +210,126 @@ public class MythicOreFeatures {
                     BiomeKeys.LUKEWARM_OCEAN,
                     BiomeKeys.OCEAN,
                     BiomeKeys.WARM_OCEAN
-            ), GenerationStep.Feature.UNDERGROUND_ORES, oreAquarium);
+            ), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
 
-            OreFeatureHelper.modBiomeOres("byg", "tropical_islands", oreAquarium);
+            OreFeatureHelper.modBiomeOres("byg", "tropical_islands", AQUARIUM);
 
-            OreFeatureHelper.modBiomeOres("terrestria", "caldera", oreAquarium);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_lake", oreAquarium);
-            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island", oreAquarium);
-            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island_shore", oreAquarium);
+            OreFeatureHelper.modBiomeOres("terrestria", "caldera", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_lake", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island_shore", AQUARIUM);
 
-            OreFeatureHelper.modBiomeOres("traverse", "wooded_island", oreAquarium);
+            OreFeatureHelper.modBiomeOres("traverse", "wooded_island", AQUARIUM);
 
-            OreFeatureHelper.modBiomeOres("lakeside", "warm_lake", oreAquarium);
-            OreFeatureHelper.modBiomeOres("lakeside", "jungle_lake", oreAquarium);
-            OreFeatureHelper.modBiomeOres("lakeside", "cold_lake", oreAquarium);
-            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", oreAquarium);
+            OreFeatureHelper.modBiomeOres("lakeside", "warm_lake", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("lakeside", "jungle_lake", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("lakeside", "cold_lake", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", AQUARIUM);
 
-            OreFeatureHelper.modBiomeOres("terralith", "dark_ocean", oreAquarium);
-            OreFeatureHelper.modBiomeOres("terralith", "dark_swamp", oreAquarium);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", oreAquarium);
+            OreFeatureHelper.modBiomeOres("terralith", "dark_ocean", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "dark_swamp", AQUARIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", AQUARIUM);
         }
         //Jungle only ores
         if (CONFIG.prometheum.enabled) {
+            RegistryHelper.placedFeature(PROMETHEUM.getValue(), ORE_PROMETHEUM);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
                     BiomeKeys.BAMBOO_JUNGLE,
-                    BiomeKeys.BAMBOO_JUNGLE_HILLS,
                     BiomeKeys.JUNGLE,
-                    BiomeKeys.JUNGLE_EDGE,
-                    BiomeKeys.JUNGLE_HILLS,
-                    BiomeKeys.MODIFIED_JUNGLE,
-                    BiomeKeys.MODIFIED_JUNGLE_EDGE,
+                    BiomeKeys.SPARSE_JUNGLE,
                     BiomeKeys.LUSH_CAVES
-            ), GenerationStep.Feature.UNDERGROUND_ORES, orePrometheum);
+            ), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("byg", "araucaria_forest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "cherry_blossom_forest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "ebony_woods", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "redwood_tropics", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "tropical_islands", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "tropical_fungal_rainforest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("byg", "tropical_rainforest", orePrometheum);
+            OreFeatureHelper.modBiomeOres("byg", "araucaria_forest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "cherry_blossom_forest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "ebony_woods", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "redwood_tropics", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "tropical_islands", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "tropical_fungal_rainforest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("byg", "tropical_rainforest", PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("terrestria", "oasis", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "hemlock_rainforest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "hemlock_clearing", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "lush_redwood_forest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_lake", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island", orePrometheum);
+            OreFeatureHelper.modBiomeOres("terrestria", "oasis", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "hemlock_rainforest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "hemlock_clearing", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "lush_redwood_forest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_lake", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terrestria", "volcanic_island", PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("traverse", "lush_swamp", orePrometheum);
-            OreFeatureHelper.modBiomeOres("traverse", "mini_jungle", orePrometheum);
+            OreFeatureHelper.modBiomeOres("traverse", "lush_swamp", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("traverse", "mini_jungle", PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("lakeside", "jungle_lake", orePrometheum);
-            OreFeatureHelper.modBiomeOres("lakeside", "jungle_island", orePrometheum);
+            OreFeatureHelper.modBiomeOres("lakeside", "jungle_lake", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("lakeside", "jungle_island", PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest_lowlands", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "coastal_jungle", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "lush_canyon", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "mega_jungle", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", orePrometheum);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", orePrometheum);
+            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest_lowlands", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "coastal_jungle", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "lush_canyon", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "mega_jungle", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", PROMETHEUM);
         }
         //Mountain only ores
         if (CONFIG.manganese.enabled) {
+            RegistryHelper.placedFeature(MANGANESE.getValue(), ORE_MANGANESE);
             BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.GRAVELLY_MOUNTAINS,
-                    BiomeKeys.MODIFIED_GRAVELLY_MOUNTAINS,
-                    BiomeKeys.MOUNTAINS,
-                    BiomeKeys.MOUNTAIN_EDGE,
-                    BiomeKeys.SHATTERED_SAVANNA,
-                    BiomeKeys.SHATTERED_SAVANNA_PLATEAU,
-                    BiomeKeys.SNOWY_MOUNTAINS,
-                    BiomeKeys.SNOWY_TAIGA_MOUNTAINS,
-                    BiomeKeys.TAIGA_MOUNTAINS
-            ), GenerationStep.Feature.UNDERGROUND_ORES, oreManganese);
+                    BiomeKeys.SNOWY_SLOPES,
+                    BiomeKeys.FROZEN_PEAKS,
+                    BiomeKeys.JAGGED_PEAKS,
+                    BiomeKeys.STONY_PEAKS
+            ), GenerationStep.Feature.UNDERGROUND_ORES, MANGANESE);
 
-            OreFeatureHelper.modBiomeOres("byg", "alpine_foothills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "alps", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "black_forest_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "blue_taiga_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "bluff_peaks", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "bluff_steeps", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "boreal_forest_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "cika_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "coniferous_forest_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "dover_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "ebony_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "enchatned_forest_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "evergreen_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "grassland_plateau", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "guiana_clearing", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "guiana_shield", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest_hills", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "redwood_mountians", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "skyris_highlands", oreManganese);
-            OreFeatureHelper.modBiomeOres("byg", "wooded_grassland_plateau", oreManganese);
+            OreFeatureHelper.modBiomeOres("byg", "alpine_foothills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "alps", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "black_forest_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "blue_taiga_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "bluff_peaks", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "bluff_steeps", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "boreal_forest_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "cika_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "coniferous_forest_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "dover_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "ebony_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "enchatned_forest_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "evergreen_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "grassland_plateau", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "guiana_clearing", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "guiana_shield", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "jacaranda_forest_hills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "redwood_mountians", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "skyris_highlands", MANGANESE);
+            OreFeatureHelper.modBiomeOres("byg", "wooded_grassland_plateau", MANGANESE);
 
-            OreFeatureHelper.modBiomeOres("terrestria", "caldera_foothills", oreManganese);
-            OreFeatureHelper.modBiomeOres("terrestria", "caldera_ridge", oreManganese);
-            OreFeatureHelper.modBiomeOres("terrestria", "outback_uluru", oreManganese);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", oreManganese);
-            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_mountains", oreManganese);
+            OreFeatureHelper.modBiomeOres("terrestria", "caldera_foothills", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terrestria", "caldera_ridge", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terrestria", "outback_uluru", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terrestria", "rainbow_rainforest_mountains", MANGANESE);
 
-            OreFeatureHelper.modBiomeOres("traverse", "arid_highlands", oreManganese);
-            OreFeatureHelper.modBiomeOres("traverse", "cliffs", oreManganese);
-            OreFeatureHelper.modBiomeOres("traverse", "rolling_hills", oreManganese);
+            OreFeatureHelper.modBiomeOres("traverse", "arid_highlands", MANGANESE);
+            OreFeatureHelper.modBiomeOres("traverse", "cliffs", MANGANESE);
+            OreFeatureHelper.modBiomeOres("traverse", "rolling_hills", MANGANESE);
 
-            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", oreManganese);
+            OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", MANGANESE);
 
-            OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "red_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "salt_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley_r", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "savanna_heights", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "stardust_valley", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_volcano", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "yellowstone", oreManganese);
-            OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", oreManganese);
+            OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "red_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "salt_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley_r", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "savanna_heights", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "stardust_valley", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "tropical_volcano", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "yellowstone", MANGANESE);
+            OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", MANGANESE);
         }
 
     }

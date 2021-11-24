@@ -1,6 +1,6 @@
 package nourl.mythicmetals.armor;
 
-import com.glisco.owo.registration.reflect.SimpleFieldProcessingSubject;
+import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 

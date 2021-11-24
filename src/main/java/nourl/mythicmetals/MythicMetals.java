@@ -1,7 +1,7 @@
 package nourl.mythicmetals;
 
-import com.glisco.owo.itemgroup.OwoItemGroup;
-import com.glisco.owo.registration.reflect.FieldRegistrationHandler;
+import io.wispforest.owo.itemgroup.OwoItemGroup;
+import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;

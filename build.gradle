@@ -8,10 +8,10 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	maven {url = "https://jitpack.io"}
 	maven {url = "https://www.cursemaven.com"}
 	maven {url = "https://maven.shedaniel.me/"}
 	maven {url = "https://maven.terraformersmc.com/"}
+	maven {url = "https://maven.wispforest.io/"}
 
 	flatDir {
 		dir('libs')
@@ -32,15 +32,13 @@ dependencies {
 //	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
 
 	// Alloy Forgery
-	modApi ("curse.maven:alloy_forgery-438718:${project.alloyforgery_id}")
-//	modApi("wraith.alloyforgery:wraith-alloy_forgery:${project.alloyforgery_version}")
-//	modApi("com.github.LordDeatHunter:Alloy-Forgery:master-SNAPSHOT")
+	modImplementation("wraith:alloy-forgery:${project.alloyforgery_version}")
 
 	// config
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")
 
 	// OwO
-	modImplementation "com.github.glisco03:owo-lib:${project.owo_version}"
+	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	include "com.github.glisco03:owo-lib:${project.owo_version}"
 
 	// REI

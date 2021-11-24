@@ -1,7 +1,7 @@
 package nourl.mythicmetals.item;
 
-import com.glisco.owo.itemgroup.OwoItemSettings;
-import com.glisco.owo.registration.reflect.ItemRegistryContainer;
+import io.wispforest.owo.itemgroup.OwoItemSettings;
+import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import net.minecraft.item.Item;
 import nourl.mythicmetals.MythicMetals;
 
