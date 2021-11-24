@@ -1,6 +1,6 @@
 # 0.10.2
 Another hotfix.  
-Fixes Palladium not generating.  
+Fixes Palladium not generating, and an issue with the Starrite height range.  
 
 # 0.10.1
 Hotfix!  
