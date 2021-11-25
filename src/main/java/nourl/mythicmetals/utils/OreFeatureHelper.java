@@ -35,11 +35,11 @@ public class OreFeatureHelper {
     }
 
     public static void netherOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
     }
 
     public static void endOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
     }
 
     public static void modBiomeOres(String modId, String path, RegistryKey<PlacedFeature> ore) {

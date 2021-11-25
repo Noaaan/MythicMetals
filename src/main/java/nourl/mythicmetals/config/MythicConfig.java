@@ -23,7 +23,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig carmot = new OreConfig(true,4, 3, 16 ,32, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public VariantConfig kyber = new VariantConfig(true, 3, 15, 1, 40, 12, 4, 40, 56,.5f);
+     public VariantConfig kyber = new VariantConfig(true, 3, 15, 1, 40, 2, -62, 50, 40,.5f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig manganese = new OreConfig(true, 9, 2, 28, 48,.25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -59,7 +59,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig vermiculite = new OreConfig(true,8, 4, 64, 108, .25f);
     @ConfigEntry.Gui.Excluded
-    public int configVersion = 0;
+    public int configVersion = 1;
 
     public ArrayList<String> blacklist = new ArrayList<>();
 }

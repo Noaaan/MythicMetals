@@ -60,7 +60,7 @@ public class MythicOreFeatures {
 
     // Ores below zero - Reaches Deep Dark
     public static PlacedFeature ORE_ADAMANTITE = OreFeatureHelper.trapezoid("ore_adamantite", ADAMANTITE_TARGETS, CONFIG.adamantite);
-    public static PlacedFeature ORE_CALCITE_KYBER = OreFeatureHelper.aboveBottom("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.kyber.getVariant());
+    public static PlacedFeature ORE_CALCITE_KYBER = OreFeatureHelper.uniform("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.kyber.getVariant());
     public static PlacedFeature ORE_MYTHRIL = OreFeatureHelper.trapezoid("ore_mythril", MYTHRIL_TARGETS, CONFIG.mythril);
     public static PlacedFeature ORE_ORICHALCUM = OreFeatureHelper.aboveBottom("ore_orichalcum", ORICHALCUM_TARGETS, CONFIG.orichalcum);
     public static PlacedFeature ORE_PROMETHEUM = OreFeatureHelper.aboveBottom("ore_prometheum", PROMETHEUM_TARGETS, CONFIG.prometheum);
