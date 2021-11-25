@@ -1,7 +1,0 @@
-{
-  "parent": "mythicaddons:block/chain_base",
-  "textures": {
-    "all": "mythicaddons:blocks/banglum_chain",
-    "particle": "mythicaddons:blocks/banglum_chain"
-  }
-}

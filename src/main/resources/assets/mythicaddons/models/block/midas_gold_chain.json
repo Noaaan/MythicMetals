@@ -1,7 +1,0 @@
-{
-  "parent": "mythicaddons:block/chain_base",
-  "textures": {
-    "all": "mythicaddons:blocks/midas_gold_chain",
-    "particle": "mythicaddons:blocks/midas_gold_chain"
-  }
-}

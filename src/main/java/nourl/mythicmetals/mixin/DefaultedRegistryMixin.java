@@ -32,7 +32,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
         @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0)
         Identifier fixMissingFromRegistry(@Nullable Identifier id) {
             if(id != null) {
-                if(id.getNamespace().equals("mm_decorations")) return new Identifier(MythicMetals.ADDON_ID, id.getPath());
+                // Various MOD_ID renames across mod versions, including Mythic Metals Decorations
+                if(id.getNamespace().equals("mm_decorations")) return new Identifier("mythicmetals_decorations", id.getPath());
+                if(id.getNamespace().equals("mythicaddons") && !id.getPath().contains("aegis")) return new Identifier("mythicmetals_decorations", id.getPath());
+                if(id.getNamespace().equals("mythicaddons") && id.getPath().contains("aegis")) return new Identifier(MythicMetals.MOD_ID, id.getPath());
+
+                // Removed or changed items
                 if(id.getPath().equals("unobtainium_dust")) return RegistryHelper.id( "unobtainium");
                 if(id.equals(mythicCopperOre)) return new Identifier("minecraft","copper_ore");
                 if(id.equals(mythicCopperIngot)) return new Identifier("minecraft","copper_ingot");

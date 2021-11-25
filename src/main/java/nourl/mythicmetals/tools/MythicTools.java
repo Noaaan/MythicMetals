@@ -58,8 +58,8 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     @Override
     public void afterFieldProcessing() {
         RegistryHelper.item("froge", Frogery.FROGE);
-        RegistryHelper.addonItem("red_aegis_sword", RED_AEGIS_SWORD);
-        RegistryHelper.addonItem("white_aegis_sword", WHITE_AEGIS_SWORD);
+        RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
+        RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
     }
 
     public static class Frogery {

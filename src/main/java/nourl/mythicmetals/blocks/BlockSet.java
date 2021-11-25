@@ -1,18 +1,16 @@
 package nourl.mythicmetals.blocks;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import io.wispforest.owo.util.TagInjector;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.*;
-import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.tag.Tag;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.utils.RegistryHelper;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -23,7 +21,7 @@ import java.util.function.Consumer;
  * @author glisco
  * @author Noaaan
  */
-@SuppressWarnings({"ClassCanBeRecord", "unused"})
+@SuppressWarnings({"unused"})
 public class BlockSet {
     private final OreBlock ore;
     private final Block storageBlock;
@@ -33,13 +31,13 @@ public class BlockSet {
     private final String name;
     private final boolean fireproof;
 
+    private final Multimap<Block, Identifier> miningLevels;
     private final Map<String, OreBlock> oreVariants;
 
     /**
      * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks.
      * Use {@link Builder#begin(String, boolean) BlockSet.Builder.begin} to begin,
      * and call {@link Builder#finish()} when you are done.
-     *
      * @param name              Common name for the entire set of blocks, applies to every block created.
      * @param ore               Contains a vanilla {@link OreBlock}.
      * @param storageBlock      Contains a {@link Block} which is used as a storage block.
@@ -47,9 +45,19 @@ public class BlockSet {
      * @param anvil             Contains an {@link AnvilBlock}
      * @param oreVariants       A map of a string and {@link OreBlock} which is used for variant ores.
      * @param fireproof         Boolean for creating fireproof block sets.
+     * @param miningLevels      A map containing all the blocks being registered with their corresponding mining levels.
      */
-    private BlockSet(String name, OreBlock ore, Block storageBlock, Block oreStorageBlock, AnvilBlock anvil, Map<String, OreBlock> oreVariants, boolean fireproof) {
+    private BlockSet(String name,
+                     OreBlock ore,
+                     Block storageBlock,
+                     Block oreStorageBlock,
+                     AnvilBlock anvil,
+                     Map<String, OreBlock> oreVariants,
+                     boolean fireproof,
+                     Multimap<Block, Identifier> miningLevels) {
+
         this.name = name;
+        this.fireproof = fireproof;
 
         this.ore = ore;
         this.storageBlock = storageBlock;
@@ -57,7 +65,7 @@ public class BlockSet {
         this.anvil = anvil;
 
         this.oreVariants = oreVariants;
-        this.fireproof = fireproof;
+        this.miningLevels = miningLevels;
     }
 
     private void register() {
@@ -73,7 +81,8 @@ public class BlockSet {
         if (anvil != null) {
             RegistryHelper.block(name + "_anvil", anvil, fireproof);
         }
-
+        // Inject all the mining levels into their tags.
+        miningLevels.forEach((block, level) -> TagInjector.injectBlocks(level, block));
     }
 
     /**
@@ -132,8 +141,12 @@ public class BlockSet {
         private BlockSoundGroup currentSounds = BlockSoundGroup.STONE;
         private float currentHardness = -1;
         private float currentResistance = -1;
-        private Consumer<FabricBlockSettings> settingsProcessor = fabricBlockSettings -> {
+        private final Multimap<Block, Identifier> miningLevels = HashMultimap.create();
+        private final Consumer<FabricBlockSettings> settingsProcessor = fabricBlockSettings -> {
         };
+
+        private final Identifier SHOVEL = new Identifier("mineable/shovel");
+        private final Identifier PICKAXE = new Identifier("mineable/pickaxe");
 
         /**
          * @see #begin(String, boolean)
@@ -166,10 +179,12 @@ public class BlockSet {
          * @param hardness      Determines the breaking time of the block.
          * @param resistance    Determines blast resistance of a block.
          * @param sounds        Determines the sounds that blocks play when interacted with.
-         * @param miningLevel   Mining level of the block.
          */
-        private static FabricBlockSettings blockSettings(Material material, float hardness, float resistance, BlockSoundGroup sounds, int miningLevel) {
-            return FabricBlockSettings.of(material).strength(hardness, resistance).sounds(sounds).breakByTool(FabricToolTags.PICKAXES, miningLevel).requiresTool();
+        private static FabricBlockSettings blockSettings(Material material, float hardness, float resistance, BlockSoundGroup sounds) {
+            return FabricBlockSettings.of(material)
+                    .strength(hardness, resistance)
+                    .sounds(sounds)
+                    .requiresTool();
         }
 
         /**
@@ -179,8 +194,13 @@ public class BlockSet {
          * @param miningLevel       Mining level of the blocks. The ore sets the raw value,
          *                          while every other block recieves + 1 to their level.
          */
-        public Builder createDefaultSet(float strength, int miningLevel) {
-            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createOreStorageBlock(miningLevel).createStorageBlock(miningLevel++).createAnvil(miningLevel);
+        public Builder createDefaultSet(float strength, Identifier miningLevel, Identifier higherMiningLevel) {
+            return  strength(strength)
+                    .createOre(miningLevel)
+                    .strength(strength + 1.0F)
+                    .createOreStorageBlock(miningLevel)
+                    .createStorageBlock(higherMiningLevel)
+                    .createAnvil(miningLevel);
         }
 
         /**
@@ -191,8 +211,12 @@ public class BlockSet {
          * @param storageMiningLevel    The mining level of both storage blocks
          *
          */
-        public Builder createDefaultSet(float strength, int miningLevel, int storageMiningLevel) {
-            return strength(strength).createOre(miningLevel).strength(strength + 1.0F).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel);
+        public Builder createBlockSet(float strength, Identifier miningLevel, Identifier storageMiningLevel) {
+            return  strength(strength)
+                    .createOre(miningLevel)
+                    .strength(strength + 1.0F)
+                    .createStorageBlock(storageMiningLevel)
+                    .createOreStorageBlock(storageMiningLevel);
         }
 
         /**
@@ -203,8 +227,12 @@ public class BlockSet {
          * @param storageMiningLevel    The mining level of the storage block and ore storage block.
          * @see #strength(float)        oreStrength and storageStrength
          */
-        public Builder createDefaultSet(float oreStrength, int oreMiningLevel, float storageStrength, int storageMiningLevel) {
-            return strength(oreStrength).createOre(oreMiningLevel).strength(storageStrength).createStorageBlock(storageMiningLevel).createOreStorageBlock(storageMiningLevel);
+        public Builder createDefaultSet(float oreStrength, Identifier oreMiningLevel, float storageStrength, Identifier storageMiningLevel) {
+            return  strength(oreStrength)
+                    .createOre(oreMiningLevel)
+                    .strength(storageStrength)
+                    .createStorageBlock(storageMiningLevel)
+                    .createOreStorageBlock(storageMiningLevel);
         }
 
         /**
@@ -212,8 +240,11 @@ public class BlockSet {
          * @param miningLevel   The mining level of the anvil and the storage block
          * @see #strength(float)
          */
-        public Builder createAnvilSet(float strength, int miningLevel) {
-            return strength(strength).sounds(BlockSoundGroup.METAL).createStorageBlock(miningLevel).createAnvil(miningLevel);
+        public Builder createAnvilSet(float strength, Identifier miningLevel) {
+            return  strength(strength)
+                    .sounds(BlockSoundGroup.METAL)
+                    .createStorageBlock(miningLevel)
+                    .createAnvil(miningLevel);
         }
 
         /**
@@ -221,10 +252,12 @@ public class BlockSet {
          * @param hardness      The hardness of the storage block.
          * @param resistance    The blast resistance of the storage block.
          * @param miningLevel   The mining level of the anvil and the storage block.
-         * @see #createAnvil(int) createAnvil
+         * @see #createAnvil(Identifier)  createAnvil
          */
-        public Builder createAnvilSet(float hardness, float resistance, int miningLevel) {
-            return strength(hardness, resistance).createStorageBlock(miningLevel).createAnvil(miningLevel);
+        public Builder createAnvilSet(float hardness, float resistance, Identifier miningLevel) {
+            return  strength(hardness, resistance)
+                    .createStorageBlock(miningLevel)
+                    .createAnvil(miningLevel);
         }
 
         /**
@@ -261,10 +294,12 @@ public class BlockSet {
          * @param miningLevel   The mining level of the ore block.
          * @see Builder
          */
-        public Builder createOre(int miningLevel) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createOre(Identifier miningLevel) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.ore = new OreBlock(settings);
+            miningLevels.put(ore, miningLevel);
+            miningLevels.put(ore, PICKAXE);
             return this;
         }
 
@@ -274,10 +309,12 @@ public class BlockSet {
          * @param experience    An {@link UniformIntProvider}, which holds the range of xp that can drop.
          * @see Builder
          */
-        public Builder createOre(int miningLevel, UniformIntProvider experience) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createOre(Identifier miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.ore = new OreBlock(settings, experience);
+            miningLevels.put(ore, miningLevel);
+            miningLevels.put(ore, PICKAXE);
             return this;
         }
 
@@ -287,10 +324,12 @@ public class BlockSet {
          * @param miningLevel   The mining level of the ore variant.
          * @see Builder
          */
-        public Builder createOreVariant(String name, int miningLevel) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createOreVariant(String name, Identifier miningLevel) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new OreBlock(settings));
+            miningLevels.put(oreVariants.get(name), miningLevel);
+            miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
         }
 
@@ -300,10 +339,12 @@ public class BlockSet {
          * @param miningLevel   The mining level of the variant ore block.
          * @param experience    An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createOreVariant(String name, int miningLevel, UniformIntProvider experience) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new OreBlock(settings, experience));
+            miningLevels.put(oreVariants.get(name), miningLevel);
+            miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
         }
 
@@ -312,10 +353,12 @@ public class BlockSet {
          * @param miningLevel   The mining level of the block.
          * @param experience    An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createStarriteOre(int miningLevel, UniformIntProvider experience) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createStarriteOre(Identifier miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.ore = new StarriteOreBlock(settings, experience);
+            miningLevels.put(ore, miningLevel);
+            miningLevels.put(ore, PICKAXE);
             return this;
         }
 
@@ -325,10 +368,12 @@ public class BlockSet {
          * @param miningLevel   The mining level of the block.
          * @param experience    An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createStarriteOreVariant(String name, int miningLevel, UniformIntProvider experience) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createStarriteOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new StarriteOreBlock(settings, experience));
+            miningLevels.put(oreVariants.get(name), miningLevel);
+            miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
         }
 
@@ -336,7 +381,7 @@ public class BlockSet {
          * Create a storage block for metals.
          * @param miningLevel   The mining level of the storage block.
          */
-        public Builder createStorageBlock(int miningLevel) {
+        public Builder createStorageBlock(Identifier miningLevel) {
             return createStorageBlock(BlockSoundGroup.METAL, miningLevel);
         }
 
@@ -345,10 +390,12 @@ public class BlockSet {
          * @param material      Vanilla {@link Material}, determines piston behaviour.
          * @param miningLevel   The mining level of the storage block.
          */
-        public Builder createStorageBlock(Material material, int miningLevel) {
-            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createStorageBlock(Material material, Identifier miningLevel) {
+            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
             return this;
         }
 
@@ -357,10 +404,12 @@ public class BlockSet {
          * @param sounds        A {@link BlockSoundGroup}, which determines block sounds.
          * @param miningLevel   The mining level of the storage block.
          */
-        public Builder createStorageBlock(BlockSoundGroup sounds, int miningLevel) {
-            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, sounds, miningLevel);
+        public Builder createStorageBlock(BlockSoundGroup sounds, Identifier miningLevel) {
+            final var settings = blockSettings(Material.METAL, currentHardness, currentResistance, sounds);
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
             return this;
         }
 
@@ -369,9 +418,10 @@ public class BlockSet {
          * @param material      Vanilla {@link Material}, determines piston behaviour.
          * @param miningLevel   The mining level of the storage block.
          */
-        public Builder createFallingStorageBlock(Material material, int miningLevel, Tag<Item> toolTag) {
-
-            this.storageBlock = new FallingBlock(FabricBlockSettings.of(material).strength(currentHardness, currentResistance).sounds(currentSounds).breakByTool(toolTag, miningLevel));
+        public Builder createFallingStorageBlock(Material material, Identifier miningLevel) {
+            this.storageBlock = new FallingBlock(FabricBlockSettings.of(material).strength(currentHardness, currentResistance).sounds(currentSounds));
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, SHOVEL);
             return this;
         }
 
@@ -379,10 +429,12 @@ public class BlockSet {
          * Create a raw ore storage block.
          * @param miningLevel   The mining level of the raw storage block.
          */
-        public Builder createOreStorageBlock(int miningLevel) {
-            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds, miningLevel);
+        public Builder createOreStorageBlock(Identifier miningLevel) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.oreStorageBlock = new Block(settings);
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
             return this;
         }
 
@@ -391,10 +443,12 @@ public class BlockSet {
          * Only requires a mining level, since hardness and resistance match vanilla values.
          * @param miningLevel   Mining level of the anvil.
          */
-        public Builder createAnvil(int miningLevel) {
-            final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL, miningLevel);
+        public Builder createAnvil(Identifier miningLevel) {
+            final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL);
             settingsProcessor.accept(settings);
             this.anvil = new AnvilBlock(settings);
+            miningLevels.put(anvil, miningLevel);
+            miningLevels.put(anvil, PICKAXE);
             return this;
         }
 
@@ -404,7 +458,9 @@ public class BlockSet {
          * @return BlockSet
          */
         public BlockSet finish() {
-            final var set = new BlockSet(this.name, this.ore, this.storageBlock, this.oreStorageBlock, this.anvil, this.oreVariants, this.fireproof);
+            final var set = new BlockSet(this.name, this.ore,
+                    this.storageBlock, this.oreStorageBlock, this.anvil,
+                    this.oreVariants, this.fireproof, this.miningLevels);
             Builder.toBeRegistered.add(set);
             return set;
         }

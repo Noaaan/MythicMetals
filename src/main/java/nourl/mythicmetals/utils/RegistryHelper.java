@@ -27,10 +27,6 @@ public class RegistryHelper {
         Registry.register(Registry.ITEM, id(path), item);
     }
 
-    public static void addonItem(String path, Item item) {
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), item);
-    }
-
     public static void block(String path, Block block) {
         Registry.register(Registry.BLOCK, id(path), block);
         Registry.register(Registry.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1)));
@@ -56,19 +52,6 @@ public class RegistryHelper {
         } else {
             block(path, block, group);
         }
-    }
-
-    public static void chain(String path, Block block) {
-        Registry.register(Registry.BLOCK, new Identifier(MythicMetals.ADDON_ID, path), block);
-        Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), new BlockItem(block, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR)));
-    }
-
-    public static void chain(String path, Block block, boolean fireproof) {
-        if (fireproof) {
-            Registry.register(Registry.BLOCK, new Identifier(MythicMetals.ADDON_ID, path), block);
-            Registry.register(Registry.ITEM, new Identifier(MythicMetals.ADDON_ID, path), new BlockItem(block, new Item.Settings().group(MythicMetals.MYTHICMETALS_DECOR).fireproof()));
-        }
-        else chain(path, block);
     }
 
     public static void placedFeature(String name, PlacedFeature feature) {

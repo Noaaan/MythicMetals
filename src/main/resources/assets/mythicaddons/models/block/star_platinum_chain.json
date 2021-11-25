@@ -1,7 +1,0 @@
-{
-  "parent": "mythicaddons:block/chain_base",
-  "textures": {
-    "all": "mythicaddons:blocks/star_platinum_chain",
-    "particle": "mythicaddons:blocks/star_platinum_chain"
-  }
-}

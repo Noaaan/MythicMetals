@@ -4,9 +4,9 @@
     "item": "mythicmetals:palladium_sword"
   },
   "addition": {
-    "item": "mythicmetals:adamantite_block"
+    "item": "mythicmetals:hallowed_block"
   },
   "result": {
-    "item": "mythicaddons:red_aegis_sword"
+    "item": "mythicmetals:white_aegis_sword"
   }
 }

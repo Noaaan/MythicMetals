@@ -26,12 +26,11 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final String ADDON_ID = "mythicaddons";
+
     public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
 
     public static final OwoItemGroup TABBED_GROUP = new MythicItemGroups(RegistryHelper.id("main"));
-    public static final ItemGroup MYTHICMETALS_DECOR = FabricItemGroupBuilder.create(
-            new Identifier(ADDON_ID, "decorations")).icon(() -> new ItemStack(MythicBlocks.ADAMANTITE_CHAIN)).build();
+
 
     @Override
     public void onInitialize() {
@@ -39,7 +38,7 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(MythicTools.class, false);
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
-        FieldRegistrationHandler.processSimple(MythicBlocks.class, true);
+        MythicBlocks.init();
         MythicOreFeatures.init();
         EnchantConfig.appendEnchants();
         TABBED_GROUP.initialize();
