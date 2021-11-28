@@ -20,7 +20,8 @@ public class MythicMetalsPlugin implements REIClientPlugin {
     public void registerDisplays(DisplayRegistry registry) {
         registry.registerVisibilityPredicate((category, display) -> {
             if (display.getOutputEntries().stream().flatMap(List::stream)
-                    .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack && stack.getItem() == MythicTools.Frogery.FROGE))
+                    .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack
+                            && (stack.getItem() == MythicTools.Frogery.FROGE || stack.getItem() == MythicTools.Frogery.DOGE)))
                 return EventResult.interruptFalse();
             else return EventResult.pass();
         });
@@ -29,9 +30,12 @@ public class MythicMetalsPlugin implements REIClientPlugin {
     @Override
     public void registerEntries(EntryRegistry registry) {
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
+        registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
         FieldIterator.iterateAccessibleFields(MythicMetals.CONFIG, OreConfig.class, (config, name) -> {
             if (!config.enabled) registry.removeEntryIf(entryStack ->
-                    entryStack.getIdentifier().getNamespace().equals(MythicMetals.MOD_ID) && entryStack.getIdentifier().getPath().matches(".*(^|_)" + name + "($|_).*"));
+                    entryStack.getIdentifier().getNamespace().equals(MythicMetals.MOD_ID)
+                    &&
+                    entryStack.getIdentifier().getPath().matches(".*(^|_)" + name + "($|_).*"));
         });
     }
 }

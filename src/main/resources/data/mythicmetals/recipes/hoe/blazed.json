@@ -1,0 +1,41 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:prometheum_block"
+    },
+    {
+      "item": "minecraft:large_fern"
+    },
+    {
+      "item": "mythicmetals:prometheum_block"
+    },
+    {
+      "item": "minecraft:large_fern"
+    },
+    {
+      "item": "mythicmetals:prometheum_block"
+    },
+    {
+      "item": "minecraft:dried_kelp_block"
+    },
+    {
+      "item": "mythicmetals:prometheum_block"
+    },
+    {
+      "item": "minecraft:dried_kelp_block"
+    },
+    {
+      "item": "mythicmetals:prometheum_block"
+    },
+    {
+      "item": "minecraft:dried_kelp_block"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:doge",
+    "count": 1
+  },
+  "min_forge_tier": 3,
+  "fuel_per_tick": 5000
+}

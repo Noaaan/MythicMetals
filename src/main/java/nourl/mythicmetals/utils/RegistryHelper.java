@@ -55,7 +55,6 @@ public class RegistryHelper {
     }
 
     public static void placedFeature(String name, PlacedFeature feature) {
-        MythicMetals.LOGGER.info("Registering {} for the feature: {}", name, feature);
         PlacedFeatures.register(name, feature);
     }
 

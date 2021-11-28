@@ -3,6 +3,10 @@ package nourl.mythicmetals.item;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import net.minecraft.item.Item;
+import net.minecraft.item.MusicDiscItem;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.MutableText;
+import net.minecraft.util.Formatting;
 import nourl.mythicmetals.MythicMetals;
 
 @SuppressWarnings("unused")
@@ -119,6 +123,17 @@ public class MythicItems implements ItemRegistryContainer {
         if (identifier.contains("dust")) return MythicMetals.CONFIG.enableDusts;
         if (identifier.contains("nugget")) return MythicMetals.CONFIG.enableNuggets;
         return true;
+    }
+
+    public static class CustomMusicDiscItem extends MusicDiscItem {
+        public CustomMusicDiscItem(int comparatorOutput, SoundEvent sound, Settings settings) {
+            super(comparatorOutput, sound, settings);
+        }
+
+        @Override
+        public MutableText getDescription() {
+           return super.getDescription().formatted(Formatting.ITALIC);
+        }
     }
 
 }

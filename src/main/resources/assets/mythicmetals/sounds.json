@@ -9,5 +9,10 @@
       "mythicmetals:equip_runite5",
       "mythicmetals:equip_runite6"
     ]
+  },
+  "music_disc.dog4": {
+    "sounds": [
+      "mythicmetals:dog4"
+    ]
   }
 }

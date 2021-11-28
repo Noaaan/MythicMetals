@@ -33,6 +33,7 @@ My friends revanitez, drakath9, glisco and Spxtreofficial who have contributed t
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 Flytre, for helping with the RecipeManager Mixin.  
 Spxtreofficial, for his LivingEntityMixin.  
+The incredible music talent from Jan_Boyega.  
 
 DH, Temreno, Tector, Pois1x, Henchman, RGBeet, Windy and Shiftless for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  

@@ -6,6 +6,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
+import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 @SuppressWarnings("unused")
@@ -57,6 +59,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     @Override
     public void afterFieldProcessing() {
+        RegistryHelper.item("doge", Frogery.DOGE);
         RegistryHelper.item("froge", Frogery.FROGE);
         RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
         RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
@@ -64,6 +67,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static class Frogery {
         public static final Item FROGE = new Item(new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD));
+        public static final Item DOGE = new MythicItems.CustomMusicDiscItem(42, RegisterSounds.DOG, new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD).maxCount(1));
     }
 
 }
