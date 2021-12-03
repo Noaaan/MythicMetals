@@ -19,9 +19,9 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig aquarium = new OreConfig(true, 9, 4, 39, 63, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig banglum = new OreConfig(true, 6, 3, 38, 52, .25f);
+    public OreConfig banglum = new OreConfig(true, 6, 3, 42, 65, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig carmot = new OreConfig(true,4, 3, 16 ,32, .0f);
+    public OreConfig carmot = new OreConfig(true,4, 2, 4 ,36, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
      public VariantConfig kyber = new VariantConfig(true, 3, 15, 1, 40, 2, -62, 50, 40,.5f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -29,9 +29,9 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig midas_gold = new OreConfig(true,6, 7, 10, 128,.125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig mythril = new OreConfig(true, 4, 1, -36, 16, .125f);
+    public OreConfig mythril = new OreConfig(true, 5, 1, -36, 16, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig orichalcum = new OreConfig(true, 4, 1, 8, 24, .125f);
+    public OreConfig orichalcum = new OreConfig(true, 5, 1, 8, 24, .125f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig osmium = new OreConfig(true, 6, 5, 20, 40, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -41,25 +41,25 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig platinum = new OreConfig(true, 6, 2, 8, 32, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig prometheum = new OreConfig(true, 6, 4, 30, 48, .25f);
+    public OreConfig prometheum = new OreConfig(true, 6, 4, 30, 48, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig quadrillum = new OreConfig(true,7, 2, 16, 44, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig runite = new OreConfig(true, 3, 2, 9, 39, .125f);
+    public OreConfig runite = new OreConfig(true, 3, 2, 9, 39, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 16, 38, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 50, 40, 40, 20, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig stormyx = new OreConfig(true,8, 2, 4, 116, .125f);
+    public OreConfig stormyx = new OreConfig(true,8, 3, 4, 116, .0f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig unobtainium = new OreConfig(true,3, 1, -60, 12, .5f);
+    public OreConfig unobtainium = new OreConfig(true,3, 1, -60, 12, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig tin = new OreConfig(true,8, 4, 44, 72, .25f);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig vermiculite = new OreConfig(true,8, 4, 64, 108, .25f);
     @ConfigEntry.Gui.Excluded
-    public int configVersion = 1;
+    public int configVersion = 2;
 
     public ArrayList<String> blacklist = new ArrayList<>();
 }

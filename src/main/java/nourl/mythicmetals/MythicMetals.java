@@ -5,11 +5,7 @@ import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.EnchantConfig;
@@ -26,6 +22,7 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
+    public static final int CONFIG_VERSION = 2;
 
     public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
 
@@ -43,7 +40,11 @@ public class MythicMetals implements ModInitializer {
         EnchantConfig.appendEnchants();
         TABBED_GROUP.initialize();
 
-        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized");
+        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
+
+        if (CONFIG.configVersion < CONFIG_VERSION) {
+            LOGGER.info("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
+        }
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
             LOGGER.info("[Mythic Metals] I see HarvestScythes. I'll take care of DH so you don't have to");
