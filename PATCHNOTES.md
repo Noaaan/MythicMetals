@@ -1,3 +1,9 @@
+# 0.11.0  
+Full port to 1.18!  
+**CHAINS HAVE BEEN MOVED TO ANOTHER PROJECT!**  
+THEY ARE AVAILABLE OVER AT [*MythicMetalsDecorations!!!*](https://github.com/Noaaan/MythicMetalsDecorations)  
+A few ore-gen tweaks as well. Have fun!  
+
 # 0.10.2
 Another hotfix.  
 Fixes Palladium not generating, and an issue with the Starrite height range.  
