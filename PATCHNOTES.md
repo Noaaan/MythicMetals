@@ -1,3 +1,11 @@
+# 0.11.x  
+Ores have recieved new height ranges! Be sure to double check your config if you are a modpack creator, 
+or simply delete your old config file to update your ore spawns.  
+A deepslate variant of Carmot was added.  
+A new debug command was added, which dumps all the height ranges of ores.  
+Various items recieved rarity tweaks.  
+
+
 # 0.11.0  
 Full port to 1.18!  
 **CHAINS HAVE BEEN MOVED TO ANOTHER PROJECT!**  

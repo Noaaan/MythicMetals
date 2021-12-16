@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "tag": "mythicmetals:palladium_ores"
+      "tag": "c:palladium_ores"
     }
   ],
   "output": {

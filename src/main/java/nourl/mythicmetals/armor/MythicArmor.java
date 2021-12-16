@@ -14,7 +14,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet CELESTIUM = new ArmorSet(ArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final ArmorSet COPPER = new ArmorSet(ArmorMaterials.COPPER);
     public static final ArmorSet DURASTEEL = new ArmorSet(ArmorMaterials.DURASTEEL);
-    public static final ArmorSet HALLOWED = new ArmorSet(ArmorMaterials.HALLOWED);
+    public static final ArmorSet HALLOWED = new ArmorSet(ArmorMaterials.HALLOWED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet KYBER = new ArmorSet(ArmorMaterials.KYBER);
     public static final ArmorSet METALLURGIUM = new ArmorSet(ArmorMaterials.METALLURGIUM, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ArmorSet MIDAS_GOLD = new ArmorSet(ArmorMaterials.MIDAS_GOLD);

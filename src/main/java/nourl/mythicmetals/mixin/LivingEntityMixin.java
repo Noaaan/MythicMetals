@@ -1,6 +1,12 @@
 package nourl.mythicmetals.mixin;
 
-import net.minecraft.entity.*;
+import io.wispforest.owo.particles.ClientParticles;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
@@ -22,6 +28,8 @@ import java.util.Random;
 public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
+    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -29,29 +37,33 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo info) {
-        addCarmotParticle();
-        addCopperParticle();
+        addArmorEffects();
     }
 
-    private void addCarmotParticle() {
+    private void addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
             if (RegisterTags.CARMOT_ARMOR.contains(armorItems.getItem())) {
                 carmotParticle();
             }
-        }
-    }
 
-    private void addCopperParticle() {
-        for (ItemStack armorItems : getArmorItems()) {
             if (RegisterTags.COPPER_ARMOR.contains(armorItems.getItem()) && world.isThundering()) {
                 copperParticle();
                 int i = r.nextInt(500000);
-                if (i == 666 & copperParticle())  {
+                if (i == 666 & copperParticle()) {
                     LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
                     if (lightningEntity != null) {
                         lightningEntity.copyPositionAndRotation(this);
                         world.spawnEntity(lightningEntity);
                     }
+                }
+            }
+
+            if (RegisterTags.PALLADIUM_ARMOR.contains(armorItems.getItem())) {
+                this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 4, 0, true, false, true));
+                Vec3d velocity = this.getVelocity();
+                if (velocity.length() >= 0.1 && r.nextInt(5) < 1) {
+                    ClientParticles.setParticleCount(1);
+                    ClientParticles.spawn(ParticleTypes.LAVA, world, getPos(), 0.5D);
                 }
             }
         }

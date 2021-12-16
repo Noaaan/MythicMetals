@@ -41,7 +41,7 @@ public final class MythicCommands {
                                         + " to "
                                         + feature.top
                                         + ", with a discard chance of "
-                                        + feature.discardChance + "f"), false);
+                                        + feature.discardChance * 100 + "%"), false);
                                 if (feature.enabled && feature.offset)
                                     context.getSource().sendFeedback(new LiteralText(
                                         name.toUpperCase(Locale.ROOT)
@@ -50,7 +50,7 @@ public final class MythicCommands {
                                         + "(offset) to "
                                         + feature.top
                                         + ", with a discard chance of "
-                                        + feature.discardChance + "f"), false);
+                                        + feature.discardChance * 100 + "%"), false);
                                 if (feature.enabled && feature.trapezoid)
                                     context.getSource().sendFeedback(new LiteralText(
                                         name.toUpperCase(Locale.ROOT)
@@ -61,7 +61,7 @@ public final class MythicCommands {
                                             + ", where the sweet spot is at Y = "
                                             + ((feature.bottom + feature.top) / 2)
                                             + " with a discard chance of "
-                                            + feature.discardChance + "f"), false);
+                                            + feature.discardChance * 100 + "%"), false);
                                 if (!feature.enabled)
                                     context.getSource().sendFeedback(new LiteralText("Ore" + name + "is disabled."), false);
 
@@ -80,7 +80,7 @@ public final class MythicCommands {
                                                     + " to "
                                                     + feature.topVariant
                                                     + ", with a discard chance of "
-                                                    + feature.discardChance + "f"), false);
+                                                    + feature.discardChance * 100 + "%"), false);
                                 else
                                     context.getSource().sendFeedback(new LiteralText("Ore" + name + "is disabled."), false);
 
