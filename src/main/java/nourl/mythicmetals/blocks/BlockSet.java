@@ -256,7 +256,7 @@ public class BlockSet {
          */
         public Builder createAnvilSet(float hardness, float resistance, Identifier miningLevel) {
             return  strength(hardness, resistance)
-                    .createStorageBlock(miningLevel)
+                    .createStorageBlock(this.currentSounds, miningLevel)
                     .createAnvil(miningLevel);
         }
 

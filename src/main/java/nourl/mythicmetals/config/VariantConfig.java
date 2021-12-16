@@ -29,8 +29,10 @@ public class VariantConfig {
     public int bottomVariant;
     @ConfigEntry.Gui.RequiresRestart
     public int topVariant;
+    @ConfigEntry.Gui.Excluded
+    public boolean offset;
 
-    public VariantConfig(boolean enabled, int veinSize, int veinSizeVariant, int perChunk, int perChunkVariant, int bottom, int bottomVariant, int top, int topVariant, float discardChance) {
+    public VariantConfig(boolean enabled, int veinSize, int veinSizeVariant, int perChunk, int perChunkVariant, int bottom, int bottomVariant, int top, int topVariant, float discardChance, boolean offset) {
         this.enabled = enabled;
         this.veinSize = veinSize;
         this.perChunk = perChunk;
@@ -41,9 +43,10 @@ public class VariantConfig {
         this.perChunkVariant = perChunkVariant;
         this.bottomVariant = bottomVariant;
         this.topVariant = topVariant;
+        this.offset = offset;
     }
 
     public OreConfig getVariant() {
-        return new OreConfig(enabled, veinSizeVariant, perChunkVariant, bottomVariant, topVariant, discardChance);
+        return new OreConfig(enabled, veinSizeVariant, perChunkVariant, bottomVariant, topVariant, discardChance, offset);
     }
 }

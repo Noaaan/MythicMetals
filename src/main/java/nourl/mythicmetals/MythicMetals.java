@@ -14,6 +14,7 @@ import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.utils.MythicCommands;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -37,6 +38,7 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicBlocks.init();
         MythicOreFeatures.init();
+        MythicCommands.register();
         EnchantConfig.appendEnchants();
         TABBED_GROUP.initialize();
 
