@@ -29,10 +29,12 @@ public class VariantConfig {
     public int bottomVariant;
     @ConfigEntry.Gui.RequiresRestart
     public int topVariant;
-    @ConfigEntry.Gui.Excluded
+    @ConfigEntry.Gui.RequiresRestart
     public boolean offset;
+    @ConfigEntry.Gui.RequiresRestart
+    public boolean trapezoid;
 
-    public VariantConfig(boolean enabled, int veinSize, int veinSizeVariant, int perChunk, int perChunkVariant, int bottom, int bottomVariant, int top, int topVariant, float discardChance, boolean offset) {
+    public VariantConfig(boolean enabled, int veinSize, int veinSizeVariant, int perChunk, int perChunkVariant, int bottom, int bottomVariant, int top, int topVariant, float discardChance, boolean offset, boolean trapezoid) {
         this.enabled = enabled;
         this.veinSize = veinSize;
         this.perChunk = perChunk;
@@ -44,6 +46,7 @@ public class VariantConfig {
         this.bottomVariant = bottomVariant;
         this.topVariant = topVariant;
         this.offset = offset;
+        this.trapezoid = trapezoid;
     }
 
     public OreConfig getVariant() {

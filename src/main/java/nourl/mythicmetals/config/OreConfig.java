@@ -21,9 +21,9 @@ public class OreConfig {
     public int top;
     @ConfigEntry.Gui.RequiresRestart
     public float discardChance;
-    @ConfigEntry.Gui.Excluded
+    @ConfigEntry.Gui.RequiresRestart
     public boolean offset;
-    @ConfigEntry.Gui.Excluded
+    @ConfigEntry.Gui.RequiresRestart
     public boolean trapezoid;
 
     /**

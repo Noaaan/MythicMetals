@@ -7,6 +7,7 @@ import net.minecraft.item.MusicDiscItem;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
 
 @SuppressWarnings("unused")
@@ -17,12 +18,12 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item BANGLUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BRONZE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item CARMOT_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item CELESTIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item CELESTIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.RARE));
     public static final Item DURASTEEL_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item HALLOWED_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item HALLOWED_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item KYBER_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MANGANESE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item METALLURGIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof());
+    public static final Item METALLURGIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.RARE));
     public static final Item MIDAS_GOLD_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MYTHRIL_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item ORICHALCUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
@@ -38,7 +39,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item STEEL_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item STORMYX_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item TIN_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item UNOBTAINIUM = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof());
+    public static final Item UNOBTAINIUM = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.UNCOMMON));
     public static final Item VERMICULITE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
     // Raw Ores
@@ -67,13 +68,13 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item BANGLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BRONZE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item CARMOT_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item CELESTIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item CELESTIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.RARE));
     public static final Item COPPER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item DURASTEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item HALLOWED_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item HALLOWED_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item KYBER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MANGANESE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item METALLURGIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof());
+    public static final Item METALLURGIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.RARE));
     public static final Item MIDAS_GOLD_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MYTHRIL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item ORICHALCUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
@@ -95,14 +96,14 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item BANGLUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BRONZE_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item CARMOT_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item CELESTIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item CELESTIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.RARE));
     public static final Item COPPER_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item DURASTEEL_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item GOLD_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item HALLOWED_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item HALLOWED_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item KYBER_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MANGANESE_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item METALLURGIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof());
+    public static final Item METALLURGIUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.RARE));
     public static final Item MIDAS_GOLD_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MYTHRIL_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item ORICHALCUM_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));

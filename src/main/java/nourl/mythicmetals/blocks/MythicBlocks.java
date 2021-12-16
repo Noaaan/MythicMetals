@@ -31,7 +31,10 @@ public class MythicBlocks {
             .createAnvilSet(5, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet CARMOT = BlockSet.Builder.begin("carmot", false)
-            .createDefaultSet(4, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
+            .createDefaultSet(4.5F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
+            .strength(5.5F, 12).sounds(BlockSoundGroup.DEEPSLATE)
+            .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
+            .finish();
 
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
             .createAnvilSet(10, 15, NETHERITE_MINING_LEVEL).finish();

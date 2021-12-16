@@ -1,0 +1,24 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "tag": "mythicmetals:banglum_ores"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:banglum_ingot",
+    "count": 2
+  },
+  "overrides": {
+    "2": {
+      "id": "mythicmetals:banglum_ingot",
+      "count": 3
+    },
+    "3+": {
+      "id": "mythicmetals:banglum_ingot",
+      "count": 4
+    }
+  },
+  "min_forge_tier": 1,
+  "fuel_per_tick": 5
+}
