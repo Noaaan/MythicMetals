@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "v v",
+    " v "
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:quadrillum_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:bucket",
+    "count": 1
+  }
+}

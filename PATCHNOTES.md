@@ -2,9 +2,12 @@
 Ores have recieved new height ranges! Be sure to double check your config if you are a modpack creator, 
 or simply delete your old config file to update your ore spawns.  
 A deepslate variant of Carmot was added.  
-A new debug command was added, which dumps all the height ranges of ores.  
-Various items recieved rarity tweaks.  
-
+A new debug command was added (`/mythicmetals range everything`), which dumps all the height ranges of ores.  
+Higher tier items recieved some rarity tweaks.  
+Palladium was buffed. It now (boringly) gives fire resistance, and follows you with firey particles.  
+Added recipes for forging ore blocks into ingots.  
+Gave Quadrillum some useful industrial recipes.  
+Turned Vermiculite into a fertilizer (bone meal).  
 
 # 0.11.0  
 Full port to 1.18!  

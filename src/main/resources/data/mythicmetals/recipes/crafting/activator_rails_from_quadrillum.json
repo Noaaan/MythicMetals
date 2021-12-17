@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "vev",
+    "viv",
+    "vev"
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:quadrillum_ingot"
+    },
+    "i": {
+      "item": "minecraft:redstone_torch"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "minecraft:activator_rail",
+    "count": 6
+  }
+}

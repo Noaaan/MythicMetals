@@ -2,6 +2,7 @@ package nourl.mythicmetals.item;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.sound.SoundEvent;
@@ -40,7 +41,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item STORMYX_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item TIN_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item UNOBTAINIUM = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.UNCOMMON));
-    public static final Item VERMICULITE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item VERMICULITE = new BoneMealItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
     // Raw Ores
     public static final Item RAW_ADAMANTITE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));

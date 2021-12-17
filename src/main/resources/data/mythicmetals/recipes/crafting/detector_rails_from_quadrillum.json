@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "v v",
+    "viv",
+    "vev"
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:quadrillum_ingot"
+    },
+    "i": {
+      "item": "minecraft:stone_pressure_plate"
+    },
+    "e": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "minecraft:detector_rail",
+    "count": 6
+  }
+}
