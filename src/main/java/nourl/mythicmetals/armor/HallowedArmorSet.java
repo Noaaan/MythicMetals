@@ -11,29 +11,30 @@ import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
 
-public class ArmorSet {
+public class HallowedArmorSet extends ArmorSet {
 
-    private final ArmorItem helmet;
-    private final ArmorItem chestplate;
-    private final ArmorItem leggings;
+    private final HallowedArmor helmet;
+    private final HallowedArmor chestplate;
+    private final HallowedArmor leggings;
     private final ArmorItem boots;
 
-    public static ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
+    private static HallowedArmor baseArmorItem(EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
-        return new ArmorItem(material, slot, settings);
+        return new HallowedArmor(slot, settings);
     }
 
-    public ArmorSet(ArmorMaterial material) {
+    public HallowedArmorSet(ArmorMaterial material) {
         this(material, settings -> {
         });
     }
 
-    public ArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
-        this.helmet = baseArmorItem(material, EquipmentSlot.HEAD, settingsProcessor);
-        this.chestplate = baseArmorItem(material, EquipmentSlot.CHEST, settingsProcessor);
-        this.leggings = baseArmorItem(material, EquipmentSlot.LEGS, settingsProcessor);
-        this.boots = baseArmorItem(material, EquipmentSlot.FEET, settingsProcessor);
+    public HallowedArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
+        super(material);
+        this.helmet = baseArmorItem(EquipmentSlot.HEAD, settingsProcessor);
+        this.chestplate = baseArmorItem(EquipmentSlot.CHEST, settingsProcessor);
+        this.leggings = baseArmorItem(EquipmentSlot.LEGS, settingsProcessor);
+        this.boots = ArmorSet.baseArmorItem(ArmorMaterials.HALLOWED, EquipmentSlot.FEET, settingsProcessor);
     }
 
     public void register(String name) {

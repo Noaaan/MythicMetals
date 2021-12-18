@@ -19,6 +19,9 @@
     "main": [
       "nourl.mythicmetals.MythicMetals"
     ],
+    "client": [
+      "nourl.mythicmetals.MythicMetalsClient"
+    ],
     "rei_plugins": [
       "nourl.mythicmetals.compat.MythicMetalsPlugin"
     ],
