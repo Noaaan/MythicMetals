@@ -63,7 +63,7 @@ public enum ToolMaterials implements ToolMaterial {
     RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
         return Ingredient.ofItems(MythicItems.RUNITE_INGOT);
     }),
-    STAR_PLATINUM(3, 1300, 9F, 3.0F, 18, () -> {
+    STAR_PLATINUM(3, 1300, 9.0F, 3.0F, 18, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
     }),
     STEEL(3, 600, 7.0F, 2.5F, 11, () -> {
