@@ -8,10 +8,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class ArmorModel extends BipedEntityModel<LivingEntity> {
+public class HelmetModel extends BipedEntityModel<LivingEntity> {
     final EquipmentSlot slot;
 
-    public ArmorModel(ModelPart root, EquipmentSlot slot) {
+    public HelmetModel(ModelPart root, EquipmentSlot slot) {
         super(root);
         this.slot = slot;
     }
@@ -59,13 +59,8 @@ public class ArmorModel extends BipedEntityModel<LivingEntity> {
 
     private void renderArmorPart(EquipmentSlot slot) {
         setVisible(false);
-        switch (slot) {
-            case HEAD -> head.visible = true;
-            case CHEST -> {
-                body.visible = true;
-                rightArm.visible = true;
-                leftArm.visible = true;
-            }
+        if (slot == EquipmentSlot.HEAD) {
+            head.visible = true;
         }
     }
 

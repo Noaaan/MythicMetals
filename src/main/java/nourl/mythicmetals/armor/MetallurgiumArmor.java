@@ -4,7 +4,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ArmorItem;
@@ -15,17 +14,17 @@ import nourl.mythicmetals.utils.ModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
-public class HallowedArmor extends ArmorItem {
+public class MetallurgiumArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
     public final EquipmentSlot slot;
 
-    public HallowedArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.HALLOWED, slot, settings);
+    public MetallurgiumArmor(EquipmentSlot slot, Settings settings) {
+        this(ArmorMaterials.METALLURGIUM, slot, settings);
     }
 
-    public HallowedArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
+    public MetallurgiumArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
         super(material, slot, settings);
         this.slot = slot;
     }
@@ -41,12 +40,13 @@ public class HallowedArmor extends ArmorItem {
     @Environment(EnvType.CLIENT)
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
-        var root = models.getModelPart(ModelHandler.HALLOWED);
-        return new ArmorModel(root, slot);
+        var root = models.getModelPart(ModelHandler.METALLURGIUM);
+        return new HelmetModel(root, slot);
     }
 
     @NotNull
-    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
-        return RegistryHelper.id("textures/models/hallowed_model.png");
+    @Override
+    public final Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+        return RegistryHelper.id("textures/models/metallurgium_model.png");
     }
 }

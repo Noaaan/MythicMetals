@@ -59,7 +59,7 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (RegisterTags.PALLADIUM_ARMOR.contains(armorItems.getItem())) {
-                this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 4, 0, true, false, true));
+//                this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 4, 0, true, false, true));
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(5) < 1) {
                     ClientParticles.setParticleCount(1);

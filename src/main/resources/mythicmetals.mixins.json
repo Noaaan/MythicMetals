@@ -4,6 +4,7 @@
   "package": "nourl.mythicmetals.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "AccessorEntityModelLayers",
     "AnvilScreenHandlerMixin",
     "ArmorItemMixin",
     "DefaultedRegistryMixin",

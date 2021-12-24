@@ -2,139 +2,89 @@ package nourl.mythicmetals.armor;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.math.MathHelper;
 
-public class HallowedArmorModel extends BipedEntityModel<LivingEntity> {
-
-    private final ModelPart ROOT;
-
-    private final ModelPart HEAD;
-    private final ModelPart RIGHTWING;
-    private final ModelPart LEFTWING;
-    private final ModelPart BODY;
-    private final ModelPart RIGHTARM;
-    private final ModelPart LEFTARM;
-    private final ModelPart RIGHTLEG;
-    private final ModelPart LEFTLEG;
-    private final ModelPart LBOOT;
-    private final ModelPart RBOOT;
+public class HallowedArmorModel {
+    public final ModelPart head;
+    public final ModelPart hat;
+    public final ModelPart body;
+    public final ModelPart rightArm;
+    public final ModelPart leftArm;
 
     public HallowedArmorModel(ModelPart root) {
-        super(root);
-        this.ROOT = root;
-        this.HEAD = root.getChild("head");
-        this.RIGHTWING = root.getChild("rightWing");
-        this.LEFTWING = root.getChild("leftWing");
-        this.BODY = root.getChild("body");
-        this.RIGHTARM = root.getChild("right_arm");
-        this.LEFTARM = root.getChild("left_arm");
-        this.RIGHTLEG = root.getChild("right_leg");
-        this.LEFTLEG = root.getChild("left_leg");
-        this.LBOOT = root.getChild("lboot");
-        this.RBOOT = root.getChild("rboot");
+        this.head = root.getChild("head");
+        this.hat = root.getChild("hat");
+        this.body = root.getChild("body");
+        this.rightArm = root.getChild("right_arm");
+        this.leftArm = root.getChild("left_arm");
     }
 
-    public static TexturedModelData getTexturedModelData() {
+    public static ModelData getModelData() {
         ModelData data = new ModelData();
-        ModelPartData root = data.getRoot();
-        root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
+        var root = data.getRoot();
 
-        ModelPartData HEAD = root.addChild(
+        root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addChild("left_leg", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addChild("right_leg", ModelPartBuilder.create(), ModelTransform.NONE);
+
+        ModelPartData head = root.addChild(
                 "head",
                 ModelPartBuilder.create()
                         .uv(0, 0)
-                        .mirrored(false)
                         .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F))
                         .uv(32, 0)
-                        .mirrored(false)
                         .cuboid(-1.0F, -7.3F, -6.2F, 2.0F, 2.0F, 1.0F, new Dilation(0.2F)),
-                ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+                ModelTransform.NONE
                 );
 
-        ModelPartData RightWing = HEAD.addChild(
-                "rightWing",
+        head.addChild(
+                "right_wing",
                 ModelPartBuilder.create()
                         .uv(16, 32)
-                        .mirrored(false)
-                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.0F)),
+                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.01F)),
                 ModelTransform.of(-5.5269F, -6.9135F, -0.4809F, 0.1745F, -0.2182F, 0.0F)
                 );
 
-        ModelPartData LeftWing = HEAD.addChild(
-                "leftWing",
+        head.addChild(
+                "left_wing",
                 ModelPartBuilder.create()
                         .uv(26, 39)
-                        .mirrored(false)
-                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.0F)),
+                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.01F)),
                 ModelTransform.of(5.5269F, -6.9135F, 0.5191F, 0.1745F, 0.2182F, 0.0F)
                 );
 
-        ModelPartData BODY = root.addChild(
+        var body = root.addChild(
                 "body",
                 ModelPartBuilder.create()
                         .uv(16, 16)
-                        .mirrored(false)
-                        .cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.5F))
-                        .uv(32, 0)
-                        .mirrored(false)
-                        .cuboid(-1.0F, 4.0F, -3.1F, 2.0F, 2.0F, 1.0F, new Dilation(0.2F)),
-                ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+                        .cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.8F)),
+                ModelTransform.NONE
                 );
+        body.addChild(
+                "helm_crystal",
+                ModelPartBuilder.create()
+                .uv(32, 0)
+                .cuboid(-1.0F, 4.0F, -3.1F, 2.0F, 2.0F, 1.0F, new Dilation(0.35F)),
+                ModelTransform.NONE
+        );
 
-        ModelPartData RIGHTARM = root.addChild(
+        var right_arm = root.addChild(
                 "right_arm",
                 ModelPartBuilder.create()
                         .uv(40, 32)
-                        .mirrored(false)
-                        .cuboid(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.52F)),
-                ModelTransform.of(-5.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+                        .cuboid(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.7F)),
+                ModelTransform.pivot(-5.0F, 2.0F, 0.0F)
                 );
-
-        ModelPartData LEFTARM = root.addChild(
+        var left_arm = root.addChild(
                 "left_arm",
                 ModelPartBuilder.create()
                         .uv(40, 16)
-                        .mirrored(false)
-                        .cuboid(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.52F)),
-                ModelTransform.of(5.0F, 2.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+                        .cuboid(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(.7F)),
+                ModelTransform.pivot(5.0F, 2.0F, 0.0F)
                 );
-
-        ModelPartData RIGHTLEG = root.addChild(
-                "right_leg",
-                ModelPartBuilder.create()
-                        .uv(0, 48)
-                        .mirrored(true)
-                        .cuboid(-2.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F)),
-                ModelTransform.of(-1.9F, 12.0F, 0.0F, 0.0F, 0.0F, 0.0F)
-                );
-
-        ModelPartData LEFTLEG = root.addChild(
-                "left_leg",
-                ModelPartBuilder.create()
-                        .uv(16, 48)
-                        .mirrored(false)
-                        .cuboid(-2.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.25F)),
-                ModelTransform.of(1.9F, 12.0F, 0.0F, 0.0F, 0.0F, 0.0F)
-                );
-
-        ModelPartData LBOOT = root.addChild(
-                "lboot",
-                ModelPartBuilder.create()
-                        .uv(0, 16)
-                        .mirrored(false)
-                        .cuboid(-2.0F, -6.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.52F)),
-                ModelTransform.of(1.9F, 18.0F, 0.0F, 0.0F, 0.0F, 0.0F)
-                );
-
-        ModelPartData RBOOT = root.addChild(
-                "rboot",
-                ModelPartBuilder.create()
-                        .uv(0, 32)
-                        .mirrored(false)
-                        .cuboid(-2.0F, -6.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.51F)),
-                ModelTransform.of(-1.9F, 18.0F, 0.0F, 0.0F, 0.0F, 0.0F)
-                );
-
-        return TexturedModelData.of(data, 64, 64);
+        root.createPart(64, 64);
+        return data;
     }
 }

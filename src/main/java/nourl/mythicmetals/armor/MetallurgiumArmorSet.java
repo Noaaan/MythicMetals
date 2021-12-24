@@ -11,30 +11,30 @@ import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
 
-public class HallowedArmorSet extends ArmorSet {
+public class MetallurgiumArmorSet extends ArmorSet {
 
-    private final HallowedArmor helmet;
-    private final HallowedArmor chestplate;
+    private final MetallurgiumArmor helmet;
+    private final ArmorItem chestplate;
     private final ArmorItem leggings;
     private final ArmorItem boots;
 
-    private static HallowedArmor baseHallowedArmor(EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
+    private static MetallurgiumArmor makeMetallurgiumHelmet(Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
-        return new HallowedArmor(slot, settings);
+        return new MetallurgiumArmor(EquipmentSlot.HEAD, settings);
     }
 
-    public HallowedArmorSet(ArmorMaterial material) {
+    public MetallurgiumArmorSet(ArmorMaterial material) {
         this(material, settings -> {
         });
     }
 
-    public HallowedArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
+    public MetallurgiumArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
         super(material);
-        this.helmet = baseHallowedArmor(EquipmentSlot.HEAD, settingsProcessor);
-        this.chestplate = baseHallowedArmor(EquipmentSlot.CHEST, settingsProcessor);
-        this.leggings = baseArmorItem(ArmorMaterials.HALLOWED, EquipmentSlot.LEGS, settingsProcessor);
-        this.boots = baseArmorItem(ArmorMaterials.HALLOWED, EquipmentSlot.FEET, settingsProcessor);
+        this.helmet = makeMetallurgiumHelmet(settingsProcessor);
+        this.chestplate = baseArmorItem(ArmorMaterials.METALLURGIUM, EquipmentSlot.CHEST, settingsProcessor);
+        this.leggings = baseArmorItem(ArmorMaterials.METALLURGIUM, EquipmentSlot.LEGS, settingsProcessor);
+        this.boots = baseArmorItem(ArmorMaterials.METALLURGIUM, EquipmentSlot.FEET, settingsProcessor);
     }
 
     public void register(String name) {
