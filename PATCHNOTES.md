@@ -4,10 +4,21 @@ or simply delete your old config file to update your ore spawns.
 A deepslate variant of Carmot was added.  
 A new debug command was added (`/mythicmetals range everything`), which dumps all the height ranges of ores.  
 Higher tier items recieved some rarity tweaks.  
-Palladium was buffed. It now (boringly) gives fire resistance, and follows you with firey particles.  
+New ore textures for Osmium, Runite, Tin, and Silver.  
+Turned Vermiculite into an actual fertilizer (bone meal).  
+
+__Balance changes:__  
+Palladium recieved multiple QOL features, like being able to stand on magma blocks, campfires, and in powder snow.    
 Added recipes for forging ore blocks into ingots.  
-Gave Quadrillum some useful industrial recipes.  
-Turned Vermiculite into a fertilizer (bone meal).  
+Gave Quadrillum some useful industrial recipes (buckets, shears, rails, hoppers).  
+Slightly reduced enchantability of quadrillum, as well as increasing its damage.  
+Reduced osmium armor values, but in return gave it knockback resistance, more durability, and armor toughness.  
+Increased the durability of Hallowed gear.  
+Increased the armor of runite and Kyber.  
+Tweaked the armor values of star platinum and silver.  
+Reduced the armor of aquarium, but increased the durability of its gear.  
+Globally increased the armor values of **all** boots.  
+
 
 # 0.11.0  
 Full port to 1.18!  

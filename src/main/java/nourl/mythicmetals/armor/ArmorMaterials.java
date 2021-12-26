@@ -19,7 +19,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.ADAMANTITE_INGOT);
     }),
-    AQUARIUM("aquarium", 16, new int[]{2, 5, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+    AQUARIUM("aquarium", 20, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.AQUARIUM_INGOT);
     }),
     BANGLUM("banglum", 14, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
@@ -40,10 +40,10 @@ public enum ArmorMaterials implements ArmorMaterial {
     DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
-    HALLOWED("hallowed", 37, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
+    HALLOWED("hallowed", 40, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);
     }),
-    KYBER("kyber", 19, new int[]{2, 6, 8, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+    KYBER("kyber", 19, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.KYBER_INGOT);
     }),
     METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.2F, () -> {
@@ -55,10 +55,10 @@ public enum ArmorMaterials implements ArmorMaterial {
     MYTHRIL("mythril", 28, new int[]{3, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.MYTHRIL_INGOT);
     }),
-    ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.1F, () -> {
+    ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT);
     }),
-    OSMIUM("osmium", 16, new int[]{2, 5, 7, 2}, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.05F, () -> {
+    OSMIUM("osmium", 22, new int[]{1, 4, 5, 2}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.OSMIUM_INGOT);
     }),
     PALLADIUM("palladium", 28, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
@@ -67,13 +67,13 @@ public enum ArmorMaterials implements ArmorMaterial {
     PROMETHEUM("prometheum", 18, new int[]{3, 6, 8, 3}, 17, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.PROMETHEUM_INGOT);
     }),
-    RUNITE("runite", 27, new int[]{3, 6, 7, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {
+    RUNITE("runite", 27, new int[]{3, 6, 8, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.RUNITE_INGOT);
     }),
-    SILVER("silver", 8, new int[]{2, 3, 5, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
+    SILVER("silver", 8, new int[]{1, 3, 4, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.SILVER_INGOT);
     }),
-    STAR_PLATINUM("star_platinum", 34, new int[]{3, 6, 8, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.5F, 0.1F, () -> {
+    STAR_PLATINUM("star_platinum", 34, new int[]{3, 7, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
     }),
     STEEL("steel", 19, new int[]{2, 5, 7, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
@@ -84,7 +84,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     });
 
 
-    private static final int[] BASE_DURABILITY = new int[]{12, 15, 16, 11};
+    private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 12};
     private final String name;
     private final int durabilityMultiplier;
     private final int[] protectionAmounts;
