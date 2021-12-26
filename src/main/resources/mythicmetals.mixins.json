@@ -7,8 +7,10 @@
     "AccessorEntityModelLayers",
     "AnvilScreenHandlerMixin",
     "ArmorItemMixin",
+    "CampfireBlockMixin",
     "DefaultedRegistryMixin",
     "LivingEntityMixin",
+    "MagmaBlockMixin",
     "RecipeManagerMixin"
   ],
   "client": [],

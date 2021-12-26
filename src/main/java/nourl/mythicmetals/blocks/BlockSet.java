@@ -376,6 +376,18 @@ public class BlockSet {
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
         }
+        /**
+         * A special method for the creation of storage blocks that copies Amethyst Blocks.
+         * @param miningLevel   The mining level of the block.
+         * @see Blocks#AMETHYST_BLOCK
+         * @see AmethystBlock
+         */
+        public Builder createAmethystStorageBlock(Identifier miningLevel) {
+            this.storageBlock = new AmethystBlock(blockSettings(Material.AMETHYST, currentHardness, currentResistance, BlockSoundGroup.AMETHYST_BLOCK));
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
+            return this;
+        }
 
         /**
          * Create a storage block for metals.

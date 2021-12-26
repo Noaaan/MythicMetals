@@ -16,7 +16,9 @@ https://www.curseforge.com/minecraft/mc-mods/mythicmetals
 
 This mod is now licensed under MIT. Please read it before using any code.  
 You can use this mod as an example/base for adding in blocks, ingots, armor, tools, and ore generation for Fabric mods.  
-Feel free to use this in any modpack you wish for. I might feature them on this page!  
+Feel free to use this in any modpack you wish for. I might feature them on CurseForge/Modrinth!  
+Some modpacks that use Mythic Metals:  
+* Euphoric Curiosities: 
 
 ## Credits
 
@@ -29,13 +31,16 @@ LambdAurora, for her readme on how to use Gradle.
 BoogieMonster1O1, for giving me pointers about Mixins.  
 misode, for his loot table generator.  
 My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
-My friends revanitez, drakath9, glisco and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
+My friends revanitez, drakath9, and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 Flytre, for helping with the RecipeManager Mixin.  
 Spxtreofficial, for his LivingEntityMixin.  
+glisco, for his multiple commits helping the backend of the code.  
 The incredible music talent from Jan_Boyega.  
 
-DH, Temreno, Tector, Pois1x, Henchman, RGBeet, Windy and Shiftless for making awesome new textures for the mod.  
+**The artists:**  
+DH, Temreno, Tector, Pois1x, Henchman, RGBeet, Windy, Shiftless, and Haunted Chest.   
+Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  
   
 And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.  
@@ -47,16 +52,3 @@ These people have helped translating the mod into different languages. Thank you
 * DH for the macedonian translation.
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
-  
-
-
-## Compatability  
-Mythic Metals is compatible with multiple mods. It uses common tag conventions which automatically lets materials from this mod be used in others.  
-Currently we actively support these mods:  
-TechReborn: https://github.com/TechReborn/TechReborn  
-Starry Skies: https://github.com/DaFuqs/StarrySky  
-Mechanix: https://github.com/Flytre/Mechanix  
-Modern Industrialization: https://github.com/AztechMC/Modern-Industrialization  
-Alloy Forgery: https://github.com/LordDeatHunter/Alloy-Forgery/  
-
-Feel free to suggest any mods that could work with Mythic Metals.  

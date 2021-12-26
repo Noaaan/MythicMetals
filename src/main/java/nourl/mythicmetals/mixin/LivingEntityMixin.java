@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -28,7 +29,7 @@ import java.util.Random;
 public abstract class LivingEntityMixin extends Entity {
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
-    @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
+    @Shadow public abstract boolean canFreeze();
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -36,7 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
     Random r = new Random();
 
     @Inject(method = "tick", at = @At("HEAD"))
-    private void tick(CallbackInfo info) {
+    private void tick(CallbackInfo ci) {
         addArmorEffects();
     }
 
@@ -59,7 +60,6 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (RegisterTags.PALLADIUM_ARMOR.contains(armorItems.getItem())) {
-//                this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 4, 0, true, false, true));
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(5) < 1) {
                     ClientParticles.setParticleCount(1);

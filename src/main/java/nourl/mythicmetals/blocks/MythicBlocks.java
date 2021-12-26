@@ -126,7 +126,7 @@ public class MythicBlocks {
             .createStarriteOreVariant("calcite", DIAMOND_MINING_LEVEL, UniformIntProvider.create(3, 6))
             .sounds(BlockSoundGroup.STONE).strength(5.0F)
             .createStarriteOreVariant("end_stone", NETHERITE_MINING_LEVEL, UniformIntProvider.create(3, 6))
-            .createStorageBlock(BlockSoundGroup.AMETHYST_BLOCK, NETHERITE_MINING_LEVEL)
+            .createAmethystStorageBlock(NETHERITE_MINING_LEVEL)
             .finish();
 
     public static final BlockSet STEEL = BlockSet.Builder.begin("steel", false)
