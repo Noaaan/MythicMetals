@@ -38,7 +38,8 @@
     "fabric": ">=0.36.0",
     "minecraft": "1.18.x",
     "cloth-config2": ">=5.0.30",
-    "java": ">=17"
+    "java": ">=17",
+    "owo": ">=0.3.10+1.18"
 
   },
   "suggests": {
