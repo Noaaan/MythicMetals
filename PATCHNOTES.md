@@ -1,4 +1,4 @@
-# 0.11.x  
+# 0.11.1  
 Ores have recieved new height ranges! Be sure to double check your config if you are a modpack creator, 
 or simply delete your old config file to update your ore spawns.  
 A deepslate variant of Carmot was added.  
@@ -6,6 +6,8 @@ A new debug command was added (`/mythicmetals range everything`), which dumps al
 Higher tier items recieved some rarity tweaks.  
 New ore textures for Osmium, Runite, Tin, and Silver.  
 Turned Vermiculite into an actual fertilizer (bone meal).  
+Added a CATLOL translation.  
+Added new textures for Star Platinum, mainly tools.  
 
 __Balance changes:__  
 Palladium recieved multiple QOL features, like being able to stand on magma blocks, campfires, and in powder snow.    
