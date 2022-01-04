@@ -17,9 +17,11 @@ Slightly reduced enchantability of quadrillum, as well as increasing its damage.
 Reduced osmium armor values, but in return gave it knockback resistance, more durability, and armor toughness.  
 Increased the durability of Hallowed gear.  
 Increased the armor of runite and Kyber.  
-Tweaked the armor values of star platinum and silver.  
+Tweaked the armor values of silver.  
 Reduced the armor of aquarium, but increased the durability of its gear.  
 Globally increased the armor values of **all** boots.  
+Buffed Osmiums mining level.  
+Tewaked Star Platinums armor values, and increased its attack speed slightly.  
 
 
 # 0.11.0  

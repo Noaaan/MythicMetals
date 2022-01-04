@@ -43,30 +43,36 @@ public class OreFeatureHelper {
 
     public static void modBiomeOres(String modId, String path, RegistryKey<PlacedFeature> ore) {
         if (FabricLoader.getInstance().isModLoaded(modId)) {
-            BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier(modId, path))), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+            BiomeModifications.addFeature(
+                    BiomeSelectors.includeByKey(RegistryKey.of(Registry.BIOME_KEY, new Identifier(modId, path))),
+                    GenerationStep.Feature.UNDERGROUND_ORES, ore);
         }
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
-        var feature = Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance));
+        var feature = Feature.ORE.configure(
+                new OreFeatureConfig(targets, config.veinSize, config.discardChance));
         RegistryHelper.configuredFeature(name, feature);
         return feature;
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, RuleTest rule, Block block, OreConfig config) {
-        var feature = Feature.ORE.configure(new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
+        var feature = Feature.ORE.configure(
+                new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
         RegistryHelper.configuredFeature(name, feature);
         return feature;
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
-        var feature = Feature.ORE.configure(new OreFeatureConfig(targets, config.veinSize, config.discardChance));
+        var feature = Feature.ORE.configure(
+                new OreFeatureConfig(targets, config.veinSize, config.discardChance));
         RegistryHelper.configuredFeature(name, feature);
         return feature;
     }
 
     public static ConfiguredFeature<OreFeatureConfig, ?> createConfiguredFeature(String name, RuleTest rule, Block block, VariantConfig config) {
-        var feature = Feature.ORE.configure(new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
+        var feature = Feature.ORE.configure(
+                new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
         RegistryHelper.configuredFeature(name, feature);
         return feature;
     }
@@ -121,62 +127,74 @@ public class OreFeatureHelper {
 
     public static PlacedFeature uniform(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature uniform(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature uniform(String name, RuleTest rule, Block block, OreConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature uniform(String name, RuleTest rule, Block block, VariantConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature aboveBottom(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature aboveBottom(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature aboveBottom(String name, RuleTest rule, Block block, OreConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature aboveBottom(String name, RuleTest rule, Block block, VariantConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature trapezoid(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature trapezoid(String name, RuleTest rule, Block block, OreConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature trapezoid(String name, RuleTest rule, Block block, VariantConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static PlacedFeature trapezoid(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
-        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk), HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
+        return feature.withPlacement(modifiers(CountPlacementModifier.of(config.perChunk),
+                HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
     public static RegistryKey<PlacedFeature> placedFeatureKey(String string) {

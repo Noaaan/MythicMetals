@@ -445,8 +445,8 @@ public class BlockSet {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
             this.oreStorageBlock = new Block(settings);
-            miningLevels.put(storageBlock, miningLevel);
-            miningLevels.put(storageBlock, PICKAXE);
+            miningLevels.put(oreStorageBlock, miningLevel);
+            miningLevels.put(oreStorageBlock, PICKAXE);
             return this;
         }
 

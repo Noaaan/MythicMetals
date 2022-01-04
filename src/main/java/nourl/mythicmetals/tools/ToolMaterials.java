@@ -48,7 +48,7 @@ public enum ToolMaterials implements ToolMaterial {
     ORICHALCUM(4, 2048, 6.0F, 4.0F, 16, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT);
     }),
-    OSMIUM(2, 584, 7.0F, 2.0F, 13, () -> {
+    OSMIUM(3, 584, 7.0F, 2.0F, 13, () -> {
         return Ingredient.ofItems(MythicItems.OSMIUM_INGOT);
     }),
     PALLADIUM(4, 1234, 8.0F, 3.5F, 16, () -> {
