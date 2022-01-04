@@ -1,0 +1,38 @@
+{
+  "parent": "mythicmetals:hallowed",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.unobtainium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.unobtainium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:deepslate_unobtainium_ore"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "the_unobtained": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:unobtainium",
+              "mythicmetals:unobtainium_block",
+              "mythicmetals:unobtainium_ore",
+              "mythicmetals:deepslate_unobtainium_ore"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 200
+  }
+}

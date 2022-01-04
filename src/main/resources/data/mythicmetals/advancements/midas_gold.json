@@ -1,0 +1,33 @@
+{
+  "parent": "mythicmetals:root",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.midas_gold.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.midas_gold.description"
+    },
+    "icon": {
+      "item": "mythicmetals:midas_gold_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "there_is_gold_here": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_midas_gold",
+              "mythicmetals:midas_gold_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

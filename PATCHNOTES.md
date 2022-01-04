@@ -8,6 +8,7 @@ New ore textures for Osmium, Runite, Tin, and Silver.
 Turned Vermiculite into an actual fertilizer (bone meal).  
 Added a CATLOL translation.  
 Added new textures for Star Platinum, mainly tools.  
+Added low level documentation in the form of Advancements!  
 
 __Balance changes:__  
 Palladium recieved multiple QOL features, like being able to stand on magma blocks, campfires, and in powder snow.    

@@ -1,0 +1,33 @@
+{
+  "parent": "mythicmetals:root",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.banglum.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.banglum.description"
+    },
+    "icon": {
+      "item": "mythicmetals:banglum_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "big_bang": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_banglum",
+              "mythicmetals:banglum_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

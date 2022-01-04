@@ -1,0 +1,33 @@
+{
+  "parent": "mythicmetals:aquarium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.osmium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.osmium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:osmium_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gliscos_favorite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_osmium",
+              "mythicmetals:osmium_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

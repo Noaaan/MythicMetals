@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:adamantite",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.hallowed.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.hallowed.description"
+    },
+    "icon": {
+      "item": "mythicmetals:hallowed_ingot"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "hallowed_bars": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:hallowed_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

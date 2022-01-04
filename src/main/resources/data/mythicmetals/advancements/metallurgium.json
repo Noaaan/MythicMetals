@@ -1,0 +1,35 @@
+{
+  "parent": "mythicmetals:unobtainium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.metallurgium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.metallurgium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:metallurgium_ingot"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "immovable_object": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:metallurgium_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "mythicmetals:stormyx",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.palladium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.palladium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:palladium_ore"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "feel_the_heat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_palladium",
+              "mythicmetals:palladium_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

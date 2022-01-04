@@ -1,0 +1,33 @@
+{
+  "parent": "mythicmetals:banglum",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.aquarium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.aquarium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:aquarium_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fishy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_aquarium",
+              "mythicmetals:aquarium_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

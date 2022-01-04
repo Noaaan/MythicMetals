@@ -1,0 +1,36 @@
+{
+  "parent": "mythicmetals:mythril",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.orichalcum.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.orichalcum.description"
+    },
+    "icon": {
+      "item": "mythicmetals:deepslate_orichalcum_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "orich": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_orichalcum",
+              "mythicmetals:orichalcum_ore",
+              "mythicmetals:deepslate_orichalcum_ore",
+              "mythicmetals:tuff_orichalcum_ore",
+              "mythicmetals:smooth_basalt_orichalcum_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

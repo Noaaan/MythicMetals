@@ -1,0 +1,34 @@
+{
+  "parent": "mythicmetals:durasteel",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.adamantite.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.adamantite.description"
+    },
+    "icon": {
+      "item": "mythicmetals:deepslate_adamantite_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "addy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_adamantite",
+              "mythicmetals:adamantite_ore",
+              "mythicmetals:deepslate_adamantite_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

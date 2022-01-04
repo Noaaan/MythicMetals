@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:banglum",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.durasteel.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.durasteel.description"
+    },
+    "icon": {
+      "item": "mythicmetals:durasteel_ingot"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "thats_your_a_tier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:durasteel_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

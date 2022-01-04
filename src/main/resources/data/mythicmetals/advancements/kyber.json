@@ -1,0 +1,34 @@
+{
+  "parent": "mythicmetals:banglum",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.kyber.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.kyber.description"
+    },
+    "icon": {
+      "item": "mythicmetals:calcite_kyber_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "star_wars_baby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_kyber",
+              "mythicmetals:kyber_ore",
+              "mythicmetals:calcite_kyber_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

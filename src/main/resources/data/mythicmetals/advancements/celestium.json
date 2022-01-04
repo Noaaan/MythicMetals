@@ -1,0 +1,35 @@
+{
+  "parent": "mythicmetals:unobtainium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.celestium.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.celestium.description"
+    },
+    "icon": {
+      "item": "mythicmetals:celestium_ingot"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "unstoppable_force": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:celestium_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  }
+}

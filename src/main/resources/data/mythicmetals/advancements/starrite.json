@@ -1,0 +1,35 @@
+{
+  "parent": "mythicmetals:carmot",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.starrite.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.starrite.description"
+    },
+    "icon": {
+      "item": "mythicmetals:end_stone_starrite_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "starcaller": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:starrite",
+              "mythicmetals:starrite_ore",
+              "mythicmetals:calcite_starrite_ore",
+              "mythicmetals:end_stone_starrite_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

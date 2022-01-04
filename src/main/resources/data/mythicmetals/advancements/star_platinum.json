@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:starrite",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.star_platinum.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.star_platinum.description"
+    },
+    "icon": {
+      "item": "mythicmetals:star_platinum"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "jotaro": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:star_platinum"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

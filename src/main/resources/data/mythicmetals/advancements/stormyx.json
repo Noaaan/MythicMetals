@@ -1,0 +1,34 @@
+{
+  "parent": "mythicmetals:midas_gold",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.stormyx.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.stormyx.description"
+    },
+    "icon": {
+      "item": "mythicmetals:stormyx_ore"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "nether_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:raw_stormyx",
+              "mythicmetals:stormyx_ore",
+              "mythicmetals:blackstone_stormyx_ore"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
