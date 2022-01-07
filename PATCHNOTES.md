@@ -1,3 +1,8 @@
+# 0.11.2  
+Hotfix!  
+Fixed crash related to particles.  
+Also forgot to mention that the Custom Armor Models from 1.16 have been re-implemented.  
+
 # 0.11.1  
 Ores have recieved new height ranges! Be sure to double check your config if you are a modpack creator, 
 or simply delete your old config file to update your ore spawns.  
@@ -6,7 +11,7 @@ A new debug command was added (`/mythicmetals range everything`), which dumps al
 Higher tier items recieved some rarity tweaks.  
 New ore textures for Osmium, Runite, Tin, and Silver.  
 Turned Vermiculite into an actual fertilizer (bone meal).  
-Added a CATLOL translation.  
+Added a CATLOL translation.
 Added new textures for Star Platinum, mainly tools.  
 Added low level documentation in the form of Advancements!  
 

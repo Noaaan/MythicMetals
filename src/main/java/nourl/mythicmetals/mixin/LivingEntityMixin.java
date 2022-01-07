@@ -61,9 +61,8 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (RegisterTags.PALLADIUM_ARMOR.contains(armorItems.getItem())) {
                 Vec3d velocity = this.getVelocity();
-                if (velocity.length() >= 0.1 && r.nextInt(5) < 1) {
-                    ClientParticles.setParticleCount(1);
-                    ClientParticles.spawn(ParticleTypes.LAVA, world, getPos(), 0.5D);
+                if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
+                    palladiumParticle();
                 }
             }
         }
@@ -118,6 +117,20 @@ public abstract class LivingEntityMixin extends Entity {
             return true;
         }
         return isConductive;
+    }
+
+    private void palladiumParticle() {
+        // Random ints which cycle between negative and positive
+        int i = r.nextInt(2) * 2 - 1;
+        int j = r.nextInt(2) * 2 - 1;
+        int k = r.nextInt(2) * 2 - 1;
+
+        // Doubles that return between 0 and 1
+        double l = r.nextDouble();
+        double m = r.nextDouble();
+
+        this.world.addParticle(ParticleTypes.LAVA, this.getPos().getX() + l, this.getPos().getY(), this.getPos().getZ() + m, 0.1 * k, 0.1, 0.1 * j);
+
     }
 
 
