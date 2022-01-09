@@ -1,3 +1,9 @@
+#0.x.x
+Split debug command into `/mythicmetals range console` and `/mythicmetals range file`.  
+File will dumb config into CSV, while console will dump the config in a readable format into chat/logs.  
+Added animated stormyx ore textures.  
+Slight texture adjustments.  
+
 # 0.11.2  
 Hotfix!  
 Fixed crash related to particles.  
