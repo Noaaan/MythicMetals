@@ -76,9 +76,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     STAR_PLATINUM("star_platinum", 34, new int[]{3, 7, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
     }),
-    STEEL("steel", 19, new int[]{2, 5, 7, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.STEEL_INGOT);
-    }),
     STORMYX("stormyx", 30, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.STORMYX_INGOT);
     });

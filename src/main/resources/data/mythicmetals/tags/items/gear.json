@@ -21,7 +21,6 @@
     "mythicmetals:runite_helmet",
     "mythicmetals:silver_helmet",
     "mythicmetals:star_platinum_helmet",
-    "mythicmetals:steel_helmet",
     "mythicmetals:stormyx_helmet",
     "mythicmetals:adamantite_chestplate",
     "mythicmetals:aquarium_chestplate",
@@ -43,7 +42,6 @@
     "mythicmetals:runite_chestplate",
     "mythicmetals:silver_chestplate",
     "mythicmetals:star_platinum_chestplate",
-    "mythicmetals:steel_chestplate",
     "mythicmetals:stormyx_chestplate",
     "mythicmetals:adamantite_leggings",
     "mythicmetals:aquarium_leggings",
@@ -65,7 +63,6 @@
     "mythicmetals:runite_leggings",
     "mythicmetals:silver_leggings",
     "mythicmetals:star_platinum_leggings",
-    "mythicmetals:steel_leggings",
     "mythicmetals:stormyx_leggings",
     "mythicmetals:adamantite_boots",
     "mythicmetals:aquarium_boots",
@@ -87,7 +84,6 @@
     "mythicmetals:runite_boots",
     "mythicmetals:silver_boots",
     "mythicmetals:star_platinum_boots",
-    "mythicmetals:steel_boots",
     "mythicmetals:stormyx_boots"
   ]
 }

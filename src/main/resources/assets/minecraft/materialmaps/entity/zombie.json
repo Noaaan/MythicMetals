@@ -288,22 +288,6 @@
     {
       "predicate": {
         "materialPredicate": {
-          "texture": "minecraft:textures/models/armor/steel_layer_1.png"
-        }
-      },
-      "material": "lumiext:armor_metal_transform"
-    },
-    {
-      "predicate": {
-        "materialPredicate": {
-          "texture": "minecraft:textures/models/armor/steel_layer_2.png"
-        }
-      },
-      "material": "lumiext:armor_metal_transform"
-    },
-    {
-      "predicate": {
-        "materialPredicate": {
           "texture": "minecraft:textures/models/armor/stormyx_layer_1.png"
         }
       },
@@ -321,6 +305,38 @@
       "predicate": {
         "materialPredicate": {
           "texture": "minecraft:textures/models/armor/adamantite_layer_1.png"
+        }
+      },
+      "material": "lumiext:armor_metal_transform"
+    },
+    {
+      "predicate": {
+        "materialPredicate": {
+          "texture": "mythicmetals:textures/models/hallowed_model.png"
+        }
+      },
+      "material": "lumiext:armor_metal_transform"
+    },
+    {
+      "predicate": {
+        "materialPredicate": {
+          "texture": "mythicmetals:textures/models/metallurgium_model.png"
+        }
+      },
+      "material": "lumiext:armor_metal_transform"
+    },
+    {
+      "predicate": {
+        "materialPredicate": {
+          "texture": "mythicmetals:textures/models/hallowed_model.png"
+        }
+      },
+      "material": "lumiext:armor_metal_transform"
+    },
+    {
+      "predicate": {
+        "materialPredicate": {
+          "texture": "mythicmetals:textures/models/metallurgium_model.png"
         }
       },
       "material": "lumiext:armor_metal_transform"

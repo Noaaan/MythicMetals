@@ -10,6 +10,8 @@ import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
 
+import java.lang.reflect.Field;
+
 @SuppressWarnings("unused")
 public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     // Arrays for weapon/tool damage: sword, axe, pickaxe, shovel, and hoe
@@ -41,14 +43,13 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet QUADRILLUM = new ToolSet(ToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet RUNITE = new ToolSet(ToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STAR_PLATINUM = new ToolSet(ToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
-    public static final ToolSet STEEL = new ToolSet(ToolMaterials.STEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STORMYX = new ToolSet(ToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
 
     public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 5, -3.0F, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON));
     public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.CELESTIUM, 3, -2.5F, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON));
 
     @Override
-    public void processField(ToolSet toolSet, String name) {
+    public void processField(ToolSet toolSet, String name, Field f) {
         toolSet.register(name);
     }
 

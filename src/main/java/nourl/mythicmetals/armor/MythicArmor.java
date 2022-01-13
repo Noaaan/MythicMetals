@@ -4,6 +4,8 @@ import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
+import java.lang.reflect.Field;
+
 @SuppressWarnings("unused")
 public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet ADAMANTITE = new ArmorSet(ArmorMaterials.ADAMANTITE);
@@ -26,11 +28,10 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet RUNITE = new ArmorSet(ArmorMaterials.RUNITE);
     public static final ArmorSet SILVER = new ArmorSet(ArmorMaterials.SILVER);
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(ArmorMaterials.STAR_PLATINUM);
-    public static final ArmorSet STEEL = new ArmorSet(ArmorMaterials.STEEL);
     public static final ArmorSet STORMYX = new ArmorSet(ArmorMaterials.STORMYX);
 
     @Override
-    public void processField(ArmorSet armorSet, String name) {
+    public void processField(ArmorSet armorSet, String name, Field f) {
         armorSet.register(name);
     }
 
