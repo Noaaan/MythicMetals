@@ -11,6 +11,8 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
 
+import java.lang.reflect.Field;
+
 @SuppressWarnings("unused")
 public class MythicItems implements ItemRegistryContainer {
     //Normal Ingots
@@ -121,7 +123,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item TIN_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
     @Override
-    public boolean shouldProcessField(Item value, String identifier) {
+    public boolean shouldProcessField(Item value, String identifier, Field f) {
         if (identifier.contains("dust")) return MythicMetals.CONFIG.enableDusts;
         if (identifier.contains("nugget")) return MythicMetals.CONFIG.enableNuggets;
         return true;

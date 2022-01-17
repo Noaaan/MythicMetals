@@ -33,7 +33,7 @@ public enum ToolMaterials implements ToolMaterial {
     DURASTEEL(3, 800, 7.0F, 3.5F, 12, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
-    HALLOWED(4, 1562, 12.0F, 5.0F, 20, () -> {
+    HALLOWED(4, 1629, 12.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);
     }),
     KYBER(2, 889, 7.0F, 2.5F, 20, () -> {

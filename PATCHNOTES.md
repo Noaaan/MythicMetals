@@ -1,8 +1,13 @@
-#0.x.x
+#0.11.3
 Split debug command into `/mythicmetals range console` and `/mythicmetals range file`.  
-File will dumb config into CSV, while console will dump the config in a readable format into chat/logs.  
+File will dump config into CSV, while console will dump the config in a readable format into chat/logs.  
 Added animated stormyx ore textures.  
 Slight texture adjustments.  
+Removed steel gear.  
+Shoutouts to Starmute for updating the Terralith compat!  
+
+__Balancing changes:__  
+Hallowed tools recieved a small increase in durability.  
 
 # 0.11.2  
 Hotfix!  
