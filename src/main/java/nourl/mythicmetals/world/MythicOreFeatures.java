@@ -217,10 +217,6 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("lakeside", "jungle_lake", AQUARIUM);
             OreFeatureHelper.modBiomeOres("lakeside", "cold_lake", AQUARIUM);
             OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", AQUARIUM);
-
-            OreFeatureHelper.modBiomeOres("terralith", "dark_ocean", AQUARIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "dark_swamp", AQUARIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", AQUARIUM);
         }
         //Jungle only ores
         if (CONFIG.prometheum.enabled) {
@@ -256,14 +252,14 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("lakeside", "jungle_island", PROMETHEUM);
 
             OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest_lowlands", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "amethyst_canyon", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "coastal_jungle", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "lush_canyon", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "mega_jungle", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "rocky_jungle", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_archipelago", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
+            OreFeatureHelper.modBiomeOres("terralith", "tropical_jungle", PROMETHEUM);
         }
         //Mountain only ores
         if (CONFIG.osmium.enabled) {
@@ -307,20 +303,20 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("traverse", "rolling_hills", OSMIUM);
 
             OreFeatureHelper.modBiomeOres("lakeside", "mountain_lake", OSMIUM);
-
+            
+            OreFeatureHelper.modBiomeOres("terralith", "caldera", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "cloud_forest", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "red_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "salt_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "sandstone_valley_r", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "savanna_heights", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "painted_mountains", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "rocky_mountains", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "stardust_valley", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_volcano", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "yellowstone", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "stony_spires", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "volcanic_peaks", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "volcanic_crater", OSMIUM);
+            OreFeatureHelper.modBiomeOres("terralith", "windswept_spires", OSMIUM);
             OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", OSMIUM);
         }
 
