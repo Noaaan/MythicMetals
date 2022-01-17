@@ -18,7 +18,8 @@ This mod is now licensed under MIT. Please read it before using any code.
 You can use this mod as an example/base for adding in blocks, ingots, armor, tools, and ore generation for Fabric mods.  
 Feel free to use this in any modpack you wish for. I might feature them on CurseForge/Modrinth!  
 Some modpacks that use Mythic Metals:  
-* Euphoric Curiosities: 
+* Euphoric Curiosities: https://www.curseforge.com/minecraft/modpacks/euphoriccuriosity  
+* Medieval Minecraft (Fabric): https://www.curseforge.com/minecraft/modpacks/medieval-minecraft-fabric/  
 
 ## Credits
 
@@ -37,9 +38,19 @@ Flytre, for helping with the RecipeManager Mixin.
 Spxtreofficial, for his LivingEntityMixin.  
 glisco, for his multiple commits helping the backend of the code.  
 The incredible music talent from Jan_Boyega.  
+williewillus, for the implementation of Fabrics ArmorRenderer.  
 
 **The artists:**  
-DH, Temreno, Tector, Pois1x, Henchman, RGBeet, Windy, Shiftless, and Haunted Chest.   
+* DH 
+* Temreno 
+* Tector 
+* Pois1x 
+* Henchman 
+* RGBeet 
+* Windy 
+* Shiftless 
+* Haunted Chest
+
 Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  
   

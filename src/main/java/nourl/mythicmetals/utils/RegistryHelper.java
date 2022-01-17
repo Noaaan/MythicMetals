@@ -64,14 +64,17 @@ public class RegistryHelper {
         ConfiguredFeatures.register(name, feature);
     }
 
-    public static EntityModelLayer model(String name) {
-        return model(name, "main");
-    }
-
+    /* Shoutouts to williewillus for this implementation:
+     * https://github.com/VazkiiMods/Botania/blob/1.18.x-fabric/src/main/java/vazkii/botania/client/model/ModModelLayers.java
+     */
     public static EntityModelLayer model(String name, String layer) {
         var result = new EntityModelLayer(id(name), layer);
         AccessorEntityModelLayers.getAllModels().add(result);
         return result;
+    }
+
+    public static EntityModelLayer model(String name) {
+        return model(name, "main");
     }
 
 }
