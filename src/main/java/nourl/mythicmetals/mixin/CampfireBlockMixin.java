@@ -2,7 +2,6 @@ package nourl.mythicmetals.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CampfireBlock;
-import net.minecraft.block.MagmaBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;

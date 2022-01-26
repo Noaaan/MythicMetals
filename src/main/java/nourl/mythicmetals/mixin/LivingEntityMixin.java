@@ -1,12 +1,9 @@
 package nourl.mythicmetals.mixin;
 
-import io.wispforest.owo.particles.ClientParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
@@ -21,7 +18,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -121,7 +117,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void palladiumParticle() {
         // Random ints which cycle between negative and positive
-        int i = r.nextInt(2) * 2 - 1;
         int j = r.nextInt(2) * 2 - 1;
         int k = r.nextInt(2) * 2 - 1;
 

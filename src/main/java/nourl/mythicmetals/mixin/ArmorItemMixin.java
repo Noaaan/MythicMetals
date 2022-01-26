@@ -42,7 +42,7 @@ public abstract class ArmorItemMixin {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "Knockback resistance", this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == ArmorMaterials.CELESTIUM) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.05f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
         if (material == ArmorMaterials.MIDAS_GOLD) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0f, EntityAttributeModifier.Operation.ADDITION);

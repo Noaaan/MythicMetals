@@ -24,7 +24,7 @@ public enum ToolMaterials implements ToolMaterial {
     CARMOT(3, 730, 11.5F, 2.0F, 42, () -> {
         return Ingredient.ofItems(MythicItems.CARMOT_INGOT);
     }),
-    CELESTIUM(4, 2270, 16.9F, 6.0F, 24, () -> {
+    CELESTIUM(5, 2270, 16.9F, 6.0F, 26, () -> {
         return Ingredient.ofItems(MythicItems.CELESTIUM_INGOT);
     }),
     COPPER(1, 125, 5.0F, 1.0F, 8, () -> {
@@ -39,7 +39,7 @@ public enum ToolMaterials implements ToolMaterial {
     KYBER(2, 889, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(MythicItems.KYBER_INGOT);
     }),
-    METALLURGIUM(5, 3000, 15.0F, 7.0F, 30, () -> {
+    METALLURGIUM(5, 3000, 15.0F, 8.0F, 30, () -> {
         return Ingredient.ofItems(MythicItems.METALLURGIUM_INGOT);
     }),
     MYTHRIL(4, 1024, 13.0F, 3.0F, 22, () -> {
@@ -60,10 +60,10 @@ public enum ToolMaterials implements ToolMaterial {
     QUADRILLUM(2, 321, 5.0F, 2.5F, 8, () -> {
         return Ingredient.ofItems(MythicItems.QUADRILLUM_INGOT);
     }),
-    RUNITE(3, 1337, 6.9F, 3.3F, 13, () -> {
+    RUNITE(3, 1337, 8.9F, 3.3F, 17, () -> {
         return Ingredient.ofItems(MythicItems.RUNITE_INGOT);
     }),
-    STAR_PLATINUM(3, 1300, 9.0F, 3.0F, 18, () -> {
+    STAR_PLATINUM(3, 1300, 9.0F, 4.0F, 18, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
     }),
     STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> {

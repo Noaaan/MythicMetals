@@ -3,6 +3,14 @@ Fixed an oversight where mining orichalcum with silk touch would return mythril 
 Improved the armor textures of hallowed and bronze.  
 Added the final ore texture courtesy of Haunted Chest.  
 
+__Balancing changes:__  
+Buffed Celestium armors speed trait.  
+Increased Celestiums harvest level to mythic, and made the blocks require the same level 
+(same as Metallurgium and the unobtainium block).  
+Buffed Metallurgium and Star Platinums base damage by 1.  
+Increased Hallowed Armors toughness up to 4, but decreased its durability.  
+
+
 # 0.11.3  
 Split debug command into `/mythicmetals range console` and `/mythicmetals range file`.  
 File will dump config into CSV, while console will dump the config in a readable format into chat/logs.  

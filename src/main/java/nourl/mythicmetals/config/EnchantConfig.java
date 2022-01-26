@@ -2,8 +2,8 @@ package nourl.mythicmetals.config;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.tools.MythicTools;
 import wraith.enchant_giver.EnchantsList;
 
 // Hardcodes enchantments onto armour into the Enchant Giver config

@@ -40,7 +40,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.DURASTEEL_INGOT);
     }),
-    HALLOWED("hallowed", 40, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
+    HALLOWED("hallowed", 36, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);
     }),
     KYBER("kyber", 19, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {

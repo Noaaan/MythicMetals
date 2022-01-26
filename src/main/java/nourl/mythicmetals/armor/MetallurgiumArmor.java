@@ -6,7 +6,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;

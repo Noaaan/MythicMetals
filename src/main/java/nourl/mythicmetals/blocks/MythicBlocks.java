@@ -37,7 +37,7 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
-            .createAnvilSet(10, 15, NETHERITE_MINING_LEVEL).finish();
+            .createAnvilSet(10, 15, MYTHIC_MINING_LEVEL).finish();
 
     public static final BlockSet DURASTEEL = BlockSet.Builder.begin("durasteel", false)
             .createAnvilSet(5, DIAMOND_MINING_LEVEL).finish();
@@ -154,14 +154,14 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
-            .strength(8.0F, 13000F)
+            .strength(13.0F, 13000F)
             .sounds(BlockSoundGroup.LODESTONE)
             .createOre(NETHERITE_MINING_LEVEL, UniformIntProvider.create(4, 7))
-            .strength(10F, 14000F)
+            .strength(15F, 14000F)
             .sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", NETHERITE_MINING_LEVEL)
             .sounds(BlockSoundGroup.LODESTONE)
-            .strength(15F, 15000F)
+            .strength(25F, 15000F)
             .createStorageBlock(MYTHIC_MINING_LEVEL)
             .finish();
 

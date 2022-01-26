@@ -7,9 +7,9 @@ import io.wispforest.owo.itemgroup.gui.ItemGroupTab;
 import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class MythicItemGroups extends OwoItemGroup {

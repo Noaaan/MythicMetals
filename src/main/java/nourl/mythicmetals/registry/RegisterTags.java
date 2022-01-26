@@ -1,7 +1,6 @@
 package nourl.mythicmetals.registry;
 
 import net.fabricmc.fabric.api.tag.TagFactory;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.Tag;
 import nourl.mythicmetals.utils.RegistryHelper;

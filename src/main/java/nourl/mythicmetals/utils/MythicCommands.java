@@ -14,7 +14,6 @@ import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.config.VariantConfig;
 import wraith.enchant_giver.Config;
 
-import java.io.File;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
