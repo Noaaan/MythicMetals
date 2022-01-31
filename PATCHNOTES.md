@@ -2,6 +2,8 @@
 Fixed an oversight where mining orichalcum with silk touch would return mythril ore.  
 Improved the armor textures of hallowed and bronze.  
 Added the final ore texture courtesy of Haunted Chest.  
+Set the EnchantGivers override to false, allowing the config to be changed.  
+Minor internal tweaks to reduce overhead in DefaultedRegistry.  
 
 __Balancing changes:__  
 Buffed Celestium armors speed trait.  
