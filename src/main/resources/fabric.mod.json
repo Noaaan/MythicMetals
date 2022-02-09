@@ -23,7 +23,7 @@
       "nourl.mythicmetals.MythicMetalsClient"
     ],
     "rei_plugins": [
-      "nourl.mythicmetals.compat.MythicMetalsPlugin"
+      "nourl.mythicmetals.compat.MythicMetalsREIPlugin"
     ],
     "modmenu": [
       "nourl.mythicmetals.compat.MythicMetalsModMenu"

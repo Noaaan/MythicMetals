@@ -19,6 +19,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item ADAMANTITE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item AQUARIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BANGLUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BRONZE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item CARMOT_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item CELESTIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.RARE));

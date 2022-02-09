@@ -13,6 +13,10 @@ repositories {
 	maven {url = "https://maven.shedaniel.me/"}
 	maven {url = "https://maven.terraformersmc.com/"}
 	maven {url = "https://maven.wispforest.io/"}
+	maven {url = "https://jitpack.io" }
+	maven {url = "https://ladysnake.jfrog.io/artifactory/mods" }
+	maven {url = "https://maven.cafeteria.dev" }
+	maven {url = "https://maven.jamieswhiteshirt.com/libs-release" }
 
 	flatDir {
 		dir('libs')
@@ -48,6 +52,10 @@ dependencies {
 
 	// modmenu
 	modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+	// Origins compat
+	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+
 
 	java {
 		// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task

@@ -27,6 +27,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet ADAMANTITE = new ToolSet(ToolMaterials.ADAMANTITE, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(ToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(ToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet LEGENDARY_BANGLUM = new ToolSet(ToolMaterials.LEGENDARY_BANGLUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);
     public static final ToolSet BRONZE = new ToolSet(ToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CARMOT = new ToolSet(ToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CELESTIUM = new ToolSet(ToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));

@@ -25,6 +25,9 @@ public enum ArmorMaterials implements ArmorMaterial {
     BANGLUM("banglum", 14, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM_INGOT);
     }),
+    LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
+        return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
+    }),
     BRONZE("bronze", 17, new int[]{3, 5, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BRONZE_INGOT);
     }),

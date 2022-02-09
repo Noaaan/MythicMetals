@@ -6,9 +6,9 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.config.EnchantConfig;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
@@ -39,7 +39,7 @@ public class MythicMetals implements ModInitializer {
         MythicBlocks.init();
         MythicOreFeatures.init();
         MythicCommands.register();
-        EnchantConfig.appendEnchants();
+        Abilities.init();
         TABBED_GROUP.initialize();
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
@@ -56,7 +56,6 @@ public class MythicMetals implements ModInitializer {
         }
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             LOGGER.info("[Mythic Metals] Have fun using Origins!");
-            EnchantConfig.appendWaterProt();
         }
     }
 }

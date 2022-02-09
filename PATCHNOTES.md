@@ -1,3 +1,12 @@
+# 0.12.0  
+Replaced EnchantGiver with a custom ability system.  
+**PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore restrictions.**  
+Banglum has recieved a re-work:  
+- Regular Banglum now only has Blast Padding on all pieces (Blast Protection 1)  
+- You can use banglum chunks in order to upgrade Banglum to Legendary Banglum, with various natural enchants  
+
+Tweaked the White Aegis sword slightly.  
+
 # 0.11.4  
 Fixed an oversight where mining orichalcum with silk touch would return mythril ore.  
 Improved the armor textures of hallowed and bronze.  

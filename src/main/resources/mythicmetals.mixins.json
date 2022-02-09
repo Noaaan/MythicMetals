@@ -8,12 +8,15 @@
     "AnvilScreenHandlerMixin",
     "ArmorItemMixin",
     "CampfireBlockMixin",
+    "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
+    "EnchantmentHelperMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "RecipeManagerMixin"
   ],
   "client": [],
+  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {
     "defaultRequire": 1
   }

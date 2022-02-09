@@ -18,6 +18,9 @@ public enum ToolMaterials implements ToolMaterial {
     BANGLUM(2, 260, 11.0F, 2.0F, 1, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM_INGOT);
     }),
+    LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> {
+        return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
+    }),
     BRONZE(2, 624, 6.0F, 2.5F, 14, () -> {
         return Ingredient.ofItems(MythicItems.BRONZE_INGOT);
     }),
