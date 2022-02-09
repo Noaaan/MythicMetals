@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:prometheum_helmet",
+    "mythicmetals:prometheum_chestplate",
+    "mythicmetals:prometheum_leggings",
+    "mythicmetals:prometheum_boots"
+  ]
+}

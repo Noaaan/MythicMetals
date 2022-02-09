@@ -27,6 +27,10 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean canFreeze();
 
+    @Shadow public abstract int getArmor();
+
+    @Shadow public abstract ItemStack getMainHandStack();
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -34,6 +38,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
+        prometheumItemRegen();
         addArmorEffects();
     }
 
@@ -41,6 +46,13 @@ public abstract class LivingEntityMixin extends Entity {
         for (ItemStack armorItems : getArmorItems()) {
             if (RegisterTags.CARMOT_ARMOR.contains(armorItems.getItem())) {
                 carmotParticle();
+            }
+
+            if (RegisterTags.PROMETHEUM_ARMOR.contains(armorItems.getItem())) {
+                var dmg = armorItems.getDamage();
+                var rng = r.nextInt(200);
+                if (rng == 117)
+                    armorItems.setDamage(dmg - 1);
             }
 
             if (RegisterTags.COPPER_ARMOR.contains(armorItems.getItem()) && world.isThundering()) {
@@ -126,6 +138,16 @@ public abstract class LivingEntityMixin extends Entity {
 
         this.world.addParticle(ParticleTypes.LAVA, this.getPos().getX() + l, this.getPos().getY(), this.getPos().getZ() + m, 0.1 * k, 0.1, 0.1 * j);
 
+    }
+
+    private void prometheumItemRegen() {
+        var heldItem = getMainHandStack();
+        if (RegisterTags.PROMETHEUM_TOOLS.contains(heldItem.getItem())) {
+            var dmg = heldItem.getDamage();
+            var rng = r.nextInt(200);
+            if (rng == 117)
+            heldItem.setDamage(dmg - 1);
+        }
     }
 
 
