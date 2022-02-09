@@ -3,7 +3,8 @@
 Replaced EnchantGiver with a custom ability system.  
 **PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore restrictions.**   
 Tweaked the White Aegis sword texture slightly.  
-Adjusted all hardness values of ores, and made ores harder to mine with the wrong tool. 
+Adjusted all hardness values of ores, and made ores harder to mine with the wrong tool (especially if you have efficiency).  
+Changed the Aegis blades to use their own material, so that they can be repaired with Palladium instead of Celestium.  
 
 Banglum has recieved a **major** re-work:
 - Regular Banglum now only has Blast Padding on all pieces (Blast Protection 1)  

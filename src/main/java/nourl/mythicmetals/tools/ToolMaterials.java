@@ -9,6 +9,9 @@ import nourl.mythicmetals.item.MythicItems;
 import java.util.function.Supplier;
 
 public enum ToolMaterials implements ToolMaterial {
+    AEGIS(4, 2270, 10.0F, 6.0F, 25, () -> {
+        return Ingredient.ofItems(MythicItems.PALLADIUM_INGOT);
+    }),
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> {
         return Ingredient.ofItems(MythicItems.ADAMANTITE_INGOT);
     }),
@@ -39,7 +42,7 @@ public enum ToolMaterials implements ToolMaterial {
     HALLOWED(4, 1629, 12.0F, 5.0F, 20, () -> {
         return Ingredient.ofItems(MythicItems.HALLOWED_INGOT);
     }),
-    KYBER(2, 889, 7.0F, 2.5F, 20, () -> {
+    KYBER(3, 889, 7.0F, 2.5F, 20, () -> {
         return Ingredient.ofItems(MythicItems.KYBER_INGOT);
     }),
     METALLURGIUM(5, 3000, 15.0F, 8.0F, 30, () -> {
