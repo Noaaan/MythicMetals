@@ -69,6 +69,7 @@ public class MythicOreFeatures {
     public static PlacedFeature ORE_UNOBTAINIUM = OreFeatureHelper.range("ore_unobtainium", UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
 
     // Nether Ores
+    public static PlacedFeature ORE_NETHER_BANGLUM = OreFeatureHelper.range("ore_nether_banglum", NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), CONFIG.banglum.getVariant());
     public static PlacedFeature ORE_MIDAS_GOLD = OreFeatureHelper.range("ore_midas_gold", NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), CONFIG.midas_gold);
     public static PlacedFeature ORE_PALLADIUM = OreFeatureHelper.range("ore_palladium", NETHERRACK_RULE, MythicBlocks.PALLADIUM.getOre(), CONFIG.palladium);
     public static PlacedFeature ORE_STORMYX = OreFeatureHelper.range("ore_stormyx", STORMYX_TARGETS, CONFIG.stormyx);
@@ -81,6 +82,7 @@ public class MythicOreFeatures {
     public static final RegistryKey<PlacedFeature> ADAMANTITE = OreFeatureHelper.placedFeatureKey("ore_adamantite");
     public static final RegistryKey<PlacedFeature> AQUARIUM = OreFeatureHelper.placedFeatureKey("ore_aquarium");
     public static final RegistryKey<PlacedFeature> BANGLUM = OreFeatureHelper.placedFeatureKey("ore_banglum");
+    public static final RegistryKey<PlacedFeature> NETHER_BANGLUM = OreFeatureHelper.placedFeatureKey("ore_nether_banglum");
     public static final RegistryKey<PlacedFeature> CARMOT = OreFeatureHelper.placedFeatureKey("ore_carmot");
     public static final RegistryKey<PlacedFeature> CALCITE_KYBER = OreFeatureHelper.placedFeatureKey("ore_calcite_kyber");
     public static final RegistryKey<PlacedFeature> KYBER = OreFeatureHelper.placedFeatureKey("ore_kyber");
@@ -176,6 +178,10 @@ public class MythicOreFeatures {
         }
 
         //Nether Ores
+        if (CONFIG.banglum.enabled) {
+            RegistryHelper.placedFeature(NETHER_BANGLUM.getValue().toString(), ORE_NETHER_BANGLUM);
+            OreFeatureHelper.netherOre(NETHER_BANGLUM);
+        }
         if (CONFIG.midas_gold.enabled) {
             RegistryHelper.placedFeature(MIDAS_GOLD.getValue().toString(), ORE_MIDAS_GOLD);
             OreFeatureHelper.netherOre(MIDAS_GOLD);

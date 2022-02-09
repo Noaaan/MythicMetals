@@ -38,7 +38,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
-        prometheumItemRegen();
+        prometheumRepairPassive();
         addArmorEffects();
     }
 
@@ -140,7 +140,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     }
 
-    private void prometheumItemRegen() {
+    private void prometheumRepairPassive() {
         var heldItem = getMainHandStack();
         if (RegisterTags.PROMETHEUM_TOOLS.contains(heldItem.getItem())) {
             var dmg = heldItem.getDamage();

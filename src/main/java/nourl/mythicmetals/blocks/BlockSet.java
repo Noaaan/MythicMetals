@@ -86,6 +86,7 @@ public class BlockSet {
         }
         // Inject all the mining levels into their tags.
         miningLevels.forEach((block, level) -> TagInjector.injectBlocks(level, block));
+        miningLevels.forEach((block, level) -> TagInjector.injectBlocks(RegistryHelper.id("ores"), block));
     }
 
     /**
@@ -379,6 +380,16 @@ public class BlockSet {
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
         }
+
+        public Builder createBanglumOreVariant(String name, Identifier miningLevel) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
+            settingsProcessor.accept(settings);
+            this.oreVariants.put(name, new BanglumOreBlock(settings));
+            miningLevels.put(oreVariants.get(name), miningLevel);
+            miningLevels.put(oreVariants.get(name), PICKAXE);
+            return this;
+        }
+
         /**
          * A special method for the creation of storage blocks that copies Amethyst Blocks.
          * @param miningLevel   The mining level of the block.
