@@ -8,6 +8,7 @@ import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class BlockSet {
         if (storageBlock != null) {
             RegistryHelper.block(name + "_block", storageBlock, fireproof);
         }
-        if (anvil != null) {
+        if (anvil != null && MythicMetals.CONFIG.enableAnvils) {
             RegistryHelper.block(name + "_anvil", anvil, fireproof);
         }
         // Inject all the mining levels into their tags.
