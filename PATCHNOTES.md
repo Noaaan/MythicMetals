@@ -8,7 +8,13 @@ Changed the Aegis blades to use their own material, so that they can be repaired
 
 Banglum has recieved a **major** re-work:
 - Regular Banglum now only has Blast Padding on all pieces (Blast Protection 1)  
-- You can use banglum chunks in order to upgrade Banglum to Legendary Banglum, with various natural enchants  
+- Nether Banglum ores have been added.
+- Banglum Ores are now **volatile**. The ores have a chance to explode that scales with the levels of efficiency and fortune on your pickaxe.
+- Silk Touch drastically reduces this explosion chance.  
+- Banglum Ores have a higher chance to explode when placed in The Nether.  
+- You can use Banglum Chunks in order to upgrade Banglum to Legendary Banglum, with various natural enchants  
+  - The set has Spiked Helm (Thorns which always activates), Blast Protection 6, Projectile Protection 5, and Feather Falling 4.  
+- Banglum Chunks are recieved as a rare drop from Banglum Ores (0.2%) and Nether Banglum Ore (4%).
 
 
 

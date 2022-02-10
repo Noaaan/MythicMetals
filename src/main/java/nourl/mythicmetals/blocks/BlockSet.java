@@ -366,6 +366,15 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createBanglumOre(Identifier miningLevel) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
+            settingsProcessor.accept(settings);
+            this.ore = new BanglumOreBlock(settings);
+            miningLevels.put(ore, miningLevel);
+            miningLevels.put(ore, PICKAXE);
+            return this;
+        }
+
         /**
          * A special method for the creation of variants from {@link StarriteOreBlock}.
          * @param name          The name/key for the variant.

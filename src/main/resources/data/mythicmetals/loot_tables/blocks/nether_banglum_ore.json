@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "mythicmetals:banglum_ore"
+              "name": "mythicmetals:nether_banglum_ore"
             },
             {
               "type": "minecraft:item",
@@ -32,7 +32,7 @@
               "conditions": [
                 {
                   "condition": "minecraft:random_chance",
-                  "chance": 0.002
+                  "chance": 0.04
                 }
               ]
             },

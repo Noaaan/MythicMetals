@@ -27,7 +27,7 @@ public class Abilities {
     public static void init() {
         SPIKED_HELM.addItem(MythicArmor.LEGENDARY_BANGLUM.getHelmet(), Style.EMPTY.withColor(Formatting.GOLD));
         BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), Style.EMPTY.withColor(Formatting.GOLD));
-        BLAST_PROTECTION.addArmorSet(MythicArmor.BANGLUM, Style.EMPTY.withColor(Formatting.GOLD));
+        BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, Style.EMPTY.withColor(Formatting.GOLD));
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), Style.EMPTY.withColor(Formatting.GOLD));
         FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), Style.EMPTY.withColor(Formatting.GOLD));
         AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), Style.EMPTY.withColor(Formatting.AQUA));

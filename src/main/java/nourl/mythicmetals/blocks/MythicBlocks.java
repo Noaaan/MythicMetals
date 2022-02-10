@@ -25,7 +25,11 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
-            .createDefaultSet(4F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
+            .strength(5.0F, 5.5F)
+            .createBanglumOre(IRON_MINING_LEVEL)
+            .createOreStorageBlock(IRON_MINING_LEVEL)
+            .createStorageBlock(DIAMOND_MINING_LEVEL)
+            .createAnvil(IRON_MINING_LEVEL)
             .sounds(BlockSoundGroup.NETHER_ORE)
             .createBanglumOreVariant("nether", IRON_MINING_LEVEL)
             .finish();
