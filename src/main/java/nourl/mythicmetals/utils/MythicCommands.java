@@ -5,6 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.LiteralText;
@@ -12,8 +13,10 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.config.VariantConfig;
-import wraith.enchant_giver.Config;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.file.Files;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
@@ -90,10 +93,11 @@ public final class MythicCommands {
                                     return 1;
                                 }
                                 case "file" -> {
-                                    var contents = new StringBuilder();
-                                    FieldIterator.iterateAccessibleFields(config, OreConfig.class, (feature, name) -> {
+                                    try (var file = Files.newOutputStream(FabricLoader.getInstance().getConfigDir().resolve("debug/mythicmetals.csv"))) {
+                                        var contents = new StringBuilder();
+                                        FieldIterator.iterateAccessibleFields(config, OreConfig.class, (feature, name) -> {
                                         if (feature.enabled) {
-                                            contents.append(name).append(",")
+                                                contents.append(name).append(",")
                                                 .append(feature.bottom).append(",")
                                                 .append(feature.top).append(",")
                                                 .append(feature.perChunk).append(",")
@@ -118,9 +122,11 @@ public final class MythicCommands {
                                             .append(feature.offset).append(",")
                                             .append(feature.trapezoid).append("\n");
                                     });
-                                    Config.createFile("debug/mythicmetals.json", contents.toString(), true);
+                                    new OutputStreamWriter(file).write(contents.toString());
                                     return 1;
-                                }
+                                } catch (IOException e) {
+                                        e.printStackTrace();
+                                }}
                             }
                             return 1;
 

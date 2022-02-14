@@ -28,6 +28,16 @@
             },
             {
               "type": "minecraft:item",
+              "name": "mythicmetals:aquarium_pearl",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.01
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
               "functions": [
                 {
                   "function": "minecraft:set_count",

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sgs",
+    " p ",
+    " p "
+  ],
+  "key": {
+    "p": {
+      "item": "mythicmetals:aquarium_pearl"
+    },
+    "s": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "g": {
+      "item": "minecraft:heart_of_the_sea"
+    }
+  },
+  "result": {
+    "item": "minecraft:trident",
+    "count": 1
+  }
+}

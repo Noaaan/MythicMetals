@@ -16,6 +16,10 @@ Banglum has recieved a **major** re-work:
   - The set has Spiked Helm (Thorns which always activates), Blast Protection 6, Projectile Protection 5, and Feather Falling 4.  
 - Banglum Chunks are recieved as a rare drop from Banglum Ores (0.2%) and Nether Banglum Ore (4%).
 
+Aquarium has been buffed following the EnchantGiver replacement:  
+- All the natural enchantments have been increased by one level
+- A new item, the **Aquarium Pearl** has been added as a rare drop from Aquarium
+  - This item can be used in order to craft a Trident from Prismarine Shards and a Heart of the Sea  
 
 
 # 0.11.4  

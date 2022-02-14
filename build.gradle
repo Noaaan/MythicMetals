@@ -29,13 +29,6 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Enchant Giver
-	modApi ("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
-	include("curse.maven:enchantgiver-430733:${project.enchantgiver_id}")
-
-//	modApi("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
-//	include("wraith.enchantgiver:wraith-enchant_giver:${project.enchantgiver_version}")
-
 	// Alloy Forgery
 	modImplementation("wraith:alloy-forgery:${project.alloyforgery_version}")
 

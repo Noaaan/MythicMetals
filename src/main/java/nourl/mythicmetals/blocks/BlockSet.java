@@ -366,6 +366,10 @@ public class BlockSet {
             return this;
         }
 
+        /**
+         * A special ore creator for the creation of a {@link BanglumOreBlock}.
+         * @param miningLevel   The mining level of the block.
+         */
         public Builder createBanglumOre(Identifier miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
@@ -390,6 +394,11 @@ public class BlockSet {
             return this;
         }
 
+        /**
+         * A special method for the creation of variants from {@link BanglumOreBlock}.
+         * @param name          The name/key for the variant.
+         * @param miningLevel   The mining level of the block.
+         */
         public Builder createBanglumOreVariant(String name, Identifier miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
