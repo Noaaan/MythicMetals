@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "mythicmetals:vermiculite_block"
+      "item": "mythicmetals:morkite_block"
     }
   ],
   "result": {
-    "item": "mythicmetals:vermiculite",
+    "item": "mythicmetals:morkite",
     "count": 9
   }
 }

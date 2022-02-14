@@ -1,9 +1,13 @@
 package nourl.mythicmetals.blocks;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import nourl.mythicmetals.registry.RegisterSounds;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 @SuppressWarnings("unused")
 public class MythicBlocks {
@@ -33,6 +37,8 @@ public class MythicBlocks {
             .sounds(BlockSoundGroup.NETHER_ORE)
             .createBanglumOreVariant("nether", IRON_MINING_LEVEL)
             .finish();
+
+    public static final BanglumTntBlock BANGLUM_TNT_BLOCK = new BanglumTntBlock(FabricBlockSettings.copyOf(Blocks.TNT));
 
     public static final BlockSet BRONZE = BlockSet.Builder.begin("bronze", false)
             .createAnvilSet(5, IRON_MINING_LEVEL).finish();
@@ -76,6 +82,15 @@ public class MythicBlocks {
     public static final BlockSet METALLURGIUM = BlockSet.Builder.begin("metallurgium", true)
             .sounds(BlockSoundGroup.NETHERITE)
             .createAnvilSet(60.0F, 15000F, MYTHIC_MINING_LEVEL)
+            .finish();
+
+    public static final BlockSet MORKITE = BlockSet.Builder.begin("morkite", false)
+            .strength(3.0F)
+            .createStorageBlock(IRON_MINING_LEVEL)
+            .sounds(RegisterSounds.MORKITE_ORE)
+            .createOre(IRON_MINING_LEVEL, UniformIntProvider.create(0, 2))
+            .sounds(RegisterSounds.DEEPSLATE_MORKITE_ORE)
+            .createOreVariant("deepslate", IRON_MINING_LEVEL, UniformIntProvider.create(0, 2))
             .finish();
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)
@@ -125,7 +140,7 @@ public class MythicBlocks {
             .createDefaultSet(4.0F, STONE_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet STAR_PLATINUM = BlockSet.Builder.begin("star_platinum", false)
-            .createAnvilSet(5F, DIAMOND_MINING_LEVEL).finish();
+            .sounds(RegisterSounds.MORKITE_ORE).createAnvilSet(5F, DIAMOND_MINING_LEVEL).finish();
 
     public static final BlockSet STARRITE = BlockSet.Builder.begin("starrite", false)
             .strength(5.0F).createStarriteOre(DIAMOND_MINING_LEVEL, UniformIntProvider.create(3, 6))
@@ -154,11 +169,6 @@ public class MythicBlocks {
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
             .createDefaultSet(2.0F, STONE_MINING_LEVEL, 2.5F, IRON_MINING_LEVEL).finish();
 
-    public static final BlockSet VERMICULITE = BlockSet.Builder.begin("vermiculite", false)
-            .strength(1.5F).createOre(STONE_MINING_LEVEL, UniformIntProvider.create(0, 2))
-            .sounds(BlockSoundGroup.GRAVEL)
-            .createFallingStorageBlock(Material.AGGREGATE, STONE_MINING_LEVEL)
-            .finish();
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
             .strength(16.0F, 13000F)
@@ -175,6 +185,7 @@ public class MythicBlocks {
 
     public static void init() {
         BlockSet.Builder.register();
+        RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
     }
 
 }

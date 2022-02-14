@@ -3,6 +3,7 @@ package nourl.mythicmetals.utils;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -14,6 +15,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.mixin.AccessorEntityModelLayers;
+import nourl.mythicmetals.registry.RegisterEntities;
 
 /*
  * This is a helper class containing methods for registering various blocks and items.
@@ -75,6 +77,10 @@ public class RegistryHelper {
 
     public static EntityModelLayer model(String name) {
         return model(name, "main");
+    }
+
+    public static void entityType(String path, EntityType<?> type){
+        Registry.register(Registry.ENTITY_TYPE, RegistryHelper.id(path), type);
     }
 
 }

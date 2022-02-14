@@ -28,7 +28,6 @@
     "mythicmetals:stormyx_ingot",
     "mythicmetals:tin_ingot",
     "mythicmetals:unobtainium",
-    "mythicmetals:vermiculite",
 
     "mythicmetals:raw_adamantite",
     "mythicmetals:raw_aquarium",
@@ -74,6 +73,8 @@
     "mythicmetals:star_platinum_nugget",
     "mythicmetals:steel_nugget",
     "mythicmetals:stormyx_nugget",
-    "mythicmetals:tin_nugget"
+    "mythicmetals:tin_nugget",
+    "mythicmetals:morkite",
+    "mythicmetals:banglum_chunk"
   ]
 }

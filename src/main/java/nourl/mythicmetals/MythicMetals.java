@@ -5,13 +5,16 @@ import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicCommands;
@@ -29,7 +32,6 @@ public class MythicMetals implements ModInitializer {
 
     public static final OwoItemGroup TABBED_GROUP = new MythicItemGroups(RegistryHelper.id("main"));
 
-
     @Override
     public void onInitialize() {
         RegisterSounds.register();
@@ -40,7 +42,11 @@ public class MythicMetals implements ModInitializer {
         MythicOreFeatures.init();
         MythicCommands.register();
         Abilities.init();
+        RegisterEntities.init();
         TABBED_GROUP.initialize();
+        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 800);
+        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 5200);
+
 
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
 
@@ -58,4 +64,6 @@ public class MythicMetals implements ModInitializer {
             LOGGER.info("[Mythic Metals] Have fun using Origins!");
         }
     }
+
+
 }

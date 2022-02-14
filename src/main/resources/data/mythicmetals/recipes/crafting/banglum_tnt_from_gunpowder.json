@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gvg",
+    "vgv",
+    "gvg"
+  ],
+  "key": {
+    "v": {
+      "item": "minecraft:gunpowder"
+    },
+    "g": {
+      "item": "mythicmetals:raw_banglum"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:banglum_tnt",
+    "count": 1
+  }
+}

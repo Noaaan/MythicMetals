@@ -27,6 +27,8 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig manganese = new OreConfig(true, 9, 2, 28, 48,.25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
+    public OreConfig morkite = new OreConfig(true,11, 3, 27, 32, .25f, true);
+    @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig midas_gold = new OreConfig(true,7, 5, 9, 127,.25f, false, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig mythril = new OreConfig(true, 5, 1, -24, 4, .125f, false, true);
@@ -56,8 +58,6 @@ public class MythicConfig implements ConfigData {
     public OreConfig unobtainium = new OreConfig(true,3, 1, -59, 5, .25f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig tin = new OreConfig(true,8, 4, 64, 92, .25f, false);
-    @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig vermiculite = new OreConfig(true,8, 4, 64, 112, .25f, false);
     @ConfigEntry.Gui.Excluded
     public int configVersion = MythicMetals.CONFIG_VERSION;
 

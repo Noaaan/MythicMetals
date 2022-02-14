@@ -6,11 +6,11 @@
     "gvg"
   ],
   "key": {
-    "v": {
-      "item": "mythicmetals:vermiculite"
-    },
     "g": {
-      "item": "minecraft:gunpowder"
+      "item": "mythicmetals:morkite"
+    },
+    "v": {
+      "item": "minecraft:sand"
     }
   },
   "result": {

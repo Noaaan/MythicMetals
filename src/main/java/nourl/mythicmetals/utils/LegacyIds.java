@@ -23,6 +23,7 @@ public class LegacyIds {
     private static final Identifier OLD_RAW_STARRITE = RegistryHelper.id( "raw_starrite");
     private static final Identifier OLD_STARRITE_INGOT = RegistryHelper.id( "starrite_ingot");
     private static final Identifier OLD_UNOBTAINIUM_DUST = RegistryHelper.id("unobtainium_dust");
+    private static final Identifier OLD_VERMICULITE = RegistryHelper.id("vermiculite_ore");
 
     private static final Identifier VANILLA_COPPER_ORE = new Identifier("copper_ore");
     private static final Identifier VANILLA_COPPER_INGOT = new Identifier("copper_ingot");
@@ -56,6 +57,7 @@ public class LegacyIds {
         LEGACY_IDS.put(OLD_RAW_STARRITE, NEW_STARRITE);
         LEGACY_IDS.put(OLD_STARRITE_INGOT, NEW_STARRITE);
         LEGACY_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
+        LEGACY_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
 
     }
 

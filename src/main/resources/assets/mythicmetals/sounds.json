@@ -2,17 +2,33 @@
   "equip_runite": {
     "subtitle": "subtitles.mythicmetals.equip_runite",
     "sounds": [
-      "mythicmetals:equip_runite1",
-      "mythicmetals:equip_runite2",
-      "mythicmetals:equip_runite3",
-      "mythicmetals:equip_runite4",
-      "mythicmetals:equip_runite5",
-      "mythicmetals:equip_runite6"
+      "mythicmetals:equip_runite_1",
+      "mythicmetals:equip_runite_2",
+      "mythicmetals:equip_runite_3",
+      "mythicmetals:equip_runite_4",
+      "mythicmetals:equip_runite_5",
+      "mythicmetals:equip_runite_6"
     ]
   },
   "music_disc.dog4": {
     "sounds": [
       "mythicmetals:dog4"
+    ]
+  },
+  "morkite_ore_break": {
+    "sounds": [
+      "mythicmetals:morkite_ore_break_1",
+      "mythicmetals:morkite_ore_break_2",
+      "mythicmetals:morkite_ore_break_3",
+      "mythicmetals:morkite_ore_break_4"
+    ]
+  },
+  "deepslate_morkite_ore_break": {
+    "sounds": [
+      "mythicmetals:deepslate_morkite_ore_break_1",
+      "mythicmetals:deepslate_morkite_ore_break_2",
+      "mythicmetals:deepslate_morkite_ore_break_3",
+      "mythicmetals:deepslate_morkite_ore_break_4"
     ]
   }
 }

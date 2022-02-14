@@ -2,7 +2,6 @@ package nourl.mythicmetals.item;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
-import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.sound.SoundEvent;
@@ -27,6 +26,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item KYBER_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MANGANESE_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item METALLURGIUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.RARE));
+    public static final Item MORKITE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MIDAS_GOLD_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item MYTHRIL_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item ORICHALCUM_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
@@ -43,7 +43,6 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item STORMYX_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item TIN_INGOT = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item UNOBTAINIUM = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.UNCOMMON));
-    public static final Item VERMICULITE = new BoneMealItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
     // Raw Ores
     public static final Item RAW_ADAMANTITE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
@@ -123,9 +122,10 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item TIN_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
 
-    // Rare Crafting Mats
+    // Crafting Mats
     public static final Item AQUARIUM_PEARL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+
 
     @Override
     public boolean shouldProcessField(Item value, String identifier, Field f) {

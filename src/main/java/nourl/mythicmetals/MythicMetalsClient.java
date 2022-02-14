@@ -3,9 +3,12 @@ package nourl.mythicmetals;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
+import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.utils.ModelHandler;
 
 public class MythicMetalsClient implements ClientModInitializer {
@@ -14,6 +17,8 @@ public class MythicMetalsClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
+
+        EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
     }
 
     private void registerArmorRenderer() {

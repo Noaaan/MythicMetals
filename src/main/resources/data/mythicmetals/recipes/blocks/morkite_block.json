@@ -7,11 +7,11 @@
   ],
   "key": {
     "m": {
-      "item": "mythicmetals:vermiculite"
+      "item": "mythicmetals:morkite"
     }
   },
   "result": {
-    "item": "mythicmetals:vermiculite_block",
+    "item": "mythicmetals:morkite_block",
     "count": 1
   }
 }

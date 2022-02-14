@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/vermiculite_ore"
+    "all": "mythicmetals:blocks/morkite_ore"
   }
 }

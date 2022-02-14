@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gvg",
+    "vcv",
+    "gvg"
+  ],
+  "key": {
+    "g": {
+      "item": "mythicmetals:morkite_block"
+    },
+    "v": {
+      "item": "mythicmetals:raw_banglum_block"
+    },
+    "c": {
+      "item": "mythicmetals:banglum_chunk"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:banglum_tnt",
+    "count": 12
+  }
+}
