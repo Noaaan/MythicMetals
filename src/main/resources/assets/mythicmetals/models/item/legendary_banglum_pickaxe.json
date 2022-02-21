@@ -1,6 +1,14 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/legendary_banglum_pickaxe"
-  }
+    "layer0": "mythicmetals:items/tools/legendary_banglum_pickaxe_recharge"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "is_primed": 1
+      },
+      "model": "mythicmetals:item/legendary_banglum_pickaxe_primed"
+    }
+  ]
 }

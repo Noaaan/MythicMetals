@@ -49,6 +49,9 @@ dependencies {
 	// Origins compat
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
+	include 'com.github.Draylar:magna:1.7.0-1.18'
+	modImplementation 'com.github.Draylar:magna:1.7.0-1.18'
+
 
 	java {
 		// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task

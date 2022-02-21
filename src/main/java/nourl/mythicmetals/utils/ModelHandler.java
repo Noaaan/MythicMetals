@@ -2,8 +2,8 @@ package nourl.mythicmetals.utils;
 
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import nourl.mythicmetals.armor.HallowedArmorModel;
-import nourl.mythicmetals.armor.MetallurgiumArmorModel;
+import nourl.mythicmetals.armor.models.HallowedArmorModel;
+import nourl.mythicmetals.armor.models.MetallurgiumArmorModel;
 
 import java.util.function.BiConsumer;
 

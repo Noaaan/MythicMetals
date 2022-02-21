@@ -15,7 +15,6 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.mixin.AccessorEntityModelLayers;
-import nourl.mythicmetals.registry.RegisterEntities;
 
 /*
  * This is a helper class containing methods for registering various blocks and items.

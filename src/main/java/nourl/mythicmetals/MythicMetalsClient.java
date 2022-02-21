@@ -4,11 +4,15 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
+import nourl.mythicmetals.tools.BanglumPick;
+import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.ModelHandler;
 
 public class MythicMetalsClient implements ClientModInitializer {
@@ -19,6 +23,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerArmorRenderer();
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
+        FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
     }
 
     private void registerArmorRenderer() {

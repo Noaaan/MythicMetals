@@ -2,7 +2,7 @@
 // Exported for Minecraft version 1.17
 // Paste this class into your mod and generate all required imports
 
-package nourl.mythicmetals.armor;
+package nourl.mythicmetals.armor.models;
 
 import net.minecraft.client.model.*;
 

@@ -1,12 +1,22 @@
 # 0.12.0  
-### MAKE A BACKUP BEFORE UPDATING TO THIS VERSION!
-Replaced EnchantGiver with a custom ability system.  
-**PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore restrictions.**   
+## MAKE A BACKUP BEFORE UPDATING TO THIS VERSION!
+### Replaced EnchantGiver with a custom ability system.  
+**PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore vanilla enchantment restrictions.** 
+
 Tweaked the White Aegis sword texture slightly.  
 Adjusted all hardness values of ores, and made ores harder to mine with the wrong tool (especially if you have efficiency).  
 Changed the Aegis blades to use their own material, so that they can be repaired with Palladium instead of Celestium.  
+Slightly buffed the attack speed of Orichalcum and Osmium tools.  
+Updated the armor item textures for Durasteel, Palladium, and regular Banglum.  
+Removed Vermiculite.  
 
-Banglum has recieved a **major** re-work:
+### Morkite has been added  
+This new ore drops a new crystal-like metal, which works as fuel.  
+Two pieces of morkite is just as effective as a single piece of coal.  
+Morkite can be found around the stone/deepslate border underground.  
+
+
+### Banglum has recieved a **major** re-work:
 - Regular Banglum now only has Blast Padding on all pieces (Blast Protection 1)  
 - Nether Banglum ores have been added.
 - Banglum Ores are now **volatile**. The ores have a chance to explode that scales with the levels of efficiency and fortune on your pickaxe.
@@ -14,9 +24,11 @@ Banglum has recieved a **major** re-work:
 - Banglum Ores have a higher chance to explode when placed in The Nether.  
 - You can use Banglum Chunks in order to upgrade Banglum to Legendary Banglum, with various natural enchants  
   - The set has Spiked Helm (Thorns which always activates), Blast Protection 6, Projectile Protection 5, and Feather Falling 4.  
-- Banglum Chunks are recieved as a rare drop from Banglum Ores (0.2%) and Nether Banglum Ore (4%).
+  - The pickaxe has a powerful explosion ability, which lets you create strip-mines easily  
+- Banglum Chunks are recieved as a rare drop from Banglum Ore (0.2%) and Nether Banglum Ore (3%).
+- Added Banglum TNT, which has the same explosive power as an End Crystal.  
 
-Aquarium has been buffed following the EnchantGiver replacement:  
+### Aquarium has been buffed following the EnchantGiver replacement:  
 - All the natural enchantments have been increased by one level
 - A new item, the **Aquarium Pearl** has been added as a rare drop from Aquarium
   - This item can be used in order to craft a Trident from Prismarine Shards and a Heart of the Sea  

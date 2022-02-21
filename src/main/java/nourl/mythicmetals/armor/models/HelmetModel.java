@@ -1,4 +1,4 @@
-package nourl.mythicmetals.armor;
+package nourl.mythicmetals.armor.models;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
