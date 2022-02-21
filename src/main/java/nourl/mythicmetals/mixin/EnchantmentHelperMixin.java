@@ -106,4 +106,13 @@ public class EnchantmentHelperMixin {
             cir.setReturnValue(amount + change);
     }
 
+    @Inject(method = "getKnockback", at = @At("TAIL"), cancellable = true)
+    private static void increaseKnockback(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        var amount = cir.getReturnValue();
+        for (ItemStack mainHand : entity.getItemsHand()) {
+            if (Abilities.KNOCKBACK.getItems().contains(mainHand.getItem()))
+                cir.setReturnValue(amount + Abilities.KNOCKBACK.getLevel());
+        }
+    }
+
 }

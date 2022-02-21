@@ -25,9 +25,6 @@ public enum ArmorMaterials implements ArmorMaterial {
     BANGLUM("banglum", 14, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM_INGOT);
     }),
-    LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
-    }),
     BRONZE("bronze", 17, new int[]{3, 5, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BRONZE_INGOT);
     }),
@@ -48,6 +45,9 @@ public enum ArmorMaterials implements ArmorMaterial {
     }),
     KYBER("kyber", 19, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.KYBER_INGOT);
+    }),
+    LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
+        return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
     }),
     METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.2F, () -> {
         return Ingredient.ofItems(MythicItems.METALLURGIUM_INGOT);

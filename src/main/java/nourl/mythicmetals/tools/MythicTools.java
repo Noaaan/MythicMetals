@@ -34,7 +34,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet DURASTEEL = new ToolSet(ToolMaterials.DURASTEEL, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ToolSet KYBER = new ToolSet(ToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet LEGENDARY_BANGLUM = new SuperBangToolSet(ToolMaterials.LEGENDARY_BANGLUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(ToolMaterials.LEGENDARY_BANGLUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ToolSet MYTHRIL = new ToolSet(ToolMaterials.MYTHRIL, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet ORICHALCUM = new ToolSet(ToolMaterials.ORICHALCUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);

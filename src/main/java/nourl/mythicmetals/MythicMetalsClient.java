@@ -12,6 +12,7 @@ import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
+import nourl.mythicmetals.tools.BanglumShovel;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.ModelHandler;
 
@@ -24,6 +25,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
+        FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
     }
 
     private void registerArmorRenderer() {

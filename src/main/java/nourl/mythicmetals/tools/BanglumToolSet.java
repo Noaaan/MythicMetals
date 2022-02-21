@@ -8,12 +8,12 @@ import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.Consumer;
 
-public class SuperBangToolSet extends ToolSet {
+public class BanglumToolSet extends ToolSet {
 
     private final SwordItem sword;
     private final AxeItem axe;
     private final BanglumPick pickaxe;
-    private final ShovelItem shovel;
+    private final BanglumShovel shovel;
     private final HoeItem hoe;
 
     private static Item.Settings createSettings(Consumer<Item.Settings> settingsProcessor) {
@@ -22,16 +22,16 @@ public class SuperBangToolSet extends ToolSet {
         return settings;
     }
 
-    public SuperBangToolSet(ToolMaterial material, int[] damage, float[] speed) {
+    public BanglumToolSet(ToolMaterial material, int[] damage, float[] speed) {
         this(material, damage, speed, settings -> {});
     }
 
-    public SuperBangToolSet(ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
+    public BanglumToolSet(ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
         super(material, damage, speed, settingsProcessor);
         this.sword = new SwordItem(material, damage[0], speed[0], createSettings(settingsProcessor));
         this.axe = new AxeBase(material, damage[1], speed[1], createSettings(settingsProcessor));
         this.pickaxe = new BanglumPick(material, damage[2], speed[2], createSettings(settingsProcessor));
-        this.shovel = new ShovelItem(material, damage[3], speed[3], createSettings(settingsProcessor));
+        this.shovel = new BanglumShovel(material, damage[3], speed[3], createSettings(settingsProcessor));
         this.hoe = new HoeBase(material, damage[4], speed[4], createSettings(settingsProcessor));
     }
 
