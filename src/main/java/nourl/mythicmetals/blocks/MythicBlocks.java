@@ -140,7 +140,7 @@ public class MythicBlocks {
             .createDefaultSet(4.0F, STONE_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet STAR_PLATINUM = BlockSet.Builder.begin("star_platinum", false)
-            .sounds(RegisterSounds.MORKITE_ORE).createAnvilSet(5F, 5.5F, DIAMOND_MINING_LEVEL).finish();
+            .createAnvilSet(5F, 5.5F, DIAMOND_MINING_LEVEL).finish();
 
     public static final BlockSet STARRITE = BlockSet.Builder.begin("starrite", false)
             .strength(5.0F).createStarriteOre(DIAMOND_MINING_LEVEL, UniformIntProvider.create(3, 6))

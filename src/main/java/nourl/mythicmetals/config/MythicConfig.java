@@ -13,6 +13,8 @@ public class MythicConfig implements ConfigData {
     public boolean enableDusts = false;
     @ConfigEntry.Gui.RequiresRestart
     public boolean enableNuggets = true;
+    @ConfigEntry.Gui.RequiresRestart
+    public boolean enableAnvils = true;
 
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig adamantite = new OreConfig(true, 5, 1, -54, -20, .125f, false, true);

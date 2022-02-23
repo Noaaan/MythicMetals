@@ -49,10 +49,9 @@ public class MythicMetals implements ModInitializer {
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 5200);
 
 
-        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
-            LOGGER.info("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
         }
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
@@ -64,6 +63,7 @@ public class MythicMetals implements ModInitializer {
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             LOGGER.info("[Mythic Metals] Have fun using Origins!");
         }
+        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }
 
 

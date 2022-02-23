@@ -17,5 +17,13 @@
     "item": "mythicmetals:celestium_anvil",
     "count": 1
   },
-  "group": "mm_anvils"
+  "group": "mm_anvils",
+    "fabric:load_conditions": [
+    {
+      "condition": "fabric:block_tags_populated",
+      "values": [
+        "mythicmetals:anvils"
+      ]
+    }
+  ]
 }

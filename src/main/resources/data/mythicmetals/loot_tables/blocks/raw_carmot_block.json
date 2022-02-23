@@ -6,7 +6,7 @@
         {
           "type": "minecraft:item",
           "name": "mythicmetals:raw_carmot_block",
-    "count": 1
+          "count": 1
         }
       ]
     }
