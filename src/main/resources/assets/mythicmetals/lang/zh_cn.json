@@ -460,5 +460,15 @@
   "advancement.mythicmetals.prometheum.title": "奢华的蔬菜",
   "advancement.mythicmetals.prometheum.description": "找到丛林或繁茂洞穴深处的幻金矿石",
   "advancement.mythicmetals.palladium.title": "最热的豆子",
-  "advancement.mythicmetals.palladium.description": "在下界岩浆海附件找到钯矿石"
+  "advancement.mythicmetals.palladium.description": "在下界岩浆海附件找到钯矿石",
+  "subtitles.mythicmetals.equip_runite" : "熟悉的盔甲碰撞声",
+  "itemGroup.mythicmetals.main": "神话金属",
+  "itemGroup.mythicmetals.main.button.github": "神话金属问题跟踪器",
+  "itemGroup.mythicmetals.main.button.curseforge": "神话金属的CurseForge页面",
+  "itemGroup.mythicmetals.main.button.modrinth": "神话金属的Modrinth页面",
+  "itemGroup.mythicmetals.main.button.discord": "需要帮助？加入Wraith Coding Sesh Discord服务器寻求支持！",
+  "itemGroup.mythicmetals.main.tab.items": "物品",
+  "itemGroup.mythicmetals.main.tab.tools": "工具",
+  "itemGroup.mythicmetals.main.tab.blocks": "方块",
+  "itemGroup.mythicmetals.main.tab.armor": "盔甲"
 }
