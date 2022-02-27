@@ -19,14 +19,14 @@ public class Ability {
     private final Set<Item> items;
     private boolean showLevel = true;
 
-    public Ability(String tooltip, int level) {
-        this.tooltip = tooltip;
+    public Ability(String translationKey, int level) {
+        this.tooltip = translationKey;
         this.level = level;
         this.items = new HashSet<>();
     }
 
-    public Ability(String tooltip, int level, boolean showLevel) {
-        this.tooltip = tooltip;
+    public Ability(String tranlsationKey, int level, boolean showLevel) {
+        this.tooltip = tranlsationKey;
         this.level = level;
         this.items = new HashSet<>();
         this.showLevel = showLevel;
@@ -76,7 +76,8 @@ public class Ability {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             MutableText text = new LiteralText("");
             if (stack.getItem().equals(item)) {
-                text.append(tooltip).setStyle(style);
+                text.append(new TranslatableText("abilities.mythicmetals." + tooltip));
+                text.setStyle(style);
                 if (showLevel) {
                     text.append(" ").append(new TranslatableText("enchantment.level." + level));
                 }
