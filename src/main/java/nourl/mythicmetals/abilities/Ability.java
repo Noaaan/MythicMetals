@@ -1,6 +1,9 @@
 package nourl.mythicmetals.abilities;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
@@ -42,6 +45,7 @@ public class Ability {
 
     public void addItem(Item item, Style style) {
         items.add(item);
+        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT))
         addTooltip(item, style);
 
     }
@@ -51,10 +55,12 @@ public class Ability {
         items.add(armorSet.getChestplate());
         items.add(armorSet.getLeggings());
         items.add(armorSet.getBoots());
-        addTooltip(armorSet.getHelmet(), style);
-        addTooltip(armorSet.getChestplate(), style);
-        addTooltip(armorSet.getLeggings(), style);
-        addTooltip(armorSet.getBoots(), style);
+        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT)) {
+            addTooltip(armorSet.getHelmet(), style);
+            addTooltip(armorSet.getChestplate(), style);
+            addTooltip(armorSet.getLeggings(), style);
+            addTooltip(armorSet.getBoots(), style);
+        }
 
     }
 
@@ -64,14 +70,16 @@ public class Ability {
         items.add(toolSet.getHoe());
         items.add(toolSet.getPickaxe());
         items.add(toolSet.getShovel());
-        addTooltip(toolSet.getSword(), style);
-        addTooltip(toolSet.getAxe(), style);
-        addTooltip(toolSet.getHoe(), style);
-        addTooltip(toolSet.getPickaxe(), style);
-        addTooltip(toolSet.getShovel(), style);
-
+        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT)) {
+            addTooltip(toolSet.getSword(), style);
+            addTooltip(toolSet.getAxe(), style);
+            addTooltip(toolSet.getHoe(), style);
+            addTooltip(toolSet.getPickaxe(), style);
+            addTooltip(toolSet.getShovel(), style);
+        }
     }
 
+    @Environment(EnvType.CLIENT)
     public void addTooltip(Item item, Style style) {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             MutableText text = new LiteralText("");
