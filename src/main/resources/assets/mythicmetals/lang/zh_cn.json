@@ -707,5 +707,21 @@
   "advancement.mythicmetals.prometheum.title": "熠熠生辉的植被",
   "advancement.mythicmetals.prometheum.description": "在丛林与繁茂洞穴的深处开采钷矿",
   "advancement.mythicmetals.palladium.title": "茄汁焗黄豆——打一矿物",
-  "advancement.mythicmetals.palladium.description": "在下界的岩浆湖四周开采钯金"
+  "advancement.mythicmetals.palladium.description": "在下界的岩浆湖四周开采钯金",
+  
+  "abilities.mythicmetals.aqua_affinity": "提供水下速掘",
+  "abilities.mythicmetals.blast_mining": "可通过爆破采矿",
+  "abilities.mythicmetals.knockback": "提供击退",
+  "abilities.mythicmetals.blast_padding": "加有防爆护垫",
+  "abilities.mythicmetals.blast_protection": "提供爆炸保护",
+  "abilities.mythicmetals.depth_strider": "提供深海探索者",
+  "abilities.mythicmetals.feather_falling": "提供摔落保护",
+  "abilities.mythicmetals.fire_aspect": "提供火焰附加",
+  "abilities.mythicmetals.material_tooltip": "稀有合成材料",
+  "abilities.mythicmetals.mending": "可再生",
+  "abilities.mythicmetals.projectile_protection": "提供弹射物保护",
+  "abilities.mythicmetals.respiration": "提供水下呼吸",
+  "abilities.mythicmetals.smite": "神圣",
+  "abilities.mythicmetals.spiked_helm": "加有利刺点缀",
+  "abilities.mythicmetals.water_protection": "提供水下保护"
 }
