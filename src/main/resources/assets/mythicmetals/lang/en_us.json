@@ -444,7 +444,7 @@
   "text.autoconfig.mythicmetals.option.adamantite": "Adamantite Ore Settings",
   "text.autoconfig.mythicmetals.option.adamantite.bottom": "Adamantite Minimum Spawn Height",
   "text.autoconfig.mythicmetals.option.adamantite.discardChance": "Discard chance of Adamantite",
-  "text.autoconfig.mythicmetals.option.adamantite.enabled": "Enable Adamantite Ore",
+  "text.autoconfig.mythicmetals.option.adamantite.enabled": "Generate Adamantite Ore",
   "text.autoconfig.mythicmetals.option.adamantite.offset": "Should Adamantite be offset?",
   "text.autoconfig.mythicmetals.option.adamantite.perChunk": "Adamantite Spawn Chance",
   "text.autoconfig.mythicmetals.option.adamantite.top": "Adamantite Max Spawn Height",

@@ -34,12 +34,12 @@
   ],
   "depends": {
     "fabricloader": ">=0.11.6",
-    "alloy_forgery": ">=2.0.5",
-    "fabric": ">=0.36.0",
+    "alloy_forgery": ">=2.0.8",
+    "fabric": ">=0.45.0",
     "minecraft": "1.18.x",
     "cloth-config2": ">=5.0.30",
     "java": ">=17",
-    "owo": ">=0.3.10+1.18"
+    "owo": ">=0.5.2+1.18"
 
   },
   "suggests": {

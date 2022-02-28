@@ -10,6 +10,8 @@ Slightly buffed the attack speed of Orichalcum and Osmium tools.
 Updated the armor item textures for Durasteel, Palladium, and regular Banglum.  
 Removed Vermiculite.  
 
+Thanks to leocth for the Simplified Chinese (zh_ch) translation! 
+
 ### Morkite has been added  
 This new ore drops a new crystal-like metal, which works as fuel.  
 Two pieces of morkite is just as effective as a single piece of coal.  

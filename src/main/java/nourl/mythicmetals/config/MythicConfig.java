@@ -7,7 +7,7 @@ import nourl.mythicmetals.MythicMetals;
 
 import java.util.ArrayList;
 
-@Config(name = MythicMetals.MOD_ID)
+@Config(name = MythicMetals.MOD_ID + "_config")
 public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart
     public boolean enableDusts = false;

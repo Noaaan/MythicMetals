@@ -15,7 +15,7 @@ public class Abilities {
     public static final Ability AQUA_AFFINITY = new Ability("aqua_affinity", 1, false);
     public static final Ability BLAST_MINING = new Ability("blast_mining", 0, false);
     public static final Ability KNOCKBACK = new Ability("knockback", 3);
-    public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, true);
+    public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 4);
