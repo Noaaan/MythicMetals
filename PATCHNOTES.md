@@ -19,7 +19,7 @@ Morkite can be found around the stone/deepslate border underground.
 
 
 ### Banglum has recieved a **major** re-work:
-- Regular Banglum now only has Blast Padding on all pieces (Blast Protection 1)  
+- Regular Banglum armor now only has Blast Padding on all pieces (Blast Protection 1)  
 - Nether Banglum ores have been added.
 - Banglum Ores are now **volatile**. The ores have a chance to explode that scales with the levels of efficiency and fortune on your pickaxe.
 - Silk Touch drastically reduces this explosion chance.  

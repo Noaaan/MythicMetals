@@ -17,6 +17,7 @@ repositories {
 	maven {url = "https://ladysnake.jfrog.io/artifactory/mods" }
 	maven {url = "https://maven.cafeteria.dev" }
 	maven {url = "https://maven.jamieswhiteshirt.com/libs-release" }
+	maven {url = "https://api.modrinth.com/maven/"}
 
 	flatDir {
 		dir('libs')
@@ -30,7 +31,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Alloy Forgery
-	modImplementation("wraith:alloy-forgery:${project.alloyforgery_version}")
+	modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
 	// config
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")

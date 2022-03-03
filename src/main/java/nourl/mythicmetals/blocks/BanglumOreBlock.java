@@ -26,8 +26,7 @@ public class BanglumOreBlock extends OreBlock {
         if (rng < 2 && world.getDimension().isUltrawarm()) {
             ClientParticles.setParticleCount(12);
             ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.5D);
-        }
-        else if (rng == 69) {
+        } else if (rng == 69) {
             ClientParticles.setParticleCount(6);
             ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.0D);
         }
@@ -49,16 +48,19 @@ public class BanglumOreBlock extends OreBlock {
         chance = MathHelper.clamp(chance, 0, 80);
 
         // Roll the dice
-        if (random.nextFloat(100) <= chance && !player.isCreative())
-            explode(world, pos);
+        if (random.nextFloat(100) <= chance && !player.isCreative()) {
+            if (!world.isClient) {
+                world.removeBlock(pos, false);
+                explode(world, pos);
+            }
+        }
         super.onBreak(world, pos, state, player);
     }
 
     private void explode(World world, BlockPos pos) {
         if (world.getDimension().isUltrawarm()) {
-            world.createExplosion(null, pos.getX(), pos.getY() + 0.5, pos.getZ(), 3.0F, Explosion.DestructionType.DESTROY);
-        }
-        else {
+            world.createExplosion(null, pos.getX(), pos.getY() + 0.6, pos.getZ(), 3.2F, Explosion.DestructionType.DESTROY);
+        } else {
             world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 0.3F, Explosion.DestructionType.BREAK);
         }
     }
