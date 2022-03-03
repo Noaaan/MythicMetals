@@ -1,16 +1,9 @@
 # 0.12.0  
 ## MAKE A BACKUP BEFORE UPDATING TO THIS VERSION!
 ### Replaced EnchantGiver with a custom ability system.  
-**PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore vanilla enchantment restrictions.** 
+**PLEASE NOTE that these <ins>STACK</ins> with enchantments, and ignore vanilla enchantment restrictions.**
 
-Tweaked the White Aegis sword texture slightly.  
-Adjusted all hardness values of ores, and made ores harder to mine with the wrong tool (especially if you have efficiency).  
-Changed the Aegis blades to use their own material, so that they can be repaired with Palladium instead of Celestium.  
-Slightly buffed the attack speed of Orichalcum and Osmium tools.  
-Updated the armor item textures for Durasteel, Palladium, and regular Banglum.  
-Removed Vermiculite.  
-
-Thanks to leocth for the Simplified Chinese (zh_ch) translation! 
+Thanks to clarenre, Kasualix and leocth for working towards the Simplified Chinese (zh_ch) translation! 
 
 ### Morkite has been added  
 This new ore drops a new crystal-like metal, which works as fuel.  
@@ -35,6 +28,14 @@ Morkite can be found around the stone/deepslate border underground.
 - A new item, the **Aquarium Pearl** has been added as a rare drop from Aquarium
   - This item can be used in order to craft a Trident from Prismarine Shards and a Heart of the Sea  
 
+#### Other changes:  
+Tweaked the White Aegis sword texture slightly.  
+Adjusted all hardness values of ores, and made ores harder to mine with the wrong tool (especially if you have efficiency).  
+Changed the Aegis blades to use their own material, so that they can be repaired with Palladium instead of Celestium.  
+Slightly buffed the attack speed of Orichalcum and Osmium tools.  
+Updated the armor item textures for Durasteel, Palladium, and regular Banglum.  
+Made Unobtainium slightly more common.  
+Removed Vermiculite.
 
 # 0.11.4  
 Fixed an oversight where mining orichalcum with silk touch would return mythril ore.  

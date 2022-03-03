@@ -31,14 +31,13 @@ supersaiyansubtlety, for helping me with Mixin.
 LambdAurora, for her readme on how to use Gradle.  
 BoogieMonster1O1, for giving me pointers about Mixins.  
 misode, for his loot table generator.  
-My friend SnifferProduct, who helped in designing the first iteration of tool stats.  
-My friends revanitez, drakath9, and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
+My friends SnifferProduct, revanitez, drakath9, and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 Flytre, for helping with the RecipeManager Mixin.  
 Spxtreofficial, for his LivingEntityMixin.  
-glisco, for his multiple commits helping the backend of the code.  
+glisco, for his multiple commits to code and helpful toolchain.  
 The incredible music talent from Jan_Boyega.  
-williewillus, for the implementation of Fabrics ArmorRenderer.  
+williewillus, for the implementation of Fabric's ArmorRenderer.  
 
 **The artists:**  
 * DH 
@@ -59,7 +58,8 @@ And a final thanks to the Fabric Project Discord, who have been supportive while
 ## Translations  
 These people have helped translating the mod into different languages. Thank you to:  
 
-* Oscienet for the russian translation.  
-* DH for the macedonian translation.
+* Oscienet, for the russian translation.  
+* DH, for the macedonian translation.  
+* leocth, for the simplified chinese translation.  
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
