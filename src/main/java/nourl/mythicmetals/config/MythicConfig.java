@@ -57,7 +57,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig stormyx = new OreConfig(true,8, 2, 4, 60, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig unobtainium = new OreConfig(true,3, 1, -59, 5, .25f, false, true);
+    public OreConfig unobtainium = new OreConfig(true,3, 1, -59, 5, .0f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig tin = new OreConfig(true,8, 4, 64, 92, .25f, false);
     @ConfigEntry.Gui.Excluded
