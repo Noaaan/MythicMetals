@@ -11,6 +11,7 @@
     "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
+    "ExplosionMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PlayerEntityMixin",

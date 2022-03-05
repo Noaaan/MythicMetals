@@ -99,7 +99,7 @@ public class EnchantmentHelperMixin {
     private static void increaseDamage(ItemStack stack, EntityGroup group, CallbackInfoReturnable<Float> cir) {
         var amount = cir.getReturnValue();
         int change = 0;
-        if (Abilities.PROJECTILE_PROTECTION.getItems().contains(stack.getItem()) && group == EntityGroup.UNDEAD) {
+        if (Abilities.SMITE.getItems().contains(stack.getItem()) && group == EntityGroup.UNDEAD) {
             change += Abilities.SMITE.getLevel() * 2.5f;
         }
         if (change != 0)
