@@ -10,6 +10,7 @@
     "CampfireBlockMixin",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
+    "ExplosionMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PlayerEntityMixin",
