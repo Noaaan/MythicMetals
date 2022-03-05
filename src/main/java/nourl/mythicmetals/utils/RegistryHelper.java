@@ -9,10 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.mixin.AccessorEntityModelLayers;
 
@@ -55,14 +51,6 @@ public class RegistryHelper {
         } else {
             block(path, block, group);
         }
-    }
-
-    public static void placedFeature(String name, PlacedFeature feature) {
-        PlacedFeatures.register(name, feature);
-    }
-
-    public static void configuredFeature(String name, ConfiguredFeature<?, ?> feature) {
-        ConfiguredFeatures.register(name, feature);
     }
 
     /* Shoutouts to williewillus for this implementation:

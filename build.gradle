@@ -1,7 +1,7 @@
 plugins {
-	id 'fabric-loom' version '0.10-SNAPSHOT'
+	id 'fabric-loom' version '0.11-SNAPSHOT'
 	id 'maven-publish'
-	id 'io.github.juuxel.loom-quiltflower-mini' version '1.2.1'
+	id 'io.github.juuxel.loom-quiltflower' version '1.6.0'
 }
 
 archivesBaseName = project.archives_base_name
@@ -48,8 +48,8 @@ dependencies {
 	// modmenu
 	modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-	// Origins compat
-	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+	// Origins compat - Will re-enable for 1.18.2 version
+	//modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
 	include 'com.github.Draylar:magna:1.7.0-1.18'
 	modImplementation 'com.github.Draylar:magna:1.7.0-1.18'

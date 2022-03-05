@@ -8,7 +8,7 @@ import net.minecraft.client.model.*;
 
 public class MetallurgiumArmorModel {
 
-    private final ModelPart head;
+    public final ModelPart head;
 
     public MetallurgiumArmorModel(ModelPart root) {
         this.head = root.getChild("head");

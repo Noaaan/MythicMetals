@@ -35,8 +35,14 @@ public class MythicMetals implements ModInitializer {
     @Override
     public void onInitialize() {
         RegisterSounds.register();
-        FieldRegistrationHandler.processSimple(MythicTools.class, false);
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
+        if (CONFIG.enableNuggets) {
+            FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
+        }
+        if (CONFIG.enableDusts) {
+            FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
+        }
+        FieldRegistrationHandler.processSimple(MythicTools.class, false);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
         MythicBlocks.init();

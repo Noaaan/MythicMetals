@@ -3,10 +3,10 @@ package nourl.mythicmetals.item;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
-import io.wispforest.owo.itemgroup.gui.ItemGroupTab;
-import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.tools.MythicTools;
@@ -20,10 +20,10 @@ public class MythicItemGroups extends OwoItemGroup {
 
     @Override
     protected void setup() {
-        this.addTab(Icon.of(MythicItems.ADAMANTITE_INGOT), "items", TagFactory.ITEM.create(RegistryHelper.id("metals")));
-        this.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", ItemGroupTab.EMPTY);
-        this.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagFactory.ITEM.create(RegistryHelper.id("weapons")));
-        this.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagFactory.ITEM.create(RegistryHelper.id("gear")));
+        this.addTab(Icon.of(MythicItems.ADAMANTITE_INGOT), "items", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("metals")));
+        this.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("blocks")));
+        this.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("weapons")));
+        this.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("gear")));
 
         this.addButton(ItemGroupButton.github("https://github.com/Noaaan/MythicMetals/issues"));
         this.addButton(ItemGroupButton.curseforge("https://www.curseforge.com/minecraft/mc-mods/mythicmetals"));

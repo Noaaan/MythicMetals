@@ -13,6 +13,7 @@ import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.utils.RegistryHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,18 +45,18 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
-            if (RegisterTags.CARMOT_ARMOR.contains(armorItems.getItem())) {
+            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.CARMOT_ARMOR)) {
                 carmotParticle();
             }
 
-            if (RegisterTags.PROMETHEUM_ARMOR.contains(armorItems.getItem())) {
+            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_ARMOR)) {
                 var dmg = armorItems.getDamage();
                 var rng = r.nextInt(200);
                 if (rng == 117)
                     armorItems.setDamage(dmg - 1);
             }
 
-            if (RegisterTags.COPPER_ARMOR.contains(armorItems.getItem()) && world.isThundering()) {
+            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.COPPER_ARMOR) && world.isThundering()) {
                 copperParticle();
                 int i = r.nextInt(500000);
                 if (i == 666 & copperParticle()) {
@@ -67,7 +68,7 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
 
-            if (RegisterTags.PALLADIUM_ARMOR.contains(armorItems.getItem())) {
+            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PALLADIUM_ARMOR)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                     palladiumParticle();
@@ -142,7 +143,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void prometheumRepairPassive() {
         var heldItem = getMainHandStack();
-        if (RegisterTags.PROMETHEUM_TOOLS.contains(heldItem.getItem())) {
+        if (heldItem.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_TOOLS)) {
             var dmg = heldItem.getDamage();
             var rng = r.nextInt(200);
             if (rng == 117)

@@ -18,7 +18,7 @@ import java.util.Map;
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
 
-    @Inject(method = "apply", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "apply*", at = @At("HEAD"))
     private void deserialize(Map<Identifier, JsonObject> map, ResourceManager resourceManager, Profiler profiler, CallbackInfo info) {
         // Removes recipes from the recipe map if a mod is not present
         Iterator<Map.Entry<Identifier, JsonObject>> iterator = map.entrySet().iterator();

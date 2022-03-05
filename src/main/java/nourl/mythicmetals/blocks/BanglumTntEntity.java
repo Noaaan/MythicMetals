@@ -22,7 +22,7 @@ public class BanglumTntEntity extends Entity {
 
     public BanglumTntEntity(EntityType<? extends BanglumTntEntity> entityType, World world) {
         super(entityType, world);
-        this.inanimate = true;
+        this.intersectionChecked = true;
     }
 
     public BanglumTntEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {

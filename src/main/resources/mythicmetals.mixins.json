@@ -2,13 +2,12 @@
   "required": true,
   "minVersion": "0.8",
   "package": "nourl.mythicmetals.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AccessorEntityModelLayers",
     "AnvilScreenHandlerMixin",
     "ArmorItemMixin",
     "CampfireBlockMixin",
-    "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
     "LivingEntityMixin",
@@ -17,7 +16,6 @@
     "RecipeManagerMixin"
   ],
   "client": [],
-  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {
     "defaultRequire": 1
   }

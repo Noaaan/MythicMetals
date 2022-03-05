@@ -3,9 +3,9 @@ package nourl.mythicmetals.armor.models;
 import net.minecraft.client.model.*;
 
 public class BanglumArmorModel {
-    private final ModelPart head;
-    private final ModelPart right_horn;
-    private final ModelPart left_horn;
+    public final ModelPart head;
+    public final ModelPart right_horn;
+    public final ModelPart left_horn;
 
     public BanglumArmorModel(ModelPart root) {
         this.head = root.getChild("head");
