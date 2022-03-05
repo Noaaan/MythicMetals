@@ -27,11 +27,11 @@ public class ToolSet {
     }
 
     public ToolSet(ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
-        this.sword = new SwordItem(material, damage[0], speed[0], createSettings(settingsProcessor));
-        this.axe = new AxeBase(material, damage[1], speed[1], createSettings(settingsProcessor));
-        this.pickaxe = new PickaxeBase(material, damage[2], speed[2], createSettings(settingsProcessor));
-        this.shovel = new ShovelItem(material, damage[3], speed[3], createSettings(settingsProcessor));
-        this.hoe = new HoeBase(material, damage[4], speed[4], createSettings(settingsProcessor));
+        this.sword = this.makeSword(material, damage[0], speed[0], createSettings(settingsProcessor));
+        this.axe = this.makeAxe(material, damage[1], speed[1], createSettings(settingsProcessor));
+        this.pickaxe = this.makePickaxe(material, damage[2], speed[2], createSettings(settingsProcessor));
+        this.shovel = this.makeShovel(material, damage[3], speed[3], createSettings(settingsProcessor));
+        this.hoe = this.makeHoe(material, damage[4], speed[4], createSettings(settingsProcessor));
     }
 
     public void register(String name) {
@@ -41,6 +41,27 @@ public class ToolSet {
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_shovel"), shovel);
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
     }
+
+    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+        return new SwordItem(material, damage, speed, settings);
+    }
+
+    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+        return new AxeBase(material, damage, speed, settings);
+    }
+
+    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+        return new PickaxeBase(material, damage, speed, settings);
+    }
+
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+        return new ShovelItem(material, damage, speed, settings);
+    }
+
+    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+        return new HoeBase(material, damage, speed, settings);
+    }
+
 
     public SwordItem getSword() {
         return sword;

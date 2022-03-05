@@ -18,10 +18,10 @@ public class ArmorSet {
     private final ArmorItem leggings;
     private final ArmorItem boots;
 
-    public static ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
-        return new ArmorItem(material, slot, settings);
+        return this.makeItem(material, slot, settings);
     }
 
     public ArmorSet(ArmorMaterial material) {
@@ -41,6 +41,10 @@ public class ArmorSet {
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_chestplate"), chestplate);
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_leggings"), leggings);
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_boots"), boots);
+    }
+
+    protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
+        return new ArmorItem(material, slot, settings);
     }
 
     public ArmorItem getHelmet() {
