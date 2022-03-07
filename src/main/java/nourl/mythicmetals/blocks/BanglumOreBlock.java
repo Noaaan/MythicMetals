@@ -40,9 +40,9 @@ public class BanglumOreBlock extends OreBlock {
         // Calculate explosion chance
         var stack = player.getMainHandStack();
         if (stack.hasEnchantments()) {
-            chance = chance + (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
-            chance = chance + (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 10);
-            chance = chance - (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 40);
+            chance += (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
+            chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 10);
+            chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 40);
         }
 
         chance = MathHelper.clamp(chance, 0, 80);

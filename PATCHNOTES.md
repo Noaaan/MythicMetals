@@ -1,3 +1,14 @@
+# 0.13.0  
+Ported to 1.18.2
+
+# 0.12.1
+Fixed some issues regarding the language files not using correct translation keys.  
+Fixed Banglum TNT not respecting who detonated it.  
+Fixed the Smite ability not applying correctly.  
+Added missing recipes for Legendary Banglum tools and smelting ores into drops.  
+Increased the fuel value of Morkite in an Alloy Forge.  
+Adjusted the Hallowed Helmet model slightly.  
+
 # 0.12.0  
 ## MAKE A BACKUP BEFORE UPDATING TO THIS VERSION!
 ### Replaced EnchantGiver with a custom ability system.  

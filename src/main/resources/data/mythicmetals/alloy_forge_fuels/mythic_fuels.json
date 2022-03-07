@@ -2,11 +2,11 @@
   "fuels": [
     {
       "item": "mythicmetals:morkite",
-      "fuel": 500
+      "fuel": 650
     },
     {
       "item": "mythicmetals:morkite_block",
-      "fuel": 4500
+      "fuel": 6000
     }
   ]
 }
