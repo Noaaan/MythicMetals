@@ -31,7 +31,7 @@ public class HallowedArmorModel {
                         .uv(0, 0)
                         .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F))
                         .uv(32, 0)
-                        .cuboid(-1.0F, -7.3F, -6.2F, 2.0F, 2.0F, 1.0F, new Dilation(0.2F)),
+                        .cuboid(-1.0F, -7.3F, -5.8F, 2.0F, 2.0F, 1.0F, new Dilation(0.2F)),
                 ModelTransform.NONE
                 );
 
