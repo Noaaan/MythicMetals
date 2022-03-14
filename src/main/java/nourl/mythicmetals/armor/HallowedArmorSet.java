@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public class HallowedArmorSet extends ArmorSet {
 
     public HallowedArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
-        super(material);
+        super(material, settingsProcessor);
     }
 
     @Override

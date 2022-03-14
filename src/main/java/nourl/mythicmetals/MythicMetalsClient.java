@@ -14,7 +14,7 @@ import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.utils.ModelHandler;
+import nourl.mythicmetals.armor.models.ModelHandler;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
