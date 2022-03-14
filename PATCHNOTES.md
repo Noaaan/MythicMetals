@@ -1,3 +1,9 @@
+# 0.13.x and 0.12.x 
+Fixed multiple issues with anvils, causing them to be both slow to break, and unbreakable on first load (`/reload` on older versions fixes this issue till next restart)
+Added anvils to the `minecraft:minable/pickaxe` tag.  
+Added a new resource condition to properly validate anvils being disabled. 
+
+
 # 0.13.0  
 Ported to 1.18.2
 

@@ -533,6 +533,7 @@ public class BlockSet {
                 settingsProcessor.accept(settings);
                 this.anvil = new AnvilBlock(settings);
                 anvilMap.put(anvil, miningLevel);
+                anvilMap.put(anvil, PICKAXE);
             }
             return this;
         }
