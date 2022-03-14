@@ -11,7 +11,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.models.ArmorModel;
-import nourl.mythicmetals.utils.ModelHandler;
+import nourl.mythicmetals.armor.models.ModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 

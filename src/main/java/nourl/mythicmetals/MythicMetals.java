@@ -18,6 +18,7 @@ import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicCommands;
 import nourl.mythicmetals.utils.MythicParticleSystem;
+import nourl.mythicmetals.utils.MythicResourceConditions;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -53,6 +54,7 @@ public class MythicMetals implements ModInitializer {
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1000);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 9000);
+        MythicResourceConditions.init();
 
 
 
