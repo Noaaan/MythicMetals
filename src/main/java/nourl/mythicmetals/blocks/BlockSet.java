@@ -528,10 +528,13 @@ public class BlockSet {
          * @param miningLevel Mining level of the anvil.
          */
         public Builder createAnvil(Identifier miningLevel) {
-            final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL);
-            settingsProcessor.accept(settings);
-            this.anvil = new AnvilBlock(settings);
-            anvilMap.put(anvil, miningLevel);
+            if (MythicMetals.CONFIG.enableAnvils) {
+                final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL);
+                settingsProcessor.accept(settings);
+                this.anvil = new AnvilBlock(settings);
+                anvilMap.put(anvil, miningLevel);
+                anvilMap.put(anvil, PICKAXE);
+            }
             return this;
         }
 

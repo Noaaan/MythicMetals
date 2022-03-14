@@ -36,7 +36,7 @@ LordDeatHunter, for his helpful scripts and direct contributions to the mod.
 Flytre, for helping with the RecipeManager Mixin.  
 Spxtreofficial, for his LivingEntityMixin.  
 glisco, for his multiple commits to code and helpful toolchain.  
-The incredible music talent from Jan_Boyega.  
+The incredible music talent from Galaxy Goats, provided by Jan_Boyega.  
 williewillus, for the implementation of Fabric's ArmorRenderer.  
 
 **The artists:**  

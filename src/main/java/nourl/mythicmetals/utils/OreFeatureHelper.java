@@ -197,10 +197,6 @@ public class OreFeatureHelper {
                 HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
-    public static RegistryKey<PlacedFeature> placedFeatureKey(String string) {
-        return RegistryKey.of(Registry.PLACED_FEATURE_KEY, RegistryHelper.id(string));
-    }
-
     //From Mojanks OrePlacedFeatures
     private static List<PlacementModifier> modifiers(PlacementModifier first, PlacementModifier second) {
         return List.of(first, SquarePlacementModifier.of(), second, BiomePlacementModifier.of());
