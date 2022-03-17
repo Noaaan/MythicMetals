@@ -35,7 +35,7 @@ public class BanglumOreBlock extends OreBlock {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        float chance = world.getDimension().isUltrawarm() ? 30 : 10;
+        int chance = world.getDimension().isUltrawarm() ? 30 : 10;
         Random random = new Random();
         // Calculate explosion chance
         var stack = player.getMainHandStack();
@@ -48,7 +48,7 @@ public class BanglumOreBlock extends OreBlock {
         chance = MathHelper.clamp(chance, 0, 80);
 
         // Roll the dice
-        if (random.nextFloat(100) <= chance && !player.isCreative()) {
+        if (random.nextInt(100) <= chance && !player.isCreative()) {
             if (!world.isClient) {
                 world.removeBlock(pos, false);
                 explode(world, pos);
