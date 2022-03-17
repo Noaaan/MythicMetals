@@ -1,7 +1,13 @@
 # 0.13.x and 0.12.x 
-Fixed multiple issues with anvils, causing them to be both slow to break, and unbreakable on first load (`/reload` on older versions fixes this issue till next restart)
-Added anvils to the `minecraft:minable/pickaxe` tag.  
-Added a new resource condition to properly validate anvils being disabled. 
+Fixed multiple issues with anvils, causing them to be slow to break and not drop   
+(`/reload` on older versions fixes this issue till next restart).  
+- Added anvils to the `minecraft:minable/pickaxe` tag.  
+- Added a new resource condition to properly validate anvils being disabled.
+
+Fixed a settings issue with custom armor items (Hallowed, Metallurgium, Palladium, Legendary Banglum).  
+Moved unused Fabric tool tags to Common.  
+Added all pickaxes to the `minecraft:cluster_max_harvestables` tag.  
+Fixed an issue where mining Banglum Ore could crash a server.  
 
 
 # 0.13.0  
