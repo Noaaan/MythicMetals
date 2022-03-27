@@ -80,31 +80,31 @@ public class MythicOreFeatures {
     public static PlacedFeature ORE_END_STARRITE = OreFeatureHelper.range("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.starrite.getVariant());
 
     // RegistryKeys for features
-    public static final RegistryKey<PlacedFeature> ADAMANTITE = OreFeatureHelper.placedFeatureKey("ore_adamantite");
-    public static final RegistryKey<PlacedFeature> AQUARIUM = OreFeatureHelper.placedFeatureKey("ore_aquarium");
-    public static final RegistryKey<PlacedFeature> BANGLUM = OreFeatureHelper.placedFeatureKey("ore_banglum");
-    public static final RegistryKey<PlacedFeature> NETHER_BANGLUM = OreFeatureHelper.placedFeatureKey("ore_nether_banglum");
-    public static final RegistryKey<PlacedFeature> CARMOT = OreFeatureHelper.placedFeatureKey("ore_carmot");
-    public static final RegistryKey<PlacedFeature> CALCITE_KYBER = OreFeatureHelper.placedFeatureKey("ore_calcite_kyber");
-    public static final RegistryKey<PlacedFeature> KYBER = OreFeatureHelper.placedFeatureKey("ore_kyber");
-    public static final RegistryKey<PlacedFeature> OVERWORLD_NETHER_ORES = OreFeatureHelper.placedFeatureKey("ore_overworld_nether");
-    public static final RegistryKey<PlacedFeature> MANGANESE = OreFeatureHelper.placedFeatureKey("ore_manganese");
-    public static final RegistryKey<PlacedFeature> MIDAS_GOLD = OreFeatureHelper.placedFeatureKey("ore_midas_gold");
-    public static final RegistryKey<PlacedFeature> MYTHRIL = OreFeatureHelper.placedFeatureKey("ore_mythril");
-    public static final RegistryKey<PlacedFeature> ORICHALCUM = OreFeatureHelper.placedFeatureKey("ore_orichalcum");
-    public static final RegistryKey<PlacedFeature> OSMIUM = OreFeatureHelper.placedFeatureKey("ore_osmium");
-    public static final RegistryKey<PlacedFeature> PLATINUM = OreFeatureHelper.placedFeatureKey("ore_platinum");
-    public static final RegistryKey<PlacedFeature> PROMETHEUM = OreFeatureHelper.placedFeatureKey("ore_prometheum");
-    public static final RegistryKey<PlacedFeature> QUADRILLUM = OreFeatureHelper.placedFeatureKey("ore_quadrillum");
-    public static final RegistryKey<PlacedFeature> RUNITE = OreFeatureHelper.placedFeatureKey("ore_runite");
-    public static final RegistryKey<PlacedFeature> SILVER = OreFeatureHelper.placedFeatureKey("ore_silver");
-    public static final RegistryKey<PlacedFeature> STARRITE = OreFeatureHelper.placedFeatureKey("ore_starrite");
-    public static final RegistryKey<PlacedFeature> END_STARRITE = OreFeatureHelper.placedFeatureKey("ore_end_starrite");
-    public static final RegistryKey<PlacedFeature> STORMYX = OreFeatureHelper.placedFeatureKey("ore_stormyx");
-    public static final RegistryKey<PlacedFeature> TIN = OreFeatureHelper.placedFeatureKey("ore_tin");
-    public static final RegistryKey<PlacedFeature> PALLADIUM = OreFeatureHelper.placedFeatureKey("ore_palladium");
-    public static final RegistryKey<PlacedFeature> UNOBTAINIUM = OreFeatureHelper.placedFeatureKey("ore_unobtainium");
-    public static final RegistryKey<PlacedFeature> MORKITE = OreFeatureHelper.placedFeatureKey("ore_morkite");
+    public static final RegistryKey<PlacedFeature> ADAMANTITE = RegistryHelper.placedFeatureKey("ore_adamantite");
+    public static final RegistryKey<PlacedFeature> AQUARIUM = RegistryHelper.placedFeatureKey("ore_aquarium");
+    public static final RegistryKey<PlacedFeature> BANGLUM = RegistryHelper.placedFeatureKey("ore_banglum");
+    public static final RegistryKey<PlacedFeature> NETHER_BANGLUM = RegistryHelper.placedFeatureKey("ore_nether_banglum");
+    public static final RegistryKey<PlacedFeature> CARMOT = RegistryHelper.placedFeatureKey("ore_carmot");
+    public static final RegistryKey<PlacedFeature> CALCITE_KYBER = RegistryHelper.placedFeatureKey("ore_calcite_kyber");
+    public static final RegistryKey<PlacedFeature> KYBER = RegistryHelper.placedFeatureKey("ore_kyber");
+    public static final RegistryKey<PlacedFeature> OVERWORLD_NETHER_ORES = RegistryHelper.placedFeatureKey("ore_overworld_nether");
+    public static final RegistryKey<PlacedFeature> MANGANESE = RegistryHelper.placedFeatureKey("ore_manganese");
+    public static final RegistryKey<PlacedFeature> MIDAS_GOLD = RegistryHelper.placedFeatureKey("ore_midas_gold");
+    public static final RegistryKey<PlacedFeature> MYTHRIL = RegistryHelper.placedFeatureKey("ore_mythril");
+    public static final RegistryKey<PlacedFeature> ORICHALCUM = RegistryHelper.placedFeatureKey("ore_orichalcum");
+    public static final RegistryKey<PlacedFeature> OSMIUM = RegistryHelper.placedFeatureKey("ore_osmium");
+    public static final RegistryKey<PlacedFeature> PLATINUM = RegistryHelper.placedFeatureKey("ore_platinum");
+    public static final RegistryKey<PlacedFeature> PROMETHEUM = RegistryHelper.placedFeatureKey("ore_prometheum");
+    public static final RegistryKey<PlacedFeature> QUADRILLUM = RegistryHelper.placedFeatureKey("ore_quadrillum");
+    public static final RegistryKey<PlacedFeature> RUNITE = RegistryHelper.placedFeatureKey("ore_runite");
+    public static final RegistryKey<PlacedFeature> SILVER = RegistryHelper.placedFeatureKey("ore_silver");
+    public static final RegistryKey<PlacedFeature> STARRITE = RegistryHelper.placedFeatureKey("ore_starrite");
+    public static final RegistryKey<PlacedFeature> END_STARRITE = RegistryHelper.placedFeatureKey("ore_end_starrite");
+    public static final RegistryKey<PlacedFeature> STORMYX = RegistryHelper.placedFeatureKey("ore_stormyx");
+    public static final RegistryKey<PlacedFeature> TIN = RegistryHelper.placedFeatureKey("ore_tin");
+    public static final RegistryKey<PlacedFeature> PALLADIUM = RegistryHelper.placedFeatureKey("ore_palladium");
+    public static final RegistryKey<PlacedFeature> UNOBTAINIUM = RegistryHelper.placedFeatureKey("ore_unobtainium");
+    public static final RegistryKey<PlacedFeature> MORKITE = RegistryHelper.placedFeatureKey("ore_morkite");
 
     public static void init() {
 

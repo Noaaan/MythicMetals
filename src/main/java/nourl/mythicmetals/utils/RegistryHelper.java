@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.PlacedFeature;
@@ -81,5 +82,10 @@ public class RegistryHelper {
     public static void entityType(String path, EntityType<?> type){
         Registry.register(Registry.ENTITY_TYPE, RegistryHelper.id(path), type);
     }
+
+    public static RegistryKey<PlacedFeature> placedFeatureKey(String string) {
+        return RegistryKey.of(Registry.PLACED_FEATURE_KEY, RegistryHelper.id(string));
+    }
+
 
 }
