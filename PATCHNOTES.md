@@ -8,6 +8,7 @@ Fixed a settings issue with custom armor items (Hallowed, Metallurgium, Palladiu
 Moved unused Fabric tool tags to Common.  
 Added all pickaxes to the `minecraft:cluster_max_harvestables` tag.  
 Fixed an issue where mining Banglum Ore could crash a server.  
+Updated advancements to work better as a guide for new players.  
 
 
 # 0.13.0  

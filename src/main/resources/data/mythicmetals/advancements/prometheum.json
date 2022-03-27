@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:osmium",
+  "parent": "mythicmetals:runite",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.prometheum.title"

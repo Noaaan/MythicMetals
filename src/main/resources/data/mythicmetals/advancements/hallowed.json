@@ -8,7 +8,7 @@
       "translate": "advancement.mythicmetals.hallowed.description"
     },
     "icon": {
-      "item": "mythicmetals:hallowed_ingot"
+      "item": "mythicmetals:hallowed_pickaxe"
     },
     "frame": "goal",
     "show_toast": true,
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-              "mythicmetals:hallowed_ingot"
+              "mythicmetals:hallowed_pickaxe"
             ]
           }
         ]

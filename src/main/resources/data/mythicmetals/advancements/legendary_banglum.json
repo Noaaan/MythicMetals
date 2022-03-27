@@ -1,0 +1,52 @@
+{
+  "parent": "mythicmetals:banglum_chunk",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.legendary_banglum.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.legendary_banglum.description"
+    },
+    "icon": {
+      "item": "mythicmetals:legendary_banglum_pickaxe"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ultra_bang": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:legendary_banglum_pickaxe",
+              "mythicmetals:legendary_banglum_shovel"
+            ]
+          }
+        ]
+      }
+    },
+    "blast_mining_activated": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+            "items": [
+              "mythicmetals:legendary_banglum_pickaxe",
+              "mythicmetals:legendary_banglum_shovel"
+            ]
+          }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ultra_bang"
+    ],
+    [
+      "blast_mining_activated"
+    ]
+  ]
+}

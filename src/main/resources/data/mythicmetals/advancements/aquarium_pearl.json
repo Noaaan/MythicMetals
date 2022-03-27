@@ -1,29 +1,28 @@
 {
-  "parent": "mythicmetals:root",
+  "parent": "mythicmetals:aquarium",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.aquarium.title"
+      "translate": "advancement.mythicmetals.aquarium_pearl.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.aquarium.description"
+      "translate": "advancement.mythicmetals.aquarium_pearl.description"
     },
     "icon": {
-      "item": "mythicmetals:aquarium_ore"
+      "item": "mythicmetals:aquarium_pearl"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "fishy": {
+    "is_this_ore_a_clam": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_aquarium",
-              "mythicmetals:aquarium_ore"
+              "mythicmetals:aquarium_pearl"
             ]
           }
         ]

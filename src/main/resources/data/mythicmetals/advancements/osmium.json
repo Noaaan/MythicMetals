@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:aquarium",
+  "parent": "mythicmetals:root",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.osmium.title"

@@ -1,14 +1,14 @@
 {
-  "parent": "mythicmetals:forgery",
+  "parent": "mythicmetals:osmium",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.kyber.title"
+      "translate": "advancement.mythicmetals.runite.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.kyber.description"
+      "translate": "advancement.mythicmetals.runite.description"
     },
     "icon": {
-      "item": "mythicmetals:calcite_kyber_ore"
+      "item": "mythicmetals:runite_ore"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,15 +16,14 @@
     "hidden": false
   },
   "criteria": {
-    "star_wars_baby": {
+    "buying_gf": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_kyber",
-              "mythicmetals:kyber_ore",
-              "mythicmetals:calcite_kyber_ore"
+              "mythicmetals:raw_runite",
+              "mythicmetals:runite_ore"
             ]
           }
         ]
