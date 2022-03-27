@@ -1,29 +1,28 @@
 {
-  "parent": "mythicmetals:root",
+  "parent": "mythicmetals:forge",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.aquarium.title"
+      "translate": "advancement.mythicmetals.steel.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.aquarium.description"
+      "translate": "advancement.mythicmetals.steel.description"
     },
     "icon": {
-      "item": "mythicmetals:aquarium_ore"
+      "item": "mythicmetals:steel_ingot"
     },
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "hidden": false
   },
   "criteria": {
-    "fishy": {
+    "big_bang": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_aquarium",
-              "mythicmetals:aquarium_ore"
+              "mythicmetals:steel_ingot"
             ]
           }
         ]

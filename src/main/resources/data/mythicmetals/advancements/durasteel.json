@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:banglum",
+  "parent": "mythicmetals:forgery",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.durasteel.title"
@@ -16,7 +16,7 @@
     "hidden": false
   },
   "criteria": {
-    "thats_your_a_tier": {
+    "thats_your_classic_a_tier": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

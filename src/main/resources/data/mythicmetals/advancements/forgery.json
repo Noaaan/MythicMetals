@@ -2,13 +2,13 @@
   "parent": "mythicmetals:forge",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.midas_gold.title"
+      "translate": "advancement.mythicmetals.forgery.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.midas_gold.description"
+      "translate": "advancement.mythicmetals.forgery.description"
     },
     "icon": {
-      "item": "mythicmetals:midas_gold_ore"
+      "item": "alloy_forgery:deepslate_bricks_forge_controller"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,14 +16,14 @@
     "hidden": false
   },
   "criteria": {
-    "there_is_gold_here": {
+    "we_do_a_little_bit_of_forgery": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_midas_gold",
-              "mythicmetals:midas_gold_ore"
+              "alloy_forgery:deepslate_bricks_forge_controller",
+              "alloy_forgery:polished_blackstone_forge_controller"
             ]
           }
         ]

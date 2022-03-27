@@ -2,28 +2,28 @@
   "parent": "mythicmetals:root",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.aquarium.title"
+      "translate": "advancement.mythicmetals.forge.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.aquarium.description"
+      "translate": "advancement.mythicmetals.forge.description"
     },
     "icon": {
-      "item": "mythicmetals:aquarium_ore"
+      "item": "alloy_forgery:bricks_forge_controller"
     },
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "hidden": false
   },
   "criteria": {
-    "fishy": {
+    "smol_forg": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_aquarium",
-              "mythicmetals:aquarium_ore"
+              "alloy_forgery:bricks_forge_controller",
+			  "alloy_forgery:stone_bricks_forge_controller"
             ]
           }
         ]
