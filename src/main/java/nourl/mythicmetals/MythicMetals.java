@@ -65,6 +65,9 @@ public class MythicMetals implements ModInitializer {
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             LOGGER.info("[Mythic Metals] Have fun using Origins!");
         }
+        if (FabricLoader.getInstance().isModLoaded("spectrum")) {
+            LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
+        }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }
 
