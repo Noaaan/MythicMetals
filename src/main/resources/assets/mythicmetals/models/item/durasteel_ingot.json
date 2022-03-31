@@ -2,5 +2,13 @@
   "parent": "item/generated",
   "textures": {
     "layer0": "mythicmetals:items/durasteel_ingot"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "mythicmetals:funny_day": 1
+      },
+      "model": "mythicmetals:item/dura-chan"
+    }
+  ]
 }

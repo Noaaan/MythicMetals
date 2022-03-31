@@ -14,7 +14,8 @@
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PlayerEntityMixin",
-    "RecipeManagerMixin"
+    "RecipeManagerMixin",
+    "TranslationStorageMixin"
   ],
   "client": [],
   "injectors": {
