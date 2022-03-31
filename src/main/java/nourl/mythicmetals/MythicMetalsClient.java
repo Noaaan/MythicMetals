@@ -15,6 +15,9 @@ import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.armor.models.ModelHandler;
+import nourl.mythicmetals.utils.RegistryHelper;
+
+import java.util.Calendar;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
@@ -26,6 +29,8 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
         FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
+        FabricModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
+                (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1 && !MythicMetals.CONFIG.disableFunny) ? 1 : 0);
     }
 
     private void registerArmorRenderer() {

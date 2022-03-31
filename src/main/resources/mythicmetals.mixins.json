@@ -15,7 +15,8 @@
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PlayerEntityMixin",
-    "RecipeManagerMixin"
+    "RecipeManagerMixin",
+    "TranslationStorageMixin"
   ],
   "client": [],
   "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",

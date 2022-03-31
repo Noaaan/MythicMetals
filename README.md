@@ -14,12 +14,13 @@ https://www.curseforge.com/minecraft/mc-mods/mythicmetals
 
 ## License
 
-This mod is now licensed under MIT. Please read it before using any code.  
+This mod is licensed under a custom MIT license. Please read it before re-using any code.  
 You can use this mod as an example/base for adding in blocks, ingots, armor, tools, and ore generation for Fabric mods.  
-Feel free to use this in any modpack you wish for. I might feature them on CurseForge/Modrinth!  
+Feel free to use this in any modpack you wish for.  
 Some modpacks that use Mythic Metals:  
-* Euphoric Curiosities: https://www.curseforge.com/minecraft/modpacks/euphoriccuriosity  
+* Euphoric Curiosities: https://www.curseforge.com/minecraft/modpacks/euphoriccuriosity/  
 * Medieval Minecraft (Fabric): https://www.curseforge.com/minecraft/modpacks/medieval-minecraft-fabric/  
+* Another Quality Modpack 2: https://www.curseforge.com/minecraft/modpacks/another-quality-modpack-2/
 
 ## Credits
 
@@ -38,6 +39,7 @@ Spxtreofficial, for his LivingEntityMixin.
 glisco, for his multiple commits to code and helpful toolchain.  
 The incredible music talent from Galaxy Goats, provided by Jan_Boyega.  
 williewillus, for the implementation of Fabric's ArmorRenderer.  
+Dr. Zeal, for the wisp texture.  
 
 **The artists:**  
 * DH 

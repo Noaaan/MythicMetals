@@ -62,6 +62,8 @@ public class MythicConfig implements ConfigData {
     public OreConfig tin = new OreConfig(true,8, 4, 64, 92, .25f, false);
     @ConfigEntry.Gui.Excluded
     public int configVersion = MythicMetals.CONFIG_VERSION;
+    @ConfigEntry.Gui.RequiresRestart
+    public boolean disableFunny = false;
 
     public ArrayList<String> blacklist = new ArrayList<>();
 }

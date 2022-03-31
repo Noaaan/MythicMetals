@@ -440,6 +440,7 @@
   "text.autoconfig.mythicmetals_config.option.enableAnvils": "Enable Anvils",
   "text.autoconfig.mythicmetals_config.option.enableDusts": "Enable Dust Items",
   "text.autoconfig.mythicmetals_config.option.enableNuggets": "Enable Nuggets",
+  "text.autoconfig.mythicmetals_config.option.disableFunny": "Disable relatively funny event features",
   "text.autoconfig.mythicmetals_config.option.configVersion": "Current config version",
   "text.autoconfig.mythicmetals_config.option.adamantite": "Adamantite Ore Settings",
   "text.autoconfig.mythicmetals_config.option.adamantite.bottom": "Adamantite Minimum Spawn Height",

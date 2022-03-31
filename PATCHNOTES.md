@@ -1,4 +1,4 @@
-# 0.13.x and 0.12.x 
+# 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop   
 (`/reload` on older versions fixes this issue till next restart).  
 - Added anvils to the `minecraft:minable/pickaxe` tag.  
