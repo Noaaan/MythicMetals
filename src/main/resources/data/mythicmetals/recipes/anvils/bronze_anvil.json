@@ -18,12 +18,9 @@
     "count": 1
   },
   "group": "mm_anvils",
-    "fabric:load_conditions": [
+  "fabric:load_conditions": [
     {
-      "condition": "fabric:block_tags_populated",
-      "values": [
-        "mythicmetals:anvils"
-      ]
+      "condition": "mythicmetals:anvils_enabled"
     }
   ]
 }
