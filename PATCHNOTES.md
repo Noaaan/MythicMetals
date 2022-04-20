@@ -1,9 +1,9 @@
 # 0.14.0  
-Re-worked the Hallowed Armor model (thanks Pois1x!)  
-
+Re-worked the Hallowed Armor model (thanks Pois1x!).  
+Re-worked all durasteel assets, and raw quadrillum (thanks Pois1x!).  
 
 # 0.13.1 and 0.12.2 
-Fixed multiple issues with anvils, causing them to be slow to break and not drop   
+Fixed multiple issues with anvils, causing them to be slow to break and not drop.   
 (`/reload` on older versions fixes this issue till next restart).  
 - Added anvils to the `minecraft:minable/pickaxe` tag.  
 - Added a new resource condition to properly validate anvils being disabled.
