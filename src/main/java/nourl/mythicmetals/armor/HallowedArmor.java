@@ -10,8 +10,8 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.armor.models.ArmorModel;
-import nourl.mythicmetals.armor.models.ModelHandler;
+import nourl.mythicmetals.armor.models.HelmetModel;
+import nourl.mythicmetals.armor.models.MythicModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,8 +41,8 @@ public class HallowedArmor extends ArmorItem {
     @Environment(EnvType.CLIENT)
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
-        var root = models.getModelPart(ModelHandler.HALLOWED);
-        return new ArmorModel(root, slot);
+        var root = models.getModelPart(MythicModelHandler.HALLOWED_ARMOR);
+        return new HelmetModel(root, slot);
     }
 
     @NotNull

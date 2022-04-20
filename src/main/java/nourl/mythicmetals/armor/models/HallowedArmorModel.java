@@ -4,17 +4,15 @@ import net.minecraft.client.model.*;
 
 public class HallowedArmorModel {
     public final ModelPart head;
-    public final ModelPart hat;
-    public final ModelPart body;
-    public final ModelPart rightArm;
-    public final ModelPart leftArm;
+    public final ModelPart faceguard;
+    public final ModelPart wing_r;
+    public final ModelPart wing_l;
 
     public HallowedArmorModel(ModelPart root) {
         this.head = root.getChild("head");
-        this.hat = root.getChild("hat");
-        this.body = root.getChild("body");
-        this.rightArm = root.getChild("right_arm");
-        this.leftArm = root.getChild("left_arm");
+        this.faceguard = root.getChild("faceguard");
+        this.wing_r = root.getChild("wing_r");
+        this.wing_l = root.getChild("wing_l");
     }
 
     public static ModelData getModelData() {
@@ -22,64 +20,42 @@ public class HallowedArmorModel {
         var root = data.getRoot();
 
         root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("left_leg", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("right_leg", ModelPartBuilder.create(), ModelTransform.NONE);
 
-        ModelPartData head = root.addChild(
-                "head",
+        var head = root.addChild("head",
                 ModelPartBuilder.create()
                         .uv(0, 0)
-                        .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F))
-                        .uv(32, 0)
-                        .cuboid(-1.0F, -7.3F, -5.8F, 2.0F, 2.0F, 1.0F, new Dilation(0.2F)),
-                ModelTransform.NONE
-                );
-
-        head.addChild(
-                "right_wing",
-                ModelPartBuilder.create()
-                        .uv(16, 32)
-                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.01F)),
-                ModelTransform.of(-5.5269F, -6.9135F, -0.4809F, 0.1745F, -0.2182F, 0.0F)
-                );
-
-        head.addChild(
-                "left_wing",
-                ModelPartBuilder.create()
-                        .uv(26, 39)
-                        .cuboid(-0.5F, -1.5F, -3.0F, 1.0F, 3.0F, 6.0F, new Dilation(0.01F)),
-                ModelTransform.of(5.5269F, -6.9135F, 0.5191F, 0.1745F, 0.2182F, 0.0F)
-                );
-
-        var body = root.addChild(
-                "body",
-                ModelPartBuilder.create()
-                        .uv(16, 16)
-                        .cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new Dilation(0.8F)),
-                ModelTransform.NONE
-                );
-        body.addChild(
-                "helm_crystal",
-                ModelPartBuilder.create()
-                .uv(32, 0)
-                .cuboid(-1.0F, 4.0F, -3.1F, 2.0F, 2.0F, 1.0F, new Dilation(0.35F)),
-                ModelTransform.NONE
+                        .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F)),
+                ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
         );
 
-        var right_arm = root.addChild(
-                "right_arm",
+        head.addChild(
+                "wing_r",
                 ModelPartBuilder.create()
-                        .uv(40, 32)
-                        .cuboid(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(0.7F)),
-                ModelTransform.pivot(-5.0F, 2.0F, 0.0F)
-                );
-        var left_arm = root.addChild(
-                "left_arm",
+                        .uv(43, 50)
+                        .cuboid(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new Dilation(0.0F)),
+                ModelTransform.of(-5.0F, -6.5F, 0.5F, 0.4363F, -0.2618F, 0.0F)
+        );
+
+        head.addChild(
+                "wing_l",
                 ModelPartBuilder.create()
-                        .uv(40, 16)
-                        .cuboid(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new Dilation(.7F)),
-                ModelTransform.pivot(5.0F, 2.0F, 0.0F)
-                );
+                        .uv(43, 50)
+                        .cuboid(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new Dilation(0.0F)),
+                ModelTransform.of(5.0F, -6.5F, 0.5F, 0.4363F, 0.2618F, 0.0F)
+        );
+
+        head.addChild(
+                "faceguard",
+                ModelPartBuilder.create()
+                        .uv(16, 53)
+                        .cuboid(-5.0F, -3.0F, -6.0F, 10.0F, 4.0F, 7.0F, new Dilation(0.0F)),
+                ModelTransform.of(0.0F, -5.0F, 0.0F, -0.3491F, 0.0F, 0.0F)
+        );
         root.createPart(64, 64);
         return data;
     }

@@ -5,26 +5,36 @@ import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.texture.ResourceTexture;
 import net.minecraft.item.Item;
+import net.minecraft.resource.ResourceManager;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.armor.models.MythicModelHandler;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.armor.models.ModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.Calendar;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
+        MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
+        //registerReloadListener();
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
@@ -40,6 +50,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 .toArray(Item[]::new);
 
         ArmorRenderer renderer = (matrices, vertexConsumer, stack, entity, slot, light, original) -> {
+
             HallowedArmor armor = (HallowedArmor) stack.getItem();
             var model = armor.getArmorModel();
             var texture = armor.getArmorTexture(stack, slot);
@@ -47,6 +58,22 @@ public class MythicMetalsClient implements ClientModInitializer {
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
         };
         ArmorRenderer.register(renderer, armors);
+    }
+
+    private void registerReloadListener() {
+//        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new IdentifiableResourceReloadListener() {
+//            @Override
+//            public Identifier getFabricId() {
+//                return RegistryHelper.id("resource_listener");
+//            }
+//
+//            @Override
+//            public CompletableFuture<Void> reload(Synchronizer synchronizer, ResourceManager manager, Profiler prepareProfiler, Profiler applyProfiler, Executor prepareExecutor, Executor applyExecutor) {
+//                MinecraftClient.getInstance().getTextureManager().registerTexture(MythicModelHandler.HALLOWED_CAPE,
+//                        new ResourceTexture(MythicModelHandler.HALLOWED_CAPE));
+//                return CompletableFuture.completedFuture(null);
+//            }
+//        });
     }
 
 }

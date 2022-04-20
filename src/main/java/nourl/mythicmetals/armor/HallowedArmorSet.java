@@ -15,7 +15,8 @@ public class HallowedArmorSet extends ArmorSet {
 
     @Override
     protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
-        if (slot != EquipmentSlot.HEAD && slot != EquipmentSlot.CHEST) return super.makeItem(material, slot, settings);
+        if (slot != EquipmentSlot.HEAD)
+            return super.makeItem(material, slot, settings);
         return new HallowedArmor(slot, settings);
     }
 }

@@ -10,7 +10,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.models.HelmetModel;
-import nourl.mythicmetals.armor.models.ModelHandler;
+import nourl.mythicmetals.armor.models.MythicModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +40,7 @@ public class BanglumArmor extends HallowedArmor {
     @Environment(EnvType.CLIENT)
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
-        var root = models.getModelPart(ModelHandler.BANGLUM);
+        var root = models.getModelPart(MythicModelHandler.BANGLUM);
         return new HelmetModel(root, slot);
     }
 
