@@ -36,7 +36,7 @@ public class BanglumPick extends PickaxeItem implements BreakValidator {
 
             for (BlockPos blockPos : finder) {
                 if (canBreak(world, blockPos)) {
-                    world.breakBlock(blockPos, true, player);
+                    WorldOps.breakBlockWithItem(world, blockPos, context.getStack());
                     context.getStack().damage(2, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                     shouldPass = true;
                 }
