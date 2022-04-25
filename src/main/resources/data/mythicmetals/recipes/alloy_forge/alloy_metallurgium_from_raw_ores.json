@@ -21,6 +21,12 @@
     "id": "mythicmetals:metallurgium_ingot",
     "count": 1
   },
+  "overrides": {
+    "3+": {
+      "id": "mythicmetals:metallurgium_ingot",
+      "count": 2
+    }
+  },
   "min_forge_tier": 2,
   "fuel_per_tick": 20
 }

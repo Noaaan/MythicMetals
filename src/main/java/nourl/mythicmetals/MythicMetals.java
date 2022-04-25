@@ -52,8 +52,8 @@ public class MythicMetals implements ModInitializer {
         Abilities.init();
         RegisterEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1000);
-        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 9000);
+        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
+        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 10800);
         MythicResourceConditions.init();
 
 
