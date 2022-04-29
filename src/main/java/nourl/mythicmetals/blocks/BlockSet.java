@@ -102,6 +102,7 @@ public class BlockSet {
         }
         miningLevels.forEach((block, level) -> TagInjector.injectBlocks(level, block));
         miningLevels.forEach((block, level) -> TagInjector.injectBlocks(RegistryHelper.id("ores"), block));
+        miningLevels.forEach((block, level) -> TagInjector.injectItems(new Identifier("c", "ores"), block.asItem()));
 
     }
 
@@ -350,6 +351,22 @@ public class BlockSet {
         }
 
         /**
+         * Creates an ore block, which drops experience.
+         *
+         * @param miningLevel The mining level of the ore block.
+         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @see Builder
+         */
+        public Builder createLuminantOre(Identifier miningLevel, UniformIntProvider experience, int luminance) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds).luminance(luminance);
+            settingsProcessor.accept(settings);
+            this.ore = new OreBlock(settings, experience);
+            miningLevels.put(ore, miningLevel);
+            miningLevels.put(ore, PICKAXE);
+            return this;
+        }
+
+        /**
          * Creates an ore variant.
          *
          * @param name        The name/key for the variant.
@@ -374,6 +391,22 @@ public class BlockSet {
          */
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
+            settingsProcessor.accept(settings);
+            this.oreVariants.put(name, new OreBlock(settings, experience));
+            miningLevels.put(oreVariants.get(name), miningLevel);
+            miningLevels.put(oreVariants.get(name), PICKAXE);
+            return this;
+        }
+
+        /**
+         * Creates an ore variant, which drops experience.
+         *
+         * @param name        The name/key for the variant.
+         * @param miningLevel The mining level of the variant ore block.
+         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         */
+        public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience, int luminance) {
+            final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds).luminance(luminance);
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new OreBlock(settings, experience));
             miningLevels.put(oreVariants.get(name), miningLevel);

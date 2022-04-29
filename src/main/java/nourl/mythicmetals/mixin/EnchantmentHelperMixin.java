@@ -70,6 +70,8 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)
     private static void damageReduction(Iterable<ItemStack> equipment, DamageSource source, CallbackInfoReturnable<Integer> cir) {
+        // Make sure that there is any gear to check
+        if(!equipment.iterator().hasNext()) return;
 
         var gear = equipment.iterator().next().getItem();
         var amount = cir.getReturnValue();

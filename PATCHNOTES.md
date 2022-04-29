@@ -3,7 +3,9 @@ Re-worked the Hallowed Armor model (thanks Pois1x!).
 Re-worked all durasteel assets, and raw quadrillum (thanks Pois1x!).  
 Made the Blast Mining ability of Legendary Banglum respect Silk Touch.  
 Buffed Morkite's fuel value.  
-Fixed some inconsistent recipes with Metallurgium and 
+Fixed some inconsistent recipes with Metallurgium.  
+Made Unobtainium ores slightly luminous.  
+Fixed a crash related to EnchantmentHelper for entities with no gear.  
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   

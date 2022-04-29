@@ -53,12 +53,14 @@ public class MythicMetals implements ModInitializer {
         RegisterEntities.init();
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
-        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 10800);
+        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         MythicResourceConditions.init();
 
 
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
         }
 
