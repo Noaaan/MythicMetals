@@ -8,5 +8,10 @@
   "result": {
     "item": "mythicmetals:star_platinum_nugget",
     "count": 9
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
 }

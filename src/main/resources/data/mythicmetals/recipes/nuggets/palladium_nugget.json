@@ -8,5 +8,10 @@
   "result": {
     "item": "mythicmetals:palladium_nugget",
     "count": 9
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
 }

@@ -6,6 +6,7 @@ Buffed Morkite's fuel value.
 Fixed some inconsistent recipes with Metallurgium.  
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  
+Added a resource condition to validate nuggets.  
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   

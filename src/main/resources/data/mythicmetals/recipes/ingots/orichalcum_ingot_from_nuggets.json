@@ -13,5 +13,10 @@
   "result": {
     "item": "mythicmetals:orichalcum_ingot",
     "count": 1
-  }
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
 }
