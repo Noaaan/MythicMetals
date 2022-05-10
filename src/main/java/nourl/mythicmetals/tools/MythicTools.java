@@ -6,6 +6,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -46,8 +47,10 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet STAR_PLATINUM = new ToolSet(ToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet STORMYX = new ToolSet(ToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
 
-    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 5, -3.0F, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON));
-    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 3, -2.5F, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON));
+    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 5, -3.0F,
+            new Item.Settings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP));
+    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 3, -2.5F,
+            new Item.Settings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP));
 
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {

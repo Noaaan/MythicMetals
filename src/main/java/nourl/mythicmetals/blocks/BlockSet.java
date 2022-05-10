@@ -2,12 +2,14 @@ package nourl.mythicmetals.blocks;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
@@ -97,12 +99,12 @@ public class BlockSet {
         }
         // Inject all the mining levels into their tags.
         if (MythicMetals.CONFIG.enableAnvils) {
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.injectBlocks(RegistryHelper.id("anvils"), anvilBlock)));
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.injectBlocks(level, anvilBlock)));
+            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("anvils"), anvilBlock)));
+            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, level, anvilBlock)));
         }
-        miningLevels.forEach((block, level) -> TagInjector.injectBlocks(level, block));
-        miningLevels.forEach((block, level) -> TagInjector.injectBlocks(RegistryHelper.id("ores"), block));
-        miningLevels.forEach((block, level) -> TagInjector.injectItems(new Identifier("c", "ores"), block.asItem()));
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, level, block));
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("ores"), block));
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.ITEM, new Identifier("c", "ores"), block.asItem()));
 
     }
 
@@ -363,6 +365,7 @@ public class BlockSet {
             this.ore = new OreBlock(settings, experience);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
+            Maldenhagen.injectCopium(this.ore);
             return this;
         }
 
@@ -411,6 +414,7 @@ public class BlockSet {
             this.oreVariants.put(name, new OreBlock(settings, experience));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
+            Maldenhagen.injectCopium(this.oreVariants.get(name));
             return this;
         }
 

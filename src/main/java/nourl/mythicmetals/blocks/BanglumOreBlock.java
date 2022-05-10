@@ -35,13 +35,13 @@ public class BanglumOreBlock extends OreBlock {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        int chance = world.getDimension().isUltrawarm() ? 30 : 10;
+        int chance = world.getDimension().isUltrawarm() ? 35 : 6;
         Random random = new Random();
         // Calculate explosion chance
         var stack = player.getMainHandStack();
         if (stack.hasEnchantments()) {
             chance += (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
-            chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 10);
+            chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 8);
             chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 40);
         }
 
