@@ -4,19 +4,18 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
-import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.ResourceTexture;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.entity.feature.FeatureRendererContext;
+import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.profiler.Profiler;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.armor.models.MythicModelHandler;
+import nourl.mythicmetals.armor.models.PlayerEnergySwirlFeatureRenderer;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
@@ -25,16 +24,20 @@ import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.Calendar;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
+    @SuppressWarnings("unchecked")
     @Override
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
         //registerReloadListener();
+
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+            if (entityType != EntityType.PLAYER) return;
+            registrationHelper.register(new PlayerEnergySwirlFeatureRenderer((FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer, context.getModelLoader()));
+        });
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         FabricModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"), (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
