@@ -32,7 +32,6 @@ public class MythicMetalsClient implements ClientModInitializer {
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
-        //registerReloadListener();
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType != EntityType.PLAYER) return;
@@ -61,22 +60,6 @@ public class MythicMetalsClient implements ClientModInitializer {
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
         };
         ArmorRenderer.register(renderer, armors);
-    }
-
-    private void registerReloadListener() {
-//        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new IdentifiableResourceReloadListener() {
-//            @Override
-//            public Identifier getFabricId() {
-//                return RegistryHelper.id("resource_listener");
-//            }
-//
-//            @Override
-//            public CompletableFuture<Void> reload(Synchronizer synchronizer, ResourceManager manager, Profiler prepareProfiler, Profiler applyProfiler, Executor prepareExecutor, Executor applyExecutor) {
-//                MinecraftClient.getInstance().getTextureManager().registerTexture(MythicModelHandler.HALLOWED_CAPE,
-//                        new ResourceTexture(MythicModelHandler.HALLOWED_CAPE));
-//                return CompletableFuture.completedFuture(null);
-//            }
-//        });
     }
 
 }

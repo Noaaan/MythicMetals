@@ -12,8 +12,8 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.mixin.AccessorEntityModelLayers;
 
-/*
- * This is a helper class containing methods for registering various blocks and items.
+/**
+ * A helper class containing methods for registering various blocks and items.
  * @author  Noaaan
  */
 public class RegistryHelper {

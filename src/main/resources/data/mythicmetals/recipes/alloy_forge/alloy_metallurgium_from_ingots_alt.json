@@ -1,0 +1,20 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "tag": "mythicmetals:hallowed_ingots"
+    },
+	{
+      "tag": "c:palladium_ingots"
+    },
+	{
+	  "item": "mythicmetals:unobtainium"
+	}
+  ],
+  "output": {
+    "id": "mythicmetals:metallurgium_ingot",
+    "count": 1
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 20
+}

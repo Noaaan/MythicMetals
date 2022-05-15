@@ -21,6 +21,9 @@ import nourl.mythicmetals.config.VariantConfig;
 
 import java.util.List;
 
+/**
+ * A helper class for adding creating and adding ore features to the world.
+ */
 public class OreFeatureHelper {
     public static final MythicConfig CONFIG = MythicMetals.CONFIG;
 

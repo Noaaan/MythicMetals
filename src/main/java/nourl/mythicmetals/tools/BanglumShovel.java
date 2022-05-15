@@ -21,6 +21,10 @@ public class BanglumShovel extends ShovelItem implements BreakValidator {
         super(material, attackDamage, attackSpeed, settings);
     }
 
+    /**
+     * Method for the legendary banglum shovel breaking ability.
+     * When the tool is used on a block, it breaks a bunch of blocks in a set radius.
+     */
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         boolean shouldPass = false;
