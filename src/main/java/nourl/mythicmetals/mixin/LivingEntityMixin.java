@@ -13,7 +13,6 @@ import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
-import nourl.mythicmetals.utils.RegistryHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,17 +23,22 @@ import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    @Shadow public abstract Iterable<ItemStack> getArmorItems();
+    @Shadow
+    public abstract Iterable<ItemStack> getArmorItems();
 
-    @Shadow public abstract boolean canFreeze();
+    @Shadow
+    public abstract boolean canFreeze();
 
-    @Shadow public abstract int getArmor();
+    @Shadow
+    public abstract int getArmor();
 
-    @Shadow public abstract ItemStack getMainHandStack();
+    @Shadow
+    public abstract ItemStack getMainHandStack();
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
+
     Random r = new Random();
 
     @Inject(method = "tick", at = @At("HEAD"))
@@ -88,9 +92,9 @@ public abstract class LivingEntityMixin extends Entity {
         double m = r.nextDouble();
 
         // Get entity position
-        double x = this.getPos().getX();
+        double x = this.getPos().getX() - this.getWidth() * .5;
         double y = this.getPos().getY();
-        double z = this.getPos().getZ();
+        double z = this.getPos().getZ() - this.getWidth() * .5;
         Vec3d velocity = this.getVelocity();
         Vec3f carmot_colour = new Vec3f(Vec3d.unpackRgb(0xE63E73));
         ParticleEffect p = new DustParticleEffect(carmot_colour, 1.0F);
@@ -105,6 +109,7 @@ public abstract class LivingEntityMixin extends Entity {
             this.world.addParticle(p2, x + l, y, z + m, 0.1 * k, 0.05, 0.1 * j);
         }
     }
+
     private boolean copperParticle() {
         double x = this.getPos().getX();
         double y = this.getPos().getY();
@@ -147,9 +152,8 @@ public abstract class LivingEntityMixin extends Entity {
             var dmg = heldItem.getDamage();
             var rng = r.nextInt(200);
             if (rng == 117)
-            heldItem.setDamage(dmg - 1);
+                heldItem.setDamage(dmg - 1);
         }
     }
-
 
 }
