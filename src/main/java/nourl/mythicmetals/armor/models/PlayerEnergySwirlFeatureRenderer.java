@@ -10,10 +10,11 @@ import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
 
-    private static final Identifier SWIRL_TEXTURE = new Identifier("textures/entity/creeper/creeper_armor.png");
+    public static final Identifier SWIRL_TEXTURE = RegistryHelper.id("textures/models/carmot_shield.png");
 
     private final PlayerEntityModel<AbstractClientPlayerEntity> swirlModel;
 
@@ -30,9 +31,10 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
 
         this.swirlModel.animateModel(entity, limbAngle, limbDistance, tickDelta);
         this.getContextModel().copyStateTo(this.swirlModel);
+        this.getContextModel().setAttributes(this.swirlModel);
 
-        var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .01f) % 1.0F, f * 0.01F % 1.0F));
+        var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
         this.swirlModel.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
-        this.swirlModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, 1f, 0.1f, 0.1f, 1);
+        this.swirlModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .8f, .1f, .05f, 1);
     }
 }
