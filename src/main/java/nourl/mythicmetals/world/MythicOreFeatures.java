@@ -3,6 +3,7 @@ package nourl.mythicmetals.world;
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
@@ -177,17 +178,7 @@ public class MythicOreFeatures {
 
         //Ocean only ores
         if (CONFIG.aquarium.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.COLD_OCEAN,
-                    BiomeKeys.DEEP_COLD_OCEAN,
-                    BiomeKeys.DEEP_FROZEN_OCEAN,
-                    BiomeKeys.DEEP_LUKEWARM_OCEAN,
-                    BiomeKeys.DEEP_OCEAN,
-                    BiomeKeys.FROZEN_OCEAN,
-                    BiomeKeys.LUKEWARM_OCEAN,
-                    BiomeKeys.OCEAN,
-                    BiomeKeys.WARM_OCEAN
-            ), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.AQUATIC), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
 
             OreFeatureHelper.modBiomeOres("byg", "tropical_islands", AQUARIUM);
 
@@ -205,12 +196,7 @@ public class MythicOreFeatures {
         }
         //Jungle only ores
         if (CONFIG.prometheum.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.BAMBOO_JUNGLE,
-                    BiomeKeys.JUNGLE,
-                    BiomeKeys.SPARSE_JUNGLE,
-                    BiomeKeys.LUSH_CAVES
-            ), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_HOT), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
             OreFeatureHelper.modBiomeOres("byg", "araucaria_forest", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("byg", "cherry_blossom_forest", PROMETHEUM);
@@ -245,14 +231,9 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "tropical_jungle", PROMETHEUM);
         }
-        //Mountain only ores
+        //Mountain only ores, list tries to match emeralds
         if (CONFIG.osmium.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.includeByKey(
-                    BiomeKeys.SNOWY_SLOPES,
-                    BiomeKeys.FROZEN_PEAKS,
-                    BiomeKeys.JAGGED_PEAKS,
-                    BiomeKeys.STONY_PEAKS
-            ), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.MOUNTAIN), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
 
             OreFeatureHelper.modBiomeOres("byg", "alpine_foothills", OSMIUM);
             OreFeatureHelper.modBiomeOres("byg", "alps", OSMIUM);
