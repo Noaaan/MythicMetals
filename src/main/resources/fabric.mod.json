@@ -27,6 +27,9 @@
     ],
     "modmenu": [
       "nourl.mythicmetals.compat.MythicMetalsModMenu"
+    ],
+    "cardinal-components-entity": [
+      "nourl.mythicmetals.MythicMetals"
     ]
   },
   "mixins": [
@@ -39,6 +42,12 @@
     "minecraft": "1.18.x",
     "cloth-config2": ">=6.2.57",
     "java": ">=17",
-    "owo": ">=0.5.4+1.18"
+    "owo": ">=0.5.4+1.18",
+    "cardinal-components-entity": ">=4.1.4"
+  },
+  "custom": {
+    "cardinal-components": [
+      "mythicmetals:carmot_shield"
+    ]
   }
 }

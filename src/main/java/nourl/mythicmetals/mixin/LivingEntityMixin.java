@@ -42,7 +42,7 @@ public abstract class LivingEntityMixin extends Entity {
     Random r = new Random();
 
     @Inject(method = "tick", at = @At("HEAD"))
-    private void tick(CallbackInfo ci) {
+    private void mythicmetals$tick(CallbackInfo ci) {
         prometheumRepairPassive();
         addArmorEffects();
     }
@@ -101,12 +101,12 @@ public abstract class LivingEntityMixin extends Entity {
         ParticleEffect p2 = ParticleTypes.END_ROD;
 
         // Add particles around the entity when standing still
-        if (velocity.length() <= 0.1 && r.nextInt(10) < 5) {
-            this.world.addParticle(p, x + i * (l - 0.1D), y + 1D + (k * l * 0.75D), z + k * (m - 0.1D), 0.1D * i, 0.1D * j, 0.1D * k);
+        if (velocity.length() <= 0.1 && r.nextInt(10) < 4) {
+            this.world.addParticle(p, x + i, y + 1D , z + k, 0.1D * i, 0.1D * j, 0.1D * k);
         }
         // Particle trail if the entity is moving
-        if (velocity.length() >= 0.1 && r.nextInt(10) < 7) {
-            this.world.addParticle(p2, x + l, y, z + m, 0.1 * k, 0.05, 0.1 * j);
+        if (velocity.length() >= 0.1 && r.nextInt(10) < 6) {
+            this.world.addParticle(p2, x + l, y, z + m, 0.1 * i, 0.05, 0.1 * j);
         }
     }
 
