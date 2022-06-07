@@ -9,11 +9,11 @@ import nourl.mythicmetals.item.MythicItems;
 import java.util.function.Supplier;
 
 public enum ToolMaterials implements ToolMaterial {
-    AEGIS(4, 2270, 10.0F, 6.0F, 25, () -> Ingredient.ofItems(MythicItems.PALLADIUM_INGOT)),
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> Ingredient.ofItems(MythicItems.ADAMANTITE_INGOT)),
+    AEGIS_RED(4, 2170, 8.0F, 6.0F, 25, () -> Ingredient.ofItems(MythicItems.PALLADIUM_INGOT)),
+    AEGIS_WHITE(4, 2070, 10.0F, 5.0F, 25, () -> Ingredient.ofItems(MythicItems.HALLOWED_INGOT)),
     AQUARIUM(2, 455, 6.5F, 2.0F, 12, () -> Ingredient.ofItems(MythicItems.AQUARIUM_INGOT)),
     BANGLUM(2, 260, 11.0F, 2.0F, 1, () -> Ingredient.ofItems(MythicItems.BANGLUM_INGOT)),
-    LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> Ingredient.ofItems(MythicItems.BANGLUM_CHUNK)),
     BRONZE(2, 624, 6.0F, 2.5F, 14, () -> Ingredient.ofItems(MythicItems.BRONZE_INGOT)),
     CARMOT(3, 730, 11.5F, 2.0F, 42, () -> Ingredient.ofItems(MythicItems.CARMOT_INGOT)),
     CELESTIUM(5, 2270, 16.9F, 6.0F, 26, () -> Ingredient.ofItems(MythicItems.CELESTIUM_INGOT)),
@@ -21,6 +21,7 @@ public enum ToolMaterials implements ToolMaterial {
     DURASTEEL(3, 800, 7.0F, 3.5F, 12, () -> Ingredient.ofItems(MythicItems.DURASTEEL_INGOT)),
     HALLOWED(4, 1629, 12.0F, 5.0F, 20, () -> Ingredient.ofItems(MythicItems.HALLOWED_INGOT)),
     KYBER(3, 889, 7.0F, 2.5F, 20, () -> Ingredient.ofItems(MythicItems.KYBER_INGOT)),
+    LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> Ingredient.ofItems(MythicItems.BANGLUM_CHUNK)),
     METALLURGIUM(5, 3000, 15.0F, 8.0F, 30, () -> Ingredient.ofItems(MythicItems.METALLURGIUM_INGOT)),
     MYTHRIL(4, 1024, 13.0F, 3.0F, 22, () -> Ingredient.ofItems(MythicItems.MYTHRIL_INGOT)),
     ORICHALCUM(4, 2048, 6.0F, 4.0F, 16, () -> Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT)),

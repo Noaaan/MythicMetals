@@ -1,5 +1,6 @@
 package nourl.mythicmetals.tools;
 
+import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
@@ -47,10 +48,10 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet STAR_PLATINUM = new ToolSet(ToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet STORMYX = new ToolSet(ToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
 
-    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 5, -3.0F,
-            new Item.Settings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP));
-    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS, 3, -2.5F,
-            new Item.Settings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP));
+    public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS_RED, 5, -3.0F,
+            new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
+    public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS_WHITE, 4, -2.6F,
+            new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {

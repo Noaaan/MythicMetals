@@ -27,6 +27,8 @@ public class TranslationStorageMixin {
         if(!MythicMetals.CONFIG.disableFunny) return;
 
         var builder = new HashMap<>(translations);
+        builder.put("item.mythicmetals.adamantite_ingot", "Suspicious Ingot");
+        builder.put("item.mythicmetals.aquarium_ingot", "Fish Tank");
         builder.put("item.mythicmetals.durasteel_ingot", "Dura-Chan");
         builder.put("item.mythicmetals.banglum_chunk", "Windy Made This");
         builder.put("item.mythicmetals.osmium_ingot", "Glisconium");
