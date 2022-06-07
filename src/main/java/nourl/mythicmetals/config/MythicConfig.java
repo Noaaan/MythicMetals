@@ -49,7 +49,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig quadrillum = new OreConfig(true,7, 2, 12, 40, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig runite = new OreConfig(true, 4, 1, 38, 52, .25f, false, true);
+    public OreConfig runite = new OreConfig(true, 4, 1, 39, 53, .25f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 25, 42, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)

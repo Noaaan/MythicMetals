@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "mythicmetals:starrite_ore",
-    "mythicmetals:calcite_starrite_ore"
+    "mythicmetals:calcite_starrite_ore",
+    "mythicmetals:end_stone_starrite_ore"
   ]
 }

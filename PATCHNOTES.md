@@ -3,7 +3,8 @@ Re-worked the Hallowed Armor model (thanks Pois1x!).
 Re-worked all durasteel assets, and raw quadrillum (thanks Pois1x!).  
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  
-Added a resource condition to validate nuggets.
+Added a resource condition to validate nuggets.  
+Fixed Natural Aqua Affinity not applying on tools.  
 
 ### Balance Changes  
 Buffed Morkite's fuel value.  

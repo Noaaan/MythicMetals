@@ -41,13 +41,16 @@ public class EnchantmentHelperMixin {
         }
     }
 
-    @Inject(method = "getRespiration", at = @At("HEAD"), cancellable = true)
-    private static void addRespiration(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+    @Inject(method = "getRespiration", at = @At(value = "RETURN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEquipmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/entity/LivingEntity;)I"), cancellable = true)
+    private static void increaseRespiration(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
 
+        int level = cir.getReturnValue();
         for (ItemStack armorItems : entity.getArmorItems()) {
             if (Abilities.RESPIRATION.getItems().contains(armorItems.getItem()))
-                cir.setReturnValue(Abilities.RESPIRATION.getLevel());
+                level += Abilities.RESPIRATION.getLevel();
         }
+
+        cir.setReturnValue(level);
     }
 
     @Inject(method = "hasAquaAffinity", at = @At("HEAD"), cancellable = true)
@@ -55,6 +58,10 @@ public class EnchantmentHelperMixin {
 
         for (ItemStack armorItems : entity.getArmorItems()) {
             if (Abilities.AQUA_AFFINITY.getItems().contains(armorItems.getItem()))
+                cir.setReturnValue(true);
+        }
+        for (ItemStack mainHand : entity.getItemsHand()) {
+            if (Abilities.AQUA_AFFINITY.getItems().contains(mainHand.getItem()))
                 cir.setReturnValue(true);
         }
     }
@@ -71,7 +78,7 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)
     private static void damageReduction(Iterable<ItemStack> equipment, DamageSource source, CallbackInfoReturnable<Integer> cir) {
         // Make sure that there is any gear to check
-        if(!equipment.iterator().hasNext()) return;
+        if (!equipment.iterator().hasNext()) return;
 
         var gear = equipment.iterator().next().getItem();
         var amount = cir.getReturnValue();
@@ -94,7 +101,7 @@ public class EnchantmentHelperMixin {
         }
 
         if (change != 0)
-        cir.setReturnValue(amount + change);
+            cir.setReturnValue(amount + change);
     }
 
     @Inject(method = "getAttackDamage", at = @At("TAIL"), cancellable = true)
