@@ -4,14 +4,17 @@ Re-worked all durasteel assets, and raw quadrillum (thanks Pois1x!).
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  
 Added a resource condition to validate nuggets.  
-Fixed Natural Aqua Affinity not applying on tools.  
+Fixed Natural Aqua Affinity not applying on tools.
 
 ### Balance Changes  
-Buffed Morkite's fuel value.  
+Buffed Morkite's fuel value from 1000 to 1200 ticks (from smelting 5 to 6 items per fuel).  
 Made the Blast Mining ability of Legendary Banglum respect Silk Touch.  
-Fixed some inconsistent recipes with Metallurgium.
+Fixed some inconsistent recipes with Metallurgium.  
 Reduced Banglum Ore Explosion chance in overworld and with fortune, and increased it in the nether.  
-Reduced the durability of the Aegis swords, and re-assigned their repair materials.
+Reduced the durability of the Aegis swords, and re-assigned their repair materials.  
+Increased the durability of Hallowed, and Mythril tools.  
+Increased the mining speed of Durasteel slightly.  
+Reduced the durability of Prometheum and Bronze tools.  
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   

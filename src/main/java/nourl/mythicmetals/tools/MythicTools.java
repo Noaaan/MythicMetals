@@ -24,17 +24,17 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final float [] DEFAULT_ATTACK_SPEED = new float[]{-2.4F, -3.1F, -2.8F, -2.9F, -3.0F};
     public static final float [] BETTER_AXE_ATTACK_SPEED = new float[]{-2.4F, -3.0F, -2.8F, -2.9F, -3.0F};
     public static final float [] FASTER_ATTACK_SPEED = new float[]{-2.2F, -2.9F, -2.7F, -2.8F, -2.8F};
-    public static final float [] HIGHEST_ATTACK_SPEED = new float[]{-2.1F, -2.9F, -2.6F, -2.8F, -2.7F};
+    public static final float [] HIGHEST_ATTACK_SPEED = new float[]{-2.0F, -2.8F, -2.6F, -2.7F, -2.6F};
 
     public static final ToolSet ADAMANTITE = new ToolSet(ToolMaterials.ADAMANTITE, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(ToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(ToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BRONZE = new ToolSet(ToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CARMOT = new ToolSet(ToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CELESTIUM = new ToolSet(ToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
+    public static final ToolSet CARMOT = new ToolSet(ToolMaterials.CARMOT, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet CELESTIUM = new ToolSet(ToolMaterials.CELESTIUM, BETTER_AXE_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
     public static final ToolSet COPPER = new ToolSet(ToolMaterials.COPPER, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet DURASTEEL = new ToolSet(ToolMaterials.DURASTEEL, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ToolSet HALLOWED = new ToolSet(ToolMaterials.HALLOWED, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ToolSet KYBER = new ToolSet(ToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(ToolMaterials.LEGENDARY_BANGLUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ToolSet METALLURGIUM = new ToolSet(ToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
@@ -46,6 +46,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet QUADRILLUM = new ToolSet(ToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet RUNITE = new ToolSet(ToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STAR_PLATINUM = new ToolSet(ToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
+    public static final ToolSet STEEL = new ToolSet(ToolMaterials.STEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STORMYX = new ToolSet(ToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
 
     public static final Item RED_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS_RED, 5, -3.0F,
