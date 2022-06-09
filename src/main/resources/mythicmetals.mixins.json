@@ -15,7 +15,6 @@
     "MagmaBlockMixin",
     "PlayerEntityMixin",
     "PlayerEntityRendererMixin",
-    "RecipeManagerMixin",
     "TranslationStorageMixin"
   ],
   "client": [
