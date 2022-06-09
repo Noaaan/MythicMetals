@@ -31,6 +31,7 @@ public enum ToolMaterials implements ToolMaterial {
     QUADRILLUM(2, 321, 5.0F, 2.5F, 8, () -> Ingredient.ofItems(MythicItems.QUADRILLUM_INGOT)),
     RUNITE(3, 1337, 8.9F, 3.3F, 17, () -> Ingredient.ofItems(MythicItems.RUNITE_INGOT)),
     STAR_PLATINUM(3, 1300, 9.0F, 4.0F, 18, () -> Ingredient.ofItems(MythicItems.STAR_PLATINUM)),
+    STEEL(2, 600, 6.5F, 2.5F, 12, () -> Ingredient.ofItems(MythicItems.STEEL_INGOT)),
     STORMYX(3, 1305, 8.0F, 3.5F, 20, () -> Ingredient.ofItems(MythicItems.STORMYX_INGOT));
 
     private final int miningLevel;

@@ -82,31 +82,34 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void carmotParticle() {
+
         // Random ints which cycle between negative and positive
-        int i = r.nextInt(2) * 2 - 1;
-        int j = r.nextInt(2) * 2 - 1;
-        int k = r.nextInt(2) * 2 - 1;
+        int i = r.nextInt(2) == 1 ? -1 : 1;
+        int j = r.nextInt(2) == 1 ? -1 : 1;
+        int k = r.nextInt(2) == 1 ? -1 : 1;
 
         // Doubles that return between 0 and 1
         double l = r.nextDouble();
         double m = r.nextDouble();
 
         // Get entity position
-        double x = this.getPos().getX() - this.getWidth() * .5;
+        double x = this.getPos().getX() - .5;
         double y = this.getPos().getY();
-        double z = this.getPos().getZ() - this.getWidth() * .5;
+        double z = this.getPos().getZ() - .5;
+
         Vec3d velocity = this.getVelocity();
         Vec3f carmot_colour = new Vec3f(Vec3d.unpackRgb(0xE63E73));
+
         ParticleEffect p = new DustParticleEffect(carmot_colour, 1.0F);
         ParticleEffect p2 = ParticleTypes.END_ROD;
 
         // Add particles around the entity when standing still
-        if (velocity.length() <= 0.1 && r.nextInt(10) < 4) {
-            this.world.addParticle(p, x + i, y + 1D , z + k, 0.1D * i, 0.1D * j, 0.1D * k);
+        if (velocity.length() <= 0.1 && r.nextInt(12) < 2) {
+            this.world.addParticle(p, x + l * i * 2, y + 1.0D + (.5D * j), z + m * k * 2, 0.35D * i, 0.5D * j, 0.35D * k);
         }
         // Particle trail if the entity is moving
-        if (velocity.length() >= 0.1 && r.nextInt(10) < 6) {
-            this.world.addParticle(p2, x + l, y, z + m, 0.1 * i, 0.05, 0.1 * j);
+        if (velocity.length() >= 0.1 && r.nextInt(10) < 5) {
+            this.world.addParticle(p2, x + l, y, z + m, 0.1D * i, 0.1D, 0.1D * k);
         }
     }
 

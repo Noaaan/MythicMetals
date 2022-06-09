@@ -23,7 +23,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public VariantConfig banglum = new VariantConfig(true, 6, 8, 3, 4, 50, 69, 69, 110, .125f, false, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig carmot = new OreConfig(true,4, 2, -12 ,8, .125f, false);
+    public OreConfig carmot = new OreConfig(true,4, 1, -24 ,10, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
      public VariantConfig kyber = new VariantConfig(true, 3, 15, 1, 40, 12, -62, 52, 40,.5f, false, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)

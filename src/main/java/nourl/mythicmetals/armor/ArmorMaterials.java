@@ -1,6 +1,7 @@
 package nourl.mythicmetals.armor;
 
 import com.google.common.base.Suppliers;
+import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
@@ -22,10 +23,10 @@ public enum ArmorMaterials implements ArmorMaterial {
     AQUARIUM("aquarium", 20, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.AQUARIUM_INGOT);
     }),
-    BANGLUM("banglum", 14, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
+    BANGLUM("banglum", 13, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM_INGOT);
     }),
-    BRONZE("bronze", 17, new int[]{3, 5, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
+    BRONZE("bronze", 15, new int[]{3, 5, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BRONZE_INGOT);
     }),
     CARMOT("carmot", 21, new int[]{3, 6, 8, 3}, 40, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
@@ -49,7 +50,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
     }),
-    METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.2F, () -> {
+    METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.225F, () -> {
         return Ingredient.ofItems(MythicItems.METALLURGIUM_INGOT);
     }),
     MIDAS_GOLD("midas_gold", 12, new int[]{1, 3, 5, 2}, 24, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
@@ -78,6 +79,9 @@ public enum ArmorMaterials implements ArmorMaterial {
     }),
     STAR_PLATINUM("star_platinum", 34, new int[]{3, 7, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.STAR_PLATINUM);
+    }),
+    STEEL("steel", 17,  new int[]{2, 5, 6, 2}, 10, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.5F, 0.0F, () -> {
+        return Ingredient.ofItems(MythicItems.STEEL_INGOT);
     }),
     STORMYX("stormyx", 30, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.STORMYX_INGOT);

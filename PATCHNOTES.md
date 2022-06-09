@@ -1,10 +1,12 @@
 # 0.14.0  
-Re-worked the Hallowed Armor model (thanks Pois1x!).  
-Re-worked all durasteel assets, and raw quadrillum (thanks Pois1x!).  
-Made Unobtainium ores slightly luminous.  
-Fixed a crash related to EnchantmentHelper for entities with no gear.  
-Added a resource condition to validate nuggets.  
-Fixed Natural Aqua Affinity not applying on tools.
+This update finally brings Mythic Metals to 1.19.  
+It also features an initial Carmot re-work and the next balance pass.  
+
+### Carmot Re-work
+Carmot is now a material that builds off Kyber gear, similar to how you upgrade Banglum.  
+The armor itself now grants you extra max health (up to 5 hearts with the full set).  
+It also features the Carmot Shield, which is a passively regenerating shield.  
+It can block up to 5 incoming damage per piece (blocks up to 20 damage with the full set). 
 
 ### Balance Changes  
 Buffed Morkite's fuel value from 1000 to 1200 ticks (from smelting 5 to 6 items per fuel).  
@@ -15,6 +17,14 @@ Reduced the durability of the Aegis swords, and re-assigned their repair materia
 Increased the durability of Hallowed, and Mythril tools.  
 Increased the mining speed of Durasteel slightly.  
 Reduced the durability of Prometheum and Bronze tools.  
+
+#### Other Changes
+Re-worked the Hallowed Armor model (thanks Pois1x!).  
+Re-worked all durasteel assets, plus raw quadrillum (thanks Pois1x!).  
+Made Unobtainium ores slightly luminous.  
+Fixed a crash related to EnchantmentHelper for entities with no gear.  
+Added a resource condition to validate nuggets.  
+Fixed Natural Aqua Affinity not applying on tools.
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   
