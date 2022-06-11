@@ -4,15 +4,13 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.DustParticleEffect;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.utils.MythicParticleSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -35,6 +33,9 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract ItemStack getMainHandStack();
 
+    @Shadow
+    public abstract boolean damage(DamageSource source, float amount);
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -43,14 +44,14 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
-        prometheumRepairPassive();
-        addArmorEffects();
+        mythicmetals$prometheumRepairPassive();
+        mythicmetals$addArmorEffects();
     }
 
-    private void addArmorEffects() {
+    private void mythicmetals$addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.CARMOT_ARMOR)) {
-                carmotParticle();
+                mythicmetals$carmotParticle();
             }
 
             if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_ARMOR)) {
@@ -61,13 +62,14 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.COPPER_ARMOR) && world.isThundering()) {
-                copperParticle();
+                mythicmetals$copperParticle();
                 int i = r.nextInt(500000);
-                if (i == 666 & copperParticle()) {
+                if (i == 666 & mythicmetals$copperParticle()) {
                     LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
                     if (lightningEntity != null) {
                         lightningEntity.copyPositionAndRotation(this);
                         world.spawnEntity(lightningEntity);
+                        this.damage(DamageSource.LIGHTNING_BOLT, 10);
                     }
                 }
             }
@@ -75,81 +77,40 @@ public abstract class LivingEntityMixin extends Entity {
             if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PALLADIUM_ARMOR)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
-                    palladiumParticle();
+                    MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 1, 0));
                 }
             }
         }
     }
 
-    private void carmotParticle() {
-
-        // Random ints which cycle between negative and positive
-        int i = r.nextInt(2) == 1 ? -1 : 1;
-        int j = r.nextInt(2) == 1 ? -1 : 1;
-        int k = r.nextInt(2) == 1 ? -1 : 1;
-
-        // Doubles that return between 0 and 1
-        double l = r.nextDouble();
-        double m = r.nextDouble();
-
-        // Get entity position
-        double x = this.getPos().getX() - .5;
-        double y = this.getPos().getY();
-        double z = this.getPos().getZ() - .5;
+    private void mythicmetals$carmotParticle() {
+        if (!world.isClient) return;
 
         Vec3d velocity = this.getVelocity();
-        Vec3f carmot_colour = new Vec3f(Vec3d.unpackRgb(0xE63E73));
-
-        ParticleEffect p = new DustParticleEffect(carmot_colour, 1.0F);
-        ParticleEffect p2 = ParticleTypes.END_ROD;
 
         // Add particles around the entity when standing still
-        if (velocity.length() <= 0.1 && r.nextInt(12) < 2) {
-            this.world.addParticle(p, x + l * i * 2, y + 1.0D + (.5D * j), z + m * k * 2, 0.35D * i, 0.5D * j, 0.35D * k);
+        if (velocity.length() <= 0.1 && r.nextInt(15) < 2) {
+            MythicParticleSystem.CARMOT_PARTICLES.spawn(world, this.getPos());
         }
         // Particle trail if the entity is moving
-        if (velocity.length() >= 0.1 && r.nextInt(10) < 5) {
-            this.world.addParticle(p2, x + l, y, z + m, 0.1D * i, 0.1D, 0.1D * k);
+        if (velocity.length() >= 0.1 && r.nextInt(10) < 1) {
+            MythicParticleSystem.CARMOT_TRAIL.spawn(world, this.getPos());
         }
     }
 
-    private boolean copperParticle() {
-        double x = this.getPos().getX();
-        double y = this.getPos().getY();
-        double z = this.getPos().getZ();
+    private boolean mythicmetals$copperParticle() {
+        Vec3d playerPos = this.getPos();
 
-        int i = r.nextInt(2) * 2 - 1;
-        int j = r.nextInt(2) * 2 - 1;
-        int k = r.nextInt(2) * 2 - 1;
-
-        double l = r.nextDouble();
-        double m = r.nextDouble();
-
-        ParticleEffect p = ParticleTypes.ELECTRIC_SPARK;
-
-        boolean isConductive = y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) x, (int) z - 1);
+        boolean isConductive = this.getPos().y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
 
         if (world.isThundering() && r.nextInt(40) < 1 && isConductive) {
-            this.world.addParticle(p, x + i * (l - 0.1D), y + 1.0D + (k * l * 0.75D), z + k * (m - 0.1D), 0.1D * i, 0.1D * j, 0.1D * k);
+            MythicParticleSystem.COPPER_SPARK.spawn(world, this.getPos().add(0, 1, 0));
             return true;
         }
         return isConductive;
     }
 
-    private void palladiumParticle() {
-        // Random ints which cycle between negative and positive
-        int j = r.nextInt(2) * 2 - 1;
-        int k = r.nextInt(2) * 2 - 1;
-
-        // Doubles that return between 0 and 1
-        double l = r.nextDouble();
-        double m = r.nextDouble();
-
-        this.world.addParticle(ParticleTypes.LAVA, this.getPos().getX() + l, this.getPos().getY(), this.getPos().getZ() + m, 0.1 * k, 0.1, 0.1 * j);
-
-    }
-
-    private void prometheumRepairPassive() {
+    private void mythicmetals$prometheumRepairPassive() {
         var heldItem = getMainHandStack();
         if (heldItem.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_TOOLS)) {
             var dmg = heldItem.getDamage();

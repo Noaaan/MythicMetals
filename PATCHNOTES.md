@@ -24,7 +24,9 @@ Re-worked all durasteel assets, plus raw quadrillum (thanks Pois1x!).
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  
 Added a resource condition to validate nuggets.  
-Fixed Natural Aqua Affinity not applying on tools.
+Fixed Natural Aqua Affinity not applying on tools.  
+Improved the textures of Bronze and Osmium armor.  
+Overhauled all armor and tool effect particles.  
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   

@@ -50,7 +50,9 @@ public class BanglumPick extends PickaxeItem implements BreakValidator {
 
         if (shouldPass) {
             var pos = context.getBlockPos();
-            MythicParticleSystem.OVERENGINEERED_SINGLE_EXPLOSION_PARTICLE.spawn(world, Vec3d.of(pos));
+            var facing = context.getPlayerFacing();
+            var pos2 = context.getBlockPos().offset(facing, 5);
+            MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS);
 
             player.getItemCooldownManager().set(this, 100);
