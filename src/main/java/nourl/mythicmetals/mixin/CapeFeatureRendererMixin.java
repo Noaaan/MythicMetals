@@ -7,6 +7,7 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.render.entity.feature.CapeFeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
@@ -31,6 +32,7 @@ public abstract class CapeFeatureRendererMixin extends FeatureRenderer<AbstractC
 
     @Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/client/network/AbstractClientPlayerEntity;FFFFFF)V", at = @At("HEAD"), cancellable = true)
     public void render(MatrixStack ms, VertexConsumerProvider vertices, int light, AbstractClientPlayerEntity player, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
+        if (!player.isPartVisible(PlayerModelPart.CAPE) || player.getCapeTexture() != null) return;
         if (player.getEquippedStack(EquipmentSlot.CHEST).getItem() == MythicArmor.HALLOWED.getChestplate().asItem()) {
             ms.push();
             ms.translate(0.0, 0.0, 0.125);

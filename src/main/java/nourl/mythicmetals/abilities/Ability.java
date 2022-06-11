@@ -46,7 +46,7 @@ public class Ability {
     public void addItem(Item item, Style style) {
         items.add(item);
         if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT))
-        addTooltip(item, style);
+            addTooltip(item, style);
 
     }
 
