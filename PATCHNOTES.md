@@ -7,6 +7,8 @@ Carmot is now a material that builds off Kyber gear, similar to how you upgrade 
 The armor itself now grants you extra max health (up to 5 hearts with the full set).  
 It also features the Carmot Shield, which is a passively regenerating shield.  
 It can block up to 5 incoming damage per piece (blocks up to 20 damage with the full set). 
+The tools also contain some abilities.  
+The sword has an extra level of looting, while the rest have an extra level of fortune.   
 
 ### Balance Changes  
 Buffed Morkite's fuel value from 1000 to 1200 ticks (from smelting 5 to 6 items per fuel).  
