@@ -444,6 +444,7 @@
   "item.mythicmetals.unobtainium": "Unobtainium",
   "item.mythicmetals.unobtainium_dust": "Unobtainium Dust",
   "item.mythicmetals.unobtainium_nugget": "Unobtainium Nugget",
+  "item.mythicmetals.carmot_staff": "Carmot Staff",
 
   "text.autoconfig.mythicmetals_config.option.blacklist": "Biome Blacklist",
   "text.autoconfig.mythicmetals_config.option.enableAnvils": "Enable Anvils",
@@ -684,7 +685,7 @@
 
   "advancement.mythicmetals.root.title": "Mythic Metals",
   "advancement.mythicmetals.root.description": "Discover all the ores deep underground",
-  "advancement.mythicmetals.unobtainium.title": "How Did You Get this?",
+  "advancement.mythicmetals.unobtainium.title": "How Did You Get This?",
   "advancement.mythicmetals.unobtainium.description": "Obtain Unobtainium, usually found deeply surrounded by deepslate",
   "advancement.mythicmetals.adamantite.title": "Forged From Aether",
   "advancement.mythicmetals.adamantite.description": "Find Adamantite in the deepest part of the deepslate caves",

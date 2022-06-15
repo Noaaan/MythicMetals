@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.item.CarmotStaff;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -53,6 +54,8 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS_WHITE, 4, -2.6F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
+    public static final Item CARMOT_STAFF = new CarmotStaff(ToolMaterials.CARMOT,
+            new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {
@@ -70,6 +73,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("froge", Frogery.FROGE);
         RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
         RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
+        RegistryHelper.item("carmot_staff", CARMOT_STAFF);
     }
 
     public static class Frogery {
