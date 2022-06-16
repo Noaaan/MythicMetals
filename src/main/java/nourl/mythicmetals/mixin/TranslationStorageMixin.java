@@ -1,6 +1,5 @@
 package nourl.mythicmetals.mixin;
 
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.resource.language.TranslationStorage;
 import nourl.mythicmetals.MythicMetals;
 import org.spongepowered.asm.mixin.Final;

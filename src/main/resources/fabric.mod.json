@@ -15,6 +15,7 @@
   "license": "MIT",
   "icon": "assets/mythicmetals/icon.png",
   "environment": "*",
+  "accessWidener": "mythicmetals.accesswidener",
   "entrypoints": {
     "main": [
       "nourl.mythicmetals.MythicMetals"

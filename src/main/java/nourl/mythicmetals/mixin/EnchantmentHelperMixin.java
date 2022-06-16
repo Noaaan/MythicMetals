@@ -87,16 +87,6 @@ public class EnchantmentHelperMixin {
         cir.setReturnValue(level);
     }
 
-    @Inject(method = "getLevel", at = @At("RETURN"), cancellable = true)
-    private static void mythicmetals$increaseFortune(Enchantment enchantment, ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-        if (stack.isEmpty()) return;
-        int level = cir.getReturnValue();
-        if (Abilities.BONUS_LOOTING.getItems().contains(stack.getItem()))
-            level += Abilities.BONUS_LOOTING.getLevel();
-
-        cir.setReturnValue(level);
-    }
-
     @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$damageReduction(Iterable<ItemStack> equipment, DamageSource source, CallbackInfoReturnable<Integer> cir) {
         // Make sure that there is any gear to check

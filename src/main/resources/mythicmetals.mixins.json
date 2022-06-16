@@ -6,6 +6,7 @@
   "mixins": [
     "AccessorEntityModelLayers",
     "AnvilScreenHandlerMixin",
+    "ApplyBonusLootFunctionMixin",
     "ArmorItemMixin",
     "CampfireBlockMixin",
     "DefaultedRegistryMixin",
@@ -15,6 +16,7 @@
     "MagmaBlockMixin",
     "PlayerEntityMixin",
     "PlayerEntityRendererMixin",
+    "TableBonusLootConditionMixin",
     "TranslationStorageMixin"
   ],
   "client": [

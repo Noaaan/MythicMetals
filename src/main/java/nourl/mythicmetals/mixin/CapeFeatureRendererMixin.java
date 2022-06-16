@@ -17,7 +17,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.armor.models.MythicModelHandler;
+import nourl.mythicmetals.models.MythicModelHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

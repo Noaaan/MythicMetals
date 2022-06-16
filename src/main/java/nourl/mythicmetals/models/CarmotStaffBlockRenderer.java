@@ -1,4 +1,4 @@
-package nourl.mythicmetals.armor.models;
+package nourl.mythicmetals.models;
 
 import net.fabricmc.fabric.api.client.model.ExtraModelProvider;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
