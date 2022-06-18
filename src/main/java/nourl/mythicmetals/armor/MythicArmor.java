@@ -12,7 +12,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet AQUARIUM = new ArmorSet(ArmorMaterials.AQUARIUM);
     public static final ArmorSet BANGLUM = new ArmorSet(ArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(ArmorMaterials.BRONZE);
-    public static final ArmorSet CARMOT = new ArmorSet(ArmorMaterials.CARMOT);
+    public static final ArmorSet CARMOT = new CarmotArmorSet(ArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet CELESTIUM = new ArmorSet(ArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final ArmorSet COPPER = new ArmorSet(ArmorMaterials.COPPER);
     public static final ArmorSet DURASTEEL = new ArmorSet(ArmorMaterials.DURASTEEL);

@@ -14,10 +14,12 @@ public class MythicModelHandler {
     public static final EntityModelLayer HALLOWED_ARMOR = RegistryHelper.model("hallowed_armor");
     public static final EntityModelLayer METALLURGIUM = RegistryHelper.model("metallurgium_armor");
     public static final EntityModelLayer CARMOT_SWIRL = RegistryHelper.model("carmot_swirl");
+    public static final EntityModelLayer CARMOT = RegistryHelper.model("carmot_armor");
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 32, 32));
+        consumer.accept(CARMOT, TexturedModelData.of(CarmotArmorModel.getModelData(), 64, 64));
         consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 64));
         consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 32, 16));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));

@@ -6,12 +6,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.block.BlockModelRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.resource.ResourceManager;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import nourl.mythicmetals.item.CarmotStaff;
@@ -28,6 +30,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
         var block = staff.has(CarmotStaff.STORED_BLOCK) ? (staff.get(CarmotStaff.STORED_BLOCK)) : Blocks.AIR;
         var instance = MinecraftClient.getInstance();
         var model = instance.getBakedModelManager().getModel(CARMOT_STAFF_ID);
+        var blockModel = instance.getBakedModelManager().getBlockModels().getModel(block.getDefaultState());
 
         matrices.translate(.5, .5, .5);
         instance.getItemRenderer().renderItem(staff, mode, false, matrices, vertexConsumers, light, overlay, model);
@@ -36,8 +39,8 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
         matrices.scale(0.25F, 0.25F, 0.25F);
         matrices.translate(-.5F, 2F, 0F);
 
-        instance.getBlockRenderManager().renderBlock(block.getDefaultState(), BlockPos.ORIGIN, instance.world, matrices, vertexConsumers.getBuffer(RenderLayer.getSolid()), false, new Random());
-        instance.getBlockRenderManager().renderBlock(block.getDefaultState(), BlockPos.ORIGIN, instance.world, matrices, ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.getSolid(), true, true), false, new Random());
+        instance.getBlockRenderManager().renderBlockAsEntity(block.getDefaultState(), matrices, vertexConsumers, light, overlay);
+        instance.getBlockRenderManager().getModelRenderer().render(matrices.peek(), ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.getSolid(), true, staff.hasGlint()), block.getDefaultState(), blockModel, 0, 0, 0, light, overlay);
     }
 
     @Override

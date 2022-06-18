@@ -5,7 +5,7 @@ It also features an initial Carmot re-work and the next balance pass.
 ### Carmot Re-work
 Carmot is now a material that builds off Kyber gear, similar to how you upgrade Banglum.  
 The armor itself now grants you extra max health (up to 5 hearts with the full set).  
-It also features the Carmot Shield, which is a passively regenerating shield.  
+It also features the Carmot Shield ability, which is a passively regenerating shield.  
 It can block up to 5 incoming damage per piece (blocks up to 20 damage with the full set). 
 The tools also contain some abilities.  
 The sword has an extra level of looting, while the rest have an extra level of fortune.   
@@ -29,6 +29,7 @@ Added a resource condition to validate nuggets.
 Fixed Natural Aqua Affinity not applying on tools.  
 Improved the textures of Bronze and Osmium armor.  
 Overhauled all armor and tool effect particles.  
+Added a new armor model for Carmot (thanks Dr. Zeal!).  
 
 # 0.13.1 and 0.12.2 
 Fixed multiple issues with anvils, causing them to be slow to break and not drop.   
