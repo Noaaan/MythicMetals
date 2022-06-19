@@ -19,6 +19,7 @@ Reduced the durability of the Aegis swords, and re-assigned their repair materia
 Increased the durability of Hallowed, and Mythril tools.  
 Increased the mining speed of Durasteel slightly.  
 Reduced the durability of Prometheum and Bronze tools.  
+Increased the chance to find Banglum Chunks and Aquarium Pearls if you have luck.  
 
 #### Other Changes
 Re-worked the Hallowed Armor model (thanks Pois1x!).  
