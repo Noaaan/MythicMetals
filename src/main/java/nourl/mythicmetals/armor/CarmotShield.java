@@ -26,11 +26,11 @@ public class CarmotShield implements Component, AutoSyncedComponent {
         renderTime = 0;
         cooldown = 0;
     }
-    
+
     public boolean isShieldActive() {
         return renderTime > 0 || cooldown > MAX_COOLDOWN - 15;
     }
-    
+
     public void damageShield(float damage) {
         health = MathHelper.clamp(health - damage, 0f, getMaxHealth());
 
@@ -38,7 +38,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
             cooldown = MAX_COOLDOWN;
         }
     }
-    
+
     public void tickShield() {
         if (MinecraftClient.getInstance().world == null) return;
         MythicMetals.CARMOT_SHIELD.sync(player);
@@ -49,7 +49,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
 
         if (health < getMaxHealth()) {
             if (cooldown == 0) {
-                health = MathHelper.clamp(health += 0.1f, 0f, this.getMaxHealth());
+                health = MathHelper.clamp(health += 0.075f, 0f, this.getMaxHealth());
                 renderTime = 40;
             } else {
                 cooldown--;
@@ -65,7 +65,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
             health = 0;
         }
     }
-    
+
     public float getMaxHealth() {
         // For loop using the players armor items
         int result = 0;

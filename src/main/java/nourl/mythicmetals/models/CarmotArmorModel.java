@@ -1,15 +1,8 @@
 package nourl.mythicmetals.models;
 
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EquipmentSlot;
 
-public class CarmotArmorModel extends ArmorModel {
-    private final ModelPart robe;
-    private final ModelPart robe_left;
-    private final ModelPart robe_back;
-    private final ModelPart robe_right;
+public class CarmotArmorModel {
     private final ModelPart left_leg;
     private final ModelPart right_leg;
     private final ModelPart right_arm;
@@ -17,12 +10,7 @@ public class CarmotArmorModel extends ArmorModel {
     private final ModelPart body;
     private final ModelPart head;
 
-    public CarmotArmorModel(ModelPart root, EquipmentSlot slot) {
-        super(root, slot);
-        this.robe = root.getChild("robe");
-        this.robe_left = root.getChild("robe_left");
-        this.robe_back = root.getChild("robe_back");
-        this.robe_right = root.getChild("robe_right");
+    public CarmotArmorModel(ModelPart root) {
         this.left_leg = root.getChild("left_leg");
         this.right_leg = root.getChild("right_leg");
         this.right_arm = root.getChild("right_arm");
@@ -83,30 +71,6 @@ public class CarmotArmorModel extends ArmorModel {
                 ModelTransform.NONE
         );
 
-        var robe_back = body.addChild(
-                "robe_back",
-                ModelPartBuilder.create()
-                        .uv(19, 40)
-                        .cuboid(-5.0F, 0.0F, 3.0F, 10.0F, 10.0F, 1.0F),
-                ModelTransform.of(0.0F, 11.0F, 0.0F, 0.0873F, 0.0F, 0.0F)
-        );
-
-        var robe_left = body.addChild(
-                "robe_left",
-                ModelPartBuilder.create()
-                        .uv(41, 35)
-                        .cuboid(-4.0F, -14.0F, -3.0F, 1.0F, 10.0F, 6.0F, new Dilation(0.0F)),
-                ModelTransform.of(9.5F, 24.0F, 0.0F, 0.0F, 0.0F, -0.0873F)
-        );
-
-        var robe_right = body.addChild(
-                "robe_right",
-                ModelPartBuilder.create()
-                        .uv(41, 35)
-                        .cuboid(-6.0F, -13.0F, -3.0F, 1.0F, 10.0F, 6.0F),
-                ModelTransform.of(-0.5F, 24.0F, 0.0F, 0.0F, 0.0F, 0.0873F)
-        );
-
         var head = root.addChild(
                 "head",
                 ModelPartBuilder.create()
@@ -118,14 +82,6 @@ public class CarmotArmorModel extends ArmorModel {
         return data;
     }
 
-    @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-
-    }
-
-    public void renderFlap(MatrixStack matrices, VertexConsumer vertices, int light, int overlay) {
-        this.robe_back.render(matrices, vertices, light, overlay);
-    }
 
 
 }

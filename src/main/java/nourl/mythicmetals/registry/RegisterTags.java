@@ -14,6 +14,8 @@ public class RegisterTags {
     public static final TagKey<Item> PROMETHEUM_ARMOR = TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("prometheum_armor"));
     public static final TagKey<Item> PROMETHEUM_TOOLS = TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("prometheum_tools"));
 
+    public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("carmot_staff_blocks"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("ores"));
+
 
 }

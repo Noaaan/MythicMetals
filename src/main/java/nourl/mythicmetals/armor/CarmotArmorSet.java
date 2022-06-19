@@ -15,7 +15,7 @@ public class CarmotArmorSet extends ArmorSet {
 
     @Override
     protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
-        if (slot == EquipmentSlot.FEET) return super.makeItem(material, slot, settings);
+        if (slot == EquipmentSlot.FEET || slot == EquipmentSlot.LEGS) return super.makeItem(material, slot, settings);
         return new CarmotArmor(slot, settings);
     }
 }

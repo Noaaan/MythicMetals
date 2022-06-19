@@ -8,13 +8,14 @@ import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
-import nourl.mythicmetals.models.*;
+import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
+import nourl.mythicmetals.models.MythicModelHandler;
+import nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
@@ -30,6 +31,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
+        registerModelPredicates();
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, entityRendererFactoryCtx) -> {
             if (entityType != EntityType.PLAYER) return;
@@ -37,23 +39,9 @@ public class MythicMetalsClient implements ClientModInitializer {
                     new PlayerEnergySwirlFeatureRenderer(
                             (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
                             entityRendererFactoryCtx.getModelLoader()));
-
-//            registrationHelper.register(
-//                    new CarmotBackFlapFeatureRenderer(
-//                            (FeatureRendererContext<LivingEntity, CarmotArmorModel>) entityRenderer));
         });
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
-
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
-                (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
-
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
-                (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
-
-        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
-                (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1
-                        && !MythicMetals.CONFIG.disableFunny) ? 1 : 0);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
@@ -74,6 +62,18 @@ public class MythicMetalsClient implements ClientModInitializer {
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
         };
         ArmorRenderer.register(renderer, armors);
+    }
+
+    private void registerModelPredicates() {
+        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
+                (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
+
+        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
+                (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
+
+        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
+                (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1
+                        && !MythicMetals.CONFIG.disableFunny) ? 1 : 0);
     }
 
 }

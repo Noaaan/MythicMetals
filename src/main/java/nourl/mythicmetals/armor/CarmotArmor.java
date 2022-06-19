@@ -10,7 +10,6 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.models.ArmorModel;
-import nourl.mythicmetals.models.HelmetModel;
 import nourl.mythicmetals.models.MythicModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 import org.jetbrains.annotations.NotNull;

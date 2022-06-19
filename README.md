@@ -51,6 +51,7 @@ Dr. Zeal, for the wisp texture.
 * Windy 
 * Shiftless 
 * Haunted Chest
+* Dr. Zeal
 
 Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  
