@@ -20,16 +20,18 @@ Increased the durability of Hallowed, and Mythril tools.
 Increased the mining speed of Durasteel slightly.  
 Reduced the durability of Prometheum and Bronze tools.  
 Increased the chance to find Banglum Chunks and Aquarium Pearls if you have luck.  
+Prometheum will no longer cancel block breaking when regaining durability.  
 
 #### Other Changes
 Re-worked the Hallowed Armor model (thanks Pois1x!).  
 Re-worked all durasteel assets, plus raw quadrillum (thanks Pois1x!).  
+Re-implemented steel tools and armor.  
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  
 Added a resource condition to validate nuggets.  
 Fixed Natural Aqua Affinity not applying on tools.  
 Improved the textures of Bronze and Osmium armor.  
-Overhauled all armor and tool effect particles.  
+Overhauled all armor and tool effect particles.
 Added a new armor model for Carmot (thanks Dr. Zeal!).  
 
 # 0.13.1 and 0.12.2 

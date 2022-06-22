@@ -1,9 +1,6 @@
 package nourl.mythicmetals.mixin;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
@@ -44,7 +41,9 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
-        mythicmetals$prometheumRepairPassive();
+        if (!world.isClient()) {
+            mythicmetals$prometheumRepairPassive();
+        }
         mythicmetals$addArmorEffects();
     }
 
@@ -89,7 +88,7 @@ public abstract class LivingEntityMixin extends Entity {
         Vec3d velocity = this.getVelocity();
 
         // Add particles around the entity when standing still
-        if (velocity.length() <= 0.1 && r.nextInt(15) < 2) {
+        if (velocity.length() <= 0.1 && r.nextInt(14) < 1) {
             MythicParticleSystem.CARMOT_PARTICLES.spawn(world, this.getPos());
         }
         // Particle trail if the entity is moving
@@ -103,7 +102,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         boolean isConductive = this.getPos().y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
 
-        if (world.isThundering() && r.nextInt(40) < 1 && isConductive) {
+        if (r.nextInt(40) < 1 && isConductive) {
             MythicParticleSystem.COPPER_SPARK.spawn(world, this.getPos().add(0, 1, 0));
             return true;
         }

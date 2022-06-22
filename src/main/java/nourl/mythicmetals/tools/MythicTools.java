@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.item.CarmotStaff;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -43,7 +42,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet ORICHALCUM = new ToolSet(ToolMaterials.ORICHALCUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);
     public static final ToolSet OSMIUM = new ToolSet(ToolMaterials.OSMIUM, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet PALLADIUM = new ToolSet(ToolMaterials.PALLADIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, Item.Settings::fireproof);
-    public static final ToolSet PROMETHEUM = new ToolSet(ToolMaterials.PROMETHEUM, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet PROMETHEUM = new PrometheumToolSet(ToolMaterials.PROMETHEUM, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet QUADRILLUM = new ToolSet(ToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet RUNITE = new ToolSet(ToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STAR_PLATINUM = new ToolSet(ToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
@@ -54,7 +53,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item WHITE_AEGIS_SWORD = new SwordItem(ToolMaterials.AEGIS_WHITE, 4, -2.6F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
-    public static final Item CARMOT_STAFF = new CarmotStaff(ToolMaterials.CARMOT,
+    public static final Item CARMOT_STAFF = new CarmotStaff(ToolMaterials.CARMOT, -3.0F,
             new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     @Override
