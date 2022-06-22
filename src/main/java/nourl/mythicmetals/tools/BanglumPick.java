@@ -8,7 +8,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -18,7 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
-public class BanglumPick extends PickaxeItem implements BreakValidator {
+public class BanglumPick extends PickaxeBase implements BreakValidator {
 
     public BanglumPick(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);

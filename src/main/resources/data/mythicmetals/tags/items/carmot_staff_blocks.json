@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:gold_block",
+    "minecraft:copper_block",
+    "minecraft:iron_block",
+    "minecraft:diamond_block",
+    "minecraft:emerald_block",
+    "minecraft:netherite_block",
+    "minecraft:sponge",
+    "mythicmetals:adamantite_block",
+    "mythicmetals:bronze_block",
+    "mythicmetals:carmot_block",
+    "mythicmetals:hallowed_block",
+    "mythicmetals:midas_gold_block",
+    "mythicmetals:mythril_block",
+    "mythicmetals:orichalcum_block",
+    "mythicmetals:palladium_block"
+  ]
+}

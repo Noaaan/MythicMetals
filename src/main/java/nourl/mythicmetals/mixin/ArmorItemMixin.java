@@ -51,7 +51,7 @@ public abstract class ArmorItemMixin {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5f, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == ArmorMaterials.CARMOT) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Attack bonus", 2.5f, EntityAttributeModifier.Operation.ADDITION);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.5f, EntityAttributeModifier.Operation.ADDITION);
         }
     }
 

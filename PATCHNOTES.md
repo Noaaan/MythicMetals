@@ -10,6 +10,15 @@ It can block up to 5 incoming damage per piece (blocks up to 20 damage with the 
 The tools also contain some abilities.  
 The sword has an extra level of looting, while the rest have an extra level of fortune.   
 
+#### Carmot Staff  
+You can now create a mystical staff out of Carmot, allowing you to channel the inner power of different metal blocks.  
+Currently there are only a few blocks that react with it, which is specified in this list:  
+- Iron - Fling opponents up, makes the staff stronger  
+- Gold - Grant yourself luck for two minutes  
+- Copper - Summon lightning on yourself  
+- Bronze - Smite whoever you strike with lightning  
+- Netherite - Powerful melee weapon, makes the staff much stronger  
+
 ### Balance Changes  
 Buffed Morkite's fuel value from 1000 to 1200 ticks (from smelting 5 to 6 items per fuel).  
 Made the Blast Mining ability of Legendary Banglum respect Silk Touch.  
