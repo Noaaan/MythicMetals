@@ -31,6 +31,7 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.registry.RegisterTags;
 
+@SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
 
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
@@ -169,7 +170,7 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int amount = 1;
-        if (hasBlockInStaff(stack, MythicBlocks.BRONZE.getStorageBlock()) && !isOnCooldown(attacker, stack)) {
+        if (hasBlockInStaff(stack, MythicBlocks.BRONZE.getStorageBlock()) && isNotOnCooldown(attacker, stack)) {
             var world = target.getWorld();
             var lightning = EntityType.LIGHTNING_BOLT.create(world);
             if (lightning != null) {
@@ -181,7 +182,7 @@ public class CarmotStaff extends ToolItem {
             }
 
         }
-        if (hasBlockInStaff(stack, Blocks.IRON_BLOCK) && isOnCooldown(attacker, stack)) {
+        if (hasBlockInStaff(stack, Blocks.IRON_BLOCK) && isNotOnCooldown(attacker, stack)) {
             target.addVelocity(0, 0.64, 0);
             if (attacker.isPlayer()) {
                 ((PlayerEntity) attacker).getItemCooldownManager().set(stack.getItem(), 40);
@@ -201,11 +202,11 @@ public class CarmotStaff extends ToolItem {
         return true;
     }
 
-    public static boolean isOnCooldown(LivingEntity entity, ItemStack stack) {
+    public static boolean isNotOnCooldown(LivingEntity entity, ItemStack stack) {
         if (entity != null && entity.isPlayer()) {
-            return ((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack.getItem());
+            return !((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack.getItem());
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -213,19 +214,30 @@ public class CarmotStaff extends ToolItem {
 
         Multimap<EntityAttribute, EntityAttributeModifier> mapnite = this.getAttributeModifiers(slot);
 
+        var block = getBlockInStaff(stack);
 
+        if (block != Blocks.AIR) {
+            float damage = 1.0F;
+            float speed = -4.0F;
 
-        if (hasBlockInStaff(stack, Blocks.NETHERITE_BLOCK) || hasBlockInStaff(stack, Blocks.IRON_BLOCK)) {
+            if (Blocks.IRON_BLOCK.equals(block)) {
+                damage = 7.0F;
+                speed = 0.9F;
+            } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
+                damage = 11.0F;
+                speed = 0.7F;
+            } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
+                damage = 14.0F;
+                speed = 0.5F;
+            }
+
             mapnite = HashMultimap.create(mapnite);
 
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_SPEED);
 
-            float damage = hasBlockInStaff(stack, Blocks.NETHERITE_BLOCK) ? 13.0F : 6.0F;
-            float speed = (hasBlockInStaff(stack, Blocks.NETHERITE_BLOCK) ? 0.6F : 0.8F) - 4.0F;
-
-            mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Weapon damage", damage, EntityAttributeModifier.Operation.ADDITION));
-            mapnite.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Item.ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", speed, EntityAttributeModifier.Operation.ADDITION));
+            mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", damage, EntityAttributeModifier.Operation.ADDITION));
+            mapnite.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Item.ATTACK_SPEED_MODIFIER_ID, "Attack speed modifier", speed, EntityAttributeModifier.Operation.ADDITION));
 
         }
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
@@ -233,5 +245,9 @@ public class CarmotStaff extends ToolItem {
 
     private boolean hasBlockInStaff(ItemStack stack, Block block) {
         return stack.has(STORED_BLOCK) && stack.get(STORED_BLOCK).equals(block);
+    }
+
+    private Block getBlockInStaff(ItemStack stack) {
+        return (stack.has(STORED_BLOCK) ? stack.get(STORED_BLOCK) : Blocks.AIR);
     }
 }
