@@ -28,5 +28,5 @@
     }
   },
   "min_forge_tier": 2,
-  "fuel_per_tick": 10
+  "fuel_per_tick": 15
 }
