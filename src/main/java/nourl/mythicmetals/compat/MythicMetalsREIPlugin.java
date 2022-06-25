@@ -31,11 +31,5 @@ public class MythicMetalsREIPlugin implements REIClientPlugin {
     public void registerEntries(EntryRegistry registry) {
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
-        FieldIterator.iterateAccessibleFields(MythicMetals.CONFIG, OreConfig.class, (config, name) -> {
-            if (!config.enabled) registry.removeEntryIf(entryStack ->
-                    entryStack.getIdentifier().getNamespace().equals(MythicMetals.MOD_ID)
-                    &&
-                    entryStack.getIdentifier().getPath().matches(".*(^|_)" + name + "($|_).*"));
-        });
     }
 }
