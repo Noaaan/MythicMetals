@@ -1,5 +1,6 @@
 package nourl.mythicmetals.config;
 
+import com.google.errorprone.annotations.Var;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
@@ -49,7 +50,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig quadrillum = new OreConfig(true,7, 2, 12, 40, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig runite = new OreConfig(true, 4, 1, 39, 53, .25f, false, true);
+    public VariantConfig runite = new VariantConfig(true, 3, 4, 1, 2, 39, -55, 53, -37, .5f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 25, 42, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -57,7 +58,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig stormyx = new OreConfig(true,8, 2, 4, 60, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig unobtainium = new OreConfig(true,3, 1, -59, 5, .0f, false, true);
+    public OreConfig unobtainium = new OreConfig(true,3, 1, -54, 5, .0f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig tin = new OreConfig(true,8, 4, 64, 92, .25f, false);
     @ConfigEntry.Gui.Excluded

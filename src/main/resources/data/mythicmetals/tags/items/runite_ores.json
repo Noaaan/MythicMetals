@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:runite_ore"
+    "mythicmetals:runite_ore",
+    "mythicmetals:deepslate_runite_ore"
   ]
 }

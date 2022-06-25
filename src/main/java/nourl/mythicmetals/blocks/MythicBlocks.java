@@ -134,7 +134,9 @@ public class MythicBlocks {
             .createDefaultSet(5.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
 
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
-            .createDefaultSet(5.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
+            .createDefaultSet(8.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
+            .createOreVariant("deepslate", IRON_MINING_LEVEL)
+            .finish();
 
     public static final BlockSet SILVER = BlockSet.Builder.begin("silver", false)
             .createDefaultSet(4.0F, STONE_MINING_LEVEL, IRON_MINING_LEVEL).finish();
