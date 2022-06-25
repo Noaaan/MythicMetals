@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "afa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "mythicmetals:adamantite_ingot"
+    },
+    "f": {
+      "item": "minecraft:blast_furnace"
+    }
+  },
+  "result": {
+    "item": "alloy_forgery:adamantite_block_forge_controller",
+    "count": 1
+  }
+}

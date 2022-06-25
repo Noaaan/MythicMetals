@@ -1,6 +1,6 @@
 # 0.14.0  
 This update finally brings Mythic Metals to 1.19.  
-It also features an initial Carmot re-work and the next balance pass.  
+It also features an initial Carmot re-work, some new ore variants + features, and the next balance pass.  
 
 ### Carmot Re-work
 Carmot is now a material that builds off Kyber gear, similar to how you upgrade Banglum.  
@@ -32,10 +32,15 @@ Reduced the durability of Prometheum and Bronze tools.
 Increased the chance to find Banglum Chunks and Aquarium Pearls if you have luck.  
 Prometheum will no longer cancel block breaking when regaining durability.  
 Star Platinum no longer requires Carmot to be crafted.  
+Runite can now be found in Deepslate.  
+The Aegis Swords now have different recipes:  
+- The Sword of The Aegis is crafted from an Adamantite Sword with a Palladium block in a smithing table  
+- The Blade of The Aegis is crafted from a Hallowed Sword with a Hallowed block in a smithing table  
 
 #### Other Changes
 Re-worked the Hallowed Armor model (thanks Pois1x!).  
 Re-worked all durasteel assets, plus raw quadrillum (thanks Pois1x!).  
+You can now make an **Adamantite Block Alloy Forge**.  
 Re-implemented steel tools and armor.  
 Made Unobtainium ores slightly luminous.  
 Fixed a crash related to EnchantmentHelper for entities with no gear.  

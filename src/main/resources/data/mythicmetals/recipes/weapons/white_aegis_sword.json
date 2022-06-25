@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing",
   "base": {
-    "item": "mythicmetals:palladium_sword"
+    "item": "mythicmetals:hallowed_sword"
   },
   "addition": {
     "item": "mythicmetals:hallowed_block"
