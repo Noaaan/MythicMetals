@@ -101,7 +101,7 @@ public class CarmotStaff extends ToolItem {
             if (cursorStackReference.get().isEmpty() && staff.has(STORED_BLOCK)) {
                 if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
                     staff.delete(STORED_BLOCK);
-                    player.playSound(SoundEvents.BLOCK_GRINDSTONE_USE, SoundCategory.PLAYERS, 0.85F, 0.5F);
+                    player.playSound(SoundEvents.ENTITY_GLOW_ITEM_FRAME_REMOVE_ITEM, SoundCategory.PLAYERS, 0.25F, 0.5F);
                     return true;
                 }
                 return false;
@@ -217,18 +217,24 @@ public class CarmotStaff extends ToolItem {
         var block = getBlockInStaff(stack);
 
         if (block != Blocks.AIR) {
-            float damage = 1.0F;
+            float damage = 3.0F;
             float speed = -4.0F;
 
             if (Blocks.IRON_BLOCK.equals(block)) {
                 damage = 7.0F;
-                speed = 0.9F;
+                speed += 0.9F;
+            } else if (Blocks.DIAMOND_BLOCK.equals(block)) {
+                damage = 9.0F;
+                speed += 0.8F;
             } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
                 damage = 11.0F;
-                speed = 0.7F;
+                speed += 0.6F;
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
-                speed = 0.5F;
+                speed += 0.5F;
+            }
+            else {
+                speed += 1.0F;
             }
 
             mapnite = HashMultimap.create(mapnite);
