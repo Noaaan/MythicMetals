@@ -31,6 +31,7 @@ Increased the mining speed of Durasteel slightly.
 Reduced the durability of Prometheum and Bronze tools.  
 Increased the chance to find Banglum Chunks and Aquarium Pearls if you have luck.  
 Prometheum will no longer cancel block breaking when regaining durability.  
+Star Platinum no longer requires Carmot to be crafted.  
 
 #### Other Changes
 Re-worked the Hallowed Armor model (thanks Pois1x!).  
