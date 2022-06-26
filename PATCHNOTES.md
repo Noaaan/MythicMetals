@@ -33,6 +33,7 @@ Increased the chance to find Banglum Chunks and Aquarium Pearls if you have luck
 Prometheum will no longer cancel block breaking when regaining durability.  
 Star Platinum no longer requires Carmot to be crafted.  
 Runite can now be found in Deepslate.  
+Tightened the spawn range of Starrite, making it more common.  
 The Aegis Swords now have different recipes:  
 - The Sword of The Aegis is crafted from an Adamantite Sword with a Palladium block in a smithing table  
 - The Blade of The Aegis is crafted from a Hallowed Sword with a Hallowed block in a smithing table  

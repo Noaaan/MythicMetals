@@ -42,7 +42,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig overworld_nether_ores = new OreConfig(true, 4, 2, 40, 70, .125f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig palladium = new OreConfig(true, 5, 2, 14, 35, .0f, false);
+    public OreConfig palladium = new OreConfig(true, 5, 2, 14, 36, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig platinum = new OreConfig(true, 6, 2, 8, 32, .0f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
@@ -54,7 +54,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 25, 42, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 50, 30, 300, 90, .25f, false, true);
+    public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 70, 30, 260, 90, .125f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig stormyx = new OreConfig(true,8, 2, 4, 60, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
