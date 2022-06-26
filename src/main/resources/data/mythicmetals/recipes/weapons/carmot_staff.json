@@ -4,9 +4,9 @@
     "item": "mythicmetals:kyber_shovel"
   },
   "addition": {
-    "item": "mythicmetals:carmot_ingot"
+    "item": "mythicmetals:carmot_block"
   },
   "result": {
-    "item": "mythicmetals:carmot_shovel"
+    "item": "mythicmetals:carmot_staff"
   }
 }

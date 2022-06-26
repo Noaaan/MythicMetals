@@ -1,20 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mm ",
-    " / ",
-    " / "
-  ],
-  "key": {
-    "m": {
-      "item": "mythicmetals:carmot_ingot"
-    },
-    "/": {
-      "item": "minecraft:stick"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mythicmetals:kyber_hoe"
+  },
+  "addition": {
+    "item": "mythicmetals:carmot_ingot"
   },
   "result": {
-    "item": "mythicmetals:carmot_hoe",
-    "count": 1
+    "item": "mythicmetals:carmot_hoe"
   }
 }
