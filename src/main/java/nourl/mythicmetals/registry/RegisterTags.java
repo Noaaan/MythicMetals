@@ -2,9 +2,10 @@ package nourl.mythicmetals.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.tag.Tag;
 import net.minecraft.tag.TagKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterTags {
@@ -16,6 +17,8 @@ public class RegisterTags {
 
     public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("carmot_staff_blocks"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("ores"));
+
+    public static final TagKey<Biome> HUMID_BIOMES = TagKey.of(Registry.BIOME_KEY, new Identifier("c", "humid"));
 
 
 }
