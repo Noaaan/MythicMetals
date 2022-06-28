@@ -6,12 +6,10 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
-import io.wispforest.owo.network.OwoNetChannel;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import nourl.mythicmetals.abilities.Abilities;
@@ -24,7 +22,10 @@ import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.utils.*;
+import nourl.mythicmetals.utils.MythicCommands;
+import nourl.mythicmetals.utils.MythicParticleSystem;
+import nourl.mythicmetals.utils.MythicResourceConditions;
+import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,6 +43,8 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     @Override
     public void onInitialize() {
+        System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
+
         RegisterSounds.register();
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         if (CONFIG.enableNuggets) {
@@ -50,7 +53,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         if (CONFIG.enableDusts) {
             FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
         }
-        FieldRegistrationHandler.processSimple(MythicTools.class, false);
+        FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
         MythicBlocks.init();

@@ -37,13 +37,13 @@
     "mythicmetals.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.13.0",
-    "alloy_forgery": ">=2.0.10",
-    "fabric": ">=0.53.0",
+    "fabricloader": ">=0.14.0",
+    "alloy_forgery": ">=2.0.13",
+    "fabric": ">=0.56.0",
     "minecraft": "1.18.x",
     "cloth-config2": ">=6.2.57",
     "java": ">=17",
-    "owo": ">=0.5.4+1.18",
+    "owo": ">=0.7.2",
     "cardinal-components-entity": ">=4.1.4"
   },
   "custom": {

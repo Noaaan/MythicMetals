@@ -1,5 +1,5 @@
-# 0.14.0  
-This update finally brings Mythic Metals to 1.19.  
+# 0.15.0 and 0.14.0  
+This update finally brings Mythic Metals to 1.19 (with an update for 1.18 too!).  
 It also features an initial Carmot re-work, some new ore variants + features, and the next balance pass.  
 
 ### Carmot Re-work
