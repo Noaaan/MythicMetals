@@ -43,7 +43,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     @Override
     public void onInitialize() {
-        System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
 
         RegisterSounds.register();
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);

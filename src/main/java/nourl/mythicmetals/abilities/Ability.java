@@ -5,10 +5,9 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import nourl.mythicmetals.armor.ArmorSet;
 import nourl.mythicmetals.tools.ToolSet;
 
@@ -82,12 +81,12 @@ public class Ability {
     @Environment(EnvType.CLIENT)
     public void addTooltip(Item item, Style style) {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            MutableText text = new LiteralText("");
+            MutableText text = Text.literal("");
             if (stack.getItem().equals(item)) {
-                text.append(new TranslatableText("abilities.mythicmetals." + tooltip));
+                text.append(Text.translatable("abilities.mythicmetals." + tooltip));
                 text.setStyle(style);
                 if (showLevel) {
-                    text.append(" ").append(new TranslatableText("enchantment.level." + level));
+                    text.append(" ").append(Text.translatable("enchantment.level." + level));
                 }
                 if (lines.size() > 2) {
                     var enchantCount = stack.getEnchantments().size();

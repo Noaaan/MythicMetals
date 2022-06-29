@@ -7,10 +7,7 @@ import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.client.registry.entry.EntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.item.ItemStack;
-import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.utils.FieldIterator;
 
 import java.util.List;
 

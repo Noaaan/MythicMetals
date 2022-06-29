@@ -1,6 +1,5 @@
 package nourl.mythicmetals.config;
 
-import com.google.errorprone.annotations.Var;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
