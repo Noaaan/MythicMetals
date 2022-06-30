@@ -2,7 +2,6 @@ package nourl.mythicmetals.armor;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -40,7 +39,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     }
 
     public void tickShield() {
-        if (MinecraftClient.getInstance().world == null) return;
+        if (player.getWorld() == null) return;
         MythicMetals.CARMOT_SHIELD.sync(player);
 
         if (health > getMaxHealth()) {

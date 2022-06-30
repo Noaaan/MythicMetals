@@ -1,3 +1,7 @@
+# 0.14.1  
+Forced the usage of owo-lib-0.7.2-no-cme (1.18.2 only).  
+Updated Metallurgium Pickaxe texture.
+
 # 0.15.0 and 0.14.0  
 This update finally brings Mythic Metals to 1.19 (with an update for 1.18 too!).  
 It also features an initial Carmot re-work, some new ore variants + features, and the next balance pass.  
@@ -8,7 +12,8 @@ The armor itself now grants you extra max health (up to 5 hearts with the full s
 It also features the Carmot Shield ability, which is a passively regenerating shield.  
 It can block up to 5 incoming damage per piece (blocks up to 20 damage with the full set).  
 The tools also contain some abilities.  
-The sword has an extra level of looting, while the rest have an extra level of fortune.   
+The sword has an extra level of looting, while the rest have an extra level of fortune.  
+Also, thanks to paintedwithdrugs for the new Carmot Ingot sprite!   
 
 #### Carmot Staff  
 You can now create a mystical staff out of Carmot, allowing you to channel the inner power of different metal blocks.  
