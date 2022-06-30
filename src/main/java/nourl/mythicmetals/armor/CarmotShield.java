@@ -12,7 +12,6 @@ import nourl.mythicmetals.registry.RegisterTags;
 
 public class CarmotShield implements Component, AutoSyncedComponent {
     private final PlayerEntity player;
-
     public float health;
     public int renderTime;
     public int cooldown;
@@ -40,7 +39,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     }
 
     public void tickShield() {
-        if (MinecraftClient.getInstance().world == null) return;
+        if (player.world == null) return;
         MythicMetals.CARMOT_SHIELD.sync(player);
 
         if (health > getMaxHealth()) {

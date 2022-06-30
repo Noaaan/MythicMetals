@@ -53,7 +53,7 @@ dependencies {
 //    modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
     // Magna, used for Super Bang tools
-    include 'com.github.Draylar:magna:1.7.0-1.18'
+    include 'com.github.Technici4n:magna:1.8.1-1.19'
     modImplementation 'com.github.Technici4n:magna:1.8.1-1.19'
 
     // MM Decorations
