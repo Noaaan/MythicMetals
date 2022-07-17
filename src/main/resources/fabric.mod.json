@@ -23,7 +23,7 @@
     "client": [
       "nourl.mythicmetals.MythicMetalsClient"
     ],
-    "rei_common": [
+    "rei_client": [
       "nourl.mythicmetals.compat.MythicMetalsREIPlugin"
     ],
     "modmenu": [
