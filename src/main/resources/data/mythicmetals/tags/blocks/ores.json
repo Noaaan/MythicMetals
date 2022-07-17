@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:adamantite_ore",
+    "mythicmetals:deepslate_adamantite_ore",
+    "mythicmetals:manganese_ore",
+    "mythicmetals:mythril_ore",
+    "mythicmetals:deepslate_mythril_ore",
+    "mythicmetals:orichalcum_ore",
+    "mythicmetals:deepslate_orichalcum_ore",
+    "mythicmetals:smooth_basalt_orichalcum_ore",
+    "mythicmetals:tuff_orichalcum_ore",
+    "mythicmetals:osmium_ore",
+    "mythicmetals:palladium_ore",
+    "mythicmetals:platinum_ore",
+    "mythicmetals:silver_ore",
+    "mythicmetals:tin_ore",
+    "#mythicmetals:aquarium_ores",
+    "#mythicmetals:banglum_ores",
+    "#mythicmetals:carmot_ores",
+    "#mythicmetals:kyber_ores",
+    "#mythicmetals:midas_gold_ores",
+    "#mythicmetals:morkite_ores",
+    "#mythicmetals:prometheum_ores",
+    "#mythicmetals:quadrillum_ores",
+    "#mythicmetals:runite_ores",
+    "#mythicmetals:starrite_ores",
+    "#mythicmetals:stormyx_ores",
+    "#mythicmetals:unobtainium_ores"
+  ]
+}

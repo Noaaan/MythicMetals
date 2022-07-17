@@ -103,9 +103,7 @@ public class BlockSet {
             anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, level, anvilBlock)));
         }
         miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, level, block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("ores"), block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.ITEM, new Identifier("c", "ores"), block.asItem()));
-
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("blocks"), block));
     }
 
     /**
