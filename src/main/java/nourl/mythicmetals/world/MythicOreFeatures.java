@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
+import net.minecraft.tag.BiomeTags;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
@@ -188,34 +189,15 @@ public class MythicOreFeatures {
         if (CONFIG.prometheum.enabled) {
             BiomeModifications.addFeature(BiomeSelectors.tag(RegisterTags.HUMID_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
-            OreFeatureHelper.modBiomeOres("terralith", "amethyst_rainforest", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "amethyst_canyon", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "coastal_jungle", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "rocky_jungle", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "tropical_jungle", PROMETHEUM);
         }
         // Add Osmium to mountainous biomes
         if (CONFIG.osmium.enabled) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.MOUNTAIN), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
-            
-            OreFeatureHelper.modBiomeOres("terralith", "caldera", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "cloud_forest", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "emerald_peaks", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "haze_mountain", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "jungle_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "painted_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "rocky_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "scarlet_mountains", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "siberian_taiga", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "stony_spires", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "volcanic_peaks", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "volcanic_crater", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "windswept_spires", OSMIUM);
-            OreFeatureHelper.modBiomeOres("terralith", "yosemite_cliffs", OSMIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_HILL), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
+
         }
 
     }
