@@ -18,6 +18,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
@@ -26,12 +27,15 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.utils.MythicParticleSystem;
 
 @SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
@@ -197,6 +201,47 @@ public class CarmotStaff extends ToolItem {
             stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             user.getItemCooldownManager().set(stack.getItem(), 3000);
             return TypedActionResult.success(stack);
+        }
+
+        if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock()) && !isCoolingDown) {
+            float reach = 10.f;
+
+            Vec3d normalizedFacing = user.getRotationVec(1.0F);
+            Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.x * reach, normalizedFacing.y * reach, normalizedFacing.z * reach);
+
+            EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
+                user.getBoundingBox().stretch(normalizedFacing.multiply(reach)).expand(1), entity -> entity.collides() && !entity.isSpectator(), reach * reach);
+
+
+            if (res != null) {
+                var entity = res.getEntity();
+
+                int damageRoll = world.random.nextInt(6);
+
+                int freezeRoll = Math.max(damageRoll, world.random.nextInt(6));
+
+                if (freezeRoll > 0) {
+                    int time = entity.canFreeze() ? 300 : 150;
+
+                    if (entity instanceof LivingEntity living)
+                        living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, time, 4));
+
+                    entity.setFrozenTicks(time);
+
+                    user.setFrozenTicks(time);
+                }
+
+                MythicParticleSystem.ICE_BARRAGE.spawn(world, user.getCameraPosVec(0), entity.getCameraPosVec(0));
+
+                if (damageRoll != 0)
+                    entity.damage(DamageSource.player(user), damageRoll);
+
+                stack.damage(3, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+
+                user.getItemCooldownManager().set(stack.getItem(), 400);
+
+                return TypedActionResult.success(stack);
+            }
         }
 
         return TypedActionResult.pass(stack);

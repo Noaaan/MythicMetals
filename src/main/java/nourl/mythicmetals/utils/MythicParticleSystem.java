@@ -56,9 +56,17 @@ public class MythicParticleSystem {
                 Vec3d.ZERO.add(r.nextDouble(-1, 1), 1.75D, r.nextDouble(-1, 1)), 1.25D);
         ClientParticles.setVelocity(velocity);
 
-        ClientParticles.persist();
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);
-        ClientParticles.reset();
+    });
+
+    public static final ParticleSystem<Vec3d> ICE_BARRAGE = CONTROLLER.register(Vec3d.class, (world, pos, data) -> {
+        Vec3d step = data.subtract(pos).multiply(1 / 20f);
+
+        for (int i = 0; i < 20; i++) {
+            ClientParticles.spawn(ParticleTypes.FALLING_WATER, world, pos, 0.2D);
+
+            pos = pos.add(step);
+        }
     });
 
     public static void init() {

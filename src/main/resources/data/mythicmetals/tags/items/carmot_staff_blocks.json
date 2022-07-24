@@ -17,6 +17,7 @@
     "mythicmetals:mythril_block",
     "mythicmetals:orichalcum_block",
     "mythicmetals:palladium_block",
-    "mythicmetals:metallurgium_block"
+    "mythicmetals:metallurgium_block",
+    "mythicmetals:runite_block"
   ]
 }
