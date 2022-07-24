@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -26,6 +27,7 @@ import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.blocks.MythicBlocks;
@@ -144,6 +146,7 @@ public class CarmotStaff extends ToolItem {
         var stack = user.getStackInHand(hand);
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
+
         if (hasBlockInStaff(stack, Blocks.COPPER_BLOCK) && !isCoolingDown) {
             var lightning = EntityType.LIGHTNING_BOLT.create(world);
             if (lightning != null) {
@@ -164,6 +167,38 @@ public class CarmotStaff extends ToolItem {
             user.getItemCooldownManager().set(stack.getItem(), 1200);
             return TypedActionResult.success(stack);
         }
+
+        if (hasBlockInStaff(stack, MythicBlocks.CARMOT.getStorageBlock()) && !isCoolingDown) {
+            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
+            entities.forEach(entity -> {
+                if (entity.isLiving()) {
+                    if (((LivingEntity) entity).isUndead()) {
+                        entity.damage(DamageSource.MAGIC, 5.0F);
+                    } else {
+                        ((LivingEntity) entity).heal(5.0F);
+                    }
+                }
+            });
+            user.heal(6.0F);
+            stack.damage(8, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            user.getItemCooldownManager().set(stack.getItem(), 700);
+            return TypedActionResult.success(stack);
+        }
+
+        if (hasBlockInStaff(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock()) && !isCoolingDown) {
+            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
+            var betterLuckStatus = new StatusEffectInstance(StatusEffects.LUCK, 4800, 1, true, false, true);
+            entities.forEach(entity -> {
+                if (entity.isLiving()) {
+                    ((LivingEntity) entity).addStatusEffect(betterLuckStatus);
+                }
+            });
+            user.addStatusEffect(betterLuckStatus);
+            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            user.getItemCooldownManager().set(stack.getItem(), 3000);
+            return TypedActionResult.success(stack);
+        }
+
         return TypedActionResult.pass(stack);
     }
 
@@ -232,8 +267,7 @@ public class CarmotStaff extends ToolItem {
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
                 speed += 0.5F;
-            }
-            else {
+            } else {
                 speed += 1.0F;
             }
 
