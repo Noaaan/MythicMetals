@@ -7,6 +7,7 @@ import io.wispforest.owo.util.VectorRandomUtils;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 
@@ -35,17 +36,13 @@ public class MythicParticleSystem {
     public static final ParticleSystem<Void> CARMOT_TRAIL = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(1);
         ClientParticles.setVelocity(new Vec3d(0, 0.1F, 0));
-        ClientParticles.persist();
         ClientParticles.spawn(ParticleTypes.END_ROD, world, new Vec3d(pos.x, pos.y, pos.z), 1.0D);
-        ClientParticles.reset();
     });
 
     public static final ParticleSystem<Void> COPPER_SPARK = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(1);
         ClientParticles.randomizeVelocity(1.25D);
-        ClientParticles.persist();
         ClientParticles.spawn(ParticleTypes.ELECTRIC_SPARK, world, pos, 1.0D);
-        ClientParticles.reset();
 
     });
 
@@ -59,7 +56,7 @@ public class MythicParticleSystem {
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);
     });
 
-    public static final ParticleSystem<Vec3d> ICE_BARRAGE = CONTROLLER.register(Vec3d.class, (world, pos, data) -> {
+    public static final ParticleSystem<Vec3d> ICE_TRAIL = CONTROLLER.register(Vec3d.class, (world, pos, data) -> {
         Vec3d step = data.subtract(pos).multiply(1 / 20f);
 
         for (int i = 0; i < 20; i++) {
@@ -68,6 +65,17 @@ public class MythicParticleSystem {
             pos = pos.add(step);
         }
     });
+
+    public static final ParticleSystem<Void> ICE_BARRAGE = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        ClientParticles.setParticleCount(10);
+        Random r = new Random();
+
+        ClientParticles.persist();
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.SNOWFLAKE, world, new BlockPos(pos), new Vec3d(0, 3, 0), 1.5F);
+        ClientParticles.reset();
+
+    });
+
 
     public static void init() {
     }

@@ -4,7 +4,6 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import io.wispforest.owo.nbt.NbtKey;
-import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -31,9 +30,11 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.registry.RegisterTags;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
@@ -147,6 +148,7 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        var random = Random.create();
         var stack = user.getStackInHand(hand);
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
@@ -204,41 +206,51 @@ public class CarmotStaff extends ToolItem {
         }
 
         if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock()) && !isCoolingDown) {
-            float reach = 10.f;
+            boolean succesfulFreeze = false;
+            float range = 10.0F;
 
             Vec3d normalizedFacing = user.getRotationVec(1.0F);
-            Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.x * reach, normalizedFacing.y * reach, normalizedFacing.z * reach);
+            Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.multiply(range));
 
             EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
-                user.getBoundingBox().stretch(normalizedFacing.multiply(reach)).expand(1), entity -> entity.collides() && !entity.isSpectator(), reach * reach);
-
+                    user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1),
+                    entity -> entity.collides() && !entity.isSpectator() && entity.isLiving(), range * range);
 
             if (res != null) {
-                var entity = res.getEntity();
+                var target = res.getEntity();
+                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 3, 2, 3));
+                entities.add(target);
 
-                int damageRoll = world.random.nextInt(6);
+                world.playSound(null, user.getBlockPos(), RegisterSounds.ICE_MAGIC, SoundCategory.PLAYERS, 0.8F, 1.0F);
+                MythicParticleSystem.ICE_TRAIL.spawn(world, user.getCameraPosVec(0), target.getCameraPosVec(0));
 
-                int freezeRoll = Math.max(damageRoll, world.random.nextInt(6));
+                for (net.minecraft.entity.Entity e : entities) {
 
-                if (freezeRoll > 0) {
-                    int time = entity.canFreeze() ? 300 : 150;
+                    LivingEntity victim = (LivingEntity) e;
 
-                    if (entity instanceof LivingEntity living)
-                        living.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, time, 4));
-
-                    entity.setFrozenTicks(time);
-
-                    user.setFrozenTicks(time);
+                    if (victim.isLiving()) {
+                        int damageRoll = random.nextInt(4);
+                        if (damageRoll > 0 || random.nextInt(10) == 0) {
+                            int time = victim.canFreeze() ? 600 : 150;
+                            victim.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, time, victim.canFreeze() ? 3 : 0));
+                            MythicParticleSystem.ICE_BARRAGE.spawn(world, victim.getPos());
+                            world.playSound(null, victim.getBlockPos(), SoundEvents.BLOCK_POWDER_SNOW_BREAK, SoundCategory.PLAYERS, 1.25F, 0.85F);
+                            victim.setFrozenTicks(time);
+                            victim.damage(DamageSource.FREEZE, damageRoll + 1);
+                            succesfulFreeze = true;
+                        } else {
+                            world.playSound(null, victim.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_SPLASH, SoundCategory.PLAYERS, 1.0F, 0.8F);
+                        }
+                    }
                 }
 
-                MythicParticleSystem.ICE_BARRAGE.spawn(world, user.getCameraPosVec(0), entity.getCameraPosVec(0));
+                if (succesfulFreeze) {
+                    stack.damage(10, user, e2 -> e2.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                    user.getItemCooldownManager().set(stack.getItem(), 400);
+                } else {
+                    user.getItemCooldownManager().set(stack.getItem(), 300);
+                }
 
-                if (damageRoll != 0)
-                    entity.damage(DamageSource.player(user), damageRoll);
-
-                stack.damage(3, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-
-                user.getItemCooldownManager().set(stack.getItem(), 400);
 
                 return TypedActionResult.success(stack);
             }
