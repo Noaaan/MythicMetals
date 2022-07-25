@@ -21,6 +21,7 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ClickType;
@@ -32,8 +33,14 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
+import net.minecraft.world.explosion.ExplosionBehavior;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.registry.AscensionDamageSource;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.registry.RegisterTags;
 import nourl.mythicmetals.utils.MythicParticleSystem;
@@ -152,6 +159,21 @@ public class CarmotStaff extends ToolItem {
         var stack = user.getStackInHand(hand);
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
+
+        // Command Block - Set yourself to Creative Mode
+        if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK) && !isCoolingDown) {
+
+            if (!MythicMetals.CONFIG.disableFunny) {
+                ((ServerPlayerEntity)user).changeGameMode(GameMode.CREATIVE);
+                user.getItemCooldownManager().set(stack.getItem(), 6000);
+            }
+            else {
+                world.createExplosion(null, new AscensionDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+            }
+
+            stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            return TypedActionResult.success(stack);
+        }
 
         // Copper - Summon a lightning bolt on yourself
         if (hasBlockInStaff(stack, Blocks.COPPER_BLOCK) && !isCoolingDown) {

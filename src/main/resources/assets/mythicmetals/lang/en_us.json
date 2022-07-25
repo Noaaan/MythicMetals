@@ -761,5 +761,7 @@
   "abilities.mythicmetals.respiration": "Natural Respiration",
   "abilities.mythicmetals.smite": "Holy",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
-  "abilities.mythicmetals.water_protection": "Natural Water Protection"
+  "abilities.mythicmetals.water_protection": "Natural Water Protection",
+
+  "death.attack.ascension": "%s stood too close to the sun"
 }
