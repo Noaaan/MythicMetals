@@ -8,6 +8,8 @@
     "minecraft:emerald_block",
     "minecraft:netherite_block",
     "minecraft:glowstone",
+    "minecraft:beacon",
+    "minecraft:command_block",
     "minecraft:sponge",
     "mythicmetals:adamantite_block",
     "mythicmetals:bronze_block",
@@ -17,6 +19,7 @@
     "mythicmetals:mythril_block",
     "mythicmetals:orichalcum_block",
     "mythicmetals:palladium_block",
+    "mythicmetals:star_platinum_block",
     "mythicmetals:metallurgium_block",
     "mythicmetals:runite_block"
   ]

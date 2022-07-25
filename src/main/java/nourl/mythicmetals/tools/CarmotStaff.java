@@ -153,6 +153,7 @@ public class CarmotStaff extends ToolItem {
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
 
+        // Copper - Summon a lightning bolt on yourself
         if (hasBlockInStaff(stack, Blocks.COPPER_BLOCK) && !isCoolingDown) {
             var lightning = EntityType.LIGHTNING_BOLT.create(world);
             if (lightning != null) {
@@ -166,6 +167,7 @@ public class CarmotStaff extends ToolItem {
             return TypedActionResult.success(stack);
         }
 
+        // Gold - Luck 1 for two minutes
         if (hasBlockInStaff(stack, Blocks.GOLD_BLOCK) && !isCoolingDown) {
             var luckStatus = new StatusEffectInstance(StatusEffects.LUCK, 2400, 0, true, false, true);
             user.addStatusEffect(luckStatus);
@@ -174,6 +176,7 @@ public class CarmotStaff extends ToolItem {
             return TypedActionResult.success(stack);
         }
 
+        // Carmot - AoE Heal
         if (hasBlockInStaff(stack, MythicBlocks.CARMOT.getStorageBlock()) && !isCoolingDown) {
             var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
             entities.forEach(entity -> {
@@ -191,6 +194,7 @@ public class CarmotStaff extends ToolItem {
             return TypedActionResult.success(stack);
         }
 
+        // Midas Gold - Luck 2 for four minutes
         if (hasBlockInStaff(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock()) && !isCoolingDown) {
             var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
             var betterLuckStatus = new StatusEffectInstance(StatusEffects.LUCK, 4800, 1, true, false, true);
@@ -205,6 +209,7 @@ public class CarmotStaff extends ToolItem {
             return TypedActionResult.success(stack);
         }
 
+        // Runite - Ice Barrage, AOE freeze
         if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock()) && !isCoolingDown) {
             boolean succesfulFreeze = false;
             float range = 10.0F;
@@ -262,6 +267,8 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         int amount = 1;
+
+        // Bronze - Smite your opponent with a lightning bolt
         if (hasBlockInStaff(stack, MythicBlocks.BRONZE.getStorageBlock()) && isNotOnCooldown(attacker, stack)) {
             var world = target.getWorld();
             var lightning = EntityType.LIGHTNING_BOLT.create(world);
@@ -274,6 +281,8 @@ public class CarmotStaff extends ToolItem {
             }
 
         }
+
+        // Iron - Flings your opponent into the air
         if (hasBlockInStaff(stack, Blocks.IRON_BLOCK) && isNotOnCooldown(attacker, stack)) {
             target.addVelocity(0, 0.64, 0);
             if (attacker.isPlayer()) {
@@ -324,6 +333,9 @@ public class CarmotStaff extends ToolItem {
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
                 speed += 0.5F;
+            } else if (MythicBlocks.STAR_PLATINUM.getStorageBlock().equals(block)) {
+                damage = 4.0F;
+                speed += 3.5F;
             } else {
                 speed += 1.0F;
             }
