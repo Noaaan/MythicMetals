@@ -2,6 +2,7 @@
 Added more effects to the Carmot Staff:
 - Carmot - Heals you and everything around you for a small amount of health.  
 - Midas Gold - Grants you and everyone around you Luck 2 for four minutes.  
+- Runite - Barrages your enemies in ice, freezing them in place.  
 
 # 0.15.1  
 Fixed serverside Carmot Shield crash.  
