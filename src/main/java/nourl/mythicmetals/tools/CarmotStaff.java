@@ -45,6 +45,8 @@ import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.registry.RegisterTags;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
+import java.util.List;
+
 @SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
 
@@ -160,15 +162,50 @@ public class CarmotStaff extends ToolItem {
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
 
+        if (isCoolingDown) return TypedActionResult.fail(stack);
+
+        // Beacon - Give a small buff to all players around you
+        if (hasBlockInStaff(stack, Blocks.BEACON)) {
+            var buffList = List.of(
+                    StatusEffects.SPEED,
+                    StatusEffects.HASTE,
+                    StatusEffects.RESISTANCE,
+                    StatusEffects.JUMP_BOOST,
+                    StatusEffects.STRENGTH,
+                    StatusEffects.REGENERATION);
+            var buff = random.nextInt(5);
+
+            var targets = world.getOtherEntities(user, Box.of(user.getPos(), 18, 5, 18));
+            targets.add(user);
+
+            targets.forEach(entity -> {
+                if (entity.isPlayer()) {
+                    ((PlayerEntity) entity)
+                            .addStatusEffect(new StatusEffectInstance(
+                                    buffList.get(buff),
+                                    600,
+                                    0,
+                                    true,
+                                    true,
+                                    true));
+                }
+            });
+
+            user.getItemCooldownManager().set(stack.getItem(), 500);
+            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+
+            return TypedActionResult.success(stack);
+        }
+
         // Command Block - Set yourself to Creative Mode
-        if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK)) {
 
             if (!MythicMetals.CONFIG.disableFunny) {
-                ((ServerPlayerEntity)user).changeGameMode(GameMode.CREATIVE);
+                ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
-            }
-            else {
+            } else {
                 world.createExplosion(null, new AscensionDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                user.getItemCooldownManager().set(stack.getItem(), 6000);
             }
 
             stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -176,7 +213,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Copper - Summon a lightning bolt on yourself
-        if (hasBlockInStaff(stack, Blocks.COPPER_BLOCK) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, Blocks.COPPER_BLOCK)) {
             var lightning = EntityType.LIGHTNING_BOLT.create(world);
             if (lightning != null) {
                 lightning.copyPositionAndRotation(user);
@@ -190,7 +227,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Gold - Luck 1 for two minutes
-        if (hasBlockInStaff(stack, Blocks.GOLD_BLOCK) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, Blocks.GOLD_BLOCK)) {
             var luckStatus = new StatusEffectInstance(StatusEffects.LUCK, 2400, 0, true, false, true);
             user.addStatusEffect(luckStatus);
             stack.damage(5, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -199,7 +236,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Carmot - AoE Heal
-        if (hasBlockInStaff(stack, MythicBlocks.CARMOT.getStorageBlock()) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, MythicBlocks.CARMOT.getStorageBlock())) {
             var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
             entities.forEach(entity -> {
                 if (entity.isLiving()) {
@@ -217,7 +254,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Midas Gold - Luck 2 for four minutes
-        if (hasBlockInStaff(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock()) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock())) {
             var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
             var betterLuckStatus = new StatusEffectInstance(StatusEffects.LUCK, 4800, 1, true, false, true);
             entities.forEach(entity -> {
@@ -232,7 +269,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Runite - Ice Barrage, AOE freeze
-        if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock()) && !isCoolingDown) {
+        if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock())) {
             boolean succesfulFreeze = false;
             float range = 10.0F;
 
@@ -272,7 +309,7 @@ public class CarmotStaff extends ToolItem {
                 }
 
                 if (succesfulFreeze) {
-                    stack.damage(10, user, e2 -> e2.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                    stack.damage(12, user, e2 -> e2.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                     user.getItemCooldownManager().set(stack.getItem(), 400);
                 } else {
                     user.getItemCooldownManager().set(stack.getItem(), 300);
