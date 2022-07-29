@@ -4,6 +4,7 @@ import com.google.common.base.Suppliers;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 
 import java.util.function.Supplier;
@@ -19,10 +20,12 @@ public enum ToolMaterials implements ToolMaterial {
     CELESTIUM(5, 2270, 16.9F, 6.0F, 26, () -> Ingredient.ofItems(MythicItems.CELESTIUM_INGOT)),
     COPPER(1, 125, 4.5F, 1.0F, 8, () -> Ingredient.ofItems(Items.COPPER_INGOT)),
     DURASTEEL(3, 800, 7.1F, 3.5F, 12, () -> Ingredient.ofItems(MythicItems.DURASTEEL_INGOT)),
+    GILDED_MIDAS_GOLD(3, 800, 13.0F, 4.0F, 30, () -> Ingredient.ofItems(MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem())),
     HALLOWED(4, 1739, 12.0F, 5.0F, 20, () -> Ingredient.ofItems(MythicItems.HALLOWED_INGOT)),
     KYBER(3, 889, 7.0F, 2.5F, 20, () -> Ingredient.ofItems(MythicItems.KYBER_INGOT)),
     LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> Ingredient.ofItems(MythicItems.BANGLUM_CHUNK)),
     METALLURGIUM(5, 3000, 15.0F, 8.0F, 30, () -> Ingredient.ofItems(MythicItems.METALLURGIUM_INGOT)),
+    MIDAS_GOLD(3, 300, 13.0F, 3.0F, 30, () -> Ingredient.ofItems(MythicItems.MIDAS_GOLD_INGOT)),
     MYTHRIL(4, 1445, 13.0F, 3.0F, 22, () -> Ingredient.ofItems(MythicItems.MYTHRIL_INGOT)),
     ORICHALCUM(4, 2048, 6.0F, 4.0F, 16, () -> Ingredient.ofItems(MythicItems.ORICHALCUM_INGOT)),
     OSMIUM(3, 584, 7.0F, 2.0F, 13, () -> Ingredient.ofItems(MythicItems.OSMIUM_INGOT)),

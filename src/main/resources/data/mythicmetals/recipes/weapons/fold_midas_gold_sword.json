@@ -1,0 +1,12 @@
+{
+  "type": "mythicmetals:special_smithing_recipe",
+  "base": {
+    "item": "mythicmetals:midas_gold_sword"
+  },
+  "addition": {
+    "item": "mythicmetals:midas_gold_block"
+  },
+  "result": {
+    "item": "mythicmetals:midas_gold_sword"
+  }
+}

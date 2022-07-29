@@ -20,6 +20,7 @@ import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterEntities;
+import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicCommands;
@@ -64,6 +65,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         MythicResourceConditions.init();
+        RegisterRecipeSerializers.init();
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");

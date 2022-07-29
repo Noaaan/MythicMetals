@@ -18,7 +18,10 @@ public class MythicMetalsREIPlugin implements REIClientPlugin {
         registry.registerVisibilityPredicate((category, display) -> {
             if (display.getOutputEntries().stream().flatMap(List::stream)
                     .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack
-                            && (stack.getItem() == MythicTools.Frogery.FROGE || stack.getItem() == MythicTools.Frogery.DOGE)))
+                            && (stack.getItem() == MythicTools.Frogery.FROGE
+                            || stack.getItem() == MythicTools.Frogery.DOGE
+                            || stack.getItem() == MythicTools.GILDED_MIDAS_GOLD_SWORD
+                    )))
                 return EventResult.interruptFalse();
             else return EventResult.pass();
         });
@@ -28,5 +31,6 @@ public class MythicMetalsREIPlugin implements REIClientPlugin {
     public void registerEntries(EntryRegistry registry) {
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
+        registry.removeEntry(EntryStacks.of(MythicTools.GILDED_MIDAS_GOLD_SWORD));
     }
 }
