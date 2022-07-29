@@ -5,8 +5,16 @@ Added more effects to the Carmot Staff:
 - Runite - Barrages your enemies in ice, freezing them in place.  
 - Star Platinum - Lets you swing the staff really fast.
 - Beacon - Grants players in a large radius (18 blocks) a random beacon effect for 30 seconds.  
-Added a new sword: The Midas Gold Sword! This weapon makes Midas Gold some more milage.  
 
+### Added the Midas Gold Sword!  
+This weapon makes Midas Gold some more milage, by giving you a nice sword that you can upgrade... 
+as long as you have enough gold.  
+
+### Balancing changes  
+Tweaked Aquarium so that both the chestplate and leggings give Respiration.  
+
+### Other changes
+Fixed an issue with disabling funny mode.  
 
 # 0.15.1  
 Fixed serverside Carmot Shield crash, and updated the Metallurgium Pickaxe texture.  
