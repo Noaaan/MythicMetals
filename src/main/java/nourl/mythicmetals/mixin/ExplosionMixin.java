@@ -5,7 +5,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.blocks.BanglumTntEntity;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +14,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Explosion.class)
 public class ExplosionMixin {
 
-    @Shadow @Final private @Nullable Entity entity;
+    @Shadow
+    @Nullable
+    public Entity entity;
 
     @Inject(method = "getCausingEntity", at = @At("HEAD"), cancellable = true)
     public void superBang(CallbackInfoReturnable<LivingEntity> cir) {
