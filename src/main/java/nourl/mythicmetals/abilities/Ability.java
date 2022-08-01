@@ -106,6 +106,7 @@ public class Ability {
         });
     }
 
+    @Environment(EnvType.CLIENT)
     public static void initMidasGoldTooltip() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.getItem().equals(MythicTools.MIDAS_GOLD_SWORD) || stack.getItem().equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
