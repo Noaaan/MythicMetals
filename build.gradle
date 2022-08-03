@@ -33,7 +33,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}") {
+        transitive = false
+    }
 
     // config
     modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_version}")
