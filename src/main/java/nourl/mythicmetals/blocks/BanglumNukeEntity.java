@@ -2,6 +2,7 @@ package nourl.mythicmetals.blocks;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.utils.EpicExplosion;
@@ -34,6 +35,6 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
     @Override
     protected void explode() {
-        EpicExplosion.explode(world, (int) getX(), (int) getY(), (int) getZ(), POWER);
+        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), POWER);
     }
 }
