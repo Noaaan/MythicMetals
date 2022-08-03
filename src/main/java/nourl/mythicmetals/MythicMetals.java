@@ -15,6 +15,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
@@ -59,6 +60,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
         MythicBlocks.init();
+        BanglumNukeHandler.init();
         MythicOreFeatures.init();
         MythicCommands.register();
         Abilities.init();
