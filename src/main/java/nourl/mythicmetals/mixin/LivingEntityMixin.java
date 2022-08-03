@@ -1,17 +1,24 @@
 package nourl.mythicmetals.mixin;
 
-import net.minecraft.entity.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.MythicParticleSystem;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
@@ -33,6 +40,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean damage(DamageSource source, float amount);
 
+    @Shadow public abstract @Nullable LivingEntity getAttacker();
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -45,6 +54,14 @@ public abstract class LivingEntityMixin extends Entity {
             mythicmetals$prometheumRepairPassive();
         }
         mythicmetals$addArmorEffects();
+    }
+
+    @ModifyArg(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
+    private int mythicmetals$doubleXp(int value) {
+        if (this.getAttacker() != null && this.getAttacker().getMainHandStack().get(CarmotStaff.STORED_BLOCK).asItem().equals(Blocks.LAPIS_BLOCK.asItem())) {
+            return value * 2;
+        }
+        return value;
     }
 
     private void mythicmetals$addArmorEffects() {
