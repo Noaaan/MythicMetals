@@ -47,6 +47,8 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
         RegisterSounds.register();
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
         if (CONFIG.enableNuggets) {
             FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
         }
@@ -62,7 +64,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         Abilities.init();
         RegisterEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
+        FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         MythicResourceConditions.init();
         RegisterRecipeSerializers.init();
