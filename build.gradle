@@ -57,7 +57,7 @@ dependencies {
     modImplementation 'com.github.Technici4n:magna:1.8.1-1.19'
 
     // MM Decorations
-    modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
+    //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 
     // Cardinal Components
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
@@ -68,6 +68,32 @@ dependencies {
     include "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
 
 }
+
+sourceSets {
+    main{
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
+    }
+}
+
+loom {
+    runs {
+        datagen {
+            server()
+
+            name "Minecraft Data"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+
+            runDir "build/datagen"
+        }
+    }
+}
+
+assemble.dependsOn runDatagen
 
 java {
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
