@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "minecraft:raw_iron"
+      "tag": "c:raw_iron_ores"
     },
 	{
-      "item": "mythicmetals:raw_manganese"
+      "tag": "c:raw_manganese_ores"
     }
   ],
   "output": {

@@ -5,7 +5,7 @@
       "item": "mythicmetals:raw_quadrillum"
     },
 	{
-      "item": "mythicmetals:raw_manganese"
+      "tag": "c:raw_manganese_ores"
     }
   ],
   "output": {
