@@ -1,6 +1,8 @@
 package nourl.mythicmetals.blocks;
 
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
@@ -13,10 +15,7 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -103,9 +102,7 @@ public class BlockSet {
             anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, level, anvilBlock)));
         }
         miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, level, block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("ores"), block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.ITEM, new Identifier("c", "ores"), block.asItem()));
-
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("blocks"), block));
     }
 
     /**
@@ -123,11 +120,26 @@ public class BlockSet {
     }
 
     /**
+     * @return Returns the ore storage block from the set
+     */
+    public Block getOreStorageBlock() {
+        return oreStorageBlock;
+    }
+
+    /**
      * @param variant The string of the ore variants name
      * @return Returns the specified ore variant from the variant map in the blockset
      */
     public OreBlock getOreVariant(String variant) {
         return oreVariants.get(variant);
+    }
+
+    public Set<Block> getOreVariants() {
+        return ImmutableSet.copyOf(oreVariants.values());
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     /**

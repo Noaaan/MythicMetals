@@ -26,7 +26,6 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
         this.swirlModel = new PlayerEntityModel<>(loader.getModelPart(MythicModelHandler.CARMOT_SWIRL), false);
     }
 
-    @SuppressWarnings("UnstableApiUsage")
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (entity.getComponent(MythicMetals.CARMOT_SHIELD).isShieldActive()) {
@@ -45,8 +44,7 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
             if (shield.cooldown > 0) {
                 matrices.scale(1.125f, 1.0625f, 1.125f);
                 this.swirlModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .9f, .025f, .025f, 1);
-            }
-            else // Regular animation
+            } else // Regular animation
                 this.swirlModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .8f, .1f + health, .05f, 1);
         }
     }

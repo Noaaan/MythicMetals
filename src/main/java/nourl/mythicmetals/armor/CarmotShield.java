@@ -7,11 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.data.MythicTags;
 
 public class CarmotShield implements Component, AutoSyncedComponent {
     private final PlayerEntity player;
-
     public float health;
     public int renderTime;
     public int cooldown;
@@ -39,7 +38,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     }
 
     public void tickShield() {
-        if (player.getWorld() == null) return;
+        if (player.world == null) return;
         MythicMetals.CARMOT_SHIELD.sync(player);
 
         if (health > getMaxHealth()) {
@@ -69,7 +68,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
         // For loop using the players armor items
         int result = 0;
         for (ItemStack armorItems : player.getArmorItems()) {
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.CARMOT_ARMOR)) {
+            if (armorItems.getItem().getRegistryEntry().isIn(MythicTags.CARMOT_ARMOR)) {
                 result += HEALTH_PER_PIECE;
             }
         }

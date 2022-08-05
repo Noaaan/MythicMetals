@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
@@ -29,6 +30,8 @@ public class MythicMetalsClient implements ClientModInitializer {
     @SuppressWarnings("unchecked")
     @Override
     public void onInitializeClient() {
+        Ability.initMidasGoldTooltip();
+
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         registerArmorRenderer();
         registerModelPredicates();

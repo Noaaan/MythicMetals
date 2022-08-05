@@ -71,8 +71,4 @@ public class RegistryHelper {
         Registry.register(Registry.ENTITY_TYPE, RegistryHelper.id(path), type);
     }
 
-    public static EntityAttribute attribute(String id, EntityAttribute attribute) {
-        return Registry.register(Registry.ATTRIBUTE, id, attribute);
-    }
-
 }

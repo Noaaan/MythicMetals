@@ -1,17 +1,24 @@
 package nourl.mythicmetals.mixin;
 
-import net.minecraft.entity.*;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
-import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.MythicParticleSystem;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
@@ -33,6 +40,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean damage(DamageSource source, float amount);
 
+    @Shadow public abstract @Nullable LivingEntity getAttacker();
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -47,20 +56,28 @@ public abstract class LivingEntityMixin extends Entity {
         mythicmetals$addArmorEffects();
     }
 
+    @ModifyArg(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
+    private int mythicmetals$doubleXp(int value) {
+        if (this.getAttacker() != null && this.getAttacker().getMainHandStack().get(CarmotStaff.STORED_BLOCK).asItem().equals(Blocks.LAPIS_BLOCK.asItem())) {
+            return value * 2;
+        }
+        return value;
+    }
+
     private void mythicmetals$addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.CARMOT_ARMOR)) {
+            if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
                 mythicmetals$carmotParticle();
             }
 
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_ARMOR)) {
+            if (armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
                 var dmg = armorItems.getDamage();
                 var rng = r.nextInt(200);
                 if (rng == 117)
                     armorItems.setDamage(dmg - 1);
             }
 
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.COPPER_ARMOR) && world.isThundering()) {
+            if (armorItems.isIn(MythicTags.COPPER_ARMOR) && world.isThundering()) {
                 mythicmetals$copperParticle();
                 int i = r.nextInt(500000);
                 if (i == 666 & mythicmetals$copperParticle()) {
@@ -73,7 +90,7 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
 
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.PALLADIUM_ARMOR)) {
+            if (armorItems.isIn(MythicTags.PALLADIUM_ARMOR)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                     MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 1, 0));
@@ -111,7 +128,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void mythicmetals$prometheumRepairPassive() {
         var heldItem = getMainHandStack();
-        if (heldItem.getItem().getRegistryEntry().isIn(RegisterTags.PROMETHEUM_TOOLS)) {
+        if (heldItem.isIn(MythicTags.PROMETHEUM_TOOLS)) {
             var dmg = heldItem.getDamage();
             var rng = r.nextInt(200);
             if (rng == 117)

@@ -3,12 +3,12 @@ package nourl.mythicmetals.models;
 import net.minecraft.client.model.*;
 
 public class CarmotArmorModel {
-    private final ModelPart left_leg;
-    private final ModelPart right_leg;
-    private final ModelPart right_arm;
-    private final ModelPart left_arm;
-    private final ModelPart body;
-    private final ModelPart head;
+    public final ModelPart left_leg;
+    public final ModelPart right_leg;
+    public final ModelPart right_arm;
+    public final ModelPart left_arm;
+    public final ModelPart body;
+    public final ModelPart head;
 
     public CarmotArmorModel(ModelPart root) {
         this.left_leg = root.getChild("left_leg");

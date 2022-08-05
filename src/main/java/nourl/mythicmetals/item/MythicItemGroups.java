@@ -20,7 +20,7 @@ public class MythicItemGroups extends OwoItemGroup {
 
     @Override
     protected void setup() {
-        this.addTab(Icon.of(MythicItems.ADAMANTITE_INGOT), "items", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("metals")));
+        this.addTab(Icon.of(MythicItems.Ingots.ADAMANTITE_INGOT), "items", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("metals")));
         this.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("blocks")));
         this.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("weapons")));
         this.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("gear")));
@@ -33,6 +33,6 @@ public class MythicItemGroups extends OwoItemGroup {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(MythicItems.STORMYX_INGOT);
+        return new ItemStack(MythicItems.Ingots.STORMYX_INGOT);
     }
 }

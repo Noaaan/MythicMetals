@@ -10,7 +10,6 @@ import nourl.mythicmetals.utils.RegistryHelper;
 public class RegisterEntities {
     public static final EntityType<BanglumTntEntity> BANGLUM_TNT_ENTITY_TYPE;
 
-
     public static void init() {
         RegistryHelper.entityType("banglum_tnt", BANGLUM_TNT_ENTITY_TYPE);
 

@@ -23,8 +23,11 @@
     "client": [
       "nourl.mythicmetals.MythicMetalsClient"
     ],
-    "rei_plugins": [
-      "nourl.mythicmetals.compat.MythicMetalsREIPlugin"
+    "fabric-datagen": [
+      "nourl.mythicmetals.data.MythicMetalsData"
+    ],
+    "rei_client": [
+      "nourl.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
     "modmenu": [
       "nourl.mythicmetals.compat.MythicMetalsModMenu"
@@ -43,7 +46,7 @@
     "minecraft": "1.18.x",
     "cloth-config2": ">=6.2.57",
     "java": ">=17",
-    "owo": "0.7.2-no-cme",
+    "owo": ">=0.7.2",
     "cardinal-components-entity": ">=4.1.4"
   },
   "custom": {

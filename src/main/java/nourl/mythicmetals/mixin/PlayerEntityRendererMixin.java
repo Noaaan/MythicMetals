@@ -19,7 +19,6 @@ import static nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer.SWIRL_T
 @Mixin(PlayerEntityRenderer.class)
 public class PlayerEntityRendererMixin {
 
-    @SuppressWarnings("UnstableApiUsage")
     @Inject(method = "renderArm", at = @At("TAIL"))
     private void renderShieldArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, ModelPart arm, ModelPart sleeve, CallbackInfo ci) {
         if (player.getComponent(MythicMetals.CARMOT_SHIELD).isShieldActive()) {
@@ -36,8 +35,7 @@ public class PlayerEntityRendererMixin {
             if (shield.cooldown > 0) {
                 matrices.scale(1.0625f, 1.0625f, 1.0625f);
                 sleeve.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .9f, .025f, .025f, 1);
-            }
-            else // Regular animation
+            } else // Regular animation
                 sleeve.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .8f, .1f + health, .05f, 1);
         }
     }

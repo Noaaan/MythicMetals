@@ -30,5 +30,10 @@
       "mythicmetals:deepslate_morkite_ore_break_3",
       "mythicmetals:deepslate_morkite_ore_break_4"
     ]
+  },
+  "ice_magic": {
+    "sounds": [
+      "mythicmetals:ice_magic"
+    ]
   }
 }

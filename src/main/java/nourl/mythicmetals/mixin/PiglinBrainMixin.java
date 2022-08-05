@@ -1,0 +1,60 @@
+package nourl.mythicmetals.mixin;
+
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.PiglinBrain;
+import net.minecraft.entity.mob.PiglinEntity;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootTable;
+import net.minecraft.util.Identifier;
+import nourl.mythicmetals.armor.ArmorMaterials;
+import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.utils.RegistryHelper;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(PiglinBrain.class)
+public class PiglinBrainMixin {
+
+    @Unique
+    private static ItemStack mythicmetals$cachedBarterItem;
+
+    private static final Identifier mythicmetals$BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");
+
+    @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
+    private static void mythicmetals$grabBarteredItem(PiglinEntity piglin, boolean barter, CallbackInfo ci) {
+        mythicmetals$cachedBarterItem = piglin.getOffHandStack();
+    }
+
+    @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
+    private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        if (stack.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
+            cir.setReturnValue(true);
+        }
+    }
+
+    @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
+    private static LootTable giveLootForMidasGold(LootTable table, PiglinEntity piglin) {
+        if (mythicmetals$cachedBarterItem.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
+            return piglin.world.getServer().getLootManager().getTable(mythicmetals$BETTER_PIGLIN_BARTERING);
+        }
+        return table;
+    }
+
+    @Inject(method = "wearsGoldArmor", at = @At("TAIL"), cancellable = true)
+    private static void checkForMidasGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+        for(ItemStack itemStack : entity.getArmorItems()) {
+            Item item = itemStack.getItem();
+            if (item instanceof ArmorItem armorItem && armorItem.getMaterial() == ArmorMaterials.MIDAS_GOLD) {
+                cir.setReturnValue(true);
+            }
+        }
+    }
+
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "f",
+    "f"
+  ],
+  "key": {
+    "f": {
+      "item": "minecraft:fern"
+    }
+  },
+  "result": {
+    "item": "minecraft:large_fern",
+    "count": 1
+  }
+}

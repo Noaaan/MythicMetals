@@ -26,7 +26,7 @@ public class Abilities {
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability MENDING = new Ability("mending", 1, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
-    public static final Ability RESPIRATION = new Ability("respiration", 3);
+    public static final Ability RESPIRATION = new Ability("respiration", 2);
     public static final Ability SMITE = new Ability("smite", 4);
     public static final Ability SPIKED_HELM = new Ability("spiked_helm", 3, false);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
@@ -54,6 +54,7 @@ public class Abilities {
         MENDING.addArmorSet(MythicArmor.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
         MENDING.addToolSet(MythicTools.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), Style.EMPTY.withColor(Formatting.GOLD));
+        RESPIRATION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
         RESPIRATION.addItem(MythicArmor.AQUARIUM.getLeggings(), Style.EMPTY.withColor(Formatting.AQUA));
         SPIKED_HELM.addItem(MythicArmor.LEGENDARY_BANGLUM.getHelmet(), Style.EMPTY.withColor(Formatting.GOLD));
         WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));

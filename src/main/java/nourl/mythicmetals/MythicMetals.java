@@ -20,6 +20,7 @@ import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterEntities;
+import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicCommands;
@@ -43,16 +44,17 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     @Override
     public void onInitialize() {
-        System.out.println(this.getClass().getProtectionDomain().getCodeSource().getLocation());
 
         RegisterSounds.register();
-        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
         if (CONFIG.enableNuggets) {
             FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
         }
         if (CONFIG.enableDusts) {
             FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
         }
+        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
@@ -62,11 +64,13 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         Abilities.init();
         RegisterEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
+        FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         MythicResourceConditions.init();
+        RegisterRecipeSerializers.init();
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
@@ -83,6 +87,9 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         }
         if (FabricLoader.getInstance().isModLoaded("spectrum")) {
             LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
+        }
+        if (FabricLoader.getInstance().isModLoaded("jello")) {
+            LOGGER.info("[Mythic Metals] Here comes the colors, weeeeeee!");
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }

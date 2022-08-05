@@ -22,21 +22,21 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
     public static final ModelIdentifier CARMOT_STAFF_ID = new ModelIdentifier(RegistryHelper.id("carmot_staff_base"), "inventory");
 
     @Override
-    public void render(ItemStack staff, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(ItemStack staff, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
         var block = staff.has(CarmotStaff.STORED_BLOCK) ? (staff.get(CarmotStaff.STORED_BLOCK)) : Blocks.AIR;
         var instance = MinecraftClient.getInstance();
         var model = instance.getBakedModelManager().getModel(CARMOT_STAFF_ID);
         var blockModel = instance.getBakedModelManager().getBlockModels().getModel(block.getDefaultState());
 
         matrices.translate(.5, .5, .5);
-        instance.getItemRenderer().renderItem(staff, mode, false, matrices, vertexConsumers, light, overlay, model);
+        instance.getItemRenderer().renderItem(staff, mode, false, matrices, vertexConsumerProvider, light, overlay, model);
 
         model.getTransformation().getTransformation(mode).apply(false, matrices);
         matrices.scale(0.25F, 0.25F, 0.25F);
         matrices.translate(-.5F, 2F, 0F);
 
-        instance.getBlockRenderManager().renderBlockAsEntity(block.getDefaultState(), matrices, vertexConsumers, light, overlay);
-        instance.getBlockRenderManager().getModelRenderer().render(matrices.peek(), ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.getSolid(), true, staff.hasGlint()), block.getDefaultState(), blockModel, 0, 0, 0, light, overlay);
+        instance.getBlockRenderManager().renderBlockAsEntity(block.getDefaultState(), matrices, vertexConsumerProvider, light, overlay);
+        instance.getBlockRenderManager().getModelRenderer().render(matrices.peek(), ItemRenderer.getItemGlintConsumer(vertexConsumerProvider, RenderLayer.getCutoutMipped(), true, staff.hasGlint()), block.getDefaultState(), blockModel, 0, 0, 0, light, overlay);
     }
 
     @Override
