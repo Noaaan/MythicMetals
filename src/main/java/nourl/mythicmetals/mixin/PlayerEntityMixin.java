@@ -9,7 +9,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.data.MythicTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,7 +34,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
         var hand = getInventory().getMainHandStack();
-        if (blockState.isIn(RegisterTags.MYTHIC_ORES) && !hand.isSuitableFor(blockState)) {
+        if (blockState.isIn(MythicTags.MYTHIC_ORES) && !hand.isSuitableFor(blockState)) {
             var speed = cir.getReturnValue();
             if (hand.hasEnchantments() && hand.getEnchantments().iterator().next().equals(Enchantments.EFFICIENCY)) {
                 speed *= 0.01f;

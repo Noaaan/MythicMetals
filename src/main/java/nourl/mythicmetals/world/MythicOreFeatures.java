@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
-import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.utils.OreFeatureHelper;
 
 @SuppressWarnings("ALL")
@@ -187,7 +187,7 @@ public class MythicOreFeatures {
         }
         // Add Prometheum to hot biomes
         if (CONFIG.prometheum.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(RegisterTags.HUMID_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.HUMID_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
             OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
             OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", PROMETHEUM);
