@@ -29,3 +29,4 @@ run/
 /.idea/
 /remappedSrc/
 /libs/
+/src/main/generated/.cache/

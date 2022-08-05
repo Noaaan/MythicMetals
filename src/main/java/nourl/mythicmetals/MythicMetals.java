@@ -46,7 +46,15 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public void onInitialize() {
 
         RegisterSounds.register();
-        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, true);
+        FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
+        if (CONFIG.enableNuggets) {
+            FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
+        }
+        if (CONFIG.enableDusts) {
+            FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
+        }
+        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
@@ -62,6 +70,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterRecipeSerializers.init();
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
