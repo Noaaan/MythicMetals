@@ -116,6 +116,11 @@ public class MythicItems implements ItemRegistryContainer {
         public static final Item STEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
         public static final Item STORMYX_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
         public static final Item TIN_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+
+        @Override
+        public boolean shouldProcessField(Item value, String identifier, Field field) {
+            return MythicMetals.CONFIG.enableNuggets;
+        }
     }
 
     public static final class Dusts implements ItemRegistryContainer {
@@ -147,6 +152,10 @@ public class MythicItems implements ItemRegistryContainer {
         public static final Item STORMYX_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
         public static final Item TIN_DUST = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
 
+        @Override
+        public boolean shouldProcessField(Item value, String identifier, Field field) {
+            return MythicMetals.CONFIG.enableDusts;
+        }
     }
 
     // Crafting Mats
