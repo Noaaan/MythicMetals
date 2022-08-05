@@ -11,7 +11,7 @@ import nourl.mythicmetals.tools.MythicTools;
 
 import java.util.List;
 
-public class MythicMetalsREIPlugin implements REIClientPlugin {
+public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
