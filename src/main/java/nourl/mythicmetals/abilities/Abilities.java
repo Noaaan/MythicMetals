@@ -61,8 +61,6 @@ public class Abilities {
 
         FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(0xDA1F00));
         SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
-
-        //Ability.initMidasGoldTooltip();
     }
 
 }

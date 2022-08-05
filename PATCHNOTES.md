@@ -5,13 +5,28 @@ Added more effects to the Carmot Staff:
 - Runite - Barrages your enemies in ice, freezing them in place.  
 - Star Platinum - Lets you swing the staff really fast.
 - Beacon - Grants players in a large radius (18 blocks) a random beacon effect for 30 seconds.  
+- Lapis - Doubles the experience when you kill a mob with the staff.  
 
-### Added the Midas Gold Sword!  
-This weapon makes Midas Gold some more milage, by giving you a nice sword that you can upgrade... 
+
+### Midas Gold Overhaul  
+Midas Gold recieved a ton of small changes, and is now more useful.  
+
+You no longer need Piglib to experience the features of Midas Gold, which are:  
+
+- Piglins being distracted by Midas Gold Items
+- Piglins not attacking you while wearing Midas Gold Armor
+- Bartering with Piglins using Midas Gold
+
+There is also a custom loot table for bartering with Piglins. You will find it slightly more useful than the normal one.  
+
+There is also a new sword: The Midas Gold Sword!  
+This weapon makes Midas Gold some more milage, by giving you a nice sword that you can upgrade 
 as long as you have enough gold.  
+It might even change depending on how much you give it...
 
 ### Balancing changes  
 Tweaked Aquarium so that both the chestplate and leggings give Respiration.  
+Decreased the chance of Midas Gold spawning.  
 
 ### Other changes
 Fixed an issue with disabling funny mode.  
