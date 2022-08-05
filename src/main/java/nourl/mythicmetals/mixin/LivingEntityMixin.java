@@ -11,6 +11,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;

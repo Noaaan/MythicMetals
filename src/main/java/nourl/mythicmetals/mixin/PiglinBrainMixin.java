@@ -23,25 +23,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class PiglinBrainMixin {
 
     @Unique
-    private static ItemStack cachedBarterItem;
+    private static ItemStack mythicmetals$cachedBarterItem;
 
     private static final Identifier mythicmetals$BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");
 
     @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
     private static void mythicmetals$grabBarteredItem(PiglinEntity piglin, boolean barter, CallbackInfo ci) {
-        cachedBarterItem = piglin.getOffHandStack();
+        mythicmetals$cachedBarterItem = piglin.getOffHandStack();
     }
 
     @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (stack.isOf(MythicItems.MIDAS_GOLD_INGOT)) {
+        if (stack.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
             cir.setReturnValue(true);
         }
     }
 
     @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, PiglinEntity piglin) {
-        if (cachedBarterItem.isOf(MythicItems.MIDAS_GOLD_INGOT)) {
+        if (mythicmetals$cachedBarterItem.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
             return piglin.world.getServer().getLootManager().getTable(mythicmetals$BETTER_PIGLIN_BARTERING);
         }
         return table;
