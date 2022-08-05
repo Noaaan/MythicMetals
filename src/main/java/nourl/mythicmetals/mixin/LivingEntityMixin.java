@@ -10,8 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
-import nourl.mythicmetals.registry.RegisterTags;
-import nourl.mythicmetals.tools.CarmotStaff;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -66,18 +65,18 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void mythicmetals$addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
-            if (armorItems.isIn(RegisterTags.CARMOT_ARMOR)) {
+            if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
                 mythicmetals$carmotParticle();
             }
 
-            if (armorItems.isIn(RegisterTags.PROMETHEUM_ARMOR)) {
+            if (armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
                 var dmg = armorItems.getDamage();
                 var rng = r.nextInt(200);
                 if (rng == 117)
                     armorItems.setDamage(dmg - 1);
             }
 
-            if (armorItems.isIn(RegisterTags.COPPER_ARMOR) && world.isThundering()) {
+            if (armorItems.isIn(MythicTags.COPPER_ARMOR) && world.isThundering()) {
                 mythicmetals$copperParticle();
                 int i = r.nextInt(500000);
                 if (i == 666 & mythicmetals$copperParticle()) {
@@ -90,7 +89,7 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
 
-            if (armorItems.isIn(RegisterTags.PALLADIUM_ARMOR)) {
+            if (armorItems.isIn(MythicTags.PALLADIUM_ARMOR)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                     MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 1, 0));
@@ -128,7 +127,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void mythicmetals$prometheumRepairPassive() {
         var heldItem = getMainHandStack();
-        if (heldItem.isIn(RegisterTags.PROMETHEUM_TOOLS)) {
+        if (heldItem.isIn(MythicTags.PROMETHEUM_TOOLS)) {
             var dmg = heldItem.getDamage();
             var rng = r.nextInt(200);
             if (rng == 117)

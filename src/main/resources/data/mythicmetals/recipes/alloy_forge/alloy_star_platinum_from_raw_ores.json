@@ -5,7 +5,7 @@
       "item": "mythicmetals:starrite"
     },
 	{
-      "item": "mythicmetals:raw_platinum"
+      "tag": "c:raw_platinum_ores"
     }
   ],
   "output": {

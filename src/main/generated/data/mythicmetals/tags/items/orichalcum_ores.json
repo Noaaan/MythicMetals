@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:tuff_orichalcum_ore",
+    "mythicmetals:smooth_basalt_orichalcum_ore",
+    "mythicmetals:deepslate_orichalcum_ore",
+    "mythicmetals:orichalcum_ore"
+  ]
+}

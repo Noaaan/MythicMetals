@@ -2,13 +2,12 @@ package nourl.mythicmetals.armor;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegisterTags;
+import nourl.mythicmetals.data.MythicTags;
 
 public class CarmotShield implements Component, AutoSyncedComponent {
     private final PlayerEntity player;
@@ -69,7 +68,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
         // For loop using the players armor items
         int result = 0;
         for (ItemStack armorItems : player.getArmorItems()) {
-            if (armorItems.getItem().getRegistryEntry().isIn(RegisterTags.CARMOT_ARMOR)) {
+            if (armorItems.getItem().getRegistryEntry().isIn(MythicTags.CARMOT_ARMOR)) {
                 result += HEALTH_PER_PIECE;
             }
         }

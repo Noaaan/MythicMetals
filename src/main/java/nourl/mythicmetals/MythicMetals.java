@@ -46,13 +46,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public void onInitialize() {
 
         RegisterSounds.register();
-        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
-        if (CONFIG.enableNuggets) {
-            FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
-        }
-        if (CONFIG.enableDusts) {
-            FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
-        }
+        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, true);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
@@ -62,7 +56,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         Abilities.init();
         RegisterEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.MORKITE, 1200);
+        FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         MythicResourceConditions.init();
         RegisterRecipeSerializers.init();
@@ -84,6 +78,9 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         }
         if (FabricLoader.getInstance().isModLoaded("spectrum")) {
             LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
+        }
+        if (FabricLoader.getInstance().isModLoaded("jello")) {
+            LOGGER.info("[Mythic Metals] Here comes the colors, weeeeeee!");
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }

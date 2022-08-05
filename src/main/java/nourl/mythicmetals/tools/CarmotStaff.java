@@ -38,9 +38,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.AscensionDamageSource;
 import nourl.mythicmetals.registry.RegisterSounds;
-import nourl.mythicmetals.registry.RegisterTags;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
 import java.util.List;
@@ -73,7 +73,7 @@ public class CarmotStaff extends ToolItem {
         if (clickType == ClickType.RIGHT) {
             if (!staff.has(STORED_BLOCK) && !slot.getStack().isEmpty() && slot.getStack().getItem() instanceof BlockItem blockItem) {
                 // Try put block in staff
-                if (blockItem.getRegistryEntry().isIn(RegisterTags.CARMOT_STAFF_BLOCKS)) {
+                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS)) {
                     staff.put(STORED_BLOCK, blockItem.getBlock());
                     slot.takeStack(1);
                     player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
@@ -81,7 +81,7 @@ public class CarmotStaff extends ToolItem {
                 } else return false;
             }
 
-            if (slot.getStack().getItem() instanceof BlockItem blockItem && blockItem.getRegistryEntry().isIn(RegisterTags.CARMOT_STAFF_BLOCKS)) {
+            if (slot.getStack().getItem() instanceof BlockItem blockItem && blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS)) {
                 // Try replace block in staff
                 if (slot.tryTakeStackRange(1, 1, player).isPresent()) {
                     var staffBlock = staff.get(STORED_BLOCK).asItem().getDefaultStack();
@@ -123,7 +123,7 @@ public class CarmotStaff extends ToolItem {
 
             // If staff has block, and cursor has valid block, swap them
             if (staff.has(STORED_BLOCK) && cursorStackReference.get().getItem() instanceof BlockItem blockItem) {
-                if (blockItem.getRegistryEntry().isIn(RegisterTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
+                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
                     if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
                         staff.delete(STORED_BLOCK);
                         staff.put(STORED_BLOCK, blockItem.getBlock());
@@ -137,7 +137,7 @@ public class CarmotStaff extends ToolItem {
 
             // If staff is empty, but cursor has valid block, put it into staff
             if (!staff.has(STORED_BLOCK) && cursorStackReference.get().getItem() instanceof BlockItem blockItem) {
-                if (blockItem.getRegistryEntry().isIn(RegisterTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
+                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
                     staff.put(STORED_BLOCK, blockItem.getBlock());
                     cursorStack.decrement(1);
                     player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);

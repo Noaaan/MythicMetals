@@ -5,7 +5,7 @@
       "item": "mythicmetals:raw_adamantite"
     },
 	{
-      "item": "mythicmetals:raw_mythril"
+      "tag": "c:raw_mythril_ores"
     },
 	{
       "item": "mythicmetals:raw_orichalcum"
