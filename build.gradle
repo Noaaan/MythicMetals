@@ -93,8 +93,6 @@ loom {
     }
 }
 
-assemble.dependsOn runDatagen
-
 java {
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
     withSourcesJar()
