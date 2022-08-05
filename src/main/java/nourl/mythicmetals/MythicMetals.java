@@ -54,6 +54,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         if (CONFIG.enableDusts) {
             FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
         }
+        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
