@@ -8,9 +8,11 @@ You can find the patch notes in the PATCHNOTES.md file.
 
 ## Download
 
-You can download the mod from CurseForge, or build it yourself.  
+You can download the mod from CurseForge, use CI builds, or build it yourself.  
 CurseForge link:
 https://www.curseforge.com/minecraft/mc-mods/mythicmetals
+GitHub Actions link:
+https://github.com/Noaaan/MythicMetals/actions
 
 ## License
 
