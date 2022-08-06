@@ -30,6 +30,7 @@ Decreased the chance of Midas Gold spawning.
 Reduced the Carmot Armors Bonus HP (2.5 -> 2.0) and Shield Health per Piece (5 -> 4).  
 Increased Star Platinums mining level (3 -> 4).  
 Reduced Osmiums mining level (3 -> 2).  
+Lowered the Star Platinum Block ability attack speed (3.5 -> 3.0), and made it consume 3 durability per hit.  
 
 ### Other changes
 Fixed an issue with disabling funny mode.  
