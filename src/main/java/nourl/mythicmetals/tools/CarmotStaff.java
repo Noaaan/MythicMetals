@@ -347,6 +347,12 @@ public class CarmotStaff extends ToolItem {
             }
             amount = 3;
         }
+
+        // Star Platinum - eat slightly more durability at the cost of big attack speed
+        if (hasBlockInStaff(stack, MythicBlocks.STAR_PLATINUM.getStorageBlock())) {
+            amount = 3;
+        }
+
         stack.damage(amount, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         return true;
     }
@@ -392,7 +398,7 @@ public class CarmotStaff extends ToolItem {
                 speed += 0.5F;
             } else if (MythicBlocks.STAR_PLATINUM.getStorageBlock().equals(block)) {
                 damage = 4.0F;
-                speed += 3.5F;
+                speed += 3.0F;
             } else {
                 speed += 1.0F;
             }
