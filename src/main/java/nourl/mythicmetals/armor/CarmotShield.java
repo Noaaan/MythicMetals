@@ -15,7 +15,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     public int renderTime;
     public int cooldown;
 
-    public static final int HEALTH_PER_PIECE = 5;
+    public static final int SHIELD_HEALTH_PER_PIECE = 4;
     public static final int MAX_COOLDOWN = 160;
 
     public CarmotShield(PlayerEntity player) {
@@ -69,7 +69,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
         int result = 0;
         for (ItemStack armorItems : player.getArmorItems()) {
             if (armorItems.getItem().getRegistryEntry().isIn(MythicTags.CARMOT_ARMOR)) {
-                result += HEALTH_PER_PIECE;
+                result += SHIELD_HEALTH_PER_PIECE;
             }
         }
         return result;
