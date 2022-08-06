@@ -27,6 +27,7 @@ It might even change depending on how much you give it...
 ### Balancing changes  
 Tweaked Aquarium so that both the chestplate and leggings give Respiration.  
 Decreased the chance of Midas Gold spawning.  
+Reduced the Carmot Armors Bonus HP (2.5 -> 2.0) and Shield Health per Piece (5 -> 4).  
 
 ### Other changes
 Fixed an issue with disabling funny mode.  
