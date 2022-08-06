@@ -10,6 +10,7 @@
     "ArmorItemMixin",
     "CampfireBlockMixin",
     "DamageOverTimePowerMixin",
+    "DamageSourceAccessor",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",

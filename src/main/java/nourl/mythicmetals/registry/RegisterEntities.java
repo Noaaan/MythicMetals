@@ -14,7 +14,7 @@ public class RegisterEntities {
 
     public static void init() {
         RegistryHelper.entityType("banglum_tnt", BANGLUM_TNT_ENTITY_TYPE);
-        RegistryHelper.entityType("big_banglum_tnt", BANGLUM_NUKE_ENTITY_TYPE);
+        RegistryHelper.entityType("banglum_nuke", BANGLUM_NUKE_ENTITY_TYPE);
 
     }
     static {
