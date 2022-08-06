@@ -31,7 +31,6 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
@@ -44,6 +43,7 @@ import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
 import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
@@ -155,7 +155,7 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        var random = Random.create();
+        var random = new Random();
         var stack = user.getStackInHand(hand);
         if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());

@@ -5,9 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
+import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.ArmorSet;
 import nourl.mythicmetals.tools.MidasGoldSword;
@@ -91,12 +89,12 @@ public class Ability {
     @Environment(EnvType.CLIENT)
     public void addTooltip(Item item, Style style) {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            MutableText text = Text.literal("");
+            MutableText text = new LiteralText("");
             if (stack.getItem().equals(item)) {
-                text.append(Text.translatable("abilities.mythicmetals." + tooltip));
+                text.append(new TranslatableText("abilities.mythicmetals." + tooltip));
                 text.setStyle(style);
                 if (showLevel) {
-                    text.append(" ").append(Text.translatable("enchantment.level." + level));
+                    text.append(" ").append(new TranslatableText("enchantment.level." + level));
                 }
                 if (lines.size() > 2) {
                     var enchantCount = stack.getEnchantments().size();
@@ -120,25 +118,25 @@ public class Ability {
 
                 int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
                 if (goldCount < 64) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.0").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.0").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 64 && goldCount < 128) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.1").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.1").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 128 && goldCount < 192) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.2").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.2").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 192 && goldCount < 256) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.3").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.3").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 256 && goldCount < 320) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.4").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.4").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 320 && goldCount < 640) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.5").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.5").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
                 if (goldCount >= 640) {
-                    lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.99").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.99").formatted(Formatting.GOLD, Formatting.ITALIC));
                 }
             }
         });

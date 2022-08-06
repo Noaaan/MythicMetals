@@ -1,7 +1,6 @@
 package nourl.mythicmetals.blocks;
 
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.TntMinecartEntityRenderer;
@@ -13,11 +12,9 @@ import net.minecraft.util.math.Vec3f;
 
 //VanillaCopy of the TntEntityRenderer
 public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity> {
-    private final BlockRenderManager blockRenderManager;
     public BanglumTntEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
         this.shadowRadius=0.5f;
-        blockRenderManager = context.getBlockRenderManager();
     }
 
     public void render(BanglumTntEntity banglumTnt, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
@@ -36,7 +33,7 @@ public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity> {
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90.0F));
         matrixStack.translate(-0.5, -0.5, 0.5);
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
-        TntMinecartEntityRenderer.renderFlashingBlock(blockRenderManager, MythicBlocks.BANGLUM_TNT_BLOCK.getDefaultState(), matrixStack, vertexConsumerProvider, i, j / 5 % 2 == 0);
+        TntMinecartEntityRenderer.renderFlashingBlock(MythicBlocks.BANGLUM_TNT_BLOCK.getDefaultState(), matrixStack, vertexConsumerProvider, i, j / 5 % 2 == 0);
         matrixStack.pop();
         super.render(banglumTnt, f, g, matrixStack, vertexConsumerProvider, i);
     }

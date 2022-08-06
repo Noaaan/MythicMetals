@@ -10,8 +10,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class StarriteOreBlock extends OreBlock {
     public StarriteOreBlock(Settings settings, UniformIntProvider uniformIntProvider) {

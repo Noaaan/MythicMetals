@@ -10,9 +10,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+
+import java.util.Random;
 
 public class BanglumOreBlock extends OreBlock {
     public BanglumOreBlock(FabricBlockSettings settings) {
@@ -22,7 +23,7 @@ public class BanglumOreBlock extends OreBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         int rng = random.nextInt(130);
-        if (rng < 2 && world.getDimension().ultrawarm()) {
+        if (rng < 2 && world.getDimension().isUltrawarm()) {
             ClientParticles.setParticleCount(12);
             ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.5D);
         } else if (rng == 69) {
@@ -34,8 +35,8 @@ public class BanglumOreBlock extends OreBlock {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        int chance = world.getDimension().ultrawarm() ? 35 : 6;
-        Random random = Random.create();
+        int chance = world.getDimension().isUltrawarm() ? 35 : 6;
+        Random random = new Random();
         // Calculate explosion chance
         var stack = player.getMainHandStack();
         if (stack.hasEnchantments()) {
@@ -57,7 +58,7 @@ public class BanglumOreBlock extends OreBlock {
     }
 
     private void explode(World world, BlockPos pos) {
-        if (world.getDimension().ultrawarm()) {
+        if (world.getDimension().isUltrawarm()) {
             world.createExplosion(null, pos.getX(), pos.getY() + 0.6, pos.getZ(), 3.2F, Explosion.DestructionType.DESTROY);
         } else {
             world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 0.3F, Explosion.DestructionType.BREAK);

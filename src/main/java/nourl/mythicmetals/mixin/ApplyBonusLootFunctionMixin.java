@@ -16,7 +16,7 @@ public class ApplyBonusLootFunctionMixin {
 
     @ModifyVariable(method = "process",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/loot/context/LootContext;getRandom()Lnet/minecraft/util/math/random/Random;", shift = At.Shift.BEFORE),
+                    target = "Lnet/minecraft/loot/context/LootContext;getRandom()Ljava/util/Random;", shift = At.Shift.BEFORE),
                     ordinal = 0)
     private int mythicmetals$increaseFortune(int level, ItemStack drop, LootContext lootCtx) {
         if (Abilities.BONUS_FORTUNE.getItems().contains(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)).getItem())) {
