@@ -28,6 +28,8 @@ It might even change depending on how much you give it...
 Tweaked Aquarium so that both the chestplate and leggings give Respiration.  
 Decreased the chance of Midas Gold spawning.  
 Reduced the Carmot Armors Bonus HP (2.5 -> 2.0) and Shield Health per Piece (5 -> 4).  
+Increased Star Platinums mining level (3 -> 4).  
+Reduced Osmiums mining level (3 -> 2).  
 
 ### Other changes
 Fixed an issue with disabling funny mode.  
