@@ -10,6 +10,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import nourl.mythicmetals.data.MythicTags;
 
 public class BanglumNukeHandler {
     public static void init() {
@@ -43,20 +44,36 @@ public class BanglumNukeHandler {
     }
 
     private static boolean tryLightBigTntAt(World world, PlayerEntity player, int x, int y, int z) {
-        for (var checkPos : BlockPos.iterate(x, y, z, x + 2, y + 2, z + 2)) {
-            BlockState neededState = (checkPos.getX() - x + checkPos.getY() - y + checkPos.getZ() - z) % 2 == 0
-                ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
-                : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
+        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
-            if (world.getBlockState(checkPos) != neededState) return false;
+        for (int ox = 0; ox < 2; ox++) {
+            for (int oy = 0; oy < 2; oy++) {
+                for (int oz = 0; oz < 2; oz++) {
+                    if (ox == 1 && oy == 1 && oz == 1) continue;
+
+                    BlockState neededState = (ox + oy + oz) % 2 == 0
+                        ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
+                        : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
+
+                    mutablePos.set(x + ox, y + oy, z + oz);
+
+                    if (world.getBlockState(mutablePos) != neededState) return false;
+                }
+            }
         }
+
+        mutablePos.set(x + 1, y + 1, z + 1);
+        BlockState coreState = world.getBlockState(mutablePos);
+
+        if (!coreState.isIn(MythicTags.NUKE_CORES))
+            return false;
 
         for (var pos : BlockPos.iterate(x, y, z, x + 2, y + 2, z + 2)) {
             world.removeBlock(pos, false);
         }
 
         if (!world.isClient) {
-            BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player);
+            BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
             world.spawnEntity(nuke);
             world.playSound(
                 null, nuke.getX(), nuke.getY(), nuke.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F

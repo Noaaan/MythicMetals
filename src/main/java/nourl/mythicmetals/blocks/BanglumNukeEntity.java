@@ -1,5 +1,6 @@
 package nourl.mythicmetals.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,11 +23,13 @@ import org.jetbrains.annotations.Nullable;
 public class BanglumNukeEntity extends BanglumTntEntity {
     private static final int DEFAULT_FUSE = 200;
 
+    private Block coreBlock = MythicBlocks.BANGLUM_NUKE_CORE;
+
     public BanglumNukeEntity(EntityType<? extends BanglumNukeEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public BanglumNukeEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {
+    public BanglumNukeEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter, Block coreBlock) {
         this(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, world);
         this.setPosition(x, y, z);
         double d = world.random.nextDouble() * (float) (Math.PI * 2);
@@ -36,6 +39,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         this.prevY = y;
         this.prevZ = z;
         this.causingEntity = igniter;
+        this.coreBlock = coreBlock;
     }
 
     @Override
@@ -45,7 +49,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
     @Override
     protected void explode() {
-        int radius = MythicMetals.CONFIG.banglumNukeRadius;
+        int radius = MythicMetals.CONFIG.banglumNukeCoreRadius;
 
         EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius);
 
