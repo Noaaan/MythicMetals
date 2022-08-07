@@ -1,6 +1,7 @@
 package nourl.mythicmetals.blocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
@@ -39,6 +40,7 @@ public class MythicBlocks {
             .finish();
 
     public static final BanglumTntBlock BANGLUM_TNT_BLOCK = new BanglumTntBlock(FabricBlockSettings.copyOf(Blocks.TNT));
+    public static final Block BANGLUM_NUKE_CORE = new Block(FabricBlockSettings.copyOf(BANGLUM.getStorageBlock()));
 
     public static final BlockSet BRONZE = BlockSet.Builder.begin("bronze", false)
             .createAnvilSet(5, IRON_MINING_LEVEL).finish();
@@ -188,6 +190,7 @@ public class MythicBlocks {
     public static void init() {
         BlockSet.Builder.register();
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
+        RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
     }
 
 }
