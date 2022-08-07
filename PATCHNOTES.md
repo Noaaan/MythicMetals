@@ -34,6 +34,7 @@ Lowered the Star Platinum Block ability attack speed (3.5 -> 3.0), and made it c
 
 ### Other changes
 Fixed an issue with disabling funny mode.  
+Changed the textures of Osmium Armor items.  
 
 # 0.15.1  
 Fixed serverside Carmot Shield crash, and updated the Metallurgium Pickaxe texture.  
