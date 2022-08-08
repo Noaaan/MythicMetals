@@ -15,7 +15,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.mixin.DamageSourceAccessor;
+import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.utils.EpicExplosion;
 import org.jetbrains.annotations.Nullable;
@@ -66,7 +66,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         if (causingEntity != null) {
             damageSource = new EntityDamageSource("banglum_nuke.player", causingEntity);
         } else {
-            damageSource = DamageSourceAccessor.createDamageSource("banglum_nuke");
+            damageSource = new CustomDamageSource("banglum_nuke");
         }
 
         damageSource.setExplosive();
