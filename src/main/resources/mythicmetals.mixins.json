@@ -9,7 +9,6 @@
     "ApplyBonusLootFunctionMixin",
     "ArmorItemMixin",
     "CampfireBlockMixin",
-    "DamageSourceAccessor",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",
