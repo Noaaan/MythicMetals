@@ -66,6 +66,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void mythicmetals$addArmorEffects() {
         for (ItemStack armorItems : getArmorItems()) {
+            if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
+
             if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
                 mythicmetals$carmotParticle();
             }
