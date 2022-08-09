@@ -30,6 +30,7 @@ public class MythicTags {
     public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(Registry.ITEM_KEY, RegistryHelper.id("carmot_staff_blocks"));
 
     public static final TagKey<Block> MYTHIC_ORES = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("ores"));
+    public static final TagKey<Block> NUKE_CORES = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("nuke_cores"));
 
     public static final TagKey<Biome> HUMID_BIOMES = TagKey.of(Registry.BIOME_KEY, new Identifier("c", "humid"));
 

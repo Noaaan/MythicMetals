@@ -8,6 +8,7 @@
   "block.mythicmetals.aquarium_ore": "Aquarium Ore",
   "block.mythicmetals.banglum_anvil": "Banglum Anvil",
   "block.mythicmetals.banglum_block": "Banglum Block",
+  "block.mythicmetals.banglum_nuke_core": "Banglum Nuke Core",
   "block.mythicmetals.banglum_ore": "Banglum Ore",
   "block.mythicmetals.banglum_tnt": "Banglum TNT",
   "block.mythicmetals.blackstone_stormyx_ore": "Blackstone Stormyx Ore",
@@ -452,6 +453,7 @@
   "text.autoconfig.mythicmetals_config.option.blacklist": "Biome Blacklist",
   "text.autoconfig.mythicmetals_config.option.configVersion": "Current config version",
   "text.autoconfig.mythicmetals_config.option.disableFunny": "Disable relatively funny event features",
+  "text.autoconfig.mythicmetals_config.option.banglumNukeCoreRadius": "Banglum Nuke Core Explosion Radius",
   "text.autoconfig.mythicmetals_config.option.enableAnvils": "Enable Anvils",
   "text.autoconfig.mythicmetals_config.option.enableDusts": "Enable Dust Items",
   "text.autoconfig.mythicmetals_config.option.enableNuggets": "Enable Nuggets",
@@ -771,5 +773,8 @@
   "tooltip.midas_gold.level.4": "The sword feels more powerful... Can it go further?",
   "tooltip.midas_gold.level.5": "King Midas would be proud of this weapon",
   "tooltip.midas_gold.level.99": "Go touch grass",
-  "death.attack.ascension": "%s stood too close to the sun"
+
+  "death.attack.ascension": "%s stood too close to the sun",
+  "death.attack.banglum_nuke": "%1$s was vaporized",
+  "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s"
 }

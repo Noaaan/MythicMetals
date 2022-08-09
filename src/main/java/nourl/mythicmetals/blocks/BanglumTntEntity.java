@@ -18,7 +18,7 @@ public class BanglumTntEntity extends Entity {
     private static final int DEFAULT_FUSE = 100;
 
     @Nullable
-    private LivingEntity causingEntity;
+    protected LivingEntity causingEntity;
 
     public BanglumTntEntity(EntityType<? extends BanglumTntEntity> entityType, World world) {
         super(entityType, world);
@@ -64,10 +64,14 @@ public class BanglumTntEntity extends Entity {
         } else {
             this.updateWaterState();
             if (this.world.isClient) {
-                this.world.addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + 0.5, this.getZ(), 0.0, 0.0, 0.0);
+                this.world.addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
 
+    }
+
+    public double getSmokeParticleHeight() {
+        return 0.5;
     }
 
     @Override
@@ -85,9 +89,8 @@ public class BanglumTntEntity extends Entity {
         return new EntitySpawnS2CPacket(this);
     }
 
-    private void explode() {
-        float power = 6.0F;
-        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), power, Explosion.DestructionType.BREAK);
+    protected void explode() {
+        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, Explosion.DestructionType.BREAK);
     }
 
     @Override

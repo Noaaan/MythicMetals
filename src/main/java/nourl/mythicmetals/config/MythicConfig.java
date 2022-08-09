@@ -64,6 +64,7 @@ public class MythicConfig implements ConfigData {
     public int configVersion = MythicMetals.CONFIG_VERSION;
     @ConfigEntry.Gui.RequiresRestart
     public boolean disableFunny = false;
+    public int banglumNukeCoreRadius = 32;
 
     public ArrayList<String> blacklist = new ArrayList<>();
 }

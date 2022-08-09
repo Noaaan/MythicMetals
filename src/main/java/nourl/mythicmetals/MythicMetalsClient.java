@@ -14,6 +14,7 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
+import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.models.MythicModelHandler;
 import nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer;
@@ -45,6 +46,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         });
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());

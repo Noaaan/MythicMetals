@@ -39,7 +39,7 @@ import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.registry.AscensionDamageSource;
+import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
@@ -202,7 +202,7 @@ public class CarmotStaff extends ToolItem {
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
             } else {
-                world.createExplosion(null, new AscensionDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
             }
 

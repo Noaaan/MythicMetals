@@ -2,9 +2,9 @@ package nourl.mythicmetals.registry;
 
 import net.minecraft.entity.damage.DamageSource;
 
-public class AscensionDamageSource extends DamageSource {
+public class CustomDamageSource extends DamageSource {
 
-    public AscensionDamageSource(String name) {
+    public CustomDamageSource(String name) {
         super(name);
     }
 }
