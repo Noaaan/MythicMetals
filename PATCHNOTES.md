@@ -1,4 +1,12 @@
-# 0.15.2 and 0.14.2
+# 0.15.2  
+Includes all the changes of 0.14.2, but with one **significant** addition.  
+
+## The Banglum Nuke  
+You can now mix Banglum and Morkite blocks into a powerful bomb.  
+All you need is a 3x3x3 cube made out of them, with a Banglum Nuke Core in the middle.  
+An example on how to build this will be made available on the wiki following this release.  
+
+# 0.14.2
 Added more effects to the Carmot Staff:
 - Carmot - Heals you and everything around you for a small amount of health.  
 - Midas Gold - Grants you and everyone around you Luck 2 for four minutes.  
