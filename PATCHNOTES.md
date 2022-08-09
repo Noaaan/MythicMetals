@@ -1,4 +1,4 @@
-# 0.x.x
+# 0.15.2 and 0.14.2
 Added more effects to the Carmot Staff:
 - Carmot - Heals you and everything around you for a small amount of health.  
 - Midas Gold - Grants you and everyone around you Luck 2 for four minutes.  
