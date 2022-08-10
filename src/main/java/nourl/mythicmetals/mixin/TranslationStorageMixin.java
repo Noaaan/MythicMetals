@@ -33,11 +33,13 @@ public class TranslationStorageMixin {
         builder.put("item.mythicmetals.durasteel_ingot", "Dura-Chan");
         builder.put("item.mythicmetals.banglum_chunk", "Windy Made This");
         builder.put("item.mythicmetals.carmot_ingot", "Jello");
-        builder.put("item.mythicmetals.morkite", "Jello");
+        builder.put("item.mythicmetals.morkite", "MOARKIIIIITE");
         builder.put("item.mythicmetals.midas_gold_ingot", "Butter");
-        builder.put("item.mythicmetals.osmium_ingot", "Glisconium");
+        builder.put("item.mythicmetals.osmium_ingot", "glisconium");
         builder.put("item.mythicmetals.raw_stormyx", "Bubble Gum");
         builder.put("item.mythicmetals.runite_ingot", "99 Smithing Bar");
+        builder.put("item.mythicmetals.starrite", "Maldium");
+        builder.put("item.mythicmetals.steel_ingot", "Basednite");
         builder.put("item.mythicmetals.stormyx_ingot", "Candy Bar");
         builder.put("item.mythicmetals.unobtainium", "Obamium");
 

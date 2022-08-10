@@ -1,0 +1,23 @@
+{
+  "type": "alloy_forgery:forging",
+  "inputs": [
+    {
+      "item": "mythicmetals:raw_adamantite"
+    },
+    {
+      "item": "mythicmetals:raw_adamantite"
+    }
+  ],
+  "output": {
+    "id": "mythicmetals:adamantite_ingot",
+    "count": 2
+  },
+  "overrides": {
+    "3+": {
+      "id": "mythicmetals:adamantite_ingot",
+      "count": 3
+    }
+  },
+  "min_forge_tier": 2,
+  "fuel_per_tick": 10
+}
