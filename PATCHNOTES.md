@@ -6,6 +6,11 @@ You can now mix Banglum and Morkite blocks into a powerful bomb.
 All you need is a 3x3x3 cube made out of them, with a Banglum Nuke Core in the middle.  
 An example on how to build this will be made available on the wiki following this release.  
 
+# 0.14.3  
+HOTFIX!  
+
+Re-adds missing recipes that were ported over to Alloy Forgery for the next 1.19.x releases.
+
 # 0.14.2
 Added more effects to the Carmot Staff:
 - Carmot - Heals you and everything around you for a small amount of health.  
