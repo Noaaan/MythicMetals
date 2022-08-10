@@ -68,6 +68,10 @@ public abstract class LivingEntityMixin extends Entity {
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
 
+            if (armorItems.getItem() == null) {
+                throw new RuntimeException("The stack " + armorItems.getTranslationKey() + " was null somehow, report this!");
+            }
+
             if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
                 mythicmetals$carmotParticle();
             }
