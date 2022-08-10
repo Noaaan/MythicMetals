@@ -60,7 +60,7 @@ public class EnchantmentHelperMixin {
             if (Abilities.AQUA_AFFINITY.getItems().contains(armorItems.getItem()))
                 cir.setReturnValue(true);
         }
-        for (ItemStack mainHand : entity.getItemsHand()) {
+        for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.AQUA_AFFINITY.getItems().contains(mainHand.getItem()))
                 cir.setReturnValue(true);
         }
@@ -69,7 +69,7 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getFireAspect", at = @At("HEAD"), cancellable = true)
     private static void mythicmetals$addFireAspect(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
 
-        for (ItemStack mainHand : entity.getItemsHand()) {
+        for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.FIRE_ASPECT.getItems().contains(mainHand.getItem()))
                 cir.setReturnValue(Abilities.FIRE_ASPECT.getLevel());
         }
@@ -78,7 +78,7 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getLooting", at = @At("RETURN"), cancellable = true)
     private static void mythicmetals$increaseLooting(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
         int level = cir.getReturnValue();
-        for (ItemStack mainHand : entity.getItemsHand()) {
+        for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.BONUS_LOOTING.getItems().contains(mainHand.getItem()))
                 level += Abilities.BONUS_LOOTING.getLevel();
         }
@@ -129,7 +129,7 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getKnockback", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$increaseKnockback(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
         var amount = cir.getReturnValue();
-        for (ItemStack mainHand : entity.getItemsHand()) {
+        for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.KNOCKBACK.getItems().contains(mainHand.getItem()))
                 cir.setReturnValue(amount + Abilities.KNOCKBACK.getLevel());
         }

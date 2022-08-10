@@ -274,13 +274,19 @@ public class CarmotStaff extends ToolItem {
             Vec3d normalizedFacing = user.getRotationVec(1.0F);
             Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.multiply(range));
 
+            var barrageBox = user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1);
+
             EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
-                    user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1),
-                    entity -> entity.collides() && !entity.isSpectator() && entity.isLiving(), range * range);
+                    barrageBox,
+                    entity -> entity.canHit() &&
+                            !entity.isSpectator() &&
+                            entity.isLiving() &&
+                            ((LivingEntity)entity).isMobOrPlayer(),
+                    range * range);
 
             if (res != null) {
                 var target = res.getEntity();
-                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 3, 2, 3));
+                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 5, 2, 5));
                 entities.add(target);
 
                 world.playSound(null, user.getBlockPos(), RegisterSounds.ICE_MAGIC, SoundCategory.PLAYERS, 0.8F, 1.0F);

@@ -6,6 +6,9 @@ You can now mix Banglum and Morkite blocks into a powerful bomb.
 All you need is a 3x3x3 cube made out of them, with a Banglum Nuke Core in the middle.  
 An example on how to build this will be made available on the wiki following this release.  
 
+### Other changes  
+Increased the radius of the Runite Block Ability (Ice Barrage).  
+
 # 0.14.2
 Added more effects to the Carmot Staff:
 - Carmot - Heals you and everything around you for a small amount of health.  

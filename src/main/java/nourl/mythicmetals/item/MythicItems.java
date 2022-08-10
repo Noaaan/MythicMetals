@@ -164,7 +164,7 @@ public class MythicItems implements ItemRegistryContainer {
 
     public static class CustomMusicDiscItem extends MusicDiscItem {
         public CustomMusicDiscItem(int comparatorOutput, SoundEvent sound, Settings settings) {
-            super(comparatorOutput, sound, settings);
+            super(comparatorOutput, sound, settings,162);
         }
 
         @Override

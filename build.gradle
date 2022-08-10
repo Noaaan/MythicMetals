@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.11-SNAPSHOT'
+    id 'fabric-loom' version '0.12-SNAPSHOT'
     id 'maven-publish'
     id 'io.github.juuxel.loom-quiltflower' version '1.7.2'
 }
@@ -42,13 +42,15 @@ dependencies {
     modImplementation "io.wispforest:owo-lib:${project.owo_version}"
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 
-    // REI
+    // REI + Arch
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    modRuntimeOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
-    // modmenu
+    // ModMenu
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
+    // TODO - Test this and re-enable if appropiate
     // Origins compat - Definitely not really late
     // modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
