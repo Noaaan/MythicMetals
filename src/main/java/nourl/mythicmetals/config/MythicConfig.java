@@ -53,7 +53,9 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig silver = new OreConfig(true,8, 4, 25, 42, .25f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public VariantConfig starrite = new VariantConfig(true, 4, 7, 1, 2, 70, 30, 260, 90, .125f, false, true);
+    public OreConfig starrite = new OreConfig(true, 4,  1,  70,  260,  .125f, false, false);
+    @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
+    public OreConfig end_starrite = new OreConfig(true, 7, 2, 30, 90, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig stormyx = new OreConfig(true,8, 2, 4, 60, .0f, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
