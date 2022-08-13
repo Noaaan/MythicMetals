@@ -1,17 +1,19 @@
 package nourl.mythicmetals.mixin;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.tools.CarmotStaff;
+import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -57,10 +60,26 @@ public abstract class LivingEntityMixin extends Entity {
         mythicmetals$addArmorEffects();
     }
 
+    @Inject(method = "createLivingAttributes", at = @At("RETURN"))
+    private static void mythicmetals$addAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
+        cir.getReturnValue().add(RegisterEntityAttributes.EXPERIENCE_BOOST);
+    }
+
+    @SuppressWarnings("ConstantConditions")
     @ModifyArg(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
     private int mythicmetals$doubleXp(int value) {
-        if (this.getAttacker() != null && this.getAttacker().getMainHandStack().get(CarmotStaff.STORED_BLOCK).asItem().equals(Blocks.LAPIS_BLOCK.asItem())) {
-            return value * 2;
+        // If the user has a Carmot Staff in the offhand, damage their tool
+        var attacker = this.getAttacker();
+        if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
+            var staff = attacker.getStackInHand(Hand.OFF_HAND);
+            if (((CarmotStaff)staff.getItem()).hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
+                staff.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
+            }
+        }
+
+        // Modify the experience dropped dependent on the attribute
+        if (attacker != null && attacker.getAttributes().hasAttribute(RegisterEntityAttributes.EXPERIENCE_BOOST)) {
+            return MathHelper.ceil(value * attacker.getAttributeInstance(RegisterEntityAttributes.EXPERIENCE_BOOST).getValue());
         }
         return value;
     }
