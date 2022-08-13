@@ -24,6 +24,6 @@ public class StarriteOreBlock extends OreBlock {
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        ClientParticles.spawnCenteredOnBlock(new DustParticleEffect(starriteColour, 1F), world, pos, 1.5D);
+        ClientParticles.spawnCenteredOnBlock(new DustParticleEffect(starriteColour, 1F), world, pos, 2.0D);
     }
 }

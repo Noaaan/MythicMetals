@@ -82,7 +82,7 @@ public class MythicOreFeatures {
     public static RegistryEntry<PlacedFeature> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.create("ore_overworld_nether", OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
 
     // End Ores
-    public static RegistryEntry<PlacedFeature> ORE_END_STARRITE = OreFeatureHelper.create("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.starrite.getVariant());
+    public static RegistryEntry<PlacedFeature> ORE_END_STARRITE = OreFeatureHelper.create("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.end_starrite);
 
     // RegistryKeys for features
     public static final RegistryKey<PlacedFeature> ADAMANTITE = ORE_ADAMANTITE.getKey().get();
@@ -155,7 +155,9 @@ public class MythicOreFeatures {
         }
         if (CONFIG.starrite.enabled) {
             OreFeatureHelper.ore(STARRITE);
-            OreFeatureHelper.endOre(END_STARRITE);
+        }
+        if (CONFIG.end_starrite.enabled) {
+            OreFeatureHelper.ore(END_STARRITE);
         }
         if (CONFIG.tin.enabled) {
             OreFeatureHelper.ore(TIN);

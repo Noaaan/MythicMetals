@@ -1,5 +1,5 @@
 # 0.15.2  
-Includes all the changes of 0.14.2, but with one **significant** addition.  
+Includes all the changes of 0.14.2, with one **significant** addition.  
 
 ## The Banglum Nuke  
 You can now mix Banglum and Morkite blocks into a powerful bomb.  
@@ -8,6 +8,7 @@ An example on how to build this will be made available on the wiki following thi
 
 ### Other changes  
 Increased the radius of the Runite Block Ability (Ice Barrage).  
+Split End Starrite and Starrite into their own features. This should make End Starrite more common.  
 
 # 0.14.2
 Added more effects to the Carmot Staff:
