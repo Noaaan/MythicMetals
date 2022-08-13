@@ -40,10 +40,12 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
+import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
 import java.util.List;
+import java.util.UUID;
 
 @SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
@@ -274,13 +276,19 @@ public class CarmotStaff extends ToolItem {
             Vec3d normalizedFacing = user.getRotationVec(1.0F);
             Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.multiply(range));
 
+            var barrageBox = user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1);
+
             EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
-                    user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1),
-                    entity -> entity.collides() && !entity.isSpectator() && entity.isLiving(), range * range);
+                    barrageBox,
+                    entity -> entity.canHit() &&
+                            !entity.isSpectator() &&
+                            entity.isLiving() &&
+                            ((LivingEntity) entity).isMobOrPlayer(),
+                    range * range);
 
             if (res != null) {
                 var target = res.getEntity();
-                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 3, 2, 3));
+                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 5, 2, 5));
                 entities.add(target);
 
                 world.playSound(null, user.getBlockPos(), RegisterSounds.ICE_MAGIC, SoundCategory.PLAYERS, 0.8F, 1.0F);
@@ -383,6 +391,7 @@ public class CarmotStaff extends ToolItem {
         if (block != Blocks.AIR) {
             float damage = 3.0F;
             float speed = -4.0F;
+            float experience = 0.0F;
 
             if (Blocks.IRON_BLOCK.equals(block)) {
                 damage = 7.0F;
@@ -390,6 +399,10 @@ public class CarmotStaff extends ToolItem {
             } else if (Blocks.DIAMOND_BLOCK.equals(block)) {
                 damage = 9.0F;
                 speed += 0.8F;
+            } else if (Blocks.LAPIS_BLOCK.equals(block)) {
+                damage = 3.5F;
+                speed += 1.0F;
+                experience = slot == EquipmentSlot.MAINHAND ? 1.0F : .25F;
             } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
                 damage = 11.0F;
                 speed += 0.6F;
@@ -407,19 +420,27 @@ public class CarmotStaff extends ToolItem {
 
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_SPEED);
+            mapnite.removeAll(RegisterEntityAttributes.EXPERIENCE_BOOST);
 
             mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", damage, EntityAttributeModifier.Operation.ADDITION));
             mapnite.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Item.ATTACK_SPEED_MODIFIER_ID, "Attack speed modifier", speed, EntityAttributeModifier.Operation.ADDITION));
+            mapnite.put(RegisterEntityAttributes.EXPERIENCE_BOOST, new EntityAttributeModifier(UUID.fromString("5a902603-f288-4a12-bf13-4e0c1a12f6cd"), "Bonus Experience", experience, EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
+            if (Blocks.LAPIS_BLOCK.equals(block) && slot == EquipmentSlot.OFFHAND) {
+                mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+                mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_SPEED);
+                return mapnite;
+            }
         }
+
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
     }
 
-    private boolean hasBlockInStaff(ItemStack stack, Block block) {
+    public boolean hasBlockInStaff(ItemStack stack, Block block) {
         return stack.has(STORED_BLOCK) && stack.get(STORED_BLOCK).equals(block);
     }
 
-    private Block getBlockInStaff(ItemStack stack) {
+    public Block getBlockInStaff(ItemStack stack) {
         return (stack.has(STORED_BLOCK) ? stack.get(STORED_BLOCK) : Blocks.AIR);
     }
 }

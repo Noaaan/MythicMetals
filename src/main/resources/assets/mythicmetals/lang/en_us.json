@@ -780,5 +780,7 @@
 
   "death.attack.ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
-  "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s"
+  "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
+
+  "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience"
 }
