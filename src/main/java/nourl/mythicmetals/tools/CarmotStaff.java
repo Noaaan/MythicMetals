@@ -280,7 +280,7 @@ public class CarmotStaff extends ToolItem {
 
             EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
                     barrageBox,
-                    entity -> entity.canHit() &&
+                    entity -> entity.collides() &&
                             !entity.isSpectator() &&
                             entity.isLiving() &&
                             ((LivingEntity) entity).isMobOrPlayer(),
