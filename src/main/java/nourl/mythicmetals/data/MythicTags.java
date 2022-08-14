@@ -185,6 +185,7 @@ public class MythicTags {
                 TagKey<T> ingotLikeTag =  Objects.equals(material, "unobtainium")
                         || Objects.equals(material, "morkite")
                         || Objects.equals(material, "starrite")
+                        || Objects.equals(material, "star_platinum")
                         ? tagBuilder.apply(material)
                         : tagBuilder.apply(material + "_ingots");
 
