@@ -9,6 +9,10 @@ An example on how to build this will be made available on the wiki following thi
 ### Other changes  
 Increased the radius of the Runite Block Ability (Ice Barrage).  
 Split End Starrite and Starrite into their own features. This should make End Starrite more common.  
+Fixed some bad tags, causing issues with Harvest Scythes.  
+Removed Magna as a dependency.  
+Removed Nugget tags.  
+
 
 # 0.14.2
 Added more effects to the Carmot Staff:

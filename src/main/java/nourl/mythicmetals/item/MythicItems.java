@@ -87,32 +87,32 @@ public class MythicItems implements ItemRegistryContainer {
 
     // Nuggets
     public static final class Nuggets implements ItemRegistryContainer {
-        public static final Item ADAMANTITE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item AQUARIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item BANGLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item BRONZE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item CARMOT_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item CELESTIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.RARE));
-        public static final Item COPPER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item DURASTEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item HALLOWED_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
-        public static final Item KYBER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item MANGANESE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item METALLURGIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof().rarity(Rarity.RARE));
-        public static final Item MIDAS_GOLD_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item MYTHRIL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item ORICHALCUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item OSMIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item PALLADIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).fireproof());
-        public static final Item PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item PROMETHEUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item QUADRILLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item RUNITE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item SILVER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item STAR_PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item STEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item STORMYX_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-        public static final Item TIN_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+        public static final Item ADAMANTITE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item AQUARIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item BANGLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item BRONZE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item CARMOT_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item CELESTIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0).rarity(Rarity.RARE));
+        public static final Item COPPER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item DURASTEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item HALLOWED_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0).rarity(Rarity.UNCOMMON));
+        public static final Item KYBER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item MANGANESE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item METALLURGIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0).fireproof().rarity(Rarity.RARE));
+        public static final Item MIDAS_GOLD_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item MYTHRIL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item ORICHALCUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item OSMIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item PALLADIUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0).fireproof());
+        public static final Item PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item PROMETHEUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item QUADRILLUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item RUNITE_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item SILVER_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item STAR_PLATINUM_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item STEEL_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item STORMYX_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
+        public static final Item TIN_NUGGET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(0));
 
         @Override
         public boolean shouldProcessField(Item value, String identifier, Field field) {

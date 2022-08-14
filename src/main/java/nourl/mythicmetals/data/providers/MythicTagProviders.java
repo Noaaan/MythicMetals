@@ -27,7 +27,7 @@ public class MythicTagProviders {
         @Override
         protected void generateTags() {
             ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-                Optional.ofNullable(MythicTags.Blocks.INSTANCE.ADVANCED_METAL_TAGS.get(blockSet.getName()))
+                Optional.ofNullable(MythicTags.Blocks.INSTANCE.BLOCK_METAL_TAGS.get(blockSet.getName()))
                     .ifPresent(metalTagHelper -> {
                         MythicTags.MetalTagHelper<Block> commonTagHelper = metalTagHelper.createCommonVersion();
 
@@ -61,7 +61,7 @@ public class MythicTagProviders {
         @Override
         protected void generateTags() {
             ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-                Optional.ofNullable(MythicTags.Items.INSTANCE.ADVANCED_METAL_TAGS.get(blockSet.getName()))
+                Optional.ofNullable(MythicTags.Items.INSTANCE.ITEM_METAL_TAGS.get(blockSet.getName()))
                     .ifPresent(metalTagHelper -> {
                         MythicTags.MetalTagHelper<Item> commonTagHelper = metalTagHelper.createCommonVersion();
 
