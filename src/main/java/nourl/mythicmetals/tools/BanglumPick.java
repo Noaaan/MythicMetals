@@ -1,7 +1,5 @@
 package nourl.mythicmetals.tools;
 
-import draylar.magna.api.BlockFinder;
-import draylar.magna.api.BreakValidator;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -15,9 +13,10 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
+import nourl.mythicmetals.utils.BlockBreaker;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 
-public class BanglumPick extends PickaxeBase implements BreakValidator {
+public class BanglumPick extends PickaxeBase {
 
     public BanglumPick(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -34,10 +33,10 @@ public class BanglumPick extends PickaxeBase implements BreakValidator {
         var player = context.getPlayer();
 
         if (player != null && !getCooldown(player, context.getStack()) && !world.isClient) {
-            var finder = BlockFinder.DEFAULT.findPositions(
-                    world, player, 1, 5);
 
-            for (BlockPos blockPos : finder) {
+            var iterator = BlockBreaker.findBlocks(context);
+
+            for (BlockPos blockPos : iterator) {
                 if (canBreak(world, blockPos)) {
                     WorldOps.breakBlockWithItem(world, blockPos, context.getStack());
                     context.getStack().damage(2, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -51,6 +50,7 @@ public class BanglumPick extends PickaxeBase implements BreakValidator {
             var pos = context.getBlockPos();
             var facing = context.getPlayerFacing();
             var pos2 = context.getBlockPos().offset(facing, 5);
+
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS);
 
@@ -61,7 +61,6 @@ public class BanglumPick extends PickaxeBase implements BreakValidator {
         return ActionResult.FAIL;
     }
 
-    @Override
     public boolean canBreak(BlockView view, BlockPos pos) {
         return super.isSuitableFor(view.getBlockState(pos));
     }

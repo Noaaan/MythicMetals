@@ -52,10 +52,6 @@ dependencies {
     // Origins compat - Definitely not really late
     // modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
-    // Magna, used for Super Bang tools
-    include 'com.github.Technici4n:magna:1.8.1-1.19'
-    modImplementation 'com.github.Technici4n:magna:1.8.1-1.19'
-
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 
