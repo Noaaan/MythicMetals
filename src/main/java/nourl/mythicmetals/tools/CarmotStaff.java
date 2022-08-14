@@ -278,7 +278,7 @@ public class CarmotStaff extends ToolItem {
 
             EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
                     user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1),
-                    entity -> entity.collides() && !entity.isSpectator() && entity.isLiving(), range * range);
+                    entity -> entity.isCollidable() && !entity.isSpectator() && entity.isLiving(), range * range);
 
             if (res != null) {
                 var target = res.getEntity();
