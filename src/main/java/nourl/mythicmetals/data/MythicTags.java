@@ -36,7 +36,7 @@ public class MythicTags {
 
     public static class Blocks implements AdvancedTagHelper<Block> {
 
-        public final Map<String, MetalTagHelper<Block>> ADVANCED_METAL_TAGS = new HashMap<>();
+        public final Map<String, MetalTagHelper<Block>> BLOCK_METAL_TAGS = new HashMap<>();
 
         public static final Blocks INSTANCE = new Blocks();
 
@@ -85,7 +85,7 @@ public class MythicTags {
         public MetalTagHelper<Block> createMetalTags(String material, BlockSet set, boolean createAsCommon) {
             MetalTagHelper<Block> metalTags = AdvancedTagHelper.super.createMetalTags(material, set, createAsCommon);
 
-            INSTANCE.ADVANCED_METAL_TAGS.put(material, metalTags);
+            INSTANCE.BLOCK_METAL_TAGS.put(material, metalTags);
 
             return metalTags;
         }
@@ -103,7 +103,7 @@ public class MythicTags {
 
     public static class Items implements AdvancedTagHelper<Item> {
 
-        public final Map<String, MetalTagHelper<Item>> ADVANCED_METAL_TAGS = new HashMap<>();
+        public final Map<String, MetalTagHelper<Item>> ITEM_METAL_TAGS = new HashMap<>();
 
         public static final Items INSTANCE = new Items();
 
@@ -152,7 +152,7 @@ public class MythicTags {
         public MetalTagHelper<Item> createMetalTags(String material, BlockSet set, boolean createAsCommon) {
             MetalTagHelper<Item> metalTags = AdvancedTagHelper.super.createMetalTags(material, set, createAsCommon);
 
-            INSTANCE.ADVANCED_METAL_TAGS.put(material, metalTags);
+            INSTANCE.ITEM_METAL_TAGS.put(material, metalTags);
 
             return metalTags;
         }
