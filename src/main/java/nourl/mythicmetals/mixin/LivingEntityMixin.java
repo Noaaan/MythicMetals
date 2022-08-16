@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
-import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.MythicParticleSystem;
@@ -70,7 +69,9 @@ public abstract class LivingEntityMixin extends Entity {
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
 
-            mythicmetals$debugArmor(armorItems);
+            if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
+                mythicmetals$carmotParticle();
+            }
 
             if (armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
                 var dmg = armorItems.getDamage();
@@ -101,23 +102,6 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    /**
-     * This method invokes the registry about if an item is in a tag.
-     * The reason this exists is to debug a rarer crash where the item somehow is not null,
-     * yet does not have an entry in registry.
-     * @param armor The stack of the Armor item to be queried
-     */
-    private void mythicmetals$debugArmor(ItemStack armor) {
-        try {
-            MythicMetals.LOGGER.info(armor.getItem().getTranslationKey());
-            if (armor.isIn(MythicTags.CARMOT_ARMOR)) {
-                mythicmetals$carmotParticle();
-            }
-
-        } catch (NullPointerException e) {
-            throw new RuntimeException("The stack " + armor.getTranslationKey() + " was null somehow, report this!", e.getCause());
-        }
-    }
 
     private void mythicmetals$carmotParticle() {
         if (!world.isClient) return;

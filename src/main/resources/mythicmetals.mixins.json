@@ -9,6 +9,7 @@
     "ApplyBonusLootFunctionMixin",
     "ArmorItemMixin",
     "CampfireBlockMixin",
+    "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",
@@ -23,6 +24,7 @@
   "client": [
     "CapeFeatureRendererMixin"
   ],
+  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {
     "defaultRequire": 1
   }
