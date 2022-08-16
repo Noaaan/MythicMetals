@@ -12,6 +12,7 @@ Split End Starrite and Starrite into their own features. This should make End St
 Fixed some bad tags, causing issues with Harvest Scythes.  
 Removed Magna as a dependency.  
 Removed Nugget tags.  
+Re-enabled Origins Compat.  
 
 
 # 0.14.2

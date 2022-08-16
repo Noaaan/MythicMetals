@@ -49,8 +49,8 @@ dependencies {
     // modmenu
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-    // Origins compat - Definitely not really late
-    // modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+    // Origins compat
+     modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
