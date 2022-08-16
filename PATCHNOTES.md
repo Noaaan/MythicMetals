@@ -1,10 +1,5 @@
-# 0.15.2  
-Includes all the changes of 0.14.2, but with one **significant** addition.  
-
-## The Banglum Nuke  
-You can now mix Banglum and Morkite blocks into a powerful bomb.  
-All you need is a 3x3x3 cube made out of them, with a Banglum Nuke Core in the middle.  
-An example on how to build this will be made available on the wiki following this release.  
+# 0.14.4
+Re-enabled Origins compatability.  
 
 # 0.14.3  
 HOTFIX!  
