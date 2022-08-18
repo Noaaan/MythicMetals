@@ -1,3 +1,16 @@
+# 0.15.4
+Restored Alloy Forgery recipes (will be available natively in AF next week).  
+Includes fixes from hotfixes.  
+
+# 0.15.x-hotfix2
+Fixed a crash related to experience dropped.  
+
+# 0.15.x-hotfix  
+Fixed an issue where broken tags allowed you to craft items for free.  
+
+# 0.15.3  
+Ported to 1.19.x.  
+
 # 0.15.2  
 Includes all the changes of 0.14.2, with one **significant** addition.  
 
@@ -8,6 +21,12 @@ An example on how to build this will be made available on the wiki following thi
 
 ### Other changes  
 Increased the radius of the Runite Block Ability (Ice Barrage).  
+Split End Starrite and Starrite into their own features. This should make End Starrite more common.  
+Fixed some bad tags, causing issues with Harvest Scythes.  
+Removed Magna as a dependency.  
+Removed Nugget tags.  
+Re-enabled Origins Compat.  
+
 
 # 0.14.2
 Added more effects to the Carmot Staff:
