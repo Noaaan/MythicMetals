@@ -10,6 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
+import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.tools.CarmotStaff;
@@ -43,8 +44,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow
-    public abstract @Nullable LivingEntity getAttacker();
+    @Shadow public abstract @Nullable LivingEntity getAttacker();
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -88,10 +88,15 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void mythicmetals$addArmorEffects() {
+
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
 
-            if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
+            if (armorItems.getItem() == null) {
+                throw new RuntimeException("The stack " + armorItems + " was null somehow, report this!");
+            }
+
+            if (MythicArmor.CARMOT.isInArmorSet(armorItems)) {
                 mythicmetals$carmotParticle();
             }
 
@@ -102,7 +107,7 @@ public abstract class LivingEntityMixin extends Entity {
                     armorItems.setDamage(dmg - 1);
             }
 
-            if (armorItems.isIn(MythicTags.COPPER_ARMOR) && world.isThundering()) {
+            if (MythicArmor.COPPER.isInArmorSet(armorItems) && world.isThundering()) {
                 mythicmetals$copperParticle();
                 int i = r.nextInt(500000);
                 if (i == 666 & mythicmetals$copperParticle()) {
@@ -115,7 +120,7 @@ public abstract class LivingEntityMixin extends Entity {
                 }
             }
 
-            if (armorItems.isIn(MythicTags.PALLADIUM_ARMOR)) {
+            if (MythicArmor.PALLADIUM.isInArmorSet(armorItems)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                     MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 1, 0));
@@ -123,7 +128,6 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
-
 
     private void mythicmetals$carmotParticle() {
         if (!world.isClient) return;
