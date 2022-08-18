@@ -1,6 +1,7 @@
 # 0.15.4
 Restored Alloy Forgery recipes (will be available natively in AF next week).  
 Includes fixes from hotfixes.  
+Removed armor set tags, in an attempt to fix a rarer crash.  
 
 # 0.15.x-hotfix2
 Fixed a crash related to experience dropped.  
