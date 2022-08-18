@@ -69,6 +69,9 @@ public abstract class LivingEntityMixin extends Entity {
     private int mythicmetals$doubleXp(int value) {
         // If the user has a Carmot Staff in the offhand, damage their tool
         var attacker = this.getAttacker();
+
+        if (attacker == null) return value; // Return immediately there is no attacker
+
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
             var staff = attacker.getStackInHand(Hand.OFF_HAND);
             if (((CarmotStaff)staff.getItem()).hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
@@ -77,7 +80,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         // Modify the experience dropped dependent on the attribute
-        if (attacker != null && attacker.getAttributes().hasAttribute(RegisterEntityAttributes.EXPERIENCE_BOOST)) {
+        if (attacker.getAttributes().hasAttribute(RegisterEntityAttributes.EXPERIENCE_BOOST)) {
             return MathHelper.ceil(value * attacker.getAttributeInstance(RegisterEntityAttributes.EXPERIENCE_BOOST).getValue());
         }
         return value;
