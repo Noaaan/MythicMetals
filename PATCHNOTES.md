@@ -5,7 +5,6 @@ Removed armor set tags, in an attempt to fix a rarer crash.
 
 # 0.15.x-hotfix2
 Fixed a crash related to experience dropped.  
-Fixed a crash related to music discs on 1.19.  
 
 # 0.15.x-hotfix  
 Fixed an issue where broken tags allowed you to craft items for free.  
