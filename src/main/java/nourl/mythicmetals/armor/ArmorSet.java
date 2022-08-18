@@ -5,10 +5,12 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ArmorSet {
@@ -17,6 +19,8 @@ public class ArmorSet {
     private final ArmorItem chestplate;
     private final ArmorItem leggings;
     private final ArmorItem boots;
+
+    private final List<Item> armorSet;
 
     public ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
@@ -34,6 +38,7 @@ public class ArmorSet {
         this.chestplate = baseArmorItem(material, EquipmentSlot.CHEST, settingsProcessor);
         this.leggings = baseArmorItem(material, EquipmentSlot.LEGS, settingsProcessor);
         this.boots = baseArmorItem(material, EquipmentSlot.FEET, settingsProcessor);
+        this.armorSet = List.of(helmet, chestplate, leggings, boots);
     }
 
     public void register(String name) {
@@ -61,5 +66,13 @@ public class ArmorSet {
 
     public ArmorItem getBoots() {
         return boots;
+    }
+
+    public List<Item> getArmorSet() {
+        return armorSet;
+    }
+
+    public boolean isInArmorSet(ItemStack stack) {
+        return this.getArmorSet().contains(stack.getItem());
     }
 }
