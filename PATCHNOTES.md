@@ -1,5 +1,9 @@
 # 0.15.4
 Restored Alloy Forgery recipes (will be available natively in AF next week).  
+Includes fixes from hotfixes.  
+
+# 0.15.x-hotfix2
+Fixed a crash related to experience dropped.  
 
 # 0.15.x-hotfix  
 Fixed an issue where broken tags allowed you to craft items for free.  
