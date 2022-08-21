@@ -2,12 +2,16 @@ package nourl.mythicmetals.blocks;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.data.MythicTags;
@@ -43,6 +47,28 @@ public class BanglumNukeHandler {
         });
     }
 
+    public static boolean tryLightBigTntWithDispenser(BlockPointer pointer) {
+        var world = pointer.getWorld();
+        Direction direction = pointer.getWorld().getBlockState(pointer.getPos()).get(DispenserBlock.FACING);
+        BlockState state = pointer.getWorld().getBlockState(pointer.getPos().offset(direction));
+        var pos = pointer.getPos().offset(direction);
+
+        if (!state.isOf(MythicBlocks.BANGLUM.getStorageBlock())
+                && !state.isOf(MythicBlocks.MORKITE.getStorageBlock()))
+            return false;
+
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; z++) {
+                    if (tryLightBigTntAt(world, null, pos.getX() - x + 1, pos.getY() - y + 1, pos.getZ() - z + 1)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     private static boolean tryLightBigTntAt(World world, PlayerEntity player, int x, int y, int z) {
         BlockPos.Mutable mutablePos = new BlockPos.Mutable();
 
@@ -57,7 +83,8 @@ public class BanglumNukeHandler {
 
                     mutablePos.set(x + ox, y + oy, z + oz);
 
-                    if (world.getBlockState(mutablePos) != neededState) return false;
+                    if (world.getBlockState(mutablePos) != neededState)
+                        return false;
                 }
             }
         }
