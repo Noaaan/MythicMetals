@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "mythicmetals:banglum_nuke_core"
+        "mythicmetals:banglum_nuke_core",
+        "mythicmetals:carmot_nuke_core"
     ]
 }

@@ -1,0 +1,7 @@
+{
+    "replace": false,
+    "values": [
+        "#c:ores",
+        "minecraft:ancient_debris"
+    ]
+}
