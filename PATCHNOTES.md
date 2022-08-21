@@ -1,3 +1,6 @@
+# 0.x.x  
+Allow the Banglum Nuke to be ignited using a flint and steel.  
+
 # 0.15.4
 Restored Alloy Forgery recipes (will be available natively in AF next week).  
 Includes fixes from hotfixes.  
