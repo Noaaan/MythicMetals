@@ -403,6 +403,7 @@
   "item.mythicmetals.silver_nugget": "Silver Nugget",
   "item.mythicmetals.star_platinum": "Star Platinum",
   "item.mythicmetals.star_platinum_anvil": "Star Platinum Anvil",
+  "item.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
   "item.mythicmetals.star_platinum_axe": "Star Platinum Axe",
   "item.mythicmetals.star_platinum_boots": "Star Platinum Boots",
   "item.mythicmetals.star_platinum_chestplate": "Star Platinum Chestplate",
@@ -781,6 +782,7 @@
   "death.attack.ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
+  "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
 
   "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience"
 }

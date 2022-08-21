@@ -1,5 +1,8 @@
 # 0.x.x  
-Allow the Banglum Nuke to be ignited using a flint and steel.  
+Added Star Platinum Arrows.  
+- These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
+
+Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.  
 
 # 0.15.4
 Restored Alloy Forgery recipes (will be available natively in AF next week).  
