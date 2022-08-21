@@ -18,6 +18,7 @@ import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.models.MythicModelHandler;
 import nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer;
+import nourl.mythicmetals.models.StarPlatinumArrowEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
@@ -47,6 +48,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
