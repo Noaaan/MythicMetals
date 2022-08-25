@@ -72,6 +72,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     public static final Item STAR_PLATINUM_ARROW = new StarPlatinumArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
+    public static final Item STORMYX_SHIELD = new StormyxShield(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2).maxDamage(1680).rarity(Rarity.UNCOMMON));
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {
         toolSet.register(name);
@@ -92,6 +93,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
+        RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
     }
 
     public static class Frogery {

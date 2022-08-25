@@ -13,8 +13,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
-import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
+import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.models.MythicModelHandler;
 import nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer;
@@ -24,6 +24,7 @@ import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.utils.ShieldUsePredicate;
 
 import java.util.Calendar;
 
@@ -77,6 +78,8 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
+
+        ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, new Identifier("blocking"), new ShieldUsePredicate());
 
         ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
                 (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1

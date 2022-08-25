@@ -3,6 +3,7 @@
   "pools": [
     {
       "rolls": 1,
+      "bonus_rolls": 0.5,
       "entries": [
         {
           "type": "minecraft:alternatives",
@@ -25,6 +26,17 @@
                 }
               ],
               "name": "mythicmetals:blackstone_stormyx_ore"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "mythicmetals:stormyx_shell",
+              "conditions": [
+                {
+                  "condition": "minecraft:random_chance",
+                  "chance": 0.02
+                }
+              ],
+              "quality": 1
             },
             {
               "type": "minecraft:item",

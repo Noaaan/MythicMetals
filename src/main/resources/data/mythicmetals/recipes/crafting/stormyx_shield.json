@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "isi",
+    "iii",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "item": "mythicmetals:stormyx_ingot"
+    },
+    "s": {
+      "item": "mythicmetals:stormyx_shell"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:stormyx_shield",
+    "count": 1
+  }
+}
