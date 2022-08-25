@@ -440,6 +440,8 @@
   "item.mythicmetals.stormyx_leggings": "Stormyx Leggings",
   "item.mythicmetals.stormyx_nugget": "Stormyx Nugget",
   "item.mythicmetals.stormyx_pickaxe": "Stormyx Pickaxe",
+  "item.mythicmetals.stormyx_shell": "Stormyx Shell",
+  "item.mythicmetals.stormyx_shield": "Stormyx Shield",
   "item.mythicmetals.stormyx_shovel": "Stormyx Shovel",
   "item.mythicmetals.stormyx_sword": "Stormyx Sword",
   "item.mythicmetals.tin_dust": "Tin Dust",
@@ -784,5 +786,6 @@
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
 
-  "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience"
+  "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience",
+  "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection"
 }

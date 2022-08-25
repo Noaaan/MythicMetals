@@ -378,7 +378,7 @@ public class CarmotStaff extends ToolItem {
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
 
-        Multimap<EntityAttribute, EntityAttributeModifier> mapnite = this.getAttributeModifiers(slot);
+        var mapnite = HashMultimap.create(this.getAttributeModifiers(slot));
 
         var block = getBlockInStaff(stack);
 
@@ -409,8 +409,6 @@ public class CarmotStaff extends ToolItem {
             } else {
                 speed += 1.0F;
             }
-
-            mapnite = HashMultimap.create(mapnite);
 
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_SPEED);

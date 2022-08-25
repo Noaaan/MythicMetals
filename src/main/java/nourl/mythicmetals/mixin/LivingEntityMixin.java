@@ -2,7 +2,9 @@ package nourl.mythicmetals.mixin;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -22,6 +24,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -44,7 +47,14 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean damage(DamageSource source, float amount);
 
-    @Shadow public abstract @Nullable LivingEntity getAttacker();
+    @Shadow
+    public abstract @Nullable LivingEntity getAttacker();
+
+    @Shadow
+    public abstract AttributeContainer getAttributes();
+
+    @Shadow
+    public abstract double getAttributeValue(EntityAttribute attribute);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -60,9 +70,25 @@ public abstract class LivingEntityMixin extends Entity {
         mythicmetals$addArmorEffects();
     }
 
+    @ModifyVariable(method = "applyArmorToDamage", at = @At("HEAD"), argsOnly = true)
+    private float mythicmetals$reduceMagicDamage(float amount, DamageSource source) {
+        var dmg = amount;
+        var attributes = this.getAttributes();
+        if (source.isMagic()
+                && attributes.hasAttribute(RegisterEntityAttributes.MAGIC_PROTECTION)
+                && attributes.getValue(RegisterEntityAttributes.MAGIC_PROTECTION) > 0) {
+
+            double reduction = this.getAttributeValue(RegisterEntityAttributes.MAGIC_PROTECTION);
+            dmg = (float) Math.max(dmg - reduction, 0);
+        }
+        return dmg;
+    }
+
     @Inject(method = "createLivingAttributes", at = @At("RETURN"))
     private static void mythicmetals$addAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue().add(RegisterEntityAttributes.EXPERIENCE_BOOST);
+        cir.getReturnValue()
+                .add(RegisterEntityAttributes.EXPERIENCE_BOOST)
+                .add(RegisterEntityAttributes.MAGIC_PROTECTION);
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -75,7 +101,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
             var staff = attacker.getStackInHand(Hand.OFF_HAND);
-            if (((CarmotStaff)staff.getItem()).hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
+            if (((CarmotStaff) staff.getItem()).hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
                 staff.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
             }
         }

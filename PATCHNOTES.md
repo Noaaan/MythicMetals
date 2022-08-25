@@ -1,7 +1,13 @@
 # 0.x.x  
-Added Star Platinum Arrows.  
-- These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
 
+### Small Stormyx rework  
+Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
+It can be crafted into a Stormyx Shield. A much more durable shield which protects you slightly against Magic damage.  
+
+### Added Star Platinum Arrows.  
+These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
+
+### Other Changes
 Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.  
 
 # 0.15.4
