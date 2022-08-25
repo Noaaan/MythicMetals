@@ -156,8 +156,9 @@ public class MythicItems implements ItemRegistryContainer {
     }
 
     // Crafting Mats
-    public static final Item AQUARIUM_PEARL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
-    public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
+    public static final Item AQUARIUM_PEARL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item STORMYX_SHELL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
 
     public static class CustomMusicDiscItem extends MusicDiscItem {
         public CustomMusicDiscItem(int comparatorOutput, SoundEvent sound, Settings settings) {
