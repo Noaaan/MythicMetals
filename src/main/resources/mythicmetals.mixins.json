@@ -23,7 +23,8 @@
     "TranslationStorageMixin"
   ],
   "client": [
-    "CapeFeatureRendererMixin"
+    "CapeFeatureRendererMixin",
+    "ElytraFeatureRendererMixin"
   ],
   "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {
