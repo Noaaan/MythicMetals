@@ -1,18 +1,17 @@
 package nourl.mythicmetals.utils;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.server.ServerTask;
+import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.explosion.Explosion;
+
+import java.util.function.Predicate;
 
 public final class EpicExplosion {
     private EpicExplosion() {
 
     }
 
-    public static void explode(ServerWorld world, int x, int y, int z, int radius) {
+    public static void explode(ServerWorld world, int x, int y, int z, int radius, Predicate<BlockState> statePredicate) {
         int radiusSq = radius * radius;
         var pos = new BlockPos.Mutable();
 
@@ -24,7 +23,9 @@ public final class EpicExplosion {
                     pos.set(x + ox, y + oy, z + oz);
                     var state = world.getBlockState(pos);
 
-                    if (state.isAir() || state.getHardness(world, pos) == -1) continue;
+                    if (state.isAir() || state.getBlock().getBlastResistance() > 10000) continue;
+
+                    if (!statePredicate.test(state)) continue;
 
                     world.setBlockState(pos, Blocks.AIR.getDefaultState());
                 }

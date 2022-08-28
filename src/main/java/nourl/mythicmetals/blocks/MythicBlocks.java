@@ -51,6 +51,8 @@ public class MythicBlocks {
             .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
             .finish();
 
+    public static final Block CARMOT_NUKE_CORE = new Block(FabricBlockSettings.copyOf(BANGLUM_NUKE_CORE));
+
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
             .createAnvilSet(10F, 15F, MYTHIC_MINING_LEVEL).finish();
 
@@ -191,6 +193,7 @@ public class MythicBlocks {
         BlockSet.Builder.register();
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
+        RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
     }
 
 }

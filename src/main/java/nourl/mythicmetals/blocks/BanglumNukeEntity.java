@@ -1,6 +1,8 @@
 package nourl.mythicmetals.blocks;
 
+import io.wispforest.owo.nbt.NbtKey;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -8,20 +10,26 @@ import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.utils.EpicExplosion;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Predicate;
+
 public class BanglumNukeEntity extends BanglumTntEntity {
     private static final int DEFAULT_FUSE = 200;
+    private static final NbtKey<Block> CORE_BLOCK_KEY = new NbtKey<>("CoreBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
 
     private Block coreBlock = MythicBlocks.BANGLUM_NUKE_CORE;
 
@@ -43,6 +51,20 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     }
 
     @Override
+    protected void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+
+        this.coreBlock = nbt.getOr(CORE_BLOCK_KEY, MythicBlocks.BANGLUM_NUKE_CORE);
+    }
+
+    @Override
+    protected void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+
+        nbt.put(CORE_BLOCK_KEY, coreBlock);
+    }
+
+    @Override
     public double getSmokeParticleHeight() {
         return 2.5;
     }
@@ -51,7 +73,15 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     protected void explode() {
         int radius = MythicMetals.CONFIG.banglumNukeCoreRadius;
 
-        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius);
+        Predicate<BlockState> statePredicate;
+
+        if (coreBlock == MythicBlocks.CARMOT_NUKE_CORE) {
+            statePredicate = state -> !state.isIn(MythicTags.CARMOT_NUKE_IGNORED);
+        } else {
+            statePredicate = ignored -> true;
+        }
+
+        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate);
 
         int soundRadius = (int) (radius * 1.25);
 

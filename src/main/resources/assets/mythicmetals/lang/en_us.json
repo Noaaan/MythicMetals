@@ -18,6 +18,7 @@
   "block.mythicmetals.calcite_starrite_ore": "Calcite Starrite Ore",
   "block.mythicmetals.carmot_anvil": "Carmot Anvil",
   "block.mythicmetals.carmot_block": "Carmot Block",
+  "block.mythicmetals.carmot_nuke_core": "Carmot Nuke Core",
   "block.mythicmetals.carmot_ore": "Carmot Ore",
   "block.mythicmetals.celestium_anvil": "Celestium Anvil",
   "block.mythicmetals.celestium_block": "Celestium Block",
@@ -785,6 +786,10 @@
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
+
+  "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
+  "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
+  "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
   "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience",
   "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection"
