@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "mythicmetals:banglum_nuke_core"
+    },
+    "addition": {
+        "item": "mythicmetals:carmot_block"
+    },
+    "result": {
+        "item": "mythicmetals:carmot_nuke_core"
+    }
+}

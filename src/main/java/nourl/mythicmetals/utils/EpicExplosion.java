@@ -23,7 +23,7 @@ public final class EpicExplosion {
                     pos.set(x + ox, y + oy, z + oz);
                     var state = world.getBlockState(pos);
 
-                    if (state.isAir() || state.getHardness(world, pos) == -1) continue;
+                    if (state.isAir() || state.getBlock().getBlastResistance() > 10000) continue;
 
                     if (!statePredicate.test(state)) continue;
 
