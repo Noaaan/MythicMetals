@@ -64,9 +64,9 @@ public class MythicOreFeatures {
 
     // Ores below zero - Reaches Deep Dark
     public static RegistryEntry<PlacedFeature> ORE_ADAMANTITE = OreFeatureHelper.create("ore_adamantite", ADAMANTITE_TARGETS, CONFIG.adamantite);
-    public static RegistryEntry<PlacedFeature> ORE_CALCITE_KYBER = OreFeatureHelper.create("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.kyber.getVariant());
+    public static RegistryEntry<PlacedFeature> ORE_CALCITE_KYBER = OreFeatureHelper.create("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.calcite_kyber);
     public static RegistryEntry<PlacedFeature> ORE_CARMOT = OreFeatureHelper.create("ore_carmot", CARMOT_TARGETS, CONFIG.carmot);
-    public static RegistryEntry<PlacedFeature> ORE_DEEPSLATE_RUNITE = OreFeatureHelper.create("ore_deepslate_runite", RUNITE_TARGETS, CONFIG.runite.getVariant());
+    public static RegistryEntry<PlacedFeature> ORE_DEEPSLATE_RUNITE = OreFeatureHelper.create("ore_deepslate_runite", RUNITE_TARGETS, CONFIG.deepslate_runite);
     public static RegistryEntry<PlacedFeature> ORE_MORKITE = OreFeatureHelper.create("ore_morkite", MORKITE_TARGETS, CONFIG.morkite);
     public static RegistryEntry<PlacedFeature> ORE_MYTHRIL = OreFeatureHelper.create("ore_mythril", MYTHRIL_TARGETS, CONFIG.mythril);
     public static RegistryEntry<PlacedFeature> ORE_ORICHALCUM = OreFeatureHelper.create("ore_orichalcum", ORICHALCUM_TARGETS, CONFIG.orichalcum);
@@ -75,7 +75,7 @@ public class MythicOreFeatures {
     public static RegistryEntry<PlacedFeature> ORE_UNOBTAINIUM = OreFeatureHelper.create("ore_unobtainium", UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
 
     // Nether Ores
-    public static RegistryEntry<PlacedFeature> ORE_NETHER_BANGLUM = OreFeatureHelper.create("ore_nether_banglum", NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), CONFIG.banglum.getVariant());
+    public static RegistryEntry<PlacedFeature> ORE_NETHER_BANGLUM = OreFeatureHelper.create("ore_nether_banglum", NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), CONFIG.nether_banglum);
     public static RegistryEntry<PlacedFeature> ORE_MIDAS_GOLD = OreFeatureHelper.create("ore_midas_gold", NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), CONFIG.midas_gold);
     public static RegistryEntry<PlacedFeature> ORE_PALLADIUM = OreFeatureHelper.create("ore_palladium", NETHERRACK_RULE, MythicBlocks.PALLADIUM.getOre(), CONFIG.palladium);
     public static RegistryEntry<PlacedFeature> ORE_STORMYX = OreFeatureHelper.create("ore_stormyx", STORMYX_TARGETS, CONFIG.stormyx);

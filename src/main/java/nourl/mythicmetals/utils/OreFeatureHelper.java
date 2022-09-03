@@ -17,7 +17,6 @@ import net.minecraft.world.gen.placementmodifier.*;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
-import nourl.mythicmetals.config.VariantConfig;
 
 import java.util.List;
 
@@ -58,14 +57,6 @@ public class OreFeatureHelper {
         return ConfiguredFeatures.register(name, Feature.ORE, new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
     }
 
-    public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> createConfiguredFeature(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
-        return ConfiguredFeatures.register(name, Feature.ORE, new OreFeatureConfig(targets, config.veinSize, config.discardChance));
-    }
-
-    public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> createConfiguredFeature(String name, RuleTest rule, Block block, VariantConfig config) {
-        return ConfiguredFeatures.register(name, Feature.ORE, new OreFeatureConfig(rule, block.getDefaultState(), config.veinSize, config.discardChance));
-    }
-
     public static RegistryEntry<PlacedFeature> create(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
         var b = config.offset && config.trapezoid; // Check if both offset and trapezoid is being used at the same time.
         if (b) {
@@ -90,36 +81,7 @@ public class OreFeatureHelper {
         return uniform(name, rule, block, config);
     }
 
-    public static RegistryEntry<PlacedFeature> create(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
-        var b = config.offset && config.trapezoid; // Check if both offset and trapezoid is being used at the same time.
-        if (b) {
-            throw new IllegalArgumentException(name + " cannot be offset and trapezoid at the same time.");
-        }
-        if (config.offset)
-            return aboveBottom(name, targets, config);
-        if (config.trapezoid)
-            return trapezoid(name, targets, config);
-        return uniform(name, targets, config);
-    }
-
-    public static RegistryEntry<PlacedFeature> create(String name, RuleTest rule, Block block, VariantConfig config) {
-        var b = config.offset && config.trapezoid; // Check if both offset and trapezoid is being used at the same time.
-        if (b) {
-            throw new IllegalArgumentException(name + " cannot be offset and trapezoid at the same time.");
-        }
-        if (config.offset)
-            return aboveBottom(name, rule, block, config);
-        if (config.trapezoid)
-            return trapezoid(name, rule, block, config);
-        return uniform(name, rule, block, config);
-    }
-
     public static RegistryEntry<PlacedFeature> uniform(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
-        var feature = createConfiguredFeature(name, targets, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
-    }
-
-    public static RegistryEntry<PlacedFeature> uniform(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
         return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
@@ -129,27 +91,12 @@ public class OreFeatureHelper {
         return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 
-    public static RegistryEntry<PlacedFeature> uniform(String name, RuleTest rule, Block block, VariantConfig config) {
-        var feature = createConfiguredFeature(name, rule, block, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
-    }
-
     public static RegistryEntry<PlacedFeature> aboveBottom(String name, ImmutableList<OreFeatureConfig.Target> targets, OreConfig config) {
         var feature = createConfiguredFeature(name, targets, config);
         return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
 
-    public static RegistryEntry<PlacedFeature> aboveBottom(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
-        var feature = createConfiguredFeature(name, targets, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
-    }
-
     public static RegistryEntry<PlacedFeature> aboveBottom(String name, RuleTest rule, Block block, OreConfig config) {
-        var feature = createConfiguredFeature(name, rule, block, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
-    }
-
-    public static RegistryEntry<PlacedFeature> aboveBottom(String name, RuleTest rule, Block block, VariantConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
         return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.uniform(YOffset.aboveBottom(config.bottom), YOffset.fixed(config.top))));
     }
@@ -161,16 +108,6 @@ public class OreFeatureHelper {
 
     public static RegistryEntry<PlacedFeature> trapezoid(String name, RuleTest rule, Block block, OreConfig config) {
         var feature = createConfiguredFeature(name, rule, block, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
-    }
-
-    public static RegistryEntry<PlacedFeature> trapezoid(String name, RuleTest rule, Block block, VariantConfig config) {
-        var feature = createConfiguredFeature(name, rule, block, config);
-        return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
-    }
-
-    public static RegistryEntry<PlacedFeature> trapezoid(String name, ImmutableList<OreFeatureConfig.Target> targets, VariantConfig config) {
-        var feature = createConfiguredFeature(name, targets, config);
         return PlacedFeatures.register(name, feature, modifiersWithCount(config.perChunk, HeightRangePlacementModifier.trapezoid(YOffset.fixed(config.bottom), YOffset.fixed(config.top))));
     }
 

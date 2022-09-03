@@ -4,7 +4,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -12,7 +12,6 @@ import net.minecraft.text.Text;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
-import nourl.mythicmetals.config.VariantConfig;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -25,7 +24,7 @@ public final class MythicCommands {
     private MythicCommands() {}
 
     public static void register() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) ->
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccessdedicated, environment) ->
             dispatcher.register(CommandManager.literal("mythicmetals")
                 .then(CommandManager.literal("range")
                     .then(CommandManager.argument("type", StringArgumentType.word())
@@ -39,7 +38,7 @@ public final class MythicCommands {
                                 case "console" -> {
                                     FieldIterator.iterateAccessibleFields(config, OreConfig.class, (feature, name) -> {
                                         if (feature.enabled && !feature.offset && !feature.trapezoid)
-                                            context.getSource().sendFeedback(Text.of(
+                                            context.getSource().sendFeedback(Text.literal(
                                                 name.toUpperCase(Locale.ROOT)
                                                     + " has the range between "
                                                     + feature.bottom
@@ -48,7 +47,7 @@ public final class MythicCommands {
                                                     + ", with a discard chance of "
                                                     + feature.discardChance * 100 + "%"), false);
                                         if (feature.enabled && feature.offset)
-                                            context.getSource().sendFeedback(Text.of(
+                                            context.getSource().sendFeedback(Text.literal(
                                                 name.toUpperCase(Locale.ROOT)
                                                     + " has the range between "
                                                     + feature.bottom
@@ -57,7 +56,7 @@ public final class MythicCommands {
                                                     + ", with a discard chance of "
                                                     + feature.discardChance * 100 + "%"), false);
                                         if (feature.enabled && feature.trapezoid)
-                                            context.getSource().sendFeedback(Text.of(
+                                            context.getSource().sendFeedback(Text.literal(
                                                 name.toUpperCase(Locale.ROOT)
                                                     + " has a triangle range between "
                                                     + feature.bottom
@@ -68,26 +67,7 @@ public final class MythicCommands {
                                                     + " with a discard chance of "
                                                     + feature.discardChance * 100 + "%"), false);
                                         if (!feature.enabled)
-                                            context.getSource().sendFeedback(Text.of("Ore" + name + "is disabled."), false);
-
-                                    });
-
-                                    FieldIterator.iterateAccessibleFields(config, VariantConfig.class, (feature, name) -> {
-                                        if (feature.enabled)
-                                            context.getSource().sendFeedback(Text.of(
-                                                name.toUpperCase(Locale.ROOT)
-                                                    + " has the range between "
-                                                    + feature.bottom
-                                                    + " to "
-                                                    + feature.top
-                                                    + ", while its variant has the range of "
-                                                    + feature.bottomVariant
-                                                    + " to "
-                                                    + feature.topVariant
-                                                    + ", with a discard chance of "
-                                                    + feature.discardChance * 100 + "%"), false);
-                                        else
-                                            context.getSource().sendFeedback(Text.of("Ore" + name + "is disabled."), false);
+                                            context.getSource().sendFeedback(Text.literal("Ore" + name + "is disabled."), false);
 
                                     });
                                     return 1;
@@ -105,22 +85,6 @@ public final class MythicCommands {
                                                 .append(feature.offset).append(",")
                                                 .append(feature.trapezoid).append("\n");
                                         }
-                                    });
-                                    FieldIterator.iterateAccessibleFields(config, VariantConfig.class, (feature, name) -> {
-                                        contents.append(name).append(",")
-                                            .append(feature.bottom).append(",")
-                                            .append(feature.top).append(",")
-                                            .append(feature.perChunk).append(",")
-                                            .append(feature.veinSize).append(",")
-                                            .append(feature.offset).append(",")
-                                            .append(feature.trapezoid).append("\n");
-                                        contents.append(name).append("Variant,")
-                                            .append(feature.bottomVariant).append(",")
-                                            .append(feature.topVariant).append(",")
-                                            .append(feature.perChunkVariant).append(",")
-                                            .append(feature.veinSizeVariant).append(",")
-                                            .append(feature.offset).append(",")
-                                            .append(feature.trapezoid).append("\n");
                                     });
                                     new OutputStreamWriter(file).write(contents.toString());
                                     return 1;
