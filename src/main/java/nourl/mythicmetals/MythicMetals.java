@@ -36,7 +36,7 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 6;
+    public static final int CONFIG_VERSION = 7;
 
     public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
 
@@ -73,10 +73,11 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterEntityAttributes.init();
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
         }
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
@@ -93,6 +94,10 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         }
         if (FabricLoader.getInstance().isModLoaded("jello")) {
             LOGGER.info("[Mythic Metals] Here comes the colors, weeeeeee!");
+        }
+        if (FabricLoader.getInstance().isModLoaded("terralith")) {
+            LOGGER.info("[Mythic Metals] Terralith detected. Please go over the config and disable Overworld Nether Ores");
+            LOGGER.info("[Mythic Metals] Many ores spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }

@@ -12,7 +12,6 @@ import net.minecraft.text.Text;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
-import nourl.mythicmetals.config.VariantConfig;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -71,25 +70,6 @@ public final class MythicCommands {
                                             context.getSource().sendFeedback(Text.literal("Ore" + name + "is disabled."), false);
 
                                     });
-
-                                    FieldIterator.iterateAccessibleFields(config, VariantConfig.class, (feature, name) -> {
-                                        if (feature.enabled)
-                                            context.getSource().sendFeedback(Text.literal(
-                                                name.toUpperCase(Locale.ROOT)
-                                                    + " has the range between "
-                                                    + feature.bottom
-                                                    + " to "
-                                                    + feature.top
-                                                    + ", while its variant has the range of "
-                                                    + feature.bottomVariant
-                                                    + " to "
-                                                    + feature.topVariant
-                                                    + ", with a discard chance of "
-                                                    + feature.discardChance * 100 + "%"), false);
-                                        else
-                                            context.getSource().sendFeedback(Text.literal("Ore" + name + "is disabled."), false);
-
-                                    });
                                     return 1;
                                 }
                                 case "file" -> {
@@ -105,22 +85,6 @@ public final class MythicCommands {
                                                 .append(feature.offset).append(",")
                                                 .append(feature.trapezoid).append("\n");
                                         }
-                                    });
-                                    FieldIterator.iterateAccessibleFields(config, VariantConfig.class, (feature, name) -> {
-                                        contents.append(name).append(",")
-                                            .append(feature.bottom).append(",")
-                                            .append(feature.top).append(",")
-                                            .append(feature.perChunk).append(",")
-                                            .append(feature.veinSize).append(",")
-                                            .append(feature.offset).append(",")
-                                            .append(feature.trapezoid).append("\n");
-                                        contents.append(name).append("Variant,")
-                                            .append(feature.bottomVariant).append(",")
-                                            .append(feature.topVariant).append(",")
-                                            .append(feature.perChunkVariant).append(",")
-                                            .append(feature.veinSizeVariant).append(",")
-                                            .append(feature.offset).append(",")
-                                            .append(feature.trapezoid).append("\n");
                                     });
                                     new OutputStreamWriter(file).write(contents.toString());
                                     return 1;
