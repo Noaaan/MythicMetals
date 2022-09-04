@@ -47,7 +47,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
         return Ingredient.ofItems(MythicItems.Ingots.KYBER_INGOT);
     }),
     LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.BANGLUM_CHUNK);
+        return Ingredient.ofItems(MythicItems.Ingots.BANGLUM_INGOT);
     }),
     METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.225F, () -> {
         return Ingredient.ofItems(MythicItems.Ingots.METALLURGIUM_INGOT);
