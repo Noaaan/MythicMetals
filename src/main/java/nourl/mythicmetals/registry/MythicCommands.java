@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.registry;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.config.OreConfig;
+import nourl.mythicmetals.utils.FieldIterator;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;

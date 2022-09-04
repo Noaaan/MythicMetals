@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.tools;
 
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
@@ -11,8 +11,6 @@ import net.minecraft.recipe.SmithingRecipe;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
-import nourl.mythicmetals.tools.MidasGoldSword;
-import nourl.mythicmetals.tools.MythicTools;
 
 public class SpecialSmithingRecipe extends SmithingRecipe {
     final Ingredient base;
