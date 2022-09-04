@@ -27,16 +27,26 @@ public class PiglinBrainMixin {
 
     private static final Identifier mythicmetals$BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");
 
-    @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
-    private static void mythicmetals$grabBarteredItem(PiglinEntity piglin, boolean barter, CallbackInfo ci) {
-        mythicmetals$cachedBarterItem = piglin.getOffHandStack();
-    }
-
     @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
             cir.setReturnValue(true);
         }
+    }
+
+    @Inject(method = "wearsGoldArmor", at = @At("HEAD"), cancellable = true)
+    private static void checkForMidasGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+        for(ItemStack itemStack : entity.getArmorItems()) {
+            Item item = itemStack.getItem();
+            if (item instanceof ArmorItem armorItem && armorItem.getMaterial() == MythicArmorMaterials.MIDAS_GOLD) {
+                cir.setReturnValue(true);
+            }
+        }
+    }
+
+    @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
+    private static void mythicmetals$grabBarteredItem(PiglinEntity piglin, boolean barter, CallbackInfo ci) {
+        mythicmetals$cachedBarterItem = piglin.getOffHandStack();
     }
 
     @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
@@ -45,16 +55,6 @@ public class PiglinBrainMixin {
             return piglin.world.getServer().getLootManager().getTable(mythicmetals$BETTER_PIGLIN_BARTERING);
         }
         return table;
-    }
-
-    @Inject(method = "wearsGoldArmor", at = @At("TAIL"), cancellable = true)
-    private static void checkForMidasGoldArmor(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
-        for(ItemStack itemStack : entity.getArmorItems()) {
-            Item item = itemStack.getItem();
-            if (item instanceof ArmorItem armorItem && armorItem.getMaterial() == MythicArmorMaterials.MIDAS_GOLD) {
-                cir.setReturnValue(true);
-            }
-        }
     }
 
 }
