@@ -1,4 +1,7 @@
 # 0.x.x  
+## Config changes
+Configuration has changed internally, and no longer uses Variant Configs.  
+Please delete or update your configuration file in order to prevent errors when updating!  
 
 ### Small Stormyx rework  
 Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
@@ -12,9 +15,29 @@ You can now make a Nuke Core out of Carmot.
 Instead of destroying all the blocks in its radius, it will exclude any ores in the blast radius.
 Thanks to BasiqueEvangelist for this feature!
 
+### Balancing changes  
+Platinum is now slightly less common in caves (discard chance up).  
+Slightly increased the spawn chance of Calcite Kyber.  
+Increased the durability of the following armor sets (largest to smallest increase):
+- Carmot
+- Steel
+- Kyber
+- Midas Gold
+- Mythril
+- Hallowed
+- Osmium
+
+Increased the durability of the following tools:  
+- Gilded Midas Gold Sword (800 -> 999)
+- Hallowed (1739 -> 1984)
+- Mythril (1445 -> 1564)
+
 ### Other Changes
 Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.  
 Added Smooth Stone to the Midas Gold Bartering loot table.  
+**Added a warning to logs whenever Terralith is installed.**  
+- Terralith uses a lot of stone variants in the overworld, like Calcite, which causes ores to spawn in unexpected places.
+- Keep this in mind whenever you are using both, as I have yet to create a custom ore configuration just for Terralith.
 
 # 0.15.4
 Restored Alloy Forgery recipes (will be available natively in AF next week).  
