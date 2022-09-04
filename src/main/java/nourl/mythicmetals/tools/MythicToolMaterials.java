@@ -9,7 +9,7 @@ import nourl.mythicmetals.item.MythicItems;
 
 import java.util.function.Supplier;
 
-public enum ToolMaterials implements ToolMaterial {
+public enum MythicToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> Ingredient.ofItems(MythicItems.Ingots.ADAMANTITE_INGOT)),
     AEGIS_RED(4, 2170, 8.0F, 6.0F, 25, () -> Ingredient.ofItems(MythicItems.Ingots.PALLADIUM_INGOT)),
     AEGIS_WHITE(4, 2070, 10.0F, 5.0F, 25, () -> Ingredient.ofItems(MythicItems.Ingots.HALLOWED_INGOT)),
@@ -44,7 +44,7 @@ public enum ToolMaterials implements ToolMaterial {
     private final int enchantability;
     private final Supplier<Ingredient> repairIngredient;
 
-    ToolMaterials(int miningLevel, int itemDurability, float miningSpeedMultiplier, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+    MythicToolMaterials(int miningLevel, int itemDurability, float miningSpeedMultiplier, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
         this.itemDurability = itemDurability;
         this.miningSpeedMultiplier = miningSpeedMultiplier;

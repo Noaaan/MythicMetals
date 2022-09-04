@@ -21,7 +21,7 @@ public class RuniteArmor extends HallowedArmor {
     public final EquipmentSlot slot;
 
     public RuniteArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.RUNITE, slot, settings);
+        this(MythicArmorMaterials.RUNITE, slot, settings);
     }
 
     public RuniteArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {

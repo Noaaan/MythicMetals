@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 @SuppressWarnings("ALL")
-public enum ArmorMaterials implements ArmorMaterial {
+public enum MythicArmorMaterials implements ArmorMaterial {
     ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.Ingots.ADAMANTITE_INGOT);
     }),
@@ -97,7 +97,7 @@ public enum ArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredientSupplier;
 
-    private ArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    private MythicArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.protectionAmounts = protectionAmounts;

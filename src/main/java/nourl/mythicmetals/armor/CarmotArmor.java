@@ -21,7 +21,7 @@ public class CarmotArmor extends HallowedArmor {
     public final EquipmentSlot slot;
 
     public CarmotArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.CARMOT, slot, settings);
+        this(MythicArmorMaterials.CARMOT, slot, settings);
     }
 
     public CarmotArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
