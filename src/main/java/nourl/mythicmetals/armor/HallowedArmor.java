@@ -22,7 +22,7 @@ public class HallowedArmor extends ArmorItem {
     public final EquipmentSlot slot;
 
     public HallowedArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.HALLOWED, slot, settings);
+        this(MythicArmorMaterials.HALLOWED, slot, settings);
     }
 
     public HallowedArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {

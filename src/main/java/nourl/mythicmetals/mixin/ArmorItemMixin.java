@@ -9,7 +9,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
-import nourl.mythicmetals.armor.ArmorMaterials;
+import nourl.mythicmetals.armor.MythicArmorMaterials;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -38,19 +38,19 @@ public abstract class ArmorItemMixin {
     private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
-        if (ArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
+        if (MythicArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "Knockback resistance", this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION);
         }
-        if (material == ArmorMaterials.CELESTIUM) {
+        if (material == MythicArmorMaterials.CELESTIUM) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
-        if (material == ArmorMaterials.MIDAS_GOLD) {
+        if (material == MythicArmorMaterials.MIDAS_GOLD) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0f, EntityAttributeModifier.Operation.ADDITION);
         }
-        if (material == ArmorMaterials.STAR_PLATINUM) {
+        if (material == MythicArmorMaterials.STAR_PLATINUM) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5f, EntityAttributeModifier.Operation.ADDITION);
         }
-        if (material == ArmorMaterials.CARMOT) {
+        if (material == MythicArmorMaterials.CARMOT) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0f, EntityAttributeModifier.Operation.ADDITION);
         }
     }

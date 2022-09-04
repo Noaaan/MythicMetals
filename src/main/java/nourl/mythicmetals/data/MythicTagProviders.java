@@ -1,4 +1,4 @@
-package nourl.mythicmetals.data.providers;
+package nourl.mythicmetals.data;
 
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;

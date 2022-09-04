@@ -21,7 +21,7 @@ public class MetallurgiumArmor extends HallowedArmor {
     public final EquipmentSlot slot;
 
     public MetallurgiumArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.METALLURGIUM, slot, settings);
+        this(MythicArmorMaterials.METALLURGIUM, slot, settings);
     }
 
     public MetallurgiumArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {

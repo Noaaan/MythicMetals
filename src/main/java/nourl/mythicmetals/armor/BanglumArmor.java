@@ -21,7 +21,7 @@ public class BanglumArmor extends HallowedArmor {
     public final EquipmentSlot slot;
 
     public BanglumArmor(EquipmentSlot slot, Settings settings) {
-        this(ArmorMaterials.LEGENDARY_BANGLUM, slot, settings);
+        this(MythicArmorMaterials.LEGENDARY_BANGLUM, slot, settings);
     }
 
     public BanglumArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
