@@ -5,7 +5,7 @@ Please delete or update your configuration file in order to prevent errors when 
 
 ### Small Stormyx rework  
 Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
-It can be crafted into a Stormyx Shield. A much more durable shield which protects you slightly against Magic damage.  
+It can be crafted into a **Stormyx Shield**. A much more durable shield which protects you slightly against Magic damage.  
 
 ### Added Star Platinum Arrows  
 These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
@@ -18,6 +18,7 @@ Thanks to BasiqueEvangelist for this feature!
 ### Balancing changes  
 Platinum is now slightly less common in caves (discard chance up).  
 Slightly increased the spawn chance of Calcite Kyber.  
+Legendary Banglum Armor is now repaired with ingots instead of chunks.  
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
 - Steel
