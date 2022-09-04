@@ -25,9 +25,9 @@ import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.utils.MythicCommands;
+import nourl.mythicmetals.registry.MythicCommands;
 import nourl.mythicmetals.utils.MythicParticleSystem;
-import nourl.mythicmetals.utils.MythicResourceConditions;
+import nourl.mythicmetals.registry.RegisterResourceConditions;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -68,7 +68,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
-        MythicResourceConditions.init();
+        RegisterResourceConditions.init();
         RegisterRecipeSerializers.init();
         RegisterEntityAttributes.init();
 

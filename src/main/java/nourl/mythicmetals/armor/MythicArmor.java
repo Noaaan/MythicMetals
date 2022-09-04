@@ -26,7 +26,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet OSMIUM = new ArmorSet(ArmorMaterials.OSMIUM);
     public static final ArmorSet PALLADIUM = new ArmorSet(ArmorMaterials.PALLADIUM, Item.Settings::fireproof);
     public static final ArmorSet PROMETHEUM = new ArmorSet(ArmorMaterials.PROMETHEUM);
-    public static final ArmorSet RUNITE = new ArmorSet(ArmorMaterials.RUNITE);
+    public static final ArmorSet RUNITE = new RuniteArmorSet(ArmorMaterials.RUNITE);
     public static final ArmorSet SILVER = new ArmorSet(ArmorMaterials.SILVER);
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(ArmorMaterials.STAR_PLATINUM);
     public static final ArmorSet STEEL = new ArmorSet(ArmorMaterials.STEEL);

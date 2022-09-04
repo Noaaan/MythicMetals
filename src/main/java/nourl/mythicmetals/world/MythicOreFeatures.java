@@ -19,7 +19,6 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.utils.OreFeatureHelper;
 
 @SuppressWarnings("ALL")
 public class MythicOreFeatures {
