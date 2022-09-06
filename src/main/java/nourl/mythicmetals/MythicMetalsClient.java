@@ -83,7 +83,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
                 (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1
-                        && !MythicMetals.CONFIG.disableFunny) ? 1 : 0);
+                        && !MythicMetals.CONFIG.disableFunny()) ? 1 : 0);
     }
 
 }

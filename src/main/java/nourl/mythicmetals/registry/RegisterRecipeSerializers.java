@@ -1,8 +1,8 @@
 package nourl.mythicmetals.registry;
 
 import net.minecraft.util.registry.Registry;
-import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.tools.SpecialSmithingRecipe;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterRecipeSerializers {
 

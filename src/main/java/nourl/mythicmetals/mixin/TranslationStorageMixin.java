@@ -25,7 +25,7 @@ public class TranslationStorageMixin {
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addTranslations(Map<String, String> translations, boolean rightToLeft, CallbackInfo ci) {
         if(Calendar.getInstance().get(Calendar.MONTH) != Calendar.APRIL) return;
-        if(MythicMetals.CONFIG.disableFunny) return;
+        if(MythicMetals.CONFIG.disableFunny()) return;
 
         var builder = new HashMap<>(translations);
         builder.put("item.mythicmetals.adamantite_ingot", "Suspicious Ingot");

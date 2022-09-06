@@ -15,15 +15,14 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.config.MythicConfig;
 import nourl.mythicmetals.data.MythicTags;
+
+import static nourl.mythicmetals.MythicMetals.CONFIG;
 
 @SuppressWarnings("ALL")
 public class MythicOreFeatures {
     // Defines the config that applies to the ore features
-    public static final MythicConfig CONFIG = MythicMetals.CONFIG;
 
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in
     public static final RuleTest BLACKSTONE_RULE = new BlockMatchRuleTest(Blocks.BLACKSTONE);
@@ -63,9 +62,9 @@ public class MythicOreFeatures {
 
     // Ores below zero - Reaches Deep Dark
     public static RegistryEntry<PlacedFeature> ORE_ADAMANTITE = OreFeatureHelper.create("ore_adamantite", ADAMANTITE_TARGETS, CONFIG.adamantite);
-    public static RegistryEntry<PlacedFeature> ORE_CALCITE_KYBER = OreFeatureHelper.create("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.calcite_kyber);
+    public static RegistryEntry<PlacedFeature> ORE_CALCITE_KYBER = OreFeatureHelper.create("ore_calcite_kyber", CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), CONFIG.calciteKyber);
     public static RegistryEntry<PlacedFeature> ORE_CARMOT = OreFeatureHelper.create("ore_carmot", CARMOT_TARGETS, CONFIG.carmot);
-    public static RegistryEntry<PlacedFeature> ORE_DEEPSLATE_RUNITE = OreFeatureHelper.create("ore_deepslate_runite", RUNITE_TARGETS, CONFIG.deepslate_runite);
+    public static RegistryEntry<PlacedFeature> ORE_DEEPSLATE_RUNITE = OreFeatureHelper.create("ore_deepslate_runite", RUNITE_TARGETS, CONFIG.deepslateRunite);
     public static RegistryEntry<PlacedFeature> ORE_MORKITE = OreFeatureHelper.create("ore_morkite", MORKITE_TARGETS, CONFIG.morkite);
     public static RegistryEntry<PlacedFeature> ORE_MYTHRIL = OreFeatureHelper.create("ore_mythril", MYTHRIL_TARGETS, CONFIG.mythril);
     public static RegistryEntry<PlacedFeature> ORE_ORICHALCUM = OreFeatureHelper.create("ore_orichalcum", ORICHALCUM_TARGETS, CONFIG.orichalcum);
@@ -74,14 +73,14 @@ public class MythicOreFeatures {
     public static RegistryEntry<PlacedFeature> ORE_UNOBTAINIUM = OreFeatureHelper.create("ore_unobtainium", UNOBTAINIUM_TARGETS, CONFIG.unobtainium);
 
     // Nether Ores
-    public static RegistryEntry<PlacedFeature> ORE_NETHER_BANGLUM = OreFeatureHelper.create("ore_nether_banglum", NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), CONFIG.nether_banglum);
-    public static RegistryEntry<PlacedFeature> ORE_MIDAS_GOLD = OreFeatureHelper.create("ore_midas_gold", NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), CONFIG.midas_gold);
+    public static RegistryEntry<PlacedFeature> ORE_NETHER_BANGLUM = OreFeatureHelper.create("ore_nether_banglum", NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), CONFIG.netherBanglum);
+    public static RegistryEntry<PlacedFeature> ORE_MIDAS_GOLD = OreFeatureHelper.create("ore_midas_gold", NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), CONFIG.midasGold);
     public static RegistryEntry<PlacedFeature> ORE_PALLADIUM = OreFeatureHelper.create("ore_palladium", NETHERRACK_RULE, MythicBlocks.PALLADIUM.getOre(), CONFIG.palladium);
     public static RegistryEntry<PlacedFeature> ORE_STORMYX = OreFeatureHelper.create("ore_stormyx", STORMYX_TARGETS, CONFIG.stormyx);
-    public static RegistryEntry<PlacedFeature> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.create("ore_overworld_nether", OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworld_nether_ores);
+    public static RegistryEntry<PlacedFeature> ORE_OVERWORLD_NETHER_ORES = OreFeatureHelper.create("ore_overworld_nether", OVERWORLD_NETHER_ORE_TARGETS, CONFIG.overworldNetherOres);
 
     // End Ores
-    public static RegistryEntry<PlacedFeature> ORE_END_STARRITE = OreFeatureHelper.create("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.end_starrite);
+    public static RegistryEntry<PlacedFeature> ORE_END_STARRITE = OreFeatureHelper.create("ore_end_starrite", END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), CONFIG.endStarrite);
 
     // RegistryKeys for features
     public static final RegistryKey<PlacedFeature> ADAMANTITE = ORE_ADAMANTITE.getKey().get();
@@ -114,80 +113,80 @@ public class MythicOreFeatures {
     public static void init() {
 
         //Overworld Ores
-        if (CONFIG.adamantite.enabled) {
+        if (CONFIG.adamantite.enabled()) {
             OreFeatureHelper.ore(ADAMANTITE);
         }
-        if (CONFIG.banglum.enabled) {
+        if (CONFIG.banglum.enabled()) {
             OreFeatureHelper.ore(BANGLUM);
         }
-        if (CONFIG.carmot.enabled) {
+        if (CONFIG.carmot.enabled()) {
             OreFeatureHelper.ore(CARMOT);
         }
-        if (CONFIG.kyber.enabled) {
+        if (CONFIG.kyber.enabled()) {
             OreFeatureHelper.ore(KYBER);
             OreFeatureHelper.ore(CALCITE_KYBER);
         }
-        if (CONFIG.mythril.enabled) {
+        if (CONFIG.mythril.enabled()) {
             OreFeatureHelper.ore(MYTHRIL);
         }
-        if (CONFIG.orichalcum.enabled) {
+        if (CONFIG.orichalcum.enabled()) {
             OreFeatureHelper.ore(ORICHALCUM);
         }
-        if (CONFIG.manganese.enabled) {
+        if (CONFIG.manganese.enabled()) {
             OreFeatureHelper.ore(MANGANESE);
         }
-        if (CONFIG.overworld_nether_ores.enabled) {
+        if (CONFIG.overworldNetherOres.enabled()) {
             OreFeatureHelper.ore(OVERWORLD_NETHER_ORES);
         }
-        if (CONFIG.platinum.enabled) {
+        if (CONFIG.platinum.enabled()) {
             OreFeatureHelper.ore(PLATINUM);
         }
-        if (CONFIG.quadrillum.enabled) {
+        if (CONFIG.quadrillum.enabled()) {
             OreFeatureHelper.ore(QUADRILLUM);
         }
-        if (CONFIG.runite.enabled) {
+        if (CONFIG.runite.enabled()) {
             OreFeatureHelper.ore(RUNITE);
             OreFeatureHelper.ore(DEEPSLATE_RUNITE);
         }
-        if (CONFIG.silver.enabled) {
+        if (CONFIG.silver.enabled()) {
             OreFeatureHelper.ore(SILVER);
         }
-        if (CONFIG.starrite.enabled) {
+        if (CONFIG.starrite.enabled()) {
             OreFeatureHelper.ore(STARRITE);
         }
-        if (CONFIG.end_starrite.enabled) {
-            OreFeatureHelper.ore(END_STARRITE);
+        if (CONFIG.endStarrite.enabled()) {
+            OreFeatureHelper.endOre(END_STARRITE);
         }
-        if (CONFIG.tin.enabled) {
+        if (CONFIG.tin.enabled()) {
             OreFeatureHelper.ore(TIN);
         }
-        if (CONFIG.unobtainium.enabled) {
+        if (CONFIG.unobtainium.enabled()) {
             OreFeatureHelper.ore(UNOBTAINIUM);
         }
-        if (CONFIG.morkite.enabled) {
+        if (CONFIG.morkite.enabled()) {
             OreFeatureHelper.ore(MORKITE);
         }
 
         //Nether Ores
-        if (CONFIG.banglum.enabled) {
+        if (CONFIG.banglum.enabled()) {
             OreFeatureHelper.netherOre(NETHER_BANGLUM);
         }
-        if (CONFIG.midas_gold.enabled) {
+        if (CONFIG.midasGold.enabled()) {
             OreFeatureHelper.netherOre(MIDAS_GOLD);
         }
-        if (CONFIG.stormyx.enabled) {
+        if (CONFIG.stormyx.enabled()) {
             OreFeatureHelper.netherOre(STORMYX);
         }
-        if (CONFIG.palladium.enabled) {
+        if (CONFIG.palladium.enabled()) {
             OreFeatureHelper.netherOre(PALLADIUM);
         }
 
         // Add Aquarium to Aquatic Biomes
-        if (CONFIG.aquarium.enabled) {
+        if (CONFIG.aquarium.enabled()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.AQUATIC), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
         }
         // Add Prometheum to hot biomes
-        if (CONFIG.prometheum.enabled) {
+        if (CONFIG.prometheum.enabled()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.HUMID_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
             OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
@@ -195,7 +194,7 @@ public class MythicOreFeatures {
             OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
         }
         // Add Osmium to mountainous biomes
-        if (CONFIG.osmium.enabled) {
+        if (CONFIG.osmium.enabled()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.MOUNTAIN), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
             BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_HILL), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
 

@@ -10,7 +10,7 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.config.MythicMetalsConfig;
 import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.utils.FieldIterator;
 
@@ -32,7 +32,7 @@ public final class MythicCommands {
                         .suggests(MythicCommands::dumpType)
                         .requires(source -> source.hasPermissionLevel(1))
                         .executes(context -> {
-                            MythicConfig config = MythicMetals.CONFIG;
+                            MythicMetalsConfig config = MythicMetals.CONFIG;
                             if (config == null)
                                 return 1;
                             switch (StringArgumentType.getString(context, "type")) {

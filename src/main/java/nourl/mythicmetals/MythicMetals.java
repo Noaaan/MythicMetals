@@ -7,8 +7,6 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -17,17 +15,12 @@ import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.config.MythicMetalsConfig;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.registry.RegisterEntities;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
-import nourl.mythicmetals.registry.RegisterRecipeSerializers;
-import nourl.mythicmetals.registry.RegisterSounds;
+import nourl.mythicmetals.registry.*;
 import nourl.mythicmetals.tools.MythicTools;
-import nourl.mythicmetals.registry.MythicCommands;
 import nourl.mythicmetals.utils.MythicParticleSystem;
-import nourl.mythicmetals.registry.RegisterResourceConditions;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -38,7 +31,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static final String MOD_ID = "mythicmetals";
     public static final int CONFIG_VERSION = 7;
 
-    public static MythicConfig CONFIG = AutoConfig.register(MythicConfig.class, GsonConfigSerializer::new).getConfig();
+    public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
     public static final OwoItemGroup TABBED_GROUP = new MythicItemGroups(RegistryHelper.id("main"));
 
@@ -49,10 +42,10 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterSounds.register();
         FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
         FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
-        if (CONFIG.enableNuggets) {
+        if (CONFIG.enableNuggets()) {
             FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
         }
-        if (CONFIG.enableDusts) {
+        if (CONFIG.enableDusts()) {
             FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
         }
         FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
@@ -72,7 +65,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterRecipeSerializers.init();
         RegisterEntityAttributes.init();
 
-        if (CONFIG.configVersion < CONFIG_VERSION) {
+        if (CONFIG.configVersion() < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");

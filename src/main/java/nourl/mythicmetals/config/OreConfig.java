@@ -1,29 +1,31 @@
 package nourl.mythicmetals.config;
 
-import me.shedaniel.autoconfig.annotation.ConfigEntry;
+
+import io.wispforest.owo.config.annotation.RangeConstraint;
+import io.wispforest.owo.config.annotation.RestartRequired;
 
 /**
  * A config constructor that lets you quickly create all the settings used
  * for a ore in the {@link nourl.mythicmetals.world.MythicOreFeatures} class.
  */
 public class OreConfig {
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public boolean enabled;
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-    @ConfigEntry.Gui.RequiresRestart
+    @RangeConstraint(min = 1, max = 64)
+    @RestartRequired
     public int veinSize;
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 64)
-    @ConfigEntry.Gui.RequiresRestart
+    @RangeConstraint(min = 1, max = 64)
+    @RestartRequired
     public int perChunk;
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public int bottom;
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public int top;
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public float discardChance;
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public boolean offset;
-    @ConfigEntry.Gui.RequiresRestart
+    @RestartRequired
     public boolean trapezoid;
 
     /**

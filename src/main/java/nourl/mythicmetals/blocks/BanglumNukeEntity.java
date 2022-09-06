@@ -71,7 +71,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
     @Override
     protected void explode() {
-        int radius = MythicMetals.CONFIG.banglumNukeCoreRadius;
+        int radius = MythicMetals.CONFIG.banglumNukeCoreRadius();
 
         Predicate<BlockState> statePredicate;
 

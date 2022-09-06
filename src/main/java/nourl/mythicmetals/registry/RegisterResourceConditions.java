@@ -16,7 +16,7 @@ public class RegisterResourceConditions {
     private static final Identifier NUGGETS_LOADED = RegistryHelper.id("nuggets_enabled");
 
     public static void init() {
-        ResourceConditions.register(ANVILS_LOADED, object -> MythicMetals.CONFIG.enableAnvils);
-        ResourceConditions.register(NUGGETS_LOADED, object -> MythicMetals.CONFIG.enableNuggets);
+        ResourceConditions.register(ANVILS_LOADED, object -> MythicMetals.CONFIG.enableAnvils());
+        ResourceConditions.register(NUGGETS_LOADED, object -> MythicMetals.CONFIG.enableNuggets());
     }
 }

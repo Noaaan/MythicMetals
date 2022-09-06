@@ -96,7 +96,7 @@ public class BlockSet {
 
         }
         // Inject all the mining levels into their tags.
-        if (MythicMetals.CONFIG.enableAnvils) {
+        if (MythicMetals.CONFIG.enableAnvils()) {
             anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("anvils"), anvilBlock)));
             anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, level, anvilBlock)));
         }
@@ -576,7 +576,7 @@ public class BlockSet {
          * @param miningLevel Mining level of the anvil.
          */
         public Builder createAnvil(Identifier miningLevel) {
-            if (MythicMetals.CONFIG.enableAnvils) {
+            if (MythicMetals.CONFIG.enableAnvils()) {
                 final var settings = blockSettings(Material.REPAIR_STATION, 5.0f, 15000f, BlockSoundGroup.ANVIL);
                 settingsProcessor.accept(settings);
                 this.anvil = new AnvilBlock(settings);

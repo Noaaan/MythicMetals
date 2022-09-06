@@ -200,7 +200,7 @@ public class CarmotStaff extends ToolItem {
         // Command Block - Set yourself to Creative Mode
         if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK)) {
 
-            if (!MythicMetals.CONFIG.disableFunny) {
+            if (!MythicMetals.CONFIG.disableFunny()) {
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
             } else {

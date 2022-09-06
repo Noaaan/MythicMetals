@@ -116,7 +116,7 @@ public class MythicItems implements ItemRegistryContainer {
 
         @Override
         public boolean shouldProcessField(Item value, String identifier, Field field) {
-            return MythicMetals.CONFIG.enableNuggets;
+            return MythicMetals.CONFIG.enableNuggets();
         }
     }
 
@@ -151,7 +151,7 @@ public class MythicItems implements ItemRegistryContainer {
 
         @Override
         public boolean shouldProcessField(Item value, String identifier, Field field) {
-            return MythicMetals.CONFIG.enableDusts;
+            return MythicMetals.CONFIG.enableDusts();
         }
     }
 
