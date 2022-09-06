@@ -19,7 +19,7 @@ public class MythicBlocks {
     private static final Identifier MYTHIC_MINING_LEVEL = new Identifier("fabric:needs_tool_level_5");
 
     public static final BlockSet ADAMANTITE = BlockSet.Builder.begin("adamantite", false)
-            .createDefaultSet(4, DIAMOND_MINING_LEVEL, NETHERITE_MINING_LEVEL)
+            .createDefaultSet(4, DIAMOND_MINING_LEVEL, DIAMOND_MINING_LEVEL)
             .strength(6, 12).sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
             .finish();
@@ -33,7 +33,7 @@ public class MythicBlocks {
             .strength(5.0F, 5.5F)
             .createBanglumOre(IRON_MINING_LEVEL)
             .createOreStorageBlock(IRON_MINING_LEVEL)
-            .createStorageBlock(DIAMOND_MINING_LEVEL)
+            .createStorageBlock(IRON_MINING_LEVEL)
             .createAnvil(IRON_MINING_LEVEL)
             .sounds(BlockSoundGroup.NETHER_ORE)
             .createBanglumOreVariant("nether", IRON_MINING_LEVEL)
@@ -46,7 +46,7 @@ public class MythicBlocks {
             .createAnvilSet(5, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet CARMOT = BlockSet.Builder.begin("carmot", false)
-            .createDefaultSet(5.5F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
+            .createDefaultSet(5.5F, IRON_MINING_LEVEL, IRON_MINING_LEVEL)
             .strength(6.5F, 12).sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
             .finish();
@@ -63,7 +63,7 @@ public class MythicBlocks {
             .createAnvilSet(5F, NETHERITE_MINING_LEVEL).finish();
 
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
-            .createDefaultSet(3.0F, IRON_MINING_LEVEL, 4.0F, DIAMOND_MINING_LEVEL)
+            .createDefaultSet(3.0F, IRON_MINING_LEVEL, 4.0F, IRON_MINING_LEVEL)
             .createAnvil(IRON_MINING_LEVEL)
             .strength(3.0F, 3.0F)
             .sounds(BlockSoundGroup.CALCITE)
@@ -98,13 +98,13 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)
-            .createDefaultSet(5F, DIAMOND_MINING_LEVEL, NETHERITE_MINING_LEVEL)
+            .createDefaultSet(5F, DIAMOND_MINING_LEVEL, DIAMOND_MINING_LEVEL)
             .strength(5.5F).sounds(BlockSoundGroup.DEEPSLATE)
             .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
             .finish();
 
     public static final BlockSet ORICHALCUM = BlockSet.Builder.begin("orichalcum", false)
-            .createDefaultSet(5.5F, DIAMOND_MINING_LEVEL, NETHERITE_MINING_LEVEL)
+            .createDefaultSet(5.5F, DIAMOND_MINING_LEVEL, DIAMOND_MINING_LEVEL)
             .sounds(BlockSoundGroup.TUFF)
             .createOreVariant("tuff", DIAMOND_MINING_LEVEL)
             .sounds(BlockSoundGroup.BASALT)
@@ -114,19 +114,19 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet OSMIUM = BlockSet.Builder.begin("osmium", false)
-            .createDefaultSet(4.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
+            .createDefaultSet(4.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet PALLADIUM = BlockSet.Builder.begin("palladium", true)
             .strength(5.0F).sounds(BlockSoundGroup.NETHER_ORE)
             .createOre(DIAMOND_MINING_LEVEL)
             .strength(6.0F).sounds(BlockSoundGroup.METAL)
             .createOreStorageBlock(DIAMOND_MINING_LEVEL)
-            .createStorageBlock(Material.METAL, NETHERITE_MINING_LEVEL)
+            .createStorageBlock(Material.METAL, DIAMOND_MINING_LEVEL)
             .createAnvil(DIAMOND_MINING_LEVEL)
             .finish();
 
     public static final BlockSet PLATINUM = BlockSet.Builder.begin("platinum", false)
-            .createDefaultSet(3.5F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
+            .createDefaultSet(3.5F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet PROMETHEUM = BlockSet.Builder.begin("prometheum", false)
             .createDefaultSet(5.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
@@ -135,10 +135,10 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
-            .createDefaultSet(5.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL).finish();
+            .createDefaultSet(5.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
-            .createDefaultSet(8.0F, IRON_MINING_LEVEL, DIAMOND_MINING_LEVEL)
+            .createDefaultSet(8.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL)
             .createOreVariant("deepslate", IRON_MINING_LEVEL)
             .finish();
 
@@ -166,10 +166,10 @@ public class MythicBlocks {
             .sounds(BlockSoundGroup.GILDED_BLACKSTONE)
             .createOreVariant("blackstone", IRON_MINING_LEVEL)
             .strength(6.0F)
-            .createOreStorageBlock(DIAMOND_MINING_LEVEL)
+            .createOreStorageBlock(IRON_MINING_LEVEL)
             .sounds(BlockSoundGroup.METAL)
-            .createStorageBlock(Material.METAL, DIAMOND_MINING_LEVEL)
-            .createAnvil(DIAMOND_MINING_LEVEL)
+            .createStorageBlock(Material.METAL, IRON_MINING_LEVEL)
+            .createAnvil(IRON_MINING_LEVEL)
             .finish();
 
     public static final BlockSet TIN = BlockSet.Builder.begin("tin", false)
