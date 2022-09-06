@@ -91,6 +91,16 @@ public abstract class LivingEntityMixin extends Entity {
                 .add(RegisterEntityAttributes.MAGIC_PROTECTION);
     }
 
+    private void mythicmetals$prometheumRepairPassive() {
+        var heldItem = getMainHandStack();
+        if (heldItem.isIn(MythicTags.PROMETHEUM_TOOLS)) {
+            var dmg = heldItem.getDamage();
+            var rng = r.nextInt(200);
+            if (rng == 117)
+                heldItem.setDamage(dmg - 1);
+        }
+    }
+
     @SuppressWarnings("ConstantConditions")
     @ModifyArg(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
     private int mythicmetals$doubleXp(int value) {
@@ -114,7 +124,6 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void mythicmetals$addArmorEffects() {
-
         for (ItemStack armorItems : getArmorItems()) {
             if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
 
@@ -126,7 +135,8 @@ public abstract class LivingEntityMixin extends Entity {
                 mythicmetals$carmotParticle();
             }
 
-            if (armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
+            if (!world.isClient && armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
+                // Repair Prometheum Armor server-side
                 var dmg = armorItems.getDamage();
                 var rng = r.nextInt(200);
                 if (rng == 117)
@@ -134,9 +144,15 @@ public abstract class LivingEntityMixin extends Entity {
             }
 
             if (MythicArmor.COPPER.isInArmorSet(armorItems) && world.isThundering()) {
+                Vec3d playerPos = this.getPos();
+                boolean isConductive = playerPos.y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
+                int rng = r.nextInt(60000);
+
+                // Display particles on client
                 mythicmetals$copperParticle();
-                int i = r.nextInt(500000);
-                if (i == 666 & mythicmetals$copperParticle()) {
+
+                // Randomly strike the player with lightning when conductive
+                if (rng == 666 & isConductive) {
                     LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(world);
                     if (lightningEntity != null) {
                         lightningEntity.copyPositionAndRotation(this);
@@ -157,7 +173,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     private void mythicmetals$carmotParticle() {
         if (!world.isClient) return;
-
         Vec3d velocity = this.getVelocity();
 
         // Add particles around the entity when standing still
@@ -170,25 +185,9 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    private boolean mythicmetals$copperParticle() {
-        Vec3d playerPos = this.getPos();
-
-        boolean isConductive = this.getPos().y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
-
-        if (r.nextInt(40) < 1 && isConductive) {
+    private void mythicmetals$copperParticle() {
+        if (world.isClient && r.nextInt(40) < 1) {
             MythicParticleSystem.COPPER_SPARK.spawn(world, this.getPos().add(0, 1, 0));
-            return true;
-        }
-        return isConductive;
-    }
-
-    private void mythicmetals$prometheumRepairPassive() {
-        var heldItem = getMainHandStack();
-        if (heldItem.isIn(MythicTags.PROMETHEUM_TOOLS)) {
-            var dmg = heldItem.getDamage();
-            var rng = r.nextInt(200);
-            if (rng == 117)
-                heldItem.setDamage(dmg - 1);
         }
     }
 
