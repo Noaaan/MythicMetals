@@ -19,6 +19,7 @@ Thanks to BasiqueEvangelist for this feature!
 Platinum is now slightly less common in caves (discard chance up).  
 Slightly increased the spawn chance of Calcite Kyber.  
 Legendary Banglum Armor is now repaired with ingots instead of chunks.  
+Copper Armor is now more conductible. Please be careful in thunderstorms.  
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
 - Steel
@@ -36,6 +37,8 @@ Increased the durability of the following tools:
 ### Other Changes
 Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.  
 Added Smooth Stone to the Midas Gold Bartering loot table.  
+Improved the textures of Runite armor.  
+Prometheum no longer repairs itself on client, preventing innacurate durability bars.  
 **Added a warning to logs whenever Terralith is installed.**  
 - Terralith uses a lot of stone variants in the overworld, like Calcite, which causes ores to spawn in unexpected places.
 - Keep this in mind whenever you are using both, as I have yet to create a custom ore configuration just for Terralith.
