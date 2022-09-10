@@ -29,9 +29,6 @@
     "rei_client": [
       "nourl.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
-    "modmenu": [
-      "nourl.mythicmetals.compat.MythicMetalsModMenu"
-    ],
     "cardinal-components-entity": [
       "nourl.mythicmetals.MythicMetals"
     ]
@@ -41,12 +38,11 @@
   ],
   "depends": {
     "fabricloader": ">=0.14.0",
-    "alloy_forgery": ">=2.0.14",
+    "alloy_forgery": ">=2.0.16",
     "fabric": ">=0.57.0",
     "minecraft": "1.19.x",
-    "cloth-config2": ">=7.0.0",
     "java": ">=17",
-    "owo": ">=0.7.3",
+    "owo": ">=0.8.1",
     "cardinal-components-entity": "*"
   },
   "custom": {
