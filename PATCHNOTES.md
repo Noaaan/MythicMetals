@@ -18,7 +18,10 @@ You can now make a Nuke Core out of Carmot.
 Instead of destroying all the blocks in its radius, it will exclude any ores in the blast radius.
 Thanks to BasiqueEvangelist for this feature!
 
-### Balancing changes  
+### Orichalcum Hammer
+A simple but strong mining tool, which allows you to mine blocks in a 3x3x2 area.
+
+### Balancing Changes  
 Platinum is now slightly less common in caves (discard chance up).  
 Slightly increased the spawn chance of Calcite Kyber.  
 Legendary Banglum Armor is now repaired with ingots instead of chunks.  
