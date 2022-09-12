@@ -24,6 +24,7 @@ Slightly increased the spawn chance of Calcite Kyber.
 Legendary Banglum Armor is now repaired with ingots instead of chunks.  
 Copper Armor is now more conductible. Please be careful in thunderstorms.  
 Reduced the mining level required for most storage blocks.  
+Re-added Carmot to the alt recipe of Celestium Ingots.  
 
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
