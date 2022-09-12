@@ -4,6 +4,7 @@
   "package": "nourl.mythicmetals.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractBlockStateMixin",
     "AccessorEntityModelLayers",
     "AnvilScreenHandlerMixin",
     "ApplyBonusLootFunctionMixin",

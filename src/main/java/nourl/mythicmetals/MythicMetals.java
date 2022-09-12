@@ -25,6 +25,7 @@ import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.utils.BlockBreaker;
 import nourl.mythicmetals.registry.MythicCommands;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import nourl.mythicmetals.registry.RegisterResourceConditions;
@@ -71,6 +72,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterResourceConditions.init();
         RegisterRecipeSerializers.init();
         RegisterEntityAttributes.init();
+        BlockBreaker.initHammerTime();
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
