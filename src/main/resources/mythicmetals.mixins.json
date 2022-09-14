@@ -25,7 +25,8 @@
   ],
   "client": [
     "CapeFeatureRendererMixin",
-    "ElytraFeatureRendererMixin"
+    "ElytraFeatureRendererMixin",
+    "WorldRendererInvoker"
   ],
   "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {

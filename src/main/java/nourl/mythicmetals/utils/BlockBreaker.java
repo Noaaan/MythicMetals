@@ -72,7 +72,8 @@ public class BlockBreaker {
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
             var stack = player.getMainHandStack();
 
-            if (!(stack.getItem() instanceof HammerBase hammer)) return true;
+            if (!(stack.getItem() instanceof HammerBase hammer)) return true; // dont do this for non-hammers
+            if (!hammer.isSuitableFor(state)) return true; // dont break anything extra if you are not mining rocks or stones
             var reach = BlockBreaker.getReachDistance(player);
 
             BlockHitResult blockHitResult = (BlockHitResult) player.raycast(reach, 1, false);

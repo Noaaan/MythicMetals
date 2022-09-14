@@ -3,18 +3,26 @@ package nourl.mythicmetals;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
+import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.models.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.models.MythicModelHandler;
 import nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer;
@@ -22,10 +30,13 @@ import nourl.mythicmetals.models.StarPlatinumArrowEntityRenderer;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
+import nourl.mythicmetals.tools.HammerBase;
 import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.utils.BlockBreaker;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.utils.ShieldUsePredicate;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MythicMetalsClient implements ClientModInitializer {
@@ -47,12 +58,75 @@ public class MythicMetalsClient implements ClientModInitializer {
                             entityRendererFactoryCtx.getModelLoader()));
         });
 
+        renderHammerOutline();
+
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
         EntityRendererRegistry.register(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
+    }
+
+    /**
+     * Renders the outline of a {@link HammerBase hammer item.}
+     */
+    private void renderHammerOutline() {
+        WorldRenderEvents.BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
+            if (!blockOutlineContext.entity().isPlayer()) return true;
+            var player = (PlayerEntity) blockOutlineContext.entity();
+
+            // Only render the outline if you are hovering over something the hammer can break
+            if (player.getMainHandStack().getItem() instanceof HammerBase hammer
+                    && !blockOutlineContext.blockState().isAir()
+                    && hammer.isSuitableFor(blockOutlineContext.blockState())) {
+
+                var reach = BlockBreaker.getReachDistance(player);
+                BlockHitResult blockHitResult = (BlockHitResult) player.raycast(reach, 1, false);
+
+                var facing = blockHitResult.getSide().getOpposite();
+                var blocks = BlockBreaker.findBlocks(facing, blockOutlineContext.blockPos(), hammer.getDepth());
+                var originalPos = blockOutlineContext.blockPos();
+
+                // Create VoxelShapes out of the block positions and put them in a list
+                var voxels = new ArrayList<VoxelShape>();
+
+                for (BlockPos blockPos : blocks) {
+                    if (!player.world.getBlockState(blockPos).isAir()) {
+                        var blockState = player.world.getBlockState(blockPos);
+                        voxels.add(blockState.getOutlineShape(
+                                        worldRenderContext.world(),
+                                        blockPos,
+                                        ShapeContext.of(blockOutlineContext.entity())
+                                ).offset(blockPos.getX() - originalPos.getX(),
+                                        blockPos.getY() - originalPos.getY(),
+                                        blockPos.getZ() - originalPos.getZ())
+                        );
+                    }
+                }
+
+                // Combine and render the full shape
+                var outlineOptional = voxels.stream().reduce(VoxelShapes::union);
+                if (outlineOptional.isEmpty()) return true;
+
+                var outlineShape = outlineOptional.get();
+
+                WorldRendererInvoker.mythicmetals$drawShapeOutline(
+                        worldRenderContext.matrixStack(),
+                        worldRenderContext.consumers().getBuffer(RenderLayer.getLines()),
+                        outlineShape,
+                        originalPos.getX() - blockOutlineContext.cameraX(),
+                        originalPos.getY() - blockOutlineContext.cameraY(),
+                        originalPos.getZ() - blockOutlineContext.cameraZ(),
+                        0,0,0, 0.4F //RGBA
+                );
+                // Cancel the event to prevent the middle outline from rendering
+                return false;
+            }
+
+            // Keep moving along if we reach this point
+            return true;
+        });
     }
 
     private void registerArmorRenderer() {
@@ -85,5 +159,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1
                         && !MythicMetals.CONFIG.disableFunny) ? 1 : 0);
     }
+
 
 }
