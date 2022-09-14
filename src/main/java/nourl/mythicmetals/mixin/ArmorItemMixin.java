@@ -10,6 +10,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import nourl.mythicmetals.armor.MythicArmorMaterials;
+import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Mutable;
@@ -52,6 +53,9 @@ public abstract class ArmorItemMixin {
         }
         if (material == MythicArmorMaterials.CARMOT) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0f, EntityAttributeModifier.Operation.ADDITION);
+        }
+        if (material == MythicArmorMaterials.STORMYX) {
+            armorMapBuilder(uUID, RegisterEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0f, EntityAttributeModifier.Operation.ADDITION);
         }
     }
 

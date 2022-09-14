@@ -6,7 +6,8 @@ Variant Configs were also removed. Since the new config file is JSON5, the new c
 although your old configuration values are not transferred.  
 Please check your configuration file in order to prevent errors when updating!  
 
-### Small Stormyx rework  
+### Stormyx Rework  
+Stormyx has recieved a re-work, focusing a lot more on magic protection.  
 Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
 It can be crafted into a **Stormyx Shield**. A much more durable shield which protects you slightly against Magic damage.  
 
