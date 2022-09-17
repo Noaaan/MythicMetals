@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "mythicmetals:quadrillum_tools"
+  },
+  "result": "mythicmetals:quadrillum_nugget",
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}

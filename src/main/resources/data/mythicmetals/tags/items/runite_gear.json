@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:runite_helmet",
+    "mythicmetals:runite_chestplate",
+    "mythicmetals:runite_leggings",
+    "mythicmetals:runite_boots",
+    "mythicmetals:runite_sword",
+    "mythicmetals:runite_pickaxe",
+    "mythicmetals:runite_axe",
+    "mythicmetals:runite_shovel",
+    "mythicmetals:runite_hoe"
+  ]
+}

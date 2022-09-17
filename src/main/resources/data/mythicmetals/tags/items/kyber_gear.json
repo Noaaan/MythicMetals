@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:kyber_helmet",
+    "mythicmetals:kyber_chestplate",
+    "mythicmetals:kyber_leggings",
+    "mythicmetals:kyber_boots",
+    "mythicmetals:kyber_sword",
+    "mythicmetals:kyber_pickaxe",
+    "mythicmetals:kyber_axe",
+    "mythicmetals:kyber_shovel",
+    "mythicmetals:kyber_hoe"
+  ]
+}

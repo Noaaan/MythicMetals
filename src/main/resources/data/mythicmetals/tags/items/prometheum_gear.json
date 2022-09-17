@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:prometheum_helmet",
+    "mythicmetals:prometheum_chestplate",
+    "mythicmetals:prometheum_leggings",
+    "mythicmetals:prometheum_boots",
+    "mythicmetals:prometheum_sword",
+    "mythicmetals:prometheum_pickaxe",
+    "mythicmetals:prometheum_axe",
+    "mythicmetals:prometheum_shovel",
+    "mythicmetals:prometheum_hoe"
+  ]
+}

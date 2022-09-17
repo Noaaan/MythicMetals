@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "mythicmetals:osmium_gear"
+  },
+  "result": "mythicmetals:osmium_nugget",
+  "experience": 0.1,
+  "cookingtime": 100,
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}

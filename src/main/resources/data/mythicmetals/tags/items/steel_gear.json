@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:steel_helmet",
+    "mythicmetals:steel_chestplate",
+    "mythicmetals:steel_leggings",
+    "mythicmetals:steel_boots",
+    "mythicmetals:steel_sword",
+    "mythicmetals:steel_pickaxe",
+    "mythicmetals:steel_axe",
+    "mythicmetals:steel_shovel",
+    "mythicmetals:steel_hoe"
+  ]
+}
