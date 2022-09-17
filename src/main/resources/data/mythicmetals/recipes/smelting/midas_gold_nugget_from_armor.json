@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "mythicmetals:midas_gold_armor"
+  },
+  "result": "mythicmetals:midas_gold_nugget",
+  "experience": 0.1,
+  "cookingtime": 200,
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}

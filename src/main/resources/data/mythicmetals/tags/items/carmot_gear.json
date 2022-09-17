@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:carmot_helmet",
+    "mythicmetals:carmot_chestplate",
+    "mythicmetals:carmot_leggings",
+    "mythicmetals:carmot_boots",
+    "mythicmetals:carmot_sword",
+    "mythicmetals:carmot_pickaxe",
+    "mythicmetals:carmot_axe",
+    "mythicmetals:carmot_shovel",
+    "mythicmetals:carmot_hoe"
+  ]
+}

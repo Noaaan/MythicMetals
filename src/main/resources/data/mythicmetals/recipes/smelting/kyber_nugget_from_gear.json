@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "mythicmetals:kyber_gear"
+  },
+  "result": "mythicmetals:kyber_nugget",
+  "experience": 0.1,
+  "cookingtime": 200,
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}

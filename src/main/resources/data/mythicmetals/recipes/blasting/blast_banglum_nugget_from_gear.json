@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "tag": "mythicmetals:banglum_gear"
+  },
+  "result": "mythicmetals:banglum_nugget",
+  "experience": 0.1,
+  "cookingtime": 100,
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}
