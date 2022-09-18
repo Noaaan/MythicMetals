@@ -4,6 +4,6 @@
     "item": "mythicmetals:raw_midas_gold"
   },
   "result": "mythicmetals:midas_gold_ingot",
-  "experience": 0.1,
+  "experience": 1.0,
   "cookingtime": 100
 }
