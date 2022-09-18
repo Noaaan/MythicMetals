@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "mythicmetals:midas_gold_ores"
+  },
+  "result": "mythicmetals:midas_gold_ingot",
+  "experience": 1.0,
+  "cookingtime": 100
+}

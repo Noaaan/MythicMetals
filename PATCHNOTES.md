@@ -29,6 +29,8 @@ Legendary Banglum Armor is now repaired with ingots instead of chunks.
 Copper Armor is now more conductible. Please be careful in thunderstorms.  
 Reduced the mining level required for most storage blocks.  
 Re-added Carmot to the alt recipe of Celestium Ingots.  
+Increased the experience gained from smelting and blasting ores (0.2 XP -> Range between 0.7, 1.0, 1.5, 2.0 XP per smelt).  
+Midas Gold can now be smelted in a regular furnace.  
 
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
