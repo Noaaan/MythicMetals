@@ -4,6 +4,6 @@
     "item": "mythicmetals:raw_runite"
   },
   "result": "mythicmetals:runite_ingot",
-  "experience": 0.1,
+  "experience": 1.0,
   "cookingtime": 100
 }
