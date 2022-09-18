@@ -82,9 +82,11 @@ public class BlockBreaker {
             var blocks = BlockBreaker.findBlocks(facing, pos, hammer.getDepth());
             boolean hasMined = false;
             for (BlockPos blockPos : blocks) {
-                if (hammer.canBreak(world, blockPos)) {
+                if (hammer.canBreak(world, blockPos) && !player.isCreative()) {
                     WorldOps.breakBlockWithItem(world, blockPos, stack);
                     hasMined = true;
+                } else if (player.isCreative()) {
+                    world.breakBlock(blockPos, false, null);
                 }
             }
             if (hasMined) stack.damage(2, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
