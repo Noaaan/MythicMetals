@@ -3,7 +3,7 @@
 Configuration has changed internally, and no longer uses Variant Configs.  
 Please delete or update your configuration file in order to prevent errors when updating!  
 
-### Stormyx Rework  
+### Stormyx Enhancements  
 Stormyx has recieved a re-work, focusing a lot more on magic protection.  
 Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
 It can be crafted into a **Stormyx Shield**. A much more durable shield which protects you slightly against Magic damage.  
@@ -48,6 +48,7 @@ Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.
 Added Smooth Stone to the Midas Gold Bartering loot table.  
 Improved the textures of Runite armor.  
 Prometheum no longer repairs itself on client, preventing innacurate durability bars.  
+Fixed an edge-case with the Hallowed Cape rendering.  
 **Added a warning to logs whenever Terralith is installed.**  
 - Terralith uses a lot of stone variants in the overworld, like Calcite, which causes ores to spawn in unexpected places.
 - Keep this in mind whenever you are using both, as I have yet to create a custom ore configuration just for Terralith.
