@@ -7,6 +7,7 @@ import io.wispforest.owo.nbt.NbtKey;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -17,16 +18,17 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ClickType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -43,14 +45,17 @@ import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.MythicParticleSystem;
+import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.List;
 import java.util.UUID;
 
-@SuppressWarnings("deprecation")
 public class CarmotStaff extends ToolItem {
 
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
+    public static final NbtKey<Boolean> IS_USED = new NbtKey<>("IsUsed", NbtKey.Type.BOOLEAN);
+
+    public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
@@ -69,6 +74,7 @@ public class CarmotStaff extends ToolItem {
         this.attributeModifiers = builder.build();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onStackClicked(ItemStack staff, Slot slot, ClickType clickType, PlayerEntity player) {
 
@@ -110,6 +116,7 @@ public class CarmotStaff extends ToolItem {
     }
 
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean onClicked(ItemStack staff, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
@@ -159,8 +166,16 @@ public class CarmotStaff extends ToolItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var random = Random.create();
         var stack = user.getStackInHand(hand);
-        if (world.isClient()) return TypedActionResult.fail(stack);
         boolean isCoolingDown = user.getItemCooldownManager().isCoolingDown(stack.getItem());
+
+        // Stormyx - Rainbow Shield that blocks projectiles around you
+        if (hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock()) && user.getMainHandStack().equals(stack)) {
+            user.setCurrentHand(hand);
+            return TypedActionResult.consume(stack);
+        }
+
+        if (world.isClient()) return TypedActionResult.fail(stack);
+
 
         if (isCoolingDown) return TypedActionResult.fail(stack);
 
@@ -288,7 +303,7 @@ public class CarmotStaff extends ToolItem {
 
             if (res != null) {
                 var target = res.getEntity();
-                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 5, 2, 5));
+                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 8, 4, 8));
                 entities.add(target);
 
                 world.playSound(null, user.getBlockPos(), RegisterSounds.ICE_MAGIC, SoundCategory.PLAYERS, 0.8F, 1.0F);
@@ -379,6 +394,84 @@ public class CarmotStaff extends ToolItem {
             return !((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack.getItem());
         }
         return true;
+    }
+
+    @Override
+    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
+        super.usageTick(world, user, stack, remainingUseTicks);
+
+        var blockBox = Box.of(user.getPos().add(0, 1,0), 8, 8, 8);
+        var entities = world.getOtherEntities(user, blockBox);
+        if (CarmotStaff.isNotOnCooldown(user, stack)) {
+            stack.put(IS_USED, true);
+        }
+
+        for (Entity entity : entities) {
+            // Special handling for ExplosiveProjectileEntities, like fireballs
+            if (entity instanceof ExplosiveProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+                var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
+                projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
+                projectile.powerX = -projectile.powerX;
+                projectile.powerY = -projectile.powerY;
+                projectile.powerZ = -projectile.powerZ;
+                projectile.setOwner(user);
+                projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+            }
+            // Shulker bullet handling
+            if (entity instanceof ShulkerBulletEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+                projectile.damage(DamageSource.GENERIC, 1.0F);
+            }
+            else if (entity instanceof ProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+                // Bounce the projectiles in the direction the player is looking
+                var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
+                projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
+                projectile.setOwner(user);
+                projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+            }
+        }
+    }
+
+    @Override
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        // Damage and set Carmot Staff on cooldown after using any sustaining block ability
+        if (!world.isClient && user.isPlayer()) {
+            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 160);
+        }
+        stack.put(IS_USED, false);
+    }
+
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        stack.put(IS_USED, false);
+        return super.finishUsing(stack, world, user);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        if (!hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
+            return 0;
+        }
+        return 72000;
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        if (!hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
+            return super.getUseAction(stack);
+        }
+        return UseAction.BOW;
+    }
+
+
+    @Override
+    public boolean isUsedOnRelease(ItemStack stack) {
+        if (getBlockInStaff(stack).equals(MythicBlocks.STORMYX.getStorageBlock())) {
+            return true;
+        }
+
+        return stack.isOf(this);
     }
 
     @Override

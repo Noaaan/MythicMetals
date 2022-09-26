@@ -43,19 +43,19 @@ public abstract class ArmorItemMixin {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "Knockback resistance", this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.CELESTIUM) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
         if (material == MythicArmorMaterials.MIDAS_GOLD) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0f, EntityAttributeModifier.Operation.ADDITION);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.STAR_PLATINUM) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5f, EntityAttributeModifier.Operation.ADDITION);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.CARMOT) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0f, EntityAttributeModifier.Operation.ADDITION);
+            armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.STORMYX) {
-            armorMapBuilder(uUID, RegisterEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0f, EntityAttributeModifier.Operation.ADDITION);
+            armorMapBuilder(uUID, RegisterEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
     }
 
