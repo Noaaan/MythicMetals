@@ -4,6 +4,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -28,6 +29,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -179,6 +181,7 @@ public class CarmotStaff extends ToolItem {
         // Stormyx - Rainbow Shield that blocks projectiles around you
         if (hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock()) && user.getMainHandStack().equals(stack)) {
             user.setCurrentHand(hand);
+            WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.AMBIENT, 1.0F, 1.5F);
             return TypedActionResult.consume(stack);
         }
 
@@ -216,23 +219,46 @@ public class CarmotStaff extends ToolItem {
 
             user.getItemCooldownManager().set(stack.getItem(), 500);
             stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
             return TypedActionResult.success(stack);
         }
 
         // Command Block - Set yourself to Creative Mode
         if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK)) {
-
-            if (!MythicMetals.CONFIG.disableFunny()) {
-                ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
-                user.getItemCooldownManager().set(stack.getItem(), 6000);
-            } else {
-                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
-                user.getItemCooldownManager().set(stack.getItem(), 6000);
+            // If command blocks are disabled, then no man should have that much power
+            if (world.getServer() != null && !world.getServer().areCommandBlocksEnabled()) {
+                user.sendMessage(Text.translatable("advMode.notEnabled"));
+                return TypedActionResult.fail(stack);
             }
 
-            stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-            return TypedActionResult.success(stack);
+            // Let modpack authors disable funny easter eggs that should in practice NEVER occur
+            if (!MythicMetals.CONFIG.disableFunny()) {
+
+                // Overload the staff if it is unbreakable, its simply too much power
+                if (stack.getNbt() != null && stack.getNbt().getBoolean("Unbreakable")) {
+                    stack.getNbt().remove("Unbreakable");
+                    stack.getEnchantments().clear();
+                    stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
+                    stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                    world.setBlockState(user.getBlockPos().add(0, 1, 0), Blocks.BEDROCK.getDefaultState());
+                    world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                    return TypedActionResult.success(stack);
+                }
+
+
+                ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
+                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                user.getItemCooldownManager().set(stack.getItem(), 6000);
+                stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+
+
+                return TypedActionResult.success(stack);
+            } else {
+                user.sendMessage(Text.of("This power has been disabled"));
+                return TypedActionResult.fail(stack);
+            }
+
         }
 
         // Copper - Summon a lightning bolt on yourself
@@ -413,6 +439,9 @@ public class CarmotStaff extends ToolItem {
         if (CarmotStaff.isNotOnCooldown(user, stack)) {
             stack.put(IS_USED, true);
         }
+        if (remainingUseTicks % 40 == 1) {
+            WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_AMBIENT, SoundCategory.AMBIENT, 1.0F, 1.5F);
+        }
 
         for (Entity entity : entities) {
             // Special handling for ExplosiveProjectileEntities, like fireballs
@@ -442,20 +471,22 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        // Damage and set Carmot Staff on cooldown after using any sustaining block ability
+        // Handle Carmot Staff after using the Stormyx ability
         if (!world.isClient && user.isPlayer()) {
             ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 240);
         }
         stack.put(IS_USED, false);
+        WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.AMBIENT, 0.9F, 1.5F);
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        // Damage and set Carmot Staff on cooldown after using any sustaining block ability
+        // Handle Carmot Staff after using the Stormyx ability
         if (!world.isClient && user.isPlayer()) {
             ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 320);
         }
         stack.put(IS_USED, false);
+        WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.AMBIENT, 0.9F, 1.5F);
         return super.finishUsing(stack, world, user);
     }
 
