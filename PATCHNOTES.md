@@ -27,7 +27,7 @@ Copper Armor is now more conductible. Please be careful in thunderstorms.
 Reduced the mining level required for most storage blocks.  
 Re-added Carmot to the alt recipe of Celestium Ingots.  
 Increased the experience gained from smelting and blasting ores (0.2 XP -> Range between 0.7, 1.0, 1.5, 2.0 XP per smelt).  
-Midas Gold can now be smelted in a regular furnace.  
+Midas Gold can now be smelted in a regular furnace.
 
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
@@ -42,6 +42,11 @@ Increased the durability of the following tools:
 - Gilded Midas Gold Sword (800 -> 999)
 - Hallowed (1739 -> 1984)
 - Mythril (1445 -> 1564)
+
+Increased the mining speed of the following tools:
+- Celestium (16.9 -> 20.0)
+- Mythril (14.0 -> 14.3)
+- Stormyx (8.0 -> 8.5)
 
 ### Other Changes
 Allow the Banglum Nuke to be ignited using a flint and steel inside a dispenser.  
