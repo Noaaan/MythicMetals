@@ -418,6 +418,7 @@ public class CarmotStaff extends ToolItem {
                 projectile.powerZ = -projectile.powerZ;
                 projectile.setOwner(user);
                 projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+                stack.damage(2, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
             // Shulker bullet handling
             if (entity instanceof ShulkerBulletEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
@@ -428,6 +429,7 @@ public class CarmotStaff extends ToolItem {
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
                 projectile.setOwner(user);
                 projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+                stack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
         }
     }
@@ -436,8 +438,7 @@ public class CarmotStaff extends ToolItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         // Damage and set Carmot Staff on cooldown after using any sustaining block ability
         if (!world.isClient && user.isPlayer()) {
-            stack.damage(15, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 200);
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 240);
         }
         stack.put(IS_USED, false);
     }
@@ -446,7 +447,7 @@ public class CarmotStaff extends ToolItem {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         // Damage and set Carmot Staff on cooldown after using any sustaining block ability
         if (!world.isClient && user.isPlayer()) {
-            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 240);
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 320);
         }
         stack.put(IS_USED, false);
         return super.finishUsing(stack, world, user);
