@@ -537,7 +537,6 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        // TODO - Find a way to check if the player has swapped the main hand with off hand, and set the staff on cooldown if its being used
         if (!((PlayerEntity) entity).getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
             finishUsing(stack, world, (LivingEntity) entity);
         }
