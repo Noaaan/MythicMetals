@@ -2,7 +2,6 @@ package nourl.mythicmetals.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.TntMinecartEntityRenderer;
@@ -14,11 +13,9 @@ import net.minecraft.util.math.Vec3f;
 
 //VanillaCopy of the TntEntityRenderer
 public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity> {
-    private final BlockRenderManager blockRenderManager;
     public BanglumNukeEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
         this.shadowRadius=0.5f;
-        blockRenderManager = context.getBlockRenderManager();
     }
 
     public void render(BanglumNukeEntity nuke, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
@@ -50,7 +47,7 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity>
                         ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
                         : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
 
-                    TntMinecartEntityRenderer.renderFlashingBlock(blockRenderManager, neededState, matrixStack, vertexConsumerProvider, i, j / 5 % 2 == 0);
+                    TntMinecartEntityRenderer.renderFlashingBlock(neededState, matrixStack, vertexConsumerProvider, i, j / 5 % 2 == 0);
 
                     matrixStack.pop();
                 }

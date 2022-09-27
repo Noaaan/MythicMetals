@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(WorldRenderer.class)
 public interface WorldRendererInvoker {
 
-    @Invoker("drawCuboidShapeOutline")
+    @Invoker("drawShapeOutline")
     static void mythicmetals$drawShapeOutline(
             MatrixStack matrixStack,
             VertexConsumer vertexConsumer,
