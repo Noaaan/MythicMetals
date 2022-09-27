@@ -52,7 +52,15 @@ import java.util.Random;
 
 public class CarmotStaff extends ToolItem {
 
+    /**
+     * Contains the block stored inside the staff.
+     * This is rendered via the {@link nourl.mythicmetals.models.CarmotStaffBlockRenderer}
+     */
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
+
+    /**
+     * NBT Key that determines whether or not the staff is actively being used
+     */
     public static final NbtKey<Boolean> IS_USED = new NbtKey<>("IsUsed", NbtKey.Type.BOOLEAN);
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
@@ -394,7 +402,7 @@ public class CarmotStaff extends ToolItem {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         super.usageTick(world, user, stack, remainingUseTicks);
 
-        var blockBox = Box.of(user.getPos().add(0, 1,0), 8, 8, 8);
+        var blockBox = Box.of(user.getPos().add(0, 1, 0), 8, 8, 8);
         var entities = world.getOtherEntities(user, blockBox);
         if (CarmotStaff.isNotOnCooldown(user, stack)) {
             stack.put(IS_USED, true);
@@ -414,8 +422,7 @@ public class CarmotStaff extends ToolItem {
             // Shulker bullet handling
             if (entity instanceof ShulkerBulletEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
                 projectile.damage(DamageSource.GENERIC, 1.0F);
-            }
-            else if (entity instanceof ProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+            } else if (entity instanceof ProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
                 // Bounce the projectiles in the direction the player is looking
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
@@ -429,15 +436,18 @@ public class CarmotStaff extends ToolItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         // Damage and set Carmot Staff on cooldown after using any sustaining block ability
         if (!world.isClient && user.isPlayer()) {
-            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-            stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 160);
+            stack.damage(15, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 200);
         }
         stack.put(IS_USED, false);
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        // Damage and set Carmot Staff on cooldown after using any sustaining block ability
+        if (!world.isClient && user.isPlayer()) {
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 240);
+        }
         stack.put(IS_USED, false);
         return super.finishUsing(stack, world, user);
     }
@@ -461,10 +471,6 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public boolean isUsedOnRelease(ItemStack stack) {
-        if (getBlockInStaff(stack).equals(MythicBlocks.STORMYX.getStorageBlock())) {
-            return true;
-        }
-
         return stack.isOf(this);
     }
 
@@ -521,11 +527,19 @@ public class CarmotStaff extends ToolItem {
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
     }
 
-    public boolean hasBlockInStaff(ItemStack stack, Block block) {
+    public static boolean hasBlockInStaff(ItemStack stack, Block block) {
         return stack.has(STORED_BLOCK) && stack.get(STORED_BLOCK).equals(block);
     }
 
     public Block getBlockInStaff(ItemStack stack) {
         return (stack.has(STORED_BLOCK) ? stack.get(STORED_BLOCK) : Blocks.AIR);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        // TODO - Find a way to check if the player has swapped the main hand with off hand, and set the staff on cooldown if its being used
+        if (!((PlayerEntity) entity).getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
+            finishUsing(stack, world, (LivingEntity) entity);
+        }
     }
 }

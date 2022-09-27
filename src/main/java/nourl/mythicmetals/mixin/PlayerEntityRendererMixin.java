@@ -60,34 +60,31 @@ public class PlayerEntityRendererMixin {
             at = @At("TAIL"))
     private void mythicmetals$renderRainbowShield(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
         var stack = player.getStackInHand(Hand.MAIN_HAND);
-        if (stack.has(CarmotStaff.STORED_BLOCK) && stack.get(CarmotStaff.STORED_BLOCK).equals(MythicBlocks.STORMYX.getStorageBlock())) {
+        if (CarmotStaff.hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
             if (!stack.get(CarmotStaff.IS_USED)) return; // Only render if the staff is actively being used
             matrixStack.push();
-            var block = player.getStackInHand(Hand.MAIN_HAND).get(CarmotStaff.STORED_BLOCK);
-            if (block.equals(MythicBlocks.STORMYX.getStorageBlock())) {
-                double delta = System.currentTimeMillis() / 45.0;
+            double delta = System.currentTimeMillis() / 45.0;
 
-                double hue = delta % 360.0;
-                float saturation = 1;
-                float constantvalue = 1;
+            double hue = delta % 360.0;
+            float saturation = 1;
+            float constantvalue = 1;
 
-                int color = MathHelper.hsvToRgb((float) (hue / 360), saturation, constantvalue);
+            int color = MathHelper.hsvToRgb((float) (hue / 360), saturation, constantvalue);
 
-                float[] rgbColors = UselessSingletonForColorUtil.splitRGBToFloats(color);
+            float[] rgbColors = UselessSingletonForColorUtil.splitRGBToFloats(color);
 
-                var part = RainbowShieldModel.getTexturedModelData();
+            var part = RainbowShieldModel.getTexturedModelData();
 
-                part.createModel().render(
-                        matrixStack,
-                        vertexConsumerProvider.getBuffer(RenderLayer.getEnergySwirl(WORLD_BORDER, (float) ((delta * .005f) % 1f), (float) (delta * .005f % 1f))),
-                        i,
-                        OverlayTexture.DEFAULT_UV,
-                        rgbColors[0],
-                        rgbColors[1],
-                        rgbColors[2],
-                        0.5F);
-                matrixStack.pop();
-            }
+            part.createModel().render(
+                    matrixStack,
+                    vertexConsumerProvider.getBuffer(RenderLayer.getEnergySwirl(WORLD_BORDER, (float) ((delta * .005f) % 1f), (float) (delta * .005f % 1f))),
+                    i,
+                    OverlayTexture.DEFAULT_UV,
+                    rgbColors[0],
+                    rgbColors[1],
+                    rgbColors[2],
+                    0.5F);
+            matrixStack.pop();
         }
     }
 }
