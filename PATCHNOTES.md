@@ -7,6 +7,8 @@ Please delete or update your configuration file in order to prevent errors when 
 Stormyx has recieved a re-work, focusing a lot more on magic protection.  
 Stormyx Ore now drops a __Stormyx Shell__, which has a single use right now.  
 It can be crafted into a **Stormyx Shield**. A much more durable shield which protects you slightly against Magic damage.  
+You can also now put a Stormyx Block in the Carmot Staff.  
+This produces a **forcefield**, which protects you and whoever is close by reflecting any projectiles.  
 
 ### Added Star Platinum Arrows  
 These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
