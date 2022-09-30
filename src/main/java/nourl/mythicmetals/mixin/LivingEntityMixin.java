@@ -111,7 +111,7 @@ public abstract class LivingEntityMixin extends Entity {
 
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
             var staff = attacker.getStackInHand(Hand.OFF_HAND);
-            if (((CarmotStaff) staff.getItem()).hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
+            if (CarmotStaff.hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
                 staff.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
             }
         }
