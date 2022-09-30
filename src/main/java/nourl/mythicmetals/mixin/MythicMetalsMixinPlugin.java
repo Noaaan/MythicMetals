@@ -20,7 +20,7 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        return FabricLoader.getInstance().isModLoaded("origins") || !mixinClassName.equals("DamageOverTimePowerMixin");
+        return FabricLoader.getInstance().isModLoaded("origins") && !mixinClassName.equals("DamageOverTimePowerMixin");
     }
 
     @Override

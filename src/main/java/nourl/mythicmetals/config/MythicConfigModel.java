@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 @Modmenu(modId = MythicMetals.MOD_ID)
 @Config(name = MythicMetals.MOD_ID, wrapperName = "MythicMetalsConfig")
-public class MythicConfig {
+public class MythicConfigModel {
     @RestartRequired
     public boolean enableDusts = false;
     @RestartRequired

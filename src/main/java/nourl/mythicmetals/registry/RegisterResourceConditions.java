@@ -3,11 +3,12 @@ package nourl.mythicmetals.registry;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.config.MythicConfig;
+import nourl.mythicmetals.config.MythicConfigModel;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 /**
- * Simple resource condition that check if the corresponding {@link MythicConfig} booleans are enabled.
+ * Simple resource conditions that check if the corresponding {@link MythicMetals#CONFIG} booleans are enabled.
+ * <br>
  * This is used to check if anvils or nuggets are disabled, so that errors regarding them can be surpressed.
  */
 public class RegisterResourceConditions {
