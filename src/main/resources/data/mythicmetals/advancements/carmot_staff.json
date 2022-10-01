@@ -1,29 +1,28 @@
 {
-  "parent": "mythicmetals:root",
+  "parent": "mythicmetals:carmot",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.midas_gold.title"
+      "translate": "advancement.mythicmetals.carmot_staff.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.midas_gold.description"
+      "translate": "advancement.mythicmetals.carmot_staff.description"
     },
     "icon": {
-      "item": "mythicmetals:midas_gold_ore"
+      "item": "mythicmetals:carmot_staff"
     },
-    "frame": "task",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "there_is_gold_here": {
+    "mythical_magical_staffnite": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:raw_midas_gold",
-              "mythicmetals:midas_gold_ore"
+              "mythicmetals:carmot_staff"
             ]
           }
         ]

@@ -1,0 +1,36 @@
+{
+  "parent": "mythicmetals:gilded_midas_gold_sword",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.maxed_midas_gold_sword.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.maxed_midas_gold_sword.description"
+    },
+    "icon": {
+      "item": "minecraft:grass_block"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "min_maxed_mmo_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:gilded_midas_gold_sword"
+            ],
+            "nbt": "{GoldFolded: 640}"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 150
+  }
+}

@@ -13,7 +13,7 @@
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": true
+    "hidden": false
   },
   "criteria": {
     "the_unobtained": {
@@ -33,6 +33,6 @@
     }
   },
   "rewards": {
-    "experience": 200
+    "experience": 50
   }
 }

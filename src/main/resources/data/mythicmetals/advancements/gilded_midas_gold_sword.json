@@ -1,0 +1,35 @@
+{
+  "parent": "mythicmetals:midas_gold_sword",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.gilded_midas_gold_sword.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.gilded_midas_gold_sword.description"
+    },
+    "icon": {
+      "item": "mythicmetals:gilded_midas_gold_sword"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "maxed_mmo_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:gilded_midas_gold_sword"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 15
+  }
+}
