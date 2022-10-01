@@ -89,8 +89,8 @@ public class MythicMetalsClient implements ClientModInitializer {
                 var voxels = new ArrayList<VoxelShape>();
 
                 for (BlockPos blockPos : blocks) {
-                    if (!player.world.getBlockState(blockPos).isAir()) {
-                        var blockState = player.world.getBlockState(blockPos);
+                    var blockState = player.world.getBlockState(blockPos);
+                    if (!blockState.isAir() && hammer.isSuitableFor(blockState)) {
                         voxels.add(blockState.getOutlineShape(
                                         worldRenderContext.world(),
                                         blockPos,
