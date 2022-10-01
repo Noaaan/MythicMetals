@@ -32,6 +32,7 @@ Increased the experience gained from smelting and blasting ores (0.2 XP -> Range
 Midas Gold can now be smelted in a regular furnace.  
 Added some weight to rolls to improve Midas Gold Bartering.  
 Unobtainium can now be found in Ancient City Chests.  
+Palladium Boots now let you stand on top of Powder Snow.  
 
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
@@ -59,6 +60,7 @@ Improved the textures of Runite armor.
 Prometheum no longer repairs itself on client, preventing innacurate durability bars.  
 Fixed an edge-case with the Hallowed Cape rendering.  
 Overhauled the Mythic Metals Advancement tree.  
+Made particles from Palladium Gear less obtrusive.  
 **Added a warning to logs whenever Terralith is installed.**  
 - Terralith uses a lot of stone variants in the overworld, like Calcite, which causes ores to spawn in unexpected places.
 - Keep this in mind whenever you are using both, as I have yet to create a custom ore configuration just for Terralith.
