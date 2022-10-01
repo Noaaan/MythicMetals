@@ -6,12 +6,14 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
+import io.wispforest.owo.ops.LootOps;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.loot.LootTables;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
@@ -73,6 +75,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterRecipeSerializers.init();
         RegisterEntityAttributes.init();
         BlockBreaker.initHammerTime();
+        LootOps.injectItem(MythicItems.Ingots.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
 
         if (CONFIG.configVersion < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
@@ -95,7 +98,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
         }
         if (FabricLoader.getInstance().isModLoaded("jello")) {
-            LOGGER.info("[Mythic Metals] Here comes the colors, weeeeeee!");
+            LOGGER.info("[Mythic Metals] Is that Jello? Here comes the colors, weeeeeee!");
         }
         if (FabricLoader.getInstance().isModLoaded("terralith")) {
             LOGGER.info("[Mythic Metals] Terralith detected. Please go over the config and disable Overworld Nether Ores");

@@ -29,7 +29,9 @@ Copper Armor is now more conductible. Please be careful in thunderstorms.
 Reduced the mining level required for most storage blocks.  
 Re-added Carmot to the alt recipe of Celestium Ingots.  
 Increased the experience gained from smelting and blasting ores (0.2 XP -> Range between 0.7, 1.0, 1.5, 2.0 XP per smelt).  
-Midas Gold can now be smelted in a regular furnace.
+Midas Gold can now be smelted in a regular furnace.  
+Added some weight to rolls to improve Midas Gold Bartering.  
+Unobtainium can now be found in Ancient City Chests.  
 
 Increased the durability of the following armor sets (largest to smallest increase):
 - Carmot
@@ -56,6 +58,7 @@ Added Smooth Stone to the Midas Gold Bartering loot table.
 Improved the textures of Runite armor.  
 Prometheum no longer repairs itself on client, preventing innacurate durability bars.  
 Fixed an edge-case with the Hallowed Cape rendering.  
+Overhauled the Mythic Metals Advancement tree.  
 **Added a warning to logs whenever Terralith is installed.**  
 - Terralith uses a lot of stone variants in the overworld, like Calcite, which causes ores to spawn in unexpected places.
 - Keep this in mind whenever you are using both, as I have yet to create a custom ore configuration just for Terralith.
