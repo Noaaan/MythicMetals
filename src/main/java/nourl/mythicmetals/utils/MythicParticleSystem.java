@@ -50,7 +50,7 @@ public class MythicParticleSystem {
         ClientParticles.setParticleCount(1);
         Random r = new Random();
         var velocity = VectorRandomUtils.getRandomOffset(world,
-                Vec3d.ZERO.add(r.nextDouble(-1, 1), 1.75D, r.nextDouble(-1, 1)), 1.25D);
+                Vec3d.ZERO.add(r.nextDouble(-1, 1), 0.75D, r.nextDouble(-1, 1)), 1.25D);
         ClientParticles.setVelocity(velocity);
 
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);

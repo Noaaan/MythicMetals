@@ -165,7 +165,7 @@ public abstract class LivingEntityMixin extends Entity {
             if (MythicArmor.PALLADIUM.isInArmorSet(armorItems)) {
                 Vec3d velocity = this.getVelocity();
                 if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
-                    MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 1, 0));
+                    MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));
                 }
             }
         }
