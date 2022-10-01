@@ -117,26 +117,34 @@ public class Ability {
                 }
 
                 int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+
                 if (goldCount < 64) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.0").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.0").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 64").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 64 && goldCount < 128) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.1").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.1").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 128").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 128 && goldCount < 192) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.2").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.2").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 192").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 192 && goldCount < 256) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.3").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.3").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 256").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 256 && goldCount < 320) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.4").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.4").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 320").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 320 && goldCount < 640) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.5").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.5").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 320").formatted(Formatting.GOLD));
                 }
                 if (goldCount >= 640) {
-                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.99").formatted(Formatting.GOLD, Formatting.ITALIC));
+                    lines.add(lineIndex, new TranslatableText("tooltip.midas_gold.level.99").formatted(Formatting.GOLD));
+                    lines.add(lineIndex + 1, new LiteralText(goldCount + " / 640").formatted(Formatting.GOLD));
                 }
             }
         });
