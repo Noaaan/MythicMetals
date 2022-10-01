@@ -20,8 +20,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 8,
-          "name": "mythicmetals:midas_gold_boots",
+          "weight": 3,
+          "name": "mythicmetals:stormyx_boots",
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
@@ -161,8 +161,9 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 40,
-          "name": "minecraft:fire_charge"
+          "weight": 30,
+          "name": "minecraft:fire_charge",
+          "quality": -2
         },
         {
           "type": "minecraft:item",
@@ -184,6 +185,7 @@
           "type": "minecraft:item",
           "weight": 40,
           "name": "minecraft:soul_sand",
+          "quality": -3,
           "functions": [
             {
               "function": "minecraft:set_count",
