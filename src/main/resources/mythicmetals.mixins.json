@@ -25,10 +25,10 @@
   ],
   "client": [
     "CapeFeatureRendererMixin",
+    "EntityModelLayersAccessor",
     "ElytraFeatureRendererMixin",
     "WorldRendererInvoker"
   ],
-  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin",
   "injectors": {
     "defaultRequire": 1
   }
