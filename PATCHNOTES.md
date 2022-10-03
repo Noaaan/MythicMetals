@@ -1,3 +1,6 @@
+# 0.16.1  
+Fixes a crash on launch related to Accessors.  
+
 # 0.16.0  
 ## Config changes
 Configuration has changed internally.
