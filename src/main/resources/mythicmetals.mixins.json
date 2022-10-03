@@ -24,7 +24,6 @@
     "TranslationStorageMixin"
   ],
   "client": [
-    "AccessorEntityModelLayers",
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "WorldRendererInvoker"

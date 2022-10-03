@@ -1,11 +1,11 @@
 package nourl.mythicmetals.models;
 
+import net.fabricmc.fabric.mixin.client.rendering.EntityModelLayersAccessor;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.mixin.AccessorEntityModelLayers;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.BiConsumer;
@@ -15,9 +15,9 @@ public class MythicModelHandler {
     public static final EntityModelLayer CARMOT = model("carmot_armor");
     public static final EntityModelLayer CARMOT_SWIRL = model("carmot_swirl");
     public static final EntityModelLayer HALLOWED_ARMOR = model("hallowed_armor");
-    public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
     public static final EntityModelLayer METALLURGIUM = model("metallurgium_armor");
     public static final EntityModelLayer RUNITE = model("runite_armor");
+    public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 32, 32));
@@ -33,7 +33,7 @@ public class MythicModelHandler {
      */
     public static EntityModelLayer model(String name, String layer) {
         var result = new EntityModelLayer(RegistryHelper.id(name), layer);
-        AccessorEntityModelLayers.getAllModels().add(result);
+        EntityModelLayersAccessor.getLayers().add(result);
         return result;
     }
 
