@@ -1,7 +1,13 @@
-# 0.x.x  
+# 0.16.1  
+Fixes a crash on launch related to Accessors.  
+
+# 0.16.0  
 ## Config changes
-Configuration has changed internally, and no longer uses Variant Configs.  
-Please delete or update your configuration file in order to prevent errors when updating!  
+Configuration has changed internally.
+Mythic Metals now uses owo-config, which means you no longer need Cloth as a dependency.  
+Variant Configs were also removed. Since the new config file is JSON5, the new config should not break, 
+although your old configuration values are not transferred.  
+Please check your configuration file in order to prevent errors when updating!  
 
 ### Stormyx Re-work
 Stormyx has recieved a re-work, focusing a lot more on magic protection.  
@@ -11,7 +17,7 @@ You can also now put a Stormyx Block in the Carmot Staff.
 This produces a **forcefield**, which protects you and whoever is close by reflecting any projectiles.  
 
 ### Added Star Platinum Arrows  
-These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to both monsters and players.  
+These arrows act as stronger arrows of harming, dealing a *minimum* of 18 damage to players, and 18 healing damage towards undead.  
 
 ### Carmot Nuke Core  
 You can now make a Nuke Core out of Carmot.  
