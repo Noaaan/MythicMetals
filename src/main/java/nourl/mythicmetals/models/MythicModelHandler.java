@@ -1,11 +1,11 @@
 package nourl.mythicmetals.models;
 
-import net.fabricmc.fabric.mixin.client.rendering.EntityModelLayersAccessor;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.util.Identifier;
+import nourl.mythicmetals.mixin.EntityModelLayersAccessor;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 import java.util.function.BiConsumer;
@@ -33,7 +33,7 @@ public class MythicModelHandler {
      */
     public static EntityModelLayer model(String name, String layer) {
         var result = new EntityModelLayer(RegistryHelper.id(name), layer);
-        EntityModelLayersAccessor.getLayers().add(result);
+        EntityModelLayersAccessor.getLAYERS().add(result);
         return result;
     }
 

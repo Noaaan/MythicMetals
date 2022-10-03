@@ -42,26 +42,23 @@ dependencies {
     modImplementation "io.wispforest:owo-lib:${project.owo_version}"
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 
-    // REI
+    // REI + Arch
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    modRuntimeOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
-    // modmenu
+    // ModMenu
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-    // Origins compat - Definitely not really late
+    // Origins compat
      modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 
     // Cardinal Components
-    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
-    // Adds a dependency on a specific module
-    modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
-    // Includes Cardinal Components API as a Jar-in-Jar dependency (optional)
-    include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}"
-    include "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}"
+    modImplementation include ("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}")
+    modImplementation include ("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
 
 }
 
