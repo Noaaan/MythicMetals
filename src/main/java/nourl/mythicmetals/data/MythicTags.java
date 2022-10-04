@@ -33,7 +33,8 @@ public class MythicTags {
     public static final TagKey<Block> NUKE_CORES = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("nuke_cores"));
     public static final TagKey<Block> CARMOT_NUKE_IGNORED = TagKey.of(Registry.BLOCK_KEY, RegistryHelper.id("carmot_nuke_ignored"));
 
-    public static final TagKey<Biome> HUMID_BIOMES = TagKey.of(Registry.BIOME_KEY, new Identifier("c", "humid"));
+    public static final TagKey<Biome> PROMETHEUM_BIOMES = TagKey.of(Registry.BIOME_KEY, RegistryHelper.id("prometheum_biomes"));
+    public static final TagKey<Biome> OSMIUM_BIOMES = TagKey.of(Registry.BIOME_KEY, RegistryHelper.id("osmium_biomes"));
 
     public static class Blocks implements AdvancedTagHelper<Block> {
 

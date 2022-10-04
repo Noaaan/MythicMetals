@@ -8,7 +8,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.tag.BiomeTags;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
@@ -188,17 +187,11 @@ public class MythicOreFeatures {
         }
         // Add Prometheum to hot biomes
         if (CONFIG.prometheum.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.HUMID_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
-
-            OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "sakura_grove", PROMETHEUM);
-            OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.PROMETHEUM_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
         }
         // Add Osmium to mountainous biomes
         if (CONFIG.osmium.enabled) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.MOUNTAIN), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
-            BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_HILL), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
-
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.OSMIUM_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
         }
 
     }
