@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:mountain",
+      "replace": false
+    },
+    {
+      "id": "#c:extreme_hills",
+      "replace": false
+    }
+  ]
+}
