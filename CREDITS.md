@@ -30,6 +30,7 @@ Draylar, for making a ton of cool mods that inspired multiple parts of the proje
 * Shiftless
 * Haunted Chest
 * Dr. Zeal
+* Azazelthedemonlord
 
 Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!
