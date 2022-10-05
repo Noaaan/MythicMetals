@@ -814,6 +814,6 @@
   "entity.mythicmetals.banglum_tnt": "점화된 뱅그룸 TNT",
   "entity.mythicmetals.banglum_nuke": "점화된 뱅그룸 핵",
 
-  "attribute.name.generic.mythicmetals.experience_boost": "몹 경험치",
+  "attribute.name.generic.mythicmetals.experience_boost": "몹 경험치 증가",
   "attribute.name.generic.mythicmetals.magic_protection": "마법 보호"
 }
