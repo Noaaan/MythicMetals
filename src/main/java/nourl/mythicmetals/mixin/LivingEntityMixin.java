@@ -108,6 +108,7 @@ public abstract class LivingEntityMixin extends Entity {
         var attacker = this.getAttacker();
 
         if (attacker == null) return value; // Return immediately there is no attacker
+        if (this.isPlayer()) return value; // Return immediately if you are a player
 
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
             var staff = attacker.getStackInHand(Hand.OFF_HAND);

@@ -1,3 +1,8 @@
+# 0.16.2
+Prevent players from dropping more experience when being killed with Experience Boost.  
+Added Korean Translations (thanks gyular!).  
+Fixed crashes with Terralith installed.  
+
 # 0.16.1  
 Fixes a crash on launch related to Accessors.  
 
