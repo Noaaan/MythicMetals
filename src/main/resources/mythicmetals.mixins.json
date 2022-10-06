@@ -31,5 +31,6 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin"
 }
