@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
-@SuppressWarnings("ALL")
+@SuppressWarnings("CodeBlock2Expr")
 public enum MythicArmorMaterials implements ArmorMaterial {
     ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.Ingots.ADAMANTITE_INGOT);
@@ -97,7 +97,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredientSupplier;
 
-    private MythicArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
+    MythicArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredientSupplier) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.protectionAmounts = protectionAmounts;
@@ -125,7 +125,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     }
 
     public Ingredient getRepairIngredient() {
-        return (Ingredient) this.repairIngredientSupplier.get();
+        return this.repairIngredientSupplier.get();
     }
 
     public String getName() {
@@ -140,8 +140,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
         return this.knockbackResistance;
     }
 
-    public static final List KNOCKBACKABLE_ARMOR_MATERIALS = Arrays.asList(new ArmorMaterial[]{
-            ORICHALCUM, OSMIUM, METALLURGIUM
-    });
+    @SuppressWarnings("rawtypes")
+    public static final List KNOCKBACKABLE_ARMOR_MATERIALS = Arrays.asList(ORICHALCUM, OSMIUM, METALLURGIUM);
 
 }

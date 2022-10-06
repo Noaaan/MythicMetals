@@ -6,6 +6,7 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -46,6 +47,13 @@ public class ArmorSet {
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_chestplate"), chestplate);
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_leggings"), leggings);
         Registry.register(Registry.ITEM, RegistryHelper.id(name + "_boots"), boots);
+    }
+
+    public void register(String modid, String name) {
+        Registry.register(Registry.ITEM, new Identifier(modid, name + "_helmet"), helmet);
+        Registry.register(Registry.ITEM, new Identifier(modid, name + "_chestplate"), chestplate);
+        Registry.register(Registry.ITEM, new Identifier(modid, name + "_leggings"), leggings);
+        Registry.register(Registry.ITEM, new Identifier(modid, name + "_boots"), boots);
     }
 
     protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
