@@ -29,9 +29,6 @@ public abstract class ArmorItemMixin {
     private static UUID[] MODIFIERS;
     @Shadow
     @Final
-    protected float knockbackResistance;
-    @Shadow
-    @Final
     @Mutable
     private Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
@@ -39,9 +36,6 @@ public abstract class ArmorItemMixin {
     private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
-        if (MythicArmorMaterials.KNOCKBACKABLE_ARMOR_MATERIALS.contains(material)) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, "Knockback resistance", this.knockbackResistance, EntityAttributeModifier.Operation.ADDITION);
-        }
         if (material == MythicArmorMaterials.CELESTIUM) {
             armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
@@ -59,7 +53,6 @@ public abstract class ArmorItemMixin {
         }
     }
 
-    @SuppressWarnings("SameParameterValue")
     private void armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         this.attributeModifiers.forEach(builder::put);
