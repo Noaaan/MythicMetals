@@ -10,8 +10,6 @@ import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Supplier;
 
 @SuppressWarnings("CodeBlock2Expr")
@@ -140,7 +138,11 @@ public enum MythicArmorMaterials implements ArmorMaterial {
         return this.knockbackResistance;
     }
 
-    @SuppressWarnings("rawtypes")
-    public static final List KNOCKBACKABLE_ARMOR_MATERIALS = Arrays.asList(ORICHALCUM, OSMIUM, METALLURGIUM);
+    public int getDuraMultiplier() {
+        return durabilityMultiplier;
+    }
 
+    public int[] getProtectionAmounts() {
+        return protectionAmounts;
+    }
 }
