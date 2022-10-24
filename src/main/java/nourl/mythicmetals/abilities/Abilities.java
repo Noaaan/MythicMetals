@@ -22,6 +22,7 @@ public class Abilities {
     public static final Ability CARMOT_SHIELD = new Ability("carmot_shield", 0, false);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 4);
+    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 2);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability MENDING = new Ability("mending", 1, false);
@@ -46,6 +47,7 @@ public class Abilities {
         CARMOT_SHIELD.addArmorSet(MythicArmor.CARMOT, Style.EMPTY.withColor(0xE63E73));
         DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), Style.EMPTY.withColor(Formatting.AQUA));
         FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), Style.EMPTY.withColor(Formatting.GOLD));
+        FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, Style.EMPTY.withColor(0xDF7323));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), Style.EMPTY.withColor(Formatting.GOLD));

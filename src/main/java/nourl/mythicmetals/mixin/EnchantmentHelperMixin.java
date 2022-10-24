@@ -111,6 +111,10 @@ public class EnchantmentHelperMixin {
             change += Abilities.FEATHER_FALLING.getLevel() * 3;
         }
 
+        if (Abilities.FIRE_PROTECTION.getItems().contains(gear) && source.isFire()) {
+            change += Abilities.FIRE_PROTECTION.getLevel() * 2;
+        }
+
         if (change != 0)
             cir.setReturnValue(amount + change);
     }
