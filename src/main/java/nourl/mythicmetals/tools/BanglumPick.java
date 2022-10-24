@@ -34,7 +34,7 @@ public class BanglumPick extends PickaxeBase {
 
         if (player != null && !getCooldown(player, context.getStack()) && !world.isClient) {
 
-            var iterator = BlockBreaker.findBlocks(context);
+            var iterator = BlockBreaker.findBlocks(context, 5);
 
             for (BlockPos blockPos : iterator) {
                 if (canBreak(world, blockPos)) {
@@ -48,7 +48,7 @@ public class BanglumPick extends PickaxeBase {
 
         if (shouldPass) {
             var pos = context.getBlockPos();
-            var facing = context.getPlayerFacing();
+            var facing = context.getSide().getOpposite();
             var pos2 = context.getBlockPos().offset(facing, 5);
 
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));

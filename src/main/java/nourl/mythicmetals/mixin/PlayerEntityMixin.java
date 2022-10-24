@@ -17,6 +17,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.tools.HammerBase;
 import nourl.mythicmetals.tools.MythicTools;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -46,15 +47,23 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
-        var hand = getInventory().getMainHandStack();
-        if (blockState.isIn(MythicTags.MYTHIC_ORES) && !hand.isSuitableFor(blockState)) {
+        var mainHandStack = getInventory().getMainHandStack();
+
+        // Don't do any special handling if you are not holding a tool
+        if (mainHandStack.isEmpty()) return;
+
+        // Slow down mining if you are using an item without a high enough mining level
+        if (blockState.isIn(MythicTags.MYTHIC_ORES) && !mainHandStack.isSuitableFor(blockState)) {
             var speed = cir.getReturnValue();
-            if (hand.hasEnchantments() && hand.getEnchantments().iterator().next().equals(Enchantments.EFFICIENCY)) {
+            if (mainHandStack.hasEnchantments() && mainHandStack.getEnchantments().iterator().next().equals(Enchantments.EFFICIENCY)) {
                 speed *= 0.01f;
             } else
                 speed *= 0.3f;
 
             cir.setReturnValue(speed);
+        }
+        else if (mainHandStack.getItem() instanceof HammerBase) {
+            var speed = cir.getReturnValue();
         }
 
     }

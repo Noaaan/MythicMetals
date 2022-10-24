@@ -58,6 +58,9 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
+
+    public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 3, -3.0F,
+            new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2), 1);
     public static final Item GILDED_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
@@ -80,6 +83,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
         RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
         RegistryHelper.item("carmot_staff", CARMOT_STAFF);
+        RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);
         RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);

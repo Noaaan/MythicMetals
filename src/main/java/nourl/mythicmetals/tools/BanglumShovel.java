@@ -34,7 +34,7 @@ public class BanglumShovel extends ShovelItem {
         var player = context.getPlayer();
 
         if (player != null && !getCooldown(player, context.getStack()) && !world.isClient) {
-            var iterator = BlockBreaker.findBlocks(context);
+            var iterator = BlockBreaker.findBlocks(context, 5);
 
             for (BlockPos blockPos : iterator) {
                 if (canBreak(world, blockPos)) {
