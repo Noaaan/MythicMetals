@@ -11,6 +11,7 @@
     "CampfireBlockMixin",
     "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
+    "DispenserBehaviorMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",
     "LivingEntityMixin",
