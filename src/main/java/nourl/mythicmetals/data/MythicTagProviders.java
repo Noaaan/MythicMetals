@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.MythicItems;
 
 import java.util.ArrayList;
