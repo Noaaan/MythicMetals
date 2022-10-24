@@ -1,3 +1,9 @@
+# 0.16.3  
+Gave Palladium Natural Fire Resistance, reducing damage taken from fire sources.  
+Removed outdated Lumi Lights compat, which was causing a crash (#124).  
+Fixed missing raw ore tags (#126).  
+Added a recipe for Flint and Steel... using Steel.  
+
 # 0.16.2
 Prevent players from dropping more experience when being killed with Experience Boost.  
 Added Korean Translations (thanks gyular!).  

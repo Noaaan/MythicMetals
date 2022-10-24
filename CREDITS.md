@@ -19,29 +19,30 @@ Dr. Zeal, for the wisp texture.
 BasiqueEvangelist, for contributing to the project, helping with recipe serialization, and for mining copious amounts of Midas Gold.  
 Draylar, for making a ton of cool mods that inspired multiple parts of the project.  
 
-## **The artists**
-* DH
-* Temreno
-* Tector
-* Pois1x
-* Henchman
-* RGBeet
-* Windy
-* Shiftless
-* Haunted Chest
-* Dr. Zeal
-* Azazelthedemonlord
+## **The artists**  
+* DH  
+* Temreno  
+* Tector  
+* Pois1x  
+* Henchman  
+* RGBeet  
+* Windy  
+* Shiftless  
+* Haunted Chest  
+* Dr. Zeal  
+* Azazelthedemonlord  
 
 Thank you all for making awesome new textures for the mod.  
-As well as a special thanks to Matpac for new ingot textures!
+As well as a special thanks to Matpac for new ingot textures!  
 
-And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.
+And a final thanks to the Fabric Project Discord, who have been supportive while developing this mod.  
 
 ## Translations
-These people have helped translating the mod into different languages. Thank you to:
+These people have helped translating the mod into different languages. Thank you to:  
 
-* Oscienet, for the russian translation.
-* DH, for the macedonian translation.
-* leocth, for the simplified chinese translation.
+* Oscienet, for the russian translation.  
+* DH, for the macedonian translation.  
+* pluiedev, for the simplified chinese translation.  
+* gyular, for the korean translation.  
 
 Feel free to contribute a translation if you want to! I do not support crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
