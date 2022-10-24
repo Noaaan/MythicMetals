@@ -1,7 +1,6 @@
 package nourl.mythicmetals.blocks;
 
 import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import io.wispforest.owo.util.Maldenhagen;
