@@ -1,7 +1,6 @@
 package nourl.mythicmetals.utils;
 
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
-import io.wispforest.owo.ops.WorldOps;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EquipmentSlot;
@@ -80,10 +79,18 @@ public class BlockBreaker {
 
             var facing = blockHitResult.getSide().getOpposite();
             var blocks = BlockBreaker.findBlocks(facing, pos, hammer.getDepth());
+
             boolean hasMined = false;
             for (BlockPos blockPos : blocks) {
+                // Ignore the center block, to prevent an edge case where the middle block is broken thrice
+                if (blockPos.equals(pos)) {
+                    continue;
+                }
                 if (hammer.canBreak(world, blockPos) && !player.isCreative()) {
-                    WorldOps.breakBlockWithItem(world, blockPos, stack);
+                    // Call Block.onBreak here, to allow interactions when a player breaks blocks
+                    // Note that the center block still calls onBreak twice
+                    world.getBlockState(blockPos).getBlock().onBreak(world, pos, state, player);
+                    world.breakBlock(blockPos, true, player);
                     hasMined = true;
                 } else if (player.isCreative()) {
                     world.breakBlock(blockPos, false, null);

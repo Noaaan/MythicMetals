@@ -25,10 +25,10 @@ public class BanglumOreBlock extends OreBlock {
         int rng = random.nextInt(130);
         if (rng < 2 && world.getDimension().isUltrawarm()) {
             ClientParticles.setParticleCount(12);
-            ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.5D);
+            ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 3.5D);
         } else if (rng == 69) {
             ClientParticles.setParticleCount(6);
-            ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.0D);
+            ClientParticles.spawnCenteredOnBlock(ParticleTypes.LARGE_SMOKE, world, pos, 2.5D);
         }
         super.randomDisplayTick(state, world, pos, random);
     }
