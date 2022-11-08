@@ -91,28 +91,29 @@ public class EnchantmentHelperMixin {
         // Make sure that there is any gear to check
         if (!equipment.iterator().hasNext()) return;
 
-        var gear = equipment.iterator().next().getItem();
         var amount = cir.getReturnValue();
         int change = 0;
 
-        if (Abilities.BLAST_PROTECTION.getItems().contains(gear) && source.isExplosive()) {
-            change += Abilities.BLAST_PROTECTION.getLevel() * 2;
-        }
+        for (var gear : equipment) {
+            if (Abilities.BLAST_PROTECTION.getItems().contains(gear.getItem()) && source.isExplosive()) {
+                change += Abilities.BLAST_PROTECTION.getLevel() * 2;
+            }
 
-        if (Abilities.BLAST_PADDING.getItems().contains(gear) && source.isExplosive()) {
-            change += Abilities.BLAST_PROTECTION.getLevel() * 2;
-        }
+            if (Abilities.BLAST_PADDING.getItems().contains(gear.getItem()) && source.isExplosive()) {
+                change += Abilities.BLAST_PADDING.getLevel() * 2;
+            }
 
-        if (Abilities.PROJECTILE_PROTECTION.getItems().contains(gear) && source.isProjectile()) {
-            change += Abilities.PROJECTILE_PROTECTION.getLevel() * 2;
-        }
+            if (Abilities.PROJECTILE_PROTECTION.getItems().contains(gear.getItem()) && source.isProjectile()) {
+                change += Abilities.PROJECTILE_PROTECTION.getLevel() * 2;
+            }
 
-        if (Abilities.FEATHER_FALLING.getItems().contains(gear) && source.isFromFalling()) {
-            change += Abilities.FEATHER_FALLING.getLevel() * 3;
-        }
+            if (Abilities.FEATHER_FALLING.getItems().contains(gear.getItem()) && source.isFromFalling()) {
+                change += Abilities.FEATHER_FALLING.getLevel() * 3;
+            }
 
-        if (Abilities.FIRE_PROTECTION.getItems().contains(gear) && source.isFire()) {
-            change += Abilities.FIRE_PROTECTION.getLevel() * 2;
+            if (Abilities.FIRE_PROTECTION.getItems().contains(gear.getItem()) && source.isFire()) {
+                change += Abilities.FIRE_PROTECTION.getLevel() * 2;
+            }
         }
 
         if (change != 0)
