@@ -20,9 +20,9 @@ public class MythicConfigModel {
     @Nest
     public OreConfig aquarium = new OreConfig(true, 9, 4, 41, 63, .0f, false);
     @Nest
-    public OreConfig banglum = new OreConfig(true, 6, 3, 50, 69, .125f, false);
+    public OreConfig banglum = new OreConfig(true, 7, 3, 48, 69, .125f, false);
     @Nest
-    public OreConfig netherBanglum = new OreConfig(true, 8, 4, 69, 110, .125f, false);
+    public OreConfig netherBanglum = new OreConfig(true, 10, 4, 69, 110, .125f, false);
     @Nest
     public OreConfig carmot = new OreConfig(true,4, 1, -24 ,10, .25f, false);
     @Nest
