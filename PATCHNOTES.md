@@ -1,3 +1,14 @@
+# 0.16.4
+## Balancing changes  
+Increased Banglum vein sizes.  
+Increased Midas Gold drops, which is improved when lucky.  
+Nether Banglum Ores explode less frequently when Silk Touch + Efficiency/Fortune is used.  
+
+## Fixes  
+Fixed an issue where Natural Armor Enchants would not apply correctly.  
+Fixed an issue where breaking blocks with Hammers would not respect the player.  
+Fixed an issue where Banglum Ores are not triggered by the Orichalcum Hammer.  
+
 # 0.16.3  
 Gave Palladium Natural Fire Resistance, reducing damage taken from fire sources.  
 Removed outdated Lumi Lights compat, which was causing a crash (#124).  

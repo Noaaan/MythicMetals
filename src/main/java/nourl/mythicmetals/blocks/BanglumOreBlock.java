@@ -41,7 +41,7 @@ public class BanglumOreBlock extends OreBlock {
         if (stack.hasEnchantments()) {
             chance += (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
             chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 8);
-            chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 40);
+            chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 45);
         }
 
         chance = MathHelper.clamp(chance, 0, 80);
