@@ -36,7 +36,7 @@
                   "chance": 0.03
                 }
               ],
-              "quality": 1
+              "quality": 1.5
             },
             {
               "type": "minecraft:item",
