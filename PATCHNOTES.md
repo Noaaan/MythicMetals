@@ -3,6 +3,7 @@
 Increased Banglum vein sizes.  
 Increased Midas Gold drops, which is improved when lucky.  
 Nether Banglum Ores explode less frequently when Silk Touch + Efficiency/Fortune is used.  
+Nether Banglum Chunk drops happen more frequently when lucky.  
 
 ## Fixes  
 Fixed an issue where Natural Armor Enchants would not apply correctly.  
