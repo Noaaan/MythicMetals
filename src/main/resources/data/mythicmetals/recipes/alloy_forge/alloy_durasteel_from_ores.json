@@ -15,7 +15,7 @@
   "overrides": {
     "3+": {
       "id": "mythicmetals:durasteel_ingot",
-      "count": 7
+      "count": 8
     }
   },
   "min_forge_tier": 2,
