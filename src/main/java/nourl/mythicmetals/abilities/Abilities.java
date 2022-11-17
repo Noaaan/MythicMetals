@@ -21,14 +21,14 @@ public class Abilities {
     public static final Ability BONUS_LOOTING = new Ability("bonus_looting", 1, false);
     public static final Ability CARMOT_SHIELD = new Ability("carmot_shield", 0, false);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
-    public static final Ability FEATHER_FALLING = new Ability("feather_falling", 4);
-    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 2);
+    public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
+    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability MENDING = new Ability("mending", 1, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability RESPIRATION = new Ability("respiration", 2);
-    public static final Ability SMITE = new Ability("smite", 4);
+    public static final Ability SMITE = new Ability("smite", 3);
     public static final Ability SPIKED_HELM = new Ability("spiked_helm", 3, false);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
 
