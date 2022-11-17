@@ -3,7 +3,7 @@
   "pools": [
     {
       "rolls": 1,
-      "bonus_rolls": 0,
+      "bonus_rolls": 0.5,
       "entries": [
         {
           "type": "minecraft:item",
@@ -101,6 +101,7 @@
           "type": "minecraft:item",
           "weight": 10,
           "name": "minecraft:ender_pearl",
+          "quality": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -138,7 +139,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 2,
-                "max": 4
+                "max": 5
               }
             }
           ]
@@ -175,7 +176,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 3,
-                "max": 7
+                "max": 9
               },
               "add": false
             }

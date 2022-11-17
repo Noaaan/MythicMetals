@@ -35,7 +35,7 @@ public class MythicConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig morkite = new OreConfig(true,11, 3, 27, 32, .25f, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-    public OreConfig midas_gold = new OreConfig(true,7, 4, 12, 125,.25f, false, false);
+    public OreConfig midas_gold = new OreConfig(true,7, 4, 12, 125,.125f, false, false);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
     public OreConfig mythril = new OreConfig(true, 5, 1, -24, 4, .125f, false, true);
     @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
