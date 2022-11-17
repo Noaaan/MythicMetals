@@ -1,5 +1,5 @@
 # 0.16.4
-### Balancing changes  
+### Changes  
 Increased Banglum vein sizes.  
 Increased Midas Gold drops, which is improved when lucky.  
 Nether Banglum Ores explode less frequently when Silk Touch + Efficiency/Fortune is used.  
@@ -7,16 +7,17 @@ Nether Banglum Chunk drops happen more frequently when lucky.
 Reduced Midas Gold Discard Chance.  
 Improved the effect Luck has on Midas Gold bartering.  
 Increased Durasteel yield from full ores when using a Tier 3 Forge Controller.  
+Improved Bronze tool textures.  
 Reduced the levels of the following abilities:
-- Holy (For anyone wondering, Holy is just extra levels of Smite): 4 -> 3 
-- Natural Fire Protection: 2 -> 1
+- Holy (For anyone wondering, Holy is just extra levels of Smite): 4 -> 3   
+- Natural Fire Protection: 2 -> 1  
 - Natural Feather Falling: 4 -> 3
 
 
 ### Fixes  
 Fixed an issue where Natural Armor Enchants would not apply correctly.  
 Fixed an issue where breaking blocks with Hammers would not respect the player.  
-Fixed an issue where Banglum Ores are not triggered by the Orichalcum Hammer.  
+Fixed an issue where Banglum Ores are not triggered by the Orichalcum Hammer.
 
 # 0.16.3  
 Gave Palladium Natural Fire Resistance, reducing damage taken from fire sources.  
