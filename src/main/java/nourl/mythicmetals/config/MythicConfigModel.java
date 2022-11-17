@@ -34,7 +34,7 @@ public class MythicConfigModel {
     @Nest
     public OreConfig morkite = new OreConfig(true,11, 3, 27, 32, .25f, true);
     @Nest
-    public OreConfig midasGold = new OreConfig(true,7, 4, 12, 125,.25f, false, false);
+    public OreConfig midasGold = new OreConfig(true,7, 4, 12, 125,.125f, false, false);
     @Nest
     public OreConfig mythril = new OreConfig(true, 5, 1, -24, 4, .125f, false, true);
     @Nest
