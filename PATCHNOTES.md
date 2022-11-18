@@ -17,7 +17,8 @@ Reduced the levels of the following abilities:
 ### Fixes  
 Fixed an issue where Natural Armor Enchants would not apply correctly.  
 Fixed an issue where breaking blocks with Hammers would not respect the player.  
-Fixed an issue where Banglum Ores are not triggered by the Orichalcum Hammer.
+Fixed an issue where Banglum Ores are not triggered by the Orichalcum Hammer.  
+Fixed a server crash related to a missing sound effect when using a Runite Block powered Carmot Staff.  
 
 # 0.16.3  
 Gave Palladium Natural Fire Resistance, reducing damage taken from fire sources.  
