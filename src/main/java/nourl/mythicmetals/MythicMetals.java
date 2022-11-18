@@ -42,7 +42,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     @Override
     public void onInitialize() {
-        RegisterSounds.register();
+        FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
         FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
         if (CONFIG.enableNuggets()) {

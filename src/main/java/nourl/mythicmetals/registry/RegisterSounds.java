@@ -1,12 +1,13 @@
 package nourl.mythicmetals.registry;
 
+import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.utils.RegistryHelper;
 
-public class RegisterSounds {
+public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
 
     public static SoundEvent EQUIP_RUNITE = new SoundEvent(RegistryHelper.id("equip_runite"));
     public static SoundEvent DOG = new SoundEvent(RegistryHelper.id("music_disc.dog4"));
@@ -27,11 +28,14 @@ public class RegisterSounds {
             SoundEvents.BLOCK_DEEPSLATE_HIT,
             SoundEvents.BLOCK_DEEPSLATE_FALL);
 
-    public static void register() {
-        Registry.register(Registry.SOUND_EVENT, EQUIP_RUNITE.getId(), EQUIP_RUNITE);
-        Registry.register(Registry.SOUND_EVENT, DOG.getId(), DOG);
-        Registry.register(Registry.SOUND_EVENT, MORKITE_ORE_BREAK.getId(), MORKITE_ORE_BREAK);
-        Registry.register(Registry.SOUND_EVENT, DEEPSLATE_MORKITE_ORE_BREAK.getId(), DEEPSLATE_MORKITE_ORE_BREAK);
+    @Override
+    public Registry<SoundEvent> getRegistry() {
+        return Registry.SOUND_EVENT;
+    }
+
+    @Override
+    public Class<SoundEvent> getTargetFieldType() {
+        return SoundEvent.class;
     }
 }
 
