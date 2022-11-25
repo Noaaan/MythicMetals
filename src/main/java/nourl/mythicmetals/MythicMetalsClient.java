@@ -63,6 +63,8 @@ public class MythicMetalsClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
         ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
+
+        ShieldHudComponent.init();
     }
 
     /**
