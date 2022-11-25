@@ -34,14 +34,14 @@ public class PlayerEntityRendererMixin {
      */
     @Inject(method = "renderArm", at = @At("TAIL"))
     private void mythicmetals$renderShieldArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, ModelPart arm, ModelPart sleeve, CallbackInfo ci) {
-        if (player.getComponent(MythicMetals.CARMOT_SHIELD).isShieldActive()) {
+        if (player.getComponent(MythicMetals.CARMOT_SHIELD).shouldRenderShield()) {
             final var client = MinecraftClient.getInstance();
             float f = player.age + (client.isPaused() ? 0 : client.getTickDelta());
 
             var shield = player.getComponent(MythicMetals.CARMOT_SHIELD);
 
             int pieces = (int) (shield.getMaxHealth() % 4 + 1);
-            float health = pieces < 3 ? shield.health / 80f : shield.health / 110f;
+            float health = pieces < 3 ? shield.shieldHealth / 80f : shield.shieldHealth / 110f;
 
             var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
 

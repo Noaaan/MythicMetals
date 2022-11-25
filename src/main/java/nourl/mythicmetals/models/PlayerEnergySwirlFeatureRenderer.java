@@ -11,6 +11,7 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
@@ -28,11 +29,11 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
 
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-        if (entity.getComponent(MythicMetals.CARMOT_SHIELD).isShieldActive()) {
+        if (entity.getComponent(MythicMetals.CARMOT_SHIELD).shouldRenderShield()) {
             var shield = entity.getComponent(MythicMetals.CARMOT_SHIELD);
             float f = entity.age + tickDelta;
             int pieces = (int) (shield.getMaxHealth() % 4 + 1);
-            float health = pieces < 3 ? shield.health / 80f : shield.health / 110f;
+            float health = pieces < 3 ? shield.shieldHealth / 80f : shield.shieldHealth / 110f;
 
             this.swirlModel.animateModel(entity, limbAngle, limbDistance, tickDelta);
             this.getContextModel().copyStateTo(this.swirlModel);
@@ -41,7 +42,7 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
             var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
             this.swirlModel.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
             // Break animation
-            if (shield.cooldown > 0) {
+            if (shield.cooldown > CarmotShield.MAX_COOLDOWN - 30) {
                 matrices.scale(1.125f, 1.0625f, 1.125f);
                 this.swirlModel.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .9f, .025f, .025f, 1);
             } else // Regular animation

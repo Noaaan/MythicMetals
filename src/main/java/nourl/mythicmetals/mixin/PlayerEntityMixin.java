@@ -41,29 +41,40 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Shadow
     public abstract Iterable<ItemStack> getArmorItems();
 
-    @Shadow public abstract void incrementStat(Stat<?> stat);
+    @Shadow
+    public abstract void incrementStat(Stat<?> stat);
 
-    @Shadow @Final private ItemCooldownManager itemCooldownManager;
+    @Shadow
+    @Final
+    private ItemCooldownManager itemCooldownManager;
 
     @Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
         var mainHandStack = getInventory().getMainHandStack();
+        float speedMod = 1.0f;
 
         // Don't do any special handling if you are not holding a tool
         if (mainHandStack.isEmpty()) return;
 
-        // Slow down mining if you are using an item without a high enough mining level
+        // Slow down mining MM ores if you are using an item without a high enough mining level
         if (blockState.isIn(MythicTags.MYTHIC_ORES) && !mainHandStack.isSuitableFor(blockState)) {
-            var speed = cir.getReturnValue();
             if (mainHandStack.hasEnchantments() && mainHandStack.getEnchantments().iterator().next().equals(Enchantments.EFFICIENCY)) {
-                speed *= 0.01f;
-            } else
-                speed *= 0.3f;
+                speedMod *= 0.01f;
+            } else {
+                speedMod *= 0.3f;
+            }
 
+        }
+
+        // Slow down Hammers
+        if (mainHandStack.getItem() instanceof HammerBase) {
+            speedMod *= 0.9f;
             cir.setReturnValue(speed);
         }
-        else if (mainHandStack.getItem() instanceof HammerBase) {
+
+        if (speedMod < 1.0f) {
             var speed = cir.getReturnValue();
+            cir.setReturnValue(speed * speedMod);
         }
 
     }
@@ -83,7 +94,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     public float carmotShieldCancel(float amount) {
         var shield = getComponent(MythicMetals.CARMOT_SHIELD);
         if (shield.getMaxHealth() > 0) {
-            float health = shield.health;
+            float health = shield.shieldHealth;
             shield.damageShield(amount);
             return amount > health ? amount - health : 0;
 
@@ -93,7 +104,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
 
     // [VanillaCopy]
-    // Slight modifications to durability reduction, to make the shield more durable
+    // Slight modifications to durability reduction, to make the Stormyx Shield more durable
     @Inject(method = "damageShield", at = @At("HEAD"))
     private void mythicmetals$damageShield(float amount, CallbackInfo ci) {
         if (this.activeItemStack.isOf(MythicTools.STORMYX_SHIELD)) {
@@ -101,7 +112,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                 incrementStat(Stats.USED.getOrCreateStat(this.activeItemStack.getItem()));
             }
 
-            if (amount >= 4.0F) {
+            if (amount >= 4.0f) {
                 int i = MathHelper.floor(amount);
                 Hand hand = this.getActiveHand();
                 this.activeItemStack.damage(i, this, player -> player.sendToolBreakStatus(hand));

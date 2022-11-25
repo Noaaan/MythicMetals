@@ -8,10 +8,19 @@ Reduced Midas Gold Discard Chance.
 Improved the effect Luck has on Midas Gold bartering.  
 Increased Durasteel yield from full ores when using a Tier 3 Forge Controller.  
 Improved Bronze tool textures.  
+Reduced Orichalcum Hammer mining speed by 10%.  
 Reduced the levels of the following abilities:
 - Holy (For anyone wondering, Holy is just extra levels of Smite): 4 -> 3   
 - Natural Fire Protection: 2 -> 1  
 - Natural Feather Falling: 4 -> 3
+
+### Re-worked Carmot Shield  
+- You now gain more shield per armor piece, 4 -> 5 
+  - The ability description has been updated to reflect this.  
+- Increased shield recharge rate  
+- Improved the rendering of the shield  
+- The shield now goes on a 2.5 second (50 tick) cooldown whenever you take damage
+- The Particle trail will no longer show on players if the shield has 0 health
 
 
 ### Fixes  
