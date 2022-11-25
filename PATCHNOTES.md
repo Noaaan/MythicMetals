@@ -22,7 +22,6 @@ Reduced the levels of the following abilities:
 - The shield now goes on a 2.5 second (50 tick) cooldown whenever you take damage
 - The Particle trail will no longer show on players if the shield has 0 health
 
-
 ### Fixes  
 Fixed an issue where Natural Armor Enchants would not apply correctly.  
 Fixed an issue where breaking blocks with Hammers would not respect the player.  

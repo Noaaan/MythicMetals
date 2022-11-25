@@ -1,4 +1,4 @@
-package nourl.mythicmetals.models;
+package nourl.mythicmetals.client.models;
 
 public class RenderingContext {
 
