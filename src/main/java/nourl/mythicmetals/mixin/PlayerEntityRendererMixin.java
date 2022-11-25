@@ -12,6 +12,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.tools.CarmotStaff;
@@ -45,7 +46,7 @@ public class PlayerEntityRendererMixin {
 
             var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
 
-            if (shield.cooldown > 0) {
+            if (shield.cooldown > CarmotShield.MAX_COOLDOWN - 30) {
                 matrices.scale(1.0625f, 1.0625f, 1.0625f);
                 sleeve.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, .9f, .025f, .025f, 1);
             } else // Regular animation
