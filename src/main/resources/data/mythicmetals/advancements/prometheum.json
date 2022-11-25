@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:runite",
+  "parent": "mythicmetals:root",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.prometheum.title"

@@ -23,7 +23,7 @@ import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
-import nourl.mythicmetals.models.*;
+import nourl.mythicmetals.client.models.*;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;

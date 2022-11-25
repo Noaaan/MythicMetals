@@ -8,7 +8,7 @@
       "translate": "advancement.mythicmetals.maxed_midas_gold_sword.description"
     },
     "icon": {
-      "item": "minecraft:grass_block"
+      "item": "mythicmetals:midas_gold_block"
     },
     "frame": "challenge",
     "show_toast": true,
