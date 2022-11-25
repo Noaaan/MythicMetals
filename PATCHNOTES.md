@@ -9,6 +9,10 @@ Improved the effect Luck has on Midas Gold bartering.
 Increased Durasteel yield from full ores when using a Tier 3 Forge Controller.  
 Improved Bronze tool textures.  
 Reduced Orichalcum Hammer mining speed by 10%.  
+Increased the healing from a Carmot Block in a Carmot Staff (2.5 Hearts -> 5 Hearts).  
+Reduced the cooldown of the Carmot Block healing ability (700 ticks -> 480 ticks).  
+Increased the attack speed of a Carmot Staff with a Netherite Block (0.6 -> 0.7).  
+Increased the range of small AoE Carmot Staff abilities.  
 Reduced the levels of the following abilities:
 - Holy (For anyone wondering, Holy is just extra levels of Smite): 4 -> 3   
 - Natural Fire Protection: 2 -> 1  

@@ -69,7 +69,6 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         // Slow down Hammers
         if (mainHandStack.getItem() instanceof HammerBase) {
             speedMod *= 0.9f;
-            cir.setReturnValue(speed);
         }
 
         if (speedMod < 1.0f) {
