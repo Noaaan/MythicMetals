@@ -1,4 +1,4 @@
-package nourl.mythicmetals.models;
+package nourl.mythicmetals.client.models;
 
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;

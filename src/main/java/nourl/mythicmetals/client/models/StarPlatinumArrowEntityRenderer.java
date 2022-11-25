@@ -1,4 +1,4 @@
-package nourl.mythicmetals.models;
+package nourl.mythicmetals.client.models;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

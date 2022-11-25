@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.models.RainbowShieldModel;
+import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.UselessSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static nourl.mythicmetals.models.PlayerEnergySwirlFeatureRenderer.SWIRL_TEXTURE;
+import static nourl.mythicmetals.client.models.PlayerEnergySwirlFeatureRenderer.SWIRL_TEXTURE;
 
 @Mixin(PlayerEntityRenderer.class)
 public class PlayerEntityRendererMixin {

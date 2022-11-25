@@ -1,4 +1,4 @@
-package nourl.mythicmetals.models;
+package nourl.mythicmetals.client.models;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
@@ -8,10 +8,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class HelmetModel extends BipedEntityModel<LivingEntity> {
+public class ArmorModel extends BipedEntityModel<LivingEntity> {
     final EquipmentSlot slot;
 
-    public HelmetModel(ModelPart root, EquipmentSlot slot) {
+    public ArmorModel(ModelPart root, EquipmentSlot slot) {
         super(root);
         this.slot = slot;
     }
@@ -59,8 +59,17 @@ public class HelmetModel extends BipedEntityModel<LivingEntity> {
 
     private void renderArmorPart(EquipmentSlot slot) {
         setVisible(false);
-        if (slot == EquipmentSlot.HEAD) {
-            head.visible = true;
+        switch (slot) {
+            case HEAD -> head.visible = true;
+            case CHEST -> {
+                body.visible = true;
+                rightArm.visible = true;
+                leftArm.visible = true;
+            }
+            case LEGS -> {
+                rightLeg.visible = true;
+                leftLeg.visible = true;
+            }
         }
     }
 

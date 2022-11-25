@@ -56,7 +56,7 @@ public class CarmotStaff extends ToolItem {
 
     /**
      * Contains the block stored inside the staff.
-     * This is rendered via the {@link nourl.mythicmetals.models.CarmotStaffBlockRenderer}
+     * This is rendered via the {@link nourl.mythicmetals.client.models.CarmotStaffBlockRenderer}
      */
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
 
