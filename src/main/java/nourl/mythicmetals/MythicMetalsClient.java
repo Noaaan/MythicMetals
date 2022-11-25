@@ -22,8 +22,12 @@ import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
+import nourl.mythicmetals.client.ShieldHudComponent;
+import nourl.mythicmetals.client.models.CarmotStaffBlockRenderer;
+import nourl.mythicmetals.client.models.MythicModelHandler;
+import nourl.mythicmetals.client.models.PlayerEnergySwirlFeatureRenderer;
+import nourl.mythicmetals.client.models.StarPlatinumArrowEntityRenderer;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
-import nourl.mythicmetals.models.*;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
@@ -63,6 +67,8 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
+
+        ShieldHudComponent.init();
     }
 
     /**
@@ -115,7 +121,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                         originalPos.getX() - blockOutlineContext.cameraX(),
                         originalPos.getY() - blockOutlineContext.cameraY(),
                         originalPos.getZ() - blockOutlineContext.cameraZ(),
-                        0,0,0, 0.4F //RGBA
+                        0, 0, 0, 0.4F //RGBA
                 );
                 // Cancel the event to prevent the middle outline from rendering
                 return false;
