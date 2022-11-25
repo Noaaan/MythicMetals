@@ -50,7 +50,6 @@ public class CarmotShield implements Component, AutoSyncedComponent {
 
     public void tickShield() {
         if (player.world == null) return;
-        System.out.println(shieldHealth);
         MythicMetals.CARMOT_SHIELD.sync(player);
 
         // Prevent overshields

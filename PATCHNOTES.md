@@ -1,7 +1,7 @@
 # 0.16.4
 ### Changes  
 Increased Banglum vein sizes.  
-Increased Midas Gold drops, which is improved when lucky.  
+Increased Midas Gold drops.  
 Nether Banglum Ores explode less frequently when Silk Touch + Efficiency/Fortune is used.  
 Nether Banglum Chunk drops happen more frequently when lucky.  
 Reduced Midas Gold Discard Chance.  
