@@ -12,6 +12,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
@@ -175,6 +176,10 @@ public abstract class LivingEntityMixin extends Entity {
     private void mythicmetals$carmotParticle() {
         if (!world.isClient) return;
         Vec3d velocity = this.getVelocity();
+
+        if (this.isPlayer() && this.getComponent(MythicMetals.CARMOT_SHIELD).shieldHealth == 0) {
+            return; // If you are a player, and your shield ran out, do not display particles
+        }
 
         // Add particles around the entity when standing still
         if (velocity.length() <= 0.1 && r.nextInt(14) < 1) {

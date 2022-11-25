@@ -11,56 +11,71 @@ import nourl.mythicmetals.data.MythicTags;
 
 public class CarmotShield implements Component, AutoSyncedComponent {
     private final PlayerEntity player;
-    public float health;
+    public float shieldHealth;
     public int renderTime;
     public int cooldown;
 
-    public static final int SHIELD_HEALTH_PER_PIECE = 4;
+    public static final int SHIELD_HEALTH_PER_PIECE = 5;
     public static final int MAX_COOLDOWN = 160;
 
     public CarmotShield(PlayerEntity player) {
         this.player = player;
-        health = 0;
+        shieldHealth = 0;
         renderTime = 0;
         cooldown = 0;
     }
 
-    public boolean isShieldActive() {
-        return renderTime > 0 || cooldown > MAX_COOLDOWN - 15;
+    public boolean shouldRenderShield() {
+        return renderTime > 0;
     }
 
     public void damageShield(float damage) {
-        health = MathHelper.clamp(health - damage, 0f, getMaxHealth());
+        shieldHealth = MathHelper.clamp(shieldHealth - damage, 0f, getMaxHealth());
 
-        if (health == 0) {
+        // Put the shield on cooldown when you take damage
+        if (shieldHealth > 0) {
+            renderTime = 20;
+            cooldown = 50;
+        }
+
+        // Handle if the shield should break
+        if (shieldHealth == 0) {
+            // Set the shield to render the break animation once
+            if (cooldown == 0) {
+                renderTime = 30;
+            }
             cooldown = MAX_COOLDOWN;
         }
     }
 
     public void tickShield() {
         if (player.world == null) return;
+        System.out.println(shieldHealth);
         MythicMetals.CARMOT_SHIELD.sync(player);
 
-        if (health > getMaxHealth()) {
-            health = getMaxHealth();
+        // Prevent overshields
+        if (shieldHealth > getMaxHealth()) {
+            shieldHealth = getMaxHealth();
         }
 
-        if (health < getMaxHealth()) {
+        // Regenerate shield if not on cooldown
+        if (shieldHealth < getMaxHealth()) {
             if (cooldown == 0) {
-                health = MathHelper.clamp(health += 0.075f, 0f, this.getMaxHealth());
+                shieldHealth = MathHelper.clamp(shieldHealth += 0.1f, 0f, this.getMaxHealth());
                 renderTime = 40;
             } else {
                 cooldown--;
             }
         }
 
-        if (isShieldActive()) {
+        if (shouldRenderShield()) {
             renderTime--;
         }
 
+        // If you dont have the shield anymore, stop rendering
         if (getMaxHealth() == 0) {
             renderTime = 0;
-            health = 0;
+            shieldHealth = 0;
         }
     }
 
@@ -77,14 +92,14 @@ public class CarmotShield implements Component, AutoSyncedComponent {
 
     @Override
     public void readFromNbt(NbtCompound tag) {
-        health = tag.getFloat("health");
+        shieldHealth = tag.getFloat("health");
         renderTime = tag.getInt("rendertime");
         cooldown = tag.getInt("cooldown");
     }
 
     @Override
     public void writeToNbt(NbtCompound tag) {
-        tag.putFloat("health", health);
+        tag.putFloat("health", shieldHealth);
         tag.putInt("rendertime", renderTime);
         tag.putInt("cooldown", cooldown);
 
