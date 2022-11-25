@@ -59,7 +59,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
 
-    public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 5, -3.3F,
+    public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2F,
             new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2), 1);
     public static final Item GILDED_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));

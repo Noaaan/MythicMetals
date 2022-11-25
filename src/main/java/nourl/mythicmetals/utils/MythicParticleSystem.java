@@ -68,10 +68,27 @@ public class MythicParticleSystem {
 
     public static final ParticleSystem<Void> ICE_BARRAGE = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(10);
-        Random r = new Random();
 
         ClientParticles.persist();
         ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.SNOWFLAKE, world, new BlockPos(pos), new Vec3d(0, 3, 0), 1.5F);
+        ClientParticles.reset();
+
+    });
+
+    public static final ParticleSystem<Void> HEALING_HEARTS = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        ClientParticles.setParticleCount(5);
+
+        ClientParticles.persist();
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.HEART, world, new BlockPos(pos), new Vec3d(0, 1.25, 0), 2.0F);
+        ClientParticles.reset();
+
+    });
+
+    public static final ParticleSystem<Void> HEALING_DAMAGE = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        ClientParticles.setParticleCount(5);
+
+        ClientParticles.persist();
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.ENCHANTED_HIT, world, new BlockPos(pos), new Vec3d(0, 1.25, 0), 2.0F);
         ClientParticles.reset();
 
     });

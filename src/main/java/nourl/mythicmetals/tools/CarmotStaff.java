@@ -285,25 +285,28 @@ public class CarmotStaff extends ToolItem {
 
         // Carmot - AoE Heal
         if (hasBlockInStaff(stack, MythicBlocks.CARMOT.getStorageBlock())) {
-            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
+            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 4, 3, 4));
             entities.forEach(entity -> {
-                if (entity.isLiving()) {
-                    if (((LivingEntity) entity).isUndead()) {
-                        entity.damage(DamageSource.MAGIC, 5.0F);
+                if (entity instanceof LivingEntity livingEntity) {
+                    if (livingEntity.isUndead()) {
+                        entity.damage(DamageSource.MAGIC, 10.0F);
+                        MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.getPos());
                     } else {
-                        ((LivingEntity) entity).heal(5.0F);
+                        livingEntity.heal(10.0F);
+                        MythicParticleSystem.HEALING_HEARTS.spawn(world, livingEntity.getPos());
                     }
                 }
             });
-            user.heal(6.0F);
+            user.heal(10.0F);
+            MythicParticleSystem.HEALING_HEARTS.spawn(world, user.getPos());
             stack.damage(8, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-            user.getItemCooldownManager().set(stack.getItem(), 700);
+            user.getItemCooldownManager().set(stack.getItem(), 480);
             return TypedActionResult.success(stack);
         }
 
         // Midas Gold - Luck 2 for four minutes
         if (hasBlockInStaff(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock())) {
-            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 3, 2, 3));
+            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 4, 3, 4));
             var betterLuckStatus = new StatusEffectInstance(StatusEffects.LUCK, 4800, 1, true, false, true);
             entities.forEach(entity -> {
                 if (entity.isLiving()) {
@@ -529,7 +532,7 @@ public class CarmotStaff extends ToolItem {
                 experience = slot == EquipmentSlot.MAINHAND ? 1.0F : .25F;
             } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
                 damage = 11.0F;
-                speed += 0.6F;
+                speed += 0.7F;
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
                 speed += 0.5F;
