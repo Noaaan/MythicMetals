@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:orichalcum",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.orichalcum_hammer.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.orichalcum_hammer.description"
+    },
+    "icon": {
+      "item": "mythicmetals:orichalcum_hammer"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "hammer_time_hammer_time_hammer_time_bottom_text": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:orichalcum_hammer"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

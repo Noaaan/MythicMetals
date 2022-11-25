@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:stormyx_shell",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.stormyx_shield.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.stormyx_shield.description"
+    },
+    "icon": {
+      "item": "mythicmetals:stormyx_shield"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fanciful_colorful_shield": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:stormyx_shield"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:osmium",
+  "parent": "mythicmetals:forge",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.runite.title"
@@ -23,7 +23,8 @@
           {
             "items": [
               "mythicmetals:raw_runite",
-              "mythicmetals:runite_ore"
+              "mythicmetals:runite_ore",
+              "mythicmetals:deepslate_runite_ore"
             ]
           }
         ]
