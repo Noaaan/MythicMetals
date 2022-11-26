@@ -25,7 +25,7 @@ public class MythicConfigModel {
     @Nest
     public OreConfig netherBanglum = new OreConfig(true, 10, 4, 69, 110, .125f, false);
     @Nest
-    public OreConfig carmot = new OreConfig(true, 4, 1, -24, 10, .25f, false);
+    public OreConfig carmot = new OreConfig(true, 4, 1, -24, 10, .125f, false);
     @Nest
     public OreConfig calciteKyber = new OreConfig(true, 16, 40, -56, 40, .4f, false, false);
     @Nest
