@@ -1,0 +1,89 @@
+{
+  "type": "spectrum:titration_barrel",
+  "group": "infused_beverages",
+  "ingredients": [
+    {
+      "item": "minecraft:hay_block",
+      "count": 3
+    },
+    {
+      "item": "mythicmetals:morkite",
+      "count": 5
+    }
+  ],
+  "min_fermentation_time_hours": 24,
+  "fluid": "minecraft:water",
+  "tapping_item": "minecraft:glass_bottle",
+  "fermentation_data": {
+    "fermentation_speed_mod": 0.35,
+    "effects": [
+      {
+        "id": "minecraft:strength",
+        "base_duration": 4800,
+        "potency": [
+          {
+            "min_alc": 3,
+            "potency": 0
+          }
+        ]
+      },
+      {
+        "id": "minecraft:haste",
+        "base_duration": 9600,
+        "potency": [
+          {
+            "min_alc": 6,
+            "potency": 0
+          },
+          {
+            "min_alc": 10,
+            "potency": 1
+          },
+          {
+            "min_alc": 16,
+            "potency": 2
+          }
+        ]
+      },
+      {
+        "id": "minecraft:weakness",
+        "base_duration": 4800,
+        "potency": [
+          {
+            "min_thickness": 2
+          },
+          {
+            "min_thickness": 3,
+            "potency": 1
+          },
+          {
+            "min_thickness": 4,
+            "potency": 2
+          }
+        ]
+      },
+      {
+        "id": "minecraft:nausea",
+        "base_duration": 600,
+        "potency": [
+          {
+            "min_thickness": 4
+          },
+          {
+            "min_alc": 10
+          },
+          {
+            "min_alc": 18,
+            "potency": 1
+          }
+        ]
+      }
+    ]
+  },
+  "result": {
+    "item": "spectrum:infused_beverage",
+    "count": 4,
+    "nbt": "{Variant: \"morkite\", Color: 16494 }"
+  },
+  "required_advancement": "spectrum:milestones/confirmed_drinking_age"
+}
