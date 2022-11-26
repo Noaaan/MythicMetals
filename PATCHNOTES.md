@@ -9,6 +9,7 @@ Improved the effect Luck has on Midas Gold bartering.
 Increased Durasteel yield from full ores when using a Tier 3 Forge Controller.  
 Improved Bronze tool textures.  
 Reduced Orichalcum Hammer mining speed by 10%.  
+Increased the chance of Carmot spawning in caves (Discard Chance 25% -> 12.5%).  
 Increased the healing from a Carmot Block in a Carmot Staff (2.5 Hearts -> 5 Hearts).  
 Reduced the cooldown of the Carmot Block healing ability (700 ticks -> 480 ticks).  
 Increased the attack speed of a Carmot Staff with a Netherite Block (0.6 -> 0.7).  
