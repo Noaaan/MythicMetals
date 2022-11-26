@@ -825,5 +825,6 @@
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
   "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience",
-  "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection"
+  "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection",
+  "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite"
 }
