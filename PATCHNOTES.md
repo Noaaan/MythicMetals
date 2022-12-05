@@ -1,5 +1,7 @@
 # 0.x.x  
 Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.  
+Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
+Lightened the outline of the Orichalcum Sword slightly.  
 
 # 0.16.4
 ### Changes  

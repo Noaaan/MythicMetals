@@ -83,7 +83,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate);
 
-        int soundRadius = (int) (radius * 1.25);
+        int soundRadius = radius * 3;
 
         for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) > soundRadius * soundRadius) continue;

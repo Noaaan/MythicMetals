@@ -10,7 +10,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.data.MythicTags;
@@ -46,11 +45,10 @@ public class BanglumNukeHandler {
         });
     }
 
-    public static boolean tryLightBigTntWithDispenser(BlockPointer pointer) {
-        var world = pointer.getWorld();
-        Direction direction = pointer.getWorld().getBlockState(pointer.getPos()).get(DispenserBlock.FACING);
-        BlockState state = pointer.getWorld().getBlockState(pointer.getPos().offset(direction));
-        var pos = pointer.getPos().offset(direction);
+    public static boolean tryLightBigTntWithDispenser(BlockPointer dispenser) {
+        var world = dispenser.getWorld();
+        BlockState state = world.getBlockState(dispenser.getPos().offset(dispenser.getBlockState().get(DispenserBlock.FACING)));
+        var pos = dispenser.getPos().offset(dispenser.getBlockState().get(DispenserBlock.FACING));
 
         if (!state.isOf(MythicBlocks.BANGLUM.getStorageBlock())
                 && !state.isOf(MythicBlocks.MORKITE.getStorageBlock()))
@@ -59,7 +57,7 @@ public class BanglumNukeHandler {
         for (int x = 0; x < 3; x++) {
             for (int y = 0; y < 3; y++) {
                 for (int z = 0; z < 3; z++) {
-                    if (tryLightBigTntAt(world, null, pos.getX() - x + 1, pos.getY() - y + 1, pos.getZ() - z + 1)) {
+                    if (tryLightBigTntAt(world, null, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
                         return true;
                     }
                 }
