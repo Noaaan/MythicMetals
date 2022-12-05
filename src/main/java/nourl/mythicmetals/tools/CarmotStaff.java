@@ -27,6 +27,7 @@ import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -46,6 +47,7 @@ import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
+import nourl.mythicmetals.utils.EpicExplosion;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import nourl.mythicmetals.utils.RegistryHelper;
 
@@ -376,6 +378,16 @@ public class CarmotStaff extends ToolItem {
 
                 return TypedActionResult.success(stack);
             }
+        }
+
+        // Sponge - Remove water
+        if (hasBlockInStaff(stack, Blocks.SPONGE)) {
+            if (!world.isClient) {
+                EpicExplosion.explode((ServerWorld) world, user.getBlockX(), user.getBlockY(), user.getBlockZ(), 12, blockState -> blockState.getBlock().equals(Blocks.WATER));
+            }
+            user.getItemCooldownManager().set(stack.getItem(), 138);
+            stack.damage(3, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            return TypedActionResult.success(stack);
         }
 
         return TypedActionResult.pass(stack);
