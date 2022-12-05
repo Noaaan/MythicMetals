@@ -102,6 +102,11 @@ public class CarmotStaff extends ToolItem {
             }
 
             if (slot.getStack().getItem() instanceof BlockItem blockItem && blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS)) {
+                // Don't bother swapping if the block is the same
+                if (getBlockInStaff(staff).equals(blockItem.getBlock())) return false;
+                // Dont do any swapping if the stack is larger than 1
+                if (slot.getStack().getCount() > 1) return false;
+
                 // Try replace block in staff
                 if (slot.tryTakeStackRange(1, 1, player).isPresent()) {
                     var staffBlock = staff.get(STORED_BLOCK).asItem().getDefaultStack();

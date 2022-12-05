@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import nourl.mythicmetals.abilities.Abilities;
+import nourl.mythicmetals.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -43,14 +44,15 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getRespiration", at = @At(value = "RETURN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEquipmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/entity/LivingEntity;)I"), cancellable = true)
     private static void mythicmetals$increaseRespiration(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
-
         int level = cir.getReturnValue();
+        int change = 0;
         for (ItemStack armorItems : entity.getArmorItems()) {
             if (Abilities.RESPIRATION.getItems().contains(armorItems.getItem()))
-                level += Abilities.RESPIRATION.getLevel();
+                change += Abilities.RESPIRATION.getLevel();
         }
-
-        cir.setReturnValue(level);
+        if (change > 0) {
+            cir.setReturnValue(level + change);
+        }
     }
 
     @Inject(method = "hasAquaAffinity", at = @At("HEAD"), cancellable = true)
@@ -78,10 +80,16 @@ public class EnchantmentHelperMixin {
     @Inject(method = "getLooting", at = @At("RETURN"), cancellable = true)
     private static void mythicmetals$increaseLooting(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
         int level = cir.getReturnValue();
+        int change = 0;
         for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.BONUS_LOOTING.getItems().contains(mainHand.getItem()))
-                level += Abilities.BONUS_LOOTING.getLevel();
+                change += Abilities.BONUS_LOOTING.getLevel();
         }
+
+        if (change > 0) {
+            cir.setReturnValue(level + change);
+        }
+    }
 
         cir.setReturnValue(level);
     }

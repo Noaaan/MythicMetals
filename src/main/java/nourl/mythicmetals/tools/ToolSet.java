@@ -47,11 +47,11 @@ public class ToolSet {
     }
 
     protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new AxeBase(material, damage, speed, settings);
+        return new AxeItem(material, damage, speed, settings);
     }
 
     protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PickaxeBase(material, damage, speed, settings);
+        return new PickaxeItem(material, damage, speed, settings);
     }
 
     protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
@@ -59,7 +59,7 @@ public class ToolSet {
     }
 
     protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new HoeBase(material, damage, speed, settings);
+        return new HoeItem(material, damage, speed, settings);
     }
 
 

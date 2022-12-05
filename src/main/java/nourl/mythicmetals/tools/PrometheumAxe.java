@@ -1,11 +1,12 @@
 package nourl.mythicmetals.tools;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.Hand;
 
-public class PrometheumAxe extends AxeBase {
+public class PrometheumAxe extends AxeItem {
     public PrometheumAxe(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
