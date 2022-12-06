@@ -91,7 +91,19 @@ public class EnchantmentHelperMixin {
         }
     }
 
-        cir.setReturnValue(level);
+    @Inject(method = "getEfficiency", at = @At("RETURN"), cancellable = true)
+    private static void mythicmetals$increaseEfficiency(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        int level = cir.getReturnValue();
+        int change = 0;
+        for (ItemStack mainHand : entity.getHandItems()) {
+            if (mainHand.getItem() instanceof MythrilDrill drill && drill.hasFuel(mainHand) && drill.isActive(mainHand)) {
+                 change += 1;
+            }
+        }
+
+        if (change > 0) {
+            cir.setReturnValue(level + change);
+        }
     }
 
     @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)

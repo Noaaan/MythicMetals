@@ -1,4 +1,8 @@
 # 0.x.x  
+### Mythril Drill
+A new use for Mythril. 
+Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
+
 Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.  
 Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
 Lightened the outline of the Orichalcum Sword slightly.  

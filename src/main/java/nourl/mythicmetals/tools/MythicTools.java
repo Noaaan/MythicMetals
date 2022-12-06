@@ -76,6 +76,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final Item STAR_PLATINUM_ARROW = new StarPlatinumArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item STORMYX_SHIELD = new StormyxShield(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2).maxDamage(1680).rarity(Rarity.UNCOMMON));
+    public static final Item MYTHRIL_DRILL = new MythrilDrill(MythicToolMaterials.MYTHRIL_DRILL, 3, -2.5f, new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {
         toolSet.register(name);
@@ -95,6 +96,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("carmot_staff", CARMOT_STAFF);
         RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);
         RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
+        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
         RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
