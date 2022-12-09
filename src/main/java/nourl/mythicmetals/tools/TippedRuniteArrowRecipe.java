@@ -6,6 +6,7 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
+import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
@@ -58,6 +59,12 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.TIPPED_ARROW;
+        return Serializer.get();
+    }
+
+    public static class Serializer {
+        public static RecipeSerializer<?> get() {
+            return new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
+        }
     }
 }
