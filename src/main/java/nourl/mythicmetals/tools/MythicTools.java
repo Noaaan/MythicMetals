@@ -12,6 +12,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -19,6 +21,8 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.item.RuniteArrowItem;
+import nourl.mythicmetals.item.TippedRuniteArrowItem;
 import nourl.mythicmetals.item.StarPlatinumArrowItem;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -74,6 +78,15 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final Item GILDED_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
+    public static final Item RUNITE_ARROW = new RuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
+    public static final Item TIPPED_RUNITE_ARROW = new TippedRuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2).stackGenerator((item, stacks) -> {
+        for(Potion potion : Registry.POTION) {
+            if (!potion.getEffects().isEmpty()) {
+                stacks.add(PotionUtil.setPotion(new ItemStack(item), potion));
+            }
+        }
+    }));
+
     public static final Item STAR_PLATINUM_ARROW = new StarPlatinumArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item STORMYX_SHIELD = new StormyxShield(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2).maxDamage(1680).rarity(Rarity.UNCOMMON));
     public static final Item MYTHRIL_DRILL = new MythrilDrill(MythicToolMaterials.MYTHRIL_DRILL, 3, -2.5f, new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
@@ -99,6 +112,8 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
+        RegistryHelper.item("runite_arrow", RUNITE_ARROW);
+        RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);
         RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
     }
 

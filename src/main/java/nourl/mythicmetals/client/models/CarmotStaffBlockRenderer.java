@@ -19,7 +19,7 @@ import net.minecraft.util.math.Vec3f;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.RegistryHelper;
-import nourl.mythicmetals.utils.UselessSingletonForColorUtil;
+import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 
 import java.util.function.Consumer;
 
@@ -46,7 +46,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
 
             int color = MathHelper.hsvToRgb((float) (hue / 360), saturation, constantvalue);
 
-            float[] rgbColors = UselessSingletonForColorUtil.splitRGBToFloats(color);
+            float[] rgbColors = SlowlyMoreUsefulSingletonForColorUtil.splitRGBToFloats(color);
 
             // Model handling, tries to reverse the rotation of the shield from the Bow UseAction
 

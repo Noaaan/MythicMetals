@@ -16,7 +16,7 @@ import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.tools.CarmotStaff;
-import nourl.mythicmetals.utils.UselessSingletonForColorUtil;
+import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -72,7 +72,7 @@ public class PlayerEntityRendererMixin {
 
             int color = MathHelper.hsvToRgb((float) (hue / 360), saturation, constantvalue);
 
-            float[] rgbColors = UselessSingletonForColorUtil.splitRGBToFloats(color);
+            float[] rgbColors = SlowlyMoreUsefulSingletonForColorUtil.splitRGBToFloats(color);
 
             var part = RainbowShieldModel.getTexturedModelData();
 

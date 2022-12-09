@@ -32,6 +32,7 @@ import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.BlockBreaker;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.utils.ShieldUsePredicate;
+import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,8 +43,9 @@ public class MythicMetalsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         Ability.initMidasGoldTooltip();
-
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
+
+        renderHammerOutline();
         registerArmorRenderer();
         registerModelPredicates();
 
@@ -55,14 +57,15 @@ public class MythicMetalsClient implements ClientModInitializer {
                             entityRendererFactoryCtx.getModelLoader()));
         });
 
-        renderHammerOutline();
 
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         EntityRendererRegistry.register(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
         EntityRendererRegistry.register(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
+        EntityRendererRegistry.register(RegisterEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
+        ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
     }
 
     /**

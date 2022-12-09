@@ -8,6 +8,7 @@
     "AnvilScreenHandlerMixin",
     "ApplyBonusLootFunctionMixin",
     "ArmorItemMixin",
+    "BowItemMixin",
     "CampfireBlockMixin",
     "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
@@ -25,8 +26,8 @@
   ],
   "client": [
     "CapeFeatureRendererMixin",
-    "EntityModelLayersAccessor",
     "ElytraFeatureRendererMixin",
+    "EntityModelLayersAccessor",
     "WorldRendererInvoker"
   ],
   "injectors": {

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:star_platinum_arrow"
+    "mythicmetals:star_platinum_arrow",
+    "mythicmetals:runite_arrow",
+    "mythicmetals:tipped_runite_arrow"
   ]
 }

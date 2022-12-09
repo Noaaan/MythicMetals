@@ -26,7 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.utils.UselessSingletonForColorUtil;
+import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -141,7 +141,7 @@ public class MythrilDrill extends PickaxeItem {
             tooltip.add(1, Text.translatable("tooltip.mythril_drill.deactivated").formatted(Formatting.GRAY, Formatting.ITALIC));
         }
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.fuel", fuel, MAX_FUEL)
-                .fillStyle(Style.EMPTY.withColor(UselessSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
+                .fillStyle(Style.EMPTY.withColor(SlowlyMoreUsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
     }
 
     @Override
