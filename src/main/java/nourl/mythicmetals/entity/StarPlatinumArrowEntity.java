@@ -34,7 +34,7 @@ public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
     @Override
     protected void onHit(LivingEntity target) {
         super.onHit(target);
-        target.damage(new CustomDamageSource("star_platinum_arrow"), 18);
+        target.damage(new CustomDamageSource("star_platinum_arrow").setUsesMagic().setProjectile(), 24);
     }
 
     @Override

@@ -11,6 +11,7 @@ Fixed a bug where the Banglum Nuke would not light with a dispenser on specific 
 Lightened the outline of the Orichalcum Sword slightly.  
 Fix the Aegis Sword models in item frames and on ground.  
 Overhauled some helmet textures into crowns (Thanks Azzy!).  
+Increased Star Platinum arrow damage (18 -> 24).  
 
 # 0.16.4
 ### Changes  
