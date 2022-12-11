@@ -1,21 +1,19 @@
 package nourl.mythicmetals.mixin;
 
+import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.AttributeContainer;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.MythicParticleSystem;
@@ -24,10 +22,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -76,20 +72,13 @@ public abstract class LivingEntityMixin extends Entity {
         var dmg = amount;
         var attributes = this.getAttributes();
         if (source.isMagic()
-                && attributes.hasAttribute(RegisterEntityAttributes.MAGIC_PROTECTION)
-                && attributes.getValue(RegisterEntityAttributes.MAGIC_PROTECTION) > 0) {
+                && attributes.hasAttribute(AdditionalEntityAttributes.MAGIC_PROTECTION)
+                && attributes.getValue(AdditionalEntityAttributes.MAGIC_PROTECTION) > 0) {
 
-            double reduction = this.getAttributeValue(RegisterEntityAttributes.MAGIC_PROTECTION);
+            double reduction = this.getAttributeValue(AdditionalEntityAttributes.MAGIC_PROTECTION);
             dmg = (float) Math.max(dmg - reduction, 0);
         }
         return dmg;
-    }
-
-    @Inject(method = "createLivingAttributes", at = @At("RETURN"))
-    private static void mythicmetals$addAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> cir) {
-        cir.getReturnValue()
-                .add(RegisterEntityAttributes.EXPERIENCE_BOOST)
-                .add(RegisterEntityAttributes.MAGIC_PROTECTION);
     }
 
     private void mythicmetals$prometheumRepairPassive() {
@@ -103,14 +92,13 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @SuppressWarnings("ConstantConditions")
-    @ModifyArg(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
-    private int mythicmetals$doubleXp(int value) {
-        // If the user has a Carmot Staff in the offhand, damage their tool
+    @Inject(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
+    private void mythicmetals$damageCarmotStaffOnXpDrop(CallbackInfo ci) {
         var attacker = this.getAttacker();
 
-        if (attacker == null) return value; // Return immediately there is no attacker
-        if (this.isPlayer()) return value; // Return immediately if you are a player
+        if (attacker == null && this.isPlayer()) return; // Return immediately there is no attacker or you are a player
 
+        // If the user has a Carmot Staff in the offhand, damage their tool
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
             var staff = attacker.getStackInHand(Hand.OFF_HAND);
             if (CarmotStaff.hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
@@ -118,11 +106,6 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
 
-        // Modify the experience dropped dependent on the attribute
-        if (attacker.getAttributes().hasAttribute(RegisterEntityAttributes.EXPERIENCE_BOOST)) {
-            return MathHelper.ceil(value * attacker.getAttributeInstance(RegisterEntityAttributes.EXPERIENCE_BOOST).getValue());
-        }
-        return value;
     }
 
     private void mythicmetals$addArmorEffects() {

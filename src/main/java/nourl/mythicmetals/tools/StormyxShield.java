@@ -2,6 +2,7 @@ package nourl.mythicmetals.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -15,7 +16,6 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -62,7 +62,7 @@ public class StormyxShield extends ShieldItem {
 
         var mapnite = HashMultimap.create(this.getAttributeModifiers(slot));
 
-        mapnite.put(RegisterEntityAttributes.MAGIC_PROTECTION,
+        mapnite.put(AdditionalEntityAttributes.MAGIC_PROTECTION,
                 new EntityAttributeModifier(UUID.fromString("82b91018-24a1-11ed-861d-0242ac120002"),
                         "Magic protection",
                         MAGIC_DAMAGE_REDUCTION,

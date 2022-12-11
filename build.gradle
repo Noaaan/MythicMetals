@@ -48,20 +48,29 @@ dependencies {
     // ModMenu
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-    // Origins compat
-     modCompileOnly "com.github.apace100:origins-fabric:${project.origins_version}"
+    // Additional Entity Attributes
+    modImplementation "com.github.DaFuqs:AdditionalEntityAttributes:${project.aea_versionite}"
+
+    // Origins compat via Apoli
+    // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
+    modCompileOnly("com.github.apace100:apoli:${project.apoli_version}") {
+        exclude(group: "com.github.DaFuqs")
+    }
+
+    // Reach Entity Attributes
+    include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 
     // Cardinal Components
-    modImplementation include ("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}")
-    modImplementation include ("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
 
 }
 
 sourceSets {
-    main{
+    main {
         resources {
             srcDirs += [
                     'src/main/generated'

@@ -3,6 +3,7 @@ package nourl.mythicmetals.tools;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.nbt.NbtKey;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.block.Block;
@@ -45,7 +46,6 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.EpicExplosion;
 import nourl.mythicmetals.utils.MythicParticleSystem;
@@ -569,11 +569,11 @@ public class CarmotStaff extends ToolItem {
 
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_SPEED);
-            mapnite.removeAll(RegisterEntityAttributes.EXPERIENCE_BOOST);
+            mapnite.removeAll(AdditionalEntityAttributes.DROPPED_EXPERIENCE);
 
             mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", damage, EntityAttributeModifier.Operation.ADDITION));
             mapnite.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Item.ATTACK_SPEED_MODIFIER_ID, "Attack speed modifier", speed, EntityAttributeModifier.Operation.ADDITION));
-            mapnite.put(RegisterEntityAttributes.EXPERIENCE_BOOST, new EntityAttributeModifier(UUID.fromString("5a902603-f288-4a12-bf13-4e0c1a12f6cd"), "Bonus Experience", experience, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+            mapnite.put(AdditionalEntityAttributes.DROPPED_EXPERIENCE, new EntityAttributeModifier(UUID.fromString("5a902603-f288-4a12-bf13-4e0c1a12f6cd"), "Bonus Experience", experience, EntityAttributeModifier.Operation.MULTIPLY_BASE));
 
             if (Blocks.LAPIS_BLOCK.equals(block) && slot == EquipmentSlot.OFFHAND) {
                 mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
