@@ -12,13 +12,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 
-public class SpecialSmithingRecipe extends SmithingRecipe {
+public class MidasSmithingRecipe extends SmithingRecipe {
     final Ingredient base;
     final Ingredient addition;
     final ItemStack result;
     final Identifier id;
 
-    public SpecialSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result, Identifier id) {
+    public MidasSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result, Identifier id) {
         super(id, base, addition, result);
         this.base = base;
         this.addition = addition;
@@ -69,22 +69,22 @@ public class SpecialSmithingRecipe extends SmithingRecipe {
         return false;
     }
 
-    public static class Serializer implements RecipeSerializer<SpecialSmithingRecipe> {
-            public SpecialSmithingRecipe read(Identifier identifier, JsonObject jsonObject) {
+    public static class Serializer implements RecipeSerializer<MidasSmithingRecipe> {
+            public MidasSmithingRecipe read(Identifier identifier, JsonObject jsonObject) {
                 Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
                 Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
                 ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-                return new SpecialSmithingRecipe(ingredient, ingredient2, itemStack, identifier);
+                return new MidasSmithingRecipe(ingredient, ingredient2, itemStack, identifier);
             }
 
-            public SpecialSmithingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
+            public MidasSmithingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
                 Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
                 Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
                 ItemStack itemStack = packetByteBuf.readItemStack();
-                return new SpecialSmithingRecipe(ingredient, ingredient2, itemStack, identifier);
+                return new MidasSmithingRecipe(ingredient, ingredient2, itemStack, identifier);
             }
 
-            public void write(PacketByteBuf packetByteBuf, SpecialSmithingRecipe smithingRecipe) {
+            public void write(PacketByteBuf packetByteBuf, MidasSmithingRecipe smithingRecipe) {
                 smithingRecipe.base.write(packetByteBuf);
                 smithingRecipe.addition.write(packetByteBuf);
                 packetByteBuf.writeItemStack(smithingRecipe.result);

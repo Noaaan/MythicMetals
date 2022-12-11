@@ -9,6 +9,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
@@ -24,6 +25,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
@@ -40,6 +42,8 @@ public class MythrilDrill extends PickaxeItem {
      * NbtKey that determines whether or not the drill should consume fuel and mine faster
      */
     public static final NbtKey<Boolean> IS_ACTIVE = new NbtKey<>("IsActive", NbtKey.Type.BOOLEAN);
+    public static final NbtKey<Item> UPGRADE_SLOT_ONE = new NbtKey<>("UpgradeSlot1", NbtKey.Type.ofRegistry(Registry.ITEM));
+    public static final NbtKey<Item> UPGRADE_SLOT_TWO = new NbtKey<>("UpgradeSlot2", NbtKey.Type.ofRegistry(Registry.ITEM));
     /**
      * A fully fueled drill should last 30 minutes
      */
@@ -88,11 +92,12 @@ public class MythrilDrill extends PickaxeItem {
         if (clickType == ClickType.RIGHT) {
             // If right-clicking with Morkite on Drill, try to fuel it
             if (cursorStack.getItem().equals(MythicItems.Ingots.MORKITE)) {
+
                 // Dont bother interacting if the Drills fuel is full
                 if (drill.get(FUEL).equals(MAX_FUEL)) return false;
 
-                int morkiteCount = cursorStack.getCount();
                 // Greedily take all the morkite if we can, otherwise calculate how much to take
+                int morkiteCount = cursorStack.getCount();
                 if (morkiteCount * 10 < (MAX_FUEL) - drill.get(FUEL)) {
                     int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * 10), 0, MAX_FUEL);
                     cursorStack.decrement(morkiteCount);
@@ -180,4 +185,20 @@ public class MythrilDrill extends PickaxeItem {
         }
         return super.getMiningSpeedMultiplier(stack, state);
     }
+
+    public static boolean hasUpgrade(ItemStack stack, Item upgradeItem) {
+        boolean result = false;
+
+        // Check if the upgrade exists in slot one
+        if (stack.has(UPGRADE_SLOT_ONE)) {
+            result = (stack.get(UPGRADE_SLOT_ONE) == upgradeItem);
+        }
+
+        // Check if the upgrade exists in slot two, unless we already found it
+        if (stack.has(UPGRADE_SLOT_TWO) && !result) {
+            result = (stack.get(UPGRADE_SLOT_TWO) == upgradeItem);
+        }
+        return result;
+    }
+
 }
