@@ -137,6 +137,8 @@ public class MythicBlocks {
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
             .createDefaultSet(5.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
+    public static final Block QUADRILLUM_NUKE_CORE = new Block(FabricBlockSettings.copyOf(QUADRILLUM.getStorageBlock()));
+
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
             .createDefaultSet(8.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL)
             .createOreVariant("deepslate", IRON_MINING_LEVEL)
@@ -194,6 +196,7 @@ public class MythicBlocks {
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
+        RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
     }
 
 }

@@ -72,13 +72,22 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     @Override
     protected void explode() {
         int radius = MythicMetals.CONFIG.banglumNukeCoreRadius();
+        int baseDamage = 1;
 
+        // Decides what blocks are ignored by the nuke
         Predicate<BlockState> statePredicate;
 
+        // Handle different cores
         if (coreBlock == MythicBlocks.CARMOT_NUKE_CORE) {
             statePredicate = state -> !state.isIn(MythicTags.CARMOT_NUKE_IGNORED);
         } else {
             statePredicate = ignored -> true;
+        }
+
+        // Quadrillum core - Double damage, half range
+        if (coreBlock == MythicBlocks.QUADRILLUM_NUKE_CORE) {
+            radius = (radius * 2) / 3;
+            baseDamage = 2;
         }
 
         EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate);
@@ -104,8 +113,8 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion()) continue;
 
-            double w = 1 - entity.distanceTo(this) / (double) radius;
-            if (w >= 0) {
+            double distanceModifier = baseDamage - entity.distanceTo(this) / (double) radius;
+            if (distanceModifier >= 0) {
                 double x = entity.getX() - this.getX();
                 double y = (entity instanceof TntEntity ? entity.getY() : entity.getEyeY()) - this.getY();
                 double z = entity.getZ() - this.getZ();
@@ -114,13 +123,13 @@ public class BanglumNukeEntity extends BanglumTntEntity {
                     x /= dist;
                     y /= dist;
                     z /= dist;
-                    entity.damage(damageSource, MathHelper.floor((w * w + w) * 7.0 * radius + 1.0));
-                    double kb = w * 5;
+                    entity.damage(damageSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
+                    double knockback = distanceModifier * 5;
                     if (entity instanceof LivingEntity living) {
-                        kb = ProtectionEnchantment.transformExplosionKnockback(living, kb);
+                        knockback = ProtectionEnchantment.transformExplosionKnockback(living, knockback);
                     }
 
-                    entity.addVelocity(x * kb, y * kb, z * kb);
+                    entity.addVelocity(x * knockback, y * knockback, z * knockback);
                 }
             }
         }

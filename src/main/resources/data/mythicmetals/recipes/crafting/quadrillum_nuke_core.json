@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "vvv",
+    "vcv",
+    "vvv"
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:raw_quadrillum"
+    },
+    "c": {
+      "item": "mythicmetals:banglum_nuke_core"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:quadrillum_nuke_core",
+    "count": 1
+  }
+}
