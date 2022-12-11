@@ -4,20 +4,19 @@ Hugman76, for inspiring me to use Fabric.
 Shadowclaimer, for creating Metallurgy in the first place.  
 Daveleo and matpac, for creating Metallurgy Reforged 4.  
 Brandcraf06, for his Blockus code, helping creating blocks, chains, and anvils for the mod.  
-supersaiyansubtlety, for helping me with Mixin.  
+supersaiyansubtlety and BoogieMonster1O1, for helping me with Mixin.  
 LambdAurora, for her readme on how to use Gradle.  
-BoogieMonster1O1, for giving me pointers about Mixins.  
 misode, for his loot table generator.  
-My friends SnifferProduct, revanitez, drakath9, and Spxtreofficial who have contributed to the original assets and supported me with the mod.  
+My friends SnifferProduct, revanitez, drakath9, and Spxtreofficial who have contributed and supported me with the mod.  
 LordDeatHunter, for his helpful scripts and direct contributions to the mod.  
 Flytre, for helping with the RecipeManager Mixin.  
-Spxtreofficial, for his LivingEntityMixin.  
-glisco, for his multiple commits to code and helpful toolchain.  
+glisco, for his multiple commits to code and incredible toolchain.  
 The incredible music talent from Galaxy Goats, provided by Jan_Boyega.  
 williewillus, for the implementation of Fabric's ArmorRenderer.  
 Dr. Zeal, for the wisp texture.  
 BasiqueEvangelist, for contributing to the project, helping with recipe serialization, and for mining copious amounts of Midas Gold.  
 Draylar, for making a ton of cool mods that inspired multiple parts of the project.  
+Starmute, for keeping the Terralith compat up-to-date.   
 
 ## **The artists**  
 * DH  
