@@ -839,6 +839,8 @@
   "tooltip.mythril_drill.activated": "Activated (+1 Efficiency)",
   "tooltip.mythril_drill.deactivated": "Deactivated",
   "tooltip.mythril_drill.fuel": "Fuel %s / %s",
+  "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
+  "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
 
   "death.attack.ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",

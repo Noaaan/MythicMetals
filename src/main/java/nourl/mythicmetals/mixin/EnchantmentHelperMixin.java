@@ -69,7 +69,7 @@ public class EnchantmentHelperMixin {
             if (Abilities.AQUA_AFFINITY.getItems().contains(mainHand.getItem())) {
                 cir.setReturnValue(true);
             }
-            if (mainHand.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgrade(mainHand, MythicItems.AQUARIUM_PEARL)) {
+            if (mainHand.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgradeItem(mainHand, MythicItems.AQUARIUM_PEARL)) {
                 cir.setReturnValue(true);
             }
         }

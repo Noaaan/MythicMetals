@@ -46,7 +46,7 @@ public class BanglumOreBlock extends OreBlock {
             chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 45);
         }
 
-        if (MythrilDrill.hasUpgrade(stack, MythicItems.STORMYX_SHELL)) {
+        if (MythrilDrill.hasUpgradeItem(stack, MythicItems.STORMYX_SHELL)) {
             chance -= 102;
         }
 

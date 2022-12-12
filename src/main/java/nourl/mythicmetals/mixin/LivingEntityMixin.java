@@ -94,7 +94,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         // Handle Mythril Drill with Prometheum Upgrade
-        if (handStack.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgrade(handStack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
+        if (handStack.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgradeItem(handStack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
             var dmg = handStack.getDamage();
             var rng = r.nextInt(200);
             if (rng == 33 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));

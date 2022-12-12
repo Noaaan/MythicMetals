@@ -54,7 +54,7 @@ public class DrillUpgradeSmithingRecipe extends SmithingRecipe {
             if (drill.has(MythrilDrill.UPGRADE_SLOT_ONE) && drill.has(MythrilDrill.UPGRADE_SLOT_TWO)) return false;
 
             // Return if upgrade is already on drill, as they are unique
-            if (MythrilDrill.hasUpgrade(drill, inventory.getStack(1).getItem())) return false;
+            if (MythrilDrill.hasUpgradeItem(drill, inventory.getStack(1).getItem())) return false;
 
             // If any slot is empty, you can upgrade the drill
             return !drill.has(MythrilDrill.UPGRADE_SLOT_ONE) || !drill.has(MythrilDrill.UPGRADE_SLOT_TWO);

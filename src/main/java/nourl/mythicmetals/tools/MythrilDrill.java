@@ -1,6 +1,7 @@
 package nourl.mythicmetals.tools;
 
 import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.BlockState;
@@ -27,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 import org.jetbrains.annotations.Nullable;
@@ -82,7 +84,7 @@ public class MythrilDrill extends PickaxeItem {
             // If right-clicking Drill onto Morkite, try to fuel it
             if (slot.getStack().getItem().equals(MythicItems.Ingots.MORKITE)) {
                 int morkiteCount = slot.getStack().getCount();
-                if (slot.tryTakeStackRange(MAX_FUEL - drill.get(FUEL), morkiteCount, player).isPresent()) {
+                if (slot.tryTakeStackRange((MAX_FUEL - drill.get(FUEL)) / 10, morkiteCount, player).isPresent()) {
                     int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * 10), 0, MAX_FUEL);
                     drill.put(FUEL, fuel);
                     return true;
@@ -135,7 +137,7 @@ public class MythrilDrill extends PickaxeItem {
             if (state.isIn(ConventionalBlockTags.ORES)) {
 
                 // Restore air when mining ores underwater
-                if (hasUpgrade(stack, MythicItems.AQUARIUM_PEARL)) {
+                if (hasUpgradeItem(stack, MythicItems.AQUARIUM_PEARL)) {
                     miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
                 }
                 // Randomly drop gold from midas gold
@@ -159,13 +161,22 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         int fuel = stack.has(FUEL) ? stack.get(FUEL) : 0;
+        // Upgrade slots
+        var format2 = hasUpgrade(stack, 2) ? Formatting.RESET : Formatting.GRAY;
+        var format1 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
+        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_2", getUpgradeString(stack, 2)).formatted(format2));
+        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_1", getUpgradeString(stack, 1)).formatted(format1));
+
+        // Activation Status
         if (isActive(stack)) {
-            tooltip.add(1, Text.translatable("tooltip.mythril_drill.activated").formatted(Formatting.BLUE));
+            tooltip.add(1, Text.translatable("tooltip.mythril_drill.activated").formatted(Formatting.AQUA));
         } else {
-            tooltip.add(1, Text.translatable("tooltip.mythril_drill.deactivated").formatted(Formatting.GRAY, Formatting.ITALIC));
+            tooltip.add(1, Text.translatable("tooltip.mythril_drill.deactivated").setStyle(Style.EMPTY.withColor(Color.ofRgb(0x622622).rgb()).withFormatting(Formatting.ITALIC)));
         }
+        // Fuel Gauge
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.fuel", fuel, MAX_FUEL)
                 .fillStyle(Style.EMPTY.withColor(SlowlyMoreUsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
+
     }
 
     @Override
@@ -208,7 +219,7 @@ public class MythrilDrill extends PickaxeItem {
         return super.getMiningSpeedMultiplier(stack, state);
     }
 
-    public static boolean hasUpgrade(ItemStack stack, Item upgradeItem) {
+    public static boolean hasUpgradeItem(ItemStack stack, Item upgradeItem) {
         boolean result = false;
 
         // Check if the upgrade exists in slot one
@@ -222,4 +233,27 @@ public class MythrilDrill extends PickaxeItem {
         }
         return result;
     }
+
+    public static boolean hasUpgrade(ItemStack stack, int slot) {
+        if (slot == 2) {
+            return stack.has(UPGRADE_SLOT_TWO);
+        } else {
+            return stack.has(UPGRADE_SLOT_ONE);
+        }
+    }
+
+    public static String getUpgradeString(ItemStack stack, int slot) {
+        if (slot == 2) {
+            if (stack.has(UPGRADE_SLOT_TWO)) {
+                return DrillUpgrades.MAP.get(stack.get(UPGRADE_SLOT_TWO));
+            }
+        } else {
+            if (stack.has(UPGRADE_SLOT_ONE)) {
+                return DrillUpgrades.MAP.get(stack.get(UPGRADE_SLOT_ONE));
+            }
+        }
+        return "Empty";
+    }
+
+
 }
