@@ -118,7 +118,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                         originalPos.getX() - blockOutlineContext.cameraX(),
                         originalPos.getY() - blockOutlineContext.cameraY(),
                         originalPos.getZ() - blockOutlineContext.cameraZ(),
-                        0,0,0, 0.4F //RGBA
+                        0, 0, 0, 0.4F //RGBA
                 );
                 // Cancel the event to prevent the middle outline from rendering
                 return false;

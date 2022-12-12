@@ -1,0 +1,12 @@
+{
+  "type": "mythicmetals:mythril_drill_smithing_recipe",
+  "base": {
+    "item": "mythicmetals:mythril_drill"
+  },
+  "addition": {
+    "item": "mythicmetals:stormyx_shell"
+  },
+  "result": {
+    "item": "mythicmetals:mythril_drill"
+  }
+}

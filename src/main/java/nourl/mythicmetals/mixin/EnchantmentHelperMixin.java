@@ -8,6 +8,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import nourl.mythicmetals.abilities.Abilities;
+import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -59,12 +61,17 @@ public class EnchantmentHelperMixin {
     private static void mythicmetals$addAquaAffinity(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
 
         for (ItemStack armorItems : entity.getArmorItems()) {
-            if (Abilities.AQUA_AFFINITY.getItems().contains(armorItems.getItem()))
+            if (Abilities.AQUA_AFFINITY.getItems().contains(armorItems.getItem())) {
                 cir.setReturnValue(true);
+            }
         }
         for (ItemStack mainHand : entity.getHandItems()) {
-            if (Abilities.AQUA_AFFINITY.getItems().contains(mainHand.getItem()))
+            if (Abilities.AQUA_AFFINITY.getItems().contains(mainHand.getItem())) {
                 cir.setReturnValue(true);
+            }
+            if (mainHand.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgrade(mainHand, MythicItems.AQUARIUM_PEARL)) {
+                cir.setReturnValue(true);
+            }
         }
     }
 
@@ -97,7 +104,7 @@ public class EnchantmentHelperMixin {
         int change = 0;
         for (ItemStack mainHand : entity.getHandItems()) {
             if (mainHand.getItem() instanceof MythrilDrill drill && drill.hasFuel(mainHand) && drill.isActive(mainHand)) {
-                 change += 1;
+                change += 1;
             }
         }
 

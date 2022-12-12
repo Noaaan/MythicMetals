@@ -42,7 +42,13 @@ public class MythrilDrill extends PickaxeItem {
      * NbtKey that determines whether or not the drill should consume fuel and mine faster
      */
     public static final NbtKey<Boolean> IS_ACTIVE = new NbtKey<>("IsActive", NbtKey.Type.BOOLEAN);
+    /**
+     * Holds an item, which determines what upgrades the drill has
+     */
     public static final NbtKey<Item> UPGRADE_SLOT_ONE = new NbtKey<>("UpgradeSlot1", NbtKey.Type.ofRegistry(Registry.ITEM));
+    /**
+     * Holds another item, which determines what upgrades the drill has
+     */
     public static final NbtKey<Item> UPGRADE_SLOT_TWO = new NbtKey<>("UpgradeSlot2", NbtKey.Type.ofRegistry(Registry.ITEM));
     /**
      * A fully fueled drill should last 30 minutes
@@ -154,6 +160,9 @@ public class MythrilDrill extends PickaxeItem {
         if (!world.isClient && hasFuel(stack) && isActive(stack) && MathHelper.floor(world.getTime()) % 36 == 1) {
             stack.put(FUEL, stack.get(FUEL) - 1);
         }
+        if (!hasFuel(stack)) {
+            stack.put(IS_ACTIVE, false);
+        }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 
@@ -200,5 +209,4 @@ public class MythrilDrill extends PickaxeItem {
         }
         return result;
     }
-
 }

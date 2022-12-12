@@ -8,14 +8,17 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.tools.MythrilDrill;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -82,12 +85,19 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void mythicmetals$prometheumRepairPassive() {
-        var heldItem = getMainHandStack();
-        if (heldItem.isIn(MythicTags.PROMETHEUM_TOOLS)) {
-            var dmg = heldItem.getDamage();
+        var handStack = getMainHandStack();
+        // Handle Prometheum Tools
+        if (handStack.isIn(MythicTags.PROMETHEUM_TOOLS)) {
+            var dmg = handStack.getDamage();
             var rng = r.nextInt(200);
-            if (rng == 117)
-                heldItem.setDamage(dmg - 1);
+            if (rng == 117 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+        }
+
+        // Handle Mythril Drill with Prometheum Upgrade
+        if (handStack.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgrade(handStack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
+            var dmg = handStack.getDamage();
+            var rng = r.nextInt(200);
+            if (rng == 33 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
         }
     }
 
