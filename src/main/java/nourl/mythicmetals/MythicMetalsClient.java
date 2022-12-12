@@ -18,12 +18,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.blocks.BanglumNukeEntityRenderer;
 import nourl.mythicmetals.blocks.BanglumTntEntityRenderer;
-import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.client.models.*;
+import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.tools.BanglumPick;
 import nourl.mythicmetals.tools.BanglumShovel;
@@ -42,7 +41,6 @@ public class MythicMetalsClient implements ClientModInitializer {
     @SuppressWarnings("unchecked")
     @Override
     public void onInitializeClient() {
-        Ability.initMidasGoldTooltip();
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
 
         renderHammerOutline();
