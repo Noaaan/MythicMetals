@@ -73,8 +73,10 @@ public class MythrilDrill extends PickaxeItem {
             var sound = stack.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
             user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
             stack.put(IS_ACTIVE, !stack.get(IS_ACTIVE));
-            return TypedActionResult.success(stack);
+            return TypedActionResult.pass(stack);
         }
+        user.sendMessage(Text.translatable("tooltip.mythril_drill.out_of_fuel"), true);
+        user.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BASS, SoundCategory.PLAYERS, 0.8f, 0.5f);
         return TypedActionResult.pass(stack);
     }
 
@@ -213,10 +215,12 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
         if (isActive(stack)) {
-            if (state.isIn(BlockTags.SHOVEL_MINEABLE) && this.getMaterial().getMiningLevel() >= MiningLevelManager.getRequiredMiningLevel(state))
+            if (state.isIn(BlockTags.SHOVEL_MINEABLE) && this.getMaterial().getMiningLevel() >= MiningLevelManager.getRequiredMiningLevel(state)) {
                 return this.miningSpeed;
+            }
+            else return super.getMiningSpeedMultiplier(stack, state);
         }
-        return super.getMiningSpeedMultiplier(stack, state);
+        return super.getMiningSpeedMultiplier(stack, state) / 2.5F;
     }
 
     public static boolean hasUpgradeItem(ItemStack stack, Item upgradeItem) {

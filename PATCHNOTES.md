@@ -1,14 +1,16 @@
 # 0.x.x  
 ### Mythril Drill
 A new use for Mythril. 
-Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.
+Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
+
+Requires Morkite to be fueled. Right click Morkite onto it to fuel (like a bundle).
 
 The Drill has two upgrade slots, which can be used for the following upgrades:
 
 - Prometheum - Regain Durability while holding the drill
 - Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
 - Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
-
+- Midas Gold - Randomly drop raw gold when mining ores
 
 ### Runite Arrows
 Use runite to craft more expensive, but more accurate arrows.  
