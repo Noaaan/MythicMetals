@@ -3,6 +3,12 @@
 A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.
 
+The Drill has two upgrade slots, which can be used for the following upgrades:
+
+- Prometheum - Regain Durability while holding the drill
+- Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
+
+
 ### Runite Arrows
 Use runite to craft more expensive, but more accurate arrows.  
 These can be tipped like normal arrows, although modded potions will likely not have language keys for them. 

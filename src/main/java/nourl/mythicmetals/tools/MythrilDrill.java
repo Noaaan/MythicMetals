@@ -2,6 +2,7 @@ package nourl.mythicmetals.tools;
 
 import io.wispforest.owo.nbt.NbtKey;
 import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -130,6 +131,11 @@ public class MythrilDrill extends PickaxeItem {
             // Randomly cancel damage while active
             if (isActive(stack) && world.getRandom().nextInt(10) > 5) return true;
             stack.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+
+            // Restore air when mining ores underwater
+            if (hasUpgrade(stack, MythicItems.AQUARIUM_PEARL) && state.isIn(ConventionalBlockTags.ORES)) {
+                miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
+            }
         }
 
         return true;
