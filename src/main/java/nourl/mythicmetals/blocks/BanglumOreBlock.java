@@ -13,6 +13,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.tools.MythrilDrill;
 
 public class BanglumOreBlock extends OreBlock {
     public BanglumOreBlock(FabricBlockSettings settings) {
@@ -42,6 +44,10 @@ public class BanglumOreBlock extends OreBlock {
             chance += (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
             chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 8);
             chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 45);
+        }
+
+        if (MythrilDrill.hasUpgrade(stack, MythicItems.STORMYX_SHELL)) {
+            chance -= 102;
         }
 
         chance = MathHelper.clamp(chance, 0, 80);

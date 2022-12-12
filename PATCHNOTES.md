@@ -7,6 +7,7 @@ The Drill has two upgrade slots, which can be used for the following upgrades:
 
 - Prometheum - Regain Durability while holding the drill
 - Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
+- Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
 
 
 ### Runite Arrows
