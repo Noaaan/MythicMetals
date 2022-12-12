@@ -5,15 +5,14 @@ import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -129,12 +128,20 @@ public class MythrilDrill extends PickaxeItem {
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
         if (!world.isClient && state.getHardness(world, pos) != 0.0F) {
             // Randomly cancel damage while active
-            if (isActive(stack) && world.getRandom().nextInt(10) > 5) return true;
+            var random = world.getRandom();
+            if (isActive(stack) && random.nextInt(10) > 3) return true;
             stack.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
 
-            // Restore air when mining ores underwater
-            if (hasUpgrade(stack, MythicItems.AQUARIUM_PEARL) && state.isIn(ConventionalBlockTags.ORES)) {
-                miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
+            if (state.isIn(ConventionalBlockTags.ORES)) {
+
+                // Restore air when mining ores underwater
+                if (hasUpgrade(stack, MythicItems.AQUARIUM_PEARL)) {
+                    miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
+                }
+                // Randomly drop gold from midas gold
+                if (random.nextInt(40) == 27 && !EnchantmentHelper.get(stack).containsKey(Enchantments.SILK_TOUCH)) {
+                    miner.dropItem(Items.RAW_GOLD);
+                }
             }
         }
 
