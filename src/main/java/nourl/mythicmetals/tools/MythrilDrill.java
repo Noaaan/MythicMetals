@@ -195,12 +195,12 @@ public class MythrilDrill extends PickaxeItem {
 
     @Override
     public boolean allowNbtUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
-        return oldStack.get(FUEL).equals(newStack.get(FUEL));
+        return oldStack.get(FUEL).equals(newStack.get(FUEL)) && oldStack.getDamage() == newStack.getDamage();
     }
 
     @Override
     public boolean allowContinuingBlockBreaking(PlayerEntity player, ItemStack oldStack, ItemStack newStack) {
-        return !oldStack.get(FUEL).equals(newStack.get(FUEL));
+        return !oldStack.get(FUEL).equals(newStack.get(FUEL)) || oldStack.getDamage() != newStack.getDamage();
     }
 
     @Override
