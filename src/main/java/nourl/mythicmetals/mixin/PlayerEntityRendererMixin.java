@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static nourl.mythicmetals.client.models.PlayerEnergySwirlFeatureRenderer.SWIRL_TEXTURE;
+import static nourl.mythicmetals.client.rendering.PlayerEnergySwirlFeatureRenderer.SWIRL_TEXTURE;
 
 @Mixin(PlayerEntityRenderer.class)
 public class PlayerEntityRendererMixin {

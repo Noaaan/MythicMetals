@@ -1,4 +1,4 @@
-package nourl.mythicmetals.client.models;
+package nourl.mythicmetals.client.rendering;
 
 import net.fabricmc.fabric.api.client.model.ExtraModelProvider;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
@@ -17,6 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.tools.CarmotStaff;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;

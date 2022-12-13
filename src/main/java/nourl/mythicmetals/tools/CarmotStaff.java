@@ -44,6 +44,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterSounds;
@@ -58,7 +59,7 @@ public class CarmotStaff extends ToolItem {
 
     /**
      * Contains the block stored inside the staff.
-     * This is rendered via the {@link nourl.mythicmetals.client.models.CarmotStaffBlockRenderer}
+     * This is rendered via the {@link CarmotStaffBlockRenderer}
      */
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
 

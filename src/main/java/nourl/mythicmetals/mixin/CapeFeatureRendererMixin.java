@@ -19,7 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.client.models.MythicModelHandler;
-import nourl.mythicmetals.client.models.RenderingContext;
+import nourl.mythicmetals.client.rendering.RenderingContext;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

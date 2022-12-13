@@ -1,4 +1,4 @@
-package nourl.mythicmetals.client.models;
+package nourl.mythicmetals.client.rendering;
 
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.OverlayTexture;
@@ -12,6 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.CarmotShield;
+import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
