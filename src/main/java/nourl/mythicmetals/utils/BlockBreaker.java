@@ -3,6 +3,9 @@ package nourl.mythicmetals.utils;
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemUsageContext;
@@ -68,7 +71,8 @@ public class BlockBreaker {
     }
 
     public static void initHammerTime() {
-        PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
+        // Original Block Pos is always the center block of where the hammer hits
+        PlayerBlockBreakEvents.BEFORE.register((world, player, originalBlockPos, state, blockEntity) -> {
             var stack = player.getMainHandStack();
 
             if (!(stack.getItem() instanceof HammerBase hammer)) return true; // dont do this for non-hammers
@@ -78,22 +82,24 @@ public class BlockBreaker {
             BlockHitResult blockHitResult = (BlockHitResult) player.raycast(reach, 1, false);
 
             var facing = blockHitResult.getSide().getOpposite();
-            var blocks = BlockBreaker.findBlocks(facing, pos, hammer.getDepth());
+            var blocks = BlockBreaker.findBlocks(facing, originalBlockPos, hammer.getDepth());
 
             boolean hasMined = false;
-            for (BlockPos blockPos : blocks) {
+            for (BlockPos pos : blocks) {
                 // Ignore the center block, to prevent an edge case where the middle block is broken thrice
-                if (blockPos.equals(pos)) {
+                if (pos.equals(originalBlockPos)) {
                     continue;
                 }
-                if (hammer.canBreak(world, blockPos) && !player.isCreative()) {
+                if (hammer.canBreak(world, pos) && !player.isCreative()) {
                     // Call Block.onBreak here, to allow interactions when a player breaks blocks
                     // Note that the center block still calls onBreak twice
-                    world.getBlockState(blockPos).getBlock().onBreak(world, pos, state, player);
-                    world.breakBlock(blockPos, true, player);
+                    world.getBlockState(pos).getBlock().onBreak(world, pos, state, player);
+                    BlockEntity breakEntity = world.getBlockState(pos).getBlock() instanceof BlockEntityProvider ? world.getBlockEntity(pos) : null;
+                    Block.dropStacks(world.getBlockState(pos), world, originalBlockPos, breakEntity, player, stack);
+                    world.breakBlock(pos, false, player);
                     hasMined = true;
                 } else if (player.isCreative()) {
-                    world.breakBlock(blockPos, false, null);
+                    world.breakBlock(pos, false, null);
                 }
             }
             if (hasMined) stack.damage(2, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));

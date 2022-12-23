@@ -1,5 +1,5 @@
 # 0.x.x  
-### Mythril Drill
+## Mythril Drill
 A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
 
@@ -10,22 +10,37 @@ The Drill has two upgrade slots, which can be used for the following upgrades:
 - Prometheum - Regain Durability while holding the drill
 - Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
 - Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
+  - *Warning, driller warranty is void for any case where the chance of a Banglum Ore explosion exceeds 99%*
 - Midas Gold - Randomly drop raw gold when mining ores
 
 ### Runite Arrows
 Use runite to craft more expensive, but more accurate arrows.  
+
 These can be tipped like normal arrows, although modded potions will likely not have language keys for them. 
 
 ### Quadrillum Nuke Core
 Use Raw Quadrillum to improve the shrapnel of the Banglum Nuke.  
+
 This sacrifices some of the radius for **double the damage**.
 
+### Changes
+
 Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.  
-Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
+
 Lightened the outline of the Orichalcum Sword slightly.  
-Fix the Aegis Sword models in item frames and on ground.  
+
 Overhauled some helmet textures into crowns (Thanks Azzy!).  
+
 Increased Star Platinum arrow damage (18 -> 24).  
+
+### Bug Fixes
+
+Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
+
+Fix the Aegis Sword models in item frames and on ground.
+
+Fixed a bug where the Orichalcum Hammer did not apply enchants correctly.
+
 
 # 0.16.4
 ### Changes  
