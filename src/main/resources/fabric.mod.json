@@ -35,6 +35,7 @@
   "mixins": [
     "mythicmetals.mixins.json"
   ],
+  "accessWidener": "mythicmetals.accessWidener",
   "depends": {
     "fabricloader": ">=0.14.0",
     "alloy_forgery": ">=2.0.16",

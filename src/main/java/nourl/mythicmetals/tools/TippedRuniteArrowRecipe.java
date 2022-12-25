@@ -11,6 +11,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
+    public static final RecipeSerializer<TippedRuniteArrowRecipe> INSTANCE = new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
     public TippedRuniteArrowRecipe(Identifier identifier) {
         super(identifier);
     }
@@ -59,12 +60,6 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return Serializer.get();
-    }
-
-    public static class Serializer {
-        public static RecipeSerializer<?> get() {
-            return new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
-        }
+        return INSTANCE;
     }
 }

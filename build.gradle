@@ -49,7 +49,7 @@ dependencies {
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
-    modImplementation "com.github.DaFuqs:AdditionalEntityAttributes:${project.aea_versionite}"
+    modImplementation include("com.github.DaFuqs:AdditionalEntityAttributes:${project.aea_versionite}")
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
@@ -58,7 +58,7 @@ dependencies {
     }
 
     // Reach Entity Attributes
-    include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
+    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
@@ -80,6 +80,7 @@ sourceSets {
 }
 
 loom {
+    accessWidenerPath = file("src/main/resources/mythicmetals.accessWidener")
     runs {
         datagen {
             server()
