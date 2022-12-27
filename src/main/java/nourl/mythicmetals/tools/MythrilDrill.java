@@ -20,10 +20,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.ClickType;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
@@ -64,17 +61,26 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
+        var oppositeHandStack = hand.equals(Hand.OFF_HAND) ? user.getStackInHand(Hand.MAIN_HAND) : user.getStackInHand(Hand.OFF_HAND);
+
         // Put the bool in there for the first time
         if (!stack.has(IS_ACTIVE)) {
             stack.put(IS_ACTIVE, false);
         }
+
+        // TODO - When you have an item with two distinct states, what is the best way of toggling between them?
+        if (user.isSneaking() && (oppositeHandStack.getUseAction() != UseAction.NONE || oppositeHandStack.getItem() instanceof BlockItem)) {
+            return TypedActionResult.pass(stack);
+        }
+
         // If you have fuel, toggle the state of the drill
         if (hasFuel(stack)) {
             var sound = stack.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
             user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
             stack.put(IS_ACTIVE, !stack.get(IS_ACTIVE));
-            return TypedActionResult.pass(stack);
+            return TypedActionResult.success(stack);
         }
+
         user.sendMessage(Text.translatable("tooltip.mythril_drill.out_of_fuel"), true);
         user.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BASS, SoundCategory.PLAYERS, 0.8f, 0.5f);
         return TypedActionResult.pass(stack);
