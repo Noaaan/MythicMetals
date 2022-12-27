@@ -24,7 +24,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
@@ -36,10 +35,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameMode;
@@ -50,7 +47,6 @@ import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.EpicExplosion;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import nourl.mythicmetals.utils.RegistryHelper;
@@ -344,64 +340,6 @@ public class CarmotStaff extends ToolItem {
             stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             user.getItemCooldownManager().set(stack.getItem(), 3000);
             return TypedActionResult.success(stack);
-        }
-
-        // Runite - Ice Barrage, AOE freeze
-        if (hasBlockInStaff(stack, MythicBlocks.RUNITE.getStorageBlock())) {
-            boolean succesfulFreeze = false;
-            float range = 10.0F;
-
-            Vec3d normalizedFacing = user.getRotationVec(1.0F);
-            Vec3d denormalizedFacing = user.getCameraPosVec(0).add(normalizedFacing.multiply(range));
-
-            var barrageBox = user.getBoundingBox().stretch(normalizedFacing.multiply(range)).expand(1);
-
-            EntityHitResult res = ProjectileUtil.raycast(user, user.getCameraPosVec(0), denormalizedFacing,
-                    barrageBox,
-                    entity -> entity.canHit() &&
-                            !entity.isSpectator() &&
-                            entity.isLiving() &&
-                            ((LivingEntity) entity).isMobOrPlayer(),
-                    range * range);
-
-            if (res != null) {
-                var target = res.getEntity();
-                var entities = world.getOtherEntities(target, Box.of(target.getPos(), 8, 4, 8));
-                entities.add(target);
-
-                world.playSound(null, user.getBlockPos(), RegisterSounds.ICE_MAGIC, SoundCategory.PLAYERS, 0.8F, 1.0F);
-                MythicParticleSystem.ICE_TRAIL.spawn(world, user.getCameraPosVec(0), target.getCameraPosVec(0));
-
-                for (net.minecraft.entity.Entity e : entities) {
-
-                    LivingEntity victim = (LivingEntity) e;
-
-                    if (victim.isLiving()) {
-                        int damageRoll = random.nextInt(4);
-                        if (damageRoll > 0 || random.nextInt(10) == 0) {
-                            int time = victim.canFreeze() ? 600 : 150;
-                            victim.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, time, victim.canFreeze() ? 3 : 0));
-                            MythicParticleSystem.ICE_BARRAGE.spawn(world, victim.getPos());
-                            world.playSound(null, victim.getBlockPos(), SoundEvents.BLOCK_POWDER_SNOW_BREAK, SoundCategory.PLAYERS, 1.25F, 0.85F);
-                            victim.setFrozenTicks(time);
-                            victim.damage(DamageSource.FREEZE, damageRoll + 1);
-                            succesfulFreeze = true;
-                        } else {
-                            world.playSound(null, victim.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_SPLASH, SoundCategory.PLAYERS, 1.0F, 0.8F);
-                        }
-                    }
-                }
-
-                if (succesfulFreeze) {
-                    stack.damage(12, user, e2 -> e2.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    user.getItemCooldownManager().set(stack.getItem(), 400);
-                } else {
-                    user.getItemCooldownManager().set(stack.getItem(), 300);
-                }
-
-
-                return TypedActionResult.success(stack);
-            }
         }
 
         // Sponge - Remove water

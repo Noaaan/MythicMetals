@@ -33,9 +33,14 @@ For map makers, if you wish to create a Carmot Staff which is locked to a specif
 
 The Locked boolean will prevent anyone from modifiying the staff.
 
+Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.
+
+Added stats for using the Hallowed Block.  
+
+Removed the Runite Block ability, since the freeze didn't find the impact it needed.
+
 ### Changes
 
-Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.  
 
 Lightened the outline of the Orichalcum Sword slightly.  
 
