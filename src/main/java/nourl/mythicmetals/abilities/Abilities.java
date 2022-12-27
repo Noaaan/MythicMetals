@@ -66,6 +66,7 @@ public class Abilities {
         SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
 
         DrillUpgrades.init();
+        UniqueStaffBlocks.init();
     }
 
 }

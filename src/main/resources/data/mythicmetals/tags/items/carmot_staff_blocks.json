@@ -6,9 +6,7 @@
     "minecraft:iron_block",
     "minecraft:diamond_block",
     "minecraft:lapis_block",
-    "minecraft:emerald_block",
     "minecraft:netherite_block",
-    "minecraft:glowstone",
     "minecraft:beacon",
     "minecraft:command_block",
     "minecraft:sponge",
@@ -17,12 +15,10 @@
     "mythicmetals:carmot_block",
     "mythicmetals:hallowed_block",
     "mythicmetals:midas_gold_block",
-    "mythicmetals:mythril_block",
-    "mythicmetals:orichalcum_block",
-    "mythicmetals:palladium_block",
     "mythicmetals:star_platinum_block",
     "mythicmetals:metallurgium_block",
     "mythicmetals:stormyx_block",
-    "mythicmetals:runite_block"
+    "mythicmetals:runite_block",
+    "mythicmetals:unobtainium_block"
   ]
 }

@@ -1,4 +1,4 @@
-# 0.x.x  
+# 0.17.0 
 ## Mythril Drill
 A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
@@ -22,6 +22,16 @@ These can be tipped like normal arrows, although modded potions will likely not 
 Use Raw Quadrillum to improve the shrapnel of the Banglum Nuke.  
 
 This sacrifices some of the radius for **double the damage**.
+
+### Carmot Staff Rework  
+The Carmot Staff can now accept a large variety of blocks.
+
+When you use a block that has an unique ability, it will be reflected in its tooltip.
+
+For map makers, if you wish to create a Carmot Staff which is locked to a specific block, you can give yourself a staff with the following NBT:  
+`/give @s mythicmetals:carmot_staff{StoredBlock:"blockid:here", Locked:1b}`
+
+The Locked boolean will prevent anyone from modifiying the staff.
 
 ### Changes
 

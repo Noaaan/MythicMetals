@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.nbt.NbtKey;
 import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.ui.core.Color;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -32,6 +33,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.EntityHitResult;
@@ -44,6 +46,7 @@ import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.registry.CustomDamageSource;
@@ -68,6 +71,10 @@ public class CarmotStaff extends ToolItem {
      * NBT Key that determines whether or not the staff is actively being used
      */
     public static final NbtKey<Boolean> IS_USED = new NbtKey<>("IsUsed", NbtKey.Type.BOOLEAN);
+    /**
+     * NBT Key that prevents the staff from inserting blocks
+     */
+    public static final NbtKey<Boolean> LOCKED = new NbtKey<>("Locked", NbtKey.Type.BOOLEAN);
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 
@@ -91,6 +98,7 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean onStackClicked(ItemStack staff, Slot slot, ClickType clickType, PlayerEntity player) {
         if (clickType == ClickType.RIGHT) {
+            if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
             // Check if item is a BlockItem, if not try empty
             if (slot.getStack().getItem() instanceof BlockItem blockItem) {
 
@@ -133,7 +141,7 @@ public class CarmotStaff extends ToolItem {
             if (slot.getStack().isEmpty()) {
                 slot.insertStack(staff.get(STORED_BLOCK).asItem().getDefaultStack());
                 staff.delete(STORED_BLOCK);
-                player.playSound(SoundEvents.BLOCK_GRINDSTONE_USE, SoundCategory.PLAYERS, 0.85F, 0.5F);
+                player.playSound(SoundEvents.ENTITY_GLOW_ITEM_FRAME_REMOVE_ITEM, SoundCategory.PLAYERS, 0.85F, 0.5F);
                 return true;
             }
 
@@ -145,7 +153,7 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean onClicked(ItemStack staff, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
-
+            if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
             // If cursor is empty, but staff has block, take block out of staff
             if (cursorStackReference.get().isEmpty() && staff.has(STORED_BLOCK)) {
                 if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
@@ -266,12 +274,10 @@ public class CarmotStaff extends ToolItem {
                     return TypedActionResult.success(stack);
                 }
 
-
+                stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                user.getItemCooldownManager().set(stack.getItem(), 6000);
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
                 world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
-                user.getItemCooldownManager().set(stack.getItem(), 6000);
-                stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-
 
                 return TypedActionResult.success(stack);
             } else {
@@ -564,19 +570,28 @@ public class CarmotStaff extends ToolItem {
             float speed = -4.0F;
             float experience = 0.0F;
 
-            if (Blocks.IRON_BLOCK.equals(block)) {
+            if (Blocks.GOLD_BLOCK.equals(block)) {
+                damage = 5.0F;
+                speed += 1.2F;
+            } else if (Blocks.IRON_BLOCK.equals(block)) {
                 damage = 7.0F;
                 speed += 0.9F;
             } else if (Blocks.DIAMOND_BLOCK.equals(block)) {
                 damage = 9.0F;
                 speed += 1.0F;
             } else if (Blocks.LAPIS_BLOCK.equals(block)) {
-                damage = 3.5F;
+                damage = 4.0F;
                 speed += 1.0F;
                 experience = slot == EquipmentSlot.MAINHAND ? 1.0F : .25F;
             } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
                 damage = 11.0F;
                 speed += 0.8F;
+            } else if (MythicBlocks.HALLOWED.getStorageBlock().equals(block)) {
+                damage = 12.0F;
+                speed += 0.75F;
+            } else if (MythicBlocks.ADAMANTITE.getStorageBlock().equals(block)) {
+                damage = 12.0F;
+                speed += 0.7F;
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
                 speed += 0.6F;
@@ -634,7 +649,18 @@ public class CarmotStaff extends ToolItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (!stack.has(STORED_BLOCK)) {
-            tooltip.add(1, Text.literal("Right-click with block over staff to insert").formatted(Formatting.GRAY));
+            tooltip.add(1, Text.literal("Right-click with block over staff to insert").setStyle(Style.EMPTY.withColor(Color.ofDye(DyeColor.LIGHT_GRAY).rgb())));
+        } else {
+            int index = 1;
+            if (UniqueStaffBlocks.hasUniqueBlockInStaff(stack)) {
+                tooltip.add(index++, UniqueStaffBlocks.getBlockTranslationKey(stack.get(STORED_BLOCK)));
+            }
+
+            if (stack.get(LOCKED)) {
+                tooltip.add(index, Text.literal("Locked").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+            }
         }
     }
+
+
 }

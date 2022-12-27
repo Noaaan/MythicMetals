@@ -17,6 +17,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     BANGLUM(2, 260, 11.0F, 2.0F, 1, () -> Ingredient.ofItems(MythicItems.Ingots.BANGLUM_INGOT)),
     BRONZE(2, 354, 5.5F, 2.5F, 14, () -> Ingredient.ofItems(MythicItems.Ingots.BRONZE_INGOT)),
     CARMOT(3, 1130, 11.5F, 3.0F, 42, () -> Ingredient.ofItems(MythicItems.Ingots.CARMOT_INGOT)),
+    CARMOT_STAFF(3, 1230, 11.5F, 2.0F, 40, () -> Ingredient.ofItems(MythicItems.Ingots.CARMOT_INGOT)),
     CELESTIUM(5, 2270, 25.0F, 6.0F, 26, () -> Ingredient.ofItems(MythicItems.Ingots.CELESTIUM_INGOT)),
     COPPER(1, 125, 4.5F, 1.0F, 8, () -> Ingredient.ofItems(Items.COPPER_INGOT)),
     DURASTEEL(3, 800, 7.1F, 3.5F, 12, () -> Ingredient.ofItems(MythicItems.Ingots.DURASTEEL_INGOT)),
