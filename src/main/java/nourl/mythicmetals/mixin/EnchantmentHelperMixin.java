@@ -154,8 +154,9 @@ public class EnchantmentHelperMixin {
         if (Abilities.SMITE.getItems().contains(stack.getItem()) && group == EntityGroup.UNDEAD) {
             change += Abilities.SMITE.getLevel() * 2.5f;
         }
-        if (change != 0)
+        if (change != 0) {
             cir.setReturnValue(amount + change);
+        }
     }
 
     @Inject(method = "getKnockback", at = @At("TAIL"), cancellable = true)

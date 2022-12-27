@@ -31,8 +31,9 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
                             && (stack.getItem() == MythicTools.Frogery.FROGE
                             || stack.getItem() == MythicTools.Frogery.DOGE
                             || stack.getItem() == MythicTools.GILDED_MIDAS_GOLD_SWORD
-                    )))
+                    ))) {
                 return EventResult.interruptFalse();
+            }
             else return EventResult.pass();
         });
 

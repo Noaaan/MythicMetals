@@ -9,6 +9,7 @@ import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -45,12 +46,12 @@ import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
-import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.registry.CustomDamageSource;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.EpicExplosion;
 import nourl.mythicmetals.utils.MythicParticleSystem;
 import nourl.mythicmetals.utils.RegistryHelper;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.UUID;
@@ -87,40 +88,47 @@ public class CarmotStaff extends ToolItem {
         this.attributeModifiers = builder.build();
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public boolean onStackClicked(ItemStack staff, Slot slot, ClickType clickType, PlayerEntity player) {
-
         if (clickType == ClickType.RIGHT) {
-            if (!staff.has(STORED_BLOCK) && !slot.getStack().isEmpty() && slot.getStack().getItem() instanceof BlockItem blockItem) {
-                // Try put block in staff
-                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS)) {
-                    staff.put(STORED_BLOCK, blockItem.getBlock());
-                    slot.takeStack(1);
-                    player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
-                    return true;
-                } else return false;
-            }
+            // Check if item is a BlockItem, if not try empty
+            if (slot.getStack().getItem() instanceof BlockItem blockItem) {
 
-            if (slot.getStack().getItem() instanceof BlockItem blockItem && blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS)) {
-                // Don't bother swapping if the block is the same
-                if (getBlockInStaff(staff).equals(blockItem.getBlock())) return false;
-                // Dont do any swapping if the stack is larger than 1
-                if (slot.getStack().getCount() > 1) return false;
+                boolean validStaffBlock = validateStaffBlock(blockItem);
+                if (!staff.has(STORED_BLOCK) && !slot.getStack().isEmpty()) {
 
-                // Try replace block in staff
-                if (slot.tryTakeStackRange(1, 1, player).isPresent()) {
-                    var staffBlock = staff.get(STORED_BLOCK).asItem().getDefaultStack();
-                    slot.takeStack(1);
-                    staff.put(STORED_BLOCK, blockItem.getBlock());
-                    slot.insertStack(staffBlock, 1);
-                    player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
-                    return true;
+                    // Try put block in staff
+                    if (validStaffBlock) {
+                        staff.put(STORED_BLOCK, blockItem.getBlock());
+                        slot.takeStack(1);
+                        player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                // If Staff is not empty, try swapping the blocks
+                if (validStaffBlock) {
+                    // Don't bother swapping if the block is the same, or if block is larger than 1
+                    if (getBlockInStaff(staff).equals(blockItem.getBlock())) return false;
+                    if (slot.getStack().getCount() > 1) return false;
+
+                    // Try replace block in staff
+                    if (slot.tryTakeStackRange(1, 1, player).isPresent()) {
+                        var staffBlock = staff.get(STORED_BLOCK).asItem().getDefaultStack();
+                        slot.takeStack(1);
+                        staff.put(STORED_BLOCK, blockItem.getBlock());
+                        slot.insertStack(staffBlock, 1);
+                        player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
+                        return true;
+
+                    }
+                    return false;
 
                 }
-                return false;
-
             }
+
             // Try empty block into inventory
             if (slot.getStack().isEmpty()) {
                 slot.insertStack(staff.get(STORED_BLOCK).asItem().getDefaultStack());
@@ -134,10 +142,10 @@ public class CarmotStaff extends ToolItem {
     }
 
 
-    @SuppressWarnings("deprecation")
     @Override
     public boolean onClicked(ItemStack staff, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
+
             // If cursor is empty, but staff has block, take block out of staff
             if (cursorStackReference.get().isEmpty() && staff.has(STORED_BLOCK)) {
                 if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
@@ -148,9 +156,13 @@ public class CarmotStaff extends ToolItem {
                 return false;
             }
 
+            // Check if item is a BlockItem, and if its from Minecraft or MythicMetals
+            if (!(cursorStackReference.get().getItem() instanceof BlockItem blockItem)) return false;
+            boolean validStaffBlock = validateStaffBlock(blockItem);
+
             // If staff has block, and cursor has valid block, swap them
-            if (staff.has(STORED_BLOCK) && cursorStackReference.get().getItem() instanceof BlockItem blockItem) {
-                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
+            if (staff.has(STORED_BLOCK)) {
+                if (validStaffBlock && cursorStack.getCount() == 1) {
                     if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
                         staff.delete(STORED_BLOCK);
                         staff.put(STORED_BLOCK, blockItem.getBlock());
@@ -163,8 +175,8 @@ public class CarmotStaff extends ToolItem {
             }
 
             // If staff is empty, but cursor has valid block, put it into staff
-            if (!staff.has(STORED_BLOCK) && cursorStackReference.get().getItem() instanceof BlockItem blockItem) {
-                if (blockItem.getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS) && cursorStack.getCount() == 1) {
+            if (!staff.has(STORED_BLOCK)) {
+                if (validStaffBlock && cursorStack.getCount() >= 1) {
                     staff.put(STORED_BLOCK, blockItem.getBlock());
                     cursorStack.decrement(1);
                     player.playSound(blockItem.getBlock().getDefaultState().getSoundGroup().getPlaceSound(), SoundCategory.PLAYERS, 0.85F, 0.5F);
@@ -401,6 +413,7 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        // Durabilty damage amount
         int amount = 1;
 
         // Bronze - Smite your opponent with a lightning bolt
@@ -417,9 +430,15 @@ public class CarmotStaff extends ToolItem {
 
         }
 
-        // Iron - Flings your opponent into the air
+        // Iron - Flings mobs and players into the air like an Iron Golem
         if (hasBlockInStaff(stack, Blocks.IRON_BLOCK) && isNotOnCooldown(attacker, stack)) {
-            target.addVelocity(0, 0.64, 0);
+            double knockbackResistance = target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE);
+            double multiplier = Math.max(0.0, 1.0 - knockbackResistance);
+            if (target.isPlayer()) {
+                target.setVelocity(target.getVelocity().add(0.0, 0.4F * multiplier, 0.0));
+            } else {
+                target.addVelocity(0, 0.54 * multiplier, 0);
+            }
             if (attacker.isPlayer()) {
                 ((PlayerEntity) attacker).getItemCooldownManager().set(stack.getItem(), 40);
             }
@@ -550,17 +569,17 @@ public class CarmotStaff extends ToolItem {
                 speed += 0.9F;
             } else if (Blocks.DIAMOND_BLOCK.equals(block)) {
                 damage = 9.0F;
-                speed += 0.8F;
+                speed += 1.0F;
             } else if (Blocks.LAPIS_BLOCK.equals(block)) {
                 damage = 3.5F;
                 speed += 1.0F;
                 experience = slot == EquipmentSlot.MAINHAND ? 1.0F : .25F;
             } else if (Blocks.NETHERITE_BLOCK.equals(block)) {
                 damage = 11.0F;
-                speed += 0.7F;
+                speed += 0.8F;
             } else if (MythicBlocks.METALLURGIUM.getStorageBlock().equals(block)) {
                 damage = 14.0F;
-                speed += 0.5F;
+                speed += 0.6F;
             } else if (MythicBlocks.STAR_PLATINUM.getStorageBlock().equals(block)) {
                 damage = 4.0F;
                 speed += 3.0F;
@@ -598,6 +617,24 @@ public class CarmotStaff extends ToolItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (!((PlayerEntity) entity).getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
             finishUsing(stack, world, (LivingEntity) entity);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private boolean validateStaffBlock(BlockItem item) {
+        if (item.getRegistryEntry().getKey().isEmpty()) {
+            return false;
+        }
+        boolean b1 = item.getRegistryEntry().getKey().get().getValue().getNamespace().equals("minecraft");
+        boolean b2 = item.getRegistryEntry().getKey().get().getValue().getNamespace().equals("mythicmetals");
+        return b1 || b2;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        super.appendTooltip(stack, world, tooltip, context);
+        if (!stack.has(STORED_BLOCK)) {
+            tooltip.add(1, Text.literal("Right-click with block over staff to insert").formatted(Formatting.GRAY));
         }
     }
 }
