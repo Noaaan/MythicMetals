@@ -53,6 +53,7 @@ public class MythrilDrill extends PickaxeItem {
      * A fully fueled drill should last 30 minutes
      */
     public static final int MAX_FUEL = 1000;
+    public static final int FUEL_CONSTANT = 10;
 
     public MythrilDrill(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -61,15 +62,14 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
-        var oppositeHandStack = hand.equals(Hand.OFF_HAND) ? user.getStackInHand(Hand.MAIN_HAND) : user.getStackInHand(Hand.OFF_HAND);
+        var offHandStack = user.getStackInHand(Hand.OFF_HAND);
 
         // Put the bool in there for the first time
         if (!stack.has(IS_ACTIVE)) {
             stack.put(IS_ACTIVE, false);
         }
 
-        // TODO - When you have an item with two distinct states, what is the best way of toggling between them?
-        if (user.isSneaking() && (oppositeHandStack.getUseAction() != UseAction.NONE || oppositeHandStack.getItem() instanceof BlockItem)) {
+        if (user.isSneaking() && !offHandStack.equals(stack) && (offHandStack.getUseAction() != UseAction.NONE || offHandStack.getItem() instanceof BlockItem)) {
             return TypedActionResult.pass(stack);
         }
 
@@ -92,8 +92,8 @@ public class MythrilDrill extends PickaxeItem {
             // If right-clicking Drill onto Morkite, try to fuel it
             if (slot.getStack().getItem().equals(MythicItems.Ingots.MORKITE)) {
                 int morkiteCount = slot.getStack().getCount();
-                if (slot.tryTakeStackRange((MAX_FUEL - drill.get(FUEL)) / 10, morkiteCount, player).isPresent()) {
-                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * 10), 0, MAX_FUEL);
+                if (slot.tryTakeStackRange((MAX_FUEL - drill.get(FUEL)) / FUEL_CONSTANT, morkiteCount, player).isPresent()) {
+                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * FUEL_CONSTANT), 0, MAX_FUEL);
                     drill.put(FUEL, fuel);
                     return true;
                 }
@@ -114,16 +114,16 @@ public class MythrilDrill extends PickaxeItem {
 
                 // Greedily take all the morkite if we can, otherwise calculate how much to take
                 int morkiteCount = cursorStack.getCount();
-                if (morkiteCount * 10 < (MAX_FUEL) - drill.get(FUEL)) {
-                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * 10), 0, MAX_FUEL);
+                if (morkiteCount * FUEL_CONSTANT < (MAX_FUEL) - drill.get(FUEL)) {
+                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * FUEL_CONSTANT), 0, MAX_FUEL);
                     cursorStack.decrement(morkiteCount);
                     drill.put(FUEL, fuel);
                     return true;
                 }
                 // Manually calculate how much Morkite to take
-                if (morkiteCount * 10 >= (MAX_FUEL) - drill.get(FUEL)) {
-                    int morkiteToTake = (MAX_FUEL / 10) - (drill.get(FUEL) / 10);
-                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteToTake * 10), 0, MAX_FUEL);
+                if (morkiteCount * FUEL_CONSTANT >= (MAX_FUEL) - drill.get(FUEL)) {
+                    int morkiteToTake = (MAX_FUEL / FUEL_CONSTANT) - (drill.get(FUEL) / FUEL_CONSTANT);
+                    int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteToTake * FUEL_CONSTANT), 0, MAX_FUEL);
                     cursorStack.decrement(morkiteToTake);
                     drill.put(FUEL, fuel);
                     return true;
@@ -189,7 +189,7 @@ public class MythrilDrill extends PickaxeItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient && hasFuel(stack) && isActive(stack) && MathHelper.floor(world.getTime()) % 36 == 1) {
+        if (!world.isClient && hasFuel(stack) && isActive(stack) && MathHelper.floor(world.getTime()) % (4 * FUEL_CONSTANT) == 1) {
             stack.put(FUEL, stack.get(FUEL) - 1);
         }
         if (!hasFuel(stack)) {
