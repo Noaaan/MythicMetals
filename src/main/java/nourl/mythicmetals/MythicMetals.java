@@ -66,6 +66,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         RegisterResourceConditions.init();
         RegisterRecipeSerializers.init();
+        RegisterPotionEffects.init();
         BlockBreaker.initHammerTime();
         LootOps.injectItem(MythicItems.Ingots.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
 

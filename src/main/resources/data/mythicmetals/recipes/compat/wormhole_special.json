@@ -1,0 +1,119 @@
+{
+  "type": "spectrum:titration_barrel",
+  "group": "infused_beverages",
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit",
+      "count": 3
+    },
+    {
+      "item": "minecraft:wheat",
+      "count": 2
+    },
+    {
+      "tag": "c:mushrooms",
+      "count": 1
+    }
+  ],
+  "min_fermentation_time_hours": 24,
+  "fluid": "minecraft:water",
+  "tapping_item": "minecraft:glass_bottle",
+  "fermentation_data": {
+    "fermentation_speed_mod": 0.35,
+    "effects": [
+      {
+        "id": "mythicmetals:wormhole_special",
+        "base_duration": 1200,
+        "potency": [
+          {
+            "min_alc": 3,
+            "potency": 0
+          },
+          {
+            "min_alc": 20,
+            "potency": 1
+          },
+          {
+            "min_alc": 35,
+            "potency": 2
+          }
+        ]
+      },
+      {
+        "id": "minecraft:slow_falling",
+        "base_duration": 9600,
+        "potency": [
+          {
+            "min_alc": 7,
+            "potency": 0
+          },
+          {
+            "min_alc": 12,
+            "potency": 1
+          },
+          {
+            "min_alc": 24,
+            "potency": 2
+          }
+        ]
+      },
+      {
+        "id": "minecraft:slow_falling",
+        "base_duration": 9600,
+        "potency": [
+          {
+            "min_alc": 11,
+            "potency": 0
+          },
+          {
+            "min_alc": 24,
+            "potency": 1
+          }
+        ]
+      },
+      {
+        "id": "minecraft:weakness",
+        "base_duration": 2400,
+        "potency": [
+          {
+            "min_thickness": 2
+          },
+          {
+            "min_thickness": 4,
+            "potency": 1
+          }
+        ]
+      },
+      {
+        "id": "minecraft:nausea",
+        "base_duration": 600,
+        "potency": [
+          {
+            "min_thickness": 3
+          },
+          {
+            "min_alc": 14
+          },
+          {
+            "min_alc": 26,
+            "potency": 1
+          }
+        ]
+      }
+    ]
+  },
+  "result": {
+    "item": "spectrum:infused_beverage",
+    "count": 4,
+    "nbt": "{Variant: \"wormhole_special\", Color: 1258295 }"
+  },
+  "required_advancement": "spectrum:milestones/confirmed_drinking_age",
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "spectrum"
+      ]
+    }
+  ]
+}

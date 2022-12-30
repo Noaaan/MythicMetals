@@ -852,7 +852,7 @@
   "tooltip.carmot_staff.sponge": "Unique Ability - Absorb Water",
   "tooltip.carmot_staff.carmot": "Unique Ability - AoE Heal",
   "tooltip.carmot_staff.stormyx": "Unique Ability - Projectile Barrier",
-  "tooltip.carmot_staff.command_block": "Right click to Ascend",
+  "tooltip.carmot_staff.command_block": "Power of Creation - Right Click to ascend",
   "tooltip.carmot_staff.unobtainim": "THE ONE PIECE IS REAAAL!",
   "tooltip.carmot_staff.unique": "Unique",
 
@@ -867,5 +867,7 @@
 
   "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience",
   "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection",
-  "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite"
+  "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite",
+  "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Wormhole Special",
+  "effect.mythicmetals.wormhole_special": "Wormhole Special"
 }

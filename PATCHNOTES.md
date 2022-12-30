@@ -48,6 +48,8 @@ Overhauled some helmet textures into crowns (Thanks Azzy!).
 
 Increased Star Platinum arrow damage (18 -> 24).  
 
+Compat - Added Wormhole Special to Spectrums Titration Barrel (Infused Beverage).
+
 ### Bug Fixes
 
 Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
