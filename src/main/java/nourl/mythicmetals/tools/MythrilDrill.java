@@ -21,10 +21,12 @@ import net.minecraft.tag.BlockTags;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
@@ -60,29 +62,46 @@ public class MythrilDrill extends PickaxeItem {
     }
 
     @Override
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        // If the Drill is in offhand, handle it normally when used on a block
+        if (context.getHand().equals(Hand.OFF_HAND)) {
+            return super.use(context.getWorld(), context.getPlayer(), context.getHand()).getResult();
+        }
+        // If the Drill is used on block in mainhand, cancel the action if a block is in the offhand and use the block instead
+        if (context.getHand().equals(Hand.MAIN_HAND) && context.getPlayer() != null) {
+            var offhandStack = context.getPlayer().getStackInHand(Hand.OFF_HAND);
+            if (offhandStack != null && offhandStack.getItem() != null && offhandStack.getItem() instanceof BlockItem blockItem) {
+                blockItem.useOnBlock(new ItemUsageContext(context.getWorld(), context.getPlayer(), Hand.OFF_HAND, offhandStack,new BlockHitResult(context.getHitPos(), context.getSide(), context.getBlockPos(), context.hitsInsideBlock())));
+                context.getPlayer().swingHand(Hand.OFF_HAND);
+                return ActionResult.CONSUME_PARTIAL;
+            }
+        }
+        return super.useOnBlock(context);
+    }
+
+    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
         var offHandStack = user.getStackInHand(Hand.OFF_HAND);
 
-        // Put the bool in there for the first time
-        if (!stack.has(IS_ACTIVE)) {
-            stack.put(IS_ACTIVE, false);
+        if (user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+            return TypedActionResult.pass(stack);
         }
 
-        if (user.isSneaking() && !offHandStack.equals(stack) && (offHandStack.getUseAction() != UseAction.NONE || offHandStack.getItem() instanceof BlockItem)) {
+        if (!offHandStack.equals(stack) && (respectFood(offHandStack, user)) || !offHandStack.getUseAction().equals(UseAction.DRINK)) {
             return TypedActionResult.pass(stack);
         }
 
         // If you have fuel, toggle the state of the drill
         if (hasFuel(stack)) {
-            var sound = stack.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
-            user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
-            stack.put(IS_ACTIVE, !stack.get(IS_ACTIVE));
+            toggleDrillState(world, user, stack);
             return TypedActionResult.success(stack);
         }
 
-        user.sendMessage(Text.translatable("tooltip.mythril_drill.out_of_fuel"), true);
-        user.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BASS, SoundCategory.PLAYERS, 0.8f, 0.5f);
+        if (world.isClient) {
+            user.sendMessage(Text.translatable("tooltip.mythril_drill.out_of_fuel"), true);
+            user.playSound(SoundEvents.BLOCK_NOTE_BLOCK_BASS, SoundCategory.PLAYERS, 0.8f, 0.5f);
+        }
         return TypedActionResult.pass(stack);
     }
 
@@ -223,32 +242,45 @@ public class MythrilDrill extends PickaxeItem {
         if (isActive(stack)) {
             if (state.isIn(BlockTags.SHOVEL_MINEABLE) && this.getMaterial().getMiningLevel() >= MiningLevelManager.getRequiredMiningLevel(state)) {
                 return this.miningSpeed;
-            }
-            else return super.getMiningSpeedMultiplier(stack, state);
+            } else return super.getMiningSpeedMultiplier(stack, state);
         }
         return super.getMiningSpeedMultiplier(stack, state) / 2.5F;
     }
 
-    public static boolean hasUpgradeItem(ItemStack stack, Item upgradeItem) {
+    /**
+     * Checks the NBT on the stack and checks if an upgrade is installed
+     *
+     * @param drillStack  The Drill to be checked
+     * @param upgradeItem The upgrade item you wish to check against
+     */
+    public static boolean hasUpgradeItem(ItemStack drillStack, Item upgradeItem) {
         boolean result = false;
 
         // Check if the upgrade exists in slot one
-        if (stack.has(UPGRADE_SLOT_ONE)) {
-            result = (stack.get(UPGRADE_SLOT_ONE) == upgradeItem);
+        if (drillStack.has(UPGRADE_SLOT_ONE)) {
+            result = (drillStack.get(UPGRADE_SLOT_ONE) == upgradeItem);
         }
 
         // Check if the upgrade exists in slot two, unless we already found it
-        if (stack.has(UPGRADE_SLOT_TWO) && !result) {
-            result = (stack.get(UPGRADE_SLOT_TWO) == upgradeItem);
+        if (drillStack.has(UPGRADE_SLOT_TWO) && !result) {
+            result = (drillStack.get(UPGRADE_SLOT_TWO) == upgradeItem);
         }
         return result;
     }
 
-    public static boolean hasUpgrade(ItemStack stack, int slot) {
+    /**
+     * Check if any upgrade is installed in a specified slot
+     * @param drillStack    The Drill in question
+     * @param slot          Specified slot. For this drill use either slot 1 or slot 2, anything else will always return false
+     */
+    public static boolean hasUpgrade(ItemStack drillStack, int slot) {
         if (slot == 2) {
-            return stack.has(UPGRADE_SLOT_TWO);
+            return drillStack.has(UPGRADE_SLOT_TWO);
+        } else if (slot == 1) {
+            return drillStack.has(UPGRADE_SLOT_ONE);
         } else {
-            return stack.has(UPGRADE_SLOT_ONE);
+            MythicMetals.LOGGER.error("BAD DRILL QUERY - Upgrade slot " + slot + " does NOT exist on this Drill!");
+            return false;
         }
     }
 
@@ -263,6 +295,32 @@ public class MythrilDrill extends PickaxeItem {
             }
         }
         return "Empty";
+    }
+
+    /**
+     * Handles applying the drill active state by toggling its NBT keys
+     * Includes playing sound effects and applying a cooldown to prevent spam
+     */
+    public void toggleDrillState(World world, PlayerEntity user, ItemStack drill) {
+
+        // Put the bool in there for the first time
+        if (!drill.has(IS_ACTIVE)) {
+            drill.put(IS_ACTIVE, false);
+        }
+
+        if (world.isClient) {
+            var sound = drill.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
+            user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
+        }
+        user.getItemCooldownManager().set(drill.getItem(), 20);
+        drill.put(IS_ACTIVE, !drill.get(IS_ACTIVE));
+    }
+
+    /**
+     * Return whether or not you can eat the food-related itemstack in question
+     */
+    private boolean respectFood(ItemStack foodStack, PlayerEntity user) {
+        return foodStack.isFood() && user.canConsume(foodStack.getItem().getFoodComponent() != null && foodStack.getItem().getFoodComponent().isAlwaysEdible());
     }
 
 
