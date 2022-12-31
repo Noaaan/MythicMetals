@@ -1,5 +1,7 @@
 package nourl.mythicmetals.tools;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import io.wispforest.owo.nbt.NbtKey;
 import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
@@ -11,6 +13,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
@@ -28,11 +33,13 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 public class MythrilDrill extends PickaxeItem {
     /**
@@ -88,7 +95,7 @@ public class MythrilDrill extends PickaxeItem {
             return TypedActionResult.pass(stack);
         }
 
-        if (!offHandStack.equals(stack) && (respectFood(offHandStack, user)) || !offHandStack.getUseAction().equals(UseAction.DRINK)) {
+        if (!offHandStack.equals(stack) && (respectFood(offHandStack, user)) || offHandStack.getUseAction().equals(UseAction.DRINK)) {
             return TypedActionResult.pass(stack);
         }
 
@@ -191,8 +198,8 @@ public class MythrilDrill extends PickaxeItem {
         // Upgrade slots
         var format2 = hasUpgrade(stack, 2) ? Formatting.RESET : Formatting.GRAY;
         var format1 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
-        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_2", getUpgradeString(stack, 2)).formatted(format2));
-        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_1", getUpgradeString(stack, 1)).formatted(format1));
+        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_2", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 2))).formatted(format2));
+        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_1", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 1))).formatted(format1));
 
         // Activation Status
         if (isActive(stack)) {
@@ -294,7 +301,7 @@ public class MythrilDrill extends PickaxeItem {
                 return DrillUpgrades.MAP.get(stack.get(UPGRADE_SLOT_ONE));
             }
         }
-        return "Empty";
+        return "empty";
     }
 
     /**
@@ -323,5 +330,12 @@ public class MythrilDrill extends PickaxeItem {
         return foodStack.isFood() && user.canConsume(foodStack.getItem().getFoodComponent() != null && foodStack.getItem().getFoodComponent().isAlwaysEdible());
     }
 
-
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+        var mapnite = HashMultimap.create(this.getAttributeModifiers(slot));
+        if (hasUpgradeItem(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem())) {
+            mapnite.put(EntityAttributes.GENERIC_LUCK, new EntityAttributeModifier(UUID.fromString("dc61bf90-67b4-414e-8ecf-994065208b3e"), "Drill Luck", 1.0f, EntityAttributeModifier.Operation.ADDITION));
+        }
+        return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
+    }
 }

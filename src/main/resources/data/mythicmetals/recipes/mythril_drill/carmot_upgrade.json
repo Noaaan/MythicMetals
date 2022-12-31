@@ -1,0 +1,12 @@
+{
+  "type": "mythicmetals:mythril_drill_smithing_recipe",
+  "base": {
+    "item": "mythicmetals:mythril_drill"
+  },
+  "addition": {
+    "item": "mythicmetals:carmot_block"
+  },
+  "result": {
+    "item": "mythicmetals:mythril_drill"
+  }
+}

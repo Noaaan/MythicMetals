@@ -12,6 +12,7 @@ The Drill has two upgrade slots, which can be used for the following upgrades:
 - Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
   - *Warning, driller warranty is void for any case where the chance of a Banglum Ore explosion exceeds 99%*
 - Midas Gold - Randomly drop raw gold when mining ores
+- Carmot - Same as Carmot tools - increased Fortune when mining
 
 ### Runite Arrows
 Use runite to craft more expensive, but more accurate arrows.  

@@ -16,10 +16,11 @@ public class DrillUpgrades {
     public static final Map<Item, String> MAP = new HashMap<>();
 
     public static void init() {
-        MAP.put(MythicItems.AQUARIUM_PEARL, "Aquarium");
-        MAP.put(MythicItems.STORMYX_SHELL, "Stormyx");
-        MAP.put(MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem(), "Midas Gold");
-        MAP.put(MythicBlocks.PROMETHEUM.getStorageBlock().asItem(), "Prometheum");
-        MAP.put(Items.AIR,  "Empty");
+        MAP.put(MythicItems.AQUARIUM_PEARL, "aquarium");
+        MAP.put(MythicItems.STORMYX_SHELL, "stormyx");
+        MAP.put(MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem(), "midas_gold");
+        MAP.put(MythicBlocks.PROMETHEUM.getStorageBlock().asItem(), "prometheum");
+        MAP.put(MythicBlocks.CARMOT.getStorageBlock().asItem(), "carmot");
+        MAP.put(Items.AIR, "empty");
     }
 }
