@@ -51,6 +51,14 @@ Increased Star Platinum arrow damage (18 -> 24).
 
 Compat - Added Wormhole Special to Spectrums Titration Barrel (Infused Beverage).
 
+Major internal repackages. If you are making an addon which uses Mythic Metals, please update your compatability. 
+
+Increased the default size of a Banglum Nuke (24 -> 32 blocks radius)
+
+Increased the vein sizes of Stormyx and End Starrite slightly.
+
+Increased the bottom spawn range of Aquarium (41 -> 31)
+
 ### Bug Fixes
 
 Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  

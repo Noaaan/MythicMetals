@@ -10,7 +10,8 @@ import nourl.mythicmetals.item.MythicItems;
 import java.util.function.Supplier;
 
 /**
- * Use {@link nourl.mythicmetals.item.tools.MythicToolMaterials} instead, this will be removed and will break direct compat
+ * Use {@link nourl.mythicmetals.item.tools.MythicToolMaterials} instead.
+ * This will be removed for 0.18.x, and will break compat
  */
 @Deprecated(since = "0.17.0", forRemoval = true)
 public enum MythicToolMaterials implements ToolMaterial {

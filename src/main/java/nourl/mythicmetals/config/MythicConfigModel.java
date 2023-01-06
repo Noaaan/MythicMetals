@@ -19,7 +19,7 @@ public class MythicConfigModel {
     @Nest
     public OreConfig adamantite = new OreConfig(true, 5, 1, -54, -20, .125f, false, true);
     @Nest
-    public OreConfig aquarium = new OreConfig(true, 9, 4, 41, 63, .0f, false);
+    public OreConfig aquarium = new OreConfig(true, 9, 4, 31, 63, .0f, false);
     @Nest
     public OreConfig banglum = new OreConfig(true, 7, 3, 48, 69, .125f, false);
     @Nest
@@ -61,9 +61,9 @@ public class MythicConfigModel {
     @Nest
     public OreConfig starrite = new OreConfig(true, 4, 1, 70, 260, .125f, false, false);
     @Nest
-    public OreConfig endStarrite = new OreConfig(true, 7, 2, 30, 90, .0f, false);
+    public OreConfig endStarrite = new OreConfig(true, 8, 2, 30, 90, .0f, false);
     @Nest
-    public OreConfig stormyx = new OreConfig(true, 8, 2, 4, 60, .0f, false);
+    public OreConfig stormyx = new OreConfig(true, 9, 2, 4, 60, .0f, false);
     @Nest
     public OreConfig unobtainium = new OreConfig(true, 3, 1, -54, 5, .0f, false, true);
     @Nest
@@ -72,7 +72,7 @@ public class MythicConfigModel {
     public int configVersion = MythicMetals.CONFIG_VERSION;
     @RestartRequired
     public boolean disableFunny = false;
-    public int banglumNukeCoreRadius = 24;
+    public int banglumNukeCoreRadius = 32;
 
     public ArrayList<String> blacklist = new ArrayList<>();
 }
