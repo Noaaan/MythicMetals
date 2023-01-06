@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.minecraft.entity.player.PlayerEntity;

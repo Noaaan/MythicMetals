@@ -3,7 +3,6 @@ package nourl.mythicmetals.registry;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.config.MythicConfigModel;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 /**

@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import com.google.common.base.Suppliers;
 import net.minecraft.item.Items;
@@ -9,10 +9,6 @@ import nourl.mythicmetals.item.MythicItems;
 
 import java.util.function.Supplier;
 
-/**
- * Use {@link nourl.mythicmetals.item.tools.MythicToolMaterials} instead, this will be removed and will break direct compat
- */
-@Deprecated(since = "0.17.0", forRemoval = true)
 public enum MythicToolMaterials implements ToolMaterial {
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, () -> Ingredient.ofItems(MythicItems.Ingots.ADAMANTITE_INGOT)),
     AEGIS_RED(4, 2170, 8.0F, 6.0F, 25, () -> Ingredient.ofItems(MythicItems.Ingots.PALLADIUM_INGOT)),

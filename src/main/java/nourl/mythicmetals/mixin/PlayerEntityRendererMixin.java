@@ -15,7 +15,7 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
-import nourl.mythicmetals.tools.CarmotStaff;
+import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

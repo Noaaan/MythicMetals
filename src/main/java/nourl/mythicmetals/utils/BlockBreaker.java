@@ -12,7 +12,7 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import nourl.mythicmetals.tools.HammerBase;
+import nourl.mythicmetals.item.tools.HammerBase;
 
 public class BlockBreaker {
 

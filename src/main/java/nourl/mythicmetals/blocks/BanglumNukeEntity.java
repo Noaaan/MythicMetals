@@ -20,8 +20,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.registry.RegisterEntities;
 import nourl.mythicmetals.utils.EpicExplosion;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +38,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     }
 
     public BanglumNukeEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter, Block coreBlock) {
-        this(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, world);
+        this(MythicEntities.BANGLUM_NUKE_ENTITY_TYPE, world);
         this.setPosition(x, y, z);
         double d = world.random.nextDouble() * (float) (Math.PI * 2);
         this.setVelocity(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);

@@ -56,25 +56,6 @@ public class MythicParticleSystem {
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);
     });
 
-    public static final ParticleSystem<Vec3d> ICE_TRAIL = CONTROLLER.register(Vec3d.class, (world, pos, data) -> {
-        Vec3d step = data.subtract(pos).multiply(1 / 20f);
-
-        for (int i = 0; i < 20; i++) {
-            ClientParticles.spawn(ParticleTypes.FALLING_WATER, world, pos, 0.2D);
-
-            pos = pos.add(step);
-        }
-    });
-
-    public static final ParticleSystem<Void> ICE_BARRAGE = CONTROLLER.register(Void.class, (world, pos, data) -> {
-        ClientParticles.setParticleCount(10);
-
-        ClientParticles.persist();
-        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.SNOWFLAKE, world, new BlockPos(pos), new Vec3d(0, 3, 0), 1.5F);
-        ClientParticles.reset();
-
-    });
-
     public static final ParticleSystem<Void> HEALING_HEARTS = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(5);
 

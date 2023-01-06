@@ -4,7 +4,7 @@ import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.item.tools.MythicTools;
 
 /**
  * Truly hardcode abilities onto items. These act as enchantments, but they stack with them.

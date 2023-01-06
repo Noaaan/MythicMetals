@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class MythicItemGroups extends OwoItemGroup {

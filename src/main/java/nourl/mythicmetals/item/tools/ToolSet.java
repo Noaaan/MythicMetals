@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.*;

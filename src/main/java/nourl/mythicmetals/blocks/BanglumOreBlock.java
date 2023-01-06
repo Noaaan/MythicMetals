@@ -14,7 +14,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.tools.MythrilDrill;
+import nourl.mythicmetals.item.tools.MythrilDrill;
 
 public class BanglumOreBlock extends OreBlock {
     public BanglumOreBlock(FabricBlockSettings settings) {

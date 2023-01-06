@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;

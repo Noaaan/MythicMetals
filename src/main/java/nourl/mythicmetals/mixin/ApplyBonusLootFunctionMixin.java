@@ -6,7 +6,7 @@ import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.tools.MythrilDrill;
+import nourl.mythicmetals.item.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;

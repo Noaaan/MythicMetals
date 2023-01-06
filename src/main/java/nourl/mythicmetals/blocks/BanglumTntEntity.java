@@ -10,7 +10,7 @@ import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
-import nourl.mythicmetals.registry.RegisterEntities;
+import nourl.mythicmetals.entity.MythicEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntEntity extends Entity {
@@ -26,7 +26,7 @@ public class BanglumTntEntity extends Entity {
     }
 
     public BanglumTntEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {
-        this(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, world);
+        this(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, world);
         this.setPosition(x, y, z);
         double d = world.random.nextDouble() * (float) (Math.PI * 2);
         this.setVelocity(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);

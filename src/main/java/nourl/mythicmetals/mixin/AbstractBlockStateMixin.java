@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.RaycastContext;
-import nourl.mythicmetals.tools.HammerBase;
+import nourl.mythicmetals.item.tools.HammerBase;
 import nourl.mythicmetals.utils.BlockBreaker;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

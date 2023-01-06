@@ -9,7 +9,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.armor.ArmorSet;
-import nourl.mythicmetals.tools.ToolSet;
+import nourl.mythicmetals.item.tools.ToolSet;
 
 import java.util.HashSet;
 import java.util.Set;

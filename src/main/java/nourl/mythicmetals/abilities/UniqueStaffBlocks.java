@@ -7,7 +7,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.tools.CarmotStaff;
+import nourl.mythicmetals.item.tools.CarmotStaff;
 
 import java.util.HashMap;
 import java.util.Map;

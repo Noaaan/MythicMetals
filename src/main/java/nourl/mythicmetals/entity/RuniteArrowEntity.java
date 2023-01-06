@@ -21,8 +21,7 @@ import net.minecraft.potion.Potions;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import nourl.mythicmetals.registry.RegisterEntities;
-import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.item.tools.MythicTools;
 
 import java.util.Collection;
 import java.util.Set;
@@ -36,11 +35,11 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
     private boolean colorSet;
 
     public RuniteArrowEntity(EntityType<RuniteArrowEntity> type, World world) {
-        super(RegisterEntities.RUNITE_ARROW_ENTITY_TYPE, world);
+        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, world);
     }
 
     public RuniteArrowEntity(LivingEntity shooter, World world) {
-        super(RegisterEntities.RUNITE_ARROW_ENTITY_TYPE, shooter, world);
+        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, shooter, world);
     }
 
     public void initFromStack(ItemStack stack) {

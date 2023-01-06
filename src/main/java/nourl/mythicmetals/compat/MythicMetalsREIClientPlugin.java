@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
-import nourl.mythicmetals.tools.MythicTools;
+import nourl.mythicmetals.item.tools.MythicTools;
 
 import java.util.ArrayList;
 import java.util.Collections;

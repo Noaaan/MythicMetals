@@ -7,18 +7,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
+import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.registry.RegisterEntities;
-import nourl.mythicmetals.tools.MythicTools;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
 
     public StarPlatinumArrowEntity(LivingEntity owner, World world) {
-        super(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world);
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world);
     }
 
     public StarPlatinumArrowEntity(EntityType<StarPlatinumArrowEntity> type, World world) {
-        super(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, world);
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, world);
     }
 
     @Override

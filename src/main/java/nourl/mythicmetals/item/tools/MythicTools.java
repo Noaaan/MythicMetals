@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
@@ -22,8 +22,8 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.RuniteArrowItem;
-import nourl.mythicmetals.item.TippedRuniteArrowItem;
 import nourl.mythicmetals.item.StarPlatinumArrowItem;
+import nourl.mythicmetals.item.TippedRuniteArrowItem;
 import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.utils.RegistryHelper;
 

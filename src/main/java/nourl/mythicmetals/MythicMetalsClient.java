@@ -19,14 +19,14 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
-import nourl.mythicmetals.client.models.*;
+import nourl.mythicmetals.entity.MythicEntities;
+import nourl.mythicmetals.item.tools.BanglumPick;
+import nourl.mythicmetals.item.tools.BanglumShovel;
+import nourl.mythicmetals.item.tools.HammerBase;
+import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
-import nourl.mythicmetals.registry.RegisterEntities;
-import nourl.mythicmetals.tools.BanglumPick;
-import nourl.mythicmetals.tools.BanglumShovel;
-import nourl.mythicmetals.tools.HammerBase;
-import nourl.mythicmetals.tools.MythicTools;
 import nourl.mythicmetals.utils.BlockBreaker;
 import nourl.mythicmetals.utils.RegistryHelper;
 import nourl.mythicmetals.utils.ShieldUsePredicate;
@@ -55,10 +55,10 @@ public class MythicMetalsClient implements ClientModInitializer {
         });
 
 
-        EntityRendererRegistry.register(RegisterEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
-        EntityRendererRegistry.register(RegisterEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
+        EntityRendererRegistry.register(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
+        EntityRendererRegistry.register(MythicEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
+        EntityRendererRegistry.register(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
+        EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());

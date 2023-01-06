@@ -1,4 +1,4 @@
-package nourl.mythicmetals.tools;
+package nourl.mythicmetals.item.tools;
 
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;

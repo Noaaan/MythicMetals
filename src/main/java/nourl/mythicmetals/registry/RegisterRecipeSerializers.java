@@ -1,9 +1,9 @@
 package nourl.mythicmetals.registry;
 
 import net.minecraft.util.registry.Registry;
-import nourl.mythicmetals.tools.DrillUpgradeSmithingRecipe;
-import nourl.mythicmetals.tools.MidasSmithingRecipe;
-import nourl.mythicmetals.tools.TippedRuniteArrowRecipe;
+import nourl.mythicmetals.item.tools.DrillUpgradeSmithingRecipe;
+import nourl.mythicmetals.item.tools.MidasSmithingRecipe;
+import nourl.mythicmetals.item.tools.TippedRuniteArrowRecipe;
 import nourl.mythicmetals.utils.RegistryHelper;
 
 public class RegisterRecipeSerializers {
