@@ -2,6 +2,8 @@ package nourl.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -72,6 +74,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract double getAttributeValue(EntityAttribute attribute);
 
+    @Shadow private @Nullable LivingEntity attacker;
+
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -128,10 +132,16 @@ public abstract class LivingEntityMixin extends Entity {
                 int level = effect.getAmplifier();
                 int duration = effect.getDuration();
                 this.removeStatusEffect(RegisterStatusEffects.HEAT);
+
                 MythicParticleSystem.COMBUSTION_EXPLOSION.spawn(world, this.getPos());
 
-                this.addStatusEffect(new StatusEffectInstance(RegisterStatusEffects.COMBUSTION, duration + 10, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
-                this.setFireTicks(duration + 10);
+                if (this.attacker != null && this.attacker.getMainHandStack() != null && EnchantmentHelper.get(this.attacker.getMainHandStack()).containsKey(Enchantments.FIRE_ASPECT)) {
+                    duration *= 2;
+                }
+
+                this.addStatusEffect(new StatusEffectInstance(RegisterStatusEffects.COMBUSTION, duration + 40, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
+
+                this.setFireTicks(duration + 40);
                 component.setCooldown(1800);
             }
 

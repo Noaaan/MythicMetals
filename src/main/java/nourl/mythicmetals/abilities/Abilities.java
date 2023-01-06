@@ -24,6 +24,7 @@ public class Abilities {
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
+    public static final Ability HOT = new Ability("hot", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability MENDING = new Ability("mending", 1, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
@@ -48,6 +49,7 @@ public class Abilities {
         DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), Style.EMPTY.withColor(Formatting.AQUA));
         FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), Style.EMPTY.withColor(Formatting.GOLD));
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, Style.EMPTY.withColor(0xDF7323));
+        HOT.addToolSet(MythicTools.PALLADIUM, Style.EMPTY.withColor(0xDF7323));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), Style.EMPTY.withColor(Formatting.GOLD));

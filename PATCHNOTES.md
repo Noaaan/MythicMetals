@@ -40,6 +40,15 @@ Added stats for using the Hallowed Block.
 
 Removed the Runite Block ability, since the freeze didn't find the impact it needed.
 
+### Palladium Rework
+This rework introduces two new effects in regards to Palladium: Heat, and Combustion.
+
+Apply Heat to your targets by comboing them with a Palladium tool, and once they are hot enough light them on fire to make them combust!
+
+This heavily increases the fire damage and duration of their burn. Use this to your advantage in places with low water (and use the Carmot Staff from above to remove it!).
+
+While combusting you are also vulnerable, meaning Fire Resistance will not make you fully immune against burning.
+
 ### Changes
 
 
