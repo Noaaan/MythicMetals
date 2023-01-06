@@ -25,7 +25,7 @@ import nourl.mythicmetals.item.RuniteArrowItem;
 import nourl.mythicmetals.item.StarPlatinumArrowItem;
 import nourl.mythicmetals.item.TippedRuniteArrowItem;
 import nourl.mythicmetals.registry.RegisterSounds;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 import java.lang.reflect.Field;
 

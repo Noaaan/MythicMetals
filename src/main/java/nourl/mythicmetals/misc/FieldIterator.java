@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.misc;
 
 import java.lang.reflect.Modifier;
 import java.util.function.BiConsumer;

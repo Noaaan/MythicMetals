@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.misc;
 
 import net.minecraft.util.Identifier;
 

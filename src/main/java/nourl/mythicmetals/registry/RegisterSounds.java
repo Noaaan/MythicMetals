@@ -5,7 +5,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.registry.Registry;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
 

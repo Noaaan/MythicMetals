@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.misc;
 
 import io.wispforest.owo.ui.core.Color;
 import net.minecraft.entity.effect.StatusEffectInstance;

@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.entity.StarPlatinumArrowEntity;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 @Environment(EnvType.CLIENT)
 public class StarPlatinumArrowEntityRenderer extends ProjectileEntityRenderer<StarPlatinumArrowEntity> {

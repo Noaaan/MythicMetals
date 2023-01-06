@@ -1,4 +1,4 @@
-package nourl.mythicmetals.registry;
+package nourl.mythicmetals.misc;
 
 import net.minecraft.entity.damage.DamageSource;
 

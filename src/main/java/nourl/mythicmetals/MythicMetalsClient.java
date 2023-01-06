@@ -27,10 +27,10 @@ import nourl.mythicmetals.item.tools.BanglumShovel;
 import nourl.mythicmetals.item.tools.HammerBase;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
-import nourl.mythicmetals.utils.BlockBreaker;
-import nourl.mythicmetals.utils.RegistryHelper;
-import nourl.mythicmetals.utils.ShieldUsePredicate;
-import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.BlockBreaker;
+import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.ShieldUsePredicate;
+import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;

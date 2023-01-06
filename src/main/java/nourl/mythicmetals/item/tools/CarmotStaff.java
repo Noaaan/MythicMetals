@@ -46,10 +46,10 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
-import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.utils.EpicExplosion;
-import nourl.mythicmetals.utils.MythicParticleSystem;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.CustomDamageSource;
+import nourl.mythicmetals.misc.EpicExplosion;
+import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

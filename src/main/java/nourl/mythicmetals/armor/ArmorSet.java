@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 import java.util.List;
 import java.util.function.Consumer;

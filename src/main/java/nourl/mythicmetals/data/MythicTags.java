@@ -11,7 +11,7 @@ import net.minecraft.world.biome.Biome;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;

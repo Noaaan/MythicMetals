@@ -19,8 +19,8 @@ import net.minecraft.util.math.Vec3f;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.item.tools.CarmotStaff;
-import nourl.mythicmetals.utils.RegistryHelper;
-import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
 
 import java.util.function.Consumer;
 

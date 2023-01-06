@@ -14,8 +14,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
-import nourl.mythicmetals.utils.BlockBreaker;
-import nourl.mythicmetals.utils.MythicParticleSystem;
+import nourl.mythicmetals.misc.BlockBreaker;
+import nourl.mythicmetals.misc.MythicParticleSystem;
 
 public class BanglumPick extends PickaxeItem {
 

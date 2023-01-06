@@ -21,8 +21,8 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
-import nourl.mythicmetals.registry.CustomDamageSource;
-import nourl.mythicmetals.utils.EpicExplosion;
+import nourl.mythicmetals.misc.CustomDamageSource;
+import nourl.mythicmetals.misc.EpicExplosion;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;

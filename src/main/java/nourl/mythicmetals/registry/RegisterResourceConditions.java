@@ -3,7 +3,7 @@ package nourl.mythicmetals.registry;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 /**
  * Simple resource conditions that check if the corresponding {@link MythicMetals#CONFIG} booleans are enabled.

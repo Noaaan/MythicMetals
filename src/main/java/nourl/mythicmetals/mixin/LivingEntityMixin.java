@@ -19,7 +19,7 @@ import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
-import nourl.mythicmetals.utils.MythicParticleSystem;
+import nourl.mythicmetals.misc.MythicParticleSystem;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

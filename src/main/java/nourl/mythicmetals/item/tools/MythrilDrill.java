@@ -35,7 +35,7 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.utils.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

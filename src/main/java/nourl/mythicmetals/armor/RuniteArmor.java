@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.client.models.HelmetModel;
 import nourl.mythicmetals.client.models.MythicModelHandler;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
 public class RuniteArmor extends HallowedArmor {

@@ -8,7 +8,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.registry.CustomDamageSource;
+import nourl.mythicmetals.misc.CustomDamageSource;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
 

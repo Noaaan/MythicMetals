@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import nourl.mythicmetals.blocks.BanglumNukeEntity;
 import nourl.mythicmetals.blocks.BanglumTntEntity;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 public class MythicEntities {
     public static final EntityType<BanglumTntEntity> BANGLUM_TNT_ENTITY_TYPE;

@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.misc;
 
 import blue.endless.jankson.annotation.Nullable;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;

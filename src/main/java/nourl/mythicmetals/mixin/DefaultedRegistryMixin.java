@@ -3,7 +3,7 @@ package nourl.mythicmetals.mixin;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.DefaultedRegistry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.utils.LegacyIds;
+import nourl.mythicmetals.misc.LegacyIds;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

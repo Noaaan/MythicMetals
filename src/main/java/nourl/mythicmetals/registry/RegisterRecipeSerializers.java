@@ -4,7 +4,7 @@ import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.item.tools.DrillUpgradeSmithingRecipe;
 import nourl.mythicmetals.item.tools.MidasSmithingRecipe;
 import nourl.mythicmetals.item.tools.TippedRuniteArrowRecipe;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterRecipeSerializers {
 

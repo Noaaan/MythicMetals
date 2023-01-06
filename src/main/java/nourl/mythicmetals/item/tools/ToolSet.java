@@ -4,7 +4,7 @@ import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 import java.util.function.Consumer;
 

@@ -10,7 +10,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.MythicArmorMaterials;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.utils.RegistryHelper;
+import nourl.mythicmetals.misc.RegistryHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

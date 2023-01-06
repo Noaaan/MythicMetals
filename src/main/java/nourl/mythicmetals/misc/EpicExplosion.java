@@ -1,4 +1,4 @@
-package nourl.mythicmetals.utils;
+package nourl.mythicmetals.misc;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
