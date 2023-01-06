@@ -60,6 +60,10 @@ dependencies {
     // Reach Entity Attributes
     modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
+    // Mixin Extras
+    annotationProcessor modImplementation("com.github.LlamaLad7:MixinExtras:${project.me_version}")
+    include "com.github.LlamaLad7:MixinExtras:${project.me_version}"
+
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 

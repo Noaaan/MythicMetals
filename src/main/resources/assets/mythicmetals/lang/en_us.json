@@ -480,6 +480,7 @@
   "item.mythicmetals.unobtainium_nugget": "Unobtainium Nugget",
   "item.mythicmetals.white_aegis_sword": "Sword of the Aegis",
   "item.mythicmetals.gilded_midas_gold_sword": "Gilded Midas Gold Sword",
+  "item.mythicmetals.combustion_stick": "Particle Stick - Combustion",
 
   "text.config.mythicmetals.category.adamantite": "Adamantite Ore Settings",
   "text.config.mythicmetals.category.aquarium": "Aquarium Ore Settings",
@@ -878,14 +879,17 @@
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
+  "death.attack.temperature_shock": "%1$s could not handle their cold bath",
 
   "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
-  "attribute.name.generic.mythicmetals.experience_boost": "Mob Experience",
-  "attribute.name.generic.mythicmetals.magic_protection": "Magic Protection",
+  "attribute.name.generic.mythicmetals.fire_vulnerability": "Fire Vulnerability",
   "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite",
   "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Wormhole Special",
-  "effect.mythicmetals.wormhole_special": "Wormhole Special"
+  "effect.mythicmetals.wormhole_special": "Wormhole Special",
+  "effect.mythicmetals.heat": "Heat",
+  "effect.mythicmetals.combustion": "Combusting!"
+
 }

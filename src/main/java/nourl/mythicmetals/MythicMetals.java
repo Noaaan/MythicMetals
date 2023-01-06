@@ -11,6 +11,7 @@ import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.loot.LootTables;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
@@ -18,6 +19,7 @@ import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicMetalsConfig;
+import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
@@ -41,6 +43,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static final OwoItemGroup TABBED_GROUP = new MythicItemGroups(RegistryHelper.id("main"));
 
     public static final ComponentKey<CarmotShield> CARMOT_SHIELD = ComponentRegistry.getOrCreate(RegistryHelper.id("carmot_shield"), CarmotShield.class);
+    public static final ComponentKey<CombustionCooldown> COMBUSTION_COOLDOWN = ComponentRegistry.getOrCreate(RegistryHelper.id("combustion_cooldown"), CombustionCooldown.class);
 
     @Override
     public void onInitialize() {
@@ -62,6 +65,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicOreFeatures.init();
         MythicCommands.register();
         Abilities.init();
+        RegisterEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
@@ -105,6 +109,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
+        registry.registerFor(LivingEntity.class, COMBUSTION_COOLDOWN, CombustionCooldown::new);
         registry.registerForPlayers(CARMOT_SHIELD, CarmotShield::new, RespawnCopyStrategy.INVENTORY);
     }
 }

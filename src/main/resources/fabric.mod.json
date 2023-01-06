@@ -19,6 +19,9 @@
     "main": [
       "nourl.mythicmetals.MythicMetals"
     ],
+    "preLaunch": [
+      "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
+    ],
     "client": [
       "nourl.mythicmetals.MythicMetalsClient"
     ],
@@ -47,7 +50,8 @@
   },
   "custom": {
     "cardinal-components": [
-      "mythicmetals:carmot_shield"
+      "mythicmetals:carmot_shield",
+      "mythicmetals:combustion_cooldown"
     ]
   }
 }

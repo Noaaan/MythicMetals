@@ -1,14 +1,21 @@
 package nourl.mythicmetals.item;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
+import io.wispforest.owo.particles.systems.ParticleSystem;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.misc.MythicParticleSystem;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -159,6 +166,7 @@ public class MythicItems implements ItemRegistryContainer {
     public static final Item AQUARIUM_PEARL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
     public static final Item STORMYX_SHELL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
+    public static final Item COMBUSTION_STICK = new ParticleStick(new OwoItemSettings(), MythicParticleSystem.COMBUSTION_EXPLOSION);
 
     public static class CustomMusicDiscItem extends MusicDiscItem {
         public CustomMusicDiscItem(int comparatorOutput, SoundEvent sound, Settings settings) {
@@ -168,6 +176,26 @@ public class MythicItems implements ItemRegistryContainer {
         @Override
         public MutableText getDescription() {
             return super.getDescription().formatted(Formatting.ITALIC);
+        }
+    }
+
+    public static class ParticleStick extends Item {
+        public static ParticleSystem<?> particle = null;
+        public ParticleStick(Settings settings, ParticleSystem<?> p) {
+            super(settings);
+            particle = p;
+        }
+
+        @Override
+        public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+            var stack = user.getStackInHand(hand);
+            particle.spawn(world, user.getPos());
+            return TypedActionResult.pass(stack);
+        }
+
+        @Override
+        public boolean hasGlint(ItemStack stack) {
+            return true;
         }
     }
 

@@ -1,11 +1,14 @@
 package nourl.mythicmetals.mixin;
 
-import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
@@ -16,10 +19,13 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.registry.RegisterEntityAttributes;
+import nourl.mythicmetals.registry.RegisterStatusEffects;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,6 +33,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -51,7 +58,16 @@ public abstract class LivingEntityMixin extends Entity {
     public abstract @Nullable LivingEntity getAttacker();
 
     @Shadow
-    public abstract AttributeContainer getAttributes();
+    public abstract boolean hasStatusEffect(StatusEffect effect);
+
+    @Shadow
+    public abstract boolean removeStatusEffect(StatusEffect type);
+
+    @Shadow
+    public abstract @Nullable StatusEffectInstance getStatusEffect(StatusEffect effect);
+
+    @Shadow
+    public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
     @Shadow
     public abstract double getAttributeValue(EntityAttribute attribute);
@@ -62,26 +78,64 @@ public abstract class LivingEntityMixin extends Entity {
 
     Random r = new Random();
 
+    @Inject(method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;", require = 1, allow = 1, at = @At("RETURN"))
+    private static void additionalEntityAttributes$addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
+        info.getReturnValue().add(RegisterEntityAttributes.FIRE_VULNERABILITY);
+    }
+
+    @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/entity/effect/StatusEffect;)Z"))
+    private boolean mythicmetals$bypassFireResistance(boolean original) {
+        // We respect Fire Invulnerability, but not Fire Resistance
+        // original = source.isFire() && this.hasStatusEffect(StatusEffects.FIRE_RESISTANCE)
+        return original && !(this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) > 0);
+    }
+
+    /**
+     * Increase fire damage taken by 1 for each point of Fire Vulnerability
+     * Fire Resistance halves this, although you will still take fire damage this way
+     */
+    @ModifyVariable(method = "damage", at = @At(value = "HEAD"), argsOnly = true)
+    private float mythicmetals$changeFireDamage(float original, DamageSource source) {
+        if (source.isFire() && this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) > 0) {
+            float modifier = (this.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) ?
+                    Math.min(MathHelper.floor(((float) this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) / 2.0f)), 1)
+                    :
+                    ((float) this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY)));
+            return original + modifier;
+        }
+        return original;
+    }
+
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
         if (!world.isClient()) {
             mythicmetals$prometheumRepairPassive();
+            mythicmetals$tickCombustion();
         }
         mythicmetals$addArmorEffects();
     }
 
-    @ModifyVariable(method = "applyArmorToDamage", at = @At("HEAD"), argsOnly = true)
-    private float mythicmetals$reduceMagicDamage(float amount, DamageSource source) {
-        var dmg = amount;
-        var attributes = this.getAttributes();
-        if (source.isMagic()
-                && attributes.hasAttribute(AdditionalEntityAttributes.MAGIC_PROTECTION)
-                && attributes.getValue(AdditionalEntityAttributes.MAGIC_PROTECTION) > 0) {
+    private void mythicmetals$tickCombustion() {
+        var component = getComponent(MythicMetals.COMBUSTION_COOLDOWN);
+        component.tickCooldown();
+        mythicmetals$handleCombustion(component);
+    }
 
-            double reduction = this.getAttributeValue(AdditionalEntityAttributes.MAGIC_PROTECTION);
-            dmg = (float) Math.max(dmg - reduction, 0);
+    private void mythicmetals$handleCombustion(CombustionCooldown component) {
+        if (this.isOnFire() && this.hasStatusEffect(RegisterStatusEffects.HEAT) && component.isCombustible()) {
+            var effect = this.getStatusEffect(RegisterStatusEffects.HEAT);
+            if (effect != null) {
+                int level = effect.getAmplifier();
+                int duration = effect.getDuration();
+                this.removeStatusEffect(RegisterStatusEffects.HEAT);
+                MythicParticleSystem.COMBUSTION_EXPLOSION.spawn(world, this.getPos());
+
+                this.addStatusEffect(new StatusEffectInstance(RegisterStatusEffects.COMBUSTION, duration + 10, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
+                this.setFireTicks(duration + 10);
+                component.setCooldown(1800);
+            }
+
         }
-        return dmg;
     }
 
     private void mythicmetals$prometheumRepairPassive() {
@@ -192,5 +246,4 @@ public abstract class LivingEntityMixin extends Entity {
             MythicParticleSystem.COPPER_SPARK.spawn(world, this.getPos().add(0, 1, 0));
         }
     }
-
 }
