@@ -4,13 +4,17 @@ Mythic Metals is a Fabric based Minecraft mod, that adds new ores, materials, to
 The mod is heavily inspired by Shadowclaimers Metallurgy, and was originally intended as a port.  
 After being denied the privilege to do so this mod was created from the ground up as my first proper Minecraft mod.
 
-You can find the patch notes in the PATCHNOTES.md file.
+You can find the patch notes in the [PATCHNOTES.md](PATCHNOTES.md) file.
 
 ## Download
 
-You can download the mod from CurseForge, use CI builds, or build it yourself.  
+You can download the mod from CurseForge, Modrinth, use CI builds, or build it yourself.  
 CurseForge link:
 https://www.curseforge.com/minecraft/mc-mods/mythicmetals
+
+Modrinth link:
+https://modrinth.com/mod/mythicmetals
+
 GitHub Actions link:
 https://github.com/Noaaan/MythicMetals/actions
 
