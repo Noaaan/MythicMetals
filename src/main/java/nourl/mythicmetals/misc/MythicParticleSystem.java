@@ -48,6 +48,16 @@ public class MythicParticleSystem {
 
     });
 
+    public static final ParticleSystem<Void> SMOKING_PALLADIUM_PARTICLE = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        ClientParticles.setParticleCount(1);
+        Random r = new Random();
+        var velocity = VectorRandomUtils.getRandomOffset(world,
+                Vec3d.ZERO.add(r.nextDouble(-1, 1), 0.75D, r.nextDouble(-1, 1)), 1.25D);
+        ClientParticles.setVelocity(velocity);
+
+        ClientParticles.spawn(ParticleTypes.SMOKE, world, pos, 0.0D);
+    });
+
     public static final ParticleSystem<Void> OVERENGINEERED_PALLADIUM_PARTICLE = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(1);
         Random r = new Random();

@@ -74,7 +74,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract double getAttributeValue(EntityAttribute attribute);
 
-    @Shadow private @Nullable LivingEntity attacker;
+    @Shadow
+    private @Nullable LivingEntity attacker;
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -116,6 +117,7 @@ public abstract class LivingEntityMixin extends Entity {
             mythicmetals$prometheumRepairPassive();
             mythicmetals$tickCombustion();
         }
+        mythicmetals$palladiumParticles();
         mythicmetals$addArmorEffects();
     }
 
@@ -223,13 +225,6 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
             }
-
-            if (MythicArmor.PALLADIUM.isInArmorSet(armorItems)) {
-                Vec3d velocity = this.getVelocity();
-                if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
-                    MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));
-                }
-            }
         }
     }
 
@@ -254,6 +249,25 @@ public abstract class LivingEntityMixin extends Entity {
     private void mythicmetals$copperParticle() {
         if (world.isClient && r.nextInt(40) < 1) {
             MythicParticleSystem.COPPER_SPARK.spawn(world, this.getPos().add(0, 1, 0));
+        }
+    }
+
+    private void mythicmetals$palladiumParticles() {
+        if (this.hasStatusEffect(RegisterStatusEffects.HEAT)) {
+            var status = this.getStatusEffect(RegisterStatusEffects.HEAT);
+            if (status == null) return;
+            if (status.getAmplifier() < 3) return;
+            Vec3d velocity = this.getVelocity();
+            if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
+                MythicParticleSystem.SMOKING_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));
+            }
+        }
+
+        if (this.hasStatusEffect(RegisterStatusEffects.COMBUSTION)) {
+            Vec3d velocity = this.getVelocity();
+            if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
+                MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));
+            }
         }
     }
 }

@@ -1,13 +1,17 @@
 package nourl.mythicmetals.item.tools;
 
+import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.registry.RegisterStatusEffects;
 
 import java.util.function.Consumer;
 
 public class PalladiumToolSet extends ToolSet {
+    public static final int MAX_HEAT = 6;
     public PalladiumToolSet(ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
         super(material, damage, speed, settingsProcessor);
     }
@@ -102,8 +106,11 @@ public class PalladiumToolSet extends ToolSet {
             target.addStatusEffect(new StatusEffectInstance(RegisterStatusEffects.HEAT, 100), attacker);
         } else {
             var effect = target.getStatusEffect(RegisterStatusEffects.HEAT);
-            int amplifier = effect == null ? 0 : target.getRandom().nextInt(4) == 1 ? effect.getAmplifier() + 1 : effect.getAmplifier();
-            target.setStatusEffect(new StatusEffectInstance(RegisterStatusEffects.HEAT, 100 + (20 * amplifier * amplifier), Math.min(amplifier, 6)), attacker);
+            int amplifier = effect == null ? 0 : target.getRandom().nextInt(3) == 0 ? effect.getAmplifier() + 1 : effect.getAmplifier();
+            if (amplifier >= MAX_HEAT) {
+                WorldOps.playSound(target.getWorld(), target.getPos(), SoundEvents.ENTITY_GENERIC_BURN, SoundCategory.PLAYERS);
+            }
+            target.setStatusEffect(new StatusEffectInstance(RegisterStatusEffects.HEAT, 100 + (20 * amplifier * amplifier), Math.min(amplifier, MAX_HEAT)), attacker);
         }
     }
 }
