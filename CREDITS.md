@@ -30,6 +30,7 @@ Starmute, for keeping the Terralith compat up-to-date.
 * Haunted Chest  
 * Dr. Zeal  
 * Azazelthedemonlord  
+* Paintedwithdrugs
 
 Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  
