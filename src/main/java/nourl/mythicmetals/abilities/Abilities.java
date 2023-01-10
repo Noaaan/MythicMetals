@@ -22,7 +22,7 @@ public class Abilities {
     public static final Ability CARMOT_SHIELD = new Ability("carmot_shield", 0, false);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
-    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1);
+    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
     public static final Ability HOT = new Ability("hot", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);

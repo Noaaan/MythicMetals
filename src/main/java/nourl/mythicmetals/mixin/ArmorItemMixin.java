@@ -51,6 +51,11 @@ public abstract class ArmorItemMixin {
         if (material == MythicArmorMaterials.STORMYX) {
             armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
+        if (material == MythicArmorMaterials.PALLADIUM && slot.equals(EquipmentSlot.HEAD)) {
+            armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_VISIBILITY, "Lava vision bonus", 8.0f, EntityAttributeModifier.Operation.ADDITION);
+        } else if (material == MythicArmorMaterials.PALLADIUM) {
+            armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_SPEED, "Lava swim bonus", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+        }
     }
 
     private void armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {

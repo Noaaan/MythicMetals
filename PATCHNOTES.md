@@ -49,6 +49,11 @@ This heavily increases the fire damage and duration of their burn. Use this to y
 
 While combusting you are also vulnerable, meaning Fire Resistance will not make you fully immune against burning.
 
+The armor also received a buff, and will now provide two different attributes: 
+Lava Swim Speed, and Vision in Lava.
+
+These do exactly as advertised: They reduce the fog from being in lava, and increases you speed while in lava, letting you move around much faster.
+
 ### Changes
 
 
