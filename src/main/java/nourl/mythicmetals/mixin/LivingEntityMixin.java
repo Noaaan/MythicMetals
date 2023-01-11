@@ -11,7 +11,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
@@ -29,6 +28,7 @@ import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.misc.WasSpawnedFromCreeper;
 import nourl.mythicmetals.registry.RegisterCriteria;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import org.jetbrains.annotations.Nullable;
@@ -79,6 +79,9 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     private @Nullable LivingEntity attacker;
+
+    @Shadow
+    public abstract boolean canHaveStatusEffect(StatusEffectInstance effect);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -147,6 +150,8 @@ public abstract class LivingEntityMixin extends Entity {
                 this.addStatusEffect(new StatusEffectInstance(MythicStatusEffects.COMBUSTION, duration + 40, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
 
                 this.setFireTicks(duration + 40);
+                // TODO - Remove this debug log entry
+                MythicMetals.LOGGER.info("Should be set on fire for " + (duration + 40) + " ticks, but was actually " + this.getFireTicks());
                 component.setCooldown(1800);
             }
 
@@ -270,6 +275,19 @@ public abstract class LivingEntityMixin extends Entity {
             Vec3d velocity = this.getVelocity();
             if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                 MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));
+            }
+        }
+    }
+
+    /**
+     * Bonus advancement if you combust yourself via a creeper. Good job.
+     */
+    @Inject(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"))
+    private void mythicmetals$grantAdvancementOnStatusEffectFromCreepers(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
+        if (source == null || !this.canHaveStatusEffect(effect)) return;
+        if (!world.isClient() && effect.getEffectType().equals(MythicStatusEffects.COMBUSTION) && this.isPlayer()) {
+            if (source instanceof AreaEffectCloudEntity cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
+                RegisterCriteria.RECIEVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
             }
         }
     }

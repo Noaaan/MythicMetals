@@ -19,16 +19,17 @@ import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicMetalsConfig;
+import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.MythicItemGroups;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.misc.MythicCommands;
-import nourl.mythicmetals.registry.*;
 import nourl.mythicmetals.misc.BlockBreaker;
+import nourl.mythicmetals.misc.MythicCommands;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.*;
 import nourl.mythicmetals.world.MythicOreFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -73,7 +74,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterResourceConditions.init();
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
-        RegisterStatusEffects.init();
+        RegisterCriteria.init();
         BlockBreaker.initHammerTime();
         LootOps.injectItem(MythicItems.Ingots.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
 

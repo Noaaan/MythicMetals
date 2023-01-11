@@ -1,0 +1,24 @@
+{
+  "parent": "mythicmetals:palladium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.intentional_combusting_mechanics.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.intentional_combusting_mechanics.description"
+    },
+    "icon": {
+      "item": "mythicmetals:palladium_ingot"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_too_close_to_the_aww_man": {
+      "trigger": "mythicmetals:recieved_combustion_from_creeper",
+      "conditions": {}
+    }
+  }
+}

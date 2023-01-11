@@ -1,0 +1,29 @@
+{
+  "parent": "mythicmetals:palladium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.superhot.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.superhot.description"
+    },
+    "icon": {
+      "item": "mythicmetals:palladium_ingot"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "all_effects": {
+      "conditions": {
+        "effects": {
+          "mythicmetals:heat": {},
+          "mythicmetals:combustion": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  }
+}

@@ -808,6 +808,10 @@
   "advancement.mythicmetals.stormyx_shield.title": "Better Protection Prayer",
   "advancement.mythicmetals.unobtainium.description": "Obtain Unobtainium, usually found deep underground",
   "advancement.mythicmetals.unobtainium.title": "How Did You Get This?",
+  "advancement.mythicmetals.superhot.title": "On Fire!",
+  "advancement.mythicmetals.superhot.description": "Try to not turn into charcoal with both Heat and Combustion applied at the same time",
+  "advancement.mythicmetals.intentional_combusting_mechanics.title": "This Is Based",
+  "advancement.mythicmetals.intentional_combusting_mechanics.description": "Abuse intentional game mechanics to apply Combustion on yourself",
 
   "abilities.mythicmetals.aqua_affinity": "Natural Aqua Affinity",
   "abilities.mythicmetals.blast_mining": "Blast Mining",
