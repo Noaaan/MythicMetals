@@ -1,4 +1,4 @@
-package nourl.mythicmetals.registry;
+package nourl.mythicmetals.effects;
 
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.LivingEntity;

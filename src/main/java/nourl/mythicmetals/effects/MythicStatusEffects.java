@@ -1,12 +1,13 @@
-package nourl.mythicmetals.registry;
+package nourl.mythicmetals.effects;
 
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.RegisterEntityAttributes;
 
-public class RegisterStatusEffects {
+public class MythicStatusEffects {
 
     public static final StatusEffect WORMHOLE_SPECIAL = new WormholeSpecial(StatusEffectCategory.HARMFUL, 133337);
     public static final StatusEffect HEAT = new StatusEffect(StatusEffectCategory.HARMFUL, 16747008);

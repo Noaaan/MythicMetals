@@ -71,6 +71,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         RegisterResourceConditions.init();
+        MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
         RegisterStatusEffects.init();
         BlockBreaker.initHammerTime();

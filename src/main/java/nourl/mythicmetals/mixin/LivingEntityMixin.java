@@ -11,7 +11,9 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -21,13 +23,14 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.registry.RegisterCriteria;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
-import nourl.mythicmetals.registry.RegisterStatusEffects;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -128,12 +131,12 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void mythicmetals$handleCombustion(CombustionCooldown component) {
-        if (this.isOnFire() && this.hasStatusEffect(RegisterStatusEffects.HEAT) && component.isCombustible()) {
-            var effect = this.getStatusEffect(RegisterStatusEffects.HEAT);
+        if (this.isOnFire() && this.hasStatusEffect(MythicStatusEffects.HEAT) && component.isCombustible()) {
+            var effect = this.getStatusEffect(MythicStatusEffects.HEAT);
             if (effect != null) {
                 int level = effect.getAmplifier();
                 int duration = effect.getDuration();
-                this.removeStatusEffect(RegisterStatusEffects.HEAT);
+                this.removeStatusEffect(MythicStatusEffects.HEAT);
 
                 MythicParticleSystem.COMBUSTION_EXPLOSION.spawn(world, this.getPos());
 
@@ -141,7 +144,7 @@ public abstract class LivingEntityMixin extends Entity {
                     duration *= 2;
                 }
 
-                this.addStatusEffect(new StatusEffectInstance(RegisterStatusEffects.COMBUSTION, duration + 40, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
+                this.addStatusEffect(new StatusEffectInstance(MythicStatusEffects.COMBUSTION, duration + 40, Math.max(MathHelper.floor(level / 2.0f), 0), false, true));
 
                 this.setFireTicks(duration + 40);
                 component.setCooldown(1800);
@@ -253,8 +256,8 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     private void mythicmetals$palladiumParticles() {
-        if (this.hasStatusEffect(RegisterStatusEffects.HEAT)) {
-            var status = this.getStatusEffect(RegisterStatusEffects.HEAT);
+        if (this.hasStatusEffect(MythicStatusEffects.HEAT)) {
+            var status = this.getStatusEffect(MythicStatusEffects.HEAT);
             if (status == null) return;
             if (status.getAmplifier() < 3) return;
             Vec3d velocity = this.getVelocity();
@@ -263,7 +266,7 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
 
-        if (this.hasStatusEffect(RegisterStatusEffects.COMBUSTION)) {
+        if (this.hasStatusEffect(MythicStatusEffects.COMBUSTION)) {
             Vec3d velocity = this.getVelocity();
             if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                 MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(world, this.getPos().add(0, 0.25, 0));

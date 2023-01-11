@@ -1,4 +1,4 @@
-package nourl.mythicmetals.registry;
+package nourl.mythicmetals.effects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
