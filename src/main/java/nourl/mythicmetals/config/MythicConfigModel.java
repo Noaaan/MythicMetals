@@ -77,6 +77,7 @@ public class MythicConfigModel {
 
     public ArrayList<String> blacklist = new ArrayList<>();
 
+    @Hook
     public ShieldPosition shieldPosition = ShieldPosition.TOP_LEFT;
 
     public enum ShieldPosition {
@@ -93,8 +94,8 @@ public class MythicConfigModel {
             this.y = y;
         }
 
-        public static Positioning asRelativePos(ShieldPosition pos) {
-            return Positioning.relative(pos.x, pos.y);
+        public Positioning asRelativePos() {
+            return Positioning.relative(x, y);
         }
     }
 }

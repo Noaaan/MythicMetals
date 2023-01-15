@@ -19,6 +19,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.entity.MythicEntities;
@@ -26,11 +27,11 @@ import nourl.mythicmetals.item.tools.BanglumPick;
 import nourl.mythicmetals.item.tools.BanglumShovel;
 import nourl.mythicmetals.item.tools.HammerBase;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.ShieldUsePredicate;
 import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.mixin.WorldRendererInvoker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -64,7 +65,9 @@ public class MythicMetalsClient implements ClientModInitializer {
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
         ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
-        ShieldHudComponent.init();
+        HudRenderCallback.EVENT.register((matrixStack, tickDelta) -> CarmotShieldHudHandler.tick());
+
+        CarmotShieldHudHandler.init();
     }
 
     /**
