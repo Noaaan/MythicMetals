@@ -30,13 +30,13 @@ public class MythicConfigModel {
     @Nest
     public OreConfig calciteKyber = new OreConfig(true, 16, 40, -56, 40, .4f, false, false);
     @Nest
-    public OreConfig manganese = new OreConfig(true, 9, 2, 28, 48,.25f, false);
+    public OreConfig manganese = new OreConfig(true, 9, 2, 28, 48, .25f, false);
     @Nest
     public OreConfig kyber = new OreConfig(true, 3, 1, 12, 52, .5f, false, false);
     @Nest
-    public OreConfig morkite = new OreConfig(true,11, 3, 27, 32, .25f, true);
+    public OreConfig morkite = new OreConfig(true, 11, 3, 27, 32, .25f, true);
     @Nest
-    public OreConfig midasGold = new OreConfig(true,7, 4, 12, 125,.125f, false, false);
+    public OreConfig midasGold = new OreConfig(true, 7, 4, 12, 125, .125f, false, false);
     @Nest
     public OreConfig mythril = new OreConfig(true, 5, 1, -24, 4, .125f, false, true);
     @Nest
@@ -52,23 +52,23 @@ public class MythicConfigModel {
     @Nest
     public OreConfig prometheum = new OreConfig(true, 6, 4, 30, 48, .0f, true);
     @Nest
-    public OreConfig quadrillum = new OreConfig(true,7, 2, 12, 40, .25f, false);
+    public OreConfig quadrillum = new OreConfig(true, 7, 2, 12, 40, .25f, false);
     @Nest
     public OreConfig runite = new OreConfig(true, 3, 1, 39, 53, .5f, false, true);
     @Nest
     public OreConfig deepslateRunite = new OreConfig(true, 4, 2, -55, -37, .5f, false, true);
     @Nest
-    public OreConfig silver = new OreConfig(true,8, 4, 25, 42, .25f, false);
+    public OreConfig silver = new OreConfig(true, 8, 4, 25, 42, .25f, false);
     @Nest
-    public OreConfig starrite = new OreConfig(true, 4,  1,  70,  260,  .125f, false, false);
+    public OreConfig starrite = new OreConfig(true, 4, 1, 70, 260, .125f, false, false);
     @Nest
     public OreConfig endStarrite = new OreConfig(true, 8, 2, 30, 90, .0f, false);
     @Nest
     public OreConfig stormyx = new OreConfig(true, 9, 2, 4, 60, .0f, false);
     @Nest
-    public OreConfig unobtainium = new OreConfig(true,3, 1, -54, 5, .0f, false, true);
+    public OreConfig unobtainium = new OreConfig(true, 3, 1, -54, 5, .0f, false, true);
     @Nest
-    public OreConfig tin = new OreConfig(true,8, 4, 64, 92, .25f, false);
+    public OreConfig tin = new OreConfig(true, 8, 4, 64, 92, .25f, false);
     @ExcludeFromScreen
     public int configVersion = MythicMetals.CONFIG_VERSION;
     @RestartRequired
