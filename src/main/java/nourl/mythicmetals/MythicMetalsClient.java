@@ -1,6 +1,7 @@
 package nourl.mythicmetals;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.minecraft.block.ShapeContext;
@@ -65,7 +66,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
         ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
-        HudRenderCallback.EVENT.register((matrixStack, tickDelta) -> CarmotShieldHudHandler.tick());
+        ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
         CarmotShieldHudHandler.init();
     }
