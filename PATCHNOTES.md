@@ -15,24 +15,24 @@ The Drill has two upgrade slots, which can be used for the following upgrades:
 - Carmot - Same as Carmot tools - increased Fortune when mining
 
 ### Runite Arrows
-Use runite to craft more expensive, but more accurate arrows.  
+Use Runite to craft more expensive, but more accurate arrows.  
 
 These can be tipped like normal arrows, although modded potions will likely not have language keys for them. 
 
 ### Quadrillum Nuke Core
 Use Raw Quadrillum to improve the shrapnel of the Banglum Nuke.  
 
-This sacrifices some of the radius for **double the damage**.
+This sacrifices its radius for **double the damage**.
 
 ### Carmot Staff Rework  
 The Carmot Staff can now accept a large variety of blocks.
 
-When you use a block that has an unique ability, it will be reflected in its tooltip.
+When you use a block that has a unique ability, it will be reflected in its tooltip.
 
-For map makers, if you wish to create a Carmot Staff which is locked to a specific block, you can give yourself a staff with the following NBT:  
+For mapmakers, if you wish to create a Carmot Staff which is locked to a specific block, you can give yourself a staff with the following NBT:  
 `/give @s mythicmetals:carmot_staff{StoredBlock:"blockid:here", Locked:1b}`
 
-The Locked boolean will prevent anyone from modifiying the staff.
+The Locked boolean will prevent anyone from modifying the staff.
 
 Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.
 
@@ -41,9 +41,9 @@ Added stats for using the Hallowed Block.
 Removed the Runite Block ability, since the freeze didn't find the impact it needed.
 
 ### Palladium Rework
-This rework introduces two new effects in regards to Palladium: Heat, and Combustion.
+This rework introduces two new effects for Palladium Weapons: Heat, and Combustion.
 
-Apply Heat to your targets by comboing them with a Palladium tool, and once they are hot enough light them on fire to make them combust!
+Apply Heat to your targets by combo-ing them with a Palladium tool, and once they are hot enough light them on fire to make them combust!
 
 This heavily increases the fire damage and duration of their burn. Use this to your advantage in places with low water (and use the Carmot Staff from above to remove it!).
 
@@ -56,16 +56,15 @@ These do exactly as advertised: They reduce the fog from being in lava, and incr
 
 ### Changes
 
-
 Lightened the outline of the Orichalcum Sword slightly.  
 
 Overhauled some helmet textures into crowns (Thanks Azzy!).  
 
 Increased Star Platinum arrow damage (18 -> 24).  
 
-Compat - Added Wormhole Special to Spectrums Titration Barrel (Infused Beverage).
+Compat - Added Wormhole Special to Spectrum's Titration Barrel (Infused Beverage).
 
-Major internal repackages. If you are making an addon which uses Mythic Metals, please update your compatability. 
+Major internal repackages. If you are making an addon which uses Mythic Metals, please update your compatibility. 
 
 Increased the default size of a Banglum Nuke (24 -> 32 blocks radius).
 
@@ -73,7 +72,9 @@ Increased the vein sizes of Stormyx and End Starrite slightly.
 
 Increased the bottom spawn range of Aquarium (41 -> 31).
 
-Changed Durasteel Axe texture (thanks Painted!)
+Changed Durasteel Axe texture (thanks Painted!).
+
+Added a configurable HUD element which displays your Carmot Shield health.
 
 ### Bug Fixes
 
