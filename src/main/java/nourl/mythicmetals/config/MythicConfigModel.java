@@ -84,7 +84,8 @@ public class MythicConfigModel {
         TOP_LEFT(2, 2),
         TOP_RIGHT(97, 2),
         BOTTOM_LEFT(2, 97),
-        BOTTOM_RIGHT(97, 97);
+        BOTTOM_RIGHT(97, 97),
+        DISABLED(0, 0);
 
         private final int x;
         private final int y;

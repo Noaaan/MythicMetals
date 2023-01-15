@@ -10,6 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.config.MythicConfigModel;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class CarmotShieldHudHandler {
@@ -47,14 +48,14 @@ public class CarmotShieldHudHandler {
             var background = (CarmotShieldComponent) ((ParentComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
 
             // Hide Shield if it's not needed
-            if (carmotShield.getMaxHealth() == 0) {
+            if (carmotShield.getMaxHealth() == 0 || MythicMetals.CONFIG.shieldPosition().equals(MythicConfigModel.ShieldPosition.DISABLED)) {
                 shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
                 background.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
                 return;
             }
 
             boolean isShieldBroken = carmotShield.shieldHealth == 0;
-            int shieldX = MathHelper.ceil(16 + 45 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
+            int shieldX = MathHelper.ceil(16 + 46 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
 
             CarmotShieldComponent.barShouldBeRed = player.hurtTime > 0 || isShieldBroken;
             // Hide bar if shield is broken
@@ -69,7 +70,7 @@ public class CarmotShieldHudHandler {
 
     public static class CarmotShieldComponent extends TextureComponent {
 
-        public static final Color HEALTHY_COLOR = Color.ofRgb(0x64D0FF);
+        public static final Color HEALTHY_COLOR = Color.ofRgb(0x52CBFF);
         public static final Color DAMAGED_COLOR = Color.ofRgb(0xE0343A);
         public static boolean barShouldBeRed = false;
 

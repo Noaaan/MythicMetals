@@ -244,10 +244,6 @@ public abstract class LivingEntityMixin extends Entity {
             return; // If you are a player, and your shield ran out, do not display particles
         }
 
-        // Add particles around the entity when standing still
-        if (velocity.length() <= 0.1 && r.nextInt(14) < 1) {
-            MythicParticleSystem.CARMOT_PARTICLES.spawn(world, this.getPos());
-        }
         // Particle trail if the entity is moving
         if (velocity.length() >= 0.1 && r.nextInt(10) < 1) {
             MythicParticleSystem.CARMOT_TRAIL.spawn(world, this.getPos());
