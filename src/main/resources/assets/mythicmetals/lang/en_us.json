@@ -723,6 +723,12 @@
   "text.config.mythicmetals.option.unobtainium.top": "Unobtainium Maximum Spawn Height",
   "text.config.mythicmetals.option.unobtainium.trapezoid": "Should Unobtainium use trapezoid range?",
   "text.config.mythicmetals.option.unobtainium.veinSize": "Max Unobtainium Vein Size",
+  "text.config.mythicmetals.enum.shieldPosition.bottom_right": "Bottom Right",
+  "text.config.mythicmetals.enum.shieldPosition.top_right": "Top Right",
+  "text.config.mythicmetals.enum.shieldPosition.bottom_left": "Bottom Left",
+  "text.config.mythicmetals.enum.shieldPosition.top_left": "Top Left",
+  "text.config.mythicmetals.enum.shieldPosition.disabled": "Disabled",
+  "text.config.mythicmetals.enum.shieldPosition": "Carmot Shield HUD Position",
 
   "text.config.mythicmetals.title": "Mythic Metals Configuration",
 

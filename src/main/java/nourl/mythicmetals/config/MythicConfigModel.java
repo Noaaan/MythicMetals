@@ -1,6 +1,7 @@
 package nourl.mythicmetals.config;
 
 import io.wispforest.owo.config.annotation.*;
+import io.wispforest.owo.ui.core.Positioning;
 import nourl.mythicmetals.MythicMetals;
 
 import java.util.ArrayList;
@@ -75,6 +76,27 @@ public class MythicConfigModel {
     public int banglumNukeCoreRadius = 32;
 
     public ArrayList<String> blacklist = new ArrayList<>();
+
+    @Hook
+    public ShieldPosition shieldPosition = ShieldPosition.TOP_LEFT;
+
+    public enum ShieldPosition {
+        TOP_LEFT(2, 2),
+        TOP_RIGHT(97, 2),
+        BOTTOM_LEFT(2, 97),
+        BOTTOM_RIGHT(97, 97),
+        DISABLED(0, 0);
+
+        private final int x;
+        private final int y;
+
+        ShieldPosition(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Positioning asRelativePos() {
+            return Positioning.relative(x, y);
+        }
+    }
 }
-
-

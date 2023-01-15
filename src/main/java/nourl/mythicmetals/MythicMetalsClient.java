@@ -1,6 +1,7 @@
 package nourl.mythicmetals;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.minecraft.block.ShapeContext;
@@ -19,6 +20,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.entity.MythicEntities;
@@ -26,11 +28,11 @@ import nourl.mythicmetals.item.tools.BanglumPick;
 import nourl.mythicmetals.item.tools.BanglumShovel;
 import nourl.mythicmetals.item.tools.HammerBase;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.ShieldUsePredicate;
 import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.mixin.WorldRendererInvoker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -63,6 +65,10 @@ public class MythicMetalsClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
         ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
+
+        CarmotShieldHudHandler.init();
+        ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
+
     }
 
     /**
