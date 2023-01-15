@@ -25,9 +25,6 @@
     "client": [
       "nourl.mythicmetals.MythicMetalsClient"
     ],
-    "fabric-datagen": [
-      "nourl.mythicmetals.data.MythicMetalsData"
-    ],
     "rei_client": [
       "nourl.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],

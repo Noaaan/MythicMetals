@@ -29,7 +29,7 @@ public class PiglinBrainMixin {
 
     @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (stack.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT)) {
+        if (stack.isOf(MythicItems.MIDAS_GOLD.getIngot())) {
             cir.setReturnValue(true);
         }
     }
@@ -51,7 +51,7 @@ public class PiglinBrainMixin {
 
     @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, PiglinEntity piglin) {
-        if (mythicmetals$cachedBarterItem.isOf(MythicItems.Ingots.MIDAS_GOLD_INGOT) && piglin.world.getServer() != null) {
+        if (mythicmetals$cachedBarterItem.isOf(MythicItems.MIDAS_GOLD.getIngot()) && piglin.world.getServer() != null) {
             return piglin.world.getServer().getLootManager().getTable(mythicmetals$BETTER_PIGLIN_BARTERING);
         }
         return table;

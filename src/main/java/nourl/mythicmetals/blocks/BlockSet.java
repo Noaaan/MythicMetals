@@ -43,7 +43,7 @@ public class BlockSet {
      * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks.
      * Use {@link Builder#begin(String, boolean) BlockSet.Builder.begin} to begin,
      * and call {@link Builder#finish()} when you are done.
-     *  @param name            Common name for the entire set of blocks, applies to every block created.
+     * @param name            Common name for the entire set of blocks, applies to every block created.
      * @param ore             Contains a vanilla {@link OreBlock}.
      * @param storageBlock    Contains a {@link Block} which is used as a storage block.
      * @param oreStorageBlock Contains a {@link Block} which is used as a ore storage block.

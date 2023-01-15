@@ -1,3 +1,4 @@
+/*
 package nourl.mythicmetals.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -11,3 +12,4 @@ public class MythicMetalsData implements DataGeneratorEntrypoint {
         fabricDataGenerator.addProvider(new MythicTagProviders.ItemTags(fabricDataGenerator));
     }
 }
+*/

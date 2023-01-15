@@ -49,15 +49,9 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     @Override
     public void onInitialize() {
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
-        FieldRegistrationHandler.register(MythicItems.Ingots.class, MOD_ID, false);
-        FieldRegistrationHandler.register(MythicItems.RawOres.class, MOD_ID, false);
-        if (CONFIG.enableNuggets()) {
-            FieldRegistrationHandler.register(MythicItems.Nuggets.class, MOD_ID, false);
-        }
-        if (CONFIG.enableDusts()) {
-            FieldRegistrationHandler.register(MythicItems.Dusts.class, MOD_ID, false);
-        }
-        FieldRegistrationHandler.register(MythicItems.class, MOD_ID, false);
+        FieldRegistrationHandler.processSimple(MythicItems.class, false);
+        FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
+        FieldRegistrationHandler.processSimple(MythicItems.Copper.class, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         MythicParticleSystem.init();
@@ -69,14 +63,14 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.Ingots.MORKITE, 1200);
+        FuelRegistry.INSTANCE.add(MythicItems.Mats.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         RegisterResourceConditions.init();
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
         RegisterCriteria.init();
         BlockBreaker.initHammerTime();
-        LootOps.injectItem(MythicItems.Ingots.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
+        LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");

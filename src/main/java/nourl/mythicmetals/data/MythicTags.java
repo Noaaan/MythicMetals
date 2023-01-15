@@ -184,7 +184,7 @@ public class MythicTags {
             MetalItemTagHelper<T> itemSpecificHelper = null;
 
             if(getRegistry() == Registry.ITEM){
-                TagKey<T> ingotLikeTag =  Objects.equals(material, "unobtainium")
+                TagKey<T> ingotLikeTag = Objects.equals(material, "unobtainium")
                         || Objects.equals(material, "morkite")
                         || Objects.equals(material, "starrite")
                         || Objects.equals(material, "star_platinum")
@@ -226,7 +226,7 @@ public class MythicTags {
 
     public record MetalTagHelper<T extends ItemConvertible>(String material, TagKey<T> block, @Nullable TagKey<T> oreBlock, @Nullable TagKey<T> rawOreBlock, MetalItemTagHelper<T> itemSpecficHelper, RegistryKey<? extends Registry<T>> registryKey){
 
-        public MetalTagHelper<T> createCommonVersion(){
+        public MetalTagHelper<T> createCommonVersion() {
             return new MetalTagHelper<>(
                 material,
                 createCommonTag(block.id()),
@@ -237,7 +237,7 @@ public class MythicTags {
             );
         }
 
-        private TagKey<T> createCommonTag(Identifier id){
+        private TagKey<T> createCommonTag(Identifier id) {
             return TagKey.of(registryKey, new Identifier("c", id.getPath()));
         }
     }

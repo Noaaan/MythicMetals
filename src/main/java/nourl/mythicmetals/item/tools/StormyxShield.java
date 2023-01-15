@@ -54,7 +54,7 @@ public class StormyxShield extends ShieldItem {
 
     @Override
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.isOf(MythicItems.Ingots.STORMYX_INGOT) || super.canRepair(stack, ingredient);
+        return ingredient.isOf(MythicItems.STORMYX.getIngot()) || super.canRepair(stack, ingredient);
     }
 
     @Override

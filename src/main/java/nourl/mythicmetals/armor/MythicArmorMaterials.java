@@ -15,73 +15,73 @@ import java.util.function.Supplier;
 @SuppressWarnings("CodeBlock2Expr")
 public enum MythicArmorMaterials implements ArmorMaterial {
     ADAMANTITE("adamantite", 30, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.ADAMANTITE_INGOT);
+        return Ingredient.ofItems(MythicItems.ADAMANTITE.getIngot());
     }),
     AQUARIUM("aquarium", 20, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.AQUARIUM_INGOT);
+        return Ingredient.ofItems(MythicItems.AQUARIUM.getIngot());
     }),
     BANGLUM("banglum", 14, new int[]{2, 5, 6, 3}, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.BANGLUM_INGOT);
+        return Ingredient.ofItems(MythicItems.BANGLUM.getIngot());
     }),
     BRONZE("bronze", 15, new int[]{3, 5, 6, 2}, 14, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.BRONZE_INGOT);
+        return Ingredient.ofItems(MythicItems.BRONZE.getIngot());
     }),
     CARMOT("carmot", 26, new int[]{3, 6, 8, 3}, 40, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.CARMOT_INGOT);
+        return Ingredient.ofItems(MythicItems.CARMOT.getIngot());
     }),
     CELESTIUM("celestium", 38, new int[]{4, 8, 10, 4}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.CELESTIUM_INGOT);
+        return Ingredient.ofItems(MythicItems.CELESTIUM.getIngot());
     }),
     COPPER("copper", 9, new int[]{1, 3, 4, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.COPPER_INGOT);
     }),
     DURASTEEL("durasteel", 25, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 1.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.DURASTEEL_INGOT);
+        return Ingredient.ofItems(MythicItems.DURASTEEL.getIngot());
     }),
     HALLOWED("hallowed", 41, new int[]{4, 7, 9, 4}, 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 4.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.HALLOWED_INGOT);
+        return Ingredient.ofItems(MythicItems.HALLOWED.getIngot());
     }),
     KYBER("kyber", 21, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.KYBER_INGOT);
+        return Ingredient.ofItems(MythicItems.KYBER.getIngot());
     }),
     LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.BANGLUM_INGOT);
+        return Ingredient.ofItems(MythicItems.BANGLUM.getIngot());
     }),
     METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 5.0F, 0.225F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.METALLURGIUM_INGOT);
+        return Ingredient.ofItems(MythicItems.METALLURGIUM.getIngot());
     }),
     MIDAS_GOLD("midas_gold", 14, new int[]{1, 3, 5, 2}, 24, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.MIDAS_GOLD_INGOT);
+        return Ingredient.ofItems(MythicItems.MIDAS_GOLD.getIngot());
     }),
     MYTHRIL("mythril", 30, new int[]{3, 6, 8, 3}, 22, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.MYTHRIL_INGOT);
+        return Ingredient.ofItems(MythicItems.MYTHRIL.getIngot());
     }),
     ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.ORICHALCUM_INGOT);
+        return Ingredient.ofItems(MythicItems.ORICHALCUM.getIngot());
     }),
     OSMIUM("osmium", 25, new int[]{1, 4, 5, 2}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.1F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.OSMIUM_INGOT);
+        return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
     }),
     PALLADIUM("palladium", 28, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.PALLADIUM_INGOT);
+        return Ingredient.ofItems(MythicItems.PALLADIUM.getIngot());
     }),
     PROMETHEUM("prometheum", 18, new int[]{3, 6, 8, 3}, 17, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.PROMETHEUM_INGOT);
+        return Ingredient.ofItems(MythicItems.PROMETHEUM.getIngot());
     }),
     RUNITE("runite", 27, new int[]{3, 6, 8, 3}, 13, RegisterSounds.EQUIP_RUNITE, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.RUNITE_INGOT);
+        return Ingredient.ofItems(MythicItems.RUNITE.getIngot());
     }),
     SILVER("silver", 10, new int[]{1, 3, 4, 2}, 20, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.SILVER_INGOT);
+        return Ingredient.ofItems(MythicItems.SILVER.getIngot());
     }),
     STAR_PLATINUM("star_platinum", 34, new int[]{3, 7, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.1F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.STAR_PLATINUM);
+        return Ingredient.ofItems(MythicItems.STAR_PLATINUM.getIngot());
     }),
     STEEL("steel", 20,  new int[]{2, 5, 6, 2}, 10, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.5F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.STEEL_INGOT);
+        return Ingredient.ofItems(MythicItems.STEEL.getIngot());
     }),
     STORMYX("stormyx", 30, new int[]{3, 6, 8, 3}, 20, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 2.0F, 0.0F, () -> {
-        return Ingredient.ofItems(MythicItems.Ingots.STORMYX_INGOT);
+        return Ingredient.ofItems(MythicItems.STORMYX.getIngot());
     });
 
 

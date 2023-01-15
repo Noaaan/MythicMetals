@@ -116,7 +116,7 @@ public class MythrilDrill extends PickaxeItem {
     public boolean onStackClicked(ItemStack drill, Slot slot, ClickType clickType, PlayerEntity player) {
         if (clickType == ClickType.RIGHT) {
             // If right-clicking Drill onto Morkite, try to fuel it
-            if (slot.getStack().getItem().equals(MythicItems.Ingots.MORKITE)) {
+            if (slot.getStack().getItem().equals(MythicItems.Mats.MORKITE)) {
                 int morkiteCount = slot.getStack().getCount();
                 if (slot.tryTakeStackRange((MAX_FUEL - drill.get(FUEL)) / FUEL_CONSTANT, morkiteCount, player).isPresent()) {
                     int fuel = MathHelper.clamp(drill.get(FUEL) + (morkiteCount * FUEL_CONSTANT), 0, MAX_FUEL);
@@ -133,7 +133,7 @@ public class MythrilDrill extends PickaxeItem {
     public boolean onClicked(ItemStack drill, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
             // If right-clicking with Morkite on Drill, try to fuel it
-            if (cursorStack.getItem().equals(MythicItems.Ingots.MORKITE)) {
+            if (cursorStack.getItem().equals(MythicItems.Mats.MORKITE)) {
 
                 // Dont bother interacting if the Drills fuel is full
                 if (drill.get(FUEL).equals(MAX_FUEL)) return false;
@@ -171,7 +171,7 @@ public class MythrilDrill extends PickaxeItem {
             if (state.isIn(ConventionalBlockTags.ORES)) {
 
                 // Restore air when mining ores underwater
-                if (hasUpgradeItem(stack, MythicItems.AQUARIUM_PEARL)) {
+                if (hasUpgradeItem(stack, MythicItems.Mats.AQUARIUM_PEARL)) {
                     miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
                 }
                 // Randomly drop gold from midas gold

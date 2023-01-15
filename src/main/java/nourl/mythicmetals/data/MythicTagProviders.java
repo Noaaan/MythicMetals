@@ -1,3 +1,4 @@
+/*
 package nourl.mythicmetals.data;
 
 import io.wispforest.owo.util.ReflectionUtils;
@@ -95,3 +96,4 @@ public class MythicTagProviders {
     }
 
 }
+*/
