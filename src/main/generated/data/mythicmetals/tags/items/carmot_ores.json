@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:deepslate_carmot_ore",
-    "mythicmetals:carmot_ore"
+    "mythicmetals:carmot_ore",
+    "mythicmetals:deepslate_carmot_ore"
   ]
 }

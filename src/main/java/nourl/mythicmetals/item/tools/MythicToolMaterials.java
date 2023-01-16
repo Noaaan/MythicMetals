@@ -24,7 +24,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     GILDED_MIDAS_GOLD(3, 999, 13.0F, 4.0F, 30, () -> Ingredient.ofItems(MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem())),
     HALLOWED(4, 1984, 12.0F, 5.0F, 20, () -> Ingredient.ofItems(MythicItems.HALLOWED.getIngot())),
     KYBER(3, 889, 7.0F, 2.5F, 20, () -> Ingredient.ofItems(MythicItems.KYBER.getIngot())),
-    LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> Ingredient.ofItems(MythicItems.Mats.BANGLUM_CHUNK)),
+    LEGENDARY_BANGLUM(3, 1040, 12.0F, 4.0F, 2, () -> Ingredient.ofItems(MythicItems.RareMats.BANGLUM_CHUNK)),
     METALLURGIUM(5, 3000, 15.0F, 8.0F, 30, () -> Ingredient.ofItems(MythicItems.METALLURGIUM.getIngot())),
     MIDAS_GOLD(3, 300, 13.0F, 3.0F, 30, () -> Ingredient.ofItems(MythicItems.MIDAS_GOLD.getIngot())),
     MYTHRIL(4, 1564, 14.3F, 3.0F, 22, () -> Ingredient.ofItems(MythicItems.MYTHRIL.getIngot())),
