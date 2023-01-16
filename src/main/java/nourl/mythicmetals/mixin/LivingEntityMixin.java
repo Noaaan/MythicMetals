@@ -151,7 +151,6 @@ public abstract class LivingEntityMixin extends Entity {
 
                 this.setFireTicks(duration + 40);
                 // TODO - Remove this debug log entry
-                MythicMetals.LOGGER.info("Should be set on fire for " + (duration + 40) + " ticks, but was actually " + this.getFireTicks());
                 component.setCooldown(1800);
             }
 
