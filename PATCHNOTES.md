@@ -1,4 +1,15 @@
 # 0.17.0 
+
+A bit late perhaps, but happy new year!
+
+I hope this massive content update is worth the wait.
+
+
+### **If you are adding integration/making an addon which uses Mythic Metals, please update your compatibility.**
+
+This is due to major internal refactors and re-packages. 
+
+If you know any authors, please ask them to verify their integration still works. 
 ## Mythril Drill
 A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
@@ -54,7 +65,7 @@ Lava Swim Speed, and Vision in Lava.
 
 These do exactly as advertised: They reduce the fog from being in lava, and increases you speed while in lava, letting you move around much faster.
 
-### Changes
+### Other Changes
 
 Lightened the outline of the Orichalcum Sword slightly.  
 
@@ -62,9 +73,7 @@ Overhauled some helmet textures into crowns (Thanks Azzy!).
 
 Increased Star Platinum arrow damage (18 -> 24).  
 
-Compat - Added Wormhole Special to Spectrum's Titration Barrel (Infused Beverage).
-
-Major internal repackages. If you are making an addon which uses Mythic Metals, please update your compatibility. 
+Compat - Added Wormhole Special and Dark Morkite to Spectrum's Titration Barrel (Infused Beverage).
 
 Increased the default size of a Banglum Nuke (24 -> 32 blocks radius).
 
