@@ -1,8 +1,6 @@
 # 0.17.0 
 
-A bit late perhaps, but happy new year!
-
-I hope this massive content update is worth the wait.
+A bit late perhaps, but happy new year! I hope this massive content update is worth the wait.
 
 
 ### **If you are adding integration/making an addon which uses Mythic Metals, please update your compatibility.**
@@ -11,89 +9,90 @@ This is due to major internal refactors and re-packages.
 
 If you know any authors, please ask them to verify their integration still works. 
 ## Mythril Drill
-A new use for Mythril. 
+- A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
 
-You can craft it in a Smithing Table by using a Durasteel Engine with a Mythril Pickaxe.
+- You can craft it in a Smithing Table by using a Durasteel Engine with a Mythril Pickaxe.
 
-Requires Morkite to be fueled. Right click Morkite onto it to fuel (like a bundle).
+- Requires Morkite to be fueled. Right click Morkite onto it to fuel (like a bundle).
 
-The Drill has two upgrade slots, which can be used for the following upgrades:
+- The Drill has two upgrade slots, which can be used for the following upgrades:
 
-- Prometheum - Regain Durability while holding the drill
-- Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
-- Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
-  - *Warning, driller warranty is void for any case where the chance of a Banglum Ore explosion exceeds 99%*
-- Midas Gold - Randomly drop raw gold when mining ores
-- Carmot - Same as Carmot tools - increased Fortune when mining
+  - Prometheum - Regain Durability while holding the drill
+  - Aquarium Pearl - Acts as Aqua Affinity, and restores air when mining ores
+  - Stormyx Shell - Reduces the chance of Banglum Ores detonating by 102%
+        - *Warning, driller warranty is void for any case where the chance of a Banglum Ore explosion exceeds 99%*
+  - Midas Gold - Randomly drop raw gold when mining ores
+    - Carmot - Same as Carmot tools - increased Fortune when mining
 
 ### Runite Arrows
-Use Runite to craft more expensive, but more accurate arrows.  
+- Use Runite to craft more expensive, but more accurate arrows.  
 
-These can be tipped like normal arrows, although modded potions will likely not have language keys for them. 
+- These can be tipped like normal arrows, although modded potions will likely not have language keys for them. 
 
 ### Quadrillum Nuke Core
-Use Raw Quadrillum to improve the shrapnel of the Banglum Nuke.  
+- Use Raw Quadrillum to improve the shrapnel of the Banglum Nuke.  
 
-This sacrifices its radius for **double the damage**.
+- This sacrifices its radius for **double the damage**.
 
 ### Carmot Staff Rework  
-The Carmot Staff can now accept a large variety of blocks.
+- The Carmot Staff can now accept a large variety of blocks.
 
-When you use a block that has a unique ability, it will be reflected in its tooltip.
+- When you use a block that has a unique ability, it will be reflected in its tooltip.
 
-For mapmakers, if you wish to create a Carmot Staff which is locked to a specific block, you can give yourself a staff with the following NBT:  
+- For mapmakers, if you wish to create a Carmot Staff which is locked to a specific block, you can give yourself a staff with the following NBT:  
 `/give @s mythicmetals:carmot_staff{StoredBlock:"blockid:here", Locked:1b}`
 
-The Locked boolean will prevent anyone from modifying the staff.
+- The Locked boolean will prevent anyone from modifying the staff.
 
-Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.
+- Added a Sponge Block Staff Ability, which clears water around you in a 12 block radius.
 
-Added stats for using the Hallowed Block.  
+- Added stats for using the Hallowed Block.  
 
-Removed the Runite Block ability, since the freeze didn't find the impact it needed.
+- Removed the Runite Block ability, since the freeze didn't find the impact it needed.
 
 ### Palladium Rework
-This rework introduces two new effects for Palladium Weapons: Heat, and Combustion.
+- This rework introduces two new effects for Palladium Weapons: Heat, and Combustion.
 
-Apply Heat to your targets by combo-ing them with a Palladium tool, and once they are hot enough light them on fire to make them combust!
+- Apply Heat to your targets by combo-ing them with a Palladium tool, and once they are hot enough light them on fire to make them combust!
 
-This heavily increases the fire damage and duration of their burn. Use this to your advantage in places with low water (and use the Carmot Staff from above to remove it!).
+- This heavily increases the fire damage and duration of their burn. Use this to your advantage in places with low water (and use the Carmot Staff from above to remove it!).
 
-While combusting you are also vulnerable, meaning Fire Resistance will not make you fully immune against burning.
+- While combusting you are also vulnerable, meaning Fire Resistance will not make you fully immune against burning.
 
-The armor also received a buff, and will now provide two different attributes: 
-Lava Swim Speed, and Vision in Lava.
+- The armor also received a buff, and will now provide two different attributes: 
+  - Lava Swim Speed
+  - Vision in Lava.
 
-These do exactly as advertised: They reduce the fog from being in lava, and increases you speed while in lava, letting you move around much faster.
+- These do exactly as advertised: They reduce the fog from being in lava, and increases you speed while in lava, letting you move around much faster.
 
 ### Other Changes
 
-Lightened the outline of the Orichalcum Sword slightly.  
+- Lightened the outline of the Orichalcum Sword slightly.  
 
-Overhauled some helmet textures into crowns (Thanks Azzy!).  
+- Overhauled some helmet textures into crowns (Thanks Azzy!).  
 
-Increased Star Platinum arrow damage (18 -> 24).  
+- Increased Star Platinum arrow damage (18 -> 24).  
 
-Compat - Added Wormhole Special and Dark Morkite to Spectrum's Titration Barrel (Infused Beverage).
+- Compat - Added Wormhole Special and Dark Morkite to Spectrum's Titration Barrel (Infused Beverage).
 
-Increased the default size of a Banglum Nuke (24 -> 32 blocks radius).
+- Increased the default size of a Banglum Nuke (24 -> 32 blocks radius).
 
-Increased the vein sizes of Stormyx and End Starrite slightly.
+- Increased the vein sizes of Stormyx and End Starrite slightly.
 
-Increased the bottom spawn range of Aquarium (41 -> 31).
+- Increased the bottom spawn range of Aquarium (41 -> 31).
 
-Changed Durasteel Axe texture (thanks Painted!).
+- Changed Durasteel Axe texture (thanks Painted!).
 
-Added a configurable HUD element which displays your Carmot Shield health.
+- Added a configurable HUD element which displays your Carmot Shield health.
 
 ### Bug Fixes
 
-Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
+- Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
 
-Fix the Aegis Sword models in item frames and on ground.
+- Fix the Aegis Sword models in item frames and on ground.
 
-Fixed a bug where the Orichalcum Hammer did not apply enchants correctly.
+- Fixed a bug where the Orichalcum Hammer did not apply enchants correctly.
 
 
 # 0.16.4
