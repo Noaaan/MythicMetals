@@ -14,6 +14,8 @@ If you know any authors, please ask them to verify their integration still works
 A new use for Mythril. 
 Create a mining tool specialized for speed, letting you drill through the world like a hot metal baseball bat through snow.  
 
+You can craft it in a Smithing Table by using a Durasteel Engine with a Mythril Pickaxe.
+
 Requires Morkite to be fueled. Right click Morkite onto it to fuel (like a bundle).
 
 The Drill has two upgrade slots, which can be used for the following upgrades:

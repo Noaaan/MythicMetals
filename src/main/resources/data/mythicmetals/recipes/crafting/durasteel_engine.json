@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "lal",
+    "mom",
+    "lll"
+  ],
+  "key": {
+    "l": {
+      "item": "mythicmetals:durasteel_ingot"
+    },
+    "m": {
+      "item": "mythicmetals:morkite"
+    },
+    "a": {
+      "item": "minecraft:hopper"
+    },
+    "o": {
+      "item": "mythicmetals:durasteel_block"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:durasteel_engine",
+    "count": 1
+  }
+}

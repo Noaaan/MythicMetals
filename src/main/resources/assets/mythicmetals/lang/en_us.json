@@ -213,6 +213,7 @@
   "item.mythicmetals.durasteel_hoe": "Durasteel Hoe",
   "item.mythicmetals.durasteel_ingot": "Durasteel Ingot",
   "item.mythicmetals.durasteel_leggings": "Durasteel Leggings",
+  "item.mythicmetals.durasteel_engine": "Durasteel Engine",
   "item.mythicmetals.durasteel_nugget": "Durasteel Nugget",
   "item.mythicmetals.durasteel_pickaxe": "Durasteel Pickaxe",
   "item.mythicmetals.durasteel_shovel": "Durasteel Shovel",
@@ -861,9 +862,9 @@
     {"text": "Golden Luck", "color": "#FFAA00"}
   ],
   "tooltip.mythril_drill.upgrade.stormyx": [
-    {"text": "Bangl", "color": "#512FC2"},
+    {"text": "Bangl", "color": "#812FC2"},
     {"text": "um De", "color": "#692FC2"},
-    {"text": "fuser", "color": "#812FC2"}
+    {"text": "fuser", "color": "#512FC2"}
   ],
   "tooltip.mythril_drill.upgrade.aquarium": [
     {"text": "Aqua Affinity", "color": "#55FFFF"}

@@ -168,14 +168,13 @@ public class MythrilDrill extends PickaxeItem {
             if (isActive(stack) && random.nextInt(10) > 3) return true;
             stack.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
 
-            if (state.isIn(ConventionalBlockTags.ORES)) {
-
+            if (!EnchantmentHelper.get(stack).containsKey(Enchantments.SILK_TOUCH) && state.isIn(ConventionalBlockTags.ORES)) {
                 // Restore air when mining ores underwater
                 if (hasUpgradeItem(stack, MythicItems.RareMats.AQUARIUM_PEARL)) {
                     miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
                 }
                 // Randomly drop gold from midas gold
-                if (random.nextInt(40) == 27 && !EnchantmentHelper.get(stack).containsKey(Enchantments.SILK_TOUCH)) {
+                if (hasUpgradeItem(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem()) && random.nextInt(40) == 27) {
                     miner.dropItem(Items.RAW_GOLD);
                 }
             }
