@@ -24,10 +24,7 @@ import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.entity.MythicEntities;
-import nourl.mythicmetals.item.tools.BanglumPick;
-import nourl.mythicmetals.item.tools.BanglumShovel;
-import nourl.mythicmetals.item.tools.HammerBase;
-import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.item.tools.*;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.ShieldUsePredicate;
@@ -155,6 +152,9 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
+
+        ModelPredicateProviderRegistry.register(MythicTools.MYTHRIL_DRILL, new Identifier("is_active"),
+                (stack, world, entity, seed) -> stack.get(MythrilDrill.IS_ACTIVE) ? 0 : 1);
 
         ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, new Identifier("blocking"), new ShieldUsePredicate());
 

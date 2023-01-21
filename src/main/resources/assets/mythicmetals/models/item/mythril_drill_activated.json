@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/mythril_drill"
+    "layer0": "mythicmetals:items/tools/mythril_drill_deactivated"
   },
   "display": {
     "thirdperson_righthand": {
@@ -12,13 +12,5 @@
       "rotation": [0, 90, 25],
       "translation": [0, -2, -3.25]
     }
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "is_active": 1
-      },
-      "model": "mythicmetals:item/mythril_drill_activated"
-    }
-  ]
+  }
 }
