@@ -174,12 +174,12 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Inject(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
     private void mythicmetals$damageCarmotStaffOnXpDrop(CallbackInfo ci) {
+        // Find the attacker, and if they exist damage their carmot staff if it's in their offhand
         var attacker = this.getAttacker();
 
-        if (attacker == null && this.isPlayer()) return; // Return immediately there is no attacker or you are a player
+        if (attacker == null || this.isPlayer()) return;
 
         // If the user has a Carmot Staff in the offhand, damage their tool
         if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
@@ -277,6 +277,7 @@ public abstract class LivingEntityMixin extends Entity {
     /**
      * Bonus advancement if you combust yourself via a creeper. Good job.
      */
+    @SuppressWarnings("DataFlowIssue")
     @Inject(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At("HEAD"))
     private void mythicmetals$grantAdvancementOnStatusEffectFromCreepers(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
         if (source == null || !this.canHaveStatusEffect(effect)) return;
