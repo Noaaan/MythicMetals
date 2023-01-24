@@ -13,7 +13,6 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static SoundEvent DOG = new SoundEvent(RegistryHelper.id("music_disc.dog4"));
     public static SoundEvent MORKITE_ORE_BREAK = new SoundEvent(RegistryHelper.id("morkite_ore_break"));
     public static SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = new SoundEvent(RegistryHelper.id("deepslate_morkite_ore_break"));
-    public static SoundEvent ICE_MAGIC = new SoundEvent(RegistryHelper.id("ice_magic"));
 
     public static final BlockSoundGroup MORKITE_ORE = new BlockSoundGroup(1.0F, 1.0F,
             MORKITE_ORE_BREAK,
