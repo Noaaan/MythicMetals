@@ -14,15 +14,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.item.*;
-import nourl.mythicmetals.registry.RegisterSounds;
+import nourl.mythicmetals.item.CustomMusicDiscItem;
+import nourl.mythicmetals.item.RuniteArrowItem;
+import nourl.mythicmetals.item.StarPlatinumArrowItem;
+import nourl.mythicmetals.item.TippedRuniteArrowItem;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.RegisterSounds;
 
 import java.lang.reflect.Field;
 
@@ -77,7 +80,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final Item RUNITE_ARROW = new RuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item TIPPED_RUNITE_ARROW = new TippedRuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2).stackGenerator((item, stacks) -> {
-        for(Potion potion : Registry.POTION) {
+        for(Potion potion : Registries.POTION) {
             if (!potion.getEffects().isEmpty()) {
                 stacks.add(PotionUtil.setPotion(new ItemStack(item), potion));
             }
@@ -125,7 +128,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             @Override
             public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
                 if (entity.getType() == EntityType.FROG && FabricLoader.getInstance().isModLoaded("delightful-froge")) {
-                    ((FrogEntity) entity).setVariant(Registry.FROG_VARIANT.get(new Identifier("delightful", "froge")));
+                    ((FrogEntity) entity).setVariant(Registries.FROG_VARIANT.get(new Identifier("delightful", "froge")));
                     return ActionResult.SUCCESS;
                 }
                 return super.useOnEntity(stack, user, entity, hand);

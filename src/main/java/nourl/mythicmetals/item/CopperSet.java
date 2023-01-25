@@ -2,7 +2,8 @@ package nourl.mythicmetals.item;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.Item;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 
@@ -33,10 +34,10 @@ public class CopperSet {
 
     public void register(String name) {
         if (nuggetItem != null) {
-            Registry.register(Registry.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
         }
         if (dustItem != null) {
-            Registry.register(Registry.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
         }
     }
 

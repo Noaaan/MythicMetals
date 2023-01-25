@@ -18,8 +18,8 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
 
@@ -106,7 +106,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         if (this.potion != Potions.EMPTY) {
-            nbt.putString("Potion", Registry.POTION.getId(this.potion).toString());
+            nbt.putString("Potion", Registries.POTION.getId(this.potion).toString());
         }
 
         if (this.colorSet) {

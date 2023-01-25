@@ -16,7 +16,7 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.RenderingContext;
@@ -65,9 +65,9 @@ public abstract class CapeFeatureRendererMixin extends FeatureRenderer<AbstractC
                 q += 25.0F;
             }
 
-            ms.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(6.0F + r / 2.0F + q));
-            ms.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(s / 2.0F));
-            ms.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F - s / 2.0F));
+            ms.multiply(RotationAxis.POSITIVE_X.rotationDegrees(6.0F + r / 2.0F + q));
+            ms.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(s / 2.0F));
+            ms.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F - s / 2.0F));
             VertexConsumer vertexConsumer = vertices.getBuffer(RenderLayer.getEntitySolid(MythicModelHandler.HALLOWED_CAPE));
             this.getContextModel().renderCape(ms, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
             ms.pop();

@@ -7,8 +7,8 @@ import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import nourl.mythicmetals.registry.RegisterSounds;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.RegisterSounds;
 
 @SuppressWarnings("unused")
 public class MythicBlocks {

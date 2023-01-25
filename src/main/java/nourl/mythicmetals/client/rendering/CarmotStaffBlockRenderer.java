@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.item.tools.CarmotStaff;
@@ -84,13 +84,13 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
 
         // Model handling, tries to reverse the rotation of the shield from the Bow UseAction
         if (mode.equals(ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND)) {
-            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(13.935F * 3));
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-35.3F * 2));
-            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(9.785F * 2));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(13.935F * 3));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-35.3F * 2));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(9.785F * 2));
         } else {
-            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(13.935F * 1.5F));
-            matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(35.3F * 1.85F));
-            matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(9.785F * 1));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(13.935F * 1.5F));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(35.3F * 1.85F));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(9.785F * 1));
         }
 
         // Create and render rainbow shield

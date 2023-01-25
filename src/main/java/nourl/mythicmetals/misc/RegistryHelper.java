@@ -1,13 +1,17 @@
 package nourl.mythicmetals.misc;
 
+import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import nourl.mythicmetals.MythicMetals;
 
 /**
@@ -21,38 +25,42 @@ public class RegistryHelper {
     }
 
     public static void item(String path, Item item) {
-        Registry.register(Registry.ITEM, id(path), item);
+        Registry.register(Registries.ITEM, id(path), item);
     }
 
     public static void block(String path, Block block) {
-        Registry.register(Registry.BLOCK, id(path), block);
-        Registry.register(Registry.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1)));
+        Registry.register(Registries.BLOCK, id(path), block);
+        Registry.register(Registries.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1)));
     }
 
     public static void block(String path, Block block, boolean fireproof) {
         if (fireproof) {
-            Registry.register(Registry.BLOCK, id(path), block);
-            Registry.register(Registry.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof()));
+            Registry.register(Registries.BLOCK, id(path), block);
+            Registry.register(Registries.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof()));
         } else {
             block(path, block);
         }
     }
-    public static void block(String path, Block block, ItemGroup group) {
-        Registry.register(Registry.BLOCK, id(path), block);
-        Registry.register(Registry.ITEM, id(path), new BlockItem(block, new Item.Settings().group(group)));
+    public static void block(String path, Block block, OwoItemGroup group) {
+        Registry.register(Registries.BLOCK, id(path), block);
+        Registry.register(Registries.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(group)));
     }
 
-    public static void block(String path, Block block, ItemGroup group, boolean fireproof) {
+    public static void block(String path, Block block, OwoItemGroup group, boolean fireproof) {
         if (fireproof) {
-            Registry.register(Registry.BLOCK, id(path), block);
-            Registry.register(Registry.ITEM, id(path), new BlockItem(block, new Item.Settings().group(group).fireproof()));
+            Registry.register(Registries.BLOCK, id(path), block);
+            Registry.register(Registries.ITEM, id(path), new BlockItem(block, new OwoItemSettings().group(group).fireproof()));
         } else {
             block(path, block, group);
         }
     }
 
     public static void entityType(String path, EntityType<?> type){
-        Registry.register(Registry.ENTITY_TYPE, RegistryHelper.id(path), type);
+        Registry.register(Registries.ENTITY_TYPE, RegistryHelper.id(path), type);
+    }
+
+    public static RegistryKey<ConfiguredFeature<?, ?>> configuredFeatureKey(String string) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, RegistryHelper.id(string));
     }
 
 }

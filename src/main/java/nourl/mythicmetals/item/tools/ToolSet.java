@@ -2,7 +2,8 @@ package nourl.mythicmetals.item.tools;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.*;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 
@@ -35,11 +36,11 @@ public class ToolSet {
     }
 
     public void register(String name) {
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_sword"), sword);
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_axe"), axe);
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_pickaxe"), pickaxe);
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_shovel"), shovel);
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_sword"), sword);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_axe"), axe);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_pickaxe"), pickaxe);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_shovel"), shovel);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
     }
 
     protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {

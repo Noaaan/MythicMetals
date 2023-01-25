@@ -27,6 +27,7 @@ import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -38,10 +39,8 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
@@ -61,7 +60,7 @@ public class CarmotStaff extends ToolItem {
      * Contains the block stored inside the staff.
      * This is rendered via the {@link CarmotStaffBlockRenderer}
      */
-    public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
+    public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registries.BLOCK));
 
     /**
      * NBT Key that determines whether or not the staff is actively being used
@@ -266,14 +265,14 @@ public class CarmotStaff extends ToolItem {
                     stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                     world.setBlockState(user.getBlockPos().add(0, 1, 0), Blocks.BEDROCK.getDefaultState());
-                    world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                    world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
                     return TypedActionResult.success(stack);
                 }
 
                 stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
-                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
+                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
 
                 return TypedActionResult.success(stack);
             } else {

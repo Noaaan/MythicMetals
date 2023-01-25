@@ -13,10 +13,10 @@ import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import nourl.mythicmetals.armor.HallowedArmor;
@@ -130,9 +130,9 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private void registerArmorRenderer() {
-        Item[] armors = Registry.ITEM.stream()
+        Item[] armors = Registries.ITEM.stream()
                 .filter(i -> i instanceof HallowedArmor
-                        && Registry.ITEM.getKey(i).get().getValue().getNamespace().equals(MythicMetals.MOD_ID))
+                        && Registries.ITEM.getKey(i).get().getValue().getNamespace().equals(MythicMetals.MOD_ID))
                 .toArray(Item[]::new);
 
         ArmorRenderer renderer = (matrices, vertexConsumer, stack, entity, slot, light, original) -> {
@@ -140,7 +140,7 @@ public class MythicMetalsClient implements ClientModInitializer {
             HallowedArmor armor = (HallowedArmor) stack.getItem();
             var model = armor.getArmorModel();
             var texture = armor.getArmorTexture(stack, slot);
-            original.setAttributes(model);
+            original.copyBipedStateTo(model);
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
         };
         ArmorRenderer.register(renderer, armors);

@@ -6,10 +6,10 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.entity.MythicEntities;
 import org.jetbrains.annotations.Nullable;
 
@@ -85,12 +85,12 @@ public class BanglumTntEntity extends Entity {
     }
 
     @Override
-    public Packet<?> createSpawnPacket() {
+    public Packet<ClientPlayPacketListener> createSpawnPacket() {
         return new EntitySpawnS2CPacket(this);
     }
 
     protected void explode() {
-        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, Explosion.DestructionType.BREAK);
+        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, World.ExplosionSourceType.TNT);
     }
 
     @Override

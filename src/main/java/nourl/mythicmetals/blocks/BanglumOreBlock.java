@@ -3,7 +3,7 @@ package nourl.mythicmetals.blocks;
 import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.OreBlock;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,11 +12,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 
-public class BanglumOreBlock extends OreBlock {
+public class BanglumOreBlock extends ExperienceDroppingBlock {
     public BanglumOreBlock(FabricBlockSettings settings) {
         super(settings);
     }
@@ -64,9 +63,9 @@ public class BanglumOreBlock extends OreBlock {
 
     private void explode(World world, BlockPos pos) {
         if (world.getDimension().ultrawarm()) {
-            world.createExplosion(null, pos.getX(), pos.getY() + 0.6, pos.getZ(), 3.2F, Explosion.DestructionType.DESTROY);
+            world.createExplosion(null, pos.getX(), pos.getY() + 0.6, pos.getZ(), 3.2F, World.ExplosionSourceType.BLOCK);
         } else {
-            world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 0.3F, Explosion.DestructionType.BREAK);
+            world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 0.3F, World.ExplosionSourceType.BLOCK);
         }
     }
 }

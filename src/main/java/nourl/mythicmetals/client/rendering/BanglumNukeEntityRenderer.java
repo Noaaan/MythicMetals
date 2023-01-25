@@ -10,7 +10,7 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.blocks.BanglumNukeEntity;
 import nourl.mythicmetals.blocks.MythicBlocks;
 
@@ -36,9 +36,9 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity>
             matrixStack.scale(k, k, k);
         }
 
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-90.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
         matrixStack.translate(-0.5, -0.5, 0.5);
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(90.0F));
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
 
         matrixStack.translate(-1, 0, -1);
 

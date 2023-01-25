@@ -11,12 +11,12 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 
 public class BanglumNukeEntity extends BanglumTntEntity {
     private static final int DEFAULT_FUSE = 200;
-    private static final NbtKey<Block> CORE_BLOCK_KEY = new NbtKey<>("CoreBlock", NbtKey.Type.ofRegistry(Registry.BLOCK));
+    private static final NbtKey<Block> CORE_BLOCK_KEY = new NbtKey<>("CoreBlock", NbtKey.Type.ofRegistry(Registries.BLOCK));
 
     private Block coreBlock = MythicBlocks.BANGLUM_NUKE_CORE;
 

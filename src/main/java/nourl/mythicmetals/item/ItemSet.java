@@ -2,7 +2,8 @@ package nourl.mythicmetals.item;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.Item;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 
@@ -42,26 +43,26 @@ public class ItemSet {
     }
 
     public void register(String name) {
-        Registry.register(Registry.ITEM, RegistryHelper.id(name + "_ingot"), ingotItem);
+        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_ingot"), ingotItem);
         if (rawOreItem != null) {
-            Registry.register(Registry.ITEM, RegistryHelper.id("raw_" + name), rawOreItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id("raw_" + name), rawOreItem);
         }
         if (nuggetItem != null) {
-            Registry.register(Registry.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
         }
         if (dustItem != null) {
-            Registry.register(Registry.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
         }
     }
 
     public void register(String name, boolean imStarPlatinum) {
         if (imStarPlatinum) {
-            Registry.register(Registry.ITEM, RegistryHelper.id(name), ingotItem);
+            Registry.register(Registries.ITEM, RegistryHelper.id(name), ingotItem);
             if (nuggetItem != null) {
-                Registry.register(Registry.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
+                Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
             }
             if (dustItem != null) {
-                Registry.register(Registry.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
+                Registry.register(Registries.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
             }
         } else {
             register(name);

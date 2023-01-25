@@ -38,7 +38,7 @@ public class PlayerEnergySwirlFeatureRenderer extends FeatureRenderer<AbstractCl
 
             this.swirlModel.animateModel(entity, limbAngle, limbDistance, tickDelta);
             this.getContextModel().copyStateTo(this.swirlModel);
-            this.getContextModel().setAttributes(this.swirlModel);
+            this.getContextModel().copyBipedStateTo(this.swirlModel);
 
             var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
             this.swirlModel.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);

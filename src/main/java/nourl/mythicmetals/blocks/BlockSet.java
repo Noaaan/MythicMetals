@@ -7,10 +7,10 @@ import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 
@@ -27,7 +27,7 @@ import java.util.function.Consumer;
  */
 @SuppressWarnings({"unused"})
 public class BlockSet {
-    private final OreBlock ore;
+    private final ExperienceDroppingBlock ore;
     private final Block storageBlock;
     private final Block oreStorageBlock;
     private final AnvilBlock anvil;
@@ -37,28 +37,28 @@ public class BlockSet {
 
     private final Multimap<Block, Identifier> miningLevels;
     private final Multimap<AnvilBlock, Identifier> anvilMap;
-    private final Map<String, OreBlock> oreVariants;
+    private final Map<String, ExperienceDroppingBlock> oreVariants;
 
     /**
      * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks.
      * Use {@link Builder#begin(String, boolean) BlockSet.Builder.begin} to begin,
      * and call {@link Builder#finish()} when you are done.
      * @param name            Common name for the entire set of blocks, applies to every block created.
-     * @param ore             Contains a vanilla {@link OreBlock}.
+     * @param ore             Contains a vanilla {@link ExperienceDroppingBlock}.
      * @param storageBlock    Contains a {@link Block} which is used as a storage block.
      * @param oreStorageBlock Contains a {@link Block} which is used as a ore storage block.
      * @param anvil           Contains an {@link AnvilBlock}
-     * @param oreVariants     A map of a string and {@link OreBlock} which is used for variant ores.
+     * @param oreVariants     A map of a string and {@link ExperienceDroppingBlock} which is used for variant ores.
      * @param fireproof       Boolean for creating fireproof block sets.
      * @param miningLevels    A map containing all the blocks being registered with their corresponding mining levels.
      * @param anvilMap        A map containing all anvils and their levels, so that they can be disabled.
      */
     private BlockSet(String name,
-                     OreBlock ore,
+                     ExperienceDroppingBlock ore,
                      Block storageBlock,
                      Block oreStorageBlock,
                      AnvilBlock anvil,
-                     Map<String, OreBlock> oreVariants,
+                     Map<String, ExperienceDroppingBlock> oreVariants,
                      boolean fireproof,
                      Multimap<Block, Identifier> miningLevels,
                      Multimap<AnvilBlock, Identifier> anvilMap) {
@@ -97,17 +97,17 @@ public class BlockSet {
         }
         // Inject all the mining levels into their tags.
         if (MythicMetals.CONFIG.enableAnvils()) {
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("anvils"), anvilBlock)));
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registry.BLOCK, level, anvilBlock)));
+            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock)));
+            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registries.BLOCK, level, anvilBlock)));
         }
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, level, block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registry.BLOCK, RegistryHelper.id("blocks"), block));
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registries.BLOCK, level, block));
+        miningLevels.forEach((block, level) -> TagInjector.inject(Registries.BLOCK, RegistryHelper.id("blocks"), block));
     }
 
     /**
      * @return Returns the ore block in the set
      */
-    public OreBlock getOre() {
+    public ExperienceDroppingBlock getOre() {
         return ore;
     }
 
@@ -129,7 +129,7 @@ public class BlockSet {
      * @param variant The string of the ore variants name
      * @return Returns the specified ore variant from the variant map in the blockset
      */
-    public OreBlock getOreVariant(String variant) {
+    public ExperienceDroppingBlock getOreVariant(String variant) {
         return oreVariants.get(variant);
     }
 
@@ -167,8 +167,8 @@ public class BlockSet {
 
         private final String name;
         private final boolean fireproof;
-        private final Map<String, OreBlock> oreVariants = new LinkedHashMap<>();
-        private OreBlock ore = null;
+        private final Map<String, ExperienceDroppingBlock> oreVariants = new LinkedHashMap<>();
+        private ExperienceDroppingBlock ore = null;
         private Block storageBlock = null;
         private Block oreStorageBlock = null;
         private AnvilBlock anvil = null;
@@ -341,7 +341,7 @@ public class BlockSet {
         public Builder createOre(Identifier miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.ore = new OreBlock(settings);
+            this.ore = new ExperienceDroppingBlock(settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -357,7 +357,7 @@ public class BlockSet {
         public Builder createOre(Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.ore = new OreBlock(settings, experience);
+            this.ore = new ExperienceDroppingBlock(settings, experience);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -373,7 +373,7 @@ public class BlockSet {
         public Builder createLuminantOre(Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds).luminance(luminance);
             settingsProcessor.accept(settings);
-            this.ore = new OreBlock(settings, experience);
+            this.ore = new ExperienceDroppingBlock(settings, experience);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             Maldenhagen.injectCopium(this.ore);
@@ -390,7 +390,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new OreBlock(settings));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
@@ -406,7 +406,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new OreBlock(settings, experience));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(settings, experience));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
@@ -422,7 +422,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(Material.STONE, currentHardness, currentResistance, currentSounds).luminance(luminance);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new OreBlock(settings, experience));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(settings, experience));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             Maldenhagen.injectCopium(this.oreVariants.get(name));

@@ -1,7 +1,7 @@
 package nourl.mythicmetals.mixin;
 
+import net.minecraft.registry.SimpleDefaultedRegistry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.DefaultedRegistry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.LegacyIds;
 import org.jetbrains.annotations.Nullable;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 // This Mixin is a class that works as a datafixer.
 // Upon loading a world it will check for missing objects in the recipe and replace them in order to
 // prevent air pockets when upgrading from older worlds, as well as returning changed/removed items.
-@Mixin(DefaultedRegistry.class)
+@Mixin(SimpleDefaultedRegistry.class)
 public class DefaultedRegistryMixin {
 
     @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0, argsOnly = true)

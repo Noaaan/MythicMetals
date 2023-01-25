@@ -1,19 +1,19 @@
 package nourl.mythicmetals.registry;
 
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.registry.Registry;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
 
-    public static SoundEvent EQUIP_RUNITE = new SoundEvent(RegistryHelper.id("equip_runite"));
-    public static SoundEvent DOG = new SoundEvent(RegistryHelper.id("music_disc.dog4"));
-    public static SoundEvent MORKITE_ORE_BREAK = new SoundEvent(RegistryHelper.id("morkite_ore_break"));
-    public static SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = new SoundEvent(RegistryHelper.id("deepslate_morkite_ore_break"));
-    public static SoundEvent ICE_MAGIC = new SoundEvent(RegistryHelper.id("ice_magic"));
+    public static SoundEvent EQUIP_RUNITE = SoundEvent.of(RegistryHelper.id("equip_runite"));
+    public static SoundEvent DOG = SoundEvent.of(RegistryHelper.id("music_disc.dog4"));
+    public static SoundEvent MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("morkite_ore_break"));
+    public static SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("deepslate_morkite_ore_break"));
 
     public static final BlockSoundGroup MORKITE_ORE = new BlockSoundGroup(1.0F, 1.0F,
             MORKITE_ORE_BREAK,
@@ -30,7 +30,7 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
 
     @Override
     public Registry<SoundEvent> getRegistry() {
-        return Registry.SOUND_EVENT;
+        return Registries.SOUND_EVENT;
     }
 
     @Override

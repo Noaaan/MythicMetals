@@ -1,7 +1,3 @@
-// Made with Blockbench 4.0.5
-// Exported for Minecraft version 1.17
-// Paste this class into your mod and generate all required imports
-
 package nourl.mythicmetals.client.models;
 
 import net.minecraft.client.model.*;
