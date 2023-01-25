@@ -43,8 +43,8 @@ public class MythicConfigModel {
     public OreConfig orichalcum = new OreConfig(true, 5, 1, 8, 8, .0f, true);
     @Nest
     public OreConfig osmium = new OreConfig(true, 6, 5, 50, 120, .25f, false);
-    @Nest
-    public OreConfig overworldNetherOres = new OreConfig(true, 4, 2, 40, 70, .125f, false);
+    //@Nest
+    //public OreConfig overworldNetherOres = new OreConfig(true, 4, 2, 40, 70, .125f, false);
     @Nest
     public OreConfig palladium = new OreConfig(true, 5, 2, 14, 36, .0f, false);
     @Nest

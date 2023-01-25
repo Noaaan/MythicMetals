@@ -7,13 +7,14 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.SpecialRecipeSerializer;
+import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
     public static final RecipeSerializer<TippedRuniteArrowRecipe> INSTANCE = new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
-    public TippedRuniteArrowRecipe(Identifier identifier) {
-        super(identifier);
+    public TippedRuniteArrowRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+        super(identifier, craftingRecipeCategory);
     }
 
     public boolean matches(CraftingInventory craftingInventory, World world) {

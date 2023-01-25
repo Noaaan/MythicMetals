@@ -3,10 +3,11 @@ package nourl.mythicmetals.config;
 
 import io.wispforest.owo.config.annotation.RangeConstraint;
 import io.wispforest.owo.config.annotation.RestartRequired;
+import nourl.mythicmetals.data.MythicOreKeys;
 
 /**
  * A config constructor that lets you quickly create all the settings used
- * for a ore in the {@link nourl.mythicmetals.world.MythicOreFeatures} class.
+ * for a ore in the {@link MythicOreKeys} class.
  */
 public class OreConfig {
     @RestartRequired
@@ -48,7 +49,7 @@ public class OreConfig {
     }
 
     /**
-     *  Extra constructor that contains an extra boolean, which is whether or not the feature contains an offset.
+     *  Extra constructor that contains an extra boolean, which is whether the feature contains an offset.
      * @param enabled           Whether the ore is enabled or not
      * @param veinSize          The vein size of the ore feature
      * @param perChunk          How many times the ore should attempt to generate per chunk
