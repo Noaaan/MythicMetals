@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/weapons/tipped_runite_arrow_base",
-    "layer1": "mythicmetals:items/weapons/tipped_runite_arrow_head"
+    "layer0": "mythicmetals:item/weapons/tipped_runite_arrow_base",
+    "layer1": "mythicmetals:item/weapons/tipped_runite_arrow_head"
   }
 }

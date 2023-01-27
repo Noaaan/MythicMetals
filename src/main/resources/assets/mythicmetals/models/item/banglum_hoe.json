@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/banglum_hoe"
+    "layer0": "mythicmetals:item/tools/banglum_hoe"
   }
 }

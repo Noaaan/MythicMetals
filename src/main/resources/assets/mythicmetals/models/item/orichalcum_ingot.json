@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/orichalcum_ingot"
+    "layer0": "mythicmetals:item/orichalcum_ingot"
   }
 }

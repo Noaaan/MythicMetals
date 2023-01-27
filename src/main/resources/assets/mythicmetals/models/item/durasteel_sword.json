@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/durasteel_sword"
+    "layer0": "mythicmetals:item/tools/durasteel_sword"
   }
 }

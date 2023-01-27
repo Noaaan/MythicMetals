@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/palladium_leggings"
+    "layer0": "mythicmetals:item/armor/palladium_leggings"
   }
 }

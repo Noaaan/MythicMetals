@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/runite_shovel"
+    "layer0": "mythicmetals:item/tools/runite_shovel"
   },
   "display": {
     "thirdperson_righthand": {

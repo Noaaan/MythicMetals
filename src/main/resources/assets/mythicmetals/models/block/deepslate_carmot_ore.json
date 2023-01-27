@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/deepslate_carmot_ore"
+    "all": "mythicmetals:block/deepslate_carmot_ore"
   }
 }

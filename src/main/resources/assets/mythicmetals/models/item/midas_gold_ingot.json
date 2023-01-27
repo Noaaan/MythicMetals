@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/midas_gold_ingot"
+    "layer0": "mythicmetals:item/midas_gold_ingot"
   }
 }

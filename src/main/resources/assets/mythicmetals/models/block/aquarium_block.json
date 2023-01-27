@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/aquarium_block"
+    "all": "mythicmetals:block/aquarium_block"
   }
 }

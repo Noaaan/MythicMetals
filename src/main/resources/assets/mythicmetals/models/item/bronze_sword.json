@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/bronze_sword"
+    "layer0": "mythicmetals:item/tools/bronze_sword"
   }
 }

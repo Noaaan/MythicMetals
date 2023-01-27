@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/adamantite_pickaxe"
+    "layer0": "mythicmetals:item/tools/adamantite_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

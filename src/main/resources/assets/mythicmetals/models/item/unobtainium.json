@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/unobtainium"
+    "layer0": "mythicmetals:item/unobtainium"
   },
   "overrides": [
     {

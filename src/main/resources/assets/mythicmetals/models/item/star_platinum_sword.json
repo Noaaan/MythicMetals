@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/star_platinum_sword"
+    "layer0": "mythicmetals:item/tools/star_platinum_sword"
   }
 }

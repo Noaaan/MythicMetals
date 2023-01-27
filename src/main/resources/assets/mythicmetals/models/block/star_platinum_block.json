@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/star_platinum_block"
+    "all": "mythicmetals:block/star_platinum_block"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/metallurgium_block"
+    "all": "mythicmetals:block/metallurgium_block"
   }
 }

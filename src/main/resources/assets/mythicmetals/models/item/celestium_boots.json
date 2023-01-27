@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/celestium_boots"
+    "layer0": "mythicmetals:item/armor/celestium_boots"
   }
 }

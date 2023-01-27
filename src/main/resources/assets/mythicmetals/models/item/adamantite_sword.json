@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench, thanks Iffy!",
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "mythicmetals:items/tools/adamantite_sword"
+		"layer0": "mythicmetals:item/tools/adamantite_sword"
 	},
 	"display": {
 		"thirdperson_righthand": {

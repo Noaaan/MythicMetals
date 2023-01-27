@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/stormyx_shovel"
+    "layer0": "mythicmetals:item/tools/stormyx_shovel"
   },
   "display": {
     "thirdperson_righthand": {

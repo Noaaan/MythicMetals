@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/legendary_banglum_pickaxe_recharge"
+    "layer0": "mythicmetals:item/tools/legendary_banglum_pickaxe_recharge"
   },
   "display": {
     "thirdperson_righthand": {

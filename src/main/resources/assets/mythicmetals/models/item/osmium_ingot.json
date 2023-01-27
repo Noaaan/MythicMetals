@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/osmium_ingot"
+    "layer0": "mythicmetals:item/osmium_ingot"
   },
   "overrides": [
     {

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/copper_hoe"
+    "layer0": "mythicmetals:item/tools/copper_hoe"
   }
 }

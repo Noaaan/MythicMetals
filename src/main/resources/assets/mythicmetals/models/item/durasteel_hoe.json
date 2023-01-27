@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/durasteel_hoe"
+    "layer0": "mythicmetals:item/tools/durasteel_hoe"
   },
   "display": {
     "thirdperson_righthand": {

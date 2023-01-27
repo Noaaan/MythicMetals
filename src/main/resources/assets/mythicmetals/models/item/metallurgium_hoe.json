@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/metallurgium_hoe"
+    "layer0": "mythicmetals:item/tools/metallurgium_hoe"
   }
 }

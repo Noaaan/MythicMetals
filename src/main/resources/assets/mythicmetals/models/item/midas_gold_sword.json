@@ -1,6 +1,6 @@
 {
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "mythicmetals:items/tools/midas_gold_sword"
+		"layer0": "mythicmetals:item/tools/midas_gold_sword"
 	}
 }

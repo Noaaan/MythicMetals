@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/metallurgium_anvil",
-    "particle": "mythicmetals:blocks/metallurgium_block"
+    "body": "mythicmetals:block/metallurgium_anvil",
+    "particle": "mythicmetals:block/metallurgium_block"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/stormyx_pickaxe"
+    "layer0": "mythicmetals:item/tools/stormyx_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

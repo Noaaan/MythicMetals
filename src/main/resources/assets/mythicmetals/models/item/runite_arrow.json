@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/weapons/runite_arrow"
+    "layer0": "mythicmetals:item/weapons/runite_arrow"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/celestium_hoe"
+    "layer0": "mythicmetals:item/tools/celestium_hoe"
   }
 }

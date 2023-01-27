@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/raw_ore/raw_prometheum"
+    "layer0": "mythicmetals:item/raw_ore/raw_prometheum"
   }
 }

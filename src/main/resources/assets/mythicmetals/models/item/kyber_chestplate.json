@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/kyber_chestplate"
+    "layer0": "mythicmetals:item/armor/kyber_chestplate"
   }
 }

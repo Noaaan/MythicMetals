@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/palladium_ore"
+    "all": "mythicmetals:block/palladium_ore"
   }
 }

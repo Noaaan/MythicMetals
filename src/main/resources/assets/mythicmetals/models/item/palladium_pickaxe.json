@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/palladium_pickaxe"
+    "layer0": "mythicmetals:item/tools/palladium_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

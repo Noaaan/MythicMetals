@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/mythril_drill_deactivated"
+    "layer0": "mythicmetals:item/tools/mythril_drill_deactivated"
   },
   "display": {
     "thirdperson_righthand": {

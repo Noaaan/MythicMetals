@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/mythril_block"
+    "all": "mythicmetals:block/mythril_block"
   }
 }

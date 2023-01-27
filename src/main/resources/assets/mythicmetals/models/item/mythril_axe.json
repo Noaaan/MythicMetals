@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/mythril_axe"
+    "layer0": "mythicmetals:item/tools/mythril_axe"
   }
 }

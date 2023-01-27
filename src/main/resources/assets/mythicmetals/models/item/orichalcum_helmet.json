@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/orichalcum_helmet"
+    "layer0": "mythicmetals:item/armor/orichalcum_helmet"
   }
 }

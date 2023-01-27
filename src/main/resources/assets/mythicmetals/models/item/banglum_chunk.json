@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/banglum_chunk"
+    "layer0": "mythicmetals:item/banglum_chunk"
   }
 }

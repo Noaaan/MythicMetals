@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/kyber_pickaxe"
+    "layer0": "mythicmetals:item/tools/kyber_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

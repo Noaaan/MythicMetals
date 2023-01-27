@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/stormyx_anvil",
-    "particle": "mythicmetals:blocks/stormyx_block"
+    "body": "mythicmetals:block/stormyx_anvil",
+    "particle": "mythicmetals:block/stormyx_block"
   }
 }

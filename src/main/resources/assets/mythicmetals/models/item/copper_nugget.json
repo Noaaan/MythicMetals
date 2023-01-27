@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/nuggets/copper_nugget"
+    "layer0": "mythicmetals:item/nuggets/copper_nugget"
   }
 }

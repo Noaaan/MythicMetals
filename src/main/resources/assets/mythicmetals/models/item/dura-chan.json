@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/dura-chan"
+    "layer0": "mythicmetals:item/dura-chan"
   }
 }

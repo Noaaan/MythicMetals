@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/bronze_anvil",
-    "particle": "mythicmetals:blocks/bronze_block"
+    "body": "mythicmetals:block/bronze_anvil",
+    "particle": "mythicmetals:block/bronze_block"
   }
 }

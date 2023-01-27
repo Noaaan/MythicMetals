@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/quadrillum_anvil",
-    "particle": "mythicmetals:blocks/quadrillum_block"
+    "body": "mythicmetals:block/quadrillum_anvil",
+    "particle": "mythicmetals:block/quadrillum_block"
   }
 }

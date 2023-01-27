@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/deepslate_mythril_ore"
+    "all": "mythicmetals:block/deepslate_mythril_ore"
   }
 }

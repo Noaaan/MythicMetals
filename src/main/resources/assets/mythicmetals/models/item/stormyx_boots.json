@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/stormyx_boots"
+    "layer0": "mythicmetals:item/armor/stormyx_boots"
   }
 }

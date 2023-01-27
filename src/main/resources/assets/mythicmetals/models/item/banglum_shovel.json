@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/banglum_shovel"
+    "layer0": "mythicmetals:item/tools/banglum_shovel"
   },
   "display": {
     "thirdperson_righthand": {

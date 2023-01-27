@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/silver_ore"
+    "all": "mythicmetals:block/silver_ore"
   }
 }

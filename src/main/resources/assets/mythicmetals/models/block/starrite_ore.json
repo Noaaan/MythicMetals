@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/starrite_ore"
+    "all": "mythicmetals:block/starrite_ore"
   }
 }

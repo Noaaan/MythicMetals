@@ -1,8 +1,8 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "top": "mythicmetals:blocks/adamantite_block",
+    "top": "mythicmetals:block/adamantite_block",
     "front": "alloy_forgery:block/adamantite_block_forge_controller_front",
-    "side": "mythicmetals:blocks/adamantite_block"
+    "side": "mythicmetals:block/adamantite_block"
   }
 }

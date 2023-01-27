@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/durasteel_helmet"
+    "layer0": "mythicmetals:item/armor/durasteel_helmet"
   }
 }

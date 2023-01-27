@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/prometheum_boots"
+    "layer0": "mythicmetals:item/armor/prometheum_boots"
   }
 }

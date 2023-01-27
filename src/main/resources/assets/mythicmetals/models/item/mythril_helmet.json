@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/armor/mythril_helmet"
+    "layer0": "mythicmetals:item/armor/mythril_helmet"
   }
 }

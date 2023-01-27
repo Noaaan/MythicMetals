@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/stormyx_shell"
+    "layer0": "mythicmetals:item/stormyx_shell"
   }
 }

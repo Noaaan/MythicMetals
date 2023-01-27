@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/bronze_pickaxe"
+    "layer0": "mythicmetals:item/tools/bronze_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

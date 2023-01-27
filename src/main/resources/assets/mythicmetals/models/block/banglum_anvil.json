@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/banglum_anvil",
-    "particle": "mythicmetals:blocks/banglum_block"
+    "body": "mythicmetals:block/banglum_anvil",
+    "particle": "mythicmetals:block/banglum_block"
   }
 }

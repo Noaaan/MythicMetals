@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/platinum_ore"
+    "all": "mythicmetals:block/platinum_ore"
   }
 }

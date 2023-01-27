@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/metallurgium_ingot"
+    "layer0": "mythicmetals:item/metallurgium_ingot"
   }
 }

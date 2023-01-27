@@ -1,7 +1,7 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/orichalcum_pickaxe"
+    "layer0": "mythicmetals:item/tools/orichalcum_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

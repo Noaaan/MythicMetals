@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/durasteel_engine"
+    "layer0": "mythicmetals:item/durasteel_engine"
   }
 }

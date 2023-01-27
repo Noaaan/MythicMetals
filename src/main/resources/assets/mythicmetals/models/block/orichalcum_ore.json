@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/orichalcum_ore"
+    "all": "mythicmetals:block/orichalcum_ore"
   }
 }

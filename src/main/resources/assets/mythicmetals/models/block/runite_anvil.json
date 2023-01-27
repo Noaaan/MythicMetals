@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/runite_anvil",
-    "particle": "mythicmetals:blocks/runite_block"
+    "body": "mythicmetals:block/runite_anvil",
+    "particle": "mythicmetals:block/runite_block"
   }
 }

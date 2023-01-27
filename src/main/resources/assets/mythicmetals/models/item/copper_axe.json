@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythicmetals:items/tools/copper_axe"
+    "layer0": "mythicmetals:item/tools/copper_axe"
   }
 }

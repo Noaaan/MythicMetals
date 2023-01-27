@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:items/nuggets/star_platinum_nugget"
+    "layer0": "mythicmetals:item/nuggets/star_platinum_nugget"
   }
 }

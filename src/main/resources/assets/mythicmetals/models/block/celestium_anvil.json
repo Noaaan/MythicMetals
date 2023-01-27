@@ -1,7 +1,7 @@
 {
   "parent": "mythicmetals:block/anvil_base",
   "textures": {
-    "body": "mythicmetals:blocks/celestium_anvil",
-    "particle": "mythicmetals:blocks/celestium_block"
+    "body": "mythicmetals:block/celestium_anvil",
+    "particle": "mythicmetals:block/celestium_block"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mythicmetals:blocks/midas_gold_ore"
+    "all": "mythicmetals:block/midas_gold_ore"
   }
 }

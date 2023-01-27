@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench, thanks Iffy!",
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "mythicmetals:items/weapons/white_aegis_sword"
+		"layer0": "mythicmetals:item/weapons/white_aegis_sword"
 	},
 	"display": {
 		"thirdperson_righthand": {
