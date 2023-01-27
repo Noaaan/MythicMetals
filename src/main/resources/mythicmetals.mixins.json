@@ -23,14 +23,14 @@
     "PlayerEntityMixin",
     "PlayerEntityRendererMixin",
     "PowderSnowBlockMixin",
-    "TableBonusLootConditionMixin",
-    "TranslationStorageMixin"
+    "TableBonusLootConditionMixin"
   ],
   "client": [
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
-    "WorldRendererInvoker"
+    "WorldRendererInvoker",
+    "TranslationStorageMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,5 +1,6 @@
 package nourl.mythicmetals.abilities;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
@@ -8,6 +9,7 @@ import nourl.mythicmetals.item.tools.MythicTools;
 
 /**
  * Truly hardcode abilities onto items. These act as enchantments, but they stack with them.
+ *
  * @author Noaaan
  */
 public class Abilities {
@@ -62,10 +64,11 @@ public class Abilities {
         RESPIRATION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
         RESPIRATION.addItem(MythicArmor.AQUARIUM.getLeggings(), Style.EMPTY.withColor(Formatting.AQUA));
         SPIKED_HELM.addItem(MythicArmor.LEGENDARY_BANGLUM.getHelmet(), Style.EMPTY.withColor(Formatting.GOLD));
-        WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
-
         FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(0xDA1F00));
         SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
+        if (FabricLoader.getInstance().isModLoaded("origins")) {
+            WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
+        }
 
         DrillUpgrades.init();
         UniqueStaffBlocks.init();
