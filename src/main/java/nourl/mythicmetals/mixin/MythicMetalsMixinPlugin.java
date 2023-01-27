@@ -22,7 +22,7 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.equals("nourl.mythicmetals.mixin.DamageOverTimePowerMixin")) {
-            return FabricLoader.getInstance().isModLoaded("terralith");
+            return FabricLoader.getInstance().isModLoaded("origins");
         }
         return true;
     }

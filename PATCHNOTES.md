@@ -86,14 +86,17 @@ Create a mining tool specialized for speed, letting you drill through the world 
 
 - Added a configurable HUD element which displays your Carmot Shield health.
 
+- Removed Water Protection tooltip if Origins is not installed. 
+
 ### Bug Fixes
 
 - Fixed a bug where the Banglum Nuke would not light with a dispenser on specific sides.  
 
 - Fix the Aegis Sword models in item frames and on ground.
 
-- Fixed a bug where the Orichalcum Hammer did not apply enchants correctly.
+- Fix Orichalcum Hammer not applying enchants correctly.
 
+- Fix Origins compat not enabling itself
 
 # 0.16.4
 ### Changes  
