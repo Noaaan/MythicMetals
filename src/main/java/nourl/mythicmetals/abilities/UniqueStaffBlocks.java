@@ -44,5 +44,6 @@ public class UniqueStaffBlocks {
         MAP.put(MythicBlocks.CARMOT.getStorageBlock(), "carmot");
         MAP.put(MythicBlocks.MIDAS_GOLD.getStorageBlock(), "midas_gold");
         MAP.put(MythicBlocks.STORMYX.getStorageBlock(), "stormyx");
+        MAP.put(MythicBlocks.UNOBTAINIUM.getStorageBlock(), "unobtainium");
     }
 }

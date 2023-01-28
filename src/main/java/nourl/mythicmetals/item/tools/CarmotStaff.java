@@ -265,7 +265,6 @@ public class CarmotStaff extends ToolItem {
                     stack.getEnchantments().clear();
                     stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    world.setBlockState(user.getBlockPos().add(0, 1, 0), Blocks.BEDROCK.getDefaultState());
                     world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, Explosion.DestructionType.NONE);
                     return TypedActionResult.success(stack);
                 }
