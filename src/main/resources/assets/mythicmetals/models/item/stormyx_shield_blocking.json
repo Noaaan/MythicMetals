@@ -4,7 +4,7 @@
   "gui_light": "front",
   "textures": {
     "particle": "mythicmetals:block/stormyx_block",
-    "1": "mythicmetals:models/stormyx_shield"
+    "1": "mythicmetals:block/model/stormyx_shield"
   },
   "elements": [
     {

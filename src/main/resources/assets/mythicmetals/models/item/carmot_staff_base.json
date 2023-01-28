@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench, by Dr. Zeal",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "mythicmetals:models/carmot_staff",
-		"particle": "mythicmetals:models/carmot_staff"
+		"0": "mythicmetals:block/model/carmot_staff",
+		"particle": "mythicmetals:block/model/carmot_staff"
 	},
 	"elements": [
 		{
