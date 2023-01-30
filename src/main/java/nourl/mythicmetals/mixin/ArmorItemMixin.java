@@ -37,28 +37,28 @@ public abstract class ArmorItemMixin {
         UUID uUID = MODIFIERS[slot.getEntitySlotId()];
 
         if (material == MythicArmorMaterials.CELESTIUM) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
         if (material == MythicArmorMaterials.MIDAS_GOLD) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0F, EntityAttributeModifier.Operation.ADDITION);
+            mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_LUCK, "Luck bonus", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.STAR_PLATINUM) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5F, EntityAttributeModifier.Operation.ADDITION);
+            mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_ATTACK_DAMAGE, "Attack bonus", 0.5F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.CARMOT) {
-            armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0F, EntityAttributeModifier.Operation.ADDITION);
+            mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Health bonus", 2.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.STORMYX) {
-            armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0F, EntityAttributeModifier.Operation.ADDITION);
+            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.PALLADIUM && slot.equals(EquipmentSlot.HEAD)) {
-            armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_VISIBILITY, "Lava vision bonus", 8.0f, EntityAttributeModifier.Operation.ADDITION);
+            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_VISIBILITY, "Lava vision bonus", 8.0f, EntityAttributeModifier.Operation.ADDITION);
         } else if (material == MythicArmorMaterials.PALLADIUM) {
-            armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_SPEED, "Lava swim bonus", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_SPEED, "Lava swim bonus", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
     }
 
-    private void armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {
+    private void mythicmetals$armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         this.attributeModifiers.forEach(builder::put);
         builder.put(attributes,
