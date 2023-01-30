@@ -20,6 +20,7 @@ public class MythicTags {
 
     public static final TagKey<Biome> PROMETHEUM_BIOMES = TagKey.of(RegistryKeys.BIOME, RegistryHelper.id("prometheum_biomes"));
     public static final TagKey<Biome> OSMIUM_BIOMES = TagKey.of(RegistryKeys.BIOME, RegistryHelper.id("osmium_biomes"));
+    public static final TagKey<Biome> VALID_ORE_BIOMES = TagKey.of(RegistryKeys.BIOME, RegistryHelper.id("valid_ore_biomes"));
 }
 
 

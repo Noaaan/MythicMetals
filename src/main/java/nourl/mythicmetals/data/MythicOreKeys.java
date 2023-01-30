@@ -71,77 +71,77 @@ public class MythicOreKeys {
     public static void init() {
 
         //Overworld Ores
-        if (CONFIG.adamantite.enabled()) {
+        if (CONFIG.adamantite()) {
             OreFeatureHelper.ore(ADAMANTITE);
         }
-        if (CONFIG.banglum.enabled()) {
+        if (CONFIG.banglum()) {
             OreFeatureHelper.ore(BANGLUM);
         }
-        if (CONFIG.carmot.enabled()) {
+        if (CONFIG.carmot()) {
             OreFeatureHelper.ore(CARMOT);
         }
-        if (CONFIG.kyber.enabled()) {
+        if (CONFIG.kyber()) {
             OreFeatureHelper.ore(KYBER);
             OreFeatureHelper.ore(CALCITE_KYBER);
         }
-        if (CONFIG.mythril.enabled()) {
+        if (CONFIG.mythril()) {
             OreFeatureHelper.ore(MYTHRIL);
         }
-        if (CONFIG.orichalcum.enabled()) {
+        if (CONFIG.orichalcum()) {
             OreFeatureHelper.ore(ORICHALCUM);
         }
-        if (CONFIG.manganese.enabled()) {
+        if (CONFIG.manganese()) {
             OreFeatureHelper.ore(MANGANESE);
         }
-        if (CONFIG.platinum.enabled()) {
+        if (CONFIG.platinum()) {
             OreFeatureHelper.ore(PLATINUM);
         }
-        if (CONFIG.quadrillum.enabled()) {
+        if (CONFIG.quadrillum()) {
             OreFeatureHelper.ore(QUADRILLUM);
         }
-        if (CONFIG.runite.enabled()) {
+        if (CONFIG.runite()) {
             OreFeatureHelper.ore(RUNITE);
             OreFeatureHelper.ore(DEEPSLATE_RUNITE);
         }
-        if (CONFIG.silver.enabled()) {
+        if (CONFIG.silver()) {
             OreFeatureHelper.ore(SILVER);
         }
-        if (CONFIG.starrite.enabled()) {
+        if (CONFIG.starrite()) {
             OreFeatureHelper.ore(STARRITE);
         }
-        if (CONFIG.endStarrite.enabled()) {
+        if (CONFIG.endStarrite()) {
             OreFeatureHelper.endOre(END_STARRITE);
         }
-        if (CONFIG.tin.enabled()) {
+        if (CONFIG.tin()) {
             OreFeatureHelper.ore(TIN);
         }
-        if (CONFIG.unobtainium.enabled()) {
+        if (CONFIG.unobtainium()) {
             OreFeatureHelper.ore(UNOBTAINIUM);
         }
-        if (CONFIG.morkite.enabled()) {
+        if (CONFIG.morkite()) {
             OreFeatureHelper.ore(MORKITE);
         }
 
         //Nether Ores
-        if (CONFIG.banglum.enabled()) {
+        if (CONFIG.banglum()) {
             OreFeatureHelper.netherOre(NETHER_BANGLUM);
         }
-        if (CONFIG.midasGold.enabled()) {
+        if (CONFIG.midasGold()) {
             OreFeatureHelper.netherOre(MIDAS_GOLD);
         }
-        if (CONFIG.stormyx.enabled()) {
+        if (CONFIG.stormyx()) {
             OreFeatureHelper.netherOre(STORMYX);
         }
-        if (CONFIG.palladium.enabled()) {
+        if (CONFIG.palladium()) {
             OreFeatureHelper.netherOre(PALLADIUM);
         }
 
         // Add Aquarium to Aquatic Biomes
-        if (CONFIG.aquarium.enabled()) {
+        if (CONFIG.aquarium()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.AQUATIC), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
         }
         // Add Prometheum to hot biomes
-        if (CONFIG.prometheum.enabled()) {
+        if (CONFIG.prometheum()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.PROMETHEUM_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PROMETHEUM);
 
             OreFeatureHelper.modBiomeOres("terralith", "hot_shrubland", PROMETHEUM);
@@ -149,7 +149,7 @@ public class MythicOreKeys {
             OreFeatureHelper.modBiomeOres("terralith", "sakura_valley", PROMETHEUM);
         }
         // Add Osmium to mountainous biomes
-        if (CONFIG.osmium.enabled()) {
+        if (CONFIG.osmium()) {
             BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.OSMIUM_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, OSMIUM);
 
         }

@@ -40,7 +40,7 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 9;
+    public static final int CONFIG_VERSION = 10;
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
