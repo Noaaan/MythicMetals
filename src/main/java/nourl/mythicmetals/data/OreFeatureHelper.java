@@ -24,7 +24,7 @@ import java.util.List;
 public class OreFeatureHelper {
 
     public static void ore(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.VALID_ORE_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, ore);
+        BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.MYTHIC_ORE_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void netherOre(RegistryKey<PlacedFeature> ore) {
