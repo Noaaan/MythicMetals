@@ -48,7 +48,7 @@ public class OreConfig {
     }
 
     /**
-     *  Extra constructor that contains an extra boolean, which is whether or not the feature contains an offset.
+     *  Extra constructor that contains an extra boolean, which is whether the feature contains an offset.
      * @param enabled           Whether the ore is enabled or not
      * @param veinSize          The vein size of the ore feature
      * @param perChunk          How many times the ore should attempt to generate per chunk
