@@ -9,11 +9,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class ParticleStick extends Item {
-    public static ParticleSystem<?> particle = null;
+    private final ParticleSystem<?> particle;
 
-    public ParticleStick(Settings settings, ParticleSystem<?> p) {
+    public ParticleStick(Settings settings, ParticleSystem<?> particle) {
         super(settings);
-        particle = p;
+        this.particle = particle;
     }
 
     @Override
