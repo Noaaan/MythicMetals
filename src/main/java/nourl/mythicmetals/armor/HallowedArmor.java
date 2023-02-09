@@ -19,21 +19,21 @@ public class HallowedArmor extends ArmorItem {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
-    public final EquipmentSlot slot;
+    public final ArmorItem.Type type;
 
-    public HallowedArmor(EquipmentSlot slot, Settings settings) {
-        this(MythicArmorMaterials.HALLOWED, slot, settings);
+    public HallowedArmor(ArmorItem.Type type, Settings settings) {
+        this(MythicArmorMaterials.HALLOWED, type, settings);
     }
 
-    public HallowedArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
+    public HallowedArmor(ArmorMaterial material, ArmorItem.Type slot, Settings settings) {
         super(material, slot, settings);
-        this.slot = slot;
+        this.type = slot;
     }
 
     @Environment(EnvType.CLIENT)
     public BipedEntityModel<LivingEntity> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(slot);
+            model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
         return model;
     }

@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.misc.CustomDamageSource;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
 
@@ -33,7 +32,8 @@ public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
     @Override
     protected void onHit(LivingEntity target) {
         super.onHit(target);
-        target.damage(new CustomDamageSource("star_platinum_arrow").setUsesMagic().setProjectile(), 24);
+        // TODO - Reimplement this damagesource
+        //target.damage(new CustomDamageSource("star_platinum_arrow").setUsesMagic().setProjectile(), 24);
     }
 
     @Override

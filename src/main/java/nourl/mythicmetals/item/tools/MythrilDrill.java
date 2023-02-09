@@ -47,7 +47,7 @@ public class MythrilDrill extends PickaxeItem {
      */
     public static final NbtKey<Integer> FUEL = new NbtKey<>("Fuel", NbtKey.Type.INT);
     /**
-     * NbtKey that determines whether or not the drill should consume fuel and mine faster
+     * NbtKey that determines whether the drill should consume fuel and mine faster
      */
     public static final NbtKey<Boolean> IS_ACTIVE = new NbtKey<>("IsActive", NbtKey.Type.BOOLEAN);
     /**

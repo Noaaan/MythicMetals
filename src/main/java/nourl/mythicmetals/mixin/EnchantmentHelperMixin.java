@@ -7,6 +7,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.DamageTypeTags;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
@@ -29,7 +30,7 @@ public class EnchantmentHelperMixin {
                     armorItems.damage(1, user, player -> player.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
 
                 if (attacker != null)
-                    attacker.damage(DamageSource.thorns(user), 2.2F);
+                    attacker.damage(user.world.getDamageSources().thorns(user), 2.2F);
             }
 
         }
@@ -122,23 +123,23 @@ public class EnchantmentHelperMixin {
         int change = 0;
 
         for (var gear : equipment) {
-            if (Abilities.BLAST_PROTECTION.getItems().contains(gear.getItem()) && source.isExplosive()) {
+            if (Abilities.BLAST_PROTECTION.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_EXPLOSION)) {
                 change += Abilities.BLAST_PROTECTION.getLevel() * 2;
             }
 
-            if (Abilities.BLAST_PADDING.getItems().contains(gear.getItem()) && source.isExplosive()) {
+            if (Abilities.BLAST_PADDING.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_EXPLOSION)) {
                 change += Abilities.BLAST_PADDING.getLevel() * 2;
             }
 
-            if (Abilities.PROJECTILE_PROTECTION.getItems().contains(gear.getItem()) && source.isProjectile()) {
+            if (Abilities.PROJECTILE_PROTECTION.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_PROJECTILE)) {
                 change += Abilities.PROJECTILE_PROTECTION.getLevel() * 2;
             }
 
-            if (Abilities.FEATHER_FALLING.getItems().contains(gear.getItem()) && source.isFromFalling()) {
+            if (Abilities.FEATHER_FALLING.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_FALL)) {
                 change += Abilities.FEATHER_FALLING.getLevel() * 3;
             }
 
-            if (Abilities.FIRE_PROTECTION.getItems().contains(gear.getItem()) && source.isFire()) {
+            if (Abilities.FIRE_PROTECTION.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_FIRE)) {
                 change += Abilities.FIRE_PROTECTION.getLevel() * 2;
             }
         }

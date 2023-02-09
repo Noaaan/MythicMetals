@@ -1,6 +1,5 @@
 package nourl.mythicmetals.armor;
 
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
@@ -14,8 +13,8 @@ public class CarmotArmorSet extends ArmorSet {
     }
 
     @Override
-    protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
-        if (slot == EquipmentSlot.FEET || slot == EquipmentSlot.LEGS) return super.makeItem(material, slot, settings);
+    protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, Item.Settings settings) {
+        if (slot == ArmorItem.Type.BOOTS || slot == ArmorItem.Type.LEGGINGS) return super.makeItem(material, slot, settings);
         return new CarmotArmor(slot, settings);
     }
 }

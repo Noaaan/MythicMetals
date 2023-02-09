@@ -12,6 +12,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
@@ -107,7 +108,7 @@ public abstract class LivingEntityMixin extends Entity {
      */
     @ModifyVariable(method = "damage", at = @At(value = "HEAD"), argsOnly = true)
     private float mythicmetals$changeFireDamage(float original, DamageSource source) {
-        if (source.isFire() && this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) > 0) {
+        if (source.isIn(DamageTypeTags.IS_FIRE) && this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) > 0) {
             float modifier = (this.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) ?
                     Math.min(MathHelper.floor(((float) this.getAttributeValue(RegisterEntityAttributes.FIRE_VULNERABILITY) / 2.0f)), 1)
                     :
@@ -228,7 +229,7 @@ public abstract class LivingEntityMixin extends Entity {
                     if (lightningEntity != null) {
                         lightningEntity.copyPositionAndRotation(this);
                         world.spawnEntity(lightningEntity);
-                        this.damage(DamageSource.LIGHTNING_BOLT, 10);
+                        this.damage(world.getDamageSources().lightningBolt(), 10);
                     }
                 }
             }

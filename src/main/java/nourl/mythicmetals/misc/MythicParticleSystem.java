@@ -57,7 +57,7 @@ public class MythicParticleSystem {
         ClientParticles.reset();
         ClientParticles.setParticleCount(5);
 
-        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.HEART, world, new BlockPos(pos), new Vec3d(0, 1.25, 0), 2.0F);
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.HEART, world, BlockPos.ofFloored(pos), new Vec3d(0, 1.25, 0), 2.0F);
 
     });
 
@@ -65,7 +65,7 @@ public class MythicParticleSystem {
         ClientParticles.reset();
         ClientParticles.setParticleCount(5);
 
-        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.ENCHANTED_HIT, world, new BlockPos(pos), new Vec3d(0, 1.25, 0), 2.0F);
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.ENCHANTED_HIT, world, BlockPos.ofFloored(pos), new Vec3d(0, 1.25, 0), 2.0F);
 
     });
 

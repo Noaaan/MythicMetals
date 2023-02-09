@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,21 +19,21 @@ public class BanglumArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
-    public final EquipmentSlot slot;
+    public final ArmorItem.Type type;
 
-    public BanglumArmor(EquipmentSlot slot, Settings settings) {
-        this(MythicArmorMaterials.LEGENDARY_BANGLUM, slot, settings);
+    public BanglumArmor(ArmorItem.Type type, Settings settings) {
+        this(MythicArmorMaterials.LEGENDARY_BANGLUM, type, settings);
     }
 
-    public BanglumArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
-        this.slot = slot;
+    public BanglumArmor(ArmorMaterial material, ArmorItem.Type type, Settings settings) {
+        super(material, type, settings);
+        this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
     public BipedEntityModel<LivingEntity> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(slot);
+            model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
         return model;
     }
@@ -45,7 +46,7 @@ public class BanglumArmor extends HallowedArmor {
     }
 
     @NotNull
-    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public Identifier getArmorTexture(ItemStack stack, ArmorItem.Type type) {
         return RegistryHelper.id("textures/models/banglum_model.png");
     }
 }

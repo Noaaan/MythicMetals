@@ -6,13 +6,13 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
-import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
-    public static final RecipeSerializer<TippedRuniteArrowRecipe> INSTANCE = new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
     public TippedRuniteArrowRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
     }
@@ -42,8 +42,9 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
         }
     }
 
-    public ItemStack craft(CraftingInventory craftingInventory) {
-        ItemStack itemStack = craftingInventory.getStack(1 + craftingInventory.getWidth());
+    @Override
+    public ItemStack craft(CraftingInventory inventory, DynamicRegistryManager registryManager) {
+        ItemStack itemStack = inventory.getStack(1 + inventory.getWidth());
         if (!itemStack.isOf(Items.LINGERING_POTION)) {
             return ItemStack.EMPTY;
         } else {
@@ -61,6 +62,6 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return INSTANCE;
+        return RegisterRecipeSerializers.TIPPED_RUNITE_ARROW_RECIPE;
     }
 }

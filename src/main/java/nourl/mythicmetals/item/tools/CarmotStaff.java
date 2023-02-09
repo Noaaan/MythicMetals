@@ -18,13 +18,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ExplosiveProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.projectile.ShulkerBulletEntity;
+import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -45,7 +45,6 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
-import nourl.mythicmetals.misc.CustomDamageSource;
 import nourl.mythicmetals.misc.EpicExplosion;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -63,7 +62,7 @@ public class CarmotStaff extends ToolItem {
     public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registries.BLOCK));
 
     /**
-     * NBT Key that determines whether or not the staff is actively being used
+     * NBT Key that determines whether the staff is actively being used
      */
     public static final NbtKey<Boolean> IS_USED = new NbtKey<>("IsUsed", NbtKey.Type.BOOLEAN);
     /**
@@ -255,23 +254,24 @@ public class CarmotStaff extends ToolItem {
                 return TypedActionResult.fail(stack);
             }
 
-            // Let modpack authors disable funny easter eggs that should in practice NEVER occur
+            // Let modpack authors disable funny Easter eggs that should in practice NEVER occur
             if (!MythicMetals.CONFIG.disableFunny()) {
 
+                // TODO - Reimplement these damage sources
                 // Overload the staff if it is unbreakable, its simply too much power
                 if (stack.getNbt() != null && stack.getNbt().getBoolean("Unbreakable")) {
                     stack.getNbt().remove("Unbreakable");
                     stack.getEnchantments().clear();
                     stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
+                    //world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
                     return TypedActionResult.success(stack);
                 }
 
                 stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
-                world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
+                //world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
 
                 return TypedActionResult.success(stack);
             } else {
@@ -287,7 +287,7 @@ public class CarmotStaff extends ToolItem {
             if (lightning != null) {
                 lightning.copyPositionAndRotation(user);
                 world.spawnEntity(lightning);
-                user.damage(DamageSource.LIGHTNING_BOLT, 3);
+                user.damage(world.getDamageSources().lightningBolt(), 3);
                 user.getItemCooldownManager().set(stack.getItem(), 400);
             }
 
@@ -310,7 +310,7 @@ public class CarmotStaff extends ToolItem {
             entities.forEach(entity -> {
                 if (entity instanceof LivingEntity livingEntity) {
                     if (livingEntity.isUndead()) {
-                        entity.damage(DamageSource.MAGIC, 10.0F);
+                        entity.damage(world.getDamageSources().magic(), 10.0F);
                         MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.getPos());
                     } else {
                         livingEntity.heal(10.0F);
@@ -365,7 +365,7 @@ public class CarmotStaff extends ToolItem {
             if (lightning != null) {
                 lightning.copyPositionAndRotation(target);
                 world.spawnEntity(lightning);
-                target.damage(DamageSource.LIGHTNING_BOLT, 4);
+                target.damage(world.getDamageSources().lightningBolt(), 4);
                 ((PlayerEntity) attacker).getItemCooldownManager().set(stack.getItem(), 500);
                 amount = 5;
             }
@@ -426,26 +426,32 @@ public class CarmotStaff extends ToolItem {
         }
 
         for (Entity entity : entities) {
+            // Setting the owner of the trident to someone else would lead to shenanigans, don't do that
+            if (entity instanceof TridentEntity trident) {
+                var bounceVec = trident.getVelocity().multiply(-0.25, -0.25, -0.25);
+                trident.setVelocity(bounceVec);
+                trident.returnTimer = 0;
+            }
             // Special handling for ExplosiveProjectileEntities, like fireballs
-            if (entity instanceof ExplosiveProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+            if (entity instanceof ExplosiveProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
                 projectile.powerX = -projectile.powerX;
                 projectile.powerY = -projectile.powerY;
                 projectile.powerZ = -projectile.powerZ;
                 projectile.setOwner(user);
-                projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+                projectile.addCommandTag(PROJECTILE_MODIFIED.toString());
                 stack.damage(2, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
             // Shulker bullet handling
-            if (entity instanceof ShulkerBulletEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
-                projectile.damage(DamageSource.GENERIC, 1.0F);
-            } else if (entity instanceof ProjectileEntity projectile && !projectile.getScoreboardTags().contains(PROJECTILE_MODIFIED.toString())) {
+            if (entity instanceof ShulkerBulletEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+                projectile.damage(world.getDamageSources().generic(), 1.0F);
+            } else if (entity instanceof ProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
                 // Bounce the projectiles in the direction the player is looking
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
                 projectile.setOwner(user);
-                projectile.getScoreboardTags().add(PROJECTILE_MODIFIED.toString());
+                projectile.getCommandTags().add(PROJECTILE_MODIFIED.toString());
                 stack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
         }

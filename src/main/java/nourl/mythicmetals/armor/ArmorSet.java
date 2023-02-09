@@ -1,7 +1,6 @@
 package nourl.mythicmetals.armor;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
@@ -24,7 +23,7 @@ public class ArmorSet {
 
     private final List<Item> armorSet;
 
-    public ArmorItem baseArmorItem(ArmorMaterial material, EquipmentSlot slot, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorItem baseArmorItem(ArmorMaterial material, ArmorItem.Type slot, Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
         return this.makeItem(material, slot, settings);
@@ -36,10 +35,10 @@ public class ArmorSet {
     }
 
     public ArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
-        this.helmet = baseArmorItem(material, EquipmentSlot.HEAD, settingsProcessor);
-        this.chestplate = baseArmorItem(material, EquipmentSlot.CHEST, settingsProcessor);
-        this.leggings = baseArmorItem(material, EquipmentSlot.LEGS, settingsProcessor);
-        this.boots = baseArmorItem(material, EquipmentSlot.FEET, settingsProcessor);
+        this.helmet = baseArmorItem(material, ArmorItem.Type.HELMET, settingsProcessor);
+        this.chestplate = baseArmorItem(material, ArmorItem.Type.CHESTPLATE, settingsProcessor);
+        this.leggings = baseArmorItem(material, ArmorItem.Type.LEGGINGS, settingsProcessor);
+        this.boots = baseArmorItem(material, ArmorItem.Type.BOOTS, settingsProcessor);
         this.armorSet = List.of(helmet, chestplate, leggings, boots);
     }
 
@@ -57,7 +56,7 @@ public class ArmorSet {
         Registry.register(Registries.ITEM, new Identifier(modid, name + "_boots"), boots);
     }
 
-    protected ArmorItem makeItem(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings) {
+    protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, Item.Settings settings) {
         return new ArmorItem(material, slot, settings);
     }
 

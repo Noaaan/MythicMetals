@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,21 +19,21 @@ public class RuniteArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
-    public final EquipmentSlot slot;
+    public final ArmorItem.Type type;
 
-    public RuniteArmor(EquipmentSlot slot, Settings settings) {
-        this(MythicArmorMaterials.RUNITE, slot, settings);
+    public RuniteArmor(ArmorItem.Type type, Settings settings) {
+        this(MythicArmorMaterials.RUNITE, type, settings);
     }
 
-    public RuniteArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
-        this.slot = slot;
+    public RuniteArmor(ArmorMaterial material, ArmorItem.Type type, Settings settings) {
+        super(material, type, settings);
+        this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
     public BipedEntityModel<LivingEntity> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(slot);
+            model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
         return model;
     }
@@ -44,6 +45,7 @@ public class RuniteArmor extends HallowedArmor {
         return new HelmetModel(root, slot);
     }
 
+    @Override
     @NotNull
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return RegistryHelper.id("textures/models/runite_model.png");

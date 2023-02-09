@@ -8,7 +8,7 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformation;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
@@ -29,7 +29,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
     private static final Identifier WORLD_BORDER = new Identifier("textures/misc/forcefield.png");
 
     @Override
-    public void render(ItemStack staff, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
+    public void render(ItemStack staff, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
         var block = staff.has(CarmotStaff.STORED_BLOCK) ? (staff.get(CarmotStaff.STORED_BLOCK)) : Blocks.AIR;
         var instance = MinecraftClient.getInstance();
         var staffModel = instance.getBakedModelManager().getModel(CARMOT_STAFF_ID);
@@ -69,7 +69,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
     /**
      * Renders the model of the Stormyx Rainbow Shield, a fancy localized worldborder
      */
-    private void renderRainbowShield(ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vcp, int light) {
+    private void renderRainbowShield(ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vcp, int light) {
         matrices.push();
         // Rainbow Handling
         double delta = System.currentTimeMillis() / 45.0;
@@ -83,7 +83,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
         float[] rgbColors = SlowlyMoreUsefulSingletonForColorUtil.splitRGBToFloats(color);
 
         // Model handling, tries to reverse the rotation of the shield from the Bow UseAction
-        if (mode.equals(ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND)) {
+        if (mode.equals(ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)) {
             matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(13.935F * 3));
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-35.3F * 2));
             matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(9.785F * 2));

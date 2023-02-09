@@ -48,7 +48,7 @@ public class BanglumShovel extends ShovelItem {
 
         if (shouldPass) {
             var pos = context.getBlockPos();
-            var facing = context.getPlayerFacing();
+            var facing = context.getHorizontalPlayerFacing();
             var pos2 = context.getBlockPos().offset(facing, 5);
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS);

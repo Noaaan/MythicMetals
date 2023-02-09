@@ -7,8 +7,6 @@ import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.TntEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.EntityDamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
@@ -21,7 +19,6 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
-import nourl.mythicmetals.misc.CustomDamageSource;
 import nourl.mythicmetals.misc.EpicExplosion;
 import org.jetbrains.annotations.Nullable;
 
@@ -100,16 +97,6 @@ public class BanglumNukeEntity extends BanglumTntEntity {
             player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F);
         }
 
-        DamageSource damageSource;
-
-        if (causingEntity != null) {
-            damageSource = new EntityDamageSource("banglum_nuke.player", causingEntity);
-        } else {
-            damageSource = new CustomDamageSource("banglum_nuke");
-        }
-
-        damageSource.setExplosive();
-
         for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion()) continue;
 
@@ -123,7 +110,8 @@ public class BanglumNukeEntity extends BanglumTntEntity {
                     x /= dist;
                     y /= dist;
                     z /= dist;
-                    entity.damage(damageSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
+                    // TODO - Reimplement this damagesource
+                    entity.damage(world.getDamageSources().explosion(null), MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
                     double knockback = distanceModifier * 5;
                     if (entity instanceof LivingEntity living) {
                         knockback = ProtectionEnchantment.transformExplosionKnockback(living, knockback);

@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -18,21 +19,21 @@ public class CarmotArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
-    public final EquipmentSlot slot;
+    public final ArmorItem.Type type;
 
-    public CarmotArmor(EquipmentSlot slot, Settings settings) {
-        this(MythicArmorMaterials.CARMOT, slot, settings);
+    public CarmotArmor(ArmorItem.Type type, Settings settings) {
+        this(MythicArmorMaterials.CARMOT, type, settings);
     }
 
-    public CarmotArmor(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
-        this.slot = slot;
+    public CarmotArmor(ArmorMaterial material, ArmorItem.Type type, Settings settings) {
+        super(material, type, settings);
+        this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
     public BipedEntityModel<LivingEntity> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(slot);
+            model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
         return model;
     }
