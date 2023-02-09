@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.EnumMap;
 import java.util.UUID;
 
 @Mixin(ArmorItem.class)
@@ -26,15 +27,16 @@ public abstract class ArmorItemMixin {
 
     @Shadow
     @Final
-    private static UUID[] MODIFIERS;
+    private static EnumMap<ArmorItem.Type, UUID> MODIFIERS;
+
     @Shadow
     @Final
     @Mutable
     private Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
-    private void constructor(ArmorMaterial material, EquipmentSlot slot, Item.Settings settings, CallbackInfo ci) {
-        UUID uUID = MODIFIERS[slot.getEntitySlotId()];
+    private void constructor(ArmorMaterial material, ArmorItem.Type type, Item.Settings settings, CallbackInfo ci) {
+        UUID uUID = MODIFIERS.get(type);
 
         if (material == MythicArmorMaterials.CELESTIUM) {
             mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Speed bonus", 0.08F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
@@ -51,7 +53,7 @@ public abstract class ArmorItemMixin {
         if (material == MythicArmorMaterials.STORMYX) {
             mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Magic protection armor", 1.0F, EntityAttributeModifier.Operation.ADDITION);
         }
-        if (material == MythicArmorMaterials.PALLADIUM && slot.equals(EquipmentSlot.HEAD)) {
+        if (material == MythicArmorMaterials.PALLADIUM && type.getEquipmentSlot().equals(EquipmentSlot.HEAD)) {
             mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_VISIBILITY, "Lava vision bonus", 8.0f, EntityAttributeModifier.Operation.ADDITION);
         } else if (material == MythicArmorMaterials.PALLADIUM) {
             mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_SPEED, "Lava swim bonus", 0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);

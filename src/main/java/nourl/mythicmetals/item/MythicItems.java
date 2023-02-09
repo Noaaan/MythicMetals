@@ -67,6 +67,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         public static final Item COMBUSTION_STICK = new ParticleStick(new OwoItemSettings(), MythicParticleSystem.COMBUSTION_EXPLOSION);
         public static final Item SPARK_STICK = new ParticleStick(new OwoItemSettings(), MythicParticleSystem.COPPER_SPARK);
         public static final Item HEART_STICK = new ParticleStick(new OwoItemSettings(), MythicParticleSystem.HEALING_HEARTS);
+        public static final Item PLATINUM_WATCH = new Item(new OwoItemSettings());
     }
 
     public static class Copper implements SimpleFieldProcessingSubject<CopperSet> {

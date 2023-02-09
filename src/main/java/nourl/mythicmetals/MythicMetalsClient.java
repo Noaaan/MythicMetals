@@ -1,10 +1,12 @@
 package nourl.mythicmetals;
 
+import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.RenderLayer;
@@ -19,11 +21,13 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.World;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.entity.MythicEntities;
+import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.*;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -35,6 +39,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MythicMetalsClient implements ClientModInitializer {
+    private long lastTick;
+    private float time;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -161,6 +167,24 @@ public class MythicMetalsClient implements ClientModInitializer {
         ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
                 (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1
                         && !MythicMetals.CONFIG.disableFunny()) ? 1 : 0);
+
+        ModelPredicateProviderRegistry.register(MythicItems.ParticleSticks.PLATINUM_WATCH, RegistryHelper.id("time"), (stack, world, entity, seed) -> {
+            if (entity == null || entity.world == null) {
+                return 0.0F;
+            }
+
+            return this.getTime(entity.world);
+        });
+
+    }
+
+    private float getTime(World world) {
+        if (world.getTime() != this.lastTick) {
+            this.lastTick = world.getTime();
+            this.time += Delta.compute(this.time, (world.getTimeOfDay()) / 24000.0f, MinecraftClient.getInstance().getLastFrameDuration() / 50.0f);
+        }
+
+        return this.time;
     }
 
 

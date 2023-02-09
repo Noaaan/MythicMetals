@@ -1,8 +1,8 @@
 package nourl.mythicmetals.misc;
 
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
+//import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.fabricmc.loader.api.FabricLoader;
+//import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
@@ -62,10 +62,10 @@ public class BlockBreaker {
 
     public static double getReachDistance(PlayerEntity playerEntity) {
         double base = playerEntity.isCreative() ? 5.0F : 4.5F;
-
-        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
-            return ReachEntityAttributes.getReachDistance(playerEntity, base);
-        }
+//      temporarily disabled until REA updates to 1.19.4
+//        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
+//            return ReachEntityAttributes.getReachDistance(playerEntity, base);
+//        }
 
         return base;
     }
@@ -75,8 +75,8 @@ public class BlockBreaker {
         PlayerBlockBreakEvents.BEFORE.register((world, player, originalBlockPos, state, blockEntity) -> {
             var stack = player.getMainHandStack();
 
-            if (!(stack.getItem() instanceof HammerBase hammer)) return true; // dont do this for non-hammers
-            if (!hammer.isSuitableFor(state)) return true; // dont break anything extra if you are not mining rocks or stones
+            if (!(stack.getItem() instanceof HammerBase hammer)) return true; // don't do this for non-hammers
+            if (!hammer.isSuitableFor(state)) return true; // don't break anything extra if you are not mining rocks or stones
             var reach = BlockBreaker.getReachDistance(player);
 
             BlockHitResult blockHitResult = (BlockHitResult) player.raycast(reach, 1, false);
