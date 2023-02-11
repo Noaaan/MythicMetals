@@ -648,6 +648,7 @@
   "tooltip.mythril_drill.deactivated": "Deactivated",
   "tooltip.mythril_drill.fuel": "Fuel %s / %s",
   "tooltip.mythril_drill.out_of_fuel":  "Out of Fuel!",
+  "tooltip.mythril_drill.refuel":  "Right-click with Morkite to re-fuel",
   "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
   "tooltip.mythril_drill.upgrade.prometheum": [
@@ -681,6 +682,8 @@
   "tooltip.carmot_staff.command_block": "Power of Creation - Right Click to Ascend",
   "tooltip.carmot_staff.unobtainium": "THE ONE PIECE IS REAAAL!",
   "tooltip.carmot_staff.unique": "Unique",
+  "tooltip.carmot_staff.empty_staff": "Right-click with block over staff to insert",
+  "tooltip.carmot_staff.locked": "Locked",
 
   "death.attack.ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
