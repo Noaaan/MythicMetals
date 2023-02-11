@@ -1,8 +1,10 @@
 # 0.17.2
-Improved Carmot Staff and Mythril Drill tooltips
+- Improved Carmot Staff and Mythril Drill tooltips
+- Banglum Ore is now affected by the +1 Fortune ability from the Mythril Drill
+- Reduced the effect of the Banglum Defuser (102% -> 92%)
 
 # 0.17.1
-Fixed an issue where world-gen would not work correctly (#146, only relevant to 1.19.3)
+- Fixed an issue where world-gen would not work correctly (#146, only relevant to 1.19.3)
 
 # 0.17.0 
 
