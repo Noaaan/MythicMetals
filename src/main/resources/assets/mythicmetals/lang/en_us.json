@@ -648,9 +648,13 @@
   "tooltip.mythril_drill.deactivated": "Deactivated",
   "tooltip.mythril_drill.fuel": "Fuel %s / %s",
   "tooltip.mythril_drill.out_of_fuel":  "Out of Fuel!",
-  "tooltip.mythril_drill.refuel":  "Right-click with Morkite to re-fuel",
   "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
+  "tooltip.mythril_drill.refuel":[
+    {"text": "Right-click with "},
+    {"text": "Morkite", "color": "#00e3d6"},
+    {"text": " to re-fuel"}
+  ],
   "tooltip.mythril_drill.upgrade.prometheum": [
     {"text": "Auto Repair", "color": "#3A6A56"}
   ],
