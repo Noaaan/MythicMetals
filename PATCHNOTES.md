@@ -1,3 +1,9 @@
+# 0.17.2
+Improved Carmot Staff and Mythril Drill tooltips
+
+# 0.17.1
+Fixed an issue where world-gen would not work correctly (#146, only relevant to 1.19.3)
+
 # 0.17.0 
 
 A bit late perhaps, but happy new year! I hope this massive content update is worth the wait.
