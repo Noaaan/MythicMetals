@@ -1,0 +1,13 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "alloy_forgery:adamantite_block_forge_controller"
+        }
+      ]
+    }
+  ]
+}
