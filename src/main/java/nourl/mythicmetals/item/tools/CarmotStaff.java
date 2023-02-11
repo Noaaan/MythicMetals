@@ -591,7 +591,7 @@ public class CarmotStaff extends ToolItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (!stack.has(STORED_BLOCK)) {
-            tooltip.add(1, Text.literal("Right-click with block over staff to insert").setStyle(Style.EMPTY.withColor(Color.ofDye(DyeColor.LIGHT_GRAY).rgb())));
+            tooltip.add(1, Text.translatable("tooltip.carmot_staff.empty_staff").setStyle(Style.EMPTY.withColor(Color.ofDye(DyeColor.LIGHT_GRAY).rgb())));
         } else {
             int index = 1;
             if (UniqueStaffBlocks.hasUniqueBlockInStaff(stack)) {
@@ -599,7 +599,7 @@ public class CarmotStaff extends ToolItem {
             }
 
             if (stack.get(LOCKED)) {
-                tooltip.add(index, Text.literal("Locked").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
+                tooltip.add(index, Text.translatable("tooltip.carmot_staff.locked").setStyle(Style.EMPTY.withColor(Formatting.YELLOW)));
             }
         }
     }

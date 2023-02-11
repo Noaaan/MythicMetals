@@ -206,6 +206,9 @@ public class MythrilDrill extends PickaxeItem {
         } else {
             tooltip.add(1, Text.translatable("tooltip.mythril_drill.deactivated").setStyle(Style.EMPTY.withColor(Color.ofRgb(0x622622).rgb()).withFormatting(Formatting.ITALIC)));
         }
+        if (fuel == 0) {
+            tooltip.add(1, Text.translatable("tooltip.mythril_drill.refuel").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+        }
         // Fuel Gauge
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.fuel", fuel, MAX_FUEL)
                 .fillStyle(Style.EMPTY.withColor(SlowlyMoreUsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
@@ -323,7 +326,8 @@ public class MythrilDrill extends PickaxeItem {
     }
 
     /**
-     * Return whether or not you can eat the food-related itemstack in question
+     * Used for prioritizing eating food in off-hand over activating the drill
+     * @return whether you can eat the food-related itemstack in question
      */
     private boolean respectFood(ItemStack foodStack, PlayerEntity user) {
         return foodStack.isFood() && user.canConsume(foodStack.getItem().getFoodComponent() != null && foodStack.getItem().getFoodComponent().isAlwaysEdible());
