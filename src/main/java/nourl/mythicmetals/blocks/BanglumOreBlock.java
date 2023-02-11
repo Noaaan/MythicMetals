@@ -34,22 +34,33 @@ public class BanglumOreBlock extends OreBlock {
         super.randomDisplayTick(state, world, pos, random);
     }
 
+    /**
+     * Occasionally, or in some cases often, explode when mined
+     */
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        int chance = world.getDimension().ultrawarm() ? 35 : 6;
+        int chance = world.getDimension().ultrawarm() ? 35 : 7;
         Random random = Random.create();
-        // Calculate explosion chance
         var stack = player.getMainHandStack();
+
+        // This living ore is allergic to Efficiency and Fortune, but is defused by Silk Touch
         if (stack.hasEnchantments()) {
             chance += (EnchantmentHelper.getLevel(Enchantments.EFFICIENCY, stack) * 5);
             chance += (EnchantmentHelper.getLevel(Enchantments.FORTUNE, stack) * 8);
             chance -= (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) * 45);
         }
 
-        if (MythrilDrill.hasUpgradeItem(stack, MythicItems.RareMats.STORMYX_SHELL)) {
-            chance -= 102;
+        // Extra fortune = more allergic
+        if (MythrilDrill.hasUpgradeItem(stack, MythicBlocks.CARMOT.getStorageBlock().asItem())) {
+            chance += 10;
         }
 
+        // Banglum Defuser really living up to its name
+        if (MythrilDrill.hasUpgradeItem(stack, MythicItems.RareMats.STORMYX_SHELL)) {
+            chance -= 92;
+        }
+
+        // Clamp at 80%, just so you don't use these to *reliably* blow up stuff
         chance = MathHelper.clamp(chance, 0, 80);
 
         // Roll the dice
