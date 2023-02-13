@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " v ",
+    "viv",
+    " v "
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:platinum_ingot"
+    },
+    "i": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:platinum_watch",
+    "count": 1
+  }
+}

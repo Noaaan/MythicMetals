@@ -65,7 +65,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicItems.class, false);
         FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
-        FieldRegistrationHandler.register(MythicItems.RareMats.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
         }
