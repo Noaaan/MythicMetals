@@ -55,7 +55,7 @@ public class BanglumOreBlock extends ExperienceDroppingBlock {
         }
 
         // Banglum Defuser really living up to its name
-        if (MythrilDrill.hasUpgradeItem(stack, MythicItems.RareMats.STORMYX_SHELL)) {
+        if (MythrilDrill.hasUpgradeItem(stack, MythicItems.Mats.STORMYX_SHELL)) {
             chance -= 92;
         }
 
