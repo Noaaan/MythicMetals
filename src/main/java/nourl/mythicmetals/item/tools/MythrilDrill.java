@@ -170,7 +170,7 @@ public class MythrilDrill extends PickaxeItem {
 
             if (!EnchantmentHelper.get(stack).containsKey(Enchantments.SILK_TOUCH) && state.isIn(ConventionalBlockTags.ORES)) {
                 // Restore air when mining ores underwater
-                if (hasUpgradeItem(stack, MythicItems.RareMats.AQUARIUM_PEARL)) {
+                if (hasUpgradeItem(stack, MythicItems.Mats.AQUARIUM_PEARL)) {
                     miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
                 }
                 // Randomly drop gold from midas gold
