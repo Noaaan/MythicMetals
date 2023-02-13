@@ -117,6 +117,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("runite_arrow", RUNITE_ARROW);
         RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);
         RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
+        RegistryHelper.item("platinum_watch", PLATINUM_WATCH);
     }
 
     public static class Frogery {
