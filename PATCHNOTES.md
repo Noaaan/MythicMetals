@@ -1,8 +1,9 @@
 # 0.17.2
-- Added a Platinum Watch. A sturdier clock that even works in The Nether
+- Added a Platinum Watch. A sturdier clock that even works in The Nether (1.19.3 only)
 - Improved Carmot Staff and Mythril Drill tooltips
 - Banglum Ore is now affected by the +1 Fortune ability from the Mythril Drill
 - Reduced the effect of the Banglum Defuser (102% -> 92%)
+- Attempted to fix an edge case where the Drill would not consume fuel
 
 # 0.17.1
 - Fixed an issue where world-gen would not work correctly (#146, only relevant to 1.19.3)

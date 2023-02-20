@@ -62,6 +62,9 @@ public class MythrilDrill extends PickaxeItem {
      * A fully fueled drill should last 30 minutes
      */
     public static final int MAX_FUEL = 1000;
+    /**
+     * Each piece of Morkite will fuel the drill by this constant worth of units
+     */
     public static final int FUEL_CONSTANT = 10;
 
     public MythrilDrill(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
@@ -135,7 +138,7 @@ public class MythrilDrill extends PickaxeItem {
             // If right-clicking with Morkite on Drill, try to fuel it
             if (cursorStack.getItem().equals(MythicItems.Mats.MORKITE)) {
 
-                // Dont bother interacting if the Drills fuel is full
+                // Don't bother interacting if the Drills fuel is full
                 if (drill.get(FUEL).equals(MAX_FUEL)) return false;
 
                 // Greedily take all the morkite if we can, otherwise calculate how much to take
@@ -217,7 +220,8 @@ public class MythrilDrill extends PickaxeItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient && hasFuel(stack) && isActive(stack) && MathHelper.floor(world.getTime()) % (4 * FUEL_CONSTANT) == 1) {
+        if (!world.isClient && hasFuel(stack) && isActive(stack) && world.getTime() % (4 * FUEL_CONSTANT) == 1) {
+            System.out.println(world.getTime());
             stack.put(FUEL, stack.get(FUEL) - 1);
         }
         if (!hasFuel(stack)) {
