@@ -1,71 +1,102 @@
 {
-  "credit": "Copied from vanilla by Noaaan via Blockbench. Since this is a vanilla copy, feel free to use",
-  "texture_size": [64, 64],
-  "gui_light": "front",
-  "textures": {
-    "particle": "mythicmetals:block/stormyx_block",
-    "1": "mythicmetals:block/model/stormyx_shield"
-  },
-  "elements": [
-    {
-      "name": "plate",
-      "from": [5, 0, 1],
-      "to": [17, 22, 2],
-      "faces": {
-        "north": {"uv": [0.25, 0.25, 3.25, 5.75], "texture": "#1"},
-        "east": {"uv": [0, 0.25, 0.25, 5.75], "texture": "#1"},
-        "south": {"uv": [3.5, 0.25, 6.5, 5.75], "texture": "#1"},
-        "west": {"uv": [3.25, 0.25, 3.5, 5.75], "texture": "#1"},
-        "up": {"uv": [3.25, 0.25, 0.25, 0], "texture": "#1"},
-        "down": {"uv": [6.25, 0, 3.25, 0.25], "texture": "#1"}
-      }
-    },
-    {
-      "name": "strap",
-      "from": [10, 9, 2],
-      "to": [12, 15, 8],
-      "faces": {
-        "north": {"uv": [8, 1.5, 8.5, 3], "texture": "#1"},
-        "east": {"uv": [6.5, 1.5, 8, 3], "texture": "#1"},
-        "south": {"uv": [10, 1.5, 10.5, 3], "texture": "#1"},
-        "west": {"uv": [8.5, 1.5, 10, 3], "texture": "#1"},
-        "up": {"uv": [8.5, 1.5, 8, 0], "texture": "#1"},
-        "down": {"uv": [9, 0, 8.5, 1.5], "texture": "#1"}
-      }
-    }
-  ],
-  "display": {
-    "thirdperson_righthand": {
-      "rotation": [30, -40, -5],
-      "translation": [-2.5, -5.5, -1]
-    },
-    "thirdperson_lefthand": {
-      "rotation": [30, -40, -5],
-      "translation": [2, -5.5, 2.5]
-    },
-    "firstperson_righthand": {
-      "rotation": [0, -10, 5],
-      "translation": [-1.5, -16, 0],
-      "scale": [1.5, 1.5, 1.5]
-    },
-    "firstperson_lefthand": {
-      "rotation": [0, -10, 5],
-      "translation": [5.5, -15.5, 0.5],
-      "scale": [1.5, 1.5, 1.5]
-    },
-    "ground": {
-      "scale": [0.75, 0.75, 0.75]
-    },
-    "gui": {
-      "rotation": [0, 165, 0],
-      "translation": [3.75, -2, 0],
-      "scale": [0.75, 0.75, 0.75]
-    },
-    "head": {
-      "translation": [-3, 0, 0]
-    },
-    "fixed": {
-      "translation": [-3, -3, 4.5]
-    }
-  }
+	"credit": "Copied from vanilla by Noaaan via Blockbench. Since this is a vanilla copy, feel free to use",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "mythicmetals:block/model/stormyx_shield",
+		"particle": "mythicmetals:block/stormyx_block"
+	},
+	"elements": [
+		{
+			"name": "wide",
+			"from": [5, 7, 1],
+			"to": [17, 17, 2],
+			"faces": {
+				"north": {"uv": [0.5, 2, 6.5, 7], "texture": "#1"},
+				"east": {"uv": [0, 2, 0.5, 7], "texture": "#1"},
+				"south": {"uv": [6.5, 2, 0.5, 7], "texture": "#1"},
+				"west": {"uv": [0, 2, 0.5, 7], "texture": "#1"},
+				"up": {"uv": [3.5, 0.5, 0.5, 0], "texture": "#1"},
+				"down": {"uv": [3.5, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		},
+		{
+			"name": "middle",
+			"from": [7.001, 6.001, 1.001],
+			"to": [14.999, 17.999, 1.999],
+			"faces": {
+				"north": {"uv": [1.5, 1.5, 5.5, 7.5], "texture": "#1"},
+				"east": {"uv": [0, 1.5, 0.5, 7.5], "texture": "#1"},
+				"south": {"uv": [5.5, 1.5, 1.5, 7.5], "texture": "#1"},
+				"west": {"uv": [0, 1.5, 0.5, 7.5], "texture": "#1"},
+				"up": {"uv": [0.5, 0, 3, 0.25], "texture": "#1"},
+				"down": {"uv": [0.5, 0, 3, 0.25], "texture": "#1"}
+			}
+		},
+		{
+			"name": "tall",
+			"from": [9.002, 5.002, 1.002],
+			"to": [12.998, 18.998, 1.998],
+			"faces": {
+				"north": {"uv": [2.5, 1, 4.5, 8], "texture": "#1"},
+				"east": {"uv": [0, 1, 0.5, 8], "texture": "#1"},
+				"south": {"uv": [4.5, 1, 2.5, 8], "texture": "#1"},
+				"west": {"uv": [0, 1, 0.5, 8], "texture": "#1"},
+				"up": {"uv": [1, 0, 2.5, 0.25], "texture": "#1"},
+				"down": {"uv": [1, 0, 2.5, 0.25], "texture": "#1"}
+			}
+		},
+		{
+			"name": "strap",
+			"from": [10, 9, 2],
+			"to": [12, 14, 7],
+			"faces": {
+				"north": {"uv": [11, 5, 12, 8], "texture": "#1"},
+				"east": {"uv": [12, 5, 15, 8], "texture": "#1"},
+				"south": {"uv": [15, 5, 16, 8], "texture": "#1"},
+				"west": {"uv": [8, 5, 11, 8], "texture": "#1"},
+				"up": {"uv": [12, 5, 11, 2], "texture": "#1"},
+				"down": {"uv": [13, 2, 12, 5], "texture": "#1"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"overrides": [
+		{"predicate": {"blocking": 1}, "model": "mythicmetals:item/stormyx_shield_blocking"}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [35, -20, 0],
+			"translation": [-3.75, -6, 0.75],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [35, -20, 0],
+			"translation": [2.75, -7, 2.25],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 0, 8],
+			"translation": [2, -9, 1],
+			"scale": [1.25, 1.25, 1.25]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 0, 8],
+			"translation": [9, -9, 1],
+			"scale": [1.25, 1.25, 1.25]
+		},
+		"ground": {
+			"scale": [0.65, 0.65, 0.65]
+		},
+		"gui": {
+			"rotation": [0, 170, 0],
+			"translation": [4.5, -4.25, 0]
+		},
+		"head": {
+			"translation": [-3, -3.25, 0]
+		},
+		"fixed": {
+			"translation": [-3.5, -4.75, 8],
+			"scale": [1.25, 1.25, 1.25]
+		}
+	}
 }
