@@ -221,7 +221,6 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (!world.isClient && hasFuel(stack) && isActive(stack) && world.getTime() % (4 * FUEL_CONSTANT) == 1) {
-            System.out.println(world.getTime());
             stack.put(FUEL, stack.get(FUEL) - 1);
         }
         if (!hasFuel(stack)) {
