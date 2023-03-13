@@ -4,6 +4,7 @@
 
 # 0.17.3
 - Removed a bad debug message when using a Mythril Drill
+- Updated the Stormyx Shield model
 
 # 0.17.2
 - Added a Platinum Watch. A sturdier clock that even works in The Nether (1.19.3 only)
