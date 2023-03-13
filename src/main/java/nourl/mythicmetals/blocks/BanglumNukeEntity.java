@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -89,7 +90,9 @@ public class BanglumNukeEntity extends BanglumTntEntity {
             baseDamage = 2;
         }
 
-        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate);
+        ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
+        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate,
+                              this, playerCause);
 
         int soundRadius = radius * 3;
 

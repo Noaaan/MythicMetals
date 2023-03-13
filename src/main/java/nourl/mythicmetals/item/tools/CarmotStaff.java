@@ -346,7 +346,8 @@ public class CarmotStaff extends ToolItem {
         // Sponge - Remove water
         if (hasBlockInStaff(stack, Blocks.SPONGE)) {
             if (!world.isClient) {
-                EpicExplosion.explode((ServerWorld) world, user.getBlockX(), user.getBlockY(), user.getBlockZ(), 12, blockState -> blockState.getBlock().equals(Blocks.WATER));
+                EpicExplosion.explode((ServerWorld) world, user.getBlockX(), user.getBlockY(), user.getBlockZ(), 12, blockState -> blockState.getBlock().equals(Blocks.WATER),
+                    null, user);
             }
             user.getItemCooldownManager().set(stack.getItem(), 138);
             stack.damage(3, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
