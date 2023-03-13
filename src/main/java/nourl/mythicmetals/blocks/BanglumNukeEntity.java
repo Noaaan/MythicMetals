@@ -1,5 +1,7 @@
 package nourl.mythicmetals.blocks;
 
+import com.mojang.authlib.GameProfile;
+import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.owo.nbt.NbtKey;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -91,6 +93,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         }
 
         ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
+        GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
         EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate,
                               this, playerCause);
 
@@ -104,6 +107,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion()) continue;
+            if (!CommonProtection.canDamageEntity(world, entity, playerCauseProfile, playerCause)) continue;
 
             double distanceModifier = baseDamage - entity.distanceTo(this) / (double) radius;
             if (distanceModifier >= 0) {
