@@ -2,12 +2,17 @@ package nourl.mythicmetals.entity;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.misc.MythicDamageTypes;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
 
@@ -32,8 +37,15 @@ public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
     @Override
     protected void onHit(LivingEntity target) {
         super.onHit(target);
-        // TODO - Reimplement this damagesource
-        //target.damage(new CustomDamageSource("star_platinum_arrow").setUsesMagic().setProjectile(), 24);
+        var source = new DamageSource(
+                this.world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.STAR_PLATINUM_ARROW).orElseThrow(),
+                this,
+                getOwner());
+        if (target.isUndead()) {
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 3));
+        } else {
+            target.damage(source, 24);
+        }
     }
 
     @Override

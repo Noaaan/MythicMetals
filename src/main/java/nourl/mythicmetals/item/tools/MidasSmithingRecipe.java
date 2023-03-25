@@ -4,28 +4,26 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.recipe.SmithingRecipe;
+import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
-public class MidasSmithingRecipe implements SmithingRecipe {
+public class MidasSmithingRecipe extends LegacySmithingRecipe implements SmithingRecipe {
     final Ingredient base;
     final Ingredient addition;
     final ItemStack result;
-    final Ingredient template;
+    //final Ingredient template;
     final Identifier id;
 
-    public MidasSmithingRecipe(Ingredient base, Ingredient addition, Ingredient template, ItemStack result, Identifier id) {
+    public MidasSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result, Identifier id) {
+        super(id, base, addition, result);
         this.base = base;
         this.addition = addition;
         this.result = result;
-        this.template = template;
+        //this.template = template;
         this.id = id;
     }
 
@@ -86,7 +84,7 @@ public class MidasSmithingRecipe implements SmithingRecipe {
 
     @Override
     public boolean testTemplate(ItemStack stack) {
-        return this.template.test(stack);
+        return false;
     }
 
     @Override
@@ -101,19 +99,20 @@ public class MidasSmithingRecipe implements SmithingRecipe {
 
     public static class Serializer implements RecipeSerializer<MidasSmithingRecipe> {
             public MidasSmithingRecipe read(Identifier identifier, JsonObject jsonObject) {
-                Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
+                //Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
                 Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
                 Ingredient ingredient3 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
                 ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-                return new MidasSmithingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
+                //return new MidasSmithingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
+                return new MidasSmithingRecipe(ingredient2, ingredient3, itemStack, identifier);
             }
 
             public MidasSmithingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
-                Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
+                //Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
                 Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
                 Ingredient ingredient3 = Ingredient.fromPacket(packetByteBuf);
                 ItemStack itemStack = packetByteBuf.readItemStack();
-                return new MidasSmithingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
+                return new MidasSmithingRecipe(ingredient2, ingredient3, itemStack, identifier);
             }
 
             public void write(PacketByteBuf packetByteBuf, MidasSmithingRecipe smithingRecipe) {

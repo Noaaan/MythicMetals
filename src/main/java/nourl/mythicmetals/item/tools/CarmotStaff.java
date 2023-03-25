@@ -18,6 +18,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,6 +29,7 @@ import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -46,6 +48,7 @@ import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.rendering.CarmotStaffBlockRenderer;
 import nourl.mythicmetals.misc.EpicExplosion;
+import nourl.mythicmetals.misc.MythicDamageTypes;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.Nullable;
@@ -257,21 +260,21 @@ public class CarmotStaff extends ToolItem {
             // Let modpack authors disable funny Easter eggs that should in practice NEVER occur
             if (!MythicMetals.CONFIG.disableFunny()) {
 
-                // TODO - Reimplement these damage sources
                 // Overload the staff if it is unbreakable, its simply too much power
                 if (stack.getNbt() != null && stack.getNbt().getBoolean("Unbreakable")) {
                     stack.getNbt().remove("Unbreakable");
                     stack.getEnchantments().clear();
                     stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    //world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
-                    return TypedActionResult.success(stack);
+                    user.getItemCooldownManager().set(stack.getItem(), 6000);
+                    explode(world, user);
+                    return TypedActionResult.consume(stack);
                 }
 
                 stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
-                //world.createExplosion(null, new CustomDamageSource("ascension"), null, user.getX(), user.getY(), user.getZ(), 20.0F, false, World.ExplosionSourceType.NONE);
+                explode(world, user);
 
                 return TypedActionResult.success(stack);
             } else {
@@ -604,5 +607,15 @@ public class CarmotStaff extends ToolItem {
         }
     }
 
+    public void explode(World world, LivingEntity user) {
+        world.createExplosion(
+                null,
+                new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.ASCENSION).orElseThrow()),
+                null,
+                user.getPos(),
+                20.0F,
+                false,
+                World.ExplosionSourceType.NONE);
+    }
 
 }

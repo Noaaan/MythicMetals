@@ -6,10 +6,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -19,7 +19,9 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
+import nourl.mythicmetals.misc.BanglumNukeSource;
 import nourl.mythicmetals.misc.EpicExplosion;
+import nourl.mythicmetals.misc.MythicDamageTypes;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -103,15 +105,18 @@ public class BanglumNukeEntity extends BanglumTntEntity {
             double distanceModifier = baseDamage - entity.distanceTo(this) / (double) radius;
             if (distanceModifier >= 0) {
                 double x = entity.getX() - this.getX();
-                double y = (entity instanceof TntEntity ? entity.getY() : entity.getEyeY()) - this.getY();
+                double y = (entity instanceof BanglumTntEntity ? entity.getY() : entity.getEyeY()) - this.getY();
                 double z = entity.getZ() - this.getZ();
                 double dist = Math.sqrt(x * x + y * y + z * z);
                 if (dist != 0.0) {
                     x /= dist;
                     y /= dist;
                     z /= dist;
-                    // TODO - Reimplement this damagesource
-                    entity.damage(world.getDamageSources().explosion(null), MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
+                    var banglumNukeSource = new BanglumNukeSource(
+                            world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.BANGLUM_NUKE).orElseThrow(),
+                            this,
+                            this.getCausingEntity());
+                    entity.damage(banglumNukeSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
                     double knockback = distanceModifier * 5;
                     if (entity instanceof LivingEntity living) {
                         knockback = ProtectionEnchantment.transformExplosionKnockback(living, knockback);

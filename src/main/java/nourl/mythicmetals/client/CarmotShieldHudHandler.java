@@ -86,6 +86,7 @@ public class CarmotShieldHudHandler {
                 RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
             }
             super.draw(matrices, mouseX, mouseY, partialTicks, delta);
+            RenderSystem.setShaderColor(1, 1, 1, 1);
         }
     }
 }

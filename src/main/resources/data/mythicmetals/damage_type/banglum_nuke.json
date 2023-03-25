@@ -1,0 +1,5 @@
+{
+  "exhaustion": 0.8,
+  "message_id": "banglum_nuke",
+  "scaling": "when_caused_by_living_non_player"
+}

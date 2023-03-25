@@ -689,11 +689,11 @@
   "tooltip.carmot_staff.empty_staff": "Right-click with block over staff to insert",
   "tooltip.carmot_staff.locked": "Locked",
 
-  "death.attack.ascension": "%s stood too close to the sun",
+  "death.attack.mythic_ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
-  "death.attack.temperature_shock": "%1$s could not handle their cold bath",
+  "death.attack.star_platinum_arrow.player.item": "%1$s was pierced by %2$s using %3$s",
 
   "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
