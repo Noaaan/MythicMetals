@@ -1,6 +1,6 @@
-# 0.18.x
-### Aquarium Rework
-- Aquarium Sentry - A block which uses Conduit Power to zap nearby mobs. Must be placed in range of an active Conduit.  
+# 0.17.4
+- Ported to 1.19.4
+- Improved Celestium  
 
 # 0.17.3
 - Removed a bad debug message when using a Mythril Drill
