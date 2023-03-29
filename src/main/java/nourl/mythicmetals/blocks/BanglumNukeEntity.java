@@ -1,5 +1,7 @@
 package nourl.mythicmetals.blocks;
 
+import com.mojang.authlib.GameProfile;
+import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.owo.nbt.NbtKey;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -89,7 +92,10 @@ public class BanglumNukeEntity extends BanglumTntEntity {
             baseDamage = 2;
         }
 
-        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate);
+        ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
+        GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
+        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate,
+                              this, playerCause);
 
         int soundRadius = radius * 3;
 
@@ -101,6 +107,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion()) continue;
+            if (!CommonProtection.canDamageEntity(world, entity, playerCauseProfile, playerCause)) continue;
 
             double distanceModifier = baseDamage - entity.distanceTo(this) / (double) radius;
             if (distanceModifier >= 0) {
