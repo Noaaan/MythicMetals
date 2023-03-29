@@ -14,7 +14,7 @@ glisco, for his multiple commits to code and incredible toolchain.
 The incredible music talent from Galaxy Goats, provided by Jan_Boyega.  
 williewillus, for the implementation of Fabric's ArmorRenderer.  
 Dr. Zeal, for the wisp texture.  
-BasiqueEvangelist, for contributing to the project, helping with recipe serialization, and for mining copious amounts of Midas Gold.  
+BasiqueEvangelist, for multiple contributions to the project, helping with recipe serialization, and for mining copious amounts of Midas Gold.  
 Draylar, for making a ton of cool mods that inspired multiple parts of the project.  
 Starmute, for keeping the Terralith compat up-to-date.   
 

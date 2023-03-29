@@ -346,8 +346,7 @@ public class CarmotStaff extends ToolItem {
         // Sponge - Remove water
         if (hasBlockInStaff(stack, Blocks.SPONGE)) {
             if (!world.isClient) {
-                EpicExplosion.explode((ServerWorld) world, user.getBlockX(), user.getBlockY(), user.getBlockZ(), 12, blockState -> blockState.getBlock().equals(Blocks.WATER),
-                    null, user);
+                EpicExplosion.absorbWater((ServerWorld) world, user.getBlockX(), user.getBlockY(), user.getBlockZ(), 12, user);
             }
             user.getItemCooldownManager().set(stack.getItem(), 138);
             stack.damage(3, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -416,6 +415,9 @@ public class CarmotStaff extends ToolItem {
         return true;
     }
 
+    /**
+     * Handles the staff usage tick, which is used in conjuction with a Stormyx Block
+     */
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         super.usageTick(world, user, stack, remainingUseTicks);
