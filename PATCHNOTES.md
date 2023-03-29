@@ -1,6 +1,8 @@
 # 0.17.4
 - Ported to 1.19.4
-- Improved Celestium  
+- Improved Celestium and the Red Aegis Sword textures 
+- Added support for the Common Protection API (#154, thanks BasiqueEvangelist!)
+  - This lets you use mods like Get Of My Lawn ReServed to protect your claims against explosions, like the various Banglum Nukes
 
 # 0.17.3
 - Removed a bad debug message when using a Mythril Drill
