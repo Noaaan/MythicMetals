@@ -66,9 +66,7 @@ dependencies {
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")
 
     // Mixin Extras
-    // Using MavenLocal since the file refuses to build with the betas via Jitpack
-    annotationProcessor modImplementation("com.llamalad7:MixinExtras:${project.me_version}")
-    include "com.llamalad7:MixinExtras:${project.me_version}"
+    include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.6")))
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
