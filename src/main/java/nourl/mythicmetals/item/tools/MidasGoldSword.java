@@ -48,6 +48,10 @@ public class MidasGoldSword extends SwordItem {
                 bonus += 1;
             }
 
+//            if (goldCount >= 1280) {
+//                bonus += 1;
+//            } - What? Its like I have something planned... Just you wait :)
+
             mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", baseDamage + bonus, EntityAttributeModifier.Operation.ADDITION));
 
         }
@@ -90,7 +94,7 @@ public class MidasGoldSword extends SwordItem {
             lines.add(lineIndex + 1, Text.literal(goldCount + " / 320").formatted(Formatting.GOLD));
         }
         if (goldCount >= 640) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.99").formatted(Formatting.GOLD));
+            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.grass").formatted(Formatting.GOLD));
             lines.add(lineIndex + 1, Text.literal(goldCount + " / 640").formatted(Formatting.GOLD));
         }
     }

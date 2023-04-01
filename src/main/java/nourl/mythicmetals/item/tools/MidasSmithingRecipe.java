@@ -33,7 +33,7 @@ public class MidasSmithingRecipe extends LegacySmithingRecipe implements Smithin
             var stack = inventory.getStack(0);
 
             int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
-            return goldCount < 640;
+            return goldCount < 640000;
         }
 
         return false;

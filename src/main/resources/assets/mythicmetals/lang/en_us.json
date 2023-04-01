@@ -478,7 +478,6 @@
   "item.mythicmetals.tin_nugget": "Tin Nugget",
   "item.mythicmetals.unobtainium": "Unobtainium",
   "item.mythicmetals.unobtainium_dust": "Unobtainium Dust",
-  "item.mythicmetals.unobtainium_nugget": "Unobtainium Nugget",
   "item.mythicmetals.white_aegis_sword": "Sword of the Aegis",
   "item.mythicmetals.gilded_midas_gold_sword": "Gilded Midas Gold Sword",
   "item.mythicmetals.combustion_stick": "Particle Stick - Combustion",
@@ -642,7 +641,7 @@
   "tooltip.midas_gold.level.3": "Why would you make this many blocks? Just make normal gold...",
   "tooltip.midas_gold.level.4": "The sword feels more powerful... Can it go further?",
   "tooltip.midas_gold.level.5": "King Midas would be proud of this weapon",
-  "tooltip.midas_gold.level.99": "Go touch grass",
+  "tooltip.midas_gold.level.grass": "Go touch grass",
 
   "tooltip.mythril_drill.activated": "Activated (+1 Efficiency)",
   "tooltip.mythril_drill.deactivated": "Deactivated",
