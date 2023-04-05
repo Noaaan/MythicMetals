@@ -21,7 +21,7 @@ public class ArmorSet {
     private final ArmorItem leggings;
     private final ArmorItem boots;
 
-    private final List<Item> armorSet;
+    private final List<ArmorItem> armorSet;
 
     public ArmorItem baseArmorItem(ArmorMaterial material, ArmorItem.Type slot, Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
@@ -76,11 +76,11 @@ public class ArmorSet {
         return boots;
     }
 
-    public List<Item> getArmorSet() {
+    public List<ArmorItem> getArmorItems() {
         return armorSet;
     }
 
     public boolean isInArmorSet(ItemStack stack) {
-        return this.getArmorSet().contains(stack.getItem());
+        return this.getArmorItems().contains(stack.getItem());
     }
 }

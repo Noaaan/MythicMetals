@@ -5,9 +5,12 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
+    public static final Map<String, ArmorSet> ARMOR_MAP = new HashMap<>();
     public static final ArmorSet ADAMANTITE = new ArmorSet(MythicArmorMaterials.ADAMANTITE);
     public static final ArmorSet AQUARIUM = new ArmorSet(MythicArmorMaterials.AQUARIUM);
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM);
@@ -35,6 +38,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     @Override
     public void processField(ArmorSet armorSet, String name, Field f) {
         armorSet.register(name);
+        ARMOR_MAP.put(name, armorSet);
     }
 
     @Override

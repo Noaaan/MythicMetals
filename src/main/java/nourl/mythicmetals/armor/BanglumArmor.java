@@ -46,7 +46,8 @@ public class BanglumArmor extends HallowedArmor {
     }
 
     @NotNull
-    public Identifier getArmorTexture(ItemStack stack, ArmorItem.Type type) {
+    @Override
+    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return RegistryHelper.id("textures/models/banglum_model.png");
     }
 }
