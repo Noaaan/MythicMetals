@@ -9,13 +9,21 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
+import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.texture.Sprite;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.registry.Registries;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -147,6 +155,18 @@ public class MythicMetalsClient implements ClientModInitializer {
             var texture = armor.getArmorTexture(stack, slot);
             original.copyBipedStateTo(model);
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
+
+            // Armor trim time
+            if (entity.world.getEnabledFeatures().contains(FeatureFlags.UPDATE_1_20)) {
+                ArmorTrim.getTrim(entity.world.getRegistryManager(), stack).ifPresent(trim -> {
+                    var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
+                    Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trim.getLeggingsModelId(armor.getMaterial()) : trim.getGenericModelId(armor.getMaterial()));
+                    VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
+                            ItemRenderer.getDirectItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(), true, stack.hasGlint())
+                    );
+                    model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+                });
+            }
         };
         ArmorRenderer.register(renderer, armors);
     }
