@@ -1,3 +1,9 @@
+# 0.17.5
+- Tweaked texture sizes of custom armor models, related to Armor Trims
+- Add handling for Armor Trim rendering (experimental, will likely be changed for 1.20)
+- New Hallowed Cape texture (thanks DH!)
+- New Storage Block textures for Aquarium, Osmium, Platinum, Quadrillum and Runite (Thanks DH!)
+
 # 0.17.4
 - Ported to 1.19.4
 - Improved Celestium and the Red Aegis Sword textures 
