@@ -3,6 +3,7 @@
 - Add handling for Armor Trim rendering (experimental, will likely be changed for 1.20)
 - New Hallowed Cape texture (thanks DH!)
 - New Storage Block textures for Aquarium, Osmium, Platinum, Quadrillum and Runite (Thanks DH!)
+- Updated the Mythic Metals Icon (thanks Azzy, for the new ingot!)
 
 # 0.17.4
 - Ported to 1.19.4
