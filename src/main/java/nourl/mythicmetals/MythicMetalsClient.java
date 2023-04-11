@@ -157,6 +157,8 @@ public class MythicMetalsClient implements ClientModInitializer {
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
 
             // Armor trim time
+            // TODO - Hallowed Helmet does not look great with the rendering, since the wings and helm-guard tend to get
+            // TODO - some color on like, half of them. See if there is a way to split these parts up.
             if (entity.world.getEnabledFeatures().contains(FeatureFlags.UPDATE_1_20)) {
                 ArmorTrim.getTrim(entity.world.getRegistryManager(), stack).ifPresent(trim -> {
                     var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);

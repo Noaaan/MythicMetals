@@ -23,7 +23,7 @@ public class MythicModelHandler {
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT, TexturedModelData.of(CarmotArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
-        consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 64)); // TODO - Needs to be 64x32
+        consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));
         consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 64, 32));
         consumer.accept(RUNITE, TexturedModelData.of(RuniteArmorModel.getModelData(), 64, 32));
     }
