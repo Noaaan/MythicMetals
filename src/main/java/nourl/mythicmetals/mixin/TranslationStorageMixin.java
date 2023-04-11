@@ -24,7 +24,7 @@ public class TranslationStorageMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addTranslations(Map<String, String> translations, boolean rightToLeft, CallbackInfo ci) {
-        if(Calendar.getInstance().get(Calendar.MONTH) != Calendar.APRIL && Calendar.getInstance().get(Calendar.WEEK_OF_MONTH) != 1) return;
+        if(!(Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.WEEK_OF_MONTH) == 1)) return;
         if(MythicMetals.CONFIG.disableFunny()) return;
 
         var builder = new HashMap<>(translations);
