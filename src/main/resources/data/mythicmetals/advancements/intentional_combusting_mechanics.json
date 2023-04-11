@@ -13,7 +13,7 @@
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,
-    "hidden": false
+    "hidden": true
   },
   "criteria": {
     "get_too_close_to_the_aww_man": {
