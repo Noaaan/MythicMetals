@@ -4,27 +4,25 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.recipe.SmithingRecipe;
+import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
-public class DrillUpgradeSmithingRecipe implements SmithingRecipe {
+public class DrillUpgradeSmithingRecipe extends LegacySmithingRecipe implements SmithingRecipe {
     final Ingredient base;
     final Ingredient addition;
-    final Ingredient template;
+    //final Ingredient template;
     final ItemStack result;
     final Identifier id;
 
-    public DrillUpgradeSmithingRecipe(Ingredient base, Ingredient addition, Ingredient template, ItemStack result, Identifier id) {
+    public DrillUpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result, Identifier id) {
+        super(id, base, addition, result);
         this.base = base;
         this.addition = addition;
-        this.template = template;
+        //this.template = template;
         this.result = result;
         this.id = id;
     }
@@ -82,7 +80,8 @@ public class DrillUpgradeSmithingRecipe implements SmithingRecipe {
 
     @Override
     public boolean testTemplate(ItemStack stack) {
-        return this.template.test(stack);
+        return false;
+        //return this.template.test(stack);
     }
 
     @Override
@@ -97,19 +96,19 @@ public class DrillUpgradeSmithingRecipe implements SmithingRecipe {
 
     public static class Serializer implements RecipeSerializer<DrillUpgradeSmithingRecipe> {
             public DrillUpgradeSmithingRecipe read(Identifier identifier, JsonObject jsonObject) {
-                Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
-                Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
-                Ingredient ingredient3 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
+                Ingredient base = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
+                Ingredient addition = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
+                //Ingredient template = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
                 ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-                return new DrillUpgradeSmithingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
+                return new DrillUpgradeSmithingRecipe(base, addition, itemStack, identifier);
             }
 
             public DrillUpgradeSmithingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
-                Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
-                Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
-                Ingredient ingredient3 = Ingredient.fromPacket(packetByteBuf);
+                Ingredient base = Ingredient.fromPacket(packetByteBuf);
+                Ingredient addition = Ingredient.fromPacket(packetByteBuf);
+                //Ingredient template = Ingredient.fromPacket(packetByteBuf);
                 ItemStack itemStack = packetByteBuf.readItemStack();
-                return new DrillUpgradeSmithingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
+                return new DrillUpgradeSmithingRecipe(base, addition, itemStack, identifier);
             }
 
             public void write(PacketByteBuf packetByteBuf, DrillUpgradeSmithingRecipe smithingRecipe) {

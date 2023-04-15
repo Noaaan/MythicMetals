@@ -1,3 +1,6 @@
+# 0.17.6
+- Fixed an issue related to the Mythril Drill recipe handler (#161)
+
 # 0.17.5
 - Tweaked texture sizes of custom armor models, related to Armor Trims
 - Add handling for Armor Trim rendering (experimental, will likely be changed for 1.20)
