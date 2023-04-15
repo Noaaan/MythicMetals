@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "mythicmetals:aquarium_boots"
+  },
+  "addition": {
+    "item": "mythicmetals:aquarium_pearl"
+  },
+  "result": {
+    "item": "mythicmetals:improved_aquarium_boots"
+  }
+}
