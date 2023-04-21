@@ -1,3 +1,6 @@
+# 0.x.x
+- Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
+
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
 
