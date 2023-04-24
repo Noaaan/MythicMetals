@@ -1,5 +1,7 @@
 # 0.x.x
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
+- Changed the animations of the Mythril Drill
+- Revealed the Palladium advancements and made them more clear
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
