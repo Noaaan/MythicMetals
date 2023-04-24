@@ -7,6 +7,7 @@ import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -16,12 +17,14 @@ import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.item.tools.CarmotStaff;
+import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static nourl.mythicmetals.client.rendering.PlayerEnergySwirlFeatureRenderer.SWIRL_TEXTURE;
 
@@ -86,6 +89,13 @@ public class PlayerEntityRendererMixin {
                     rgbColors[2],
                     0.5F);
             matrixStack.pop();
+        }
+    }
+    @Inject(method = "getArmPose", at = @At("RETURN"), cancellable = true)
+    private static void mythicmetals$mythrilDrillPose(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
+        var stack = player.getStackInHand(hand);
+        if (stack.getItem() instanceof MythrilDrill drill && drill.isActive(stack)) {
+            cir.setReturnValue(BipedEntityModel.ArmPose.CROSSBOW_CHARGE);
         }
     }
 }

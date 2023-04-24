@@ -1,7 +1,9 @@
 package nourl.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import io.wispforest.owo.Owo;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
@@ -83,6 +85,8 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract boolean canHaveStatusEffect(StatusEffectInstance effect);
+
+    @Shadow public abstract ItemStack getStackInHand(Hand hand);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -285,6 +289,17 @@ public abstract class LivingEntityMixin extends Entity {
             if (source instanceof AreaEffectCloudEntity cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
                 RegisterCriteria.RECIEVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
             }
+        }
+    }
+
+    @Inject(method = "swingHand(Lnet/minecraft/util/Hand;Z)V", at = @At("HEAD"), cancellable = true)
+    private void mythicmetals$cancelSwingOnActiveMythrilDrill(Hand hand, boolean fromServerPlayer, CallbackInfo ci) {
+        if (this.world.isClient && !MinecraftClient.getInstance().getEntityRenderDispatcher().camera.isThirdPerson()) {
+            return;
+        }
+        var stack = this.getStackInHand(hand);
+        if (stack.getItem() instanceof MythrilDrill drill && drill.isActive(stack)) {
+            ci.cancel();
         }
     }
 }
