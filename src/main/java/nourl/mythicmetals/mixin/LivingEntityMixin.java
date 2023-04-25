@@ -1,8 +1,6 @@
 package nourl.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import io.wispforest.owo.Owo;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -27,7 +25,6 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
-import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MythicParticleSystem;
@@ -61,9 +58,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract boolean damage(DamageSource source, float amount);
-
-    @Shadow
-    public abstract @Nullable LivingEntity getAttacker();
 
     @Shadow
     public abstract boolean hasStatusEffect(StatusEffect effect);
@@ -176,23 +170,6 @@ public abstract class LivingEntityMixin extends Entity {
             var rng = r.nextInt(200);
             if (rng == 33 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
         }
-    }
-
-    @Inject(method = "dropXp", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/ExperienceOrbEntity;spawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/Vec3d;I)V"))
-    private void mythicmetals$damageCarmotStaffOnXpDrop(CallbackInfo ci) {
-        // Find the attacker, and if they exist damage their carmot staff if it's in their offhand
-        var attacker = this.getAttacker();
-
-        if (attacker == null || this.isPlayer()) return;
-
-        // If the user has a Carmot Staff in the offhand, damage their tool
-        if (attacker.getStackInHand(Hand.OFF_HAND).getItem().equals(MythicTools.CARMOT_STAFF)) {
-            var staff = attacker.getStackInHand(Hand.OFF_HAND);
-            if (CarmotStaff.hasBlockInStaff(staff, Blocks.LAPIS_BLOCK)) {
-                staff.damage(1, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
-            }
-        }
-
     }
 
     private void mythicmetals$addArmorEffects() {

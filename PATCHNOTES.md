@@ -2,6 +2,7 @@
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
 - Changed the animations of the Mythril Drill
 - Revealed the Palladium advancements and made them more clear
+- Remove the Lapis Block Carmot Staff ability durability damage when in off-hand
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
