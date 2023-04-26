@@ -15,6 +15,7 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.loot.LootTables;
+import net.minecraft.registry.OneTwentyBuiltinRegistries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import nourl.mythicmetals.abilities.Abilities;
@@ -45,7 +46,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
     public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"),
-            () -> Icon.of(MythicItems.STORMYX.getIngot())).initializer(group -> {
+                    () -> Icon.of(MythicItems.STORMYX.getIngot())).initializer(group -> {
                 group.addTab(Icon.of(MythicItems.ADAMANTITE.getIngot()), "items", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("item_tab")), false);
                 group.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("blocks")), false);
                 group.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("tool_tab")), false);
@@ -65,6 +66,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicItems.class, false);
         FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
         }

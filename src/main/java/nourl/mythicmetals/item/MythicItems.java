@@ -4,11 +4,16 @@ import io.wispforest.owo.itemgroup.OwoItemSettings;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
+import net.minecraft.item.SmithingTemplateItem;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.misc.RegistryHelper;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
@@ -77,6 +82,48 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         public Class<CopperSet> getTargetFieldType() {
             return CopperSet.class;
         }
+    }
+
+    public static class Templates implements ItemRegistryContainer {
+        public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.unobtainium.applies_to").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.unobtainium.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.unobtainium.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.unobtainium.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.unobtainium.additions_slot_description"),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
+        );
+
+        public static final Item MYTHRIL_DRILL_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.mythril_drill.applies_to").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.mythril_drill.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.mythril_drill.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.mythril_drill.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.mythril_drill.additions_slot_description"),
+                List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
+                List.of(RegistryHelper.id("item/template/empty_slot_engine"))
+        );
+
+        public static final Item MIDAS_FOLDING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.midas_folding.applies_to").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.additions_slot_description"),
+                List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
+                List.of(RegistryHelper.id("item/template/empty_slot_engine"))
+        );
+
+        public static final Item GILDED_MIDAS_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.gilded_midas.applies_to").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.gilded_midas.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.gilded_midas.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.gilded_midas.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.gilded_midas.additions_slot_description"),
+                List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
+                List.of(RegistryHelper.id("item/template/empty_slot_engine"))
+        );
     }
 
 }

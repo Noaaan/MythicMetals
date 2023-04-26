@@ -1,5 +1,5 @@
 {
-  "type": "mythicmetals:legacy_mythril_drill_smithing_recipe",
+  "type": "mythicmetals:mythril_drill_upgrade",
   "base": {
     "item": "mythicmetals:mythril_drill"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "mythicmetals:mythril_drill"
+  },
+  "template": {
+    "item": "mythicmetals:mythril_drill_smithing_template"
   }
 }

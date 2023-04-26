@@ -698,6 +698,30 @@
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
+  "smithing_template.mythicmetals.mythril_drill.title": "Mythril Drill",
+  "smithing_template.mythicmetals.mythril_drill.applies_to": "Mythril Pickaxe",
+  "smithing_template.mythicmetals.mythril_drill.ingredients": "Durasteel Engine",
+  "smithing_template.mythicmetals.mythril_drill.base_slot_description": "Put a Mythril Pickaxe here",
+  "smithing_template.mythicmetals.mythril_drill.additions_slot_description": "Put a Durasteel Engine here",
+
+  "smithing_template.mythicmetals.midas_folding.title": "Midas Gold Sword Folding",
+  "smithing_template.mythicmetals.midas_folding.applies_to": "Midas Gold Swords",
+  "smithing_template.mythicmetals.midas_folding.ingredients": "Midas Gold Block",
+  "smithing_template.mythicmetals.midas_folding.base_slot_description": "Put any Midas Gold Sword here",
+  "smithing_template.mythicmetals.midas_folding.additions_slot_description": "Put your Midas Gold Blocks here",
+
+  "smithing_template.mythicmetals.gilded_midas.title": "Gilded Midas Sword Upgrade",
+  "smithing_template.mythicmetals.gilded_midas.applies_to": "Midas Gold Sword",
+  "smithing_template.mythicmetals.gilded_midas.ingredients": "Midas Gold Block",
+  "smithing_template.mythicmetals.gilded_midas.base_slot_description": "Put a regular Midas Gold Sword here",
+  "smithing_template.mythicmetals.gilded_midas.additions_slot_description": "Put one more Midas Gold Blocks here",
+
+  "smithing_template.mythicmetals.unobtainium.title": "Unobtainium Alloy Upgrade",
+  "smithing_template.mythicmetals.unobtainium.applies_to": "Netherite or Diamond Equipment",
+  "smithing_template.mythicmetals.unobtainium.ingredients": "Metallurgium or Celestium Ingot",
+  "smithing_template.mythicmetals.unobtainium.base_slot_description": "For Metallurgium put a piece of Netherite Equipment here. For Celestium put a piece of Diamond Equipment here",
+  "smithing_template.mythicmetals.unobtainium.additions_slot_description": "Depending on your choice, put a Metallurgium or Celestium Ingot here",
+
   "attribute.name.generic.mythicmetals.fire_vulnerability": "Fire Vulnerability",
   "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite",
   "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Wormhole Special",

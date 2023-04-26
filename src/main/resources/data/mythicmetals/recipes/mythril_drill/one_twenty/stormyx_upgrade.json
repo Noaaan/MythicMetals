@@ -1,10 +1,13 @@
 {
-  "type": "mythicmetals:legacy_mythril_drill_smithing_recipe",
+  "type": "mythicmetals:mythril_drill_upgrade",
   "base": {
     "item": "mythicmetals:mythril_drill"
   },
   "addition": {
     "item": "mythicmetals:stormyx_shell"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
   },
   "result": {
     "item": "mythicmetals:mythril_drill"

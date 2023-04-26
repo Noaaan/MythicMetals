@@ -3,6 +3,7 @@ package nourl.mythicmetals.item.tools;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
@@ -11,32 +12,31 @@ import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
-public class DrillUpgradeSmithingRecipe extends LegacySmithingRecipe implements SmithingRecipe {
+public class DrillUpgradeRecipe implements SmithingRecipe {
     final Ingredient base;
     final Ingredient addition;
-    //final Ingredient template;
+    final Ingredient template;
     final ItemStack result;
     final Identifier id;
 
-    public DrillUpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result, Identifier id) {
-        super(id, base, addition, result);
+    public DrillUpgradeRecipe(Ingredient base, Ingredient addition, Ingredient template, ItemStack result, Identifier id) {
         this.base = base;
         this.addition = addition;
-        //this.template = template;
+        this.template = template;
         this.result = result;
         this.id = id;
     }
 
     @Override
     public boolean matches(Inventory inventory, World world) {
-        if (this.base.test(inventory.getStack(0)) && this.addition.test(inventory.getStack(1))) {
-            var drill = inventory.getStack(0);
+        if (this.template.test(inventory.getStack(0)) && this.base.test(inventory.getStack(1)) && this.addition.test(inventory.getStack(2))) {
+            var drill = inventory.getStack(1);
 
             // If both upgrade slots are filled, you are not able to upgrade
             if (drill.has(MythrilDrill.UPGRADE_SLOT_ONE) && drill.has(MythrilDrill.UPGRADE_SLOT_TWO)) return false;
 
             // Return if upgrade is already on drill, as they are unique
-            if (MythrilDrill.hasUpgradeItem(drill, inventory.getStack(1).getItem())) return false;
+            if (MythrilDrill.hasUpgradeItem(drill, inventory.getStack(2).getItem())) return false;
 
             // If any slot is empty, you can upgrade the drill
             return !drill.has(MythrilDrill.UPGRADE_SLOT_ONE) || !drill.has(MythrilDrill.UPGRADE_SLOT_TWO);
@@ -49,7 +49,12 @@ public class DrillUpgradeSmithingRecipe extends LegacySmithingRecipe implements 
     @Override
     public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
         var drillStack = this.result.copy();
-        var upgradeItem = inventory.getStack(1).getItem();
+        var upgradeItem = inventory.getStack(2).getItem();
+
+        NbtCompound nbtCompound = inventory.getStack(1).getNbt();
+        if (nbtCompound != null) {
+            drillStack.setNbt(nbtCompound.copy());
+        }
 
         if (drillStack.getItem().equals(MythicTools.MYTHRIL_DRILL)) {
             if (!drillStack.has(MythrilDrill.UPGRADE_SLOT_ONE)) {
@@ -75,13 +80,12 @@ public class DrillUpgradeSmithingRecipe extends LegacySmithingRecipe implements 
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RegisterRecipeSerializers.MYTHRIL_DRILL_SMITHING_RECIPE;
+        return RegisterRecipeSerializers.DRILL_UPGRADE_RECIPE;
     }
 
     @Override
     public boolean testTemplate(ItemStack stack) {
-        return false;
-        //return this.template.test(stack);
+        return this.template.test(stack);
     }
 
     @Override
@@ -94,26 +98,27 @@ public class DrillUpgradeSmithingRecipe extends LegacySmithingRecipe implements 
         return this.addition.test(stack);
     }
 
-    public static class Serializer implements RecipeSerializer<DrillUpgradeSmithingRecipe> {
-            public DrillUpgradeSmithingRecipe read(Identifier identifier, JsonObject jsonObject) {
+    public static class Serializer implements RecipeSerializer<DrillUpgradeRecipe> {
+            public DrillUpgradeRecipe read(Identifier identifier, JsonObject jsonObject) {
                 Ingredient base = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
                 Ingredient addition = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
-                //Ingredient template = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
+                Ingredient template = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
                 ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-                return new DrillUpgradeSmithingRecipe(base, addition, itemStack, identifier);
+                return new DrillUpgradeRecipe(base, addition, template, itemStack, identifier);
             }
 
-            public DrillUpgradeSmithingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
+            public DrillUpgradeRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
                 Ingredient base = Ingredient.fromPacket(packetByteBuf);
                 Ingredient addition = Ingredient.fromPacket(packetByteBuf);
-                //Ingredient template = Ingredient.fromPacket(packetByteBuf);
+                Ingredient template = Ingredient.fromPacket(packetByteBuf);
                 ItemStack itemStack = packetByteBuf.readItemStack();
-                return new DrillUpgradeSmithingRecipe(base, addition, itemStack, identifier);
+                return new DrillUpgradeRecipe(base, addition, template, itemStack, identifier);
             }
 
-            public void write(PacketByteBuf packetByteBuf, DrillUpgradeSmithingRecipe smithingRecipe) {
+            public void write(PacketByteBuf packetByteBuf, DrillUpgradeRecipe smithingRecipe) {
                 smithingRecipe.base.write(packetByteBuf);
                 smithingRecipe.addition.write(packetByteBuf);
+                smithingRecipe.template.write(packetByteBuf);
                 packetByteBuf.writeItemStack(smithingRecipe.result);
             }
     }
