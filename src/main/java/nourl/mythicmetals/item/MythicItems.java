@@ -106,8 +106,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         );
 
         public static final Item MIDAS_FOLDING_TEMPLATE = new SmithingTemplateItem(
-                Text.translatable("smithing_template.mythicmetals.midas_folding.applies_to").formatted(Formatting.BLUE),
-                Text.translatable("smithing_template.mythicmetals.midas_folding.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.applies_to").formatted(Formatting.GOLD),
+                Text.translatable("smithing_template.mythicmetals.midas_folding.ingredients").formatted(Formatting.GOLD),
                 Text.translatable("smithing_template.mythicmetals.midas_folding.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.midas_folding.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.midas_folding.additions_slot_description"),
@@ -115,12 +115,12 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 List.of(RegistryHelper.id("item/template/empty_slot_engine"))
         );
 
-        public static final Item GILDED_MIDAS_SMITHING_TEMPLATE = new SmithingTemplateItem(
-                Text.translatable("smithing_template.mythicmetals.gilded_midas.applies_to").formatted(Formatting.BLUE),
-                Text.translatable("smithing_template.mythicmetals.gilded_midas.ingredients").formatted(Formatting.BLUE),
-                Text.translatable("smithing_template.mythicmetals.gilded_midas.title").formatted(Formatting.GRAY),
-                Text.translatable("smithing_template.mythicmetals.gilded_midas.base_slot_description"),
-                Text.translatable("smithing_template.mythicmetals.gilded_midas.additions_slot_description"),
+        public static final Item ROYAL_MIDAS_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.royal_midas.applies_to").formatted(Formatting.GOLD),
+                Text.translatable("smithing_template.mythicmetals.royal_midas.ingredients").formatted(Formatting.GOLD),
+                Text.translatable("smithing_template.mythicmetals.royal_midas.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.royal_midas.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.royal_midas.additions_slot_description"),
                 List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
                 List.of(RegistryHelper.id("item/template/empty_slot_engine"))
         );

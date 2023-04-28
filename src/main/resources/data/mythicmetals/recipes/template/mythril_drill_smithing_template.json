@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "dtd",
+    "dmd",
+    "ddd"
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:deepslate"
+    },
+    "t": {
+      "item": "mythicmetals:mythril_drill_smithing_template"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:mythril_drill_smithing_template",
+    "count": 2
+  }
+}

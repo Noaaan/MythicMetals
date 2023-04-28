@@ -174,14 +174,35 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private void registerModelPredicates() {
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
 
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
 
-        ModelPredicateProviderRegistry.register(MythicTools.MYTHRIL_DRILL, new Identifier("is_active"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.MYTHRIL_DRILL, new Identifier("is_active"),
                 (stack, world, entity, seed) -> stack.get(MythrilDrill.IS_ACTIVE) ? 0 : 1);
+
+        ModelPredicateProviderRegistry.register(MythicTools.MIDAS_GOLD_SWORD, new Identifier("midas_gold_count"),
+                (stack, world, entity, seed) -> {
+                    int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+                    return MidasGoldSword.countGold(goldCount);
+                });
+
+        ModelPredicateProviderRegistry.register(MythicTools.GILDED_MIDAS_GOLD_SWORD, new Identifier("midas_gold_count"),
+                (stack, world, entity, seed) -> {
+                    int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+                    return MidasGoldSword.countGold(goldCount);
+                });
+
+        ModelPredicateProviderRegistry.register(MythicTools.ROYAL_MIDAS_GOLD_SWORD, new Identifier("midas_gold_count"),
+                (stack, world, entity, seed) -> {
+                    int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+                    return MidasGoldSword.countGold(goldCount);
+                });
 
         ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, new Identifier("blocking"), new ShieldUsePredicate());
 

@@ -70,12 +70,14 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item CARMOT_STAFF = new CarmotStaff(MythicToolMaterials.CARMOT_STAFF, -3.0F,
             new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
-    public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
-            new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
-
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2F,
             new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2), 1);
+    public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
+            new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item GILDED_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
+            new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
+
+    public static final Item ROYAL_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     public static final Item RUNITE_ARROW = new RuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
@@ -111,8 +113,9 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("carmot_staff", CARMOT_STAFF);
         RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);
         RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
-        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
+        RegistryHelper.item("royal_midas_gold_sword", ROYAL_MIDAS_GOLD_SWORD);
+        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
         RegistryHelper.item("runite_arrow", RUNITE_ARROW);
         RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);

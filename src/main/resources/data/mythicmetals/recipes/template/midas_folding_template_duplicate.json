@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "gtg",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "item": "mythicmetals:midas_gold_nugget"
+    },
+    "t": {
+      "item": "mythicmetals:midas_folding_template"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:midas_folding_template",
+    "count": 2
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ]
+}

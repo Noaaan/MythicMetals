@@ -23,6 +23,8 @@ import java.util.List;
 public class MidasGoldSword extends SwordItem {
 
     public static final NbtKey<Integer> GOLD_FOLDED = new NbtKey<>("GoldFolded", NbtKey.Type.INT);
+    public static final NbtKey<Boolean> IS_GILDED = new NbtKey<>("IsGilded", NbtKey.Type.BOOLEAN);
+    public static final NbtKey<Boolean> IS_ROYAL = new NbtKey<>("IsRoyal", NbtKey.Type.BOOLEAN);
 
     public MidasGoldSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -42,15 +44,11 @@ public class MidasGoldSword extends SwordItem {
 
             float baseDamage = getAttackDamage();
 
-            int bonus = MathHelper.clamp(MathHelper.floor((float) goldCount / 64), 0, 5);
+            int bonus = MathHelper.clamp(MathHelper.floor((float) goldCount / 64), 0, 6);
 
-            if (goldCount >= 640) {
+            if (goldCount >= 1280) {
                 bonus += 1;
             }
-
-//            if (goldCount >= 1280) {
-//                bonus += 1;
-//            } - What? Its like I have something planned... Just you wait :)
 
             mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", baseDamage + bonus, EntityAttributeModifier.Operation.ADDITION));
 
@@ -68,34 +66,69 @@ public class MidasGoldSword extends SwordItem {
         }
 
         int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+        int level = calculateSwordLevel(goldCount);
 
-        if (goldCount < 64) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.0").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 64").formatted(Formatting.GOLD));
+        if (level > 20) {
+            level = 20 + level / 6;
         }
-        if (goldCount >= 64 && goldCount < 128) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.1").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 128").formatted(Formatting.GOLD));
+
+        // Spout fun facts and lore while leveling up the sword
+        lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level." + level).formatted(Formatting.GOLD));
+        if (goldCount == 0) {
+            return;
         }
-        if (goldCount >= 128 && goldCount < 192) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.2").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 192").formatted(Formatting.GOLD));
+
+        // Remove the cap from tooltip when maxed
+        if (goldCount >= 1280) {
+            if (goldCount == 10000) {
+                // e.g. Folds: 10000 **MAXED**
+                lines.add(lineIndex + 1, Text.translatable("tooltip.midas_gold.maxed", goldCount).formatted(Formatting.GOLD, Formatting.BOLD));
+            } else {
+                // e.g. Folds: 2500
+                lines.add(lineIndex + 1, Text.translatable("tooltip.midas_gold.fold_counter", goldCount).formatted(Formatting.GOLD));
+            }
+            return;
         }
-        if (goldCount >= 192 && goldCount < 256) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.3").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 256").formatted(Formatting.GOLD));
+
+        // Handle the cap format
+        if (stack.has(IS_ROYAL)) {
+            // e.g. 63/128
+            lines.add(lineIndex + 1, Text.literal(goldCount + " / " + 1280).formatted(Formatting.GOLD));
+        } else if (stack.has(IS_GILDED)) {
+            // e.g. 63/128
+            lines.add(lineIndex + 1, Text.literal(goldCount + " / " + 640).formatted(Formatting.GOLD));
+        } else {
+            // e.g. 63/128
+            lines.add(lineIndex + 1, Text.literal(goldCount + " / " + (64 + level * 64)).formatted(Formatting.GOLD));
         }
-        if (goldCount >= 256 && goldCount < 320) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.4").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 320").formatted(Formatting.GOLD));
-        }
-        if (goldCount >= 320 && goldCount < 640) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.5").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 320").formatted(Formatting.GOLD));
-        }
-        if (goldCount >= 640) {
-            lines.add(lineIndex, Text.translatable("tooltip.midas_gold.level.grass").formatted(Formatting.GOLD));
-            lines.add(lineIndex + 1, Text.literal(goldCount + " / 640").formatted(Formatting.GOLD));
-        }
+
+    }
+
+    public static float countGold(int goldCount) {
+        if (goldCount >= 1280) return 1.0f;
+        return switch (goldCount / 64) {
+            case 1 -> 0.1f;
+            case 2, 3 -> 0.2f;
+            case 4 -> 0.3f;
+            case 5, 6, 7, 8, 9 -> 0.4f;
+            case 10,11 -> 0.5f;
+            case 12,13 -> 0.6f;
+            case 14,15 -> 0.7f;
+            case 16,17 -> 0.8f;
+            case 18 -> 0.9f;
+            case 19 -> 1.0f;
+            default -> 0.0f;
+        };
+    }
+
+    /**
+     * Calculates a level from intervals of 64.
+     * Used for appending specific text to a Midas Gold Sword tooltip
+     * @param goldCount The amount of gold that is currently applied on this stack
+     * @return amount of gold divided by 64, or 0 if less than 64 gold
+     */
+    public static int calculateSwordLevel(int goldCount) {
+        if (goldCount < 64) return 0;
+        return (goldCount / 64);
     }
 }

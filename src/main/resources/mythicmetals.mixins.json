@@ -29,8 +29,9 @@
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
-    "WorldRendererInvoker",
-    "TranslationStorageMixin"
+    "SmithingScreenMixin",
+    "TranslationStorageMixin",
+    "WorldRendererInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

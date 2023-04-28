@@ -82,11 +82,6 @@ public class LegacyMidasFoldingRecipe extends LegacySmithingRecipe implements Sm
     }
 
     @Override
-    public boolean testTemplate(ItemStack stack) {
-        return false;
-    }
-
-    @Override
     public boolean testBase(ItemStack stack) {
         return this.base.test(stack);
     }
