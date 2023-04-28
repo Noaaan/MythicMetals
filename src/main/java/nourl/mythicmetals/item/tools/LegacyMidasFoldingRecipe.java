@@ -40,7 +40,7 @@ public class LegacyMidasFoldingRecipe extends LegacySmithingRecipe implements Sm
 
     @Override
     public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
-        var itemStack = this.result.copy();
+        var itemStack = inventory.getStack(0).copy();
         if (itemStack.getItem().equals(MythicTools.MIDAS_GOLD_SWORD)) {
 
             int goldCount = itemStack.get(MidasGoldSword.GOLD_FOLDED);
