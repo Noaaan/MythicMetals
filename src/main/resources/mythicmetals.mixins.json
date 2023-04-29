@@ -29,6 +29,7 @@
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
+    "ItemRendererMixin",
     "SmithingScreenMixin",
     "TranslationStorageMixin",
     "WorldRendererInvoker"
