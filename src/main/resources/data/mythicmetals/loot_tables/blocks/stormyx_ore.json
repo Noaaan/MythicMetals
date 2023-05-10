@@ -32,7 +32,7 @@
               "name": "mythicmetals:stormyx_shell",
               "conditions": [
                 {
-                  "condition": "minecraft:random_chance",
+                  "condition": "mythicmetals:random_chance_with_luck",
                   "chance": 0.02
                 }
               ],
