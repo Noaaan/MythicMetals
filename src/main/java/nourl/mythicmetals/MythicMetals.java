@@ -15,7 +15,6 @@ import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.loot.LootTables;
-import net.minecraft.registry.OneTwentyBuiltinRegistries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import nourl.mythicmetals.abilities.Abilities;
