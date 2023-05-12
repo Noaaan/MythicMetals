@@ -1,0 +1,37 @@
+{
+  "parent": "mythicmetals:royal_midas_smithing_template",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.maxed_royal_midas_gold_sword.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.maxed_royal_midas_gold_sword.description"
+    },
+    "icon": {
+      "item": "mythicmetals:royal_midas_gold_sword",
+      "nbt": "{GoldFolded: 1280}"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "borderline_p2w_korean_mmo_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:royal_midas_gold_sword"
+            ],
+            "nbt": "{GoldFolded: 1280}"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 250
+  }
+}
