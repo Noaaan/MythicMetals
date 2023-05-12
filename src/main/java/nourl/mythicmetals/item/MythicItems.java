@@ -7,12 +7,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.Util;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
@@ -85,13 +88,16 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     }
 
     public static class Templates implements ItemRegistryContainer {
+        public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()), identifiers -> {
+            identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra"));
+        });
         public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.unobtainium.applies_to").formatted(Formatting.BLUE),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.ingredients").formatted(Formatting.BLUE),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.additions_slot_description"),
-                SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+                UNOBTAINIUM_ALLOY_ITEMS,
                 SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
         );
 

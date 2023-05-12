@@ -183,6 +183,7 @@
   "item.mythicmetals.celestium_boots": "Celestium Boots",
   "item.mythicmetals.celestium_chestplate": "Celestium Chestplate",
   "item.mythicmetals.celestium_dust": "Celestium Dust",
+  "item.mythicmetals.celestium_elytra": "Celestium Elytra",
   "item.mythicmetals.celestium_helmet": "Celestium Helmet",
   "item.mythicmetals.celestium_hoe": "Celestium Hoe",
   "item.mythicmetals.celestium_ingot": "Celestium Ingot",
@@ -631,6 +632,7 @@
   "abilities.mythicmetals.depth_strider": "Natural Depth Strider",
   "abilities.mythicmetals.hot": "Branding",
   "abilities.mythicmetals.feather_falling": "Natural Feather Falling",
+  "abilities.mythicmetals.firework_boost": "Firework Boost",
   "abilities.mythicmetals.fire_aspect": "Natural Fire Aspect",
   "abilities.mythicmetals.fire_protection": "Natural Fire Protection",
   "abilities.mythicmetals.knockback": "Natural Knockback",
@@ -772,6 +774,7 @@
   "smithing_template.mythicmetals.unobtainium.additions_slot_description": "Depending on your choice, put a Metallurgium or Celestium Ingot here",
 
   "attribute.name.generic.mythicmetals.fire_vulnerability": "Fire Vulnerability",
+  "attribute.name.generic.mythicmetals.elytra_rocket_speed": "Elytra Rocket Speed",
   "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite",
   "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Wormhole Special",
   "effect.mythicmetals.wormhole_special": "Wormhole Special",

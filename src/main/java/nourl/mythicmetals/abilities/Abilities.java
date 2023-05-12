@@ -16,18 +16,20 @@ public class Abilities {
 
     public static final Ability AQUA_AFFINITY = new Ability("aqua_affinity", 1, false);
     public static final Ability BLAST_MINING = new Ability("blast_mining", 0, false);
-    public static final Ability KNOCKBACK = new Ability("knockback", 3);
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability BONUS_FORTUNE = new Ability("bonus_fortune", 1, false);
     public static final Ability BONUS_LOOTING = new Ability("bonus_looting", 1, false);
+    // Tooltip only, applies to items in #mythicmetals:carmot_armor
     public static final Ability CARMOT_SHIELD = new Ability("carmot_shield", 0, false);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
-    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
+    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
+    public static final Ability KNOCKBACK = new Ability("knockback", 3);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
+    // Tooltip only, applies to items in #mythicmetals:prometheum_tools and armor items in #mythicmetals:prometheum_armor
     public static final Ability MENDING = new Ability("mending", 1, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability RESPIRATION = new Ability("respiration", 2);

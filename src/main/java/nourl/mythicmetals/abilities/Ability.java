@@ -34,8 +34,8 @@ public class Ability {
         this.items = new HashSet<>();
     }
 
-    public Ability(String tranlsationKey, int level, boolean showLevel) {
-        this.tooltip = tranlsationKey;
+    public Ability(String translationKey, int level, boolean showLevel) {
+        this.tooltip = translationKey;
         this.level = level;
         this.items = new HashSet<>();
         this.showLevel = showLevel;
@@ -101,5 +101,9 @@ public class Ability {
                 } else lines.add(text);
             }
         });
+    }
+
+    private void getEntriesFromTag() {
+
     }
 }

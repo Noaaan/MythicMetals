@@ -36,6 +36,7 @@ import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.entity.MythicEntities;
+import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.item.tools.*;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -60,14 +61,15 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerArmorRenderer();
         registerModelPredicates();
 
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, entityRendererFactoryCtx) -> {
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType != EntityType.PLAYER) return;
             registrationHelper.register(
                     new PlayerEnergySwirlFeatureRenderer(
                             (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
-                            entityRendererFactoryCtx.getModelLoader()));
+                            context.getModelLoader()));
         });
 
+        LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
 
         EntityRendererRegistry.register(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);

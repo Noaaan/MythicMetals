@@ -1,5 +1,11 @@
 # 0.18.0
 
+## Celestium Rework
+Celestium is getting some more love this update, and a new Celestium item: the **Celestium Elytra!**
+
+### Celestium Elytra
+A much more durable elytra, which not only has the benefits of being armored, it also speeds up your speed when using Firework Rockets by 20%
+
 ## Smithing Templates 
 Smithing templates are now found across the overworld, with both Armor Trims and gear upgrades.
 Since you need templates for the smithing table, the following Smithing Templates were added:

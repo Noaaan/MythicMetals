@@ -17,6 +17,7 @@
     "DispenserBehaviorMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",
+    "FireworkRocketEntityMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PiglinBrainMixin",
