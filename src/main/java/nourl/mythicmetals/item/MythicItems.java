@@ -111,8 +111,13 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 Text.translatable("smithing_template.mythicmetals.midas_folding.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.midas_folding.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.midas_folding.additions_slot_description"),
-                List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
-                List.of(RegistryHelper.id("item/template/empty_slot_engine"))
+                List.of(
+                        RegistryHelper.id("item/template/empty_slot_midas_dagger"),
+                        RegistryHelper.id("item/template/empty_slot_midas"),
+                        RegistryHelper.id("item/template/empty_slot_gilded_midas"),
+                        RegistryHelper.id("item/template/empty_slot_royal_midas")
+                        ),
+                List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
 
         public static final Item ROYAL_MIDAS_SMITHING_TEMPLATE = new SmithingTemplateItem(
@@ -121,8 +126,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 Text.translatable("smithing_template.mythicmetals.royal_midas.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.royal_midas.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.royal_midas.additions_slot_description"),
-                List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
-                List.of(RegistryHelper.id("item/template/empty_slot_engine"))
+                List.of(RegistryHelper.id("item/template/empty_slot_gilded_midas")),
+                List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
     }
 
