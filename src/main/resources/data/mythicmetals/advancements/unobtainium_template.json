@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:unobtainium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.unobtainium_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.unobtainium_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:unobtainium_smithing_template"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "i_was_jumpscared_five_times_while_hunting_this_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:unobtainium_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

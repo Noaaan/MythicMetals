@@ -8,13 +8,11 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
-import io.wispforest.owo.ops.LootOps;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.loot.LootTables;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import nourl.mythicmetals.abilities.Abilities;
@@ -29,10 +27,7 @@ import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.misc.BlockBreaker;
-import nourl.mythicmetals.misc.MythicCommands;
-import nourl.mythicmetals.misc.MythicParticleSystem;
-import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,7 +35,7 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 11;
+    public static final int CONFIG_VERSION = 10;
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
@@ -89,7 +84,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterRecipeSerializers.init();
         RegisterCriteria.init();
         BlockBreaker.initHammerTime();
-        LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
+        MythicLootOps.init();
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
             LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");

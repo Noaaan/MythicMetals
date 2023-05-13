@@ -5,6 +5,7 @@ import com.google.common.collect.Multimap;
 import io.wispforest.owo.nbt.NbtKey;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -16,6 +17,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import nourl.mythicmetals.item.MythicItems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -28,6 +30,14 @@ public class MidasGoldSword extends SwordItem {
 
     public MidasGoldSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!attacker.getWorld().isClient && stack.has(IS_ROYAL) && stack.get(IS_ROYAL) && target.isDead()) {
+            target.dropItem(MythicItems.MIDAS_GOLD.getNugget());
+        }
+        return super.postHit(stack, target, attacker);
     }
 
     @Override
@@ -70,6 +80,10 @@ public class MidasGoldSword extends SwordItem {
 
         if (level > 20) {
             level = 20 + level / 6;
+        }
+
+        if (goldCount < 704 && stack.get(MidasGoldSword.IS_ROYAL)) {
+            level = 11;
         }
 
         // Spout fun facts and lore while leveling up the sword

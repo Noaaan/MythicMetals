@@ -30,14 +30,14 @@ Since you need templates for the smithing table, the following Smithing Template
   - Can be duplicated for nuggets once you have made one
 
 **NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
-This means you cannot obtain the Royal Midas Sword in regular 1.19.4 worlds. 
+This means you cannot obtain the Royal Midas Gold Sword in regular 1.19.4 worlds. 
 I recommend saving up Midas Gold until you update to 1.20.
 
 ## Midas Gold Sword Rework
 The Midas Gold Sword received a massive rework following this update. 
 As specified above you now need to craft smithing templates in order to fold it, which makes maxing it slightly more expensive. 
 
-There is a rare chance when bartering with Piglins you can find a Royal Midas Gold Sword Upgrade, which lets you upgrade 
+There is a rare chance when bartering with Piglins you can find a **Royal Midas Gold Sword Upgrade**, which lets you upgrade 
 a maxed Gilded Midas Gold Sword one more time...
 
 Are you ready to become the ultimate sword-smith?
@@ -46,7 +46,10 @@ Are you ready to become the ultimate sword-smith?
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
 - Changed the animations of the Mythril Drill
 - Revealed the Palladium advancements and made them more clear
+- Overhauled advancements, adding Smithing Templates and the Mythril Drill to the tree
+- Added advancements for unlocking 
 - Remove the Lapis Block Carmot Staff ability durability damage when in off-hand
+- Added a new loot condition: `mythicmetals:random_chance_with_luck`, which applies Luck directly to the chance modifier when breaking blocks/ores
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)

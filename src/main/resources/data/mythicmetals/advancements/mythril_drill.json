@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:mythril_drill_template",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.mythril_drill_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.mythril_drill_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:mythril_drill"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "diggy_diggy_hole": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:mythril_drill"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

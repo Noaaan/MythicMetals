@@ -31,6 +31,8 @@ public class Abilities {
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     // Tooltip only, applies to items in #mythicmetals:prometheum_tools and armor items in #mythicmetals:prometheum_armor
     public static final Ability MENDING = new Ability("mending", 1, false);
+    // Tooltip only, applies to Royal Midas Gold Swords
+    public static final Ability MIDAS_TOUCH = new Ability("midas_touch", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability RESPIRATION = new Ability("respiration", 2);
     public static final Ability SMITE = new Ability("smite", 3);
@@ -62,6 +64,7 @@ public class Abilities {
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withItalic(true).withColor(Formatting.LIGHT_PURPLE));
         MENDING.addArmorSet(MythicArmor.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
         MENDING.addToolSet(MythicTools.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
+        MIDAS_TOUCH.addItem(MythicTools.ROYAL_MIDAS_GOLD_SWORD, Style.EMPTY.withColor(Formatting.GOLD));
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), Style.EMPTY.withColor(Formatting.GOLD));
         RESPIRATION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
         RESPIRATION.addItem(MythicArmor.AQUARIUM.getLeggings(), Style.EMPTY.withColor(Formatting.AQUA));
