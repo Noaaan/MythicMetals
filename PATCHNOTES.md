@@ -2,9 +2,15 @@
 
 ## Celestium Rework
 Celestium is getting some more love this update, and a new Celestium item: the **Celestium Elytra!**
+The following changes were made for it:
+- Increased the movement speed bonus to 10% per piece (from 8%)
+- Increased Star Platinums damage bonus to 1 per piece (from 0.5)
+- Celestium armor now inherits this damage bonus, meaning all Celestium Armor now has this damage bonus
+- Changed the Celestium Sword texture to be more like a scimitar
 
 ### Celestium Elytra
-A much more durable elytra, which not only has the benefits of being armored, it also speeds up your speed when using Firework Rockets by 20%
+A much more durable elytra. This is an armored elytra, meaning it gives you both armor and toughness. 
+Not only does it have a movement speed bonus, it also speeds up your flying speed when using Firework Rockets by 20%
 
 ## Smithing Templates 
 Smithing templates are now found across the overworld, with both Armor Trims and gear upgrades.

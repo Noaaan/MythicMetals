@@ -19,7 +19,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(MythicArmorMaterials.BRONZE);
     public static final ArmorSet CARMOT = new CarmotArmorSet(MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ArmorSet CELESTIUM = new ArmorSet(MythicArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
+    public static final ArmorSet CELESTIUM = new CelestiumArmorSet(MythicArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final Item CELESTIUM_ELYTRA = new CelestiumElytra(new OwoItemSettings().rarity(Rarity.RARE).group(MythicMetals.TABBED_GROUP).tab(1).maxDamage(832));
     public static final ArmorSet COPPER = new ArmorSet(MythicArmorMaterials.COPPER);
     public static final ArmorSet DURASTEEL = new ArmorSet(MythicArmorMaterials.DURASTEEL);
@@ -31,7 +31,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet MYTHRIL = new ArmorSet(MythicArmorMaterials.MYTHRIL);
     public static final ArmorSet ORICHALCUM = new ArmorSet(MythicArmorMaterials.ORICHALCUM);
     public static final ArmorSet OSMIUM = new ArmorSet(MythicArmorMaterials.OSMIUM);
-    public static final ArmorSet PALLADIUM = new ArmorSet(MythicArmorMaterials.PALLADIUM, Item.Settings::fireproof);
+    public static final ArmorSet PALLADIUM = new ArmorSet(MythicArmorMaterials.PALLADIUM, OwoItemSettings::fireproof);
     public static final ArmorSet PROMETHEUM = new ArmorSet(MythicArmorMaterials.PROMETHEUM);
     public static final ArmorSet RUNITE = new RuniteArmorSet(MythicArmorMaterials.RUNITE);
     public static final ArmorSet SILVER = new ArmorSet(MythicArmorMaterials.SILVER);

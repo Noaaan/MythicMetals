@@ -4,15 +4,16 @@ import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 
-public class RuniteArmorSet extends ArmorSet {
+import java.util.function.Consumer;
 
-    public RuniteArmorSet(ArmorMaterial material) {
-        super(material);
+public class CelestiumArmorSet extends ArmorSet {
+
+    public CelestiumArmorSet(ArmorMaterial material, Consumer<OwoItemSettings> settingsConsumer) {
+        super(material, settingsConsumer);
     }
 
     @Override
     protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, OwoItemSettings settings) {
-        if (slot != ArmorItem.Type.HELMET) return super.makeItem(material, slot, settings);
-        return new RuniteArmor(slot, settings);
+        return new CelestiumArmor(material, slot, settings);
     }
 }
