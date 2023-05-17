@@ -17,17 +17,24 @@ Smithing templates are now found across the overworld, with both Armor Trims and
 Since you need templates for the smithing table, the following Smithing Templates were added:
 - Unobtainium Alloy Upgrade
   - Found in Ancient Cities
-  - Allows you to craft
+  - Allows you to craft Metallurgium and Celestium Gear from Netherite and Diamond respectively
+  - Can be duplicated with Diamonds and Deepslate
 - Royal Midas Gold Sword Upgrade
   - Rarely found when bartering with Piglins using Midas Gold
   - Allows you to upgrade a maxed Gilded Midas Gold Sword into its final form...
+  - Can be duplicated with Diamonds and Deepslate
 - Mythril Drill Upgrade
   - Found in Mineshafts
   - Upgrades a Mythril Pickaxe, using a Durasteel engine, into a Mythril Drill
+  - Can be duplicated with Diamonds and Deepslate
 - Midas Gold Folding
   - Crafted in the crafting table using Midas Gold and Netherrack
   - Used to increase the gold counter on any Midas Gold Swords by 1
   - Can be duplicated for nuggets once you have made one
+- Carmot Staff
+  - Found in Village Temple chests. In vanilla this only spawns in Desert Village Temples
+    - Not to be confused with Desert Temples, which resemble pyramids. The structure you are looking for is more like a small sandstone castle
+  - Can be duplicated with Diamonds and Smooth Basalt
 
 **NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
 This means you cannot obtain the Royal Midas Gold Sword in regular 1.19.4 worlds. 
@@ -38,7 +45,7 @@ The Midas Gold Sword received a massive rework following this update.
 As specified above you now need to craft smithing templates in order to fold it, which makes maxing it slightly more expensive. 
 
 There is a rare chance when bartering with Piglins you can find a **Royal Midas Gold Sword Upgrade**, which lets you upgrade 
-a maxed Gilded Midas Gold Sword one more time...
+a maxed Gilded Midas Gold Sword one more time... Some even say it comes with a special ability which should help with obtaining more gold.
 
 Are you ready to become the ultimate sword-smith?
 
