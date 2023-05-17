@@ -1,14 +1,14 @@
 {
-  "parent": "mythicmetals:mythril_drill_template",
+  "parent": "mythicmetals:carmot",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.mythril_drill.title"
+      "translate": "advancement.mythicmetals.carmot_staff_template.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.mythril_drill.description"
+      "translate": "advancement.mythicmetals.carmot_staff_template.description"
     },
     "icon": {
-      "item": "mythicmetals:mythril_drill"
+      "item": "mythicmetals:carmot_staff_smithing_template"
     },
     "frame": "goal",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "diggy_diggy_hole": {
+    "beckers_secret_recipe": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:mythril_drill"
+              "mythicmetals:carmot_staff_smithing_template"
             ]
           }
         ]

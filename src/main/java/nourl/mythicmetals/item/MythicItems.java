@@ -5,12 +5,14 @@ import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.item.SmithingTemplateItem;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Util;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.misc.MetalColors;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
 
@@ -133,6 +135,16 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 Text.translatable("smithing_template.mythicmetals.royal_midas.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.royal_midas.additions_slot_description"),
                 List.of(RegistryHelper.id("item/template/empty_slot_gilded_midas")),
+                List.of(RegistryHelper.id("item/template/empty_slot_block"))
+        );
+
+        public static final Item CARMOT_STAFF_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.carmot_staff.applies_to").setStyle(Style.EMPTY.withColor(MetalColors.CARMOT.rgb())),
+                Text.translatable("smithing_template.mythicmetals.carmot_staff.ingredients").setStyle(Style.EMPTY.withColor(MetalColors.CARMOT.rgb())),
+                Text.translatable("smithing_template.mythicmetals.carmot_staff.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.carmot_staff.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.carmot_staff.additions_slot_description"),
+                List.of(RegistryHelper.id("item/template/empty_slot_kyber_shovel")),
                 List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
     }

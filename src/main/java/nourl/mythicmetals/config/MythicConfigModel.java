@@ -66,6 +66,9 @@ public class MythicConfigModel {
     public boolean enableAnvils = true;
     @ExcludeFromScreen
     public int configVersion = MythicMetals.CONFIG_VERSION;
+    public float unobtainiumTemplateChance = 0.25f;
+    public float mythrilDrillTemplateChance = 0.5f;
+    public float carmotStaffTemplateChance = 0.9f;
     @RestartRequired
     public boolean disableFunny = false;
     public int banglumNukeCoreRadius = 32;

@@ -557,7 +557,9 @@
   "advancement.mythicmetals.bronze.title": "Bronze Age Collapse",
   "advancement.mythicmetals.carmot.description": "Find Carmot around the top of the Deepslate layer",
   "advancement.mythicmetals.carmot.title": "Alchemical Miracle",
-  "advancement.mythicmetals.carmot_staff.description": "Use a Carmot Block to create a Carmot Staff, which changes abiltiies depending on the block inside",
+  "advancement.mythicmetals.carmot_staff_template.description": "Find a Village Temple chest and obtain a Carmot Staff Smithing Template",
+  "advancement.mythicmetals.carmot_staff_template.title": "The Myths Were True",
+  "advancement.mythicmetals.carmot_staff.description": "Use a Carmot Block and a Kyber Shovel to create a Carmot Staff, which changes abilities depending on the block inside",
   "advancement.mythicmetals.carmot_staff.title": "Carmot vs. Minecraft",
   "advancement.mythicmetals.celestium.description": "Forge Celestium from Star Platinum, Kyber, Carmot, and Unobtainium",
   "advancement.mythicmetals.celestium.title": "Unstoppable Force",
@@ -754,6 +756,12 @@
   "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
+
+  "smithing_template.mythicmetals.carmot_staff.title": "Carmot Staff",
+  "smithing_template.mythicmetals.carmot_staff.applies_to": "Kyber Shovel",
+  "smithing_template.mythicmetals.carmot_staff.ingredients": "Carmot Block",
+  "smithing_template.mythicmetals.carmot_staff.base_slot_description": "Put a Kyber Shovel here",
+  "smithing_template.mythicmetals.carmot_staff.additions_slot_description": "Put a Carmot Block here",
 
   "smithing_template.mythicmetals.mythril_drill.title": "Mythril Drill Upgrade",
   "smithing_template.mythicmetals.mythril_drill.applies_to": "Mythril Pickaxe",
