@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ccc",
+    "cmc",
+    "ccc"
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:tuff"
+    },
+    "c": {
+      "item": "mythicmetals:banglum_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:legendary_banglum_smithing_template",
+    "count": 1
+  },
+  "group": "banglum_template"
+}

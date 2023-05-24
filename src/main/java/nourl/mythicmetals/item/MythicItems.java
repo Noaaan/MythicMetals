@@ -147,6 +147,36 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 List.of(RegistryHelper.id("item/template/empty_slot_kyber_shovel")),
                 List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
+
+        public static final Item AEGIS_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.aegis.applies_to").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.aegis.ingredients").formatted(Formatting.BLUE),
+                Text.translatable("smithing_template.mythicmetals.aegis.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.aegis.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.aegis.additions_slot_description"),
+                List.of(RegistryHelper.id("item/template/empty_slot_kyber_shovel")),
+                List.of(RegistryHelper.id("item/template/empty_slot_block"))
+        );
+
+        public static final Item CARMOT_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.carmot.applies_to").setStyle(Style.EMPTY.withColor(MetalColors.KYBER.rgb())),
+                Text.translatable("smithing_template.mythicmetals.carmot.ingredients").setStyle(Style.EMPTY.withColor(MetalColors.CARMOT.rgb())),
+                Text.translatable("smithing_template.mythicmetals.carmot.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.carmot.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.carmot.additions_slot_description"),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
+        );
+
+        public static final Item LEGENDARY_BANGLUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.legendary_banglum.applies_to").setStyle(Style.EMPTY.withColor(MetalColors.BANGLUM.rgb())),
+                Text.translatable("smithing_template.mythicmetals.legendary_banglum.ingredients").setStyle(Style.EMPTY.withColor(MetalColors.BANGLUM.rgb())),
+                Text.translatable("smithing_template.mythicmetals.legendary_banglum.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.legendary_banglum.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.legendary_banglum.additions_slot_description"),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+                List.of(RegistryHelper.id("item/template/empty_slot_chunk"))
+        );
     }
 
 }

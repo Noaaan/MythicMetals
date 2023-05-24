@@ -13,8 +13,9 @@ A much more durable elytra. This is an armored elytra, meaning it gives you both
 Not only does it have a movement speed bonus, it also speeds up your flying speed when using Firework Rockets by 20%
 
 ## Smithing Templates 
-Smithing templates are now found across the overworld, with both Armor Trims and gear upgrades.
-Since you need templates for the smithing table, the following Smithing Templates were added:
+To comform with the Smithing Table rework you can now find and craft various Smithing Templates. 
+These are found across the world, or crafted from certain materials.
+The following Smithing Templates were added:
 - Unobtainium Alloy Upgrade
   - Found in Ancient Cities
   - Allows you to craft Metallurgium and Celestium Gear from Netherite and Diamond respectively
@@ -35,6 +36,13 @@ Since you need templates for the smithing table, the following Smithing Template
   - Found in Village Temple chests. In vanilla this only spawns in Desert Village Temples
     - Not to be confused with Desert Temples, which resemble pyramids. The structure you are looking for is more like a small sandstone castle
   - Can be duplicated with Diamonds and Smooth Basalt
+- Carmot Upgrade
+  - Crafted from Carmot, Diamonds, and Smooth Basalt
+  - Upgrades Kyber Gear into its Carmot equivalent
+  - Can be duplicated using Carmot, Smooth Basalt, and Carmot Nuggets
+- Legendary Banglum Upgrade
+  - Crafted from Banglum Ingots and Tuff
+  - Upgrades Banglum Gear to its Legendary variant using a Banglum Chunk
 
 **NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
 This means you cannot obtain the Royal Midas Gold Sword in regular 1.19.4 worlds. 
@@ -48,6 +56,10 @@ There is a rare chance when bartering with Piglins you can find a **Royal Midas 
 a maxed Gilded Midas Gold Sword one more time... Some even say it comes with a special ability which should help with obtaining more gold.
 
 Are you ready to become the ultimate sword-smith?
+
+## Mythril Drill Upgrades
+The old drill crafting required a Smithing Table to upgrade the drill. You can now right-click Drill Upgrade Items onto it instead. 
+These have a special tooltip indicating that they can be put into the drill.
 
 ## Other changes
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)

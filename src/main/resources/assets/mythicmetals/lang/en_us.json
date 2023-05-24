@@ -621,7 +621,7 @@
   "advancement.mythicmetals.stormyx_shell.title": "The Nether Diamond",
   "advancement.mythicmetals.stormyx_shield.description": "Create a Stormyx Shield from a Stormyx Shell",
   "advancement.mythicmetals.stormyx_shield.title": "Better Protection Prayer",
-  "advancement.mythicmetals.unobtainium_template.description": "Find a Unobtainium Smithing Template, which allows you to forge powerful gear from Unobtainium-based alloys",
+  "advancement.mythicmetals.unobtainium_template.description": "Find a Unobtainium Smithing Template, which allows you to forge powerful equipment from Unobtainium-based alloys",
   "advancement.mythicmetals.unobtainium_template.title": "Secret of The Sculk",
   "advancement.mythicmetals.unobtainium.description": "Obtain Unobtainium, usually found deep underground",
   "advancement.mythicmetals.unobtainium.title": "How Did You Get This?",
@@ -780,6 +780,18 @@
   "smithing_template.mythicmetals.royal_midas.ingredients": "Midas Gold Block",
   "smithing_template.mythicmetals.royal_midas.base_slot_description": "Put a Gilded Midas Gold Sword here",
   "smithing_template.mythicmetals.royal_midas.additions_slot_description": "Put one more Midas Gold Block here",
+
+  "smithing_template.mythicmetals.carmot.title": "Carmot Upgrade",
+  "smithing_template.mythicmetals.carmot.applies_to": "Kyber Equipment",
+  "smithing_template.mythicmetals.carmot.ingredients": "Carmot Ingot",
+  "smithing_template.mythicmetals.carmot.base_slot_description": "Put a piece of Kyber Equipment here",
+  "smithing_template.mythicmetals.carmot.additions_slot_description": "Put a Carmot Ingot here",
+
+  "smithing_template.mythicmetals.legendary_banglum.title": "Legendary Banglum Upgrade",
+  "smithing_template.mythicmetals.legendary_banglum.applies_to": "Banglum Equipment",
+  "smithing_template.mythicmetals.legendary_banglum.ingredients": "Banglum Chunk",
+  "smithing_template.mythicmetals.legendary_banglum.base_slot_description": "Put a piece of Banglum Equipment here",
+  "smithing_template.mythicmetals.legendary_banglum.additions_slot_description": "Put a Banglum Chunk here",
 
   "smithing_template.mythicmetals.unobtainium.title": "Unobtainium Alloy Upgrade",
   "smithing_template.mythicmetals.unobtainium.applies_to": "Netherite or Diamond Equipment",
