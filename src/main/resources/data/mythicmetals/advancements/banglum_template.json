@@ -1,0 +1,37 @@
+{
+  "parent": "mythicmetals:banglum_chunk",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.banglum_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.banglum_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:legendary_banglum_smithing_template"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "craft_a_banger": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:legendary_banglum_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "craft_a_banger"
+    ]
+  ]
+}
