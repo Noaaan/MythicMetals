@@ -14,6 +14,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
+import nourl.mythicmetals.registry.RegisterSounds;
 
 import java.util.UUID;
 
@@ -29,7 +30,7 @@ public class CelestiumElytra extends ElytraItem implements FabricElytraItem {
 
     @Override
     public SoundEvent getEquipSound() {
-        return super.getEquipSound();
+        return RegisterSounds.EQUIP_CELESTIUM_ELYTRA;
     }
 
     public static boolean isWearing(LivingEntity entity) {
