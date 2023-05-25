@@ -63,12 +63,12 @@ These have a special tooltip indicating that they can be put into the drill.
 
 ## Other changes
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
-- Changed the animations of the Mythril Drill
+- Changed the animations of the Mythril Drill. It now has more lights when active, and a custom holding animation. 
 - Revealed the Palladium advancements and made them more clear
-- Overhauled advancements, adding Smithing Templates and the Mythril Drill to the tree
-- Added advancements for unlocking 
+- Overhauled advancements heavily, adding all Smithing Templates and the Mythril Drill
 - Remove the Lapis Block Carmot Staff ability durability damage when in off-hand
 - Added a new loot condition: `mythicmetals:random_chance_with_luck`, which applies Luck directly to the chance modifier when breaking blocks/ores
+  - While luck does have an effect on the older loot tables, it did not have a sufficient impact on drops. This patch should remedy this
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)

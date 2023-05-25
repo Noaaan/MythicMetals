@@ -38,8 +38,8 @@ public class RandomChanceWithLuckCondition implements LootCondition {
     }
 
     public static class Serializer implements JsonSerializer<RandomChanceWithLuckCondition> {
-        public void toJson(JsonObject jsonObject, RandomChanceWithLuckCondition randomChanceLootCondition, JsonSerializationContext jsonSerializationContext) {
-            jsonObject.addProperty("chance", randomChanceLootCondition.chance);
+        public void toJson(JsonObject jsonObject, RandomChanceWithLuckCondition condition, JsonSerializationContext jsonSerializationContext) {
+            jsonObject.addProperty("chance", condition.chance);
         }
 
         public RandomChanceWithLuckCondition fromJson(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
