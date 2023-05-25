@@ -216,7 +216,9 @@ public class MythrilDrill extends PickaxeItem {
         // Upgrade slots
         var format2 = hasUpgrade(stack, 2) ? Formatting.RESET : Formatting.GRAY;
         var format1 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
-        tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_tip"));
+        if (hasEmptyUpgradeSlot(stack)) {
+            tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_tip"));
+        }
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_2", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 2))).formatted(format2));
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_1", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 1))).formatted(format1));
 
