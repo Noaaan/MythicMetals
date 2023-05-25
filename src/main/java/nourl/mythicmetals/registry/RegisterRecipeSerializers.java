@@ -14,13 +14,11 @@ public class RegisterRecipeSerializers {
 
     public static final RecipeSerializer<TippedRuniteArrowRecipe> TIPPED_RUNITE_ARROW_RECIPE = new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
     public static final RecipeSerializer<MidasFoldingRecipe> MIDAS_FOLDING_RECIPE = new MidasFoldingRecipe.Serializer();
-    public static final RecipeSerializer<DrillUpgradeRecipe> DRILL_UPGRADE_RECIPE = new DrillUpgradeRecipe.Serializer();
 
     public static void init() {
         Registry.register(Registries.RECIPE_SERIALIZER, RegistryHelper.id("legacy_fold_midas_smithing_recipe"), LEGACY_MIDAS_SMITHING_RECIPE);
         Registry.register(Registries.RECIPE_SERIALIZER, RegistryHelper.id("legacy_mythril_drill_smithing_recipe"), LEGACY_MYTHRIL_DRILL_SMITHING_RECIPE);
         Registry.register(Registries.RECIPE_SERIALIZER, RegistryHelper.id("runite_tipped_arrow_recipe"), TIPPED_RUNITE_ARROW_RECIPE);
         Registry.register(Registries.RECIPE_SERIALIZER, RegistryHelper.id("fold_midas_sword"), MIDAS_FOLDING_RECIPE);
-        Registry.register(Registries.RECIPE_SERIALIZER, RegistryHelper.id("mythril_drill_upgrade"), DRILL_UPGRADE_RECIPE);
     }
 }

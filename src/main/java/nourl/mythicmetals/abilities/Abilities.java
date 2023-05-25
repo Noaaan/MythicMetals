@@ -1,11 +1,14 @@
 package nourl.mythicmetals.abilities;
 
+import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MetalColors;
 
 /**
@@ -29,6 +32,7 @@ public class Abilities {
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
     public static final Ability KNOCKBACK = new Ability("knockback", 3);
+    public static final Ability UPGRADE_TOOLTIP = new Ability("upgrade_tooltip", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     // Tooltip only, applies to items in #mythicmetals:prometheum_tools and armor items in #mythicmetals:prometheum_armor
     public static final Ability MENDING = new Ability("mending", 1, false);
@@ -41,6 +45,9 @@ public class Abilities {
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
 
     public static void init() {
+        DrillUpgrades.init();
+        UniqueStaffBlocks.init();
+
         AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), Style.EMPTY.withColor(Formatting.AQUA));
         AQUA_AFFINITY.addToolSet(MythicTools.AQUARIUM, Style.EMPTY.withColor(Formatting.AQUA));
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), Style.EMPTY.withColor(Formatting.GOLD));
@@ -60,6 +67,9 @@ public class Abilities {
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), Style.EMPTY.withColor(Formatting.GOLD));
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), Style.EMPTY.withColor(Formatting.GOLD));
+        DrillUpgrades.MAP.forEach((item, s) -> {
+            UPGRADE_TOOLTIP.addItem(item, Style.EMPTY.withColor(MetalColors.MYTHRIL.rgb()));
+        });
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, Style.EMPTY.withItalic(true).withColor(Formatting.AQUA));
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withItalic(true).withColor(Formatting.LIGHT_PURPLE));
@@ -75,9 +85,6 @@ public class Abilities {
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
         }
-
-        DrillUpgrades.init();
-        UniqueStaffBlocks.init();
     }
 
 }

@@ -655,6 +655,7 @@
   "abilities.mythicmetals.respiration": "Natural Respiration",
   "abilities.mythicmetals.smite": "Holy",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
+  "abilities.mythicmetals.upgrade_tooltip": "Mythril Drill Upgrade",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",
 
   "tooltip.midas_gold.level.0": "Can be folded in a smithing table, using Midas Gold Blocks",
@@ -712,6 +713,11 @@
   "tooltip.mythril_drill.out_of_fuel":  "Out of Fuel!",
   "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
+  "tooltip.mythril_drill.upgrade_tip":[
+    {"text": "Right-click with a "},
+    {"text": "Drill Upgrade", "color": "#3485C8"},
+    {"text": " to upgrade"}
+  ],
   "tooltip.mythril_drill.refuel":[
     {"text": "Right-click with "},
     {"text": "Morkite", "color": "#00e3d6"},
