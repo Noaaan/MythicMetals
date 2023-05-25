@@ -548,5 +548,86 @@
       "item/armor/equip_chain5",
       "item/armor/equip_chain6"
     ]
+  },
+  "carmot_staff_empty": {
+    "subtitle": "subtitles.mythicmetals.carmot_staff_empty",
+    "sounds": [
+      "entity/itemframe/remove_item1",
+      "entity/itemframe/remove_item2",
+      "entity/itemframe/remove_item3",
+      "entity/itemframe/remove_item4"
+    ]
+  },
+
+  "projectile_barrier_begin":  {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_begin",
+    "sounds": [
+      "block/beacon/activate"
+    ]
+  },
+  "projectile_barrier_maintain": {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_maintain",
+    "sounds": [
+      {
+        "attenuation_distance": 5,
+        "name": "block/beacon/ambient",
+        "volume": 0.8,
+        "pitch": 0.8
+      }
+    ]
+  },
+  "projectile_barrier_end":  {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_end",
+    "sounds": [
+      "block/beacon/deactivate"
+    ]
+  },
+  "banglum_nuke_ignite": {
+    "subtitle": "subtitles.mythicmetals.banglum_nuke_ignite",
+    "sounds": [
+      {
+        "name": "random/fuse",
+        "pitch": 0.6
+      }
+    ]
+  },
+  "banglum_nuke_explosion": {
+    "subtitle": "subtitles.mythicmetals.banglum_nuke_explosion",
+    "sounds": [
+      {
+        "name": "random/explode1",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode2",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode3",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode4",
+        "pitch": 0.8
+      }
+    ]
+  },
+  "mythril_drill_activate":  {
+    "subtitle": "subtitles.mythicmetals.mythril_drill_activate",
+    "sounds": [
+      {
+        "name": "block/conduit/activate",
+        "volume": 0.8
+      }
+    ]
+  },
+  "mythril_drill_deactivate": {
+    "subtitle": "subtitles.mythicmetals.mythril_drill_deactivate",
+    "sounds": [
+      {
+        "name": "block/conduit/deactivate",
+        "volume": 0.6
+      }
+    ]
   }
 }

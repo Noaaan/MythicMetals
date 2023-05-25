@@ -38,6 +38,14 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static SoundEvent DOG = SoundEvent.of(RegistryHelper.id("music_disc.dog4"));
     public static SoundEvent MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("morkite_ore_break"));
     public static SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("deepslate_morkite_ore_break"));
+    public static SoundEvent CARMOT_STAFF_EMPTY = SoundEvent.of(RegistryHelper.id("carmot_staff_empty"));
+    public static SoundEvent PROJECTILE_BARRIER_BEGIN = SoundEvent.of(RegistryHelper.id("projectile_barrier_begin"));
+    public static SoundEvent PROJECTILE_BARRIER_MAINTAIN = SoundEvent.of(RegistryHelper.id("projectile_barrier_maintain"));
+    public static SoundEvent PROJECTILE_BARRIER_END = SoundEvent.of(RegistryHelper.id("projectile_barrier_end"));
+    public static SoundEvent BANGLUM_NUKE_IGNITE = SoundEvent.of(RegistryHelper.id("banglum_nuke_ignite"));
+    public static SoundEvent BANGLUM_NUKE_EXPLOSION = SoundEvent.of(RegistryHelper.id("banglum_nuke_explosion"));
+    public static SoundEvent MYTHRIL_DRILL_ACTIVATE = SoundEvent.of(RegistryHelper.id("mythril_drill_activate"));
+    public static SoundEvent MYTHRIL_DRILL_DEACTIVATE = SoundEvent.of(RegistryHelper.id("mythril_drill_deactivate"));
 
     public static final BlockSoundGroup MORKITE_ORE = new BlockSoundGroup(1.0F, 1.0F,
             MORKITE_ORE_BREAK,

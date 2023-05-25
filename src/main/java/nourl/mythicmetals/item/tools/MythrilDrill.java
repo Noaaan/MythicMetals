@@ -36,6 +36,7 @@ import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -348,7 +349,7 @@ public class MythrilDrill extends PickaxeItem {
         }
 
         if (world.isClient) {
-            var sound = drill.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
+            var sound = drill.get(IS_ACTIVE) ? RegisterSounds.MYTHRIL_DRILL_DEACTIVATE : RegisterSounds.MYTHRIL_DRILL_ACTIVATE;
             user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
         }
         user.getItemCooldownManager().set(drill.getItem(), 20);

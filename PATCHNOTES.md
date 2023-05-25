@@ -92,8 +92,12 @@ To clarify, these are the current (and new) abilities of Prometheum:
 - Remove the Lapis Block Carmot Staff ability durability damage when in off-hand
 - Added a new loot condition: `mythicmetals:random_chance_with_luck`, which applies Luck directly to the chance modifier when breaking blocks/ores
   - While luck does have an effect on the older loot tables, it did not have a sufficient impact on drops. This patch should remedy this
-- Added subtitles and sound events for all armor
-  - This means resource pack creators can individually change Mythic Metals armor sounds, if they modify the sounds.json
+- Added subtitles and sound events
+  - All armor now have custom equip sound events
+  - The Carmot Staff abilities, Mythril Drill, and Banglum Nuke now has sound events
+  - All of the above have subtitle support, accurately describing what sound is being played
+  - This means over time custom sounds for items can be added over time
+  - Resource pack creators can already change the sounds, if they modify the `sounds.json`
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
