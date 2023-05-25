@@ -1,14 +1,11 @@
 package nourl.mythicmetals.abilities;
 
-import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MetalColors;
 
 /**

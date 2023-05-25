@@ -4,7 +4,10 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import nourl.mythicmetals.item.tools.*;
+import nourl.mythicmetals.item.tools.LegacyDrillSmithingRecipe;
+import nourl.mythicmetals.item.tools.LegacyMidasFoldingRecipe;
+import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
+import nourl.mythicmetals.item.tools.TippedRuniteArrowRecipe;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterRecipeSerializers {
