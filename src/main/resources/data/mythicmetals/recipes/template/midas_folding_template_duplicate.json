@@ -21,5 +21,6 @@
     {
       "condition": "mythicmetals:nuggets_enabled"
     }
-  ]
+  ],
+  "group": "midas_folding_template"
 }
