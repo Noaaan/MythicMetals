@@ -43,6 +43,10 @@ The following Smithing Templates were added:
 - Legendary Banglum Upgrade
   - Crafted from Banglum Ingots and Tuff
   - Upgrades Banglum Gear to its Legendary variant using a Banglum Chunk
+- Aegis Sword Upgrade
+  - Obtained from trading with Villagers, specifically Master level Clerics
+  - Can upgrade a Palladium Sword to the Blade of the Aegis
+  - Can upgrade a Hallowed Sword to the Sword of the Aegis
 
 **NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
 This means you cannot obtain the Royal Midas Gold Sword in regular 1.19.4 worlds. 

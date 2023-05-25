@@ -32,6 +32,9 @@
     }
   },
   "rewards": {
-    "experience": 250
+    "experience": 250,
+    "loot": [
+      "mythicmetals:grass"
+    ]
   }
 }

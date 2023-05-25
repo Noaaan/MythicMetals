@@ -793,6 +793,12 @@
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
+  "smithing_template.mythicmetals.aegis.title":  "Aegis Sword Upgrade",
+  "smithing_template.mythicmetals.aegis.applies_to": "Palladium or Hallowed Swords",
+  "smithing_template.mythicmetals.aegis.ingredients": "Adamantite or Hallowed Ingots",
+  "smithing_template.mythicmetals.aegis.base_slot_description": "Put a Palladium or Hallowed Sword here",
+  "smithing_template.mythicmetals.aegis.additions_slot_description": "For a Palladium Sword put an Adamantite Ingot here. For a Hallowed Sword put a Hallowed Ingot here",
+
   "smithing_template.mythicmetals.carmot_staff.title": "Carmot Staff",
   "smithing_template.mythicmetals.carmot_staff.applies_to": "Kyber Shovel",
   "smithing_template.mythicmetals.carmot_staff.ingredients": "Carmot Block",

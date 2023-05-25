@@ -90,9 +90,10 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     }
 
     public static class Templates implements ItemRegistryContainer {
-        public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()), identifiers -> {
-            identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra"));
-        });
+        public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
+                identifiers -> {
+                    identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra"));
+                });
         public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.unobtainium.applies_to").formatted(Formatting.BLUE),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.ingredients").formatted(Formatting.BLUE),
@@ -124,7 +125,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                         RegistryHelper.id("item/template/empty_slot_midas"),
                         RegistryHelper.id("item/template/empty_slot_gilded_midas"),
                         RegistryHelper.id("item/template/empty_slot_royal_midas")
-                        ),
+                ),
                 List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
 
@@ -154,8 +155,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 Text.translatable("smithing_template.mythicmetals.aegis.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.aegis.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.aegis.additions_slot_description"),
-                List.of(RegistryHelper.id("item/template/empty_slot_kyber_shovel")),
-                List.of(RegistryHelper.id("item/template/empty_slot_block"))
+                List.of(RegistryHelper.id("item/template/empty_slot_hallowed_sword"), RegistryHelper.id("item/template/empty_slot_palladium_sword")),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
         );
 
         public static final Item CARMOT_SMITHING_TEMPLATE = new SmithingTemplateItem(

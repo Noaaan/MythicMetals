@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "mythicmetals:aegis_smithing_template",
     "mythicmetals:carmot_staff_smithing_template",
     "mythicmetals:carmot_smithing_template",
     "mythicmetals:legendary_banglum_smithing_template",
