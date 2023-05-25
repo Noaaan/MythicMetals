@@ -98,6 +98,8 @@ To clarify, these are the current (and new) abilities of Prometheum:
   - All of the above have subtitle support, accurately describing what sound is being played
   - This means over time custom sounds for items can be added over time
   - Resource pack creators can already change the sounds, if they modify the `sounds.json`
+- Changed the implementation of attribute modifications
+  - This is in an attempt to make them more compatible with mods that modify attributes
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)

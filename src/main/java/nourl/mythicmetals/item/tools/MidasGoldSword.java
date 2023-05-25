@@ -50,18 +50,19 @@ public class MidasGoldSword extends SwordItem {
 
             mapnite = HashMultimap.create(mapnite);
 
+            // Store and clear so that we can modify the vanilla attack damage modifier independently
+            var damageValues = mapnite.get(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             mapnite.removeAll(EntityAttributes.GENERIC_ATTACK_DAMAGE);
 
             float baseDamage = getAttackDamage();
-
             int bonus = MathHelper.clamp(MathHelper.floor((float) goldCount / 64), 0, 6);
-
             if (goldCount >= 1280) {
                 bonus += 1;
             }
-
             mapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(Item.ATTACK_DAMAGE_MODIFIER_ID, "Damage modifier", baseDamage + bonus, EntityAttributeModifier.Operation.ADDITION));
 
+            var finalMapnite = mapnite;
+            damageValues.forEach(entityAttributeModifier -> finalMapnite.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, entityAttributeModifier));
         }
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
     }

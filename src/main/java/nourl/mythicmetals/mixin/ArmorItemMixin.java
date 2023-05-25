@@ -1,6 +1,6 @@
 package nourl.mythicmetals.mixin;
 
-import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.entity.EquipmentSlot;
@@ -62,11 +62,9 @@ public abstract class ArmorItemMixin {
     }
 
     private void mythicmetals$armorMapBuilder(UUID uUID, EntityAttribute attributes, String name, float value, EntityAttributeModifier.Operation operation) {
-        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        this.attributeModifiers.forEach(builder::put);
-        builder.put(attributes,
-                new EntityAttributeModifier(uUID, name, value, operation));
-        this.attributeModifiers = builder.build();
+        var mapnite = HashMultimap.create(this.attributeModifiers);
+        mapnite.put(attributes, new EntityAttributeModifier(uUID, name, value, operation));
+        this.attributeModifiers = mapnite;
     }
 
 }
