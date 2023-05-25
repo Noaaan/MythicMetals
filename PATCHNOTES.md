@@ -57,9 +57,28 @@ a maxed Gilded Midas Gold Sword one more time... Some even say it comes with a s
 
 Are you ready to become the ultimate sword-smith?
 
+**NOTE** - Again, as mentioned above, the Royal Midas Gold Sword is **only available in 1.20/experimental feature worlds**.
+
 ## Mythril Drill Upgrades
-The old drill crafting required a Smithing Table to upgrade the drill. You can now right-click Drill Upgrade Items onto it instead. 
-These have a special tooltip indicating that they can be put into the drill.
+The old drill crafting required a Smithing Table to upgrade the drill. 
+You can now right-click Drill Upgrade Items onto it instead. 
+
+Items that can be inserted into the Mythril Drill have tooltip indicating that they can be put into the drill (NEW!).
+
+### Prometheum Rework
+This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
+To clarify, these are the current (and new) abilities of Prometheum:
+- Regrowth
+  - Prometheum will automatically repair itself
+  - For armor, it must be equipped for this to take effect
+  - For tools, it must be in your main hand to repair itself
+  - The tools can also be in your off-hand (NEW!)
+- Overgrown (NEW!)
+  - Regrowth will track how much durability has been restored
+  - Once you hit a threshold of around 2000 durability regained, the armor will gain additional stats
+  - The regrowth self-repair effect will also increase on tools
+- Engrained (NEW!)
+  - If you apply Curse of Binding on the Armor, it will gain additional stats, as well as increase the self-repair effect more. 
 
 ## Other changes
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)

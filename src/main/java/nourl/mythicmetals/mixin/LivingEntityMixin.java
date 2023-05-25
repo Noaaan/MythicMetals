@@ -25,8 +25,8 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
-import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
+import nourl.mythicmetals.item.tools.PrometheumToolSet;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.WasSpawnedFromCreeper;
 import nourl.mythicmetals.registry.RegisterCriteria;
@@ -80,7 +80,13 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract boolean canHaveStatusEffect(StatusEffectInstance effect);
 
-    @Shadow public abstract ItemStack getStackInHand(Hand hand);
+    @Shadow
+    public abstract ItemStack getStackInHand(Hand hand);
+
+    @Shadow
+    public abstract ItemStack getOffHandStack();
+
+    @Shadow public abstract void stopRiding();
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -120,7 +126,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
         if (!world.isClient()) {
-            mythicmetals$prometheumRepairPassive();
+            mythicmetals$prometheumRepairPassive(getMainHandStack());
+            mythicmetals$prometheumRepairPassive(getOffHandStack());
             mythicmetals$tickCombustion();
         }
         mythicmetals$palladiumParticles();
@@ -156,47 +163,68 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    private void mythicmetals$prometheumRepairPassive() {
-        var handStack = getMainHandStack();
+    private void mythicmetals$prometheumRepairPassive(ItemStack stack) {
         // Handle Prometheum Tools
-        if (handStack.isIn(MythicTags.PROMETHEUM_TOOLS)) {
-            var dmg = handStack.getDamage();
+        if (stack.isIn(MythicTags.PROMETHEUM_TOOLS)) {
+
+            if (!stack.has(PrometheumToolSet.DURABILITY_REPAIRED)) {
+                stack.put(PrometheumToolSet.DURABILITY_REPAIRED, 0);
+            }
+
+            var dmg = stack.getDamage();
             var rng = r.nextInt(200);
-            if (rng == 117 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+            if (rng == 117 && dmg > 0) {
+                int value = PrometheumToolSet.isOvergrown(stack) ? 2 : 1;
+                stack.setDamage(MathHelper.clamp(dmg - value, 0, Integer.MAX_VALUE));
+                PrometheumToolSet.incrementRepairCounter(stack, 1);
+            }
         }
 
         // Handle Mythril Drill with Prometheum Upgrade
-        if (handStack.getItem().equals(MythicTools.MYTHRIL_DRILL) && MythrilDrill.hasUpgradeItem(handStack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
-            var dmg = handStack.getDamage();
+        if (stack.getItem() instanceof MythrilDrill && MythrilDrill.hasUpgradeItem(stack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
+            var dmg = stack.getDamage();
             var rng = r.nextInt(200);
-            if (rng == 33 && dmg > 0) handStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+            if (rng == 33 && dmg > 0) {
+                stack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+            }
         }
     }
 
     private void mythicmetals$addArmorEffects() {
-        for (ItemStack armorItems : getArmorItems()) {
-            if (armorItems.isEmpty()) continue; // Dont get the item for an empty stack
-
-            if (armorItems.getItem() == null) {
+        for (ItemStack armorStack : getArmorItems()) {
+            // Turns out, this bug was in Minecraft itself
+            // It only took a couple of years to find, and it was re-producible in vanilla context
+            if (armorStack.isEmpty()) continue; // Don't get the item for an empty stack
+            if (armorStack.getItem() == null) {
                 MythicMetals.LOGGER.error("An ItemStack was somehow marked as empty, but does contain an item.");
                 MythicMetals.LOGGER.error("This is not caused by Mythic Metals, and it could potentially crash!");
                 MythicMetals.LOGGER.error("Skipping the Armor Item query");
                 continue;
             }
 
-            if (MythicArmor.CARMOT.isInArmorSet(armorItems)) {
+            if (MythicArmor.CARMOT.isInArmorSet(armorStack)) {
                 mythicmetals$carmotParticle();
             }
 
-            if (!world.isClient && armorItems.isIn(MythicTags.PROMETHEUM_ARMOR)) {
-                // Repair Prometheum Armor server-side
-                var dmg = armorItems.getDamage();
+            // Repair Prometheum Armor server-side
+            if (!world.isClient && armorStack.isIn(MythicTags.PROMETHEUM_ARMOR) && armorStack.isDamaged()) {
+                var dmg = armorStack.getDamage();
                 var rng = r.nextInt(200);
-                if (rng == 117)
-                    armorItems.setDamage(dmg - 1);
+
+                if (!armorStack.has(PrometheumToolSet.DURABILITY_REPAIRED)) {
+                    armorStack.put(PrometheumToolSet.DURABILITY_REPAIRED, 0);
+                }
+
+                if (EnchantmentHelper.hasBindingCurse(armorStack) && rng < 2) {
+                    armorStack.setDamage(MathHelper.clamp(dmg - 2, 0, Integer.MAX_VALUE));
+                    PrometheumToolSet.incrementRepairCounter(armorStack, 2);
+                } else if (rng == 117) {
+                    armorStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+                    PrometheumToolSet.incrementRepairCounter(armorStack, 1);
+                }
             }
 
-            if (MythicArmor.COPPER.isInArmorSet(armorItems) && world.isThundering()) {
+            if (MythicArmor.COPPER.isInArmorSet(armorStack) && world.isThundering()) {
                 Vec3d playerPos = this.getPos();
                 boolean isConductive = playerPos.y == world.getTopY(Heightmap.Type.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
                 int rng = r.nextInt(60000);

@@ -780,6 +780,9 @@
   "tooltip.carmot_staff.empty_staff": "Right-click with block over staff to insert",
   "tooltip.carmot_staff.locked": "Locked",
 
+  "tooltip.prometheum.engrained": "Engrained",
+  "tooltip.prometheum.overgrown": "Overgrown",
+
   "death.attack.mythic_ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
