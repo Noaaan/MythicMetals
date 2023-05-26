@@ -69,7 +69,7 @@ You can now right-click Drill Upgrade Items onto it instead.
 
 Items that can be inserted into the Mythril Drill have tooltip indicating that they can be put into the drill (NEW!).
 
-### Prometheum Rework
+## Prometheum Rework
 This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
 To clarify, these are the current (and new) abilities of Prometheum:
 - Regrowth
@@ -83,6 +83,18 @@ To clarify, these are the current (and new) abilities of Prometheum:
   - The regrowth self-repair effect will also increase on tools
 - Engrained (NEW!)
   - If you apply Curse of Binding on the Armor, it will gain additional stats, as well as increase the self-repair effect more. 
+
+## Balancing changes
+- Default axe damage has been increased (+2 over sword), meaning over half the axes in the mod got a buff!
+- Celestium changes, see the Celestium Rework section
+- Prometheum changes, see the Prometheum Rework section
+- Osmium base damage: 2 -> 2.5
+- Osmium mining level: 2 -> 3 (can now mine obsidian)
+- Osmium durability: 584 -> 664
+- Steel mining level: 2 -> 3 (can now mine obsidian)
+- Steel durability: 600 -> 700
+- Steel enchantability: 12 -> 11
+- Durasteel durability: 800 -> 820
 
 ## Other changes
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
