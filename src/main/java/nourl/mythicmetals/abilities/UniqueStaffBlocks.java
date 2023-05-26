@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.tools.CarmotStaff;
-import nourl.mythicmetals.misc.MetalColors;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,9 +30,9 @@ public class UniqueStaffBlocks {
 
     public static Text getBlockTranslationKey(Block block) {
         if (!MAP.containsKey(block)) {
-            return Text.translatable("tooltip.carmot_staff.unique").setStyle(Style.EMPTY.withColor(MetalColors.CARMOT.rgb()));
+            return Text.translatable("tooltip.carmot_staff.unique").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
         }
-        return Text.translatable("tooltip.carmot_staff." + UniqueStaffBlocks.MAP.get(block)).setStyle(Style.EMPTY.withColor(MetalColors.CARMOT.rgb()));
+        return Text.translatable("tooltip.carmot_staff." + UniqueStaffBlocks.MAP.get(block)).setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
     }
 
     public static void init() {

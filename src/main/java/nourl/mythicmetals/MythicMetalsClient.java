@@ -79,18 +79,18 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
-                Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+                Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
             }
         });
 
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
                 if (PrometheumToolSet.isOvergrown(stack)) {
-                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
                 }
 
                 if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
                 }
             }
         });
@@ -132,7 +132,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
-        ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
+        ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());

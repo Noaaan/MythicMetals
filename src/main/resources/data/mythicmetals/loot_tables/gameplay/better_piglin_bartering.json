@@ -249,11 +249,11 @@
           "type": "minecraft:item",
           "weight": 7,
           "quality": 2,
-          "name": "mythicmetals:royal_midas_smithing_template",
+          "name": "mythicmetals:enchanted_midas_gold_block",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
-              "chance": 0.02
+              "chance": 0.025
             }
           ]
         }

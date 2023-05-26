@@ -49,19 +49,17 @@ The following Smithing Templates were added:
   - Can upgrade a Hallowed Sword to the Sword of the Aegis
 
 **NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
-This means you cannot obtain the Royal Midas Gold Sword in regular 1.19.4 worlds. 
-I recommend saving up Midas Gold until you update to 1.20.
 
 ## Midas Gold Sword Rework
 The Midas Gold Sword received a massive rework following this update. 
 As specified above you now need to craft smithing templates in order to fold it, which makes maxing it slightly more expensive. 
 
-There is a rare chance when bartering with Piglins you can find a **Royal Midas Gold Sword Upgrade**, which lets you upgrade 
-a maxed Gilded Midas Gold Sword one more time... Some even say it comes with a special ability which should help with obtaining more gold.
+There is a rare chance when bartering with Piglins you can find an **Enchanted Midas Gold Block**. 
+This can be crafted into a **Royal Midas Gold Sword Upgrade**, which lets you upgrade 
+a maxed Gilded Midas Gold Sword one more time... 
+Some even say it comes with a special ability which should help with obtaining more gold.
 
 Are you ready to become the ultimate sword-smith?
-
-**NOTE** - Again, as mentioned above, the Royal Midas Gold Sword is **only available in 1.20/experimental feature worlds**.
 
 ## Mythril Drill Upgrades
 The old drill crafting required a Smithing Table to upgrade the drill. 

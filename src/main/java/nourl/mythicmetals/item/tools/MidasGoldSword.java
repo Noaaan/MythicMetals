@@ -23,9 +23,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MidasGoldSword extends SwordItem {
-
+    /**
+     * Counter that tracks how much gold is folded on the sword. Used for dynamically changing damage and transforming the sword
+     */
     public static final NbtKey<Integer> GOLD_FOLDED = new NbtKey<>("GoldFolded", NbtKey.Type.INT);
+    /**
+     * Tracks if the sword is gilded, so that the upgrade text after transforming into a Royal Midas Gold Sword changes
+     */
     public static final NbtKey<Boolean> IS_GILDED = new NbtKey<>("IsGilded", NbtKey.Type.BOOLEAN);
+    /**
+     * Tracks if the sword is royal, which causes the sword to drop Raw Midas Gold on mob kills
+     */
     public static final NbtKey<Boolean> IS_ROYAL = new NbtKey<>("IsRoyal", NbtKey.Type.BOOLEAN);
 
     public MidasGoldSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
@@ -96,7 +104,7 @@ public class MidasGoldSword extends SwordItem {
         // Remove the cap from tooltip when maxed
         if (goldCount >= 1280) {
             if (goldCount == 10000) {
-                // e.g. Folds: 10000 **MAXED**
+                // e.g. **⭐10000 FOLDS - MAXED⭐**
                 lines.add(lineIndex + 1, Text.translatable("tooltip.midas_gold.maxed", goldCount).formatted(Formatting.GOLD, Formatting.BOLD));
             } else {
                 // e.g. Folds: 2500
@@ -107,10 +115,10 @@ public class MidasGoldSword extends SwordItem {
 
         // Handle the cap format
         if (stack.has(IS_ROYAL)) {
-            // e.g. 63/128
+            // e.g. 63/1280
             lines.add(lineIndex + 1, Text.literal(goldCount + " / " + 1280).formatted(Formatting.GOLD));
         } else if (stack.has(IS_GILDED)) {
-            // e.g. 63/128
+            // e.g. 63/640
             lines.add(lineIndex + 1, Text.literal(goldCount + " / " + 640).formatted(Formatting.GOLD));
         } else {
             // e.g. 63/128

@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import nourl.mythicmetals.misc.MetalColors;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import org.joml.Vector3f;
 
 public class StarriteOreBlock extends ExperienceDroppingBlock {
@@ -21,6 +21,6 @@ public class StarriteOreBlock extends ExperienceDroppingBlock {
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        ClientParticles.spawnCenteredOnBlock(new DustParticleEffect(new Vector3f(MetalColors.STARRITE.hsv()), 1F), world, pos, 2.0D);
+        ClientParticles.spawnCenteredOnBlock(new DustParticleEffect(new Vector3f(UsefulSingletonForColorUtil.MetalColors.STARRITE.hsv()), 1F), world, pos, 2.0D);
     }
 }

@@ -6,10 +6,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.text.Style;
+import net.minecraft.util.Formatting;
 
 import java.util.List;
 
-public class SlowlyMoreUsefulSingletonForColorUtil {
+public class UsefulSingletonForColorUtil {
     public static float[] splitRGBToFloats(int rgb) {
         return new float[]{(rgb >> 16) / 255f, ((rgb >> 8) & 0xFF) / 255f, (rgb & 0xFF) / 255f};
     }
@@ -40,5 +42,24 @@ public class SlowlyMoreUsefulSingletonForColorUtil {
             }
         }
         return -1;
+    }
+
+    /**
+     * Contains constants for all the colors used for various text and particles
+     */
+    public static class MetalColors {
+        public static final Color BANGLUM = Color.ofFormatting(Formatting.GOLD);
+        public static final Color CARMOT = Color.ofRgb(0xE63E73);
+        public static final Style CARMOT_STYLE = Style.EMPTY.withColor(CARMOT.rgb());
+        public static final Color MORKITE = Color.ofRgb(0x00E3D6);
+        public static final Color MYTHRIL = Color.ofRgb(0x3485C8);
+        public static final Color RED_AEGIS = Color.ofRgb(0xDA1F00);
+        public static final Color STARRITE = Color.ofRgb(0xF56CE3);
+        public static final Color PALLADIUM = Color.ofRgb(0xDF7323);
+        public static final Color PROMETHEUM = Color.ofRgb(0x3A6A56);
+        public static final Color KYBER = Color.ofRgb(0xDEA5FF);
+        public static final Style AQUA_STYLE = Style.EMPTY.withColor(Formatting.AQUA);
+        public static final Style GOLD_STYLE = Style.EMPTY.withColor(Formatting.GOLD);
+        public static final Style PALLADIUM_STYLE = Style.EMPTY.withColor(MetalColors.PALLADIUM.rgb());
     }
 }

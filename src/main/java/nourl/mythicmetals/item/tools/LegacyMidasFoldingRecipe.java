@@ -41,7 +41,8 @@ public class LegacyMidasFoldingRecipe extends LegacySmithingRecipe implements Sm
     @Override
     public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
         var itemStack = inventory.getStack(0).copy();
-        if (itemStack.getItem().equals(MythicTools.MIDAS_GOLD_SWORD)) {
+        var item = itemStack.getItem();
+        if (item.equals(MythicTools.MIDAS_GOLD_SWORD)) {
 
             int goldCount = itemStack.get(MidasGoldSword.GOLD_FOLDED);
 
@@ -51,14 +52,29 @@ public class LegacyMidasFoldingRecipe extends LegacySmithingRecipe implements Sm
 
             if (goldCount >= 319) {
                 var swordnite = new ItemStack(MythicTools.GILDED_MIDAS_GOLD_SWORD);
+                itemStack.put(MidasGoldSword.IS_GILDED, true);
                 swordnite.setNbt(itemStack.getNbt());
                 return swordnite;
             }
         }
 
-        if (itemStack.getItem().equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
+        if (item.equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
             int goldCount = itemStack.get(MidasGoldSword.GOLD_FOLDED);
             if (goldCount < 640) {
+                itemStack.put(MidasGoldSword.GOLD_FOLDED, goldCount + 1);
+            }
+
+            if (goldCount >= 640) {
+                var swordnite = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+                itemStack.put(MidasGoldSword.IS_ROYAL, true);
+                swordnite.setNbt(itemStack.getNbt());
+                return swordnite;
+            }
+        }
+
+        if (item.equals(MythicTools.ROYAL_MIDAS_GOLD_SWORD)) {
+            int goldCount = itemStack.get(MidasGoldSword.GOLD_FOLDED);
+            if (goldCount > 10000) {
                 itemStack.put(MidasGoldSword.GOLD_FOLDED, goldCount + 1);
             }
         }
