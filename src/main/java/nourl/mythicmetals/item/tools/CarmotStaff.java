@@ -95,10 +95,13 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public boolean onStackClicked(ItemStack staff, Slot slot, ClickType clickType, PlayerEntity player) {
+        // Check if item is a BlockItem, if not try empty
         if (clickType == ClickType.RIGHT) {
+            // Validation - Cannot be used if locked
+            // You cannot insert blocks with NBT, since the staff wipes it, and frankly
+            // I do not want to deal with nesting staves inside shulker boxes with portable barrels inside or something
             if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
-            // Check if item is a BlockItem, if not try empty
-            if (slot.getStack().getItem() instanceof BlockItem blockItem) {
+            if (slot.getStack().getItem() instanceof BlockItem blockItem && !slot.getStack().hasNbt()) {
 
                 boolean validStaffBlock = validateStaffBlock(blockItem);
                 if (!staff.has(STORED_BLOCK) && !slot.getStack().isEmpty()) {
@@ -151,7 +154,7 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean onClicked(ItemStack staff, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
-            if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
+            if ((staff.has(LOCKED) && staff.get(LOCKED)) || cursorStack.hasNbt()) return false;
             // If cursor is empty, but staff has block, take block out of staff
             if (cursorStackReference.get().isEmpty() && staff.has(STORED_BLOCK)) {
                 if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
