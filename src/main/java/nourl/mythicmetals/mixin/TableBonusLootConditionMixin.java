@@ -1,12 +1,13 @@
 package nourl.mythicmetals.mixin;
 
+import net.minecraft.enchantment.*;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.tools.MythrilDrill;
-import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
@@ -14,10 +15,17 @@ import java.util.Objects;
 
 @Mixin(TableBonusLootCondition.class)
 public class TableBonusLootConditionMixin {
+    
+    @Shadow @Final Enchantment enchantment;
+    
     @ModifyVariable(method = "test(Lnet/minecraft/loot/context/LootContext;)Z",
             at = @At(value = "LOAD"))
-    private int mythicmetals$increaseFortuneOnLeavesAndGravel(int level, LootContext lootCtx) {
-        // TODO - Currently these bonus fortunes increase the level of ALL bonus conditions, I.E. Spectrums Resonance. Find out how to fix
+    private int mythicmetals$increaseFortune(int level, LootContext lootCtx) {
+        // only modify when the loot table bonus loot checks for fortune
+        if(this.enchantment != Enchantments.FORTUNE) {
+            return level;
+        }
+        
         if (Abilities.BONUS_FORTUNE.getItems().contains(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)).getItem())) {
             return (level + Abilities.BONUS_FORTUNE.getLevel());
         }
