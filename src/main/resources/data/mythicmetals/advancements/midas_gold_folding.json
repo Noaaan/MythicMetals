@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:midas_gold_sword",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.midas_gold_folding.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.midas_gold_folding.description"
+    },
+    "icon": {
+      "item": "mythicmetals:midas_folding_template"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "i_love_midas_gold_i_love_midas_gold": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:midas_folding_template"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

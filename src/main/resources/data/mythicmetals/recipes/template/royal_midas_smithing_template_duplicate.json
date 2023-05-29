@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "dtd",
+    "dmd",
+    "ddd"
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:netherrack"
+    },
+    "t": {
+      "item": "mythicmetals:royal_midas_smithing_template"
+    },
+    "d": {
+      "item": "mythicmetals:midas_gold_block"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:royal_midas_smithing_template",
+    "count": 2
+  }
+}

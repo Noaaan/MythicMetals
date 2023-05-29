@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:banglum_chunk",
+  "parent": "mythicmetals:banglum_template",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.legendary_banglum.title"

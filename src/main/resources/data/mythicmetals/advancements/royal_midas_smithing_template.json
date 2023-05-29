@@ -1,0 +1,35 @@
+{
+  "parent": "mythicmetals:maxed_gilded_midas_gold_sword",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.royal_midas_smithing_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.royal_midas_smithing_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:royal_midas_smithing_template"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bribing_piglins_until_i_cry": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:royal_midas_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 25
+  }
+}

@@ -30,5 +30,604 @@
       "mythicmetals:deepslate_morkite_ore_break_3",
       "mythicmetals:deepslate_morkite_ore_break_4"
     ]
+  },
+  "equip_adamantite": {
+    "subtitle": "subtitles.mythicmetals.equip_adamantite",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_celestium": {
+    "subtitle": "subtitles.mythicmetals.equip_celestium",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_celestium_elytra": {
+    "sounds": [
+      {
+        "name": "item/armor/equip_leather1",
+        "volume": 0.8,
+        "pitch": 1.2
+      },
+      {
+        "name": "item/armor/equip_leather2",
+        "volume": 0.8,
+        "pitch": 1.2
+      },
+      {
+        "name": "item/armor/equip_leather3",
+        "volume": 0.8,
+        "pitch": 1.2
+      },
+      {
+        "name": "item/armor/equip_leather4",
+        "volume": 0.8,
+        "pitch": 1.2
+      },
+      {
+        "name": "item/armor/equip_leather5",
+        "volume": 0.8,
+        "pitch": 1.2
+      },
+      {
+        "name": "item/armor/equip_leather6",
+        "volume": 0.8,
+        "pitch": 1.2
+      }
+    ],
+    "subtitle": "subtitles.mythicmetals.equip_celestium_elytra"
+  },
+  "equip_durasteel": {
+    "subtitle": "subtitles.mythicmetals.equip_durasteel",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_hallowed": {
+    "subtitle": "subtitles.mythicmetals.equip_hallowed",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_orichalcum": {
+    "subtitle": "subtitles.mythicmetals.equip_orichalcum",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_metallurgium": {
+    "subtitle": "subtitles.mythicmetals.equip_metallurgium",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_midas_gold": {
+    "subtitle": "subtitles.mythicmetals.equip_midas_gold",
+    "sounds": [
+      "item/armor/equip_chain1",
+      "item/armor/equip_chain2",
+      "item/armor/equip_chain3",
+      "item/armor/equip_chain4",
+      "item/armor/equip_chain5",
+      "item/armor/equip_chain6"
+    ]
+  },
+  "equip_stormyx": {
+    "subtitle": "subtitles.mythicmetals.equip_midas_gold",
+    "sounds": [
+      "item/armor/equip_chain1",
+      "item/armor/equip_chain2",
+      "item/armor/equip_chain3",
+      "item/armor/equip_chain4",
+      "item/armor/equip_chain5",
+      "item/armor/equip_chain6"
+    ]
+  },
+  "equip_mythril": {
+    "subtitle": "subtitles.mythicmetals.equip_mythril",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+  "equip_palladium": {
+    "subtitle": "subtitles.mythicmetals.equip_palladium",
+    "sounds": [
+      {
+        "name": "item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ]
+  },
+
+  "equip_aquarium": {
+    "subtitle": "subtitles.mythicmetals.equip_aquarium",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_banglum":{
+    "subtitle": "subtitles.mythicmetals.equip_banglum",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_copper": {
+    "subtitle": "subtitles.mythicmetals.equip_copper",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_kyber":{
+    "subtitle": "subtitles.mythicmetals.equip_kyber",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_legendary_banglum": {
+    "subtitle": "subtitles.mythicmetals.equip_legendary_banglum",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_osmium": {
+    "subtitle": "subtitles.mythicmetals.equip_osmium",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_steel": {
+    "subtitle": "subtitles.mythicmetals.equip_steel",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_star_platinum": {
+    "subtitle": "subtitles.mythicmetals.equip_star_platinum",
+    "sounds": [
+      "item/armor/equip_diamond1",
+      "item/armor/equip_diamond2",
+      "item/armor/equip_diamond3",
+      "item/armor/equip_diamond4",
+      "item/armor/equip_diamond5",
+      "item/armor/equip_diamond6"
+    ]
+  },
+  "equip_bronze": {
+    "subtitle": "subtitles.mythicmetals.equip_bronze",
+    "sounds": [
+      "item/armor/equip_gold1",
+      "item/armor/equip_gold2",
+      "item/armor/equip_gold3",
+      "item/armor/equip_gold4",
+      "item/armor/equip_gold5",
+      "item/armor/equip_gold6"
+    ]
+  },
+  "equip_carmot": {
+    "subtitle": "subtitles.mythicmetals.equip_carmot",
+    "sounds": [
+      "item/armor/equip_gold1",
+      "item/armor/equip_gold2",
+      "item/armor/equip_gold3",
+      "item/armor/equip_gold4",
+      "item/armor/equip_gold5",
+      "item/armor/equip_gold6"
+    ]
+  },
+  "equip_prometheum": {
+    "subtitle": "subtitles.mythicmetals.equip_prometheum",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
+  "equip_silver": {
+    "subtitle": "subtitles.mythicmetals.equip_silver",
+    "sounds": [
+      "item/armor/equip_chain1",
+      "item/armor/equip_chain2",
+      "item/armor/equip_chain3",
+      "item/armor/equip_chain4",
+      "item/armor/equip_chain5",
+      "item/armor/equip_chain6"
+    ]
+  },
+  "carmot_staff_empty": {
+    "subtitle": "subtitles.mythicmetals.carmot_staff_empty",
+    "sounds": [
+      "entity/itemframe/remove_item1",
+      "entity/itemframe/remove_item2",
+      "entity/itemframe/remove_item3",
+      "entity/itemframe/remove_item4"
+    ]
+  },
+
+  "projectile_barrier_begin":  {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_begin",
+    "sounds": [
+      "block/beacon/activate"
+    ]
+  },
+  "projectile_barrier_maintain": {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_maintain",
+    "sounds": [
+      {
+        "attenuation_distance": 5,
+        "name": "block/beacon/ambient",
+        "volume": 0.8,
+        "pitch": 0.8
+      }
+    ]
+  },
+  "projectile_barrier_end":  {
+    "subtitle": "subtitles.mythicmetals.projectile_barrier_end",
+    "sounds": [
+      "block/beacon/deactivate"
+    ]
+  },
+  "banglum_nuke_ignite": {
+    "subtitle": "subtitles.mythicmetals.banglum_nuke_ignite",
+    "sounds": [
+      {
+        "name": "random/fuse",
+        "pitch": 0.6
+      }
+    ]
+  },
+  "banglum_nuke_explosion": {
+    "subtitle": "subtitles.mythicmetals.banglum_nuke_explosion",
+    "sounds": [
+      {
+        "name": "random/explode1",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode2",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode3",
+        "pitch": 0.8
+      },
+      {
+        "name": "random/explode4",
+        "pitch": 0.8
+      }
+    ]
+  },
+  "mythril_drill_activate":  {
+    "subtitle": "subtitles.mythicmetals.mythril_drill_activate",
+    "sounds": [
+      {
+        "name": "block/conduit/activate",
+        "volume": 0.8
+      }
+    ]
+  },
+  "mythril_drill_deactivate": {
+    "subtitle": "subtitles.mythicmetals.mythril_drill_deactivate",
+    "sounds": [
+      {
+        "name": "block/conduit/deactivate",
+        "volume": 0.6
+      }
+    ]
   }
 }

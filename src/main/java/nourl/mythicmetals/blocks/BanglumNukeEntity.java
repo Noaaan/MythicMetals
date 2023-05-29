@@ -15,7 +15,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -25,6 +24,7 @@ import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.misc.BanglumNukeSource;
 import nourl.mythicmetals.misc.EpicExplosion;
 import nourl.mythicmetals.misc.MythicDamageTypes;
+import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -102,7 +102,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) > soundRadius * soundRadius) continue;
 
-            player.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F);
+            player.playSound(RegisterSounds.BANGLUM_NUKE_EXPLOSION, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F);
         }
 
         for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "mythicmetals:banglum_sword"
+  },
+  "addition": {
+    "item": "mythicmetals:banglum_chunk"
+  },
+  "result": {
+    "item": "mythicmetals:legendary_banglum_sword"
+  },
+  "template": {
+    "item": "mythicmetals:legendary_banglum_smithing_template"
+  }
+}

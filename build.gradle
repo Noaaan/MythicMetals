@@ -51,7 +51,7 @@ dependencies {
 
     // Additional Entity Attributes
     //modImplementation include("de.dafuqs:AdditionalEntityAttributes:${project.aea_versionite}")
-    modImplementation include("com.github.DaFuqs:AdditionalEntityAttributes:${project.aea_jitpack}")
+    modImplementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
@@ -60,7 +60,7 @@ dependencies {
     }
 
     // Reach Entity Attributes
-    //modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
+    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // Common Protection API
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")

@@ -8,5 +8,6 @@
   "result": {
     "item": "mythicmetals:steel_ingot",
     "count": 9
-  }
+  },
+  "group": "mm_steel"
 }

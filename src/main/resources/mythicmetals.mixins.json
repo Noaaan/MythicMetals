@@ -17,6 +17,7 @@
     "DispenserBehaviorMixin",
     "EnchantmentHelperMixin",
     "ExplosionMixin",
+    "FireworkRocketEntityMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "PiglinBrainMixin",
@@ -29,8 +30,10 @@
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
-    "WorldRendererInvoker",
-    "TranslationStorageMixin"
+    "ItemRendererMixin",
+    "SmithingScreenMixin",
+    "TranslationStorageMixin",
+    "WorldRendererInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

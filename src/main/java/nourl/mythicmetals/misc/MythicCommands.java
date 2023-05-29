@@ -163,7 +163,7 @@ public final class MythicCommands {
     public static void summonArmorStandWithTrim(World world, @Nullable ArmorTrim trim, ArmorSet armorSet, int x, int z) {
         if (world.isClient) return;
 
-        var armorStand = new ArmorStandEntity(world, x, world.getTopY(), z);
+        var armorStand = new ArmorStandEntity(world, x, world.getTopY() - 50, z);
         armorSet.getArmorItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
             if (trim != null) {
@@ -176,7 +176,7 @@ public final class MythicCommands {
 
     /**
      * @param world The world to get the DynamicRegistryManager from. This should only happen on the server
-     * @return Returns all of armor trims in a sorted ArrayList
+     * @return Returns all armor trims in a sorted ArrayList
      */
     public static ArrayList<ArmorTrim> getAllArmorTrims(World world) {
         if (world.isClient) return new ArrayList<>();

@@ -6,6 +6,7 @@ import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
+import static nourl.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
 
 /**
  * Truly hardcode abilities onto items. These act as enchantments, but they stack with them.
@@ -16,19 +17,24 @@ public class Abilities {
 
     public static final Ability AQUA_AFFINITY = new Ability("aqua_affinity", 1, false);
     public static final Ability BLAST_MINING = new Ability("blast_mining", 0, false);
-    public static final Ability KNOCKBACK = new Ability("knockback", 3);
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability BONUS_FORTUNE = new Ability("bonus_fortune", 1, false);
     public static final Ability BONUS_LOOTING = new Ability("bonus_looting", 1, false);
+    // Tooltip only, applies to items in #mythicmetals:carmot_armor
     public static final Ability CARMOT_SHIELD = new Ability("carmot_shield", 0, false);
     public static final Ability DEPTH_STRIDER = new Ability("depth_strider", 3);
     public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
-    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4);
+    public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
+    public static final Ability KNOCKBACK = new Ability("knockback", 3);
+    public static final Ability UPGRADE_TOOLTIP = new Ability("upgrade_tooltip", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
+    // Tooltip only, applies to items in #mythicmetals:prometheum_tools and armor items in #mythicmetals:prometheum_armor
     public static final Ability MENDING = new Ability("mending", 1, false);
+    // Tooltip only, applies to Royal Midas Gold Swords
+    public static final Ability MIDAS_TOUCH = new Ability("midas_touch", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability RESPIRATION = new Ability("respiration", 2);
     public static final Ability SMITE = new Ability("smite", 3);
@@ -36,42 +42,47 @@ public class Abilities {
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
 
     public static void init() {
-        AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), Style.EMPTY.withColor(Formatting.AQUA));
-        AQUA_AFFINITY.addToolSet(MythicTools.AQUARIUM, Style.EMPTY.withColor(Formatting.AQUA));
-        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), Style.EMPTY.withColor(Formatting.GOLD));
-        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), Style.EMPTY.withColor(Formatting.GOLD));
-        BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, Style.EMPTY.withColor(Formatting.GOLD));
-        BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), Style.EMPTY.withColor(Formatting.GOLD));
-        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getPickaxe(), Style.EMPTY.withColor(0xE63E73));
-        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getAxe(), Style.EMPTY.withColor(0xE63E73));
-        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getHoe(), Style.EMPTY.withColor(0xE63E73));
-        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getShovel(), Style.EMPTY.withColor(0xE63E73));
-        BONUS_LOOTING.addItem(MythicTools.CARMOT.getSword(), Style.EMPTY.withColor(0xE63E73));
-        CARMOT_SHIELD.addArmorSet(MythicArmor.CARMOT, Style.EMPTY.withColor(0xE63E73));
-        DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), Style.EMPTY.withColor(Formatting.AQUA));
-        FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), Style.EMPTY.withColor(Formatting.GOLD));
-        FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, Style.EMPTY.withColor(0xDF7323));
-        HOT.addToolSet(MythicTools.PALLADIUM, Style.EMPTY.withColor(0xDF7323));
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), Style.EMPTY.withColor(Formatting.GOLD));
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), Style.EMPTY.withColor(Formatting.GOLD));
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), Style.EMPTY.withColor(Formatting.GOLD));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, Style.EMPTY.withItalic(true).withColor(Formatting.AQUA));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withItalic(true).withColor(Formatting.LIGHT_PURPLE));
-        MENDING.addArmorSet(MythicArmor.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
-        MENDING.addToolSet(MythicTools.PROMETHEUM, Style.EMPTY.withColor(0x3A6A56));
-        PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), Style.EMPTY.withColor(Formatting.GOLD));
-        RESPIRATION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
-        RESPIRATION.addItem(MythicArmor.AQUARIUM.getLeggings(), Style.EMPTY.withColor(Formatting.AQUA));
-        SPIKED_HELM.addItem(MythicArmor.LEGENDARY_BANGLUM.getHelmet(), Style.EMPTY.withColor(Formatting.GOLD));
-        FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(0xDA1F00));
-        SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
-        if (FabricLoader.getInstance().isModLoaded("origins")) {
-            WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), Style.EMPTY.withColor(Formatting.AQUA));
-        }
-
         DrillUpgrades.init();
         UniqueStaffBlocks.init();
+
+        AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), MetalColors.AQUA_STYLE);
+        AQUA_AFFINITY.addToolSet(MythicTools.AQUARIUM, MetalColors.AQUA_STYLE);
+        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), MetalColors.GOLD_STYLE);
+        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);
+        BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
+        BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), MetalColors.GOLD_STYLE);
+        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getPickaxe(), MetalColors.CARMOT_STYLE);
+        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getAxe(), MetalColors.CARMOT_STYLE);
+        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getHoe(), MetalColors.CARMOT_STYLE);
+        BONUS_FORTUNE.addItem(MythicTools.CARMOT.getShovel(), MetalColors.CARMOT_STYLE);
+        BONUS_LOOTING.addItem(MythicTools.CARMOT.getSword(), MetalColors.CARMOT_STYLE);
+        CARMOT_SHIELD.addArmorSet(MythicArmor.CARMOT, MetalColors.CARMOT_STYLE);
+        DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), MetalColors.AQUA_STYLE);
+        FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), MetalColors.GOLD_STYLE);
+        FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
+        HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
+        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), MetalColors.GOLD_STYLE);
+        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), MetalColors.GOLD_STYLE);
+        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), MetalColors.GOLD_STYLE);
+        DrillUpgrades.MAP.forEach((item, s) -> {
+            UPGRADE_TOOLTIP.addItem(item, Style.EMPTY.withColor(MetalColors.MYTHRIL.rgb()));
+        });
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, Style.EMPTY.withItalic(true).withColor(Formatting.AQUA));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withItalic(true).withColor(Formatting.LIGHT_PURPLE));
+        MENDING.addArmorSet(MythicArmor.PROMETHEUM, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()));
+        MENDING.addToolSet(MythicTools.PROMETHEUM, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()));
+        MIDAS_TOUCH.addItem(MythicTools.ROYAL_MIDAS_GOLD_SWORD, Style.EMPTY.withColor(Formatting.GOLD));
+        PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), Style.EMPTY.withColor(Formatting.GOLD));
+        RESPIRATION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
+        RESPIRATION.addItem(MythicArmor.AQUARIUM.getLeggings(), MetalColors.AQUA_STYLE);
+        SPIKED_HELM.addItem(MythicArmor.LEGENDARY_BANGLUM.getHelmet(), Style.EMPTY.withColor(Formatting.GOLD));
+        FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(MetalColors.RED_AEGIS.rgb()));
+        SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
+        if (FabricLoader.getInstance().isModLoaded("origins")) {
+            WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
+        }
     }
 
 }

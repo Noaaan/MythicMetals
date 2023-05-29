@@ -3,8 +3,10 @@ package nourl.mythicmetals;
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
@@ -16,38 +18,46 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.texture.Sprite;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.registry.Registries;
 import net.minecraft.resource.featuretoggle.FeatureFlags;
+import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
+import nourl.mythicmetals.abilities.Ability;
+import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
-import nourl.mythicmetals.misc.BlockBreaker;
-import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.misc.ShieldUsePredicate;
-import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
 
 public class MythicMetalsClient implements ClientModInitializer {
     private long lastTick;
     private float time;
+    public static ModelTransformationMode mode;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -58,14 +68,62 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerArmorRenderer();
         registerModelPredicates();
 
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, entityRendererFactoryCtx) -> {
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType != EntityType.PLAYER) return;
             registrationHelper.register(
                     new PlayerEnergySwirlFeatureRenderer(
                             (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
-                            entityRendererFactoryCtx.getModelLoader()));
+                            context.getModelLoader()));
         });
 
+
+        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+            if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
+                Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+            }
+        });
+
+        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
+                if (PrometheumToolSet.isOvergrown(stack)) {
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+                }
+
+                if (EnchantmentHelper.hasBindingCurse(stack)) {
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
+                }
+            }
+        });
+
+        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
+            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem)stack.getItem()).getSlotType().equals(slot)) {
+                if (EnchantmentHelper.hasBindingCurse(stack)) {
+                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
+                            UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
+                            "Bound Prometheum bonus",
+                            0.05,
+                            EntityAttributeModifier.Operation.MULTIPLY_BASE
+                    ));
+
+                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
+                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
+                            "Bound Prometheum bonus",
+                            1,
+                            EntityAttributeModifier.Operation.ADDITION
+                    ));
+                }
+                if (PrometheumToolSet.isOvergrown(stack)) {
+                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
+                            UUID.fromString("2dd3f3eb-3804-454d-8876-97f6b3f9b289"),
+                            "Overgrown Prometheum bonus",
+                            1,
+                            EntityAttributeModifier.Operation.ADDITION
+                    ));
+                }
+            }
+        });
+
+        LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
 
         EntityRendererRegistry.register(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, BanglumTntEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.BANGLUM_NUKE_ENTITY_TYPE, BanglumNukeEntityRenderer::new);
@@ -74,7 +132,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingRegistry.INSTANCE.registerModelProvider(new CarmotStaffBlockRenderer());
-        ColorProviderRegistry.ITEM.register(SlowlyMoreUsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
+        ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
@@ -174,14 +232,29 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private void registerModelPredicates() {
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.LEGENDARY_BANGLUM.getPickaxe(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumPick.getCooldown(entity, stack) ? 0 : 1);
 
-        ModelPredicateProviderRegistry.register(MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.LEGENDARY_BANGLUM.getShovel(), new Identifier("is_primed"),
                 (stack, world, entity, seed) -> BanglumShovel.getCooldown(entity, stack) ? 0 : 1);
 
-        ModelPredicateProviderRegistry.register(MythicTools.MYTHRIL_DRILL, new Identifier("is_active"),
+        ModelPredicateProviderRegistry.register(
+                MythicTools.MYTHRIL_DRILL, new Identifier("is_active"),
                 (stack, world, entity, seed) -> stack.get(MythrilDrill.IS_ACTIVE) ? 0 : 1);
+
+        registerMidasPredicates(MythicTools.MIDAS_GOLD_SWORD);
+        registerMidasPredicates(MythicTools.GILDED_MIDAS_GOLD_SWORD);
+        registerMidasPredicates(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+
+        ModelPredicateProviderRegistry.register(RegistryHelper.id("in_world"), (itemStack, world, livingEntity, i) -> {
+            if (mode == null) {
+                return 1.0f;
+            }
+
+            return mode.equals(ModelTransformationMode.GUI) ? 0.0F : 1.0f;
+        });
 
         ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, new Identifier("blocking"), new ShieldUsePredicate());
 
@@ -207,5 +280,12 @@ public class MythicMetalsClient implements ClientModInitializer {
         return this.time;
     }
 
+    public void registerMidasPredicates(Item item) {
+        ModelPredicateProviderRegistry.register(item, new Identifier("midas_gold_count"),
+                (stack, world, entity, seed) -> {
+                    int goldCount = stack.get(MidasGoldSword.GOLD_FOLDED);
+                    return MidasGoldSword.countGold(goldCount);
+                });
+    }
 
 }

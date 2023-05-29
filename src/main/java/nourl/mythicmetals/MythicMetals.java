@@ -8,15 +8,16 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
-import io.wispforest.owo.ops.LootOps;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.loot.LootTables;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.village.TradeOffers;
+import net.minecraft.village.VillagerProfession;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
@@ -29,10 +30,7 @@ import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.misc.BlockBreaker;
-import nourl.mythicmetals.misc.MythicCommands;
-import nourl.mythicmetals.misc.MythicParticleSystem;
-import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,12 +38,12 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 10;
+    public static final int CONFIG_VERSION = 11;
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
-    public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"),
-            () -> Icon.of(MythicItems.STORMYX.getIngot())).initializer(group -> {
+    public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicItems.STORMYX.getIngot()))
+            .initializer(group -> {
                 group.addTab(Icon.of(MythicItems.ADAMANTITE.getIngot()), "items", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("item_tab")), false);
                 group.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("blocks")), false);
                 group.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("tool_tab")), false);
@@ -65,6 +63,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicItems.class, false);
         FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
+        FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
         }
@@ -83,18 +82,22 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FuelRegistry.INSTANCE.add(MythicItems.Mats.MORKITE, 1200);
         FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         RegisterResourceConditions.init();
+        RegisterLootConditions.init();
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
         RegisterCriteria.init();
         BlockBreaker.initHammerTime();
-        LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.01F, LootTables.ANCIENT_CITY_CHEST);
+        MythicLootOps.init();
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
+            factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
+        });
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete the file so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
         }
 
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {

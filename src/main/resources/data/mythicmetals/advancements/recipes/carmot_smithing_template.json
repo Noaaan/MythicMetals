@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "found_carmot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:carmot_ingot",
+              "mythicmetals:raw_carmot",
+              "mythicmetals:deepslate_carmot_ore",
+              "mythicmetals:carmot_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:template/carmot_smithing_template_duplicate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "found_carmot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:template/carmot_smithing_template",
+      "mythicmetals:template/carmot_smithing_template_duplicate"
+    ]
+  }
+}

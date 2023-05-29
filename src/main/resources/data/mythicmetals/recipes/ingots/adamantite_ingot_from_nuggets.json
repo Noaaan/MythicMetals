@@ -18,5 +18,6 @@
     {
       "condition": "mythicmetals:nuggets_enabled"
     }
-  ]
+  ],
+  "group": "mm_adamantite_ingot"
 }

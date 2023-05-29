@@ -20,7 +20,7 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 
 import java.util.function.Consumer;
 
@@ -80,7 +80,7 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
 
         int color = MathHelper.hsvToRgb((float) (hue / 360), saturation, constantvalue);
 
-        float[] rgbColors = SlowlyMoreUsefulSingletonForColorUtil.splitRGBToFloats(color);
+        float[] rgbColors = UsefulSingletonForColorUtil.splitRGBToFloats(color);
 
         // Model handling, tries to reverse the rotation of the shield from the Bow UseAction
         if (mode.equals(ModelTransformationMode.FIRST_PERSON_RIGHT_HAND)) {

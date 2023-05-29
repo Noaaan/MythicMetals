@@ -6,11 +6,14 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonSerializer;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import nourl.mythicmetals.MythicMetals;
 
@@ -59,8 +62,12 @@ public class RegistryHelper {
         Registry.register(Registries.ENTITY_TYPE, RegistryHelper.id(path), type);
     }
 
-    public static RegistryKey<ConfiguredFeature<?, ?>> configuredFeatureKey(String string) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, RegistryHelper.id(string));
+    public static RegistryKey<ConfiguredFeature<?, ?>> configuredFeatureKey(String path) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, RegistryHelper.id(path));
+    }
+
+    public static LootConditionType lootConditionType(String path, JsonSerializer<? extends LootCondition> serializer) {
+        return Registry.register(Registries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootConditionType(serializer));
     }
 
 }

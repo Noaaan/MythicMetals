@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:carmot",
+  "parent": "mythicmetals:carmot_staff_template",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.carmot_staff.title"

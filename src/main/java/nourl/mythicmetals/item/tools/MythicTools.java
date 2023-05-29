@@ -32,7 +32,8 @@ import java.lang.reflect.Field;
 @SuppressWarnings("unused")
 public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     // Arrays for weapon/tool damage: sword, axe, pickaxe, shovel, and hoe
-    public static final int [] DEFAULT_DAMAGE = new int[]{3, 4, 2, 1, 0};
+    public static final int [] DEFAULT_DAMAGE = new int[]{3, 5, 2, 1, 0};
+    @Deprecated(forRemoval = true, since = "0.18.0")
     public static final int [] BETTER_AXE_DAMAGE = new int[]{3, 5, 2, 1, 0};
     // Arrays for weapon/tool attack speed: sword, axe, pickaxe, shovel and hoe
     public static final float [] SLOW_ATTACK_SPEED = new float[]{-2.5F, -3.1F, -2.9F, -3.0F, -3.1F};
@@ -41,23 +42,23 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final float [] FASTER_ATTACK_SPEED = new float[]{-2.2F, -2.9F, -2.7F, -2.8F, -2.8F};
     public static final float [] HIGHEST_ATTACK_SPEED = new float[]{-2.0F, -2.8F, -2.6F, -2.7F, -2.6F};
 
-    public static final ToolSet ADAMANTITE = new ToolSet(MythicToolMaterials.ADAMANTITE, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED);
+    public static final ToolSet ADAMANTITE = new ToolSet(MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BRONZE = new ToolSet(MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CARMOT = new ToolSet(MythicToolMaterials.CARMOT, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CELESTIUM = new ToolSet(MythicToolMaterials.CELESTIUM, BETTER_AXE_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
+    public static final ToolSet CARMOT = new ToolSet(MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet CELESTIUM = new ToolSet(MythicToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
     public static final ToolSet COPPER = new ToolSet(MythicToolMaterials.COPPER, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet DURASTEEL = new ToolSet(MythicToolMaterials.DURASTEEL, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet HALLOWED = new ToolSet(MythicToolMaterials.HALLOWED, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ToolSet DURASTEEL = new ToolSet(MythicToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet HALLOWED = new ToolSet(MythicToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ToolSet KYBER = new ToolSet(MythicToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(MythicToolMaterials.LEGENDARY_BANGLUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ToolSet METALLURGIUM = new ToolSet(MythicToolMaterials.METALLURGIUM, BETTER_AXE_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
+    public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(MythicToolMaterials.LEGENDARY_BANGLUM, DEFAULT_DAMAGE, SLOW_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ToolSet METALLURGIUM = new ToolSet(MythicToolMaterials.METALLURGIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ToolSet MYTHRIL = new ToolSet(MythicToolMaterials.MYTHRIL, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
-    public static final ToolSet ORICHALCUM = new ToolSet(MythicToolMaterials.ORICHALCUM, BETTER_AXE_DAMAGE, SLOW_ATTACK_SPEED);
-    public static final ToolSet OSMIUM = new ToolSet(MythicToolMaterials.OSMIUM, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet ORICHALCUM = new ToolSet(MythicToolMaterials.ORICHALCUM, DEFAULT_DAMAGE, SLOW_ATTACK_SPEED);
+    public static final ToolSet OSMIUM = new ToolSet(MythicToolMaterials.OSMIUM, DEFAULT_DAMAGE, SLOW_ATTACK_SPEED);
     public static final ToolSet PALLADIUM = new PalladiumToolSet(MythicToolMaterials.PALLADIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, Item.Settings::fireproof);
-    public static final ToolSet PROMETHEUM = new PrometheumToolSet(MythicToolMaterials.PROMETHEUM, BETTER_AXE_DAMAGE, DEFAULT_ATTACK_SPEED);
+    public static final ToolSet PROMETHEUM = new PrometheumToolSet(MythicToolMaterials.PROMETHEUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet QUADRILLUM = new ToolSet(MythicToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet RUNITE = new ToolSet(MythicToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet STAR_PLATINUM = new ToolSet(MythicToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
@@ -70,12 +71,14 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item CARMOT_STAFF = new CarmotStaff(MythicToolMaterials.CARMOT_STAFF, -3.0F,
             new OwoItemSettings().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
-    public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
-            new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
-
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2F,
             new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2), 1);
+    public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD, 3, -2.4F,
+            new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
     public static final Item GILDED_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -2.4F,
+            new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
+
+    public static final Item ROYAL_MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.ROYAL_MIDAS_GOLD, 3, -2.4F,
             new OwoItemSettings().fireproof().rarity(Rarity.UNCOMMON).group(MythicMetals.TABBED_GROUP).tab(2));
 
     public static final Item RUNITE_ARROW = new RuniteArrowItem(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2));
@@ -111,8 +114,9 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("carmot_staff", CARMOT_STAFF);
         RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);
         RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
-        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
+        RegistryHelper.item("royal_midas_gold_sword", ROYAL_MIDAS_GOLD_SWORD);
+        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
         RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
         RegistryHelper.item("runite_arrow", RUNITE_ARROW);
         RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "addition": {
+    "item": "mythicmetals:celestium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:celestium_hoe"
+  },
+  "template": {
+    "item": "mythicmetals:unobtainium_smithing_template"
+  }
+}
