@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:unobtainium",
+  "parent": "mythicmetals:unobtainium_template",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.metallurgium.title"

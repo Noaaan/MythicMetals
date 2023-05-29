@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_midas_gold_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:midas_gold_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:template/midas_folding_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_midas_gold_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:template/midas_folding_template",
+      "mythicmetals:template/midas_folding_template_duplicate"
+    ]
+  }
+}

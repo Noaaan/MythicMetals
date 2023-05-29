@@ -45,7 +45,7 @@
     "fabric": ">=0.57.0",
     "minecraft": "1.19.x",
     "java": ">=17",
-    "owo": ">=0.9.3",
+    "owo": ">=0.10.3",
     "cardinal-components-entity": "*"
   },
   "custom": {

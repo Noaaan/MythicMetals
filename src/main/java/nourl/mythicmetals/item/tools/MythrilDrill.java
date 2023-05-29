@@ -35,7 +35,8 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.misc.SlowlyMoreUsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
+import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -135,8 +136,9 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public boolean onClicked(ItemStack drill, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
+            var cursorItem = cursorStack.getItem();
             // If right-clicking with Morkite on Drill, try to fuel it
-            if (cursorStack.getItem().equals(MythicItems.Mats.MORKITE)) {
+            if (cursorItem.equals(MythicItems.Mats.MORKITE)) {
 
                 // Don't bother interacting if the Drills fuel is full
                 if (drill.get(FUEL).equals(MAX_FUEL)) return false;
@@ -159,6 +161,21 @@ public class MythrilDrill extends PickaxeItem {
                 }
             }
 
+            // Drill Upgrade logic. Check if item on cursor is valid and insert if applicable
+            if ((!hasUpgrade(drill, 0) || !hasUpgrade(drill, 1))) {
+                if (!DrillUpgrades.MAP.containsKey(cursorItem) || hasUpgradeItem(drill, cursorItem)) return false;
+
+                if (!drill.has(MythrilDrill.UPGRADE_SLOT_ONE)) {
+                    cursorStack.decrement(1);
+                    drill.put(MythrilDrill.UPGRADE_SLOT_ONE, cursorItem);
+                    return true;
+                }
+                else if (!drill.has(MythrilDrill.UPGRADE_SLOT_TWO)) {
+                    cursorStack.decrement(1);
+                    drill.put(MythrilDrill.UPGRADE_SLOT_TWO, cursorItem);
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -200,6 +217,9 @@ public class MythrilDrill extends PickaxeItem {
         // Upgrade slots
         var format2 = hasUpgrade(stack, 2) ? Formatting.RESET : Formatting.GRAY;
         var format1 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
+        if (hasEmptyUpgradeSlot(stack)) {
+            tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_tip"));
+        }
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_2", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 2))).formatted(format2));
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_slot_1", Text.translatable("tooltip.mythril_drill.upgrade." + getUpgradeString(stack, 1))).formatted(format1));
 
@@ -214,7 +234,7 @@ public class MythrilDrill extends PickaxeItem {
         }
         // Fuel Gauge
         tooltip.add(1, Text.translatable("tooltip.mythril_drill.fuel", fuel, MAX_FUEL)
-                .fillStyle(Style.EMPTY.withColor(SlowlyMoreUsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
+                .fillStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(fuel, MAX_FUEL))));
 
     }
 
@@ -296,6 +316,14 @@ public class MythrilDrill extends PickaxeItem {
         }
     }
 
+    /**
+     * Check if there is a free upgrade slot
+     * @param drillStack  The Drill in question
+     */
+    public static boolean hasEmptyUpgradeSlot(ItemStack drillStack) {
+            return drillStack.has(UPGRADE_SLOT_TWO) || drillStack.has(UPGRADE_SLOT_ONE);
+    }
+
     public static String getUpgradeString(ItemStack stack, int slot) {
         if (slot == 2) {
             if (stack.has(UPGRADE_SLOT_TWO)) {
@@ -321,7 +349,7 @@ public class MythrilDrill extends PickaxeItem {
         }
 
         if (world.isClient) {
-            var sound = drill.get(IS_ACTIVE) ? SoundEvents.BLOCK_CONDUIT_DEACTIVATE : SoundEvents.BLOCK_CONDUIT_ACTIVATE;
+            var sound = drill.get(IS_ACTIVE) ? RegisterSounds.MYTHRIL_DRILL_DEACTIVATE : RegisterSounds.MYTHRIL_DRILL_ACTIVATE;
             user.playSound(sound, SoundCategory.PLAYERS, 1.0f, 1.0f);
         }
         user.getItemCooldownManager().set(drill.getItem(), 20);

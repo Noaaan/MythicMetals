@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.registry.RegisterSounds;
 
 public class BanglumNukeHandler {
     public static void init() {
@@ -100,7 +101,7 @@ public class BanglumNukeHandler {
             BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
             world.spawnEntity(nuke);
             world.playSound(
-                null, nuke.getX(), nuke.getY(), nuke.getZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F
+                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundCategory.BLOCKS, 1.0F, 1.0F
             );
             world.emitGameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
         }

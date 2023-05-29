@@ -1,0 +1,39 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "mythicmetals:item/weapons/royal_midas_gold_greatsword"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -90, 55],
+			"translation": [0, 6.75, 0.55],
+			"scale": [1.80, 1.80, 1.1]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 90, -55],
+			"translation": [0, 6.75, 0.55],
+			"scale": [1.80, 1.80, 1.1]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 4.5, 1.13],
+			"scale": [1.30, 1.30, 1.0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, -25],
+			"translation": [1.13, 4.5, 1.13],
+			"scale": [1.30, 1.30, 1.0]
+		},
+		"gui": {
+			"scale": [1.5, 1.5, 1.5]
+		},
+		"fixed": {
+			"rotation": [180, 0, 180],
+			"scale": [2.5, 2.5, 2.0]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [1.45, 1.45, 0.6]
+		}
+	}
+}

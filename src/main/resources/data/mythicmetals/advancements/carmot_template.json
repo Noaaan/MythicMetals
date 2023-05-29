@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:carmot",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.carmot_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.carmot_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:carmot_smithing_template"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gygrid": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:carmot_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

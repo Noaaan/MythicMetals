@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "mythicmetals:kyber_axe"
+  },
+  "addition": {
+    "item": "mythicmetals:carmot_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:carmot_axe"
+  },
+  "template": {
+    "item": "mythicmetals:carmot_smithing_template"
+  }
+}

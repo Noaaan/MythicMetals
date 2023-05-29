@@ -17,6 +17,7 @@ Dr. Zeal, for the wisp texture.
 BasiqueEvangelist, for multiple contributions to the project, helping with recipe serialization, and for mining copious amounts of Midas Gold.  
 Draylar, for making a ton of cool mods that inspired multiple parts of the project.  
 Starmute, for keeping the Terralith compat up-to-date.   
+DaFuqs, for the ItemRendererMixin implementation
 
 ## **The artists**  
 * DH  

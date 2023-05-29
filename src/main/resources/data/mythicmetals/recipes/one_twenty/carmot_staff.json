@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": {
+    "item": "mythicmetals:kyber_shovel"
+  },
+  "addition": {
+    "item": "mythicmetals:carmot_block"
+  },
+  "result": {
+    "item": "mythicmetals:carmot_staff"
+  },
+  "template": {
+    "item": "mythicmetals:carmot_staff_smithing_template"
+  }
+}

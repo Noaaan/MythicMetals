@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -12,6 +13,7 @@ import nourl.mythicmetals.armor.ArmorSet;
 import nourl.mythicmetals.item.tools.ToolSet;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -34,8 +36,8 @@ public class Ability {
         this.items = new HashSet<>();
     }
 
-    public Ability(String tranlsationKey, int level, boolean showLevel) {
-        this.tooltip = tranlsationKey;
+    public Ability(String translationKey, int level, boolean showLevel) {
+        this.tooltip = translationKey;
         this.level = level;
         this.items = new HashSet<>();
         this.showLevel = showLevel;
@@ -101,5 +103,15 @@ public class Ability {
                 } else lines.add(text);
             }
         });
+    }
+
+   public static void addTooltipOnStack(ItemStack stack, List<Text> lines, Style style, String translationKey) {
+        MutableText text = Text.literal("");
+        text.append(Text.translatable(translationKey));
+        text.setStyle(style);
+        if (lines.size() > 2) {
+            var enchantCount = stack.getEnchantments().size();
+            lines.add(enchantCount + 1, text);
+        } else lines.add(text);
     }
 }

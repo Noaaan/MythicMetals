@@ -51,6 +51,7 @@ import nourl.mythicmetals.misc.EpicExplosion;
 import nourl.mythicmetals.misc.MythicDamageTypes;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -94,15 +95,18 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public boolean onStackClicked(ItemStack staff, Slot slot, ClickType clickType, PlayerEntity player) {
+        // Check if item is a BlockItem, if not try empty
         if (clickType == ClickType.RIGHT) {
+            // Validation - Cannot be used if locked
+            // You cannot insert blocks with NBT, since the staff wipes it, and frankly
+            // I do not want to deal with nesting staves inside shulker boxes with portable barrels inside or something
             if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
-            // Check if item is a BlockItem, if not try empty
-            if (slot.getStack().getItem() instanceof BlockItem blockItem) {
+            if (slot.getStack().getItem() instanceof BlockItem blockItem && !slot.getStack().hasNbt()) {
 
                 boolean validStaffBlock = validateStaffBlock(blockItem);
                 if (!staff.has(STORED_BLOCK) && !slot.getStack().isEmpty()) {
 
-                    // Try put block in staff
+                    // Try to put block in staff
                     if (validStaffBlock) {
                         staff.put(STORED_BLOCK, blockItem.getBlock());
                         slot.takeStack(1);
@@ -119,7 +123,7 @@ public class CarmotStaff extends ToolItem {
                     if (getBlockInStaff(staff).equals(blockItem.getBlock())) return false;
                     if (slot.getStack().getCount() > 1) return false;
 
-                    // Try replace block in staff
+                    // Try to replace block in staff
                     if (slot.tryTakeStackRange(1, 1, player).isPresent()) {
                         var staffBlock = staff.get(STORED_BLOCK).asItem().getDefaultStack();
                         slot.takeStack(1);
@@ -138,7 +142,7 @@ public class CarmotStaff extends ToolItem {
             if (slot.getStack().isEmpty()) {
                 slot.insertStack(staff.get(STORED_BLOCK).asItem().getDefaultStack());
                 staff.delete(STORED_BLOCK);
-                player.playSound(SoundEvents.ENTITY_GLOW_ITEM_FRAME_REMOVE_ITEM, SoundCategory.PLAYERS, 0.85F, 0.5F);
+                player.playSound(RegisterSounds.CARMOT_STAFF_EMPTY, SoundCategory.PLAYERS, 0.85F, 0.5F);
                 return true;
             }
 
@@ -150,12 +154,12 @@ public class CarmotStaff extends ToolItem {
     @Override
     public boolean onClicked(ItemStack staff, ItemStack cursorStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT) {
-            if (staff.has(LOCKED) && staff.get(LOCKED)) return false;
+            if ((staff.has(LOCKED) && staff.get(LOCKED)) || cursorStack.hasNbt()) return false;
             // If cursor is empty, but staff has block, take block out of staff
             if (cursorStackReference.get().isEmpty() && staff.has(STORED_BLOCK)) {
                 if (cursorStackReference.set(staff.get(STORED_BLOCK).asItem().getDefaultStack())) {
                     staff.delete(STORED_BLOCK);
-                    player.playSound(SoundEvents.ENTITY_GLOW_ITEM_FRAME_REMOVE_ITEM, SoundCategory.PLAYERS, 0.25F, 0.5F);
+                    player.playSound(RegisterSounds.CARMOT_STAFF_EMPTY, SoundCategory.PLAYERS, 0.25F, 0.5F);
                     return true;
                 }
                 return false;
@@ -206,7 +210,7 @@ public class CarmotStaff extends ToolItem {
         // Stormyx - Rainbow Shield that blocks projectiles around you
         if (hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock()) && user.getMainHandStack().equals(stack)) {
             user.setCurrentHand(hand);
-            WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.AMBIENT, 1.0F, 1.5F);
+            WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
             return TypedActionResult.consume(stack);
         }
 
@@ -428,7 +432,7 @@ public class CarmotStaff extends ToolItem {
             stack.put(IS_USED, true);
         }
         if (remainingUseTicks % 40 == 1) {
-            WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_AMBIENT, SoundCategory.AMBIENT, 1.0F, 1.5F);
+            WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
         }
 
         for (Entity entity : entities) {
@@ -470,7 +474,7 @@ public class CarmotStaff extends ToolItem {
             ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 240);
         }
         stack.put(IS_USED, false);
-        WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.AMBIENT, 0.9F, 1.5F);
+        WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
     }
 
     @Override
@@ -480,7 +484,7 @@ public class CarmotStaff extends ToolItem {
             ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 320);
         }
         stack.put(IS_USED, false);
-        WorldOps.playSound(world, user.getBlockPos(), SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.AMBIENT, 0.9F, 1.5F);
+        WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
         return super.finishUsing(stack, world, user);
     }
 

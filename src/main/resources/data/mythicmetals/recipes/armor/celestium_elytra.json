@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:elytra"
+  },
+  "addition": {
+    "item": "mythicmetals:celestium_ingot"
+  },
+  "result": {
+    "item": "mythicmetals:celestium_elytra"
+  }
+}

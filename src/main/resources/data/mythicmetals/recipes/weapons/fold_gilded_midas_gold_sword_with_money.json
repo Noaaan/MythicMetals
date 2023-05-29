@@ -1,0 +1,20 @@
+{
+  "type": "mythicmetals:legacy_fold_midas_smithing_recipe",
+  "base": {
+    "item": "mythicmetals:gilded_midas_gold_sword"
+  },
+  "addition": {
+    "item": "numismatic_overhaul:gold_coin"
+  },
+  "result": {
+    "item": "mythicmetals:gilded_midas_gold_sword"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "numismatic_overhaul"
+      ]
+    }
+  ]
+}

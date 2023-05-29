@@ -16,7 +16,7 @@ repositories {
     maven { url = "https://maven.wispforest.io/" }
     maven { url = "https://jitpack.io" }
     maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
-    //maven { url = "https://maven.cafeteria.dev" }
+    maven { url = "https://maven.cafeteria.dev" }
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
     maven { url = "https://api.modrinth.com/maven/" }
     maven { url = "https://maven.nucleoid.xyz/" }
@@ -50,8 +50,8 @@ dependencies {
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
-    modImplementation include("maven.modrinth:AdditionalEntityAttributes:${project.aea_versionite}")
-    //modImplementation include("com.github.DaFuqs:AdditionalEntityAttributes:${project.aea_jitpack}")
+    //modImplementation include("de.dafuqs:AdditionalEntityAttributes:${project.aea_versionite}")
+    modImplementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
@@ -60,7 +60,7 @@ dependencies {
     }
 
     // Reach Entity Attributes
-    //modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
+    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // Common Protection API
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")

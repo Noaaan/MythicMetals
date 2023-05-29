@@ -3,7 +3,6 @@ package nourl.mythicmetals.armor;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -23,7 +22,7 @@ public class ArmorSet {
 
     private final List<ArmorItem> armorSet;
 
-    public ArmorItem baseArmorItem(ArmorMaterial material, ArmorItem.Type slot, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorItem baseArmorItem(ArmorMaterial material, ArmorItem.Type slot, Consumer<OwoItemSettings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(3);
         settingsProcessor.accept(settings);
         return this.makeItem(material, slot, settings);
@@ -34,7 +33,7 @@ public class ArmorSet {
         });
     }
 
-    public ArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorSet(ArmorMaterial material, Consumer<OwoItemSettings> settingsProcessor) {
         this.helmet = baseArmorItem(material, ArmorItem.Type.HELMET, settingsProcessor);
         this.chestplate = baseArmorItem(material, ArmorItem.Type.CHESTPLATE, settingsProcessor);
         this.leggings = baseArmorItem(material, ArmorItem.Type.LEGGINGS, settingsProcessor);
@@ -56,7 +55,7 @@ public class ArmorSet {
         Registry.register(Registries.ITEM, new Identifier(modid, name + "_boots"), boots);
     }
 
-    protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, Item.Settings settings) {
+    protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, OwoItemSettings settings) {
         return new ArmorItem(material, slot, settings);
     }
 

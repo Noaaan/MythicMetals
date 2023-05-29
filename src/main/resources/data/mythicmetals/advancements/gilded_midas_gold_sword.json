@@ -1,5 +1,5 @@
 {
-  "parent": "mythicmetals:midas_gold_sword",
+  "parent": "mythicmetals:midas_gold_folding",
   "display": {
     "title": {
       "translate": "advancement.mythicmetals.gilded_midas_gold_sword.title"
@@ -10,7 +10,7 @@
     "icon": {
       "item": "mythicmetals:gilded_midas_gold_sword"
     },
-    "frame": "challenge",
+    "frame": "goal",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

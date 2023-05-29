@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "mythicmetals:item/weapons/midas_gold_shortsword"
+	}
+}

@@ -36,6 +36,7 @@
           "type": "minecraft:item",
           "weight": 8,
           "name": "minecraft:potion",
+          "quality": 1,
           "functions": [
             {
               "function": "minecraft:set_potion",
@@ -101,7 +102,7 @@
           "type": "minecraft:item",
           "weight": 10,
           "name": "minecraft:ender_pearl",
-          "quality": 1,
+          "quality": 2,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -118,6 +119,7 @@
           "type": "minecraft:item",
           "weight": 20,
           "name": "minecraft:string",
+          "quality": -1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -186,7 +188,7 @@
           "type": "minecraft:item",
           "weight": 40,
           "name": "minecraft:soul_sand",
-          "quality": -3,
+          "quality": -5,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -232,16 +234,28 @@
           ]
         },
         {
-          "weight": 1,
           "type": "minecraft:item",
+          "weight": 1,
+          "quality": 1,
           "name": "mythicmetals:unobtainium",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
               "chance": 0.00042
             }
-          ],
-          "quality": 1
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 7,
+          "quality": 2,
+          "name": "mythicmetals:enchanted_midas_gold_block",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.025
+            }
+          ]
         }
       ]
     }

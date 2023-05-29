@@ -1,8 +1,115 @@
-# 0.x.x
+# 0.18.0
+
+## Celestium Rework
+Celestium is getting some more love this update, and a new Celestium item: the **Celestium Elytra!**
+The following changes were made for it:
+- Increased the movement speed bonus to 10% per piece (from 8%)
+- Increased Star Platinums damage bonus to 1 per piece (from 0.5)
+- Celestium armor now inherits this damage bonus, meaning all Celestium Armor now has this damage bonus
+- Changed the Celestium Sword texture to be more like a scimitar
+
+### Celestium Elytra
+A much more durable elytra. This is an armored elytra, meaning it gives you both armor and toughness. 
+Not only does it have a movement speed bonus, it also speeds up your flying speed when using Firework Rockets by 20%
+
+## Smithing Templates 
+To comform with the Smithing Table rework you can now find and craft various Smithing Templates. 
+These are found across the world, or crafted from certain materials.
+The following Smithing Templates were added:
+- Unobtainium Alloy Upgrade
+  - Found in Ancient Cities
+  - Allows you to craft Metallurgium and Celestium Gear from Netherite and Diamond respectively
+  - Can be duplicated with Diamonds and Deepslate
+- Royal Midas Gold Sword Upgrade
+  - Rarely found when bartering with Piglins using Midas Gold
+  - Allows you to upgrade a maxed Gilded Midas Gold Sword into its final form...
+  - Can be duplicated with Diamonds and Deepslate
+- Mythril Drill Upgrade
+  - Found in Mineshafts
+  - Upgrades a Mythril Pickaxe, using a Durasteel engine, into a Mythril Drill
+  - Can be duplicated with Diamonds and Deepslate
+- Midas Gold Folding
+  - Crafted in the crafting table using Midas Gold and Netherrack
+  - Used to increase the gold counter on any Midas Gold Swords by 1
+  - Can be duplicated for nuggets once you have made one
+- Carmot Staff
+  - Found in Village Temple chests. In vanilla this only spawns in Desert Village Temples
+    - Not to be confused with Desert Temples, which resemble pyramids. The structure you are looking for is more like a small sandstone castle
+  - Can be duplicated with Diamonds and Smooth Basalt
+- Carmot Upgrade
+  - Crafted from Carmot, Diamonds, and Smooth Basalt
+  - Upgrades Kyber Gear into its Carmot equivalent
+  - Can be duplicated using Carmot, Smooth Basalt, and Carmot Nuggets
+- Legendary Banglum Upgrade
+  - Crafted from Banglum Ingots and Tuff
+  - Upgrades Banglum Gear to its Legendary variant using a Banglum Chunk
+- Aegis Sword Upgrade
+  - Obtained from trading with Villagers, specifically Master level Clerics
+  - Can upgrade a Palladium Sword to the Blade of the Aegis
+  - Can upgrade a Hallowed Sword to the Sword of the Aegis
+
+**NOTE** - For 1.19.4 these templates don't exist, unless you enable the appropriate Experimental Features.
+
+## Midas Gold Sword Rework
+The Midas Gold Sword received a massive rework following this update. 
+As specified above you now need to craft smithing templates in order to fold it, which makes maxing it slightly more expensive. 
+
+There is a rare chance when bartering with Piglins you can find an **Enchanted Midas Gold Block**. 
+This can be crafted into a **Royal Midas Gold Sword Upgrade**, which lets you upgrade 
+a maxed Gilded Midas Gold Sword one more time... 
+Some even say it comes with a special ability which should help with obtaining more gold.
+
+Are you ready to become the ultimate sword-smith?
+
+## Mythril Drill Upgrades
+The old drill crafting required a Smithing Table to upgrade the drill. 
+You can now right-click Drill Upgrade Items onto it instead. 
+
+Items that can be inserted into the Mythril Drill have tooltip indicating that they can be put into the drill (NEW!).
+
+## Prometheum Rework
+This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
+To clarify, these are the current (and new) abilities of Prometheum:
+- Regrowth
+  - Prometheum will automatically repair itself
+  - For armor, it must be equipped for this to take effect
+  - For tools, it must be in your main hand to repair itself
+  - The tools can also be in your off-hand (NEW!)
+- Overgrown (NEW!)
+  - Regrowth will track how much durability has been restored
+  - Once you hit a threshold of around 2000 durability regained, the armor will gain additional stats
+  - The regrowth self-repair effect will also increase on tools
+- Engrained (NEW!)
+  - If you apply Curse of Binding on the Armor, it will gain additional stats, as well as increase the self-repair effect more. 
+
+## Balancing changes
+- Default axe damage has been increased (+2 over sword), meaning over half the axes in the mod got a buff!
+- Celestium changes, see the Celestium Rework section
+- Prometheum changes, see the Prometheum Rework section
+- Osmium base damage: 2 -> 2.5
+- Osmium mining level: 2 -> 3 (can now mine obsidian)
+- Osmium durability: 584 -> 664
+- Steel mining level: 2 -> 3 (can now mine obsidian)
+- Steel durability: 600 -> 700
+- Steel enchantability: 12 -> 11
+- Durasteel durability: 800 -> 820
+
+## Other changes
 - Reduced the mining level of the Unobtainium Storage Block (Mythic/Metallurgium -> Netherite)
-- Changed the animations of the Mythril Drill
+- Changed the animations of the Mythril Drill. It now has more lights when active, and a custom holding animation. 
 - Revealed the Palladium advancements and made them more clear
+- Overhauled advancements heavily, adding all Smithing Templates and the Mythril Drill
 - Remove the Lapis Block Carmot Staff ability durability damage when in off-hand
+- Added a new loot condition: `mythicmetals:random_chance_with_luck`, which applies Luck directly to the chance modifier when breaking blocks/ores
+  - While luck does have an effect on the older loot tables, it did not have a sufficient impact on drops. This patch should remedy this
+- Added subtitles and sound events
+  - All armor now have custom equip sound events
+  - The Carmot Staff abilities, Mythril Drill, and Banglum Nuke now has sound events
+  - All of the above have subtitle support, accurately describing what sound is being played
+  - This means over time custom sounds for items can be added over time
+  - Resource pack creators can already change the sounds, if they modify the `sounds.json`
+- Changed the implementation of attribute modifications
+  - This is in an attempt to make them more compatible with mods that modify attributes
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
