@@ -805,7 +805,9 @@
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
   "death.attack.star_platinum_arrow.player.item": "%1$s was pierced by %2$s using %3$s",
 
+  "entity.mythicmetals.runite_arrow": "Runite Arrow",
   "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",
+  "entity.mythicmetals.tipped_runite_arrow": "Runite Arrow",
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 

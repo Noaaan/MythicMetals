@@ -110,6 +110,7 @@ To clarify, these are the current (and new) abilities of Prometheum:
   - Resource pack creators can already change the sounds, if they modify the `sounds.json`
 - Changed the implementation of attribute modifications
   - This is in an attempt to make them more compatible with mods that modify attributes
+- Made the Star Platinum and Runite arrows dispensable
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)

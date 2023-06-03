@@ -13,11 +13,18 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.math.Position;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.world.World;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
@@ -28,6 +35,8 @@ import nourl.mythicmetals.data.MythicOreKeys;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
+import nourl.mythicmetals.entity.RuniteArrowEntity;
+import nourl.mythicmetals.entity.StarPlatinumArrowEntity;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.misc.*;
@@ -90,6 +99,36 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicLootOps.init();
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
             factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
+        });
+        DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenserBehavior() {
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                var arrow = new StarPlatinumArrowEntity(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, world);
+                arrow.setPos(position.getX(), position.getY(), position.getZ());
+                arrow.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+                return arrow;
+            }
+        });
+
+        DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenserBehavior() {
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                var arrow = new RuniteArrowEntity(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, world);
+                arrow.setPos(position.getX(), position.getY(), position.getZ());
+                arrow.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+                return arrow;
+            }
+        });
+
+        DispenserBlock.registerBehavior(() -> MythicTools.TIPPED_RUNITE_ARROW, new ProjectileDispenserBehavior() {
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                var arrow = new RuniteArrowEntity(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, world);
+                arrow.setPos(position.getX(), position.getY(), position.getZ());
+                arrow.initFromStack(stack);
+                arrow.pickupType = PersistentProjectileEntity.PickupPermission.ALLOWED;
+                return arrow;
+            }
         });
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
