@@ -80,6 +80,33 @@ public class MythicParticleSystem {
         ClientParticles.reset();
     });
 
+    public static final ParticleSystem<Void> COLORED_NOTE = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        Random r = new Random();
+       ClientParticles.reset();
+       ClientParticles.setParticleCount(1);
+       ClientParticles.persist();
+       ClientParticles.setVelocity(new Vec3d(r.nextInt(32) / 16.0f, 0, 0));
+       ClientParticles.spawn(ParticleTypes.NOTE, world, pos, 0);
+       ClientParticles.reset();
+    });
+
+    public static final ParticleSystem<Void> NOTE_EXPLOSION = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        final int COUNT = 8;
+        Random r = new Random();
+        ClientParticles.reset();
+        ClientParticles.setParticleCount(1);
+        ClientParticles.persist();
+        for (int i = 0; i < COUNT; i++) {
+            ClientParticles.setVelocity(new Vec3d(r.nextInt(32) / 16.0f, 0, 0));
+            double xOffset = r.nextDouble(-1.0, 1.0);
+            double yOffset = r.nextDouble(-0.5, 2.0);
+            double zOffset = r.nextDouble(-1.0, 1.0);
+            ClientParticles.spawn(ParticleTypes.NOTE, world, pos.add(xOffset, yOffset, zOffset), 0.25f);
+        }
+
+        ClientParticles.reset();
+    });
+
 
     public static void init() {
     }

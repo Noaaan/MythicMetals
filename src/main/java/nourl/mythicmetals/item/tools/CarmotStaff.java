@@ -10,6 +10,7 @@ import io.wispforest.owo.ui.core.Color;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -40,9 +41,11 @@ import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.UniqueStaffBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
@@ -73,6 +76,10 @@ public class CarmotStaff extends ToolItem {
      * NBT Key that prevents the staff from inserting blocks
      */
     public static final NbtKey<Boolean> LOCKED = new NbtKey<>("Locked", NbtKey.Type.BOOLEAN);
+    /**
+     * NBT Key that starts playing notes above the users had
+     */
+    public static final NbtKey<Boolean> ENCORE = new NbtKey<>("Encore", NbtKey.Type.BOOLEAN);
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 
@@ -357,11 +364,27 @@ public class CarmotStaff extends ToolItem {
             return TypedActionResult.success(stack);
         }
 
+        // Note Block - Play a tune!
+        if (hasBlockInStaff(stack, Blocks.NOTE_BLOCK)) {
+            if (random.nextInt(500) > 321) {
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), RegisterSounds.MELODY, SoundCategory.PLAYERS, 1.0f, 1.0f, 1);
+                stack.damage(60, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                stack.put(ENCORE, true);
+                user.getItemCooldownManager().set(stack.getItem(), 1500);
+                return TypedActionResult.success(stack);
+            }
+            MythicParticleSystem.COLORED_NOTE.spawn(world, user.getPos().add(0, 2.35, 0));
+            playRandomSound(random, user, world);
+            user.getItemCooldownManager().set(stack.getItem(), 15);
+            return TypedActionResult.success(stack);
+        }
+
         return TypedActionResult.pass(stack);
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        Random r = Random.create();
         // Durabilty damage amount
         int amount = 1;
 
@@ -397,6 +420,15 @@ public class CarmotStaff extends ToolItem {
         // Star Platinum - eat slightly more durability at the cost of big attack speed
         if (hasBlockInStaff(stack, MythicBlocks.STAR_PLATINUM.getStorageBlock())) {
             amount = 3;
+        }
+
+        // Note Block - Instruments famously make noise when hitting people
+        if (hasBlockInStaff(stack, Blocks.NOTE_BLOCK)) {
+            amount = 1;
+            MythicParticleSystem.NOTE_EXPLOSION.spawn(target.world, target.getPos());
+            for (int i = 0; i <= r.nextInt(5); i++) {
+                playRandomSound(r, target, target.world);
+            }
         }
 
         stack.damage(amount, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
@@ -582,8 +614,20 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!((PlayerEntity) entity).getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
-            finishUsing(stack, world, (LivingEntity) entity);
+        if (entity instanceof PlayerEntity user) {
+            if (user.getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
+                finishUsing(stack, world, (LivingEntity) entity);
+            }
+
+            // Trigger Sculk Sensors every second while jamming out
+            if (world.getTime() % 20 == (world.isClient() ? 0 : 10) && hasBlockInStaff(stack, Blocks.NOTE_BLOCK) && encore(stack, world)) {
+                MythicParticleSystem.COLORED_NOTE.spawn(world, user.getPos().add(0, 2.35, 0));
+                world.emitGameEvent(GameEvent.INSTRUMENT_PLAY, user.getPos(), GameEvent.Emitter.of(user));
+            }
+
+            if (!user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+                stack.put(ENCORE, false);
+            }
         }
     }
 
@@ -625,4 +669,16 @@ public class CarmotStaff extends ToolItem {
                 World.ExplosionSourceType.NONE);
     }
 
+    private void playRandomSound(Random random, LivingEntity user, World world) {
+        float pitch = MathHelper.clamp(random.nextInt(20) / 10f, 0.1f, 2.0f);
+        int instrument = random.nextInt(15);
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), Instrument.values()[instrument].getSound().value(), SoundCategory.PLAYERS, 1.0f, pitch, random.nextLong());
+    }
+
+    /**
+     * Returns whether the player goes on an encore, playing a really sick melody
+     */
+    public static boolean encore(ItemStack stack, World world) {
+        return stack.has(ENCORE) && stack.get(ENCORE) && world.getTime() % 20 == (world.isClient() ? 0 : 10);
+    }
 }

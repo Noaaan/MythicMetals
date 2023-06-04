@@ -560,6 +560,7 @@
   "subtitles.mythicmetals.equip_star_platinum": "Star Platinum armor clangs",
   "subtitles.mythicmetals.equip_steel": "Steel armor clanks",
   "subtitles.mythicmetals.equip_stormyx": "Stormyx armor jingles",
+  "subtitles.mythicmetals.drop_the_bass": "Noteblock encores",
 
   "subtitles.mythicmetals.carmot_staff_empty": "Carmot Staff emptied",
   "subtitles.mythicmetals.projectile_barrier_begin": "Projectile barrier activated",
@@ -790,7 +791,8 @@
   "tooltip.carmot_staff.sponge": "Unique Ability - Absorb Water",
   "tooltip.carmot_staff.carmot": "Unique Ability - AoE Heal",
   "tooltip.carmot_staff.stormyx": "Unique Ability - Projectile Barrier",
-  "tooltip.carmot_staff.command_block": "Power of Creation - Right Click to Ascend",
+  "tooltip.carmot_staff.note_block": "Unique Instrument - Play a tune!",
+  "tooltip.carmot_staff.command_block": "Ascension - The Power of Creation",
   "tooltip.carmot_staff.unobtainium": "THE ONE PIECE IS REAAAL!",
   "tooltip.carmot_staff.unique": "Unique",
   "tooltip.carmot_staff.empty_staff": "Right-click with block over staff to insert",

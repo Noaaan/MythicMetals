@@ -15,6 +15,12 @@
       "mythicmetals:dog4"
     ]
   },
+  "melody": {
+    "sounds": [
+      "mythicmetals:melody"
+    ],
+    "subtitle": "subtitles.mythicmetals.drop_the_bass"
+  },
   "morkite_ore_break": {
     "sounds": [
       "mythicmetals:morkite_ore_break_1",

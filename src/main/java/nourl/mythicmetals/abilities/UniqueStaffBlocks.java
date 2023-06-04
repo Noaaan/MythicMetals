@@ -41,6 +41,7 @@ public class UniqueStaffBlocks {
         MAP.put(Blocks.GOLD_BLOCK, "gold");
         MAP.put(Blocks.SPONGE, "sponge");
         MAP.put(Blocks.COMMAND_BLOCK, "command_block");
+        MAP.put(Blocks.NOTE_BLOCK, "note_block");
         MAP.put(MythicBlocks.BRONZE.getStorageBlock(), "copper");
         MAP.put(MythicBlocks.CARMOT.getStorageBlock(), "carmot");
         MAP.put(MythicBlocks.MIDAS_GOLD.getStorageBlock(), "midas_gold");

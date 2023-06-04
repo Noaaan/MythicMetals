@@ -111,6 +111,7 @@ To clarify, these are the current (and new) abilities of Prometheum:
 - Changed the implementation of attribute modifications
   - This is in an attempt to make them more compatible with mods that modify attributes
 - Made the Star Platinum and Runite arrows dispensable
+- Added a new Unique Block for the Carmot Staff - Note Block
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
