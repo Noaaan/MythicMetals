@@ -89,6 +89,7 @@ To clarify, these are the current (and new) abilities of Prometheum:
 - Osmium base damage: 2 -> 2.5
 - Osmium mining level: 2 -> 3 (can now mine obsidian)
 - Osmium durability: 584 -> 664
+- Osmium knockback resistance: 10% per piece -> 25% per piece
 - Steel mining level: 2 -> 3 (can now mine obsidian)
 - Steel durability: 600 -> 700
 - Steel enchantability: 12 -> 11

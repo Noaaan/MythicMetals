@@ -58,7 +58,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, RegisterSounds.EQUIP_ORICHALCUM, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM.getIngot());
     }),
-    OSMIUM("osmium", 25, new int[]{1, 4, 5, 2}, 16, RegisterSounds.EQUIP_OSMIUM, 2.0F, 0.1F, () -> {
+    OSMIUM("osmium", 25, new int[]{1, 4, 5, 2}, 16, RegisterSounds.EQUIP_OSMIUM, 2.0F, 0.25F, () -> {
         return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
     }),
     PALLADIUM("palladium", 28, new int[]{3, 6, 8, 3}, 16, RegisterSounds.EQUIP_PALLADIUM, 2.0F, 0.0F, () -> {
