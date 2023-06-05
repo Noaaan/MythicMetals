@@ -107,7 +107,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "damageShield", at = @At("HEAD"))
     private void mythicmetals$damageShield(float amount, CallbackInfo ci) {
         if (this.activeItemStack.isOf(MythicTools.STORMYX_SHIELD)) {
-            if (!this.world.isClient) {
+            if (!this.getWorld().isClient) {
                 incrementStat(Stats.USED.getOrCreateStat(this.activeItemStack.getItem()));
             }
 
@@ -123,7 +123,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
                     }
 
                     this.activeItemStack = ItemStack.EMPTY;
-                    this.playSound(SoundEvents.ITEM_SHIELD_BREAK, 0.8F, 0.8F + this.world.random.nextFloat() * 0.4F);
+                    this.playSound(SoundEvents.ITEM_SHIELD_BREAK, 0.8F, 0.8F + this.getWorld().random.nextFloat() * 0.4F);
                 }
             }
 

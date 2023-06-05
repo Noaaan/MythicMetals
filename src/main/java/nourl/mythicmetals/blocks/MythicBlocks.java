@@ -3,7 +3,6 @@ package nourl.mythicmetals.blocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -121,7 +120,7 @@ public class MythicBlocks {
             .strength(5.0F).sounds(BlockSoundGroup.NETHER_ORE)
             .createOre(DIAMOND_MINING_LEVEL).strength(6.0F).sounds(BlockSoundGroup.METAL)
             .createOreStorageBlock(DIAMOND_MINING_LEVEL)
-            .createStorageBlock(Material.METAL, DIAMOND_MINING_LEVEL)
+            .createStorageBlock(DIAMOND_MINING_LEVEL)
             .createAnvil(DIAMOND_MINING_LEVEL)
             .finish();
 
@@ -165,7 +164,7 @@ public class MythicBlocks {
             .strength(5F).sounds(BlockSoundGroup.NETHER_ORE).createOre(IRON_MINING_LEVEL, UniformIntProvider.create(2, 4))
             .sounds(BlockSoundGroup.GILDED_BLACKSTONE).createOreVariant("blackstone", IRON_MINING_LEVEL)
             .strength(6.0F).createOreStorageBlock(IRON_MINING_LEVEL)
-            .sounds(BlockSoundGroup.METAL).createStorageBlock(Material.METAL, IRON_MINING_LEVEL)
+            .sounds(BlockSoundGroup.METAL).createStorageBlock(IRON_MINING_LEVEL)
             .createAnvil(IRON_MINING_LEVEL)
             .finish();
 

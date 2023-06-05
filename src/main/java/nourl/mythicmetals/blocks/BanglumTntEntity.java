@@ -47,7 +47,7 @@ public class BanglumTntEntity extends Entity {
 
         this.move(MovementType.SELF, this.getVelocity());
         this.setVelocity(this.getVelocity().multiply(0.98));
-        if (this.onGround) {
+        if (this.isOnGround()) {
             this.setVelocity(this.getVelocity().multiply(0.7, -0.5, 0.7));
         }
 
@@ -55,13 +55,13 @@ public class BanglumTntEntity extends Entity {
         this.setFuse(i);
         if (i <= 0) {
             this.discard();
-            if (!this.world.isClient) {
+            if (!this.getWorld().isClient) {
                 this.explode();
             }
         } else {
             this.updateWaterState();
-            if (this.world.isClient) {
-                this.world.addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
+            if (this.getWorld().isClient) {
+                this.getWorld().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
 
@@ -82,7 +82,7 @@ public class BanglumTntEntity extends Entity {
     }
 
     protected void explode() {
-        this.world.createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, World.ExplosionSourceType.TNT);
+        this.getWorld().createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, World.ExplosionSourceType.TNT);
     }
 
     @Override

@@ -30,7 +30,6 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.registry.Registries;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.text.Style;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
@@ -41,6 +40,7 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
@@ -163,7 +163,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 var voxels = new ArrayList<VoxelShape>();
 
                 for (BlockPos blockPos : blocks) {
-                    var blockState = player.world.getBlockState(blockPos);
+                    var blockState = player.getWorld().getBlockState(blockPos);
                     if (!blockState.isAir() && hammer.isSuitableFor(blockState)) {
                         voxels.add(blockState.getOutlineShape(
                                         worldRenderContext.world(),
@@ -215,10 +215,8 @@ public class MythicMetalsClient implements ClientModInitializer {
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
 
             // Armor trim time
-            // TODO - Hallowed Helmet does not look great with the rendering, since the wings and helm-guard tend to get
-            // TODO - some color on like, half of them. See if there is a way to split these parts up.
-            if (entity.world.getEnabledFeatures().contains(FeatureFlags.UPDATE_1_20)) {
-                ArmorTrim.getTrim(entity.world.getRegistryManager(), stack).ifPresent(trim -> {
+            if (!stack.isOf(MythicArmor.HALLOWED.getHelmet())) {
+                ArmorTrim.getTrim(entity.getWorld().getRegistryManager(), stack).ifPresent(trim -> {
                     var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
                     Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trim.getLeggingsModelId(armor.getMaterial()) : trim.getGenericModelId(armor.getMaterial()));
                     VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
@@ -262,11 +260,11 @@ public class MythicMetalsClient implements ClientModInitializer {
                 (Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.DAY_OF_MONTH) == 1 && !MythicMetals.CONFIG.disableFunny()) ? 1 : 0);
 
         ModelPredicateProviderRegistry.register(MythicTools.PLATINUM_WATCH, RegistryHelper.id("time"), (stack, world, entity, seed) -> {
-            if (entity == null || entity.world == null) {
+            if (entity == null || entity.getWorld() == null) {
                 return 0.0F;
             }
 
-            return this.getTime(entity.world);
+            return this.getTime(entity.getWorld());
         });
 
     }

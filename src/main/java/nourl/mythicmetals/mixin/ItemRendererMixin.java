@@ -30,13 +30,8 @@ public class ItemRendererMixin {
         MythicMetalsClient.mode = renderMode;
     }
 
-    @Inject(method = "innerRenderInGui(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;III)V", at = @At("HEAD"))
-    private void mythicmetals$storeItemRenderGui(MatrixStack matrices, LivingEntity entity, World world, ItemStack stack, int x, int y, int seed, CallbackInfo ci) {
-        MythicMetalsClient.mode = ModelTransformationMode.GUI;
-    }
-
-    @Inject(method = "innerRenderInGui(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;III)V", at = @At("TAIL"))
-    private void mythicmetals$releaseMode(MatrixStack matrices, LivingEntity entity, World world, ItemStack stack, int x, int y, int seed, CallbackInfo ci) {
+    @Inject(at = @At("RETURN"), method = "renderItem(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;Lnet/minecraft/world/World;III)V")
+    private void mythicmetals$resetItemRender(LivingEntity entity, ItemStack item, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, World world, int light, int overlay, int seed, CallbackInfo ci) {
         MythicMetalsClient.mode = null;
     }
 

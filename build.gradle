@@ -34,7 +34,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    //modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
     // OwO
     annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
@@ -47,7 +47,7 @@ dependencies {
     modCompileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
     // ModMenu
-    modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
+    //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
     //modImplementation include("de.dafuqs:AdditionalEntityAttributes:${project.aea_versionite}")
@@ -60,7 +60,7 @@ dependencies {
     }
 
     // Reach Entity Attributes
-    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
+    //modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // Common Protection API
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")

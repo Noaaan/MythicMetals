@@ -94,20 +94,20 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
         GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
-        EpicExplosion.explode((ServerWorld) world, (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate,
+        EpicExplosion.explode((ServerWorld) getWorld(), (int) getX(), (int) getY(), (int) getZ(), radius, statePredicate,
                               this, playerCause);
 
         int soundRadius = radius * 3;
 
-        for (PlayerEntity player : world.getPlayers()) {
+        for (PlayerEntity player : getWorld().getPlayers()) {
             if (player.squaredDistanceTo(this) > soundRadius * soundRadius) continue;
 
-            player.playSound(RegisterSounds.BANGLUM_NUKE_EXPLOSION, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F);
+            player.playSound(RegisterSounds.BANGLUM_NUKE_EXPLOSION, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.getWorld().random.nextFloat() - this.getWorld().random.nextFloat()) * 0.2F) * 0.7F);
         }
 
-        for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
+        for (var entity : getWorld().getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion()) continue;
-            if (!CommonProtection.canDamageEntity(world, entity, playerCauseProfile, playerCause)) continue;
+            if (!CommonProtection.canDamageEntity(getWorld(), entity, playerCauseProfile, playerCause)) continue;
 
             double distanceModifier = baseDamage - entity.distanceTo(this) / (double) radius;
             if (distanceModifier >= 0) {
@@ -120,7 +120,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
                     y /= dist;
                     z /= dist;
                     var banglumNukeSource = new BanglumNukeSource(
-                            world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.BANGLUM_NUKE).orElseThrow(),
+                            getWorld().getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.BANGLUM_NUKE).orElseThrow(),
                             this,
                             this.getCausingEntity());
                     entity.damage(banglumNukeSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));

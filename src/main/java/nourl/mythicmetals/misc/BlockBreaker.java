@@ -1,8 +1,6 @@
 package nourl.mythicmetals.misc;
 
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
@@ -62,9 +60,9 @@ public class BlockBreaker {
 
     public static double getReachDistance(PlayerEntity playerEntity) {
         double base = playerEntity.isCreative() ? 5.0F : 4.5F;
-        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
-            return ReachEntityAttributes.getReachDistance(playerEntity, base);
-        }
+//        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
+//            return ReachEntityAttributes.getReachDistance(playerEntity, base);
+//        }
 
         return base;
     }
@@ -117,11 +115,11 @@ public class BlockBreaker {
                 blockHitResult.getSide().getOpposite(), blockHitResult.getBlockPos(), hammer.getDepth());
 
         for (BlockPos pos : hammeredBlocks) {
-            var state = player.world.getBlockState(pos);
+            var state = player.getWorld().getBlockState(pos);
             // Ignore any blocks that are not minable
             if (!state.isAir() && hammer.isSuitableFor(state)) {
                 // Set the current delta to the lowest value in the block iterator
-                var delta = player.getBlockBreakingSpeed(state) / 30 / state.getHardness(player.world, pos);
+                var delta = player.getBlockBreakingSpeed(state) / 30 / state.getHardness(player.getWorld(), pos);
                 if (hardestDelta > delta) {
                     hardestDelta = delta;
                 }

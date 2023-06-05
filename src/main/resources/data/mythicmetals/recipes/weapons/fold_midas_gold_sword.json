@@ -1,5 +1,5 @@
 {
-  "type": "mythicmetals:legacy_fold_midas_smithing_recipe",
+  "type": "mythicmetals:fold_midas_sword",
   "base": {
     "item": "mythicmetals:midas_gold_sword"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "mythicmetals:midas_gold_sword"
+  },
+  "template": {
+    "item": "mythicmetals:midas_folding_template"
   }
 }

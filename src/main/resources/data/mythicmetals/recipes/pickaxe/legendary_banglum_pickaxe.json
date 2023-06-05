@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "mythicmetals:banglum_pickaxe"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "mythicmetals:legendary_banglum_pickaxe"
+  },
+  "template": {
+    "item": "mythicmetals:legendary_banglum_smithing_template"
   }
 }

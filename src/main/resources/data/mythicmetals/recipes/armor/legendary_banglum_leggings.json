@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "mythicmetals:banglum_leggings"
-  },
+  "type": "minecraft:smithing_transform",
   "addition": {
     "item": "mythicmetals:banglum_chunk"
   },
+  "base": {
+    "item": "mythicmetals:banglum_leggings"
+  },
   "result": {
     "item": "mythicmetals:legendary_banglum_leggings"
+  },
+  "template": {
+    "item": "mythicmetals:legendary_banglum_smithing_template"
   }
 }

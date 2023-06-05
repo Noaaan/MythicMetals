@@ -51,8 +51,8 @@ public class PiglinBrainMixin {
 
     @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, PiglinEntity piglin) {
-        if (mythicmetals$cachedBarterItem.isOf(MythicItems.MIDAS_GOLD.getIngot()) && piglin.world.getServer() != null) {
-            return piglin.world.getServer().getLootManager().getTable(mythicmetals$BETTER_PIGLIN_BARTERING);
+        if (mythicmetals$cachedBarterItem.isOf(MythicItems.MIDAS_GOLD.getIngot()) && piglin.getWorld().getServer() != null) {
+            return piglin.getWorld().getServer().getLootManager().getLootTable(mythicmetals$BETTER_PIGLIN_BARTERING);
         }
         return table;
     }

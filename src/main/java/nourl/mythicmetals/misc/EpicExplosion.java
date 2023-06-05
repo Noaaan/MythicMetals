@@ -2,10 +2,10 @@ package nourl.mythicmetals.misc;
 
 import com.mojang.authlib.GameProfile;
 import eu.pb4.common.protection.api.CommonProtection;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidDrainable;
-import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,6 +13,7 @@ import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.explosion.Explosion;
+import nourl.mythicmetals.data.MythicTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -99,15 +100,14 @@ public final class EpicExplosion {
 
                     var state = world.getBlockState(pos);
                     var fluidState = world.getFluidState(pos);
-                    var material = state.getMaterial();
 
                     if (fluidState.isIn(FluidTags.WATER)) {
                         if (state.getBlock() instanceof FluidDrainable drainable && drainable.tryDrainFluid(world, pos, state).isEmpty()) {
-                            world.setBlockState(pos, Blocks.AIR.getDefaultState());
-                        } else if (material == Material.UNDERWATER_PLANT || material == Material.REPLACEABLE_UNDERWATER_PLANT) {
+                            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
+                        } else if (state.isIn(MythicTags.SPONGABLES)) {
                             BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
                             dropStacks(state, world, pos, blockEntity);
-                            world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
                         }
                     }
                 }

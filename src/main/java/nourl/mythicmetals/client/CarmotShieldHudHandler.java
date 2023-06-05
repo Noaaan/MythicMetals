@@ -6,7 +6,6 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
@@ -79,13 +78,13 @@ public class CarmotShieldHudHandler {
         }
 
         @Override
-        public void draw(MatrixStack matrices, int mouseX, int mouseY, float partialTicks, float delta) {
+        public void draw(OwoUIDrawContext context, int mouseX, int mouseY, float partialTicks, float delta) {
             if (barShouldBeRed) {
                 RenderSystem.setShaderColor(DAMAGED_COLOR.red(), DAMAGED_COLOR.green(), DAMAGED_COLOR.blue(), 1.0f);
             } else {
                 RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
             }
-            super.draw(matrices, mouseX, mouseY, partialTicks, delta);
+            super.draw(context, mouseX, mouseY, partialTicks, delta);
             RenderSystem.setShaderColor(1, 1, 1, 1);
         }
     }

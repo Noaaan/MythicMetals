@@ -48,7 +48,7 @@ public final class MythicCommands {
                                         if (StringArgumentType.getString(context, "type").equals("console")) {
                                             ReflectionUtils.iterateAccessibleStaticFields(MythicOreConfigs.class, OreConfig.class, (feature, name, field) -> {
                                                 if (!feature.offset && !feature.trapezoid) {
-                                                    context.getSource().sendFeedback(Text.literal(
+                                                    context.getSource().sendFeedback(() -> Text.literal(
                                                             name.toUpperCase(Locale.ROOT)
                                                                     + " has the range between "
                                                                     + feature.bottom
@@ -58,7 +58,7 @@ public final class MythicCommands {
                                                                     + feature.discardChance * 100 + "%"), false);
                                                 }
                                                 if (feature.offset) {
-                                                    context.getSource().sendFeedback(Text.literal(
+                                                    context.getSource().sendFeedback(() -> Text.literal(
                                                             name.toUpperCase(Locale.ROOT)
                                                                     + " has the range between "
                                                                     + feature.bottom
@@ -68,7 +68,7 @@ public final class MythicCommands {
                                                                     + feature.discardChance * 100 + "%"), false);
                                                 }
                                                 if (feature.trapezoid) {
-                                                    context.getSource().sendFeedback(Text.literal(
+                                                    context.getSource().sendFeedback(() -> Text.literal(
                                                             name.toUpperCase(Locale.ROOT)
                                                                     + " has a triangle range between "
                                                                     + feature.bottom
@@ -114,7 +114,7 @@ public final class MythicCommands {
                                                 i.increment();
                                                 j.setValue(0);
                                             });
-                                            context.getSource().sendFeedback(Text.literal("Summoned armorstands"), true);
+                                            context.getSource().sendFeedback(() -> Text.literal("Summoned armorstands"), true);
 
                                             return 1;
                                         }
@@ -136,7 +136,7 @@ public final class MythicCommands {
                                                 summonArmorStandWithTrim(world, trims.get(i), armorSet, (int) context.getSource().getPosition().x + xOffset, (int) context.getSource().getPosition().z + zOffset);
                                                 xOffset += 2;
                                             }
-                                            context.getSource().sendFeedback(Text.literal("Summoned armorstands"), true);
+                                            context.getSource().sendFeedback(() -> Text.literal("Summoned armorstands"), true);
                                         }
                                         return 1;
                                     })

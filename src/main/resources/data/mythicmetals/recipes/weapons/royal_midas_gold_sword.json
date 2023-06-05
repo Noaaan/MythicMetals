@@ -1,12 +1,15 @@
 {
-  "type": "mythicmetals:legacy_fold_midas_smithing_recipe",
+  "type": "mythicmetals:fold_midas_sword",
   "base": {
     "item": "mythicmetals:gilded_midas_gold_sword"
   },
   "addition": {
-    "item": "mythicmetals:enchanted_midas_gold_block"
+    "item": "mythicmetals:midas_gold_block"
   },
   "result": {
     "item": "mythicmetals:royal_midas_gold_sword"
+  },
+  "template": {
+    "item": "mythicmetals:royal_midas_smithing_template"
   }
 }

@@ -49,7 +49,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     }
 
     public void tickShield() {
-        if (player.world == null) return;
+        if (player.getWorld() == null) return;
         MythicMetals.CARMOT_SHIELD.sync(player);
 
         // Prevent overshields

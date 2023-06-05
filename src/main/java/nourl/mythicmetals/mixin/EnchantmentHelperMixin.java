@@ -30,7 +30,7 @@ public class EnchantmentHelperMixin {
                     armorItems.damage(1, user, player -> player.sendEquipmentBreakStatus(EquipmentSlot.HEAD));
 
                 if (attacker != null)
-                    attacker.damage(user.world.getDamageSources().thorns(user), 2.2F);
+                    attacker.damage(user.getWorld().getDamageSources().thorns(user), 2.2F);
             }
 
         }

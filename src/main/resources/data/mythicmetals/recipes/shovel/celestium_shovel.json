@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
     "item": "minecraft:diamond_shovel"
   },
@@ -8,5 +8,8 @@
   },
   "result": {
     "item": "mythicmetals:celestium_shovel"
+  },
+  "template": {
+    "item": "mythicmetals:unobtainium_smithing_template"
   }
 }

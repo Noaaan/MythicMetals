@@ -1,12 +1,15 @@
 {
-  "type": "minecraft:smithing",
+  "type": "minecraft:smithing_transform",
   "base": {
-    "item": "mythicmetals:adamantite_sword"
+    "item": "mythicmetals:palladium_sword"
   },
   "addition": {
-    "item": "mythicmetals:palladium_block"
+    "item": "mythicmetals:adamantite_ingot"
   },
   "result": {
     "item": "mythicmetals:red_aegis_sword"
+  },
+  "template": {
+    "item": "mythicmetals:aegis_smithing_template"
   }
 }

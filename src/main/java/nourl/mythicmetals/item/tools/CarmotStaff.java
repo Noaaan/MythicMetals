@@ -425,9 +425,9 @@ public class CarmotStaff extends ToolItem {
         // Note Block - Instruments famously make noise when hitting people
         if (hasBlockInStaff(stack, Blocks.NOTE_BLOCK)) {
             amount = 1;
-            MythicParticleSystem.NOTE_EXPLOSION.spawn(target.world, target.getPos());
+            MythicParticleSystem.NOTE_EXPLOSION.spawn(target.getWorld(), target.getPos());
             for (int i = 0; i <= r.nextInt(5); i++) {
-                playRandomSound(r, target, target.world);
+                playRandomSound(r, target, target.getWorld());
             }
         }
 

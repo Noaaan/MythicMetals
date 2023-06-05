@@ -1,6 +1,6 @@
 package nourl.mythicmetals.item.tools;
 
-import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.PotionUtil;
@@ -17,7 +17,8 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
         super(identifier, craftingRecipeCategory);
     }
 
-    public boolean matches(CraftingInventory craftingInventory, World world) {
+    @Override
+    public boolean matches(RecipeInputInventory craftingInventory, World world) {
         if (craftingInventory.getWidth() == 3 && craftingInventory.getHeight() == 3) {
             for (int i = 0; i < craftingInventory.getWidth(); ++i) {
                 for (int j = 0; j < craftingInventory.getHeight(); ++j) {
@@ -43,7 +44,7 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
     }
 
     @Override
-    public ItemStack craft(CraftingInventory inventory, DynamicRegistryManager registryManager) {
+    public ItemStack craft(RecipeInputInventory inventory, DynamicRegistryManager registryManager) {
         ItemStack itemStack = inventory.getStack(1 + inventory.getWidth());
         if (!itemStack.isOf(Items.LINGERING_POTION)) {
             return ItemStack.EMPTY;
