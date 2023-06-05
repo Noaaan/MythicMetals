@@ -366,7 +366,7 @@ public class CarmotStaff extends ToolItem {
 
         // Note Block - Play a tune!
         if (hasBlockInStaff(stack, Blocks.NOTE_BLOCK)) {
-            if (random.nextInt(500) > 321) {
+            if (random.nextInt(500) == 321) {
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), RegisterSounds.MELODY, SoundCategory.PLAYERS, 1.0f, 1.0f, 1);
                 stack.damage(60, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 stack.put(ENCORE, true);
@@ -614,8 +614,9 @@ public class CarmotStaff extends ToolItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (entity instanceof PlayerEntity user) {
-            if (user.getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
+        Item item = stack.getItem();
+        if (entity instanceof PlayerEntity user && (user.getEquippedStack(EquipmentSlot.MAINHAND).isOf(item) || user.getEquippedStack(EquipmentSlot.MAINHAND).isOf(item))) {
+            if (stack.has(IS_USED) && stack.get(IS_USED)) {
                 finishUsing(stack, world, (LivingEntity) entity);
             }
 
@@ -625,7 +626,7 @@ public class CarmotStaff extends ToolItem {
                 world.emitGameEvent(GameEvent.INSTRUMENT_PLAY, user.getPos(), GameEvent.Emitter.of(user));
             }
 
-            if (!user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+            if (!user.getItemCooldownManager().isCoolingDown(item)) {
                 stack.put(ENCORE, false);
             }
         }
