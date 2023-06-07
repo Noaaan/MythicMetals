@@ -469,10 +469,11 @@ public class CarmotStaff extends ToolItem {
 
         for (Entity entity : entities) {
             // Setting the owner of the trident to someone else would lead to shenanigans, don't do that
-            if (entity instanceof TridentEntity trident) {
+            if (entity instanceof TridentEntity trident && !trident.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
                 var bounceVec = trident.getVelocity().multiply(-0.25, -0.25, -0.25);
-                trident.setVelocity(bounceVec);
+                trident.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z);
                 trident.returnTimer = 0;
+                trident.addCommandTag(PROJECTILE_MODIFIED.toString());
             }
             // Special handling for ExplosiveProjectileEntities, like fireballs
             if (entity instanceof ExplosiveProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
@@ -615,9 +616,10 @@ public class CarmotStaff extends ToolItem {
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         Item item = stack.getItem();
-        if (entity instanceof PlayerEntity user && (user.getEquippedStack(EquipmentSlot.MAINHAND).isOf(item) || user.getEquippedStack(EquipmentSlot.MAINHAND).isOf(item))) {
-            if (stack.has(IS_USED) && stack.get(IS_USED)) {
+        if (entity instanceof PlayerEntity user) {
+            if (!user.getEquippedStack(EquipmentSlot.MAINHAND).equals(stack) && stack.has(IS_USED) && stack.get(IS_USED)) {
                 finishUsing(stack, world, (LivingEntity) entity);
+                return;
             }
 
             // Trigger Sculk Sensors every second while jamming out
@@ -630,6 +632,8 @@ public class CarmotStaff extends ToolItem {
                 stack.put(ENCORE, false);
             }
         }
+
+
     }
 
     @SuppressWarnings("deprecation")
