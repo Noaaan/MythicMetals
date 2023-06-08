@@ -67,10 +67,10 @@ public class Abilities {
         DrillUpgrades.MAP.forEach((item, s) -> {
             UPGRADE_TOOLTIP.addItem(item, Style.EMPTY.withColor(MetalColors.MYTHRIL.rgb()));
         });
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, Style.EMPTY.withItalic(true).withColor(Formatting.AQUA));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK, Style.EMPTY.withItalic(true).withColor(Formatting.GOLD));
-        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withItalic(true).withColor(Formatting.LIGHT_PURPLE));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, Style.EMPTY.withColor(Formatting.AQUA));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, Style.EMPTY.withColor(Formatting.GOLD));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK, Style.EMPTY.withColor(Formatting.GOLD));
+        MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withColor(Formatting.LIGHT_PURPLE));
         MENDING.addArmorSet(MythicArmor.PROMETHEUM, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()));
         MENDING.addToolSet(MythicTools.PROMETHEUM, Style.EMPTY.withColor(MetalColors.PROMETHEUM.rgb()));
         MIDAS_TOUCH.addItem(MythicTools.ROYAL_MIDAS_GOLD_SWORD, Style.EMPTY.withColor(Formatting.GOLD));
