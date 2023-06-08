@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockView;
 import nourl.mythicmetals.misc.BlockBreaker;
 import nourl.mythicmetals.misc.MythicParticleSystem;
+import nourl.mythicmetals.registry.RegisterCriteria;
 
 public class BanglumPick extends PickaxeItem {
 
@@ -33,7 +35,7 @@ public class BanglumPick extends PickaxeItem {
         var world = context.getWorld();
         var player = context.getPlayer();
 
-        if (player != null && !getCooldown(player, context.getStack()) && !world.isClient) {
+        if (player != null && !getCooldown(player, context.getStack()) && !world.isClient()) {
 
             var iterator = BlockBreaker.findBlocks(context, 5);
 
@@ -55,6 +57,7 @@ public class BanglumPick extends PickaxeItem {
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS);
 
+            RegisterCriteria.BLAST_MINING.trigger((ServerPlayerEntity) player);
             player.getItemCooldownManager().set(this, 100);
             return ActionResult.SUCCESS;
         }

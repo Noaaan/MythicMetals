@@ -161,7 +161,7 @@ public class MythrilDrill extends PickaxeItem {
                 }
             }
 
-            // Drill Upgrade logic. Check if item on cursor is valid and insert if applicable
+            // Drill Upgrade logic. You are not allowed duplicate upgrades
             if ((!hasUpgrade(drill, 0) || !hasUpgrade(drill, 1))) {
                 if (!DrillUpgrades.MAP.containsKey(cursorItem) || hasUpgradeItem(drill, cursorItem)) return false;
 
@@ -215,8 +215,8 @@ public class MythrilDrill extends PickaxeItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         int fuel = stack.has(FUEL) ? stack.get(FUEL) : 0;
         // Upgrade slots
-        var format2 = hasUpgrade(stack, 2) ? Formatting.RESET : Formatting.GRAY;
-        var format1 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
+        var format2 = hasUpgrade(stack, 1) ? Formatting.RESET : Formatting.GRAY;
+        var format1 = hasUpgrade(stack, 0) ? Formatting.RESET : Formatting.GRAY;
         if (hasEmptyUpgradeSlot(stack)) {
             tooltip.add(1, Text.translatable("tooltip.mythril_drill.upgrade_tip"));
         }
@@ -303,12 +303,12 @@ public class MythrilDrill extends PickaxeItem {
     /**
      * Check if any upgrade is installed in a specified slot
      * @param drillStack    The Drill in question
-     * @param slot          Specified slot. For this drill use either slot 1 or slot 2, anything else will always return false
+     * @param slot          Specified slot, anything else will always return false with an error
      */
     public static boolean hasUpgrade(ItemStack drillStack, int slot) {
-        if (slot == 2) {
+        if (slot == 1) {
             return drillStack.has(UPGRADE_SLOT_TWO);
-        } else if (slot == 1) {
+        } else if (slot == 0) {
             return drillStack.has(UPGRADE_SLOT_ONE);
         } else {
             MythicMetals.LOGGER.error("BAD DRILL QUERY - Upgrade slot " + slot + " does NOT exist on this Drill!");

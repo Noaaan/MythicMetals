@@ -8,8 +8,8 @@ import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class RecievedCombustionFromCreeper extends AbstractCriterion<RecievedCombustionFromCreeper.Conditions> {
-    public static final Identifier ID = RegistryHelper.id("recieved_combustion_from_creeper");
+public class BlastMiningCriteria extends AbstractCriterion<BlastMiningCriteria.Conditions> {
+    public static final Identifier ID = RegistryHelper.id("used_blast_mining");
 
     @Override
     public Identifier getId() {
