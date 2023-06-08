@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "gvg",
+    "vcv",
+    "gvg"
+  ],
+  "key": {
+    "g": {
+      "item": "mythicmetals:raw_prometheum"
+    },
+    "v": {
+      "tag": "minecraft:small_flowers"
+    },
+    "c": {
+      "item": "mythicmetals:prometheum_ingot"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:prometheum_bouquet",
+    "count": 1
+  }
+}
