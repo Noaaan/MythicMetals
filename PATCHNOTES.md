@@ -67,6 +67,8 @@ You can now right-click Drill Upgrade Items onto it instead.
 
 Items that can be inserted into the Mythril Drill have tooltip indicating that they can be put into the drill (NEW!).
 
+The Golden Luck ability now requires an Enchanted Midas Gold Block. To compensate for this, it now gives you +2 luck (from +1).
+
 ## Prometheum Rework
 This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
 To clarify, these are the current (and new) abilities of Prometheum:
@@ -113,6 +115,7 @@ To clarify, these are the current (and new) abilities of Prometheum:
   - This is in an attempt to make them more compatible with mods that modify attributes
 - Made the Star Platinum and Runite arrows dispensable
 - Added a new Unique Block for the Carmot Staff - Note Block
+- Made the "Rare Crafting Material" tooltip not use italics
 
 # 0.17.6
 - Fixed an issue related to the Mythril Drill recipe handler (#161)
