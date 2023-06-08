@@ -63,6 +63,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     public static class Mats implements ItemRegistryContainer {
         public static final Item AQUARIUM_PEARL = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
         public static final Item BANGLUM_CHUNK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
+        public static final Item CARMOT_STONE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
+        public static final Item PROMETHEUM_BOUQUET = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
         public static final Item DURASTEEL_ENGINE = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON));
         public static final Item ENCHANTED_MIDAS_GOLD_BLOCK = new Item(new OwoItemSettings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON)) {
             @Override

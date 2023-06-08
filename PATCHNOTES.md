@@ -69,6 +69,8 @@ Items that can be inserted into the Mythril Drill have tooltip indicating that t
 
 The Golden Luck ability now requires an Enchanted Midas Gold Block. To compensate for this, it now gives you +2 luck (from +1).
 
+Added the Prometheum Bouquet and the Carmot Stone, which replace the storage blocks when being used to upgrade the Mythril Drill (NEW!).
+
 ## Prometheum Rework
 This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
 To clarify, these are the current (and new) abilities of Prometheum:

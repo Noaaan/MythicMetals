@@ -2,7 +2,6 @@ package nourl.mythicmetals.abilities;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 
 import java.util.HashMap;
@@ -17,10 +16,10 @@ public class DrillUpgrades {
 
     public static void init() {
         MAP.put(MythicItems.Mats.AQUARIUM_PEARL, "aquarium");
-        MAP.put(MythicItems.Mats.STORMYX_SHELL, "stormyx");
+        MAP.put(MythicItems.Mats.CARMOT_STONE, "carmot");
         MAP.put(MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK, "midas_gold");
-        MAP.put(MythicBlocks.PROMETHEUM.getStorageBlock().asItem(), "prometheum");
-        MAP.put(MythicBlocks.CARMOT.getStorageBlock().asItem(), "carmot");
+        MAP.put(MythicItems.Mats.PROMETHEUM_BOUQUET, "prometheum");
+        MAP.put(MythicItems.Mats.STORMYX_SHELL, "stormyx");
         MAP.put(Items.AIR, "empty");
     }
 }
