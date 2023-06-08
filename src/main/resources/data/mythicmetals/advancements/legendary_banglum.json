@@ -32,6 +32,7 @@
     "blast_mining_activated": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
+        "location": {},
         "item": {
             "items": [
               "mythicmetals:legendary_banglum_pickaxe",

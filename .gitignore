@@ -2,6 +2,7 @@
 bin
 eclipse
 *.launch
+*.exe
 .settings
 .metadata
 .classpath

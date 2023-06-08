@@ -1,12 +1,20 @@
 {
-    "type": "minecraft:smithing",
-    "base": {
-        "item": "mythicmetals:banglum_nuke_core"
-    },
-    "addition": {
-        "item": "mythicmetals:carmot_block"
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "vvv",
+        "vcv",
+        "vvv"
+    ],
+    "key": {
+        "v": {
+            "item": "mythicmetals:carmot_ingot"
+        },
+        "c": {
+            "item": "mythicmetals:banglum_nuke_core"
+        }
     },
     "result": {
-        "item": "mythicmetals:carmot_nuke_core"
+        "item": "mythicmetals:carmot_nuke_core",
+        "count": 1
     }
 }

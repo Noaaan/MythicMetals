@@ -34,7 +34,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    //modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
     // OwO
     annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
@@ -43,14 +43,13 @@ dependencies {
     // REI + Arch
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
-    modCompileOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modCompileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
     // ModMenu
     //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
-    //modImplementation include("de.dafuqs:AdditionalEntityAttributes:${project.aea_versionite}")
     modImplementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
 
     // Origins compat via Apoli
