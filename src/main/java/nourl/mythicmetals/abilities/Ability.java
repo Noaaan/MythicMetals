@@ -91,7 +91,7 @@ public class Ability {
     public void addTooltip(Item item, Style style) {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             MutableText text = Text.literal("");
-            if (stack.getItem().equals(item)) {
+            if (stack.isOf(item)) {
                 text.append(Text.translatable("abilities.mythicmetals." + tooltip));
                 text.setStyle(style);
                 if (showLevel) {

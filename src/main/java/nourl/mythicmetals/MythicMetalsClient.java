@@ -47,7 +47,10 @@ import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
-import nourl.mythicmetals.misc.*;
+import nourl.mythicmetals.misc.BlockBreaker;
+import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.ShieldUsePredicate;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
 
 import java.util.ArrayList;
@@ -76,14 +79,11 @@ public class MythicMetalsClient implements ClientModInitializer {
                             context.getModelLoader()));
         });
 
-
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
                 Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
             }
-        });
 
-        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
                 if (PrometheumToolSet.isOvergrown(stack)) {
                     Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
@@ -96,7 +96,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         });
 
         ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem)stack.getItem()).getSlotType().equals(slot)) {
+            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
                 if (EnchantmentHelper.hasBindingCurse(stack)) {
                     attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
                             UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
