@@ -368,7 +368,7 @@ public class MythrilDrill extends PickaxeItem {
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         var mapnite = HashMultimap.create(this.getAttributeModifiers(slot));
         if (hasUpgradeItem(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem())) {
-            mapnite.put(EntityAttributes.GENERIC_LUCK, new EntityAttributeModifier(UUID.fromString("dc61bf90-67b4-414e-8ecf-994065208b3e"), "Drill Luck", 1.0f, EntityAttributeModifier.Operation.ADDITION));
+            mapnite.put(EntityAttributes.GENERIC_LUCK, new EntityAttributeModifier(UUID.fromString("dc61bf90-67b4-414e-8ecf-994065208b3e"), "Drill Luck", 2.0f, EntityAttributeModifier.Operation.ADDITION));
         }
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);
     }
