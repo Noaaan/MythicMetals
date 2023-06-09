@@ -1,6 +1,8 @@
 package nourl.mythicmetals.misc;
 
+import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
@@ -60,9 +62,9 @@ public class BlockBreaker {
 
     public static double getReachDistance(PlayerEntity playerEntity) {
         double base = playerEntity.isCreative() ? 5.0F : 4.5F;
-//        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
-//            return ReachEntityAttributes.getReachDistance(playerEntity, base);
-//        }
+        if (FabricLoader.getInstance().isModLoaded("reach-entity-attributes")) {
+            return ReachEntityAttributes.getReachDistance(playerEntity, base);
+        }
 
         return base;
     }

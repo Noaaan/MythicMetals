@@ -60,6 +60,7 @@ dependencies {
 
     // Reach Entity Attributes
     //modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
+    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // Common Protection API
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")
