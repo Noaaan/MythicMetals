@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:carmot",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.carmot_stone.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.carmot_stone.description"
+    },
+    "icon": {
+      "item": "mythicmetals:carmot_stone"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "super_bang": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:carmot_stone"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
