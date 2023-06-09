@@ -33,7 +33,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
-import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import nourl.mythicmetals.registry.RegisterSounds;
@@ -194,7 +193,7 @@ public class MythrilDrill extends PickaxeItem {
                     miner.setAir(Math.min(miner.getAir() + 24, miner.getMaxAir()));
                 }
                 // Randomly drop gold from midas gold
-                if (hasUpgradeItem(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem()) && random.nextInt(40) == 27) {
+                if (hasUpgradeItem(stack, MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK) && random.nextInt(40) == 27) {
                     miner.dropItem(Items.RAW_GOLD);
                 }
             }
@@ -367,7 +366,7 @@ public class MythrilDrill extends PickaxeItem {
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
         var mapnite = HashMultimap.create(this.getAttributeModifiers(slot));
-        if (hasUpgradeItem(stack, MythicBlocks.MIDAS_GOLD.getStorageBlock().asItem())) {
+        if (hasUpgradeItem(stack, MythicItems.Mats.ENCHANTED_MIDAS_GOLD_BLOCK)) {
             mapnite.put(EntityAttributes.GENERIC_LUCK, new EntityAttributeModifier(UUID.fromString("dc61bf90-67b4-414e-8ecf-994065208b3e"), "Drill Luck", 2.0f, EntityAttributeModifier.Operation.ADDITION));
         }
         return slot == EquipmentSlot.MAINHAND ? mapnite : super.getAttributeModifiers(slot);

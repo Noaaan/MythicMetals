@@ -28,6 +28,16 @@
             },
             {
               "type": "minecraft:item",
+              "name": "mythicmetals:carmot_stone",
+              "conditions": [
+                {
+                  "condition": "mythicmetals:random_chance_with_luck",
+                  "chance": 0.04
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
               "functions": [
                 {
                   "function": "minecraft:set_count",
