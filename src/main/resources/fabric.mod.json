@@ -41,7 +41,7 @@
   "accessWidener": "mythicmetals.accessWidener",
   "depends": {
     "fabricloader": ">=0.14.0",
-
+    "alloy-forgery": "*",
     "fabric": ">=0.57.0",
     "minecraft": "1.20.x",
     "java": ">=17",
