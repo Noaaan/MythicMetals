@@ -71,6 +71,8 @@ The Golden Luck ability now requires an Enchanted Midas Gold Block. To compensat
 
 Added the Prometheum Bouquet and the Carmot Stone, which replace the storage blocks when being used to upgrade the Mythril Drill (NEW!).
 
+The Carmot Stone can be obtained rarely when mining Carmot ores (NEW!, 4% base chance of dropping, scales with Luck).
+
 ## Prometheum Rework
 This update includes a small rework to Prometheum, rewarding the player if they give it some attention.
 To clarify, these are the current (and new) abilities of Prometheum:
