@@ -1,6 +1,7 @@
 # 0.18.1
 - Fix a server crash (#175)
 - Added new textures for the Carmot Stone and Prometheum Bouquet
+- HOTFIX - Fixed Alloy Forgery not being detected on startup
 
 # 0.18.0
 
