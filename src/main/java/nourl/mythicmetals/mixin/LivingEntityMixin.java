@@ -1,6 +1,8 @@
 package nourl.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -298,13 +300,15 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Environment(EnvType.CLIENT)
     @Inject(method = "swingHand(Lnet/minecraft/util/Hand;Z)V", at = @At("HEAD"), cancellable = true)
     private void mythicmetals$cancelSwingOnActiveMythrilDrill(Hand hand, boolean fromServerPlayer, CallbackInfo ci) {
-        if (this.getWorld().isClient && !MinecraftClient.getInstance().getEntityRenderDispatcher().camera.isThirdPerson()) {
+        if (!this.getWorld().isClient()) {
             return;
         }
         var stack = this.getStackInHand(hand);
-        if (stack.getItem() instanceof MythrilDrill drill && drill.isActive(stack)) {
+        var camera = MinecraftClient.getInstance().getEntityRenderDispatcher().camera;
+        if (camera.isThirdPerson() && stack.getItem() instanceof MythrilDrill drill && drill.isActive(stack)) {
             ci.cancel();
         }
     }
