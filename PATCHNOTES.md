@@ -1,3 +1,7 @@
+# 0.18.1
+- Fix a server crash (#175)
+- Added new textures for the Carmot Stone and Prometheum Bouquet
+
 # 0.18.0
 
 ## Celestium Rework
