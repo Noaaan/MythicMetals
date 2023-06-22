@@ -7,6 +7,8 @@ import net.minecraft.registry.Registry;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ToolSet {
@@ -16,6 +18,8 @@ public class ToolSet {
     private final PickaxeItem pickaxe;
     private final ShovelItem shovel;
     private final HoeItem hoe;
+
+    private final List<Float> attackSpeed = new ArrayList<>();
 
     private static Item.Settings createSettings(Consumer<Item.Settings> settingsProcessor) {
         final var settings = new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(2);
@@ -33,6 +37,11 @@ public class ToolSet {
         this.pickaxe = this.makePickaxe(material, damage[2], speed[2], createSettings(settingsProcessor));
         this.shovel = this.makeShovel(material, damage[3], speed[3], createSettings(settingsProcessor));
         this.hoe = this.makeHoe(material, damage[4], speed[4], createSettings(settingsProcessor));
+        attackSpeed.add(speed[4]);
+        attackSpeed.add(speed[3]);
+        attackSpeed.add(speed[2]);
+        attackSpeed.add(speed[1]);
+        attackSpeed.add(speed[0]);
     }
 
     public void register(String name) {
@@ -82,5 +91,18 @@ public class ToolSet {
 
     public HoeItem getHoe() {
         return hoe;
+    }
+
+    public List<Float> getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    /**
+     * Returns a set of all the ToolItems that make this toolset
+     *
+     * @return Set of ToolItems in order: Sword, Pickaxe, Axe, Shovel, Hoe
+     */
+    public List<ToolItem> get() {
+        return List.of(sword, axe, pickaxe, shovel, hoe);
     }
 }

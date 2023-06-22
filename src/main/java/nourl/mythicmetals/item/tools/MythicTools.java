@@ -28,9 +28,12 @@ import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.registry.RegisterSounds;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
+    public static final Map<String, ToolSet> TOOL_MAP = new HashMap<>();
     // Arrays for weapon/tool damage: sword, axe, pickaxe, shovel, and hoe
     public static final int [] DEFAULT_DAMAGE = new int[]{3, 5, 2, 1, 0};
     @Deprecated(forRemoval = true, since = "0.18.0")
@@ -98,6 +101,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     @Override
     public void processField(ToolSet toolSet, String name, Field f) {
         toolSet.register(name);
+        TOOL_MAP.put(name, toolSet);
     }
 
     @Override
