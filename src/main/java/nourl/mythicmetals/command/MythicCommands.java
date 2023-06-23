@@ -1,11 +1,13 @@
-package nourl.mythicmetals.misc;
+package nourl.mythicmetals.command;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.wispforest.owo.util.ReflectionUtils;
+import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
@@ -22,6 +24,8 @@ import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.config.MythicOreConfigs;
 import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 import javax.annotation.Nullable;
@@ -36,7 +40,13 @@ public final class MythicCommands {
     private MythicCommands() {
     }
 
-    public static void register() {
+    public static void init() {
+
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("toolset"), ToolSetArgumentType.class, ConstantArgumentSerializer.of(ToolSetArgumentType::toolSet));
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("armorset"), ArmorSetArgumentType.class, ConstantArgumentSerializer.of(ArmorSetArgumentType::armorSet));
+    }
+
+    public static void registerCommands() {
         // Dump Ore Config values
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccessdedicated, environment) -> {
             dispatcher.register(CommandManager.literal("mythicmetals")
@@ -45,19 +55,22 @@ public final class MythicCommands {
                 // TODO - Make this useful command more useful for current use-cases:
                 // TODO -- Allow operator to get range for a specific OreConfig
                 // TODO -- Allow dumping output in a spreadsheet friendly format
-                // TODO -- Allow dumping output in a way that is friendly for the Wiki
                 .then(CommandManager.literal("range")
                     .then(CommandManager.argument("type", StringArgumentType.word())
                         .suggests(MythicCommands::dumpType)
                         .executes(MythicCommands::dumpOreConfig)
                     )
                 )
+                // TODO - Support "all"
                 .then(CommandManager.literal("wiki")
-                    .then(CommandManager.argument("exportable", StringArgumentType.word())
-                        .suggests(MythicCommands::exportables)
-                        .then(CommandManager.argument("export_material", StringArgumentType.word())
-                            .suggests(MythicCommands::exportMaterial)
-                            .executes(MythicCommands::statExport)
+                    .then(CommandManager.literal("tools")
+                        .then(CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
+                            .executes(MythicCommands::exportTools))
+
+                    )
+                    .then(CommandManager.literal("armor")
+                        .then(CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
+                            .executes(MythicCommands::exportArmor)
                         )
                     )
                 )
@@ -74,6 +87,87 @@ public final class MythicCommands {
             );
         });
 
+    }
+
+    /**
+     * ArmorSet exporter for the Mythic Metals Wiki
+     * Note that it does not handle abilities or custom attributes, like Lava Swim Speed
+     */
+    private static int exportArmor(CommandContext<ServerCommandSource> context) {
+        var armorSet = ArmorSetArgumentType.getArmorSet(context, "armorset");
+        String br = "<br>\n";
+
+        var source = context.getSource();
+
+        StringBuilder output = new StringBuilder();
+
+        for (var armor : armorSet.getArmorItems()) {
+            String id = Registries.ITEM.getId(armor).getPath();
+            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+            int protection = armor.getProtection();
+
+            output.append("\n");
+            output.append("<center class=tooltip>").append("\n");
+            output.append("<h4>**").append(name).append("**</h4>").append("\n");
+            output.append("![Image of %s](../assets/mythicmetals/armor/%s.png)".formatted(name, id)).append(br);
+            for (int i = 1; i < protection; i = i + 2) {
+                output.append("![armor](../assets/minecraft/full_armor_icon.png){ .sized-image style=\"--image-width: 8%;\" }").append("\n");
+            }
+            if ((protection & 1) == 1) {
+                output.append("![armor](../assets/minecraft/half_armor_icon.png){ .sized-image style=\"--image-width: 8%;\" }").append("\n");
+            }
+            output.append(br);
+            // +5 Armor, +2 Toughness
+            output.append("+%s Armor".formatted(protection));
+            if (armor.getToughness() > 0) {
+                output.append(", +%s Toughness".formatted(armor.getToughness()));
+            }
+            output.append(br);
+            if (armor.getMaterial().getKnockbackResistance() > 0) {
+                output.append("+%s Knockback Resistance").append(br);
+            }
+            // 350 Durability
+            output.append("%s Durability".formatted(armor.getMaxDamage())).append(br);
+        }
+
+        System.out.println(output);
+        source.sendFeedback(() -> Text.literal("Exported armor to wiki format"), false);
+        return 0;
+    }
+
+    /**
+     * Tool exporter for the Mythic Metals Wiki
+     */
+    private static int exportTools(CommandContext<ServerCommandSource> context) {
+        var toolset = ToolSetArgumentType.getToolSet(context, "toolset");
+        String br = "<br>\n";
+
+        var source = context.getSource();
+
+        StringBuilder output = new StringBuilder();
+
+        Deque<Integer> damage = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
+        Stack<Float> atkSpd = new Stack<>();
+        atkSpd.addAll(toolset.getAttackSpeed());
+
+        for (ToolItem tool : toolset.get()) {
+            String id = Registries.ITEM.getId(tool).getPath();
+            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+
+            output.append("\n");
+            output.append("<center class=tooltip>").append("\n");
+            output.append("<h4>**").append(name).append("**</h4>").append("\n");
+            output.append("![Image of %s](../assets/mythicmetals/tools/%s.png)".formatted(name, id)).append(br);
+            output.append("+%s Attack Damage, %s Attack Speed".formatted(
+                tool.getMaterial().getAttackDamage() + damage.poll() + 1,
+                BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
+            )).append(br);
+            output.append("%s Durability".formatted(tool.getMaxDamage())).append(br);
+        }
+
+        System.out.println(output);
+        source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
+        return 0;
     }
 
     /**
@@ -151,16 +245,6 @@ public final class MythicCommands {
     }
 
     /**
-     * Suggests tool materials from all the tool sets defined in {@link MythicTools}
-     * Includes one extra suggestion for "all"
-     */
-    private static CompletableFuture<Suggestions> toolMaterial(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
-        MythicTools.TOOL_MAP.forEach((s, toolSet) -> suggestion.suggest(s));
-        suggestion.suggest("all");
-        return suggestion.buildFuture();
-    }
-
-    /**
      * Suggests all the armor trim types available in the dynamic registry
      * Includes two extra suggestions for "all" and "none"
      */
@@ -174,90 +258,6 @@ public final class MythicCommands {
 
     private static CompletableFuture<Suggestions> exportables(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
         return suggestion.suggest("armor").suggest("tools").buildFuture();
-    }
-
-    private static CompletableFuture<Suggestions> exportMaterial(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
-        String type;
-        try {
-            type = StringArgumentType.getString(ctx, "exportable");
-        } catch (IllegalArgumentException e) {
-            return suggestion.buildFuture();
-        }
-        if (type.equals("armor")) {
-            return MythicCommands.armorMaterial(ctx, suggestion);
-        }
-
-        if (type.equals("tools")) {
-            return MythicCommands.toolMaterial(ctx, suggestion);
-        }
-        return suggestion.buildFuture();
-    }
-
-    private static int statExport(CommandContext<ServerCommandSource> context) {
-        String type;
-        String material;
-        var sauce = context.getSource();
-
-        try {
-            type = StringArgumentType.getString(context, "exportable");
-            material = StringArgumentType.getString(context, "export_material");
-        } catch (IllegalArgumentException e) {
-            sauce.sendFeedback(() -> Text.literal("invalid command dumbo"), false);
-            return 1;
-        }
-
-        if (material.equals("all")) {
-            if (type.equals("armor")) {
-                sauce.sendFeedback(() -> Text.literal("print all armornites it kthx"), false);
-                return 0;
-            }
-
-            if (type.equals("tools")) {
-                sauce.sendFeedback(() -> Text.literal("gimmie all toolnites it kthx bai"), false);
-                return 0;
-            }
-
-        }
-
-        String br = "<br>\n";
-
-        if (type.equals("armor") && MythicArmor.ARMOR_MAP.containsKey(material)) {
-            sauce.sendFeedback(() -> Text.literal("print the armor " + material + " pl0x"), false);
-            return 0;
-        }
-
-        if (type.equals("tools") && MythicTools.TOOL_MAP.containsKey(material)) {
-            var toolset = MythicTools.TOOL_MAP.get(material);
-
-            StringBuilder builder = new StringBuilder();
-
-            Deque<Integer> damage = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
-            Stack<Float> atkSpd = new Stack<>();
-            atkSpd.addAll(toolset.getAttackSpeed());
-
-            for (ToolItem tool : toolset.get()) {
-                String id = Registries.ITEM.getId(tool).getPath();
-                String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-
-                builder.append("\n");
-                builder.append("<center class=tooltip>").append("\n");
-                builder.append("<h4>**").append(name).append("**</h4>").append("\n");
-                builder.append("![Image of %s](../assets/mythicmetals/tools/%s.png)".formatted(name, id)).append(br);
-                builder.append("+%s Attack Damage, %s Attack Speed".formatted(
-                    tool.getMaterial().getAttackDamage() + damage.poll() + 1,
-                    BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
-                )).append(br);
-                builder.append("Durability: ").append(tool.getMaxDamage()).append(br);
-            }
-
-            System.out.println(builder);
-            sauce.sendFeedback(() -> Text.literal("gimmie " + material + " tools pls"), false);
-            return 0;
-        }
-
-        sauce.sendFeedback(() -> Text.literal("you dingus, you probably asked for something that didnt exist, use the autocomplete smh"), false);
-
-        return 0;
     }
 
     private static int dumpOreConfig(CommandContext<ServerCommandSource> context) {

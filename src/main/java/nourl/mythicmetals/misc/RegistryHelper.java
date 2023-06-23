@@ -69,5 +69,4 @@ public class RegistryHelper {
     public static LootConditionType lootConditionType(String path, JsonSerializer<? extends LootCondition> serializer) {
         return Registry.register(Registries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootConditionType(serializer));
     }
-
 }

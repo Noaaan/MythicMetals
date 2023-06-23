@@ -30,6 +30,7 @@ import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.command.MythicCommands;
 import nourl.mythicmetals.config.MythicMetalsConfig;
 import nourl.mythicmetals.data.MythicOreKeys;
 import nourl.mythicmetals.effects.MythicStatusEffects;
@@ -83,7 +84,8 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicBlocks.init();
         BanglumNukeHandler.init();
         MythicOreKeys.init();
-        MythicCommands.register();
+        MythicCommands.init();
+        MythicCommands.registerCommands();
         Abilities.init();
         RegisterEntityAttributes.init();
         MythicEntities.init();
