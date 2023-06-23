@@ -7,11 +7,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
-import net.minecraft.loot.condition.LootConditionTypes;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.JsonSerializer;
+import nourl.mythicmetals.registry.RegisterLootConditions;
 
 public class RandomChanceWithLuckCondition implements LootCondition {
     final float chance;
@@ -22,7 +22,7 @@ public class RandomChanceWithLuckCondition implements LootCondition {
 
     @Override
     public LootConditionType getType() {
-        return LootConditionTypes.RANDOM_CHANCE;
+        return RegisterLootConditions.RANDOM_CHANCE_WITH_LUCK;
     }
 
     public boolean test(LootContext lootContext) {
