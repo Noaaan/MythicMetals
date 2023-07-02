@@ -22,7 +22,6 @@
     "MagmaBlockMixin",
     "PiglinBrainMixin",
     "PlayerEntityMixin",
-    "PlayerEntityRendererMixin",
     "PowderSnowBlockMixin",
     "TableBonusLootConditionMixin"
   ],
@@ -30,6 +29,7 @@
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
+    "PlayerEntityRendererMixin",
     "ItemRendererMixin",
     "SmithingScreenMixin",
     "TranslationStorageMixin",
