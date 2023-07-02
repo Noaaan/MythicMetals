@@ -1,3 +1,10 @@
+# 0.18.2
+- Added the Mythril Drill and Orichalcum Hammer to the `c:pickaxes` tags
+- Fixed a crash related to the RandomChanceWithLuckCondition (#179)
+- Compiled against 1.20.1, which might resolve some Quilt-only issues (#182)
+- Improved the `/mythicmetals` Armor Stand summoning command
+- Fixed an logging error with a client-only mixin being loaded on the server
+
 # 0.18.1
 - Fix a server crash (#175)
 - Added new textures for the Carmot Stone and Prometheum Bouquet
