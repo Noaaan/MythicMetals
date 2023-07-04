@@ -52,7 +52,8 @@ public abstract class ArmorItemMixin {
             mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_MAX_HEALTH, "Carmot health bonus", 2.0F, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.STORMYX) {
-            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Stormyx magic protection", 1.0F, EntityAttributeModifier.Operation.ADDITION);
+            float value = type.getEquipmentSlot().equals(EquipmentSlot.LEGS) || type.getEquipmentSlot().equals(EquipmentSlot.CHEST) ? 2.0F : 1.0F;
+            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.MAGIC_PROTECTION, "Stormyx magic protection", value, EntityAttributeModifier.Operation.ADDITION);
         }
         if (material == MythicArmorMaterials.PALLADIUM && type.getEquipmentSlot().equals(EquipmentSlot.HEAD)) {
             mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.LAVA_VISIBILITY, "Palladium lava vision bonus", 8.0f, EntityAttributeModifier.Operation.ADDITION);

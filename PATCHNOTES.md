@@ -4,6 +4,7 @@
 - Compiled against 1.20.1, which might resolve some Quilt-specific issues (#182)
 - Improved the `/mythicmetals armor-stand` summoning command
 - Fixed an error with a client-only mixin being loaded on the server
+- Increased the magic protection of Stormyx Chestplates and Leggings (1 -> 2)
 
 # 0.18.1
 - Fix a server crash (#175)
