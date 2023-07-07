@@ -12,6 +12,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -282,7 +284,8 @@ public class CarmotStaff extends ToolItem {
                     return TypedActionResult.consume(stack);
                 }
 
-                stack.damage(100, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                int damage = stack.getMaxDamage() / (1 + EnchantmentHelper.getLevel(Enchantments.UNBREAKING, stack));
+                stack.damage(damage, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                 user.getItemCooldownManager().set(stack.getItem(), 6000);
                 ((ServerPlayerEntity) user).changeGameMode(GameMode.CREATIVE);
                 explode(world, user);
