@@ -489,11 +489,12 @@ public class CarmotStaff extends ToolItem {
             // Shulker bullet handling
             if (entity instanceof ShulkerBulletEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
                 projectile.damage(world.getDamageSources().generic(), 1.0F);
-            } else if (entity instanceof ProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+            }
+            // Default/Arrow handling
+            else if (entity instanceof ProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
                 // Bounce the projectiles in the direction the player is looking
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
-                projectile.setOwner(user);
                 projectile.getCommandTags().add(PROJECTILE_MODIFIED.toString());
                 stack.damage(1, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
