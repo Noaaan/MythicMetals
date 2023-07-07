@@ -21,7 +21,12 @@
   },
   "result": {
     "item": "mythicmetals:carmot_smithing_template",
-    "count": 1
+    "count": 2
   },
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
   "group": "carmot_template"
 }
