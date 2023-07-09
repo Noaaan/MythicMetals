@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:forgery",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.aegis_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.aegis_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:aegis_smithing_template"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "coffee_and_milk": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:aegis_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
