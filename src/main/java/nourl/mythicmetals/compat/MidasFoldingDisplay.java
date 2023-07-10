@@ -48,8 +48,11 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
             if (this.outputStack.isOf(inputStack.getItem())) {
                 if (MidasGoldSword.Type.isOf(inputStack, ROYAL)) {
                     inputStack.put(MidasGoldSword.GOLD_FOLDED, 640);
+                    inputStack.put(MidasGoldSword.IS_ROYAL, true);
+                    inputStack.put(MidasGoldSword.IS_GILDED, true);
                 } else if (MidasGoldSword.Type.isOf(inputStack, GILDED)) {
                     inputStack.put(MidasGoldSword.GOLD_FOLDED, 320);
+                    inputStack.put(MidasGoldSword.IS_GILDED, true);
                 } else {
                     inputStack.put(MidasGoldSword.GOLD_FOLDED, 16);
                 }
