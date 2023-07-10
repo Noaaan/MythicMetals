@@ -10,6 +10,7 @@
 - Increased the magic protection of Stormyx Chestplates and Leggings (1 -> 2)
 - Increase the cost of ascending with a Carmot Staff
 - Add a recipe viewer plugin for the Midas Gold Swords (works with REI and EMI)
+- Removed alternative sources of Unobtainium and Midas Gold if they are disabled in config (Pigling Bartering and Midas Touch respectively)
 
 ### Bug Fixes
 - Fixed a crash related to the RandomChanceWithLuckCondition (#179)

@@ -17,6 +17,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.item.MythicItems;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +43,7 @@ public class MidasGoldSword extends SwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!attacker.getWorld().isClient && stack.has(IS_ROYAL) && stack.get(IS_ROYAL) && target.isDead()) {
+        if (!attacker.getWorld().isClient && MythicMetals.CONFIG.midasGold() && stack.has(IS_ROYAL) && stack.get(IS_ROYAL) && target.isDead()) {
             target.dropItem(MythicItems.MIDAS_GOLD.getRawOre());
         }
         return super.postHit(stack, target, attacker);

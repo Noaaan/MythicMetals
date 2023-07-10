@@ -7,10 +7,9 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
-import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.MythicArmorMaterials;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.MythicLootOps;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,8 +23,6 @@ public class PiglinBrainMixin {
 
     @Unique
     private static ItemStack mythicmetals$cachedBarterItem;
-
-    private static final Identifier mythicmetals$BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");
 
     @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
@@ -52,7 +49,7 @@ public class PiglinBrainMixin {
     @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, PiglinEntity piglin) {
         if (mythicmetals$cachedBarterItem.isOf(MythicItems.MIDAS_GOLD.getIngot()) && piglin.getWorld().getServer() != null) {
-            return piglin.getWorld().getServer().getLootManager().getLootTable(mythicmetals$BETTER_PIGLIN_BARTERING);
+            return piglin.getWorld().getServer().getLootManager().getLootTable(MythicLootOps.BETTER_PIGLIN_BARTERING);
         }
         return table;
     }
