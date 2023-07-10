@@ -5,6 +5,10 @@
 - Improved the `/mythicmetals armor-stand` summoning command
 - Fixed an error with a client-only mixin being loaded on the server
 - Increased the magic protection of Stormyx Chestplates and Leggings (1 -> 2)
+- Fixed an exploit related to the Stormyx Barrier Block Ability
+- Increase the cost of ascending with a Carmot Staff
+- Add a recipe viewer plugin for the Midas Gold Swords (works with REI and EMI)
+- Fixed an where you could insert into the Mythril Drill. This should also fix drills which had air in them.
 
 # 0.18.1
 - Fix a server crash (#175)

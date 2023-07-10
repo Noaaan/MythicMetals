@@ -31,6 +31,9 @@
     "rei_client": [
       "nourl.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
+    "emi": [
+      "nourl.mythicmetals.compat.MythicMetalsEMIPlugin"
+    ],
     "cardinal-components-entity": [
       "nourl.mythicmetals.MythicMetals"
     ]
