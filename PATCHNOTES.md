@@ -1,13 +1,21 @@
 # 0.18.2
-- Added the Mythril Drill and Orichalcum Hammer to the `c:pickaxes` tag
-- Fixed a crash related to the RandomChanceWithLuckCondition (#179)
-- Compiled against 1.20.1, which might resolve some Quilt-specific issues (#182)
+
+### Changes
+
+- Tag refactor:
+  - Added the Mythril Drill and Orichalcum Hammer to the `c:pickaxes` tag
+  - Changed the name of `mythicmetals:gear` tag to `mythicmetals:armor`
+  - Changed the name of `mythicmetals:weapons` tag to `mythicmetals:tools`
 - Improved the `/mythicmetals armor-stand` summoning command
-- Fixed an error with a client-only mixin being loaded on the server
 - Increased the magic protection of Stormyx Chestplates and Leggings (1 -> 2)
-- Fixed an exploit related to the Stormyx Barrier Block Ability
 - Increase the cost of ascending with a Carmot Staff
 - Add a recipe viewer plugin for the Midas Gold Swords (works with REI and EMI)
+
+### Bug Fixes
+- Fixed a crash related to the RandomChanceWithLuckCondition (#179)
+- Compiled against 1.20.1, which might resolve some Quilt-specific issues (#182)
+- Fixed an error with a client-only mixin being loaded on the server
+- Fixed an exploit related to the Stormyx Barrier Block Ability
 - Fixed an where you could insert into the Mythril Drill. This should also fix drills which had air in them.
 
 # 0.18.1
