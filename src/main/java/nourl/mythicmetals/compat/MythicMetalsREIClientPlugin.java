@@ -14,6 +14,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.recipe.RecipeType;
+import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
 import nourl.mythicmetals.item.tools.MythicTools;
 
 import java.util.ArrayList;
@@ -27,15 +29,15 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
         // There are many secrets in this game...
         registry.registerVisibilityPredicate((category, display) -> {
             if (display.getOutputEntries().stream().flatMap(List::stream)
-                    .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack
-                            && (stack.getItem() == MythicTools.Frogery.FROGE
-                            || stack.getItem() == MythicTools.Frogery.DOGE
-                            || stack.getItem() == MythicTools.GILDED_MIDAS_GOLD_SWORD
-                    ))) {
+                .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack
+                    && (stack.getItem() == MythicTools.Frogery.FROGE
+                    || stack.getItem() == MythicTools.Frogery.DOGE
+                ))) {
                 return EventResult.interruptFalse();
-            }
-            else return EventResult.pass();
+            } else return EventResult.pass();
         });
+
+        registry.registerRecipeFiller(MidasFoldingRecipe.class, RecipeType.SMITHING, MidasFoldingDisplay::new);
 
         // Tipped Runite Arrow handling
         EntryIngredient arrowStack = EntryIngredient.of(EntryStacks.of(MythicTools.RUNITE_ARROW));
@@ -64,6 +66,5 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
         // ... many of which that drive peeps insane
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
-        registry.removeEntry(EntryStacks.of(MythicTools.GILDED_MIDAS_GOLD_SWORD));
     }
 }

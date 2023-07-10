@@ -154,4 +154,38 @@ public class MidasGoldSword extends SwordItem {
         if (goldCount < 64) return 0;
         return (goldCount / 64);
     }
+
+    public enum Type {
+        REGULAR,
+        GILDED,
+        ROYAL;
+
+        @Nullable
+        public static MidasGoldSword.Type getSwordType(ItemStack stack) {
+            return getSwordType(stack.getItem());
+        }
+
+        @Nullable
+        public static MidasGoldSword.Type getSwordType(Item item) {
+
+            if (item.equals(MythicTools.MIDAS_GOLD_SWORD)) {
+                return REGULAR;
+            }
+            if (item.equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
+                return GILDED;
+            }
+            if (item.equals(MythicTools.ROYAL_MIDAS_GOLD_SWORD)) {
+                return ROYAL;
+            }
+            return null;
+        }
+
+        public static boolean isOf(ItemStack stack, Type type) {
+            var comparedType = getSwordType(stack);
+            if (comparedType != null) {
+                return comparedType.equals(type);
+            }
+            return false;
+        }
+    }
 }
