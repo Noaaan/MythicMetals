@@ -160,9 +160,12 @@ public class MythrilDrill extends PickaxeItem {
                 }
             }
 
+            removeAirFromDrill(drill);
+
             // Drill Upgrade logic. Check if item on cursor is valid and insert if applicable
             if ((!hasUpgrade(drill, 0) || !hasUpgrade(drill, 1))) {
                 if (!DrillUpgrades.MAP.containsKey(cursorItem) || hasUpgradeItem(drill, cursorItem)) return false;
+                if (cursorItem.equals(Items.AIR)) return false;
 
                 if (!drill.has(MythrilDrill.UPGRADE_SLOT_ONE)) {
                     cursorStack.decrement(1);
@@ -320,7 +323,19 @@ public class MythrilDrill extends PickaxeItem {
      * @param drillStack  The Drill in question
      */
     public static boolean hasEmptyUpgradeSlot(ItemStack drillStack) {
-            return drillStack.has(UPGRADE_SLOT_TWO) || drillStack.has(UPGRADE_SLOT_ONE);
+            return !(drillStack.has(UPGRADE_SLOT_TWO) || drillStack.has(UPGRADE_SLOT_ONE));
+    }
+
+    /**
+     * Fixes a bug where you were allowed to insert air into the Drill
+     */
+    public static void removeAirFromDrill(ItemStack drillStack) {
+        if (drillStack.get(UPGRADE_SLOT_ONE).asItem().equals(Items.AIR)) {
+            drillStack.delete(UPGRADE_SLOT_ONE);
+        }
+        if (drillStack.get(UPGRADE_SLOT_TWO).asItem().equals(Items.AIR)) {
+            drillStack.delete(UPGRADE_SLOT_TWO);
+        }
     }
 
     public static String getUpgradeString(ItemStack stack, int slot) {
