@@ -36,13 +36,13 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
         this.template = recipe.template;
         this.base = recipe.base;
         this.addition = recipe.addition;
-        this.outputStack = recipe.getOutput(BasicDisplay.REGISTRY_ACCESS.get());
+        this.outputStack = recipe.result;
 
     }
 
     @Override
     public List<EntryIngredient> getInputEntries() {
-        if (this.base != null && this.addition != null) {
+        if (this.base != null && this.addition != null && outputStack != null) {
             var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElseGet(() -> new ItemStack(Items.AIR)).copy();
             // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
             if (this.outputStack.isOf(inputStack.getItem())) {
