@@ -18,6 +18,7 @@
 - Fixed an error with a client-only mixin being loaded on the server
 - Fixed an exploit related to the Stormyx Barrier Block Ability
 - Fixed an where you could insert into the Mythril Drill. This should also fix drills which had air in them.
+- Fixed a bug where you could repair Stormyx Shields with planks
 
 # 0.18.1
 - Fix a server crash (#175)
