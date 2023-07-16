@@ -11,6 +11,7 @@ import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.MusicDiscItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
@@ -20,7 +21,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.item.CustomMusicDiscItem;
 import nourl.mythicmetals.item.RuniteArrowItem;
 import nourl.mythicmetals.item.StarPlatinumArrowItem;
 import nourl.mythicmetals.item.TippedRuniteArrowItem;
@@ -146,7 +146,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             }
         }
         public static final Item FROGE = new Froger(new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD));
-        public static final Item DOGE = new CustomMusicDiscItem(42, RegisterSounds.DOG, new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD).maxCount(1));
+        public static final Item DOGE = new MusicDiscItem(42, RegisterSounds.DOG, new FabricItemSettings().rarity(Rarity.EPIC).fireproof().equipmentSlot(stack -> EquipmentSlot.HEAD).maxCount(1), 162);
     }
 
 }

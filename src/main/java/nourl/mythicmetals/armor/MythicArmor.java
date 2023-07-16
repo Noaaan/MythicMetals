@@ -18,7 +18,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet AQUARIUM = new ArmorSet(MythicArmorMaterials.AQUARIUM);
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(MythicArmorMaterials.BRONZE);
-    public static final ArmorSet CARMOT = new CarmotArmorSet(MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ArmorSet CARMOT = new ArmorSet(MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet CELESTIUM = new CelestiumArmorSet(MythicArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE));
     public static final Item CELESTIUM_ELYTRA = new CelestiumElytra(new OwoItemSettings().rarity(Rarity.RARE).group(MythicMetals.TABBED_GROUP).tab(3).maxDamage(832));
     public static final ArmorSet COPPER = new ArmorSet(MythicArmorMaterials.COPPER);

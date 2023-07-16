@@ -12,7 +12,6 @@ import java.util.function.BiConsumer;
 
 public class MythicModelHandler {
     public static final EntityModelLayer BANGLUM = model("banglum_armor");
-    public static final EntityModelLayer CARMOT = model("carmot_armor");
     public static final EntityModelLayer CARMOT_SWIRL = model("carmot_swirl");
     public static final EntityModelLayer HALLOWED_ARMOR = model("hallowed_armor");
     public static final EntityModelLayer METALLURGIUM = model("metallurgium_armor");
@@ -21,7 +20,6 @@ public class MythicModelHandler {
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
-        consumer.accept(CARMOT, TexturedModelData.of(CarmotArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
         consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));
         consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 64, 32));
