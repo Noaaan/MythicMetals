@@ -1,6 +1,21 @@
 # 0.x.x
 
+### Changes
+
 - Fixed an issue related to music discs being eaten by the jukebox
+- Removed uneccesary Carmot Armor Rendering
+
+### Texture changes
+
+- New Carmot Armor Items
+- New Osmium Armor Items
+- New Star Platinum Armor Items
+- New Kyber Armor Items
+- New Silver Armor Items
+- Tweaked Midas Gold Armor Items
+- Tweaked Star Platinum Tools
+- New Steel Armor Items
+- New Palladium Sword animation
 
 # 0.18.2
 
