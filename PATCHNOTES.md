@@ -1,3 +1,7 @@
+# 0.x.x
+
+- Fixed an issue related to music discs being eaten by the jukebox
+
 # 0.18.2
 
 ### Changes
