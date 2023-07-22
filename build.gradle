@@ -58,7 +58,7 @@ dependencies {
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
-    modCompileOnly("com.github.apace100:apoli:${project.apoli_version}") {
+    modCompileOnly("com.github.apace100:Apoli:${project.apoli_version}") {
         exclude(group: "com.github.DaFuqs")
     }
 
