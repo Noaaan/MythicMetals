@@ -16,6 +16,9 @@
 - Tweaked Star Platinum Tools
 - New Steel Armor Items
 - New Palladium Sword animation
+- Tweaked Raw Osmium sprite
+- New Raw Runite sprite
+- New Prometheum Armor sprites
 
 # 0.18.2
 
