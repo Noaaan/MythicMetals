@@ -4,7 +4,7 @@ plugins {
     id 'io.github.juuxel.loom-quiltflower' version '1.7.2'
 }
 
-archives_base_name = project.archives_base_name
+archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
