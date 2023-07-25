@@ -1,7 +1,7 @@
 plugins {
-    id 'fabric-loom' version '0.12-SNAPSHOT'
+    id 'fabric-loom' version '1.3-SNAPSHOT'
     id 'maven-publish'
-    id 'io.github.juuxel.loom-quiltflower' version '1.7.2'
+    id 'io.github.juuxel.loom-quiltflower' version '1.10.0'
 }
 
 archives_base_name = project.archives_base_name
@@ -20,6 +20,11 @@ repositories {
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
     maven { url = "https://api.modrinth.com/maven/" }
     maven { url = "https://maven.nucleoid.xyz/" }
+
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 
     flatDir {
         dir('libs')
@@ -47,8 +52,8 @@ dependencies {
     modCompileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
     // EMI
-    modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
-    modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
+    modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
+    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
     // ModMenu
     //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
@@ -70,7 +75,7 @@ dependencies {
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")
 
     // Mixin Extras
-    include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.6")))
+    include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${project.me_version}")))
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
@@ -78,6 +83,8 @@ dependencies {
     // Cardinal Components
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}")
     modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
+
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
 }
 
