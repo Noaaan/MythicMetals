@@ -28,7 +28,7 @@ import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
