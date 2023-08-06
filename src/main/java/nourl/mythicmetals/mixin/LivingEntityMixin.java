@@ -36,6 +36,7 @@ import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -94,6 +95,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(type, world);
     }
 
+    @Unique
     Random r = new Random();
 
     @Inject(method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;", require = 1, allow = 1, at = @At("RETURN"))
@@ -136,12 +138,14 @@ public abstract class LivingEntityMixin extends Entity {
         mythicmetals$addArmorEffects();
     }
 
+    @Unique
     private void mythicmetals$tickCombustion() {
         var component = getComponent(MythicMetals.COMBUSTION_COOLDOWN);
         component.tickCooldown();
         mythicmetals$handleCombustion(component);
     }
 
+    @Unique
     private void mythicmetals$handleCombustion(CombustionCooldown component) {
         if (this.isOnFire() && this.hasStatusEffect(MythicStatusEffects.HEAT) && component.isCombustible()) {
             var effect = this.getStatusEffect(MythicStatusEffects.HEAT);
@@ -165,6 +169,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Unique
     private void mythicmetals$prometheumRepairPassive(ItemStack stack) {
         // Handle Prometheum Tools
         if (stack.isIn(MythicTags.PROMETHEUM_TOOLS)) {
@@ -192,6 +197,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Unique
     private void mythicmetals$addArmorEffects() {
         for (ItemStack armorStack : getArmorItems()) {
             // Turns out, this bug was in Minecraft itself
@@ -247,6 +253,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Unique
     private void mythicmetals$carmotParticle() {
         if (!getWorld().isClient) return;
         Vec3d velocity = this.getVelocity();
@@ -261,12 +268,14 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Unique
     private void mythicmetals$copperParticle() {
         if (getWorld().isClient && r.nextInt(40) < 1) {
             MythicParticleSystem.COPPER_SPARK.spawn(getWorld(), this.getPos().add(0, 1, 0));
         }
     }
 
+    @Unique
     private void mythicmetals$palladiumParticles() {
         if (this.hasStatusEffect(MythicStatusEffects.HEAT)) {
             var status = this.getStatusEffect(MythicStatusEffects.HEAT);
@@ -295,6 +304,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (source == null || !this.canHaveStatusEffect(effect)) return;
         if (!getWorld().isClient() && effect.getEffectType().equals(MythicStatusEffects.COMBUSTION) && this.isPlayer()) {
             if (source instanceof AreaEffectCloudEntity cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
+                //noinspection ConstantConditions
                 RegisterCriteria.RECIEVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
             }
         }
