@@ -32,6 +32,7 @@ DaFuqs, for the ItemRendererMixin implementation
 * Dr. Zeal  
 * Azazelthedemonlord  
 * Paintedwithdrugs
+* Taphrine
 
 Thank you all for making awesome new textures for the mod.  
 As well as a special thanks to Matpac for new ingot textures!  
