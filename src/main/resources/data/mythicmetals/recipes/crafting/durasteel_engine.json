@@ -7,7 +7,7 @@
   ],
   "key": {
     "l": {
-      "item": "mythicmetals:durasteel_ingot"
+      "tag": "c:durasteel_ingots"
     },
     "m": {
       "item": "mythicmetals:morkite"
@@ -16,7 +16,7 @@
       "item": "minecraft:hopper"
     },
     "o": {
-      "item": "mythicmetals:durasteel_block"
+      "tag": "c:durasteel_blocks"
     }
   },
   "result": {

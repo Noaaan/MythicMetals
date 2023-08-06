@@ -4,6 +4,20 @@
 
 - Fixed an issue related to music discs being eaten by the jukebox
 - Removed uneccesary Carmot Armor Rendering
+- Updated and adjusted Better Combat integration
+- Durasteel Engine is craftable from tags (allowing compatability with mods like PSWG)
+
+### Aquarium Rework
+
+Aquarium is undergoing a rework. 
+
+#### Aquarium Conduit Blocks
+
+These blocks are special in that they only work within the range of an active conduit.
+- Aquarium Resonator
+  - Grants you stronger Conduit Power, meaning you can mine even faster underwater!
+- Aquarium Steward
+  - Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
 
 ### Texture changes
 
