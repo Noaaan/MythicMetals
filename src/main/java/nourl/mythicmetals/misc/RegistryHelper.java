@@ -3,6 +3,7 @@ package nourl.mythicmetals.misc;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -68,5 +69,9 @@ public class RegistryHelper {
 
     public static LootConditionType lootConditionType(String path, JsonSerializer<? extends LootCondition> serializer) {
         return Registry.register(Registries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootConditionType(serializer));
+    }
+
+    public static void blockEntity(String path, BlockEntityType<?> type) {
+        Registry.register(Registries.BLOCK_ENTITY_TYPE, RegistryHelper.id(path), type);
     }
 }

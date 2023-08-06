@@ -97,6 +97,8 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
         RegisterCriteria.init();
+        RegisterBlockEntityTypes.init();
+        RegisterPointOfInterests.init();
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {

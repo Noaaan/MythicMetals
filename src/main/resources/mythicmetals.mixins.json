@@ -11,6 +11,7 @@
     "ArmorItemMixin",
     "BowItemMixin",
     "CampfireBlockMixin",
+    "ConduitBlockEntityMixin",
     "CreeperEntityMixin",
     "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
@@ -29,8 +30,8 @@
     "CapeFeatureRendererMixin",
     "ElytraFeatureRendererMixin",
     "EntityModelLayersAccessor",
-    "PlayerEntityRendererMixin",
     "ItemRendererMixin",
+    "PlayerEntityRendererMixin",
     "SmithingScreenMixin",
     "TranslationStorageMixin",
     "WorldRendererInvoker"
