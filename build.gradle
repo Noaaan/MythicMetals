@@ -15,11 +15,11 @@ repositories {
     maven { url = "https://maven.terraformersmc.com/" }
     maven { url = "https://maven.wispforest.io/" }
     maven { url = "https://jitpack.io" }
-    maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
     maven { url = "https://maven.cafeteria.dev" }
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
     maven { url = "https://api.modrinth.com/maven/" }
     maven { url = "https://maven.nucleoid.xyz/" }
+    maven { url = 'https://maven.ladysnake.org/releases' }
 
     flatDir {
         dir('libs')

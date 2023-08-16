@@ -1,3 +1,15 @@
+# 0.18.1+fix+1.19.4
+
+Backports the following additions/bugfixes from later version:
+
+- Alloy Forgery not being present in dependencies
+- Mythril Drill and Orichalcum Hammer not being present in the pickaxes tag
+- A crash related to RandomChanceWithLuckCondition
+- Carmot Smithing Template duplication only giving you 1 template instead of 2 
+- Added an advancement for the Aegis Smithing Template
+- Mythril Drill allowing insertion of air
+- An issue with a certain music disc being eaten by the jukebox, never to be seen again
+
 # 0.18.1
 - Fix a server crash (#175)
 - Added new textures for the Carmot Stone and Prometheum Bouquet
