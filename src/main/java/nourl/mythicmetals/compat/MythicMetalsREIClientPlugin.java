@@ -26,17 +26,6 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        // There are many secrets in this game...
-        registry.registerVisibilityPredicate((category, display) -> {
-            if (display.getOutputEntries().stream().flatMap(List::stream)
-                .anyMatch(entryStack -> entryStack.getValue() instanceof ItemStack stack
-                    && (stack.getItem() == MythicTools.Frogery.FROGE
-                    || stack.getItem() == MythicTools.Frogery.DOGE
-                ))) {
-                return EventResult.interruptFalse();
-            } else return EventResult.pass();
-        });
-
         registry.registerRecipeFiller(MidasFoldingRecipe.class, RecipeType.SMITHING, MidasFoldingDisplay::new);
 
         // Tipped Runite Arrow handling
@@ -63,6 +52,7 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerEntries(EntryRegistry registry) {
+        // There are many secrets in this game...
         // ... many of which that drive peeps insane
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
         registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
