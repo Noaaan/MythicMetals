@@ -17,6 +17,7 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.text.TranslatableText;
 
 import java.util.List;
 import java.util.UUID;
@@ -64,7 +65,7 @@ public class StormyxShield extends ShieldItem {
 
         mapnite.put(AdditionalEntityAttributes.MAGIC_PROTECTION,
                 new EntityAttributeModifier(UUID.fromString("82b91018-24a1-11ed-861d-0242ac120002"),
-                        "Magic protection",
+                        new TranslatableText("mythicmetals.attribute.magic.protection"),
                         MAGIC_DAMAGE_REDUCTION,
                         EntityAttributeModifier.Operation.ADDITION));
 

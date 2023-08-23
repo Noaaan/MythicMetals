@@ -1140,5 +1140,14 @@
   "tag.item.mythicmetals.unobtainium_blocks": "Unobtainium Blocks",
   "tag.item.mythicmetals.unobtainium_ores": "Unobtainium Ores",
   "tag.item.mythicmetals.armor": "Mythic Metals Armor",
-  "tag.item.mythicmetals.tools": "Mythic Metals Tools"
+  "tag.item.mythicmetals.tools": "Mythic Metals Tools",
+  "mythicmetals.attribute.celestium.speed.bonus": "Celestium Speed Bonus",
+  "mythicmetals.attribute.celestium.damage.bonus": "Celestium Damage Bonus",
+  "mythicmetals.attribute.luck.bonus": "Luck Bonus",
+  "mythicmetals.attribute.star.platinum.attack.bonus": "Star Platinum Attack Bonus",
+  "mythicmetals.attribute.carmot.health.bonus": "Carmot Health Bonus",
+  "mythicmetals.attribute.stormyx.magic.protection": "Stormyx Magic Protection",
+  "mythicmetals.attribute.palladium.lava.vision.bonus": "Palladium Lava Vision Bonus",
+  "mythicmetals.attribute.palladium.lava.swim.speed.bonus": "Palladium Lava Swim Speed Bonus",
+  "mythicmetals.attribute.magic.protection": "Magic Protection"
 }
