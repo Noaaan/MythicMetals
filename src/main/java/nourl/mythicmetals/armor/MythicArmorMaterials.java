@@ -52,10 +52,10 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     MIDAS_GOLD("midas_gold", 14, new int[]{1, 3, 5, 2}, 24, RegisterSounds.EQUIP_MIDAS_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.MIDAS_GOLD.getIngot());
     }),
-    MYTHRIL("mythril", 30, new int[]{3, 6, 8, 3}, 22, RegisterSounds.EQUIP_MYTHRIL, 2.0F, 0.0F, () -> {
+    MYTHRIL("mythril", 31, new int[]{3, 6, 8, 3}, 22, RegisterSounds.EQUIP_MYTHRIL, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.MYTHRIL.getIngot());
     }),
-    ORICHALCUM("orichalcum", 42, new int[]{4, 7, 9, 4}, 16, RegisterSounds.EQUIP_ORICHALCUM, 3.0F, 0.1F, () -> {
+    ORICHALCUM("orichalcum", 40, new int[]{4, 7, 9, 4}, 16, RegisterSounds.EQUIP_ORICHALCUM, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM.getIngot());
     }),
     OSMIUM("osmium", 25, new int[]{1, 4, 5, 2}, 16, RegisterSounds.EQUIP_OSMIUM, 2.0F, 0.25F, () -> {

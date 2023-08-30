@@ -8,7 +8,12 @@
 - Durasteel Engine is craftable from tags (allowing compatability with mods like PSWG)
 - Added ingots and nuggets to common tags (#183)
 
-### Aquarium Rework
+### Balancing Changes
+
+- Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
+- Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
+
+## Aquarium Rework
 
 Aquarium is undergoing a rework. 
 
