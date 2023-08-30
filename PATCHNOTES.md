@@ -6,6 +6,7 @@
 - Removed uneccesary Carmot Armor Rendering
 - Updated and adjusted Better Combat integration
 - Durasteel Engine is craftable from tags (allowing compatability with mods like PSWG)
+- Added ingots and nuggets to common tags (#183)
 
 ### Aquarium Rework
 
