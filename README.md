@@ -29,4 +29,10 @@ Some modpacks that use Mythic Metals:
 * Another Quality Modpack 2: https://www.curseforge.com/minecraft/modpacks/another-quality-modpack-2/
 
 ## Credits
-See [the Credits file in the repo](CREDITS.md), as it contains a shoutout to everyone who has worked on the project!  
+See [the Credits file in the repo](CREDITS.md), as it contains a shoutout to everyone who has worked on the project!
+
+## Translations
+Feel free to contribute a translation if you want to!
+I currently do not support Crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
+
+Any translator is added to [the Credits.](CREDITS.md)
