@@ -50,7 +50,6 @@ public class CarmotShield implements Component, AutoSyncedComponent {
 
     public void tickShield() {
         if (player.getWorld() == null) return;
-        MythicMetals.CARMOT_SHIELD.sync(player);
 
         // Prevent overshields
         if (shieldHealth > getMaxHealth()) {
@@ -69,9 +68,10 @@ public class CarmotShield implements Component, AutoSyncedComponent {
 
         if (shouldRenderShield()) {
             renderTime--;
+            MythicMetals.CARMOT_SHIELD.sync(player);
         }
 
-        // If you dont have the shield anymore, stop rendering
+        // No shield, stop rendering
         if (getMaxHealth() == 0) {
             renderTime = 0;
             shieldHealth = 0;
