@@ -6,13 +6,13 @@ import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.entity.BanglumNukeEntity;
 import nourl.mythicmetals.registry.RegisterSounds;
 
 public class BanglumNukeHandler {

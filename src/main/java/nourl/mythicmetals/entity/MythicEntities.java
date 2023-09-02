@@ -4,8 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import nourl.mythicmetals.blocks.BanglumNukeEntity;
-import nourl.mythicmetals.blocks.BanglumTntEntity;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class MythicEntities {

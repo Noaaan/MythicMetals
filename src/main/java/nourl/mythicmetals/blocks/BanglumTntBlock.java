@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
+import nourl.mythicmetals.entity.BanglumTntEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntBlock extends TntBlock {

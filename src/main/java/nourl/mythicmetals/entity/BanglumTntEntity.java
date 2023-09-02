@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.entity;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -7,7 +7,6 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
-import nourl.mythicmetals.entity.MythicEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntEntity extends Entity {

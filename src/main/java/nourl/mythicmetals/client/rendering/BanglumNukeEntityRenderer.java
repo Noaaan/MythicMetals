@@ -11,7 +11,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import nourl.mythicmetals.blocks.BanglumNukeEntity;
+import nourl.mythicmetals.entity.BanglumNukeEntity;
 import nourl.mythicmetals.blocks.MythicBlocks;
 
 //VanillaCopy of the TntEntityRenderer

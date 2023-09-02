@@ -3,7 +3,7 @@ package nourl.mythicmetals.mixin;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.world.explosion.Explosion;
-import nourl.mythicmetals.blocks.BanglumTntEntity;
+import nourl.mythicmetals.entity.BanglumTntEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

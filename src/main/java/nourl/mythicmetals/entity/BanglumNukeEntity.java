@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.entity;
 
 import com.mojang.authlib.GameProfile;
 import eu.pb4.common.protection.api.CommonProtection;
@@ -19,8 +19,8 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.misc.BanglumNukeSource;
 import nourl.mythicmetals.misc.EpicExplosion;
 import nourl.mythicmetals.misc.MythicDamageTypes;
