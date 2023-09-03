@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.data.MythicTags;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +46,8 @@ public final class EpicExplosion {
         if (exploder != null) {
             explosion = new Explosion(world, exploder, x, y, z, radius, false, Explosion.DestructionType.DESTROY_WITH_DECAY);
         }
+
+        MythicParticleSystem.EXPLOSIVE_EXPLOSION.spawn(world, new Vec3d(x, y, z), (float) radius);
 
         GameProfile playerId = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
 
