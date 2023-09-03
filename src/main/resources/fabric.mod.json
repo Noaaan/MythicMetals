@@ -36,6 +36,9 @@
     ],
     "cardinal-components-entity": [
       "nourl.mythicmetals.MythicMetals"
+    ],
+    "mm_shedaniel:early_risers": [
+      "nourl.mythicmetals.MythicASM"
     ]
   },
   "mixins": [

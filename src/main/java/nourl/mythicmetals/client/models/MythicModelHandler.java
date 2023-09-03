@@ -1,8 +1,10 @@
 package nourl.mythicmetals.client.models;
 
 import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelData;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.render.entity.model.MinecartEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -16,9 +18,11 @@ public class MythicModelHandler {
     public static final EntityModelLayer HALLOWED_ARMOR = model("hallowed_armor");
     public static final EntityModelLayer METALLURGIUM = model("metallurgium_armor");
     public static final EntityModelLayer RUNITE = model("runite_armor");
+    public static final EntityModelLayer BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
+        consumer.accept(BANGLUM_TNT_MINECART, MinecartEntityModel.getTexturedModelData());
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
         consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));

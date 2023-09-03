@@ -13,7 +13,7 @@ import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.entity.BanglumTntEntity;
 import nourl.mythicmetals.blocks.MythicBlocks;
 
-//VanillaCopy of the TntEntityRenderer
+// [VanillaCopy] of the TntEntityRenderer, but renders our texture
 public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity> {
     private final BlockRenderManager blockRenderManager;
     public BanglumTntEntityRenderer(EntityRendererFactory.Context context) {

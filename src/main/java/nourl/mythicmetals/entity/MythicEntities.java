@@ -11,8 +11,10 @@ public class MythicEntities {
     public static final EntityType<BanglumNukeEntity> BANGLUM_NUKE_ENTITY_TYPE;
     public static final EntityType<StarPlatinumArrowEntity> STAR_PLATINUM_ARROW_ENTITY_TYPE;
     public static final EntityType<RuniteArrowEntity> RUNITE_ARROW_ENTITY_TYPE;
+    public static final EntityType<BanglumTntMinecartEntity> BANGLUM_TNT_MINECART_ENTITY_TYPE;
 
     public static void init() {
+        RegistryHelper.entityType("banglum_tnt_minecart", BANGLUM_TNT_MINECART_ENTITY_TYPE);
         RegistryHelper.entityType("banglum_tnt", BANGLUM_TNT_ENTITY_TYPE);
         RegistryHelper.entityType("banglum_nuke", BANGLUM_NUKE_ENTITY_TYPE);
         RegistryHelper.entityType("star_platinum_arrow", STAR_PLATINUM_ARROW_ENTITY_TYPE);
@@ -20,6 +22,8 @@ public class MythicEntities {
 
     }
     static {
+        BANGLUM_TNT_MINECART_ENTITY_TYPE = FabricEntityTypeBuilder.<BanglumTntMinecartEntity>create(
+                SpawnGroup.MISC, BanglumTntMinecartEntity::new).dimensions(new EntityDimensions(0.98F, 0.7F, false)).trackRangeBlocks(8).build();
        BANGLUM_TNT_ENTITY_TYPE = FabricEntityTypeBuilder.<BanglumTntEntity>create(
                SpawnGroup.MISC, BanglumTntEntity::new).dimensions(EntityDimensions.fixed(1,1)).build();
 

@@ -2,6 +2,7 @@
 
 ### Changes
 
+- Added Banglum TNT Minecarts
 - Fixed an issue related to music discs being eaten by the jukebox
 - Removed uneccesary Carmot Armor Rendering
 - Updated and adjusted Better Combat integration
