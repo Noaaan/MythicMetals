@@ -1,24 +1,10 @@
 # 0.x.x
 
-### Changes
-
-- Added Banglum TNT Minecarts
-- Fixed an issue related to music discs being eaten by the jukebox
-- Removed uneccesary Carmot Armor Rendering
-- Updated and adjusted Better Combat integration
-- Durasteel Engine is craftable from tags (allowing compatability with mods like PSWG)
-- Added ingots and nuggets to common tags (#183)
-
-### Balancing Changes
-
-- Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
-- Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
-
 ## Aquarium Rework
 
 Aquarium is undergoing a rework. 
 
-#### Aquarium Conduit Blocks
+### Aquarium Conduit Blocks
 
 These blocks are special in that they only work within the range of an active conduit.
 - Aquarium Resonator
@@ -26,7 +12,7 @@ These blocks are special in that they only work within the range of an active co
 - Aquarium Steward
   - Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
 
-### Texture changes
+## Texture changes
 
 - New Carmot Armor Items
 - New Osmium Armor Items
@@ -40,6 +26,26 @@ These blocks are special in that they only work within the range of an active co
 - Tweaked Raw Osmium sprite
 - New Raw Runite sprite
 - New Prometheum Armor sprites
+
+## Changes
+
+- Added Banglum TNT Minecarts
+- Removed unnecessary Carmot Armor Rendering
+- Updated and adjusted Better Combat integration
+- Durasteel Engine is craftable from tags (allowing compatibility with mods like PSWG)
+- Added ingots and nuggets to common tags (#183)
+- Added compatibility for Enhanced Explosions with Banglum Nukes (Thanks Superkat32!)
+
+### Balancing Changes
+
+- Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
+- Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
+
+### Bug fixes
+
+- Fixed an issue related to music discs being eaten by the jukebox
+- Fixed Air appending a Mythril Drill Upgrade tooltip
+
 
 # 0.18.2
 
@@ -61,7 +67,7 @@ These blocks are special in that they only work within the range of an active co
 - Compiled against 1.20.1, which might resolve some Quilt-specific issues (#182)
 - Fixed an error with a client-only mixin being loaded on the server
 - Fixed an exploit related to the Stormyx Barrier Block Ability
-- Fixed an where you could insert into the Mythril Drill. This should also fix drills which had air in them.
+- Fixed an error where you could insert air into the Mythril Drill. This version also retroactively fixes drills which had air in them.
 - Fixed a bug where you could repair Stormyx Shields with planks
 
 # 0.18.1
