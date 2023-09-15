@@ -139,7 +139,7 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
-            .createDefaultSet(5.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
+            .createDefaultSet(3.5F, IRON_MINING_LEVEL, 5.0f, IRON_MINING_LEVEL).finish();
 
     public static final Block QUADRILLUM_NUKE_CORE = new Block(FabricBlockSettings.copyOf(QUADRILLUM.getStorageBlock()));
 
@@ -149,7 +149,7 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet SILVER = BlockSet.Builder.begin("silver", false)
-            .createDefaultSet(4.0F, STONE_MINING_LEVEL, IRON_MINING_LEVEL).finish();
+            .createDefaultSet(2.5F, STONE_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
     public static final BlockSet STAR_PLATINUM = BlockSet.Builder.begin("star_platinum", false)
             .createAnvilSet(5F, 5.5F, DIAMOND_MINING_LEVEL).finish();
