@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "mythicmetals:block/quadrillum_block"
+    "end": "mythicmetals:block/quadrillum_block_top",
+    "side": "mythicmetals:block/quadrillum_block"
   }
 }
