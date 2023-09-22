@@ -139,7 +139,9 @@ public class MythicBlocks {
             .finish();
 
     public static final BlockSet QUADRILLUM = BlockSet.Builder.begin("quadrillum", false)
-            .createDefaultSet(3.5F, IRON_MINING_LEVEL, 5.0f, IRON_MINING_LEVEL).finish();
+            .createDefaultSet(3.5F, IRON_MINING_LEVEL, 5.0f, IRON_MINING_LEVEL)
+            .createAnvil(IRON_MINING_LEVEL)
+            .finish();
 
     public static final Block QUADRILLUM_NUKE_CORE = new Block(FabricBlockSettings.copyOf(QUADRILLUM.getStorageBlock()));
 
