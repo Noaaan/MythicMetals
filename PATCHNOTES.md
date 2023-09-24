@@ -56,6 +56,8 @@ The following materials received new block and ingot textures:
 - Reduced the attack speed of the Osmium Axe
 - Made Silver Ore and Blocks easier to break
 - Made Quadrillum Ore and Blocks much easier to break
+- Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
+- Increased attack speed of Engrained Prometheum (5% -> 8%)
 
 ### Bug fixes
 
