@@ -26,6 +26,7 @@ These blocks are special in that they only work within the range of an active co
 - Tweaked Raw Osmium sprite
 - New Raw Runite sprite
 - New Prometheum Armor sprites
+- Tweaked Midas Gold Swords
 
 The following materials received new block and ingot textures:
 
