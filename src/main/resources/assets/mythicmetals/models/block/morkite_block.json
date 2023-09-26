@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "mythicmetals:block/morkite_block"
+    "end": "mythicmetals:block/morkite_block_top",
+    "side": "mythicmetals:block/morkite_block"
   }
 }
