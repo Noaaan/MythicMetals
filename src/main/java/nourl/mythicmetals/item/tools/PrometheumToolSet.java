@@ -13,7 +13,7 @@ import java.util.UUID;
 
 public class PrometheumToolSet extends ToolSet {
     public static final NbtKey<Integer> DURABILITY_REPAIRED = new NbtKey<>("DurabilityRepaired", NbtKey.Type.INT);
-    private static final int OVERGROWN_THRESHOLD = 2000;
+    private static final int OVERGROWN_THRESHOLD = 1200;
 
     public PrometheumToolSet(ToolMaterial material, int[] damage, float[] speed) {
         super(material, damage, speed);

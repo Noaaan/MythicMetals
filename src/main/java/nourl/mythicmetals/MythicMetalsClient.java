@@ -103,22 +103,15 @@ public class MythicMetalsClient implements ClientModInitializer {
                     attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
                             UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
                             "Bound Prometheum bonus",
-                            0.05,
+                            0.08,
                             EntityAttributeModifier.Operation.MULTIPLY_BASE
-                    ));
-
-                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
-                            "Bound Prometheum bonus",
-                            1,
-                            EntityAttributeModifier.Operation.ADDITION
                     ));
                 }
                 if (PrometheumToolSet.isOvergrown(stack)) {
                     attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                            UUID.fromString("2dd3f3eb-3804-454d-8876-97f6b3f9b289"),
-                            "Overgrown Prometheum bonus",
-                            1,
+                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
+                            "Prometheum bonus toughness",
+                            EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
                             EntityAttributeModifier.Operation.ADDITION
                     ));
                 }
