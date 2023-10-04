@@ -1,0 +1,28 @@
+{
+  "parent": "mythicmetals:enchanted_midas_gold_block",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.enchanted_midas_gold_block_in_staff.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.enchanted_midas_gold_block_in_staff.description"
+    },
+    "icon": {
+      "item": "mythicmetals:carmot_staff",
+      "nbt": "{StoredBlock: \"mythicmetals:enchanted_midas_gold_block\"}"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "kinda_expensive_luck_potion_truly_mmo_moment": {
+      "trigger": "mythicmetals:use_enchanted_midas_in_carmot_staff",
+      "conditions": {}
+    }
+  },
+  "rewards": {
+    "experience": 15
+  }
+}

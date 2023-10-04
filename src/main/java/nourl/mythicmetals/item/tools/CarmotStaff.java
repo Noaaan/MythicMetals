@@ -56,6 +56,7 @@ import nourl.mythicmetals.misc.EpicExplosion;
 import nourl.mythicmetals.misc.MythicDamageTypes;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.registry.RegisterCriteria;
 import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -277,7 +278,7 @@ public class CarmotStaff extends ToolItem {
                 if (stack.getNbt() != null && stack.getNbt().getBoolean("Unbreakable")) {
                     stack.getNbt().remove("Unbreakable");
                     stack.getEnchantments().clear();
-                    stack.setDamage(MythicToolMaterials.CARMOT.getDurability());
+                    stack.setDamage(MythicToolMaterials.CARMOT_STAFF.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                     user.getItemCooldownManager().set(stack.getItem(), 6000);
                     explode(world, user);
@@ -292,7 +293,7 @@ public class CarmotStaff extends ToolItem {
 
                 return TypedActionResult.success(stack);
             } else {
-                user.sendMessage(Text.of("This power has been disabled"));
+                user.sendMessage(Text.translatable("tooltip.carmot_staff.disabled"));
                 return TypedActionResult.fail(stack);
             }
 
@@ -354,6 +355,25 @@ public class CarmotStaff extends ToolItem {
             user.addStatusEffect(betterLuckStatus);
             stack.damage(10, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             user.getItemCooldownManager().set(stack.getItem(), 3000);
+            return TypedActionResult.success(stack);
+        }
+
+        // Enchanted Midas Gold - Luck 5 for twenty minutes. Consumes the enchantment
+        if (hasBlockInStaff(stack, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK)) {
+            var entities = world.getOtherEntities(user, Box.of(user.getPos(), 16, 14, 16));
+            var bestLuckStat = new StatusEffectInstance(StatusEffects.LUCK, 24000, 4, true, false, true);
+            entities.forEach(entity -> {
+                if (entity.isLiving()) {
+                    ((LivingEntity) entity).addStatusEffect(bestLuckStat);
+                }
+            });
+            user.addStatusEffect(bestLuckStat);
+            stack.damage(20, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            user.getItemCooldownManager().set(stack.getItem(), 5000);
+            stack.put(STORED_BLOCK, MythicBlocks.MIDAS_GOLD.getStorageBlock());
+            if (!world.isClient()) {
+                RegisterCriteria.ENCHANTED_MIDAS_IN_STAFF.trigger(((ServerPlayerEntity) user));
+            }
             return TypedActionResult.success(stack);
         }
 

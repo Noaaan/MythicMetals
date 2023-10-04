@@ -8,12 +8,16 @@ import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class BlastMiningCriteria extends AbstractCriterion<BlastMiningCriteria.Conditions> {
-    public static final Identifier ID = RegistryHelper.id("used_blast_mining");
+public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions> {
+    private final Identifier id;
+
+    public SimpleCriteria(Identifier id) {
+        this.id = id;
+    }
 
     @Override
     public Identifier getId() {
-        return ID;
+        return id;
     }
 
     public void trigger(ServerPlayerEntity entity) {
@@ -25,9 +29,9 @@ public class BlastMiningCriteria extends AbstractCriterion<BlastMiningCriteria.C
         return new Conditions();
     }
 
-    public static class Conditions extends AbstractCriterionConditions {
+    public class Conditions extends AbstractCriterionConditions {
         public Conditions() {
-            super(ID, LootContextPredicate.EMPTY);
+            super(id, LootContextPredicate.EMPTY);
         }
     }
 }

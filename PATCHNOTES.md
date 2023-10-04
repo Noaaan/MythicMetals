@@ -46,6 +46,9 @@ The following materials received new block and ingot textures (#191):
 - Durasteel Engine is craftable from tags (allowing compatibility with mods like PSWG)
 - Added ingots and nuggets to common tags (#183)
 - Added compatibility for Enhanced Explosions with Banglum Nukes (#190 Thanks Superkat32!)
+- The Enchanted Midas Gold Block is now a block! Place it down in your world, admire it, enjoy it.
+- Added an advancement for using an Enchanted Midas Gold Block in a Carmot Staff
+- New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 
 ### Balancing Changes
 
