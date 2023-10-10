@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ctc",
+    "cmc",
+    "cdc"
+  ],
+  "key": {
+    "m": {
+      "item": "minecraft:deepslate"
+    },
+    "t": {
+      "item": "mythicmetals:aegis_smithing_template"
+    },
+    "c": {
+      "item": "minecraft:emerald"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "mythicmetals:aegis_smithing_template",
+    "count": 2
+  },
+  "group": "aegis_template"
+}

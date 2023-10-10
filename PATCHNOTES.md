@@ -26,6 +26,17 @@ These blocks are special in that they only work within the range of an active co
 - Tweaked Raw Osmium sprite
 - New Raw Runite sprite
 - New Prometheum Armor sprites
+- Tweaked Midas Gold Swords
+
+The following materials received new block and ingot textures:
+
+- Celestium
+- Quadrillum
+- Midas Gold
+- Manganese
+- Carmot
+- Tin
+- Silver
 
 ## Changes
 
@@ -40,6 +51,14 @@ These blocks are special in that they only work within the range of an active co
 
 - Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
 - Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
+- Increased the damage of Quadrillum tools slightly (6.5 -> 6.7)
+- Increased the mining speed of Quadrillum tools (5.0 -> 5.5)
+- Reduced the attack speed of Quadrillum tools
+- Reduced the attack speed of the Osmium Axe
+- Made Silver Ore and Blocks easier to break
+- Made Quadrillum Ore and Blocks much easier to break
+- Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
+- Increased attack speed of Engrained Prometheum (5% -> 8%)
 
 ### Bug fixes
 
