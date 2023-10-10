@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mythicmetals:osmium_ingot"
+  },
+  "base": {
+    "item": "minecraft:chainmail_leggings"
+  },
+  "result": {
+    "item": "mythicmetals:osmium_chainmail_leggings"
+  },
+  "template": {
+    "item": "mythicmetals:osmium_chainmail_smithing_template"
+  }
+}

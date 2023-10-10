@@ -93,9 +93,16 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
     public static class Templates implements ItemRegistryContainer {
         public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
+                identifiers -> identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra")));
+
+        public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
                 identifiers -> {
-                    identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra"));
+                    identifiers.add(new Identifier("item/empty_armor_slot_helmet"));
+                    identifiers.add(new Identifier("item/empty_armor_slot_chestplate"));
+                    identifiers.add(new Identifier("item/empty_armor_slot_leggings"));
+                    identifiers.add(new Identifier("item/empty_armor_slot_boots"));
                 });
+
         public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.unobtainium.applies_to").formatted(Formatting.BLUE),
                 Text.translatable("smithing_template.mythicmetals.unobtainium.ingredients").formatted(Formatting.BLUE),
@@ -168,6 +175,16 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 Text.translatable("smithing_template.mythicmetals.carmot.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.carmot.additions_slot_description"),
                 SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+                SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
+        );
+
+        public static final Item OSMIUM_CHAINMAIL_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.osmium.applies_to").setStyle(Style.EMPTY.withColor(Formatting.GRAY)),
+                Text.translatable("smithing_template.mythicmetals.osmium.ingredients").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.OSMIUM.rgb())),
+                Text.translatable("smithing_template.mythicmetals.osmium.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.osmium.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.osmium.additions_slot_description"),
+                ARMOR_ITEMS,
                 SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
         );
 
