@@ -95,7 +95,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
                 identifiers -> identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra")));
 
-        public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
+        public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(),
                 identifiers -> {
                     identifiers.add(new Identifier("item/empty_armor_slot_helmet"));
                     identifiers.add(new Identifier("item/empty_armor_slot_chestplate"));

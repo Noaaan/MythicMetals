@@ -1,13 +1,15 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_midas_gold_ingot": {
+    "found_osmium": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:midas_gold_ingot",
-              "mythicmetals:midas_gold_block"
+              "mythicmetals:osmium_ingot",
+              "mythicmetals:raw_osmium",
+              "mythicmetals:osmium_block",
+              "mythicmetals:osmium_ore"
             ]
           }
         ]
@@ -16,21 +18,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/midas_folding_template"
+        "recipe": "mythicmetals:template/osmium_chainmail_smithing_template"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_midas_gold_ingot",
+      "found_osmium",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/midas_folding_template",
-      "mythicmetals:template/midas_folding_template_duplicate"
+      "mythicmetals:template/osmium_chainmail_smithing_template"
     ]
   }
 }

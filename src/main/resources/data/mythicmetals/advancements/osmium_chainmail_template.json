@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:osmium",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.osmium_chainmail_template.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.osmium_chainmail_template.description"
+    },
+    "icon": {
+      "item": "mythicmetals:osmium_chainmail_smithing_template"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "beckers_secret_recipe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:osmium_chainmail_smithing_template"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
