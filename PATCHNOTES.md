@@ -7,10 +7,26 @@ Aquarium is undergoing a rework.
 ### Aquarium Conduit Blocks
 
 These blocks are special in that they only work within the range of an active conduit.
-- Aquarium Resonator
-  - Grants you stronger Conduit Power, meaning you can mine even faster underwater!
-- Aquarium Steward
-  - Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
+
+#### Aquarium Resonator
+
+Grants you stronger Conduit Power, meaning you can mine even faster underwater!
+
+#### Aquarium Steward
+
+Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
+
+#### Aquarium Glass
+
+This is a simple glass block that counts towards [valid Conduit blocks](https://minecraft.wiki/w/Conduit#Conduit_power),
+allowing you to view the Conduit in its full splendor while its active. 
+
+### Tidesinger Equipment
+
+Using the **Aquarium Pearls** you find sometimes when mining Aquarium, along with a handful of Coral, you can craft 
+yourself a set of **Tidesinger Armor** or **Tools**. 
+
+This gear is superior to regular Aquarium in every way, as well as providing a direct swim speed increase. 
 
 ## Texture changes
 
@@ -27,8 +43,10 @@ These blocks are special in that they only work within the range of an active co
 - New Raw Runite sprite
 - New Prometheum Armor sprites
 - Tweaked Midas Gold Swords
+- New Quadrillum Tools
+- New Celestium Armor Items and Tools
 
-The following materials received new block and ingot textures (#191):
+The following materials received new block and ingot textures (#191, #199):
 
 - Celestium
 - Quadrillum
@@ -37,6 +55,9 @@ The following materials received new block and ingot textures (#191):
 - Carmot
 - Tin
 - Silver
+- Metallurgium
+- Prometheum
+- Runite
 
 ## Changes
 
@@ -69,6 +90,7 @@ The following materials received new block and ingot textures (#191):
 - Fixed an issue related to music discs being eaten by the jukebox
 - Fixed Air appending a Mythril Drill Upgrade tooltip
 - Fixed the Mythril Drill auto-repair not working
+- Fixed the Deepslate Runite Block not playing the correct sound effect
 
 # 0.18.2
 
