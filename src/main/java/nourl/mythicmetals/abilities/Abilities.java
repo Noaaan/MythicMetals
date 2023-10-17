@@ -51,10 +51,10 @@ public class Abilities {
 
         AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), MetalColors.AQUA_STYLE);
         AQUA_AFFINITY.addToolSet(MythicTools.AQUARIUM, MetalColors.AQUA_STYLE);
-        AQUA_AFFINITY.addItem(MythicArmor.IMPROVED_AQUARIUM.getHelmet(), MetalColors.AQUA_STYLE);
-        AQUA_AFFINITY.addToolSet(MythicTools.IMPROVED_AQUARIUM, MetalColors.AQUA_STYLE);
-        BETTER_RESPIRATION.addItem(MythicArmor.IMPROVED_AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
-        BETTER_RESPIRATION.addItem(MythicArmor.IMPROVED_AQUARIUM.getLeggings(), MetalColors.AQUA_STYLE);
+        AQUA_AFFINITY.addItem(MythicArmor.TIDESINGER.getHelmet(), MetalColors.AQUA_STYLE);
+        AQUA_AFFINITY.addToolSet(MythicTools.TIDESINGER, MetalColors.AQUA_STYLE);
+        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.AQUA_STYLE);
+        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getLeggings(), MetalColors.AQUA_STYLE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), MetalColors.GOLD_STYLE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);
         BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
@@ -66,6 +66,7 @@ public class Abilities {
         BONUS_LOOTING.addItem(MythicTools.CARMOT.getSword(), MetalColors.CARMOT_STYLE);
         CARMOT_SHIELD.addArmorSet(MythicArmor.CARMOT, MetalColors.CARMOT_STYLE);
         DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), MetalColors.AQUA_STYLE);
+        DEPTH_STRIDER.addItem(MythicArmor.TIDESINGER.getBoots(), MetalColors.AQUA_STYLE);
         FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
@@ -92,7 +93,7 @@ public class Abilities {
         SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
-            BETTER_WATER_PROTECTION.addItem(MythicArmor.IMPROVED_AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
+            BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.AQUA_STYLE);
         }
     }
 

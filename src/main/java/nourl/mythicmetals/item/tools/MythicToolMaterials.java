@@ -14,7 +14,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     AEGIS_RED(4, 2170, 8.0F, 6.0F, 25, () -> Ingredient.ofItems(MythicItems.PALLADIUM.getIngot())),
     AEGIS_WHITE(4, 2070, 10.0F, 5.0F, 25, () -> Ingredient.ofItems(MythicItems.HALLOWED.getIngot())),
     AQUARIUM(2, 455, 6.5F, 2.0F, 12, () -> Ingredient.ofItems(MythicItems.AQUARIUM.getIngot())),
-    IMPROVED_AQUARIUM(3, 1233, 7.5F, 3.0F, 16, () -> Ingredient.ofItems(MythicItems.AQUARIUM.getIngot())),
+    TIDESINGER(3, 1233, 7.5F, 3.0F, 16, () -> Ingredient.ofItems(MythicItems.AQUARIUM.getIngot())),
     BANGLUM(2, 260, 11.0F, 2.0F, 1, () -> Ingredient.ofItems(MythicItems.BANGLUM.getIngot())),
     BRONZE(2, 354, 5.5F, 2.5F, 14, () -> Ingredient.ofItems(MythicItems.BRONZE.getIngot())),
     CARMOT(3, 1130, 11.5F, 3.0F, 42, () -> Ingredient.ofItems(MythicItems.CARMOT.getIngot())),

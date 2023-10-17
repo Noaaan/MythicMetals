@@ -45,7 +45,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final ToolSet ADAMANTITE = new ToolSet(MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet IMPROVED_AQUARIUM = new ToolSet(MythicToolMaterials.IMPROVED_AQUARIUM, BETTER_AXE_DAMAGE, FASTER_ATTACK_SPEED);
+    public static final ToolSet TIDESINGER = new ToolSet(MythicToolMaterials.TIDESINGER, BETTER_AXE_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final Item BANGLUM_TNT_MINECART = new MinecartItem(MythicMetals.BANGLUM_TNT, new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final ToolSet BRONZE = new ToolSet(MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);

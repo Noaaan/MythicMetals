@@ -16,7 +16,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final Map<String, ArmorSet> ARMOR_MAP = new HashMap<>();
     public static final ArmorSet ADAMANTITE = new ArmorSet(MythicArmorMaterials.ADAMANTITE);
     public static final ArmorSet AQUARIUM = new ArmorSet(MythicArmorMaterials.AQUARIUM);
-    public static final ArmorSet IMPROVED_AQUARIUM = new ArmorSet(MythicArmorMaterials.IMPROVED_AQUARIUM);
+    public static final ArmorSet TIDESINGER = new ArmorSet(MythicArmorMaterials.TIDESINGER);
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(MythicArmorMaterials.BRONZE);
     public static final ArmorSet CARMOT = new ArmorSet(MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
