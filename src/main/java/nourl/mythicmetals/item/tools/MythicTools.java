@@ -33,8 +33,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final Map<String, ToolSet> TOOL_MAP = new HashMap<>();
     // Arrays for weapon/tool damage: sword, axe, pickaxe, shovel, and hoe
     public static final int [] DEFAULT_DAMAGE = new int[]{3, 5, 2, 1, 0};
-    @Deprecated(forRemoval = true, since = "0.18.0")
-    public static final int [] BETTER_AXE_DAMAGE = new int[]{3, 5, 2, 1, 0};
     // Arrays for weapon/tool attack speed: sword, axe, pickaxe, shovel and hoe
     public static final float [] SLOWEST_ATTACK_SPEED = new float[]{-2.5F, -3.2F, -2.9F, -3.0F, -3.1F}; // -0.1 to all
     public static final float [] SLOWER_ATTACK_SPEED = new float[]{-2.5F, -3.1F, -2.9F, -3.0F, -3.1F}; // -0.1 except axes
@@ -45,7 +43,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final ToolSet ADAMANTITE = new ToolSet(MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new ToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet TIDESINGER = new ToolSet(MythicToolMaterials.TIDESINGER, BETTER_AXE_DAMAGE, FASTER_ATTACK_SPEED);
+    public static final ToolSet TIDESINGER = new ToolSet(MythicToolMaterials.TIDESINGER, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final Item BANGLUM_TNT_MINECART = new MinecartItem(MythicMetals.BANGLUM_TNT, new OwoItemSettings().group(MythicMetals.TABBED_GROUP));
     public static final ToolSet BRONZE = new ToolSet(MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
