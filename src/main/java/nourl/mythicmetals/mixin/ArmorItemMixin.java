@@ -35,7 +35,10 @@ public abstract class ArmorItemMixin {
     private void constructor(ArmorMaterial material, ArmorItem.Type type, Item.Settings settings, CallbackInfo ci) {
         UUID uUID = MODIFIERS.get(type);
         if (material == MythicArmorMaterials.TIDESINGER) {
-            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.WATER_SPEED, "Swim Speed bonus", 0.05F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            if (type.equals(ArmorItem.Type.HELMET)) {
+                mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.WATER_VISIBILITY, "Tidesinger Vision bonus", 0.25f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+            }
+            mythicmetals$armorMapBuilder(uUID, AdditionalEntityAttributes.WATER_SPEED, "Tidesinger Swim Speed bonus", 0.06F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         }
         if (material == MythicArmorMaterials.CELESTIUM) {
             mythicmetals$armorMapBuilder(uUID, EntityAttributes.GENERIC_MOVEMENT_SPEED, "Celestium speed bonus", 0.1F, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
