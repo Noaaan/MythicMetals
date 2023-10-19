@@ -1,14 +1,14 @@
 {
-  "parent": "mythicmetals:osmium",
+  "parent": "mythicmetals:aquarium_pearl",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.osmium_chainmail_template.title"
+      "translate": "advancement.mythicmetals.tidesinger_template.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.osmium_chainmail_template.description"
+      "translate": "advancement.mythicmetals.tidesinger_template.description"
     },
     "icon": {
-      "item": "mythicmetals:osmium_chainmail_smithing_template"
+      "item": "mythicmetals:tidesinger_smithing_template"
     },
     "frame": "goal",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "who_needs_an_osmium_compressor": {
+    "umberlee_would_approve": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:osmium_chainmail_smithing_template"
+              "mythicmetals:tidesinger_smithing_template"
             ]
           }
         ]

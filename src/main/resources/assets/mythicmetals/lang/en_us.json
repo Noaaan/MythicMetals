@@ -701,6 +701,8 @@
   "advancement.mythicmetals.unobtainium.title": "How Did You Get This?",
   "advancement.mythicmetals.superhot.title": "I Am On Fire!",
   "advancement.mythicmetals.superhot.description": "Try to not turn into charcoal as you have Combustion applied on yourself, bypassing Fire Resistance and increasing fire damage taken!",
+  "advancement.mythicmetals.tidesinger_template.description": "Craft a Tidesinger Smithing Template using Aquarium Pearls and Coral, allowing for the ultimate swimming gear",
+  "advancement.mythicmetals.tidesinger_template.title": "PLACEHOLDER ADVANCEMENT NAME",
   "advancement.mythicmetals.intentional_combusting_mechanics.title": "This Is Based",
   "advancement.mythicmetals.intentional_combusting_mechanics.description": "Abuse lingering Creeper mechanics to apply Combustion on yourself",
 
@@ -893,6 +895,12 @@
   "smithing_template.mythicmetals.legendary_banglum.ingredients": "Banglum Chunk",
   "smithing_template.mythicmetals.legendary_banglum.base_slot_description": "Put a piece of Banglum Equipment here",
   "smithing_template.mythicmetals.legendary_banglum.additions_slot_description": "Put a Banglum Chunk here",
+
+  "smithing_template.mythicmetals.tidesinger.title": "Tidesinger Upgrade",
+  "smithing_template.mythicmetals.tidesinger.applies_to": "Aquarium Equipment",
+  "smithing_template.mythicmetals.tidesinger.ingredients": "Aquarium Ingot",
+  "smithing_template.mythicmetals.tidesinger.base_slot_description": "Put a piece of Aquarium Equipment here",
+  "smithing_template.mythicmetals.tidesinger.additions_slot_description": "Put an Aquarium Ingot here",
 
   "smithing_template.mythicmetals.unobtainium.title": "Unobtainium Alloy Upgrade",
   "smithing_template.mythicmetals.unobtainium.applies_to": "Netherite or Diamond Equipment",

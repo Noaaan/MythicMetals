@@ -188,6 +188,16 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
                 SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures()
         );
 
+        public static final Item TIDESINGER_SMITHING_TEMPLATE = new SmithingTemplateItem(
+                Text.translatable("smithing_template.mythicmetals.tidesinger.applies_to").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.ingredients").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.title").formatted(Formatting.GRAY),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.base_slot_description"),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.additions_slot_description"),
+                ARMOR_ITEMS,
+                List.of(RegistryHelper.id("item/template/empty_slot_pearl"))
+        );
+
         public static final Item LEGENDARY_BANGLUM_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.legendary_banglum.applies_to").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.BANGLUM.rgb())),
                 Text.translatable("smithing_template.mythicmetals.legendary_banglum.ingredients").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.BANGLUM.rgb())),
