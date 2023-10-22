@@ -1,12 +1,19 @@
 package nourl.mythicmetals.blocks;
 
+import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.GlassBlock;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.registry.RegisterSounds;
 
@@ -100,6 +107,8 @@ public class MythicBlocks {
             .createStorageBlock(IRON_MINING_LEVEL)
             .createAnvil(IRON_MINING_LEVEL)
             .finish();
+
+    public static final Block ENCHANTED_MIDAS_GOLD_BLOCK = new EnchantedMidasGoldBlock(FabricBlockSettings.copyOf(MIDAS_GOLD.getStorageBlock()));
 
     public static final BlockSet MYTHRIL = BlockSet.Builder.begin("mythril", false)
             .createDefaultSet(5F, DIAMOND_MINING_LEVEL, DIAMOND_MINING_LEVEL)
@@ -197,6 +206,13 @@ public class MythicBlocks {
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
+        Registry.register(Registries.BLOCK, RegistryHelper.id("enchanted_midas_gold_block"), ENCHANTED_MIDAS_GOLD_BLOCK);
+        Registry.register(Registries.ITEM, RegistryHelper.id("enchanted_midas_gold_block"), new BlockItem(ENCHANTED_MIDAS_GOLD_BLOCK, new OwoItemSettings().group(MythicMetals.TABBED_GROUP).tab(1).rarity(Rarity.UNCOMMON)) {
+            @Override
+            public boolean hasGlint(ItemStack stack) {
+                return true;
+            }
+        });
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
     }
 

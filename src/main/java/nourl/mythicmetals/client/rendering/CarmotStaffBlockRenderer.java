@@ -1,18 +1,19 @@
 package nourl.mythicmetals.client.rendering;
 
-import net.fabricmc.fabric.api.client.model.ExtraModelProvider;
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.ItemRenderer;
+import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
@@ -22,36 +23,37 @@ import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 
-import java.util.function.Consumer;
-
-public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer, ExtraModelProvider {
+public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer, ModelLoadingPlugin {
     public static final ModelIdentifier CARMOT_STAFF_ID = new ModelIdentifier(RegistryHelper.id("carmot_staff_base"), "inventory");
     private static final Identifier WORLD_BORDER = new Identifier("textures/misc/forcefield.png");
 
     @Override
     public void render(ItemStack staff, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
-        var block = staff.has(CarmotStaff.STORED_BLOCK) ? (staff.get(CarmotStaff.STORED_BLOCK)) : Blocks.AIR;
-        var instance = MinecraftClient.getInstance();
-        var staffModel = instance.getBakedModelManager().getModel(CARMOT_STAFF_ID);
-        var blockModel = instance.getBakedModelManager().getBlockModels().getModel(block.getDefaultState());
-
+        // TODO - Small optimization: Staff Model could be static? Investigate.
+        var client = MinecraftClient.getInstance();
         boolean shouldRenderRainbowShield = CarmotStaff.hasBlockInStaff(staff, MythicBlocks.STORMYX.getStorageBlock());
+        boolean isEnchantedMidas = CarmotStaff.hasBlockInStaff(staff, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK);
+        Block block = staff.has(CarmotStaff.STORED_BLOCK) ? (staff.get(CarmotStaff.STORED_BLOCK)) : Blocks.AIR;
+        BakedModel staffModel = client.getBakedModelManager().getModel(CARMOT_STAFF_ID);
+        BakedModel blockModel = client.getBakedModelManager().getBlockModels().getModel(block.getDefaultState());
 
         if (shouldRenderRainbowShield && mode.isFirstPerson() && staff.get(CarmotStaff.IS_USED)) {
             renderRainbowShield(mode, matrices, vertexConsumerProvider, light);
         }
 
+        // Render Staff itself
         matrices.translate(.5, .5, .5);
-        instance.getItemRenderer().renderItem(staff, mode, false, matrices, vertexConsumerProvider, light, overlay, staffModel);
+        client.getItemRenderer().renderItem(staff, mode, false, matrices, vertexConsumerProvider, light, overlay, staffModel);
 
         staffModel.getTransformation().getTransformation(mode).apply(false, matrices);
         matrices.scale(0.25F, 0.25F, 0.25F);
         matrices.translate(-.5F, 2F, 0F);
 
-        instance.getBlockRenderManager().renderBlockAsEntity(block.getDefaultState(), matrices, vertexConsumerProvider, light, overlay);
-        instance.getBlockRenderManager().getModelRenderer().render(
+        // First render call fixes light, second renders the actual block
+        client.getBlockRenderManager().renderBlockAsEntity(block.getDefaultState(), matrices, vertexConsumerProvider, light, overlay);
+        client.getBlockRenderManager().getModelRenderer().render(
                 matrices.peek(),
-                ItemRenderer.getItemGlintConsumer(vertexConsumerProvider, RenderLayer.getCutoutMipped(), true, staff.hasGlint()),
+                ItemRenderer.getItemGlintConsumer(vertexConsumerProvider, RenderLayer.getCutoutMipped(), true, isEnchantedMidas || staff.hasGlint()),
                 block.getDefaultState(),
                 blockModel,
                 0,
@@ -59,11 +61,6 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
                 0,
                 light,
                 overlay);
-    }
-
-    @Override
-    public void provideExtraModels(ResourceManager manager, Consumer<Identifier> out) {
-        out.accept(CARMOT_STAFF_ID);
     }
 
     /**
@@ -105,5 +102,10 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
                 rgbColors[2],
                 0.5F);
         matrices.pop();
+    }
+
+    @Override
+    public void onInitializeModelLoader(Context pluginContext) {
+        pluginContext.addModels(CARMOT_STAFF_ID);
     }
 }

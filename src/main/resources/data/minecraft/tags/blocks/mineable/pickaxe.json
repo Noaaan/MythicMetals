@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "#mythicmetals:nuke_cores"
+    "#mythicmetals:nuke_cores",
+    "#mythicmetals:conduit_blocks",
+    "mythicmetals:enchanted_midas_gold_block"
   ]
 }

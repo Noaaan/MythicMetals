@@ -23,10 +23,10 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
+import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.item.tools.PrometheumToolSet;
 import nourl.mythicmetals.misc.MythicParticleSystem;
@@ -188,11 +188,12 @@ public abstract class LivingEntityMixin extends Entity {
         }
 
         // Handle Mythril Drill with Prometheum Upgrade
-        if (stack.getItem() instanceof MythrilDrill && MythrilDrill.hasUpgradeItem(stack, MythicBlocks.PROMETHEUM.getStorageBlock().asItem())) {
+        if (stack.getItem() instanceof MythrilDrill drill && MythrilDrill.hasUpgradeItem(stack, MythicItems.Mats.PROMETHEUM_BOUQUET)) {
             var dmg = stack.getDamage();
             var rng = r.nextInt(200);
             if (rng == 33 && dmg > 0) {
-                stack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
+                int value = drill.isActive(stack) ? 2 : 1;
+                stack.setDamage(MathHelper.clamp(dmg - value, 0, Integer.MAX_VALUE));
             }
         }
     }

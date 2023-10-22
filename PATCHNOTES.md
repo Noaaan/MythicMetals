@@ -28,7 +28,7 @@ These blocks are special in that they only work within the range of an active co
 - New Prometheum Armor sprites
 - Tweaked Midas Gold Swords
 
-The following materials received new block and ingot textures:
+The following materials received new block and ingot textures (#191):
 
 - Celestium
 - Quadrillum
@@ -45,7 +45,10 @@ The following materials received new block and ingot textures:
 - Updated and adjusted Better Combat integration
 - Durasteel Engine is craftable from tags (allowing compatibility with mods like PSWG)
 - Added ingots and nuggets to common tags (#183)
-- Added compatibility for Enhanced Explosions with Banglum Nukes (Thanks Superkat32!)
+- Added compatibility for Enhanced Explosions with Banglum Nukes (#190 Thanks Superkat32!)
+- The Enchanted Midas Gold Block is now a block! Place it down in your world, admire it, enjoy it.
+- Added an advancement for using an Enchanted Midas Gold Block in a Carmot Staff
+- New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 
 ### Balancing Changes
 
@@ -59,12 +62,13 @@ The following materials received new block and ingot textures:
 - Made Quadrillum Ore and Blocks much easier to break
 - Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
 - Increased attack speed of Engrained Prometheum (5% -> 8%)
+- Increased Mythril Drill auto repair when it is activated
 
 ### Bug fixes
 
 - Fixed an issue related to music discs being eaten by the jukebox
 - Fixed Air appending a Mythril Drill Upgrade tooltip
-
+- Fixed the Mythril Drill auto-repair not working
 
 # 0.18.2
 
