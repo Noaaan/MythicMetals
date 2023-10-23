@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "found_osmium": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:osmium_ingot",
+              "mythicmetals:raw_osmium",
+              "mythicmetals:osmium_block",
+              "mythicmetals:osmium_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:template/osmium_chainmail_smithing_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "found_osmium",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:template/osmium_chainmail_smithing_template"
+    ]
+  }
+}

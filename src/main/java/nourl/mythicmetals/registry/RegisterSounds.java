@@ -28,6 +28,7 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static final SoundEvent EQUIP_MIDAS_GOLD = SoundEvent.of(RegistryHelper.id("equip_midas_gold"));
     public static final SoundEvent EQUIP_MYTHRIL = SoundEvent.of(RegistryHelper.id("equip_mythril"));
     public static final SoundEvent EQUIP_ORICHALCUM = SoundEvent.of(RegistryHelper.id("equip_orichalcum"));
+    public static final SoundEvent EQUIP_OSMIUM_CHAINMAIL = SoundEvent.of(RegistryHelper.id("equip_osmium_chainmail"));
     public static final SoundEvent EQUIP_OSMIUM = SoundEvent.of(RegistryHelper.id("equip_osmium"));
     public static final SoundEvent EQUIP_PALLADIUM = SoundEvent.of(RegistryHelper.id("equip_palladium"));
     public static final SoundEvent EQUIP_PROMETHEUM = SoundEvent.of(RegistryHelper.id("equip_prometheum"));

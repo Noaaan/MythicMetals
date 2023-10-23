@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/cube_all",
   "textures": {
+    "particle": "mythicmetals:block/tin_block_side",
     "all": "mythicmetals:block/tin_block"
   }
 }

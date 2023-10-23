@@ -130,12 +130,12 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [0, 4, -1],
+			"translation": [0, 2, -1],
 			"scale": [1.5, 1.5, 1.5]
 		},
 		"thirdperson_lefthand": {
-			"translation": [0, 2, 0],
-			"scale": [1.25, 1.25, 1.25]
+			"translation": [0, 2, -1],
+			"scale": [1.5, 1.5, 1.5]
 		},
 		"ground": {
 			"translation": [0, 8, 0],

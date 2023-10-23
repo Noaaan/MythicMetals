@@ -50,8 +50,12 @@ public class EnchantmentHelperMixin {
         int level = cir.getReturnValue();
         int change = 0;
         for (ItemStack armorItems : entity.getArmorItems()) {
-            if (Abilities.RESPIRATION.getItems().contains(armorItems.getItem()))
+            if (Abilities.RESPIRATION.getItems().contains(armorItems.getItem())) {
                 change += Abilities.RESPIRATION.getLevel();
+            }
+            if (Abilities.BETTER_RESPIRATION.getItems().contains(armorItems.getItem())) {
+                change += Abilities.BETTER_RESPIRATION.getLevel();
+            }
         }
         if (change > 0) {
             cir.setReturnValue(level + change);

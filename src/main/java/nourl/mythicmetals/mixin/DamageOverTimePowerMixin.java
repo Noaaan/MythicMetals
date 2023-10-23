@@ -31,6 +31,9 @@ public class DamageOverTimePowerMixin extends Power {
             if (Abilities.WATER_PROTECTION.getItems().contains(itemStack.getItem())) {
                 change += Abilities.WATER_PROTECTION.getLevel() + 1;
             }
+            if (Abilities.BETTER_WATER_PROTECTION.getItems().contains(itemStack.getItem())) {
+                change += Abilities.BETTER_WATER_PROTECTION.getLevel() + 1;
+            }
         }
         if (change != 0)
             cir.setReturnValue(amount + change);
