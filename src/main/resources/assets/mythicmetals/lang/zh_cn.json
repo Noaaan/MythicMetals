@@ -1161,8 +1161,8 @@
 		}
 	],
 	"block.mythicmetals.aquarium_glass": "激水玻璃",
-	"block.mythicmetals.aquarium_resonator": "激水 Resonator",
-	"block.mythicmetals.aquarium_steward": "激水 Steward",
+	"block.mythicmetals.aquarium_resonator": "激水共鸣器",
+	"block.mythicmetals.aquarium_steward": "激水管家",
 	"item.mythicmetals.banglum_tnt_minecart": "聚爆石TNT矿车",
 	"block.mythicmetals.enchanted_midas_gold_block": "附魔迈达斯金块",
 	"item.mythicmetals.tidesinger_axe": "潮涌颂者斧",
