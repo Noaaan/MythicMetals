@@ -6,6 +6,7 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
 
@@ -58,7 +59,10 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     ORICHALCUM("orichalcum", 40, new int[]{4, 7, 9, 4}, 16, RegisterSounds.EQUIP_ORICHALCUM, 3.0F, 0.1F, () -> {
         return Ingredient.ofItems(MythicItems.ORICHALCUM.getIngot());
     }),
-    OSMIUM("osmium", 25, new int[]{1, 4, 5, 2}, 16, RegisterSounds.EQUIP_OSMIUM, 2.0F, 0.25F, () -> {
+    OSMIUM("osmium", 25, new int[]{3, 6, 7, 3}, 16, RegisterSounds.EQUIP_OSMIUM_CHAINMAIL, 2.0F, 0.25F, () -> {
+        return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
+    }),
+    OSMIUM_CHAINMAIL("osmium_chainmail", 25, new int[]{1, 4, 5, 2}, 15, RegisterSounds.EQUIP_OSMIUM, 2.0F, 0.20F, () -> {
         return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
     }),
     PALLADIUM("palladium", 28, new int[]{3, 6, 8, 3}, 16, RegisterSounds.EQUIP_PALLADIUM, 2.0F, 0.0F, () -> {
@@ -81,6 +85,9 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     }),
     STORMYX("stormyx", 30, new int[]{3, 6, 8, 3}, 20, RegisterSounds.EQUIP_STORMYX, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.STORMYX.getIngot());
+    }),
+    TIDESINGER("tidesinger", 32, new int[]{3, 6, 7, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
+        return Ingredient.ofItems(MythicItems.AQUARIUM.getIngot());
     });
 
 

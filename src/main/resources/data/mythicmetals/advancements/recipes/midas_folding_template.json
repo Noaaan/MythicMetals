@@ -6,7 +6,8 @@
         "items": [
           {
             "items": [
-              "mythicmetals:midas_gold_ingot"
+              "mythicmetals:midas_gold_ingot",
+              "mythicmetals:midas_gold_block"
             ]
           }
         ]

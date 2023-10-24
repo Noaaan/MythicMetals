@@ -50,6 +50,7 @@ public class UsefulSingletonForColorUtil {
     public static class MetalColors {
         public static final Color BANGLUM = Color.ofFormatting(Formatting.GOLD);
         public static final Color CARMOT = Color.ofRgb(0xE63E73);
+        public static final Color OSMIUM = Color.ofRgb(0x4C63A5);
         public static final Style CARMOT_STYLE = Style.EMPTY.withColor(CARMOT.rgb());
         public static final Color MORKITE = Color.ofRgb(0x00E3D6);
         public static final Color MYTHRIL = Color.ofRgb(0x3485C8);

@@ -478,6 +478,17 @@
       "item/armor/equip_iron6"
     ]
   },
+  "equip_osmium_chainmail": {
+    "subtitle": "subtitles.mythicmetals.equip_osmium_chainmail",
+    "sounds": [
+      "item/armor/equip_chain1",
+      "item/armor/equip_chain2",
+      "item/armor/equip_chain3",
+      "item/armor/equip_chain4",
+      "item/armor/equip_chain5",
+      "item/armor/equip_chain6"
+    ]
+  },
   "equip_osmium": {
     "subtitle": "subtitles.mythicmetals.equip_osmium",
     "sounds": [
