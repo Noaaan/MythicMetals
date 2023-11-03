@@ -3,11 +3,13 @@ package nourl.mythicmetals;
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
@@ -48,6 +50,7 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
+import nourl.mythicmetals.compat.IsometricArmorStandExporter;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
@@ -138,6 +141,12 @@ public class MythicMetalsClient implements ClientModInitializer {
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.AQUARIUM_GLASS, MythicBlocks.KYBER.getStorageBlock());
+
+        if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+                IsometricArmorStandExporter.register(dispatcher);
+            });
+        }
     }
 
     /**

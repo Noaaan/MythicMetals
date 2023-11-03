@@ -41,7 +41,6 @@ public final class MythicCommands {
     }
 
     public static void init() {
-
         ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("toolset"), ToolSetArgumentType.class, ConstantArgumentSerializer.of(ToolSetArgumentType::toolSet));
         ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("armorset"), ArmorSetArgumentType.class, ConstantArgumentSerializer.of(ArmorSetArgumentType::armorSet));
     }
@@ -63,10 +62,10 @@ public final class MythicCommands {
                 )
                 // TODO - Support "all"
                 .then(CommandManager.literal("wiki")
-                    .then(CommandManager.literal("tools")
+                    .then(CommandManager.literal("export-tools")
                         .then(CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
-                            .executes(MythicCommands::exportTools))
-
+                            .executes(MythicCommands::exportTools)
+                        )
                     )
                     .then(CommandManager.literal("armor")
                         .then(CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
@@ -254,10 +253,6 @@ public final class MythicCommands {
         list.forEach(trimPattern -> suggestion.suggest(trimPattern.assetId().getPath()));
         suggestion.suggest("all").suggest("none");
         return suggestion.buildFuture();
-    }
-
-    private static CompletableFuture<Suggestions> exportables(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
-        return suggestion.suggest("armor").suggest("tools").buildFuture();
     }
 
     private static int dumpOreConfig(CommandContext<ServerCommandSource> context) {
