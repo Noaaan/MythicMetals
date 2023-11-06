@@ -37,6 +37,11 @@ import java.util.concurrent.CompletableFuture;
 @SuppressWarnings({"UnstableApiUsage", "CodeBlock2Expr"})
 public final class MythicCommands {
 
+    public static final String ITEM_SCALE = "{ .sized-image style=\"--image-width: 40%;\" }";
+    public static final String RECIPE_SCALE = "{ .sized-recipe style=\"--image-width: 40%;\" }";
+    public static final String ICON_SCALE = "{ .sized-image style=\"--image-width: 8%;\" }";
+    public static final String BR = "<br>\n";
+
     private MythicCommands() {
     }
 
@@ -67,7 +72,7 @@ public final class MythicCommands {
                             .executes(MythicCommands::exportTools)
                         )
                     )
-                    .then(CommandManager.literal("armor")
+                    .then(CommandManager.literal("export-armor")
                         .then(CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
                             .executes(MythicCommands::exportArmor)
                         )
@@ -94,40 +99,60 @@ public final class MythicCommands {
      */
     private static int exportArmor(CommandContext<ServerCommandSource> context) {
         var armorSet = ArmorSetArgumentType.getArmorSet(context, "armorset");
-        String br = "<br>\n";
-
         var source = context.getSource();
 
         StringBuilder output = new StringBuilder();
 
+        // Armor Model on top of the admonition
+        String armorMaterial = Registries.ITEM.getId(armorSet.getHelmet()).getPath().split("_helmet")[0];
+        String armorTypeName = StringUtilsAtHome.toProperCase(armorMaterial.replace("_", " ") + " Armor");
+
+        output.append("\n");
+        output.append("<center class=tooltip>").append("\n");
+        output.append("<h3>**").append(armorTypeName).append("**</h3>").append("\n");
+        output.append("![Image of %s model](../assets/armor-models/256/%s.png)".formatted(armorTypeName, armorMaterial + "_256")).append("\n");
+
         for (var armor : armorSet.getArmorItems()) {
+            /* TODO - The string handling is a bit bad, although it does have to be very specific in regards
+              * to be implemented correctly into MkDocs. Try to improve this later.
+               */
             String id = Registries.ITEM.getId(armor).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+
             int protection = armor.getProtection();
 
             output.append("\n");
             output.append("<center class=tooltip>").append("\n");
             output.append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append("![Image of %s](../assets/mythicmetals/armor/%s.png)".formatted(name, id)).append(br);
+            output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
             for (int i = 1; i < protection; i = i + 2) {
-                output.append("![armor](../assets/minecraft/full_armor_icon.png){ .sized-image style=\"--image-width: 8%;\" }").append("\n");
+                output.append("![armor](../assets/icon/full_armor_icon.png)").append(ICON_SCALE).append("\n");
             }
             if ((protection & 1) == 1) {
-                output.append("![armor](../assets/minecraft/half_armor_icon.png){ .sized-image style=\"--image-width: 8%;\" }").append("\n");
+                output.append("![armor](../assets/icon/half_armor_icon.png)").append(ICON_SCALE).append("\n");
             }
-            output.append(br);
+            output.append(BR);
             // +5 Armor, +2 Toughness
             output.append("+%s Armor".formatted(protection));
             if (armor.getToughness() > 0) {
                 output.append(", +%s Toughness".formatted(armor.getToughness()));
             }
-            output.append(br);
+            output.append(BR);
             if (armor.getMaterial().getKnockbackResistance() > 0) {
-                output.append("+%s Knockback Resistance").append(br);
+                output.append("+%s Knockback Resistance").append(BR);
             }
             // 350 Durability
-            output.append("%s Durability".formatted(armor.getMaxDamage())).append(br);
+            output.append("%s Durability".formatted(armor.getMaxDamage())).append(BR);
         }
+
+        // armor recipes
+        output.append("\n").append("===RECIPE===").append("\n");
+        for (var armor : armorSet.getArmorItems()) {
+            String id = Registries.ITEM.getId(armor).getPath();
+            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+            output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
+        }
+        output.append("\n").append("===RECIPE END===").append("\n");
 
         System.out.println(output);
         source.sendFeedback(() -> Text.literal("Exported armor to wiki format"), false);
@@ -156,13 +181,21 @@ public final class MythicCommands {
             output.append("\n");
             output.append("<center class=tooltip>").append("\n");
             output.append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append("![Image of %s](../assets/mythicmetals/tools/%s.png)".formatted(name, id)).append(br);
+            output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(br);
             output.append("+%s Attack Damage, %s Attack Speed".formatted(
                 tool.getMaterial().getAttackDamage() + damage.poll() + 1,
                 BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
             )).append(br);
             output.append("%s Durability".formatted(tool.getMaxDamage())).append(br);
         }
+        // tool recipes
+        output.append("\n").append("===RECIPE===").append("\n");
+        for (ToolItem tool : toolset.get()) {
+            String id = Registries.ITEM.getId(tool).getPath();
+            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+            output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/tools/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
+        }
+        output.append("\n").append("===RECIPE END===").append("\n");
 
         System.out.println(output);
         source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
