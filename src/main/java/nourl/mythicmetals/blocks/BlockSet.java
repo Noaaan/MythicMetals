@@ -82,8 +82,7 @@ public class BlockSet {
             RegistryHelper.block(name + "_ore", ore, fireproof);
         }
 
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof
-        ));
+        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof));
 
         if (oreStorageBlock != null) {
             RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof);
@@ -93,15 +92,19 @@ public class BlockSet {
         }
         if (anvil != null) {
             RegistryHelper.block(name + "_anvil", anvil, fireproof);
-
         }
         // Inject all the mining levels into their tags.
         if (MythicMetals.CONFIG.enableAnvils()) {
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock)));
-            anvilMap.forEach(((anvilBlock, level) -> TagInjector.inject(Registries.BLOCK, level, anvilBlock)));
+            anvilMap.forEach(((anvilBlock, level) -> {
+                TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
+                TagInjector.inject(Registries.BLOCK, level, anvilBlock);
+                TagInjector.inject(Registries.BLOCK, new Identifier("anvil"), anvilBlock);
+            }));
         }
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registries.BLOCK, level, block));
-        miningLevels.forEach((block, level) -> TagInjector.inject(Registries.BLOCK, RegistryHelper.id("blocks"), block));
+        miningLevels.forEach((block, level) -> {
+                TagInjector.inject(Registries.BLOCK, level, block);
+                TagInjector.inject(Registries.BLOCK, RegistryHelper.id("blocks"), block);
+        });
     }
 
     /**
@@ -158,7 +161,7 @@ public class BlockSet {
      *
      * @author glisco
      * @author Noaaan
-     * @see Builder#begin(String, boolean) Builder.begin
+     * @see Builder#begin(String, boolean)
      * @see MythicBlocks
      */
     public static class Builder {
@@ -197,7 +200,7 @@ public class BlockSet {
          * Call {@link Builder#finish()} when you are done.
          *
          * @param name      The name of the new block set
-         * @param fireproof Boolean of whether or not the entire set should be fireproof
+         * @param fireproof Boolean of whether the entire set should be fireproof
          */
         public static Builder begin(String name, boolean fireproof) {
             return new Builder(name, fireproof);
@@ -313,7 +316,7 @@ public class BlockSet {
         /**
          * A simplified method to create a hardness and resistance value from a single int.
          *
-         * @param strength The base int value for the blocks strength.
+         * @param strength The base int value for the blocks' strength.
          * @return hardness, resistance (strength + 1)
          */
         public Builder strength(float strength) {

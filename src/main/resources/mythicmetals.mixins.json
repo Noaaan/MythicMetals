@@ -6,7 +6,6 @@
   "mixins": [
     "AbstractBlockStateMixin",
     "AbstractMinecartEntityMixin",
-    "AnvilScreenHandlerMixin",
     "ApplyBonusLootFunctionMixin",
     "AreaEffectCloudEntityMixin",
     "ArmorItemMixin",
