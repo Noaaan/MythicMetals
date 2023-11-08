@@ -70,7 +70,6 @@ public class MythicMetalsClient implements ClientModInitializer {
     private float time;
     public static ModelTransformationMode mode;
 
-    @SuppressWarnings("unchecked")
     @Override
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
@@ -78,51 +77,10 @@ public class MythicMetalsClient implements ClientModInitializer {
         renderHammerOutline();
         registerArmorRenderer();
         registerModelPredicates();
+        registerSwirlRenderer();
 
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityType != EntityType.PLAYER) return;
-            registrationHelper.register(
-                    new PlayerEnergySwirlFeatureRenderer(
-                            (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
-                            context.getModelLoader()));
-        });
-
-        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
-                Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
-            }
-
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
-                if (PrometheumToolSet.isOvergrown(stack)) {
-                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
-                }
-
-                if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
-                }
-            }
-        });
-
-        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
-                if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
-                            UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
-                            "Bound Prometheum bonus",
-                            0.08,
-                            EntityAttributeModifier.Operation.MULTIPLY_BASE
-                    ));
-                }
-                if (PrometheumToolSet.isOvergrown(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
-                            "Prometheum bonus toughness",
-                            EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
-                            EntityAttributeModifier.Operation.ADDITION
-                    ));
-                }
-            }
-        });
+        registerPrometheumTooltips();
+        registerPrometheumAttributeEvent();
 
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
 
@@ -147,6 +105,58 @@ public class MythicMetalsClient implements ClientModInitializer {
                 IsometricArmorStandExporter.register(dispatcher);
             });
         }
+    }
+
+    private void registerPrometheumAttributeEvent() {
+        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
+            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
+                if (EnchantmentHelper.hasBindingCurse(stack)) {
+                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
+                            UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
+                            "Bound Prometheum bonus",
+                            0.08,
+                            EntityAttributeModifier.Operation.MULTIPLY_BASE
+                    ));
+                }
+                if (PrometheumToolSet.isOvergrown(stack)) {
+                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
+                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
+                            "Prometheum bonus toughness",
+                            EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
+                            EntityAttributeModifier.Operation.ADDITION
+                    ));
+                }
+            }
+        });
+    }
+
+    private void registerPrometheumTooltips() {
+        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+            if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
+                Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+            }
+
+            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
+                if (PrometheumToolSet.isOvergrown(stack)) {
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
+                }
+
+                if (EnchantmentHelper.hasBindingCurse(stack)) {
+                    Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
+                }
+            }
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    private void registerSwirlRenderer() {
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+            if (entityType != EntityType.PLAYER) return;
+            registrationHelper.register(
+                    new PlayerEnergySwirlFeatureRenderer(
+                            (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
+                            context.getModelLoader()));
+        });
     }
 
     /**
