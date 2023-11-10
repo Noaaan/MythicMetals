@@ -173,6 +173,7 @@ public class MythicBlocks {
             .sounds(BlockSoundGroup.STONE).createStarriteOreVariant("end_stone", NETHERITE_MINING_LEVEL, UniformIntProvider.create(3, 6))
             .createAmethystStorageBlock(NETHERITE_MINING_LEVEL)
             .finish();
+    public static final Block SPONGE_NUKE_CORE = new Block(FabricBlockSettings.copyOf(Blocks.SPONGE));
 
     public static final BlockSet STEEL = BlockSet.Builder.begin("steel", false)
             .createAnvilSet(5, IRON_MINING_LEVEL).finish();
@@ -215,6 +216,7 @@ public class MythicBlocks {
             }
         });
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
+        RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
     }
 
 }

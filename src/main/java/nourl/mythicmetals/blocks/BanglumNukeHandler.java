@@ -90,8 +90,7 @@ public class BanglumNukeHandler {
         mutablePos.set(x + 1, y + 1, z + 1);
         BlockState coreState = world.getBlockState(mutablePos);
 
-        if (!coreState.isIn(MythicTags.NUKE_CORES))
-            return false;
+        if (!coreState.isIn(MythicTags.NUKE_CORES)) return false;
 
         for (var pos : BlockPos.iterate(x, y, z, x + 2, y + 2, z + 2)) {
             world.removeBlock(pos, false);

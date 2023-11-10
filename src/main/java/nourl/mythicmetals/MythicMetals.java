@@ -108,6 +108,40 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
             factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
         });
+        registerDispenserBehaviour();
+
+
+        if (CONFIG.configVersion() < CONFIG_VERSION) {
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+        }
+
+        if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
+            LOGGER.info("[Mythic Metals] I see HarvestScythes. I'll take care of DH so you don't have to");
+        }
+        if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
+            LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");
+        }
+        if (FabricLoader.getInstance().isModLoaded("origins")) {
+            LOGGER.info("[Mythic Metals] Have fun using Origins!");
+        }
+        if (FabricLoader.getInstance().isModLoaded("spectrum")) {
+            LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
+        }
+        if (FabricLoader.getInstance().isModLoaded("jello")) {
+            LOGGER.info("[Mythic Metals] Is that Jello? Here comes the colors, weeeeeee!");
+        }
+        if (FabricLoader.getInstance().isModLoaded("terralith")) {
+            LOGGER.info("[Mythic Metals] Terralith detected. Please go over the config and disable Overworld Nether Ores");
+            LOGGER.info("[Mythic Metals] Many ores spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
+        }
+        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
+    }
+
+    private void registerDispenserBehaviour() {
         DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenserBehavior() {
             @Override
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
@@ -138,35 +172,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
                 return arrow;
             }
         });
-
-        if (CONFIG.configVersion() < CONFIG_VERSION) {
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-            LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-        }
-
-        if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
-            LOGGER.info("[Mythic Metals] I see HarvestScythes. I'll take care of DH so you don't have to");
-        }
-        if (FabricLoader.getInstance().isModLoaded("enhancedcraft")) {
-            LOGGER.info("[Mythic Metals] Oh EnhancedCraft? If you ever see Spxctre tell him I said hi!");
-        }
-        if (FabricLoader.getInstance().isModLoaded("origins")) {
-            LOGGER.info("[Mythic Metals] Have fun using Origins!");
-        }
-        if (FabricLoader.getInstance().isModLoaded("spectrum")) {
-            LOGGER.info("[Mythic Metals] Spectrum is loaded! Good luck on finding all of its secrets...");
-        }
-        if (FabricLoader.getInstance().isModLoaded("jello")) {
-            LOGGER.info("[Mythic Metals] Is that Jello? Here comes the colors, weeeeeee!");
-        }
-        if (FabricLoader.getInstance().isModLoaded("terralith")) {
-            LOGGER.info("[Mythic Metals] Terralith detected. Please go over the config and disable Overworld Nether Ores");
-            LOGGER.info("[Mythic Metals] Many ores spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
-        }
-        LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }
 
 

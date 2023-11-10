@@ -70,6 +70,7 @@ The following materials received new block and ingot textures (#191, #199):
 - The Enchanted Midas Gold Block is now a block! Place it down in your world, admire it, enjoy it.
 - Added an advancement for using an Enchanted Midas Gold Block in a Carmot Staff
 - New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
+- Added a Sponge Nuke Core
 
 ### Balancing Changes
 
