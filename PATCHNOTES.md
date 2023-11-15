@@ -69,6 +69,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Added compatibility for Enhanced Explosions with Banglum Nukes (#190 Thanks Superkat32!)
 - The Enchanted Midas Gold Block is now a block! Place it down in your world, admire it, enjoy it.
 - Added an advancement for using an Enchanted Midas Gold Block in a Carmot Staff
+- Added an advancement for crafting a Prometheum Bouquet
 - New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 - Added a Sponge Nuke Core
 
@@ -92,6 +93,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Fixed Air appending a Mythril Drill Upgrade tooltip
 - Fixed the Mythril Drill auto-repair not working
 - Fixed the Deepslate Runite Block not playing the correct sound effect
+- Fixed a crash by adding compatibility with Custom Piglin Bartering
 
 # 0.18.2
 
