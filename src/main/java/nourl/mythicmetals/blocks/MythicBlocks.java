@@ -73,9 +73,12 @@ public class MythicBlocks {
     public static final BlockSet HALLOWED = BlockSet.Builder.begin("hallowed", false)
             .createAnvilSet(5F, NETHERITE_MINING_LEVEL).finish();
 
-    // TODO - Investigate opacity settings for Kyber
     public static final BlockSet KYBER = BlockSet.Builder.begin("kyber", false)
-            .createDefaultSet(3.0F, IRON_MINING_LEVEL, 4.0F, IRON_MINING_LEVEL)
+            .strength(3.0f)
+            .createOre(IRON_MINING_LEVEL)
+            .createOreStorageBlock(IRON_MINING_LEVEL)
+            .strength(4.0f)
+            .createCustomStorageBlock(IRON_MINING_LEVEL, FabricBlockSettings.create().nonOpaque())
             .createAnvil(IRON_MINING_LEVEL)
             .strength(3.0F, 3.0F)
             .sounds(BlockSoundGroup.CALCITE)

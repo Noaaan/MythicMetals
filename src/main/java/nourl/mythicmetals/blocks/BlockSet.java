@@ -260,7 +260,7 @@ public class BlockSet {
         }
 
         /**
-         * Puts an ore, a storage block and an ore in the blockset, with slightly more configurable settings.
+         * Puts an ore, a storage block and an ore storage block in the set, with slightly more configurable settings.
          *
          * @param oreStrength        The strength of the ore block.
          * @param oreMiningLevel     The mining level of the ore block.
@@ -578,6 +578,14 @@ public class BlockSet {
             return this;
         }
 
+        public Builder createCustomStorageBlock(Identifier miningLevel, FabricBlockSettings settings) {
+            settingsProcessor.accept(settings);
+            this.storageBlock = new Block(settings);
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
+            return this;
+        }
+
         /**
          * Finishes the creation of the block set, and returns the entire set using the settings declared.
          * For registering the blocks call {@link Builder#register() Builder.register} during mod initialization.
@@ -591,6 +599,5 @@ public class BlockSet {
             Builder.toBeRegistered.add(set);
             return set;
         }
-
     }
 }
