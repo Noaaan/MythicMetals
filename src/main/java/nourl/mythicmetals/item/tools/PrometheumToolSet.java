@@ -55,7 +55,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > 2000) {
+            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
                 modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(
                                 UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
@@ -80,7 +80,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > 2000) {
+            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
                 modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(
                                 UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
@@ -104,7 +104,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > 2000) {
+            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
                 modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(
                                 UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
@@ -128,7 +128,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > 2000) {
+            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
                 modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(
                                 UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
@@ -153,7 +153,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > 2000) {
+            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
                 modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(
                                 UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),

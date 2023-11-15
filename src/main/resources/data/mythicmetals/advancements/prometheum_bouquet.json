@@ -1,0 +1,32 @@
+{
+  "parent": "mythicmetals:prometheum",
+  "display": {
+    "title": {
+      "translate": "advancement.mythicmetals.prometheum_bouquet.title"
+    },
+    "description": {
+      "translate": "advancement.mythicmetals.prometheum_bouquet.description"
+    },
+    "icon": {
+      "item": "mythicmetals:prometheum_bouquet"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "flowery_prometheum_power": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythicmetals:prometheum_bouquet"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
