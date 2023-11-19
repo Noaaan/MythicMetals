@@ -20,6 +20,7 @@ public class MythicModelHandler {
     public static final EntityModelLayer RUNITE = model("runite_armor");
     public static final EntityModelLayer BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
+    public static final Identifier STAR_PLATINUM_CLOAK = RegistryHelper.id("textures/models/star_platinum_cloak.png");
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
         consumer.accept(BANGLUM_TNT_MINECART, MinecartEntityModel.getTexturedModelData());

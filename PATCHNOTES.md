@@ -34,11 +34,11 @@ The sword is special, as it comes with Riptide 3!
 
 - New Carmot Armor Items
 - New Osmium Armor Items
-- New Star Platinum Armor Items
+- New Star Platinum Armor and Tools
+  - Comes with a cloak too!
 - New Kyber Armor Items
 - New Silver Armor Items
 - Tweaked Midas Gold Armor Items
-- Tweaked Star Platinum Tools
 - New Steel Armor Items
 - New Palladium Sword animation
 - Tweaked Raw Osmium sprite
