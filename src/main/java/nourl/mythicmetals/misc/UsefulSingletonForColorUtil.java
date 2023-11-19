@@ -62,5 +62,6 @@ public class UsefulSingletonForColorUtil {
         public static final Style AQUA_STYLE = Style.EMPTY.withColor(Formatting.AQUA);
         public static final Style GOLD_STYLE = Style.EMPTY.withColor(Formatting.GOLD);
         public static final Style PALLADIUM_STYLE = Style.EMPTY.withColor(MetalColors.PALLADIUM.rgb());
+        public static final Style TIDESINGER_BLUE = Style.EMPTY.withColor(0x2F88FB);
     }
 }

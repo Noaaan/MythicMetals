@@ -12,6 +12,7 @@ import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
+import nourl.mythicmetals.item.tools.TidesingerSword;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -157,10 +158,17 @@ public class EnchantmentHelperMixin {
         var amount = cir.getReturnValue();
         int change = 0;
         if (Abilities.SMITE.getItems().contains(stack.getItem()) && group == EntityGroup.UNDEAD) {
-            change += Abilities.SMITE.getLevel() * 2.5f;
+            change += (int) (Abilities.SMITE.getLevel() * 2.5f);
         }
         if (change != 0) {
             cir.setReturnValue(amount + change);
+        }
+    }
+
+    @Inject(method = "getRiptide", at = @At("TAIL"), cancellable = true)
+    private static void mythicmetals$hasRiptide(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+        if (stack.getItem() instanceof TidesingerSword) {
+            cir.setReturnValue(Abilities.RIPTIDE.getLevel());
         }
     }
 

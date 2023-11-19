@@ -44,6 +44,7 @@ public class Abilities {
     public static final Ability SMITE = new Ability("smite", 3);
     public static final Ability SPIKED_HELM = new Ability("spiked_helm", 3, false);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
+    public static final Ability RIPTIDE = new Ability("riptide", 3);
 
     public static void init() {
         DrillUpgrades.init();
@@ -51,10 +52,10 @@ public class Abilities {
 
         AQUA_AFFINITY.addItem(MythicArmor.AQUARIUM.getHelmet(), MetalColors.AQUA_STYLE);
         AQUA_AFFINITY.addToolSet(MythicTools.AQUARIUM, MetalColors.AQUA_STYLE);
-        AQUA_AFFINITY.addItem(MythicArmor.TIDESINGER.getHelmet(), MetalColors.AQUA_STYLE);
-        AQUA_AFFINITY.addToolSet(MythicTools.TIDESINGER, MetalColors.AQUA_STYLE);
-        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.AQUA_STYLE);
-        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getLeggings(), MetalColors.AQUA_STYLE);
+        AQUA_AFFINITY.addItem(MythicArmor.TIDESINGER.getHelmet(), MetalColors.TIDESINGER_BLUE);
+        AQUA_AFFINITY.addToolSet(MythicTools.TIDESINGER, MetalColors.TIDESINGER_BLUE);
+        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.TIDESINGER_BLUE);
+        BETTER_RESPIRATION.addItem(MythicArmor.TIDESINGER.getLeggings(), MetalColors.TIDESINGER_BLUE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), MetalColors.GOLD_STYLE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);
         BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
@@ -66,7 +67,7 @@ public class Abilities {
         BONUS_LOOTING.addItem(MythicTools.CARMOT.getSword(), MetalColors.CARMOT_STYLE);
         CARMOT_SHIELD.addArmorSet(MythicArmor.CARMOT, MetalColors.CARMOT_STYLE);
         DEPTH_STRIDER.addItem(MythicArmor.AQUARIUM.getBoots(), MetalColors.AQUA_STYLE);
-        DEPTH_STRIDER.addItem(MythicArmor.TIDESINGER.getBoots(), MetalColors.AQUA_STYLE);
+        DEPTH_STRIDER.addItem(MythicArmor.TIDESINGER.getBoots(), MetalColors.TIDESINGER_BLUE);
         FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
@@ -93,8 +94,9 @@ public class Abilities {
         SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
         if (FabricLoader.getInstance().isModLoaded("origins")) {
             WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
-            BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.AQUA_STYLE);
+            BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.TIDESINGER_BLUE);
         }
+        RIPTIDE.addItem(MythicTools.TIDESINGER.getSword(), MetalColors.TIDESINGER_BLUE);
     }
 
 }
