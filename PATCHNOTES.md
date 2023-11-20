@@ -35,7 +35,7 @@ The sword is special, as it comes with Riptide 3!
 - New Carmot Armor Items
 - New Osmium Armor Items
 - New Star Platinum Armor and Tools
-  - Comes with a cloak too!
+  - Comes with a cloak if you do not have any capes equipped, just like Hallowed!
 - New Kyber Armor Items
 - New Silver Armor Items
 - Tweaked Midas Gold Armor Items
@@ -74,6 +74,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Added an advancement for crafting a Prometheum Bouquet
 - New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 - Added a Sponge Nuke Core
+- Added a new config option for disabling an Easter Egg with Carmot Staffs
 
 ### Balancing Changes
 

@@ -1,5 +1,6 @@
 package nourl.mythicmetals.config;
 
+import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
 import io.wispforest.owo.ui.core.Positioning;
 import nourl.mythicmetals.MythicMetals;
@@ -71,6 +72,8 @@ public class MythicConfigModel {
     public float carmotStaffTemplateChance = 1.0f;
     @RestartRequired
     public boolean disableFunny = false;
+    @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+    public boolean disableCommandBlockInStaff = false;
     public int banglumNukeCoreRadius = 32;
     @Hook
     public ShieldPosition shieldPosition = ShieldPosition.TOP_LEFT;
