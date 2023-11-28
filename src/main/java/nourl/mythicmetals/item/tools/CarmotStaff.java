@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.ops.ItemOps;
 import io.wispforest.owo.ops.WorldOps;
 import io.wispforest.owo.ui.core.Color;
 import net.minecraft.block.Block;
@@ -264,7 +265,7 @@ public class CarmotStaff extends ToolItem {
         }
 
         // Command Block - Set yourself to Creative Mode
-        if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK)) {
+        if (hasBlockInStaff(stack, Blocks.COMMAND_BLOCK) && !MythicMetals.CONFIG.disableCommandBlockInStaff()) {
             // If command blocks are disabled, then no man should have that much power
             if (world.getServer() != null && !world.getServer().areCommandBlocksEnabled()) {
                 user.sendMessage(Text.translatable("advMode.notEnabled"));
@@ -281,8 +282,11 @@ public class CarmotStaff extends ToolItem {
                     stack.setDamage(MythicToolMaterials.CARMOT_STAFF.getDurability());
                     stack.damage(99999, user, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
                     user.getItemCooldownManager().set(stack.getItem(), 6000);
+                    if (user.isCreative()) {
+                        stack = ItemStack.EMPTY;
+                    }
                     explode(world, user);
-                    return TypedActionResult.consume(stack);
+                    return TypedActionResult.success(stack);
                 }
 
                 int damage = stack.getMaxDamage() / (1 + EnchantmentHelper.getLevel(Enchantments.UNBREAKING, stack));

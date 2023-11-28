@@ -535,6 +535,7 @@
   "text.config.mythicmetals-config.option.unobtainium": "Generate Unobtainium Ore",
 
   "text.config.mythicmetals-config.option.disableFunny": "Disable relatively funny event features",
+  "text.config.mythicmetals-config.option.disableCommandBlockInStaff": "Disable Command Blocks from being usable in the Carmot Staff",
   "text.config.mythicmetals-config.option.enableAnvils": "Enable Anvils",
   "text.config.mythicmetals-config.option.enableDusts": "Enable Dust Items",
   "text.config.mythicmetals-config.option.enableNuggets": "Enable Nuggets",
