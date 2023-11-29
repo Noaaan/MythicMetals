@@ -1,5 +1,6 @@
 package nourl.mythicmetals.command;
 
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.Suggestions;
@@ -7,15 +8,22 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.item.trim.ArmorTrimPattern;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.context.LootContextParameterSet;
+import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.LootCommand;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
@@ -88,9 +96,45 @@ public final class MythicCommands {
                         )
                     )
                 )
+                    .then(CommandManager.literal("test-loot-table")
+                        .requires(source -> source.hasPermissionLevel(2))
+                        .then(CommandManager.argument("loot_table", IdentifierArgumentType.identifier())
+                            .suggests(LootCommand.SUGGESTION_PROVIDER)
+                            .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
+                                .executes(MythicCommands::testLootTable))
+                    ))
             );
         });
 
+    }
+
+    private static int testLootTable(CommandContext<ServerCommandSource> ctx) {
+        var source = ctx.getSource();
+        var lootTableId = IdentifierArgumentType.getIdentifier(ctx, "loot_table");
+        int rolls = IntegerArgumentType.getInteger(ctx, "rolls");
+
+        LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(ctx.getSource().getWorld())
+                .addOptional(LootContextParameters.THIS_ENTITY, source.getEntity())
+                .add(LootContextParameters.ORIGIN, source.getPosition())
+                .build(LootContextTypes.CHEST);
+
+        LootTable lootTable = source.getServer().getLootManager().getLootTable(lootTableId);
+
+        HashMap<Item, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < rolls; i++) {
+            List<ItemStack> list = lootTable.generateLoot(lootContextParameterSet);
+            list.forEach(itemStack -> {
+                int count = map.getOrDefault(itemStack.getItem(), 0);
+                map.put(itemStack.getItem(), itemStack.getCount() + count);
+            });
+        }
+
+        map.forEach((item, integer) -> {
+            source.sendFeedback(() -> (Text.literal(item + ": " + integer.toString())), false);
+        });
+
+        return 0;
     }
 
     /**
