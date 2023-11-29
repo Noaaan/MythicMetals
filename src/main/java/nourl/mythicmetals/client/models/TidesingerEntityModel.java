@@ -8,10 +8,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class ArmorModel extends BipedEntityModel<LivingEntity> {
+public class TidesingerEntityModel extends BipedEntityModel<LivingEntity> {
     final EquipmentSlot slot;
 
-    public ArmorModel(ModelPart root, EquipmentSlot slot) {
+    public TidesingerEntityModel(ModelPart root, EquipmentSlot slot) {
         super(root);
         this.slot = slot;
     }
@@ -59,16 +59,43 @@ public class ArmorModel extends BipedEntityModel<LivingEntity> {
 
     private void renderArmorPart(EquipmentSlot slot) {
         setVisible(false);
+        // Note - These are custom parts. By extending this you need these in your model,
+        // otherwise you guarantee a crash.
+        this.body.getChild("body_belt").visible = false;
+        this.body.getChild("body_buckle").visible = false;
+        this.body.getChild("body_crest").visible = false;
+        this.body.getChild("body_armor").visible = false;
+
+        this.rightLeg.getChild("right_boot").visible = false;
+        this.rightLeg.getChild("right_leg_armor").visible = false;
+
+        this.leftLeg.getChild("left_boot").visible = false;
+        this.leftLeg.getChild("left_leg_armor").visible = false;
+
+
         switch (slot) {
             case HEAD -> head.visible = true;
             case CHEST -> {
-                body.visible = true;
-                rightArm.visible = true;
-                leftArm.visible = true;
+                this.body.visible = true;
+                this.rightArm.visible = true;
+                this.leftArm.visible = true;
+                this.body.getChild("body_crest").visible = true;
+                this.body.getChild("body_armor").visible = true;
             }
             case LEGS -> {
-                rightLeg.visible = true;
-                leftLeg.visible = true;
+                this.body.visible = true;
+                this.body.getChild("body_belt").visible = true;
+                this.body.getChild("body_buckle").visible = true;
+                this.rightLeg.visible = true;
+                this.leftLeg.visible = true;
+                this.leftLeg.getChild("left_leg_armor").visible = true;
+                this.rightLeg.getChild("right_leg_armor").visible = true;
+            }
+            case FEET -> {
+                this.rightLeg.visible = true;
+                this.leftLeg.visible = true;
+                this.leftLeg.getChild("left_boot").visible = true;
+                this.rightLeg.getChild("right_boot").visible = true;
             }
         }
     }

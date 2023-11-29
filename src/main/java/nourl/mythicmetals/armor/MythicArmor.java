@@ -16,7 +16,6 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final Map<String, ArmorSet> ARMOR_MAP = new HashMap<>();
     public static final ArmorSet ADAMANTITE = new ArmorSet(MythicArmorMaterials.ADAMANTITE);
     public static final ArmorSet AQUARIUM = new ArmorSet(MythicArmorMaterials.AQUARIUM);
-    public static final ArmorSet TIDESINGER = new ArmorSet(MythicArmorMaterials.TIDESINGER);
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet(MythicArmorMaterials.BRONZE);
     public static final ArmorSet CARMOT = new ArmorSet(MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
@@ -40,6 +39,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(MythicArmorMaterials.STAR_PLATINUM);
     public static final ArmorSet STEEL = new ArmorSet(MythicArmorMaterials.STEEL);
     public static final ArmorSet STORMYX = new ArmorSet(MythicArmorMaterials.STORMYX);
+    public static final ArmorSet TIDESINGER = new TidesingerArmorSet(MythicArmorMaterials.TIDESINGER, settings -> settings.rarity(Rarity.UNCOMMON));
 
     @Override
     public void processField(ArmorSet armorSet, String name, Field f) {
