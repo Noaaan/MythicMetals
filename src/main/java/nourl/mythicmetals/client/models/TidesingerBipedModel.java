@@ -8,10 +8,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class TidesingerEntityModel extends BipedEntityModel<LivingEntity> {
+public class TidesingerBipedModel extends BipedEntityModel<LivingEntity> {
     final EquipmentSlot slot;
 
-    public TidesingerEntityModel(ModelPart root, EquipmentSlot slot) {
+    public TidesingerBipedModel(ModelPart root, EquipmentSlot slot) {
         super(root);
         this.slot = slot;
     }

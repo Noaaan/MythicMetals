@@ -9,7 +9,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.client.models.TidesingerEntityModel;
+import nourl.mythicmetals.client.models.TidesingerBipedModel;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +42,7 @@ public class TidesingerArmor extends HallowedArmor {
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
         var root = models.getModelPart(MythicModelHandler.TIDESINGER);
-        return new TidesingerEntityModel(root, slot);
+        return new TidesingerBipedModel(root, slot);
     }
 
     @NotNull
