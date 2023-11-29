@@ -1,12 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "found_template": {
+    "found_template_or_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:royal_midas_smithing_template"
+              "mythicmetals:royal_midas_smithing_template",
+              "mythicmetals:enchanted_midas_gold_block"
             ]
           }
         ]
@@ -22,7 +23,7 @@
   },
   "requirements": [
     [
-      "found_template",
+      "found_template_or_block",
       "has_the_recipe"
     ]
   ],
