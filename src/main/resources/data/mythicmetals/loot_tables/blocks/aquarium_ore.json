@@ -33,7 +33,7 @@
               "conditions": [
                 {
                   "condition": "mythicmetals:random_chance_with_luck",
-                  "chance": 0.02
+                  "chance": 0.025
                 }
               ],
               "quality": 1

@@ -89,6 +89,9 @@ The following materials received new block and ingot textures (#191, #199):
 - Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
 - Increased attack speed of Engrained Prometheum (5% -> 8%)
 - Increased Mythril Drill auto repair when it is activated
+- Increased Aquarium Pearl drop rate (2% -> 2.5%)
+- Increased Aquarium Ore spawn range (from 31 to 63 -> from 21 to 69)
+- Increased Aquarium Ore spawn chances (4 -> 5)
 
 ### Bug fixes
 
