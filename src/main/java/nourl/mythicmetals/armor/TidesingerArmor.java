@@ -21,7 +21,7 @@ public class TidesingerArmor extends HallowedArmor {
     public final Type type;
 
     public TidesingerArmor(Type type, Settings settings) {
-        this(MythicArmorMaterials.HALLOWED, type, settings);
+        this(MythicArmorMaterials.TIDESINGER, type, settings);
     }
 
     public TidesingerArmor(ArmorMaterial material, Type slot, Settings settings) {
