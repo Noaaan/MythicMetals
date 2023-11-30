@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "mythicmetals:adamantite_anvil",
+    "mythicmetals:aquarium_anvil",
+    "mythicmetals:banglum_anvil",
+    "mythicmetals:bronze_anvil",
+    "mythicmetals:carmot_anvil",
+    "mythicmetals:celestium_anvil",
+    "mythicmetals:durasteel_anvil",
+    "mythicmetals:hallowed_anvil",
+    "mythicmetals:kyber_anvil",
+    "mythicmetals:manganese_anvil",
+    "mythicmetals:metallurgium_anvil",
+    "mythicmetals:midas_gold_anvil",
+    "mythicmetals:mythril_anvil",
+    "mythicmetals:orichalcum_anvil",
+    "mythicmetals:osmium_anvil",
+    "mythicmetals:palladium_anvil",
+    "mythicmetals:platinum_anvil",
+    "mythicmetals:prometheum_anvil",
+    "mythicmetals:quadrillum_anvil",
+    "mythicmetals:runite_anvil",
+    "mythicmetals:silver_anvil",
+    "mythicmetals:star_platinum_anvil",
+    "mythicmetals:steel_anvil",
+    "mythicmetals:stormyx_anvil"
+  ]
+}
