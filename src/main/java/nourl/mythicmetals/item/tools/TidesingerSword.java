@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 
 public class TidesingerSword extends SwordItem {
     public static final float TRIDENT_POWER = 3.0f;
+    private static final int COOLDOWN = 60;
 
     public TidesingerSword(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -76,7 +77,7 @@ public class TidesingerSword extends SwordItem {
                 }
 
                 world.playSoundFromEntity(null, playerEntity, SoundEvents.ITEM_TRIDENT_RIPTIDE_3, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                playerEntity.getItemCooldownManager().set(stack.getItem(), 80);
+                playerEntity.getItemCooldownManager().set(stack.getItem(), COOLDOWN);
             }
         }
     }

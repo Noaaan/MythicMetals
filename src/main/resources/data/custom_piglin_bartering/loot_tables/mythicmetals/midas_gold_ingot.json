@@ -235,25 +235,13 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 1,
-          "quality": 1,
-          "name": "mythicmetals:unobtainium",
-          "conditions": [
-            {
-              "condition": "minecraft:random_chance",
-              "chance": 0.00042
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
           "weight": 10,
           "quality": 2,
           "name": "mythicmetals:enchanted_midas_gold_block",
           "conditions": [
             {
               "condition": "minecraft:random_chance",
-              "chance": 0.035
+              "chance": 0.14
             }
           ]
         }

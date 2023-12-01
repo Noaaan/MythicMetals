@@ -7,7 +7,7 @@ public class MythicOreConfigs {
     public MythicOreConfigs() {}
 
     public static final OreConfig ADAMANTITE = new OreConfig(5, 1, -54, -20, .125f, false, true);
-    public static final OreConfig AQUARIUM = new OreConfig(9, 4, 31, 63, .0f, false);
+    public static final OreConfig AQUARIUM = new OreConfig(10, 5, 21, 69, .0f, false);
     public static final OreConfig BANGLUM = new OreConfig(7, 3, 48, 69, .125f, false);
     public static final OreConfig NETHER_BANGLUM = new OreConfig(10, 4, 69, 110, .125f, false);
     public static final OreConfig CARMOT = new OreConfig(4, 1, -24, 10, .125f, false);
