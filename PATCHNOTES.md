@@ -28,7 +28,7 @@ yourself a set of **Tidesinger Armor** or **Tools**.
 
 This gear is superior to regular Aquarium in every way, as well as providing a direct swim speed increase. 
 
-The sword is special, as it comes with Riptide 3!
+The weapons (Sword and Axe) are special, as they come with Riptide 3!
 
 ## Texture changes
 

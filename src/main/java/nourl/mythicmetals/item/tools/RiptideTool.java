@@ -5,38 +5,25 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class TidesingerSword extends SwordItem {
-    public static final float TRIDENT_POWER = 3.0f;
-    private static final int COOLDOWN = 60;
+public interface RiptideTool {
+    float TRIDENT_POWER = 3.0f;
+    int COOLDOWN = 60;
+    int MAX_USE_TIME = 72000;
 
-    public TidesingerSword(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
-    }
-
-    @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.SPEAR;
-    }
-
-    @Override
-    public int getMaxUseTime(ItemStack stack) {
+    default int getMaxUseTime(ItemStack stack) {
         return 72000;
     }
 
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    default TypedActionResult<ItemStack> activateRiptide(PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
             return TypedActionResult.fail(itemStack);
@@ -50,8 +37,7 @@ public class TidesingerSword extends SwordItem {
         }
     }
 
-    @Override
-    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+    default void performRiptide(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         int i = this.getMaxUseTime(stack) - remainingUseTicks;
         if (i >= 10 && user instanceof PlayerEntity playerEntity) {
             if (playerEntity.isTouchingWaterOrRain()) {
@@ -59,7 +45,7 @@ public class TidesingerSword extends SwordItem {
                     stack.damage(1, playerEntity, p -> p.sendToolBreakStatus(user.getActiveHand()));
                 }
 
-                playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+                playerEntity.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
                 float yaw = playerEntity.getYaw();
                 float pitch = playerEntity.getPitch();
                 float h = -MathHelper.sin(yaw * (float) (Math.PI / 180.0)) * MathHelper.cos(pitch * (float) (Math.PI / 180.0));
