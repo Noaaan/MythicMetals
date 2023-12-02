@@ -28,7 +28,7 @@ yourself a set of **Tidesinger Armor** or **Tools**.
 
 This gear is superior to regular Aquarium in every way, as well as providing a direct swim speed increase. 
 
-The sword is special, as it comes with Riptide 3!
+The weapons (Sword and Axe) are special, as they come with Riptide 3!
 
 ## Texture changes
 
@@ -93,6 +93,8 @@ The following materials received new block and ingot textures (#191, #199):
 - Increased Aquarium Ore spawn range (from 31 to 63 -> from 21 to 69)
 - Increased Aquarium Ore spawn chances (4 -> 5)
 - Greatly increased the chance of bartering for an Enchanted Midas Gold Block (3.5% -> 14%! You still need to hit it on the loot table first)
+- Legendary Banglum Tools are now repaired with Banglum Ingots instead of Chunks (now consistent with armor)
+- Increased the durability of Copper Tools (125 -> 187)
 
 ### Bug fixes
 

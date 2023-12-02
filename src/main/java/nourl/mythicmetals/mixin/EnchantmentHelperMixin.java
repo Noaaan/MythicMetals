@@ -12,7 +12,7 @@ import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;
-import nourl.mythicmetals.item.tools.TidesingerSword;
+import nourl.mythicmetals.item.tools.RiptideTool;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -167,7 +167,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getRiptide", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$hasRiptide(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-        if (stack.getItem() instanceof TidesingerSword) {
+        if (stack.getItem() instanceof RiptideTool) {
             cir.setReturnValue(Abilities.RIPTIDE.getLevel());
         }
     }

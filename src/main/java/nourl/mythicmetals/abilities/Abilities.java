@@ -97,6 +97,7 @@ public class Abilities {
             BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.TIDESINGER_BLUE);
         }
         RIPTIDE.addItem(MythicTools.TIDESINGER.getSword(), MetalColors.TIDESINGER_BLUE);
+        RIPTIDE.addItem(MythicTools.TIDESINGER.getAxe(), MetalColors.TIDESINGER_BLUE);
     }
 
 }
