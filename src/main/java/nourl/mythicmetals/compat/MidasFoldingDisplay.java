@@ -1,21 +1,18 @@
 package nourl.mythicmetals.compat;
 
-import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
+import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static nourl.mythicmetals.item.tools.MidasGoldSword.Type.GILDED;
-import static nourl.mythicmetals.item.tools.MidasGoldSword.Type.REGULAR;
-import static nourl.mythicmetals.item.tools.MidasGoldSword.Type.ROYAL;
+import static nourl.mythicmetals.item.tools.MidasGoldSword.Type.*;
 
 public class MidasFoldingDisplay extends DefaultSmithingDisplay {
     Ingredient template;

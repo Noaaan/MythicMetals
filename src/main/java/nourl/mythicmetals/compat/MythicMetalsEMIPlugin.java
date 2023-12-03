@@ -5,7 +5,8 @@ import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmithingRecipe;
-import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
+import nourl.mythicmetals.recipe.MidasFoldingRecipe;
+//import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
 
 @EmiEntrypoint
 public class MythicMetalsEMIPlugin implements EmiPlugin {

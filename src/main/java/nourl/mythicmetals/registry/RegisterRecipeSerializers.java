@@ -4,9 +4,10 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
-import nourl.mythicmetals.item.tools.TippedRuniteArrowRecipe;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.recipe.MidasFoldingRecipe;
+//import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
+import nourl.mythicmetals.recipe.TippedRuniteArrowRecipe;
 
 public class RegisterRecipeSerializers {
 

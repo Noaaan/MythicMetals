@@ -8,11 +8,10 @@ import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
+import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -37,7 +36,7 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
         this.id = recipe.getId();
 
         if (this.base != null && this.addition != null && outputStack != null) {
-            var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElseGet(() -> new ItemStack(Items.AIR)).copy();
+            var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElse(ItemStack.EMPTY).copy();
             // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
             if (outputStack.isOf(inputStack.getItem())) {
                 if (MidasGoldSword.Type.isOf(inputStack, ROYAL)) {
@@ -51,18 +50,18 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
                     inputStack.put(MidasGoldSword.GOLD_FOLDED, 16);
                 }
                 inputs = List.of(
-                    EmiIngredient.of(this.template),
-                    EmiStack.of(inputStack),
-                    EmiIngredient.of(this.addition)
+                        EmiIngredient.of(this.template),
+                        EmiStack.of(inputStack),
+                        EmiIngredient.of(this.addition)
                 );
             }
             // Handles transformation from regular midas to gilded midas
             else if (MidasGoldSword.Type.isOf(inputStack, REGULAR) && MidasGoldSword.Type.isOf(outputStack, GILDED)) {
                 inputStack.put(MidasGoldSword.GOLD_FOLDED, 319);
                 inputs = List.of(
-                    EmiIngredient.of(this.template),
-                    EmiStack.of(inputStack),
-                    EmiIngredient.of(this.addition)
+                        EmiIngredient.of(this.template),
+                        EmiStack.of(inputStack),
+                        EmiIngredient.of(this.addition)
                 );
             }
             // Transformation of gilded to royal midas
@@ -70,42 +69,42 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
                 inputStack.put(MidasGoldSword.GOLD_FOLDED, 640);
                 inputStack.put(MidasGoldSword.IS_GILDED, true);
                 inputs = List.of(
-                    EmiIngredient.of(this.template),
-                    EmiStack.of(inputStack),
-                    EmiIngredient.of(this.addition)
+                        EmiIngredient.of(this.template),
+                        EmiStack.of(inputStack),
+                        EmiIngredient.of(this.addition)
                 );
             }
-        }
 
-        // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
-        var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElseGet(() -> new ItemStack(Items.AIR)).copy();
-        if (outputStack.getItem().equals(inputStack.getItem())) {
-            if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
-                outputStack.put(MidasGoldSword.GOLD_FOLDED, 641);
-            } else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
-                outputStack.put(MidasGoldSword.GOLD_FOLDED, 321);
-            } else {
-                outputStack.put(MidasGoldSword.GOLD_FOLDED, 17);
+            // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
+            if (outputStack.getItem().equals(inputStack.getItem())) {
+                if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
+                    outputStack.put(MidasGoldSword.GOLD_FOLDED, 641);
+                } else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
+                    outputStack.put(MidasGoldSword.GOLD_FOLDED, 321);
+                } else {
+                    outputStack.put(MidasGoldSword.GOLD_FOLDED, 17);
+                }
+
+                output = EmiStack.of(outputStack);
             }
+            // Royal Midas Handler
+            else if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
+                var outputWithNbt = outputStack.copy();
+                outputWithNbt.put(MidasGoldSword.GOLD_FOLDED, 640);
+                outputWithNbt.put(MidasGoldSword.IS_GILDED, true);
+                outputWithNbt.put(MidasGoldSword.IS_ROYAL, true);
+                output = EmiStack.of(outputWithNbt);
 
-            output = EmiStack.of(outputStack);
+            }
+            // Gilded Midas Handler
+            else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
+                var outputWithNbt = outputStack.copy();
+                outputWithNbt.put(MidasGoldSword.GOLD_FOLDED, 320);
+                outputWithNbt.put(MidasGoldSword.IS_GILDED, true);
+                output = EmiStack.of(outputWithNbt);
+            }
         }
-        // Royal Midas Handler
-        else if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
-            var outputWithNbt = outputStack.copy();
-            outputWithNbt.put(MidasGoldSword.GOLD_FOLDED, 640);
-            outputWithNbt.put(MidasGoldSword.IS_GILDED, true);
-            outputWithNbt.put(MidasGoldSword.IS_ROYAL, true);
-            output = EmiStack.of(outputWithNbt);
 
-        }
-        // Gilded Midas Handler
-        else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
-            var outputWithNbt = outputStack.copy();
-            outputWithNbt.put(MidasGoldSword.GOLD_FOLDED, 320);
-            outputWithNbt.put(MidasGoldSword.IS_GILDED, true);
-            output = EmiStack.of(outputWithNbt);
-        }
     }
 
     @Override

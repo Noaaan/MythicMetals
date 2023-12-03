@@ -1,4 +1,4 @@
-package nourl.mythicmetals.item.tools;
+package nourl.mythicmetals.recipe;
 
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
@@ -10,6 +10,7 @@ import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
