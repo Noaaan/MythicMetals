@@ -8,7 +8,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import nourl.mythicmetals.compat.ExplosiveCompat;
+import nourl.mythicmetals.compat.ExplosiveEnhancementCompat;
 
 import java.util.Random;
 
@@ -111,7 +111,7 @@ public class MythicParticleSystem {
 
     public static final ParticleSystem<Float> EXPLOSIVE_EXPLOSION = CONTROLLER.register(Float.class, (world, pos, power) -> {
         if(FabricLoader.getInstance().isModLoaded("explosiveenhancement")) {
-            ExplosiveCompat.spawnParticles(world, pos.x, pos.y, pos.z, power);
+            ExplosiveEnhancementCompat.spawnParticles(world, pos.x, pos.y, pos.z, power);
         }
     });
 
