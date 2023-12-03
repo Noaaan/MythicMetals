@@ -1,0 +1,15 @@
+{
+  "type": "mythicmetals:tidesinger_smithing_transform",
+  "template": {
+    "item": "mythicmetals:tidesinger_smithing_template"
+  },
+  "base": {
+    "item": "mythicmetals:aquarium_chestplate"
+  },
+  "addition": {
+    "item": "minecraft:tube_coral"
+  },
+  "result": {
+    "item": "mythicmetals:tidesinger_chestplate"
+  }
+}

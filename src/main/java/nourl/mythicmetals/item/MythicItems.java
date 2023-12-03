@@ -190,7 +190,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
         public static final Item TIDESINGER_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.tidesinger.applies_to").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
-                Text.translatable("smithing_template.mythicmetals.tidesinger.ingredients").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.ingredients").setStyle(UsefulSingletonForColorUtil.MetalColors.BUBBLE.style()),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.additions_slot_description"),

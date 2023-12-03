@@ -45,7 +45,7 @@ import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.client.rendering.EnchantedMidasBlockEntityRenderer;
+import nourl.mythicmetals.armor.TidesingerArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
@@ -79,6 +79,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerModelPredicates();
         registerSwirlRenderer();
 
+        registerTidesingerTooltips();
         registerPrometheumTooltips();
         registerPrometheumAttributeEvent();
 
@@ -144,6 +145,23 @@ public class MythicMetalsClient implements ClientModInitializer {
                 if (EnchantmentHelper.hasBindingCurse(stack)) {
                     Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
                 }
+            }
+        });
+    }
+
+    private void registerTidesingerTooltips() {
+        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+            if (stack.has(TidesingerArmor.CORAL_TYPE)) {
+                Style style = switch (stack.get(TidesingerArmor.CORAL_TYPE)) {
+                    case "brain" -> UsefulSingletonForColorUtil.MetalColors.BRAIN.style();
+                    case "bubble" -> UsefulSingletonForColorUtil.MetalColors.BUBBLE.style();
+                    case "fire" -> UsefulSingletonForColorUtil.MetalColors.FIRE.style();
+                    case "horn" -> UsefulSingletonForColorUtil.MetalColors.HORN.style();
+                    case "tube" -> UsefulSingletonForColorUtil.MetalColors.TUBE.style();
+                    default -> Style.EMPTY;
+                };
+
+                Ability.addTooltipOnStack(stack, lines, style, "tooltip.tidesinger.coral." + stack.get(TidesingerArmor.CORAL_TYPE));
             }
         });
     }

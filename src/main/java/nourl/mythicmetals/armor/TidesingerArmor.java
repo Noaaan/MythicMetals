@@ -1,5 +1,6 @@
 package nourl.mythicmetals.armor;
 
+import io.wispforest.owo.nbt.NbtKey;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -9,12 +10,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import nourl.mythicmetals.client.models.TidesingerBipedModel;
 import nourl.mythicmetals.client.models.MythicModelHandler;
+import nourl.mythicmetals.client.models.TidesingerBipedModel;
 import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
 public class TidesingerArmor extends HallowedArmor {
+    public static NbtKey<String> CORAL_TYPE = new NbtKey<>("mm_coral_type", NbtKey.Type.STRING);
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;
@@ -48,6 +50,14 @@ public class TidesingerArmor extends HallowedArmor {
     @NotNull
     @Override
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
-        return RegistryHelper.id("textures/models/tidesinger_model.png");
+        String model = switch (stack.get(CORAL_TYPE)) {
+            case "brain" -> "textures/models/tidesinger_model_brain.png";
+            case "bubble" -> "textures/models/tidesinger_model_bubble.png";
+            case "fire" -> "textures/models/tidesinger_model_fire.png";
+            case "horn" -> "textures/models/tidesinger_model_horn.png";
+            case "tube" -> "textures/models/tidesinger_model_tube.png";
+            default -> "textures/models/tidesinger_model.png";
+        };
+        return RegistryHelper.id(model);
     }
 }

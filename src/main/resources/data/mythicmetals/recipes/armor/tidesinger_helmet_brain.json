@@ -1,0 +1,15 @@
+{
+  "type": "mythicmetals:tidesinger_smithing_transform",
+  "template": {
+    "item": "mythicmetals:tidesinger_smithing_template"
+  },
+  "base": {
+    "item": "mythicmetals:aquarium_helmet"
+  },
+  "addition": {
+    "item": "minecraft:brain_coral"
+  },
+  "result": {
+    "item": "mythicmetals:tidesinger_helmet"
+  }
+}

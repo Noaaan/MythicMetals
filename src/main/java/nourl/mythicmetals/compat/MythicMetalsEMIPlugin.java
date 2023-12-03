@@ -6,7 +6,7 @@ import dev.emi.emi.api.EmiRegistry;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmithingRecipe;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
-//import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
+import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
 
 @EmiEntrypoint
 public class MythicMetalsEMIPlugin implements EmiPlugin {
@@ -16,6 +16,9 @@ public class MythicMetalsEMIPlugin implements EmiPlugin {
         for (SmithingRecipe recipe : registry.getRecipeManager().listAllOfType(RecipeType.SMITHING)) {
             if (recipe instanceof MidasFoldingRecipe foldingRecipe) {
                 registry.addRecipe(new MidasFoldingEMIRecipe(foldingRecipe));
+            }
+            if (recipe instanceof TidesingerCoralRecipe tidesingerCoralRecipe) {
+                registry.addRecipe(new TidesingerEMIRecipe(tidesingerCoralRecipe));
             }
         }
     }
