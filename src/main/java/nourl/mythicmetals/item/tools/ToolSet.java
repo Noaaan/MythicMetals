@@ -99,7 +99,7 @@ public class ToolSet {
     /**
      * Returns a set of all the ToolItems that make this toolset
      *
-     * @return Set of ToolItems in order: Sword, Pickaxe, Axe, Shovel, Hoe
+     * @return List of ToolItems in order: Sword, Pickaxe, Axe, Shovel, Hoe
      */
     public List<ToolItem> get() {
         return List.of(sword, axe, pickaxe, shovel, hoe);

@@ -9,7 +9,6 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -104,15 +103,5 @@ public class BanglumTntBlock extends TntBlock {
             }
         }
 
-    }
-
-    @Override
-    public boolean shouldDropItemsOnExplosion(Explosion explosion) {
-        return false;
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(UNSTABLE);
     }
 }

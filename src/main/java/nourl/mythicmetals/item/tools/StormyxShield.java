@@ -35,11 +35,6 @@ public class StormyxShield extends ShieldItem {
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BLOCK;
-    }
-
-    @Override
     public int getMaxUseTime(ItemStack stack) {
         return super.getMaxUseTime(stack);
     }

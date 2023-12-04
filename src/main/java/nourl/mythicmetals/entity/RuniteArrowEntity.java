@@ -201,7 +201,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
         if (i != -1 && amount > 0) {
             double d = (double) (i >> 16 & 0xFF) / 255.0;
             double e = (double) (i >> 8 & 0xFF) / 255.0;
-            double f = (double) (i >> 0 & 0xFF) / 255.0;
+            double f = (double) (i & 0xFF) / 255.0;
 
             for (int j = 0; j < amount; ++j) {
                 this.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), d, e, f);
@@ -217,7 +217,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
             if (i != -1) {
                 double d = (double) (i >> 16 & 0xFF) / 255.0;
                 double e = (double) (i >> 8 & 0xFF) / 255.0;
-                double f = (double) (i >> 0 & 0xFF) / 255.0;
+                double f = (double) (i & 0xFF) / 255.0;
 
                 for (int j = 0; j < 20; ++j) {
                     this.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), d, e, f);

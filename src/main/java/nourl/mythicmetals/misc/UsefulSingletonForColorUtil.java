@@ -36,7 +36,7 @@ public class UsefulSingletonForColorUtil {
             }
 
             List<StatusEffectInstance> effects = PotionUtil.getPotionEffects(stack);
-            if (effects.size() > 0) {
+            if (!effects.isEmpty()) {
                 return PotionUtil.getColor(effects);
             }
         }
