@@ -98,6 +98,12 @@ public abstract class LivingEntityMixin extends Entity {
     @Unique
     Random r = new Random();
 
+    @Inject(method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;", require = 1, allow = 1, at = @At("RETURN"))
+    private static void mythicmetals$addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
+        info.getReturnValue().add(RegisterEntityAttributes.FIRE_VULNERABILITY);
+        info.getReturnValue().add(RegisterEntityAttributes.ELYTRA_ROCKET_SPEED);
+    }
+
     @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/entity/effect/StatusEffect;)Z"))
     private boolean mythicmetals$bypassFireResistance(boolean original) {
         // We respect Fire Invulnerability, but not Fire Resistance
