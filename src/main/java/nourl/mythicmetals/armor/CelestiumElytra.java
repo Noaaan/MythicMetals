@@ -5,9 +5,7 @@ import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.attribute.*;
 import net.minecraft.item.ElytraItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
@@ -15,7 +13,6 @@ import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
-
 import java.util.UUID;
 
 public class CelestiumElytra extends ElytraItem implements FabricElytraItem {

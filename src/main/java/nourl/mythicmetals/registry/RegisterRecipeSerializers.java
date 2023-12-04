@@ -5,9 +5,7 @@ import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.recipe.MidasFoldingRecipe;
-import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
-import nourl.mythicmetals.recipe.TippedRuniteArrowRecipe;
+import nourl.mythicmetals.recipe.*;
 
 public class RegisterRecipeSerializers {
 

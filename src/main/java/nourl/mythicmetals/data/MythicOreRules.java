@@ -3,9 +3,7 @@ package nourl.mythicmetals.data;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
-import net.minecraft.structure.rule.RuleTest;
-import net.minecraft.structure.rule.TagMatchRuleTest;
+import net.minecraft.structure.rule.*;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import nourl.mythicmetals.blocks.MythicBlocks;
 

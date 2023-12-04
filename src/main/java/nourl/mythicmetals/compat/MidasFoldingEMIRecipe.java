@@ -1,8 +1,6 @@
 package nourl.mythicmetals.compat;
 
-import dev.emi.emi.api.recipe.EmiRecipe;
-import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.recipe.VanillaEmiRecipeCategories;
+import dev.emi.emi.api.recipe.*;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
@@ -13,7 +11,6 @@ import net.minecraft.util.Identifier;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.Arrays;
 import java.util.List;
 

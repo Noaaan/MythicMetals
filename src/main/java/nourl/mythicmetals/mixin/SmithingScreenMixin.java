@@ -3,14 +3,10 @@ package nourl.mythicmetals.mixin;
 import net.minecraft.client.gui.screen.ingame.SmithingScreen;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.misc.RegistryHelper;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.util.ArrayList;
 import java.util.List;
 

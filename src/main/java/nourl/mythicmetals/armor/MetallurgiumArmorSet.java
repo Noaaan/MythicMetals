@@ -3,7 +3,6 @@ package nourl.mythicmetals.armor;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-
 import java.util.function.Consumer;
 
 public class MetallurgiumArmorSet extends ArmorSet {

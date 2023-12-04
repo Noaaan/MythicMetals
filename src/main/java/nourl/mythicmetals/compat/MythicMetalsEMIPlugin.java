@@ -1,8 +1,6 @@
 package nourl.mythicmetals.compat;
 
-import dev.emi.emi.api.EmiEntrypoint;
-import dev.emi.emi.api.EmiPlugin;
-import dev.emi.emi.api.EmiRegistry;
+import dev.emi.emi.api.*;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmithingRecipe;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;

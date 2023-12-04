@@ -7,15 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.Util;
+import net.minecraft.util.*;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.misc.MythicParticleSystem;
-import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
-
+import nourl.mythicmetals.misc.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;

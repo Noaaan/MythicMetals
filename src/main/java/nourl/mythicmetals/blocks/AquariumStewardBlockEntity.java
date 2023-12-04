@@ -9,13 +9,10 @@ import net.minecraft.entity.mob.Monster;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 import java.util.UUID;
 

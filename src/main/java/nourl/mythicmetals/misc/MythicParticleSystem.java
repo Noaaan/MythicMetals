@@ -9,7 +9,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import nourl.mythicmetals.compat.ExplosiveEnhancementCompat;
-
 import java.util.Random;
 
 public class MythicParticleSystem {

@@ -2,10 +2,7 @@ package nourl.mythicmetals.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
-import nourl.mythicmetals.blocks.AquariumResonatorBlockEntity;
-import nourl.mythicmetals.blocks.AquariumStewardBlockEntity;
-import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.blocks.EnchantedMidasGoldBlockEntity;
+import nourl.mythicmetals.blocks.*;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterBlockEntityTypes {

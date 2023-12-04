@@ -8,7 +8,6 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import nourl.mythicmetals.armor.TidesingerArmor;
 import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
-
 import java.util.Arrays;
 import java.util.List;
 

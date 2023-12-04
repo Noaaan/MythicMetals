@@ -1,15 +1,12 @@
 package nourl.mythicmetals.armor;
 
 import com.google.common.base.Suppliers;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
-
 import java.util.function.Supplier;
 
 @SuppressWarnings("CodeBlock2Expr")

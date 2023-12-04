@@ -11,13 +11,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 import java.util.UUID;
 

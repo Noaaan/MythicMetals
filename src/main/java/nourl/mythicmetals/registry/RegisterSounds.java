@@ -3,9 +3,7 @@ package nourl.mythicmetals.registry;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.sound.*;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {

@@ -6,7 +6,6 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
-
 import java.util.function.Supplier;
 
 public enum MythicToolMaterials implements ToolMaterial {

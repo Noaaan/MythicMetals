@@ -8,6 +8,7 @@ import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
+
 import static nourl.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
 
 /**

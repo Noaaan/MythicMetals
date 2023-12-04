@@ -1,9 +1,6 @@
 package nourl.mythicmetals.client.models;
 
-import net.minecraft.client.model.ModelData;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.model.ModelPartBuilder;
-import net.minecraft.client.model.ModelTransform;
+import net.minecraft.client.model.*;
 
 public class StarPlatCloakModel {
 	public static final ModelPart CAPE_MODEL = createCape();

@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
-
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;

@@ -9,7 +9,6 @@ import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.ItemSet;
 import nourl.mythicmetals.item.MythicItems;
-
 import java.util.concurrent.CompletableFuture;
 
 public class MythicItemDataProvider extends FabricTagProvider.ItemTagProvider {

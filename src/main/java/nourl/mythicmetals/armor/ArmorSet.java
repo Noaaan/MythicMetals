@@ -1,15 +1,12 @@
 package nourl.mythicmetals.armor;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
-
 import java.util.List;
 import java.util.function.Consumer;
 

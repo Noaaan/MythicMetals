@@ -7,7 +7,6 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.effects.MythicStatusEffects;
-
 import java.util.function.Consumer;
 
 public class PalladiumToolSet extends ToolSet {

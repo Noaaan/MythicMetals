@@ -9,14 +9,10 @@ import net.minecraft.world.poi.PointOfInterestStorage;
 import nourl.mythicmetals.blocks.ConduitPowered;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.registry.RegisterPointOfInterests;
-import org.spongepowered.asm.mixin.Final;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

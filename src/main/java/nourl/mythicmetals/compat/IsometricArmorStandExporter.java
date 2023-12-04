@@ -12,11 +12,10 @@ import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.armor.MythicArmor;
-
-import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
 
 public class IsometricArmorStandExporter {
 

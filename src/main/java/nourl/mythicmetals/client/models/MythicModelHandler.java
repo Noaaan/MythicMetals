@@ -2,13 +2,10 @@ package nourl.mythicmetals.client.models;
 
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
-import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.render.entity.model.MinecartEntityModel;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.client.render.entity.model.*;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.mixin.EntityModelLayersAccessor;
-
 import java.util.function.BiConsumer;
 
 public class MythicModelHandler {

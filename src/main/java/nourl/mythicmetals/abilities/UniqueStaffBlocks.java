@@ -9,7 +9,6 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.tools.CarmotStaff;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 

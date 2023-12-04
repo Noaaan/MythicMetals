@@ -17,10 +17,7 @@ import net.minecraft.recipe.RecipeType;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 

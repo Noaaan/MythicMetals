@@ -8,7 +8,6 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
-
 import java.util.Arrays;
 import java.util.List;
 

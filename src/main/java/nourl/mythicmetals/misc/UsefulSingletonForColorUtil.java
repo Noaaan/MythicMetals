@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
-
 import java.util.List;
 
 public class UsefulSingletonForColorUtil {
