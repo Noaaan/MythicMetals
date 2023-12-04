@@ -38,7 +38,7 @@ public enum MythicToolMaterials implements ToolMaterial {
     STAR_PLATINUM(4, 1300, 9.0F, 4.0F, 18, () -> Ingredient.ofItems(MythicItems.STAR_PLATINUM.getIngot())),
     STEEL(3, 700, 6.5F, 2.5F, 11, () -> Ingredient.ofItems(MythicItems.STEEL.getIngot())),
     STORMYX(3, 1305, 8.5F, 3.5F, 20, () -> Ingredient.ofItems(MythicItems.STORMYX.getIngot())),
-    TIDESINGER(3, 1233, 7.5F, 3.0F, 16, () -> Ingredient.ofItems(MythicItems.AQUARIUM.getIngot()));
+    TIDESINGER(3, 1233, 8.5F, 3.0F, 16, () -> Ingredient.ofItems(MythicItems.AQUARIUM.getIngot()));
 
     private final int miningLevel;
     private final int itemDurability;
