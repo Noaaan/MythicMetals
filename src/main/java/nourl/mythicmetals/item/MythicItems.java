@@ -22,7 +22,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     public static final ItemSet BANGLUM = new ItemSet();
     public static final ItemSet BRONZE = new ItemSet(true);
     public static final ItemSet CARMOT = new ItemSet();
-    public static final ItemSet CELESTIUM = new ItemSet(true, settings -> settings.rarity(Rarity.RARE));
+    public static final ItemSet CELESTIUM = new ItemSet(true, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ItemSet DURASTEEL = new ItemSet(true);
     public static final ItemSet HALLOWED = new ItemSet(true, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ItemSet KYBER = new ItemSet();

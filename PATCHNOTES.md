@@ -74,6 +74,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Greatly increased the chance of bartering for an Enchanted Midas Gold Block (3.5% -> 14%! You still need to hit it on the loot table first)
 - Legendary Banglum Tools are now repaired with Banglum Ingots instead of Chunks (now consistent with armor)
 - Increased the durability of Copper Tools (125 -> 187)
+- Celestium Equipment is now fireproof
 
 ### Bug fixes
 
