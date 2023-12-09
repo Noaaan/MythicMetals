@@ -1,27 +1,6 @@
 # 0.19.0
 
-## Aquarium Rework
-
-Aquarium is undergoing a rework. 
-
-### Aquarium Conduit Blocks
-
-These blocks are special in that they only work within the range of an active conduit.
-
-#### Aquarium Resonator
-
-Grants you stronger Conduit Power, meaning you can mine even faster underwater!
-
-#### Aquarium Steward
-
-Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
-
-#### Aquarium Glass
-
-This is a simple glass block that counts towards [valid Conduit blocks](https://minecraft.wiki/w/Conduit#Conduit_power),
-allowing you to view the Conduit in its full splendor while its active. 
-
-### Tidesinger Equipment
+## Tidesinger Equipment
 
 Using the **Aquarium Pearls** you find sometimes when mining Aquarium, along with a handful of Coral, you can craft 
 yourself a set of **Tidesinger Armor** or **Tools**. 

@@ -16,13 +16,13 @@ public class AquariumStewardBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AquariumStewardBlockEntity(RegisterBlockEntityTypes.AQUARIUM_STEWARD_BLOCK_ENTITY_TYPE, pos, state);
+        return new AquariumStewardBlockEntity(RegisterBlockEntityTypes.AQUARIUM_STEWARD, pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, RegisterBlockEntityTypes.AQUARIUM_STEWARD_BLOCK_ENTITY_TYPE, AquariumStewardBlockEntity::tick);
+        return checkType(type, RegisterBlockEntityTypes.AQUARIUM_STEWARD, AquariumStewardBlockEntity::tick);
     }
 
     @Override

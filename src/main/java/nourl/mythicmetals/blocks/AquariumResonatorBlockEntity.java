@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
     /**
-     * The range of the Aquarium Steward's attack
+     * The range of the Aquarium Resonators buff
      */
     private static final int MAX_RANGE = 24;
     private boolean activated = false;
@@ -24,7 +24,7 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
     }
 
     public AquariumResonatorBlockEntity(BlockPos pos, BlockState state) {
-        super(RegisterBlockEntityTypes.AQUARIUM_STEWARD_BLOCK_ENTITY_TYPE, pos, state);
+        super(RegisterBlockEntityTypes.AQUARIUM_RESONATOR, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {

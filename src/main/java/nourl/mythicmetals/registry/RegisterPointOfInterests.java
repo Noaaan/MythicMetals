@@ -6,7 +6,7 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class RegisterPointOfInterests {
-    public static final PointOfInterestType CONDUIT_POWERED_BLOCK = PointOfInterestHelper.register(RegistryHelper.id("conduit_powered_block"), 0, 1, MythicBlocks.AQUARIUM_STEWARD, MythicBlocks.AQUARIUM_RESONATOR);
+    public static final PointOfInterestType CONDUIT_POWERED_BLOCK = PointOfInterestHelper.register(RegistryHelper.id("conduit_powered_block"), 0, 1, MythicBlocks.Indev.AQUARIUM_STEWARD, MythicBlocks.Indev.AQUARIUM_RESONATOR);
 
     public static void init() {}
 }

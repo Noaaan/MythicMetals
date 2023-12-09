@@ -34,7 +34,7 @@ public class AquariumStewardBlockEntity extends BlockEntity implements ConduitPo
     }
 
     public AquariumStewardBlockEntity(BlockPos pos, BlockState state) {
-        super(RegisterBlockEntityTypes.AQUARIUM_STEWARD_BLOCK_ENTITY_TYPE, pos, state);
+        super(RegisterBlockEntityTypes.AQUARIUM_STEWARD, pos, state);
     }
 
 

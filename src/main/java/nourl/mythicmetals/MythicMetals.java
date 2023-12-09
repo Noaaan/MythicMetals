@@ -75,10 +75,12 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
+            RegisterPointOfInterests.init();
         }
         FieldRegistrationHandler.processSimple(MythicItems.Copper.class, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
+        FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
         MythicBlocks.init();
         BanglumNukeHandler.init();
@@ -96,8 +98,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
         RegisterCriteria.init();
-        RegisterBlockEntityTypes.init();
-        RegisterPointOfInterests.init();
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {

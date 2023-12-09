@@ -79,7 +79,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
-        BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK_ENTITY_TYPE, EnchantedMidasBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingPlugin.register(new CarmotStaffBlockRenderer());
@@ -87,7 +87,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.AQUARIUM_GLASS, MythicBlocks.KYBER.getStorageBlock());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.Indev.AQUARIUM_GLASS, MythicBlocks.KYBER.getStorageBlock());
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {

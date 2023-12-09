@@ -16,13 +16,13 @@ public class AquariumResonatorBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AquariumResonatorBlockEntity(RegisterBlockEntityTypes.AQUARIUM_RESONATOR_BLOCK_ENTITY_TYPE, pos, state);
+        return new AquariumResonatorBlockEntity(RegisterBlockEntityTypes.AQUARIUM_RESONATOR, pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, RegisterBlockEntityTypes.AQUARIUM_RESONATOR_BLOCK_ENTITY_TYPE, AquariumResonatorBlockEntity::tick);
+        return checkType(type, RegisterBlockEntityTypes.AQUARIUM_RESONATOR, AquariumResonatorBlockEntity::tick);
     }
 
     @Override
