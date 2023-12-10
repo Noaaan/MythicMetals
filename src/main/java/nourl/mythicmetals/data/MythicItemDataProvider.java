@@ -73,10 +73,15 @@ public class MythicItemDataProvider extends FabricTagProvider.ItemTagProvider {
         });
 
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (item, name, field) -> {
-            var modTag = MythicMetalsData.createModItemTag(name);
-            var commonTag = MythicMetalsData.createCommonItemTag(name);
-            getOrCreateTagBuilder(modTag).add(item);
-            getOrCreateTagBuilder(commonTag).addTag(modTag);
+            var rareMaterials = MythicMetalsData.createModItemTag("rare_materials");
+            getOrCreateTagBuilder(rareMaterials).add(item);
+
+            if (item.equals(MythicItems.Mats.STARRITE) || item.equals(MythicItems.Mats.UNOBTAINIUM) || item.equals(MythicItems.Mats.MORKITE)) {
+                var modTag = MythicMetalsData.createModItemTag(name);
+                var commonTag = MythicMetalsData.createCommonItemTag(name);
+                getOrCreateTagBuilder(modTag).add(item);
+                getOrCreateTagBuilder(commonTag).addTag(modTag);
+            }
         });
     }
 }
