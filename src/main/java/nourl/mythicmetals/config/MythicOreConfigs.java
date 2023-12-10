@@ -19,7 +19,7 @@ public class MythicOreConfigs {
     public static final OreConfig MYTHRIL = new OreConfig(5, 1, -24, 4, .125f, false, true);
     public static final OreConfig ORICHALCUM = new OreConfig(5, 1, 8, 8, .0f, true);
     public static final OreConfig OSMIUM = new OreConfig(6, 5, 50, 120, .25f, false);
-    public static final OreConfig PALLADIUM = new OreConfig(5, 2, 14, 36, .0f, false);
+    public static final OreConfig PALLADIUM = new OreConfig(6, 2, 13, 38, .0f, false);
     public static final OreConfig PLATINUM = new OreConfig(6, 2, 8, 32, .125f, false, true);
     public static final OreConfig PROMETHEUM = new OreConfig(6, 4, 30, 48, .0f, true);
     public static final OreConfig QUADRILLUM = new OreConfig(7, 2, 12, 40, .25f, false);

@@ -75,6 +75,8 @@ The following materials received new block and ingot textures (#191, #199):
 - Legendary Banglum Tools are now repaired with Banglum Ingots instead of Chunks (now consistent with armor)
 - Increased the durability of Copper Tools (125 -> 187)
 - Celestium Equipment is now fireproof
+- Increased Palladium Ore spawn range slightly (from 14 to 36 -> from 13 to 38)
+- Increased Palladium Ore max vein size (5 -> 6)
 
 ### Bug fixes
 
