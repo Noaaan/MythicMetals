@@ -96,6 +96,7 @@ public class BlockSet {
                 TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
                 TagInjector.inject(Registries.BLOCK, level, anvilBlock);
                 TagInjector.inject(Registries.BLOCK, new Identifier("anvil"), anvilBlock);
+                TagInjector.inject(Registries.ITEM, new Identifier("anvil"), anvilBlock.asItem());
             }));
         }
         miningLevels.forEach((block, level) -> {
