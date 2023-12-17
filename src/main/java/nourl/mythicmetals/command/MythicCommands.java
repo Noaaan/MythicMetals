@@ -29,7 +29,9 @@ import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -53,7 +55,7 @@ public final class MythicCommands {
 
     public static void registerCommands() {
         // Dump Ore Config values
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccessdedicated, environment) -> {
+        CommandRegistrationCallback.EVENT.register((dispatcher, access, env) -> {
             dispatcher.register(CommandManager.literal("mythicmetals")
                 // TODO - Add new command for grabbing the data-generated ore features, and create a datapack skeleton
                 .requires(source -> source.hasPermissionLevel(1))
@@ -63,10 +65,9 @@ public final class MythicCommands {
                 .then(CommandManager.literal("range")
                     .then(CommandManager.argument("type", StringArgumentType.word())
                         .suggests(MythicCommands::dumpType)
-                        .executes(MythicCommands::dumpOreConfig)
+                        .executes(MythicCommands::dumpAllOreConfigs)
                     )
                 )
-                // TODO - Support "all"
                 .then(CommandManager.literal("wiki")
                     .then(CommandManager.literal("export-tools")
                         .then(CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
@@ -83,18 +84,26 @@ public final class MythicCommands {
                     .requires(source -> source.hasPermissionLevel(2))
                     .then(CommandManager.argument("material", StringArgumentType.word())
                         .suggests(MythicCommands::armorMaterial)
+                        .executes(context -> {
+                            String material = StringArgumentType.getString(context, "material");
+                            return armorStandCommand(context, material, null);
+                        })
                         .then(CommandManager.argument("trim_pattern", StringArgumentType.word())
                             .suggests(MythicCommands::trimTypes)
-                            .executes(MythicCommands::armorStandCommand)
+                            .executes(context -> {
+                                String material = StringArgumentType.getString(context, "material");
+                                String trimQuery = StringArgumentType.getString(context, "trim_pattern");
+                                return armorStandCommand(context, material, trimQuery);
+                            })
                         )
                     )
                 )
-                    .then(CommandManager.literal("test-loot-table")
-                        .requires(source -> source.hasPermissionLevel(2))
-                        .then(CommandManager.argument("loot_table", IdentifierArgumentType.identifier())
-                            .suggests(LootCommand.SUGGESTION_PROVIDER)
-                            .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
-                                .executes(MythicCommands::testLootTable))
+                .then(CommandManager.literal("test-loot-table")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .then(CommandManager.argument("loot_table", IdentifierArgumentType.identifier())
+                        .suggests(LootCommand.SUGGESTION_PROVIDER)
+                        .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
+                            .executes(MythicCommands::testLootTable))
                     ))
             );
         });
@@ -107,9 +116,9 @@ public final class MythicCommands {
         int rolls = IntegerArgumentType.getInteger(ctx, "rolls");
 
         LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(ctx.getSource().getWorld())
-                .addOptional(LootContextParameters.THIS_ENTITY, source.getEntity())
-                .add(LootContextParameters.ORIGIN, source.getPosition())
-                .build(LootContextTypes.CHEST);
+            .addOptional(LootContextParameters.THIS_ENTITY, source.getEntity())
+            .add(LootContextParameters.ORIGIN, source.getPosition())
+            .build(LootContextTypes.CHEST);
 
         LootTable lootTable = source.getServer().getLootManager().getLootTable(lootTableId);
 
@@ -132,6 +141,7 @@ public final class MythicCommands {
 
     /**
      * ArmorSet exporter for the Mythic Metals Wiki
+     * <br><br>
      * Note that it does not handle abilities or custom attributes, like Lava Swim Speed
      */
     private static int exportArmor(CommandContext<ServerCommandSource> context) {
@@ -151,8 +161,8 @@ public final class MythicCommands {
 
         for (var armor : armorSet.getArmorItems()) {
             /* TODO - The string handling is a bit bad, although it does have to be very specific in regards
-              * to be implemented correctly into MkDocs. Try to improve this later.
-               */
+             * to be implemented correctly into MkDocs. Try to improve this later.
+             */
             String id = Registries.ITEM.getId(armor).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
 
@@ -201,6 +211,7 @@ public final class MythicCommands {
      */
     private static int exportTools(CommandContext<ServerCommandSource> context) {
         var toolset = ToolSetArgumentType.getToolSet(context, "toolset");
+
         String br = "<br>\n";
 
         var source = context.getSource();
@@ -211,12 +222,16 @@ public final class MythicCommands {
         Stack<Float> atkSpd = new Stack<>();
         atkSpd.addAll(toolset.getAttackSpeed());
 
+        String setName = StringUtilsAtHome.toProperCase(toolset.getSword().getMaterial().toString());
+
+        output.append("<center class=tooltip>").append("\n");
+        output.append("<h3>**").append(setName).append("**</h3>").append("\n");
+
         for (ToolItem tool : toolset.get()) {
             String id = Registries.ITEM.getId(tool).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
 
             output.append("\n");
-            output.append("<center class=tooltip>").append("\n");
             output.append("<h4>**").append(name).append("**</h4>").append("\n");
             output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(br);
             output.append("+%s Attack Damage, %s Attack Speed".formatted(
@@ -325,7 +340,7 @@ public final class MythicCommands {
         return suggestion.buildFuture();
     }
 
-    private static int dumpOreConfig(CommandContext<ServerCommandSource> context) {
+    private static int dumpAllOreConfigs(CommandContext<ServerCommandSource> context) {
         if (StringArgumentType.getString(context, "type").equals("console")) {
             ReflectionUtils.iterateAccessibleStaticFields(MythicOreConfigs.class, OreConfig.class, (feature, name, field) -> {
                 if (!feature.offset && !feature.trapezoid) {
@@ -367,14 +382,13 @@ public final class MythicCommands {
         return 1;
     }
 
-    private static int armorStandCommand(CommandContext<ServerCommandSource> context) {
-        // TODO -- Make armor trims truly optional, instead of providing "none"
-        // All of the armor at once, not recommended due to the sheer density of them
-        String material = StringArgumentType.getString(context, "material");
-        String trimQuery = StringArgumentType.getString(context, "trim_pattern");
+    private static int armorStandCommand(CommandContext<ServerCommandSource> context, @NotNull String material, @Nullable String rawTrim) {
+        // Summon all permutations of the armor at once. Not recommended due to the sheer density of them
         var armorTrims = new ArrayList<ArmorTrim>();
         var world = context.getSource().getWorld();
         var pos = context.getSource().getPosition();
+
+        final String trimQuery = rawTrim == null ? "none" : rawTrim;
 
         if (trimQuery.equals("none")) {
             if (material.equals("all")) {
@@ -384,10 +398,10 @@ public final class MythicCommands {
                     summonArmorStandWithTrim(world, null, armorSet, mutX.getAndIncrement(), 0);
                     count.increment();
                 });
-                context.getSource().sendFeedback(() -> Text.literal("Summoned %d armorstands".formatted(count.getValue())), true);
+                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands".formatted(count.getValue())), true);
             } else {
-                summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), 0, 0);
-                context.getSource().sendFeedback(() -> Text.literal("Summoned armorstands"), true);
+                summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), (int) pos.x, (int) pos.z);
+                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping one armorstand"), true);
             }
             return 1;
         }
@@ -419,7 +433,7 @@ public final class MythicCommands {
                 mutZ.increment();
                 mutX.setValue(0);
             });
-            context.getSource().sendFeedback(() -> Text.literal("Summoned %d armorstands with trims".formatted(count.getValue())), true);
+            context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
 
             return 1;
         } else if (MythicArmor.ARMOR_MAP.get(material) != null) {
@@ -448,7 +462,7 @@ public final class MythicCommands {
                 count++;
                 zOffset += 2;
             }
-            String feedback = "Summoned %d armorstands".formatted(count);
+            String feedback = "Summoned and dropping %d armorstands".formatted(count);
             context.getSource().sendFeedback(() -> Text.literal(feedback), true);
         }
         return 1;
