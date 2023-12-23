@@ -9,7 +9,11 @@ This gear is superior to regular Aquarium in every way, as well as providing a d
 
 The weapons (Sword and Axe) are special, as they come with Riptide 3!
 
-## Texture changes
+## Texture Update
+
+This update has been in the works to improve the textures of Mythic Metals.
+They are courtesy of Azzyparaas. Feel free to let us know what you think of them!
+Here is a somewhat extensive list containing most of the changes:
 
 - New Carmot Armor Items
 - New Osmium Armor Items
@@ -54,6 +58,7 @@ The following materials received new block and ingot textures (#191, #199):
 - New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 - Added a Sponge Nuke Core
 - Added a new config option for disabling an Easter Egg with Carmot Staffs
+- Added anvils to the `c:anvils` item tag. Thanks to N0aW for suggesting this. 
 
 ### Balancing Changes
 
