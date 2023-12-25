@@ -134,6 +134,13 @@ public class BlockSet {
         return oreVariants.get(variant);
     }
 
+    /**
+     * @return Returns the anvil from the set
+     */
+    public AnvilBlock getAnvil() {
+        return anvil;
+    }
+
     public Set<Block> getOreVariants() {
         return ImmutableSet.copyOf(oreVariants.values());
     }

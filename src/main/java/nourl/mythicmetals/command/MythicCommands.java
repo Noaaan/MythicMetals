@@ -20,9 +20,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.command.*;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import nourl.mythicmetals.armor.ArmorSet;
 import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.blocks.BlockSet;
+import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicOreConfigs;
 import nourl.mythicmetals.config.OreConfig;
 import nourl.mythicmetals.item.tools.MythicTools;
@@ -36,6 +39,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings({"UnstableApiUsage", "CodeBlock2Expr"})
 public final class MythicCommands {
@@ -104,10 +108,44 @@ public final class MythicCommands {
                         .suggests(LootCommand.SUGGESTION_PROVIDER)
                         .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
                             .executes(MythicCommands::testLootTable))
-                    ))
+                    )
+                )
+                .then(CommandManager.literal("place-all-blocks")
+                    .requires(source -> source.hasPermissionLevel(2))
+                    .executes(MythicCommands::placeAllBlocksets)
+                )
             );
         });
 
+    }
+
+    private static int placeAllBlocksets(CommandContext<ServerCommandSource> context) {
+        var source = context.getSource();
+        var world = source.getWorld();
+        AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
+        AtomicInteger y = new AtomicInteger(((int) source.getPosition().y));
+        int z = ((int) source.getPosition().z);
+        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
+            y.set(((int) source.getPosition().y));
+            if (blockSet.getOre() != null) {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getOre().getDefaultState());
+            }
+            blockSet.getOreVariants().forEach(block -> {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), block.getDefaultState());
+            });
+            if (blockSet.getOreStorageBlock() != null) {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().getDefaultState());
+            }
+            if (blockSet.getStorageBlock() != null) {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().getDefaultState());
+            }
+            if (blockSet.getAnvil() != null) {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().getDefaultState());
+            }
+            x.incrementAndGet();
+        });
+        source.sendFeedback(() -> Text.literal("Placed all blocksets around %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
+        return 0;
     }
 
     private static int testLootTable(CommandContext<ServerCommandSource> ctx) {
