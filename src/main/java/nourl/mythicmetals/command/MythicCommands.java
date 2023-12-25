@@ -8,6 +8,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.block.Block;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.entity.decoration.ArmorStandEntity;
@@ -112,14 +113,20 @@ public final class MythicCommands {
                 )
                 .then(CommandManager.literal("place-all-blocks")
                     .requires(source -> source.hasPermissionLevel(2))
-                    .executes(MythicCommands::placeAllBlocksets)
+                    .executes(context -> MythicCommands.placeAllBlocksets(context, Map.of()))
                 )
             );
         });
 
     }
 
-    private static int placeAllBlocksets(CommandContext<ServerCommandSource> context) {
+    /**
+     * Place every block set from {@link MythicBlocks} across the YZ axis
+     *
+     * @param context ServerCommandSource Command Context
+     * @param extraBlocks Map which can be used to insert extra blocks for a specific block set
+     */
+    private static int placeAllBlocksets(CommandContext<ServerCommandSource> context, Map<String, Set<Block>> extraBlocks) {
         var source = context.getSource();
         var world = source.getWorld();
         AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
@@ -142,12 +149,18 @@ public final class MythicCommands {
             if (blockSet.getAnvil() != null) {
                 world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().getDefaultState());
             }
+            extraBlocks.getOrDefault(name, Set.of()).forEach(extraBlock -> {
+                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), extraBlock.getDefaultState());
+            });
             x.incrementAndGet();
         });
-        source.sendFeedback(() -> Text.literal("Placed all blocksets around %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
+        source.sendFeedback(() -> Text.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
         return 0;
     }
 
+    /**
+     * Command which generates loot from a loot table X amount of times, and prints the output to the console
+     */
     private static int testLootTable(CommandContext<ServerCommandSource> ctx) {
         var source = ctx.getSource();
         var lootTableId = IdentifierArgumentType.getIdentifier(ctx, "loot_table");
