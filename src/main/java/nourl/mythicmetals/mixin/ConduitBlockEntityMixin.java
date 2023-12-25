@@ -7,6 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.poi.PointOfInterestStorage;
 import nourl.mythicmetals.blocks.ConduitPowered;
+import nourl.mythicmetals.blocks.IndevBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.registry.RegisterPointOfInterests;
 import org.spongepowered.asm.mixin.*;
@@ -25,7 +26,7 @@ public class ConduitBlockEntityMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$extendConduitArray(CallbackInfo ci) {
         List<Block> blocks = Arrays.stream(ACTIVATING_BLOCKS).collect(Collectors.toList());
-        blocks.add(MythicBlocks.Indev.AQUARIUM_GLASS);
+        blocks.add(IndevBlocks.AQUARIUM_GLASS);
         blocks.add(MythicBlocks.AQUARIUM.getStorageBlock());
 
         ACTIVATING_BLOCKS = blocks.toArray(ACTIVATING_BLOCKS);

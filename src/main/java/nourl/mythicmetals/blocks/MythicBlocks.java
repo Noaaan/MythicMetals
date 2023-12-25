@@ -1,9 +1,7 @@
 package nourl.mythicmetals.blocks;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
-import io.wispforest.owo.registration.reflect.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
@@ -16,7 +14,6 @@ import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.registry.RegisterSounds;
-import java.lang.reflect.Field;
 
 @SuppressWarnings("unused")
 public class MythicBlocks {
@@ -202,9 +199,6 @@ public class MythicBlocks {
 
     public static void init() {
         BlockSet.Builder.register();
-        RegistryHelper.block("aquarium_glass", Indev.AQUARIUM_GLASS);
-        RegistryHelper.block("aquarium_resonator", Indev.AQUARIUM_RESONATOR);
-        RegistryHelper.block("aquarium_steward", Indev.AQUARIUM_STEWARD);
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
@@ -217,18 +211,6 @@ public class MythicBlocks {
         });
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
         RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
-    }
-
-    public static class Indev implements BlockRegistryContainer {
-
-        public static final Block AQUARIUM_GLASS = new GlassBlock(FabricBlockSettings.copyOf(Blocks.BLUE_STAINED_GLASS));
-        public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
-        public static final AquariumStewardBlock AQUARIUM_STEWARD = new AquariumStewardBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
-
-        @Override
-        public boolean shouldProcessField(Block value, String identifier, Field field) {
-            return FabricLoader.getInstance().isDevelopmentEnvironment();
-        }
     }
 
 }

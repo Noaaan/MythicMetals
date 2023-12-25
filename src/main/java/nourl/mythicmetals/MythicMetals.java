@@ -29,6 +29,7 @@ import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
+import nourl.mythicmetals.blocks.IndevBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.command.MythicCommands;
 import nourl.mythicmetals.config.MythicMetalsConfig;
@@ -74,6 +75,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
         FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            FieldRegistrationHandler.register(IndevBlocks.class, MOD_ID, false);
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
             RegisterPointOfInterests.init();
         }

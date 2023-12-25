@@ -10,9 +10,9 @@ import java.lang.reflect.Field;
 public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {
 
     public static final BlockEntityType<AquariumStewardBlockEntity> AQUARIUM_STEWARD =
-            FabricBlockEntityTypeBuilder.create(AquariumStewardBlockEntity::new, MythicBlocks.Indev.AQUARIUM_STEWARD).build();
+            FabricBlockEntityTypeBuilder.create(AquariumStewardBlockEntity::new, IndevBlocks.AQUARIUM_STEWARD).build();
     public static final BlockEntityType<AquariumResonatorBlockEntity> AQUARIUM_RESONATOR =
-            FabricBlockEntityTypeBuilder.create(AquariumResonatorBlockEntity::new, MythicBlocks.Indev.AQUARIUM_RESONATOR).build();
+            FabricBlockEntityTypeBuilder.create(AquariumResonatorBlockEntity::new, IndevBlocks.AQUARIUM_RESONATOR).build();
 
     public static final BlockEntityType<EnchantedMidasGoldBlockEntity> ENCHANTED_MIDAS_GOLD_BLOCK =
             FabricBlockEntityTypeBuilder.create(EnchantedMidasGoldBlockEntity::new, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK).build();
