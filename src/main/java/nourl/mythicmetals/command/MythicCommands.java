@@ -19,6 +19,7 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.command.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -40,6 +41,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @SuppressWarnings({"UnstableApiUsage", "CodeBlock2Expr"})
@@ -123,7 +125,7 @@ public final class MythicCommands {
     /**
      * Place every block set from {@link MythicBlocks} across the YZ axis
      *
-     * @param context ServerCommandSource Command Context
+     * @param context     ServerCommandSource Command Context
      * @param extraBlocks Map which can be used to insert extra blocks for a specific block set
      */
     private static int placeAllBlocksets(CommandContext<ServerCommandSource> context, Map<String, Set<Block>> extraBlocks) {
@@ -269,7 +271,7 @@ public final class MythicCommands {
 
         StringBuilder output = new StringBuilder();
 
-        Deque<Integer> damage = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
+        Deque<Integer> damageDeque = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
         Stack<Float> atkSpd = new Stack<>();
         atkSpd.addAll(toolset.getAttackSpeed());
 
@@ -286,7 +288,7 @@ public final class MythicCommands {
             output.append("<h4>**").append(name).append("**</h4>").append("\n");
             output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(br);
             output.append("+%s Attack Damage, %s Attack Speed".formatted(
-                tool.getMaterial().getAttackDamage() + damage.poll() + 1,
+                tool.getMaterial().getAttackDamage() + damageDeque.pop() + 1,
                 BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
             )).append(br);
             output.append("%s Durability".formatted(tool.getMaxDamage())).append(br);
@@ -315,22 +317,29 @@ public final class MythicCommands {
      * @param armorSet {@link ArmorSet} that you wish to equip on the armor stand.
      * @param x        x-coordinate where the armor stand should spawn
      * @param z        z-coordinate where the armor stand should spawn
+     * @return Returns whether the armor set was successfully created and summoned
      * @see ArmorTrim
      * @see MythicArmor
      * @see ArmorSet
      */
-    public static void summonArmorStandWithTrim(World world, @Nullable ArmorTrim trim, ArmorSet armorSet, int x, int z) {
-        if (world.isClient) return;
+    public static boolean summonArmorStandWithTrim(World world, @Nullable ArmorTrim trim, ArmorSet armorSet, int x, int z) {
+        if (world.isClient) return false;
+        AtomicBoolean success = new AtomicBoolean(true);
 
         var armorStand = new ArmorStandEntity(world, x, world.getTopY() - 50, z);
         armorSet.getArmorItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
+            if (!armorStack.isIn(ItemTags.TRIMMABLE_ARMOR)) {
+                success.set(false);
+                return;
+            }
             if (trim != null) {
                 ArmorTrim.apply(world.getRegistryManager(), armorStack, trim);
             }
             armorStand.equipStack(armorItem.getSlotType(), armorStack);
         });
-        world.spawnEntity(armorStand);
+        if (success.get()) world.spawnEntity(armorStand);
+        return success.get();
     }
 
     /**
@@ -434,7 +443,6 @@ public final class MythicCommands {
     }
 
     private static int armorStandCommand(CommandContext<ServerCommandSource> context, @NotNull String material, @Nullable String rawTrim) {
-        // Summon all permutations of the armor at once. Not recommended due to the sheer density of them
         var armorTrims = new ArrayList<ArmorTrim>();
         var world = context.getSource().getWorld();
         var pos = context.getSource().getPosition();
@@ -442,17 +450,26 @@ public final class MythicCommands {
         final String trimQuery = rawTrim == null ? "none" : rawTrim;
 
         if (trimQuery.equals("none")) {
+            // Summon all permutations of the armor at once. Not recommended due to the sheer density of them
             if (material.equals("all")) {
-                MutableInt mutX = new MutableInt(pos.x);
-                MutableInt count = new MutableInt(0);
-                MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> {
-                    summonArmorStandWithTrim(world, null, armorSet, mutX.getAndIncrement(), 0);
-                    count.increment();
-                });
-                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands".formatted(count.getValue())), true);
+                int x = (int) pos.x;
+                int count = 0;
+
+                var armorSetStrings = new TreeSet<>(MythicArmor.ARMOR_MAP.keySet());
+                for (var armorSetName : armorSetStrings) {
+                    if (summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(armorSetName), x, 0)) {
+                        x++;
+                        count++;
+                    }
+                }
+                int finalCount = count;
+                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands".formatted(finalCount)), true);
             } else {
-                summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), (int) pos.x, (int) pos.z);
-                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping one armorstand"), true);
+                if (summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), (int) pos.x, (int) pos.z)) {
+                    context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping one armorstand"), true);
+                } else {
+                    context.getSource().sendFeedback(() -> Text.literal("Unable to summon the armor stand. It might be untrimmable"), false);
+                }
             }
             return 1;
         }
@@ -464,26 +481,29 @@ public final class MythicCommands {
             }
 
             if (trimQuery.equals("all")) {
-                armorTrims.addAll(getAllArmorTrims(world)
-                    .stream()
-                    .toList());
+                armorTrims.addAll(
+                    getAllArmorTrims(world).stream().toList()
+                );
             } else if (getAllTrimPatternStrs(world).contains(trimQuery)) {
                 armorTrims.addAll(getAllArmorTrims(world).stream().filter(trim -> trim.getPattern().value().assetId().getPath().equals(trimQuery)).toList());
             }
 
+            // lambda moment
             MutableInt mutX = new MutableInt(pos.x);
             MutableInt mutZ = new MutableInt(pos.z);
             MutableInt count = new MutableInt(0);
 
-            ArrayList<ArmorTrim> finalArmorTrims = armorTrims;
-            MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> {
-                finalArmorTrims.forEach(armorTrim -> {
-                    summonArmorStandWithTrim(world, armorTrim, armorSet, mutX.getAndIncrement(), mutZ.getValue());
-                    count.increment();
+            var armorSetStrings = new TreeSet<>(MythicArmor.ARMOR_MAP.keySet());
+            for (var armorSetName : armorSetStrings) {
+                armorTrims.forEach(armorTrim -> {
+                    if (summonArmorStandWithTrim(world, armorTrim, MythicArmor.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
+                        mutX.increment();
+                        count.increment();
+                    }
                 });
                 mutZ.increment();
                 mutX.setValue(0);
-            });
+            }
             context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
 
             return 1;
@@ -509,9 +529,12 @@ public final class MythicCommands {
                     zOffset = 0;
                 }
                 var armorSet = MythicArmor.ARMOR_MAP.get(material);
-                summonArmorStandWithTrim(world, armorTrims.get(i), armorSet, (int) pos.x + xOffset, (int) pos.z + zOffset);
-                count++;
-                zOffset += 2;
+                if (summonArmorStandWithTrim(world, armorTrims.get(i), armorSet, (int) pos.x + xOffset, (int) pos.z + zOffset)) {
+                    count++;
+                    zOffset += 2;
+                } else {
+                    xOffset -= 2;
+                }
             }
             String feedback = "Summoned and dropping %d armorstands".formatted(count);
             context.getSource().sendFeedback(() -> Text.literal(feedback), true);
