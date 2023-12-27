@@ -128,7 +128,7 @@ public final class MythicCommands {
      * @param context     ServerCommandSource Command Context
      * @param extraBlocks Map which can be used to insert extra blocks for a specific block set
      */
-    public static int placeAllBlocksets(CommandContext<ServerCommandSource> context, Map<String, Set<Block>> extraBlocks) {
+    public static int placeAllBlocksets(CommandContext<ServerCommandSource> context, Map<String, ArrayList<Block>> extraBlocks) {
         var source = context.getSource();
         var world = source.getWorld();
         AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
@@ -151,7 +151,7 @@ public final class MythicCommands {
             if (blockSet.getAnvil() != null) {
                 world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().getDefaultState());
             }
-            extraBlocks.getOrDefault(name, Set.of()).forEach(extraBlock -> {
+            extraBlocks.get(name).forEach(extraBlock -> {
                 world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), extraBlock.getDefaultState());
             });
             x.incrementAndGet();
