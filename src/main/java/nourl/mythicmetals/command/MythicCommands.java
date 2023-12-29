@@ -151,9 +151,11 @@ public final class MythicCommands {
             if (blockSet.getAnvil() != null) {
                 world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().getDefaultState());
             }
-            extraBlocks.get(name).forEach(extraBlock -> {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), extraBlock.getDefaultState());
-            });
+            if (extraBlocks.containsKey(name)) {
+                extraBlocks.get(name).forEach(extraBlock -> {
+                    world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), extraBlock.getDefaultState());
+                });
+            }
             x.incrementAndGet();
         });
         source.sendFeedback(() -> Text.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
