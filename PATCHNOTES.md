@@ -12,37 +12,28 @@ The weapons (Sword and Axe) are special, as they come with Riptide 3!
 ## Texture Update
 
 This update has been in the works to improve the textures of Mythic Metals.
-They are courtesy of Azzyparaas. Feel free to let us know what you think of them!
-Here is a somewhat extensive list containing most of the changes:
+They are courtesy of Azzyparaas (From PR #191, #193, #199, #202, #203, #207, #210, and #213).
+Feel free to let us know what you think of them!
 
-- New Carmot Armor Items
-- New Osmium Armor Items
-- New Star Platinum Armor and Tools
-  - Comes with a cloak if you do not have any capes equipped, just like Hallowed!
-- New Kyber Armor Items
-- New Silver Armor Items
-- Tweaked Midas Gold Armor Items
-- New Steel Armor Items
-- New Palladium Sword animation
-- Tweaked Raw Osmium sprite
-- New Raw Runite sprite
-- New Prometheum Armor sprites
-- Tweaked Midas Gold Swords
-- New Quadrillum Tools
-- New Celestium Armor Items and Tools
+To quickly summarize the following materials were updated in different regards:
 
-The following materials received new block and ingot textures (#191, #199):
-
-- Celestium
-- Quadrillum
-- Midas Gold
-- Manganese
-- Carmot
-- Tin
-- Silver
-- Metallurgium
-- Prometheum
-- Runite
+- Aquarium (block, ingot, tools, armor, pearl)
+- Carmot (block, armor items, tools)
+- Celestium (block, ingot, tools, armor items, elytra item)
+- Kyber (block, ingot, tools, armor, )
+- Manganese (blocks, ingot, raw ore)
+- Metallurgium (block, ingot)
+- Midas Gold (block, ingot)
+- Morkite (block and item)
+- Prometheum (block, ingot, armor items)
+- Quadrillum (blocks, ingot, raw ore)
+- Runite (blocks, ingot, arrows)
+- Silver (block and ingot)
+- Star Platinum (blocks, ingot, tools, armor)
+- Starrite (block and item)
+- Steel (blocks, ingot, tools, armor)
+- Tin (block and ingot)
+- Unobtainium (storage block and item)
 
 ## Changes
 
@@ -59,6 +50,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Added a Sponge Nuke Core
 - Added a new config option for disabling an Easter Egg with Carmot Staffs
 - Added anvils to the `c:anvils` item tag. Thanks to N0aW for suggesting this. 
+- Added a debug command for placing all block sets, `/mythicmetals place-all-blocks`
 
 ### Balancing Changes
 
