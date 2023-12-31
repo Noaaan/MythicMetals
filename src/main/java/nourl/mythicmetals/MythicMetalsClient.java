@@ -8,13 +8,15 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
-import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
+import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
@@ -24,10 +26,7 @@ import net.minecraft.client.texture.Sprite;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.registry.Registries;
@@ -39,7 +38,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 import nourl.mythicmetals.abilities.Ability;
-import nourl.mythicmetals.armor.*;
+import nourl.mythicmetals.armor.CelestiumElytra;
+import nourl.mythicmetals.armor.HallowedArmor;
+import nourl.mythicmetals.armor.MythicArmor;
+import nourl.mythicmetals.armor.TidesingerArmor;
 import nourl.mythicmetals.blocks.IndevBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
@@ -49,10 +51,15 @@ import nourl.mythicmetals.compat.IsometricArmorStandExporter;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
-import nourl.mythicmetals.misc.*;
+import nourl.mythicmetals.misc.BlockBreaker;
+import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.ShieldUsePredicate;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MythicMetalsClient implements ClientModInitializer {
     private long lastTick;
@@ -70,7 +77,6 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         registerTidesingerTooltips();
         registerPrometheumTooltips();
-        registerPrometheumAttributeEvent();
 
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
 
@@ -97,28 +103,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         }
     }
 
-    private void registerPrometheumAttributeEvent() {
-        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
-                if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
-                            UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
-                            "Bound Prometheum bonus",
-                            0.08,
-                            EntityAttributeModifier.Operation.MULTIPLY_BASE
-                    ));
-                }
-                if (PrometheumToolSet.isOvergrown(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
-                            "Prometheum bonus toughness",
-                            EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
-                            EntityAttributeModifier.Operation.ADDITION
-                    ));
-                }
-            }
-        });
-    }
+
 
     private void registerPrometheumTooltips() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {

@@ -32,7 +32,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet OSMIUM = new ArmorSet(MythicArmorMaterials.OSMIUM);
     public static final ArmorSet OSMIUM_CHAINMAIL = new ArmorSet(MythicArmorMaterials.OSMIUM_CHAINMAIL);
     public static final ArmorSet PALLADIUM = new ArmorSet(MythicArmorMaterials.PALLADIUM, OwoItemSettings::fireproof);
-    public static final ArmorSet PROMETHEUM = new ArmorSet(MythicArmorMaterials.PROMETHEUM);
+    public static final ArmorSet PROMETHEUM = new PrometheumArmorSet(MythicArmorMaterials.PROMETHEUM);
     public static final ArmorSet RUNITE = new RuniteArmorSet(MythicArmorMaterials.RUNITE);
     public static final ArmorSet SILVER = new ArmorSet(MythicArmorMaterials.SILVER);
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(MythicArmorMaterials.STAR_PLATINUM);

@@ -56,7 +56,7 @@ To quickly summarize the following materials were updated in different regards:
 
 - Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
 - Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
-- Increased the damage of Quadrillum tools slightly (6.5 -> 6.7)
+- Increased the damage dealt by Quadrillum tools slightly (6.5 -> 6.7)
 - Increased the mining speed of Quadrillum tools (5.0 -> 5.5)
 - Reduced the attack speed of Quadrillum tools
 - Reduced the attack speed of the Osmium Axe
@@ -64,6 +64,7 @@ To quickly summarize the following materials were updated in different regards:
 - Made Quadrillum Ore and Blocks much easier to break
 - Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
 - Increased attack speed of Engrained Prometheum (5% -> 8%)
+- Prometheum auto repair tick now happens anywhere in your inventory, instead of only while equipped. This should make the effect more noticable
 - Increased Mythril Drill auto repair when it is activated
 - Increased Aquarium Pearl drop rate (2% -> 2.5%)
 - Increased Aquarium Ore spawn range (from 31 to 63 -> from 21 to 69)

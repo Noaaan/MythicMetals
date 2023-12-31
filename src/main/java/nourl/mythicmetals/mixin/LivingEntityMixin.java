@@ -10,7 +10,9 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.*;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -21,21 +23,24 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythrilDrill;
-import nourl.mythicmetals.item.tools.PrometheumToolSet;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.WasSpawnedFromCreeper;
 import nourl.mythicmetals.registry.RegisterCriteria;
 import nourl.mythicmetals.registry.RegisterEntityAttributes;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
@@ -123,8 +128,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
         if (!getWorld().isClient()) {
-            mythicmetals$prometheumRepairPassive(getMainHandStack());
-            mythicmetals$prometheumRepairPassive(getOffHandStack());
+            mythicmetals$drillRepairPassive(getMainHandStack());
+            mythicmetals$drillRepairPassive(getOffHandStack());
             mythicmetals$tickCombustion();
         }
         mythicmetals$palladiumParticles();
@@ -163,23 +168,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Unique
-    private void mythicmetals$prometheumRepairPassive(ItemStack stack) {
-        // Handle Prometheum Tools
-        if (stack.isIn(MythicTags.PROMETHEUM_TOOLS)) {
-
-            if (!stack.has(PrometheumToolSet.DURABILITY_REPAIRED)) {
-                stack.put(PrometheumToolSet.DURABILITY_REPAIRED, 0);
-            }
-
-            var dmg = stack.getDamage();
-            var rng = r.nextInt(200);
-            if (rng == 117 && dmg > 0) {
-                int value = PrometheumToolSet.isOvergrown(stack) ? 2 : 1;
-                stack.setDamage(MathHelper.clamp(dmg - value, 0, Integer.MAX_VALUE));
-                PrometheumToolSet.incrementRepairCounter(stack, 1);
-            }
-        }
-
+    private void mythicmetals$drillRepairPassive(ItemStack stack) {
         // Handle Mythril Drill with Prometheum Upgrade
         if (stack.getItem() instanceof MythrilDrill drill && MythrilDrill.hasUpgradeItem(stack, MythicItems.Mats.PROMETHEUM_BOUQUET)) {
             var dmg = stack.getDamage();
@@ -206,24 +195,6 @@ public abstract class LivingEntityMixin extends Entity {
 
             if (MythicArmor.CARMOT.isInArmorSet(armorStack)) {
                 mythicmetals$carmotParticle();
-            }
-
-            // Repair Prometheum Armor server-side
-            if (!getWorld().isClient && armorStack.isIn(MythicTags.PROMETHEUM_ARMOR) && armorStack.isDamaged()) {
-                var dmg = armorStack.getDamage();
-                var rng = r.nextInt(200);
-
-                if (!armorStack.has(PrometheumToolSet.DURABILITY_REPAIRED)) {
-                    armorStack.put(PrometheumToolSet.DURABILITY_REPAIRED, 0);
-                }
-
-                if (EnchantmentHelper.hasBindingCurse(armorStack) && rng < 2) {
-                    armorStack.setDamage(MathHelper.clamp(dmg - 2, 0, Integer.MAX_VALUE));
-                    PrometheumToolSet.incrementRepairCounter(armorStack, 2);
-                } else if (rng == 117) {
-                    armorStack.setDamage(MathHelper.clamp(dmg - 1, 0, Integer.MAX_VALUE));
-                    PrometheumToolSet.incrementRepairCounter(armorStack, 1);
-                }
             }
 
             if (MythicArmor.COPPER.isInArmorSet(armorStack) && getWorld().isThundering()) {
