@@ -1,3 +1,7 @@
+# 0.19.1
+
+Fix a crash on startup due to unregistered blocks (intrusive holders). 
+
 # 0.19.0
 
 ## Tidesinger Equipment

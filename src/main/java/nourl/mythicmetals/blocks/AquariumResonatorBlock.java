@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 import org.jetbrains.annotations.Nullable;
 
-public class AquariumResonatorBlock extends BlockWithEntity {
+public class AquariumResonatorBlock {}/*extends BlockWithEntity {
 
     protected AquariumResonatorBlock(Settings settings) {
         super(settings);
@@ -30,3 +30,4 @@ public class AquariumResonatorBlock extends BlockWithEntity {
         return BlockRenderType.MODEL;
     }
 }
+*/

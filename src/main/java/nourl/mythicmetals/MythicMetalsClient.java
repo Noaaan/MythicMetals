@@ -42,7 +42,6 @@ import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.armor.TidesingerArmor;
-import nourl.mythicmetals.blocks.IndevBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
@@ -94,7 +93,12 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), IndevBlocks.AQUARIUM_GLASS, MythicBlocks.KYBER.getStorageBlock());
+
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            //BlockRenderLayerMap.INSTANCE.putBlock(IndevBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
+        }
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.KYBER.getStorageBlock());
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {

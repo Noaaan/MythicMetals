@@ -26,12 +26,13 @@ public class ConduitBlockEntityMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$extendConduitArray(CallbackInfo ci) {
         List<Block> blocks = Arrays.stream(ACTIVATING_BLOCKS).collect(Collectors.toList());
-        blocks.add(IndevBlocks.AQUARIUM_GLASS);
+        //blocks.add(IndevBlocks.AQUARIUM_GLASS);
         blocks.add(MythicBlocks.AQUARIUM.getStorageBlock());
 
         ACTIVATING_BLOCKS = blocks.toArray(ACTIVATING_BLOCKS);
     }
 
+    /*
     @Inject(method = "givePlayersEffects", at = @At("TAIL"))
     private static void mythicmetals$invokeNearbySentries(World world, BlockPos pos, List<BlockPos> activatingBlocks, CallbackInfo ci) {
         if (world.isClient) return;
@@ -45,4 +46,6 @@ public class ConduitBlockEntityMixin {
                 }
             });
     }
+
+     */
 }

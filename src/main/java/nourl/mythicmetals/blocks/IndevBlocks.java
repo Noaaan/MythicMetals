@@ -9,7 +9,7 @@ import net.minecraft.block.GlassBlock;
 
 import java.lang.reflect.Field;
 
-public class IndevBlocks implements BlockRegistryContainer {
+public class IndevBlocks {}/*implements BlockRegistryContainer {
 
     public static final Block AQUARIUM_GLASS = new GlassBlock(FabricBlockSettings.copyOf(Blocks.BLUE_STAINED_GLASS));
     public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
@@ -20,3 +20,4 @@ public class IndevBlocks implements BlockRegistryContainer {
         return FabricLoader.getInstance().isDevelopmentEnvironment();
     }
 }
+*/

@@ -11,10 +11,7 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 import java.util.List;
 
-public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
-    /**
-     * The range of the Aquarium Resonators buff
-     */
+public class AquariumResonatorBlockEntity{} /* extends BlockEntity implements ConduitPowered {
     private static final int MAX_RANGE = 24;
     private boolean activated = false;
     private int activeTime = 50;
@@ -58,3 +55,4 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
         activeTime = 50;
     }
 }
+*/

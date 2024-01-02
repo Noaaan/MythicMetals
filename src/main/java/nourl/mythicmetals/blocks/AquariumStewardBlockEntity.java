@@ -16,10 +16,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class AquariumStewardBlockEntity extends BlockEntity implements ConduitPowered {
-    /**
-     * The range of the Aquarium Steward's attack
-     */
+public class AquariumStewardBlockEntity {} /*extends BlockEntity implements ConduitPowered {
+
     private static final int MAX_RANGE = 16;
     private static final float DAMAGE = 5.0f;
     private boolean activated = false;
@@ -126,3 +124,4 @@ public class AquariumStewardBlockEntity extends BlockEntity implements ConduitPo
         activeTime = 50;
     }
 }
+*/

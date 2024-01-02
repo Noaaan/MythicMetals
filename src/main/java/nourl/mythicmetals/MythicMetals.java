@@ -84,7 +84,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
         FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            FieldRegistrationHandler.register(IndevBlocks.class, MOD_ID, false);
+            //FieldRegistrationHandler.register(IndevBlocks.class, MOD_ID, false);
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
             RegisterPointOfInterests.init();
         }
