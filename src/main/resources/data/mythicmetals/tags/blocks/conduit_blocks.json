@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "mythicmetals:aquarium_block",
-    "mythicmetals:aquarium_glass"
+    "mythicmetals:aquarium_block"
   ]
 }

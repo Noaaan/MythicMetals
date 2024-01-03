@@ -1,3 +1,7 @@
+# 0.19.2
+
+Fix an issue related to an invalid entry in the `minecraft:mineable/pickaxe` tag. 
+
 # 0.19.1
 
 Fix a crash on startup due to unregistered blocks (intrusive holders). 
