@@ -7,6 +7,6 @@ import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 
 public class EnchantedMidasGoldBlockEntity extends BlockEntity {
     public EnchantedMidasGoldBlockEntity(BlockPos pos, BlockState state) {
-        super(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK_ENTITY_TYPE, pos, state);
+        super(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, pos, state);
     }
 }

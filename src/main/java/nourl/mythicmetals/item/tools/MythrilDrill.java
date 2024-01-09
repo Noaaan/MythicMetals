@@ -10,12 +10,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.*;
@@ -38,7 +34,6 @@ import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 import java.util.UUID;
 

@@ -1,28 +1,19 @@
 package nourl.mythicmetals.entity;
 
 import com.google.common.collect.Sets;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.*;
+import net.minecraft.entity.data.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.*;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
+import net.minecraft.potion.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
-
 import java.util.Collection;
 import java.util.Set;
 
@@ -210,7 +201,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
         if (i != -1 && amount > 0) {
             double d = (double) (i >> 16 & 0xFF) / 255.0;
             double e = (double) (i >> 8 & 0xFF) / 255.0;
-            double f = (double) (i >> 0 & 0xFF) / 255.0;
+            double f = (double) (i & 0xFF) / 255.0;
 
             for (int j = 0; j < amount; ++j) {
                 this.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), d, e, f);
@@ -226,7 +217,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
             if (i != -1) {
                 double d = (double) (i >> 16 & 0xFF) / 255.0;
                 double e = (double) (i >> 8 & 0xFF) / 255.0;
-                double f = (double) (i >> 0 & 0xFF) / 255.0;
+                double f = (double) (i & 0xFF) / 255.0;
 
                 for (int j = 0; j < 20; ++j) {
                     this.getWorld().addParticle(ParticleTypes.ENTITY_EFFECT, this.getParticleX(0.5), this.getRandomBodyY(), this.getParticleZ(0.5), d, e, f);

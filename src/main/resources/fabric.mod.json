@@ -47,11 +47,11 @@
   "accessWidener": "mythicmetals.accessWidener",
   "depends": {
     "fabricloader": ">=0.14.0",
-    "alloy_forgery": "*",
-    "fabric": ">=0.57.0",
+    "alloy_forgery": ">=2.1.0",
+    "fabric": ">=0.87.0",
     "minecraft": "1.20.x",
     "java": ">=17",
-    "owo": ">=0.10.3",
+    "owo": ">=0.11.2",
     "cardinal-components-entity": "*"
   },
   "custom": {

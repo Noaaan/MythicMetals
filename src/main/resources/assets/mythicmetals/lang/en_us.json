@@ -840,6 +840,12 @@
   "tooltip.prometheum.engrained": "Engrained",
   "tooltip.prometheum.overgrown": "Overgrown",
 
+  "tooltip.tidesinger.coral.brain": "Brain Coral Variant",
+  "tooltip.tidesinger.coral.bubble": "Bubble Coral Variant",
+  "tooltip.tidesinger.coral.fire": "Fire Coral Variant",
+  "tooltip.tidesinger.coral.horn": "Horn Coral Variant",
+  "tooltip.tidesinger.coral.tube": "Tube Coral Variant",
+
   "death.attack.mythic_ascension": "%s stood too close to the sun",
   "death.attack.banglum_nuke": "%1$s was vaporized",
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
@@ -902,9 +908,9 @@
 
   "smithing_template.mythicmetals.tidesinger.title": "Tidesinger Upgrade",
   "smithing_template.mythicmetals.tidesinger.applies_to": "Aquarium Equipment",
-  "smithing_template.mythicmetals.tidesinger.ingredients": "Aquarium Ingot",
+  "smithing_template.mythicmetals.tidesinger.ingredients": "Coral Plants",
   "smithing_template.mythicmetals.tidesinger.base_slot_description": "Put a piece of Aquarium Equipment here",
-  "smithing_template.mythicmetals.tidesinger.additions_slot_description": "Put an Aquarium Ingot here",
+  "smithing_template.mythicmetals.tidesinger.additions_slot_description": "Put a plant-able coral here (Tube, Brain, Bubble, Fire, Horn)",
 
   "smithing_template.mythicmetals.unobtainium.title": "Unobtainium Alloy Upgrade",
   "smithing_template.mythicmetals.unobtainium.applies_to": "Netherite or Diamond Equipment",

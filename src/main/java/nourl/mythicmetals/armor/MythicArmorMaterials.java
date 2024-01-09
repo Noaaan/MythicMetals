@@ -1,15 +1,12 @@
 package nourl.mythicmetals.armor;
 
 import com.google.common.base.Suppliers;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.registry.RegisterSounds;
-
 import java.util.function.Supplier;
 
 @SuppressWarnings("CodeBlock2Expr")
@@ -86,7 +83,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     STORMYX("stormyx", 30, new int[]{3, 6, 8, 3}, 20, RegisterSounds.EQUIP_STORMYX, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.STORMYX.getIngot());
     }),
-    TIDESINGER("tidesinger", 32, new int[]{3, 6, 7, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
+    TIDESINGER("tidesinger", 32, new int[]{3, 6, 8, 3}, 16, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.AQUARIUM.getIngot());
     });
 

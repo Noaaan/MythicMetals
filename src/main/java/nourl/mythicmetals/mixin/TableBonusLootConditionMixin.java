@@ -1,6 +1,7 @@
 package nourl.mythicmetals.mixin;
 
-import net.minecraft.enchantment.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
@@ -10,7 +11,6 @@ import nourl.mythicmetals.item.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-
 import java.util.Objects;
 
 @Mixin(TableBonusLootCondition.class)

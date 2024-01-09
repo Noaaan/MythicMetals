@@ -1,18 +1,13 @@
 package nourl.mythicmetals.mixin;
 
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
-import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.item.tools.MythrilDrill;
-import nourl.mythicmetals.item.tools.RiptideTool;
+import nourl.mythicmetals.item.tools.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

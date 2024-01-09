@@ -8,8 +8,8 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.random.Random;
-import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.blocks.EnchantedMidasGoldBlockEntity;
+import nourl.mythicmetals.blocks.MythicBlocks;
 
 public class EnchantedMidasBlockEntityRenderer implements BlockEntityRenderer<EnchantedMidasGoldBlockEntity> {
     private final BlockRenderManager blockRenderManager;

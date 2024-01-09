@@ -2,9 +2,7 @@ package nourl.mythicmetals.blocks;
 
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.GlassBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -35,10 +33,6 @@ public class MythicBlocks {
             .createDefaultSet(4F, IRON_MINING_LEVEL, 4.5F, IRON_MINING_LEVEL)
             .createAnvil(IRON_MINING_LEVEL)
             .finish();
-
-    public static final Block AQUARIUM_GLASS = new GlassBlock(FabricBlockSettings.copyOf(Blocks.BLUE_STAINED_GLASS));
-    public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
-    public static final AquariumStewardBlock AQUARIUM_STEWARD = new AquariumStewardBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
 
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
             .strength(5.0F, 5.5F)
@@ -205,9 +199,6 @@ public class MythicBlocks {
 
     public static void init() {
         BlockSet.Builder.register();
-        RegistryHelper.block("aquarium_glass", AQUARIUM_GLASS);
-        RegistryHelper.block("aquarium_resonator", AQUARIUM_RESONATOR);
-        RegistryHelper.block("aquarium_steward", AQUARIUM_STEWARD);
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);

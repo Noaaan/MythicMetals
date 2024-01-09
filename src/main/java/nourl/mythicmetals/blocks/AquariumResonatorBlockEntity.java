@@ -6,18 +6,12 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
-
 import java.util.List;
 
-public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
-    /**
-     * The range of the Aquarium Steward's attack
-     */
+public class AquariumResonatorBlockEntity{} /* extends BlockEntity implements ConduitPowered {
     private static final int MAX_RANGE = 24;
     private boolean activated = false;
     private int activeTime = 50;
@@ -27,7 +21,7 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
     }
 
     public AquariumResonatorBlockEntity(BlockPos pos, BlockState state) {
-        super(RegisterBlockEntityTypes.AQUARIUM_STEWARD_BLOCK_ENTITY_TYPE, pos, state);
+        super(RegisterBlockEntityTypes.AQUARIUM_RESONATOR, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
@@ -61,3 +55,4 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
         activeTime = 50;
     }
 }
+*/

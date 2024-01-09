@@ -2,10 +2,7 @@ package nourl.mythicmetals.misc;
 
 import com.mojang.authlib.GameProfile;
 import eu.pb4.common.protection.api.CommonProtection;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidDrainable;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +13,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.data.MythicTags;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.function.Predicate;
 
 import static net.minecraft.block.Block.dropStacks;

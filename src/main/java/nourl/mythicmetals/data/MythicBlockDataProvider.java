@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
-
 import java.util.concurrent.CompletableFuture;
 
 public class MythicBlockDataProvider extends FabricTagProvider.BlockTagProvider {

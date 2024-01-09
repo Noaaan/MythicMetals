@@ -8,7 +8,6 @@ import net.minecraft.nbt.NbtElement;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
-
 import java.util.List;
 
 public class UsefulSingletonForColorUtil {
@@ -37,7 +36,7 @@ public class UsefulSingletonForColorUtil {
             }
 
             List<StatusEffectInstance> effects = PotionUtil.getPotionEffects(stack);
-            if (effects.size() > 0) {
+            if (!effects.isEmpty()) {
                 return PotionUtil.getColor(effects);
             }
         }
@@ -63,5 +62,13 @@ public class UsefulSingletonForColorUtil {
         public static final Style GOLD_STYLE = Style.EMPTY.withColor(Formatting.GOLD);
         public static final Style PALLADIUM_STYLE = Style.EMPTY.withColor(MetalColors.PALLADIUM.rgb());
         public static final Style TIDESINGER_BLUE = Style.EMPTY.withColor(0x2F88FB);
+
+        public static final CoralColor BRAIN = new CoralColor("brain", Style.EMPTY.withColor(0xE17DB7));
+        public static final CoralColor BUBBLE = new CoralColor("bubble", Style.EMPTY.withColor(0xCB44BD));
+        public static final CoralColor FIRE = new CoralColor("fire", Style.EMPTY.withColor(0xA2222E));
+        public static final CoralColor HORN = new CoralColor("horn", Style.EMPTY.withColor(0xEAE94B));
+        public static final CoralColor TUBE = new CoralColor("tube", Style.EMPTY.withColor(0x3F5BDF));
     }
+
+    public record CoralColor(String name, Style style) {}
 }

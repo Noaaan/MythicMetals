@@ -1,6 +1,5 @@
 package nourl.mythicmetals.compat;
 
-import dev.architectury.event.EventResult;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceSet;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
@@ -15,18 +14,17 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.RecipeType;
-import nourl.mythicmetals.item.tools.MidasFoldingRecipe;
 import nourl.mythicmetals.item.tools.MythicTools;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import nourl.mythicmetals.recipe.MidasFoldingRecipe;
+import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
+import java.util.*;
 
 public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
         registry.registerRecipeFiller(MidasFoldingRecipe.class, RecipeType.SMITHING, MidasFoldingDisplay::new);
+        registry.registerRecipeFiller(TidesingerCoralRecipe.class, RecipeType.SMITHING, TidesingerSmithingDisplay::new);
 
         // Tipped Runite Arrow handling
         EntryIngredient arrowStack = EntryIngredient.of(EntryStacks.of(MythicTools.RUNITE_ARROW));

@@ -4,7 +4,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
-
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +25,9 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
         }
         if (mixinClassName.equals("nourl.mythicmetals.mixin.PiglinBrainMixin")) {
             return !FabricLoader.getInstance().isModLoaded("custom_piglin_bartering");
+        }
+        if (mixinClassName.equals("nourl.mythicmetals.mixin.ConduitBlockEntityMixin")) {
+            return FabricLoader.getInstance().isDevelopmentEnvironment();
         }
         return true;
     }

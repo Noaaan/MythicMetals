@@ -10,7 +10,6 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.armor.ArmorSet;
 import nourl.mythicmetals.armor.MythicArmor;
-
 import java.util.concurrent.CompletableFuture;
 
 public class ArmorSetArgumentType implements ArgumentType<ArmorSet> {

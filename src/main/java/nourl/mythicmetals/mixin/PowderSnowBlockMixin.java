@@ -1,9 +1,7 @@
 package nourl.mythicmetals.mixin;
 
 import net.minecraft.block.PowderSnowBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import nourl.mythicmetals.armor.MythicArmor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

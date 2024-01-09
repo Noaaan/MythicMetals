@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:smithing_transform",
+  "type": "mythicmetals:tidesinger_smithing_transform",
   "template": {
     "item": "mythicmetals:tidesinger_smithing_template"
   },
@@ -7,7 +7,7 @@
     "item": "mythicmetals:aquarium_boots"
   },
   "addition": {
-    "item": "mythicmetals:aquarium_ingot"
+    "item": "minecraft:horn_coral"
   },
   "result": {
     "item": "mythicmetals:tidesinger_boots"

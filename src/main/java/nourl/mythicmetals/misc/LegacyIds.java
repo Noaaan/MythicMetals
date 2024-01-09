@@ -1,7 +1,6 @@
 package nourl.mythicmetals.misc;
 
 import net.minecraft.util.Identifier;
-
 import java.util.HashMap;
 
 public class LegacyIds {

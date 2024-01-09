@@ -7,15 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
-import net.minecraft.util.Util;
+import net.minecraft.util.*;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.misc.MythicParticleSystem;
-import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
-
+import nourl.mythicmetals.misc.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +22,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     public static final ItemSet BANGLUM = new ItemSet();
     public static final ItemSet BRONZE = new ItemSet(true);
     public static final ItemSet CARMOT = new ItemSet();
-    public static final ItemSet CELESTIUM = new ItemSet(true, settings -> settings.rarity(Rarity.RARE));
+    public static final ItemSet CELESTIUM = new ItemSet(true, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ItemSet DURASTEEL = new ItemSet(true);
     public static final ItemSet HALLOWED = new ItemSet(true, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ItemSet KYBER = new ItemSet();
@@ -190,7 +184,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
         public static final Item TIDESINGER_SMITHING_TEMPLATE = new SmithingTemplateItem(
                 Text.translatable("smithing_template.mythicmetals.tidesinger.applies_to").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
-                Text.translatable("smithing_template.mythicmetals.tidesinger.ingredients").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE),
+                Text.translatable("smithing_template.mythicmetals.tidesinger.ingredients").setStyle(UsefulSingletonForColorUtil.MetalColors.BUBBLE.style()),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.title").formatted(Formatting.GRAY),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.base_slot_description"),
                 Text.translatable("smithing_template.mythicmetals.tidesinger.additions_slot_description"),

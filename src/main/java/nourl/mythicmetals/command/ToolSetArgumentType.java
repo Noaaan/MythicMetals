@@ -11,7 +11,6 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.ToolSet;
-
 import java.util.concurrent.CompletableFuture;
 
 public class ToolSetArgumentType implements ArgumentType<ToolSet> {

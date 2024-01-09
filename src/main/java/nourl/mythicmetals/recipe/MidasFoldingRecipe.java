@@ -1,18 +1,17 @@
-package nourl.mythicmetals.item.tools;
+package nourl.mythicmetals.recipe;
 
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
-import net.minecraft.recipe.SmithingRecipe;
+import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.item.tools.MidasGoldSword;
+import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public class MidasFoldingRecipe implements SmithingRecipe {

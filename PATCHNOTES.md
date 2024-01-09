@@ -1,27 +1,14 @@
+# 0.19.2
+
+Fix an issue related to an invalid entry in the `minecraft:mineable/pickaxe` tag. 
+
+# 0.19.1
+
+Fix a crash on startup due to unregistered blocks (intrusive holders). 
+
 # 0.19.0
 
-## Aquarium Rework
-
-Aquarium is undergoing a rework. 
-
-### Aquarium Conduit Blocks
-
-These blocks are special in that they only work within the range of an active conduit.
-
-#### Aquarium Resonator
-
-Grants you stronger Conduit Power, meaning you can mine even faster underwater!
-
-#### Aquarium Steward
-
-Damages nearby mobs, similar to the regular conduit, albeit with increased range and damage
-
-#### Aquarium Glass
-
-This is a simple glass block that counts towards [valid Conduit blocks](https://minecraft.wiki/w/Conduit#Conduit_power),
-allowing you to view the Conduit in its full splendor while its active. 
-
-### Tidesinger Equipment
+## Tidesinger Equipment
 
 Using the **Aquarium Pearls** you find sometimes when mining Aquarium, along with a handful of Coral, you can craft 
 yourself a set of **Tidesinger Armor** or **Tools**. 
@@ -30,36 +17,31 @@ This gear is superior to regular Aquarium in every way, as well as providing a d
 
 The weapons (Sword and Axe) are special, as they come with Riptide 3!
 
-## Texture changes
+## Texture Update
 
-- New Carmot Armor Items
-- New Osmium Armor Items
-- New Star Platinum Armor and Tools
-  - Comes with a cloak if you do not have any capes equipped, just like Hallowed!
-- New Kyber Armor Items
-- New Silver Armor Items
-- Tweaked Midas Gold Armor Items
-- New Steel Armor Items
-- New Palladium Sword animation
-- Tweaked Raw Osmium sprite
-- New Raw Runite sprite
-- New Prometheum Armor sprites
-- Tweaked Midas Gold Swords
-- New Quadrillum Tools
-- New Celestium Armor Items and Tools
+This update has been in the works to improve the textures of Mythic Metals.
+They are courtesy of Azzyparaas (From PR #191, #193, #199, #202, #203, #207, #210, and #213).
+Feel free to let us know what you think of them!
 
-The following materials received new block and ingot textures (#191, #199):
+To quickly summarize the following materials were updated in different regards:
 
-- Celestium
-- Quadrillum
-- Midas Gold
-- Manganese
-- Carmot
-- Tin
-- Silver
-- Metallurgium
-- Prometheum
-- Runite
+- Aquarium (block, ingot, tools, armor, pearl)
+- Carmot (block, armor items, tools)
+- Celestium (block, ingot, tools, armor items, elytra item)
+- Kyber (block, ingot, tools, armor, )
+- Manganese (blocks, ingot, raw ore)
+- Metallurgium (block, ingot)
+- Midas Gold (block, ingot)
+- Morkite (block and item)
+- Prometheum (block, ingot, armor items)
+- Quadrillum (blocks, ingot, raw ore)
+- Runite (blocks, ingot, arrows)
+- Silver (block and ingot)
+- Star Platinum (blocks, ingot, tools, armor)
+- Starrite (block and item)
+- Steel (blocks, ingot, tools, armor)
+- Tin (block and ingot)
+- Unobtainium (storage block and item)
 
 ## Changes
 
@@ -75,12 +57,14 @@ The following materials received new block and ingot textures (#191, #199):
 - New Carmot Staff Ability: Enchanted Midas Gold Block - Grants Luck 5 in a large area around user
 - Added a Sponge Nuke Core
 - Added a new config option for disabling an Easter Egg with Carmot Staffs
+- Added anvils to the `c:anvils` item tag. Thanks to N0aW for suggesting this. 
+- Added a debug command for placing all block sets, `/mythicmetals place-all-blocks`
 
 ### Balancing Changes
 
 - Increase the durability of Mythril Armor slightly (30 -> 31, on average 14 more durability)
 - Decrease the durability of Orichalcum Armor (41 -> 39, on average 28 less durability)
-- Increased the damage of Quadrillum tools slightly (6.5 -> 6.7)
+- Increased the damage dealt by Quadrillum tools slightly (6.5 -> 6.7)
 - Increased the mining speed of Quadrillum tools (5.0 -> 5.5)
 - Reduced the attack speed of Quadrillum tools
 - Reduced the attack speed of the Osmium Axe
@@ -88,6 +72,7 @@ The following materials received new block and ingot textures (#191, #199):
 - Made Quadrillum Ore and Blocks much easier to break
 - Prometheum now becomes overgrown much earlier (2000 -> 1200 durability repaired)
 - Increased attack speed of Engrained Prometheum (5% -> 8%)
+- Prometheum auto repair tick now happens anywhere in your inventory, instead of only while equipped. This should make the effect more noticable
 - Increased Mythril Drill auto repair when it is activated
 - Increased Aquarium Pearl drop rate (2% -> 2.5%)
 - Increased Aquarium Ore spawn range (from 31 to 63 -> from 21 to 69)
@@ -95,6 +80,9 @@ The following materials received new block and ingot textures (#191, #199):
 - Greatly increased the chance of bartering for an Enchanted Midas Gold Block (3.5% -> 14%! You still need to hit it on the loot table first)
 - Legendary Banglum Tools are now repaired with Banglum Ingots instead of Chunks (now consistent with armor)
 - Increased the durability of Copper Tools (125 -> 187)
+- Celestium Equipment is now fireproof
+- Increased Palladium Ore spawn range slightly (from 14 to 36 -> from 13 to 38)
+- Increased Palladium Ore max vein size (5 -> 6)
 
 ### Bug fixes
 

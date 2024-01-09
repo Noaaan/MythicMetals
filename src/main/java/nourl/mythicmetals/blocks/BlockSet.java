@@ -1,8 +1,6 @@
 package nourl.mythicmetals.blocks;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.*;
 import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -13,7 +11,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
-
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -99,6 +96,7 @@ public class BlockSet {
                 TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
                 TagInjector.inject(Registries.BLOCK, level, anvilBlock);
                 TagInjector.inject(Registries.BLOCK, new Identifier("anvil"), anvilBlock);
+                TagInjector.inject(Registries.ITEM, new Identifier("anvil"), anvilBlock.asItem());
             }));
         }
         miningLevels.forEach((block, level) -> {
@@ -134,6 +132,13 @@ public class BlockSet {
      */
     public ExperienceDroppingBlock getOreVariant(String variant) {
         return oreVariants.get(variant);
+    }
+
+    /**
+     * @return Returns the anvil from the set
+     */
+    public AnvilBlock getAnvil() {
+        return anvil;
     }
 
     public Set<Block> getOreVariants() {

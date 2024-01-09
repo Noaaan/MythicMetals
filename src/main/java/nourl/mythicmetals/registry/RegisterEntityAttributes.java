@@ -1,10 +1,7 @@
 package nourl.mythicmetals.registry;
 
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -16,9 +13,5 @@ public class RegisterEntityAttributes {
     public static void init() {
         Registry.register(Registries.ATTRIBUTE, RegistryHelper.id("elytra_rocket_speed"), ELYTRA_ROCKET_SPEED);
         Registry.register(Registries.ATTRIBUTE, RegistryHelper.id("fire_vulnerability"), FIRE_VULNERABILITY);
-
-        var builder = PlayerEntity.createPlayerAttributes();
-        builder.add(ELYTRA_ROCKET_SPEED).add(FIRE_VULNERABILITY);
-        FabricDefaultAttributeRegistry.register(EntityType.PLAYER, builder);
     }
 }

@@ -2,16 +2,14 @@ package nourl.mythicmetals.client.rendering;
 
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.TntMinecartEntityRenderer;
+import net.minecraft.client.render.entity.*;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import nourl.mythicmetals.entity.BanglumTntEntity;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.entity.BanglumTntEntity;
 
 // [VanillaCopy] of the TntEntityRenderer, but renders our texture
 public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity> {

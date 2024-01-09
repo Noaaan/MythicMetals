@@ -8,7 +8,7 @@
       "translate": "advancement.mythicmetals.forgery.description"
     },
     "icon": {
-      "item": "alloy_forgery:deepslate_bricks_forge_controller"
+      "item": "alloy_forgery:polished_blackstone_forge_controller"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,8 +22,10 @@
         "items": [
           {
             "items": [
-              "alloy_forgery:deepslate_bricks_forge_controller",
-              "alloy_forgery:polished_blackstone_forge_controller"
+              "alloy_forgery:polished_blackstone_forge_controller",
+              "alloy_forgery:prismarine_bricks_forge_controller",
+              "alloy_forgery:end_stone_bricks_forge_controller",
+              "alloy_forgery:adamantite_block_forge_controller"
             ]
           }
         ]

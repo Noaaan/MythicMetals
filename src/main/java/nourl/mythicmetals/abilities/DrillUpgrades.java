@@ -4,7 +4,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -21,12 +21,9 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.misc.BanglumNukeSource;
-import nourl.mythicmetals.misc.EpicExplosion;
-import nourl.mythicmetals.misc.MythicDamageTypes;
+import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.function.Predicate;
 
 public class BanglumNukeEntity extends BanglumTntEntity {

@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
-import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
@@ -27,10 +26,7 @@ import net.minecraft.client.texture.Sprite;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.registry.Registries;
@@ -45,7 +41,7 @@ import nourl.mythicmetals.abilities.Ability;
 import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.HallowedArmor;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.client.rendering.EnchantedMidasBlockEntityRenderer;
+import nourl.mythicmetals.armor.TidesingerArmor;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
@@ -63,7 +59,6 @@ import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.UUID;
 
 public class MythicMetalsClient implements ClientModInitializer {
     private long lastTick;
@@ -79,8 +74,8 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerModelPredicates();
         registerSwirlRenderer();
 
+        registerTidesingerTooltips();
         registerPrometheumTooltips();
-        registerPrometheumAttributeEvent();
 
         LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
 
@@ -90,7 +85,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
-        BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK_ENTITY_TYPE, EnchantedMidasBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
         BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
         ModelLoadingPlugin.register(new CarmotStaffBlockRenderer());
@@ -98,7 +93,12 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.AQUARIUM_GLASS, MythicBlocks.KYBER.getStorageBlock());
+
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            //BlockRenderLayerMap.INSTANCE.putBlock(IndevBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
+        }
+
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.KYBER.getStorageBlock());
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -107,28 +107,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         }
     }
 
-    private void registerPrometheumAttributeEvent() {
-        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
-                if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
-                            UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
-                            "Bound Prometheum bonus",
-                            0.08,
-                            EntityAttributeModifier.Operation.MULTIPLY_BASE
-                    ));
-                }
-                if (PrometheumToolSet.isOvergrown(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                            UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
-                            "Prometheum bonus toughness",
-                            EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
-                            EntityAttributeModifier.Operation.ADDITION
-                    ));
-                }
-            }
-        });
-    }
+
 
     private void registerPrometheumTooltips() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
@@ -144,6 +123,23 @@ public class MythicMetalsClient implements ClientModInitializer {
                 if (EnchantmentHelper.hasBindingCurse(stack)) {
                     Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.engrained");
                 }
+            }
+        });
+    }
+
+    private void registerTidesingerTooltips() {
+        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+            if (stack.has(TidesingerArmor.CORAL_TYPE)) {
+                Style style = switch (stack.get(TidesingerArmor.CORAL_TYPE)) {
+                    case "brain" -> UsefulSingletonForColorUtil.MetalColors.BRAIN.style();
+                    case "bubble" -> UsefulSingletonForColorUtil.MetalColors.BUBBLE.style();
+                    case "fire" -> UsefulSingletonForColorUtil.MetalColors.FIRE.style();
+                    case "horn" -> UsefulSingletonForColorUtil.MetalColors.HORN.style();
+                    case "tube" -> UsefulSingletonForColorUtil.MetalColors.TUBE.style();
+                    default -> Style.EMPTY;
+                };
+
+                Ability.addTooltipOnStack(stack, lines, style, "tooltip.tidesinger.coral." + stack.get(TidesingerArmor.CORAL_TYPE));
             }
         });
     }
