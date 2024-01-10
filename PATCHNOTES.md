@@ -1,3 +1,14 @@
+# 0.19.3
+
+## Changes
+
+- Added new anvil textures for Carmot and Star Platinum
+
+## Fixes
+
+- Fix an issue where anvils would be destroyed upon falling too far.
+
+
 # 0.19.2
 
 Fix an issue related to an invalid entry in the `minecraft:mineable/pickaxe` tag. 
