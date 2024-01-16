@@ -7,6 +7,7 @@
 ## Fixes
 
 - Fix an issue where anvils would be destroyed upon falling too far.
+- Fixed the Platinum Watch not properly showing the time
 
 
 # 0.19.2
