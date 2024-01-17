@@ -49,7 +49,6 @@ import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
 import java.util.UUID;
 
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
@@ -57,7 +56,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static final String MOD_ID = "mythicmetals";
     public static final int CONFIG_VERSION = 11;
 
-    public static final AbstractMinecartEntity.Type BANGLUM_TNT = Arrays.stream(AbstractMinecartEntity.Type.class.getEnumConstants()).filter(constant -> constant.name().equals("BANGLUM_TNT")).toList().get(0);
+    public static final AbstractMinecartEntity.Type BANGLUM_TNT = Enum.valueOf(AbstractMinecartEntity.Type.class, "BANGLUM_TNT");
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
