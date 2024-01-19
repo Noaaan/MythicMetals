@@ -330,7 +330,7 @@
     ]
   },
   "equip_stormyx": {
-    "subtitle": "subtitles.mythicmetals.equip_midas_gold",
+    "subtitle": "subtitles.mythicmetals.equip_stormyx",
     "sounds": [
       "item/armor/equip_chain1",
       "item/armor/equip_chain2",
