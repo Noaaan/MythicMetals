@@ -9,6 +9,7 @@
 - Fix an issue where anvils would be destroyed upon falling too far.
 - Fixed the Platinum Watch not properly showing the time
 - Add recipe for Sponge Nuke Core
+- Fixed the equip subtitles of Osmium Armor, Osmium Chainmail, and Tidesinger Armor
 
 # 0.19.2
 

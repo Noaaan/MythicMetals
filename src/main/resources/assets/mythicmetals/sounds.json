@@ -566,6 +566,17 @@
       "item/armor/equip_chain6"
     ]
   },
+  "equip_tidesinger": {
+    "subtitle": "subtitles.mythicmetals.equip_tidesinger",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ]
+  },
   "carmot_staff_empty": {
     "subtitle": "subtitles.mythicmetals.carmot_staff_empty",
     "sounds": [

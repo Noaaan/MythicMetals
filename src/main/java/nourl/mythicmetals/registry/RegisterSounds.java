@@ -34,6 +34,7 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static final SoundEvent EQUIP_STAR_PLATINUM = SoundEvent.of(RegistryHelper.id("equip_star_platinum"));
     public static final SoundEvent EQUIP_STEEL = SoundEvent.of(RegistryHelper.id("equip_steel"));
     public static final SoundEvent EQUIP_STORMYX = SoundEvent.of(RegistryHelper.id("equip_stormyx"));
+    public static final SoundEvent EQUIP_TIDESINGER = SoundEvent.of(RegistryHelper.id("equip_tidesinger"));
     public static final SoundEvent DOG = SoundEvent.of(RegistryHelper.id("music_disc.dog4"));
     public static final SoundEvent MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("morkite_ore_break"));
     public static final SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("deepslate_morkite_ore_break"));
