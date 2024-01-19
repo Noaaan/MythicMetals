@@ -3,6 +3,7 @@
 ## Changes
 
 - Added new anvil textures for Carmot and Star Platinum
+- Storage Blocks now follow the vanilla naming scheme (ex. Adamantite Block -> Block of Adamantite)
 
 ## Fixes
 
