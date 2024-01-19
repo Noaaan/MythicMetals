@@ -8,7 +8,7 @@
 
 - Fix an issue where anvils would be destroyed upon falling too far.
 - Fixed the Platinum Watch not properly showing the time
-
+- Add recipe for Sponge Nuke Core
 
 # 0.19.2
 
