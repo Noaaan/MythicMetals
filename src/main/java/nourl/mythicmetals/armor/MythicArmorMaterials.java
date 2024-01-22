@@ -25,7 +25,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     CARMOT("carmot", 26, new int[]{3, 6, 8, 3}, 40, RegisterSounds.EQUIP_CARMOT, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.CARMOT.getIngot());
     }),
-    CELESTIUM("celestium", 38, new int[]{4, 8, 10, 4}, 30, RegisterSounds.EQUIP_CELESTIUM, 3.0F, 0.0F, () -> {
+    CELESTIUM("celestium", 41, new int[]{4, 7, 10, 4}, 30, RegisterSounds.EQUIP_CELESTIUM, 3.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.CELESTIUM.getIngot());
     }),
     COPPER("copper", 9, new int[]{1, 3, 4, 2}, 8, RegisterSounds.EQUIP_COPPER, 0.0F, 0.0F, () -> {
@@ -43,7 +43,7 @@ public enum MythicArmorMaterials implements ArmorMaterial {
     LEGENDARY_BANGLUM("legendary_banglum", 28, new int[]{3, 6, 8, 3}, 2, RegisterSounds.EQUIP_LEGENDARY_BANGLUM, 2.0F, 0.0F, () -> {
         return Ingredient.ofItems(MythicItems.BANGLUM.getIngot());
     }),
-    METALLURGIUM("metallurgium", 69, new int[]{5, 9, 12, 5}, 30, RegisterSounds.EQUIP_METALLURGIUM, 5.0F, 0.225F, () -> {
+    METALLURGIUM("metallurgium", 69, new int[]{5, 8, 12, 5}, 30, RegisterSounds.EQUIP_METALLURGIUM, 5.0F, 0.225F, () -> {
         return Ingredient.ofItems(MythicItems.METALLURGIUM.getIngot());
     }),
     MIDAS_GOLD("midas_gold", 14, new int[]{1, 3, 5, 2}, 24, RegisterSounds.EQUIP_MIDAS_GOLD, 0.0F, 0.0F, () -> {
