@@ -330,7 +330,7 @@
     ]
   },
   "equip_stormyx": {
-    "subtitle": "subtitles.mythicmetals.equip_midas_gold",
+    "subtitle": "subtitles.mythicmetals.equip_stormyx",
     "sounds": [
       "item/armor/equip_chain1",
       "item/armor/equip_chain2",
@@ -564,6 +564,17 @@
       "item/armor/equip_chain4",
       "item/armor/equip_chain5",
       "item/armor/equip_chain6"
+    ]
+  },
+  "equip_tidesinger": {
+    "subtitle": "subtitles.mythicmetals.equip_tidesinger",
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
     ]
   },
   "carmot_staff_empty": {

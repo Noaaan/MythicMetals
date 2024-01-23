@@ -61,7 +61,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MythicMetalsClient implements ClientModInitializer {
-    private long lastTick;
+    private long lastTime;
     private float time;
     public static ModelTransformationMode mode;
 
@@ -279,16 +279,19 @@ public class MythicMetalsClient implements ClientModInitializer {
             if (entity == null || entity.getWorld() == null) {
                 return 0.0F;
             }
-
             return this.getTime(entity.getWorld());
         });
 
     }
 
     private float getTime(World world) {
-        if (world.getTime() != this.lastTick) {
-            this.lastTick = world.getTime();
-            this.time += Delta.compute(this.time, (world.getTimeOfDay()) / 24000.0f, MinecraftClient.getInstance().getLastFrameDuration() / 10.0f);
+        if (world.getTimeOfDay() != this.lastTime) {
+            this.lastTime = world.getTimeOfDay();
+            this.time += Delta.compute(
+                    this.time,
+                    (world.getTimeOfDay()) / 24000.0f,
+                    MinecraftClient.getInstance().getLastFrameDuration() / 2.0f
+            );
         }
 
         return this.time;

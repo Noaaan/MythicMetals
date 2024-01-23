@@ -14,6 +14,7 @@ public class MythicTags {
     public static final TagKey<Item> PROMETHEUM_TOOLS = TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("prometheum_tools"));
     public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("carmot_staff_blocks"));
 
+    public static final TagKey<Block> ANVILS = TagKey.of(RegistryKeys.BLOCK, RegistryHelper.id("anvils"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.of(RegistryKeys.BLOCK, RegistryHelper.id("ores"));
     public static final TagKey<Block> NUKE_CORES = TagKey.of(RegistryKeys.BLOCK, RegistryHelper.id("nuke_cores"));
     public static final TagKey<Block> CARMOT_NUKE_IGNORED = TagKey.of(RegistryKeys.BLOCK, RegistryHelper.id("carmot_nuke_ignored"));

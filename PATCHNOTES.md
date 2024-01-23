@@ -1,3 +1,21 @@
+# 0.19.3
+
+## Changes
+
+- Added new anvil textures for Carmot and Star Platinum
+- Storage Blocks now follow the vanilla naming scheme (ex. Adamantite Block -> Block of Adamantite)
+- Increase Celestium Armor Durability (38 -> 41, approx. +72 durability per piece)
+- Decrease Celestium Leggings Armor (8 -> 7)
+- Decrease Metallurgium Leggings Armor (9 -> 8)
+
+## Fixes
+
+- Fix an issue where anvils would be destroyed upon falling too far.
+- Fixed the Platinum Watch not properly showing the time
+- Add recipe for Sponge Nuke Core
+- Fixed the equip subtitles of Osmium Armor, Osmium Chainmail, and Tidesinger Armor
+- Adjusted Quadrillum Nugget position in inventory
+
 # 0.19.2
 
 Fix an issue related to an invalid entry in the `minecraft:mineable/pickaxe` tag. 

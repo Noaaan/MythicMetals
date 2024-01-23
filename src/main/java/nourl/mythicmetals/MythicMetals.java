@@ -7,7 +7,6 @@ import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
-import me.shedaniel.mm.api.ClassTinkerers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
@@ -57,7 +56,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static final String MOD_ID = "mythicmetals";
     public static final int CONFIG_VERSION = 11;
 
-    public static final AbstractMinecartEntity.Type BANGLUM_TNT = ClassTinkerers.getEnum(AbstractMinecartEntity.Type.class, "BANGLUM_TNT");
+    public static final AbstractMinecartEntity.Type BANGLUM_TNT = Enum.valueOf(AbstractMinecartEntity.Type.class, "BANGLUM_TNT");
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
