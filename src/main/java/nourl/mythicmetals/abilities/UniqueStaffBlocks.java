@@ -19,10 +19,9 @@ public class UniqueStaffBlocks {
      */
     public static final Map<Block, String> MAP = new HashMap<>();
 
-    @SuppressWarnings("deprecation")
     public static boolean hasUniqueBlockInStaff(ItemStack stack) {
         if (stack.has(CarmotStaff.STORED_BLOCK)) {
-            return stack.get(CarmotStaff.STORED_BLOCK).asItem().getRegistryEntry().isIn(MythicTags.CARMOT_STAFF_BLOCKS);
+            return stack.get(CarmotStaff.STORED_BLOCK).asItem().getDefaultStack().isIn(MythicTags.CARMOT_STAFF_BLOCKS);
         }
         return false;
     }

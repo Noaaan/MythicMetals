@@ -15,6 +15,7 @@
 - Add recipe for Sponge Nuke Core
 - Fixed the equip subtitles of Osmium Armor, Osmium Chainmail, and Tidesinger Armor
 - Adjusted Quadrillum Nugget position in inventory
+- Changed Carmot Armor tag implementation, which fixes compatibility with Truly Modular
 
 # 0.19.2
 

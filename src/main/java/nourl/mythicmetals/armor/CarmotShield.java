@@ -82,7 +82,7 @@ public class CarmotShield implements Component, AutoSyncedComponent {
         // For loop using the players armor items
         int result = 0;
         for (ItemStack armorItems : player.getArmorItems()) {
-            if (armorItems.getItem().getRegistryEntry().isIn(MythicTags.CARMOT_ARMOR)) {
+            if (armorItems.isIn(MythicTags.CARMOT_ARMOR)) {
                 result += SHIELD_HEALTH_PER_PIECE;
             }
         }
