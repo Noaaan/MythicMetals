@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "mythicmetals:block/manganese_block_top",
-    "side": "mythicmetals:block/manganese_block"
+    "side": "mythicmetals:block/manganese_block_top"
   }
 }
