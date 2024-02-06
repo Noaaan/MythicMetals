@@ -29,7 +29,6 @@ public class TidesingerEMIRecipe implements EmiRecipe {
         this.base = recipe.base;
         this.addition = recipe.addition;
         var outputStack = recipe.result;
-        this.id = recipe.getId();
 
         if (this.base != null && this.addition != null && outputStack != null) {
             var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElse(ItemStack.EMPTY).copy();

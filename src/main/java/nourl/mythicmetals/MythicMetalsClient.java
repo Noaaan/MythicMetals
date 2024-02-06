@@ -232,11 +232,11 @@ public class MythicMetalsClient implements ClientModInitializer {
 
             // Armor trim time
             if (!stack.isOf(MythicArmor.HALLOWED.getHelmet())) {
-                ArmorTrim.getTrim(entity.getWorld().getRegistryManager(), stack).ifPresent(trim -> {
+                ArmorTrim.getTrim(entity.getWorld().getRegistryManager(), stack, true).ifPresent(trim -> {
                     var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
                     Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trim.getLeggingsModelId(armor.getMaterial()) : trim.getGenericModelId(armor.getMaterial()));
                     VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
-                            ItemRenderer.getDirectItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(), true, stack.hasGlint())
+                            ItemRenderer.getDirectItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(trim.getPattern().value().decal()), true, stack.hasGlint())
                     );
                     model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
                 });

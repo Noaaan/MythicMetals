@@ -101,7 +101,7 @@ public final class EpicExplosion {
                     var fluidState = world.getFluidState(pos);
 
                     if (fluidState.isIn(FluidTags.WATER)) {
-                        if (state.getBlock() instanceof FluidDrainable drainable && drainable.tryDrainFluid(world, pos, state).isEmpty()) {
+                        if (state.getBlock() instanceof FluidDrainable drainable && drainable.tryDrainFluid(cause, world, pos, state).isEmpty()) {
                             world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
                         } else if (state.isIn(MythicTags.SPONGABLES)) {
                             BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;

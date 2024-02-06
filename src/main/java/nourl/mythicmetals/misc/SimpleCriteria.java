@@ -7,17 +7,11 @@ import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import java.util.Optional;
 
 public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions> {
-    private final Identifier id;
 
-    public SimpleCriteria(Identifier id) {
-        this.id = id;
-    }
-
-    @Override
-    public Identifier getId() {
-        return id;
+    public SimpleCriteria() {
     }
 
     public void trigger(ServerPlayerEntity entity) {
@@ -25,13 +19,13 @@ public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions>
     }
 
     @Override
-    protected Conditions conditionsFromJson(JsonObject obj, LootContextPredicate playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
+    protected Conditions conditionsFromJson(JsonObject obj, Optional<LootContextPredicate> predicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
         return new Conditions();
     }
 
-    public class Conditions extends AbstractCriterionConditions {
+    public static class Conditions extends AbstractCriterionConditions {
         public Conditions() {
-            super(id, LootContextPredicate.EMPTY);
+            super(Optional.empty());
         }
     }
 }

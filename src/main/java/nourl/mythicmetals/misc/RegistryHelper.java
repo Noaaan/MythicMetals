@@ -1,5 +1,6 @@
 package nourl.mythicmetals.misc;
 
+import com.mojang.serialization.Codec;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.OwoItemSettings;
 import net.minecraft.block.Block;
@@ -11,7 +12,6 @@ import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonSerializer;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import nourl.mythicmetals.MythicMetals;
 
@@ -64,8 +64,8 @@ public class RegistryHelper {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, RegistryHelper.id(path));
     }
 
-    public static LootConditionType lootConditionType(String path, JsonSerializer<? extends LootCondition> serializer) {
-        return Registry.register(Registries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootConditionType(serializer));
+    public static LootConditionType lootConditionType(String path, Codec<? extends LootCondition> lootCodec) {
+        return Registry.register(Registries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootConditionType(lootCodec));
     }
 
     public static void blockEntity(String path, BlockEntityType<?> type) {

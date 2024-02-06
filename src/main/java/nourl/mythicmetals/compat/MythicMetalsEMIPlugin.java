@@ -1,8 +1,7 @@
 package nourl.mythicmetals.compat;
 
 import dev.emi.emi.api.*;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.SmithingRecipe;
+import net.minecraft.recipe.*;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
 
@@ -11,11 +10,11 @@ public class MythicMetalsEMIPlugin implements EmiPlugin {
 
     @Override
     public void register(EmiRegistry registry) {
-        for (SmithingRecipe recipe : registry.getRecipeManager().listAllOfType(RecipeType.SMITHING)) {
-            if (recipe instanceof MidasFoldingRecipe foldingRecipe) {
+        for (RecipeEntry<SmithingRecipe> recipe : registry.getRecipeManager().listAllOfType(RecipeType.SMITHING)) {
+            if (recipe.value() instanceof MidasFoldingRecipe foldingRecipe) {
                 registry.addRecipe(new MidasFoldingEMIRecipe(foldingRecipe));
             }
-            if (recipe instanceof TidesingerCoralRecipe tidesingerCoralRecipe) {
+            if (recipe.value() instanceof TidesingerCoralRecipe tidesingerCoralRecipe) {
                 registry.addRecipe(new TidesingerEMIRecipe(tidesingerCoralRecipe));
             }
         }

@@ -5,6 +5,7 @@ import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.Registries;
 import nourl.mythicmetals.armor.TidesingerArmor;
 import nourl.mythicmetals.recipe.TidesingerCoralRecipe;
@@ -17,13 +18,20 @@ public class TidesingerSmithingDisplay extends DefaultSmithingDisplay {
     Ingredient addition;
     ItemStack outputStack;
 
-    public TidesingerSmithingDisplay(TidesingerCoralRecipe recipe) {
-        super(recipe, List.of(EntryIngredients.ofIngredient(recipe.template), EntryIngredients.ofIngredient(recipe.base), EntryIngredients.ofIngredient(recipe.addition)));
+    public TidesingerSmithingDisplay(RecipeEntry<TidesingerCoralRecipe> recipe) {
+        super(
+                recipe.value(),
+                recipe.id(),
+                List.of(EntryIngredients.ofIngredient(recipe.value().template),
+                        EntryIngredients.ofIngredient(recipe.value().base),
+                        EntryIngredients.ofIngredient(recipe.value().addition)
+                )
+        );
 
-        this.template = recipe.template;
-        this.base = recipe.base;
-        this.addition = recipe.addition;
-        this.outputStack = recipe.result;
+        this.template = recipe.value().template;
+        this.base = recipe.value().base;
+        this.addition = recipe.value().addition;
+        this.outputStack = recipe.value().result;
 
     }
 

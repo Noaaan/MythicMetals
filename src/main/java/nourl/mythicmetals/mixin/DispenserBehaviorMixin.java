@@ -16,7 +16,7 @@ public class DispenserBehaviorMixin {
     private void pleaseDoNotCommitWarCrimes(BlockPointer pointer, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
         if (!BanglumNukeHandler.tryLightBigTntWithDispenser(pointer)) return;
 
-        stack.damage(1, pointer.getWorld().getRandom(), null);
+        stack.damage(1, pointer.world().getRandom(), null);
 
         cir.setReturnValue(stack.getDamage() > stack.getMaxDamage() ? ItemStack.EMPTY : stack);
 

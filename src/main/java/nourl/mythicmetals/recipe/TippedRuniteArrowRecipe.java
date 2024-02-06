@@ -14,8 +14,8 @@ import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
-    public TippedRuniteArrowRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
-        super(identifier, craftingRecipeCategory);
+    public TippedRuniteArrowRecipe(CraftingRecipeCategory craftingRecipeCategory) {
+        super(craftingRecipeCategory);
     }
 
     @Override

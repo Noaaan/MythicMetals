@@ -1,22 +1,22 @@
 package nourl.mythicmetals.misc;
 
-import com.google.gson.*;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
-import net.minecraft.util.JsonHelper;
-import net.minecraft.util.JsonSerializer;
 import nourl.mythicmetals.registry.RegisterLootConditions;
 
-public class RandomChanceWithLuckCondition implements LootCondition {
-    final float chance;
-
-    RandomChanceWithLuckCondition(float chance) {
-        this.chance = chance;
-    }
+public record RandomChanceWithLuckCondition(float chance) implements LootCondition {
+    public static final Codec<RandomChanceWithLuckCondition> CODEC = RecordCodecBuilder.create(
+            instance -> instance
+                    .group(Codec.FLOAT.fieldOf("chance")
+                            .forGetter(RandomChanceWithLuckCondition::chance))
+                    .apply(instance, RandomChanceWithLuckCondition::new)
+    );
 
     @Override
     public LootConditionType getType() {
@@ -35,13 +35,4 @@ public class RandomChanceWithLuckCondition implements LootCondition {
         return () -> new RandomChanceWithLuckCondition(chance);
     }
 
-    public static class Serializer implements JsonSerializer<RandomChanceWithLuckCondition> {
-        public void toJson(JsonObject jsonObject, RandomChanceWithLuckCondition condition, JsonSerializationContext jsonSerializationContext) {
-            jsonObject.addProperty("chance", condition.chance);
-        }
-
-        public RandomChanceWithLuckCondition fromJson(JsonObject jsonObject, JsonDeserializationContext jsonDeserializationContext) {
-            return new RandomChanceWithLuckCondition(JsonHelper.getFloat(jsonObject, "chance"));
-        }
-    }
 }

@@ -17,18 +17,18 @@ public class CombustingStatusEffect extends StatusEffect {
         super.applyUpdateEffect(entity, amplifier);
     }
 
+//    @Override
+//    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+//        entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
+//    }
+
     @Override
-    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
+    public void onRemoved(AttributeContainer attributeContainer) {
+        super.onRemoved(attributeContainer);
     }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return duration % 20 == 0;
-    }
-
-    @Override
-    public double adjustModifierAmount(int amplifier, EntityAttributeModifier modifier) {
-        return amplifier + 1;
     }
 }

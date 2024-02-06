@@ -6,6 +6,7 @@ import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeEntry;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
 import nourl.mythicmetals.recipe.MidasFoldingRecipe;
 import java.util.Arrays;
@@ -19,20 +20,21 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
     Ingredient addition;
     ItemStack outputStack;
 
-    public MidasFoldingDisplay(MidasFoldingRecipe recipe) {
+    public MidasFoldingDisplay(RecipeEntry<MidasFoldingRecipe> recipe) {
         super(
-            recipe,
+            recipe.value(),
+            recipe.id(),
             List.of(
-                EntryIngredients.ofIngredient(recipe.template),
-                EntryIngredients.ofIngredient(recipe.base),
-                EntryIngredients.ofIngredient(recipe.addition)
+                EntryIngredients.ofIngredient(recipe.value().template),
+                EntryIngredients.ofIngredient(recipe.value().base),
+                EntryIngredients.ofIngredient(recipe.value().addition)
             )
         );
 
-        this.template = recipe.template;
-        this.base = recipe.base;
-        this.addition = recipe.addition;
-        this.outputStack = recipe.result;
+        this.template = recipe.value().template;
+        this.base = recipe.value().base;
+        this.addition = recipe.value().addition;
+        this.outputStack = recipe.value().result;
 
     }
 

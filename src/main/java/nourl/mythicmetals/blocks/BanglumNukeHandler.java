@@ -47,9 +47,9 @@ public class BanglumNukeHandler {
     }
 
     public static boolean tryLightBigTntWithDispenser(BlockPointer dispenser) {
-        var world = dispenser.getWorld();
-        BlockState state = world.getBlockState(dispenser.getPos().offset(dispenser.getBlockState().get(DispenserBlock.FACING)));
-        var pos = dispenser.getPos().offset(dispenser.getBlockState().get(DispenserBlock.FACING));
+        var world = dispenser.world();
+        BlockState state = world.getBlockState(dispenser.pos().offset(dispenser.state().get(DispenserBlock.FACING)));
+        var pos = dispenser.pos().offset(dispenser.state().get(DispenserBlock.FACING));
 
         if (!state.isOf(MythicBlocks.BANGLUM.getStorageBlock())
                 && !state.isOf(MythicBlocks.MORKITE.getStorageBlock()))

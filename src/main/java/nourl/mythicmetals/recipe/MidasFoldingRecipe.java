@@ -1,13 +1,12 @@
 package nourl.mythicmetals.recipe;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.*;
 import net.minecraft.registry.DynamicRegistryManager;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MidasGoldSword;
@@ -19,14 +18,12 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     public final Ingredient addition;
     public final ItemStack result;
     public final Ingredient template;
-    public final Identifier id;
 
-    public MidasFoldingRecipe(Ingredient base, Ingredient addition, Ingredient template, ItemStack result, Identifier id) {
+    public MidasFoldingRecipe(Ingredient base, Ingredient addition, Ingredient template, ItemStack result) {
         this.base = base;
         this.addition = addition;
         this.result = result;
         this.template = template;
-        this.id = id;
     }
 
     @Override
@@ -101,14 +98,10 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public ItemStack getOutput(DynamicRegistryManager registryManager) {
+    public ItemStack getResult(DynamicRegistryManager registryManager) {
         return this.result;
     }
 
-    @Override
-    public Identifier getId() {
-        return this.id;
-    }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
@@ -131,27 +124,36 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     public static class Serializer implements RecipeSerializer<MidasFoldingRecipe> {
-            public MidasFoldingRecipe read(Identifier identifier, JsonObject jsonObject) {
-                Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"));
-                Ingredient ingredient2 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"));
-                Ingredient ingredient3 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "template"));
-                ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
-                return new MidasFoldingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
-            }
+        private static final Codec<MidasFoldingRecipe> CODEC = RecordCodecBuilder.create(
+                instance -> instance.group(
+                                Ingredient.ALLOW_EMPTY_CODEC.fieldOf("base").forGetter(recipe -> recipe.base),
+                                Ingredient.ALLOW_EMPTY_CODEC.fieldOf("addition").forGetter(recipe -> recipe.addition),
+                                Ingredient.ALLOW_EMPTY_CODEC.fieldOf("template").forGetter(recipe -> recipe.template),
+                                RecipeCodecs.CRAFTING_RESULT.fieldOf("result").forGetter(recipe -> recipe.result)
+                        )
+                        .apply(instance, MidasFoldingRecipe::new)
+        );
 
-            public MidasFoldingRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
-                Ingredient ingredient = Ingredient.fromPacket(packetByteBuf);
-                Ingredient ingredient2 = Ingredient.fromPacket(packetByteBuf);
-                Ingredient ingredient3 = Ingredient.fromPacket(packetByteBuf);
-                ItemStack itemStack = packetByteBuf.readItemStack();
-                return new MidasFoldingRecipe(ingredient, ingredient2, ingredient3, itemStack, identifier);
-            }
+        @Override
+        public Codec<MidasFoldingRecipe> codec() {
+            return CODEC;
+        }
 
-            public void write(PacketByteBuf packetByteBuf, MidasFoldingRecipe smithingRecipe) {
-                smithingRecipe.base.write(packetByteBuf);
-                smithingRecipe.addition.write(packetByteBuf);
-                smithingRecipe.template.write(packetByteBuf);
-                packetByteBuf.writeItemStack(smithingRecipe.result);
-            }
+        @Override
+        public MidasFoldingRecipe read(PacketByteBuf buf) {
+            Ingredient ingredient = Ingredient.fromPacket(buf);
+            Ingredient ingredient2 = Ingredient.fromPacket(buf);
+            Ingredient ingredient3 = Ingredient.fromPacket(buf);
+            ItemStack itemStack = buf.readItemStack();
+            return new MidasFoldingRecipe(ingredient, ingredient2, ingredient3, itemStack);
+        }
+
+        @Override
+        public void write(PacketByteBuf packetByteBuf, MidasFoldingRecipe smithingRecipe) {
+            smithingRecipe.base.write(packetByteBuf);
+            smithingRecipe.addition.write(packetByteBuf);
+            smithingRecipe.template.write(packetByteBuf);
+            packetByteBuf.writeItemStack(smithingRecipe.result);
+        }
     }
 }

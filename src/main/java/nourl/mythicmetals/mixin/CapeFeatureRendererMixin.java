@@ -32,7 +32,7 @@ public abstract class CapeFeatureRendererMixin extends FeatureRenderer<AbstractC
 
     @Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/client/network/AbstractClientPlayerEntity;FFFFFF)V", at = @At("HEAD"), cancellable = true)
     public void render(MatrixStack ms, VertexConsumerProvider vertices, int light, AbstractClientPlayerEntity player, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
-        if (!player.isPartVisible(PlayerModelPart.CAPE) || player.getCapeTexture() != null) return;
+        if (!player.isPartVisible(PlayerModelPart.CAPE) || player.getSkinTextures().capeTexture() != null) return;
         if (RenderingContext.elytraRendered || !LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.invoker().allowCapeRender(player)) return;
 
         // Custom Hallowed Cape when no other cape is present
