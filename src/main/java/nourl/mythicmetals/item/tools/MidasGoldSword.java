@@ -20,16 +20,23 @@ import java.util.List;
 
 public class MidasGoldSword extends SwordItem {
     /**
-     * Counter that tracks how much gold is folded on the sword. Used for dynamically changing damage and transforming the sword
+     * Counter that tracks how much gold is folded on the sword.
+     * Used for dynamically changing damage and transforming the sword
+     * @deprecated will be replaced by "mm_gold_folded"
      */
+    @Deprecated
     public static final KeyedEndec<Integer> GOLD_FOLDED = new KeyedEndec<>("GoldFolded", Endec.INT, 0);
     /**
      * Tracks if the sword is gilded, so that the upgrade text after transforming into a Royal Midas Gold Sword changes
+     * @deprecated will be replaced by "mm_is_gilded_midas"
      */
+    @Deprecated
     public static final KeyedEndec<Boolean> IS_GILDED = new KeyedEndec<>("IsGilded", Endec.BOOLEAN, false);
     /**
      * Tracks if the sword is royal, which causes the sword to drop Raw Midas Gold on mob kills
+     * @deprecated will be replaced by "mm_is_royal_midas"
      */
+    @Deprecated
     public static final KeyedEndec<Boolean> IS_ROYAL = new KeyedEndec<>("IsRoyal", Endec.BOOLEAN, false);
 
     public MidasGoldSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {

@@ -16,6 +16,10 @@ import nourl.mythicmetals.data.MythicTags;
 import java.util.UUID;
 
 public class PrometheumToolSet extends ToolSet {
+    /**
+     * Used to track how much durability is repaired
+     * @deprecated will be replaced by "mm_durability_repaired"
+     */
     public static final KeyedEndec<Integer> DURABILITY_REPAIRED = new KeyedEndec<>("DurabilityRepaired", Endec.INT, 0);
     private static final int OVERGROWN_THRESHOLD = 1200;
 

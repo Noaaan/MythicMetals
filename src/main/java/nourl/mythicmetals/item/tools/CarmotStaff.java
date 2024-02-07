@@ -52,21 +52,25 @@ public class CarmotStaff extends ToolItem {
     /**
      * Contains the block stored inside the staff.
      * This is rendered via the {@link CarmotStaffBlockRenderer}
+     * @deprecated Will be replaced with "mm_stored_block"
      */
+    @Deprecated
     public static final KeyedEndec<Block> STORED_BLOCK = new KeyedEndec<>("StoredBlock", BuiltInEndecs.ofRegistry(Registries.BLOCK), Blocks.AIR);
 
     /**
      * NBT Key that determines whether the staff is actively being used
      */
-    public static final KeyedEndec<Boolean> IS_USED = new KeyedEndec<>("IsUsed", Endec.BOOLEAN, false);
+    public static final KeyedEndec<Boolean> IS_USED = new KeyedEndec<>("is_used", Endec.BOOLEAN, false);
     /**
      * NBT Key that prevents the staff from inserting blocks
+     * @deprecated Will be replaced with "locked" (lowercase)
      */
+    @Deprecated
     public static final KeyedEndec<Boolean> LOCKED = new KeyedEndec<>("Locked", Endec.BOOLEAN, false);
     /**
      * NBT Key that starts playing notes above the users had
      */
-    public static final KeyedEndec<Boolean> ENCORE = new KeyedEndec<>("Encore", Endec.BOOLEAN, false);
+    public static final KeyedEndec<Boolean> ENCORE = new KeyedEndec<>("mm_encore", Endec.BOOLEAN, false);
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 

@@ -42,18 +42,23 @@ import java.util.UUID;
 public class MythrilDrill extends PickaxeItem {
     /**
      * NbtKey that stores the amount of fuel inside the drill
+     * @deprecated Will be replaced with "mm_fuel" (lowercase)
      */
+    @Deprecated
     public static final KeyedEndec<Integer> FUEL = new KeyedEndec<>("Fuel", Endec.INT, 0);
     /**
      * KeyedEndec that determines whether the drill should consume fuel and mine faster
      */
-    public static final KeyedEndec<Boolean> IS_ACTIVE = new KeyedEndec<>("IsActive", Endec.BOOLEAN, false);
+    public static final KeyedEndec<Boolean> IS_ACTIVE = new KeyedEndec<>("mm_is_active", Endec.BOOLEAN, false);
     /**
      * Holds an item, which determines what upgrades the drill has
+     * @deprecated Will be replaced by "mm_upgrade_slot_one"
      */
+    @Deprecated
     public static final KeyedEndec<Item> UPGRADE_SLOT_ONE = new KeyedEndec<>("UpgradeSlot1", BuiltInEndecs.ofRegistry(Registries.ITEM), Items.AIR);
     /**
      * Holds another item, which determines what upgrades the drill has
+     * @deprecated Will be replaced by "mm_upgrade_slot_two"
      */
     public static final KeyedEndec<Item> UPGRADE_SLOT_TWO = new KeyedEndec<>("UpgradeSlot2", BuiltInEndecs.ofRegistry(Registries.ITEM), Items.AIR);
     /**

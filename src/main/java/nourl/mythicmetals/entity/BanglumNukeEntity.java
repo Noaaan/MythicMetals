@@ -29,7 +29,7 @@ import java.util.function.Predicate;
 
 public class BanglumNukeEntity extends BanglumTntEntity {
     private static final int DEFAULT_FUSE = 200;
-    private static final KeyedEndec<Block> CORE_BLOCK_KEY = Endec.ofCodec(Block.CODEC.codec()).keyed("CoreBlock", MythicBlocks.BANGLUM_NUKE_CORE);
+    private static final KeyedEndec<Block> CORE_BLOCK_KEY = Endec.ofCodec(Block.CODEC.codec()).keyed("core_block", MythicBlocks.BANGLUM_NUKE_CORE);
 
     private Block coreBlock = MythicBlocks.BANGLUM_NUKE_CORE;
 
