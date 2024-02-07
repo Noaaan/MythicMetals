@@ -129,7 +129,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
                                 Ingredient.ALLOW_EMPTY_CODEC.fieldOf("base").forGetter(recipe -> recipe.base),
                                 Ingredient.ALLOW_EMPTY_CODEC.fieldOf("addition").forGetter(recipe -> recipe.addition),
                                 Ingredient.ALLOW_EMPTY_CODEC.fieldOf("template").forGetter(recipe -> recipe.template),
-                                RecipeCodecs.CRAFTING_RESULT.fieldOf("result").forGetter(recipe -> recipe.result)
+                                ItemStack.RECIPE_RESULT_CODEC.fieldOf("result").forGetter(recipe -> recipe.result)
                         )
                         .apply(instance, MidasFoldingRecipe::new)
         );

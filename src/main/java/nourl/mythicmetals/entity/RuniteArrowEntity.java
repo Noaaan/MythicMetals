@@ -24,13 +24,14 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
     private Potion potion = Potions.EMPTY;
     private final Set<StatusEffectInstance> effects = Sets.newHashSet();
     private boolean colorSet;
+    public static final ItemStack RUNITE_ARROW_STACK = new ItemStack(MythicTools.RUNITE_ARROW);
 
     public RuniteArrowEntity(EntityType<RuniteArrowEntity> type, World world) {
-        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, world);
+        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, world, RUNITE_ARROW_STACK);
     }
 
     public RuniteArrowEntity(LivingEntity shooter, World world) {
-        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, shooter, world);
+        super(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, shooter, world, RUNITE_ARROW_STACK);
     }
 
     public void initFromStack(ItemStack stack) {
@@ -75,7 +76,7 @@ public class RuniteArrowEntity extends PersistentProjectileEntity {
     @Override
     protected ItemStack asItemStack() {
         if (this.effects.isEmpty() && this.potion == Potions.EMPTY) {
-            return new ItemStack(MythicTools.RUNITE_ARROW);
+            return RUNITE_ARROW_STACK;
         } else {
             ItemStack itemStack = new ItemStack(MythicTools.TIPPED_RUNITE_ARROW);
             PotionUtil.setPotion(itemStack, this.potion);

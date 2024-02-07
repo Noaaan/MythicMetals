@@ -2,8 +2,10 @@ package nourl.mythicmetals.item.tools;
 
 import com.google.common.collect.*;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
-import io.wispforest.owo.nbt.NbtKey;
 import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.serialization.Endec;
+import io.wispforest.owo.serialization.endec.BuiltInEndecs;
+import io.wispforest.owo.serialization.endec.KeyedEndec;
 import io.wispforest.owo.ui.core.Color;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
@@ -51,20 +53,20 @@ public class CarmotStaff extends ToolItem {
      * Contains the block stored inside the staff.
      * This is rendered via the {@link CarmotStaffBlockRenderer}
      */
-    public static final NbtKey<Block> STORED_BLOCK = new NbtKey<>("StoredBlock", NbtKey.Type.ofRegistry(Registries.BLOCK));
+    public static final KeyedEndec<Block> STORED_BLOCK = new KeyedEndec<>("StoredBlock", BuiltInEndecs.ofRegistry(Registries.BLOCK), Blocks.AIR);
 
     /**
      * NBT Key that determines whether the staff is actively being used
      */
-    public static final NbtKey<Boolean> IS_USED = new NbtKey<>("IsUsed", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> IS_USED = new KeyedEndec<>("IsUsed", Endec.BOOLEAN, false);
     /**
      * NBT Key that prevents the staff from inserting blocks
      */
-    public static final NbtKey<Boolean> LOCKED = new NbtKey<>("Locked", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> LOCKED = new KeyedEndec<>("Locked", Endec.BOOLEAN, false);
     /**
      * NBT Key that starts playing notes above the users had
      */
-    public static final NbtKey<Boolean> ENCORE = new NbtKey<>("Encore", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> ENCORE = new KeyedEndec<>("Encore", Endec.BOOLEAN, false);
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 

@@ -15,18 +15,19 @@ import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.misc.MythicDamageTypes;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
+    public static final ItemStack STAR_PLAT_STACK = new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
 
     public StarPlatinumArrowEntity(LivingEntity owner, World world) {
-        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world);
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world, STAR_PLAT_STACK);
     }
 
     public StarPlatinumArrowEntity(EntityType<StarPlatinumArrowEntity> type, World world) {
-        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, world);
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, world, STAR_PLAT_STACK);
     }
 
     @Override
     protected ItemStack asItemStack() {
-        return new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
+        return STAR_PLAT_STACK;
     }
 
     @Override

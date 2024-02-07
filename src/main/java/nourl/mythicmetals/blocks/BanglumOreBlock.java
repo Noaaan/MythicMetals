@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.MythicItems;
@@ -17,7 +18,7 @@ import nourl.mythicmetals.item.tools.MythrilDrill;
 
 public class BanglumOreBlock extends ExperienceDroppingBlock {
     public BanglumOreBlock(FabricBlockSettings settings) {
-        super(settings);
+        super(ConstantIntProvider.ZERO, settings);
     }
     
     @Override
@@ -37,7 +38,7 @@ public class BanglumOreBlock extends ExperienceDroppingBlock {
      * Occasionally, or in some cases often, explode when mined
      */
     @Override
-    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         int chance = world.getDimension().ultrawarm() ? 35 : 7;
         Random random = Random.create();
         var stack = player.getMainHandStack();
@@ -69,7 +70,7 @@ public class BanglumOreBlock extends ExperienceDroppingBlock {
                 explode(world, pos);
             }
         }
-        super.onBreak(world, pos, state, player);
+        return super.onBreak(world, pos, state, player);
     }
 
     private void explode(World world, BlockPos pos) {

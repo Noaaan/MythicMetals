@@ -1,6 +1,7 @@
 package nourl.mythicmetals.armor;
 
-import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.serialization.Endec;
+import io.wispforest.owo.serialization.endec.KeyedEndec;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -16,7 +17,8 @@ import nourl.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
 public class TidesingerArmor extends HallowedArmor {
-    public static NbtKey<String> CORAL_TYPE = new NbtKey<>("mm_coral_type", NbtKey.Type.STRING);
+    // TODO - Minecraft finally unified their style somewhat - NBT fields are all PascalCase
+    public static KeyedEndec<String> CORAL_TYPE = new KeyedEndec<>("mm_coral_type", Endec.STRING, "none");
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<LivingEntity> model;

@@ -2,7 +2,8 @@ package nourl.mythicmetals.item.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.serialization.Endec;
+import io.wispforest.owo.serialization.endec.KeyedEndec;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -21,15 +22,15 @@ public class MidasGoldSword extends SwordItem {
     /**
      * Counter that tracks how much gold is folded on the sword. Used for dynamically changing damage and transforming the sword
      */
-    public static final NbtKey<Integer> GOLD_FOLDED = new NbtKey<>("GoldFolded", NbtKey.Type.INT);
+    public static final KeyedEndec<Integer> GOLD_FOLDED = new KeyedEndec<>("GoldFolded", Endec.INT, 0);
     /**
      * Tracks if the sword is gilded, so that the upgrade text after transforming into a Royal Midas Gold Sword changes
      */
-    public static final NbtKey<Boolean> IS_GILDED = new NbtKey<>("IsGilded", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> IS_GILDED = new KeyedEndec<>("IsGilded", Endec.BOOLEAN, false);
     /**
      * Tracks if the sword is royal, which causes the sword to drop Raw Midas Gold on mob kills
      */
-    public static final NbtKey<Boolean> IS_ROYAL = new NbtKey<>("IsRoyal", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> IS_ROYAL = new KeyedEndec<>("IsRoyal", Endec.BOOLEAN, false);
 
     public MidasGoldSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);

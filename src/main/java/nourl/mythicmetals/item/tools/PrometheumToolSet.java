@@ -2,7 +2,8 @@ package nourl.mythicmetals.item.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.serialization.Endec;
+import io.wispforest.owo.serialization.endec.KeyedEndec;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -12,11 +13,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import nourl.mythicmetals.data.MythicTags;
-
 import java.util.UUID;
 
 public class PrometheumToolSet extends ToolSet {
-    public static final NbtKey<Integer> DURABILITY_REPAIRED = new NbtKey<>("DurabilityRepaired", NbtKey.Type.INT);
+    public static final KeyedEndec<Integer> DURABILITY_REPAIRED = new KeyedEndec<>("DurabilityRepaired", Endec.INT, 0);
     private static final int OVERGROWN_THRESHOLD = 1200;
 
     public PrometheumToolSet(ToolMaterial material, int[] damage, float[] speed) {

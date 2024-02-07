@@ -1,16 +1,15 @@
 package nourl.mythicmetals.misc;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
 import net.minecraft.advancement.criterion.AbstractCriterion;
-import net.minecraft.advancement.criterion.AbstractCriterionConditions;
-import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.predicate.entity.LootContextPredicate;
+import net.minecraft.predicate.entity.LootContextPredicateValidator;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 import java.util.Optional;
 
 public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions> {
 
+    // FIXME - Broken at the moment
     public SimpleCriteria() {
     }
 
@@ -19,13 +18,22 @@ public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions>
     }
 
     @Override
-    protected Conditions conditionsFromJson(JsonObject obj, Optional<LootContextPredicate> predicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
-        return new Conditions();
+    public Codec<Conditions> getConditionsCodec() {
+        return null;
     }
 
-    public static class Conditions extends AbstractCriterionConditions {
+    public static class Conditions implements AbstractCriterion.Conditions {
         public Conditions() {
-            super(Optional.empty());
+        }
+
+        @Override
+        public void validate(LootContextPredicateValidator validator) {
+            AbstractCriterion.Conditions.super.validate(validator);
+        }
+
+        @Override
+        public Optional<LootContextPredicate> player() {
+            return Optional.empty();
         }
     }
 }

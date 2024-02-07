@@ -2,7 +2,9 @@ package nourl.mythicmetals.item.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import io.wispforest.owo.nbt.NbtKey;
+import io.wispforest.owo.serialization.Endec;
+import io.wispforest.owo.serialization.endec.BuiltInEndecs;
+import io.wispforest.owo.serialization.endec.KeyedEndec;
 import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.fabric.api.mininglevel.v1.MiningLevelManager;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
@@ -41,19 +43,19 @@ public class MythrilDrill extends PickaxeItem {
     /**
      * NbtKey that stores the amount of fuel inside the drill
      */
-    public static final NbtKey<Integer> FUEL = new NbtKey<>("Fuel", NbtKey.Type.INT);
+    public static final KeyedEndec<Integer> FUEL = new KeyedEndec<>("Fuel", Endec.INT, 0);
     /**
-     * NbtKey that determines whether the drill should consume fuel and mine faster
+     * KeyedEndec that determines whether the drill should consume fuel and mine faster
      */
-    public static final NbtKey<Boolean> IS_ACTIVE = new NbtKey<>("IsActive", NbtKey.Type.BOOLEAN);
+    public static final KeyedEndec<Boolean> IS_ACTIVE = new KeyedEndec<>("IsActive", Endec.BOOLEAN, false);
     /**
      * Holds an item, which determines what upgrades the drill has
      */
-    public static final NbtKey<Item> UPGRADE_SLOT_ONE = new NbtKey<>("UpgradeSlot1", NbtKey.Type.ofRegistry(Registries.ITEM));
+    public static final KeyedEndec<Item> UPGRADE_SLOT_ONE = new KeyedEndec<>("UpgradeSlot1", BuiltInEndecs.ofRegistry(Registries.ITEM), Items.AIR);
     /**
      * Holds another item, which determines what upgrades the drill has
      */
-    public static final NbtKey<Item> UPGRADE_SLOT_TWO = new NbtKey<>("UpgradeSlot2", NbtKey.Type.ofRegistry(Registries.ITEM));
+    public static final KeyedEndec<Item> UPGRADE_SLOT_TWO = new KeyedEndec<>("UpgradeSlot2", BuiltInEndecs.ofRegistry(Registries.ITEM), Items.AIR);
     /**
      * A fully fueled drill should last 30 minutes
      */

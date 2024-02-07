@@ -8,6 +8,7 @@ import net.minecraft.block.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -349,7 +350,7 @@ public class BlockSet {
         public Builder createOre(Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(settings);
+            this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -365,7 +366,7 @@ public class BlockSet {
         public Builder createOre(Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(settings, experience);
+            this.ore = new ExperienceDroppingBlock(experience, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -381,7 +382,7 @@ public class BlockSet {
         public Builder createLuminantOre(Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(luminance);
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(settings, experience);
+            this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             Maldenhagen.injectCopium(this.ore);
@@ -398,7 +399,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(settings));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
@@ -414,7 +415,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(settings, experience));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             return this;
@@ -430,7 +431,7 @@ public class BlockSet {
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(luminance);
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(settings, experience));
+            this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
             miningLevels.put(oreVariants.get(name), PICKAXE);
             Maldenhagen.injectCopium(this.oreVariants.get(name));
@@ -537,18 +538,6 @@ public class BlockSet {
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);
-            return this;
-        }
-
-        /**
-         * Create a falling storage block, which is exclusively used for gravel-like storage blocks.
-         *
-         * @param miningLevel The mining level of the storage block.
-         */
-        public Builder createFallingStorageBlock(Identifier miningLevel) {
-            this.storageBlock = new FallingBlock(FabricBlockSettings.create().strength(currentHardness, currentResistance).sounds(currentSounds));
-            miningLevels.put(storageBlock, miningLevel);
-            miningLevels.put(storageBlock, SHOVEL);
             return this;
         }
 

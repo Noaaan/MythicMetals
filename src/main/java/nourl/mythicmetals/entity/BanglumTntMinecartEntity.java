@@ -38,7 +38,7 @@ public class BanglumTntMinecartEntity extends TntMinecartEntity {
     }
 
     @Override
-    protected Item getItem() {
+    protected Item asItem() {
         return MythicTools.BANGLUM_TNT_MINECART;
     }
 
@@ -82,10 +82,10 @@ public class BanglumTntMinecartEntity extends TntMinecartEntity {
     }
 
     @Override
-    public void dropItems(DamageSource damageSource) {
+    public void killAndDropSelf(DamageSource damageSource) {
         double d = this.getVelocity().horizontalLengthSquared();
         if (!damageSource.isIn(DamageTypeTags.IS_FIRE) && !damageSource.isIn(DamageTypeTags.IS_EXPLOSION) && !(d >= 0.01F)) {
-            super.dropItems(damageSource);
+            super.killAndDropSelf(damageSource);
         } else {
             if (this.fuseTicks < 0) {
                 this.prime();

@@ -15,7 +15,7 @@ import org.joml.Vector3f;
 
 public class StarriteOreBlock extends ExperienceDroppingBlock {
     public StarriteOreBlock(Settings settings, UniformIntProvider uniformIntProvider) {
-        super(settings, uniformIntProvider);
+        super(uniformIntProvider, settings);
     }
 
     @Override

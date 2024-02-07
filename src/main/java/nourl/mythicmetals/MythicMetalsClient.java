@@ -139,6 +139,11 @@ public class MythicMetalsClient implements ClientModInitializer {
                     default -> Style.EMPTY;
                 };
 
+                // Do not append tooltip if there isn't a proper coral on it
+                if (style.isEmpty()) {
+                    return;
+                }
+
                 Ability.addTooltipOnStack(stack, lines, style, "tooltip.tidesinger.coral." + stack.get(TidesingerArmor.CORAL_TYPE));
             }
         });

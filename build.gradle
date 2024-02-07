@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.4-SNAPSHOT'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -58,19 +58,15 @@ dependencies {
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
-    modCompileOnly("com.github.apace100:Apoli:${project.apoli_version}") {
-        exclude(group: "com.github.DaFuqs")
-    }
+    //modCompileOnly("com.github.apace100:Apoli:${project.apoli_version}") {
+    //    exclude(group: "com.github.DaFuqs")
+    //}
 
     // Reach Entity Attributes
     //modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
-    modImplementation include("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 
     // Common Protection API
     modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")
-
-    // Mixin Extras
-    include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${project.me_version}")))
 
     // MM Decorations
     //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
