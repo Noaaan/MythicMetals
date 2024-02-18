@@ -128,8 +128,6 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tick", at = @At("HEAD"))
     private void mythicmetals$tick(CallbackInfo ci) {
         if (!getWorld().isClient()) {
-            mythicmetals$drillRepairPassive(getMainHandStack());
-            mythicmetals$drillRepairPassive(getOffHandStack());
             mythicmetals$tickCombustion();
         }
         mythicmetals$palladiumParticles();
@@ -164,19 +162,6 @@ public abstract class LivingEntityMixin extends Entity {
                 component.setCooldown(1800);
             }
 
-        }
-    }
-
-    @Unique
-    private void mythicmetals$drillRepairPassive(ItemStack stack) {
-        // Handle Mythril Drill with Prometheum Upgrade
-        if (stack.getItem() instanceof MythrilDrill drill && MythrilDrill.hasUpgradeItem(stack, MythicItems.Mats.PROMETHEUM_BOUQUET)) {
-            var dmg = stack.getDamage();
-            var rng = r.nextInt(200);
-            if (rng == 33 && dmg > 0) {
-                int value = drill.isActive(stack) ? 2 : 1;
-                stack.setDamage(MathHelper.clamp(dmg - value, 0, Integer.MAX_VALUE));
-            }
         }
     }
 

@@ -238,11 +238,16 @@ public class MythrilDrill extends PickaxeItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!world.isClient && hasFuel(stack) && isActive(stack) && world.getTime() % (4 * FUEL_CONSTANT) == 1) {
-            stack.put(FUEL, stack.get(FUEL) - 1);
-        }
-        if (!hasFuel(stack)) {
-            stack.put(IS_ACTIVE, false);
+        if (!world.isClient()) {
+            if (hasFuel(stack) && isActive(stack) && world.getTime() % (4 * FUEL_CONSTANT) == 1) {
+                stack.put(FUEL, stack.get(FUEL) - 1);
+            }
+            if (!hasFuel(stack)) {
+                stack.put(IS_ACTIVE, false);
+            }
+            if (hasUpgradeItem(stack, MythicItems.Mats.PROMETHEUM_BOUQUET)) {
+                PrometheumToolSet.tickAutoRepair(stack, world.getRandom());
+            }
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
@@ -250,11 +255,13 @@ public class MythrilDrill extends PickaxeItem {
 
     @Override
     public boolean allowNbtUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+        // Cancel animation when fuel ticks down
         return oldStack.get(FUEL).equals(newStack.get(FUEL)) && oldStack.getDamage() == newStack.getDamage();
     }
 
     @Override
     public boolean allowContinuingBlockBreaking(PlayerEntity player, ItemStack oldStack, ItemStack newStack) {
+        // Allow you to break blocks when fuel ticks down
         return !oldStack.get(FUEL).equals(newStack.get(FUEL)) || oldStack.getDamage() != newStack.getDamage();
     }
 
