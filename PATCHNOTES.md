@@ -1,3 +1,9 @@
+# 0.19.4
+
+## Fixes
+
+- Fix a crash related to the ExplosionMixin
+
 # 0.19.3
 
 ## Changes
