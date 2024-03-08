@@ -10,7 +10,6 @@ import nourl.mythicmetals.item.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import java.util.Objects;
 
 @Mixin(ApplyBonusLootFunction.class)
 public class ApplyBonusLootFunctionMixin {
@@ -20,10 +19,16 @@ public class ApplyBonusLootFunctionMixin {
                     target = "Lnet/minecraft/loot/context/LootContext;getRandom()Lnet/minecraft/util/math/random/Random;", shift = At.Shift.BEFORE),
             ordinal = 0)
     private int mythicmetals$increaseFortune(int level, ItemStack drop, LootContext lootCtx) {
-        if (Abilities.BONUS_FORTUNE.getItems().contains(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)).getItem())) {
+        // Return early if there is no item
+        var toolCtx = lootCtx.get(LootContextParameters.TOOL);
+        if (toolCtx == null) {
+            return level;
+        }
+
+        if (Abilities.BONUS_FORTUNE.getItems().contains(toolCtx.getItem())) {
             return level + Abilities.BONUS_FORTUNE.getLevel();
         }
-        if (MythrilDrill.hasUpgradeItem(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)), MythicBlocks.CARMOT.getStorageBlock().asItem())) {
+        if (MythrilDrill.hasUpgradeItem(toolCtx, MythicBlocks.CARMOT.getStorageBlock().asItem())) {
             return level + 1;
         }
         return level;
