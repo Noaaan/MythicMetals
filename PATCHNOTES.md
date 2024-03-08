@@ -1,3 +1,10 @@
+# 0.19.5
+
+## Fixes
+
+- Fixed missing translation keys from Smithing Templates (thanks Rogenar!)
+  - Templates that are obtained exclusively from crafting are now named "Crafted Smithing Templates"
+
 # 0.19.4
 
 ## Fixes

@@ -859,6 +859,17 @@
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
 
+  "item.mythicmetals.aegis_smithing_template": "Smithing Template",
+  "item.mythicmetals.carmot_staff_smithing_template": "Smithing Template",
+  "item.mythicmetals.mythril_drill_smithing_template": "Smithing Template",
+  "item.mythicmetals.midas_folding_template": "Crafted Smithing Template",
+  "item.mythicmetals.osmium_chainmail_smithing_template": "Crafted Smithing Template",
+  "item.mythicmetals.royal_midas_smithing_template": "Smithing Template",
+  "item.mythicmetals.carmot_smithing_template": "Crafted Smithing Template",
+  "item.mythicmetals.legendary_banglum_smithing_template": "Crafted Smithing Template",
+  "item.mythicmetals.tidesinger_smithing_template": "Crafted Smithing Template",
+  "item.mythicmetals.unobtainium_smithing_template": "Smithing Template",
+
   "smithing_template.mythicmetals.aegis.title":  "Aegis Sword Upgrade",
   "smithing_template.mythicmetals.aegis.applies_to": "Palladium or Hallowed Swords",
   "smithing_template.mythicmetals.aegis.ingredients": "Adamantite or Hallowed Ingots",
