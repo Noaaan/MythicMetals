@@ -8,20 +8,15 @@ import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.ModifyItemAttributeModifiersCallback;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -33,23 +28,18 @@ import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.armor.CarmotShield;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.blocks.BanglumNukeHandler;
-import nourl.mythicmetals.blocks.IndevBlocks;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.command.MythicCommands;
 import nourl.mythicmetals.config.MythicMetalsConfig;
 import nourl.mythicmetals.data.MythicOreKeys;
-import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.*;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.item.tools.PrometheumToolSet;
 import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.UUID;
 
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
@@ -114,7 +104,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
         });
         registerDispenserBehaviour();
-        registerPrometheumAttributeEvent();
+        PrometheumHandler.registerPrometheumAttributeEvent();
 
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
@@ -187,26 +177,4 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         registry.registerForPlayers(CARMOT_SHIELD, CarmotShield::new, RespawnCopyStrategy.INVENTORY);
     }
 
-    private void registerPrometheumAttributeEvent() {
-        ModifyItemAttributeModifiersCallback.EVENT.register((stack, slot, attributeModifiers) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_ARMOR) && ((ArmorItem) stack.getItem()).getSlotType().equals(slot)) {
-                if (EnchantmentHelper.hasBindingCurse(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(
-                        UUID.fromString("d42e82c8-166d-46f1-bc76-df84e91b5531"),
-                        "Bound Prometheum bonus",
-                        0.08,
-                        EntityAttributeModifier.Operation.MULTIPLY_BASE
-                    ));
-                }
-                if (PrometheumToolSet.isOvergrown(stack)) {
-                    attributeModifiers.put(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, new EntityAttributeModifier(
-                        UUID.fromString("37bb6460-e896-44e2-8e71-29335d5ce709"),
-                        "Prometheum bonus toughness",
-                        EnchantmentHelper.hasBindingCurse(stack) ? 2 : 1,
-                        EntityAttributeModifier.Operation.ADDITION
-                    ));
-                }
-            }
-        });
-    }
 }

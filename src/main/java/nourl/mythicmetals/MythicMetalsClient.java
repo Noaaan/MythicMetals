@@ -50,10 +50,7 @@ import nourl.mythicmetals.compat.IsometricArmorStandExporter;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
-import nourl.mythicmetals.misc.BlockBreaker;
-import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.misc.ShieldUsePredicate;
-import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
+import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 
@@ -111,12 +108,12 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     private void registerPrometheumTooltips() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumToolSet.isOvergrown(stack)) {
+            if (stack.isIn(MythicTags.PROMETHEUM_TOOLS) && PrometheumHandler.isOvergrown(stack)) {
                 Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
             }
 
             if (stack.isIn(MythicTags.PROMETHEUM_ARMOR)) {
-                if (PrometheumToolSet.isOvergrown(stack)) {
+                if (PrometheumHandler.isOvergrown(stack)) {
                     Ability.addTooltipOnStack(stack, lines, Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()), "tooltip.prometheum.overgrown");
                 }
 

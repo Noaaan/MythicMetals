@@ -33,6 +33,7 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.DrillUpgrades;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
+import nourl.mythicmetals.misc.PrometheumHandler;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import nourl.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
@@ -253,7 +254,7 @@ public class MythrilDrill extends PickaxeItem {
                 stack.put(IS_ACTIVE, false);
             }
             if (hasUpgradeItem(stack, MythicItems.Mats.PROMETHEUM_BOUQUET)) {
-                PrometheumToolSet.tickAutoRepair(stack, world.getRandom());
+                PrometheumHandler.tickAutoRepair(stack, world.getRandom());
             }
         }
         super.inventoryTick(stack, world, entity, slot, selected);
