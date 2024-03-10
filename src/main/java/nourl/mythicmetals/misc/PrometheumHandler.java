@@ -90,4 +90,12 @@ public class PrometheumHandler {
             }
         });
     }
+
+    public static EntityAttributeModifier createToolModifier(ItemStack stack) {
+        return new EntityAttributeModifier(
+                UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
+                "Overgrown Prometheum bonus",
+                (stack.get(DURABILITY_REPAIRED) > (OVERGROWN_THRESHOLD * 2)) ? 2 : 1,
+                EntityAttributeModifier.Operation.ADDITION);
+    }
 }
