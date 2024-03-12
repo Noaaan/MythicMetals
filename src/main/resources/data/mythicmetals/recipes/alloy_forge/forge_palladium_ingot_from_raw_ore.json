@@ -2,10 +2,8 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_palladium"
-    },
-    {
-      "item": "mythicmetals:raw_palladium"
+      "item": "mythicmetals:raw_palladium",
+      "count": 2
     }
   ],
   "output": {

@@ -2,10 +2,8 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_prometheum"
-    },
-    {
-      "item": "mythicmetals:raw_prometheum"
+      "item": "mythicmetals:raw_prometheum",
+      "count": 2
     }
   ],
   "output": {

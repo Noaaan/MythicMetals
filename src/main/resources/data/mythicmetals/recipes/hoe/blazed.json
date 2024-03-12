@@ -2,34 +2,23 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:prometheum_block"
+      "item": "mythicmetals:prometheum_block",
+      "count": 4
+    },
+    {
+      "item": "mythicmetals:prometheum_ingot",
+      "count": 20
     },
     {
       "item": "minecraft:large_fern"
     },
     {
-      "item": "mythicmetals:prometheum_block"
+      "item": "minecraft:dried_kelp_block",
+      "count": 16
     },
     {
-      "item": "minecraft:large_fern"
-    },
-    {
-      "item": "mythicmetals:prometheum_block"
-    },
-    {
-      "item": "minecraft:dried_kelp_block"
-    },
-    {
-      "item": "mythicmetals:prometheum_block"
-    },
-    {
-      "item": "minecraft:dried_kelp_block"
-    },
-    {
-      "item": "mythicmetals:prometheum_block"
-    },
-    {
-      "item": "minecraft:dried_kelp_block"
+      "item": "minecraft:dried_kelp",
+      "count": 64
     }
   ],
   "output": {

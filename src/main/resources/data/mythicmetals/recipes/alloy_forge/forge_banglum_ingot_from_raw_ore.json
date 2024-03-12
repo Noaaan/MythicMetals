@@ -2,10 +2,8 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_banglum"
-    },
-    {
-      "item": "mythicmetals:raw_banglum"
+      "item": "mythicmetals:raw_banglum",
+      "count": 2
     }
   ],
   "output": {

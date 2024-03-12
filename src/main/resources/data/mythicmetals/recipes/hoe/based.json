@@ -27,6 +27,9 @@
     },
 	{
       "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "minecraft:ochre_froglight"
     }
   ],
   "output": {
