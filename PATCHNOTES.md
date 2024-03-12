@@ -1,3 +1,25 @@
+# 0.19.5
+
+## Changes
+
+- Increase the damage of Prometheum Tools if they pass double the Overgrown threshold
+- Blacklist MM Blast Furnace recipes from duplicating with Alloy Forgery
+
+## Fixes
+
+- Fixed Alloy Forgery recipes. You should be able to use Mythic Metals on servers now (#230)
+- Fixed missing translation keys from Smithing Templates (#227, thanks Rogenar!)
+  - Templates that are obtained exclusively from crafting are now named "Crafted Smithing Templates"
+- Fix a Mixin related issue with Aether Redux (#229)
+- Fixed broken advancements
+- Renamed "Midas Block of Gold" to "Block of Midas Gold"
+
+# 0.19.4
+
+## Fixes
+
+- Fix a crash related to the ExplosionMixin
+
 # 0.19.3
 
 ## Changes
