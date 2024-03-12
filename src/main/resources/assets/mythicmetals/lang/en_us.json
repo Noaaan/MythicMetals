@@ -47,7 +47,7 @@
   "block.mythicmetals.metallurgium_anvil": "Metallurgium Anvil",
   "block.mythicmetals.metallurgium_block": "Block of Metallurgium",
   "block.mythicmetals.midas_gold_anvil": "Midas Gold Anvil",
-  "block.mythicmetals.midas_gold_block": "Midas Block of Gold",
+  "block.mythicmetals.midas_gold_block": "Block of Midas Gold",
   "block.mythicmetals.midas_gold_ore": "Midas Gold Ore",
   "block.mythicmetals.morkite_block": "Block of Morkite",
   "block.mythicmetals.morkite_ore": "Morkite Ore",
@@ -821,7 +821,7 @@
   "tooltip.mythril_drill.upgrade.empty": "Empty",
 
   "tooltip.carmot_staff.midas_gold": "Unique Ability - AoE Luck 2",
-  "tooltip.carmot_staff.enchanted_midas_gold": "Unique Ability - Large AoE Luck 5",
+  "tooltip.carmot_staff.enchanted_midas_gold": "Unique Ability - Large AoE Luck 5 (Single use!)",
   "tooltip.carmot_staff.beacon": "Unique Ability - AoE Buff",
   "tooltip.carmot_staff.bronze": "Unique Ability - Thunderstrike",
   "tooltip.carmot_staff.copper": "Unique Ability - Lightning Rod",
