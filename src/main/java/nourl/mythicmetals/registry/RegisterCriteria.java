@@ -1,21 +1,26 @@
 package nourl.mythicmetals.registry;
 
+import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.advancement.criterion.Criterion;
 import net.minecraft.util.Identifier;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.SimpleCriteria;
+import java.lang.reflect.Field;
 
-public class RegisterCriteria {
-    public static final Identifier USED_BLAST_MINING_ID = RegistryHelper.id("used_blast_mining");
-    public static final Identifier ENCHANTED_MIDAS_IN_STAFF_ID = RegistryHelper.id("use_enchanted_midas_in_carmot_staff");
-    public static final Identifier RECIEVED_COMBUSTION_FROM_CREEPER_ID = RegistryHelper.id("recieved_combustion_from_creeper");
-    public static final SimpleCriteria BLAST_MINING = new SimpleCriteria();
-    public static final SimpleCriteria ENCHANTED_MIDAS_IN_STAFF = new SimpleCriteria();
-    public static final SimpleCriteria RECIEVED_COMBUSTION_FROM_CREEPER = new SimpleCriteria();
+public class RegisterCriteria implements SimpleFieldProcessingSubject<Criterion<?>> {
+    public static final SimpleCriteria USED_BLAST_MINING = new SimpleCriteria();
+    public static final SimpleCriteria USE_ENCHANTED_MIDAS_IN_CARMOT_STAFF = new SimpleCriteria();
+    public static final SimpleCriteria RECEIVED_COMBUSTION_FROM_CREEPER = new SimpleCriteria();
 
-    public static void init() {
-        Criteria.register(USED_BLAST_MINING_ID.getPath(), BLAST_MINING);
-        Criteria.register(ENCHANTED_MIDAS_IN_STAFF_ID.getPath(), ENCHANTED_MIDAS_IN_STAFF);
-        Criteria.register(RECIEVED_COMBUSTION_FROM_CREEPER_ID.getPath(), RECIEVED_COMBUSTION_FROM_CREEPER);
+    @Override
+    public void processField(Criterion<?> value, String name, Field field) {
+        Criteria.register(MythicMetals.MOD_ID + ":" + name, value);
+    }
+
+    @Override
+    public Class<Criterion<?>> getTargetFieldType() {
+        return ((Class<Criterion<?>>) (Object) Criterion.class);
     }
 }

@@ -17,8 +17,12 @@
   },
   "criteria": {
     "get_too_close_to_the_aww_man": {
-      "trigger": "mythicmetals:recieved_combustion_from_creeper",
-      "conditions": {}
+      "trigger": "mythicmetals:received_combustion_from_creeper"
     }
-  }
+  },
+  "requirements": [
+    [
+      "get_too_close_to_the_aww_man"
+    ]
+  ]
 }

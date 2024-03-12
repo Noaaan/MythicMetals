@@ -54,7 +54,7 @@ public class BanglumPick extends PickaxeItem {
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.PLAYERS);
 
-            RegisterCriteria.BLAST_MINING.trigger((ServerPlayerEntity) player);
+            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayerEntity) player);
             player.getItemCooldownManager().set(this, 100);
             return ActionResult.SUCCESS;
         }

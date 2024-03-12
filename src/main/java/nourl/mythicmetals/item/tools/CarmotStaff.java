@@ -363,7 +363,7 @@ public class CarmotStaff extends ToolItem {
             user.getItemCooldownManager().set(stack.getItem(), 5000);
             stack.put(STORED_BLOCK, MythicBlocks.MIDAS_GOLD.getStorageBlock());
             if (!world.isClient()) {
-                RegisterCriteria.ENCHANTED_MIDAS_IN_STAFF.trigger(((ServerPlayerEntity) user));
+                RegisterCriteria.USE_ENCHANTED_MIDAS_IN_CARMOT_STAFF.trigger(((ServerPlayerEntity) user));
             }
             return TypedActionResult.success(stack);
         }

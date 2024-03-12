@@ -251,7 +251,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (!getWorld().isClient() && effect.getEffectType().equals(MythicStatusEffects.COMBUSTION) && this.isPlayer()) {
             if (source instanceof AreaEffectCloudEntity cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
                 //noinspection ConstantConditions
-                RegisterCriteria.RECIEVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
+                RegisterCriteria.RECEIVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
             }
         }
     }

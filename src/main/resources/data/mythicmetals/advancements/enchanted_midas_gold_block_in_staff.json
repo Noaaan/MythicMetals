@@ -18,11 +18,15 @@
   },
   "criteria": {
     "kinda_expensive_luck_potion_truly_mmo_moment": {
-      "trigger": "mythicmetals:use_enchanted_midas_in_carmot_staff",
-      "conditions": {}
+      "trigger": "mythicmetals:use_enchanted_midas_in_carmot_staff"
     }
   },
+  "requirements": [
+    [
+      "kinda_expensive_luck_potion_truly_mmo_moment"
+    ]
+  ],
   "rewards": {
-    "experience": 15
+    "experience": 50
   }
 }

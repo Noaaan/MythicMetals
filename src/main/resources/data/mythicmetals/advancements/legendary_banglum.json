@@ -30,8 +30,7 @@
       }
     },
     "blast_mining_activated": {
-      "trigger": "mythicmetals:used_blast_mining",
-      "conditions": {}
+      "trigger": "mythicmetals:used_blast_mining"
     }
   },
   "requirements": [

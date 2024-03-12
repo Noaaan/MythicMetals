@@ -1,15 +1,15 @@
 package nourl.mythicmetals.misc;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.advancement.criterion.AbstractCriterion;
-import net.minecraft.predicate.entity.LootContextPredicate;
-import net.minecraft.predicate.entity.LootContextPredicateValidator;
+import net.minecraft.predicate.entity.*;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.dynamic.Codecs;
 import java.util.Optional;
 
 public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions> {
 
-    // FIXME - Broken at the moment
     public SimpleCriteria() {
     }
 
@@ -19,21 +19,13 @@ public class SimpleCriteria extends AbstractCriterion<SimpleCriteria.Conditions>
 
     @Override
     public Codec<Conditions> getConditionsCodec() {
-        return null;
+        return Conditions.CODEC;
     }
 
-    public static class Conditions implements AbstractCriterion.Conditions {
-        public Conditions() {
-        }
+    public record Conditions(Optional<LootContextPredicate> player) implements AbstractCriterion.Conditions {
 
-        @Override
-        public void validate(LootContextPredicateValidator validator) {
-            AbstractCriterion.Conditions.super.validate(validator);
-        }
-
-        @Override
-        public Optional<LootContextPredicate> player() {
-            return Optional.empty();
-        }
+        public static final Codec<Conditions> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                Codecs.createStrictOptionalFieldCodec(EntityPredicate.LOOT_CONTEXT_PREDICATE_CODEC, "player").forGetter(Conditions::player)
+        ).apply(instance, Conditions::new));
     }
 }

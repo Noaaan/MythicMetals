@@ -7,6 +7,7 @@ import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
+import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
@@ -97,7 +98,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         RegisterLootConditions.init();
         MythicStatusEffects.init();
         RegisterRecipeSerializers.init();
-        RegisterCriteria.init();
+        FieldRegistrationHandler.processSimple(RegisterCriteria.class, false);
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
