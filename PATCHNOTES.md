@@ -1,9 +1,15 @@
 # 0.19.5
 
+## Changes
+
+- Increase the damage of Prometheum Tools if they pass double the Overgrown threshold
+- Blacklist MM Blast Furnace recipes from duplicating with Alloy Forgery
+
 ## Fixes
 
 - Fixed missing translation keys from Smithing Templates (thanks Rogenar!)
   - Templates that are obtained exclusively from crafting are now named "Crafted Smithing Templates"
+- Fix an issue with Aether Redux
 
 # 0.19.4
 

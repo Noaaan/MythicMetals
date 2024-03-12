@@ -25,7 +25,6 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
-import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythrilDrill;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.WasSpawnedFromCreeper;
@@ -83,9 +82,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract ItemStack getStackInHand(Hand hand);
-
-    @Shadow
-    public abstract ItemStack getOffHandStack();
 
     @Shadow public abstract void stopRiding();
 
