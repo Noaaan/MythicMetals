@@ -59,15 +59,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
-                modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(
-                        UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
-                        "Overgrown Prometheum bonus",
-                        1.0,
-                        EntityAttributeModifier.Operation.ADDITION)
-                );
-            }
+            modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, createToolModifier(stack));
 
             return modifiers;
         }
@@ -90,15 +82,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
-                modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(
-                        UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
-                        "Overgrown Prometheum bonus",
-                        1.0,
-                        EntityAttributeModifier.Operation.ADDITION)
-                );
-            }
+            modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, createToolModifier(stack));
 
             return modifiers;
         }
@@ -121,15 +105,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
-                modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(
-                        UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
-                        "Overgrown Prometheum bonus",
-                        1.0,
-                        EntityAttributeModifier.Operation.ADDITION)
-                );
-            }
+            modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, createToolModifier(stack));
 
             return modifiers;
         }
@@ -152,15 +128,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
-                modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(
-                        UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
-                        "Overgrown Prometheum bonus",
-                        1.0,
-                        EntityAttributeModifier.Operation.ADDITION)
-                );
-            }
+            modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, createToolModifier(stack));
 
             return modifiers;
         }
@@ -183,15 +151,7 @@ public class PrometheumToolSet extends ToolSet {
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
-            if (stack.has(DURABILITY_REPAIRED) && stack.get(DURABILITY_REPAIRED) > OVERGROWN_THRESHOLD) {
-                modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(
-                        UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
-                        "Overgrown Prometheum bonus",
-                        1.0,
-                        EntityAttributeModifier.Operation.ADDITION)
-                );
-            }
+            modifiers.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, createToolModifier(stack));
 
             return modifiers;
         }
@@ -246,4 +206,13 @@ public class PrometheumToolSet extends ToolSet {
 
         PrometheumToolSet.incrementRepairCounter(stack, damageToRepair);
     }
+
+    public static EntityAttributeModifier createToolModifier(ItemStack stack) {
+        return new EntityAttributeModifier(
+                UUID.fromString("69def8b1-1baa-401e-a7cb-b27ab9a55558"),
+                "Overgrown Prometheum bonus",
+                (stack.get(DURABILITY_REPAIRED) > (OVERGROWN_THRESHOLD * 2)) ? 2 : 1,
+                EntityAttributeModifier.Operation.ADDITION);
+    }
+
 }
