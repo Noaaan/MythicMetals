@@ -1,3 +1,10 @@
+# 0.19.6
+
+## Fixes
+
+- Fix another Mixin issue related to Aether Redux (#229, #231)
+- Include the language fix from previous patch (1.20.4 only)
+
 # 0.19.5
 
 ## Changes

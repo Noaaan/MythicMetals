@@ -11,7 +11,6 @@ import nourl.mythicmetals.item.tools.MythrilDrill;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import java.util.Objects;
 
 @Mixin(TableBonusLootCondition.class)
 public class TableBonusLootConditionMixin {
@@ -21,15 +20,19 @@ public class TableBonusLootConditionMixin {
     @ModifyVariable(method = "test(Lnet/minecraft/loot/context/LootContext;)Z",
             at = @At(value = "LOAD"))
     private int mythicmetals$increaseFortune(int level, LootContext lootCtx) {
+        var toolCtxStack = lootCtx.get(LootContextParameters.TOOL);
+        if (toolCtxStack == null) {
+            return level;
+        }
         // only modify when the loot table bonus loot checks for fortune
         if(this.enchantment != Enchantments.FORTUNE) {
             return level;
         }
         
-        if (Abilities.BONUS_FORTUNE.getItems().contains(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)).getItem())) {
+        if (Abilities.BONUS_FORTUNE.getItems().contains(toolCtxStack.getItem())) {
             return (level + Abilities.BONUS_FORTUNE.getLevel());
         }
-        if (MythrilDrill.hasUpgradeItem(Objects.requireNonNull(lootCtx.get(LootContextParameters.TOOL)), MythicBlocks.CARMOT.getStorageBlock().asItem())) {
+        if (MythrilDrill.hasUpgradeItem(toolCtxStack, MythicBlocks.CARMOT.getStorageBlock().asItem())) {
             return level + 1;
         }
         return level;
