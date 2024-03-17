@@ -7,12 +7,13 @@
 
 ## Fixes
 
-- Fixed Alloy Forgery recipes. You should be able to use Mythic Metals on servers now (#230)
-- Fixed missing translation keys from Smithing Templates (#227, thanks Rogenar!)
+- Fixed Alloy Forgery recipes. You should be able to use Mythic Metals on servers now (#230, 1.20.4 only)
+- Fixed missing translation keys from Smithing Templates (#227, thanks Rogenar! 1.20.4 only)
   - Templates that are obtained exclusively from crafting are now named "Crafted Smithing Templates"
 - Fix a Mixin related issue with Aether Redux (#229)
-- Fixed broken advancements
+- Fixed broken advancements (1.20.4 only)
 - Renamed "Midas Block of Gold" to "Block of Midas Gold"
+- Renamed "Star Block of Platinum" to "Block of Star Platinum"
 
 # 0.19.4
 
