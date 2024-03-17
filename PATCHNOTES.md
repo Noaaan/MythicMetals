@@ -6,6 +6,13 @@
 - Increase the mining speed of Copper tools slightly (4.5 -> 5.0)
 - Increase the mining speed of Quadrillum tools slightly (5.5 -> 6.0)
 
+# 0.19.6
+
+## Fixes
+
+- Fix another Mixin issue related to Aether Redux (#229, #231)
+- Include the language fix from previous patch (1.20.4 only)
+
 # 0.19.5
 
 ## Changes

@@ -20,15 +20,15 @@ public class ApplyBonusLootFunctionMixin {
             ordinal = 0)
     private int mythicmetals$increaseFortune(int level, ItemStack drop, LootContext lootCtx) {
         // Return early if there is no item
-        var toolCtx = lootCtx.get(LootContextParameters.TOOL);
-        if (toolCtx == null) {
+        var toolCtxStack = lootCtx.get(LootContextParameters.TOOL);
+        if (toolCtxStack == null) {
             return level;
         }
 
-        if (Abilities.BONUS_FORTUNE.getItems().contains(toolCtx.getItem())) {
+        if (Abilities.BONUS_FORTUNE.getItems().contains(toolCtxStack.getItem())) {
             return level + Abilities.BONUS_FORTUNE.getLevel();
         }
-        if (MythrilDrill.hasUpgradeItem(toolCtx, MythicBlocks.CARMOT.getStorageBlock().asItem())) {
+        if (MythrilDrill.hasUpgradeItem(toolCtxStack, MythicBlocks.CARMOT.getStorageBlock().asItem())) {
             return level + 1;
         }
         return level;
