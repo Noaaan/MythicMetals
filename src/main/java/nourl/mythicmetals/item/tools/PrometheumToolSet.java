@@ -55,7 +55,7 @@ public class PrometheumToolSet extends ToolSet {
 
         @Override
         public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-            if (slot != EquipmentSlot.MAINHAND) return super.getAttributeModifiers(slot);
+            if (slot != EquipmentSlot.MAINHAND || (stack.get(DURABILITY_REPAIRED) < OVERGROWN_THRESHOLD)) return super.getAttributeModifiers(slot);
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
@@ -78,7 +78,7 @@ public class PrometheumToolSet extends ToolSet {
 
         @Override
         public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-            if (slot != EquipmentSlot.MAINHAND) return super.getAttributeModifiers(slot);
+            if (slot != EquipmentSlot.MAINHAND || (stack.get(DURABILITY_REPAIRED) < OVERGROWN_THRESHOLD)) return super.getAttributeModifiers(slot);
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
@@ -101,7 +101,7 @@ public class PrometheumToolSet extends ToolSet {
 
         @Override
         public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-            if (slot != EquipmentSlot.MAINHAND) return super.getAttributeModifiers(slot);
+            if (slot != EquipmentSlot.MAINHAND || (stack.get(DURABILITY_REPAIRED) < OVERGROWN_THRESHOLD)) return super.getAttributeModifiers(slot);
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
@@ -124,7 +124,7 @@ public class PrometheumToolSet extends ToolSet {
 
         @Override
         public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-            if (slot != EquipmentSlot.MAINHAND) return super.getAttributeModifiers(slot);
+            if (slot != EquipmentSlot.MAINHAND || (stack.get(DURABILITY_REPAIRED) < OVERGROWN_THRESHOLD)) return super.getAttributeModifiers(slot);
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
@@ -147,7 +147,7 @@ public class PrometheumToolSet extends ToolSet {
 
         @Override
         public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
-            if (slot != EquipmentSlot.MAINHAND) return super.getAttributeModifiers(slot);
+            if (slot != EquipmentSlot.MAINHAND || (stack.get(DURABILITY_REPAIRED) < OVERGROWN_THRESHOLD)) return super.getAttributeModifiers(slot);
 
             var modifiers = HashMultimap.create(super.getAttributeModifiers(slot));
 
