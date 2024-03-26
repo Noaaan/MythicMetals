@@ -1,3 +1,11 @@
+# 0.x.x
+
+## Balancing Changes
+
+- Increase the damage of copper tools slightly (+0.5 attack damage)
+- Increase the mining speed of Copper tools slightly (4.5 -> 5.0)
+- Increase the mining speed of Quadrillum tools slightly (5.5 -> 6.0)
+
 # 0.19.5
 
 ## Changes
