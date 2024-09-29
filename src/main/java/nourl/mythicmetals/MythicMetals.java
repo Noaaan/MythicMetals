@@ -131,8 +131,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             LOGGER.info("[Mythic Metals] Is that Jello? Here comes the colors, weeeeeee!");
         }
         if (FabricLoader.getInstance().isModLoaded("terralith")) {
-            LOGGER.info("[Mythic Metals] Terralith detected. Please go over the config and disable Overworld Nether Ores");
-            LOGGER.info("[Mythic Metals] Many ores spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
+            LOGGER.info("[Mythic Metals] Terralith detected. Many ores can spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }

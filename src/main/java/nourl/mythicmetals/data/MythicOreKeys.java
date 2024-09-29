@@ -138,7 +138,7 @@ public class MythicOreKeys {
 
         // Add Aquarium to Aquatic Biomes
         if (CONFIG.aquarium()) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.AQUATIC), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.AQUARIUM_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, AQUARIUM);
         }
         // Add Prometheum to hot biomes
         if (CONFIG.prometheum()) {
