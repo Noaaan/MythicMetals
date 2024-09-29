@@ -512,9 +512,6 @@ public class CarmotStaff extends ToolItem {
             if (entity instanceof ExplosiveProjectileEntity projectile) {
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
-//                projectile.powerX = -projectile.powerX;
-//                projectile.powerY = -projectile.powerY;
-//                projectile.powerZ = -projectile.powerZ;
                 projectile.setOwner(user);
                 projectile.addCommandTag(PROJECTILE_MODIFIED.toString());
                 stack.damage(2, user, EquipmentSlot.MAINHAND);

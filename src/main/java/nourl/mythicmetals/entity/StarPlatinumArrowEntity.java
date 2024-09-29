@@ -19,8 +19,12 @@ import org.jetbrains.annotations.Nullable;
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
     public static final ItemStack STAR_PLAT_STACK = new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
 
-    public StarPlatinumArrowEntity(LivingEntity owner, World world, @Nullable ItemStack shotFrom) {
-        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world, STAR_PLAT_STACK, shotFrom);
+    public StarPlatinumArrowEntity(LivingEntity owner, World world, ItemStack stack, @Nullable ItemStack weapon) {
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world, stack, weapon);
+    }
+
+    public StarPlatinumArrowEntity(World world, double x, double y, double z, ItemStack stack, @Nullable ItemStack shotFrom) {
+        super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, x, y, z, world, stack, shotFrom);
     }
 
     public StarPlatinumArrowEntity(EntityType<StarPlatinumArrowEntity> type, World world) {
