@@ -1,3 +1,10 @@
+# 0.20.2
+
+- Added armor to vanilla tags, which improves mod compat (#263)
+- Improved Carmot Staff projectile checks slightly (#264)
+- Migrate Aquarium to use the new `#mythicmetals:aquarium_biomes` tag. Improves mod compat (#265)
+- Fixed a bug where firing a Star Platinum Arrow from a crossbow could crash on saving (#266)
+
 # 0.20.1
 
 - Fixed a bug where mining levels did not apply
