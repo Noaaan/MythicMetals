@@ -301,15 +301,19 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                     switch (armorItem.getSlotType()) {
                         case HEAD -> {
                             getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(armorItem);
+                            getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).add(armorItem);
                         }
                         case CHEST -> {
                             getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(armorItem);
+                            getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).add(armorItem);
                         }
                         case LEGS -> {
                             getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(armorItem);
+                            getOrCreateTagBuilder(ItemTags.LEG_ARMOR).add(armorItem);
                         }
                         case FEET -> {
                             getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(armorItem);
+                            getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).add(armorItem);
                         }
                         case null, default -> {
                             // no-op
