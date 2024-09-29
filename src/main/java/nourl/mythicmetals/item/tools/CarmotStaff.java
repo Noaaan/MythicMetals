@@ -497,15 +497,19 @@ public class CarmotStaff extends ToolItem {
         }
 
         for (Entity entity : entities) {
+            if (entity.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+                return;
+            }
+
             // Setting the owner of the trident to someone else would lead to shenanigans, don't do that
-            if (entity instanceof TridentEntity trident && !trident.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+            if (entity instanceof TridentEntity trident) {
                 var bounceVec = trident.getVelocity().multiply(-0.25, -0.25, -0.25);
                 trident.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z);
                 trident.returnTimer = 0;
                 trident.addCommandTag(PROJECTILE_MODIFIED.toString());
             }
             // Special handling for ExplosiveProjectileEntities, like fireballs
-            if (entity instanceof ExplosiveProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+            if (entity instanceof ExplosiveProjectileEntity projectile) {
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
 //                projectile.powerX = -projectile.powerX;
@@ -516,15 +520,15 @@ public class CarmotStaff extends ToolItem {
                 stack.damage(2, user, EquipmentSlot.MAINHAND);
             }
             // Shulker bullet handling
-            if (entity instanceof ShulkerBulletEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+            if (entity instanceof ShulkerBulletEntity projectile) {
                 projectile.damage(world.getDamageSources().generic(), 1.0F);
             }
             // Default/Arrow handling
-            else if (entity instanceof ProjectileEntity projectile && !projectile.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
+            else if (entity instanceof ProjectileEntity projectile) {
                 // Bounce the projectiles in the direction the player is looking
                 var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
                 projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
-                projectile.getCommandTags().add(PROJECTILE_MODIFIED.toString());
+                projectile.addCommandTag(PROJECTILE_MODIFIED.toString());
                 stack.damage(1, user, EquipmentSlot.MAINHAND);
             }
         }
