@@ -15,6 +15,7 @@
 * Azazelthedemonlord  
 * Paintedwithdrugs
 * Taphrine
+* thyreo
 
 Thank you all for making awesome new textures for the mod.  
 

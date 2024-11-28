@@ -1,3 +1,16 @@
+# 0.x.x
+
+## Texture Changes
+
+Most of these are made by thyreo. Thanks a ton for the new textures!
+
+- New Banglum Tools
+- Carmot Tools reworked
+- Mythril Tools reworked
+- New Palladium Tools
+- Steel Tools reworked
+- Stormyx Tools reworked
+
 # 0.20.2
 
 - Added armor to vanilla tags, which improves mod compat (#263)
