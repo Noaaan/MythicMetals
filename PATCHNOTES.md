@@ -4,12 +4,33 @@
 
 Most of these are made by thyreo. Thanks a ton for the new textures!
 
+### Tools
+
+- Bronze Tools reworked
+- Copper Tools reworked
+- Orichalcum Tools reworked
+- Prometheum Tools reworked
+- Runite Tools reworked
+- Star Platinum Tools reworked
 - New Banglum Tools
 - Carmot Tools reworked
 - Mythril Tools reworked
 - New Palladium Tools
 - Steel Tools reworked
 - Stormyx Tools reworked
+
+### Ores
+
+- New Raw Aquarium texture
+- Raw Banglum texture reworked
+- Raw Carmot texture reworked
+- Starrite Ore Blocks reworked
+
+### Items
+
+- Carmot Stone texture reworked
+- Midas Gold Ingot reworked
+- Palladium Ingot reworked
 
 # 0.20.2
 
