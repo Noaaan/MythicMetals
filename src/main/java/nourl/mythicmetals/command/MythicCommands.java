@@ -244,7 +244,7 @@ public final class MythicCommands {
         output.append("\n");
         output.append("<center class=tooltip>").append("\n");
         output.append("<h3>**").append(armorTypeName).append("**</h3>").append("\n");
-        output.append("![Image of %s model](../assets/armor-models/256/%s.png)".formatted(armorTypeName, armorMaterial + "_256")).append("\n");
+        output.append("![Image of %s model](../../assets/armor-models/256/%s.png)".formatted(armorTypeName, armorMaterial + "_256")).append("\n");
 
         for (var armor : armorSet.getArmorItems()) {
             /* TODO - The string handling is a bit bad, although it does have to be very specific in regards
@@ -258,12 +258,12 @@ public final class MythicCommands {
             output.append("\n");
             output.append("<center class=tooltip>").append("\n");
             output.append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
+            output.append("![Image of %s](../../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
             for (int i = 1; i < protection; i = i + 2) {
-                output.append("![armor](../assets/icon/full_armor_icon.png)").append(ICON_SCALE).append("\n");
+                output.append("![armor](../../assets/icon/full_armor_icon.png)").append(ICON_SCALE).append("\n");
             }
             if ((protection & 1) == 1) {
-                output.append("![armor](../assets/icon/half_armor_icon.png)").append(ICON_SCALE).append("\n");
+                output.append("![armor](../../assets/icon/half_armor_icon.png)").append(ICON_SCALE).append("\n");
             }
             output.append(BR);
             // +5 Armor, +2 Toughness
@@ -289,7 +289,7 @@ public final class MythicCommands {
         for (var armor : armorSet.getArmorItems()) {
             String id = Registries.ITEM.getId(armor).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-            output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
+            output.append("![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
         }
         output.append("## Usages\n\n");
         output.append("## Trivia\n\n");
@@ -397,7 +397,7 @@ public final class MythicCommands {
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
             output.append("\n");
             output.append(TAB).append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append(TAB).append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
+            output.append(TAB).append("![Image of %s](../../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
             output.append(TAB).append("+%s Attack Damage, %s Attack Speed".formatted(
                 tool.getMaterial().getAttackDamage() + damageDeque.pop() + 1,
                 BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
@@ -418,7 +418,7 @@ public final class MythicCommands {
         for (ToolItem tool : toolset.get()) {
             String id = Registries.ITEM.getId(tool).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-            output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/tools/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
+            output.append("![Image of the recipe for %s](../../assets/mythicmetals/recipes/tools/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
         }
         output.append("## Usages\n\n");
         output.append("## Trivia\n\n");
