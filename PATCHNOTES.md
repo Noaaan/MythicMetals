@@ -32,6 +32,14 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
 - Midas Gold Ingot reworked
 - Palladium Ingot reworked
 
+## Other Changes
+
+- Updated wiki-exporting commands
+- Removed explicit Elytra-handling with the Hallowed Cape renderer
+  - This fixes a bug related to cape stopping rendering when close to Elytras
+  - This *might* cause some minor visual bugs if wearing an Elytra using something like Elytra Slot
+  - Needs further testing
+
 # 0.20.2
 
 - Added armor to vanilla tags, which improves mod compat (#263)

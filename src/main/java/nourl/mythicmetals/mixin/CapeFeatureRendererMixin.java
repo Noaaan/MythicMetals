@@ -15,7 +15,6 @@ import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.armor.MythicArmor;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.models.StarPlatCloakModel;
-import nourl.mythicmetals.client.rendering.RenderingContext;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

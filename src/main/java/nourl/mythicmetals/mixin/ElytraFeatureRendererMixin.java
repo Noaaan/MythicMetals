@@ -11,11 +11,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.armor.CelestiumElytra;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.client.rendering.RenderingContext;
 import nourl.mythicmetals.misc.RegistryHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(ElytraFeatureRenderer.class)
@@ -38,19 +36,5 @@ public abstract class ElytraFeatureRendererMixin {
             return value;
         }
         return RegistryHelper.id("textures/models/celestium_elytra.png");
-    }
-
-    @Inject(
-        method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V",
-        at = @At(value = "HEAD"))
-    public void mythicmetals$clearElytraRender(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, LivingEntity livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
-        RenderingContext.elytraRendered = false;
-    }
-
-    @Inject(
-        method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V",
-        at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;pop()V"))
-    public void mythicmetals$isElytraRendered(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, LivingEntity livingEntity, float f, float g, float h, float j, float k, float l, CallbackInfo ci) {
-        RenderingContext.elytraRendered = true;
     }
 }
