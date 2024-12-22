@@ -279,14 +279,21 @@ public final class MythicCommands {
             output.append("%s Durability".formatted(armor.getDefaultStack().getMaxDamage())).append(BR);
         }
 
+        // Headers
+        output.append("===HEADERS===\n");
+        output.append("## Obtaining\n\n");
+        output.append("### Crafting\n\n");
         // armor recipes
-        output.append("\n").append("===RECIPE===").append("\n");
+        output.append(armorTypeName).append(" can be crafted from ").append(armorMaterial).append(" TODO - LINK TO MATERIAL.");
+        output.append("It is crafted just like any other armor").append(BR);
         for (var armor : armorSet.getArmorItems()) {
             String id = Registries.ITEM.getId(armor).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
             output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
         }
-        output.append("\n").append("===RECIPE END===").append("\n");
+        output.append("## Usages\n\n");
+        output.append("## Trivia\n\n");
+        output.append("## History\n\n");
 
         MythicMetals.LOGGER.info(output);
         source.sendFeedback(() -> Text.literal("Exported armor to wiki format in logs"), false);
@@ -323,6 +330,7 @@ public final class MythicCommands {
         String oreName = StringUtilsAtHome.toProperCase(blockSet.getName() + " Ore");
 
         // Ore names and images
+        output.append("===SIDEBAR===\n");
         output.append("!!! info inline end \"\"").append("\n");
         output.append(TAB).append("<center class=tooltip>").append("\n");
         output.append(TAB).append("<h3>**").append(oreName).append("**</h3>").append("\n");
@@ -350,11 +358,13 @@ public final class MythicCommands {
             oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%")
         ).append(BR);
         output.append("\n");
+        output.append("===SIDEBAR END===\n");
         // Headers
-        output.append("## Generation");
-        output.append("## Usages");
-        output.append("## Trivia");
-        output.append("## History");
+        output.append("===HEADERS===\n");
+        output.append("## Generation\n\n");
+        output.append("## Usages\n\n");
+        output.append("## Trivia\n\n");
+        output.append("## History\n\n");
 
         source.sendFeedback(() -> Text.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
         MythicMetals.LOGGER.info(output);
@@ -377,31 +387,42 @@ public final class MythicCommands {
         atkSpd.addAll(toolset.getAttackSpeed());
 
         String setName = StringUtilsAtHome.toProperCase(toolset.getSword().getMaterial().toString());
-
-        output.append("<center class=tooltip>").append("\n");
-        output.append("<h3>**").append(setName).append("**</h3>").append("\n");
+        output.append("===SIDEBAR===\n");
+        output.append("!!! info inline end \"\"").append("\n");
+        output.append(TAB).append("<center class=tooltip>").append("\n");
+        output.append(TAB).append("<h3>**").append(setName).append("**</h3>").append("\n");
 
         for (ToolItem tool : toolset.get()) {
             String id = Registries.ITEM.getId(tool).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-
             output.append("\n");
-            output.append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
-            output.append("+%s Attack Damage, %s Attack Speed".formatted(
+            output.append(TAB).append("<h4>**").append(name).append("**</h4>").append("\n");
+            output.append(TAB).append("![Image of %s](../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
+            output.append(TAB).append("+%s Attack Damage, %s Attack Speed".formatted(
                 tool.getMaterial().getAttackDamage() + damageDeque.pop() + 1,
                 BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
             )).append(BR);
-            output.append("%s Durability".formatted(tool.getDefaultStack().getMaxDamage())).append(BR);
+            output.append(TAB).append("%s Durability".formatted(tool.getDefaultStack().getMaxDamage())).append(BR);
         }
         // tool recipes
-        output.append("\n").append("===RECIPE===").append("\n");
+        output.append("\n").append("===SIDEBAR END===").append("\n");
+
+
+
+        // Headers
+        output.append("===HEADERS===\n");
+        output.append("## Obtaining\n\n");
+        output.append("### Crafting\n\n");
+        output.append(setName).append(" Tools can be crafted from ").append(setName).append(" TODO - LINK TO MATERIAL.");
+        output.append("It is crafted just like regular tools (TODO - MIGHT NOT APPLY!)").append(BR);
         for (ToolItem tool : toolset.get()) {
             String id = Registries.ITEM.getId(tool).getPath();
             String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
             output.append("![Image of the recipe for %s](../assets/mythicmetals/recipes/tools/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
         }
-        output.append("\n").append("===RECIPE END===").append("\n");
+        output.append("## Usages\n\n");
+        output.append("## Trivia\n\n");
+        output.append("## History\n\n");
 
         MythicMetals.LOGGER.info(output);
         source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
