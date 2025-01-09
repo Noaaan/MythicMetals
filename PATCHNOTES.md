@@ -6,39 +6,41 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
 
 ### Tools
 
-- Adamantite Tools reworked
-- Bronze Tools reworked
-- Carmot Tools reworked
-- Copper Tools reworked
-- Hallowed Tools reworked
-- Mythril Drill reworked
+- Adamantite Tools
+- Banglum Tools (New!)
+- Bronze Tools
+- Carmot Tools
+- Copper Tools
+- Hallowed Tools
+- Mythril Drill
   - Now includes an animation when active!
-- Mythril Tools reworked
-- New Banglum Tools
-- New Osmium Tools
-- New Palladium Tools
-- Orichalcum Tools reworked
-- Prometheum Tools reworked
-- Runite Tools reworked
-- Star Platinum Tools reworked
-- Steel Tools reworked
-- Stormyx Tools reworked
+- Mythril Tools
+- Osmium Tools (New!)
+- Orichalcum Tools
+- Palladium Tools (New!)
+- Prometheum Tools
+- Runite Tools
+- Star Platinum Tools
+- Steel Tools
+- Stormyx Tools
 
 ### Ores
 
-- Raw Banglum texture reworked
-- Raw Carmot texture reworked
-- New Raw Aquarium texture
-- Starrite Ore Blocks reworked
+- Raw Aquarium texture (New!)
+- Raw Banglum texture
+- Raw Carmot texture
+- Starrite Ore Blocks
 
 ### Items
 
-- Carmot Stone texture reworked
-- Carmot Template reworked
-- Legendary Banglum Template reworked
-- Midas Gold Folding Template reworked
-- Midas Gold Ingot reworked
-- Palladium Ingot reworked
+- Carmot Stone texture
+- Carmot Template
+- Hallowed Armor Items
+- Legendary Banglum Template
+- Midas Gold Folding Template
+- Midas Gold Ingot
+- Palladium Ingot
+- Prometheum Armor Items
 
 ## Other Changes
 
