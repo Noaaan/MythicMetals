@@ -49,6 +49,8 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
   - This fixes a bug related to cape stopping rendering when close to Elytras
   - This *might* cause some minor visual bugs if wearing an Elytra using something like Elytra Slot
   - Needs further testing
+- Fixed a bug where Branding would not apply
+- Branding now always applies on a critical hit
 
 # 0.20.2
 
