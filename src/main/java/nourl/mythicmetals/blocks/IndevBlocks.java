@@ -5,7 +5,6 @@ public class IndevBlocks {
 
     public static final Block AQUARIUM_GLASS = new GlassBlock(FabricBlockSettings.copyOf(Blocks.BLUE_STAINED_GLASS));
     public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
-    public static final AquariumStewardBlock AQUARIUM_STEWARD = new AquariumStewardBlock(FabricBlockSettings.copyOf(Blocks.CONDUIT));
 
     @Override
     public boolean shouldProcessField(Block value, String identifier, Field field) {
