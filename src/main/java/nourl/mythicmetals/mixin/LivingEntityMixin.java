@@ -118,10 +118,8 @@ public abstract class LivingEntityMixin extends Entity {
             return original;
         }
 
-        float modifier = (this.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) ?
-            Math.min(MathHelper.floor(((float) this.getAttributeValue(FIRE_VULNERABILITY) / 2.0f)), 1)
-            :
-            ((float) this.getAttributeValue(FIRE_VULNERABILITY)));
+        float baseDamage = (float) this.getAttributeValue(FIRE_VULNERABILITY);
+        float modifier = this.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) ? Math.min(MathHelper.floor((baseDamage / 2.0f)), 1) : baseDamage;
         return original + modifier;
     }
 
@@ -285,8 +283,8 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "dropEquipment", at = @At(value = "HEAD"))
     private void mythicmetals$dropMidasGold(ServerWorld world, DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
         if (source.getAttacker() == null) return;
-        if (source.getAttacker() instanceof PlayerEntity attacker) {
-            if (MythicMetals.CONFIG.midasGold() && attacker.getMainHandStack().isIn(MythicTags.MIDAS_TOUCH)) {
+        if (source.getAttacker() instanceof PlayerEntity attacker1) {
+            if (MythicMetals.CONFIG.midasGold() && attacker1.getMainHandStack().isIn(MythicTags.MIDAS_TOUCH)) {
                 this.dropStack(new ItemStack(MythicItems.MIDAS_GOLD.getRawOre()));
             }
         }

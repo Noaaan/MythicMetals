@@ -15,17 +15,21 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.tools.HammerBase;
 import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.misc.IsAttackCritical;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity {
+public abstract class PlayerEntityMixin extends LivingEntity implements IsAttackCritical {
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
+
+    @Unique
+    public boolean mythicmetals$isCritical = false;
 
     @Shadow
     public abstract PlayerInventory getInventory();
@@ -127,4 +131,23 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         this.itemCooldownManager.set(MythicTools.STORMYX_SHIELD.asItem(), 80);
     }
 
+    @Inject(method = "attack", at = @At("HEAD"))
+    private void setMythicmetals$resetCritical(Entity target, CallbackInfo ci) {
+        mythicmetals$setCritical(false);
+    }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;addCritParticles(Lnet/minecraft/entity/Entity;)V"))
+    private void mythicmetals$captureCritical(CallbackInfo ci) {
+        mythicmetals$setCritical(true);
+    }
+
+    @Override
+    public void mythicmetals$setCritical(boolean isCritical) {
+        mythicmetals$isCritical = isCritical;
+    }
+
+    @Override
+    public boolean mythicmetals$isCritical() {
+        return mythicmetals$isCritical;
+    }
 }
