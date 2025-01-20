@@ -114,7 +114,7 @@ public abstract class LivingEntityMixin extends Entity {
      */
     @ModifyVariable(method = "damage", at = @At(value = "HEAD"), argsOnly = true)
     private float mythicmetals$changeFireDamage(float original, DamageSource source) {
-        if (this.getAttributes().hasAttribute(FIRE_VULNERABILITY) || !source.isIn(DamageTypeTags.IS_FIRE)) {
+        if (!this.getAttributes().hasAttribute(FIRE_VULNERABILITY) || !source.isIn(DamageTypeTags.IS_FIRE)) {
             return original;
         }
 
