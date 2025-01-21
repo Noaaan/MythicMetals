@@ -35,6 +35,8 @@ public class MythicBlocks {
         .createDefaultSet(4F, IRON_MINING_LEVEL, 4.5F, IRON_MINING_LEVEL)
         .createAnvil(IRON_MINING_LEVEL)
         .finish();
+    public static final Block AQUARIUM_GLASS = new TransparentBlock(AbstractBlock.Settings.copy(Blocks.BLUE_STAINED_GLASS));
+    public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(AbstractBlock.Settings.copy(Blocks.CONDUIT));
 
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
         .strength(5.0F, 5.5F)
@@ -207,6 +209,8 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
 
     public static void init() {
         BlockSet.Builder.register();
+        RegistryHelper.block("aquarium_glass", AQUARIUM_GLASS);
+        RegistryHelper.block("aquarium_resonator", AQUARIUM_RESONATOR);
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);

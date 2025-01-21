@@ -81,7 +81,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            //BlockRenderLayerMap.INSTANCE.putBlock(IndevBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
+            BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
         }
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.KYBER.getStorageBlock());

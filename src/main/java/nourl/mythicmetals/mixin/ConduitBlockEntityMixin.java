@@ -2,7 +2,13 @@ package nourl.mythicmetals.mixin;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.ConduitBlockEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.poi.PointOfInterestStorage;
+import nourl.mythicmetals.blocks.ConduitPowered;
 import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.registry.RegisterPointOfInterests;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,13 +28,12 @@ public class ConduitBlockEntityMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$extendConduitArray(CallbackInfo ci) {
         List<Block> blocks = Arrays.stream(ACTIVATING_BLOCKS).collect(Collectors.toList());
-        //blocks.add(IndevBlocks.AQUARIUM_GLASS);
+        blocks.add(MythicBlocks.AQUARIUM_GLASS);
         blocks.add(MythicBlocks.AQUARIUM.getStorageBlock());
 
         ACTIVATING_BLOCKS = blocks.toArray(ACTIVATING_BLOCKS);
     }
 
-    /*
     @Inject(method = "givePlayersEffects", at = @At("TAIL"))
     private static void mythicmetals$invokeNearbySentries(World world, BlockPos pos, List<BlockPos> activatingBlocks, CallbackInfo ci) {
         if (world.isClient) return;
@@ -43,5 +48,4 @@ public class ConduitBlockEntityMixin {
             });
     }
 
-     */
 }

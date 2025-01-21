@@ -1,7 +1,20 @@
 package nourl.mythicmetals.blocks;
 
-public class AquariumResonatorBlockEntity {
-} /* extends BlockEntity implements ConduitPowered {
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.math.*;
+import net.minecraft.world.World;
+import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
+import java.util.List;
+
+public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
     private static final int MAX_RANGE = 24;
     private boolean activated = false;
     private int activeTime = 50;
@@ -15,20 +28,29 @@ public class AquariumResonatorBlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
-        if (!world.isClient() && world.getTime() % 40L == 0 && blockEntity.activated) {
+        if (world.isClient()) return;
+        if (blockEntity.activated && world.getTime() % 40L == 0) {
+            if (!state.get(AquariumResonatorBlock.ACTIVE)) {
+                state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.TRUE);
+            }
             empowerNearbyEntities(world, pos, state, blockEntity);
+            world.setBlockState(pos, state, Block.NOTIFY_ALL);
+            markDirty(world, pos, state);
         }
-        blockEntity.activeTime = MathHelper.clamp(blockEntity.activeTime - 1, 0, 50);
+        blockEntity.activeTime = MathHelper.clamp(blockEntity.activeTime - 1, 0, 150);
         if (blockEntity.activeTime == 0) {
             blockEntity.activated = false;
+            state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.FALSE);
+            world.setBlockState(pos, state, Block.NOTIFY_ALL);
+            markDirty(world, pos, state);
         }
     }
 
     private static Box getEffectZone(BlockPos pos) {
-        int i = pos.getX();
-        int j = pos.getY();
-        int k = pos.getZ();
-        return new Box(i, j, k, (i + 1), (j + 1), (k + 1)).expand(MAX_RANGE);
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+        return new Box(x, y, z, (x + 1), (y + 1), (z + 1)).expand(MAX_RANGE);
     }
 
     private static void empowerNearbyEntities(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
@@ -41,8 +63,21 @@ public class AquariumResonatorBlockEntity {
 
     @Override
     public void activate() {
-        activated = true;
-        activeTime = 50;
+        this.activated = true;
+        this.activeTime = 150;
+    }
+
+    @Override
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        this.activeTime = nbt.getInt("active_time");
+        this.activated = nbt.getBoolean("activated");
+        super.readNbt(nbt, registryLookup);
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        nbt.putInt("active_time", activeTime);
+        nbt.putBoolean("activated", activated);
+        super.readNbt(nbt, registryLookup);
     }
 }
-*/
