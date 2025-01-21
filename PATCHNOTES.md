@@ -42,6 +42,14 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
 - Palladium Ingot
 - Prometheum Armor Items
 
+## Balancing Changes
+
+- Branding now always applies on a critical hit
+- Adjusted some alloy recipes
+  - Bronze: 2 Copper + 1 Tin = 2 Bronze Ingots -> 3 ingots
+  - Durasteel: 1 Quadrillum + 1 Manganese = 1 Durasteel Ingot -> 2 ingots
+  - Steel: 1 Raw Iron + 1 Raw Manganese = 1 Steel Ingot -> 1 Steel Ingot, 2 ingots at tier 2, and 3 ingots at tier 3+
+
 ## Other Changes
 
 - Updated wiki-exporting commands
@@ -50,7 +58,6 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
   - This *might* cause some minor visual bugs if wearing an Elytra using something like Elytra Slot
   - Needs further testing
 - Fixed a bug where Branding would not apply
-- Branding now always applies on a critical hit
 
 # 0.20.2
 

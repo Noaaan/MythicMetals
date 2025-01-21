@@ -11,7 +11,7 @@
   ],
   "output": {
     "id": "mythicmetals:bronze_ingot",
-    "count": 2
+    "count": 3
   },
   "min_forge_tier": 1,
   "fuel_per_tick": 5
