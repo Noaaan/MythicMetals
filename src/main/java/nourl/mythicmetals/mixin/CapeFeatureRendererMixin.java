@@ -50,12 +50,12 @@ public abstract class CapeFeatureRendererMixin extends FeatureRenderer<AbstractC
 
     @Unique
     private void mythicmetals$renderStarPlatCape(MatrixStack ms, VertexConsumerProvider vertices, int light, AbstractClientPlayerEntity player, float f, float g, float h, float j, float k, float l) {
-        double x = MathHelper.lerpAngleDegrees(h / 2, (float) player.prevCapeX, (float) player.capeX)
-            - MathHelper.lerpAngleDegrees(h / 2, (float) player.prevX, (float) player.getX());
-        double y = MathHelper.lerpAngleDegrees(h / 2, (float) player.prevCapeY, (float) player.capeY)
-            - MathHelper.lerpAngleDegrees(h / 2, (float) player.prevY, (float) player.getY());
-        double z = MathHelper.lerpAngleDegrees(h / 2, (float) player.prevCapeZ, (float) player.capeZ)
-            - MathHelper.lerpAngleDegrees(h / 2, (float) player.prevZ, (float) player.getZ());
+        double x = MathHelper.lerpAngleDegrees(h, (float) player.prevCapeX, (float) player.capeX)
+            - MathHelper.lerpAngleDegrees(h, (float) player.prevX, (float) player.getX());
+        double y = MathHelper.lerpAngleDegrees(h, (float) player.prevCapeY, (float) player.capeY)
+            - MathHelper.lerpAngleDegrees(h, (float) player.prevY, (float) player.getY());
+        double z = MathHelper.lerpAngleDegrees(h, (float) player.prevCapeZ, (float) player.capeZ)
+            - MathHelper.lerpAngleDegrees(h, (float) player.prevZ, (float) player.getZ());
         float yaw = player.prevBodyYaw + (player.bodyYaw - player.prevBodyYaw);
         double o = MathHelper.sin(yaw * (float) (Math.PI / 180.0));
         double p = -MathHelper.cos(yaw * (float) (Math.PI / 180.0));
@@ -129,7 +129,7 @@ public abstract class CapeFeatureRendererMixin extends FeatureRenderer<AbstractC
         ms.multiply(RotationAxis.POSITIVE_X.rotationDegrees(6.0F + r / 2.0F + q));
         ms.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(s / 2.0F));
         ms.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F - s / 2.0F));
-        VertexConsumer vertexConsumer = vertices.getBuffer(RenderLayer.getEntitySolid(MythicModelHandler.HALLOWED_CAPE));
+        VertexConsumer vertexConsumer = vertices.getBuffer(RenderLayer.getEntityTranslucent(MythicModelHandler.HALLOWED_CAPE));
         this.getContextModel().renderCape(ms, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
         ms.pop();
     }
