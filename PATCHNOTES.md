@@ -2,7 +2,9 @@
 
 ## Texture Changes
 
-Most of these are made by thyreo. Thanks a ton for the new textures!
+Most of these are made by thyreo. Thanks a ton for the great work on the textures!
+Anything marked with "New!" replaces a placeholder texture. 
+The rest are reworks of existing textures. 
 
 ### Tools
 
@@ -23,6 +25,16 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
 - Star Platinum Tools
 - Steel Tools
 - Stormyx Tools
+
+### Blocks
+
+- Banglum Anvil
+- Banglum Block (New!)
+- Banglum Nuke Core (New!)
+- Banglum TNT (New!)
+- Durasteel Block
+- Steel Block (New!)
+- Placeholders for Carmot and Quadrillum Nuke Cores
 
 ### Ores
 
@@ -48,7 +60,10 @@ Most of these are made by thyreo. Thanks a ton for the new textures!
 - Adjusted some alloy recipes
   - Bronze: 2 Copper + 1 Tin = 2 Bronze Ingots -> 3 ingots
   - Durasteel: 1 Quadrillum + 1 Manganese = 1 Durasteel Ingot -> 2 ingots
-  - Steel: 1 Raw Iron + 1 Raw Manganese = 1 Steel Ingot -> 1 Steel Ingot, 2 ingots at tier 2, and 3 ingots at tier 3+
+  - Steel 
+    - Tier 1 -> 1 Raw Iron + 1 Raw Manganese = 1 Steel Ingot
+    - Tier 2 -> 2 Steel Ingots
+    - Tier 3+ -> 3 Steel Ingots
 
 ## Other Changes
 
