@@ -1,4 +1,4 @@
-# 0.20.3
+# 0.21.0
 
 ## Texture Changes
 
@@ -53,6 +53,12 @@ The rest are reworks of existing textures.
 - Midas Gold Ingot
 - Palladium Ingot
 - Prometheum Armor Items
+
+## Aquarium Resonator
+
+A new experimental block which builds on Conduits. 
+This works like a small Beacon as long as it is within the range of an active Conduit. 
+It grants you Beacon Power II, which works like Haste II plus Water Breathing.
 
 ## Balancing Changes
 

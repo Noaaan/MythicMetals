@@ -33,18 +33,20 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
         if (blockEntity.activated && world.getTime() % 40L == 0) {
             if (!state.get(AquariumResonatorBlock.ACTIVE)) {
                 state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.TRUE);
+                world.setBlockState(pos, state, Block.NOTIFY_ALL);
+                markDirty(world, pos, state);
             }
             MythicParticleSystem.RESONATOR_PARTICLES.spawn(world, pos.toCenterPos());
             empowerNearbyEntities(world, pos, state, blockEntity);
-            world.setBlockState(pos, state, Block.NOTIFY_ALL);
-            markDirty(world, pos, state);
         }
         blockEntity.activeTime = MathHelper.clamp(blockEntity.activeTime - 1, 0, 150);
         if (blockEntity.activeTime == 0) {
             blockEntity.activated = false;
-            state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.FALSE);
-            world.setBlockState(pos, state, Block.NOTIFY_ALL);
-            markDirty(world, pos, state);
+            if (state.get(AquariumResonatorBlock.ACTIVE)) {
+                state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.FALSE);
+                world.setBlockState(pos, state, Block.NOTIFY_ALL);
+                markDirty(world, pos, state);
+            }
         }
     }
 
