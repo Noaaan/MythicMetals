@@ -39,7 +39,7 @@ public class ConduitBlockEntityMixin {
         if (world.isClient) return;
         int radius = activatingBlocks.size() / 7 * 16;
         ((ServerWorld)world).getPointOfInterestStorage()
-            .getInCircle(type -> type.value() == RegisterPointOfInterests.CONDUIT_POWERED_BLOCK, pos, radius, PointOfInterestStorage.OccupationStatus.ANY)
+            .getInSquare(type -> type.value() == RegisterPointOfInterests.CONDUIT_POWERED_BLOCK, pos, radius, PointOfInterestStorage.OccupationStatus.ANY)
             .forEach(pointOfInterest -> {
                 var blockEntity = world.getBlockEntity(pointOfInterest.getPos());
                 if (blockEntity instanceof ConduitPowered conduitPowered) {
