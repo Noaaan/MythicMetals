@@ -1,10 +1,10 @@
 {
   "variants": {
     "active=false": {
-      "model": "minecraft:block/redstone_block"
+      "model": "mythicmetals:block/aquarium_resonator_deactivated"
     },
     "active=true": {
-      "model": "mythicmetals:block/aquarium_block"
+      "model": "mythicmetals:block/aquarium_resonator"
     }
   }
 }

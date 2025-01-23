@@ -11,11 +11,12 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
+import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 import java.util.List;
 
 public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
-    private static final int MAX_RANGE = 24;
+    public static final int MAX_RANGE = 24;
     private boolean activated = false;
     private int activeTime = 50;
 
@@ -33,6 +34,7 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
             if (!state.get(AquariumResonatorBlock.ACTIVE)) {
                 state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.TRUE);
             }
+            MythicParticleSystem.RESONATOR_PARTICLES.spawn(world, pos.toCenterPos());
             empowerNearbyEntities(world, pos, state, blockEntity);
             world.setBlockState(pos, state, Block.NOTIFY_ALL);
             markDirty(world, pos, state);
@@ -47,10 +49,7 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
     }
 
     private static Box getEffectZone(BlockPos pos) {
-        int x = pos.getX();
-        int y = pos.getY();
-        int z = pos.getZ();
-        return new Box(x, y, z, (x + 1), (y + 1), (z + 1)).expand(MAX_RANGE);
+        return new Box(pos).expand(MAX_RANGE);
     }
 
     private static void empowerNearbyEntities(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
@@ -58,7 +57,10 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
                 LivingEntity.class, getEffectZone(pos), entity -> entity.isLiving() && entity.isTouchingWaterOrRain()
         );
 
-        list.forEach(livingEntity -> livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 160, 1, true, false, true)));
+        list.forEach(livingEntity -> {
+            MythicParticleSystem.RESONATOR_POWER_PARTICLES.spawn(world, livingEntity.getPos());
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 160, 1, true, false, true));
+        });
     }
 
     @Override

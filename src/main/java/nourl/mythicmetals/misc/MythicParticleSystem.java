@@ -3,12 +3,16 @@ package nourl.mythicmetals.misc;
 import io.wispforest.owo.particles.ClientParticles;
 import io.wispforest.owo.particles.systems.ParticleSystem;
 import io.wispforest.owo.particles.systems.ParticleSystemController;
+import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.util.VectorRandomUtils;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import nourl.mythicmetals.blocks.AquariumResonatorBlockEntity;
 import nourl.mythicmetals.compat.ExplosiveEnhancementCompat;
+import org.joml.Vector3f;
 import java.util.Random;
 
 public class MythicParticleSystem {
@@ -72,20 +76,19 @@ public class MythicParticleSystem {
 
     public static final ParticleSystem<Void> COMBUSTION_EXPLOSION = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.reset();
-        ClientParticles.setParticleCount(15);
-        ClientParticles.randomizeVelocity(0.5f);
         ClientParticles.persist();
+        ClientParticles.randomizeVelocity(0.5f);
+        ClientParticles.setParticleCount(15);
         ClientParticles.spawn(ParticleTypes.ASH, world, pos.add(0, 1, 0), 3.0f);
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos.add(0, 1, 0), 3.0f);
         ClientParticles.spawn(ParticleTypes.SMOKE, world, pos.add(0, 1, 0), 3.0f);
-        ClientParticles.reset();
     });
 
     public static final ParticleSystem<Void> COLORED_NOTE = CONTROLLER.register(Void.class, (world, pos, data) -> {
         Random r = new Random();
         ClientParticles.reset();
-        ClientParticles.setParticleCount(1);
         ClientParticles.persist();
+        ClientParticles.setParticleCount(1);
         ClientParticles.setVelocity(new Vec3d(r.nextInt(32) / 16.0f, 0, 0));
         ClientParticles.spawn(ParticleTypes.NOTE, world, pos, 0);
         ClientParticles.reset();
@@ -95,8 +98,8 @@ public class MythicParticleSystem {
         final int COUNT = 8;
         Random r = new Random();
         ClientParticles.reset();
-        ClientParticles.setParticleCount(1);
         ClientParticles.persist();
+        ClientParticles.setParticleCount(1);
         for (int i = 0; i < COUNT; i++) {
             ClientParticles.setVelocity(new Vec3d(r.nextInt(32) / 16.0f, 0, 0));
             double xOffset = r.nextDouble(-1.0, 1.0);
@@ -104,8 +107,20 @@ public class MythicParticleSystem {
             double zOffset = r.nextDouble(-1.0, 1.0);
             ClientParticles.spawn(ParticleTypes.NOTE, world, pos.add(xOffset, yOffset, zOffset), 0.25f);
         }
+    });
 
+    public static final ParticleSystem<Void> RESONATOR_PARTICLES = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.reset();
+        ClientParticles.persist();
+        ClientParticles.setParticleCount(4);
+        ClientParticles.spawnCenteredOnBlock(ParticleTypes.NAUTILUS, world, BlockPos.ofFloored(pos.add(0, 1.0, 0)), 2.0);
+    });
+
+    public static final ParticleSystem<Void> RESONATOR_POWER_PARTICLES = CONTROLLER.register(Void.class, (world, pos, data) -> {
+        ClientParticles.reset();
+        ClientParticles.persist();
+        ClientParticles.setParticleCount(4);
+        ClientParticles.spawnWithOffsetFromBlock(ParticleTypes.NAUTILUS, world, BlockPos.ofFloored(pos), new Vec3d(0, 1.25, 0), 2.0F);
     });
 
     public static final ParticleSystem<Float> EXPLOSIVE_EXPLOSION = CONTROLLER.register(Float.class, (world, pos, power) -> {

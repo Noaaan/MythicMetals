@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sas",
+    "apa",
+    "sas"
+  ],
+  "key": {
+    "a": {
+      "item": "mythicmetals:aquarium_ingot"
+    },
+    "p": {
+      "item": "mythicmetals:aquarium_pearl"
+    },
+    "s": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "result": {
+    "id": "mythicmetals:aquarium_resonator",
+    "count": 1
+  }
+}
