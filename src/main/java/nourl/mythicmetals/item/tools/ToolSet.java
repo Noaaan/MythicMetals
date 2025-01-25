@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_VALUE;
+
 public class ToolSet {
 
     private final SwordItem sword;
@@ -117,32 +119,35 @@ public class ToolSet {
         return AttributeModifiersComponent.builder()
             .add(
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, damage, EntityAttributeModifier.Operation.ADD_VALUE),
+                new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, damage, ADD_VALUE),
                 AttributeModifierSlot.MAINHAND
             )
             .add(
                 EntityAttributes.GENERIC_ATTACK_SPEED,
-                new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -4.0 + speed, EntityAttributeModifier.Operation.ADD_VALUE),
+                new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -4.0 + speed, ADD_VALUE),
                 AttributeModifierSlot.MAINHAND
             )
             .build();
     }
 
-    public static AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, double damage, float speed) {
+    public AttributeModifiersComponent.Builder createAttributeBuilder(ToolMaterial material, double damage, float speed) {
         if (speed < 0.0f) {
             speed = 0;
         }
         return AttributeModifiersComponent.builder()
             .add(
                 EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, material.getAttackDamage() + damage, EntityAttributeModifier.Operation.ADD_VALUE),
+                new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, material.getAttackDamage() + damage, ADD_VALUE),
                 AttributeModifierSlot.MAINHAND
             )
             .add(
                 EntityAttributes.GENERIC_ATTACK_SPEED,
-                new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -4.0 + speed, EntityAttributeModifier.Operation.ADD_VALUE),
+                new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -4.0 + speed, ADD_VALUE),
                 AttributeModifierSlot.MAINHAND
-            )
-            .build();
+            );
+    }
+
+    public AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, double damage, float speed) {
+        return this.createAttributeBuilder(material, damage, speed).build();
     }
 }

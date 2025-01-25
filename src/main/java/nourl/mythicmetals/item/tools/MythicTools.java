@@ -13,7 +13,6 @@ import net.minecraft.registry.*;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.*;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.armor.AquariumToolSet;
 import nourl.mythicmetals.component.*;
 import nourl.mythicmetals.item.*;
 import nourl.mythicmetals.misc.RegistryHelper;
@@ -87,14 +86,14 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, new Item.Settings()
         .group(MythicMetals.TABBED_GROUP).tab(2)
-        .attributeModifiers(createAttributeModifiers(MythicToolMaterials.ORICHALCUM, 6, 0.8f)),
+        .attributeModifiers(MiningToolItem.createAttributeModifiers(MythicToolMaterials.ORICHALCUM, 6, 0.8f)),
         1
     );
 
     public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD,
         new Item.Settings()
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(createAttributeModifiers(MythicToolMaterials.MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.MIDAS_GOLD, 3, 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0))
     );
 
@@ -103,7 +102,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             .fireproof()
             .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(createAttributeModifiers(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0))
     );
 
@@ -113,7 +112,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP)
             .tab(2)
-            .attributeModifiers(createAttributeModifiers(MythicToolMaterials.ROYAL_MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ROYAL_MIDAS_GOLD, 3, 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0, true))
     );
 
@@ -190,7 +189,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             @Override
             public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
                 if (entity.getType() == EntityType.FROG && FabricLoader.getInstance().isModLoaded("delightful-froge")) {
-                    ((FrogEntity) entity).setVariant(Registries.FROG_VARIANT.getEntry(Identifier.of("delightful", "froge")).get());
+                    ((FrogEntity) entity).setVariant(Registries.FROG_VARIANT.getEntry(Identifier.of("delightful", "froge")).orElseThrow());
                     return ActionResult.SUCCESS;
                 }
                 return super.useOnEntity(stack, user, entity, hand);

@@ -12,6 +12,8 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 import nourl.mythicmetals.misc.RegistryHelper;
 
+import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE;
+
 public class TidesingerToolSet extends ToolSet {
     public TidesingerToolSet(ToolMaterial material, int[] damage, float[] speed) {
         super(material, damage, speed);
@@ -19,18 +21,18 @@ public class TidesingerToolSet extends ToolSet {
 
     @Override
     protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new TidesingerSword(material, damage, speed, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new TidesingerSword(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     @Override
     protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new TidesingerAxe(material, damage, speed, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new TidesingerAxe(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     public static class TidesingerSword extends SwordItem implements RiptideTool {
 
-        public TidesingerSword(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
-            super(material, settings.attributeModifiers(createAquaAffinityToolModifiers(material, attackDamage, attackSpeed)));
+        public TidesingerSword(ToolMaterial material, Settings settings) {
+            super(material, settings);
         }
 
         @Override
@@ -57,8 +59,8 @@ public class TidesingerToolSet extends ToolSet {
 
     public static class TidesingerAxe extends AxeItem implements RiptideTool {
 
-        public TidesingerAxe(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings) {
-            super(material, settings.attributeModifiers(createAquaAffinityToolModifiers(material, attackDamage, attackSpeed)));
+        public TidesingerAxe(ToolMaterial material, Settings settings) {
+            super(material, settings);
         }
 
         @Override
@@ -87,25 +89,11 @@ public class TidesingerToolSet extends ToolSet {
         }
     }
 
-    public static AttributeModifiersComponent createAquaAffinityToolModifiers(ToolMaterial material, double damage, float speed) {
-        if (speed < 0.0f) {
-            speed = 0;
-        }
-        return AttributeModifiersComponent.builder()
-            .add(
-                EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, material.getAttackDamage() + damage, EntityAttributeModifier.Operation.ADD_VALUE),
-                AttributeModifierSlot.MAINHAND
-            )
-            .add(
-                EntityAttributes.GENERIC_ATTACK_SPEED,
-                new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -4.0 + speed, EntityAttributeModifier.Operation.ADD_VALUE),
-                AttributeModifierSlot.MAINHAND
-            )
-            .add(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED,
-                new EntityAttributeModifier(RegistryHelper.id("tidesinger_tool_bonus"), 5, EntityAttributeModifier.Operation.ADD_VALUE),
-                AttributeModifierSlot.MAINHAND
-            )
-            .build();
+    @Override
+    public AttributeModifiersComponent.Builder createAttributeBuilder(ToolMaterial material, double damage, float speed) {
+        return super.createAttributeBuilder(material, damage, speed).add(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED,
+            new EntityAttributeModifier(RegistryHelper.id("tidesinger_tool_bonus"), 1.5f, ADD_MULTIPLIED_BASE),
+            AttributeModifierSlot.MAINHAND
+        );
     }
 }

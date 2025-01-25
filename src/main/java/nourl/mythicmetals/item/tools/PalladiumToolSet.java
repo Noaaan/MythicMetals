@@ -21,27 +21,27 @@ public class PalladiumToolSet extends ToolSet {
 
     @Override
     protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PalladiumSword(material, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new PalladiumSword(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     @Override
     protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PalladiumAxe(material, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new PalladiumAxe(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     @Override
     protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PalladiumPick(material, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new PalladiumPick(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     @Override
     protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PalladiumShovel(material, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new PalladiumShovel(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     @Override
     protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new PalladiumHoe(material, settings.attributeModifiers(ToolSet.createAttributeModifiers(material, damage, speed)));
+        return new PalladiumHoe(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
     }
 
     public static class PalladiumAxe extends AxeItem {
