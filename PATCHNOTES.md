@@ -80,9 +80,9 @@ It grants you Beacon Power II, which works like Haste II plus Water Breathing.
   - Needs further testing
 - Fixed a bug where Branding would not apply
 - Fixed Aquarium and Tidesinger Underwater Mining Speed bonuses
-  - Aquarium Tools now grant +100% underwater mining speeds
+  - Aquarium Tools now grants +100% underwater mining speed
   - Aquarium Helmet now grants +100% underwater mining speed
-  - Tidesinger Tools now grant +100% underwater mining speeds
+  - Tidesinger Tools now grants +150% underwater mining speed
 
 # 0.20.2
 

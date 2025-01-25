@@ -78,6 +78,14 @@ public class ToolSet {
         return new HoeItem(material, settings.component(DataComponentTypes.ATTRIBUTE_MODIFIERS, createAttributeModifiers(material, damage, speed)));
     }
 
+    /**
+     * Returns a set of all the ToolItems that make this toolset
+     *
+     * @return List of ToolItems in order: Sword, Axe, Pickaxe, Shovel, Hoe
+     */
+    public List<ToolItem> get() {
+        return List.of(sword, axe, pickaxe, shovel, hoe);
+    }
 
     public SwordItem getSword() {
         return sword;
@@ -101,15 +109,6 @@ public class ToolSet {
 
     public List<Float> getAttackSpeed() {
         return attackSpeed;
-    }
-
-    /**
-     * Returns a set of all the ToolItems that make this toolset
-     *
-     * @return List of ToolItems in order: Sword, Pickaxe, Axe, Shovel, Hoe
-     */
-    public List<ToolItem> get() {
-        return List.of(sword, axe, pickaxe, shovel, hoe);
     }
 
     public static AttributeModifiersComponent createAttributeModifiers(double damage, float speed) {
