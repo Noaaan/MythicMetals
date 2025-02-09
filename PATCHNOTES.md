@@ -1,4 +1,4 @@
-# 0.21.x
+# 0.21.1
 
 - Fixed Tidesingers Water Speed bonus applying on all armor
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed
