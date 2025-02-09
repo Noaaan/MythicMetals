@@ -1,3 +1,7 @@
+# 0.21.x
+
+- Fixed Tidesingers Water Speed bonus applying on all armor
+
 # 0.21.0
 
 ## Texture Changes

@@ -26,6 +26,7 @@ public abstract class ArmorItemMixin {
     private static void constructor(RegistryEntry<?> registryEntry, ArmorItem.Type type, CallbackInfoReturnable<AttributeModifiersComponent> cir, int i, float f, AttributeModifiersComponent.Builder builder, AttributeModifierSlot slot) {
         var material = registryEntry.value();
         if (material == MythicArmorMaterials.TIDESINGER) {
+            mythicmetals$armorMapBuilder(builder, "tidesinger_%s_swim_speed_bonus".formatted(type.getName()), AdditionalEntityAttributes.WATER_SPEED, 0.1F, ADD_MULTIPLIED_TOTAL, slot);
             switch (type) {
                 case HELMET -> {
                     mythicmetals$armorMapBuilder(builder, "tidesinger_helmet_underwater_mining_bonus", EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED, 3.0f, ADD_MULTIPLIED_TOTAL, slot);
@@ -38,7 +39,6 @@ public abstract class ArmorItemMixin {
             }
 
         }
-        mythicmetals$armorMapBuilder(builder, "tidesinger_%s_swim_speed_bonus".formatted(type.getName()), AdditionalEntityAttributes.WATER_SPEED, 0.1F, ADD_MULTIPLIED_TOTAL, slot);
         if (material.equals(MythicArmorMaterials.AQUARIUM)) {
             switch (type) {
                 case HELMET ->
