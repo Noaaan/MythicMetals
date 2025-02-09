@@ -86,14 +86,14 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, new Item.Settings()
         .group(MythicMetals.TABBED_GROUP).tab(2)
-        .attributeModifiers(MiningToolItem.createAttributeModifiers(MythicToolMaterials.ORICHALCUM, 6, 0.8f)),
+        .attributeModifiers(MiningToolItem.createAttributeModifiers(MythicToolMaterials.ORICHALCUM, 6, -4.0f + 0.8f)),
         1
     );
 
     public static final Item MIDAS_GOLD_SWORD = new MidasGoldSword(MythicToolMaterials.MIDAS_GOLD,
         new Item.Settings()
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.MIDAS_GOLD, 3, -4.0f + 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0))
     );
 
@@ -102,7 +102,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             .fireproof()
             .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.GILDED_MIDAS_GOLD, 3, -4.0f + 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0))
     );
 
@@ -112,7 +112,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP)
             .tab(2)
-            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ROYAL_MIDAS_GOLD, 3, 1.6f))
+            .attributeModifiers(SwordItem.createAttributeModifiers(MythicToolMaterials.ROYAL_MIDAS_GOLD, 3, -4.0f + 1.6f))
             .component(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0, true))
     );
 
