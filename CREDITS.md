@@ -32,6 +32,7 @@ These people have helped translate the mod into different languages. Thank you t
 - Kurty00 and SNL Neshorn, for the german translation.
 
 Feel free to contribute a translation if you want to!
+
 I currently do not support Crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
 
 ## Supporters
