@@ -27,7 +27,7 @@ These people have helped translate the mod into different languages. Thank you t
 
 - Oscienet, for the russian translation.
 - DH, for the macedonian translation.
-- nageih and pluiedev, for the simplified chinese translations.
+- nageih, pluiedev, and VeriTas-arch for the simplified chinese translations.
 - gyular, for the korean translation.
 - Kurty00 and SNL Neshorn, for the german translation.
 
