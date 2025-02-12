@@ -21,7 +21,7 @@ Note that the **assets (textures) in this mod is All Rights Reserved**. You may 
 Feel free to use this in any modpack you wish for. Some modpacks that use Mythic Metals:
 
 - Euphoric Curiosities: <https://www.curseforge.com/minecraft/modpacks/euphoriccuriosity>
-- Medieval Minecraft (Fabric): <https://www.curseforge.com/minecraft/modpacks/medieval-mc-fabric-mmc2>
+- Medieval Minecraft (Fabric): <https://www.curseforge.com/minecraft/modpacks/medieval-mc-fabric-mmc3>
 - BounceSMP: <https://www.curseforge.com/minecraft/modpacks/bouncesmp-public>
 
 ## Credits
