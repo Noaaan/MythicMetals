@@ -19,7 +19,7 @@ public class MythicTags {
     public static final TagKey<Item> BONUS_LOOTING = TagKey.of(RegistryKeys.ITEM, id("abilities/bonus_looting"));
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.of(RegistryKeys.ITEM, id("abilities/midas_touch"));
     public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(RegistryKeys.ITEM, id("carmot_staff_blocks"));
-    public static final TagKey<Item> COMMON_ARMOR = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "armor"));
+    public static final TagKey<Item> COMMON_ARMOR = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "armors"));
     public static final TagKey<Item> COMMON_TOOLS = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "tools"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.of(RegistryKeys.ITEM, id("tidesinger_coral"));
 

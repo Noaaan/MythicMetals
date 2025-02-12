@@ -2,6 +2,7 @@
 
 - Fixed Tidesingers Water Speed bonus applying on all armor
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed
+- Fixed a bad tag reference for common armor, which broke the Prometheum bonuses (#283)
 
 # 0.21.0
 
