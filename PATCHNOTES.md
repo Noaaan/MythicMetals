@@ -6,6 +6,7 @@
 - Added a Palladium Minecart
   - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
   - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
+- Added compat with Sword Blocking Mechanics
 
 ## Fixes
 
