@@ -791,7 +791,7 @@
   "tooltip.mythril_drill.out_of_fuel": "Немає палива!",
   "tooltip.mythril_drill.upgrade_slot_1": "Слот покращення 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2": "Слот покращення 2: %s",
-  "tooltip.mythril_drill.upgrade_tip":[
+  "tooltip.upgrade_component.tooltip":[
   {"text": "Клацніть ПКМ з "},
   {"text": "покращенням бура", "color": "#3485C8"},
   {"text": " для покращення"}

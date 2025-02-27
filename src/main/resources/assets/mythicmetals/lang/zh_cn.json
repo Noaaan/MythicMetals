@@ -1324,7 +1324,7 @@
     "tooltip.mythril_drill.upgrade_slot": "升级槽 %s：%s",
     "tooltip.mythril_drill.upgrade_slot_1": "升级槽1：%s",
     "tooltip.mythril_drill.upgrade_slot_2": "升级槽2：%s",
-    "tooltip.mythril_drill.upgrade_tip": [
+    "tooltip.upgrade_component.tooltip": [
         {
             "text": "用钻头升级"
         },

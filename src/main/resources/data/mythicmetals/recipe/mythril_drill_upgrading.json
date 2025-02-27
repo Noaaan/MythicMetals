@@ -1,0 +1,16 @@
+{
+  "type": "mythicmetals:upgrading",
+  "base": {
+    "item": "mythicmetals:mythril_drill"
+  },
+  "addition": {
+    "tag": "mythicmetals:mythril_drill_upgrades"
+  },
+  "template": {
+    "item": "minecraft:air"
+  },
+  "result": {
+    "id": "mythicmetals:mythril_drill",
+    "count": 1
+  }
+}

@@ -1,13 +1,25 @@
-# 0.21.1
+# 0.22.0
 
 ## Changes
 
 - Unobtainium Blocks and Ores are now of uncommon rarity
+- Added compat with Sword Blocking Mechanics
+- The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
+
+### Mythril Drill Recipe Rework
+
+- Mythril Drill upgrades are now applied in a Smithing Table
+- Added a generic "mythicmetals:upgrading" Smithing Table Recipe Type
+- Added a `mythicmetals:mythril_drill_upgrades` tag
+  - Note that translations are still derived from the Item, and not by the Upgrade Component
+- Added an experimental change to the Smithing Table which makes the arrow red
+  when trying to add duplicate upgrades
+
+### Palladium Minecart
+
 - Added a Palladium Minecart
   - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
   - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
-- Added compat with Sword Blocking Mechanics
-- The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
 
 ## Fixes
 

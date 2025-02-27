@@ -114,18 +114,6 @@ public class MythrilDrill extends MiningToolItem {
                     return true;
                 }
             }
-
-            if (!drill.contains(MythicDataComponents.UPGRADES)) return false;
-
-            var upgrades = drill.get(MythicDataComponents.UPGRADES);
-            if (upgrades != null && upgrades.hasFreeSlots()) {
-                if (cursorItem.equals(Items.AIR)) return false;
-                if (!drillUpgrades.containsKey(cursorItem) || upgrades.hasUpgrade(cursorItem)) return false;
-                // Apply drill upgrade
-                cursorStack.decrement(1);
-                drill.set(MythicDataComponents.UPGRADES, UpgradeComponent.addItem(upgrades, cursorItem));
-                return true;
-            }
         }
         return false;
     }

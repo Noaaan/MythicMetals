@@ -50,12 +50,25 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipApp
         return this.items.contains(upgradeItem);
     }
 
+    public boolean isEmpty() {
+        for (Item item : this.items) {
+            if (item != Items.AIR) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public boolean hasFreeSlots() {
         return this.items.contains(Items.AIR);
     }
 
     @Override
     public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
+        if (this.size > 0 && this.isEmpty()) {
+            tooltip.accept(Text.translatable("tooltip.upgrade_component.tooltip"));
+        }
+
         if (this.size > this.items.size()) {
             MythicMetals.LOGGER.warn("Upgrade Component is larger than the initial item list");
         }

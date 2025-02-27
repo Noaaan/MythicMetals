@@ -799,10 +799,10 @@
   "tooltip.mythril_drill.upgrade_slot": "Upgrade Slot %s: %s",
   "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
-  "tooltip.mythril_drill.upgrade_tip":[
-    {"text": "Right-click with a "},
+  "tooltip.upgrade_component.tooltip":[
+    {"text": "Craft with a "},
     {"text": "Drill Upgrade", "color": "#3485C8"},
-    {"text": " to upgrade"}
+    {"text": " in a Smithing Table"}
   ],
   "tooltip.mythril_drill.refuel":[
     {"text": "Right-click with "},

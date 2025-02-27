@@ -791,7 +791,7 @@
  "tooltip.mythril_drill.out_of_fuel": "Нет топлива!",
  "tooltip.mythril_drill.upgrade_slot_1": "Ячейка улучшения 1: %s",
  "tooltip.mythril_drill.upgrade_slot_2": "Ячейка улучшения 2: %s",
- "tooltip.mythril_drill.upgrade_tip":[
+ "tooltip.upgrade_component.tooltip":[
   {"text": "Щёлкните ПКМ с "},
   {"text": "улучшением бура", "color": "#3485C8"},
   {"text": " для улучшения"}

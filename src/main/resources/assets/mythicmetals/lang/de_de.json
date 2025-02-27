@@ -763,7 +763,7 @@
   "tooltip.mythril_drill.out_of_fuel":  "Kein Kraftstoff!",
   "tooltip.mythril_drill.upgrade_slot_1": "Upgrade Slot 1: %s",
   "tooltip.mythril_drill.upgrade_slot_2":  "Upgrade Slot 2: %s",
-  "tooltip.mythril_drill.upgrade_tip":[
+  "tooltip.upgrade_component.tooltip":[
     {"text": "Rechtsklick mit "},
     {"text": "Bohrerupgrade", "color": "#3485C8"},
     {"text": "zum upgraden"}

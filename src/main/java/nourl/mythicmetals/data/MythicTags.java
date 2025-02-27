@@ -39,6 +39,7 @@ public class MythicTags {
     public static final TagKey<Enchantment> SILK_TOUCH_LIKE = TagKey.of(ENCHANTMENT, id("silk_touch_like"));
     public static final TagKey<Enchantment> INCREASES_MINING_SPEED = TagKey.of(ENCHANTMENT, id("increases_mining_speed"));
     public static final TagKey<EntityType<?>> GRANTS_FIRE_RES_WHILE_RIDING = TagKey.of(ENTITY_TYPE, id("grants_fire_resistance_while_riding"));
+    public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.of(RegistryKeys.ITEM, id("mythril_drill_upgrades"));
 }
 
 
