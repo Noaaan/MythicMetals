@@ -3,7 +3,7 @@
 ## Changes
 
 - Unobtainium Blocks and Ores are now of uncommon rarity
-- Added compat with Sword Blocking Mechanics
+- Added compat with Sword Blocking Mechanics (#280)
 - The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
 
 ### Mythril Drill Recipe Rework
