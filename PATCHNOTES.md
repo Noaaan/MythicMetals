@@ -7,6 +7,7 @@
   - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
   - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
 - Added compat with Sword Blocking Mechanics
+- The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
 
 ## Fixes
 
@@ -14,6 +15,7 @@
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed
 - Fixed a bad tag reference for common armor, which broke the Prometheum bonuses (#283)
 - Fix a missing lang entry for the Banglum TNT Minecart Entity
+
 
 # 0.21.0
 

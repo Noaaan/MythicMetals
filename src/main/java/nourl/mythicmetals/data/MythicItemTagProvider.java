@@ -238,6 +238,12 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .add(MythicTools.MIDAS_GOLD_SWORD)
             .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
             .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("swords"))
+            .add(MythicTools.RED_AEGIS_SWORD)
+            .add(MythicTools.WHITE_AEGIS_SWORD)
+            .add(MythicTools.MIDAS_GOLD_SWORD)
+            .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
+            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
         getOrCreateTagBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS)
             .add(MythicTools.RED_AEGIS_SWORD)
             .add(MythicTools.WHITE_AEGIS_SWORD)
