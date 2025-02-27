@@ -358,6 +358,8 @@
   "item.mythicmetals.palladium_hoe": "Palladium Hoe",
   "item.mythicmetals.palladium_ingot": "Palladium Ingot",
   "item.mythicmetals.palladium_leggings": "Palladium Leggings",
+  "item.mythicmetals.palladium_minecart": "Palladium Minecart",
+  "item.mythicmetals.palladium_minecart.description": "Grants Fire Resistance while seated",
   "item.mythicmetals.palladium_nugget": "Palladium Nugget",
   "item.mythicmetals.palladium_pickaxe": "Palladium Pickaxe",
   "item.mythicmetals.palladium_shovel": "Palladium Shovel",
@@ -865,6 +867,7 @@
   "entity.mythicmetals.banglum_tnt": "Primed Banglum TNT",
   "entity.mythicmetals.banglum_nuke": "Primed Banglum Nuke",
   "entity.mythicmetals.banglum_tnt_minecart": "Banglum TNT Minecart",
+  "entity.mythicmetals.palladium_minecart": "Palladium Minecart",
 
   "item.mythicmetals.aegis_smithing_template": "Smithing Template",
   "item.mythicmetals.carmot_staff_smithing_template": "Smithing Template",

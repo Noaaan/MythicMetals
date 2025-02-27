@@ -8,17 +8,19 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.potion.Potion;
 import net.minecraft.registry.*;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.component.*;
 import nourl.mythicmetals.item.*;
 import nourl.mythicmetals.misc.RegistryHelper;
+import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static nourl.mythicmetals.item.tools.ToolSet.createAttributeModifiers;
 
@@ -39,6 +41,13 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet AQUARIUM = new AquariumToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet(MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final Item BANGLUM_TNT_MINECART = new MinecartItem(MythicMetals.BANGLUM_TNT, new Item.Settings().group(MythicMetals.TABBED_GROUP));
+    public static final Item PALLADIUM_MINECART = new MinecartItem(MythicMetals.PALLADIUM_MINECART, new Item.Settings().group(MythicMetals.TABBED_GROUP)) {
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            super.appendTooltip(stack, context, tooltip, type);
+            tooltip.add(Text.translatable("item.mythicmetals.palladium_minecart.description").withColor(UsefulSingletonForColorUtil.MetalColors.PALLADIUM.rgb()));
+        }
+    };
     public static final ToolSet BRONZE = new ToolSet(MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CARMOT = new ToolSet(MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CELESTIUM = new ToolSet(MythicToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
@@ -160,6 +169,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     @Override
     public void afterFieldProcessing() {
         RegistryHelper.item("banglum_tnt_minecart", BANGLUM_TNT_MINECART);
+        RegistryHelper.item("palladium_minecart", PALLADIUM_MINECART);
         RegistryHelper.item("doge", Frogery.DOGE);
         RegistryHelper.item("froge", Frogery.FROGE);
         Registry.registerReference(Registries.SOUND_EVENT, RegistryHelper.id("music_disc.dog4"), SoundEvent.of(RegistryHelper.id("music_disc.dog4")));

@@ -13,7 +13,11 @@ public abstract class AbstractMinecartEntityTypeMixin {
     @Mutable
     private static AbstractMinecartEntity.Type[] field_7673;
 
+    @Unique
     private static final AbstractMinecartEntity.Type BANGLUM_TNT = mythicmetals$addType("BANGLUM_TNT");
+
+    @Unique
+    private static final AbstractMinecartEntity.Type PALLADIUM_MINECART = mythicmetals$addType("PALLADIUM_MINECART");
 
     @Invoker("<init>")
     public static AbstractMinecartEntity.Type mythicmetals$init(String internalName, int internalId) {

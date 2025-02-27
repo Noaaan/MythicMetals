@@ -289,4 +289,11 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
     }
+
+    @Inject(method = "tickRiding", at = @At("HEAD"))
+    private void mythicmetals$tickRiding(CallbackInfo ci) {
+        if (this.hasVehicle() && this.getWorld().getTime() % 40 == 1 && this.getVehicle().getType().isIn(MythicTags.GRANTS_FIRE_RES_WHILE_RIDING)) {
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 120));
+        }
+    }
 }

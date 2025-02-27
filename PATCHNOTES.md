@@ -3,12 +3,16 @@
 ## Changes
 
 - Unobtainium Blocks and Ores are now of uncommon rarity
+- Added a Palladium Minecart
+  - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
+  - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
 
 ## Fixes
 
 - Fixed Tidesingers Water Speed bonus applying on all armor
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed
 - Fixed a bad tag reference for common armor, which broke the Prometheum bonuses (#283)
+- Fix a missing lang entry for the Banglum TNT Minecart Entity
 
 # 0.21.0
 

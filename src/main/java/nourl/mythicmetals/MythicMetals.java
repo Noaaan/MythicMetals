@@ -47,6 +47,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static final int CONFIG_VERSION = 12;
 
     public static final AbstractMinecartEntity.Type BANGLUM_TNT = Enum.valueOf(AbstractMinecartEntity.Type.class, "BANGLUM_TNT");
+    public static final AbstractMinecartEntity.Type PALLADIUM_MINECART = Enum.valueOf(AbstractMinecartEntity.Type.class, "PALLADIUM_MINECART");
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 

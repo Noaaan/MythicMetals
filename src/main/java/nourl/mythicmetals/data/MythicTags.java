@@ -2,14 +2,14 @@ package nourl.mythicmetals.data;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-import static net.minecraft.registry.RegistryKeys.BIOME;
-import static net.minecraft.registry.RegistryKeys.ENCHANTMENT;
+import static net.minecraft.registry.RegistryKeys.*;
 import static nourl.mythicmetals.misc.RegistryHelper.id;
 
 public class MythicTags {
@@ -38,6 +38,7 @@ public class MythicTags {
 
     public static final TagKey<Enchantment> SILK_TOUCH_LIKE = TagKey.of(ENCHANTMENT, id("silk_touch_like"));
     public static final TagKey<Enchantment> INCREASES_MINING_SPEED = TagKey.of(ENCHANTMENT, id("increases_mining_speed"));
+    public static final TagKey<EntityType<?>> GRANTS_FIRE_RES_WHILE_RIDING = TagKey.of(ENTITY_TYPE, id("grants_fire_resistance_while_riding"));
 }
 
 
