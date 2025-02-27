@@ -8,7 +8,9 @@ import net.minecraft.item.Items;
 import net.minecraft.item.tooltip.TooltipAppender;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
 import nourl.mythicmetals.MythicMetals;
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipApp
     @Override
     public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
         if (this.size > 0 && this.isEmpty()) {
-            tooltip.accept(Text.translatable("tooltip.upgrade_component.tooltip"));
+            tooltip.accept(Text.translatable("tooltip.upgrade_component.tooltip").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
         }
 
         if (this.size > this.items.size()) {
