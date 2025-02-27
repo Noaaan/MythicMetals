@@ -15,6 +15,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import nourl.mythicmetals.MythicMetals;
 import java.util.function.UnaryOperator;
@@ -45,6 +46,15 @@ public class RegistryHelper {
             Registry.register(Registries.ITEM, id(path), new BlockItem(block, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof()));
         } else {
             block(path, block);
+        }
+    }
+
+    public static void block(String path, Block block, boolean fireproof, boolean uncommon) {
+        if (uncommon) {
+            Registry.register(Registries.BLOCK, id(path), block);
+            Registry.register(Registries.ITEM, id(path), new BlockItem(block, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).rarity(Rarity.UNCOMMON)));
+        } else {
+            block(path, block, fireproof);
         }
     }
 

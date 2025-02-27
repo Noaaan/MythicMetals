@@ -198,6 +198,7 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
 
 
     public static final BlockSet UNOBTAINIUM = BlockSet.Builder.begin("unobtainium", true)
+        .uncommon()
         .strength(16.0F, 13000F).sounds(BlockSoundGroup.LODESTONE)
         .createLuminantOre(NETHERITE_MINING_LEVEL, UniformIntProvider.create(4, 7), 1)
         .strength(21F, 14000F).sounds(BlockSoundGroup.DEEPSLATE)

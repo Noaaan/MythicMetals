@@ -1,5 +1,11 @@
 # 0.21.1
 
+## Changes
+
+- Unobtainium Blocks and Ores are now of uncommon rarity
+
+## Fixes
+
 - Fixed Tidesingers Water Speed bonus applying on all armor
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed
 - Fixed a bad tag reference for common armor, which broke the Prometheum bonuses (#283)

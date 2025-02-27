@@ -35,6 +35,7 @@ public class BlockSet {
     private final Multimap<Block, Identifier> miningLevels;
     private final Multimap<AnvilBlock, Identifier> anvilMap;
     private final Map<String, ExperienceDroppingBlock> oreVariants;
+    private final boolean uncommon;
 
     /**
      * This constructor collects the smaller constructors from the {@link Builder} and creates a set of blocks.
@@ -50,6 +51,7 @@ public class BlockSet {
      * @param fireproof       Boolean for creating fireproof block sets.
      * @param miningLevels    A map containing all the blocks being registered with their corresponding mining levels.
      * @param anvilMap        A map containing all anvils and their levels, so that they can be disabled.
+     * @param uncommon        Boolean for setting the block item to Uncommon Rarity, changing the color of the text
      */
     private BlockSet(String name,
                      ExperienceDroppingBlock ore,
@@ -59,7 +61,7 @@ public class BlockSet {
                      Map<String, ExperienceDroppingBlock> oreVariants,
                      boolean fireproof,
                      Multimap<Block, Identifier> miningLevels,
-                     Multimap<AnvilBlock, Identifier> anvilMap) {
+                     Multimap<AnvilBlock, Identifier> anvilMap, boolean uncommon) {
 
         this.name = name;
         this.fireproof = fireproof;
@@ -72,24 +74,25 @@ public class BlockSet {
         this.oreVariants = oreVariants;
         this.miningLevels = miningLevels;
         this.anvilMap = anvilMap;
+        this.uncommon = uncommon;
     }
 
     private void register() {
 
         if (ore != null) {
-            RegistryHelper.block(name + "_ore", ore, fireproof);
+            RegistryHelper.block(name + "_ore", ore, fireproof, uncommon);
         }
 
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof));
+        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof, uncommon));
 
         if (oreStorageBlock != null) {
-            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof);
+            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof, uncommon);
         }
         if (storageBlock != null) {
-            RegistryHelper.block(name + "_block", storageBlock, fireproof);
+            RegistryHelper.block(name + "_block", storageBlock, fireproof, uncommon);
         }
         if (anvil != null) {
-            RegistryHelper.block(name + "_anvil", anvil, fireproof);
+            RegistryHelper.block(name + "_anvil", anvil, fireproof, uncommon);
         }
         // Inject all the mining levels into their tags.
         if (MythicMetals.CONFIG.enableAnvils()) {
@@ -195,6 +198,7 @@ public class BlockSet {
 
         private final Identifier SHOVEL = Identifier.of("mineable/shovel");
         private final Identifier PICKAXE = Identifier.of("mineable/pickaxe");
+        private boolean uncommon = false;
 
         /**
          * @see #begin(String, boolean)
@@ -587,6 +591,11 @@ public class BlockSet {
             return this;
         }
 
+        public Builder uncommon() {
+            this.uncommon = true;
+            return this;
+        }
+
         /**
          * Finishes the creation of the block set, and returns the entire set using the settings declared.
          * For registering the blocks call {@link Builder#register() Builder.register} during mod initialization.
@@ -596,7 +605,7 @@ public class BlockSet {
         public BlockSet finish() {
             final var set = new BlockSet(this.name, this.ore,
                 this.storageBlock, this.oreStorageBlock, this.anvil,
-                this.oreVariants, this.fireproof, this.miningLevels, this.anvilMap);
+                this.oreVariants, this.fireproof, this.miningLevels, this.anvilMap, this.uncommon);
             Builder.toBeRegistered.add(set);
             return set;
         }
