@@ -1,16 +1,15 @@
 package nourl.mythicmetals.data;
 
+import static net.minecraft.registry.RegistryKeys.*;
+import static nourl.mythicmetals.misc.RegistryHelper.id;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
-
-import static net.minecraft.registry.RegistryKeys.*;
-import static nourl.mythicmetals.misc.RegistryHelper.id;
 
 public class MythicTags {
 
@@ -19,11 +18,10 @@ public class MythicTags {
     public static final TagKey<Item> BONUS_LOOTING = TagKey.of(RegistryKeys.ITEM, id("abilities/bonus_looting"));
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.of(RegistryKeys.ITEM, id("abilities/midas_touch"));
     public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(RegistryKeys.ITEM, id("carmot_staff_blocks"));
-    public static final TagKey<Item> COMMON_ARMOR = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "armors"));
-    public static final TagKey<Item> COMMON_TOOLS = TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "tools"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.of(RegistryKeys.ITEM, id("tidesinger_coral"));
 
     public static final TagKey<Block> ANVILS = TagKey.of(RegistryKeys.BLOCK, id("anvils"));
+    public static final TagKey<Block> BOOST_IN_LAVA = TagKey.of(RegistryKeys.BLOCK, id("boosts_in_lava"));
     public static final TagKey<Block> CARMOT_NUKE_IGNORED = TagKey.of(RegistryKeys.BLOCK, id("carmot_nuke_ignored"));
     public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_ALLOY_TOOLS = TagKey.of(RegistryKeys.BLOCK, id("incorrect_for_unobtainium_alloy_tools"));
     public static final TagKey<Block> NUKE_CORES = TagKey.of(RegistryKeys.BLOCK, id("nuke_cores"));

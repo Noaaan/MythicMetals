@@ -72,6 +72,10 @@ public class RegistryHelper {
         }
     }
 
+    public static void blockOnly(String path, Block block) {
+        Registry.register(Registries.BLOCK, id(path), block);
+    }
+
     public static void entityType(String path, EntityType<?> type) {
         Registry.register(Registries.ENTITY_TYPE, RegistryHelper.id(path), type);
     }

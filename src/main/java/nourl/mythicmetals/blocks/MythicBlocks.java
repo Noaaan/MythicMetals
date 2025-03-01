@@ -2,8 +2,6 @@ package nourl.mythicmetals.blocks;
 
 import net.minecraft.block.*;
 import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -216,8 +214,8 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
         // Manually registering these in order to get the glint
-        Registry.register(Registries.BLOCK, RegistryHelper.id("enchanted_midas_gold_block"), ENCHANTED_MIDAS_GOLD_BLOCK);
-        Registry.register(Registries.ITEM, RegistryHelper.id("enchanted_midas_gold_block"), ENCHANTED_MIDAS_GOLD_BLOCK_ITEM);
+        RegistryHelper.blockOnly("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK);
+        RegistryHelper.item("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK_ITEM);
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
         RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
     }
