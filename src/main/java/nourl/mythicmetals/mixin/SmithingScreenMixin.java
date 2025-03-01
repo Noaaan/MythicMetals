@@ -32,6 +32,7 @@ public abstract class SmithingScreenMixin extends ForgingScreen<SmithingScreenHa
     private static void mythicmetals$attachMoreTextures(CallbackInfo ci) {
         var list = new ArrayList<>(EMPTY_SLOT_TEXTURES);
         list.add(RegistryHelper.id("item/template/empty_slot_midas_template"));
+        list.add(RegistryHelper.id("item/template/empty_slot_crafted_template"));
         EMPTY_SLOT_TEXTURES = list;
     }
 
