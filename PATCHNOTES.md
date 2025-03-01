@@ -33,6 +33,11 @@ Most of these are made by thyreo. Thanks again for awesome new textures!
 - Added compat with Sword Blocking Mechanics (#280)
 - The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
 - Empty slot textures now match new tool shapes
+- Updated the Prometheum Auto Repair Component handling
+  - No longer checks for `#c:armor` or `#c:tools`
+  - Will check for items in the `#mythicmetals:abilities/auto_repair` tag
+  - Armor buff only applies items extending `ArmorItem`
+  - Tool buff only applies to non-armor items which hold the `minecraft:attribute_modifiers` component
 
 ### Mythril Drill Recipe Rework
 

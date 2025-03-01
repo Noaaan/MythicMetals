@@ -9,8 +9,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.misc.RegistryHelper;
 
+/**
+ * A data carrier which holds and tracks the Prometheum Auto Repair ability.
+ * Only applies to items within the {@link MythicTags#AUTO_REPAIR} tag.
+ * <br>
+ * If the Item is an {@link net.minecraft.item.ArmorItem} it gains bonus armor, and/or armor toughness.
+ * Otherwise, if the Item has {@link net.minecraft.component.DataComponentTypes#ATTRIBUTE_MODIFIERS} it will gain bonus damage.
+ * <br>
+ * Append this component on your {@link net.minecraft.item.Item.Settings} to use it.
+ *
+ * @see nourl.mythicmetals.mixin.ItemMixin
+ */
 public record PrometheumComponent(int durabilityRepaired) {
     public static final int OVERGROWN_THRESHOLD = 1200;
     public static final StructEndec<PrometheumComponent> ENDEC = StructEndecBuilder.of(

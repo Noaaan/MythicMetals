@@ -5,7 +5,6 @@ import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.DefaultItemComponentEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.fabricmc.loader.api.FabricLoader;
@@ -23,11 +22,9 @@ import nourl.mythicmetals.blocks.BanglumNukeHandler;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.command.MythicCommands;
 import nourl.mythicmetals.component.MythicDataComponents;
-import nourl.mythicmetals.component.PrometheumComponent;
 import nourl.mythicmetals.conditions.MythicResourceConditions;
 import nourl.mythicmetals.config.MythicMetalsConfig;
 import nourl.mythicmetals.data.MythicOreKeys;
-import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.effects.MythicStatusEffects;
 import nourl.mythicmetals.entity.CombustionCooldown;
 import nourl.mythicmetals.entity.MythicEntities;
@@ -106,8 +103,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
         });
         registerDispenserBehaviour();
-        registerPrometheumAttributeEvent();
-
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
             for (int i = 0; i < 5; i++) {
@@ -134,22 +129,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             LOGGER.info("[Mythic Metals] Terralith detected. Many ores can spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
-    }
-
-    /**
-     * Registers an event that modifies all armor items in the tag with bonus attributes when bound
-     * When the item is in {@link MythicTags#COMMON_ARMOR} it will gain bonus protection.
-     * Note that this has to be {@link net.minecraft.item.ArmorItem}, as otherwise it will not get the effect.
-     * When the item is in {@link MythicTags#COMMON_TOOLS} it will gain bonus damage
-     *
-     * @see nourl.mythicmetals.mixin.ItemMixin
-     */
-    public static void registerPrometheumAttributeEvent() {
-        DefaultItemComponentEvents.MODIFY.register(context -> {
-            context.modify(item -> item.getDefaultStack().isIn(MythicTags.AUTO_REPAIR), (builder, item) -> {
-                builder.add(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
-            });
-        });
     }
 
     private void registerDispenserBehaviour() {
