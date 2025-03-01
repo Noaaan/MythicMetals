@@ -7,3 +7,5 @@ accessible method net/minecraft/item/SmithingTemplateItem getArmorTrimEmptyBaseS
 
 accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmptyBaseSlotTextures ()Ljava/util/List;
 accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmptyAdditionsSlotTextures ()Ljava/util/List;
+
+accessible method net/minecraft/block/RailPlacementHelper getNeighborCount ()I

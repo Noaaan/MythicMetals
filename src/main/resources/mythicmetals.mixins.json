@@ -11,6 +11,7 @@
     "ApplyBonusLootFunctionMixin",
     "AreaEffectCloudEntityMixin",
     "ArmorItemMixin",
+    "BucketItemMixin",
     "CampfireBlockMixin",
     "ConduitBlockEntityMixin",
     "CreeperEntityMixin",

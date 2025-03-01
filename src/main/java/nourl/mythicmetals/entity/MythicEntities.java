@@ -33,6 +33,7 @@ public class MythicEntities {
                 PalladiumMinecartEntity::new, SpawnGroup.MISC)
             .dimensions(0.98f, 0.7f)
             .maxTrackingRange(8)
+            .makeFireImmune()
             .build();
 
         BANGLUM_TNT_ENTITY_TYPE = EntityType.Builder.<BanglumTntEntity>create(

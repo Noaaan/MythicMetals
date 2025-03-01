@@ -144,6 +144,12 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
         .createAnvil(DIAMOND_MINING_LEVEL)
         .finish();
 
+    public static final Block PALLADIUM_RAIL = new PalladiumRailBlock(AbstractBlock.Settings.create()
+        .noCollision()
+        .strength(2.5f, 7.0f)
+        .sounds(BlockSoundGroup.METAL)
+    );
+
     public static final BlockSet PLATINUM = BlockSet.Builder.begin("platinum", false)
         .createDefaultSet(3.5F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
 
@@ -216,6 +222,7 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
         // Manually registering these in order to get the glint
         RegistryHelper.blockOnly("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK);
         RegistryHelper.item("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK_ITEM);
+        RegistryHelper.block("palladium_rail", PALLADIUM_RAIL);
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
         RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
     }
