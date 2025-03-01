@@ -1,10 +1,38 @@
 # 0.22.0
 
+## Texture Changes
+
+Most of these are made by thyreo. Thanks again for awesome new textures!
+
+### Tools
+
+- Kyber Tools
+- Quadrillum Tools
+- Runite and Tipped Runite Arrows
+- Star Platinum Arrows
+
+### Blocks
+
+- Raw Kyber Block (New!)
+
+### Items
+
+- Hallowed Ingot and Nugget
+- Platinum Watch
+- Prometheum Bouquet
+  - This item will likely be renamed in the future
+- Raw Prometheum (New!)
+- Raw Silver (New!)
+- Raw Midas Gold (New!)
+- Royal Midas Gold Sword Smithing Template
+- Quadrillum Ingot
+
 ## Changes
 
 - Unobtainium Blocks and Ores are now of uncommon rarity
 - Added compat with Sword Blocking Mechanics (#280)
 - The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
+- Empty slot textures now match new tool shapes
 
 ### Mythril Drill Recipe Rework
 
