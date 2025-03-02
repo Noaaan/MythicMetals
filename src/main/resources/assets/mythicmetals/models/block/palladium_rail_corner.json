@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/rail_curved",
+  "textures": {
+    "rail": "mythicmetals:block/palladium_rail_corner"
+  }
+}

@@ -64,6 +64,7 @@
   "block.mythicmetals.palladium_anvil": "Palladium Anvil",
   "block.mythicmetals.palladium_block": "Block of Palladium",
   "block.mythicmetals.palladium_ore": "Palladium Ore",
+  "block.mythicmetals.palladium_rail": "Palladium Rail",
   "block.mythicmetals.platinum_anvil": "Platinum Anvil",
   "block.mythicmetals.platinum_block": "Block of Platinum",
   "block.mythicmetals.platinum_ore": "Platinum Ore",
@@ -846,6 +847,9 @@
   "tooltip.carmot_staff.locked": "Locked",
   "tooltip.carmot_staff.disabled": "This power has been disabled",
 
+  "tooltip.palladium_rail.info": [
+    {"text":  "Works as a Booster Rail when lavalogged", "color":  "#DF7323"}
+  ],
   "tooltip.prometheum.engrained": "Engrained",
   "tooltip.prometheum.overgrown": "Overgrown",
 

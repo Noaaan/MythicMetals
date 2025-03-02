@@ -1,17 +1,18 @@
 package nourl.mythicmetals.blocks;
 
+import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.registry.RegisterSounds;
-import java.util.HashMap;
-import java.util.Map;
 
 @SuppressWarnings("unused")
 public class MythicBlocks {
@@ -58,7 +59,7 @@ public class MythicBlocks {
         .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
         .finish();
 
-public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM_NUKE_CORE));
+    public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM_NUKE_CORE));
 
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
         .createAnvilSet(10F, 15F, MYTHIC_MINING_LEVEL).finish();
@@ -146,6 +147,7 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
 
     public static final Block PALLADIUM_RAIL = new PalladiumRailBlock(AbstractBlock.Settings.create()
         .noCollision()
+        .luminance(blockState -> blockState.get(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
         .strength(2.5f, 7.0f)
         .sounds(BlockSoundGroup.METAL)
     );
@@ -222,7 +224,7 @@ public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.co
         // Manually registering these in order to get the glint
         RegistryHelper.blockOnly("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK);
         RegistryHelper.item("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK_ITEM);
-        RegistryHelper.block("palladium_rail", PALLADIUM_RAIL);
+        RegistryHelper.blockWithTooltip("palladium_rail", PALLADIUM_RAIL, Text.translatable("tooltip.palladium_rail.info"));
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
         RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
     }

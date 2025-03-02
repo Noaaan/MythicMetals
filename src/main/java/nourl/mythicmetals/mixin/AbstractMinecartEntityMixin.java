@@ -20,9 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(AbstractMinecartEntity.class)
 public class AbstractMinecartEntityMixin {
 
-    @Unique
-    boolean mythicmetals$isInLava = false;
-
     @Inject(method = "create", at = @At("HEAD"), cancellable = true)
     private static void mythicmetals$createCustomMinecart(ServerWorld world, double x, double y, double z, AbstractMinecartEntity.Type type, ItemStack stack, PlayerEntity player, CallbackInfoReturnable<AbstractMinecartEntity> cir) {
         if (type.equals(MythicMetals.BANGLUM_TNT)) {
@@ -36,8 +33,7 @@ public class AbstractMinecartEntityMixin {
 
     @ModifyVariable(method = "moveOnRail", at = @At(value = "STORE", ordinal = 0))
     private boolean mythicmetals$boostInLava(boolean original, BlockPos pos, BlockState state) {
-        if (state instanceof Lavaloggable && PalladiumRailBlock.isLavaLogged(state)) {
-            mythicmetals$isInLava = true;
+        if (state.getBlock() instanceof Lavaloggable && PalladiumRailBlock.isLavaLogged(state)) {
             return true;
         }
         return original;

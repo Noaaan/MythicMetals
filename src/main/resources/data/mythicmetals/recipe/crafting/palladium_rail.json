@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "v v",
+    "viv",
+    "v v"
+  ],
+  "key": {
+    "v": {
+      "item": "mythicmetals:palladium_ingot"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "mythicmetals:palladium_rail",
+    "count": 16
+  }
+}

@@ -32,3 +32,4 @@ run/
 /libs/
 /src/main/generated/.cache/
 changelog.md
+*.patch

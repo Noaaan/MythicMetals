@@ -1,8 +1,12 @@
 package nourl.mythicmetals.mixin;
 
+import com.llamalad7.mixinextras.sugar.Local;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.*;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BucketItem;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -20,11 +24,23 @@ public abstract class BucketItemMixin {
 
     @Shadow protected abstract void playEmptyingSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos);
 
-    @Inject(method = "placeFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isLiquid()Z", shift = At.Shift.BEFORE), cancellable = true)
+    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"), ordinal = 1)
+    private BlockPos mythicmetals$targetBlockOnLava(BlockPos original, World world, PlayerEntity user, Hand hand, @Local BlockState blockState, @Local BlockHitResult blockHitResult) {
+        if (blockState.getBlock() instanceof Lavaloggable && this.fluid.equals(Fluids.LAVA)) {
+            return blockHitResult.getBlockPos();
+        }
+        return original;
+    }
+
+    @Inject(method = "placeFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isLiquid()Z"), cancellable = true)
     private void mythicmetals$fillLavalog(PlayerEntity player, World world, BlockPos pos, BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
         var railPos = hitResult.getBlockPos();
         var state = world.getBlockState(railPos);
         if (this.fluid.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
+            // TODO - Vanilla behavior here is to eat the fluid if you log the same block twice
+            // Try and explore whether the C2S desync can be handled while also preventing you
+            // from placing lava in the same block twice
+            // Lava is mildly more inconvenient to source, after all
             lavaloggable.tryFillWithFluid(world, railPos, state, Fluids.LAVA.getStill(false));
             this.playEmptyingSound(player, world, railPos);
             cir.setReturnValue(true);
