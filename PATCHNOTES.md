@@ -39,22 +39,34 @@ Most of these are made by thyreo. Thanks again for awesome new textures!
   - Armor buff only applies items extending `ArmorItem`
   - Tool buff only applies to non-armor items which hold the `minecraft:attribute_modifiers` component
 
+### Balancing changes
+
+- Alloying Steel from Ingots gives you 2 Ingots instead of 1 (parity with Alloy Forgery)
+- Alloying Steel from Raw Ores gives you 2 Ingots instead of 1 (parity with Alloy Forgery)
+- Alloying Steel from Raw Ores gives you 3 Ingots for tier 2+ Forges
+- Forging Carmot from Raw Ores and Ingots now only require a tier 1 Forge
+- Forging Kyber from Raw Ores and Ingots now only require a tier 1 Forge
+- Forging Osmium from Raw Ores and Ingots now only require a tier 1 Forge
+- Forging Platinum from Raw Ores and Ingots now only require a tier 1 Forge
+- Forging Prometheum from Raw Ores and Ingots now only require a tier 1 Forge
+
 ### Mythril Drill Recipe Rework
 
 - Mythril Drill upgrades are now applied in a Smithing Table
 - Added a generic "mythicmetals:upgrading" Smithing Table Recipe Type
 - Added a `mythicmetals:mythril_drill_upgrades` tag
   - Note that translations are still derived from the Item, and not by the Upgrade Component
-- Added an experimental change to the Smithing Table which makes the arrow red
-  when trying to add duplicate upgrades
+- Added an experimental change to the Smithing Table which makes the arrow red when trying to add duplicate upgrades
 
-### Palladium Minecart
+### Palladium Minecart and Palladium Rails
 
 - Added a Palladium Minecart
   - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
   - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
+- Added Palladium Rails
+  - Work as Powered Rails when lavalogged
 
-## Fixes
+## Bug Fixes
 
 - Fixed Tidesingers Water Speed bonus applying on all armor
 - Fixed Midas Gold Swords and the Orichalcum Hammer having the wrong attack speed

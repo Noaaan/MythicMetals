@@ -11,11 +11,11 @@
     "count": 2
   },
   "overrides": {
-    "3+": {
+    "2+": {
       "id": "mythicmetals:platinum_ingot",
       "count": 3
     }
   },
-  "min_forge_tier": 2,
-  "fuel_per_tick": 10
+  "min_forge_tier": 1,
+  "fuel_per_tick": 5
 }

@@ -10,14 +10,10 @@
   ],
   "output": {
     "id": "mythicmetals:steel_ingot",
-    "count": 1
+    "count": 2
   },
   "overrides": {
-    "2": {
-      "id": "mythicmetals:steel_ingot",
-      "count": 2
-    },
-    "3+": {
+    "2+": {
       "id": "mythicmetals:steel_ingot",
       "count": 3
     }
