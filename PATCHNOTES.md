@@ -29,6 +29,7 @@ Most of these are made by thyreo. Thanks again for awesome new textures!
 
 ## Changes
 
+- Updated the Chinese Translations (#279, big thanks to VeriTas-arch!)
 - Unobtainium Blocks and Ores are now of uncommon rarity
 - Added compat with Sword Blocking Mechanics (#280)
 - The Aegis and Midas Gold Swords are now present in the `#mythicmetals:swords` tag
