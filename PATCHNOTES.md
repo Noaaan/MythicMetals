@@ -49,6 +49,11 @@ Most of these are made by thyreo. Thanks again for awesome new textures!
 - Forging Osmium from Raw Ores and Ingots now only require a tier 1 Forge
 - Forging Platinum from Raw Ores and Ingots now only require a tier 1 Forge
 - Forging Prometheum from Raw Ores and Ingots now only require a tier 1 Forge
+- Increased the base damage of Osmium Tools: 2.5 -> 3.0
+- Increased the base damage of Steel Tools: 2.5 -> 3.0
+- Increased the base damage of Tidesinger Tools: 3.0 -> 4.0
+- Increased the mining speed of Tidesinger Tools: 8.5 -> 9.0
+- Increased the enchantability of Tidesinger Tools: 16 -> 18
 
 ### Mythril Drill Recipe Rework
 
