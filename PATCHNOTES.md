@@ -64,6 +64,7 @@ Most of these are made by thyreo. Thanks again for awesome new textures!
   - This cool ride made out of five Palladium Ingots will keep you fireproof while riding in it
   - Functions via the "mythicmetals:grants_fire_resistance_while_riding" entity type tag
 - Added Palladium Rails
+  - These are Fireproof Rails which are crafted from Palladium
   - Work as Powered Rails when lavalogged
 
 ## Bug Fixes

@@ -1,5 +1,6 @@
 package nourl.mythicmetals.misc;
 
+import java.util.function.UnaryOperator;
 import com.mojang.serialization.MapCodec;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import net.minecraft.block.Block;
@@ -9,19 +10,15 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.*;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.potion.Potion;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import nourl.mythicmetals.MythicMetals;
-import java.util.List;
-import java.util.function.UnaryOperator;
 
 /**
  * A helper class containing methods for registering various blocks and items.
@@ -77,17 +74,6 @@ public class RegistryHelper {
 
     public static void blockOnly(String path, Block block) {
         Registry.register(Registries.BLOCK, id(path), block);
-    }
-
-    public static void blockWithTooltip(String path, Block block, Text translatableText) {
-        Registry.register(Registries.BLOCK, id(path), block);
-        Registry.register(Registries.ITEM, id(path), new BlockItem(block, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1)) {
-            @Override
-            public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-                super.appendTooltip(stack, context, tooltip, type);
-                tooltip.add(translatableText);
-            }
-        });
     }
 
     public static void entityType(String path, EntityType<?> type) {

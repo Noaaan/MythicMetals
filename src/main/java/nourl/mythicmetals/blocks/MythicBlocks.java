@@ -1,9 +1,9 @@
 package nourl.mythicmetals.blocks;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.text.Text;
@@ -94,9 +94,9 @@ public class MythicBlocks {
         .strength(3.0F)
         .createStorageBlock(IRON_MINING_LEVEL)
         .sounds(RegisterSounds.MORKITE_ORE)
-        .createOre(IRON_MINING_LEVEL, UniformIntProvider.create(0, 2))
+        .createOre(IRON_MINING_LEVEL, UniformIntProvider.create(1, 2))
         .sounds(RegisterSounds.DEEPSLATE_MORKITE_ORE)
-        .createOreVariant("deepslate", IRON_MINING_LEVEL, UniformIntProvider.create(0, 2))
+        .createOreVariant("deepslate", IRON_MINING_LEVEL, UniformIntProvider.create(1, 3))
         .finish();
 
     public static final BlockSet MIDAS_GOLD = BlockSet.Builder.begin("midas_gold", false)
@@ -151,6 +151,14 @@ public class MythicBlocks {
         .strength(2.5f, 7.0f)
         .sounds(BlockSoundGroup.METAL)
     );
+
+    public static final Item PALLADIUM_RAIL_ITEM = new BlockItem(PALLADIUM_RAIL, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof()) {
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            super.appendTooltip(stack, context, tooltip, type);
+            tooltip.add(Text.translatable("tooltip.palladium_rail.info"));
+        }
+    };
 
     public static final BlockSet PLATINUM = BlockSet.Builder.begin("platinum", false)
         .createDefaultSet(3.5F, IRON_MINING_LEVEL, IRON_MINING_LEVEL).finish();
@@ -224,7 +232,9 @@ public class MythicBlocks {
         // Manually registering these in order to get the glint
         RegistryHelper.blockOnly("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK);
         RegistryHelper.item("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK_ITEM);
-        RegistryHelper.blockWithTooltip("palladium_rail", PALLADIUM_RAIL, Text.translatable("tooltip.palladium_rail.info"));
+        // Manually registering to get a tooltip and fireproofing
+        RegistryHelper.blockOnly("palladium_rail", PALLADIUM_RAIL);
+        RegistryHelper.item("palladium_rail", PALLADIUM_RAIL_ITEM);
         RegistryHelper.block("quadrillum_nuke_core", QUADRILLUM_NUKE_CORE);
         RegistryHelper.block("sponge_nuke_core", SPONGE_NUKE_CORE);
     }
