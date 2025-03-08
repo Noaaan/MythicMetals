@@ -34,12 +34,11 @@ public abstract class BucketItemMixin {
 
     @Inject(method = "placeFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isLiquid()Z"), cancellable = true)
     private void mythicmetals$fillLavalog(PlayerEntity player, World world, BlockPos pos, BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
-        var railPos = hitResult.getBlockPos();
+        var railPos = hitResult == null ? pos : hitResult.getBlockPos();
         var state = world.getBlockState(railPos);
         if (this.fluid.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
             // TODO - Vanilla behavior here is to eat the fluid if you log the same block twice
-            // Try and explore whether the C2S desync can be handled while also preventing you
-            // from placing lava in the same block twice
+            // Try and explore whether you can prevent placing lava in the same block twice
             // Lava is mildly more inconvenient to source, after all
             lavaloggable.tryFillWithFluid(world, railPos, state, Fluids.LAVA.getStill(false));
             this.playEmptyingSound(player, world, railPos);
