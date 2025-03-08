@@ -1,3 +1,7 @@
+# 0.22.1
+
+- Fix a crash when using Lava Buckets in a Dispenser (#285)
+
 # 0.22.0
 
 ## Texture Changes
