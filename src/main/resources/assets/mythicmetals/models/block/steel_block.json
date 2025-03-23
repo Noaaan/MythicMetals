@@ -1,6 +1,6 @@
 {
-  "parent": "block/cube_all",
+  "parent": "minecraft:block/template_glazed_terracotta",
   "textures": {
-    "all": "mythicmetals:block/steel_block"
+    "pattern": "mythicmetals:block/steel_block"
   }
 }

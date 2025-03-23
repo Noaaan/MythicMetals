@@ -235,7 +235,7 @@ public class BlockSet {
          * @param resistance Determines blast resistance of a block.
          * @param sounds     Determines the sounds that blocks play when interacted with.
          */
-        private static AbstractBlock.Settings blockSettings(float hardness, float resistance, BlockSoundGroup sounds) {
+        public static AbstractBlock.Settings blockSettings(float hardness, float resistance, BlockSoundGroup sounds) {
             return AbstractBlock.Settings.create()
                 .strength(hardness, resistance)
                 .sounds(sounds)
@@ -580,6 +580,16 @@ public class BlockSet {
                 anvilMap.put(anvil, miningLevel);
                 anvilMap.put(anvil, PICKAXE);
             }
+            return this;
+        }
+
+        /**
+         * Kinda manual at this point ngl
+         */
+        public <T extends Block> Builder createCustomStorageBlock(T block, Identifier miningLevel) {
+            this.storageBlock = block;
+            miningLevels.put(storageBlock, miningLevel);
+            miningLevels.put(storageBlock, PICKAXE);
             return this;
         }
 

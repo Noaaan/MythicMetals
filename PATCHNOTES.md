@@ -1,3 +1,10 @@
+# 0.x.x
+
+## Texture Changes
+
+- Runite Block now has the same textures across all sides
+- Steel Block now has a facing, similar to Glazed Terracotta
+
 # 0.22.1
 
 - Fix a crash when using Lava Buckets in a Dispenser (#285)

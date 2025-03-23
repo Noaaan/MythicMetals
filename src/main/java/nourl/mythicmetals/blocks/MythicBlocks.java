@@ -197,7 +197,8 @@ public class MythicBlocks {
     public static final Block SPONGE_NUKE_CORE = new Block(AbstractBlock.Settings.copy(Blocks.SPONGE));
 
     public static final BlockSet STEEL = BlockSet.Builder.begin("steel", false)
-        .createAnvilSet(5, IRON_MINING_LEVEL).finish();
+        .createCustomStorageBlock(new BlockWithFacing(BlockSet.Builder.blockSettings(5.0f, 5.0f, BlockSoundGroup.METAL)), IRON_MINING_LEVEL)
+        .createAnvil(IRON_MINING_LEVEL).finish();
 
     public static final BlockSet STORMYX = BlockSet.Builder.begin("stormyx", false)
         .strength(5F).sounds(BlockSoundGroup.NETHER_ORE).createOre(IRON_MINING_LEVEL, UniformIntProvider.create(2, 4))
