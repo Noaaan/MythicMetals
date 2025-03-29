@@ -7,13 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.blocks.Lavaloggable;
-import nourl.mythicmetals.blocks.PalladiumRailBlock;
-import nourl.mythicmetals.data.MythicTags;
+import nourl.mythicmetals.block.Lavaloggable;
+import nourl.mythicmetals.block.PalladiumRailBlock;
 import nourl.mythicmetals.entity.BanglumTntMinecartEntity;
 import nourl.mythicmetals.entity.PalladiumMinecartEntity;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 

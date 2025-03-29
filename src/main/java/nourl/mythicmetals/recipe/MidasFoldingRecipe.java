@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.component.GoldFoldedComponent;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 import static nourl.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 
@@ -82,7 +81,7 @@ public record MidasFoldingRecipe(Ingredient template, Ingredient base, Ingredien
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RegisterRecipeSerializers.MIDAS_FOLDING_RECIPE;
+        return MythicRecipeSerializers.MIDAS_FOLDING_RECIPE;
     }
 
     @Override

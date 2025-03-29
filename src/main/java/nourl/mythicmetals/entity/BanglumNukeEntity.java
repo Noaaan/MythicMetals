@@ -21,7 +21,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.RegisterSounds;

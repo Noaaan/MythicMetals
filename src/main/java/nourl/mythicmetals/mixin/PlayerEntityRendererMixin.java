@@ -11,7 +11,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.CarmotShield;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.component.DrillComponent;
 import nourl.mythicmetals.component.MythicDataComponents;

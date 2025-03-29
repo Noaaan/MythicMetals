@@ -34,7 +34,7 @@ import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.component.CarmotStaffComponent;
 import nourl.mythicmetals.component.MythicDataComponents;
 import nourl.mythicmetals.item.tools.MythicToolMaterials;

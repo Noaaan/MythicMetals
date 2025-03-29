@@ -14,7 +14,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
-import nourl.mythicmetals.abilities.UniqueStaffBlocks;
+import nourl.mythicmetals.ability.UniqueStaffBlocks;
 import java.util.function.Consumer;
 
 public record CarmotStaffComponent(Block block, boolean showTooltip) implements TooltipAppender {

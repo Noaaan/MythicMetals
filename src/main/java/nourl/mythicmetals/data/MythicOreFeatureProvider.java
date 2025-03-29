@@ -4,7 +4,7 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.config.MythicOreConfigs;
 
 import static nourl.mythicmetals.data.MythicOreKeys.*;

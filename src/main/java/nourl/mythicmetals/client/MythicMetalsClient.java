@@ -35,7 +35,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.*;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.compat.IsometricArmorStandExporter;
@@ -45,7 +45,7 @@ import nourl.mythicmetals.entity.MythicEntities;
 import nourl.mythicmetals.item.tools.*;
 import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.mixin.WorldRendererInvoker;
-import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
+import nourl.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import java.util.ArrayList;
 
 public class MythicMetalsClient implements ClientModInitializer {

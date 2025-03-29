@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;

@@ -7,7 +7,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.item.MythicItems;
 import java.util.function.Supplier;

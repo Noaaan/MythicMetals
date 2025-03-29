@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 /**
  * Marks a BlockEntity to be ticked when in range of an active Conduit

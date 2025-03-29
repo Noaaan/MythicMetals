@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.component.MythicDataComponents;
 import nourl.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;

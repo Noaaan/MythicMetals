@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import blue.endless.jankson.annotation.Nullable;
 import com.mojang.serialization.MapCodec;
@@ -8,7 +8,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
+import nourl.mythicmetals.block.entity.AquariumResonatorBlockEntity;
+import nourl.mythicmetals.block.entity.RegisterBlockEntityTypes;
 
 public class AquariumResonatorBlock extends BlockWithEntity {
 

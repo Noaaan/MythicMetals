@@ -5,7 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.*;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 
 public class MythicOreRules {
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in

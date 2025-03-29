@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 import nourl.mythicmetals.component.MythicDataComponents;
 import nourl.mythicmetals.component.TidesingerPatternComponent;
 import nourl.mythicmetals.data.MythicTags;
-import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public record TidesingerCoralRecipe(Ingredient base, Ingredient addition, Ingredient template,
                                     ItemStack result) implements SmithingRecipe {
@@ -58,7 +57,7 @@ public record TidesingerCoralRecipe(Ingredient base, Ingredient addition, Ingred
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RegisterRecipeSerializers.TIDESINGER_CORAL_RECIPE;
+        return MythicRecipeSerializers.TIDESINGER_CORAL_RECIPE;
     }
 
     public static class Serializer extends EndecRecipeSerializer<TidesingerCoralRecipe> {

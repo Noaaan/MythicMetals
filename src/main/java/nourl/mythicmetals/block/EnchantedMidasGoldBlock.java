@@ -1,9 +1,10 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
+import nourl.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class EnchantedMidasGoldBlock extends BlockWithEntity {

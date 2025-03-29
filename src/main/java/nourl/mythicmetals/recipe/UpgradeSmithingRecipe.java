@@ -13,7 +13,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.component.*;
-import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public record UpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result) implements SmithingRecipe {
 
@@ -66,7 +65,7 @@ public record UpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemSt
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RegisterRecipeSerializers.UPGRADE_SMITHING_RECIPE_SERIALIZER;
+        return MythicRecipeSerializers.UPGRADE_SMITHING_RECIPE_SERIALIZER;
     }
 
     public static class Serializer extends EndecRecipeSerializer<UpgradeSmithingRecipe> {

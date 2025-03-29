@@ -2,7 +2,7 @@ package nourl.mythicmetals.mixin;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPointer;
-import nourl.mythicmetals.blocks.BanglumNukeHandler;
+import nourl.mythicmetals.block.BanglumNukeHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

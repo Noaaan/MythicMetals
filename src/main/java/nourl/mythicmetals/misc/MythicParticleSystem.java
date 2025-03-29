@@ -3,16 +3,12 @@ package nourl.mythicmetals.misc;
 import io.wispforest.owo.particles.ClientParticles;
 import io.wispforest.owo.particles.systems.ParticleSystem;
 import io.wispforest.owo.particles.systems.ParticleSystemController;
-import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.util.VectorRandomUtils;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import nourl.mythicmetals.blocks.AquariumResonatorBlockEntity;
 import nourl.mythicmetals.compat.ExplosiveEnhancementCompat;
-import org.joml.Vector3f;
 import java.util.Random;
 
 public class MythicParticleSystem {

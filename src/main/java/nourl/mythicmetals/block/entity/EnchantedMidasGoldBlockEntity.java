@@ -1,9 +1,8 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block.entity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
-import nourl.mythicmetals.registry.RegisterBlockEntityTypes;
 
 public class EnchantedMidasGoldBlockEntity extends BlockEntity {
     public EnchantedMidasGoldBlockEntity(BlockPos pos, BlockState state) {

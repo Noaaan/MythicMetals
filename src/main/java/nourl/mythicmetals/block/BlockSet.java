@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import com.google.common.collect.*;
 import io.wispforest.owo.util.Maldenhagen;

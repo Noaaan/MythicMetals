@@ -1,10 +1,10 @@
-package nourl.mythicmetals.abilities;
+package nourl.mythicmetals.ability;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.data.MythicTags;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.util.HashMap;

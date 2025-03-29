@@ -32,7 +32,7 @@ import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.misc.MythicParticleSystem;
 import nourl.mythicmetals.misc.WasSpawnedFromCreeper;
 import nourl.mythicmetals.registry.RegisterCriteria;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
+import nourl.mythicmetals.entity.MythicEntityAttributes;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
@@ -41,7 +41,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static nourl.mythicmetals.registry.RegisterEntityAttributes.FIRE_VULNERABILITY;
+import static nourl.mythicmetals.entity.MythicEntityAttributes.FIRE_VULNERABILITY;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -96,9 +96,9 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;", require = 1, allow = 1, at = @At("RETURN"))
     private static void mythicmetals$addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
-        info.getReturnValue().add(RegisterEntityAttributes.CARMOT_SHIELD);
+        info.getReturnValue().add(MythicEntityAttributes.CARMOT_SHIELD);
         info.getReturnValue().add(FIRE_VULNERABILITY);
-        info.getReturnValue().add(RegisterEntityAttributes.ELYTRA_ROCKET_SPEED);
+        info.getReturnValue().add(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
     }
 
     @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/registry/entry/RegistryEntry;)Z"))

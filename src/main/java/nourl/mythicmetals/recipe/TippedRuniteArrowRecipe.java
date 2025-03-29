@@ -10,7 +10,6 @@ import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
 import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.registry.RegisterRecipeSerializers;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
     public TippedRuniteArrowRecipe(CraftingRecipeCategory craftingRecipeCategory) {
@@ -60,6 +59,6 @@ public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return RegisterRecipeSerializers.TIPPED_RUNITE_ARROW_RECIPE;
+        return MythicRecipeSerializers.TIPPED_RUNITE_ARROW_RECIPE;
     }
 }

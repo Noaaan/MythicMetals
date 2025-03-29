@@ -11,7 +11,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import nourl.mythicmetals.blocks.Lavaloggable;
+import nourl.mythicmetals.block.Lavaloggable;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;

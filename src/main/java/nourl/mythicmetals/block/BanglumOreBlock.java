@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;

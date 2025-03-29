@@ -12,7 +12,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.item.tools.MythicTools;
 import org.jetbrains.annotations.Nullable;
 

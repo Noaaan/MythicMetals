@@ -5,7 +5,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.MathHelper;
 import nourl.mythicmetals.MythicMetals;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
+import nourl.mythicmetals.entity.MythicEntityAttributes;
 import org.ladysnake.cca.api.v3.component.Component;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 
@@ -80,8 +80,8 @@ public class CarmotShield implements Component, AutoSyncedComponent {
     // FIXME - This is likely causing some weird rendering
     public float getMaxHealth() {
         int result = 0;
-        if (this.player.getAttributes().hasAttribute(RegisterEntityAttributes.CARMOT_SHIELD)) {
-            return (float) this.player.getAttributes().getValue(RegisterEntityAttributes.CARMOT_SHIELD);
+        if (this.player.getAttributes().hasAttribute(MythicEntityAttributes.CARMOT_SHIELD)) {
+            return (float) this.player.getAttributes().getValue(MythicEntityAttributes.CARMOT_SHIELD);
         }
         return result;
     }

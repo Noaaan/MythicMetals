@@ -1,10 +1,10 @@
-package nourl.mythicmetals.abilities;
+package nourl.mythicmetals.ability;
 
 import net.minecraft.item.Items;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
 import nourl.mythicmetals.armor.MythicArmor;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.MythicBlocks;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.item.tools.MythrilDrill;

@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;

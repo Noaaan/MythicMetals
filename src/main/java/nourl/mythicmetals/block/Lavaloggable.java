@@ -1,4 +1,4 @@
-package nourl.mythicmetals.blocks;
+package nourl.mythicmetals.block;
 
 import net.minecraft.block.FluidDrainable;
 import net.minecraft.block.FluidFillable;

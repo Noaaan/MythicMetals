@@ -8,8 +8,8 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.text.Text;
-import nourl.mythicmetals.blocks.BlockSet;
-import nourl.mythicmetals.blocks.MythicBlocks;
+import nourl.mythicmetals.block.BlockSet;
+import nourl.mythicmetals.block.MythicBlocks;
 import java.util.concurrent.CompletableFuture;
 
 public class BlockSetArgumentType implements ArgumentType<BlockSet> {

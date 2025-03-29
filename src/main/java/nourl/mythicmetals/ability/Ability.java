@@ -1,4 +1,4 @@
-package nourl.mythicmetals.abilities;
+package nourl.mythicmetals.ability;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

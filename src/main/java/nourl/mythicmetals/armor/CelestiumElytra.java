@@ -15,7 +15,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.event.GameEvent;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.misc.RegistryHelper;
-import nourl.mythicmetals.registry.RegisterEntityAttributes;
+import nourl.mythicmetals.entity.MythicEntityAttributes;
 import nourl.mythicmetals.registry.RegisterSounds;
 
 public class CelestiumElytra extends ElytraItem implements FabricElytraItem {
@@ -60,7 +60,7 @@ public class CelestiumElytra extends ElytraItem implements FabricElytraItem {
         builder.add(EntityAttributes.GENERIC_ARMOR, armor, AttributeModifierSlot.CHEST);
         builder.add(EntityAttributes.GENERIC_ARMOR_TOUGHNESS, toughness, AttributeModifierSlot.CHEST);
         builder.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, speed, AttributeModifierSlot.CHEST);
-        builder.add(RegisterEntityAttributes.ELYTRA_ROCKET_SPEED, rocketSpeedBonus, AttributeModifierSlot.CHEST);
+        builder.add(MythicEntityAttributes.ELYTRA_ROCKET_SPEED, rocketSpeedBonus, AttributeModifierSlot.CHEST);
         return builder.build();
     }
 }
