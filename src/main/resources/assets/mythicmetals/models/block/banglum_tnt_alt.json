@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "particle": "mythicmetals:block/banglum_tnt_sus",
+    "down": "mythicmetals:block/banglum_tnt_bottom",
+    "up": "mythicmetals:block/banglum_tnt_top",
+    "north": "mythicmetals:block/banglum_tnt_funny_side",
+    "east": "mythicmetals:block/banglum_tnt_sus",
+    "south": "mythicmetals:block/banglum_tnt_funny_side_alt",
+    "west": "mythicmetals:block/banglum_tnt_sus"
+  }
+}

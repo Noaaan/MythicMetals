@@ -1,12 +1,15 @@
 package nourl.mythicmetals.misc;
 
+import nourl.mythicmetals.MythicMetals;
+import java.util.Calendar;
+
 public class StringUtilsAtHome {
 
     /**
      * Source: <a href="https://www.baeldung.com/java-string-title-case">Baeldung Link</a>
      *
      * @return Example:
-     * cAt -> CAt
+     * cAt -> Cat
      * super title -> Super Title
      */
     public static String toProperCase(String input) {
@@ -30,5 +33,11 @@ public class StringUtilsAtHome {
         }
 
         return converted.toString();
+    }
+
+    public static boolean isFunnyDay() {
+        if (MythicMetals.CONFIG.disableFunny()) return false;
+        var calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MONTH) == Calendar.APRIL && calendar.get(Calendar.DAY_OF_MONTH) == 1;
     }
 }

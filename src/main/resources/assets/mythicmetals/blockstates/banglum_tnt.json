@@ -1,7 +1,26 @@
 {
   "variants": {
-    "": {
-      "model": "mythicmetals:block/banglum_tnt"
-    }
+    "unstable=false": [
+      {
+        "model": "mythicmetals:block/banglum_tnt"
+      }
+    ],
+    "unstable=true": [
+      {
+        "model": "mythicmetals:block/banglum_tnt_alt"
+      },
+      {
+        "model": "mythicmetals:block/banglum_tnt_alt",
+        "y": 90
+      },
+      {
+        "model": "mythicmetals:block/banglum_tnt_alt",
+        "y": 180
+      },
+      {
+        "model": "mythicmetals:block/banglum_tnt_alt",
+        "y": 270
+      }
+    ]
   }
 }

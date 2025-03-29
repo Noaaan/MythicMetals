@@ -1,7 +1,7 @@
 package nourl.mythicmetals.mixin;
 
 import net.minecraft.client.resource.language.TranslationStorage;
-import nourl.mythicmetals.MythicMetals;
+import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,10 +18,7 @@ public class TranslationStorageMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addTranslations(Map<String, String> translations, boolean rightToLeft, CallbackInfo ci) {
-        if (!(Calendar.getInstance().get(Calendar.MONTH) == Calendar.APRIL && Calendar.getInstance().get(Calendar.WEEK_OF_MONTH) == 1))
-            return;
-        if (MythicMetals.CONFIG.disableFunny()) return;
-
+        if (!StringUtilsAtHome.isFunnyDay()) return;
         var builder = new HashMap<>(translations);
         builder.put("item.mythicmetals.aquarium_ingot", "Fish Tank");
         builder.put("item.mythicmetals.durasteel_ingot", "Dura-Chan");
@@ -50,7 +47,7 @@ public class TranslationStorageMixin {
         builder.put("item.mythicmetals.osmium_ingot", "glisconium");
         builder.put("item.mythicmetals.raw_adamantite", "Uncooked Adamantite");
         builder.put("item.mythicmetals.raw_aquarium", "Uncooked Fish Tank");
-        builder.put("item.mythicmetals.raw_banglum", "Uncooked Sweet Potatoes");
+        builder.put("item.mythicmetals.raw_banglum", "Uncooked Sweet Potato");
         builder.put("item.mythicmetals.raw_carmot", "Uncooked Gelatin");
         builder.put("item.mythicmetals.raw_kyber", "Uncooked Kyber");
         builder.put("item.mythicmetals.raw_manganese", "Uncooked Mayonnaise");
@@ -66,7 +63,7 @@ public class TranslationStorageMixin {
         builder.put("item.mythicmetals.raw_prometheum", "Uncooked Prometheum");
         builder.put("item.mythicmetals.raw_quadrillum", "Uncooked Quadrillum");
         builder.put("item.mythicmetals.raw_runite", "90 Smithing Ore");
-        builder.put("item.mythicmetals.raw_stormyx", "Bubble Gum");
+        builder.put("item.mythicmetals.raw_stormyx", "Jaw Breaker");
         builder.put("item.mythicmetals.raw_silver", "Bubble Gum");
         builder.put("item.mythicmetals.raw_tin", "Unmelted Tin Can");
         builder.put("item.mythicmetals.runite_ingot", "99 Smithing Bar");
@@ -80,31 +77,6 @@ public class TranslationStorageMixin {
         builder.put("block.mythicmetals.banglum_nuke_core", "Banglum Nether Reactor Core");
         builder.put("block.mythicmetals.carmot_nuke_core", "Carmot Nether Reactor Core");
         builder.put("block.mythicmetals.quadrillum_nuke_core", "Quadrillum Nether Reactor Core");
-        builder.put("item.mythicmetals.adamantite_nugget", "Adamantite Nuggie");
-        builder.put("item.mythicmetals.aquarium_nugget", "Fish Tank Corner");
-        builder.put("item.mythicmetals.bronze_nugget", "Bronze Nuggie");
-        builder.put("item.mythicmetals.carmot_nugget", "Jello Nuggie");
-        builder.put("item.mythicmetals.celestium_nugget", "Celestium Nuggie");
-        builder.put("item.mythicmetals.copper_nugget", "Copper Nuggie");
-        builder.put("item.mythicmetals.durasteel_nugget", "Dura-Chan Nuggie");
-        builder.put("item.mythicmetals.hallowed_nugget", "Hallowed Nuggie");
-        builder.put("item.mythicmetals.kyber_nugget", "Kyber Nuggie");
-        builder.put("item.mythicmetals.manganese_nugget", "Mayonnaise Nuggie");
-        builder.put("item.mythicmetals.metallurgium_nugget", "Metallurgium Nuggie");
-        builder.put("item.mythicmetals.midas_gold_nugget", "Pat Of Butter");
-        builder.put("item.mythicmetals.mythril_nugget", "Mythril Nuggie");
-        builder.put("item.mythicmetals.orichalcum_nugget", "Orichalcum Nuggie");
-        builder.put("item.mythicmetals.osmium_nugget", "glisconium Nuggie");
-        builder.put("item.mythicmetals.palladium_nugget", "Palladium Nuggie");
-        builder.put("item.mythicmetals.platinum_nugget", "Platinum Nuggie");
-        builder.put("item.mythicmetals.prometheum_nugget", "Prometheum Nuggie");
-        builder.put("item.mythicmetals.quadrillum_nugget", "X Nuggie");
-        builder.put("item.mythicmetals.runite_nugget", "99/9 Smithing Nuggie");
-        builder.put("item.mythicmetals.silver_nugget", "Silver Nuggie");
-        builder.put("item.mythicmetals.star_platinum_nugget", "Star Platinum Nuggie");
-        builder.put("item.mythicmetals.steel_nugget", "Steel Nuggie");
-        builder.put("item.mythicmetals.stormyx_nugget", "Mentos");
-        builder.put("item.mythicmetals.tin_nugget", "Tin Can Shard");
 
         this.translations = builder;
 
