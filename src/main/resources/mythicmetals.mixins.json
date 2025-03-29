@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "nourl.mythicmetals.mixin",
+  "package": "com.mythicmetals.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "AbstractBlockStateMixin",
@@ -44,5 +44,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "plugin": "nourl.mythicmetals.mixin.MythicMetalsMixinPlugin"
+  "plugin": "com.mythicmetals.mixin.MythicMetalsMixinPlugin"
 }
