@@ -17,7 +17,7 @@ import net.minecraft.util.math.RotationAxis;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.component.MythicDataComponents;
-import nourl.mythicmetals.item.tools.CarmotStaff;
+import nourl.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
 import nourl.mythicmetals.misc.RegistryHelper;
 
 public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer, ModelLoadingPlugin {
@@ -28,8 +28,8 @@ public class CarmotStaffBlockRenderer implements BuiltinItemRendererRegistry.Dyn
     public void render(ItemStack staff, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
         // TODO - Small optimization: Staff Model could be static? Investigate.
         var client = MinecraftClient.getInstance();
-        boolean shouldRenderRainbowShield = CarmotStaff.hasBlockInStaff(staff, MythicBlocks.STORMYX.getStorageBlock());
-        boolean isEnchantedMidas = CarmotStaff.hasBlockInStaff(staff, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK);
+        boolean shouldRenderRainbowShield = CarmotStaffItem.hasBlockInStaff(staff, MythicBlocks.STORMYX.getStorageBlock());
+        boolean isEnchantedMidas = CarmotStaffItem.hasBlockInStaff(staff, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK);
         //noinspection DataFlowIssue
         Block block = staff.contains(MythicDataComponents.CARMOT_STAFF_BLOCK) ? (staff.get(MythicDataComponents.CARMOT_STAFF_BLOCK).getBlock()) : Blocks.AIR;
         BakedModel staffModel = client.getBakedModelManager().getModel(CARMOT_STAFF_ID);

@@ -17,6 +17,7 @@ import net.minecraft.util.*;
 import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.component.*;
 import nourl.mythicmetals.item.*;
+import nourl.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.lang.reflect.Field;
@@ -83,11 +84,11 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         .attributeModifiers(createAttributeModifiers(4, 1.4f))
     );
 
-    public static final Item CARMOT_STAFF = new CarmotStaff(MythicToolMaterials.CARMOT_STAFF,
+    public static final Item CARMOT_STAFF = new CarmotStaffItem(MythicToolMaterials.CARMOT_STAFF,
         new Item.Settings()
             .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(CarmotStaff.createDefaultAttributes(4, 1.0f))
+            .attributeModifiers(CarmotStaffItem.createDefaultAttributes(4, 1.0f))
             .component(MythicDataComponents.CARMOT_STAFF_BLOCK, CarmotStaffComponent.DEFAULT)
             .component(MythicDataComponents.IS_USED, false)
             .component(MythicDataComponents.LOCKED, false)

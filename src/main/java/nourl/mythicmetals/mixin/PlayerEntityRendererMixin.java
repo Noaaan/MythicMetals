@@ -15,7 +15,7 @@ import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.client.models.RainbowShieldModel;
 import nourl.mythicmetals.component.DrillComponent;
 import nourl.mythicmetals.component.MythicDataComponents;
-import nourl.mythicmetals.item.tools.CarmotStaff;
+import nourl.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
 import nourl.mythicmetals.misc.UsefulSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -59,7 +59,7 @@ public class PlayerEntityRendererMixin {
         at = @At("TAIL"))
     private void mythicmetals$renderRainbowShield(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
         var stack = player.getStackInHand(Hand.MAIN_HAND);
-        if (CarmotStaff.hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
+        if (CarmotStaffItem.hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
             if (!stack.getOrDefault(MythicDataComponents.IS_USED, false))
                 return; // Only render if the staff is actively being used
             matrixStack.push();

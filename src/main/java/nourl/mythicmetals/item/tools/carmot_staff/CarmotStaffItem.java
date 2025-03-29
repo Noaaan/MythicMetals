@@ -1,4 +1,4 @@
-package nourl.mythicmetals.item.tools;
+package nourl.mythicmetals.item.tools.carmot_staff;
 
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.ops.WorldOps;
@@ -37,6 +37,7 @@ import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.component.CarmotStaffComponent;
 import nourl.mythicmetals.component.MythicDataComponents;
+import nourl.mythicmetals.item.tools.MythicToolMaterials;
 import nourl.mythicmetals.misc.*;
 import nourl.mythicmetals.registry.RegisterCriteria;
 import nourl.mythicmetals.registry.RegisterSounds;
@@ -44,11 +45,11 @@ import java.util.List;
 
 import static nourl.mythicmetals.component.MythicDataComponents.*;
 
-public class CarmotStaff extends ToolItem {
+public class CarmotStaffItem extends ToolItem {
 
     public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
 
-    public CarmotStaff(ToolMaterial material, Settings settings) {
+    public CarmotStaffItem(ToolMaterial material, Settings settings) {
         super(material, settings);
     }
 
@@ -489,7 +490,7 @@ public class CarmotStaff extends ToolItem {
 
         var blockBox = Box.of(user.getPos().add(0, 1, 0), 8, 8, 8);
         var entities = world.getOtherEntities(user, blockBox);
-        if (CarmotStaff.isNotOnCooldown(user, stack)) {
+        if (CarmotStaffItem.isNotOnCooldown(user, stack)) {
             stack.set(MythicDataComponents.IS_USED, true);
         }
         if (remainingUseTicks % 40 == 1) {
