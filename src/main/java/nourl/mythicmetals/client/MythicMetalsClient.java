@@ -1,4 +1,4 @@
-package nourl.mythicmetals;
+package nourl.mythicmetals.client;
 
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
@@ -33,9 +33,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.armor.*;
 import nourl.mythicmetals.blocks.MythicBlocks;
-import nourl.mythicmetals.client.CarmotShieldHudHandler;
 import nourl.mythicmetals.client.models.MythicModelHandler;
 import nourl.mythicmetals.client.rendering.*;
 import nourl.mythicmetals.compat.IsometricArmorStandExporter;

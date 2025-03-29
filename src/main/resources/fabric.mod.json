@@ -20,7 +20,7 @@
       "nourl.mythicmetals.MythicMetals"
     ],
     "client": [
-      "nourl.mythicmetals.MythicMetalsClient"
+      "nourl.mythicmetals.client.MythicMetalsClient"
     ],
     "fabric-datagen": [
       "nourl.mythicmetals.data.MythicMetalsData"
