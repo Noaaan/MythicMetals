@@ -1,9 +1,12 @@
-# 0.x.x
+# 0.22.2
 
-## Texture Changes
+## Changes
 
 - Runite Block now has the same textures across all sides
 - Steel Block now has a facing, similar to Glazed Terracotta
+- Funny Day (April Fools) content now only lasts through the first of April
+  - Note that you can still disable this in the config
+- Updated Unstable Banglum TNTs texture
 
 # 0.22.1
 
