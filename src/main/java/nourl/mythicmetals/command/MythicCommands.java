@@ -12,6 +12,7 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.block.Block;
+import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
@@ -56,7 +57,7 @@ public final class MythicCommands {
     public static final String ICON_SCALE = "{ .sized-image style=\"--image-width: 8%;\" }";
     public static final String BR = "<br>\n";
     public static final String TAB = "    "; // MkDocs likes spaces over tabs
-    public static BiMap<String, OreConfig> ORECONFIG = HashBiMap.create();
+    public static BiMap<String, OreConfig> ORE_CONFIG = HashBiMap.create();
 
     private MythicCommands() {
     }
@@ -64,7 +65,7 @@ public final class MythicCommands {
     @SuppressWarnings("UnreachableCode")
     public static void init() {
         ReflectionUtils.iterateAccessibleStaticFields(MythicOreConfigs.class, OreConfig.class, (value, name, field) -> {
-            ORECONFIG.put(name, value);
+            ORE_CONFIG.put(name, value);
         });
         ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("toolset"), ToolSetArgumentType.class, ConstantArgumentSerializer.of(ToolSetArgumentType::toolSet));
         ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("armorset"), ArmorSetArgumentType.class, ConstantArgumentSerializer.of(ArmorSetArgumentType::armorSet));
@@ -93,7 +94,7 @@ public final class MythicCommands {
             .build();
 
         var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
-            .executes(MythicCommands::exportOreAdmonition)
+            .executes(MythicCommands::exportOreData)
             .build();
         var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
             .executes(MythicCommands::exportTools)
@@ -303,73 +304,83 @@ public final class MythicCommands {
     /**
      * Ore/Material exporter for the Mythic Metals Wiki
      */
-    private static int exportOreAdmonition(CommandContext<ServerCommandSource> context) {
+    private static int exportOreData(CommandContext<ServerCommandSource> context) {
         var oreConfig = OreConfigArgumentType.getOreConfig(context, "ore-config");
         var source = context.getSource();
-        var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORECONFIG.inverse().get(oreConfig));
+        var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
 
-        StringBuilder output = new StringBuilder();
+        String oreName = StringUtilsAtHome.toProperCase(blockSet.getName() + " Ores");
 
-        if (blockSet == null || blockSet.getOre() == null) {
-            output.append("\n--- ORE STATS ---\n");
-            output.append(TAB).append("**Mining Level**: X (Y for variant)").append(BR);
-            output.append(TAB).append("**Max Vein Size**: %s".formatted(oreConfig.veinSize)).append(BR);
-            output.append(TAB).append("**Spawn Range**: %s to %s".formatted(
-                    oreConfig.bottom + (oreConfig.offset ? "(Offset)" : ""),
-                    oreConfig.top + (oreConfig.trapezoid ? " (Triangle Range)" : "")
-                )
-            ).append(BR);
-            output.append(TAB).append("**Discard Chance**: %s".formatted(
-                oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%")
-            ).append(BR);
-            MythicMetals.LOGGER.info(output);
-            source.sendFeedback(() -> Text.literal("Exported stats for the provided OreConfig"), false);
-            return 1;
-        }
-
-        String oreName = StringUtilsAtHome.toProperCase(blockSet.getName() + " Ore");
-
-        // Ore names and images
-        output.append("===SIDEBAR===\n");
-        output.append("!!! info inline end \"\"").append("\n");
-        output.append(TAB).append("<center class=tooltip>").append("\n");
-        output.append(TAB).append("<h3>**").append(oreName).append("**</h3>").append("\n");
-        output.append(TAB).append("![WRITE ALT TEXT HERE](%s)"
-            .formatted("../assets/mythicmetals/" + blockSet.getName() + "_ore.png")
-        ).append(BR);
-        blockSet.getOreVariantsMap().forEach((variantName, block) -> {
-            String variantOreName = StringUtilsAtHome.toProperCase(variantName + " " + blockSet.getName() + " Ore");
-
-            output.append(TAB).append("<h3>**").append(variantOreName).append("**</h3>").append("\n");
-            output.append(TAB).append("![WRITE ALT TEXT HERE](%s)"
-                .formatted("../assets/mythicmetals/" + variantName + "_" + blockSet.getName() + "_ore.png")
-            ).append("\n");
-        });
-        // Ore Stats
-        output.append(TAB).append("---\n");
-        output.append(TAB).append("**Mining Level**: X (Y for variant)").append(BR);
-        output.append(TAB).append("**Max Vein Size**: %s".formatted(oreConfig.veinSize)).append(BR);
-        output.append(TAB).append("**Spawn Range**: %s to %s".formatted(
-                oreConfig.bottom + (oreConfig.offset ? "(Offset)" : ""),
-                oreConfig.top + (oreConfig.trapezoid ? " (Triangle Range)" : "")
-            )
-        ).append(BR);
-        output.append(TAB).append("**Discard Chance**: %s".formatted(
-            oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%")
-        ).append(BR);
-        output.append("\n");
-        output.append("===SIDEBAR END===\n");
-        // Headers
-        output.append("===HEADERS===\n");
-        output.append("## Generation\n\n");
-        output.append("## Usages\n\n");
-        output.append("## Trivia\n\n");
-        output.append("## History\n\n");
-
+        String template = """
+            
+            ---
+            title: %s
+            project: mythicmetals
+            summary: A summary of %s Ores, their history, and where to find them.
+            ---
+            
+            %s
+            
+            ## Generation
+            
+            ## Usages
+            
+            ## Trivia
+            
+            ## History
+            
+            """.formatted(
+            oreName,
+            oreName,
+            computeOreAdmonition(blockSet, oreConfig)
+        );
         source.sendFeedback(() -> Text.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
-        MythicMetals.LOGGER.info(output);
+        MythicMetals.LOGGER.info(template);
 
         return 2;
+    }
+
+    private static String computeOreAdmonition(BlockSet blockSet, OreConfig oreConfig) {
+        var translationStorage = TranslationStorage.getInstance();
+        var output = new StringBuilder();
+        var header = """
+            !!! info inline end ""
+                <center class=tooltip>
+            """;
+        var ores = """
+                <h3>**%s**</h3>
+                ![WRITE ALT TEXT HERE](%s)<br>
+            """;
+
+        output.append(header);
+        output.append(ores.formatted(
+            translationStorage.get(blockSet.getOre().getTranslationKey()),
+            "../../assets/mythicmetals/" + blockSet.getName() + "_ore.png"
+        ));
+
+        blockSet.getOreVariantsMap().forEach((variantName, block) -> {
+            String variantOreName = translationStorage.get(block.getTranslationKey());
+            output.append(ores.formatted(
+                variantOreName,
+                "../../assets/mythicmetals/" + variantName + "_" + blockSet.getName() + "_ore.png"
+            ));
+        });
+
+        var oreStatsTemplate = """
+                ---
+                **Mining Level**: X (Y for variant)<br>
+                **Max Vein Size**: %s<br>
+                **Spawn Range**: %s to %s<br>
+                **Discard Chance**: %s<br>
+            """.formatted(
+            oreConfig.veinSize,
+            oreConfig.bottom + (oreConfig.offset ? "(Offset)" : ""),
+            oreConfig.top + (oreConfig.trapezoid ? " (Triangle Range)" : ""),
+            oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%"
+        );
+
+        output.append(oreStatsTemplate);
+        return output.toString();
     }
 
     /**
@@ -406,7 +417,6 @@ public final class MythicCommands {
         }
         // tool recipes
         output.append("\n").append("===SIDEBAR END===").append("\n");
-
 
 
         // Headers
