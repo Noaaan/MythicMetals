@@ -316,7 +316,7 @@ public final class MythicCommands {
             ---
             title: %s
             project: mythicmetals
-            summary: A summary of %s Ores, their history, and where to find them.
+            summary: A summary of %s, their history, and where to find them.
             ---
             
             %s
@@ -370,10 +370,12 @@ public final class MythicCommands {
                 ---
                 **Mining Level**: X (Y for variant)<br>
                 **Max Vein Size**: %s<br>
+                **Attempts Per Chunk**: %s<br>
                 **Spawn Range**: %s to %s<br>
                 **Discard Chance**: %s<br>
             """.formatted(
             oreConfig.veinSize,
+            oreConfig.perChunk,
             oreConfig.bottom + (oreConfig.offset ? "(Offset)" : ""),
             oreConfig.top + (oreConfig.trapezoid ? " (Triangle Range)" : ""),
             oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%"
