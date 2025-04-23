@@ -1,3 +1,7 @@
+# 0.22.3
+
+- Fixed an issue where the Aquarium Resonator did not work correctly
+
 # 0.22.2
 
 ## Changes
