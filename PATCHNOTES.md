@@ -1,5 +1,8 @@
 # 0.22.3
 
+## Changes
+
+- Added Italian localization (#287, thanks 0x07cf!)
 - Fixed an issue where the Aquarium Resonator did not work correctly
 
 # 0.22.2
