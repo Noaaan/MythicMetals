@@ -13,9 +13,13 @@
     "count": 1
   },
   "overrides": {
-    "2+": {
+    "2": {
       "id": "mythicmetals:steel_ingot",
       "count": 2
+    },
+    "3+": {
+      "id": "mythicmetals:steel_ingot",
+      "count": 3
     }
   },
   "min_forge_tier": 1,
