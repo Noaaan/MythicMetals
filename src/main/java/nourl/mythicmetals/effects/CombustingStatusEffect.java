@@ -2,7 +2,6 @@ package nourl.mythicmetals.effects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import nourl.mythicmetals.MythicMetals;
@@ -19,16 +18,12 @@ public class CombustingStatusEffect extends StatusEffect {
 
     @Override
     public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+        super.onRemoved(entity, attributes, amplifier);
         entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
     }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return duration % 20 == 0;
-    }
-
-    @Override
-    public double adjustModifierAmount(int amplifier, EntityAttributeModifier modifier) {
-        return amplifier + 1;
     }
 }
