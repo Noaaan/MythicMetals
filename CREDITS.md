@@ -47,6 +47,7 @@ These people have helped translate the mod into different languages. Thank you t
 * DH, for the macedonian translation.  
 * pluiedev, for the simplified chinese translation.  
 * gyular, for the korean translation.  
+- 0x07cf, for the italian translation.
 
 Feel free to contribute a translation if you want to! 
 I currently do not support Crowdin, so you will have to either put it up as a pull request or raise an issue with a translated lang file.
