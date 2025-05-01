@@ -4,6 +4,7 @@
 
 - Added Italian localization (#287, thanks 0x07cf!)
 - Fixed an issue where the Aquarium Resonator did not work correctly
+- Fixed Combustion cooldown not being applied
 
 # 0.22.2
 

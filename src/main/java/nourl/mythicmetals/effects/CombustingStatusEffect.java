@@ -1,8 +1,10 @@
 package nourl.mythicmetals.effects;
 
-import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import nourl.mythicmetals.MythicMetals;
 
 public class CombustingStatusEffect extends StatusEffect {
     public CombustingStatusEffect(StatusEffectCategory statusEffectCategory, int color) {
@@ -10,8 +12,9 @@ public class CombustingStatusEffect extends StatusEffect {
     }
 
     @Override
-    public void onRemoved(AttributeContainer attributeContainer) {
-        super.onRemoved(attributeContainer);
+    public void onEntityRemoval(LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
+        super.onEntityRemoval(entity, amplifier, reason);
+        entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
     }
 
     @Override
