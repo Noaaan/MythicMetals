@@ -3,6 +3,7 @@ package nourl.mythicmetals.component;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ItemStack;
@@ -58,7 +59,7 @@ public record PrometheumComponent(int durabilityRepaired) {
         int damageToRepair = isOvergrown(stack) ? 2 : 1;
 
         // Extra repair speed if bound
-        if (stack.contains(EnchantmentEffectComponentTypes.PREVENT_ARMOR_CHANGE)) {
+        if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, EnchantmentEffectComponentTypes.PREVENT_ARMOR_CHANGE)) {
             damageToRepair += 1;
         }
 
@@ -101,7 +102,7 @@ public record PrometheumComponent(int durabilityRepaired) {
         var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
         int bonus = base;
         bonus += component.durabilityRepaired() > (OVERGROWN_THRESHOLD * 2) ? 2 : 1;
-        bonus += stack.contains(EnchantmentEffectComponentTypes.PREVENT_ARMOR_CHANGE) ? 1 : 0;
+        bonus += EnchantmentHelper.hasAnyEnchantmentsWith(stack, EnchantmentEffectComponentTypes.PREVENT_ARMOR_CHANGE) ? 1 : 0;
         return new EntityAttributeModifier(
             TOUGHNESS_BONUS_ID,
             bonus,
