@@ -12,7 +12,6 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.block.Block;
-import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
@@ -36,14 +35,11 @@ import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicOreConfigs;
 import nourl.mythicmetals.config.OreConfig;
-import nourl.mythicmetals.item.tools.MythicTools;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -240,7 +236,7 @@ public final class MythicCommands {
 
         // Armor Model on top of the admonition
         String armorMaterial = Registries.ITEM.getId(armorSet.getHelmet()).getPath().split("_helmet")[0];
-        String armorTypeName = StringUtilsAtHome.toProperCase(armorMaterial.replace("_", " ") + " Armor");
+        String armorTypeName = StringUtilsAtHome.toTitleCase(armorMaterial.replace("_", " ") + " Armor");
 
         output.append("\n");
         output.append("<center class=tooltip>").append("\n");
@@ -252,7 +248,7 @@ public final class MythicCommands {
              * to be implemented correctly into MkDocs. Try to improve this later.
              */
             String id = Registries.ITEM.getId(armor).getPath();
-            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+            String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
 
             int protection = armor.getProtection();
 
@@ -289,7 +285,7 @@ public final class MythicCommands {
         output.append("It is crafted just like any other armor").append(BR);
         for (var armor : armorSet.getArmorItems()) {
             String id = Registries.ITEM.getId(armor).getPath();
-            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
+            String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append("![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
         }
         output.append("## Usages\n\n");
@@ -309,80 +305,14 @@ public final class MythicCommands {
         var source = context.getSource();
         var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
 
-        String oreName = StringUtilsAtHome.toProperCase(blockSet.getName() + " Ores");
+        String oreName = StringUtilsAtHome.toTitleCase(blockSet.getName() + " Ores");
 
-        String template = """
-            
-            ---
-            title: %s
-            project: mythicmetals
-            summary: A summary of %s, their history, and where to find them.
-            ---
-            
-            %s
-            
-            ## Generation
-            
-            ## Usages
-            
-            ## Trivia
-            
-            ## History
-            
-            """.formatted(
-            oreName,
-            oreName,
-            computeOreAdmonition(blockSet, oreConfig)
-        );
+        String template = WikiExporter.createOreTemplate(oreName, blockSet, oreConfig);
+
         source.sendFeedback(() -> Text.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
         MythicMetals.LOGGER.info(template);
 
         return 2;
-    }
-
-    private static String computeOreAdmonition(BlockSet blockSet, OreConfig oreConfig) {
-        var translationStorage = TranslationStorage.getInstance();
-        var output = new StringBuilder();
-        var header = """
-            !!! info inline end ""
-                <center class=tooltip>
-            """;
-        var ores = """
-                <h3>**%s**</h3>
-                ![WRITE ALT TEXT HERE](%s)<br>
-            """;
-
-        output.append(header);
-        output.append(ores.formatted(
-            translationStorage.get(blockSet.getOre().getTranslationKey()),
-            "../../assets/mythicmetals/" + blockSet.getName() + "_ore.png"
-        ));
-
-        blockSet.getOreVariantsMap().forEach((variantName, block) -> {
-            String variantOreName = translationStorage.get(block.getTranslationKey());
-            output.append(ores.formatted(
-                variantOreName,
-                "../../assets/mythicmetals/" + variantName + "_" + blockSet.getName() + "_ore.png"
-            ));
-        });
-
-        var oreStatsTemplate = """
-                ---
-                **Mining Level**: X (Y for variant)<br>
-                **Max Vein Size**: %s<br>
-                **Attempts Per Chunk**: %s<br>
-                **Spawn Range**: %s to %s<br>
-                **Discard Chance**: %s<br>
-            """.formatted(
-            oreConfig.veinSize,
-            oreConfig.perChunk,
-            oreConfig.bottom + (oreConfig.offset ? "(Offset)" : ""),
-            oreConfig.top + (oreConfig.trapezoid ? " (Triangle Range)" : ""),
-            oreConfig.discardChance == 0 ? "Never discarded" : oreConfig.discardChance * 100 + "%"
-        );
-
-        output.append(oreStatsTemplate);
-        return output.toString();
     }
 
     /**
@@ -392,51 +322,7 @@ public final class MythicCommands {
         var toolset = ToolSetArgumentType.getToolSet(context, "toolset");
 
         var source = context.getSource();
-
-        StringBuilder output = new StringBuilder();
-
-        Deque<Integer> damageDeque = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
-        Stack<Float> atkSpd = new Stack<>();
-        atkSpd.addAll(toolset.getAttackSpeed());
-
-        String setName = StringUtilsAtHome.toProperCase(toolset.getSword().getMaterial().toString());
-        output.append("===SIDEBAR===\n");
-        output.append("!!! info inline end \"\"").append("\n");
-        output.append(TAB).append("<center class=tooltip>").append("\n");
-        output.append(TAB).append("<h3>**").append(setName).append("**</h3>").append("\n");
-
-        for (ToolItem tool : toolset.get()) {
-            String id = Registries.ITEM.getId(tool).getPath();
-            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-            output.append("\n");
-            output.append(TAB).append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append(TAB).append("![Image of %s](../../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
-            output.append(TAB).append("+%s Attack Damage, %s Attack Speed".formatted(
-                tool.getMaterial().getAttackDamage() + damageDeque.pop() + 1,
-                BigDecimal.valueOf(4.0f + atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString()
-            )).append(BR);
-            output.append(TAB).append("%s Durability".formatted(tool.getDefaultStack().getMaxDamage())).append(BR);
-        }
-        // tool recipes
-        output.append("\n").append("===SIDEBAR END===").append("\n");
-
-
-        // Headers
-        output.append("===HEADERS===\n");
-        output.append("## Obtaining\n\n");
-        output.append("### Crafting\n\n");
-        output.append(setName).append(" Tools can be crafted from ").append(setName).append(" TODO - LINK TO MATERIAL.");
-        output.append("It is crafted just like regular tools (TODO - MIGHT NOT APPLY!)").append(BR);
-        for (ToolItem tool : toolset.get()) {
-            String id = Registries.ITEM.getId(tool).getPath();
-            String name = StringUtilsAtHome.toProperCase(id.replace('_', ' '));
-            output.append("![Image of the recipe for %s](../../assets/mythicmetals/recipes/tools/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
-        }
-        output.append("## Usages\n\n");
-        output.append("## Trivia\n\n");
-        output.append("## History\n\n");
-
-        MythicMetals.LOGGER.info(output);
+        MythicMetals.LOGGER.info(WikiExporter.computeToolset(toolset));
         source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
         return 0;
     }
