@@ -11,13 +11,15 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.item.trim.ArmorTrimPattern;
 import net.minecraft.loot.context.*;
@@ -35,11 +37,15 @@ import nourl.mythicmetals.blocks.BlockSet;
 import nourl.mythicmetals.blocks.MythicBlocks;
 import nourl.mythicmetals.config.MythicOreConfigs;
 import nourl.mythicmetals.config.OreConfig;
+import nourl.mythicmetals.item.tools.MythicTools;
+import nourl.mythicmetals.item.tools.ToolSet;
 import nourl.mythicmetals.misc.RegistryHelper;
 import nourl.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import java.io.IOException;
+import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -52,7 +58,6 @@ public final class MythicCommands {
     public static final String RECIPE_SCALE = "{ .sized-recipe style=\"--image-width: 40%;\" }";
     public static final String ICON_SCALE = "{ .sized-image style=\"--image-width: 8%;\" }";
     public static final String BR = "<br>\n";
-    public static final String TAB = "    "; // MkDocs likes spaces over tabs
     public static BiMap<String, OreConfig> ORE_CONFIG = HashBiMap.create();
 
     private MythicCommands() {
@@ -74,6 +79,7 @@ public final class MythicCommands {
         var mythicRoot = CommandManager.literal("mythicmetals").requires(src -> src.hasPermissionLevel(2)).build();
         var range = CommandManager.literal("range").build();
         var tools = CommandManager.literal("tools").build();
+        var allTools = CommandManager.literal("tools-all").executes(MythicCommands::exportAllTools).build();
         var ores = CommandManager.literal("ores").build();
         var armor = CommandManager.literal("armor").build();
         var wiki = CommandManager.literal("wiki").build();
@@ -92,6 +98,7 @@ public final class MythicCommands {
         var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
             .executes(MythicCommands::exportOreData)
             .build();
+
         var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
             .executes(MythicCommands::exportTools)
             .build();
@@ -129,6 +136,7 @@ public final class MythicCommands {
         armor.addChild(exportArmor);
         wiki.addChild(ores);
         wiki.addChild(tools);
+        wiki.addChild(allTools);
         wiki.addChild(armor);
 
         // Misc nodes
@@ -146,6 +154,35 @@ public final class MythicCommands {
         CommandRegistrationCallback.EVENT.register((dispatcher, access, env) -> {
             dispatcher.getRoot().addChild(mythicRoot);
         });
+    }
+
+    // TODO - Definitely the most lazy approach.
+    //  At least make it overwrite the files instead of forcing you to delete the folder every time
+    private static int exportAllTools(CommandContext<ServerCommandSource> context) {
+        var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
+        try {
+            Files.createDirectory(folder);
+        } catch (FileAlreadyExistsException ignored) {
+            MythicMetals.LOGGER.debug("Folder already exists");
+        } catch (IOException e) {
+            MythicMetals.LOGGER.error("Failed to create folder", e);
+        }
+        ReflectionUtils.iterateAccessibleStaticFields(MythicTools.class, ToolSet.class, (value, name, field) -> {
+            var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + "-tools.md");
+            try {
+                Files.createFile(file);
+                Files.writeString(file, WikiExporter.computeToolset(value));
+                var logString = "Successfully exported equipment/%s-tools".formatted(name.toLowerCase(Locale.ROOT));
+                MythicMetals.LOGGER.info(logString);
+            } catch (IOException e) {
+                MythicMetals.LOGGER.error("Failed to write wiki data");
+                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+            }
+        });
+
+        context.getSource().sendFeedback(() -> Text.literal("Exported all the tools (in the shed) to wiki format into the config folder"), false);
+        context.getSource().sendFeedback(() -> Text.literal("Remember to delete it to regenerate it!"), false);
+        return 0;
     }
 
     /**
