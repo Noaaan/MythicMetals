@@ -1,3 +1,9 @@
+# 0.22.4
+
+## Changes
+
+- Improve Tidesinger recipes (#290)
+
 # 0.22.3
 
 ## Changes

@@ -187,8 +187,14 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.tidesinger.title").formatted(Formatting.GRAY),
             Text.translatable("smithing_template.mythicmetals.tidesinger.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.tidesinger.additions_slot_description"),
-            ARMOR_ITEMS,
-            List.of(RegistryHelper.id("item/template/empty_slot_pearl"))
+            SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
+            List.of(
+                RegistryHelper.id("item/template/empty_slot_brain"),
+                RegistryHelper.id("item/template/empty_slot_bubble"),
+                RegistryHelper.id("item/template/empty_slot_fire"),
+                RegistryHelper.id("item/template/empty_slot_horn"),
+                RegistryHelper.id("item/template/empty_slot_tube")
+            )
         );
 
         public static final Item LEGENDARY_BANGLUM_SMITHING_TEMPLATE = new SmithingTemplateItem(

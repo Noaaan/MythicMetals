@@ -4,7 +4,7 @@
     "item": "mythicmetals:aquarium_pickaxe"
   },
   "addition": {
-    "item": "mythicmetals:aquarium_ingot"
+    "tag": "mythicmetals:tidesinger_coral"
   },
   "result": {
     "id": "mythicmetals:tidesinger_pickaxe"

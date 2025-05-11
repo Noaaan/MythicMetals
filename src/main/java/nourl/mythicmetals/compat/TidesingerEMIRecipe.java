@@ -25,7 +25,8 @@ public class TidesingerEMIRecipe implements EmiRecipe {
     EmiStack outputs;
     Identifier id;
 
-    public TidesingerEMIRecipe(TidesingerCoralRecipe recipe) {
+    public TidesingerEMIRecipe(TidesingerCoralRecipe recipe, Identifier id) {
+        this.id = id;
         this.template = recipe.template();
         this.base = recipe.base();
         this.addition = recipe.addition();
