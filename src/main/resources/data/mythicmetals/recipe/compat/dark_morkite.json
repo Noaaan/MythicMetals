@@ -16,15 +16,14 @@
     "fluid": "minecraft:water"
   },
   "tapping_item": "minecraft:glass_bottle",
-  "fermentation_data": {
-    "fermentation_speed_mod": 0.35,
+  "fermentation": {
+    "fermentation_speed_mod": 0.55,
     "effects": [
       {
         "id": "minecraft:strength",
         "base_duration": 4800,
         "potency": [
           {
-            "min_alc": 3,
             "potency": 0
           }
         ]
