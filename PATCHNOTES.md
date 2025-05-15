@@ -2,6 +2,7 @@
 
 ## Changes
 
+- Fix Engrained not applying correctly on Prometheum Equipment
 - Improve Tidesinger recipes (#290)
 - Fix Dark Morkite and Wormhole Special recipes with Spectrum (#291, thanks unilock!)
 
