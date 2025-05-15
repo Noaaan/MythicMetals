@@ -3,6 +3,7 @@
 ## Changes
 
 - Improve Tidesinger recipes (#290)
+- Fix Dark Morkite and Wormhole Special recipes with Spectrum (#291, thanks unilock!)
 
 # 0.22.3
 
