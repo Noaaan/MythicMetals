@@ -12,17 +12,18 @@
     }
   ],
   "min_fermentation_time_hours": 24,
-  "fluid": "minecraft:water",
+  "fluid": {
+    "fluid": "minecraft:water"
+  },
   "tapping_item": "minecraft:glass_bottle",
-  "fermentation_data": {
-    "fermentation_speed_mod": 0.35,
+  "fermentation": {
+    "fermentation_speed_mod": 0.55,
     "effects": [
       {
         "id": "minecraft:strength",
         "base_duration": 4800,
         "potency": [
           {
-            "min_alc": 3,
             "potency": 0
           }
         ]
@@ -83,7 +84,12 @@
   "result": {
     "id": "spectrum:infused_beverage",
     "count": 4,
-    "nbt": "{Variant: \"morkite\", Color: 16494 }"
+    "components": {
+      "spectrum:infused_beverage": {
+        "color": 16494,
+        "variant": "morkite"
+      }
+    }
   },
   "required_advancement": "spectrum:milestones/confirmed_drinking_age",
   "fabric:load_conditions": [
