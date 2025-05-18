@@ -1,9 +1,28 @@
-# 0.x.x
+# 0.22.4
 
-## Texture Changes
+## Changes
+
+- Fix Engrained not applying correctly on Prometheum Equipment
+- Improve Tidesinger recipes (#290)
+- Fix Dark Morkite and Wormhole Special recipes with Spectrum (#291, thanks unilock!)
+
+# 0.22.3
+
+## Changes
+
+- Added Italian localization (#287, thanks 0x07cf!)
+- Fixed an issue where the Aquarium Resonator did not work correctly
+- Fixed Combustion cooldown not being applied
+
+# 0.22.2
+
+## Changes
 
 - Runite Block now has the same textures across all sides
 - Steel Block now has a facing, similar to Glazed Terracotta
+- Funny Day (April Fools) content now only lasts through the first of April
+  - Note that you can still disable this in the config
+- Updated Unstable Banglum TNTs texture
 
 # 0.22.1
 
@@ -378,6 +397,17 @@ There might be some bugs surrounding these, so make sure to report them.
 I do still want to look into datafixing before the full 0.20.0 release, but for now this version acts mainly as a test version.
 
 This is the initial port to 1.21. Full patch notes will be available for the proper launch. 
+
+# 0.19.10
+
+Very minor bonus release
+
+- Added Italian localization (#287, thanks 0x07cf!)
+- Fix a bug where Combustion would permanently apply Fire Vulnerability (#275)
+- Slightly increase alloy yields from specific recipes (#270)
+  - Bronze: 2 Copper + 1 Tin = 2 Bronze Ingots -> 3 ingots
+  - Durasteel: 1 Quadrillum + 1 Manganese = 1 Durasteel Ingot -> 2 ingots
+  - Steel: 1 Raw Iron + 1 Raw Manganese = 1 Steel Ingot -> 1 Steel Ingot, 2 ingots at tier 2, and 3
 
 # 0.19.9
 

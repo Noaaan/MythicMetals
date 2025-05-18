@@ -10,6 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -148,5 +149,9 @@ public class ToolSet {
 
     public AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, double damage, float speed) {
         return this.createAttributeBuilder(material, damage, speed).build();
+    }
+
+    public String getTitlecaseName() {
+        return StringUtilsAtHome.toTitleCase(this.getSword().getMaterial().toString());
     }
 }

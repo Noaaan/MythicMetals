@@ -12,7 +12,7 @@ public class StringUtilsAtHome {
      * cAt -> Cat
      * super title -> Super Title
      */
-    public static String toProperCase(String input) {
+    public static String toTitleCase(String input) {
         if (input == null || input.isEmpty()) {
             return input;
         }

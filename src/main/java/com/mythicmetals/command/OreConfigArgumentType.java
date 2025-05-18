@@ -23,15 +23,15 @@ public class OreConfigArgumentType implements ArgumentType<OreConfig> {
     @Override
     public OreConfig parse(StringReader reader) throws CommandSyntaxException {
         final String oreConfig = reader.readString();
-        if (MythicCommands.ORECONFIG.containsKey(oreConfig)) {
-            return MythicCommands.ORECONFIG.get(oreConfig);
+        if (MythicCommands.ORE_CONFIG.containsKey(oreConfig)) {
+            return MythicCommands.ORE_CONFIG.get(oreConfig);
         }
         throw EXCEPTION.create();
     }
 
     @Override
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        MythicCommands.ORECONFIG.forEach((s, oreConfig) -> builder.suggest(s));
+        MythicCommands.ORE_CONFIG.forEach((s, oreConfig) -> builder.suggest(s));
         return builder.buildFuture();
     }
 

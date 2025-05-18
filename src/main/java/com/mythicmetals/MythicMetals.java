@@ -73,7 +73,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
-            RegisterPointOfInterests.init();
         }
         FieldRegistrationHandler.processSimple(MythicItems.Copper.class, false);
         FieldRegistrationHandler.register(MythicArmorMaterials.class, MOD_ID, false);
@@ -88,7 +87,8 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicCommands.init();
         MythicCommands.registerCommands();
         Abilities.init();
-        MythicEntityAttributes.init();
+        RegisterPointOfInterests.init();
+        RegisterEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.Mats.MORKITE, 1200);

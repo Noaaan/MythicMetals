@@ -30,6 +30,7 @@ These people have helped translate the mod into different languages. Thank you t
 - nageih, pluiedev, and VeriTas-arch for the simplified chinese translations.
 - gyular, for the korean translation.
 - Kurty00 and SNL Neshorn, for the german translation.
+- 0x07cf, for the italian translation.
 
 Feel free to contribute a translation if you want to!
 

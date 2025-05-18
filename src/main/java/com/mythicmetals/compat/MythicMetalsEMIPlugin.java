@@ -18,7 +18,7 @@ public class MythicMetalsEMIPlugin implements EmiPlugin {
                 registry.addRecipe(new MidasFoldingEMIRecipe(foldingRecipe));
             }
             if (recipe.value() instanceof TidesingerCoralRecipe tidesingerCoralRecipe) {
-                registry.addRecipe(new TidesingerEMIRecipe(tidesingerCoralRecipe));
+                registry.addRecipe(new TidesingerEMIRecipe(tidesingerCoralRecipe, recipe.id()));
             }
         }
         registry.removeRecipes(RegistryHelper.id("hoe/based"));

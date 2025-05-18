@@ -29,7 +29,7 @@ public record TidesingerCoralRecipe(Ingredient base, Ingredient addition, Ingred
 
     @Override
     public boolean testAddition(ItemStack stack) {
-        return this.addition.test(stack);
+        return this.addition.test(stack) && stack.isIn(MythicTags.TIDESINGER_CORAL);
     }
 
     @Override
@@ -39,14 +39,8 @@ public record TidesingerCoralRecipe(Ingredient base, Ingredient addition, Ingred
 
     @Override
     public ItemStack craft(SmithingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
-        var armorStack = this.result.copy();
-        var formerArmorItem = input.base().getItem();
-        armorStack.copyComponentsToNewStack(formerArmorItem, 1);
-
-        if (input.addition().isIn(MythicTags.TIDESINGER_CORAL)) {
-            armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromStack(input.addition()));
-        }
-
+        var armorStack = input.base().copyComponentsToNewStack(this.result().getItem(), 1);
+        armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromStack(input.addition()));
         return armorStack;
     }
 
