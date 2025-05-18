@@ -20,16 +20,14 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.equals("nourl.mythicmetals.mixin.DamageOverTimePowerMixin")) {
-            return FabricLoader.getInstance().isModLoaded("origins");
-        }
-        if (mixinClassName.equals("nourl.mythicmetals.mixin.PiglinBrainMixin")) {
-            return !FabricLoader.getInstance().isModLoaded("custom_piglin_bartering");
-        }
-        if (mixinClassName.equals("nourl.mythicmetals.mixin.ConduitBlockEntityMixin")) {
-            return FabricLoader.getInstance().isDevelopmentEnvironment();
-        }
-        return true;
+        return switch (mixinClassName) {
+            case "com.mythicmetals.mixin.DamageOverTimePowerMixin" -> FabricLoader.getInstance().isModLoaded("origins");
+            case "com.mythicmetals.mixin.PiglinBrainMixin" ->
+                !FabricLoader.getInstance().isModLoaded("custom_piglin_bartering");
+            case "com.mythicmetals.mixin.ConduitBlockEntityMixin" ->
+                FabricLoader.getInstance().isDevelopmentEnvironment();
+            default -> true;
+        };
     }
 
     @Override

@@ -88,7 +88,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicCommands.registerCommands();
         Abilities.init();
         RegisterPointOfInterests.init();
-        RegisterEntityAttributes.init();
+        MythicEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
         FuelRegistry.INSTANCE.add(MythicItems.Mats.MORKITE, 1200);

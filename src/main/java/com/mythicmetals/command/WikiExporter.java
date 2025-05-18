@@ -1,13 +1,13 @@
-package nourl.mythicmetals.command;
+package com.mythicmetals.command;
 
 import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.item.ToolItem;
 import net.minecraft.registry.Registries;
-import nourl.mythicmetals.blocks.BlockSet;
-import nourl.mythicmetals.config.OreConfig;
-import nourl.mythicmetals.item.tools.MythicTools;
-import nourl.mythicmetals.item.tools.ToolSet;
-import nourl.mythicmetals.misc.StringUtilsAtHome;
+import com.mythicmetals.block.BlockSet;
+import com.mythicmetals.config.OreConfig;
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.item.tools.ToolSet;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
