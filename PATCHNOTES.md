@@ -1,3 +1,9 @@
+# 0.22.5
+
+## Changes
+
+- Fix another issue related to Conduit Powered Blocks not working
+
 # 0.22.4
 
 ## Changes

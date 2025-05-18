@@ -24,8 +24,6 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
             case "com.mythicmetals.mixin.DamageOverTimePowerMixin" -> FabricLoader.getInstance().isModLoaded("origins");
             case "com.mythicmetals.mixin.PiglinBrainMixin" ->
                 !FabricLoader.getInstance().isModLoaded("custom_piglin_bartering");
-            case "com.mythicmetals.mixin.ConduitBlockEntityMixin" ->
-                FabricLoader.getInstance().isDevelopmentEnvironment();
             default -> true;
         };
     }
