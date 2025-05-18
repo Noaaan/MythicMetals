@@ -26,9 +26,6 @@ public class MythicMetalsMixinPlugin implements IMixinConfigPlugin {
         if (mixinClassName.equals("nourl.mythicmetals.mixin.PiglinBrainMixin")) {
             return !FabricLoader.getInstance().isModLoaded("custom_piglin_bartering");
         }
-        if (mixinClassName.equals("nourl.mythicmetals.mixin.ConduitBlockEntityMixin")) {
-            return FabricLoader.getInstance().isDevelopmentEnvironment();
-        }
         return true;
     }
 
