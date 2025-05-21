@@ -1,5 +1,12 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.client.models.RainbowShieldModel;
+import com.mythicmetals.client.rendering.StormyxShieldRenderer;
+import com.mythicmetals.component.DrillComponent;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -9,14 +16,6 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CarmotShield;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.client.models.RainbowShieldModel;
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -59,20 +58,11 @@ public class PlayerEntityRendererMixin {
         at = @At("TAIL"))
     private void mythicmetals$renderRainbowShield(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
         var stack = player.getStackInHand(Hand.MAIN_HAND);
-        if (CarmotStaffItem.hasBlockInStaff(stack, MythicBlocks.STORMYX.getStorageBlock())) {
-            if (!stack.getOrDefault(MythicDataComponents.IS_USED, false))
-                return; // Only render if the staff is actively being used
+        var offHandStack = player.getStackInHand(Hand.OFF_HAND);
+        // Only render if the shield is actively being used
+        if (stack.getOrDefault(MythicDataComponents.IS_USED, false) || offHandStack.getOrDefault(MythicDataComponents.IS_USED, false)) {
             matrixStack.push();
-            double delta = System.currentTimeMillis() / 45.0;
-
-            var part = RainbowShieldModel.getTexturedModelData();
-
-            part.createModel().render(
-                matrixStack,
-                vertexConsumerProvider.getBuffer(RenderLayer.getEnergySwirl(WORLD_BORDER, (float) ((delta * .005f) % 1f), (float) (delta * .005f % 1f))),
-                i,
-                OverlayTexture.DEFAULT_UV,
-                UsefulSingletonForColorUtil.rainbow());
+            StormyxShieldRenderer.renderRainbowShield(matrixStack, vertexConsumerProvider, i);
             matrixStack.pop();
         }
     }

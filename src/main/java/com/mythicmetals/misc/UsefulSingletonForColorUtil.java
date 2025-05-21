@@ -51,7 +51,7 @@ public class UsefulSingletonForColorUtil {
         float saturation = 1;
         float constantValue = 1;
 
-        return MathHelper.hsvToArgb((float) (hue / 360), saturation, constantValue, 128);
+        return MathHelper.hsvToArgb((float) (hue / 360), saturation, constantValue, 192);
     }
 
     /**

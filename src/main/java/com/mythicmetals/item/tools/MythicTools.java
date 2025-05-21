@@ -86,12 +86,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     public static final Item CARMOT_STAFF = new CarmotStaffItem(MythicToolMaterials.CARMOT_STAFF,
         new Item.Settings()
-            .rarity(Rarity.UNCOMMON)
             .group(MythicMetals.TABBED_GROUP).tab(2)
-            .attributeModifiers(CarmotStaffItem.createDefaultAttributes(4, 1.0f))
-            .component(MythicDataComponents.CARMOT_STAFF_BLOCK, CarmotStaffComponent.DEFAULT)
-            .component(MythicDataComponents.IS_USED, false)
-            .component(MythicDataComponents.LOCKED, false)
     );
 
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, new Item.Settings()

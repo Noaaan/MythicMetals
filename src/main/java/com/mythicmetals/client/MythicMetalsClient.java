@@ -74,8 +74,8 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-        BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.CARMOT_STAFF, new CarmotStaffBlockRenderer());
-        ModelLoadingPlugin.register(new CarmotStaffBlockRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(MythicTools.STORMYX_SHIELD, new StormyxShieldRenderer());
+        ModelLoadingPlugin.register(new StormyxShieldRenderer());
         ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
         CarmotShieldHudHandler.init();

@@ -18,11 +18,7 @@ public class MythicDataComponents {
             .codec(Codec.BOOL)
             .packetCodec(PacketCodecs.BOOL)
     );
-    public static final ComponentType<Boolean> ENCORE = RegistryHelper.dataComponentType(
-        "encore", builder -> builder
-            .codec(Codec.BOOL)
-            .packetCodec(PacketCodecs.BOOL)
-    );
+    // TODO - Rename
     public static final ComponentType<Boolean> IS_USED = RegistryHelper.dataComponentType(
         "is_used", builder -> builder
             .codec(Codec.BOOL)

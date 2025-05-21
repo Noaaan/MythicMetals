@@ -60,33 +60,34 @@
 		}
 	],
 	"gui_light": "front",
+	"overrides": [
+		{"predicate": {"mythicmetals:blocking": 1}, "model": "mythicmetals:item/stormyx_shield_blocking"}
+	],
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [35, -20, 0],
-			"translation": [-3.75, -6, 0.75],
+			"rotation": [0, -90, 0],
+			"translation": [-3.75, -5.75, 0],
 			"scale": [1.1, 1.1, 1.1]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [35, -20, 0],
-			"translation": [2.75, -7, 2.25],
+			"rotation": [0, -90, 0],
+			"translation": [-3.75, -5.75, 7],
 			"scale": [1.1, 1.1, 1.1]
 		},
 		"firstperson_righthand": {
-			"rotation": [0, 0, 8],
-			"translation": [2, -9, 1],
+			"translation": [3.5, -10, 0],
 			"scale": [1.25, 1.25, 1.25]
 		},
 		"firstperson_lefthand": {
-			"rotation": [0, 0, 8],
-			"translation": [9, -9, 1],
+			"translation": [9.5, -10, 0],
 			"scale": [1.25, 1.25, 1.25]
 		},
 		"ground": {
 			"scale": [0.65, 0.65, 0.65]
 		},
 		"gui": {
-			"rotation": [0, 170, 0],
-			"translation": [4.5, -4.25, 0]
+			"rotation": [-8, 160, 8],
+			"translation": [4.5, -5.25, 0]
 		},
 		"head": {
 			"translation": [-3, -3.25, 0]
