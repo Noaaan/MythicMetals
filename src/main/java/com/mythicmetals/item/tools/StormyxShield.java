@@ -1,7 +1,7 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.ops.WorldOps;
@@ -13,16 +13,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
-import java.util.List;
-import java.util.UUID;
 
 public class StormyxShield extends ShieldItem {
 
@@ -34,22 +28,8 @@ public class StormyxShield extends ShieldItem {
     }
 
     @Override
-    public String getTranslationKey(ItemStack stack) {
-        return super.getTranslationKey(stack);
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-    }
-
-    @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
-        stack.set(MythicDataComponents.IS_USED, false);
-        if (user instanceof PlayerEntity player) {
-            player.getItemCooldownManager().set(stack.getItem(), 160);
-        }
+        disableShield(stack, world, user);
         super.onStoppedUsing(stack, world, user, remainingUseTicks);
     }
 
@@ -59,7 +39,6 @@ public class StormyxShield extends ShieldItem {
 
         var blockBox = Box.of(user.getPos().add(0, 1, 0), 8, 8, 8);
         var entities = world.getOtherEntities(user, blockBox);
-        stack.set(MythicDataComponents.IS_USED, true);
 
         if (remainingUseTicks % 40 == 1) {
             WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
@@ -101,11 +80,6 @@ public class StormyxShield extends ShieldItem {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack, LivingEntity entity) {
-        return super.getMaxUseTime(stack, entity);
-    }
-
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
         user.setCurrentHand(hand);
@@ -118,11 +92,18 @@ public class StormyxShield extends ShieldItem {
         return ingredient.isOf(MythicItems.STORMYX.getIngot());
     }
 
-    public static boolean isNotOnCooldown(LivingEntity entity, ItemStack stack) {
-        if (entity instanceof PlayerEntity player) {
-            return !player.getItemCooldownManager().isCoolingDown(stack.getItem());
+
+    @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        return disableShield(stack, world, user);
+    }
+
+    private ItemStack disableShield(ItemStack stack, World world, LivingEntity user) {
+        if (!world.isClient && user.isPlayer()) {
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 320);
         }
-        return true;
+        WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
+        return stack;
     }
 
     public static AttributeModifiersComponent createStormyxShieldAttributes() {

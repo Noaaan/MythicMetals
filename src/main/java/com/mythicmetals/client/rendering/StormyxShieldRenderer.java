@@ -24,11 +24,15 @@ public class StormyxShieldRenderer implements BuiltinItemRendererRegistry.Dynami
     @Override
     public void render(ItemStack shield, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int light, int overlay) {
         var client = MinecraftClient.getInstance();
+        if (client == null) return;
+        var player = client.player;
+        if (player == null) return;
+
         if (shieldModel == null) {
             shieldModel = client.getBakedModelManager().getModel(SHIELD_ID);
         }
 
-        if (mode.isFirstPerson() && shield.getOrDefault(MythicDataComponents.IS_USED, false)) {
+        if (mode.isFirstPerson() && client.player.getActiveItem().equals(shield)) {
             renderRainbowShield(matrices, vertexConsumerProvider, light);
         }
 

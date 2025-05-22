@@ -2,10 +2,10 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.CarmotShield;
-import com.mythicmetals.client.models.RainbowShieldModel;
 import com.mythicmetals.client.rendering.StormyxShieldRenderer;
 import com.mythicmetals.component.DrillComponent;
 import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
@@ -57,10 +57,9 @@ public class PlayerEntityRendererMixin {
     @Inject(method = "render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",
         at = @At("TAIL"))
     private void mythicmetals$renderRainbowShield(AbstractClientPlayerEntity player, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
-        var stack = player.getStackInHand(Hand.MAIN_HAND);
-        var offHandStack = player.getStackInHand(Hand.OFF_HAND);
+        var stack = player.getActiveItem();
         // Only render if the shield is actively being used
-        if (stack.getOrDefault(MythicDataComponents.IS_USED, false) || offHandStack.getOrDefault(MythicDataComponents.IS_USED, false)) {
+        if (stack.getItem().equals(MythicTools.STORMYX_SHIELD)) {
             matrixStack.push();
             StormyxShieldRenderer.renderRainbowShield(matrixStack, vertexConsumerProvider, i);
             matrixStack.pop();
