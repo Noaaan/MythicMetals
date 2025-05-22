@@ -1,5 +1,7 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.client.models.RainbowShieldModel;
+import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
@@ -10,11 +12,9 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.client.models.RainbowShieldModel;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.misc.RegistryHelper;
 
-import static net.minecraft.client.render.model.json.ModelTransformationMode.*;
+import static net.minecraft.client.render.model.json.ModelTransformationMode.FIRST_PERSON_LEFT_HAND;
+import static net.minecraft.client.render.model.json.ModelTransformationMode.THIRD_PERSON_LEFT_HAND;
 
 public class StormyxShieldRenderer implements BuiltinItemRendererRegistry.DynamicItemRenderer, ModelLoadingPlugin {
     public static final Identifier SHIELD_ID = RegistryHelper.id("item/stormyx_shield_base");

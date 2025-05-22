@@ -8,12 +8,22 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.ArmorSet;
+import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.block.BlockSet;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.config.MythicOreConfigs;
+import com.mythicmetals.config.OreConfig;
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.item.tools.ToolSet;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
-import net.minecraft.command.argument.IdentifierArgumentType;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.component.DataComponentTypes;
@@ -30,17 +40,6 @@ import net.minecraft.server.command.*;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.block.BlockSet;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.config.MythicOreConfigs;
-import com.mythicmetals.config.OreConfig;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.item.tools.ToolSet;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.StringUtilsAtHome;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -76,82 +75,82 @@ public final class MythicCommands {
 
     // TODO - Add new command for grabbing the data-generated ore features, and create a datapack skeleton
     public static void registerCommands() {
-        var mythicRoot = CommandManager.literal("mythicmetals").requires(src -> src.hasPermissionLevel(2)).build();
-        var range = CommandManager.literal("range").build();
-        var tools = CommandManager.literal("tools").build();
-        var allTools = CommandManager.literal("tools-all").executes(MythicCommands::exportAllTools).build();
-        var ores = CommandManager.literal("ores").build();
-        var armor = CommandManager.literal("armor").build();
-        var wiki = CommandManager.literal("wiki").build();
-        var armorStand = CommandManager.literal("armor-stand").build();
-        var loot = CommandManager.literal("test-loot-table").build();
-        var placeBlocks = CommandManager.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
-            .build();
-
-        // TODO - Make this useful command more useful for current use-cases:
-        // TODO -- Allow dumping output in a spreadsheet friendly format
-        var rangeType = CommandManager.argument("type", StringArgumentType.word())
-            .suggests(MythicCommands::dumpType)
-            .executes(MythicCommands::dumpAllOreConfigs)
-            .build();
-
-        var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
-            .executes(MythicCommands::exportOreData)
-            .build();
-
-        var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
-            .executes(MythicCommands::exportTools)
-            .build();
-
-        var exportArmor = CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
-            .executes(MythicCommands::exportArmor)
-            .build();
-
-        var lootTables = CommandManager.argument("loot_table", IdentifierArgumentType.identifier())
-            .suggests(LootCommand.SUGGESTION_PROVIDER)
-            .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
-                .executes(MythicCommands::testLootTable))
-            .build();
-
-        var trimPattern = CommandManager.argument("trim_pattern", StringArgumentType.word())
-            .suggests(MythicCommands::trimTypes)
-            .executes(context -> {
-                String matQuery = StringArgumentType.getString(context, "material");
-                String trimQuery = StringArgumentType.getString(context, "trim_pattern");
-                return armorStandCommand(context, matQuery, trimQuery);
-            });
-
-        var summonTrims = CommandManager.argument("material", StringArgumentType.word())
-            .suggests(MythicCommands::armorMaterial)
-            .executes(context -> {
-                String mat = StringArgumentType.getString(context, "material");
-                return armorStandCommand(context, mat, null);
-            })
-            .then(trimPattern)
-            .build();
-
-        // Wiki nodes
-        ores.addChild(exportOres);
-        tools.addChild(exportTools);
-        armor.addChild(exportArmor);
-        wiki.addChild(ores);
-        wiki.addChild(tools);
-        wiki.addChild(allTools);
-        wiki.addChild(armor);
-
-        // Misc nodes
-        range.addChild(rangeType);
-        loot.addChild(lootTables);
-        armorStand.addChild(summonTrims);
-
-        // Add commands to root
-        mythicRoot.addChild(range);
-        mythicRoot.addChild(wiki);
-        mythicRoot.addChild(armorStand);
-        mythicRoot.addChild(loot);
-        mythicRoot.addChild(placeBlocks);
-
         CommandRegistrationCallback.EVENT.register((dispatcher, access, env) -> {
+            var mythicRoot = CommandManager.literal("mythicmetals").requires(src -> src.hasPermissionLevel(2)).build();
+            var range = CommandManager.literal("range").build();
+            var tools = CommandManager.literal("tools").build();
+            var allTools = CommandManager.literal("tools-all").executes(MythicCommands::exportAllTools).build();
+            var ores = CommandManager.literal("ores").build();
+            var armor = CommandManager.literal("armor").build();
+            var wiki = CommandManager.literal("wiki").build();
+            var armorStand = CommandManager.literal("armor-stand").build();
+            var loot = CommandManager.literal("test-loot-table").build();
+            var placeBlocks = CommandManager.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
+                .build();
+
+            // TODO - Make this useful command more useful for current use-cases:
+            // TODO -- Allow dumping output in a spreadsheet friendly format
+            var rangeType = CommandManager.argument("type", StringArgumentType.word())
+                .suggests(MythicCommands::dumpType)
+                .executes(MythicCommands::dumpAllOreConfigs)
+                .build();
+
+            var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
+                .executes(MythicCommands::exportOreData)
+                .build();
+
+            var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
+                .executes(MythicCommands::exportTools)
+                .build();
+
+            var exportArmor = CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
+                .executes(MythicCommands::exportArmor)
+                .build();
+
+            var lootTables = CommandManager.argument("loot_table", RegistryEntryArgumentType.LootTableArgumentType.lootTable(access))
+                .suggests(LootCommand.SUGGESTION_PROVIDER)
+                .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
+                    .executes(MythicCommands::testLootTable))
+                .build();
+
+            var trimPattern = CommandManager.argument("trim_pattern", StringArgumentType.word())
+                .suggests(MythicCommands::trimTypes)
+                .executes(context -> {
+                    String matQuery = StringArgumentType.getString(context, "material");
+                    String trimQuery = StringArgumentType.getString(context, "trim_pattern");
+                    return armorStandCommand(context, matQuery, trimQuery);
+                });
+
+            var summonTrims = CommandManager.argument("material", StringArgumentType.word())
+                .suggests(MythicCommands::armorMaterial)
+                .executes(context -> {
+                    String mat = StringArgumentType.getString(context, "material");
+                    return armorStandCommand(context, mat, null);
+                })
+                .then(trimPattern)
+                .build();
+
+            // Wiki nodes
+            ores.addChild(exportOres);
+            tools.addChild(exportTools);
+            armor.addChild(exportArmor);
+            wiki.addChild(ores);
+            wiki.addChild(tools);
+            wiki.addChild(allTools);
+            wiki.addChild(armor);
+
+            // Misc nodes
+            range.addChild(rangeType);
+            loot.addChild(lootTables);
+            armorStand.addChild(summonTrims);
+
+            // Add commands to root
+            mythicRoot.addChild(range);
+            mythicRoot.addChild(wiki);
+            mythicRoot.addChild(armorStand);
+            mythicRoot.addChild(loot);
+            mythicRoot.addChild(placeBlocks);
+
             dispatcher.getRoot().addChild(mythicRoot);
         });
     }

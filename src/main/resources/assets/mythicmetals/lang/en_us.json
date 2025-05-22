@@ -1,4 +1,9 @@
 {
+  "item.minecraft.tipped_arrow.effect.strong_luck": "Arrow of Greater Luck",
+  "item.minecraft.potion.effect.strong_luck": "Potion of Greater Luck",
+  "item.minecraft.splash_potion.effect.strong_luck": "Splash Potion of Greater Luck",
+  "item.minecraft.lingering_potion.effect.strong_luck": "Lingering Potion of Greater Luck",
+
   "block.alloy_forgery.adamantite_block_forge_controller": "Adamantite Block Forge Controller",
   "block.mythicmetals.adamantite_anvil": "Adamantite Anvil",
   "block.mythicmetals.adamantite_block": "Block of Adamantite",
@@ -434,6 +439,7 @@
   "item.mythicmetals.tipped_runite_arrow.effect.weakness": "Runite Arrow of Weakness",
   "item.mythicmetals.tipped_runite_arrow.effect.levitation": "Runite Arrow of Levitation",
   "item.mythicmetals.tipped_runite_arrow.effect.luck": "Runite Arrow of Luck",
+  "item.mythicmetals.tipped_runite_arrow.effect.strong_luck": "Runite Arrow of Greater Luck",
   "item.mythicmetals.tipped_runite_arrow.effect.turtle_master": "Runite Arrow of the Turtle Master",
   "item.mythicmetals.tipped_runite_arrow.effect.slow_falling": "Runite Arrow of Slow Falling",
   "item.mythicmetals.tipped_runite_arrow.effect.wind_charged": "Runite Arrow of Wind Charging",

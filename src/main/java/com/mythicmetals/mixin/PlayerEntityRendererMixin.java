@@ -15,9 +15,7 @@ import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -28,9 +26,6 @@ import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors.SHIE
 
 @Mixin(PlayerEntityRenderer.class)
 public class PlayerEntityRendererMixin {
-    @Unique
-    private static final Identifier WORLD_BORDER = Identifier.of("textures/misc/forcefield.png");
-
     /**
      * Renders the Carmot Shield on the players arm
      */

@@ -9,6 +9,7 @@ import net.minecraft.component.ComponentType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
@@ -110,5 +111,9 @@ public class RegistryHelper {
 
     public static <T> ComponentType<T> dataComponentType(String path, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, id(path), builderOperator.apply(ComponentType.builder()).build());
+    }
+
+    public static RegistryEntry<Potion> potion(String name, StatusEffectInstance statusEffectInstance) {
+        return Registry.registerReference(Registries.POTION, id(name), new Potion(statusEffectInstance));
     }
 }

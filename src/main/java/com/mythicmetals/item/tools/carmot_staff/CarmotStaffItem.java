@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import static com.mythicmetals.component.MythicDataComponents.CARMOT_STAFF_BLOCK;
 import static com.mythicmetals.component.MythicDataComponents.LOCKED;
 
+@Deprecated(forRemoval = true, since = "0.23.0")
 public class CarmotStaffItem extends ToolItem {
 
 

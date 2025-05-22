@@ -1,5 +1,6 @@
 package com.mythicmetals;
 
+import com.mythicmetals.item.MythicPotions;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
@@ -82,6 +83,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicParticleSystem.init();
         MythicBlocks.init();
         MythicDataComponents.init();
+        MythicPotions.init();
         BanglumNukeHandler.init();
         MythicOreKeys.init();
         MythicCommands.init();
