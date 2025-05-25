@@ -1,3 +1,26 @@
+# 0.23.0
+
+## Carmot Staff Removed
+
+### Stormyx Shield rework
+
+The Stormyx Shield now inherits the old Carmot Staff ability of reflecting projectiles. 
+The implementation for it is similar to Breezes, but keeps some of the extra behavior.
+
+- Stormyx Shield will now reflect any projectile
+- Shulker Bullets will still break when they hit you (unchanged)
+- Removed the area of effect - it will only reflect projectiles that hit you
+- Durability will now gradually tick down on the shield while guarding
+- When you stop blocking the shield will go on a longer cooldown
+- The shield break duration now lasts as long as regular shields
+- The shield durability damage now matches regular shields
+- Updated the rendering to only surround the affected player
+
+### Midas Gold Bartering adjustments
+
+- Added Potions of Greater Luck to the Midas Gold Bartering Loot Table
+  - These are simply Luck 2 Potions, which give you a higher chance at better loot and rare drops
+
 # 0.22.5
 
 ## Changes

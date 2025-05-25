@@ -1,5 +1,6 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
@@ -10,18 +11,32 @@ import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.*;
+import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.*;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 public class StormyxShield extends ShieldItem {
 
-    public static final Identifier PROJECTILE_MODIFIED = RegistryHelper.id("projectile_is_modified");
     public static final int MAGIC_DAMAGE_REDUCTION = 2;
+    public static final ProjectileDeflection STORMYX_SHIELD_DEFLECTOR = (projectile, hitEntity, random) -> {
+        // Shulker bullet handling
+        if (projectile instanceof ShulkerBulletEntity bullet) {
+            bullet.damage(bullet.getWorld().getDamageSources().generic(), 1.0F);
+            return;
+        }
+
+        // If the projectile is simply too fast then it isn't deflected. It can still be blocked by the shield itself
+        if (projectile.getVelocity().length() <= 30.0) {
+            float f = 170.0F + random.nextFloat() * 20.0F;
+            projectile.setVelocity(projectile.getVelocity().multiply(-0.5));
+            projectile.setYaw(projectile.getYaw() + f);
+            projectile.prevYaw += f;
+            projectile.velocityDirty = true;
+        }
+    };
 
     public StormyxShield(Settings settings) {
         super(settings);
@@ -37,45 +52,9 @@ public class StormyxShield extends ShieldItem {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         super.usageTick(world, user, stack, remainingUseTicks);
 
-        var blockBox = Box.of(user.getPos().add(0, 1, 0), 8, 8, 8);
-        var entities = world.getOtherEntities(user, blockBox);
-
         if (remainingUseTicks % 40 == 1) {
             WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
-        }
-
-        for (Entity entity : entities) {
-            if (entity.getCommandTags().contains(PROJECTILE_MODIFIED.toString())) {
-                return;
-            }
-
-            // Setting the owner of the trident to someone else would lead to shenanigans, don't do that
-            if (entity instanceof TridentEntity trident) {
-                var bounceVec = trident.getVelocity().multiply(-0.25, -0.25, -0.25);
-                trident.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z);
-                trident.returnTimer = 0;
-                trident.addCommandTag(PROJECTILE_MODIFIED.toString());
-            }
-            // Special handling for ExplosiveProjectileEntities, like fireballs
-            if (entity instanceof ExplosiveProjectileEntity projectile) {
-                var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
-                projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
-                projectile.setOwner(user);
-                projectile.addCommandTag(PROJECTILE_MODIFIED.toString());
-                stack.damage(2, user, EquipmentSlot.MAINHAND);
-            }
-            // Shulker bullet handling
-            if (entity instanceof ShulkerBulletEntity projectile) {
-                projectile.damage(world.getDamageSources().generic(), 1.0F);
-            }
-            // Default/Arrow handling
-            else if (entity instanceof ProjectileEntity projectile) {
-                // Bounce the projectiles in the direction the player is looking
-                var bounceVec = projectile.getVelocity().multiply(-0.25, -0.25, -0.25);
-                projectile.setVelocity(bounceVec.x, bounceVec.y, bounceVec.z, 1.05F, 0.5F);
-                projectile.addCommandTag(PROJECTILE_MODIFIED.toString());
-                stack.damage(1, user, EquipmentSlot.MAINHAND);
-            }
+            stack.damage(1, user, LivingEntity.getSlotForHand(user.getActiveHand()));
         }
     }
 
@@ -83,6 +62,7 @@ public class StormyxShield extends ShieldItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
         user.setCurrentHand(hand);
+        stack.set(MythicDataComponents.WAS_USED, true);
         WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
         return TypedActionResult.consume(stack);
     }
@@ -92,6 +72,17 @@ public class StormyxShield extends ShieldItem {
         return ingredient.isOf(MythicItems.STORMYX.getIngot());
     }
 
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (entity instanceof PlayerEntity player && stack.contains(MythicDataComponents.WAS_USED)) {
+            if (!player.getMainHandStack().equals(stack) && !player.getOffHandStack().equals(stack)) {
+                stack.remove(MythicDataComponents.WAS_USED);
+                finishUsing(stack, world, player);
+            }
+        }
+
+        super.inventoryTick(stack, world, entity, slot, selected);
+    }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
@@ -100,7 +91,7 @@ public class StormyxShield extends ShieldItem {
 
     private ItemStack disableShield(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user.isPlayer()) {
-            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 320);
+            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 160);
         }
         WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
         return stack;
@@ -112,5 +103,12 @@ public class StormyxShield extends ShieldItem {
             .add(AdditionalEntityAttributes.MAGIC_PROTECTION, modifier, AttributeModifierSlot.MAINHAND)
             .add(AdditionalEntityAttributes.MAGIC_PROTECTION, modifier, AttributeModifierSlot.OFFHAND)
             .build();
+    }
+
+    // Don't update the item in hand if durability is repaired
+    // Might affect mending as a side effect
+    @Override
+    public boolean allowComponentsUpdateAnimation(PlayerEntity player, Hand hand, ItemStack oldStack, ItemStack newStack) {
+        return oldStack.getDamage() == newStack.getDamage();
     }
 }

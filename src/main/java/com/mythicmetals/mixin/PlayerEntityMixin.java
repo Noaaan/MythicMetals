@@ -1,21 +1,16 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.tools.HammerBase;
+import com.mythicmetals.misc.IsAttackCritical;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stat;
-import net.minecraft.stat.Stats;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.tools.HammerBase;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.IsAttackCritical;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -96,39 +91,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
         }
 
         return amount;
-    }
-
-    // [VanillaCopy]
-    // Slight modifications to durability reduction, to make the Stormyx Shield more durable
-    @Inject(method = "damageShield", at = @At("HEAD"))
-    private void mythicmetals$damageShield(float amount, CallbackInfo ci) {
-        if (this.activeItemStack.isOf(MythicTools.STORMYX_SHIELD)) {
-            if (!this.getWorld().isClient) {
-                incrementStat(Stats.USED.getOrCreateStat(this.activeItemStack.getItem()));
-            }
-
-            if (amount >= 4.0f) {
-                int i = MathHelper.floor(amount);
-                Hand hand = this.getActiveHand();
-                this.activeItemStack.damage(i, this, LivingEntity.getSlotForHand(hand));
-                if (this.activeItemStack.isEmpty()) {
-                    if (hand == Hand.MAIN_HAND) {
-                        this.equipStack(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
-                    } else {
-                        this.equipStack(EquipmentSlot.OFFHAND, ItemStack.EMPTY);
-                    }
-
-                    this.activeItemStack = ItemStack.EMPTY;
-                    this.playSound(SoundEvents.ITEM_SHIELD_BREAK, 0.8F, 0.8F + this.getWorld().random.nextFloat() * 0.4F);
-                }
-            }
-
-        }
-    }
-
-    @Inject(method = "disableShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/ItemCooldownManager;set(Lnet/minecraft/item/Item;I)V"))
-    private void mythicmetals$setShieldCooldown(CallbackInfo ci) {
-        this.itemCooldownManager.set(MythicTools.STORMYX_SHIELD.asItem(), 80);
     }
 
     @Inject(method = "attack", at = @At("HEAD"))

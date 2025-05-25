@@ -19,6 +19,7 @@
     "DispenserBehaviorMixin",
     "EnchantedCountIncreaseLootFunctionMixin",
     "EnchantmentHelperMixin",
+    "EntityMixin",
     "ExplosionMixin",
     "FireworkRocketEntityMixin",
     "ItemMixin",

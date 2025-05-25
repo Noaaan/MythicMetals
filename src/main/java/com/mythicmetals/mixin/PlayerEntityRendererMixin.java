@@ -56,7 +56,7 @@ public class PlayerEntityRendererMixin {
         // Only render if the shield is actively being used
         if (stack.getItem().equals(MythicTools.STORMYX_SHIELD)) {
             matrixStack.push();
-            StormyxShieldRenderer.renderRainbowShield(matrixStack, vertexConsumerProvider, i);
+            StormyxShieldRenderer.renderRainbowShield(matrixStack, vertexConsumerProvider, i, player);
             matrixStack.pop();
         }
     }
