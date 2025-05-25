@@ -84,6 +84,12 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         .attributeModifiers(createAttributeModifiers(4, 1.4f))
     );
 
+    public static final Item CARMOT_BELL = new CarmotBellItem(new Item.Settings()
+        .group(MythicMetals.TABBED_GROUP).tab(2)
+        .rarity(Rarity.UNCOMMON)
+        .maxDamage(400)
+    );
+
     public static final Item CARMOT_STAFF = new CarmotStaffItem(MythicToolMaterials.CARMOT_STAFF,
         new Item.Settings()
             .group(MythicMetals.TABBED_GROUP).tab(2)
@@ -165,6 +171,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     @Override
     public void afterFieldProcessing() {
         RegistryHelper.item("banglum_tnt_minecart", BANGLUM_TNT_MINECART);
+        RegistryHelper.item("carmot_bell", CARMOT_BELL);
         RegistryHelper.item("palladium_minecart", PALLADIUM_MINECART);
         RegistryHelper.item("doge", Frogery.DOGE);
         RegistryHelper.item("froge", Frogery.FROGE);

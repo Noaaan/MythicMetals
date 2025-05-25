@@ -1,5 +1,6 @@
 package com.mythicmetals.misc;
 
+import com.mythicmetals.compat.ExplosiveEnhancementCompat;
 import io.wispforest.owo.particles.ClientParticles;
 import io.wispforest.owo.particles.systems.ParticleSystem;
 import io.wispforest.owo.particles.systems.ParticleSystemController;
@@ -8,7 +9,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import com.mythicmetals.compat.ExplosiveEnhancementCompat;
 import java.util.Random;
 
 public class MythicParticleSystem {
@@ -52,6 +52,20 @@ public class MythicParticleSystem {
         ClientParticles.setVelocity(velocity);
 
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);
+    });
+
+    public static final ParticleSystem<Double> HEALING_AREA = CONTROLLER.register(Double.class, (world, centre, size) -> {
+        ClientParticles.reset();
+        ClientParticles.setParticleCount(1);
+
+        int particleCount = (int) (size * size);
+        float position = (float) Math.PI;
+        float step = position / particleCount * 2;
+
+        for (int i = 0; i < particleCount; i++) {
+            position -= step;
+            ClientParticles.spawn(ParticleTypes.HAPPY_VILLAGER, world, centre.add(size * Math.sin(position), 0.25, size * Math.cos(position)), 0.0);
+        }
     });
 
     public static final ParticleSystem<Void> HEALING_HEARTS = CONTROLLER.register(Void.class, (world, pos, data) -> {

@@ -21,6 +21,13 @@ The implementation for it is similar to Breezes, but keeps some of the extra beh
 - Added Potions of Greater Luck to the Midas Gold Bartering Loot Table
   - These are simply Luck 2 Potions, which give you a higher chance at better loot and rare drops
 
+### Carmot Bell
+
+This item replicates the Carmot Staff healing ability with a Carmot Block
+
+- Heals 5 hearts (10 health), or 10% of your max health (whichever is higher)
+- Damages undead for 5 hearts (10 health), or deals 10% of their current health as damage (whichever is higher)
+
 # 0.22.5
 
 ## Changes

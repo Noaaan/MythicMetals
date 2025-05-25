@@ -179,6 +179,7 @@
   "item.mythicmetals.banglum_tnt_minecart": "Minecart with Banglum TNT",
   "item.mythicmetals.carmot_anvil": "Carmot Anvil",
   "item.mythicmetals.carmot_axe": "Carmot Axe",
+  "item.mythicmetals.carmot_bell": "Carmot Bell",
   "item.mythicmetals.carmot_boots": "Carmot Boots",
   "item.mythicmetals.carmot_chestplate": "Carmot Chestplate",
   "item.mythicmetals.carmot_dust": "Carmot Dust",
@@ -834,6 +835,8 @@
     {"text": "+1 Fortune", "color": "#E63E73"}
   ],
   "tooltip.mythril_drill.upgrade.empty": "Empty",
+
+  "tooltip.carmot_bell.info": "Heals anything around you for a significant amount",
 
   "tooltip.carmot_staff.midas_gold": "Unique Ability - AoE Luck 2",
   "tooltip.carmot_staff.enchanted_midas_gold": "Unique Ability - Large AoE Luck 5 (Single use!)",
