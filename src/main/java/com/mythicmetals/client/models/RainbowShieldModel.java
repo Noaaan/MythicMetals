@@ -9,7 +9,7 @@ public class RainbowShieldModel {
         var root = data.getRoot();
 
         root.addChild("stormyx_shield", ModelPartBuilder.create()
-            .cuboid("shield_cube", 0, 0, 0, 3, 4, 3, new Dilation(16)), ModelTransform.pivot(-0.5f, 13f, -0.5f));
+            .cuboid("shield_cube", 0, 0, 0, 6, 12, 6, new Dilation(8)), ModelTransform.pivot(-2.0f, 12f, -2.0f));
         return TexturedModelData.of(data, 16, 16);
     }
 }
