@@ -17,7 +17,6 @@ public class MythicTags {
     public static final TagKey<Item> BONUS_FORTUNE = TagKey.of(RegistryKeys.ITEM, id("abilities/bonus_fortune"));
     public static final TagKey<Item> BONUS_LOOTING = TagKey.of(RegistryKeys.ITEM, id("abilities/bonus_looting"));
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.of(RegistryKeys.ITEM, id("abilities/midas_touch"));
-    public static final TagKey<Item> CARMOT_STAFF_BLOCKS = TagKey.of(RegistryKeys.ITEM, id("carmot_staff_blocks"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.of(RegistryKeys.ITEM, id("tidesinger_coral"));
 
     public static final TagKey<Block> ANVILS = TagKey.of(RegistryKeys.BLOCK, id("anvils"));

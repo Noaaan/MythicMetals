@@ -141,16 +141,6 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             List.of(RegistryHelper.id("item/template/empty_slot_block"))
         );
 
-        public static final Item CARMOT_STAFF_SMITHING_TEMPLATE = new SmithingTemplateItem(
-            Text.translatable("smithing_template.mythicmetals.carmot_staff.applies_to").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb())),
-            Text.translatable("smithing_template.mythicmetals.carmot_staff.ingredients").setStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb())),
-            Text.translatable("smithing_template.mythicmetals.carmot_staff.title").formatted(Formatting.GRAY),
-            Text.translatable("smithing_template.mythicmetals.carmot_staff.base_slot_description"),
-            Text.translatable("smithing_template.mythicmetals.carmot_staff.additions_slot_description"),
-            List.of(RegistryHelper.id("item/template/empty_slot_kyber_shovel")),
-            List.of(RegistryHelper.id("item/template/empty_slot_block"))
-        );
-
         public static final Item AEGIS_SMITHING_TEMPLATE = new SmithingTemplateItem(
             Text.translatable("smithing_template.mythicmetals.aegis.applies_to").formatted(Formatting.BLUE),
             Text.translatable("smithing_template.mythicmetals.aegis.ingredients").formatted(Formatting.BLUE),

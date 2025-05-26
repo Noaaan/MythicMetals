@@ -10,7 +10,6 @@ import java.lang.reflect.Field;
 
 public class RegisterCriteria implements SimpleFieldProcessingSubject<Criterion<?>> {
     public static final SimpleCriteria USED_BLAST_MINING = new SimpleCriteria();
-    public static final SimpleCriteria USE_ENCHANTED_MIDAS_IN_CARMOT_STAFF = new SimpleCriteria();
     public static final SimpleCriteria RECEIVED_COMBUSTION_FROM_CREEPER = new SimpleCriteria();
 
     @Override

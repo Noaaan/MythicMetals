@@ -34,7 +34,6 @@ public class Abilities {
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
 
     public static void init() {
-        UniqueStaffBlocks.init();
         BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), MetalColors.GOLD_STYLE);
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);

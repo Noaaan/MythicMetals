@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "mythicmetals:item/template/carmot_staff_smithing_template"
-  }
-}

@@ -283,10 +283,6 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .add(MythicTools.STORMYX_SHIELD);
         getOrCreateTagBuilder(ConventionalItemTags.SHIELD_TOOLS)
             .add(MythicTools.STORMYX_SHIELD);
-        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("tools"))
-            .add(MythicTools.CARMOT_STAFF);
-        getOrCreateTagBuilder(ConventionalItemTags.TOOLS)
-            .add(MythicTools.CARMOT_STAFF);
 
         ReflectionUtils.iterateAccessibleStaticFields(MythicArmor.class, ArmorSet.class, (armorSet, name, field) -> {
             var modTag = MythicMetalsData.createModItemTag("armor/" + name);

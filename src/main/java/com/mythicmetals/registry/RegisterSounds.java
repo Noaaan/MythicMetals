@@ -36,7 +36,6 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static final SoundEvent EQUIP_TIDESINGER = SoundEvent.of(RegistryHelper.id("equip_tidesinger"));
     public static final SoundEvent MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("morkite_ore_break"));
     public static final SoundEvent DEEPSLATE_MORKITE_ORE_BREAK = SoundEvent.of(RegistryHelper.id("deepslate_morkite_ore_break"));
-    public static final SoundEvent CARMOT_STAFF_EMPTY = SoundEvent.of(RegistryHelper.id("carmot_staff_empty"));
     public static final SoundEvent PROJECTILE_BARRIER_BEGIN = SoundEvent.of(RegistryHelper.id("projectile_barrier_begin"));
     public static final SoundEvent PROJECTILE_BARRIER_MAINTAIN = SoundEvent.of(RegistryHelper.id("projectile_barrier_maintain"));
     public static final SoundEvent PROJECTILE_BARRIER_END = SoundEvent.of(RegistryHelper.id("projectile_barrier_end"));

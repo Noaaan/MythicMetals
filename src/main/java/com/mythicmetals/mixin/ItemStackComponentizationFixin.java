@@ -69,17 +69,6 @@ public abstract class ItemStackComponentizationFixin {
             );
         }
 
-        if (data.itemEquals("mythicmetals:carmot_staff")) {
-            data.moveToComponent("Locked", "mythicmetals:locked");
-            data.moveToComponent("Encore", "mythicmetals:encore");
-            data.moveToComponent("IsUsed", "mythicmetals:is_used");
-
-            data.setComponent("mythicmetals:carmot_staff_block", dynamic.emptyMap()
-                .setFieldIfPresent("block", data.getAndRemove("StoredBlock").result())
-                .set("show_tooltip", dynamic.createBoolean(true))
-            );
-        }
-
         if (data.itemEquals("mythicmetals:mythril_drill")) {
 
             var list = Util.make(new ArrayList<Dynamic<?>>(), objects -> {
