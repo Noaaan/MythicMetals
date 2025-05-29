@@ -20,6 +20,14 @@ The implementation for it is similar to Breezes, but keeps some of the extra beh
 
 - Added Potions of Greater Luck to the Midas Gold Bartering Loot Table
   - These are simply Luck 2 Potions, which give you a higher chance at better loot and rare drops
+  - These replace the Fire Resistance potions in the table
+- Reworked/improved the loot table
+  - Slightly increased the average amount of Smooth Stone
+  - Slightly increased the average amount of Ender Pearls
+  - Replaced the Awkward Potions with 1-10 Glass Blocks
+  - Removed Fire Charges, Soul Sand, and Spectral Arrows
+    - This is very significant, as it means all other drops appear more frequently
+  - Reduced the chance to get String from the Loot Table
 
 ### Carmot Bell
 

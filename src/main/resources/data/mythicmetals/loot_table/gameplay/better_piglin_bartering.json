@@ -122,9 +122,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
+          "weight": 16,
           "name": "minecraft:string",
-          "quality": -2,
           "functions": [
             {
               "function": "minecraft:set_count",
