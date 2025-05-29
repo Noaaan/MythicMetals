@@ -1,3 +1,49 @@
+# 0.23.0
+
+## Carmot Staff Removed
+
+The Carmot Staff is being removed with the next major version of Mythic Metals (not this one).
+Most code related to it has been removed, and the item has been made uncraftable.
+
+The Block inside your staff should automatically be inserted into your inventory (or dropped on the ground if it is full).
+The most interesting abilities have been made into new items, see the sections below.
+The Star Platinum ability is planning a return. 
+The Beacon, Bronze, Copper, Iron and Sponge abilities are not planned to return at this time. 
+
+### Stormyx Shield rework
+
+The Stormyx Shield now inherits the old Carmot Staff ability of reflecting projectiles. 
+The implementation for it is similar to Breezes, but keeps some of the extra behavior.
+
+- Stormyx Shield will now reflect any projectile
+- Shulker Bullets will still break when they hit you (unchanged)
+- Removed the area of effect - it will only reflect projectiles that hit you
+- Durability will now gradually tick down on the shield while guarding
+- When you stop blocking the shield will go on a longer cooldown
+- The shield break duration now lasts as long as regular shields
+- The shield durability damage now matches regular shields
+- Updated the rendering to only surround the affected player
+
+### Midas Gold Bartering adjustments
+
+- Added Potions of Greater Luck to the Midas Gold Bartering Loot Table
+  - These are simply Luck 2 Potions, which give you a higher chance at better loot and rare drops
+  - These replace the Fire Resistance potions in the table
+- Reworked/improved the loot table
+  - Slightly increased the average amount of Smooth Stone
+  - Slightly increased the average amount of Ender Pearls
+  - Replaced the Awkward Potions with 1-10 Glass Blocks
+  - Removed Fire Charges, Soul Sand, and Spectral Arrows
+    - This is very significant, as it means all other drops appear more frequently
+  - Reduced the chance to get String from the Loot Table
+
+### Carmot Bell
+
+This item replicates the Carmot Staff healing ability with a Carmot Block
+
+- Heals 5 hearts (10 health), or 10% of your max health (whichever is higher)
+- Damages undead for 5 hearts (10 health), or deals 10% of their current health as damage (whichever is higher)
+
 # 0.22.5
 
 ## Changes

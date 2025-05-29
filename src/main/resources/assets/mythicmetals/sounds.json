@@ -577,16 +577,6 @@
       "item/armor/equip_iron6"
     ]
   },
-  "carmot_staff_empty": {
-    "subtitle": "subtitles.mythicmetals.carmot_staff_empty",
-    "sounds": [
-      "entity/itemframe/remove_item1",
-      "entity/itemframe/remove_item2",
-      "entity/itemframe/remove_item3",
-      "entity/itemframe/remove_item4"
-    ]
-  },
-
   "projectile_barrier_begin":  {
     "subtitle": "subtitles.mythicmetals.projectile_barrier_begin",
     "sounds": [

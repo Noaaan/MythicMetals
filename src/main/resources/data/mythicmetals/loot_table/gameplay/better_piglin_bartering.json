@@ -40,7 +40,7 @@
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:fire_resistance"
+              "id": "mythicmetals:strong_luck"
             }
           ]
         },
@@ -51,7 +51,7 @@
           "functions": [
             {
               "function": "minecraft:set_potion",
-              "id": "minecraft:fire_resistance"
+              "id": "mythicmetals:strong_luck"
             }
           ]
         },
@@ -65,7 +65,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 2,
-                "max": 5
+                "max": 6
               },
               "add": false
             }
@@ -73,12 +73,17 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
-          "name": "minecraft:potion",
+          "weight": 6,
+          "name": "minecraft:glass",
           "functions": [
             {
-              "function": "minecraft:set_potion",
-              "id": "minecraft:awkward"
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 10
+              },
+              "add": false
             }
           ]
         },
@@ -109,7 +114,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 2,
-                "max": 4
+                "max": 5
               },
               "add": false
             }
@@ -117,9 +122,8 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 20,
+          "weight": 16,
           "name": "minecraft:string",
-          "quality": -1,
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -164,12 +168,6 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 30,
-          "name": "minecraft:fire_charge",
-          "quality": -2
-        },
-        {
-          "type": "minecraft:item",
           "weight": 40,
           "name": "minecraft:leather",
           "functions": [
@@ -179,39 +177,6 @@
                 "type": "minecraft:uniform",
                 "min": 3,
                 "max": 9
-              },
-              "add": false
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 40,
-          "name": "minecraft:soul_sand",
-          "quality": -5,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 2,
-                "max": 8
-              },
-              "add": false
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "weight": 40,
-          "name": "minecraft:spectral_arrow",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 8,
-                "max": 28
               },
               "add": false
             }

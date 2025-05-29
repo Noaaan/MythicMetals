@@ -60,9 +60,6 @@
 		}
 	],
 	"gui_light": "front",
-	"overrides": [
-		{"predicate": {"blocking": 1}, "model": "mythicmetals:item/stormyx_shield_blocking"}
-	],
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [35, -20, 0],

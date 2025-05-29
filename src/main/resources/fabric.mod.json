@@ -8,7 +8,7 @@
     "Noaaan"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/mythicmetals",
+    "homepage": "https://mythicmetals.com",
     "sources": "https://github.com/Noaaan/MythicMetals",
     "issues": "https://github.com/Noaaan/MythicMetals/issues"
   },
@@ -17,25 +17,25 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "nourl.mythicmetals.MythicMetals"
+      "com.mythicmetals.MythicMetals"
     ],
     "client": [
-      "nourl.mythicmetals.MythicMetalsClient"
+      "com.mythicmetals.client.MythicMetalsClient"
     ],
     "fabric-datagen": [
-      "nourl.mythicmetals.data.MythicMetalsData"
+      "com.mythicmetals.data.MythicMetalsData"
     ],
     "rei_client": [
-      "nourl.mythicmetals.compat.MythicMetalsREIClientPlugin"
+      "com.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
     "emi": [
-      "nourl.mythicmetals.compat.MythicMetalsEMIPlugin"
+      "com.mythicmetals.compat.MythicMetalsEMIPlugin"
     ],
     "cardinal-components-entity": [
-      "nourl.mythicmetals.MythicMetals"
+      "com.mythicmetals.MythicMetals"
     ],
     "cicada": [
-      "nourl.mythicmetals.compat.CicadaInit"
+      "com.mythicmetals.compat.CicadaInit"
     ]
   },
   "mixins": [
