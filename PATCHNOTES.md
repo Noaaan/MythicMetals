@@ -2,6 +2,14 @@
 
 ## Carmot Staff Removed
 
+The Carmot Staff is being removed with the next major version of Mythic Metals (not this one).
+Most code related to it has been removed, and the item has been made uncraftable.
+
+The Block inside your staff should automatically be inserted into your inventory (or dropped on the ground if it is full).
+The most interesting abilities have been made into new items, see the sections below.
+The Star Platinum ability is planning a return. 
+The Beacon, Bronze, Copper, Iron and Sponge abilities are not planned to return at this time. 
+
 ### Stormyx Shield rework
 
 The Stormyx Shield now inherits the old Carmot Staff ability of reflecting projectiles. 
