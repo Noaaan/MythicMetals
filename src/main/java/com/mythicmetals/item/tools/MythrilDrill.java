@@ -219,6 +219,7 @@ public class MythrilDrill extends MiningToolItem {
 
         boolean changes = false;
         var attributes = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        assert attributes != null;
         var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
         if (upgrades.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM)) {
             var modifier = new EntityAttributeModifier(
