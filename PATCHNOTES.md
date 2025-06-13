@@ -1,5 +1,11 @@
 # 0.23.0
 
+## Internal repackaging
+
+All code within the mod has been moved from `nourl.mythicmetals` to the new `com.mythicmetals` packages.
+This means **any addon directly referencing code breaks**, and now needs an update.
+Please be patient while any affected mods work on these changes. 
+
 ## Carmot Staff Removed
 
 The Carmot Staff is being removed with the next major version of Mythic Metals (not this one).
@@ -44,9 +50,7 @@ This item replicates the Carmot Staff healing ability with a Carmot Block
 - Heals 5 hearts (10 health), or 10% of your max health (whichever is higher)
 - Damages undead for 5 hearts (10 health), or deals 10% of their current health as damage (whichever is higher)
 
-# 0.22.5
-
-## Changes
+## Other changes
 
 - Fix another issue related to Conduit Powered Blocks not working
 
