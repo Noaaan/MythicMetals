@@ -83,6 +83,10 @@ public class ArmorSet {
         return boots;
     }
 
+    public static Map<ArmorItem.Type, Integer> getBaseDurability() {
+        return BASE_DURABILITY;
+    }
+
     public List<ArmorItem> getArmorItems() {
         return armorSet;
     }
