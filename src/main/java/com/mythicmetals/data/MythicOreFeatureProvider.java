@@ -7,7 +7,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
 
-import static com.mythicmetals.data.MythicOreKeys.*;
+import static com.mythicmetals.data.MythicOreFeatures.*;
 import static com.mythicmetals.data.MythicOreRules.*;
 
 public class MythicOreFeatureProvider {

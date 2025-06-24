@@ -18,6 +18,7 @@ public class MythicTags {
     public static final TagKey<Item> BONUS_LOOTING = TagKey.of(RegistryKeys.ITEM, id("abilities/bonus_looting"));
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.of(RegistryKeys.ITEM, id("abilities/midas_touch"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.of(RegistryKeys.ITEM, id("tidesinger_coral"));
+    public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.of(RegistryKeys.ITEM, id("mythril_drill_upgrades"));
 
     public static final TagKey<Block> ANVILS = TagKey.of(RegistryKeys.BLOCK, id("anvils"));
     public static final TagKey<Block> BOOST_IN_LAVA = TagKey.of(RegistryKeys.BLOCK, id("boosts_in_lava"));
@@ -26,17 +27,9 @@ public class MythicTags {
     public static final TagKey<Block> NUKE_CORES = TagKey.of(RegistryKeys.BLOCK, id("nuke_cores"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.of(RegistryKeys.BLOCK, id("ores"));
     public static final TagKey<Block> SPONGABLES = TagKey.of(RegistryKeys.BLOCK, id("spongables"));
-
-    public static final TagKey<Biome> AQUARIUM_BIOMES = TagKey.of(BIOME, id("aquarium_biomes"));
     public static final TagKey<Block> MINEABLE_MYTHRIL_DRILL = TagKey.of(RegistryKeys.BLOCK, id("mineable/mythril_drill"));
-    public static final TagKey<Biome> MYTHIC_ORE_BIOMES = TagKey.of(BIOME, id("mythic_ore_biomes"));
-    public static final TagKey<Biome> OSMIUM_BIOMES = TagKey.of(BIOME, id("osmium_biomes"));
-    public static final TagKey<Biome> PROMETHEUM_BIOMES = TagKey.of(BIOME, id("prometheum_biomes"));
 
     public static final TagKey<Enchantment> SILK_TOUCH_LIKE = TagKey.of(ENCHANTMENT, id("silk_touch_like"));
     public static final TagKey<Enchantment> INCREASES_MINING_SPEED = TagKey.of(ENCHANTMENT, id("increases_mining_speed"));
     public static final TagKey<EntityType<?>> GRANTS_FIRE_RES_WHILE_RIDING = TagKey.of(ENTITY_TYPE, id("grants_fire_resistance_while_riding"));
-    public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.of(RegistryKeys.ITEM, id("mythril_drill_upgrades"));
 }
-
-

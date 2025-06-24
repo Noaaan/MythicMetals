@@ -1,18 +1,18 @@
 package com.mythicmetals.data;
 
 import com.google.common.collect.ImmutableList;
+import com.mythicmetals.config.OreConfig;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.registry.*;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.structure.rule.RuleTest;
-import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
-import com.mythicmetals.config.OreConfig;
 import java.util.List;
 
 /**
@@ -20,24 +20,8 @@ import java.util.List;
  */
 public class OreFeatureHelper {
 
-    public static void ore(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.MYTHIC_ORE_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, ore);
-    }
-
-    public static void netherOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
-    }
-
-    public static void endOre(RegistryKey<PlacedFeature> ore) {
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_DECORATION, ore);
-    }
-
-    public static void modBiomeOres(String modId, String path, RegistryKey<PlacedFeature> ore) {
-        if (FabricLoader.getInstance().isModLoaded(modId)) {
-            BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(RegistryKey.of(RegistryKeys.BIOME, Identifier.of(modId, path))),
-                GenerationStep.Feature.UNDERGROUND_ORES, ore);
-        }
+    public static void ore(RegistryKey<PlacedFeature> ore, TagKey<Biome> tag) {
+        BiomeModifications.addFeature(BiomeSelectors.tag(tag), GenerationStep.Feature.UNDERGROUND_ORES, ore);
     }
 
     public static void configuredFeature(Registerable<ConfiguredFeature<?, ?>> registerable, RegistryKey<ConfiguredFeature<?, ?>> featureKey, RuleTest rule, Block oreBlock, OreConfig config) {

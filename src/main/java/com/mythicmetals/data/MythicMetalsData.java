@@ -19,6 +19,9 @@ public class MythicMetalsData implements DataGeneratorEntrypoint {
         data.addProvider(MythicItemTagProvider::new);
         data.addProvider(MythicMetalsDynamicRegistryProvider::new);
         data.addProvider(MythicRecipeProvider::new);
+        data.addProvider((output, registriesFuture) -> {
+            return new MythicBiomeTagProvider(output, RegistryKeys.BIOME, registriesFuture);
+        });
     }
 
     @Override

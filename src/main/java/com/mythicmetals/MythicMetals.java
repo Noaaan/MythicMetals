@@ -26,7 +26,7 @@ import com.mythicmetals.command.MythicCommands;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.conditions.MythicResourceConditions;
 import com.mythicmetals.config.MythicMetalsConfig;
-import com.mythicmetals.data.MythicOreKeys;
+import com.mythicmetals.data.MythicOreFeatures;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.*;
 import com.mythicmetals.item.MythicItems;
@@ -85,7 +85,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicDataComponents.init();
         MythicPotions.init();
         BanglumNukeHandler.init();
-        MythicOreKeys.init();
+        MythicOreFeatures.init();
         MythicCommands.init();
         MythicCommands.registerCommands();
         Abilities.init();

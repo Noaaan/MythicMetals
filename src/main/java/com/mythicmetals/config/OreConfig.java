@@ -1,11 +1,11 @@
 package com.mythicmetals.config;
 
 
-import com.mythicmetals.data.MythicOreKeys;
+import com.mythicmetals.data.MythicOreFeatures;
 
 /**
  * A config constructor that lets you quickly create all the settings used
- * for an ore in the {@link MythicOreKeys} class.
+ * for an ore in the {@link MythicOreFeatures} class.
  */
 public class OreConfig {
     public int veinSize;
