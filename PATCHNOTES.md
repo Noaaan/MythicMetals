@@ -1,3 +1,33 @@
+# 0.24.0
+
+## Individual Ore Tags
+
+This version adds individual tags for controlling which biomes every Mythic Metals ores spawn in. 
+This allows you to fully configure the features to your liking.
+
+Here is an example on how the tags work together:
+
+```
+#c:in_overworld <- #mythicmetals:mythic_ore_biomes <- #mythicmetals:platinum_ore_biomes <= mythicmetals:platinum_ore
+```
+
+In order to move the ore, simply override its target tag. 
+In this case, you would want to add a tag with `replace: true` for platinum ore biomes.
+For example:
+
+```
+#my_modpack:biomes_in_space <- #mythicmetals:platinum_ore_biomes <= mythicmetals:platinum_ore
+```
+
+*Note that you do not need to specifically nest a tag. A list of biomes is fine.*
+
+## Changes
+
+- Nether ores by default will now spawn in any biomes within the `#c:is_nether` biome tag
+  - This affects Nether Banglum, Palladium, Stormyx, and Midas Gold
+- End ores by default will now spawn in any biomes within the `#c:is_nether` biome tag
+  - This affects End Stone Starrite
+
 # 0.23.0
 
 ## Internal repackaging
