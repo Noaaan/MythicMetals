@@ -25,8 +25,17 @@ For example:
 
 - Nether ores by default will now spawn in any biomes within the `#c:is_nether` biome tag
   - This affects Nether Banglum, Palladium, Stormyx, and Midas Gold
-- End ores by default will now spawn in any biomes within the `#c:is_nether` biome tag
+- End ores by default will now spawn in any biomes within the `#c:is_end` biome tag
   - This affects End Stone Starrite
+- Aquarium Ores now spawn in the `#mythicmetals:aquarium_ore_biomes` tag
+  - This includes `#c:is_aquatic` by default
+  - This replaces the now removed `#mythicmetals:aquarium_biomes` tag
+- Prometheum Ores now spawn in the `#mythicmetals:prometheum_ore_biomes` tag
+  - This includes `#c:is_jungle` and Lush Caves (`minecraft:lush_caves`) by default
+  - This replaces the now removed `#mythicmetals:prometheum_biomes` tag
+- Osmium Ores now spawn in the `#mythicmetals:osmium_ore_biomes` tag
+  - This includes `#c:is_hill` and `#c:is_mountain` by default
+  - This replaces the now removed `#mythicmetals:osmium_biomes` tag
 
 # 0.23.0
 
