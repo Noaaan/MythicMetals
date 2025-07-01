@@ -1,6 +1,5 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
@@ -15,8 +14,11 @@ import net.minecraft.entity.projectile.ShulkerBulletEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.util.*;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+
+import static com.mythicmetals.component.MythicDataComponents.WAS_USED;
 
 public class StormyxShield extends ShieldItem {
 
@@ -62,7 +64,7 @@ public class StormyxShield extends ShieldItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
         user.setCurrentHand(hand);
-        stack.set(MythicDataComponents.WAS_USED, true);
+        stack.set(WAS_USED, true);
         WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundCategory.AMBIENT, 1.0F, 1.5F);
         return TypedActionResult.consume(stack);
     }
@@ -74,9 +76,9 @@ public class StormyxShield extends ShieldItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (entity instanceof PlayerEntity player && stack.contains(MythicDataComponents.WAS_USED)) {
+        if (entity instanceof PlayerEntity player && stack.contains(WAS_USED)) {
             if (!player.getMainHandStack().equals(stack) && !player.getOffHandStack().equals(stack)) {
-                stack.remove(MythicDataComponents.WAS_USED);
+                stack.remove(WAS_USED);
                 finishUsing(stack, world, player);
             }
         }
@@ -90,8 +92,9 @@ public class StormyxShield extends ShieldItem {
     }
 
     private ItemStack disableShield(ItemStack stack, World world, LivingEntity user) {
-        if (!world.isClient && user.isPlayer()) {
-            ((PlayerEntity) user).getItemCooldownManager().set(stack.getItem(), 160);
+        if (!world.isClient && user instanceof PlayerEntity player) {
+            stack.remove(WAS_USED);
+            player.getItemCooldownManager().set(stack.getItem(), 160);
         }
         WorldOps.playSound(world, user.getBlockPos(), RegisterSounds.PROJECTILE_BARRIER_END, SoundCategory.AMBIENT, 0.9F, 1.5F);
         return stack;
