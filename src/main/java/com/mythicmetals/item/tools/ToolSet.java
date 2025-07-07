@@ -130,6 +130,11 @@ public class ToolSet {
             .build();
     }
 
+
+    public static AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, double damage, float speed) {
+        return createAttributeModifiers(material.getAttackDamage() + damage, speed);
+    }
+
     public AttributeModifiersComponent.Builder createAttributeBuilder(ToolMaterial material, double damage, float speed) {
         if (speed < 0.0f) {
             speed = 0;
@@ -147,7 +152,7 @@ public class ToolSet {
             );
     }
 
-    public AttributeModifiersComponent createAttributeModifiers(ToolMaterial material, double damage, float speed) {
+    public AttributeModifiersComponent createAttributes(ToolMaterial material, double damage, float speed) {
         return this.createAttributeBuilder(material, damage, speed).build();
     }
 

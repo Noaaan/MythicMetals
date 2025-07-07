@@ -81,7 +81,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         .fireproof()
         .rarity(Rarity.UNCOMMON)
         .group(MythicMetals.TABBED_GROUP).tab(2)
-        .attributeModifiers(createAttributeModifiers(4, 1.4f))
+        .attributeModifiers(ToolSet.createAttributeModifiers(MythicToolMaterials.AEGIS_WHITE, 4, 1.4f))
     );
 
     public static final Item CARMOT_BELL = new CarmotBellItem(new Item.Settings()
