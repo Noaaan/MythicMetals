@@ -25,6 +25,7 @@
   "block.mythicmetals.calcite_kyber_ore": "Calcite Kyber Ore",
   "block.mythicmetals.calcite_starrite_ore": "Calcite Starrite Ore",
   "block.mythicmetals.carmot_anvil": "Carmot Anvil",
+  "block.mythicmetals.carmot_bell": "Carmot Bell",
   "block.mythicmetals.carmot_block": "Block of Carmot",
   "block.mythicmetals.carmot_nuke_core": "Carmot Nuke Core",
   "block.mythicmetals.carmot_ore": "Carmot Ore",
@@ -598,6 +599,8 @@
   "subtitles.mythicmetals.equip_stormyx": "Stormyx armor jingles",
   "subtitles.mythicmetals.equip_tidesinger": "Tidesinger armor clanks",
   "subtitles.mythicmetals.drop_the_bass": "Noteblock encores",
+  "subtitles.mythicmetals.carmot_bell_ring": "Carmot Bell Rings",
+  "subtitles.mythicmetals.carmot_bell_ding": "Carmot Bell Dings",
 
   "subtitles.mythicmetals.projectile_barrier_begin": "Projectile barrier activated",
   "subtitles.mythicmetals.projectile_barrier_maintain":  "Projectile barrier humming",
@@ -831,8 +834,12 @@
   ],
   "tooltip.mythril_drill.upgrade.empty": "Empty",
 
-  "tooltip.carmot_bell.info": "Heals anything around you for a significant amount",
-
+  "tooltip.carmot_bell.info1": [
+    {"text": "Heals anything around you for a significant amount", "color":  "#808080"}
+  ],
+  "tooltip.carmot_bell.info2": [
+    {"text": "Can be placed while sneaking", "color":  "#808080"}
+  ],
   "tooltip.palladium_rail.info": [
     {"text":  "Works as a Booster Rail when lavalogged", "color":  "#DF7323"}
   ],
@@ -850,6 +857,8 @@
   "death.attack.banglum_nuke.player": "%1$s was vaporized by %2$s",
   "death.attack.star_platinum_arrow.player": "%1$s was pierced by %2$s",
   "death.attack.star_platinum_arrow.player.item": "%1$s was pierced by %2$s using %3$s",
+  "death.attack.carmot_bell": "%1$s experienced a TKO",
+  "death.attack.carmot_bell.player": "%1$s failed to serve %2$s in time",
 
   "entity.mythicmetals.runite_arrow": "Runite Arrow",
   "entity.mythicmetals.star_platinum_arrow": "Star Platinum Arrow",

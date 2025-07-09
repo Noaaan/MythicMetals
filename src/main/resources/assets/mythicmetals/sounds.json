@@ -15,6 +15,54 @@
       "mythicmetals:dog4"
     ]
   },
+  "carmot_bell_ring": {
+    "sounds": [
+      "mythicmetals:carmot_bell_ding"
+    ],
+    "subtitle": "subtitles.mythicmetals.carmot_bell_ring"
+  },
+  "carmot_bell_ding_plain": {
+    "sounds": [
+      {
+        "name": "mythicmetals:carmot_bell_ding_plain",
+        "volume": 1.0
+      },
+      {
+        "name": "mythicmetals:carmot_bell_ding_plain",
+        "volume": 0.95,
+        "pitch": 0.95
+      },
+      {
+        "name": "mythicmetals:carmot_bell_ding_plain",
+        "volume": 1.05
+      },
+      {
+        "name": "mythicmetals:carmot_bell_ding_plain",
+        "volume": 1.0,
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.mythicmetals.carmot_bell_ding"
+  },
+  "carmot_bell_ding": {
+    "sounds": [
+      {
+        "name": "mythicmetals:carmot_bell_ding",
+        "volume": 1.0
+      },
+      {
+        "name": "mythicmetals:carmot_bell_ding",
+        "volume": 0.95,
+        "pitch": 0.95
+      },
+      {
+        "name": "mythicmetals:carmot_bell_ding",
+        "volume": 1.0,
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.mythicmetals.carmot_bell_ding"
+  },
   "melody": {
     "sounds": [
       "mythicmetals:melody"

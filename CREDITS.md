@@ -16,6 +16,7 @@
 - Paintedwithdrugs
 - Taphrine
 - thyreo
+- KrimsonCinder
 
 Thank you all for making awesome new textures for the mod.
 
@@ -41,6 +42,10 @@ I currently do not support Crowdin, so you will have to either put it up as a pu
 - Blodgharm
 - Undertaker2900
 - emroy
+
+## Sound Effects
+
+- Glass and chrystal ping ding by bozerikje -- https://freesound.org/s/478038/ -- License: Creative Commons 0
 
 ## Special Thanks
 

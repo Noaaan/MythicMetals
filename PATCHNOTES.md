@@ -1,3 +1,10 @@
+# 0.24.1
+
+## Placeable Carmot Bell
+
+This one is fairly simple. You can now place the Carmot Bell. Ring it as much as you'd like. 
+The healing ability still works, on a similar cooldown and smaller range.
+
 # 0.24.0
 
 ## Individual Ore Tags

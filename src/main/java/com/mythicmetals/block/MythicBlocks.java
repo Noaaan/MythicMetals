@@ -58,6 +58,9 @@ public class MythicBlocks {
         .strength(6.5F, 12).sounds(BlockSoundGroup.DEEPSLATE)
         .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
         .finish();
+    public static final Block CARMOT_BELL_BLOCK = new CarmotBellBlock(AbstractBlock.Settings.create()
+        .nonOpaque()
+        .strength(0.5f, 4.0f));
 
     public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM_NUKE_CORE));
 
@@ -229,6 +232,7 @@ public class MythicBlocks {
         RegistryHelper.block("aquarium_resonator", AQUARIUM_RESONATOR);
         RegistryHelper.block("banglum_tnt", BANGLUM_TNT_BLOCK);
         RegistryHelper.block("banglum_nuke_core", BANGLUM_NUKE_CORE);
+        RegistryHelper.blockOnly("carmot_bell", CARMOT_BELL_BLOCK);
         RegistryHelper.block("carmot_nuke_core", CARMOT_NUKE_CORE);
         // Manually registering these in order to get the glint
         RegistryHelper.blockOnly("enchanted_midas_gold_block", ENCHANTED_MIDAS_GOLD_BLOCK);

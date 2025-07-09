@@ -13,6 +13,9 @@ public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {
     public static final BlockEntityType<EnchantedMidasGoldBlockEntity> ENCHANTED_MIDAS_GOLD_BLOCK =
         BlockEntityType.Builder.create(EnchantedMidasGoldBlockEntity::new, MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK).build();
 
+    public static final BlockEntityType<CarmotBellBlockEntity> CARMOT_BELL_BLOCK =
+        BlockEntityType.Builder.create(CarmotBellBlockEntity::new, MythicBlocks.CARMOT_BELL_BLOCK).build();
+
     @Override
     public boolean shouldProcessField(BlockEntityType<?> value, String identifier, Field field) {
         return BlockEntityRegistryContainer.super.shouldProcessField(value, identifier, field);

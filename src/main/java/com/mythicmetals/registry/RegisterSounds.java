@@ -42,6 +42,9 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static final SoundEvent BANGLUM_NUKE_IGNITE = SoundEvent.of(RegistryHelper.id("banglum_nuke_ignite"));
     public static final SoundEvent BANGLUM_NUKE_EXPLOSION = SoundEvent.of(RegistryHelper.id("banglum_nuke_explosion"));
     public static final SoundEvent MELODY = SoundEvent.of(RegistryHelper.id("melody"));
+    public static final SoundEvent CARMOT_BELL_RING = SoundEvent.of(RegistryHelper.id("carmot_bell_ring"));
+    public static final SoundEvent CARMOT_BELL_DING = SoundEvent.of(RegistryHelper.id("carmot_bell_ding"));
+    public static final SoundEvent CARMOT_BELL_DING_PLAIN = SoundEvent.of(RegistryHelper.id("carmot_bell_ding_plain"));
 
     public static final BlockSoundGroup MORKITE_ORE = new BlockSoundGroup(1.0F, 1.0F,
         MORKITE_ORE_BREAK,
