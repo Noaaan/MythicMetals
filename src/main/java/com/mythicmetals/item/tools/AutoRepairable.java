@@ -4,14 +4,9 @@ import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.data.MythicTags;
 
 /**
- * Used to handle Auto Repair behavior regarding Prometheum Tools more gracefully
- * <br>
- * Adding your item to {@link MythicTags#AUTO_REPAIR} is enough to cause auto repair, as this adds
- * the component in {@link MythicMetals#registerPrometheumAttributeEvent()}
+ * Used to handle Auto Repair behavior regarding more gracefully
  */
 public interface AutoRepairable extends FabricItem {
 

@@ -31,7 +31,7 @@ import java.util.*;
 
 import static com.mythicmetals.component.DrillComponent.*;
 
-public class MythrilDrill extends MiningToolItem {
+public class MythrilDrill extends MiningToolItem implements AutoRepairable {
 
     /**
      * Map used to store the different types of drill upgrades
@@ -46,7 +46,7 @@ public class MythrilDrill extends MiningToolItem {
         map.put(Items.AIR, "empty");
     });
 
-    public MythrilDrill(ToolMaterial material, Settings settings) {
+    public MythrilDrill(ToolMaterial material, Item.Settings settings) {
         super(material, MythicTags.MINEABLE_MYTHRIL_DRILL, settings);
     }
 
