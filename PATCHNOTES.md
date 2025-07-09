@@ -5,6 +5,12 @@
 This one is fairly simple. You can now place the Carmot Bell. Ring it as much as you'd like. 
 The healing ability still works, on a similar cooldown and smaller range.
 
+## Changes
+
+- Fixed a bug where the Stormyx Shield would go on cooldown despite not being used
+- Fixed the Sword of the Aegis having the wrong attack damage
+- Made the Mythril Drill stop updating in hand constantly with the Auto Repair upgrade
+
 # 0.24.0
 
 ## Individual Ore Tags
