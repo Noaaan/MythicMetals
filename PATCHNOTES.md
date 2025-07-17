@@ -5,6 +5,71 @@
 This one is fairly simple. You can now place the Carmot Bell. Ring it as much as you'd like. 
 The healing ability still works, on a similar cooldown and smaller range.
 
+## Texture Overhaul
+
+A huge thanks to KrimsonCinder and thyreo for making these new assets for the mod.
+
+The following items received new or reworked textures:
+
+### Armor Items
+
+- Adamantite Armor Items
+- Banglum Armor Items
+- Legendary Banglum Armor Items (includes small animation)
+- Orichalcum Armor Items
+- Palladium Armor Items
+
+### Blocks
+
+- Raw Palladium Block
+- Palladium Block (storage block)
+
+### Raw Ores
+
+- Raw Adamantite
+- Raw Manganese
+- Raw Mythril
+- Raw Orichalcum
+- Raw Osmium
+- Raw Palladium
+- Raw Quadrillum
+- Raw Runite
+- Raw Silver
+- Raw Tin
+
+### Ingots
+
+- Adamantite Ingot
+- Bronze Ingot
+- Midas Gold Ingot
+- Mythril Ingot
+- Orichalcum Ingot
+- Platinum Ingot
+- Prometheum Ingot
+
+### Nuggets
+
+- Adamantite Nugget
+- Aquarium Nugget
+- Banglum Nugget
+- Bronze Nugget
+- Carmot Nugget
+- Celestium Nugget
+- Durasteel Nugget
+- Kyber Nugget
+- Manganese Nugget
+- Metallurgium Nugget
+- Midas Gold Nugget
+- Mythril Nugget
+- Orichalcum Nugget
+- Palladium Nugget
+- Platinum Nugget
+- Runite Nugget
+- Silver Nugget
+- Star Platinum Nugget
+- Steel Nugget
+- Tin Nugget
+
 ## Changes
 
 - Fixed a bug where the Stormyx Shield would go on cooldown despite not being used
