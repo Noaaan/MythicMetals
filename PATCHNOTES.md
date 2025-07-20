@@ -1,3 +1,9 @@
+# 0.x.x
+
+## Changes
+
+- Improved the Carmot Bell Block shape and outline
+
 # 0.24.1
 
 ## Placeable Carmot Bell

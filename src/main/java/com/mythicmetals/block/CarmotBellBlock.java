@@ -15,6 +15,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.*;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +24,7 @@ public class CarmotBellBlock extends BlockWithEntity {
 
     public static final double RANGE = 8.0;
     public static final int COOLDOWN = 10 * 20;
+    public static final VoxelShape BELL_SHAPE = Block.createCuboidShape(3.0f, 0.0f, 3.0f, 13.0f, 9.0f, 13.0f);
 
     public static final MapCodec<CarmotBellBlock> CODEC = createCodec(CarmotBellBlock::new);
 
@@ -46,6 +49,16 @@ public class CarmotBellBlock extends BlockWithEntity {
         }
 
         return super.onUse(state, world, pos, player, hit);
+    }
+
+    @Override
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return BELL_SHAPE;
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return BELL_SHAPE;
     }
 
     private void heal(World world, Vec3d pos, LivingEntity user) {
