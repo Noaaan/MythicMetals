@@ -24,10 +24,13 @@ import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.decoration.DisplayEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.trim.ArmorTrim;
@@ -85,6 +88,7 @@ public final class MythicCommands {
             var wiki = CommandManager.literal("wiki").build();
             var armorStand = CommandManager.literal("armor-stand").build();
             var loot = CommandManager.literal("test-loot-table").build();
+            var display = CommandManager.literal("place-display").build();
             var placeBlocks = CommandManager.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
                 .build();
 
@@ -105,6 +109,11 @@ public final class MythicCommands {
 
             var exportArmor = CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
                 .executes(MythicCommands::exportArmor)
+                .build();
+
+            var placeDisplay = CommandManager.argument("material", StringArgumentType.word())
+                .suggests(MythicCommands::material)
+                .executes(MythicCommands::placeMythicDisplay)
                 .build();
 
             var lootTables = CommandManager.argument("loot_table", RegistryEntryArgumentType.LootTableArgumentType.lootTable(access))
@@ -143,6 +152,7 @@ public final class MythicCommands {
             range.addChild(rangeType);
             loot.addChild(lootTables);
             armorStand.addChild(summonTrims);
+            display.addChild(placeDisplay);
 
             // Add commands to root
             mythicRoot.addChild(range);
@@ -150,6 +160,7 @@ public final class MythicCommands {
             mythicRoot.addChild(armorStand);
             mythicRoot.addChild(loot);
             mythicRoot.addChild(placeBlocks);
+            mythicRoot.addChild(display);
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
@@ -222,6 +233,86 @@ public final class MythicCommands {
         });
         source.sendFeedback(() -> Text.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
         return 0;
+    }
+
+    public static int placeMythicDisplay(CommandContext<ServerCommandSource> context) {
+        int placements = -1;
+        var material = StringArgumentType.getString(context, "material");
+
+        if (!MythicTools.TOOL_MAP.containsKey(material) && !MythicArmor.ARMOR_MAP.containsKey(material) && MythicBlocks.BLOCKSET_MAP.containsKey(material)) {
+            MythicMetals.LOGGER.error("Failed to find material: {}", material);
+            context.getSource().sendFeedback(() -> Text.literal("Could not find any items for the material %s".formatted(material)), false);
+            return -1;
+        }
+
+        // place the base structure
+        var world = context.getSource().getWorld();
+        var startPos = context.getSource().getEntity().getBlockPos();
+
+        placeStructure(world, startPos);
+
+        if (material.equals("all")) {
+            // oh dear god
+        }
+
+        if (MythicTools.TOOL_MAP.containsKey(material)) {
+            // TODO - I like item frames more, unfortunately...
+            var toolSet = MythicTools.TOOL_MAP.get(material);
+            var displayEntitySword = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+            var displayEntityPickaxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+            var displayEntityAxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+            var displayEntityShovel = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+            var displayEntityHoe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+
+            displayEntitySword.setItemStack(toolSet.getSword().getDefaultStack());
+            displayEntityPickaxe.setItemStack(toolSet.getPickaxe().getDefaultStack());
+            displayEntityAxe.setItemStack(toolSet.getAxe().getDefaultStack());
+            displayEntityShovel.setItemStack(toolSet.getShovel().getDefaultStack());
+            displayEntityHoe.setItemStack(toolSet.getHoe().getDefaultStack());
+
+            displayEntitySword.setPos(startPos.getX() + 1.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+            displayEntityPickaxe.setPos(startPos.getX() + 2.5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+            displayEntityAxe.setPos(startPos.getX() + 3.75, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+            displayEntityShovel.setPos(startPos.getX() + 5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+            displayEntityHoe.setPos(startPos.getX() + 6.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+
+            displayEntitySword.setYaw(180);
+            displayEntityPickaxe.setYaw(180);
+            displayEntityAxe.setYaw(180);
+            displayEntityShovel.setYaw(180);
+            displayEntityHoe.setYaw(180);
+
+            world.spawnEntity(displayEntitySword);
+            world.spawnEntity(displayEntityPickaxe);
+            world.spawnEntity(displayEntityAxe);
+            world.spawnEntity(displayEntityShovel);
+            world.spawnEntity(displayEntityHoe);
+        }
+
+        if (MythicArmor.ARMOR_MAP.containsKey(material)) {
+
+        }
+
+        if (MythicBlocks.BLOCKSET_MAP.containsKey(material)) {
+
+        }
+
+        return placements;
+    }
+
+    private static void placeStructure(World world, BlockPos start) {
+        // floor
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 5; j++) {
+                world.setBlockState(BlockPos.ofFloored(start.getX() + i, start.getY(), start.getZ() + j), Blocks.WHITE_CONCRETE.getDefaultState());
+
+                if (j == 0) {
+                    for (int y = 0; y < 6; y++) {
+                        world.setBlockState(BlockPos.ofFloored(start.getX() + i, start.getY() + y, start.getZ() + j), Blocks.WHITE_CONCRETE.getDefaultState());
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -441,6 +532,15 @@ public final class MythicCommands {
     private static CompletableFuture<Suggestions> armorMaterial(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
         MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
         suggestion.suggest("all");
+        return suggestion.buildFuture();
+    }
+
+    private static CompletableFuture<Suggestions> material(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
+        var placeableMaterials = new HashSet<String>();
+        placeableMaterials.addAll(MythicTools.TOOL_MAP.keySet());
+        placeableMaterials.addAll(MythicArmor.ARMOR_MAP.keySet());
+        placeableMaterials.add("all");
+        placeableMaterials.forEach(suggestion::suggest);
         return suggestion.buildFuture();
     }
 

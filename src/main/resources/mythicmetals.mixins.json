@@ -15,6 +15,7 @@
     "CampfireBlockMixin",
     "ConduitBlockEntityMixin",
     "CreeperEntityMixin",
+    "DamageOverTimePowerMixin",
     "DefaultedRegistryMixin",
     "DispenserBehaviorMixin",
     "EnchantedCountIncreaseLootFunctionMixin",

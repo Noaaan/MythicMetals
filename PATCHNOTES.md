@@ -1,8 +1,9 @@
-# 0.x.x
+# 0.24.2
 
 ## Changes
 
 - Improved the Carmot Bell Block shape and outline
+- Re-enabled the Origins Compat (alpha versions of it exists, and have been tested)
 
 # 0.24.1
 

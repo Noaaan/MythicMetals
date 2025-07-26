@@ -1,5 +1,6 @@
 package com.mythicmetals.ability;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Items;
 import net.minecraft.text.Style;
 import net.minecraft.util.Formatting;
@@ -31,7 +32,7 @@ public class Abilities {
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability SMITE = new Ability("smite", 3);
-    public static final Ability WATER_PROTECTION = new Ability("water_protection", 3);
+    public static final Ability WATER_PROTECTION = new Ability("water_protection", 2);
 
     public static void init() {
         BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
@@ -61,10 +62,12 @@ public class Abilities {
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.STORMYX_SHELL, Style.EMPTY.withColor(Formatting.LIGHT_PURPLE));
         // Mod compat specific abilities
         // TODO - Uncomment once Origins compat is updated and tested
-        //if (FabricLoader.getInstance().isModLoaded("origins")) {
-        //    WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
-        //    BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.TIDESINGER_BLUE);
-        //}
+        if (FabricLoader.getInstance().isModLoaded("origins")) {
+            WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getChestplate(), MetalColors.AQUA_STYLE);
+            WATER_PROTECTION.addItem(MythicArmor.AQUARIUM.getLeggings(), MetalColors.AQUA_STYLE);
+            BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getChestplate(), MetalColors.TIDESINGER_BLUE);
+            BETTER_WATER_PROTECTION.addItem(MythicArmor.TIDESINGER.getLeggings(), MetalColors.TIDESINGER_BLUE);
+        }
     }
 
 }
