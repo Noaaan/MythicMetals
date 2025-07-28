@@ -3,7 +3,8 @@
 ## Changes
 
 - Improved the Carmot Bell Block shape and outline
-- Re-enabled the Origins Compat (alpha versions of it exists, and have been tested)
+- Re-enabled the Origins Compat (tested against the alpha build 1.13.0-alpha.12)
+- Fixed Midas Gold Ore not spawning
 
 # 0.24.1
 
