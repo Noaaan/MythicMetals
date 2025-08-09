@@ -17,6 +17,7 @@
 - Taphrine
 - thyreo
 - KrimsonCinder
+- Kingame
 
 Thank you all for making awesome new textures for the mod.
 

@@ -1,5 +1,6 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.client.models.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -8,8 +9,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.client.models.HelmetModel;
-import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,7 +39,7 @@ public class MetallurgiumArmor extends HallowedArmor {
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
         var root = models.getModelPart(MythicModelHandler.METALLURGIUM);
-        return new HelmetModel(root, slot);
+        return new MetallurgiumBipedModel(root, slot);
     }
 
     @NotNull

@@ -4,9 +4,6 @@ import net.minecraft.client.model.*;
 
 public class TidesingerArmorModel {
 
-    public TidesingerArmorModel(ModelPart root) {
-    }
-
     @SuppressWarnings("unused")
     public static ModelData getModelData() {
         ModelData data = new ModelData();

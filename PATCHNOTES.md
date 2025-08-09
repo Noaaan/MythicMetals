@@ -1,3 +1,9 @@
+# 0.24.3
+
+## Changes
+
+- Update Metallurgium Armor Model (thanks Kingame!)
+
 # 0.24.2
 
 ## Changes
