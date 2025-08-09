@@ -1,5 +1,7 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.PrometheumComponent;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
@@ -36,7 +38,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet OSMIUM = new ArmorSet(MythicArmorMaterials.OSMIUM, 25);
     public static final ArmorSet OSMIUM_CHAINMAIL = new ArmorSet(MythicArmorMaterials.OSMIUM_CHAINMAIL, 25);
     public static final ArmorSet PALLADIUM = new ArmorSet(MythicArmorMaterials.PALLADIUM, 28, Item.Settings::fireproof);
-    public static final ArmorSet PROMETHEUM = new PrometheumArmorSet(MythicArmorMaterials.PROMETHEUM, 18);
+    public static final ArmorSet PROMETHEUM = new ArmorSet(MythicArmorMaterials.PROMETHEUM, 18, settings -> settings.component(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT));
     public static final ArmorSet RUNITE = new RuniteArmorSet(MythicArmorMaterials.RUNITE, 27);
     public static final ArmorSet SILVER = new ArmorSet(MythicArmorMaterials.SILVER, 10);
     public static final ArmorSet STAR_PLATINUM = new ArmorSet(MythicArmorMaterials.STAR_PLATINUM, 34);
