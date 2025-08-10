@@ -26,7 +26,7 @@ public class MythicModelHandler {
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
         consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));
-        consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 64, 64));
+        consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 32, 32));
         consumer.accept(RUNITE, TexturedModelData.of(RuniteArmorModel.getModelData(), 64, 32));
         consumer.accept(TIDESINGER, TexturedModelData.of(TidesingerArmorModel.getModelData(), 128, 128));
     }

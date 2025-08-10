@@ -3,15 +3,6 @@ package com.mythicmetals.client.models;
 import net.minecraft.client.model.*;
 
 public class BanglumArmorModel {
-    public final ModelPart head;
-    public final ModelPart right_horn;
-    public final ModelPart left_horn;
-
-    public BanglumArmorModel(ModelPart root) {
-        this.head = root.getChild("head");
-        this.right_horn = root.getChild("right_horn");
-        this.left_horn = root.getChild("left_horn");
-    }
 
     public static ModelData getModelData() {
 

@@ -39,7 +39,7 @@ public class MetallurgiumArmor extends HallowedArmor {
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getEntityModelLoader();
         var root = models.getModelPart(MythicModelHandler.METALLURGIUM);
-        return new MetallurgiumBipedModel(root, slot);
+        return new HelmetModel(root, slot);
     }
 
     @NotNull

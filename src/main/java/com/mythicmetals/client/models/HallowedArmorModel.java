@@ -3,17 +3,6 @@ package com.mythicmetals.client.models;
 import net.minecraft.client.model.*;
 
 public class HallowedArmorModel {
-    public final ModelPart head;
-    public final ModelPart faceguard;
-    public final ModelPart wing_r;
-    public final ModelPart wing_l;
-
-    public HallowedArmorModel(ModelPart root) {
-        this.head = root.getChild("head");
-        this.faceguard = root.getChild("faceguard");
-        this.wing_r = root.getChild("wing_r");
-        this.wing_l = root.getChild("wing_l");
-    }
 
     public static ModelData getModelData() {
         ModelData data = new ModelData();

@@ -3,13 +3,6 @@ package com.mythicmetals.client.models;
 import net.minecraft.client.model.*;
 
 public class RuniteArmorModel {
-    public final ModelPart head;
-    public final ModelPart faceguard;
-
-    public RuniteArmorModel(ModelPart root) {
-        this.head = root.getChild("head");
-        this.faceguard = root.getChild("faceguard");
-    }
 
     public static ModelData getModelData() {
         ModelData data = new ModelData();
