@@ -36,6 +36,15 @@ public class BanglumTntBlock extends TntBlock {
     }
 
     @Override
+    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        if (!world.isClient() && !player.isCreative() && state.get(UNSTABLE)) {
+            primeBangTnt(world, pos);
+        }
+
+        return super.onBreak(world, pos, state, player);
+    }
+
+    @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (world.isReceivingRedstonePower(pos)) {
             primeBangTnt(world, pos);
