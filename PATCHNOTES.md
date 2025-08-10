@@ -2,6 +2,7 @@
 
 ## Changes
 
+- Expanded the range of Nether Banglum and Banglum Ore particles slightly
 - Update Metallurgium Armor Model (thanks Kingame!)
 
 # 0.24.2
