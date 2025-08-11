@@ -38,7 +38,6 @@ dependencies {
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 
     // Isometric Renders + Worldmesher
-    // TODO - Re-enable
     modImplementation("maven.modrinth:isometric-renders:${project.isorender_version}")
     modImplementation("io.wispforest:worldmesher:${project.worldmesher_version}")
 
@@ -81,7 +80,8 @@ dependencies {
     // Explosive Enhancement
     modApi("maven.modrinth:explosive-enhancement:${project.ee_version}")
 
-    modImplementation "nl.enjarai:cicada-lib:${project.cicada_version}"
+    // Cicada
+    //modImplementation "nl.enjarai:cicada-lib:${project.cicada_version}"
 }
 
 sourceSets {
