@@ -1,19 +1,33 @@
 package com.mythicmetals.misc;
 
+import com.mojang.authlib.GameProfile;
+import com.mythicmetals.item.tools.HammerBase;
+import eu.pb4.common.protection.api.CommonProtection;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import com.mythicmetals.item.tools.HammerBase;
+import net.minecraft.world.World;
+import net.minecraft.world.explosion.Explosion;
+import org.jetbrains.annotations.Nullable;
 
 public class BlockBreaker {
+
+    public static boolean isProtected(World world, BlockPos blockPos, GameProfile profile, @Nullable PlayerEntity player) {
+        return !CommonProtection.canBreakBlock(world, blockPos, profile, player);
+    }
+
+    public static boolean isProtected(World world, BlockPos blockPos, Explosion explosion, GameProfile profile, @Nullable PlayerEntity player) {
+        return !CommonProtection.canExplodeBlock(world, blockPos, explosion, profile, player);
+    }
 
     public static Iterable<BlockPos> findBlocks(ItemUsageContext context, int depth) {
 

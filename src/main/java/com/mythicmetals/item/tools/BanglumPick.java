@@ -1,5 +1,7 @@
 package com.mythicmetals.item.tools;
 
+import com.mojang.authlib.GameProfile;
+import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -34,10 +36,12 @@ public class BanglumPick extends PickaxeItem {
         if (player != null && !isCoolingDown(player, context.getStack()) && !world.isClient()) {
 
             var iterator = BlockBreaker.findBlocks(context, 5);
-
             for (BlockPos blockPos : iterator) {
+                if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
+                    continue;
+                }
                 if (isCorrectForDrops(context.getStack(), world.getBlockState(blockPos))) {
-                    WorldOps.breakBlockWithItem(world, blockPos, context.getStack());
+                    WorldOps.breakBlockWithItem(world, blockPos, context.getStack(), player);
                     context.getStack().damage(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }

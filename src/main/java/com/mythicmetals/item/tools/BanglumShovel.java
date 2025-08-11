@@ -35,6 +35,9 @@ public class BanglumShovel extends ShovelItem {
             var iterator = BlockBreaker.findBlocks(context, 5);
 
             for (BlockPos blockPos : iterator) {
+                if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
+                    continue;
+                }
                 if (isCorrectForDrops(context.getStack(), world.getBlockState(blockPos))) {
                     WorldOps.breakBlockWithItem(world, blockPos, context.getStack());
                     context.getStack().damage(2, player, EquipmentSlot.MAINHAND);

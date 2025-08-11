@@ -46,7 +46,7 @@ public final class EpicExplosion {
 
         MythicParticleSystem.EXPLOSIVE_EXPLOSION.spawn(world, new Vec3d(x, y, z), (float) radius);
 
-        GameProfile playerId = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
+        GameProfile gameProfile = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
 
         for (int ox = -radius; ox < radius; ox++) {
             for (int oy = -radius; oy < radius; oy++) {
@@ -61,9 +61,9 @@ public final class EpicExplosion {
                     if (!statePredicate.test(state)) continue;
 
                     if (explosion != null) {
-                        if (!CommonProtection.canExplodeBlock(world, pos, explosion, playerId, cause)) continue;
+                        if (BlockBreaker.isProtected(world, pos, explosion, gameProfile, cause)) continue;
                     } else {
-                        if (!CommonProtection.canBreakBlock(world, pos, playerId, cause)) continue;
+                        if (BlockBreaker.isProtected(world, pos, gameProfile, cause)) continue;
                     }
 
                     world.setBlockState(pos, Blocks.AIR.getDefaultState());
