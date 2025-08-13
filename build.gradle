@@ -81,7 +81,7 @@ dependencies {
     modApi("maven.modrinth:explosive-enhancement:${project.ee_version}")
 
     // Cicada
-    //modImplementation "nl.enjarai:cicada-lib:${project.cicada_version}"
+    modImplementation "nl.enjarai:cicada-lib:${project.cicada_version}"
 }
 
 sourceSets {
