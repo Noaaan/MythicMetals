@@ -95,8 +95,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
         GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
-        EpicExplosion.explode((ServerWorld) getWorld(), (int) this.getX(), (int) this.getY(), (int) this.getZ(), radius, statePredicate,
-            this, playerCause);
+        EpicExplosion.explode((ServerWorld) getWorld(), (int) this.getX(), (int) this.getY(), (int) this.getZ(), radius, statePredicate, this, playerCause);
         Explosion explosion = new Explosion(this.getWorld(), playerCause, (int) this.getX(), (int) this.getY(), (int) this.getZ(), radius, false, Explosion.DestructionType.DESTROY_WITH_DECAY);
 
         int soundRadius = radius * 3;

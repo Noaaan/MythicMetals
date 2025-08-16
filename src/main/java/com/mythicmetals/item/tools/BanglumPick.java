@@ -1,7 +1,5 @@
 package com.mythicmetals.item.tools;
 
-import com.mojang.authlib.GameProfile;
-import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
