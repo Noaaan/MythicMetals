@@ -1,5 +1,6 @@
 package com.mythicmetals.block;
 
+import com.mythicmetals.entity.BanglumTntEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -16,7 +17,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
-import com.mythicmetals.entity.BanglumTntEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntBlock extends TntBlock {

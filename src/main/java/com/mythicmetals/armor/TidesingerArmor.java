@@ -1,5 +1,10 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.client.models.TidesingerBipedModel;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.TidesingerPatternComponent;
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -11,11 +16,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.models.TidesingerBipedModel;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.TidesingerPatternComponent;
-import com.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 

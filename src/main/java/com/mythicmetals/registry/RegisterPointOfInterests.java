@@ -1,9 +1,9 @@
 package com.mythicmetals.registry;
 
-import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
-import net.minecraft.world.poi.PointOfInterestType;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.misc.RegistryHelper;
+import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
+import net.minecraft.world.poi.PointOfInterestType;
 
 public class RegisterPointOfInterests {
     public static final PointOfInterestType CONDUIT_POWERED_BLOCK = PointOfInterestHelper.register(

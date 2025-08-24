@@ -1,5 +1,7 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.entity.BanglumTntMinecartEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -9,8 +11,6 @@ import net.minecraft.client.render.entity.MinecartEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.vehicle.TntMinecartEntity;
 import net.minecraft.util.math.MathHelper;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.entity.BanglumTntMinecartEntity;
 
 public class BanglumTntMinecartEntityRenderer extends MinecartEntityRenderer<BanglumTntMinecartEntity> {
     private final BlockRenderManager tntBlockRenderManager;

@@ -1,5 +1,11 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.component.*;
+import com.mythicmetals.item.*;
+import com.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.component.DataComponentTypes;
@@ -14,12 +20,6 @@ import net.minecraft.registry.*;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.component.*;
-import com.mythicmetals.item.*;
-import com.mythicmetals.item.tools.carmot_staff.CarmotStaffItem;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.lang.reflect.Field;
 import java.util.*;
 

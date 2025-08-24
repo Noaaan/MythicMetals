@@ -2,14 +2,14 @@ package com.mythicmetals.block;
 
 import blue.endless.jankson.annotation.Nullable;
 import com.mojang.serialization.MapCodec;
+import com.mythicmetals.block.entity.AquariumResonatorBlockEntity;
+import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.*;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import com.mythicmetals.block.entity.AquariumResonatorBlockEntity;
-import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 
 public class AquariumResonatorBlock extends BlockWithEntity {
 

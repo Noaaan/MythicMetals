@@ -1,5 +1,14 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.armor.ArmorSet;
+import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.block.BlockSet;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.conditions.DustLoadedCondition;
+import com.mythicmetals.conditions.NuggetsLoadedCondition;
+import com.mythicmetals.item.ItemSet;
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -14,15 +23,6 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
-import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.block.BlockSet;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.conditions.DustLoadedCondition;
-import com.mythicmetals.conditions.NuggetsLoadedCondition;
-import com.mythicmetals.item.ItemSet;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 

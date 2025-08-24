@@ -1,15 +1,15 @@
 package com.mythicmetals.compat;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.TidesingerPatternComponent;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.TidesingerPatternComponent;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import java.util.Arrays;
 import java.util.List;
 

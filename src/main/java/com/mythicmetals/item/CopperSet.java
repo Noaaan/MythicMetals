@@ -1,10 +1,10 @@
 package com.mythicmetals.item;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.function.Consumer;
 
 public class CopperSet {

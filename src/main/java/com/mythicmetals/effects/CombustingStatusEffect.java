@@ -1,10 +1,10 @@
 package com.mythicmetals.effects;
 
+import com.mythicmetals.MythicMetals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import com.mythicmetals.MythicMetals;
 
 public class CombustingStatusEffect extends StatusEffect {
     public CombustingStatusEffect(StatusEffectCategory statusEffectCategory, int color) {

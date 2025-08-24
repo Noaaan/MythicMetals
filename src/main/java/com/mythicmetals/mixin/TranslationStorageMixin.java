@@ -1,12 +1,13 @@
 package com.mythicmetals.mixin;
 
-import net.minecraft.client.resource.language.TranslationStorage;
 import com.mythicmetals.misc.StringUtilsAtHome;
+import net.minecraft.client.resource.language.TranslationStorage;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Mixin(TranslationStorage.class)
 public class TranslationStorageMixin {

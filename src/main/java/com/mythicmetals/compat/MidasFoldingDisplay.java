@@ -1,5 +1,8 @@
 package com.mythicmetals.compat;
 
+import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.item.tools.MidasGoldSword;
+import com.mythicmetals.recipe.MidasFoldingRecipe;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
@@ -7,9 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
-import com.mythicmetals.component.GoldFoldedComponent;
-import com.mythicmetals.item.tools.MidasGoldSword;
-import com.mythicmetals.recipe.MidasFoldingRecipe;
 import java.util.Arrays;
 import java.util.List;
 

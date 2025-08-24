@@ -1,11 +1,11 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Hand;
-import com.mythicmetals.item.tools.MythicTools;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

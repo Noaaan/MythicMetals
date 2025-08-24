@@ -1,14 +1,14 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.PrometheumComponent;
+import com.mythicmetals.data.MythicTags;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.PrometheumComponent;
-import com.mythicmetals.data.MythicTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

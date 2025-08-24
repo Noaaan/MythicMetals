@@ -1,6 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import com.mythicmetals.block.Lavaloggable;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
@@ -11,7 +12,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import com.mythicmetals.block.Lavaloggable;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;

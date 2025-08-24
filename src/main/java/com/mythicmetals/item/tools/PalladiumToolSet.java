@@ -1,14 +1,14 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.effects.MythicStatusEffects;
+import com.mythicmetals.misc.IsAttackCritical;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import com.mythicmetals.effects.MythicStatusEffects;
-import com.mythicmetals.misc.IsAttackCritical;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.function.Consumer;
 
 public class PalladiumToolSet extends ToolSet {

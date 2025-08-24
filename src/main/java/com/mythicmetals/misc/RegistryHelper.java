@@ -1,7 +1,7 @@
 package com.mythicmetals.misc;
 
-import java.util.function.UnaryOperator;
 import com.mojang.serialization.MapCodec;
+import com.mythicmetals.MythicMetals;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
@@ -19,7 +19,7 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import com.mythicmetals.MythicMetals;
+import java.util.function.UnaryOperator;
 
 /**
  * A helper class containing methods for registering various blocks and items.

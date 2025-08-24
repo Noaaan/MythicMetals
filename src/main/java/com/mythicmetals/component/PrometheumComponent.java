@@ -1,5 +1,7 @@
 package com.mythicmetals.component;
 
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
@@ -10,8 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.misc.RegistryHelper;
 
 /**
  * A data carrier which holds and tracks the Prometheum Auto Repair ability.

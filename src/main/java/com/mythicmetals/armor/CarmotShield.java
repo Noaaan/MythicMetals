@@ -1,11 +1,11 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.entity.MythicEntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.MathHelper;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.entity.MythicEntityAttributes;
 import org.ladysnake.cca.api.v3.component.Component;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 

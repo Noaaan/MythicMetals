@@ -1,5 +1,9 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.entity.MythicEntityAttributes;
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.registry.RegisterSounds;
 import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -13,10 +17,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.event.GameEvent;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.entity.MythicEntityAttributes;
-import com.mythicmetals.registry.RegisterSounds;
 
 public class CelestiumElytra extends ElytraItem implements FabricElytraItem {
     public CelestiumElytra(Settings settings) {

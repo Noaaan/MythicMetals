@@ -1,9 +1,9 @@
 package com.mythicmetals.mixin;
 
-import net.minecraft.registry.SimpleDefaultedRegistry;
-import net.minecraft.util.Identifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.LegacyIds;
+import net.minecraft.registry.SimpleDefaultedRegistry;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

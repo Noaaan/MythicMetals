@@ -1,5 +1,10 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
@@ -8,11 +13,6 @@ import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CarmotShield;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 
 import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors.SHIELD_BREAK_COLOR;
 

@@ -1,8 +1,8 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import com.mythicmetals.misc.RegistryHelper;
 
 // TODO - Make this extend HallowedArmor and give it an epic model sometime
 public class CelestiumArmor extends ArmorItem {

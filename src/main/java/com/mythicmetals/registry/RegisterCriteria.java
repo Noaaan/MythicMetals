@@ -1,11 +1,11 @@
 package com.mythicmetals.registry;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.SimpleCriteria;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.advancement.criterion.Criterion;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.SimpleCriteria;
 import java.lang.reflect.Field;
 
 public class RegisterCriteria implements SimpleFieldProcessingSubject<Criterion<?>> {

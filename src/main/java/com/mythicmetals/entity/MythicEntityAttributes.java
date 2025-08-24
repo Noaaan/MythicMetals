@@ -1,9 +1,9 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.registry.entry.RegistryEntry;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class MythicEntityAttributes {
     public static final RegistryEntry<EntityAttribute> CARMOT_SHIELD = RegistryHelper.entityAttribute("carmot_shield", new ClampedEntityAttribute("attribute.name.generic.mythicmetals.carmot_shield", 0, 0, 2048).setTracked(true));

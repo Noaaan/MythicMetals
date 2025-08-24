@@ -1,5 +1,6 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.registry.RegistryKey;
@@ -7,7 +8,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import com.mythicmetals.misc.RegistryHelper;
 
 import static com.mythicmetals.MythicMetals.CONFIG;
 

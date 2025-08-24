@@ -1,6 +1,9 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.mythicmetals.armor.CelestiumElytra;
+import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -9,11 +12,9 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.armor.CelestiumElytra;
-import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.misc.RegistryHelper;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Environment(EnvType.CLIENT)
 @Mixin(ElytraFeatureRenderer.class)

@@ -1,5 +1,6 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,7 +11,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import com.mythicmetals.misc.RegistryHelper;
 
 import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE;
 

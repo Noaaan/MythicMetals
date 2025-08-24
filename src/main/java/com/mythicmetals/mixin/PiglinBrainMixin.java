@@ -1,5 +1,8 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.armor.MythicArmorMaterials;
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.MythicLootOps;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.mob.PiglinEntity;
@@ -7,9 +10,6 @@ import net.minecraft.item.*;
 import net.minecraft.loot.LootTable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import com.mythicmetals.armor.MythicArmorMaterials;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.MythicLootOps;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;

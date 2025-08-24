@@ -1,6 +1,8 @@
 package com.mythicmetals.block;
 
 import com.google.common.collect.*;
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
 import net.minecraft.block.*;
@@ -9,8 +11,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.*;
 import java.util.function.Consumer;
 

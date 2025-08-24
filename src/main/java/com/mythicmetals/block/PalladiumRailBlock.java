@@ -1,6 +1,5 @@
 package com.mythicmetals.block;
 
-import java.util.Optional;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.RailShape;
@@ -16,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
+import java.util.Optional;
 
 public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggable {
 

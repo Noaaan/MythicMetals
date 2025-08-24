@@ -1,12 +1,12 @@
 package com.mythicmetals.item;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.TagInjector;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.function.Consumer;
 
 public class ItemSet {

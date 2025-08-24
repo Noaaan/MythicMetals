@@ -1,5 +1,8 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.misc.BlockBreaker;
+import com.mythicmetals.misc.MythicParticleSystem;
+import com.mythicmetals.registry.RegisterCriteria;
 import io.wispforest.owo.ops.WorldOps;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -11,9 +14,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import com.mythicmetals.misc.BlockBreaker;
-import com.mythicmetals.misc.MythicParticleSystem;
-import com.mythicmetals.registry.RegisterCriteria;
 
 public class BanglumShovel extends ShovelItem {
 

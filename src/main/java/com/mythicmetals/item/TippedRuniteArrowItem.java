@@ -1,5 +1,6 @@
 package com.mythicmetals.item;
 
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.item.Item;
@@ -8,7 +9,6 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.text.Text;
-import com.mythicmetals.item.tools.MythicTools;
 import java.util.List;
 
 public class TippedRuniteArrowItem extends RuniteArrowItem {

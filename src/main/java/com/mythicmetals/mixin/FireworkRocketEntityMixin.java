@@ -1,12 +1,12 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.entity.MythicEntityAttributes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import com.mythicmetals.entity.MythicEntityAttributes;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

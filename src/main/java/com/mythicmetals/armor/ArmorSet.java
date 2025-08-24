@@ -1,12 +1,12 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;

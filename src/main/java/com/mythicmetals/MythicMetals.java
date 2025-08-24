@@ -1,6 +1,23 @@
 package com.mythicmetals;
 
+import com.mythicmetals.ability.Abilities;
+import com.mythicmetals.armor.*;
+import com.mythicmetals.block.BanglumNukeHandler;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
+import com.mythicmetals.command.MythicCommands;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.conditions.MythicResourceConditions;
+import com.mythicmetals.config.MythicMetalsConfig;
+import com.mythicmetals.data.MythicOreFeatures;
+import com.mythicmetals.effects.MythicStatusEffects;
+import com.mythicmetals.entity.*;
+import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicPotions;
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.misc.*;
+import com.mythicmetals.recipe.MythicRecipeSerializers;
+import com.mythicmetals.registry.*;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
@@ -17,23 +34,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
-import com.mythicmetals.ability.Abilities;
-import com.mythicmetals.armor.*;
-import com.mythicmetals.block.BanglumNukeHandler;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.command.MythicCommands;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.conditions.MythicResourceConditions;
-import com.mythicmetals.config.MythicMetalsConfig;
-import com.mythicmetals.data.MythicOreFeatures;
-import com.mythicmetals.effects.MythicStatusEffects;
-import com.mythicmetals.entity.*;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.*;
-import com.mythicmetals.recipe.MythicRecipeSerializers;
-import com.mythicmetals.registry.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
@@ -130,6 +130,13 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         }
         if (FabricLoader.getInstance().isModLoaded("terralith")) {
             LOGGER.info("[Mythic Metals] Terralith detected. Many ores can spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
+        }
+        if (FabricLoader.getInstance().isModLoaded("ftb-chunks-fabric") || FabricLoader.getInstance().isModLoaded("ftb-chunks-neoforge")) {
+            if (!FabricLoader.getInstance().isModLoaded("ftb-xmod-compat-fabric")) {
+                for (int i = 0; i < 3; i++) {
+                    LOGGER.error("[Mythic Metals] FTB Chunks is loaded but FTB XMod Compat Fabric addon is not. This means claim protection will not work for some items!");
+                }
+            }
         }
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }

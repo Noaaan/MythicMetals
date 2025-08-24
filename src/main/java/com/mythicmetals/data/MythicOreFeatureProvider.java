@@ -1,11 +1,11 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.config.MythicOreConfigs;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.config.MythicOreConfigs;
 
 import static com.mythicmetals.data.MythicOreFeatures.*;
 import static com.mythicmetals.data.MythicOreRules.*;

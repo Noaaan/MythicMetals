@@ -1,5 +1,6 @@
 package com.mythicmetals.block;
 
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,7 +11,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import org.joml.Vector3f;
 
 public class StarriteOreBlock extends ExperienceDroppingBlock {

@@ -1,11 +1,11 @@
 package com.mythicmetals.misc;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.item.MythicItems;
 import io.wispforest.owo.ops.LootOps;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.loot.LootTables;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.item.MythicItems;
 
 public class MythicLootOps {
     public static final Identifier BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");

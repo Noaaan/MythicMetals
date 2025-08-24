@@ -1,9 +1,9 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.mythicmetals.data.MythicTags;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.block.BlockState;
-import com.mythicmetals.data.MythicTags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 

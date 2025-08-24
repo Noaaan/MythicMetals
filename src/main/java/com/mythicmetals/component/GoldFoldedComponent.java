@@ -1,5 +1,7 @@
 package com.mythicmetals.component;
 
+import com.mythicmetals.item.tools.MidasGoldSword;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import net.minecraft.item.Item;
@@ -7,8 +9,6 @@ import net.minecraft.item.tooltip.TooltipAppender;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import com.mythicmetals.item.tools.MidasGoldSword;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.util.function.Consumer;
 
 public record GoldFoldedComponent(int goldFolded, boolean isRoyal, boolean showTooltip) implements TooltipAppender {

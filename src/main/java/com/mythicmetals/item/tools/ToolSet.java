@@ -1,5 +1,8 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -8,9 +11,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.StringUtilsAtHome;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;

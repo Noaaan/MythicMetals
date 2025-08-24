@@ -1,8 +1,8 @@
 package com.mythicmetals.registry;
 
-import net.minecraft.loot.condition.LootConditionType;
 import com.mythicmetals.misc.RandomChanceWithLuckCondition;
 import com.mythicmetals.misc.RegistryHelper;
+import net.minecraft.loot.condition.LootConditionType;
 
 public class RegisterLootConditions {
 

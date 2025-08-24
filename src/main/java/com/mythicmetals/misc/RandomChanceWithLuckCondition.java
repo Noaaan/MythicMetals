@@ -3,13 +3,13 @@ package com.mythicmetals.misc;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mythicmetals.registry.RegisterLootConditions;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.LootConditionType;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
-import com.mythicmetals.registry.RegisterLootConditions;
 
 public record RandomChanceWithLuckCondition(float chance) implements LootCondition {
     public static final MapCodec<RandomChanceWithLuckCondition> CODEC = RecordCodecBuilder.mapCodec(

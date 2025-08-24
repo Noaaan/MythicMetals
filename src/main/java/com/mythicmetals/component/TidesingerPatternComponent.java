@@ -1,5 +1,6 @@
 package com.mythicmetals.component;
 
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import net.minecraft.item.*;
@@ -8,7 +9,6 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;

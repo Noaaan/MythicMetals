@@ -1,5 +1,8 @@
 package com.mythicmetals.compat;
 
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.recipe.MidasFoldingRecipe;
+import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceSet;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
@@ -15,9 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.recipe.RecipeType;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.recipe.MidasFoldingRecipe;
-import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import java.util.*;
 
 public class MythicMetalsREIClientPlugin implements REIClientPlugin {

@@ -1,11 +1,11 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.*;
-import com.mythicmetals.misc.RegistryHelper;
+import net.minecraft.item.ToolMaterial;
 
 import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE;
 

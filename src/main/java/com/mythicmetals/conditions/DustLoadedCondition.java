@@ -1,10 +1,10 @@
 package com.mythicmetals.conditions;
 
 import com.mojang.serialization.MapCodec;
+import com.mythicmetals.MythicMetals;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
 import net.minecraft.registry.RegistryWrapper;
-import com.mythicmetals.MythicMetals;
 import org.jetbrains.annotations.Nullable;
 
 public class DustLoadedCondition implements ResourceCondition {

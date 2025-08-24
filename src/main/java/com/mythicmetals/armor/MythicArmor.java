@@ -1,12 +1,12 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.MythicMetals;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;

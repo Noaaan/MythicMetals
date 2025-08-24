@@ -1,10 +1,10 @@
 package com.mythicmetals.conditions;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
 
 /**
  * Simple resource conditions that check if the corresponding {@link MythicMetals#CONFIG} booleans are enabled.

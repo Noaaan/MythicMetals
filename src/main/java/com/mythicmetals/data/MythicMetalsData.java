@@ -1,5 +1,6 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Block;
@@ -8,7 +9,6 @@ import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class MythicMetalsData implements DataGeneratorEntrypoint {
 

@@ -1,5 +1,8 @@
 package com.mythicmetals.recipe;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.UpgradeComponent;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
@@ -11,8 +14,6 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.input.SmithingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.component.*;
 
 public record UpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemStack result) implements SmithingRecipe {
 

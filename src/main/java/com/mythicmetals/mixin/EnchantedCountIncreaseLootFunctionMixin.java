@@ -1,5 +1,6 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.data.MythicTags;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -9,7 +10,6 @@ import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
 import net.minecraft.registry.entry.RegistryEntry;
-import com.mythicmetals.data.MythicTags;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;

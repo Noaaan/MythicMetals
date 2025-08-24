@@ -1,5 +1,9 @@
 package com.mythicmetals.block;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.UpgradeComponent;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.MythicItems;
 import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
 import net.minecraft.block.*;
@@ -11,10 +15,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.UpgradeComponent;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
 
 public class BanglumOreBlock extends ExperienceDroppingBlock {
     public BanglumOreBlock(AbstractBlock.Settings settings) {

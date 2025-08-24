@@ -1,15 +1,15 @@
 package com.mythicmetals.data;
 
-import static net.minecraft.registry.RegistryKeys.*;
-import static com.mythicmetals.misc.RegistryHelper.id;
-
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.world.biome.Biome;
+
+import static com.mythicmetals.misc.RegistryHelper.id;
+import static net.minecraft.registry.RegistryKeys.ENCHANTMENT;
+import static net.minecraft.registry.RegistryKeys.ENTITY_TYPE;
 
 public class MythicTags {
 

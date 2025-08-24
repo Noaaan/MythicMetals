@@ -1,8 +1,8 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.armor.MythicArmor;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.*;
-import com.mythicmetals.armor.MythicArmor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

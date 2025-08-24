@@ -1,15 +1,15 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.UpgradeComponent;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.MythicItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.registry.entry.RegistryEntry;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.UpgradeComponent;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;

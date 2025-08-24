@@ -1,5 +1,8 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.client.models.StarPlatCloakModel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents;
@@ -12,9 +15,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerModelPart;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.models.StarPlatCloakModel;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

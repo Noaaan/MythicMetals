@@ -1,5 +1,8 @@
 package com.mythicmetals.block;
 
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.entity.BanglumNukeEntity;
+import com.mythicmetals.registry.RegisterSounds;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
@@ -12,9 +15,6 @@ import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.entity.BanglumNukeEntity;
-import com.mythicmetals.registry.RegisterSounds;
 
 public class BanglumNukeHandler {
     public static void init() {

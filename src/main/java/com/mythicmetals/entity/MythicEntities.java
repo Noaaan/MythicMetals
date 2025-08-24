@@ -1,8 +1,8 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class MythicEntities {
     public static final EntityType<BanglumTntEntity> BANGLUM_TNT_ENTITY_TYPE;

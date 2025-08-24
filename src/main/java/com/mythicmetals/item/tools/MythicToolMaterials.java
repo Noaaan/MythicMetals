@@ -1,15 +1,15 @@
 package com.mythicmetals.item.tools;
 
 import com.google.common.base.Suppliers;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.MythicItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
 import java.util.function.Supplier;
 
 public enum MythicToolMaterials implements ToolMaterial {

@@ -1,14 +1,14 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.gui.screen.ingame.ForgingScreen;
 import net.minecraft.client.gui.screen.ingame.SmithingScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.SmithingScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.RegistryHelper;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

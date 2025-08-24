@@ -1,5 +1,7 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.entity.BanglumNukeEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
@@ -9,8 +11,6 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.entity.BanglumNukeEntity;
 
 //VanillaCopy of the TntEntityRenderer
 public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity> {

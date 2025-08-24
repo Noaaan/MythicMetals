@@ -1,5 +1,6 @@
 package com.mythicmetals.component;
 
+import com.mythicmetals.MythicMetals;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
@@ -12,7 +13,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Util;
-import com.mythicmetals.MythicMetals;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;

@@ -1,6 +1,7 @@
 package com.mythicmetals.misc;
 
 import com.mojang.authlib.GameProfile;
+import com.mythicmetals.data.MythicTags;
 import eu.pb4.common.protection.api.CommonProtection;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,7 +12,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
-import com.mythicmetals.data.MythicTags;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 

@@ -1,5 +1,6 @@
 package com.mythicmetals.recipe;
 
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -9,7 +10,6 @@ import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
-import com.mythicmetals.item.tools.MythicTools;
 
 public class TippedRuniteArrowRecipe extends SpecialCraftingRecipe {
     public TippedRuniteArrowRecipe(CraftingRecipeCategory craftingRecipeCategory) {

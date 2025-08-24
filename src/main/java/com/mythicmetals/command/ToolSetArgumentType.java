@@ -7,10 +7,10 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import net.minecraft.command.CommandSource;
-import net.minecraft.text.Text;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
+import net.minecraft.command.CommandSource;
+import net.minecraft.text.Text;
 import java.util.concurrent.CompletableFuture;
 
 public class ToolSetArgumentType implements ArgumentType<ToolSet> {

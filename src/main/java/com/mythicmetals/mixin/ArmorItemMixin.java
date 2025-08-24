@@ -1,5 +1,8 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.armor.MythicArmorMaterials;
+import com.mythicmetals.entity.MythicEntityAttributes;
+import com.mythicmetals.misc.RegistryHelper;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -7,9 +10,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.registry.entry.RegistryEntry;
-import com.mythicmetals.armor.MythicArmorMaterials;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.entity.MythicEntityAttributes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

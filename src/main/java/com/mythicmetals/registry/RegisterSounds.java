@@ -1,10 +1,10 @@
 package com.mythicmetals.registry;
 
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.*;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
 

@@ -1,5 +1,6 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.*;
@@ -10,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.EntityEffectParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.World;
-import com.mythicmetals.item.tools.MythicTools;
 import org.jetbrains.annotations.Nullable;
 
 // [VanillaCopy]

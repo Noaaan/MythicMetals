@@ -1,11 +1,11 @@
 package com.mythicmetals.client.models;
 
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.mixin.EntityModelLayersAccessor;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.*;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.mixin.EntityModelLayersAccessor;
 import java.util.function.BiConsumer;
 
 public class MythicModelHandler {

@@ -1,6 +1,9 @@
 package com.mythicmetals.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.config.MythicConfigModel;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ui.component.TextureComponent;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
@@ -8,9 +11,6 @@ import io.wispforest.owo.ui.hud.Hud;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.config.MythicConfigModel;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class CarmotShieldHudHandler {
     public static final Identifier COMPONENT_ID = RegistryHelper.id("shield_overlay");

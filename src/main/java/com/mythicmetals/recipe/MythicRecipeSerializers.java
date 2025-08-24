@@ -1,10 +1,10 @@
 package com.mythicmetals.recipe;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import com.mythicmetals.misc.RegistryHelper;
 
 public class MythicRecipeSerializers {
 

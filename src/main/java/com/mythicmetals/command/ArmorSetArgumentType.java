@@ -7,9 +7,9 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import net.minecraft.text.Text;
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
+import net.minecraft.text.Text;
 import java.util.concurrent.CompletableFuture;
 
 public class ArmorSetArgumentType implements ArgumentType<ArmorSet> {

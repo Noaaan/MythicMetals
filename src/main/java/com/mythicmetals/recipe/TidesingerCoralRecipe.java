@@ -1,5 +1,8 @@
 package com.mythicmetals.recipe;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.TidesingerPatternComponent;
+import com.mythicmetals.data.MythicTags;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
@@ -10,9 +13,6 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.input.SmithingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.TidesingerPatternComponent;
-import com.mythicmetals.data.MythicTags;
 
 public record TidesingerCoralRecipe(Ingredient base, Ingredient addition, Ingredient template,
                                     ItemStack result) implements SmithingRecipe {

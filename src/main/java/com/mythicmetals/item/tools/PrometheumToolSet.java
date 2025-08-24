@@ -1,8 +1,8 @@
 package com.mythicmetals.item.tools;
 
-import net.minecraft.item.*;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
+import net.minecraft.item.*;
 
 public class PrometheumToolSet extends ToolSet {
 

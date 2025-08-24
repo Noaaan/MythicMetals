@@ -1,9 +1,9 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.entity.BanglumTntEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.world.explosion.Explosion;
-import com.mythicmetals.entity.BanglumTntEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

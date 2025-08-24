@@ -1,14 +1,14 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.block.ConduitPowered;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.registry.RegisterPointOfInterests;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.ConduitBlockEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.poi.PointOfInterestStorage;
-import com.mythicmetals.block.ConduitPowered;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.registry.RegisterPointOfInterests;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

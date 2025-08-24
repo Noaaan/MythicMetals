@@ -1,9 +1,9 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.MythicMetals;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.MinecartEntity;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
 
 public class PalladiumMinecartEntity extends MinecartEntity {
 

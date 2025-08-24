@@ -1,5 +1,7 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.misc.MythicDamageTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -12,8 +14,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.MythicDamageTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {

@@ -1,9 +1,9 @@
 package com.mythicmetals.config;
 
+import com.mythicmetals.MythicMetals;
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
 import io.wispforest.owo.ui.core.Positioning;
-import com.mythicmetals.MythicMetals;
 
 @SuppressWarnings("unused")
 @Modmenu(modId = MythicMetals.MOD_ID)

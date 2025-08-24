@@ -1,5 +1,8 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.registry.RegisterSounds;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.item.*;
 import net.minecraft.recipe.Ingredient;
@@ -7,9 +10,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.registry.RegisterSounds;
 import java.util.List;
 import java.util.Map;
 

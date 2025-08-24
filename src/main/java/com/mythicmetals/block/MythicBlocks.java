@@ -1,6 +1,8 @@
 package com.mythicmetals.block;
 
-import java.util.*;
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.registry.RegisterSounds;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
@@ -10,9 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.registry.RegisterSounds;
+import java.util.*;
 
 @SuppressWarnings("unused")
 public class MythicBlocks {

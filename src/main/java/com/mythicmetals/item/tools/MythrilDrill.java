@@ -1,5 +1,10 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.component.*;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.component.DataComponentTypes;
@@ -21,11 +26,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.component.*;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
 import org.joml.Math;
 import java.util.*;
 

@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin;
 
-import net.minecraft.entity.AreaEffectCloudEntity;
 import com.mythicmetals.misc.WasSpawnedFromCreeper;
+import net.minecraft.entity.AreaEffectCloudEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 

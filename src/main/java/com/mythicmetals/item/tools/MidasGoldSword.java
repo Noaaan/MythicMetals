@@ -1,5 +1,7 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.component.MythicDataComponents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -9,8 +11,6 @@ import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
-import com.mythicmetals.component.GoldFoldedComponent;
-import com.mythicmetals.component.MythicDataComponents;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;

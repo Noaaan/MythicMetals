@@ -1,6 +1,8 @@
 package com.mythicmetals.armor;
 
-import com.mythicmetals.client.models.*;
+import com.mythicmetals.client.models.HelmetModel;
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -9,7 +11,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.misc.RegistryHelper;
 import org.jetbrains.annotations.NotNull;
 
 public class MetallurgiumArmor extends HallowedArmor {

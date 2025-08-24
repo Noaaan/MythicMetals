@@ -1,5 +1,9 @@
 package com.mythicmetals.compat;
 
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.TidesingerPatternComponent;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import dev.emi.emi.api.recipe.*;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
@@ -8,10 +12,6 @@ import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.TidesingerPatternComponent;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.List;

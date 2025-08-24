@@ -1,8 +1,8 @@
 package com.mythicmetals.block.entity;
 
+import com.mythicmetals.block.MythicBlocks;
 import io.wispforest.owo.registration.reflect.BlockEntityRegistryContainer;
 import net.minecraft.block.entity.BlockEntityType;
-import com.mythicmetals.block.*;
 import java.lang.reflect.Field;
 
 public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {

@@ -1,5 +1,7 @@
 package com.mythicmetals.ability;
 
+import com.mythicmetals.armor.ArmorSet;
+import com.mythicmetals.item.tools.ToolSet;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
@@ -7,8 +9,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.*;
-import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.item.tools.ToolSet;
 import java.util.*;
 
 /**

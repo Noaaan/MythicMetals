@@ -6,13 +6,12 @@ import com.glisco.isometricrenders.screen.RenderScreen;
 import com.glisco.isometricrenders.screen.ScreenScheduler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.mythicmetals.armor.MythicArmor;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import com.mythicmetals.armor.MythicArmor;
-
 import java.util.ArrayList;
 import java.util.List;
 

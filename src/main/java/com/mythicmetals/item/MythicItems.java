@@ -1,5 +1,7 @@
 package com.mythicmetals.item;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.misc.*;
 import io.wispforest.owo.registration.reflect.ItemRegistryContainer;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
@@ -7,8 +9,6 @@ import net.minecraft.item.SmithingTemplateItem;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;

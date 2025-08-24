@@ -1,5 +1,7 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
@@ -8,8 +10,6 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.random.Random;
-import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
-import com.mythicmetals.block.MythicBlocks;
 
 public class EnchantedMidasBlockEntityRenderer implements BlockEntityRenderer<EnchantedMidasGoldBlockEntity> {
     private final BlockRenderManager blockRenderManager;

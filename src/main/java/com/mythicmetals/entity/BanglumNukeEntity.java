@@ -1,6 +1,11 @@
 package com.mythicmetals.entity;
 
 import com.mojang.authlib.GameProfile;
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.misc.*;
+import com.mythicmetals.registry.RegisterSounds;
 import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.endec.impl.KeyedEndec;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
@@ -20,11 +25,6 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.misc.*;
-import com.mythicmetals.registry.RegisterSounds;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 

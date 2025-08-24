@@ -1,13 +1,13 @@
 package com.mythicmetals.effects;
 
+import com.mythicmetals.entity.MythicEntityAttributes;
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.entity.MythicEntityAttributes;
 
 public class MythicStatusEffects {
 

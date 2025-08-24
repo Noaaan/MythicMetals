@@ -1,5 +1,18 @@
 package com.mythicmetals.client;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.*;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.client.rendering.*;
+import com.mythicmetals.compat.IsometricArmorStandExporter;
+import com.mythicmetals.component.*;
+import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.entity.MythicEntities;
+import com.mythicmetals.item.tools.*;
+import com.mythicmetals.misc.*;
+import com.mythicmetals.mixin.WorldRendererInvoker;
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -33,19 +46,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.*;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.rendering.*;
-import com.mythicmetals.compat.IsometricArmorStandExporter;
-import com.mythicmetals.component.*;
-import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.entity.MythicEntities;
-import com.mythicmetals.item.tools.*;
-import com.mythicmetals.misc.*;
-import com.mythicmetals.mixin.WorldRendererInvoker;
-import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import java.util.ArrayList;
 
 public class MythicMetalsClient implements ClientModInitializer {

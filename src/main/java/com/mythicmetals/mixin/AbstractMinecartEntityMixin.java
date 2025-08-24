@@ -1,16 +1,16 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.block.Lavaloggable;
+import com.mythicmetals.block.PalladiumRailBlock;
+import com.mythicmetals.entity.BanglumTntMinecartEntity;
+import com.mythicmetals.entity.PalladiumMinecartEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.block.Lavaloggable;
-import com.mythicmetals.block.PalladiumRailBlock;
-import com.mythicmetals.entity.BanglumTntMinecartEntity;
-import com.mythicmetals.entity.PalladiumMinecartEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;

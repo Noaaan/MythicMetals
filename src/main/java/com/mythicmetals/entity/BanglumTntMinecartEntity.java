@@ -1,5 +1,8 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.MythicMetals;
+import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
@@ -11,9 +14,6 @@ import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.item.tools.MythicTools;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntMinecartEntity extends TntMinecartEntity {

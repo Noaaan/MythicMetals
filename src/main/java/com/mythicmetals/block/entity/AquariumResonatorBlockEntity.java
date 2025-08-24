@@ -1,5 +1,8 @@
 package com.mythicmetals.block.entity;
 
+import com.mythicmetals.block.AquariumResonatorBlock;
+import com.mythicmetals.block.ConduitPowered;
+import com.mythicmetals.misc.MythicParticleSystem;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -11,9 +14,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
-import com.mythicmetals.block.AquariumResonatorBlock;
-import com.mythicmetals.block.ConduitPowered;
-import com.mythicmetals.misc.MythicParticleSystem;
 import java.util.List;
 
 public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
