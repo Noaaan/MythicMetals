@@ -1,3 +1,17 @@
+# 0.24.4
+
+## New Textures
+
+Big thank you to thyreo for these awesome new armor items!
+
+- Carmot Armor Items
+- Osmium Armor Items (new!)
+- Osmium Chainmail Armor Items (new!)
+
+## Changes
+
+- Fixed a bug with Unstable Banglum TNT spawning the wrong explosive
+
 # 0.24.3
 
 ## Changes
