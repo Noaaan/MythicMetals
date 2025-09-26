@@ -2,6 +2,7 @@ package com.mythicmetals.armor;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -18,7 +19,7 @@ public class ArmorSet {
     private final ArmorItem leggings;
     private final ArmorItem boots;
 
-    private final List<ArmorItem> armorSet;
+    private final List<ArmorItem> items;
 
     private static final Map<ArmorItem.Type, Integer> BASE_DURABILITY = Map.of(
         ArmorItem.Type.HELMET, 12,
@@ -46,7 +47,7 @@ public class ArmorSet {
         this.chestplate = baseArmorItem(material, ArmorItem.Type.CHESTPLATE, durabilityModifier, settingsProcessor);
         this.leggings = baseArmorItem(material, ArmorItem.Type.LEGGINGS, durabilityModifier, settingsProcessor);
         this.boots = baseArmorItem(material, ArmorItem.Type.BOOTS, durabilityModifier, settingsProcessor);
-        this.armorSet = List.of(helmet, chestplate, leggings, boots);
+        this.items = List.of(helmet, chestplate, leggings, boots);
     }
 
     public void register(String name) {
@@ -88,7 +89,7 @@ public class ArmorSet {
     }
 
     public List<ArmorItem> getArmorItems() {
-        return armorSet;
+        return items;
     }
 
     public boolean isInArmorSet(ItemStack stack) {
@@ -97,5 +98,13 @@ public class ArmorSet {
 
     public RegistryEntry<ArmorMaterial> getEntry(ArmorMaterial material) {
         return Registries.ARMOR_MATERIAL.getEntry(material);
+    }
+
+    public String getTitlecaseName() {
+        return StringUtilsAtHome.toTitleCase(MythicArmor.ARMOR_MAP.inverse().get(this));
+    }
+
+    public String getMaterialId() {
+        return MythicArmor.ARMOR_MAP.inverse().get(this);
     }
 }

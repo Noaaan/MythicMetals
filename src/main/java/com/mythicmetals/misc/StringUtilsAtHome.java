@@ -11,11 +11,14 @@ public class StringUtilsAtHome {
      * @return Example:
      * cAt -> Cat
      * super title -> Super Title
+     * Modified to also remove underscores
      */
     public static String toTitleCase(String input) {
         if (input == null || input.isEmpty()) {
             return input;
         }
+
+        input = input.replaceAll("_", " ");
 
         StringBuilder converted = new StringBuilder();
 

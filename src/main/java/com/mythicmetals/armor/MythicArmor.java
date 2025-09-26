@@ -1,5 +1,7 @@
 package com.mythicmetals.armor;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
@@ -8,12 +10,10 @@ import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 @SuppressWarnings("unused")
 public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
-    public static final Map<String, ArmorSet> ARMOR_MAP = new HashMap<>();
+    public static final BiMap<String, ArmorSet> ARMOR_MAP = HashBiMap.create();
     public static final ArmorSet ADAMANTITE = new ArmorSet(MythicArmorMaterials.ADAMANTITE, 30);
     public static final ArmorSet AQUARIUM = new ArmorSet(MythicArmorMaterials.AQUARIUM, 20);
     public static final ArmorSet BANGLUM = new ArmorSet(MythicArmorMaterials.BANGLUM, 14);

@@ -36,7 +36,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.trim.ArmorTrim;
 import net.minecraft.item.trim.ArmorTrimPattern;
 import net.minecraft.loot.context.*;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.command.*;
@@ -56,10 +55,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SuppressWarnings({"UnstableApiUsage", "CodeBlock2Expr"})
 public final class MythicCommands {
 
-    public static final String ITEM_SCALE = "{ .sized-image style=\"--image-width: 40%;\" }";
-    public static final String RECIPE_SCALE = "{ .sized-recipe style=\"--image-width: 40%;\" }";
-    public static final String ICON_SCALE = "{ .sized-image style=\"--image-width: 8%;\" }";
-    public static final String BR = "<br>\n";
     public static BiMap<String, OreConfig> ORE_CONFIG = HashBiMap.create();
 
     private MythicCommands() {
@@ -83,6 +78,7 @@ public final class MythicCommands {
             var range = CommandManager.literal("range").build();
             var tools = CommandManager.literal("tools").build();
             var allTools = CommandManager.literal("tools-all").executes(MythicCommands::exportAllTools).build();
+            var allArmor = CommandManager.literal("armor-all").executes(MythicCommands::exportAllArmor).build();
             var ores = CommandManager.literal("ores").build();
             var armor = CommandManager.literal("armor").build();
             var wiki = CommandManager.literal("wiki").build();
@@ -147,6 +143,7 @@ public final class MythicCommands {
             wiki.addChild(tools);
             wiki.addChild(allTools);
             wiki.addChild(armor);
+            wiki.addChild(allArmor);
 
             // Misc nodes
             range.addChild(rangeType);
@@ -166,6 +163,41 @@ public final class MythicCommands {
         });
     }
 
+    private static int exportAllArmor(CommandContext<ServerCommandSource> context) {
+        var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
+        try {
+            Files.createDirectory(folder);
+        } catch (FileAlreadyExistsException ignored) {
+            MythicMetals.LOGGER.debug("Folder already exists");
+        } catch (IOException e) {
+            MythicMetals.LOGGER.error("Failed to create folder", e);
+        }
+        MythicArmor.ARMOR_MAP.forEach((name, armorSet) -> {
+            var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + ".md");
+            try {
+                Files.createFile(file);
+            } catch (FileAlreadyExistsException ignored) {
+                // no-op
+            }
+            catch (IOException e) {
+                MythicMetals.LOGGER.error("Failed to write wiki data");
+                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                return;
+            }
+            try {
+                Files.writeString(file, WikiExporter.computeArmorSet(armorSet));
+                var logString = "Successfully exported equipment/%s-tools".formatted(name.toLowerCase(Locale.ROOT));
+                MythicMetals.LOGGER.info(logString);
+            } catch (IOException e) {
+                MythicMetals.LOGGER.error("Failed to write wiki data");
+                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+            }
+        });
+
+        context.getSource().sendFeedback(() -> Text.literal("Exported all the armor to wiki format into the config folder"), false);
+        return 0;
+    }
+
     // TODO - Definitely the most lazy approach.
     //  At least make it overwrite the files instead of forcing you to delete the folder every time
     private static int exportAllTools(CommandContext<ServerCommandSource> context) {
@@ -181,6 +213,14 @@ public final class MythicCommands {
             var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + "-tools.md");
             try {
                 Files.createFile(file);
+            } catch (FileAlreadyExistsException ignored) {
+                // no-op
+            } catch (IOException e) {
+                MythicMetals.LOGGER.error("Failed to write wiki data");
+                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                return;
+            }
+            try {
                 Files.writeString(file, WikiExporter.computeToolset(value));
                 var logString = "Successfully exported equipment/%s-tools".formatted(name.toLowerCase(Locale.ROOT));
                 MythicMetals.LOGGER.info(logString);
@@ -191,7 +231,6 @@ public final class MythicCommands {
         });
 
         context.getSource().sendFeedback(() -> Text.literal("Exported all the tools (in the shed) to wiki format into the config folder"), false);
-        context.getSource().sendFeedback(() -> Text.literal("Remember to delete it to regenerate it!"), false);
         return 0;
     }
 
@@ -358,66 +397,7 @@ public final class MythicCommands {
     private static int exportArmor(CommandContext<ServerCommandSource> context) {
         var armorSet = ArmorSetArgumentType.getArmorSet(context, "armorset");
         var source = context.getSource();
-
-        StringBuilder output = new StringBuilder();
-
-        // Armor Model on top of the admonition
-        String armorMaterial = Registries.ITEM.getId(armorSet.getHelmet()).getPath().split("_helmet")[0];
-        String armorTypeName = StringUtilsAtHome.toTitleCase(armorMaterial.replace("_", " ") + " Armor");
-
-        output.append("\n");
-        output.append("<center class=tooltip>").append("\n");
-        output.append("<h3>**").append(armorTypeName).append("**</h3>").append("\n");
-        output.append("![Image of %s model](../../assets/armor-models/256/%s.png)".formatted(armorTypeName, armorMaterial + "_256")).append("\n");
-
-        for (var armor : armorSet.getArmorItems()) {
-            /* TODO - The string handling is a bit bad, although it does have to be very specific in regards
-             * to be implemented correctly into MkDocs. Try to improve this later.
-             */
-            String id = Registries.ITEM.getId(armor).getPath();
-            String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
-
-            int protection = armor.getProtection();
-
-            output.append("\n");
-            output.append("<center class=tooltip>").append("\n");
-            output.append("<h4>**").append(name).append("**</h4>").append("\n");
-            output.append("![Image of %s](../../assets/mythicmetals/%s.png)".formatted(name, id)).append(ITEM_SCALE).append(BR);
-            for (int i = 1; i < protection; i = i + 2) {
-                output.append("![armor](../../assets/icon/full_armor_icon.png)").append(ICON_SCALE).append("\n");
-            }
-            if ((protection & 1) == 1) {
-                output.append("![armor](../../assets/icon/half_armor_icon.png)").append(ICON_SCALE).append("\n");
-            }
-            output.append(BR);
-            // +5 Armor, +2 Toughness
-            output.append("+%s Armor".formatted(protection));
-            if (armor.getToughness() > 0) {
-                output.append(", +%s Toughness".formatted(armor.getToughness()));
-            }
-            output.append(BR);
-            if (armor.getMaterial().value().knockbackResistance() > 0) {
-                output.append("+%s Knockback Resistance").append(BR);
-            }
-            // 350 Durability
-            output.append("%s Durability".formatted(armor.getDefaultStack().getMaxDamage())).append(BR);
-        }
-
-        // Headers
-        output.append("===HEADERS===\n");
-        output.append("## Obtaining\n\n");
-        output.append("### Crafting\n\n");
-        // armor recipes
-        output.append(armorTypeName).append(" can be crafted from ").append(armorMaterial).append(" TODO - LINK TO MATERIAL.");
-        output.append("It is crafted just like any other armor").append(BR);
-        for (var armor : armorSet.getArmorItems()) {
-            String id = Registries.ITEM.getId(armor).getPath();
-            String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
-            output.append("![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)".formatted(name, id)).append(RECIPE_SCALE).append(BR);
-        }
-        output.append("## Usages\n\n");
-        output.append("## Trivia\n\n");
-        output.append("## History\n\n");
+        var output = WikiExporter.computeArmorSet(armorSet);
 
         MythicMetals.LOGGER.info(output);
         source.sendFeedback(() -> Text.literal("Exported armor to wiki format in logs"), false);
