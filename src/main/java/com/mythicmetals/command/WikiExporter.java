@@ -140,7 +140,7 @@ public class WikiExporter {
             
             ## History
             
-            """.formatted(name, lowercaseName + "_256.png", admonition, recipes);
+            """.formatted(name, lowercaseName + ".png", admonition, recipes);
     }
 
     static String computeToolAdmonition(ToolSet toolSet) {
