@@ -2,11 +2,13 @@
 
 ## New Textures
 
-Big thank you to thyreo for these awesome new armor items!
-
 - Carmot Armor Items
 - Osmium Armor Items (new!)
 - Osmium Chainmail Armor Items (new!)
+- Prometheum Armor Model
+
+Big thank you to thyreo for these awesome new armor items!
+As well as a thank you to Kingame for the new Prometheum Helmet model.
 
 ## Changes
 
