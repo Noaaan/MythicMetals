@@ -35,14 +35,8 @@ public record UpgradeSmithingRecipe(Ingredient base, Ingredient addition, ItemSt
     @Override
     public boolean matches(SmithingRecipeInput input, World world) {
         boolean validRecipe = this.base.test(input.base()) && this.addition.test(input.addition());
-        var stack = input.base();
-        if (!stack.contains(MythicDataComponents.UPGRADES)) {
-            MythicMetals.LOGGER.warn("Upgrade recipe was valid but item did not contain an Upgrade Component!");
-            return false;
-        }
-
         var addition = input.addition().getItem();
-        var upgrades = stack.get(MythicDataComponents.UPGRADES);
+        var upgrades = input.base().get(MythicDataComponents.UPGRADES);
         if (upgrades == null) return false;
 
         boolean isUpgradeValid = !addition.equals(Items.AIR) && !upgrades.hasUpgrade(addition);

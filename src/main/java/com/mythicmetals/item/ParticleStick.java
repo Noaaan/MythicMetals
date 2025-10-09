@@ -18,12 +18,6 @@ public class ParticleStick<T> extends Item {
         this.extraData = null;
     }
 
-    public ParticleStick(Settings settings, ParticleSystem<T> particle, T data) {
-        super(settings);
-        this.particle = particle;
-        this.extraData = data;
-    }
-
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
@@ -33,10 +27,5 @@ public class ParticleStick<T> extends Item {
             particle.spawn(world, user.getPos());
         }
         return TypedActionResult.pass(stack);
-    }
-
-    @Override
-    public boolean hasGlint(ItemStack stack) {
-        return true;
     }
 }

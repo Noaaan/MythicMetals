@@ -78,8 +78,8 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         // Decides what blocks are ignored by the nuke
         Predicate<BlockState> statePredicate;
 
-        // Carmot core - Do not destroy ores
         if (coreBlock == MythicBlocks.CARMOT_NUKE_CORE) {
+            // Carmot core - Do not destroy ores
             statePredicate = state -> !state.isIn(MythicTags.CARMOT_NUKE_IGNORED);
         } else if (coreBlock == MythicBlocks.SPONGE_NUKE_CORE) {
             statePredicate = state -> !state.getFluidState().isEmpty();

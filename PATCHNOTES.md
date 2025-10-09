@@ -11,6 +11,7 @@ Big thank you to thyreo for these awesome new armor items!
 ## Changes
 
 - Fixed a bug with Unstable Banglum TNT spawning the wrong explosive
+- Fixed a logging issue with the Smithing Table (#300)
 
 # 0.24.3
 
