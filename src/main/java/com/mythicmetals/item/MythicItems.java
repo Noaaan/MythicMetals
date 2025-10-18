@@ -154,7 +154,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.aegis.additions_slot_description"),
             List.of(RegistryHelper.id("item/template/empty_slot_hallowed_sword"), RegistryHelper.id("item/template/empty_slot_palladium_sword")),
             SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures(),
-            "aegis_template"
+            "aegis_smithing_template"
         );
 
         public static final Item CARMOT_SMITHING_TEMPLATE = createSmithingTemplate(
@@ -174,7 +174,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.osmium.additions_slot_description"),
             ARMOR_ITEMS,
             SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures(),
-            "osmium_chainmail_smtihing_template"
+            "osmium_chainmail_smithing_template"
         );
 
         public static final Item TIDESINGER_SMITHING_TEMPLATE = createSmithingTemplate(
