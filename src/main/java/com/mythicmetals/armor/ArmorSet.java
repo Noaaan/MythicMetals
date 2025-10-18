@@ -158,7 +158,7 @@ public class ArmorSet {
             case BOOTS -> "boots";
             case BODY -> "body";
         };
-        return RegistryHelper.itemKey(name + typeName);
+        return RegistryHelper.itemKey(name + "_" + typeName);
     }
 
     public String getName() {

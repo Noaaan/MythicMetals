@@ -6,6 +6,7 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
+import java.util.Optional;
 
 public class HelmetModel extends BipedEntityModel<BipedEntityRenderState> {
     final EquipmentSlot slot;
@@ -14,12 +15,6 @@ public class HelmetModel extends BipedEntityModel<BipedEntityRenderState> {
         super(root);
         this.slot = slot;
     }
-//
-//    @Override
-//    public void render(MatrixStack ms, VertexConsumer buffer, int light, int overlay, int color) {
-//        renderArmorPart(slot);
-//        super.render(ms, buffer, light, overlay, color);
-//    }
 
     private void renderArmorPart(EquipmentSlot slot) {
         setVisible(false);

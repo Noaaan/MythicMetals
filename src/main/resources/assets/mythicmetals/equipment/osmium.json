@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:osmium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:osmium"
+      }
+    ]
+  }
+}

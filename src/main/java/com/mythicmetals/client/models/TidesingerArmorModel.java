@@ -9,9 +9,9 @@ public class TidesingerArmorModel {
         ModelData data = new ModelData();
         ModelPartData root = data.getRoot();
 
-        root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
 
         ModelPartData head = root.addChild("head", ModelPartBuilder.create(), ModelTransform.NONE);
+        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
 
         ModelPartData head_armor = head.addChild("head_armor", ModelPartBuilder.create().uv(0, 26).cuboid(-4.0F, -9.0F, -4.0F, 9.0F, 9.0F, 9.0F)
             .uv(0, 118).cuboid(-7.0F, -15.0F, -4.25F, 15.0F, 10.0F, 0.0F), ModelTransform.pivot(-0.5F, 0.5F, -0.5F));

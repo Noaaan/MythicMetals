@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:hallowed"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:hallowed"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:prometheum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:prometheum"
+      }
+    ]
+  }
+}

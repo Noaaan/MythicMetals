@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:aquarium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:aquarium"
+      }
+    ]
+  }
+}

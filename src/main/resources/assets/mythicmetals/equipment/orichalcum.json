@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:orichalcum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:orichalcum"
+      }
+    ]
+  }
+}

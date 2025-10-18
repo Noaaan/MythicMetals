@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:palladium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:palladium"
+      }
+    ]
+  }
+}

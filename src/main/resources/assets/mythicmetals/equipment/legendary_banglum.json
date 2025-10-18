@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:legendary_banglum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:legendary_banglum"
+      }
+    ]
+  }
+}

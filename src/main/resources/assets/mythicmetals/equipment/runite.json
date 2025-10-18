@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:runite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:runite"
+      }
+    ]
+  }
+}

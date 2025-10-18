@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:stormyx"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:stormyx"
+      }
+    ]
+  }
+}

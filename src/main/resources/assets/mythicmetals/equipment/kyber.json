@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:kyber"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:kyber"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:adamantite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:adamantite"
+      }
+    ]
+  }
+}

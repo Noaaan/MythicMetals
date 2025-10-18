@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:celestium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:celestium"
+      }
+    ]
+  }
+}

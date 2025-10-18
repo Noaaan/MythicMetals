@@ -8,7 +8,6 @@ public class HallowedArmorModel {
         ModelData data = new ModelData();
         var root = data.getRoot();
 
-        root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
@@ -21,6 +20,8 @@ public class HallowedArmorModel {
                 .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F)),
             ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
         );
+
+        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
 
         head.addChild(
             "wing_r",

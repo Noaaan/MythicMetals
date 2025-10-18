@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mythicmetals:carmot"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mythicmetals:carmot"
+      }
+    ]
+  }
+}

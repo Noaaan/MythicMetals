@@ -10,7 +10,6 @@ public class BanglumArmorModel {
         ModelPartData root = data.getRoot();
         var dil = new Dilation(0.01F);
 
-        root.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
         root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
@@ -24,6 +23,7 @@ public class BanglumArmorModel {
                 .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)),
             ModelTransform.NONE
         );
+        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
 
         head.addChild(
             "right_horn",
