@@ -1,8 +1,6 @@
 package com.mythicmetals.compat;
 
 import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.recipe.MidasFoldingRecipe;
-import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceSet;
 import me.shedaniel.rei.api.client.plugins.REIClientPlugin;
@@ -17,15 +15,15 @@ import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
-import net.minecraft.recipe.RecipeType;
 import java.util.*;
 
 public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        registry.registerRecipeFiller(MidasFoldingRecipe.class, RecipeType.SMITHING, MidasFoldingDisplay::new);
-        registry.registerRecipeFiller(TidesingerCoralRecipe.class, RecipeType.SMITHING, TidesingerSmithingDisplay::new);
+        //registry.beginFiller(MidasFoldingDisplay.class).fill(Display::provideInternalDisplay);
+        //registry.beginFiller(TidesingerCoralRecipe.class).fill(Display::provideInternalDisplay);
+        //registry.registerRecipeFiller(TidesingerCoralRecipe.class, RecipeType.SMITHING, TidesingerSmithingDisplay::new);
 
         // Tipped Runite Arrow handling
         EntryIngredient arrowStack = EntryIngredient.of(EntryStacks.of(MythicTools.RUNITE_ARROW));
@@ -44,7 +42,7 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
                     var outputStack = PotionContentsComponent.createStack(MythicTools.TIPPED_RUNITE_ARROW, potion);
                     outputStack.setCount(8);
                     EntryIngredient output = EntryIngredients.of(outputStack);
-                    registry.add(new DefaultCustomDisplay(null, input, Collections.singletonList(output)));
+                    registry.add(new DefaultCustomDisplay(input, Collections.singletonList(output), Optional.empty()));
                 }
             }
         });

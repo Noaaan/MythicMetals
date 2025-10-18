@@ -42,8 +42,10 @@
     "mythicmetals.mixins.json"
   ],
   "accessWidener": "mythicmetals.accessWidener",
+  "recommends": {
+    "alloy_forgery": "*"
+  },
   "depends": {
-    "alloy_forgery": ">=2.4.1",
     "fabricloader": ">=0.16.0",
     "fabric": ">=0.115.0",
     "minecraft": "1.21.x",

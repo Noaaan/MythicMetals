@@ -17,8 +17,8 @@ import net.minecraft.util.math.Vec3d;
 
 public class BanglumPick extends PickaxeItem {
 
-    public BanglumPick(ToolMaterial material, Settings settings) {
-        super(material, settings);
+    public BanglumPick(ToolMaterial material, int damage, float speed, Settings settings) {
+        super(material, damage, speed, settings);
     }
 
     /**
@@ -30,17 +30,18 @@ public class BanglumPick extends PickaxeItem {
         boolean shouldPass = false;
         var world = context.getWorld();
         var player = context.getPlayer();
+        var stack = context.getStack();
 
-        if (player != null && !isCoolingDown(player, context.getStack()) && !world.isClient()) {
+        if (player != null && !isCoolingDown(player, stack) && !world.isClient()) {
 
             var iterator = BlockBreaker.findBlocks(context, 5);
             for (BlockPos blockPos : iterator) {
                 if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
                     continue;
                 }
-                if (isCorrectForDrops(context.getStack(), world.getBlockState(blockPos))) {
-                    WorldOps.breakBlockWithItem(world, blockPos, context.getStack(), player);
-                    context.getStack().damage(2, player, EquipmentSlot.MAINHAND);
+                if (isCorrectForDrops(stack, world.getBlockState(blockPos))) {
+                    WorldOps.breakBlockWithItem(world, blockPos, stack, player);
+                    stack.damage(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }
             }
@@ -56,7 +57,7 @@ public class BanglumPick extends PickaxeItem {
             WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.PLAYERS);
 
             RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayerEntity) player);
-            player.getItemCooldownManager().set(this, 100);
+            player.getItemCooldownManager().set(stack, 100);
             return ActionResult.SUCCESS;
         }
 
@@ -65,7 +66,7 @@ public class BanglumPick extends PickaxeItem {
 
     public static boolean isCoolingDown(LivingEntity entity, ItemStack stack) {
         if (entity != null && entity.isPlayer()) {
-            return ((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack.getItem());
+            return ((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack);
         }
         return false;
     }

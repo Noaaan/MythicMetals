@@ -6,7 +6,6 @@ import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.text.Text;
 import java.util.List;
@@ -33,10 +32,8 @@ public class TippedRuniteArrowItem extends RuniteArrowItem {
     }
 
     @Override
-    public String getTranslationKey(ItemStack stack) {
-        return Potion.finishTranslationKey(
-            stack.getOrDefault(DataComponentTypes.POTION_CONTENTS, PotionContentsComponent.DEFAULT).potion(),
-            this.getTranslationKey() + ".effect."
-        );
+    public Text getName(ItemStack stack) {
+        PotionContentsComponent potionContentsComponent = stack.get(DataComponentTypes.POTION_CONTENTS);
+        return potionContentsComponent != null ? potionContentsComponent.getName(this.translationKey + ".effect.") : super.getName(stack);
     }
 }

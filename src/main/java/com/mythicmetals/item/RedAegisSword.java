@@ -4,8 +4,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 
 public class RedAegisSword extends SwordItem {
-    public RedAegisSword(ToolMaterial material, Settings settings) {
-        super(material, settings);
+    public RedAegisSword(ToolMaterial material, float damage, float speed, Settings settings) {
+        super(material, damage, speed, settings);
     }
 
     @Override

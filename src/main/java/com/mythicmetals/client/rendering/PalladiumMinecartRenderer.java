@@ -7,14 +7,10 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MinecartEntityRenderer;
 import net.minecraft.util.Identifier;
 
-public class PalladiumMinecartRenderer extends MinecartEntityRenderer<PalladiumMinecartEntity> {
+// FIXME - Texture no longer...
+public class PalladiumMinecartRenderer extends MinecartEntityRenderer {
 
     public PalladiumMinecartRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, MythicModelHandler.PALLADIUM_MINECART);
-    }
-
-    @Override
-    public Identifier getTexture(PalladiumMinecartEntity abstractMinecartEntity) {
-        return RegistryHelper.id("textures/models/palladium_minecart.png");
     }
 }

@@ -299,31 +299,16 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 });
             } else {
                 modEquipmentTag = MythicMetalsData.createModItemTag("equipment/" + name);
-                armorSet.getArmorItems().forEach(armorItem -> {
-                    switch (armorItem.getSlotType()) {
-                        case HEAD -> {
-                            getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(armorItem);
-                            getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).add(armorItem);
-                        }
-                        case CHEST -> {
-                            getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(armorItem);
-                            getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).add(armorItem);
-                        }
-                        case LEGS -> {
-                            getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(armorItem);
-                            getOrCreateTagBuilder(ItemTags.LEG_ARMOR).add(armorItem);
-                        }
-                        case FEET -> {
-                            getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(armorItem);
-                            getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).add(armorItem);
-                        }
-                        case null, default -> {
-                            // no-op
-                        }
-                    }
-                    getOrCreateTagBuilder(modTag).add(armorItem);
-                    getOrCreateTagBuilder(modEquipmentTag).add(armorItem);
-                });
+                getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(armorSet.getHelmet());
+                getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).add(armorSet.getHelmet());
+                getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(armorSet.getChestplate());
+                getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).add(armorSet.getChestplate());
+                getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(armorSet.getLeggings());
+                getOrCreateTagBuilder(ItemTags.LEG_ARMOR).add(armorSet.getLeggings());
+                getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(armorSet.getBoots());
+                getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).add(armorSet.getBoots());
+                getOrCreateTagBuilder(modTag).add(armorSet.getHelmet(), armorSet.getChestplate(), armorSet.getLeggings(), armorSet.getBoots());
+                getOrCreateTagBuilder(modEquipmentTag).add(armorSet.getHelmet(), armorSet.getChestplate(), armorSet.getLeggings(), armorSet.getBoots());
             }
             getOrCreateTagBuilder(modArmorTag).addTag(modTag);
             getOrCreateTagBuilder(commonTag).addTag(modTag);

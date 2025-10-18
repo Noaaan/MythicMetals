@@ -13,18 +13,33 @@ import net.minecraft.recipe.*;
 import net.minecraft.recipe.input.SmithingRecipeInput;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Optional;
 
 import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 
-public record MidasFoldingRecipe(Ingredient template, Ingredient base, Ingredient addition,
-                                 ItemStack result) implements SmithingRecipe {
+public class MidasFoldingRecipe implements SmithingRecipe {
+
+    private final Optional<Ingredient> template;
+    private final Optional<Ingredient> base;
+    private final Optional<Ingredient> addition;
+    private final ItemStack result;
+    @Nullable
+    private IngredientPlacement ingredientPlacement;
+
+    public MidasFoldingRecipe(Optional<Ingredient> template, Optional<Ingredient> base, Optional<Ingredient> addition, ItemStack result) {
+        this.template = template;
+        this.base = base;
+        this.addition = addition;
+        this.result = result;
+    }
 
     @Override
     public boolean matches(SmithingRecipeInput input, World world) {
-        // Regular test
-        if (!(this.template.test(input.template()) && this.base.test(input.base()) && this.addition.test(input.addition()))) {
-            return false;
-        }
+
+
         var stack = input.base();
 
         if (!stack.contains(GOLD_FOLDED)) return false;
@@ -39,6 +54,26 @@ public record MidasFoldingRecipe(Ingredient template, Ingredient base, Ingredien
         }
 
         return goldCount < 640;
+    }
+
+
+    @Override
+    public Optional<Ingredient> template() {
+        return template;
+    }
+
+    @Override
+    public Optional<Ingredient> base() {
+        return base;
+    }
+
+    @Override
+    public Optional<Ingredient> addition() {
+        return addition;
+    }
+
+    public ItemStack result() {
+        return result;
     }
 
     @Override
@@ -74,36 +109,24 @@ public record MidasFoldingRecipe(Ingredient template, Ingredient base, Ingredien
     }
 
     @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup lookup) {
-        return this.result;
-    }
-
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<MidasFoldingRecipe> getSerializer() {
         return MythicRecipeSerializers.MIDAS_FOLDING_RECIPE;
     }
 
     @Override
-    public boolean testTemplate(ItemStack stack) {
-        return this.template.test(stack);
-    }
+    public IngredientPlacement getIngredientPlacement() {
+        if (this.ingredientPlacement == null) {
+            this.ingredientPlacement = IngredientPlacement.forMultipleSlots(List.of(this.template, this.base, this.addition));
+        }
 
-    @Override
-    public boolean testBase(ItemStack stack) {
-        return this.base.test(stack);
-    }
-
-    @Override
-    public boolean testAddition(ItemStack stack) {
-        return this.addition.test(stack);
+        return this.ingredientPlacement;
     }
 
     public static class Serializer extends EndecRecipeSerializer<MidasFoldingRecipe> {
-        private static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.ALLOW_EMPTY_CODEC).fieldOf("template", recipe -> recipe.template),
-            CodecUtils.toEndec(Ingredient.ALLOW_EMPTY_CODEC).fieldOf("base", recipe -> recipe.base),
-            CodecUtils.toEndec(Ingredient.ALLOW_EMPTY_CODEC).fieldOf("addition", recipe -> recipe.addition),
+        public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", MidasFoldingRecipe::base),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::addition),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::template),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             MidasFoldingRecipe::new
         );

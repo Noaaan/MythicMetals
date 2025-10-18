@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
+import net.minecraft.registry.RegistryOps;
 import net.minecraft.registry.RegistryWrapper;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,7 +17,7 @@ public class AnvilsLoadedCondition implements ResourceCondition {
     }
 
     @Override
-    public boolean test(@Nullable RegistryWrapper.WrapperLookup registryLookup) {
+    public boolean test(RegistryOps.@Nullable RegistryInfoGetter registryInfo) {
         return MythicMetals.CONFIG.enableAnvils();
     }
 }

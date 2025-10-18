@@ -6,8 +6,7 @@ import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ToolItem;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Language;
 import net.minecraft.util.Util;
@@ -43,15 +42,15 @@ public class WikiExporter {
     public static String computeArmorSet(ArmorSet armorSet) {
         return createArmorTemplate(
             armorSet.getTitlecaseName(),
-            armorSet.getMaterialId(),
+            armorSet.getName(),
             computeArmorAdmonition(armorSet),
             computeArmorRecipes(armorSet)
         );
     }
 
-    public static String computeToolset(ToolSet toolSet) {
+    public static String computeToolset(String name, ToolSet toolSet) {
         return createToolTemplate(
-            toolSet.getTitlecaseName(),
+            name,
             computeToolAdmonition(toolSet),
             computeToolRecipes(toolSet)
         );
@@ -160,7 +159,7 @@ public class WikiExporter {
                     +%s Attack Damage, %s Attack Speed<br>
                     %s Durability<br>
                 """.formatted(
-                tool.getMaterial().getAttackDamage() + damageDeque.pop() + 1,
+                toolSet.getMaterial().attackDamageBonus() + damageDeque.pop() + 1,
                 BigDecimal.valueOf(atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString(),
                 tool.getDefaultStack().getMaxDamage()
             ));
@@ -171,7 +170,7 @@ public class WikiExporter {
 
     static String computeToolRecipes(ToolSet toolSet) {
         StringBuilder output = new StringBuilder();
-        for (ToolItem tool : toolSet.get()) {
+        for (Item tool : toolSet.get()) {
             String id = Registries.ITEM.getId(tool).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""
@@ -232,7 +231,9 @@ public class WikiExporter {
             String name = translationStorage.get(Util.createTranslationKey("item", item));
             String id = item.getPath();
 
-            int protection = armor.getProtection();
+            // FIXME
+            var material = armorSet.getMaterial();
+            int protection = material.defense().get(null);
 
             output.append("\n");
             output.append("\t<h4>**").append(name).append("**</h4>").append("\n");
@@ -246,11 +247,11 @@ public class WikiExporter {
             output.append("\t<br>\n");
             // +5 Armor, +2 Toughness
             output.append("\t+%s Armor".formatted(protection));
-            if (armor.getToughness() > 0) {
-                output.append(", +%s Toughness".formatted(armor.getToughness()));
+            if (material.toughness() > 0) {
+                output.append(", +%s Toughness".formatted(material.toughness()));
             }
             output.append("<br>\n");
-            var kbRes = armor.getMaterial().value().knockbackResistance();
+            var kbRes = material.knockbackResistance();
             if (kbRes > 0) {
                 output.append("\t+%s Knockback Resistance".formatted(kbRes)).append("<br>\n");
             }
@@ -262,7 +263,7 @@ public class WikiExporter {
 
     static String computeArmorRecipes(ArmorSet armorSet) {
         StringBuilder output = new StringBuilder();
-        for (ArmorItem armor : armorSet.getArmorItems()) {
+        for (Item armor : armorSet.getArmorItems()) {
             String id = Registries.ITEM.getId(armor).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""

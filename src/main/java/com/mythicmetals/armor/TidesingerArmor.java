@@ -9,10 +9,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -22,20 +24,20 @@ import java.util.List;
 public class TidesingerArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
-    private BipedEntityModel<LivingEntity> model;
-    public final Type type;
+    private BipedEntityModel<BipedEntityRenderState> model;
+    public final EquipmentType type;
 
-    public TidesingerArmor(Type type, Settings settings) {
+    public TidesingerArmor(EquipmentType type, Settings settings) {
         this(MythicArmorMaterials.TIDESINGER, type, settings);
     }
 
-    public TidesingerArmor(ArmorMaterial material, Type slot, Settings settings) {
+    public TidesingerArmor(ArmorMaterial material, EquipmentType slot, Settings settings) {
         super(material, slot, settings.component(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty()));
         this.type = slot;
     }
 
     @Environment(EnvType.CLIENT)
-    public BipedEntityModel<LivingEntity> getArmorModel() {
+    public BipedEntityModel<BipedEntityRenderState> getArmorModel() {
         if (model == null) {
             model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
@@ -44,8 +46,8 @@ public class TidesingerArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     @Override
-    protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
-        var models = MinecraftClient.getInstance().getEntityModelLoader();
+    protected BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+        var models = MinecraftClient.getInstance().getLoadedEntityModels();
         var root = models.getModelPart(MythicModelHandler.TIDESINGER);
         return new TidesingerBipedModel(root, slot);
     }

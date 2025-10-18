@@ -2,13 +2,13 @@ package com.mythicmetals.recipe;
 
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.SpecialRecipeSerializer;
+import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class MythicRecipeSerializers {
 
-    public static final RecipeSerializer<TippedRuniteArrowRecipe> TIPPED_RUNITE_ARROW_RECIPE = new SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
+    public static final RecipeSerializer<TippedRuniteArrowRecipe> TIPPED_RUNITE_ARROW_RECIPE = new SpecialCraftingRecipe.SpecialRecipeSerializer<>(TippedRuniteArrowRecipe::new);
     public static final RecipeSerializer<MidasFoldingRecipe> MIDAS_FOLDING_RECIPE = new MidasFoldingRecipe.Serializer();
     public static final RecipeSerializer<TidesingerCoralRecipe> TIDESINGER_CORAL_RECIPE = new TidesingerCoralRecipe.Serializer(TidesingerCoralRecipe.Serializer.ENDEC);
     public static final RecipeSerializer<UpgradeSmithingRecipe> UPGRADE_SMITHING_RECIPE_SERIALIZER = new UpgradeSmithingRecipe.Serializer(UpgradeSmithingRecipe.Serializer.ENDEC);

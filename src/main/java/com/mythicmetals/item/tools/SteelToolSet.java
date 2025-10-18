@@ -9,17 +9,17 @@ import net.minecraft.world.World;
 
 public class SteelToolSet extends ToolSet {
     public SteelToolSet(ToolMaterial material, int[] damage, float[] speed) {
-        super(material, damage, speed);
+        super("steel", material, damage, speed);
     }
 
     @Override
     protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new SteelShovel(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
+        return new SteelShovel(material, damage, speed, settings);
     }
 
     public static class SteelShovel extends ShovelItem {
-        public SteelShovel(ToolMaterial material, Settings settings) {
-            super(material, settings);
+        public SteelShovel(ToolMaterial material, int damage, float speed, Settings settings) {
+            super(material, damage, speed, settings);
         }
 
         @Override

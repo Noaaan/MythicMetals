@@ -8,8 +8,8 @@ import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -29,17 +29,17 @@ public interface RiptideTool {
      *
      * @see TridentItem#use(World, PlayerEntity, Hand)
      */
-    default TypedActionResult<ItemStack> activateRiptide(PlayerEntity user, Hand hand) {
+    default ActionResult activateRiptide(PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
-            return TypedActionResult.fail(itemStack);
+            return ActionResult.FAIL;
         } else if (!user.isTouchingWaterOrRain()) {
-            return TypedActionResult.fail(itemStack);
-        } else if (user.getItemCooldownManager().isCoolingDown(itemStack.getItem())) {
-            return TypedActionResult.fail(itemStack);
+            return ActionResult.FAIL;
+        } else if (user.getItemCooldownManager().isCoolingDown(itemStack)) {
+            return ActionResult.FAIL;
         } else {
             user.setCurrentHand(hand);
-            return TypedActionResult.consume(itemStack);
+            return ActionResult.CONSUME;
         }
     }
 
@@ -50,7 +50,7 @@ public interface RiptideTool {
      * @see TridentItem#onStoppedUsing(ItemStack, World, LivingEntity, int)
      * [VanillaCopy] with only the riptide parts in mind, not the projectile logic
      */
-    default void performRiptide(ItemStack stack, World world, LivingEntity entity, int remainingUseTicks) {
+    default boolean performRiptide(ItemStack stack, World world, LivingEntity entity, int remainingUseTicks) {
         if (entity instanceof PlayerEntity user) {
             int i = MAX_USE_TIME - remainingUseTicks;
             if (i >= 10) {
@@ -75,12 +75,14 @@ public interface RiptideTool {
                                 user.move(MovementType.SELF, new Vec3d(0.0, 1.1999999F, 0.0));
                             }
 
-                            user.getItemCooldownManager().set(stack.getItem(), COOLDOWN);
+                            user.getItemCooldownManager().set(stack, COOLDOWN);
                             world.playSoundFromEntity(null, user, SoundEvents.ITEM_TRIDENT_RIPTIDE_3.value(), SoundCategory.PLAYERS, 1.0F, 1.0F);
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
 }

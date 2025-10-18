@@ -31,7 +31,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    // FIXME - Update!
+    //modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
     // OwO
     annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
@@ -44,12 +45,12 @@ dependencies {
     // REI + Arch
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
-    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modCompileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
     // EMI
     modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
-    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
+//    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
     // ModMenu
     //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")

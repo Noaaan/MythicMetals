@@ -1,6 +1,5 @@
 package com.mythicmetals.entity;
 
-import com.mythicmetals.MythicMetals;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.block.BlockState;
@@ -11,6 +10,7 @@ import net.minecraft.entity.vehicle.TntMinecartEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
@@ -82,10 +82,10 @@ public class BanglumTntMinecartEntity extends TntMinecartEntity {
     }
 
     @Override
-    public void killAndDropSelf(DamageSource damageSource) {
+    public void killAndDropSelf(ServerWorld world, DamageSource damageSource) {
         double d = this.getVelocity().horizontalLengthSquared();
         if (!damageSource.isIn(DamageTypeTags.IS_FIRE) && !damageSource.isIn(DamageTypeTags.IS_EXPLOSION) && !(d >= 0.01F)) {
-            super.killAndDropSelf(damageSource);
+            super.killAndDropSelf(world, damageSource);
         } else {
             if (this.fuseTicks < 0) {
                 this.prime();
@@ -116,7 +116,8 @@ public class BanglumTntMinecartEntity extends TntMinecartEntity {
     }
 
     @Override
-    public Type getMinecartType() {
-        return MythicMetals.BANGLUM_TNT;
+    public EntityType<?> getType() {
+        return MythicEntities.BANGLUM_TNT_ENTITY_TYPE;
     }
+
 }

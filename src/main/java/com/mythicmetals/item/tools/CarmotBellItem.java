@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.tag.EntityTypeTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -25,14 +26,14 @@ public class CarmotBellItem extends BlockItem {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         var stack = user.getStackInHand(hand);
         var entities = world.getOtherEntities(user, Box.of(user.getPos(), RANGE * 2, RANGE, RANGE * 2));
         entities.forEach(entity -> {
             if (entity instanceof LivingEntity livingEntity) {
                 if (livingEntity.getType().isIn(EntityTypeTags.UNDEAD)) {
                     var damageSource = CarmotBellDamageSource.of(world, user);
-                    entity.damage(damageSource, Math.max(10.0f, livingEntity.getHealth() * 0.1f));
+                    entity.damage(((ServerWorld) world), damageSource, Math.max(10.0f, livingEntity.getHealth() * 0.1f));
                     MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.getPos());
                 } else {
                     livingEntity.heal(Math.max(10.0f, livingEntity.getMaxHealth() * 0.1f));
@@ -45,9 +46,9 @@ public class CarmotBellItem extends BlockItem {
         stack.damage(1, user, PlayerEntity.getSlotForHand(hand));
         MythicParticleSystem.HEALING_AREA.spawn(world, user.getPos(), RANGE);
         MythicParticleSystem.HEALING_HEARTS.spawn(world, user.getPos());
-        user.getItemCooldownManager().set(this, 480);
+        user.getItemCooldownManager().set(stack, 480);
         world.playSound(user, user.getBlockPos(), RegisterSounds.CARMOT_BELL_RING, SoundCategory.PLAYERS);
-        return TypedActionResult.success(stack);
+        return ActionResult.SUCCESS;
     }
 
     @Override

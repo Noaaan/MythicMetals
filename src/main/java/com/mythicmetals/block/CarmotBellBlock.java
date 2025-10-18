@@ -11,6 +11,7 @@ import net.minecraft.block.entity.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.EntityTypeTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -62,11 +63,12 @@ public class CarmotBellBlock extends BlockWithEntity {
     }
 
     private void heal(World world, Vec3d pos, LivingEntity user) {
+        if (world.isClient()) return;
         var entities = world.getNonSpectatingEntities(LivingEntity.class, Box.of(pos, RANGE * 2, RANGE, RANGE * 2));
         entities.forEach(entity -> {
             if (entity instanceof LivingEntity livingEntity) {
                 if (livingEntity.getType().isIn(EntityTypeTags.UNDEAD)) {
-                    entity.damage(CarmotBellDamageSource.of(world, user), Math.max(10.0f, livingEntity.getHealth() * 0.1f));
+                    entity.damage(((ServerWorld) world), CarmotBellDamageSource.of(world, user), Math.max(10.0f, livingEntity.getHealth() * 0.1f));
                     MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.getPos());
                 } else {
                     livingEntity.heal(Math.max(10.0f, livingEntity.getMaxHealth() * 0.1f));

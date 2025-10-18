@@ -1,13 +1,15 @@
 package com.mythicmetals.entity;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BanglumTntEntity extends Entity {
+public class BanglumTntEntity extends Entity implements Ownable {
     private static final TrackedData<Integer> FUSE = DataTracker.registerData(BanglumTntEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final int DEFAULT_FUSE = 100;
 
@@ -64,6 +66,11 @@ public class BanglumTntEntity extends Entity {
 
     }
 
+    @Override
+    public boolean damage(ServerWorld world, DamageSource source, float amount) {
+        return false;
+    }
+
     public double getSmokeParticleHeight() {
         return 0.5;
     }
@@ -95,4 +102,8 @@ public class BanglumTntEntity extends Entity {
         return this.causingEntity;
     }
 
+    @Override
+    public @Nullable Entity getOwner() {
+        return causingEntity;
+    }
 }

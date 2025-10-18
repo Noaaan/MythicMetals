@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.vehicle.TntMinecartEntity;
 import net.minecraft.util.math.MathHelper;
 
-public class BanglumTntMinecartEntityRenderer extends MinecartEntityRenderer<BanglumTntMinecartEntity> {
+public class BanglumTntMinecartEntityRenderer extends MinecartEntityRenderer {
     private final BlockRenderManager tntBlockRenderManager;
 
     public BanglumTntMinecartEntityRenderer(EntityRendererFactory.Context context) {

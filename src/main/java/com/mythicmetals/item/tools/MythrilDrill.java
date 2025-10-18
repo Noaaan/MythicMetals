@@ -19,6 +19,7 @@ import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -46,26 +47,8 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
         map.put(Items.AIR, "empty");
     });
 
-    public MythrilDrill(ToolMaterial material, Item.Settings settings) {
-        super(material, MythicTags.MINEABLE_MYTHRIL_DRILL, settings);
-    }
-
-    @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        // If the Drill is in offhand, handle it normally when used on a block
-        if (context.getHand().equals(Hand.OFF_HAND)) {
-            return super.use(context.getWorld(), context.getPlayer(), context.getHand()).getResult();
-        }
-        // If the Drill is used on block in mainhand, cancel the action if a block is in the offhand and use the block instead
-        if (context.getHand().equals(Hand.MAIN_HAND) && context.getPlayer() != null) {
-            var offhandStack = context.getPlayer().getStackInHand(Hand.OFF_HAND);
-            if (offhandStack != null && offhandStack.getItem() != null && offhandStack.getItem() instanceof BlockItem blockItem) {
-                blockItem.useOnBlock(new ItemUsageContext(context.getWorld(), context.getPlayer(), Hand.OFF_HAND, offhandStack, new BlockHitResult(context.getHitPos(), context.getSide(), context.getBlockPos(), context.hitsInsideBlock())));
-                context.getPlayer().swingHand(Hand.OFF_HAND);
-                return ActionResult.CONSUME_PARTIAL;
-            }
-        }
-        return super.useOnBlock(context);
+    public MythrilDrill(ToolMaterial material, float damage, float atkSpeed, Item.Settings settings) {
+        super(material, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, settings);
     }
 
     @Override
@@ -126,8 +109,9 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
         }
 
         if (!world.isClient && state.getHardness(world, pos) != 0.0F) {
+            var serverWorld = ((ServerWorld) world);
             // Randomly cancel damage while active
-            var random = world.getRandom();
+            var random = serverWorld.getRandom();
             var drillComponent = stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
             var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
 
@@ -155,7 +139,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
                 }
                 // Randomly drop gold from midas gold
                 if (upgradeComponent.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem()) && random.nextInt(30) == 27) {
-                    miner.dropItem(Items.RAW_GOLD);
+                    miner.dropItem(serverWorld, Items.RAW_GOLD);
                 }
             }
         }
@@ -227,7 +211,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
                 2.0,
                 EntityAttributeModifier.Operation.ADD_VALUE
             );
-            attributes = attributes.with(EntityAttributes.GENERIC_LUCK, modifier, AttributeModifierSlot.MAINHAND);
+            attributes = attributes.with(EntityAttributes.LUCK, modifier, AttributeModifierSlot.MAINHAND);
             changes = true;
         }
         if (upgrades.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
@@ -236,7 +220,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
                 3.0,
                 EntityAttributeModifier.Operation.ADD_VALUE
             );
-            attributes = attributes.with(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED, modifier, AttributeModifierSlot.MAINHAND);
+            attributes = attributes.with(EntityAttributes.SUBMERGED_MINING_SPEED, modifier, AttributeModifierSlot.MAINHAND);
 
             changes = true;
         }
@@ -249,7 +233,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
                     1 + (level * 2),
                     EntityAttributeModifier.Operation.ADD_VALUE
                 );
-                attributes = attributes.with(EntityAttributes.PLAYER_MINING_EFFICIENCY, modifier, AttributeModifierSlot.MAINHAND);
+                attributes = attributes.with(EntityAttributes.MINING_EFFICIENCY, modifier, AttributeModifierSlot.MAINHAND);
                 changes = true;
             }
         }

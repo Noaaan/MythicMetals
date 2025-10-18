@@ -55,9 +55,6 @@ public abstract class LivingEntityMixin extends Entity {
     public abstract int getArmor();
 
     @Shadow
-    public abstract boolean damage(DamageSource source, float amount);
-
-    @Shadow
     public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
     @Shadow
@@ -113,7 +110,7 @@ public abstract class LivingEntityMixin extends Entity {
      * Fire Resistance halves this, although you will still take fire damage this way
      */
     @ModifyVariable(method = "damage", at = @At(value = "HEAD"), argsOnly = true)
-    private float mythicmetals$changeFireDamage(float original, DamageSource source) {
+    private float mythicmetals$changeFireDamage(float original, ServerWorld world, DamageSource source, float amount) {
         if (!this.getAttributes().hasAttribute(FIRE_VULNERABILITY) || !source.isIn(DamageTypeTags.IS_FIRE)) {
             return original;
         }
@@ -196,12 +193,13 @@ public abstract class LivingEntityMixin extends Entity {
                 mythicmetals$copperParticle();
 
                 // Randomly strike the player with lightning when conductive
-                if (rng == 666 & isConductive) {
-                    LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(getWorld());
+                if (!getWorld().isClient() && rng == 666 & isConductive) {
+                    var world = ((ServerWorld) getWorld());
+                    LightningEntity lightningEntity = EntityType.LIGHTNING_BOLT.create(getWorld(), SpawnReason.NATURAL);
                     if (lightningEntity != null) {
                         lightningEntity.copyPositionAndRotation(this);
-                        getWorld().spawnEntity(lightningEntity);
-                        this.damage(getWorld().getDamageSources().lightningBolt(), 10);
+                        world.spawnEntity(lightningEntity);
+                        this.damage(world, world.getDamageSources().lightningBolt(), 10);
                     }
                 }
             }
@@ -285,7 +283,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (source.getAttacker() == null) return;
         if (source.getAttacker() instanceof PlayerEntity attacker1) {
             if (MythicMetals.CONFIG.midasGold() && attacker1.getMainHandStack().isIn(MythicTags.MIDAS_TOUCH)) {
-                this.dropStack(new ItemStack(MythicItems.MIDAS_GOLD.getRawOre()));
+                this.dropStack(world, new ItemStack(MythicItems.MIDAS_GOLD.getRawOre()));
             }
         }
     }

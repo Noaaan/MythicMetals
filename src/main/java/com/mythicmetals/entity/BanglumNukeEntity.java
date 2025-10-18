@@ -74,6 +74,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     protected void explode() {
         int radius = MythicMetals.CONFIG.banglumNukeCoreRadius();
         int baseDamage = 1;
+        var world = ((ServerWorld) getWorld());
 
         // Decides what blocks are ignored by the nuke
         Predicate<BlockState> statePredicate;
@@ -95,20 +96,20 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         ServerPlayerEntity playerCause = causingEntity instanceof ServerPlayerEntity player ? player : null;
         GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
-        EpicExplosion.explode((ServerWorld) getWorld(), (int) this.getX(), (int) this.getY(), (int) this.getZ(), radius, statePredicate, this, playerCause);
-        Explosion explosion = new Explosion(this.getWorld(), playerCause, (int) this.getX(), (int) this.getY(), (int) this.getZ(), radius, false, Explosion.DestructionType.DESTROY_WITH_DECAY);
+        EpicExplosion explosion = new EpicExplosion(Explosion.DestructionType.DESTROY_WITH_DECAY, world, this.getPos(), this, playerCause, radius, world.getDamageSources().create(MythicDamageTypes.BANGLUM_NUKE), statePredicate);
+        explosion.explode();
 
         int soundRadius = radius * 3;
 
         // FIXME - Find a better way to play the sound to far-away players. Maybe use PositionedSoundInstance and the sound manager?
-        for (PlayerEntity player : getWorld().getPlayers()) {
+        for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) > soundRadius * soundRadius) continue;
 
-            player.getWorld().playSound(this, this.getBlockPos(), RegisterSounds.BANGLUM_NUKE_EXPLOSION, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.getWorld().random.nextFloat() - this.getWorld().random.nextFloat()) * 0.2F) * 0.7F);
+            world.playSound(this, this.getBlockPos(), RegisterSounds.BANGLUM_NUKE_EXPLOSION, SoundCategory.BLOCKS, 5.0F, (1.0F + (this.getWorld().random.nextFloat() - this.getWorld().random.nextFloat()) * 0.2F) * 0.7F);
         }
 
         // Handle damaging entities near the nuke explosion
-        for (var entity : getWorld().getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
+        for (var entity : world.getOtherEntities(this, Box.of(getPos(), radius * 2, radius * 2, radius * 2))) {
             if (entity.isImmuneToExplosion(explosion)) continue;
             if (!CommonProtection.canDamageEntity(getWorld(), entity, playerCauseProfile, playerCause)) continue;
 
@@ -123,14 +124,14 @@ public class BanglumNukeEntity extends BanglumTntEntity {
                     y /= dist;
                     z /= dist;
                     var banglumNukeSource = new BanglumNukeSource(
-                        getWorld().getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.BANGLUM_NUKE).orElseThrow(),
+                        world.getDamageSources().registry.getEntry(MythicDamageTypes.BANGLUM_NUKE.getValue()).orElseThrow(),
                         this,
                         this.getCausingEntity());
-                    entity.damage(banglumNukeSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
+                    entity.damage(world, banglumNukeSource, MathHelper.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));
 
                     double knockback = distanceModifier * 5;
                     if (entity instanceof LivingEntity living) {
-                        knockback = distanceModifier * (5.0 - living.getAttributeValue(EntityAttributes.GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE));
+                        knockback = distanceModifier * (5.0 - living.getAttributeValue(EntityAttributes.EXPLOSION_KNOCKBACK_RESISTANCE));
                     }
 
                     entity.addVelocity(x * knockback, y * knockback, z * knockback);

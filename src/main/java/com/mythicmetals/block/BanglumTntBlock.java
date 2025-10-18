@@ -7,19 +7,22 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.*;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.block.WireOrientation;
 import net.minecraft.world.event.GameEvent;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntBlock extends TntBlock {
+
     public BanglumTntBlock(Settings settings) {
         super(settings);
     }
@@ -45,16 +48,15 @@ public class BanglumTntBlock extends TntBlock {
     }
 
     @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
         if (world.isReceivingRedstonePower(pos)) {
             primeBangTnt(world, pos);
             world.removeBlock(pos, false);
         }
-
     }
 
     @Override
-    public void onDestroyedByExplosion(World world, BlockPos pos, Explosion explosion) {
+    public void onDestroyedByExplosion(ServerWorld world, BlockPos pos, Explosion explosion) {
         if (!world.isClient) {
             BanglumTntEntity banglumTnt = new BanglumTntEntity(world, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, explosion.getCausingEntity());
             int i = banglumTnt.getFuse();
@@ -64,7 +66,7 @@ public class BanglumTntBlock extends TntBlock {
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (!itemStack.isOf(Items.FLINT_AND_STEEL) && !itemStack.isOf(Items.FIRE_CHARGE)) {
             return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
@@ -81,7 +83,7 @@ public class BanglumTntBlock extends TntBlock {
             }
 
             player.incrementStat(Stats.USED.getOrCreateStat(item));
-            return ItemActionResult.success(world.isClient);
+            return ActionResult.SUCCESS;
         }
     }
 
@@ -106,7 +108,7 @@ public class BanglumTntBlock extends TntBlock {
         if (!world.isClient) {
             BlockPos blockPos = hit.getBlockPos();
             Entity entity = projectile.getOwner();
-            if (projectile.isOnFire() && projectile.canModifyAt(world, blockPos)) {
+            if (projectile.isOnFire() && projectile.canModifyAt((ServerWorld) world, blockPos)) {
                 primeBangTnt(world, blockPos, entity instanceof LivingEntity ? (LivingEntity) entity : null);
                 world.removeBlock(blockPos, false);
             }

@@ -15,7 +15,7 @@ public class MythicStatusEffects {
     public static final StatusEffect HEAT = new StatusEffect(StatusEffectCategory.HARMFUL, 16747008);
     public static final StatusEffect COMBUSTION = new CombustingStatusEffect(StatusEffectCategory.HARMFUL, 16747008)
         .addAttributeModifier(MythicEntityAttributes.FIRE_VULNERABILITY, RegistryHelper.id("fire_vulnerability"), 1.0, EntityAttributeModifier.Operation.ADD_VALUE)
-        .addAttributeModifier(EntityAttributes.GENERIC_BURNING_TIME, RegistryHelper.id("burn_time_reduction"), 0.5f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+        .addAttributeModifier(EntityAttributes.BURNING_TIME, RegistryHelper.id("burn_time_reduction"), 0.5f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE);
 
     public static void init() {
         Registry.register(Registries.STATUS_EFFECT, RegistryHelper.id("wormhole_special"), WORMHOLE_SPECIAL);

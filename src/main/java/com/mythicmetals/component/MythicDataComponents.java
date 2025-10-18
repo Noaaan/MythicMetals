@@ -16,17 +16,12 @@ public class MythicDataComponents {
     public static final ComponentType<Boolean> LOCKED = RegistryHelper.dataComponentType(
         "locked", builder -> builder
             .codec(Codec.BOOL)
-            .packetCodec(PacketCodecs.BOOL)
+            .packetCodec(PacketCodecs.BOOLEAN)
     );
     public static final ComponentType<Boolean> WAS_USED = RegistryHelper.dataComponentType(
         "was_used", builder ->
             builder.codec(Codec.BOOL)
-                .packetCodec(PacketCodecs.BOOL)
-    );
-    public static final ComponentType<CarmotStaffComponent> CARMOT_STAFF_BLOCK = RegistryHelper.dataComponentType(
-        "carmot_staff_block", builder -> builder
-            .codec(CodecUtils.toCodec(CarmotStaffComponent.ENDEC))
-            .packetCodec(CodecUtils.toPacketCodec(CarmotStaffComponent.ENDEC))
+                .packetCodec(PacketCodecs.BOOLEAN)
     );
     public static final ComponentType<TidesingerPatternComponent> TIDESINGER = RegistryHelper.dataComponentType(
         "tidesinger", builder -> builder

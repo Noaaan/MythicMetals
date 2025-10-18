@@ -1,4 +1,4 @@
-package com.mythicmetals.mixin;
+package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.client.resource.language.TranslationStorage;

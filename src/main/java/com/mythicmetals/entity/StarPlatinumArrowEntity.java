@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.EntityTypeTags;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -50,13 +51,13 @@ public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
     protected void onHit(LivingEntity target) {
         super.onHit(target);
         var source = new DamageSource(
-            this.getWorld().getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.STAR_PLATINUM_ARROW).orElseThrow(),
+            this.getWorld().getRegistryManager().getOrThrow(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.STAR_PLATINUM_ARROW.getValue()).orElseThrow(),
             this,
             getOwner());
         if (target.getType().isIn(EntityTypeTags.UNDEAD)) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1, 3));
         } else {
-            target.damage(source, 24);
+            target.damage(((ServerWorld) getWorld()), source, 24);
         }
     }
 

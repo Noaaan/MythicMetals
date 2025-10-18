@@ -6,6 +6,8 @@ import eu.pb4.common.protection.api.CommonProtection;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
@@ -13,60 +15,61 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.explosion.Explosion;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.function.Predicate;
 
 import static net.minecraft.block.Block.dropStacks;
 
-public final class EpicExplosion {
-    private EpicExplosion() {
+public final class EpicExplosion implements Explosion {
 
+    private final Explosion.DestructionType destructionType;
+    private final ServerWorld world;
+    private final Vec3d pos;
+    @Nullable
+    private final Entity entity;
+    @Nullable
+    private final LivingEntity cause;
+    private final float radius;
+    private final DamageSource damageSource;
+    private final Predicate<BlockState> statePredicate;
+
+    public EpicExplosion(DestructionType destructionType, ServerWorld world, Vec3d pos, @Nullable Entity entity, @Nullable LivingEntity cause, float radius, DamageSource damageSource, Predicate<BlockState> statePredicate) {
+
+        this.destructionType = destructionType;
+        this.world = world;
+        this.pos = pos;
+        this.entity = entity;
+        this.radius = radius;
+        this.damageSource = damageSource;
+        this.cause = cause;
+        this.statePredicate = statePredicate;
     }
 
-    /**
-     * Cause a large explosion
-     *
-     * @param world          World where the explosion happened
-     * @param x              X-cord for the explosion center
-     * @param y              Y-cord for the explosion center
-     * @param z              Z-cord for the explosion center
-     * @param radius         Explosion radius
-     * @param statePredicate Blockstate predicate for filtering out specific blocks
-     * @param exploder       Entity which caused the explosion
-     * @param cause          PlayerEntity which triggered the explosion, used to check against claim protection
-     */
-    public static void explode(ServerWorld world, int x, int y, int z, int radius, Predicate<BlockState> statePredicate,
-                               @Nullable Entity exploder, @Nullable PlayerEntity cause) {
-        int radiusSq = radius * radius;
-        var pos = new BlockPos.Mutable();
-        Explosion explosion = null;
+    public void explode() {
+        int radiusSq = (int) (this.radius * this.radius);
+        var mutPos = new BlockPos.Mutable();
 
-        if (exploder != null) {
-            explosion = new Explosion(world, exploder, x, y, z, radius, false, Explosion.DestructionType.DESTROY_WITH_DECAY);
-        }
+        MythicParticleSystem.EXPLOSIVE_EXPLOSION.spawn(world, this.pos, radius);
 
-        MythicParticleSystem.EXPLOSIVE_EXPLOSION.spawn(world, new Vec3d(x, y, z), (float) radius);
-
-        GameProfile gameProfile = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
-
-        for (int ox = -radius; ox < radius; ox++) {
-            for (int oy = -radius; oy < radius; oy++) {
-                for (int oz = -radius; oz < radius; oz++) {
+        for (int ox = (int) -radius; ox < radius; ox++) {
+            for (int oy = (int) -radius; oy < radius; oy++) {
+                for (int oz = (int) -radius; oz < radius; oz++) {
                     if (ox * ox + oy * oy + oz * oz > radiusSq) continue;
 
-                    pos.set(x + ox, y + oy, z + oz);
-                    var state = world.getBlockState(pos);
+                    mutPos.set(pos.x + ox, pos.y + oy, pos.z + oz);
+                    var state = world.getBlockState(mutPos);
 
                     if (state.isAir() || state.getBlock().getBlastResistance() > 10000) continue;
 
                     if (!statePredicate.test(state)) continue;
 
-                    if (explosion != null) {
-                        if (BlockBreaker.isProtected(world, pos, explosion, gameProfile, cause)) continue;
+                    if (cause instanceof PlayerEntity player) {
+                        if (BlockBreaker.isProtected(world, mutPos, this, player.getGameProfile(), player)) continue;
                     } else {
-                        if (BlockBreaker.isProtected(world, pos, gameProfile, cause)) continue;
+                        if (BlockBreaker.isProtected(world, mutPos, CommonProtection.UNKNOWN, null)) continue;
                     }
 
-                    world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    world.setBlockState(mutPos, Blocks.AIR.getDefaultState());
                 }
             }
         }
@@ -114,5 +117,49 @@ public final class EpicExplosion {
             }
         }
 
+    }
+
+    @Override
+    public ServerWorld getWorld() {
+        return world;
+    }
+
+    @Override
+    public DestructionType getDestructionType() {
+        return destructionType;
+    }
+
+    @Override
+    public @Nullable LivingEntity getCausingEntity() {
+        return cause;
+    }
+
+    @Override
+    public @Nullable Entity getEntity() {
+        return entity;
+    }
+
+    @Override
+    public float getPower() {
+        return radius;
+    }
+
+    @Override
+    public Vec3d getPosition() {
+        return pos;
+    }
+
+    @Override
+    public boolean canTriggerBlocks() {
+        return false;
+    }
+
+    @Override
+    public boolean preservesDecorativeEntities() {
+        return false;
+    }
+
+    public DamageSource getDamageSource() {
+        return damageSource;
     }
 }

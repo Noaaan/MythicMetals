@@ -7,29 +7,32 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 public class HallowedArmor extends ArmorItem {
 
     @Environment(EnvType.CLIENT)
-    private BipedEntityModel<LivingEntity> model;
-    public final ArmorItem.Type type;
+    private BipedEntityModel<BipedEntityRenderState> model;
+    public final EquipmentType type;
 
-    public HallowedArmor(ArmorItem.Type type, Settings settings) {
+    public HallowedArmor(EquipmentType type, Settings settings) {
         this(MythicArmorMaterials.HALLOWED, type, settings);
     }
 
-    public HallowedArmor(ArmorMaterial material, ArmorItem.Type slot, Settings settings) {
-        super(RegistryHelper.getEntry(material), slot, settings);
-        this.type = slot;
+    public HallowedArmor(ArmorMaterial material, EquipmentType type, Settings settings) {
+        super(material, type, settings);
+        this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
-    public BipedEntityModel<LivingEntity> getArmorModel() {
+    public BipedEntityModel<BipedEntityRenderState> getArmorModel() {
         if (model == null) {
             model = provideArmorModelForSlot(type.getEquipmentSlot());
         }
@@ -37,8 +40,8 @@ public class HallowedArmor extends ArmorItem {
     }
 
     @Environment(EnvType.CLIENT)
-    protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
-        var models = MinecraftClient.getInstance().getEntityModelLoader();
+    protected BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+        var models = MinecraftClient.getInstance().getLoadedEntityModels();
         var root = models.getModelPart(MythicModelHandler.HALLOWED_ARMOR);
         return new HelmetModel(root, slot);
     }

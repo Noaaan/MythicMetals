@@ -230,6 +230,7 @@ public class BlockSet {
 
         /**
          * Used internally for configuring blocks
+         * This does NOT configure the registry key. Do this yourself if calling this method.
          *
          * @param hardness   Determines the breaking time of the block.
          * @param resistance Determines blast resistance of a block.
@@ -360,6 +361,7 @@ public class BlockSet {
          */
         public Builder createOre(Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
             miningLevels.put(ore, miningLevel);
@@ -376,6 +378,7 @@ public class BlockSet {
          */
         public Builder createOre(Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new ExperienceDroppingBlock(experience, settings);
             miningLevels.put(ore, miningLevel);
@@ -392,6 +395,7 @@ public class BlockSet {
          */
         public Builder createLuminantOre(Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(blockState -> luminance);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
             miningLevels.put(ore, miningLevel);
@@ -409,10 +413,12 @@ public class BlockSet {
          */
         public Builder createOreVariant(String name, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings));
-            miningLevels.put(oreVariants.get(name), miningLevel);
-            miningLevels.put(oreVariants.get(name), PICKAXE);
+            var variant = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
+            this.oreVariants.put(name, variant);
+            miningLevels.put(variant, miningLevel);
+            miningLevels.put(variant, PICKAXE);
             return this;
         }
 
@@ -425,6 +431,7 @@ public class BlockSet {
          */
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
@@ -441,6 +448,7 @@ public class BlockSet {
          */
         public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(blockState -> luminance);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
@@ -457,6 +465,7 @@ public class BlockSet {
          */
         public Builder createStarriteOre(Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new StarriteOreBlock(settings, experience);
             miningLevels.put(ore, miningLevel);
@@ -471,6 +480,7 @@ public class BlockSet {
          */
         public Builder createBanglumOre(Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new BanglumOreBlock(settings);
             miningLevels.put(ore, miningLevel);
@@ -487,6 +497,7 @@ public class BlockSet {
          */
         public Builder createStarriteOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new StarriteOreBlock(settings, experience));
             miningLevels.put(oreVariants.get(name), miningLevel);
@@ -502,6 +513,7 @@ public class BlockSet {
          */
         public Builder createBanglumOreVariant(String name, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new BanglumOreBlock(settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
@@ -517,7 +529,9 @@ public class BlockSet {
          * @see AmethystBlock
          */
         public Builder createAmethystStorageBlock(Identifier miningLevel) {
-            this.storageBlock = new AmethystBlock(blockSettings(currentHardness, currentResistance, BlockSoundGroup.AMETHYST_BLOCK));
+            final var settings = blockSettings(currentHardness, currentResistance, BlockSoundGroup.AMETHYST_BLOCK);
+            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
+            this.storageBlock = new AmethystBlock(settings);
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);
             return this;
@@ -530,6 +544,7 @@ public class BlockSet {
          */
         public Builder createStorageBlock(Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
@@ -545,6 +560,7 @@ public class BlockSet {
          */
         public Builder createStorageBlock(BlockSoundGroup sounds, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, sounds);
+            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
@@ -559,6 +575,7 @@ public class BlockSet {
          */
         public Builder createOreStorageBlock(Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
+            settings.registryKey(RegistryHelper.blockKey("raw_" + name + "_block"));
             settingsProcessor.accept(settings);
             this.oreStorageBlock = new Block(settings);
             miningLevels.put(oreStorageBlock, miningLevel);
@@ -575,6 +592,7 @@ public class BlockSet {
         public Builder createAnvil(Identifier miningLevel) {
             if (MythicMetals.CONFIG.enableAnvils()) {
                 final var settings = blockSettings(5.0f, 15000f, BlockSoundGroup.ANVIL);
+                settings.registryKey(RegistryHelper.blockKey(name + "_anvil"));
                 settingsProcessor.accept(settings);
                 this.anvil = new AnvilBlock(settings);
                 anvilMap.put(anvil, miningLevel);
@@ -595,6 +613,7 @@ public class BlockSet {
 
         public Builder createCustomStorageBlock(Identifier miningLevel, AbstractBlock.Settings settings) {
             settingsProcessor.accept(settings);
+            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);

@@ -7,14 +7,12 @@ import com.glisco.isometricrenders.screen.ScreenScheduler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.armor.TidesingerArmor;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.TidesingerPatternComponent;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.component.ComponentChanges;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +40,9 @@ public class IsometricArmorStandExporter {
             // Configure the armor stand to our liking
             var armorStand = new ArmorStandEntity(EntityType.ARMOR_STAND, context.getSource().getWorld());
             armorSet.getArmorItems().forEach(armorItem -> {
-                var armorStack = new ItemStack(armorItem);
-                armorStand.equipStack(armorItem.getSlotType(), armorStack);
+                var armorStack = armorItem.getDefaultStack();
+                var equippableComponent = armorStack.get(DataComponentTypes.EQUIPPABLE);
+                armorStand.equipStack(equippableComponent.slot(), armorStack);
             });
             armorStand.setHideBasePlate(true);
             armorStand.setInvisible(true);
@@ -56,8 +55,10 @@ public class IsometricArmorStandExporter {
             var armorStand = new ArmorStandEntity(EntityType.ARMOR_STAND, context.getSource().getWorld());
             var armorSet = MythicArmor.TIDESINGER;
             armorSet.getArmorItems().forEach(armorItem -> {
-                var armorStack = new ItemStack(armorItem.getRegistryEntry(), 1, ComponentChanges.builder().add(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem)).build());
-                armorStand.equipStack(armorItem.getSlotType(), armorStack);
+                var armorStack = armorItem.getDefaultStack();
+                armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem));
+                var equippableComponent = armorStack.get(DataComponentTypes.EQUIPPABLE);
+                armorStand.equipStack(equippableComponent.slot(), armorStack);
             });
             armorStand.setHideBasePlate(true);
             armorStand.setInvisible(true);

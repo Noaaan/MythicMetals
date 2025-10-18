@@ -1,16 +1,17 @@
 package com.mythicmetals.armor;
 
 import net.minecraft.item.*;
-import java.util.function.Consumer;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentType;
 
 public class TidesingerArmorSet extends ArmorSet {
 
-    public TidesingerArmorSet(ArmorMaterial material, int duraMod, Consumer<Item.Settings> settingsProcessor) {
-        super(material, duraMod, settingsProcessor);
+    public TidesingerArmorSet(ArmorMaterial material) {
+        super("tidesinger", material);
     }
 
     @Override
-    protected ArmorItem makeItem(ArmorMaterial material, ArmorItem.Type slot, Item.Settings settings) {
+    protected ArmorItem makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
         return new TidesingerArmor(slot, settings);
     }
 }

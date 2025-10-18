@@ -24,6 +24,6 @@ public class CarmotBellDamageSource extends DamageSource {
     }
 
     public static CarmotBellDamageSource of(World world, @Nullable LivingEntity attacker) {
-        return new CarmotBellDamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.CARMOT_BELL).orElseThrow(), null, attacker);
+        return new CarmotBellDamageSource(world.getRegistryManager().getOrThrow(RegistryKeys.DAMAGE_TYPE).getEntry(MythicDamageTypes.CARMOT_BELL.getValue()).orElseThrow(), null, attacker);
     }
 }

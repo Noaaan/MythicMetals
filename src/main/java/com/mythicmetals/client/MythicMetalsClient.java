@@ -1,18 +1,20 @@
 package com.mythicmetals.client;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.*;
+import com.mythicmetals.armor.HallowedArmor;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
-import com.mythicmetals.component.*;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.PrometheumComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
-import com.mythicmetals.item.tools.*;
-import com.mythicmetals.misc.*;
-import com.mythicmetals.mixin.WorldRendererInvoker;
+import com.mythicmetals.item.tools.HammerBase;
+import com.mythicmetals.misc.BlockBreaker;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
+import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -23,20 +25,11 @@ import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexRendering;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.model.PlayerEntityModel;
-import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
-import net.minecraft.client.texture.Sprite;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -51,7 +44,6 @@ import java.util.ArrayList;
 public class MythicMetalsClient implements ClientModInitializer {
     private long lastTime;
     private float time;
-    public static ModelTransformationMode mode;
 
     @Override
     public void onInitializeClient() {
@@ -62,7 +54,8 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerModelPredicates();
         registerSwirlRenderer();
 
-        LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player));
+        // FIXME
+//        LivingEntityFeatureRenderEvents.ALLOW_CAPE_RENDER.register(player -> !CelestiumElytra.isWearing(player.skinTextures.elytraTexture()));
 
         EntityRendererRegistry.register(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, PalladiumMinecartRenderer::new);
         EntityRendererRegistry.register(MythicEntities.BANGLUM_TNT_MINECART_ENTITY_TYPE, BanglumTntMinecartEntityRenderer::new);
@@ -73,7 +66,8 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-        ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
+        // FIXME
+//        ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
@@ -95,13 +89,14 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     @SuppressWarnings("unchecked")
     private void registerSwirlRenderer() {
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityType != EntityType.PLAYER) return;
-            registrationHelper.register(
-                new PlayerEnergySwirlFeatureRenderer(
-                    (FeatureRendererContext<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>>) entityRenderer,
-                    context.getModelLoader()));
-        });
+        // FIXME
+//        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+//            if (entityType != EntityType.PLAYER) return;
+//            registrationHelper.register(
+//                new PlayerEnergySwirlFeatureRenderer(
+//                    (FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel>) entityRenderer,
+//                    context));
+//        });
     }
 
     /**
@@ -148,14 +143,14 @@ public class MythicMetalsClient implements ClientModInitializer {
 
                 var outlineShape = outlineOptional.get();
 
-                WorldRendererInvoker.mythicmetals$drawShapeOutline(
+                VertexRendering.drawOutline(
                     worldRenderContext.matrixStack(),
                     worldRenderContext.consumers().getBuffer(RenderLayer.getLines()),
                     outlineShape,
                     originalPos.getX() - blockOutlineContext.cameraX(),
                     originalPos.getY() - blockOutlineContext.cameraY(),
                     originalPos.getZ() - blockOutlineContext.cameraZ(),
-                    0, 0, 0, 0.4F //RGBA
+                    Color.ofHsv(0, 0, 0, 0.4f).argb()
                 );
                 // Cancel the event to prevent the middle outline from rendering
                 return false;
@@ -172,69 +167,71 @@ public class MythicMetalsClient implements ClientModInitializer {
                 && Registries.ITEM.getKey(i).get().getValue().getNamespace().equals(MythicMetals.MOD_ID))
             .toArray(Item[]::new);
 
-        ArmorRenderer renderer = (matrices, vertexConsumer, stack, entity, slot, light, original) -> {
+        ArmorRenderer renderer = (matrices, vertexConsumer, stack, bipedEntityRenderState, slot, light, original) -> {
 
             HallowedArmor armor = (HallowedArmor) stack.getItem();
             var model = armor.getArmorModel();
             var texture = armor.getArmorTexture(stack, slot);
-            original.copyBipedStateTo(model);
+            original.copyTransforms(model);
             ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
 
-            // Armor trim time
-            if (!stack.isOf(MythicArmor.HALLOWED.getHelmet())) {
-                var trimComponent = stack.get(DataComponentTypes.TRIM);
-                if (trimComponent != null) {
-                    var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
-                    Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trimComponent.getLeggingsModelId(armor.getMaterial()) : trimComponent.getGenericModelId(armor.getMaterial()));
-                    VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
-                        ItemRenderer.getDirectItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(trimComponent.getPattern().value().decal()), true, stack.hasGlint())
-                    );
-                    model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV);
-                }
-            }
+            // Armor trim handling for custom armor models
+            // FIXME
+//            if (!stack.isOf(MythicArmor.HALLOWED.getHelmet())) {
+//                var trimComponent = stack.get(DataComponentTypes.TRIM);
+//                if (trimComponent != null) {
+//                    var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
+//                    Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trimComponent.getLeggingsModelId(armor.getMaterial()) : trimComponent.getGenericModelId(armor.getMaterial()));
+//                    VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
+//                        ItemRenderer.getItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(trimComponent.pattern().value().decal()), true, stack.hasGlint())
+//                    );
+//                    model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV);
+//                }
+//            }
         };
         ArmorRenderer.register(renderer, armors);
     }
 
     private void registerModelPredicates() {
-        ModelPredicateProviderRegistry.register(
-            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
-            (stack, world, entity, seed) -> BanglumPick.isCoolingDown(entity, stack) ? 0 : 1
-        );
-
-        ModelPredicateProviderRegistry.register(
-            MythicTools.LEGENDARY_BANGLUM.getShovel(), RegistryHelper.id("is_primed"),
-            (stack, world, entity, seed) -> BanglumShovel.isCoolingDown(entity, stack) ? 0 : 1
-        );
-
-        ModelPredicateProviderRegistry.register(
-            MythicTools.MYTHRIL_DRILL, RegistryHelper.id("is_active"),
-            (stack, world, entity, seed) -> stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel() ? 0 : 1
-        );
-
-        registerMidasPredicates(MythicTools.MIDAS_GOLD_SWORD);
-        registerMidasPredicates(MythicTools.GILDED_MIDAS_GOLD_SWORD);
-        registerMidasPredicates(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-
-        ModelPredicateProviderRegistry.register(RegistryHelper.id("in_world"), (itemStack, world, livingEntity, i) -> {
-            if (mode == null) {
-                return 1.0f;
-            }
-
-            return mode.equals(ModelTransformationMode.GUI) ? 0.0F : 1.0f;
-        });
-
-        ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, RegistryHelper.id("blocking"), new ShieldUsePredicate());
-
-        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
-            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);
-
-        ModelPredicateProviderRegistry.register(MythicTools.PLATINUM_WATCH, RegistryHelper.id("time"), (stack, world, entity, seed) -> {
-            if (entity == null || entity.getWorld() == null) {
-                return 0.0F;
-            }
-            return this.getTime(entity.getWorld());
-        });
+        // FIXME
+//        ModelPredicateProviderRegistry.register(
+//            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
+//            (stack, world, entity, seed) -> BanglumPick.isCoolingDown(entity, stack) ? 0 : 1
+//        );
+//
+//        ModelPredicateProviderRegistry.register(
+//            MythicTools.LEGENDARY_BANGLUM.getShovel(), RegistryHelper.id("is_primed"),
+//            (stack, world, entity, seed) -> BanglumShovel.isCoolingDown(entity, stack) ? 0 : 1
+//        );
+//
+//        ModelPredicateProviderRegistry.register(
+//            MythicTools.MYTHRIL_DRILL, RegistryHelper.id("is_active"),
+//            (stack, world, entity, seed) -> stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel() ? 0 : 1
+//        );
+//
+//        registerMidasPredicates(MythicTools.MIDAS_GOLD_SWORD);
+//        registerMidasPredicates(MythicTools.GILDED_MIDAS_GOLD_SWORD);
+//        registerMidasPredicates(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+//
+//        ModelPredicateProviderRegistry.register(RegistryHelper.id("in_world"), (itemStack, world, livingEntity, i) -> {
+//            if (mode == null) {
+//                return 1.0f;
+//            }
+//
+//            return mode.equals(ModelTransformationMode.GUI) ? 0.0F : 1.0f;
+//        });
+//
+//        ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, RegistryHelper.id("blocking"), new ShieldUsePredicate());
+//
+//        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
+//            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);
+//
+//        ModelPredicateProviderRegistry.register(MythicTools.PLATINUM_WATCH, RegistryHelper.id("time"), (stack, world, entity, seed) -> {
+//            if (entity == null || entity.getWorld() == null) {
+//                return 0.0F;
+//            }
+//            return this.getTime(entity.getWorld());
+//        });
 
     }
 
@@ -288,12 +285,13 @@ public class MythicMetalsClient implements ClientModInitializer {
         return this.time;
     }
 
+    // FIXME
     public void registerMidasPredicates(Item item) {
-        ModelPredicateProviderRegistry.register(item, RegistryHelper.id("midas_gold_count"),
-            (stack, world, entity, seed) -> {
-                int goldCount = stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
-                return MidasGoldSword.countGold(goldCount);
-            });
+//        ModelPredicateProviderRegistry.register(item, RegistryHelper.id("midas_gold_count"),
+//            (stack, world, entity, seed) -> {
+//                int goldCount = stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+//                return MidasGoldSword.countGold(goldCount);
+//            });
     }
 
 }

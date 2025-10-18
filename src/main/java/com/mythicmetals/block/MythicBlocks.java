@@ -14,6 +14,9 @@ import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import java.util.*;
 
+import static com.mythicmetals.misc.RegistryHelper.blockKey;
+import static com.mythicmetals.misc.RegistryHelper.itemKey;
+
 @SuppressWarnings("unused")
 public class MythicBlocks {
 
@@ -34,8 +37,8 @@ public class MythicBlocks {
         .createDefaultSet(4F, IRON_MINING_LEVEL, 4.5F, IRON_MINING_LEVEL)
         .createAnvil(IRON_MINING_LEVEL)
         .finish();
-    public static final Block AQUARIUM_GLASS = new TransparentBlock(AbstractBlock.Settings.copy(Blocks.BLUE_STAINED_GLASS));
-    public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(AbstractBlock.Settings.copy(Blocks.CONDUIT));
+    public static final Block AQUARIUM_GLASS = new TransparentBlock(AbstractBlock.Settings.copy(Blocks.BLUE_STAINED_GLASS).registryKey(blockKey("aquarium_glass")));
+    public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(AbstractBlock.Settings.copy(Blocks.CONDUIT).registryKey(blockKey("aquarium_resonator")));
 
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
         .strength(5.0F, 5.5F)
@@ -47,8 +50,8 @@ public class MythicBlocks {
         .createBanglumOreVariant("nether", IRON_MINING_LEVEL)
         .finish();
 
-    public static final BanglumTntBlock BANGLUM_TNT_BLOCK = new BanglumTntBlock(AbstractBlock.Settings.copy(Blocks.TNT));
-    public static final Block BANGLUM_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM.getStorageBlock()));
+    public static final BanglumTntBlock BANGLUM_TNT_BLOCK = new BanglumTntBlock(AbstractBlock.Settings.copy(Blocks.TNT).registryKey(blockKey("banglum_tnt")));
+    public static final Block BANGLUM_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM.getStorageBlock()).registryKey(blockKey("banglum_nuke_core")));
 
     public static final BlockSet BRONZE = BlockSet.Builder.begin("bronze", false)
         .createAnvilSet(5, IRON_MINING_LEVEL).finish();
@@ -59,10 +62,11 @@ public class MythicBlocks {
         .createOreVariant("deepslate", DIAMOND_MINING_LEVEL)
         .finish();
     public static final Block CARMOT_BELL_BLOCK = new CarmotBellBlock(AbstractBlock.Settings.create()
+        .registryKey(blockKey("carmot_bell"))
         .nonOpaque()
         .strength(0.5f, 4.0f));
 
-    public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM_NUKE_CORE));
+    public static final Block CARMOT_NUKE_CORE = new Block(AbstractBlock.Settings.copy(BANGLUM_NUKE_CORE).registryKey(blockKey("carmot_nuke_core")));
 
     public static final BlockSet CELESTIUM = BlockSet.Builder.begin("celestium", false)
         .createAnvilSet(10F, 15F, MYTHIC_MINING_LEVEL).finish();
@@ -112,8 +116,8 @@ public class MythicBlocks {
         .createAnvil(IRON_MINING_LEVEL)
         .finish();
 
-    public static final Block ENCHANTED_MIDAS_GOLD_BLOCK = new EnchantedMidasGoldBlock(AbstractBlock.Settings.copy(MIDAS_GOLD.getStorageBlock()));
-    public static final Item ENCHANTED_MIDAS_GOLD_BLOCK_ITEM = new BlockItem(ENCHANTED_MIDAS_GOLD_BLOCK, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).rarity(Rarity.UNCOMMON)) {
+    public static final Block ENCHANTED_MIDAS_GOLD_BLOCK = new EnchantedMidasGoldBlock(AbstractBlock.Settings.copy(MIDAS_GOLD.getStorageBlock()).registryKey(blockKey("enchanted_midas_gold_block")));
+    public static final Item ENCHANTED_MIDAS_GOLD_BLOCK_ITEM = new BlockItem(ENCHANTED_MIDAS_GOLD_BLOCK, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).rarity(Rarity.UNCOMMON).registryKey(itemKey("enchanted_midas_gold_block"))) {
         @Override
         public boolean hasGlint(ItemStack stack) {
             return true;
@@ -150,12 +154,13 @@ public class MythicBlocks {
 
     public static final Block PALLADIUM_RAIL = new PalladiumRailBlock(AbstractBlock.Settings.create()
         .noCollision()
+        .registryKey(blockKey("palladium_rail"))
         .luminance(blockState -> blockState.get(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
         .strength(2.5f, 7.0f)
         .sounds(BlockSoundGroup.METAL)
     );
 
-    public static final Item PALLADIUM_RAIL_ITEM = new BlockItem(PALLADIUM_RAIL, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof()) {
+    public static final Item PALLADIUM_RAIL_ITEM = new BlockItem(PALLADIUM_RAIL, new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(1).fireproof().registryKey(itemKey("palladium_rail"))) {
         @Override
         public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
             super.appendTooltip(stack, context, tooltip, type);
@@ -177,7 +182,7 @@ public class MythicBlocks {
         .createAnvil(IRON_MINING_LEVEL)
         .finish();
 
-    public static final Block QUADRILLUM_NUKE_CORE = new Block(AbstractBlock.Settings.copy(QUADRILLUM.getStorageBlock()));
+    public static final Block QUADRILLUM_NUKE_CORE = new Block(AbstractBlock.Settings.copy(QUADRILLUM.getStorageBlock()).registryKey(blockKey("quadrillum_nuke_core")));
 
     public static final BlockSet RUNITE = BlockSet.Builder.begin("runite", false)
         .createDefaultSet(8.0F, IRON_MINING_LEVEL, IRON_MINING_LEVEL)
@@ -197,10 +202,10 @@ public class MythicBlocks {
         .sounds(BlockSoundGroup.STONE).createStarriteOreVariant("end_stone", NETHERITE_MINING_LEVEL, UniformIntProvider.create(3, 6))
         .createAmethystStorageBlock(NETHERITE_MINING_LEVEL)
         .finish();
-    public static final Block SPONGE_NUKE_CORE = new Block(AbstractBlock.Settings.copy(Blocks.SPONGE));
+    public static final Block SPONGE_NUKE_CORE = new Block(AbstractBlock.Settings.copy(Blocks.SPONGE).registryKey(blockKey("sponge_nuke_core")));
 
     public static final BlockSet STEEL = BlockSet.Builder.begin("steel", false)
-        .createCustomStorageBlock(new BlockWithFacing(BlockSet.Builder.blockSettings(5.0f, 5.0f, BlockSoundGroup.METAL)), IRON_MINING_LEVEL)
+        .createCustomStorageBlock(new BlockWithFacing(BlockSet.Builder.blockSettings(5.0f, 5.0f, BlockSoundGroup.METAL).registryKey(blockKey("steel_block"))), IRON_MINING_LEVEL)
         .createAnvil(IRON_MINING_LEVEL).finish();
 
     public static final BlockSet STORMYX = BlockSet.Builder.begin("stormyx", false)

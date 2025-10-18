@@ -1,235 +1,182 @@
 package com.mythicmetals.armor;
 
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
-import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
-import net.minecraft.item.*;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.item.Item;
+import net.minecraft.item.equipment.*;
+import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
-import java.util.List;
+import net.minecraft.util.Identifier;
 import java.util.Map;
 
 @SuppressWarnings("CodeBlock2Expr")
-public class MythicArmorMaterials implements AutoRegistryContainer<ArmorMaterial> {
-    public static final ArmorMaterial ADAMANTITE = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_ADAMANTITE), () -> {
-        return Ingredient.ofItems(MythicItems.ADAMANTITE.getIngot());
-    }, List.of(layer("adamantite")), 2.0f, 0.0f);
+public class MythicArmorMaterials {
+    public static final ArmorMaterial ADAMANTITE = new ArmorMaterial(30, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_ADAMANTITE), 2.0f, 0.0f, repairTag("adamantite"), layer("adamantite"));
 
-    public static final ArmorMaterial AQUARIUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 5,
-        ArmorItem.Type.LEGGINGS, 4,
-        ArmorItem.Type.BOOTS, 1), 12, sound(RegisterSounds.EQUIP_AQUARIUM), () -> {
-        return Ingredient.ofItems(MythicItems.AQUARIUM.getIngot());
-    }, List.of(layer("aquarium")), 0f, 0f);
+    public static final ArmorMaterial AQUARIUM = new ArmorMaterial(20, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 5,
+        EquipmentType.LEGGINGS, 4,
+        EquipmentType.BOOTS, 1), 12, sound(RegisterSounds.EQUIP_AQUARIUM), 0f, 0f, repairTag("aquarium"), layer("aquarium"));
 
-    public static final ArmorMaterial BANGLUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 6,
-        ArmorItem.Type.LEGGINGS, 5,
-        ArmorItem.Type.BOOTS, 2), 1, sound(RegisterSounds.EQUIP_BANGLUM), () -> {
-        return Ingredient.ofItems(MythicItems.BANGLUM.getIngot());
-    }, List.of(layer("banglum")), 0.0f, 0.0f);
+    public static final ArmorMaterial BANGLUM = new ArmorMaterial(14, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 6,
+        EquipmentType.LEGGINGS, 5,
+        EquipmentType.BOOTS, 2), 1, sound(RegisterSounds.EQUIP_BANGLUM), 0.0f, 0.0f, repairTag("banglum"), layer("banglum"));
 
-    public static final ArmorMaterial BRONZE = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 6,
-        ArmorItem.Type.LEGGINGS, 5,
-        ArmorItem.Type.BOOTS, 2), 14, sound(RegisterSounds.EQUIP_BRONZE), () -> {
-        return Ingredient.ofItems(MythicItems.BRONZE.getIngot());
-    }, List.of(layer("bronze")), 0.0f, 0.0f);
+    public static final ArmorMaterial BRONZE = new ArmorMaterial(15, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 6,
+        EquipmentType.LEGGINGS, 5,
+        EquipmentType.BOOTS, 2), 14, sound(RegisterSounds.EQUIP_BRONZE), 0.0f, 0.0f, repairTagCommon("bronze"), layer("bronze"));
 
-    public static final ArmorMaterial CARMOT = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 40, sound(RegisterSounds.EQUIP_CARMOT), () -> {
-        return Ingredient.ofItems(MythicItems.CARMOT.getIngot());
-    }, List.of(layer("carmot")), 0.0f, 0.0f);
+    public static final ArmorMaterial CARMOT = new ArmorMaterial(26, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 40, sound(RegisterSounds.EQUIP_CARMOT), 0.0f, 0.0f, repairTag("carmot"), layer("carmot"));
 
-    public static final ArmorMaterial CELESTIUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 4,
-        ArmorItem.Type.CHESTPLATE, 10,
-        ArmorItem.Type.LEGGINGS, 7,
-        ArmorItem.Type.BOOTS, 4), 30, sound(RegisterSounds.EQUIP_CELESTIUM), () -> {
-        return Ingredient.ofItems(MythicItems.CELESTIUM.getIngot());
-    }, List.of(layer("celestium")), 3.0f, 0.0f);
+    public static final ArmorMaterial CELESTIUM = new ArmorMaterial(41, Map.of(
+        EquipmentType.HELMET, 4,
+        EquipmentType.CHESTPLATE, 10,
+        EquipmentType.LEGGINGS, 7,
+        EquipmentType.BOOTS, 4), 30, sound(RegisterSounds.EQUIP_CELESTIUM), 3.0f, 0.0f, repairTag("celestium"), layer("celestium"));
 
-    public static final ArmorMaterial COPPER = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 4,
-        ArmorItem.Type.LEGGINGS, 3,
-        ArmorItem.Type.BOOTS, 1), 8, sound(RegisterSounds.EQUIP_COPPER), () -> {
-        return Ingredient.ofItems(Items.COPPER_INGOT);
-    }, List.of(layer("copper")), 0.0f, 0.0f);
+    @Deprecated(forRemoval = true, since = "0.25.0")
+    public static final ArmorMaterial COPPER = new ArmorMaterial(9, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 4,
+        EquipmentType.LEGGINGS, 3,
+        EquipmentType.BOOTS, 1), 8, sound(RegisterSounds.EQUIP_COPPER), 0.0f, 0.0f, repairTagCommon("copper"),  layer("copper"));
 
-    public static final ArmorMaterial DURASTEEL = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 12, sound(RegisterSounds.EQUIP_DURASTEEL), () -> {
-        return Ingredient.ofItems(MythicItems.DURASTEEL.getIngot());
-    }, List.of(layer("durasteel")), 1.0f, 0.0f);
+    public static final ArmorMaterial DURASTEEL = new ArmorMaterial(25, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 12, sound(RegisterSounds.EQUIP_DURASTEEL), 1.0f, 0.0f, repairTag("durasteel"), layer("durasteel"));
 
-    public static final ArmorMaterial HALLOWED = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 4,
-        ArmorItem.Type.CHESTPLATE, 9,
-        ArmorItem.Type.LEGGINGS, 7,
-        ArmorItem.Type.BOOTS, 4), 20, sound(RegisterSounds.EQUIP_HALLOWED), () -> {
-        return Ingredient.ofItems(MythicItems.HALLOWED.getIngot());
-    }, List.of(layer("hallowed")), 4.0f, 0.0f);
+    public static final ArmorMaterial HALLOWED = new ArmorMaterial(41, Map.of(
+        EquipmentType.HELMET, 4,
+        EquipmentType.CHESTPLATE, 9,
+        EquipmentType.LEGGINGS, 7,
+        EquipmentType.BOOTS, 4), 20, sound(RegisterSounds.EQUIP_HALLOWED), 4.0f, 0.0f, repairTag("hallowed"), layer("hallowed"));
 
-    public static final ArmorMaterial KYBER = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 20, sound(RegisterSounds.EQUIP_KYBER), () -> {
-        return Ingredient.ofItems(MythicItems.KYBER.getIngot());
-    }, List.of(layer("kyber")), 0.0f, 0.0f);
+    public static final ArmorMaterial KYBER = new ArmorMaterial(21, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 20, sound(RegisterSounds.EQUIP_KYBER), 0.0f, 0.0f, repairTag("kyber"), layer("kyber"));
 
-    public static final ArmorMaterial LEGENDARY_BANGLUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 2, sound(RegisterSounds.EQUIP_LEGENDARY_BANGLUM), () -> {
-        return Ingredient.ofItems(MythicItems.BANGLUM.getIngot());
-    }, List.of(layer("legendary_banglum")), 2.0f, 0.0f);
+    public static final ArmorMaterial LEGENDARY_BANGLUM = new ArmorMaterial(28, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 2, sound(RegisterSounds.EQUIP_LEGENDARY_BANGLUM), 2.0f, 0.0f, repairTag("legendary_banglum"), layer("legendary_banglum"));
 
-    public static final ArmorMaterial METALLURGIUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 5,
-        ArmorItem.Type.CHESTPLATE, 12,
-        ArmorItem.Type.LEGGINGS, 8,
-        ArmorItem.Type.BOOTS, 5), 30, sound(RegisterSounds.EQUIP_METALLURGIUM), () -> {
-        return Ingredient.ofItems(MythicItems.METALLURGIUM.getIngot());
-    }, List.of(layer("metallurgium")), 5.0f, 0.225f);
+    public static final ArmorMaterial METALLURGIUM = new ArmorMaterial(69, Map.of(
+        EquipmentType.HELMET, 5,
+        EquipmentType.CHESTPLATE, 12,
+        EquipmentType.LEGGINGS, 8,
+        EquipmentType.BOOTS, 5), 30, sound(RegisterSounds.EQUIP_METALLURGIUM), 5.0f, 0.225f, repairTag("metallurgium"), layer("metallurgium"));
 
-    public static final ArmorMaterial MIDAS_GOLD = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 5,
-        ArmorItem.Type.LEGGINGS, 3,
-        ArmorItem.Type.BOOTS, 1), 24, sound(RegisterSounds.EQUIP_MIDAS_GOLD), () -> {
-        return Ingredient.ofItems(MythicItems.MIDAS_GOLD.getIngot());
-    }, List.of(layer("midas_gold")), 0.0f, 0.0f);
+    public static final ArmorMaterial MIDAS_GOLD = new ArmorMaterial(14, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 5,
+        EquipmentType.LEGGINGS, 3,
+        EquipmentType.BOOTS, 1), 24, sound(RegisterSounds.EQUIP_MIDAS_GOLD), 0.0f, 0.0f, repairTag("midas_gold"), layer("midas_gold"));
 
-    public static final ArmorMaterial MYTHRIL = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 22, sound(RegisterSounds.EQUIP_MYTHRIL), () -> {
-        return Ingredient.ofItems(MythicItems.MYTHRIL.getIngot());
-    }, List.of(layer("mythril")), 2.0f, 0.0f);
+    public static final ArmorMaterial MYTHRIL = new ArmorMaterial(31, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 22, sound(RegisterSounds.EQUIP_MYTHRIL), 2.0f, 0.0f, repairTag("mythril"), layer("mythril"));
 
-    public static final ArmorMaterial ORICHALCUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 4,
-        ArmorItem.Type.CHESTPLATE, 9,
-        ArmorItem.Type.LEGGINGS, 7,
-        ArmorItem.Type.BOOTS, 4), 16, sound(RegisterSounds.EQUIP_ORICHALCUM), () -> {
-        return Ingredient.ofItems(MythicItems.ORICHALCUM.getIngot());
-    }, List.of(layer("orichalcum")), 3.0f, 0.1f);
+    public static final ArmorMaterial ORICHALCUM = new ArmorMaterial(40, Map.of(
+        EquipmentType.HELMET, 4,
+        EquipmentType.CHESTPLATE, 9,
+        EquipmentType.LEGGINGS, 7,
+        EquipmentType.BOOTS, 4), 16, sound(RegisterSounds.EQUIP_ORICHALCUM), 3.0f, 0.1f, repairTag("orichalcum"), layer("orichalcum"));
 
-    public static final ArmorMaterial OSMIUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 7,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_OSMIUM), () -> {
-        return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
-    }, List.of(layer("osmium")), 2.0f, 0.25f);
+    public static final ArmorMaterial OSMIUM = new ArmorMaterial(25, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 7,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_OSMIUM), 2.0f, 0.25f, repairTagCommon("osmium"), layer("osmium"));
 
-    public static final ArmorMaterial OSMIUM_CHAINMAIL = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 5,
-        ArmorItem.Type.LEGGINGS, 4,
-        ArmorItem.Type.BOOTS, 1), 15, sound(RegisterSounds.EQUIP_OSMIUM_CHAINMAIL), () -> {
-        return Ingredient.ofItems(MythicItems.OSMIUM.getIngot());
-    }, List.of(layer("osmium_chainmail")), 2.0f, 0.2f);
+    public static final ArmorMaterial OSMIUM_CHAINMAIL = new ArmorMaterial(25, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 5,
+        EquipmentType.LEGGINGS, 4,
+        EquipmentType.BOOTS, 1), 15, sound(RegisterSounds.EQUIP_OSMIUM_CHAINMAIL), 2.0f, 0.2f, repairTag("osmium_chainmail"), layer("osmium_chainmail"));
 
-    public static final ArmorMaterial PALLADIUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_PALLADIUM), () -> {
-        return Ingredient.ofItems(MythicItems.PALLADIUM.getIngot());
-    }, List.of(layer("palladium")), 0.0f, 0.0f);
+    public static final ArmorMaterial PALLADIUM = new ArmorMaterial(28, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_PALLADIUM), 0.0f, 0.0f, repairTag("palladium"), layer("palladium"));
 
-    public static final ArmorMaterial PROMETHEUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 17, sound(RegisterSounds.EQUIP_PROMETHEUM), () -> {
-        return Ingredient.ofItems(MythicItems.PROMETHEUM.getIngot());
-    }, List.of(layer("prometheum")), 1.0f, 0.0f);
+    public static final ArmorMaterial PROMETHEUM = new ArmorMaterial(18, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 17, sound(RegisterSounds.EQUIP_PROMETHEUM), 1.0f, 0.0f, repairTag("prometheum"), layer("prometheum"));
 
-    public static final ArmorMaterial RUNITE = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 13, sound(RegisterSounds.EQUIP_RUNITE), () -> {
-        return Ingredient.ofItems(MythicItems.RUNITE.getIngot());
-    }, List.of(layer("runite")), 2.0f, 0.0f);
+    public static final ArmorMaterial RUNITE = new ArmorMaterial(27, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 13, sound(RegisterSounds.EQUIP_RUNITE), 2.0f, 0.0f, repairTag("runite"), layer("runite"));
 
-    public static final ArmorMaterial SILVER = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 4,
-        ArmorItem.Type.LEGGINGS, 3,
-        ArmorItem.Type.BOOTS, 1), 20, sound(RegisterSounds.EQUIP_SILVER), () -> {
-        return Ingredient.ofItems(MythicItems.SILVER.getIngot());
-    }, List.of(layer("silver")), 0.0f, 0.0f);
+    public static final ArmorMaterial SILVER = new ArmorMaterial(10, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 4,
+        EquipmentType.LEGGINGS, 3,
+        EquipmentType.BOOTS, 1), 20, sound(RegisterSounds.EQUIP_SILVER), 0.0f, 0.0f, repairTagCommon("silver"), layer("silver"));
 
-    public static final ArmorMaterial STAR_PLATINUM = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 7,
-        ArmorItem.Type.LEGGINGS, 7,
-        ArmorItem.Type.BOOTS, 3), 18, sound(RegisterSounds.EQUIP_STAR_PLATINUM), () -> {
-        return Ingredient.ofItems(MythicItems.STAR_PLATINUM.getIngot());
-    }, List.of(layer("star_platinum")), 2.0f, 0.1f);
+    public static final ArmorMaterial STAR_PLATINUM = new ArmorMaterial(34, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 7,
+        EquipmentType.LEGGINGS, 7,
+        EquipmentType.BOOTS, 3), 18, sound(RegisterSounds.EQUIP_STAR_PLATINUM), 2.0f, 0.1f, repairTag("star_platinum"), layer("star_platinum"));
 
-    public static final ArmorMaterial STEEL = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 2,
-        ArmorItem.Type.CHESTPLATE, 6,
-        ArmorItem.Type.LEGGINGS, 5,
-        ArmorItem.Type.BOOTS, 2), 10, sound(RegisterSounds.EQUIP_STEEL), () -> {
-        return Ingredient.ofItems(MythicItems.STEEL.getIngot());
-    }, List.of(layer("steel")), 0.5f, 0.0f);
+    public static final ArmorMaterial STEEL = new ArmorMaterial(20, Map.of(
+        EquipmentType.HELMET, 2,
+        EquipmentType.CHESTPLATE, 6,
+        EquipmentType.LEGGINGS, 5,
+        EquipmentType.BOOTS, 2), 10, sound(RegisterSounds.EQUIP_STEEL), 0.5f, 0.0f, repairTagCommon("steel"), layer("steel"));
 
-    public static final ArmorMaterial STORMYX = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 30, sound(RegisterSounds.EQUIP_STORMYX), () -> {
-        return Ingredient.ofItems(MythicItems.STORMYX.getIngot());
-    }, List.of(layer("stormyx")), 2.0f, 0.0f);
+    public static final ArmorMaterial STORMYX = new ArmorMaterial(30, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 30, sound(RegisterSounds.EQUIP_STORMYX), 2.0f, 0.0f, repairTag("stormyx"), layer("stormyx"));
 
-    public static final ArmorMaterial TIDESINGER = new ArmorMaterial(Map.of(
-        ArmorItem.Type.HELMET, 3,
-        ArmorItem.Type.CHESTPLATE, 8,
-        ArmorItem.Type.LEGGINGS, 6,
-        ArmorItem.Type.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_TIDESINGER), () -> {
-        return Ingredient.ofItems(MythicItems.AQUARIUM.getIngot());
-    }, List.of(layer("tidesinger")), 2.0f, 0.0f);
-
-    @Override
-    public Registry<ArmorMaterial> getRegistry() {
-        return Registries.ARMOR_MATERIAL;
-    }
-
-    @Override
-    public Class<ArmorMaterial> getTargetFieldType() {
-        return ArmorMaterial.class;
-    }
+    public static final ArmorMaterial TIDESINGER = new ArmorMaterial(32, Map.of(
+        EquipmentType.HELMET, 3,
+        EquipmentType.CHESTPLATE, 8,
+        EquipmentType.LEGGINGS, 6,
+        EquipmentType.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_TIDESINGER), 2.0f, 0.0f, repairTag("aquarium"), layer("tidesinger"));
 
     private static RegistryEntry<SoundEvent> sound(SoundEvent sound) {
         return Registries.SOUND_EVENT.getEntry(sound);
     }
 
-    private static ArmorMaterial.Layer layer(String name) {
-        return new ArmorMaterial.Layer(RegistryHelper.id(name));
+    private static RegistryKey<EquipmentAsset> layer(String name) {
+        return RegistryHelper.equipmentAsset(name);
+    }
+
+    private static TagKey<Item> repairTag(String material) {
+        return TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("ingots/" + material));
+    }
+
+    private static TagKey<Item> repairTagCommon(String material) {
+        return TagKey.of(RegistryKeys.ITEM, Identifier.of("c", "ingots/" + material));
     }
 }

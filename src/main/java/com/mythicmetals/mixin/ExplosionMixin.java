@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Explosion.class)
-public class ExplosionMixin {
+public interface ExplosionMixin {
 
     @Inject(method = "getCausingEntity(Lnet/minecraft/entity/Entity;)Lnet/minecraft/entity/LivingEntity;", at = @At("HEAD"), cancellable = true)
     private static void superBang(@Nullable Entity entity, CallbackInfoReturnable<LivingEntity> cir) {

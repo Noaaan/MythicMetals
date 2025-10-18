@@ -73,7 +73,7 @@ public class BlockBreaker {
     }
 
     public static double getReachDistance(PlayerEntity playerEntity) {
-        return playerEntity.getAttributeValue(EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE);
+        return playerEntity.getAttributeValue(EntityAttributes.BLOCK_INTERACTION_RANGE);
     }
 
     public static void initHammerTime() {

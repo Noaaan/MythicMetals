@@ -26,8 +26,9 @@ public class EnchantedMidasGoldBlock extends BlockWithEntity {
         return new EnchantedMidasGoldBlockEntity(pos, state);
     }
 
+    // TODO - Review
     @Override
     public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
+        return BlockRenderType.MODEL;
     }
 }

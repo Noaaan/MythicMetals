@@ -17,14 +17,16 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class MidasGoldSword extends SwordItem {
     public MidasGoldSword(ToolMaterial material, Settings settings) {
-        super(material, settings);
+        super(material, 3.0f, -2.4f, settings);
     }
 
     @Override
     public void postProcessComponents(ItemStack stack) {
         // TODO - Surely there is a better way to do dynamic attributes, right? Right??
         //  This is a lot of effort for the correct green tooltip... Thanks Mojang
+        if (!stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) return;
         var currentAttributes = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        assert currentAttributes != null;
         int goldCount = stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
         var originalDamage = new AtomicReference<>(0.0);
         stack.getDefaultComponents().get(DataComponentTypes.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
@@ -37,7 +39,7 @@ public class MidasGoldSword extends SwordItem {
         var speed = new AtomicReference<>(0.0);
         // Copy attack speed over. We want to re-build, not add anything
         currentAttributes.modifiers().forEach(entry -> {
-            if (entry.attribute().equals(EntityAttributes.GENERIC_ATTACK_SPEED)) {
+            if (entry.attribute().equals(EntityAttributes.ATTACK_SPEED)) {
                 speed.set(entry.modifier().value());
             }
         });
@@ -45,7 +47,7 @@ public class MidasGoldSword extends SwordItem {
         if (goldDmgBonus > 0) {
             var changedComponent = AttributeModifiersComponent.builder()
                 .add(
-                    EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                    EntityAttributes.ATTACK_DAMAGE,
                     new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID,
                         originalDamage.get() + goldDmgBonus,
                         EntityAttributeModifier.Operation.ADD_VALUE
@@ -53,7 +55,7 @@ public class MidasGoldSword extends SwordItem {
                     AttributeModifierSlot.MAINHAND
                 )
                 .add(
-                    EntityAttributes.GENERIC_ATTACK_SPEED,
+                    EntityAttributes.ATTACK_SPEED,
                     new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, speed.get(), EntityAttributeModifier.Operation.ADD_VALUE),
                     AttributeModifierSlot.MAINHAND
                 )

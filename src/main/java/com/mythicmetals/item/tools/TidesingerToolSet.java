@@ -9,6 +9,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.item.consume.UseAction;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
@@ -16,27 +17,27 @@ import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.A
 
 public class TidesingerToolSet extends ToolSet {
     public TidesingerToolSet(ToolMaterial material, int[] damage, float[] speed) {
-        super(material, damage, speed);
+        super("tidesinger", material, damage, speed);
     }
 
     @Override
     protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new TidesingerSword(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
+        return new TidesingerSword(material, damage, speed, settings);
     }
 
     @Override
     protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
-        return new TidesingerAxe(material, settings.attributeModifiers(createAttributeModifiers(material, damage, speed)));
+        return new TidesingerAxe(material, damage, speed, settings);
     }
 
     public static class TidesingerSword extends SwordItem implements RiptideTool {
 
-        public TidesingerSword(ToolMaterial material, Settings settings) {
-            super(material, settings);
+        public TidesingerSword(ToolMaterial material, int damage, float speed, Settings settings) {
+            super(material, damage, speed, settings);
         }
 
         @Override
-        public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        public ActionResult use(World world, PlayerEntity user, Hand hand) {
             return activateRiptide(user, hand);
         }
 
@@ -52,19 +53,19 @@ public class TidesingerToolSet extends ToolSet {
 
 
         @Override
-        public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-            performRiptide(stack, world, user, remainingUseTicks);
+        public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+            return performRiptide(stack, world, user, remainingUseTicks);
         }
     }
 
     public static class TidesingerAxe extends AxeItem implements RiptideTool {
 
-        public TidesingerAxe(ToolMaterial material, Settings settings) {
-            super(material, settings);
+        public TidesingerAxe(ToolMaterial material, int damage, float speed, Settings settings) {
+            super(material, damage, speed, settings);
         }
 
         @Override
-        public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        public ActionResult use(World world, PlayerEntity user, Hand hand) {
             return activateRiptide(user, hand);
         }
 
@@ -79,8 +80,8 @@ public class TidesingerToolSet extends ToolSet {
         }
 
         @Override
-        public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-            performRiptide(stack, world, user, remainingUseTicks);
+        public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+            return performRiptide(stack, world, user, remainingUseTicks);
         }
 
         @Override
@@ -91,7 +92,7 @@ public class TidesingerToolSet extends ToolSet {
 
     @Override
     public AttributeModifiersComponent.Builder createAttributeBuilder(ToolMaterial material, double damage, float speed) {
-        return super.createAttributeBuilder(material, damage, speed).add(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED,
+        return super.createAttributeBuilder(material, damage, speed).add(EntityAttributes.SUBMERGED_MINING_SPEED,
             new EntityAttributeModifier(RegistryHelper.id("tidesinger_tool_bonus"), 1.5f, ADD_MULTIPLIED_BASE),
             AttributeModifierSlot.MAINHAND
         );

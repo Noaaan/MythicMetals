@@ -3,31 +3,22 @@ package com.mythicmetals.item;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import java.util.function.Consumer;
+import net.minecraft.registry.*;
 
 public class CopperSet {
     private Item nuggetItem = null;
     private Item dustItem = null;
 
-    private static Item.Settings createSettings(Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new Item.Settings().group(MythicMetals.TABBED_GROUP).tab(0);
-        settingsProcessor.accept(settings);
-        return settings;
+    private static Item.Settings createSettings(String name) {
+        return new Item.Settings().registryKey(RegistryHelper.itemKey(name)).group(MythicMetals.TABBED_GROUP).tab(0);
     }
 
     public CopperSet() {
-        this(settings -> {
-        });
-    }
-
-    public CopperSet(Consumer<Item.Settings> settingsConsumer) {
         if (MythicMetals.CONFIG.enableNuggets()) {
-            this.nuggetItem = makeItem(createSettings(settingsConsumer));
+            this.nuggetItem = makeItem(createSettings("copper_nugget"));
         }
         if (MythicMetals.CONFIG.enableDusts()) {
-            this.dustItem = makeItem(createSettings(settingsConsumer));
+            this.dustItem = makeItem(createSettings("copper_dust"));
         }
     }
 

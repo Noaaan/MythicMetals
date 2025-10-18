@@ -33,8 +33,8 @@ import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.decoration.DisplayEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.trim.ArmorTrim;
-import net.minecraft.item.trim.ArmorTrimPattern;
+import net.minecraft.item.equipment.trim.ArmorTrim;
+import net.minecraft.item.equipment.trim.ArmorTrimPattern;
 import net.minecraft.loot.context.*;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.ItemTags;
@@ -221,7 +221,7 @@ public final class MythicCommands {
                 return;
             }
             try {
-                Files.writeString(file, WikiExporter.computeToolset(value));
+                Files.writeString(file, WikiExporter.computeToolset(name, value));
                 var logString = "Successfully exported equipment/%s-tools".formatted(name.toLowerCase(Locale.ROOT));
                 MythicMetals.LOGGER.info(logString);
             } catch (IOException e) {
@@ -364,7 +364,7 @@ public final class MythicCommands {
 
             int rolls = IntegerArgumentType.getInteger(ctx, "rolls");
 
-            LootContextParameterSet lootContextParameterSet = new LootContextParameterSet.Builder(ctx.getSource().getWorld())
+            LootWorldContext lootContextParameterSet = new LootWorldContext.Builder(ctx.getSource().getWorld())
                 .addOptional(LootContextParameters.THIS_ENTITY, source.getEntity())
                 .add(LootContextParameters.ORIGIN, source.getPosition())
                 .build(LootContextTypes.CHEST);
@@ -429,15 +429,15 @@ public final class MythicCommands {
         var toolset = ToolSetArgumentType.getToolSet(context, "toolset");
 
         var source = context.getSource();
-        MythicMetals.LOGGER.info(WikiExporter.computeToolset(toolset));
+        MythicMetals.LOGGER.info(WikiExporter.computeToolset(toolset.getName(), toolset));
         source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
         return 0;
     }
 
     /**
      * Summons an armor stand with a specific armor set and trim on top of the world <br>
-     * Create the {@link ArmorTrim} using a pattern from {@link net.minecraft.item.trim.ArmorTrimPatterns}
-     * and a material from {@link net.minecraft.item.trim.ArmorTrimMaterials}
+     * Create the {@link ArmorTrim} using a pattern from {@link net.minecraft.item.equipment.trim.ArmorTrimPatterns}
+     * and a material from {@link net.minecraft.item.equipment.trim.ArmorTrimMaterials}
      *
      * @param world    The world where you want to summon the armor stand, needs to be on the server
      * @param trim     {@link ArmorTrim} you wish to use on the armor.
@@ -454,7 +454,7 @@ public final class MythicCommands {
         if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
         AtomicBoolean success = new AtomicBoolean(true);
 
-        var armorStand = new ArmorStandEntity(world, x, world.getTopY() - 50, z);
+        var armorStand = new ArmorStandEntity(world, x, world.getTopYInclusive() - 50, z);
         armorSet.getArmorItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
             if (!armorStack.isIn(ItemTags.TRIMMABLE_ARMOR)) {
@@ -463,7 +463,10 @@ public final class MythicCommands {
             if (trim != null) {
                 armorStack.set(DataComponentTypes.TRIM, trim);
             }
-            if (success.get()) armorStand.equipStack(armorItem.getSlotType(), armorStack);
+            if (success.get()) {
+                var equippableComponent = armorStack.get(DataComponentTypes.EQUIPPABLE);
+                armorStand.equipStack(equippableComponent.slot(), armorStack);
+            }
         });
         world.spawnEntity(armorStand);
         return success.get();
@@ -477,8 +480,8 @@ public final class MythicCommands {
         if (world.isClient) return new ArrayList<>();
 
         var list = new ArrayList<ArmorTrim>();
-        world.getRegistryManager().get(RegistryKeys.TRIM_MATERIAL).streamEntries().forEach(armorMaterialEntry -> {
-            world.getRegistryManager().get(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> {
+        world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_MATERIAL).streamEntries().forEach(armorMaterialEntry -> {
+            world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> {
                 list.add(new ArmorTrim(armorMaterialEntry, armorTrimEntry));
             });
         });
@@ -493,7 +496,7 @@ public final class MythicCommands {
         if (world.isClient) return new ArrayList<>();
 
         var list = new ArrayList<String>();
-        world.getRegistryManager().get(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value().assetId().getPath()));
+        world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value().assetId().getPath()));
         return list;
     }
 
@@ -530,7 +533,7 @@ public final class MythicCommands {
      */
     private static CompletableFuture<Suggestions> trimTypes(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
         var list = new ArrayList<ArmorTrimPattern>();
-        ctx.getSource().getRegistryManager().get(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value()));
+        ctx.getSource().getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value()));
         list.forEach(trimPattern -> suggestion.suggest(trimPattern.assetId().getPath()));
         suggestion.suggest("all").suggest("none");
         return suggestion.buildFuture();
@@ -624,7 +627,7 @@ public final class MythicCommands {
                     getAllArmorTrims(world).stream().toList()
                 );
             } else if (getAllTrimPatternStrs(world).contains(trimQuery)) {
-                armorTrims.addAll(getAllArmorTrims(world).stream().filter(trim -> trim.getPattern().value().assetId().getPath().equals(trimQuery)).toList());
+                armorTrims.addAll(getAllArmorTrims(world).stream().filter(trim -> trim.pattern().value().assetId().getPath().equals(trimQuery)).toList());
             }
 
             // lambda moment
@@ -650,12 +653,12 @@ public final class MythicCommands {
             if (trimQuery.equals("all")) {
                 armorTrims = getAllArmorTrims(world);
             } else {
-                var trims = getAllArmorTrims(world).stream().filter(trim -> trim.getPattern().value().assetId().getPath().equals(trimQuery)).toList();
+                var trims = getAllArmorTrims(world).stream().filter(trim -> trim.pattern().value().assetId().getPath().equals(trimQuery)).toList();
                 armorTrims.addAll(trims);
             }
 
             // Split the armor stands into groups using these offsets
-            int splitPoint = armorTrims.size() / world.getRegistryManager().get(RegistryKeys.TRIM_MATERIAL).size();
+            int splitPoint = armorTrims.size() / world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_MATERIAL).size();
 
             // flip-flop
             int xOffset = 0;

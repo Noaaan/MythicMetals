@@ -10,8 +10,7 @@ import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class TidesingerSmithingDisplay extends DefaultSmithingDisplay {
     Ingredient template;
@@ -21,17 +20,17 @@ public class TidesingerSmithingDisplay extends DefaultSmithingDisplay {
 
     public TidesingerSmithingDisplay(RecipeEntry<TidesingerCoralRecipe> recipe) {
         super(
-            recipe.value(),
-            recipe.id(),
-            List.of(EntryIngredients.ofIngredient(recipe.value().template()),
-                EntryIngredients.ofIngredient(recipe.value().base()),
-                EntryIngredients.ofIngredient(recipe.value().addition())
-            )
+            List.of(EntryIngredients.ofIngredient(recipe.value().template().get()),
+                EntryIngredients.ofIngredient(recipe.value().base().get()),
+                EntryIngredients.ofIngredient(recipe.value().addition().get())
+            ),
+            List.of(EntryIngredients.of(recipe.value().result())),
+            Optional.of(recipe.id().getValue())
         );
 
-        this.template = recipe.value().template();
-        this.base = recipe.value().base();
-        this.addition = recipe.value().addition();
+        this.template = recipe.value().template().get();
+        this.base = recipe.value().base().get();
+        this.addition = recipe.value().addition().get();
         this.outputStack = recipe.value().result();
 
     }
@@ -46,13 +45,14 @@ public class TidesingerSmithingDisplay extends DefaultSmithingDisplay {
 
     @Override
     public List<EntryIngredient> getOutputEntries() {
-        if (this.base != null && this.addition != null && this.outputStack != null) {
-            var additionStack = Arrays.stream(this.addition.getMatchingStacks()).findFirst().orElse(ItemStack.EMPTY).copy();
-            if (additionStack.isIn(MythicTags.TIDESINGER_CORAL)) {
-                outputStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(additionStack.getItem()));
-                return List.of(EntryIngredients.of(outputStack));
-            }
-        }
+        // FIXME
+//        if (this.base != null && this.addition != null && this.outputStack != null) {
+//            var additionStack = Arrays.stream(this.addition.getMatchingItems().toArray()).findFirst().orElse(ItemStack.EMPTY);
+//            if (additionStack.isIn(MythicTags.TIDESINGER_CORAL)) {
+//                outputStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(additionStack.getItem()));
+//                return List.of(EntryIngredients.of(outputStack));
+//            }
+//        }
         return super.getOutputEntries();
     }
 }

@@ -1,7 +1,8 @@
 package com.mythicmetals;
 
 import com.mythicmetals.ability.Abilities;
-import com.mythicmetals.armor.*;
+import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
@@ -24,12 +25,11 @@ import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.village.TradeOffers;
@@ -44,9 +44,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final int CONFIG_VERSION = 13;
-
-    public static final AbstractMinecartEntity.Type BANGLUM_TNT = Enum.valueOf(AbstractMinecartEntity.Type.class, "BANGLUM_TNT");
-    public static final AbstractMinecartEntity.Type PALLADIUM_MINECART = Enum.valueOf(AbstractMinecartEntity.Type.class, "PALLADIUM_MINECART");
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
@@ -70,13 +67,9 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     public void onInitialize() {
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicItems.class, false);
-        FieldRegistrationHandler.register(MythicItems.Mats.class, MOD_ID, false);
-        FieldRegistrationHandler.register(MythicItems.Templates.class, MOD_ID, false);
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            FieldRegistrationHandler.register(MythicItems.ParticleSticks.class, MOD_ID, false);
-        }
+        FieldRegistrationHandler.processSimple(MythicItems.Mats.class, false);
+        MythicItems.Templates.init();
         FieldRegistrationHandler.processSimple(MythicItems.Copper.class, false);
-        FieldRegistrationHandler.register(MythicArmorMaterials.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
@@ -93,8 +86,10 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         MythicEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistry.INSTANCE.add(MythicItems.Mats.MORKITE, 1200);
-        FuelRegistry.INSTANCE.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
+        FuelRegistryEvents.BUILD.register((builder, context) -> {
+            builder.add(MythicItems.Mats.MORKITE, 1200);
+            builder.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
+        });
         MythicResourceConditions.init();
         RegisterLootConditions.init();
         MythicStatusEffects.init();
