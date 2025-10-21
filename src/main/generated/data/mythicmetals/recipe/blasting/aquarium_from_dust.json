@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:aquarium_dust"
-  },
+  "ingredient": "mythicmetals:aquarium_dust",
   "result": {
     "id": "mythicmetals:aquarium_ingot"
   }

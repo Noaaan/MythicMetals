@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "mythicmetals:stormyx_dust"
-  },
+  "ingredient": "mythicmetals:stormyx_dust",
   "result": {
     "id": "mythicmetals:stormyx_ingot"
   }

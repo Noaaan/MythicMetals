@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:durasteel_helmet"
-    },
-    {
-      "item": "mythicmetals:durasteel_chestplate"
-    },
-    {
-      "item": "mythicmetals:durasteel_leggings"
-    },
-    {
-      "item": "mythicmetals:durasteel_boots"
-    }
+    "mythicmetals:durasteel_helmet",
+    "mythicmetals:durasteel_chestplate",
+    "mythicmetals:durasteel_leggings",
+    "mythicmetals:durasteel_boots"
   ],
   "result": {
     "id": "mythicmetals:durasteel_nugget"

@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:star_platinum_helmet"
-    },
-    {
-      "item": "mythicmetals:star_platinum_chestplate"
-    },
-    {
-      "item": "mythicmetals:star_platinum_leggings"
-    },
-    {
-      "item": "mythicmetals:star_platinum_boots"
-    }
+    "mythicmetals:star_platinum_helmet",
+    "mythicmetals:star_platinum_chestplate",
+    "mythicmetals:star_platinum_leggings",
+    "mythicmetals:star_platinum_boots"
   ],
   "result": {
     "id": "mythicmetals:star_platinum_nugget"

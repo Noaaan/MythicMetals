@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.2,
-  "ingredient": {
-    "item": "mythicmetals:tin_dust"
-  },
+  "ingredient": "mythicmetals:tin_dust",
   "result": {
     "id": "mythicmetals:tin_ingot"
   }

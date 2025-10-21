@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:celestium_helmet"
-    },
-    {
-      "item": "mythicmetals:celestium_chestplate"
-    },
-    {
-      "item": "mythicmetals:celestium_leggings"
-    },
-    {
-      "item": "mythicmetals:celestium_boots"
-    }
+    "mythicmetals:celestium_helmet",
+    "mythicmetals:celestium_chestplate",
+    "mythicmetals:celestium_leggings",
+    "mythicmetals:celestium_boots"
   ],
   "result": {
     "id": "mythicmetals:celestium_nugget"

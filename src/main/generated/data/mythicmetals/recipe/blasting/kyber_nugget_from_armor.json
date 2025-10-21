@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:kyber_helmet"
-    },
-    {
-      "item": "mythicmetals:kyber_chestplate"
-    },
-    {
-      "item": "mythicmetals:kyber_leggings"
-    },
-    {
-      "item": "mythicmetals:kyber_boots"
-    }
+    "mythicmetals:kyber_helmet",
+    "mythicmetals:kyber_chestplate",
+    "mythicmetals:kyber_leggings",
+    "mythicmetals:kyber_boots"
   ],
   "result": {
     "id": "mythicmetals:kyber_nugget"

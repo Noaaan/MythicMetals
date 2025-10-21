@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.8,
-  "ingredient": {
-    "item": "mythicmetals:osmium_ore"
-  },
+  "ingredient": "mythicmetals:osmium_ore",
   "result": {
     "id": "mythicmetals:osmium_ingot"
   }

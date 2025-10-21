@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.5,
-  "ingredient": {
-    "item": "mythicmetals:palladium_ore"
-  },
+  "ingredient": "mythicmetals:palladium_ore",
   "result": {
     "id": "mythicmetals:palladium_ingot"
   }

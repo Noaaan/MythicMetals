@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "item": "mythicmetals:hallowed_dust"
-  },
+  "ingredient": "mythicmetals:hallowed_dust",
   "result": {
     "id": "mythicmetals:hallowed_ingot"
   }

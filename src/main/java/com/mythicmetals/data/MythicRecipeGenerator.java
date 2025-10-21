@@ -4,8 +4,6 @@ import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.conditions.DustLoadedCondition;
-import com.mythicmetals.conditions.NuggetsLoadedCondition;
 import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;

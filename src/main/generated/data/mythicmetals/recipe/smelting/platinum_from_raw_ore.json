@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:raw_platinum"
-  },
+  "ingredient": "mythicmetals:raw_platinum",
   "result": {
     "id": "mythicmetals:platinum_ingot"
   }

@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:platinum_dust"
-  },
+  "ingredient": "mythicmetals:platinum_dust",
   "result": {
     "id": "mythicmetals:platinum_ingot"
   }

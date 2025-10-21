@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "mythicmetals:midas_gold_dust"
-  },
+  "ingredient": "mythicmetals:midas_gold_dust",
   "result": {
     "id": "mythicmetals:midas_gold_ingot"
   }

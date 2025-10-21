@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.5,
-  "ingredient": {
-    "item": "mythicmetals:mythril_dust"
-  },
+  "ingredient": "mythicmetals:mythril_dust",
   "result": {
     "id": "mythicmetals:mythril_ingot"
   }

@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:aquarium_ore"
-  },
+  "ingredient": "mythicmetals:aquarium_ore",
   "result": {
     "id": "mythicmetals:aquarium_ingot"
   }

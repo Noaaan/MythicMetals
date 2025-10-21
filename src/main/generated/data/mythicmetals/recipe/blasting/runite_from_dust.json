@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.0,
-  "ingredient": {
-    "item": "mythicmetals:runite_dust"
-  },
+  "ingredient": "mythicmetals:runite_dust",
   "result": {
     "id": "mythicmetals:runite_ingot"
   }

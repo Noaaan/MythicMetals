@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "item": "mythicmetals:bronze_dust"
-  },
+  "ingredient": "mythicmetals:bronze_dust",
   "result": {
     "id": "mythicmetals:bronze_ingot"
   }

@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:carmot_helmet"
-    },
-    {
-      "item": "mythicmetals:carmot_chestplate"
-    },
-    {
-      "item": "mythicmetals:carmot_leggings"
-    },
-    {
-      "item": "mythicmetals:carmot_boots"
-    }
+    "mythicmetals:carmot_helmet",
+    "mythicmetals:carmot_chestplate",
+    "mythicmetals:carmot_leggings",
+    "mythicmetals:carmot_boots"
   ],
   "result": {
     "id": "mythicmetals:carmot_nugget"

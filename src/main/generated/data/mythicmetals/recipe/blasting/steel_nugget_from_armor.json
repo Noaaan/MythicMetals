@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:steel_helmet"
-    },
-    {
-      "item": "mythicmetals:steel_chestplate"
-    },
-    {
-      "item": "mythicmetals:steel_leggings"
-    },
-    {
-      "item": "mythicmetals:steel_boots"
-    }
+    "mythicmetals:steel_helmet",
+    "mythicmetals:steel_chestplate",
+    "mythicmetals:steel_leggings",
+    "mythicmetals:steel_boots"
   ],
   "result": {
     "id": "mythicmetals:steel_nugget"

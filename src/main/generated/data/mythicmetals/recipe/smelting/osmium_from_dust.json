@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.8,
-  "ingredient": {
-    "item": "mythicmetals:osmium_dust"
-  },
+  "ingredient": "mythicmetals:osmium_dust",
   "result": {
     "id": "mythicmetals:osmium_ingot"
   }

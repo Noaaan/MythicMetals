@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:stormyx_helmet"
-    },
-    {
-      "item": "mythicmetals:stormyx_chestplate"
-    },
-    {
-      "item": "mythicmetals:stormyx_leggings"
-    },
-    {
-      "item": "mythicmetals:stormyx_boots"
-    }
+    "mythicmetals:stormyx_helmet",
+    "mythicmetals:stormyx_chestplate",
+    "mythicmetals:stormyx_leggings",
+    "mythicmetals:stormyx_boots"
   ],
   "result": {
     "id": "mythicmetals:stormyx_nugget"

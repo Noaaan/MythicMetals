@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:bronze_helmet"
-    },
-    {
-      "item": "mythicmetals:bronze_chestplate"
-    },
-    {
-      "item": "mythicmetals:bronze_leggings"
-    },
-    {
-      "item": "mythicmetals:bronze_boots"
-    }
+    "mythicmetals:bronze_helmet",
+    "mythicmetals:bronze_chestplate",
+    "mythicmetals:bronze_leggings",
+    "mythicmetals:bronze_boots"
   ],
   "result": {
     "id": "mythicmetals:bronze_nugget"

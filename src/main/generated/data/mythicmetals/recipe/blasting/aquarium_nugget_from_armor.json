@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:aquarium_helmet"
-    },
-    {
-      "item": "mythicmetals:aquarium_chestplate"
-    },
-    {
-      "item": "mythicmetals:aquarium_leggings"
-    },
-    {
-      "item": "mythicmetals:aquarium_boots"
-    }
+    "mythicmetals:aquarium_helmet",
+    "mythicmetals:aquarium_chestplate",
+    "mythicmetals:aquarium_leggings",
+    "mythicmetals:aquarium_boots"
   ],
   "result": {
     "id": "mythicmetals:aquarium_nugget"

@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:palladium_helmet"
-    },
-    {
-      "item": "mythicmetals:palladium_chestplate"
-    },
-    {
-      "item": "mythicmetals:palladium_leggings"
-    },
-    {
-      "item": "mythicmetals:palladium_boots"
-    }
+    "mythicmetals:palladium_helmet",
+    "mythicmetals:palladium_chestplate",
+    "mythicmetals:palladium_leggings",
+    "mythicmetals:palladium_boots"
   ],
   "result": {
     "id": "mythicmetals:palladium_nugget"

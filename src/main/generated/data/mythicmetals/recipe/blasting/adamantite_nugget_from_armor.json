@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:adamantite_helmet"
-    },
-    {
-      "item": "mythicmetals:adamantite_chestplate"
-    },
-    {
-      "item": "mythicmetals:adamantite_leggings"
-    },
-    {
-      "item": "mythicmetals:adamantite_boots"
-    }
+    "mythicmetals:adamantite_helmet",
+    "mythicmetals:adamantite_chestplate",
+    "mythicmetals:adamantite_leggings",
+    "mythicmetals:adamantite_boots"
   ],
   "result": {
     "id": "mythicmetals:adamantite_nugget"

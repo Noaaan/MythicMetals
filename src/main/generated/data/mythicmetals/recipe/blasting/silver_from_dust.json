@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:silver_dust"
-  },
+  "ingredient": "mythicmetals:silver_dust",
   "result": {
     "id": "mythicmetals:silver_ingot"
   }

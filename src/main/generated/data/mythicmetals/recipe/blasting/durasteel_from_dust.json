@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "item": "mythicmetals:durasteel_dust"
-  },
+  "ingredient": "mythicmetals:durasteel_dust",
   "result": {
     "id": "mythicmetals:durasteel_ingot"
   }

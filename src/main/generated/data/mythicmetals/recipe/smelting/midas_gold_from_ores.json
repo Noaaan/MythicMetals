@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.0,
-  "ingredient": {
-    "item": "mythicmetals:midas_gold_ore"
-  },
+  "ingredient": "mythicmetals:midas_gold_ore",
   "result": {
     "id": "mythicmetals:midas_gold_ingot"
   }

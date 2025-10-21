@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 1.2,
-  "ingredient": {
-    "item": "mythicmetals:carmot_dust"
-  },
+  "ingredient": "mythicmetals:carmot_dust",
   "result": {
     "id": "mythicmetals:carmot_ingot"
   }

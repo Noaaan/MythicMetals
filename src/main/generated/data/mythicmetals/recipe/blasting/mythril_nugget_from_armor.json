@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:mythril_helmet"
-    },
-    {
-      "item": "mythicmetals:mythril_chestplate"
-    },
-    {
-      "item": "mythicmetals:mythril_leggings"
-    },
-    {
-      "item": "mythicmetals:mythril_boots"
-    }
+    "mythicmetals:mythril_helmet",
+    "mythicmetals:mythril_chestplate",
+    "mythicmetals:mythril_leggings",
+    "mythicmetals:mythril_boots"
   ],
   "result": {
     "id": "mythicmetals:mythril_nugget"

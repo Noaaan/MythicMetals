@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:silver_helmet"
-    },
-    {
-      "item": "mythicmetals:silver_chestplate"
-    },
-    {
-      "item": "mythicmetals:silver_leggings"
-    },
-    {
-      "item": "mythicmetals:silver_boots"
-    }
+    "mythicmetals:silver_helmet",
+    "mythicmetals:silver_chestplate",
+    "mythicmetals:silver_leggings",
+    "mythicmetals:silver_boots"
   ],
   "result": {
     "id": "mythicmetals:silver_nugget"

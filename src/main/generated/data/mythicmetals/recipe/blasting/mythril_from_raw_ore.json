@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.5,
-  "ingredient": {
-    "item": "mythicmetals:raw_mythril"
-  },
+  "ingredient": "mythicmetals:raw_mythril",
   "result": {
     "id": "mythicmetals:mythril_ingot"
   }

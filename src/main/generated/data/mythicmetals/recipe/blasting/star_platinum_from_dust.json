@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "item": "mythicmetals:star_platinum_dust"
-  },
+  "ingredient": "mythicmetals:star_platinum_dust",
   "result": {
     "id": "mythicmetals:star_platinum"
   }

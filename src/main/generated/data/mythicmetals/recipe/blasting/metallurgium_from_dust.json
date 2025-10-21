@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": {
-    "item": "mythicmetals:metallurgium_dust"
-  },
+  "ingredient": "mythicmetals:metallurgium_dust",
   "result": {
     "id": "mythicmetals:metallurgium_ingot"
   }

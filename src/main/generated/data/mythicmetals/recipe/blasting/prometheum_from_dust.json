@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:prometheum_dust"
-  },
+  "ingredient": "mythicmetals:prometheum_dust",
   "result": {
     "id": "mythicmetals:prometheum_ingot"
   }

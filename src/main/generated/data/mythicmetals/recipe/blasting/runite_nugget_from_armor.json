@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:runite_helmet"
-    },
-    {
-      "item": "mythicmetals:runite_chestplate"
-    },
-    {
-      "item": "mythicmetals:runite_leggings"
-    },
-    {
-      "item": "mythicmetals:runite_boots"
-    }
+    "mythicmetals:runite_helmet",
+    "mythicmetals:runite_chestplate",
+    "mythicmetals:runite_leggings",
+    "mythicmetals:runite_boots"
   ],
   "result": {
     "id": "mythicmetals:runite_nugget"

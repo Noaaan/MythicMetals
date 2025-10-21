@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:quadrillum_dust"
-  },
+  "ingredient": "mythicmetals:quadrillum_dust",
   "result": {
     "id": "mythicmetals:quadrillum_ingot"
   }

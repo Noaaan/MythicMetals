@@ -9,18 +9,10 @@
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:metallurgium_helmet"
-    },
-    {
-      "item": "mythicmetals:metallurgium_chestplate"
-    },
-    {
-      "item": "mythicmetals:metallurgium_leggings"
-    },
-    {
-      "item": "mythicmetals:metallurgium_boots"
-    }
+    "mythicmetals:metallurgium_helmet",
+    "mythicmetals:metallurgium_chestplate",
+    "mythicmetals:metallurgium_leggings",
+    "mythicmetals:metallurgium_boots"
   ],
   "result": {
     "id": "mythicmetals:metallurgium_nugget"

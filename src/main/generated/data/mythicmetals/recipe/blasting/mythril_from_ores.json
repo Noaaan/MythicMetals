@@ -4,12 +4,8 @@
   "cookingtime": 100,
   "experience": 1.5,
   "ingredient": [
-    {
-      "item": "mythicmetals:deepslate_mythril_ore"
-    },
-    {
-      "item": "mythicmetals:mythril_ore"
-    }
+    "mythicmetals:deepslate_mythril_ore",
+    "mythicmetals:mythril_ore"
   ],
   "result": {
     "id": "mythicmetals:mythril_ingot"

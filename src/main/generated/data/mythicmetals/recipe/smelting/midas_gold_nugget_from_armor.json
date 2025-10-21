@@ -9,18 +9,10 @@
   "cookingtime": 200,
   "experience": 0.1,
   "ingredient": [
-    {
-      "item": "mythicmetals:midas_gold_helmet"
-    },
-    {
-      "item": "mythicmetals:midas_gold_chestplate"
-    },
-    {
-      "item": "mythicmetals:midas_gold_leggings"
-    },
-    {
-      "item": "mythicmetals:midas_gold_boots"
-    }
+    "mythicmetals:midas_gold_helmet",
+    "mythicmetals:midas_gold_chestplate",
+    "mythicmetals:midas_gold_leggings",
+    "mythicmetals:midas_gold_boots"
   ],
   "result": {
     "id": "mythicmetals:midas_gold_nugget"

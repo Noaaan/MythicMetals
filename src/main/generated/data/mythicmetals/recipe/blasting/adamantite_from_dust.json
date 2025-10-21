@@ -1,16 +1,9 @@
 {
-  "fabric:load_conditions": [
-    {
-      "condition": "mythicmetals:dust_enabled"
-    }
-  ],
   "type": "minecraft:blasting",
   "category": "misc",
   "cookingtime": 100,
   "experience": 1.5,
-  "ingredient": {
-    "item": "mythicmetals:adamantite_dust"
-  },
+  "ingredient": "mythicmetals:adamantite_dust",
   "result": {
     "id": "mythicmetals:adamantite_ingot"
   }

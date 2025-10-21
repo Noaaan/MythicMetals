@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.2,
-  "ingredient": {
-    "item": "mythicmetals:raw_manganese"
-  },
+  "ingredient": "mythicmetals:raw_manganese",
   "result": {
     "id": "mythicmetals:manganese_ingot"
   }

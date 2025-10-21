@@ -4,12 +4,8 @@
   "cookingtime": 200,
   "experience": 0.7,
   "ingredient": [
-    {
-      "item": "mythicmetals:nether_banglum_ore"
-    },
-    {
-      "item": "mythicmetals:banglum_ore"
-    }
+    "mythicmetals:nether_banglum_ore",
+    "mythicmetals:banglum_ore"
   ],
   "result": {
     "id": "mythicmetals:banglum_ingot"

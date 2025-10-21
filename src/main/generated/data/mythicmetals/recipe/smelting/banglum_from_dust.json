@@ -8,9 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
-  "ingredient": {
-    "item": "mythicmetals:banglum_dust"
-  },
+  "ingredient": "mythicmetals:banglum_dust",
   "result": {
     "id": "mythicmetals:banglum_ingot"
   }
