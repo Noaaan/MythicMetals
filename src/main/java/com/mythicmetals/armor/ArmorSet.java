@@ -39,7 +39,7 @@ public class ArmorSet {
         final var settings = new Item.Settings()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
-            .registryKey(fromType(equipmentType))
+            .registryKey(keyFromType(equipmentType))
             .attributeModifiers(createAttributeModifiers(equipmentType))
             .component(DataComponentTypes.EQUIPPABLE, EquippableComponent
                 .builder(equipmentType.getEquipmentSlot())
@@ -126,9 +126,9 @@ public class ArmorSet {
         int armor = this.material.defense().getOrDefault(equipmentType, 0);
         double toughness = this.material.toughness();
         double knockbackResistance = this.material.knockbackResistance();
-        AttributeModifiersComponent.Builder builder = AttributeModifiersComponent.builder();
-        AttributeModifierSlot attributeModifierSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
-        Identifier identifier = Identifier.ofVanilla("armor." + equipmentType.getName());
+        var builder = AttributeModifiersComponent.builder();
+        var attributeModifierSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
+        var identifier = Identifier.ofVanilla("armor." + equipmentType.getName());
         builder.add(EntityAttributes.ARMOR, new EntityAttributeModifier(identifier, armor, EntityAttributeModifier.Operation.ADD_VALUE), attributeModifierSlot);
         builder.add(
             EntityAttributes.ARMOR_TOUGHNESS,
@@ -150,7 +150,7 @@ public class ArmorSet {
         return material;
     }
 
-    private RegistryKey<Item> fromType(EquipmentType type) {
+    private RegistryKey<Item> keyFromType(EquipmentType type) {
         var typeName = switch (type) {
             case HELMET -> "helmet";
             case CHESTPLATE -> "chestplate";
