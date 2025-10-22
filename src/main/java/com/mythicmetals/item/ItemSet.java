@@ -6,6 +6,8 @@ import io.wispforest.owo.util.TagInjector;
 import net.minecraft.item.Item;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.function.Consumer;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
@@ -91,23 +93,16 @@ public class ItemSet {
 
     public void register(String name, boolean imStarPlatinum) {
         if (imStarPlatinum) {
-            Registry.register(Registries.ITEM, RegistryHelper.id(name), ingotItem);
-            if (nuggetItem != null) {
-                Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
-            }
-            if (dustItem != null) {
-                Registry.register(Registries.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
-            }
-        } else {
-            register(name);
+            Registries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id(name + "_ingot"));
         }
-
+        register(name);
     }
 
     protected Item makeItem(Item.Settings settings) {
         return new Item(settings);
     }
 
+    @Nullable
     public Item getRawOre() {
         return rawOreItem;
     }
@@ -116,10 +111,12 @@ public class ItemSet {
         return ingotItem;
     }
 
+    @Nullable
     public Item getNugget() {
         return nuggetItem;
     }
 
+    @Nullable
     public Item getDust() {
         return dustItem;
     }

@@ -10,6 +10,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
+@SuppressWarnings("CodeBlock2Expr")
 public class MythicMetalsData implements DataGeneratorEntrypoint {
 
     @Override
@@ -22,6 +23,7 @@ public class MythicMetalsData implements DataGeneratorEntrypoint {
         data.addProvider((output, registriesFuture) -> {
             return new MythicBiomeTagProvider(output, RegistryKeys.BIOME, registriesFuture);
         });
+        data.addProvider(MythicItemModelProvider::new);
     }
 
     @Override
