@@ -1,15 +1,10 @@
 {
-  "fabric:load_conditions": [
-    {
-      "condition": "mythicmetals:dust_enabled"
-    }
-  ],
   "type": "minecraft:blasting",
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
   "ingredient": "mythicmetals:star_platinum_dust",
   "result": {
-    "id": "mythicmetals:star_platinum"
+    "id": "mythicmetals:star_platinum_ingot"
   }
 }

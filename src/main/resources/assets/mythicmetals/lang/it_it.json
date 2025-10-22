@@ -532,7 +532,7 @@
     "item.mythicmetals.silver_leggings": "Gambiere d'argento",
     "item.mythicmetals.silver_nugget": "Pepita d'argento",
 
-    "item.mythicmetals.star_platinum": "Star Platinum",
+    "item.mythicmetals.star_platinum_ingot": "Star Platinum",
     "item.mythicmetals.star_platinum_anvil": "Incudine di Star Platinum",
     "item.mythicmetals.star_platinum_arrow": "Arrow di Star Platinum",
     "item.mythicmetals.star_platinum_axe": "Ascia di Star Platinum",
@@ -1275,7 +1275,7 @@
     "tag.item.mythicmetals.storage_blocks.silver": "Blocchi d'argento",
     "tag.item.mythicmetals.ingots.silver": "Lingotti d'argento",
     "tag.item.mythicmetals.ores.silver": "Minerali d'argento",
-    "tag.item.mythicmetals.star_platinum": "Star Platinum",
+    "tag.item.mythicmetals.star_platinum_ingot": "Star Platinum",
     "tag.item.mythicmetals.storage_blocks.star_platinum": "Blocchi di Star Platinum",
     "tag.item.mythicmetals.equipment.star_platinum": "Equipaggiamento di Star Platinum",
     "tag.item.mythicmetals.armor.star_platinum": "Armatura di Star Platinum",
