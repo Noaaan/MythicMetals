@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(SimpleDefaultedRegistry.class)
 public class DefaultedRegistryMixin {
 
+    // TODO - Migrate this to use registry aliases
     @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0, argsOnly = true)
     Identifier fixMissingFromRegistry(@Nullable Identifier id) {
         if (id != null) {

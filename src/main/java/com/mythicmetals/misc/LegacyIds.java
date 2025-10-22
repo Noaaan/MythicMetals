@@ -56,11 +56,12 @@ public class LegacyIds {
         LEGACY_IDS.put(OLD_STARRITE_INGOT, NEW_STARRITE);
         LEGACY_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
         LEGACY_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
-
     }
 
     public static HashMap<Identifier, Identifier> getLegacyIds() {
-        createMap();
+        if (LEGACY_IDS.isEmpty()) {
+            createMap();
+        }
         return LEGACY_IDS;
     }
 }
