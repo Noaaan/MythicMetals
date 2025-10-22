@@ -4,12 +4,11 @@ import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.BlockStateModelGenerator;
-import net.minecraft.client.data.ItemModelGenerator;
-import net.minecraft.client.data.Models;
+import net.minecraft.client.data.*;
 import net.minecraft.item.Item;
 
 public class MythicItemModelProvider extends FabricModelProvider {
@@ -70,7 +69,12 @@ public class MythicItemModelProvider extends FabricModelProvider {
         itemModelGenerator.register(MythicTools.RED_AEGIS_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MythicTools.WHITE_AEGIS_SWORD, Models.HANDHELD);
         itemModelGenerator.register(MythicTools.ORICHALCUM_HAMMER, Models.HANDHELD);
-        itemModelGenerator.registerTippedArrow(MythicTools.TIPPED_RUNITE_ARROW);
+        var tippedRuniteArrowLayers = itemModelGenerator.uploadTwoLayers(
+            MythicTools.TIPPED_RUNITE_ARROW,
+            RegistryHelper.id("item/weapons/tipped_runite_arrow_head"),
+            RegistryHelper.id("item/weapons/tipped_runite_arrow_base")
+        );
+        itemModelGenerator.registerPotionTinted(MythicTools.TIPPED_RUNITE_ARROW, tippedRuniteArrowLayers);
         // TODO - Handle manually, as they are exquisite
         //MythicTools.MIDAS_GOLD_SWORD
         //MythicTools.GILDED_MIDAS_GOLD_SWORD
