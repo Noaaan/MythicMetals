@@ -12,10 +12,8 @@ import com.mythicmetals.component.PrometheumComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.tools.HammerBase;
-import com.mythicmetals.misc.BlockBreaker;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
+import com.mythicmetals.misc.*;
 import io.wispforest.owo.ui.core.Color;
-import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -24,10 +22,10 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexRendering;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.item.property.numeric.NumericProperties;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
@@ -38,12 +36,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.World;
 import java.util.ArrayList;
 
 public class MythicMetalsClient implements ClientModInitializer {
-    private long lastTime;
-    private float time;
 
     @Override
     public void onInitializeClient() {
@@ -193,6 +188,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private void registerModelPredicates() {
+        NumericProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
         // FIXME
 //        ModelPredicateProviderRegistry.register(
 //            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
@@ -226,12 +222,6 @@ public class MythicMetalsClient implements ClientModInitializer {
 //        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
 //            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);
 //
-//        ModelPredicateProviderRegistry.register(MythicTools.PLATINUM_WATCH, RegistryHelper.id("time"), (stack, world, entity, seed) -> {
-//            if (entity == null || entity.getWorld() == null) {
-//                return 0.0F;
-//            }
-//            return this.getTime(entity.getWorld());
-//        });
 
     }
 
@@ -270,19 +260,6 @@ public class MythicMetalsClient implements ClientModInitializer {
         });
 
 
-    }
-
-    private float getTime(World world) {
-        if (world.getTimeOfDay() != this.lastTime) {
-            this.lastTime = world.getTimeOfDay();
-            this.time += Delta.compute(
-                this.time,
-                (world.getTimeOfDay()) / 24000.0f,
-                MinecraftClient.getInstance().getRenderTickCounter().getLastFrameDuration() / 2.0f
-            );
-        }
-
-        return this.time;
     }
 
     // FIXME
