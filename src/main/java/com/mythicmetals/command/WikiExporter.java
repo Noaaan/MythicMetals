@@ -7,6 +7,7 @@ import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.item.Item;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Language;
 import net.minecraft.util.Util;
@@ -226,14 +227,20 @@ public class WikiExporter {
         var armorModelImage = "../../assets/armor-models/256/%s".formatted(armorSet.getMaterialId() + "_256.png");
         output.append(ADMONIITION_TOP_IMAGE.formatted(armorTitleName + " Armor", armorModelImage));
 
-        for (var armor : armorSet.getArmorItems()) {
-            var item = Registries.ITEM.getId(armor);
-            String name = translationStorage.get(Util.createTranslationKey("item", item));
-            String id = item.getPath();
+        var map = Util.make(new HashMap<Item, Integer>(), itemMap -> {
+            itemMap.put(armorSet.getHelmet(), armorSet.getMaterial().defense().get(EquipmentType.HELMET));
+            itemMap.put(armorSet.getChestplate(), armorSet.getMaterial().defense().get(EquipmentType.CHESTPLATE));
+            itemMap.put(armorSet.getLeggings(), armorSet.getMaterial().defense().get(EquipmentType.LEGGINGS));
+            itemMap.put(armorSet.getBoots(), armorSet.getMaterial().defense().get(EquipmentType.BOOTS));
+        });
 
-            // FIXME
+        for (var armor : map.entrySet()) {
+            var itemId = Registries.ITEM.getId(armor.getKey());
+            String name = translationStorage.get(Util.createTranslationKey("item", itemId));
+            String id = itemId.getPath();
+
             var material = armorSet.getMaterial();
-            int protection = material.defense().get(null);
+            int protection = armor.getValue();
 
             output.append("\n");
             output.append("\t<h4>**").append(name).append("**</h4>").append("\n");
@@ -256,7 +263,7 @@ public class WikiExporter {
                 output.append("\t+%s Knockback Resistance".formatted(kbRes)).append("<br>\n");
             }
             // 350 Durability
-            output.append("\t%s Durability".formatted(armor.getDefaultStack().getMaxDamage())).append("<br>\n");
+            output.append("\t%s Durability".formatted(armor.getKey().getDefaultStack().getMaxDamage())).append("<br>\n");
         }
         return output.toString();
     }
