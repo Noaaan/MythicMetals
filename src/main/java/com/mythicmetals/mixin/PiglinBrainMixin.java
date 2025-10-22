@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
@@ -30,7 +31,7 @@ public class PiglinBrainMixin {
     }
 
     @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
-    private static void mythicmetals$grabBarteredItem(PiglinEntity piglin, boolean barter, CallbackInfo ci) {
+    private static void mythicmetals$grabBarteredItem(ServerWorld world, PiglinEntity piglin, boolean barter, CallbackInfo ci) {
         mythicmetals$cachedBarterItem = piglin.getOffHandStack();
     }
 
