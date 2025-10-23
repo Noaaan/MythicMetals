@@ -79,23 +79,6 @@ public class MidasGoldSword extends SwordItem {
         return bonus;
     }
 
-    public static float countGold(int goldCount) {
-        if (goldCount >= 1280) return 1.0f;
-        return switch (goldCount / 64) {
-            case 1 -> 0.1f;
-            case 2, 3 -> 0.2f;
-            case 4 -> 0.3f;
-            case 5, 6, 7, 8, 9 -> 0.4f;
-            case 10, 11 -> 0.5f;
-            case 12, 13 -> 0.6f;
-            case 14, 15 -> 0.7f;
-            case 16, 17 -> 0.8f;
-            case 18 -> 0.9f;
-            case 19 -> 1.0f;
-            default -> 0.0f;
-        };
-    }
-
     /**
      * Calculates a level from intervals of 64.
      * Used for appending specific text to a Midas Gold Sword tooltip

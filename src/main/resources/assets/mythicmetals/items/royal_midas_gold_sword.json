@@ -1,0 +1,95 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:range_dispatch",
+          "entries": [
+            {
+              "model": {
+                "type": "minecraft:model",
+                "model": "mythicmetals:item/midas/royal_small_0"
+              },
+              "threshold": 0.0
+            },
+            {
+              "model": {
+                "type": "minecraft:model",
+                "model": "mythicmetals:item/midas/royal_small_1"
+              },
+              "threshold": 896.0
+            },
+            {
+              "model": {
+                "type": "minecraft:model",
+                "model": "mythicmetals:item/midas/royal_small_2"
+              },
+              "threshold": 1024.0
+            },
+            {
+              "model": {
+                "type": "minecraft:model",
+                "model": "mythicmetals:item/midas/royal_small_3"
+              },
+              "threshold": 1152.0
+            },
+            {
+              "model": {
+                "type": "minecraft:model",
+                "model": "mythicmetals:item/midas/royal_small_4"
+              },
+              "threshold": 1280.0
+            }
+          ],
+          "property": "mythicmetals:midas_gold"
+        },
+        "when": [
+          "gui"
+        ]
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:range_dispatch",
+      "entries": [
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "mythicmetals:item/midas/royal_sword_0"
+          },
+          "threshold": 0.0
+        },
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "mythicmetals:item/midas/royal_sword_1"
+          },
+          "threshold": 896.0
+        },
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "mythicmetals:item/midas/royal_sword_2"
+          },
+          "threshold": 1024.0
+        },
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "mythicmetals:item/midas/royal_sword_3"
+          },
+          "threshold": 1152.0
+        },
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "mythicmetals:item/midas/royal_sword_4"
+          },
+          "threshold": 1280.0
+        }
+      ],
+      "property": "mythicmetals:midas_gold"
+    },
+    "property": "minecraft:display_context"
+  }
+}

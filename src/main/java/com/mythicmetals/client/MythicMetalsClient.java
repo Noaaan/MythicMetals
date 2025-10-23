@@ -5,6 +5,8 @@ import com.mythicmetals.armor.HallowedArmor;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.client.properties.MidasGoldProperty;
+import com.mythicmetals.client.properties.TrueTimeProperty;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
 import com.mythicmetals.component.MythicDataComponents;
@@ -60,9 +62,6 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
         BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
-
-        // FIXME
-//        ColorProviderRegistry.ITEM.register(UsefulSingletonForColorUtil::potionColor, MythicTools.TIPPED_RUNITE_ARROW);
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
@@ -189,6 +188,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     private void registerModelPredicates() {
         NumericProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
+        NumericProperties.ID_MAPPER.put(RegistryHelper.id("midas_gold"), MidasGoldProperty.CODEC);
         // FIXME
 //        ModelPredicateProviderRegistry.register(
 //            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
@@ -204,10 +204,6 @@ public class MythicMetalsClient implements ClientModInitializer {
 //            MythicTools.MYTHRIL_DRILL, RegistryHelper.id("is_active"),
 //            (stack, world, entity, seed) -> stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel() ? 0 : 1
 //        );
-//
-//        registerMidasPredicates(MythicTools.MIDAS_GOLD_SWORD);
-//        registerMidasPredicates(MythicTools.GILDED_MIDAS_GOLD_SWORD);
-//        registerMidasPredicates(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
 //
 //        ModelPredicateProviderRegistry.register(RegistryHelper.id("in_world"), (itemStack, world, livingEntity, i) -> {
 //            if (mode == null) {
@@ -259,16 +255,6 @@ public class MythicMetalsClient implements ClientModInitializer {
             }
         });
 
-
-    }
-
-    // FIXME
-    public void registerMidasPredicates(Item item) {
-//        ModelPredicateProviderRegistry.register(item, RegistryHelper.id("midas_gold_count"),
-//            (stack, world, entity, seed) -> {
-//                int goldCount = stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
-//                return MidasGoldSword.countGold(goldCount);
-//            });
     }
 
 }

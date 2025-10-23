@@ -1,4 +1,4 @@
-package com.mythicmetals.client;
+package com.mythicmetals.client.properties;
 
 import com.mojang.serialization.MapCodec;
 import io.wispforest.endec.Endec;

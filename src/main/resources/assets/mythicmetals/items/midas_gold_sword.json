@@ -1,0 +1,36 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/midas/midas_sword_0"
+        },
+        "threshold": 0.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/midas/midas_sword_1"
+        },
+        "threshold": 64.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/midas/midas_sword_2"
+        },
+        "threshold": 128.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/midas/midas_sword_3"
+        },
+        "threshold": 256.0
+      }
+    ],
+    "property": "mythicmetals:midas_gold"
+  }
+}
