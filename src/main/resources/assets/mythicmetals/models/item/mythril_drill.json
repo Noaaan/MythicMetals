@@ -12,13 +12,5 @@
       "rotation": [0, 60, -5],
       "translation": [2, -4, -3.25]
     }
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "mythicmetals:is_active": 1
-      },
-      "model": "mythicmetals:item/mythril_drill_activated"
-    }
-  ]
+  }
 }

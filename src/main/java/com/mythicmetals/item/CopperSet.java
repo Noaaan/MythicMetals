@@ -15,10 +15,10 @@ public class CopperSet {
 
     public CopperSet() {
         if (MythicMetals.CONFIG.enableNuggets()) {
-            this.nuggetItem = makeItem(createSettings("copper_nugget"));
+            this.nuggetItem = makeItem(createSettings("copper_nugget").modelId(RegistryHelper.id("copper_nugget")));
         }
         if (MythicMetals.CONFIG.enableDusts()) {
-            this.dustItem = makeItem(createSettings("copper_dust"));
+            this.dustItem = makeItem(createSettings("copper_dust").modelId(RegistryHelper.id("copper_dust")));
         }
     }
 

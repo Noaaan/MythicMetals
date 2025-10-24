@@ -5,8 +5,7 @@ import com.mythicmetals.armor.HallowedArmor;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.properties.MidasGoldProperty;
-import com.mythicmetals.client.properties.TrueTimeProperty;
+import com.mythicmetals.client.properties.*;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
 import com.mythicmetals.component.MythicDataComponents;
@@ -27,6 +26,7 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexRendering;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.item.property.bool.BooleanProperties;
 import net.minecraft.client.render.item.property.numeric.NumericProperties;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -189,6 +189,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     private void registerModelPredicates() {
         NumericProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
         NumericProperties.ID_MAPPER.put(RegistryHelper.id("midas_gold"), MidasGoldProperty.CODEC);
+        BooleanProperties.ID_MAPPER.put(RegistryHelper.id("has_drill_fuel"), HasDrillFuelProperty.CODEC);
         // FIXME
 //        ModelPredicateProviderRegistry.register(
 //            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
@@ -199,21 +200,6 @@ public class MythicMetalsClient implements ClientModInitializer {
 //            MythicTools.LEGENDARY_BANGLUM.getShovel(), RegistryHelper.id("is_primed"),
 //            (stack, world, entity, seed) -> BanglumShovel.isCoolingDown(entity, stack) ? 0 : 1
 //        );
-//
-//        ModelPredicateProviderRegistry.register(
-//            MythicTools.MYTHRIL_DRILL, RegistryHelper.id("is_active"),
-//            (stack, world, entity, seed) -> stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel() ? 0 : 1
-//        );
-//
-//        ModelPredicateProviderRegistry.register(RegistryHelper.id("in_world"), (itemStack, world, livingEntity, i) -> {
-//            if (mode == null) {
-//                return 1.0f;
-//            }
-//
-//            return mode.equals(ModelTransformationMode.GUI) ? 0.0F : 1.0f;
-//        });
-//
-//        ModelPredicateProviderRegistry.register(MythicTools.STORMYX_SHIELD, RegistryHelper.id("blocking"), new ShieldUsePredicate());
 //
 //        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
 //            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);

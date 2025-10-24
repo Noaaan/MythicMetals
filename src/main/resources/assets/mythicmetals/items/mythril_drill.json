@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "mythicmetals:item/mythril_drill_inactive"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "mythicmetals:item/mythril_drill"
+    },
+    "property": "mythicmetals:has_drill_fuel"
+  }
+}
