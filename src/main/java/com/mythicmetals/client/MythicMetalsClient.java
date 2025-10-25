@@ -1,9 +1,10 @@
 package com.mythicmetals.client;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.HallowedArmor;
+import com.mythicmetals.armor.CustomArmorModelItem;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
+import com.mythicmetals.client.models.CustomArmorModel;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.properties.*;
 import com.mythicmetals.client.rendering.*;
@@ -23,13 +24,16 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexRendering;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.*;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.entity.equipment.EquipmentModel;
 import net.minecraft.client.render.item.property.bool.BooleanProperties;
 import net.minecraft.client.render.item.property.numeric.NumericProperties;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -157,31 +161,33 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     private void registerArmorRenderer() {
         Item[] armors = Registries.ITEM.stream()
-            .filter(i -> i instanceof HallowedArmor
+            .filter(i -> i instanceof CustomArmorModelItem
                 && Registries.ITEM.getKey(i).get().getValue().getNamespace().equals(MythicMetals.MOD_ID))
             .toArray(Item[]::new);
 
-        ArmorRenderer renderer = (matrices, vertexConsumer, stack, bipedEntityRenderState, slot, light, original) -> {
-
-            HallowedArmor armor = (HallowedArmor) stack.getItem();
+        ArmorRenderer renderer = (matrices, vertexConsumerProvider, stack, bipedEntityRenderState, slot, light, contextModel) -> {
+            var trimAtlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
+            CustomArmorModelItem armor = (CustomArmorModelItem) stack.getItem();
             var model = armor.getArmorModel();
+            var customModelData = (CustomArmorModel) model;
+            customModelData.setVisibility(slot);
             var texture = armor.getArmorTexture(stack, slot);
-            original.copyTransforms(model);
-            ArmorRenderer.renderPart(matrices, vertexConsumer, light, stack, model, texture);
+            contextModel.copyTransforms(model);
+            ArmorRenderer.renderPart(matrices, vertexConsumerProvider, light, stack, model, texture);
 
             // Armor trim handling for custom armor models
-            // FIXME
-//            if (!stack.isOf(MythicArmor.HALLOWED.getHelmet())) {
-//                var trimComponent = stack.get(DataComponentTypes.TRIM);
-//                if (trimComponent != null) {
-//                    var atlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
-//                    Sprite sprite = atlas.apply(slot == EquipmentSlot.LEGS ? trimComponent.getLeggingsModelId(armor.getMaterial()) : trimComponent.getGenericModelId(armor.getMaterial()));
-//                    VertexConsumer trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
-//                        ItemRenderer.getItemGlintConsumer(vertexConsumer, TexturedRenderLayers.getArmorTrims(trimComponent.pattern().value().decal()), true, stack.hasGlint())
-//                    );
-//                    model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV);
-//                }
-//            }
+            var armorTrim = stack.get(DataComponentTypes.TRIM);
+            if (armorTrim != null) {
+                var layer = slot == EquipmentSlot.LEGS ? EquipmentModel.LayerType.HUMANOID_LEGGINGS : EquipmentModel.LayerType.HUMANOID;
+                var assetId = armorTrim.pattern().value().assetId();
+                var assetName = armorTrim.material().value().assetName();
+                var trimTexture = assetId.withPath(path -> "trims/entity/" + layer.asString() + "/" + path + "_" + assetName);
+                var sprite = trimAtlas.apply(trimTexture);
+                var trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
+                    vertexConsumerProvider.getBuffer(TexturedRenderLayers.getArmorTrims(armorTrim.pattern().value().decal()))
+                );
+                model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV);
+            }
         };
         ArmorRenderer.register(renderer, armors);
     }

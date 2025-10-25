@@ -11,7 +11,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
@@ -21,7 +21,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-public class TidesingerArmor extends HallowedArmor {
+public class TidesingerArmor extends ArmorItem implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<BipedEntityRenderState> model;
@@ -46,13 +46,12 @@ public class TidesingerArmor extends HallowedArmor {
 
     @Environment(EnvType.CLIENT)
     @Override
-    protected BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+    public BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getLoadedEntityModels();
         var root = models.getModelPart(MythicModelHandler.TIDESINGER);
         return new TidesingerBipedModel(root, slot);
     }
 
-    // TODO - Feels like magic string, maybe refactor
     @NotNull
     @Override
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {

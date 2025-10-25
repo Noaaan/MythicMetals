@@ -1,15 +1,11 @@
 package com.mythicmetals.client.models;
 
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.decoration.ArmorStandEntity;
 
-public class TidesingerBipedModel extends BipedEntityModel<BipedEntityRenderState> {
+public class TidesingerBipedModel extends BipedEntityModel<BipedEntityRenderState> implements CustomArmorModel {
     final EquipmentSlot slot;
 
     public TidesingerBipedModel(ModelPart root, EquipmentSlot slot) {
@@ -17,9 +13,9 @@ public class TidesingerBipedModel extends BipedEntityModel<BipedEntityRenderStat
         this.slot = slot;
     }
 
-    // FIXME
-    private void renderArmorPart(EquipmentSlot slot) {
-        setVisible(false);
+    @Override
+    public void setVisibility(EquipmentSlot slot) {
+        this.setVisible(false);
         // Note - These are custom parts. By extending this you need these in your model,
         // otherwise you guarantee a crash.
         this.body.getChild("body_belt").visible = false;

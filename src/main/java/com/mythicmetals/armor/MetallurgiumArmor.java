@@ -9,14 +9,13 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
-public class MetallurgiumArmor extends HallowedArmor {
+public class MetallurgiumArmor extends ArmorItem implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<BipedEntityRenderState> model;
@@ -40,7 +39,7 @@ public class MetallurgiumArmor extends HallowedArmor {
     }
 
     @Environment(EnvType.CLIENT)
-    protected BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+    public BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = MinecraftClient.getInstance().getLoadedEntityModels();
         var root = models.getModelPart(MythicModelHandler.METALLURGIUM);
         return new HelmetModel(root, slot);

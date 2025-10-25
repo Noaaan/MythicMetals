@@ -29,7 +29,7 @@ public class MetallurgiumArmorModel extends BipedEntityModel<BipedEntityRenderSt
                 .mirrored(false),
             ModelTransform.pivot(0.0F, 0.0F, 0.0F)
         );
-        var details = head.addChild("details", ModelPartBuilder.create().uv(0, 16).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)), ModelTransform.NONE);
+        head.addChild("details", ModelPartBuilder.create().uv(0, 16).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)), ModelTransform.NONE);
 
         return modelData;
     }
