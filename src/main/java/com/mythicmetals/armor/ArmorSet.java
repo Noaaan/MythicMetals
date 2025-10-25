@@ -64,6 +64,11 @@ public class ArmorSet {
         });
     }
 
+    public ArmorSet(String name, ArmorMaterial material, List<AttributeModifier> extraModifiers) {
+        this(name, material, extraModifiers, settings -> {
+        });
+    }
+
     public ArmorSet(String name, ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
         this.name = name;
         this.material = material;

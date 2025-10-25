@@ -9,7 +9,6 @@
     "AnvilBlockMixin",
     "ApplyBonusLootFunctionMixin",
     "AreaEffectCloudEntityMixin",
-    "ArmorItemMixin",
     "BucketItemMixin",
     "CampfireBlockMixin",
     "ConduitBlockEntityMixin",

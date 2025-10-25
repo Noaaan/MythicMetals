@@ -11,8 +11,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.state.BipedEntityRenderState;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.item.tooltip.TooltipType;
@@ -21,18 +20,14 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-public class TidesingerArmor extends ArmorItem implements CustomArmorModelItem {
+public class TidesingerArmor extends Item implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
     private BipedEntityModel<BipedEntityRenderState> model;
     public final EquipmentType type;
 
-    public TidesingerArmor(EquipmentType type, Settings settings) {
-        this(MythicArmorMaterials.TIDESINGER, type, settings);
-    }
-
-    public TidesingerArmor(ArmorMaterial material, EquipmentType slot, Settings settings) {
-        super(material, slot, settings.component(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty()));
+    public TidesingerArmor(EquipmentType slot, Settings settings) {
+        super(settings.component(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty()));
         this.type = slot;
     }
 
