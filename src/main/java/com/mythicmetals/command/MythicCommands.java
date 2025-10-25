@@ -639,11 +639,11 @@ public final class MythicCommands {
             for (var armorSetName : armorSetStrings) {
                 armorTrims.forEach(armorTrim -> {
                     if (summonArmorStandWithTrim(world, armorTrim, MythicArmor.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
-                        mutX.increment();
+                        mutX.add(2);
                         count.increment();
                     }
                 });
-                mutZ.increment();
+                mutZ.add(2);
                 mutX.setValue(pos.x);
             }
             context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
