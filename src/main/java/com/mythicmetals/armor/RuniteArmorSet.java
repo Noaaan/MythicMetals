@@ -11,7 +11,7 @@ public class RuniteArmorSet extends ArmorSet {
     }
 
     @Override
-    protected ArmorItem makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
+    protected Item makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
         if (slot != EquipmentType.HELMET) return super.makeItem(material, slot, settings);
         return new RuniteArmor(slot, settings);
     }

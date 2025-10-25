@@ -34,10 +34,6 @@ public abstract class ArmorItemMixin {
 //                    mythicmetals$armorMapBuilder(builder, "aquarium_boots_depth_strider_bonus", EntityAttributes.GENERIC_WATER_MOVEMENT_EFFICIENCY, 0.5F, ADD_VALUE, slot);
 //            }
 //        }
-//        if (material.equals(MythicArmorMaterials.CELESTIUM)) {
-//            mythicmetals$armorMapBuilder(builder, "celestium_%s_speed_bonus".formatted(type.getName()), EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.1F, ADD_MULTIPLIED_TOTAL, slot);
-//            mythicmetals$armorMapBuilder(builder, "celestium_%s_damage_bonus".formatted(type.getName()), EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0F, ADD_VALUE, slot);
-//        }
 //        if (material.equals(MythicArmorMaterials.MIDAS_GOLD)) {
 //            mythicmetals$armorMapBuilder(builder, "midas_%s_luck_bonus".formatted(type.getName()), EntityAttributes.GENERIC_LUCK, 1.0F, ADD_VALUE, slot);
 //        }

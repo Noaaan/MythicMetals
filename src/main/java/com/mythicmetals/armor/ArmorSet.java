@@ -5,24 +5,26 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.*;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.attribute.*;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_VALUE;
+
 public class ArmorSet {
 
     private final String name;
-    private final ArmorItem helmet;
-    private final ArmorItem chestplate;
-    private final ArmorItem leggings;
-    private final ArmorItem boots;
+    private final Item helmet;
+    private final Item chestplate;
+    private final Item leggings;
+    private final Item boots;
 
     private final List<Item> armorItems;
 
@@ -35,12 +37,16 @@ public class ArmorSet {
         EquipmentType.BOOTS, 13
     );
 
-    public ArmorItem baseArmorItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsProcessor) {
+    public Item baseItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsProcessor) {
+        return baseItem(material, equipmentType, settingsProcessor, List.of());
+    }
+
+    public Item baseItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsConsumer, List<AttributeModifier> extraModifiers) {
         final var settings = new Item.Settings()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
             .registryKey(keyFromType(equipmentType))
-            .attributeModifiers(createAttributeModifiers(equipmentType))
+            .attributeModifiers(createAttributeModifiers(equipmentType, extraModifiers))
             .component(DataComponentTypes.EQUIPPABLE, EquippableComponent
                 .builder(equipmentType.getEquipmentSlot())
                 .model(material.assetId())
@@ -49,7 +55,7 @@ public class ArmorSet {
             )
             .repairable(material.repairIngredient())
             .maxDamage(BASE_DURABILITY.get(equipmentType) * material.durability());
-        settingsProcessor.accept(settings);
+        settingsConsumer.accept(settings);
         return this.makeItem(material, equipmentType, settings);
     }
 
@@ -61,10 +67,20 @@ public class ArmorSet {
     public ArmorSet(String name, ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
         this.name = name;
         this.material = material;
-        this.helmet = baseArmorItem(material, EquipmentType.HELMET, settingsProcessor);
-        this.chestplate = baseArmorItem(material, EquipmentType.CHESTPLATE, settingsProcessor);
-        this.leggings = baseArmorItem(material, EquipmentType.LEGGINGS, settingsProcessor);
-        this.boots = baseArmorItem(material, EquipmentType.BOOTS, settingsProcessor);
+        this.helmet = baseItem(material, EquipmentType.HELMET, settingsProcessor);
+        this.chestplate = baseItem(material, EquipmentType.CHESTPLATE, settingsProcessor);
+        this.leggings = baseItem(material, EquipmentType.LEGGINGS, settingsProcessor);
+        this.boots = baseItem(material, EquipmentType.BOOTS, settingsProcessor);
+        this.armorItems = List.of(helmet, chestplate, leggings, boots);
+    }
+
+    public ArmorSet(String name, ArmorMaterial material, List<AttributeModifier> extraModifiers, Consumer<Item.Settings> settingsProcessor) {
+        this.name = name;
+        this.material = material;
+        this.helmet = baseItem(material, EquipmentType.HELMET, settingsProcessor, extraModifiers);
+        this.chestplate = baseItem(material, EquipmentType.CHESTPLATE, settingsProcessor, extraModifiers);
+        this.leggings = baseItem(material, EquipmentType.LEGGINGS, settingsProcessor, extraModifiers);
+        this.boots = baseItem(material, EquipmentType.BOOTS, settingsProcessor, extraModifiers);
         this.armorItems = List.of(helmet, chestplate, leggings, boots);
     }
 
@@ -82,23 +98,23 @@ public class ArmorSet {
         Registry.register(Registries.ITEM, Identifier.of(modid, name + "_boots"), boots);
     }
 
-    protected ArmorItem makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
-        return new ArmorItem(material, slot, settings);
+    protected Item makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
+        return new Item(settings);
     }
 
-    public ArmorItem getHelmet() {
+    public Item getHelmet() {
         return helmet;
     }
 
-    public ArmorItem getChestplate() {
+    public Item getChestplate() {
         return chestplate;
     }
 
-    public ArmorItem getLeggings() {
+    public Item getLeggings() {
         return leggings;
     }
 
-    public ArmorItem getBoots() {
+    public Item getBoots() {
         return boots;
     }
 
@@ -122,26 +138,40 @@ public class ArmorSet {
         return MythicArmor.ARMOR_MAP.inverse().get(this);
     }
 
-    private AttributeModifiersComponent createAttributeModifiers(EquipmentType equipmentType) {
+    private AttributeModifiersComponent createAttributeModifiers(EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
         int armor = this.material.defense().getOrDefault(equipmentType, 0);
         double toughness = this.material.toughness();
         double knockbackResistance = this.material.knockbackResistance();
         var builder = AttributeModifiersComponent.builder();
-        var attributeModifierSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
+        var equipmentSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
         var identifier = Identifier.ofVanilla("armor." + equipmentType.getName());
-        builder.add(EntityAttributes.ARMOR, new EntityAttributeModifier(identifier, armor, EntityAttributeModifier.Operation.ADD_VALUE), attributeModifierSlot);
+        builder.add(
+            EntityAttributes.ARMOR,
+            new EntityAttributeModifier(identifier, armor, ADD_VALUE),
+            equipmentSlot
+        );
         builder.add(
             EntityAttributes.ARMOR_TOUGHNESS,
-            new EntityAttributeModifier(identifier, toughness, EntityAttributeModifier.Operation.ADD_VALUE),
-            attributeModifierSlot
+            new EntityAttributeModifier(identifier, toughness, ADD_VALUE),
+            equipmentSlot
         );
         if (knockbackResistance > 0.0F) {
             builder.add(
                 EntityAttributes.KNOCKBACK_RESISTANCE,
-                new EntityAttributeModifier(identifier, knockbackResistance, EntityAttributeModifier.Operation.ADD_VALUE),
-                attributeModifierSlot
+                new EntityAttributeModifier(identifier, knockbackResistance, ADD_VALUE),
+                equipmentSlot
             );
         }
+        extraModifiers.forEach(modifier -> {
+            if (modifier.requiredSlot.matches(equipmentType.getEquipmentSlot())) {
+                var id = RegistryHelper.id(name + "_" + modifier.attribute().getKey().orElseThrow().getValue().getPath());
+                builder.add(
+                    modifier.attribute,
+                    new EntityAttributeModifier(id, modifier.value, modifier.operation),
+                    equipmentSlot
+                );
+            }
+        });
 
         return builder.build();
     }
@@ -163,5 +193,14 @@ public class ArmorSet {
 
     public String getName() {
         return name;
+    }
+
+    public record AttributeModifier(
+        RegistryEntry<EntityAttribute> attribute,
+        double value,
+        EntityAttributeModifier.Operation operation,
+        AttributeModifierSlot requiredSlot
+    ) {
+
     }
 }

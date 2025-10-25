@@ -9,12 +9,19 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.EquippableComponent;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.Unit;
 import java.lang.reflect.Field;
+import java.util.List;
+
+import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
+import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_VALUE;
 
 @SuppressWarnings("unused")
 public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
@@ -24,7 +31,25 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet BANGLUM = new ArmorSet("banglum", MythicArmorMaterials.BANGLUM);
     public static final ArmorSet BRONZE = new ArmorSet("bronze", MythicArmorMaterials.BRONZE);
     public static final ArmorSet CARMOT = new ArmorSet("carmot", MythicArmorMaterials.CARMOT, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ArmorSet CELESTIUM = new ArmorSet("celestium", MythicArmorMaterials.CELESTIUM, settings -> settings.rarity(Rarity.RARE).fireproof());
+    public static final ArmorSet CELESTIUM = new ArmorSet(
+        "celestium",
+        MythicArmorMaterials.CELESTIUM,
+        List.of(
+            new ArmorSet.AttributeModifier(
+                EntityAttributes.MOVEMENT_SPEED,
+                0.1,
+                ADD_MULTIPLIED_TOTAL,
+                AttributeModifierSlot.ARMOR
+            ),
+            new ArmorSet.AttributeModifier(
+                EntityAttributes.ATTACK_DAMAGE,
+                1.0,
+                ADD_VALUE,
+                AttributeModifierSlot.ARMOR
+            )
+        ),
+        settings -> settings.rarity(Rarity.RARE).fireproof()
+    );
     public static final Item CELESTIUM_ELYTRA = new CelestiumElytra(new Item.Settings()
         .maxDamage(832)
         .registryKey(RegistryHelper.itemKey("celestium_elytra"))
