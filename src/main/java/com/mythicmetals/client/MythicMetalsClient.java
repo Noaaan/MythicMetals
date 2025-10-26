@@ -33,6 +33,7 @@ import net.minecraft.client.render.item.property.numeric.NumericProperties;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -87,14 +88,10 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     @SuppressWarnings("unchecked")
     private void registerSwirlRenderer() {
-        // FIXME
-//        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-//            if (entityType != EntityType.PLAYER) return;
-//            registrationHelper.register(
-//                new PlayerEnergySwirlFeatureRenderer(
-//                    (FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel>) entityRenderer,
-//                    context));
-//        });
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+            if (entityType != EntityType.PLAYER) return;
+            registrationHelper.register(new PlayerEnergySwirlFeatureRenderer(entityRenderer, context.getEntityModels()));
+        });
     }
 
     /**

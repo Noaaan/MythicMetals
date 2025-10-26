@@ -6,7 +6,6 @@ import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.render.*;
-import net.minecraft.client.render.entity.equipment.EquipmentRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.LoadedEntityModels;
@@ -24,8 +23,7 @@ public class PlayerEnergySwirlFeatureRenderer<S extends PlayerEntityRenderState,
 
     public PlayerEnergySwirlFeatureRenderer(
         FeatureRendererContext<S, M> context,
-        LoadedEntityModels loader,
-        EquipmentRenderer equipmentRenderer) {
+        LoadedEntityModels loader) {
         super(context);
         this.swirlModel = new PlayerEntityModel(loader.getModelPart(MythicModelHandler.CARMOT_SWIRL), false);
     }
@@ -34,11 +32,8 @@ public class PlayerEnergySwirlFeatureRenderer<S extends PlayerEntityRenderState,
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, S state, float limbAngle, float limbDistance) {
         if (state instanceof MythicMetalsRenderState mmstate && mmstate.mythicmetals$getPlayerRenderContext().carmotShield().shouldRenderShield()) {
             var shield = mmstate.mythicmetals$getPlayerRenderContext().carmotShield();
-            float f = state.age ; // TODO - Add tickdelta?
-
             this.swirlModel.copyTransforms(this.getContextModel());
-
-            var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
+            var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (state.age * .005f) % 1f, state.age * .005f % 1f));
             this.swirlModel.setAngles(state);
             // Break animation
             if (shield.cooldown > CarmotShield.MAX_COOLDOWN - 30) {
