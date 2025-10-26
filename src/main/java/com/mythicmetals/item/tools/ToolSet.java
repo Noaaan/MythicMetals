@@ -43,11 +43,11 @@ public class ToolSet {
     public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
         this.name = name;
         this.material = material;
-        this.sword = this.makeSword(material, damage[0], speed[0], createSettings(name + "_sword", settingsProcessor));
-        this.axe = this.makeAxe(material, damage[1], speed[1], createSettings(name + "_axe", settingsProcessor));
-        this.pickaxe = this.makePickaxe(material, damage[2], speed[2], createSettings(name + "_pickaxe", settingsProcessor));
-        this.shovel = this.makeShovel(material, damage[3], speed[3], createSettings(name + "_shovel", settingsProcessor));
-        this.hoe = this.makeHoe(material, damage[4], speed[4], createSettings(name + "_hoe", settingsProcessor));
+        this.sword = this.makeSword(material, damage[0], speed[0] - 4.0f, createSettings(name + "_sword", settingsProcessor));
+        this.axe = this.makeAxe(material, damage[1], speed[1] - 4.0f, createSettings(name + "_axe", settingsProcessor));
+        this.pickaxe = this.makePickaxe(material, damage[2], speed[2] - 4.0f, createSettings(name + "_pickaxe", settingsProcessor));
+        this.shovel = this.makeShovel(material, damage[3], speed[3] - 4.0f, createSettings(name + "_shovel", settingsProcessor));
+        this.hoe = this.makeHoe(material, damage[4], speed[4] - 4.0f, createSettings(name + "_hoe", settingsProcessor));
         attackSpeed.add(speed[4]);
         attackSpeed.add(speed[3]);
         attackSpeed.add(speed[2]);
