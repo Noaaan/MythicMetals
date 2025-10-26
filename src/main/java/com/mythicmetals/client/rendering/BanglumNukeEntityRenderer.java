@@ -1,11 +1,14 @@
 package com.mythicmetals.client.rendering;
 
+import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.entity.BanglumNukeEntity;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.entity.EntityRenderer;
-import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.*;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RotationAxis;
 
 //VanillaCopy of the TntEntityRenderer
 public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity, BanglumNukeEntityState> {
@@ -17,50 +20,54 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
         blockRenderManager = context.getBlockRenderManager();
     }
 
-    // FIXME
     @Override
     public BanglumNukeEntityState createRenderState() {
         return new BanglumNukeEntityState();
     }
 
-    public void render(BanglumNukeEntity nuke, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-//        matrixStack.push();
-//        matrixStack.translate(0.0, 0.5, 0.0);
-//        int j = nuke.getFuse();
-//        if ((float) j - g + 1.0F < 10.0F) {
-//            float h = 1.0F - ((float) j - g + 1.0F) / 10.0F;
-//            h = MathHelper.clamp(h, 0.0F, 1.0F);
-//            h *= h;
-//            h *= h;
-//            float k = 1.0F + h * 0.3F;
-//            matrixStack.scale(k, k, k);
-//        }
-//
-//        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
-//        matrixStack.translate(-0.5, -0.5, 0.5);
-//        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
-//
-//        matrixStack.translate(-1, 0, -1);
-//
-//        for (int x = 0; x < 3; x++) {
-//            for (int y = 0; y < 3; y++) {
-//                for (int z = 0; z < 3; z++) {
-//                    matrixStack.push();
-//                    matrixStack.translate(x, y, z);
-//
-//                    BlockState neededState = (x + y + z) % 2 == 0
-//                        ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
-//                        : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
-//
-//                    TntMinecartEntityRenderer.renderFlashingBlock(blockRenderManager, neededState, matrixStack, vertexConsumerProvider, i, j / 5 % 2 == 0);
-//
-//                    matrixStack.pop();
-//                }
-//            }
-//        }
-//
-//        matrixStack.pop();
-//        super.render(nuke, f, g, matrixStack, vertexConsumerProvider, i);
+    @Override
+    public void render(BanglumNukeEntityState nuke, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
+        matrices.push();
+        matrices.translate(0.0, 0.5, 0.0);
+        int fuse = (int) nuke.fuse;
+        if (fuse < 10.0F) {
+            float g = 1.0F - fuse / 10.0F;
+            g = MathHelper.clamp(g, 0.0F, 1.0F);
+            g *= g;
+            g *= g;
+            float h = 1.0F + g * 0.3F;
+            matrices.scale(h, h, h);
+        }
+
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
+        matrices.translate(-0.5, -0.5, 0.5);
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
+
+        matrices.translate(-1, 0, -1);
+
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
+                for (int z = 0; z < 3; z++) {
+                    matrices.push();
+                    matrices.translate(x, y, z);
+
+                    BlockState neededState = (x + y + z) % 2 == 0
+                        ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
+                        : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
+                    TntMinecartEntityRenderer.renderFlashingBlock(blockRenderManager, neededState, matrices, vertexConsumers, light, fuse / 5 % 4 == 0);
+
+                    matrices.pop();
+                }
+            }
+        }
+
+        matrices.pop();
+        super.render(nuke, matrices, vertexConsumers, light);
     }
 
+    @Override
+    public void updateRenderState(BanglumNukeEntity entity, BanglumNukeEntityState state, float tickDelta) {
+        super.updateRenderState(entity, state, tickDelta);
+        state.fuse = entity.getFuse();
+    }
 }

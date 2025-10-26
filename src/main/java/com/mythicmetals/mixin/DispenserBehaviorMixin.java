@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 // [ConjuringCopy] https://github.com/wisp-forest/conjuring/blob/1.18/src/main/java/com/glisco/conjuring/mixin/DispenserBehaviorMixin.java
-@Mixin(targets = {"net.minecraft.block.dispenser.DispenserBehavior$17"})
+@Mixin(targets = {"net.minecraft.block.dispenser.DispenserBehavior$14"})
 public class DispenserBehaviorMixin {
 
     @Inject(method = "dispenseSilently(Lnet/minecraft/util/math/BlockPointer;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", at = @At("HEAD"), cancellable = true)
