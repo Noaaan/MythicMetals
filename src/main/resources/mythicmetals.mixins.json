@@ -43,5 +43,5 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "plugin": "com.mythicmetals.mixin.MythicMetalsMixinPlugin"
+  "plugin": "com.mythicmetals.MythicMetalsMixinPlugin"
 }

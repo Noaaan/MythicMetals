@@ -1,4 +1,4 @@
-package com.mythicmetals.mixin;
+package com.mythicmetals;
 
 import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
