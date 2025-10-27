@@ -164,11 +164,11 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         ArmorRenderer renderer = (matrices, vertexConsumerProvider, stack, bipedEntityRenderState, slot, light, contextModel) -> {
             var trimAtlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
-            CustomArmorModelItem armor = (CustomArmorModelItem) stack.getItem();
-            var model = armor.getArmorModel();
+            var armorItem = (CustomArmorModelItem) stack.getItem();
+            var model = armorItem.getArmorModel();
             var customModelData = (CustomArmorModel) model;
             customModelData.setVisibility(slot);
-            var texture = armor.getArmorTexture(stack, slot);
+            var texture = armorItem.getArmorTexture(stack, slot);
             contextModel.copyTransforms(model);
             ArmorRenderer.renderPart(matrices, vertexConsumerProvider, light, stack, model, texture);
 

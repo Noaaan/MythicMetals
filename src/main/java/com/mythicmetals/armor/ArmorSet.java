@@ -42,11 +42,17 @@ public class ArmorSet {
     }
 
     public Item baseItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsConsumer, List<AttributeModifier> extraModifiers) {
-        final var settings = new Item.Settings()
+        var settings = baseArmorSettings(name, material, equipmentType, extraModifiers);
+        settingsConsumer.accept(settings);
+        return this.makeItem(material, equipmentType, settings);
+    }
+
+    public static Item.Settings baseArmorSettings(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
+        return new Item.Settings()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
-            .registryKey(keyFromType(equipmentType))
-            .attributeModifiers(createAttributeModifiers(equipmentType, extraModifiers))
+            .registryKey(keyFromType(name, equipmentType))
+            .attributeModifiers(createAttributeModifiers(name, material, equipmentType, extraModifiers))
             .component(DataComponentTypes.EQUIPPABLE, EquippableComponent
                 .builder(equipmentType.getEquipmentSlot())
                 .model(material.assetId())
@@ -55,8 +61,6 @@ public class ArmorSet {
             )
             .repairable(material.repairIngredient())
             .maxDamage(BASE_DURABILITY.get(equipmentType) * material.durability());
-        settingsConsumer.accept(settings);
-        return this.makeItem(material, equipmentType, settings);
     }
 
     public ArmorSet(String name, ArmorMaterial material) {
@@ -143,10 +147,10 @@ public class ArmorSet {
         return MythicArmor.ARMOR_MAP.inverse().get(this);
     }
 
-    private AttributeModifiersComponent createAttributeModifiers(EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
-        int armor = this.material.defense().getOrDefault(equipmentType, 0);
-        double toughness = this.material.toughness();
-        double knockbackResistance = this.material.knockbackResistance();
+    private static AttributeModifiersComponent createAttributeModifiers(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
+        int armor = material.defense().getOrDefault(equipmentType, 0);
+        double toughness = material.toughness();
+        double knockbackResistance = material.knockbackResistance();
         var builder = AttributeModifiersComponent.builder();
         var equipmentSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
         var identifier = Identifier.ofVanilla("armor." + equipmentType.getName());
@@ -185,7 +189,7 @@ public class ArmorSet {
         return material;
     }
 
-    private RegistryKey<Item> keyFromType(EquipmentType type) {
+    private static RegistryKey<Item> keyFromType(String name, EquipmentType type) {
         var typeName = switch (type) {
             case HELMET -> "helmet";
             case CHESTPLATE -> "chestplate";

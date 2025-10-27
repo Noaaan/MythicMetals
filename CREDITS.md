@@ -18,6 +18,7 @@
 - thyreo
 - KrimsonCinder
 - Kingame
+- Icedmi
 
 Thank you all for making awesome new textures for the mod.
 

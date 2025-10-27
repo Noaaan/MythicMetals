@@ -87,7 +87,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet ORICHALCUM = new ArmorSet("orichalcum", MythicArmorMaterials.ORICHALCUM);
     public static final ArmorSet OSMIUM = new ArmorSet("osmium", MythicArmorMaterials.OSMIUM);
     public static final ArmorSet OSMIUM_CHAINMAIL = new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL);
-    public static final ArmorSet PALLADIUM = new ArmorSet(
+    public static final ArmorSet PALLADIUM = new PalladiumArmorSet(
         "palladium",
         MythicArmorMaterials.PALLADIUM,
         List.of(

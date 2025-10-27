@@ -24,10 +24,10 @@ public class MetallurgiumArmorModel extends BipedEntityModel<BipedEntityRenderSt
         head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
         head.addChild("head", ModelPartBuilder.create()
                 .uv(0, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F))
-                .uv(24, 0).cuboid(4.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, new Dilation(0.0F))
-                .uv(24, 0).mirrored().cuboid(-6.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, new Dilation(0.0F))
+                .uv(24, 0).cuboid(4.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, Dilation.NONE)
+                .uv(24, 0).mirrored().cuboid(-6.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, Dilation.NONE)
                 .mirrored(false),
-            ModelTransform.pivot(0.0F, 0.0F, 0.0F)
+            ModelTransform.NONE
         );
         head.addChild("details", ModelPartBuilder.create().uv(0, 16).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)), ModelTransform.NONE);
 

@@ -17,6 +17,7 @@ public class MythicModelHandler {
     public static final EntityModelLayer TIDESINGER = model("tidesinger");
     public static final EntityModelLayer BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
     public static final EntityModelLayer PALLADIUM_MINECART = model("palladium_minecart");
+    public static final EntityModelLayer PALLADIUM = model("palladium_armor");
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
     public static final Identifier STAR_PLATINUM_CLOAK = RegistryHelper.id("textures/models/star_platinum_cloak.png");
 
@@ -24,6 +25,7 @@ public class MythicModelHandler {
         consumer.accept(BANGLUM_TNT_MINECART, MinecartEntityModel.getTexturedModelData());
         consumer.accept(PALLADIUM_MINECART, MinecartEntityModel.getTexturedModelData());
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
+        consumer.accept(PALLADIUM, TexturedModelData.of(PalladiumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
         consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));
         consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 64, 32));
