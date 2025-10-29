@@ -1,0 +1,22 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "entries": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/legendary_banglum_pickaxe_primed"
+        },
+        "threshold": 0.0
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "mythicmetals:item/legendary_banglum_pickaxe"
+        },
+        "threshold": 0.001
+      }
+    ],
+    "property": "minecraft:cooldown"
+  }
+}

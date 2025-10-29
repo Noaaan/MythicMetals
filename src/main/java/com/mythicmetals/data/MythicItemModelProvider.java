@@ -8,9 +8,9 @@ import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.*;
-import net.minecraft.client.render.item.property.numeric.NumericProperties;
-import net.minecraft.client.render.item.property.select.SelectProperties;
+import net.minecraft.client.data.BlockStateModelGenerator;
+import net.minecraft.client.data.ItemModelGenerator;
+import net.minecraft.client.data.Models;
 import net.minecraft.item.Item;
 
 public class MythicItemModelProvider extends FabricModelProvider {
@@ -57,11 +57,13 @@ public class MythicItemModelProvider extends FabricModelProvider {
 
         // Tools
         MythicTools.TOOL_MAP.forEach((s, toolSet) -> {
-            itemModelGenerator.register(toolSet.getSword(), Models.HANDHELD);
-            itemModelGenerator.register(toolSet.getAxe(), Models.HANDHELD);
-            itemModelGenerator.register(toolSet.getPickaxe(), Models.HANDHELD);
-            itemModelGenerator.register(toolSet.getShovel(), Models.HANDHELD);
-            itemModelGenerator.register(toolSet.getHoe(), Models.HANDHELD);
+            if (!s.equals("legendary_banglum")) {
+                itemModelGenerator.register(toolSet.getSword(), Models.HANDHELD);
+                itemModelGenerator.register(toolSet.getAxe(), Models.HANDHELD);
+                itemModelGenerator.register(toolSet.getPickaxe(), Models.HANDHELD);
+                itemModelGenerator.register(toolSet.getShovel(), Models.HANDHELD);
+                itemModelGenerator.register(toolSet.getHoe(), Models.HANDHELD);
+            }
         });
         itemModelGenerator.register(MythicTools.BANGLUM_TNT_MINECART, Models.GENERATED);
         itemModelGenerator.register(MythicTools.PALLADIUM_MINECART, Models.GENERATED);
@@ -77,12 +79,5 @@ public class MythicItemModelProvider extends FabricModelProvider {
             RegistryHelper.id("item/weapons/tipped_runite_arrow_base")
         );
         itemModelGenerator.registerPotionTinted(MythicTools.TIPPED_RUNITE_ARROW, tippedRuniteArrowLayers);
-        // TODO - Handle manually, as they are exquisite
-        //MythicTools.MIDAS_GOLD_SWORD
-        //MythicTools.GILDED_MIDAS_GOLD_SWORD
-        //MythicTools.ROYAL_MIDAS_GOLD_SWORD
-        //MythicTools.MYTHRIL_DRILL
-        //MythicTools.STORMYX_SHIELD
-        //MythicTools.PLATINUM_WATCH
     }
 }

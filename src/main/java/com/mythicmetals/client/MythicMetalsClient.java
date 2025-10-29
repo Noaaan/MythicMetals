@@ -193,17 +193,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         NumericProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
         NumericProperties.ID_MAPPER.put(RegistryHelper.id("midas_gold"), MidasGoldProperty.CODEC);
         BooleanProperties.ID_MAPPER.put(RegistryHelper.id("has_drill_fuel"), HasDrillFuelProperty.CODEC);
-        // FIXME
-//        ModelPredicateProviderRegistry.register(
-//            MythicTools.LEGENDARY_BANGLUM.getPickaxe(), RegistryHelper.id("is_primed"),
-//            (stack, world, entity, seed) -> BanglumPick.isCoolingDown(entity, stack) ? 0 : 1
-//        );
-//
-//        ModelPredicateProviderRegistry.register(
-//            MythicTools.LEGENDARY_BANGLUM.getShovel(), RegistryHelper.id("is_primed"),
-//            (stack, world, entity, seed) -> BanglumShovel.isCoolingDown(entity, stack) ? 0 : 1
-//        );
-//
+        // TODO
 //        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
 //            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);
 //
