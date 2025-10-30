@@ -3,7 +3,8 @@ package com.mythicmetals.item;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.item.Item;
-import net.minecraft.registry.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 public class CopperSet {
     private Item nuggetItem = null;

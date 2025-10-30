@@ -1,7 +1,8 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.misc.*;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.item.Item;
 import net.minecraft.item.SmithingTemplateItem;

@@ -1,7 +1,8 @@
 package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.client.*;
+import com.mythicmetals.client.MythicMetalsPlayerRenderContext;
+import com.mythicmetals.client.MythicMetalsRenderState;
 import com.mythicmetals.component.DrillComponent;
 import com.mythicmetals.component.MythicDataComponents;
 import net.minecraft.client.network.AbstractClientPlayerEntity;

@@ -7,7 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.function.Consumer;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;

@@ -1,22 +1,14 @@
 package com.mythicmetals.item.tools;
 
-import com.google.common.base.Suppliers;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.data.MythicMetalsData;
 import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.block.Block;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import java.util.function.Supplier;
 
 public class MythicToolMaterials {
     public static final ToolMaterial ADAMANTITE  = new ToolMaterial(getInverseTag(4), 1024, 7.0f, 5f, 16, TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("ingots/adamantite")));

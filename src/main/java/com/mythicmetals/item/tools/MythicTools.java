@@ -23,7 +23,6 @@ import net.minecraft.util.*;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static com.mythicmetals.misc.RegistryHelper.blockKey;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
 @SuppressWarnings("unused")

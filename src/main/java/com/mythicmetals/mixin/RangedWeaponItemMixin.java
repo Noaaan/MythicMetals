@@ -1,17 +1,7 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.item.tools.MythicTools;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.RangedWeaponItem;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Hand;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArgs;
-import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
-import java.util.List;
 
 @Mixin(RangedWeaponItem.class)
 public abstract class RangedWeaponItemMixin {

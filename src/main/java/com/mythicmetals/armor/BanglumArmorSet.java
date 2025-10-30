@@ -1,13 +1,13 @@
 package com.mythicmetals.armor;
 
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 import java.util.function.Consumer;
 
 public class BanglumArmorSet extends ArmorSet {
 
-    public BanglumArmorSet(ArmorMaterial material, int duraMod, Consumer<Item.Settings> settingsProcessor) {
+    public BanglumArmorSet(ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
         super("legendary_banglum", material, settingsProcessor);
     }
 

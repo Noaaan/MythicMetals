@@ -1,12 +1,6 @@
 package com.mythicmetals.compat;
 
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.recipe.MidasFoldingRecipe;
-import com.mythicmetals.recipe.TidesingerCoralRecipe;
 import dev.emi.emi.api.*;
-import dev.emi.emi.api.stack.EmiStack;
-import net.minecraft.recipe.*;
 
 @EmiEntrypoint
 public class MythicMetalsEMIPlugin implements EmiPlugin {

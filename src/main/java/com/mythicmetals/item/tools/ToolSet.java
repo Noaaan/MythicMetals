@@ -2,8 +2,6 @@ package com.mythicmetals.item.tools;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

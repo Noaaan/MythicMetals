@@ -11,7 +11,6 @@ import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Language;
 import net.minecraft.util.Util;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;

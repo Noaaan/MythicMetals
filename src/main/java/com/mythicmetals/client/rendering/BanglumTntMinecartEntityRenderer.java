@@ -1,7 +1,6 @@
 package com.mythicmetals.client.rendering;
 
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.entity.BanglumTntMinecartEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;

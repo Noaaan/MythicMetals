@@ -1,9 +1,7 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.MythicLootOps;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.item.ItemStack;
