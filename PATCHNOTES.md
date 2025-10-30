@@ -5,10 +5,18 @@
 - Carmot Armor Items
 - Osmium Armor Items (new!)
 - Osmium Chainmail Armor Items (new!)
+- Adamantite Armor Model (new!)
+- Palladium Armor Model (new!)
 - Prometheum Armor Model
 
+### Credits
+
 Big thank you to thyreo for these awesome new armor items!
-As well as a thank you to Kingame for the new Prometheum Helmet model.
+
+The Adamantite and Palladium models were made by Icedmi, who is the author of the [Reincarnation](https://modrinth.com/resourcepack/reincarnation) resource pack. 
+Be sure to check it out!
+
+Thank you and shoutout to Kingame for the new Prometheum Helmet model.
 
 ## Changes
 

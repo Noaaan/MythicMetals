@@ -28,7 +28,7 @@ import static net.minecraft.entity.attribute.EntityAttributes.*;
 @SuppressWarnings("unused")
 public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final BiMap<String, ArmorSet> ARMOR_MAP = HashBiMap.create();
-    public static final ArmorSet ADAMANTITE = new ArmorSet("adamantite", MythicArmorMaterials.ADAMANTITE);
+    public static final ArmorSet ADAMANTITE = new AdamantiteArmorSet(MythicArmorMaterials.ADAMANTITE);
     public static final ArmorSet AQUARIUM = new ArmorSet(
         "aquarium",
         MythicArmorMaterials.AQUARIUM,
@@ -74,7 +74,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet DURASTEEL = new ArmorSet("durasteel", MythicArmorMaterials.DURASTEEL);
     public static final ArmorSet HALLOWED = new HallowedArmorSet(MythicArmorMaterials.HALLOWED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet KYBER = new ArmorSet("kyber", MythicArmorMaterials.KYBER);
-    public static final ArmorSet LEGENDARY_BANGLUM = new BanglumArmorSet(MythicArmorMaterials.LEGENDARY_BANGLUM, 28, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ArmorSet LEGENDARY_BANGLUM = new BanglumArmorSet(MythicArmorMaterials.LEGENDARY_BANGLUM, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet METALLURGIUM = new MetallurgiumArmorSet(MythicArmorMaterials.METALLURGIUM, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ArmorSet MIDAS_GOLD = new ArmorSet(
         "midas_gold",
