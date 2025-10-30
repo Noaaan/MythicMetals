@@ -455,6 +455,7 @@ public final class MythicCommands {
         AtomicBoolean success = new AtomicBoolean(true);
 
         var armorStand = new ArmorStandEntity(world, x, world.getTopYInclusive() - 50, z);
+        armorStand.setHideBasePlate(true);
         armorSet.getArmorItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
             if (!armorStack.isIn(ItemTags.TRIMMABLE_ARMOR)) {
