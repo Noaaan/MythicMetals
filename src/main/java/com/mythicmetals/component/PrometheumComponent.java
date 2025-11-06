@@ -95,7 +95,8 @@ public record PrometheumComponent(int durabilityRepaired) {
         return new EntityAttributeModifier(
             id,
             bonus,
-            EntityAttributeModifier.Operation.ADD_VALUE);
+            EntityAttributeModifier.Operation.ADD_VALUE
+        );
     }
 
     public static EntityAttributeModifier createOvergrownToughnessModifier(ItemStack stack, int base) {
