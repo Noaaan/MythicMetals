@@ -100,7 +100,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 
         int soundRadius = radius * 3;
 
-        // FIXME - Find a better way to play the sound to far-away players. Maybe use PositionedSoundInstance and the sound manager?
+        // TODO - Find a better way to play the sound to far-away players. Maybe use PositionedSoundInstance and the sound manager?
         for (PlayerEntity player : world.getPlayers()) {
             if (player.squaredDistanceTo(this) > soundRadius * soundRadius) continue;
 
