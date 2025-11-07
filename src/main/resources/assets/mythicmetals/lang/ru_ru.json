@@ -889,8 +889,8 @@
  "smithing_template.mythicmetals.unobtainium.base_slot_description": "Для металлургия поместите элемент незеритового снаряжения. Для целестия поместите элемент алмазного снаряжения",
  "smithing_template.mythicmetals.unobtainium.additions_slot_description": "В зависимости от вашего выбора, поместите слиток металлургия или целестия",
 
- "attribute.name.generic.mythicmetals.fire_vulnerability": "Уязвимость к огню",
- "attribute.name.generic.mythicmetals.elytra_rocket_speed": "Скорость ракеты на элитрах",
+ "attribute.name.mythicmetals.fire_vulnerability": "Уязвимость к огню",
+ "attribute.name.mythicmetals.elytra_rocket_speed": "Скорость ракеты на элитрах",
  "item.spectrum.infused_beverage.tooltip.variant.morkite": "Тёмный моркит",
  "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Особенность червоточины",
  "effect.mythicmetals.wormhole_special": "Червоточина",

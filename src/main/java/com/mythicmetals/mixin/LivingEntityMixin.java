@@ -42,6 +42,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.mythicmetals.entity.MythicEntityAttributes.FIRE_VULNERABILITY;
+import static com.mythicmetals.entity.MythicEntityAttributes.UNDEAD_BONUS_DAMAGE;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
@@ -94,8 +95,9 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;", require = 1, allow = 1, at = @At("RETURN"))
     private static void mythicmetals$addAttributes(final CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
         info.getReturnValue().add(MythicEntityAttributes.CARMOT_SHIELD);
-        info.getReturnValue().add(FIRE_VULNERABILITY);
         info.getReturnValue().add(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
+        info.getReturnValue().add(FIRE_VULNERABILITY);
+        info.getReturnValue().add(UNDEAD_BONUS_DAMAGE);
     }
 
     @ModifyExpressionValue(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/registry/entry/RegistryEntry;)Z"))

@@ -822,7 +822,7 @@
   "abilities.mythicmetals.blast_protection": "Natural Blast Resistance",
   "abilities.mythicmetals.bonus_fortune": "Bonus Fortune",
   "abilities.mythicmetals.bonus_looting": "Bonus Looting",
-  "attribute.name.generic.mythicmetals.carmot_shield": "Carmot Shield",
+  "attribute.name.mythicmetals.carmot_shield": "Carmot Shield",
   "abilities.mythicmetals.depth_strider": "Natural Depth Strider",
   "abilities.mythicmetals.hot": "Branding",
   "abilities.mythicmetals.feather_falling": "Natural Feather Falling",
@@ -836,7 +836,9 @@
   "abilities.mythicmetals.projectile_protection": "Natural Projectile Protection",
   "abilities.mythicmetals.respiration": "Natural Respiration",
   "abilities.mythicmetals.riptide": "Riptide",
-  "abilities.mythicmetals.smite": "Holy",
+  "attribute.name.mythicmetals.undead_bonus_damage": [
+    {"text":"Damage Against Undead", "color": "#3485C8"}
+  ],
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
   "abilities.mythicmetals.upgrade_tooltip": "Mythril Drill Upgrade",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",
@@ -1016,8 +1018,8 @@
   "smithing_template.mythicmetals.unobtainium.base_slot_description": "For Metallurgium put a piece of Netherite Equipment here. For Celestium put a piece of Diamond Equipment here",
   "smithing_template.mythicmetals.unobtainium.additions_slot_description": "Depending on your choice, put a Metallurgium or Celestium Ingot here",
 
-  "attribute.name.generic.mythicmetals.fire_vulnerability": "Fire Vulnerability",
-  "attribute.name.generic.mythicmetals.elytra_rocket_speed": "Elytra Rocket Speed",
+  "attribute.name.mythicmetals.fire_vulnerability": "Fire Vulnerability",
+  "attribute.name.mythicmetals.elytra_rocket_speed": "Elytra Rocket Speed",
   "item.spectrum.infused_beverage.tooltip.variant.morkite": "Dark Morkite",
   "item.spectrum.infused_beverage.tooltip.variant.wormhole_special": "Wormhole Special",
   "effect.mythicmetals.wormhole_special": "Wormhole Special",

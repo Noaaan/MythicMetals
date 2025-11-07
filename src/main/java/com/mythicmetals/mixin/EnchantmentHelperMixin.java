@@ -7,7 +7,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
-import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -45,18 +44,6 @@ public class EnchantmentHelperMixin {
 
         if (change != 0)
             cir.setReturnValue(amount + change);
-    }
-
-    @Inject(method = "getDamage", at = @At("TAIL"), cancellable = true)
-    private static void mythicmetals$increaseDamage(ServerWorld world, ItemStack stack, Entity target, DamageSource damageSource, float baseDamage, CallbackInfoReturnable<Float> cir) {
-        var amount = cir.getReturnValue();
-        int change = 0;
-        if (Abilities.SMITE.getItems().contains(stack.getItem()) && target.getType() != null && target.getType().isIn(EntityTypeTags.UNDEAD)) {
-            change += (int) (Abilities.SMITE.getLevel() * 2.5f);
-        }
-        if (change != 0) {
-            cir.setReturnValue(amount + change);
-        }
     }
 
     @Inject(method = "modifyKnockback", at = @At("TAIL"), cancellable = true)
