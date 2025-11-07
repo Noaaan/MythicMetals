@@ -836,9 +836,7 @@
   "abilities.mythicmetals.projectile_protection": "Natural Projectile Protection",
   "abilities.mythicmetals.respiration": "Natural Respiration",
   "abilities.mythicmetals.riptide": "Riptide",
-  "attribute.name.mythicmetals.undead_bonus_damage": [
-    {"text":"Damage Against Undead", "color": "#3485C8"}
-  ],
+  "attribute.name.mythicmetals.undead_bonus_damage": "Damage Against Undead",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
   "abilities.mythicmetals.upgrade_tooltip": "Mythril Drill Upgrade",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",

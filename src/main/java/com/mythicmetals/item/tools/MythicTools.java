@@ -1,16 +1,20 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.AttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.component.*;
 import com.mythicmetals.entity.MythicEntities;
+import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.*;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
@@ -20,6 +24,7 @@ import net.minecraft.registry.*;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
+import org.w3c.dom.Attr;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -79,12 +84,13 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         .registryKey(RegistryHelper.itemKey("red_aegis_sword"))
     );
 
-    public static final Item WHITE_AEGIS_SWORD = new SwordItem(MythicToolMaterials.AEGIS_WHITE, 4, -2.6f, new Item.Settings()
+    public static final Item WHITE_AEGIS_SWORD = new ToolSet.SwordMock(MythicToolMaterials.AEGIS_WHITE, 4, -2.6f, new Item.Settings()
         .fireproof()
         .rarity(Rarity.UNCOMMON)
         .group(MythicMetals.TABBED_GROUP)
         .tab(2)
-        .registryKey(RegistryHelper.itemKey("white_aegis_sword"))
+        .registryKey(RegistryHelper.itemKey("white_aegis_sword")),
+        List.of(new AttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, EntityAttributeModifier.Operation.ADD_VALUE, AttributeModifierSlot.MAINHAND))
     );
 
     public static final Item CARMOT_BELL = new CarmotBellItem(new Item.Settings()

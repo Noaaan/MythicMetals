@@ -30,7 +30,6 @@ public class Abilities {
     public static final Ability UPGRADE_TOOLTIP = new Ability("upgrade_tooltip", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
-    public static final Ability SMITE = new Ability("smite", 3);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 2);
 
     public static void init() {
@@ -51,7 +50,6 @@ public class Abilities {
         });
         // Aegis Sword abilities
         FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(MetalColors.RED_AEGIS.rgb()));
-        SMITE.addItem(MythicTools.WHITE_AEGIS_SWORD, Style.EMPTY.withColor(Formatting.YELLOW));
         // Material Tooltips
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, MetalColors.AQUA_STYLE);
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, MetalColors.GOLD_STYLE);
