@@ -1,11 +1,13 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.AttributeModifier;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import java.util.List;
 
 public class SteelToolSet extends ToolSet {
     public SteelToolSet(ToolMaterial material, int[] damage, float[] speed) {
@@ -13,7 +15,7 @@ public class SteelToolSet extends ToolSet {
     }
 
     @Override
-    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
         return new SteelShovel(material, damage, speed, settings);
     }
 

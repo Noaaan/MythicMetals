@@ -28,6 +28,7 @@ import static com.mythicmetals.misc.RegistryHelper.itemKey;
 @SuppressWarnings("unused")
 public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final Map<String, ToolSet> TOOL_MAP = new HashMap<>();
+    public static final Set<ToolSet> MODDED_TOOLSETS = new HashSet<>();
     // Arrays for weapon/tool damage: sword, axe, pickaxe, shovel, and hoe
     public static final int[] DEFAULT_DAMAGE = new int[]{3, 5, 2, 1, 0};
     // Arrays for weapon/tool attack speed: sword, axe, pickaxe, shovel and hoe

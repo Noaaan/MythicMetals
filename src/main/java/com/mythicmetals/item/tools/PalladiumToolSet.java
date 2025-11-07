@@ -1,5 +1,6 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.AttributeModifier;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.misc.IsAttackCritical;
 import com.mythicmetals.misc.RegistryHelper;
@@ -9,6 +10,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class PalladiumToolSet extends ToolSet {
@@ -20,27 +22,27 @@ public class PalladiumToolSet extends ToolSet {
     }
 
     @Override
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraMods) {
         return new PalladiumSword(material, damage, speed, settings);
     }
 
     @Override
-    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
         return new PalladiumAxe(material, damage, speed, settings);
     }
 
     @Override
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
         return new PalladiumPick(material, damage, speed, settings);
     }
 
     @Override
-    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
         return new PalladiumShovel(material, damage, speed, settings);
     }
 
     @Override
-    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings) {
+    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
         return new PalladiumHoe(material, damage, speed, settings);
     }
 
