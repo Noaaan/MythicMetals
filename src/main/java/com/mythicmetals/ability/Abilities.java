@@ -23,7 +23,6 @@ public class Abilities {
     public static final Ability BLAST_MINING = new Ability("blast_mining", 0, false);
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
-    public static final Ability FEATHER_FALLING = new Ability("feather_falling", 3);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4); // TODO - Move this tooltip to the RedAegisSword class
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
@@ -40,7 +39,6 @@ public class Abilities {
         BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);
         BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), MetalColors.GOLD_STYLE);
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), MetalColors.GOLD_STYLE);
-        FEATHER_FALLING.addItem(MythicArmor.LEGENDARY_BANGLUM.getBoots(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), MetalColors.GOLD_STYLE);

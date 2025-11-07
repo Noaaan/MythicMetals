@@ -1,5 +1,6 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.AttributeModifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;

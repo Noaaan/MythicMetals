@@ -38,10 +38,6 @@ public class EnchantmentHelperMixin {
                 change += Abilities.PROJECTILE_PROTECTION.getLevel() * 2;
             }
 
-            if (Abilities.FEATHER_FALLING.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_FALL)) {
-                change += Abilities.FEATHER_FALLING.getLevel() * 3;
-            }
-
             if (Abilities.FIRE_PROTECTION.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_FIRE)) {
                 change += Abilities.FIRE_PROTECTION.getLevel() * 2;
             }

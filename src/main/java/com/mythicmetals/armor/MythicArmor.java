@@ -2,6 +2,7 @@ package com.mythicmetals.armor;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.mythicmetals.AttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
@@ -33,10 +34,10 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "aquarium",
         MythicArmorMaterials.AQUARIUM,
         List.of(
-            new ArmorSet.AttributeModifier(SUBMERGED_MINING_SPEED, 1.0, ADD_MULTIPLIED_TOTAL, HEAD),
-            new ArmorSet.AttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, CHEST),
-            new ArmorSet.AttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, LEGS),
-            new ArmorSet.AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_MULTIPLIED_TOTAL, FEET)
+            new AttributeModifier(SUBMERGED_MINING_SPEED, 1.0, ADD_MULTIPLIED_TOTAL, HEAD),
+            new AttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, CHEST),
+            new AttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, LEGS),
+            new AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_MULTIPLIED_TOTAL, FEET)
         )
     );
     public static final ArmorSet BANGLUM = new ArmorSet("banglum", MythicArmorMaterials.BANGLUM);
@@ -45,8 +46,8 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "carmot",
         MythicArmorMaterials.CARMOT,
         List.of(
-            new ArmorSet.AttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, ARMOR),
-            new ArmorSet.AttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, ARMOR)
+            new AttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, ARMOR),
+            new AttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, ARMOR)
         ),
         settings -> settings.rarity(Rarity.UNCOMMON)
     );
@@ -54,8 +55,8 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "celestium",
         MythicArmorMaterials.CELESTIUM,
         List.of(
-            new ArmorSet.AttributeModifier(MOVEMENT_SPEED, 0.1, ADD_MULTIPLIED_TOTAL, ARMOR),
-            new ArmorSet.AttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
+            new AttributeModifier(MOVEMENT_SPEED, 0.1, ADD_MULTIPLIED_TOTAL, ARMOR),
+            new AttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
         ),
         settings -> settings.rarity(Rarity.RARE).fireproof()
     );
@@ -74,13 +75,19 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
     public static final ArmorSet DURASTEEL = new ArmorSet("durasteel", MythicArmorMaterials.DURASTEEL);
     public static final ArmorSet HALLOWED = new HallowedArmorSet(MythicArmorMaterials.HALLOWED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet KYBER = new ArmorSet("kyber", MythicArmorMaterials.KYBER);
-    public static final ArmorSet LEGENDARY_BANGLUM = new BanglumArmorSet(MythicArmorMaterials.LEGENDARY_BANGLUM, settings -> settings.rarity(Rarity.UNCOMMON));
+    public static final ArmorSet LEGENDARY_BANGLUM = new BanglumArmorSet(
+        MythicArmorMaterials.LEGENDARY_BANGLUM,
+        settings -> settings.rarity(Rarity.UNCOMMON),
+        List.of(
+            new AttributeModifier(SAFE_FALL_DISTANCE, 15, ADD_VALUE, FEET)
+        )
+    );
     public static final ArmorSet METALLURGIUM = new MetallurgiumArmorSet(MythicArmorMaterials.METALLURGIUM, settings -> settings.fireproof().rarity(Rarity.RARE));
     public static final ArmorSet MIDAS_GOLD = new ArmorSet(
         "midas_gold",
         MythicArmorMaterials.MIDAS_GOLD,
         List.of(
-            new ArmorSet.AttributeModifier(LUCK, 1.0, ADD_VALUE, ARMOR)
+            new AttributeModifier(LUCK, 1.0, ADD_VALUE, ARMOR)
         )
     );
     public static final ArmorSet MYTHRIL = new ArmorSet("mythril", MythicArmorMaterials.MYTHRIL);
@@ -91,11 +98,11 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "palladium",
         MythicArmorMaterials.PALLADIUM,
         List.of(
-            new ArmorSet.AttributeModifier(AdditionalEntityAttributes.LAVA_VISIBILITY, 2.0, ADD_VALUE, HEAD),
-            new ArmorSet.AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, CHEST),
-            new ArmorSet.AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, LEGS),
-            new ArmorSet.AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, FEET),
-            new ArmorSet.AttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, ARMOR)
+            new AttributeModifier(AdditionalEntityAttributes.LAVA_VISIBILITY, 2.0, ADD_VALUE, HEAD),
+            new AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, CHEST),
+            new AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, LEGS),
+            new AttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, FEET),
+            new AttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, ARMOR)
         ),
         Item.Settings::fireproof
     );
@@ -106,7 +113,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "star_platinum",
         MythicArmorMaterials.STAR_PLATINUM,
         List.of(
-            new ArmorSet.AttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
+            new AttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
         )
     );
     public static final ArmorSet STEEL = new ArmorSet("steel", MythicArmorMaterials.STEEL);
@@ -114,15 +121,15 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         "stormyx",
         MythicArmorMaterials.STORMYX,
         List.of(
-            new ArmorSet.AttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 2.0, ADD_VALUE, ARMOR)
+            new AttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 2.0, ADD_VALUE, ARMOR)
         )
     );
     public static final ArmorSet TIDESINGER = new TidesingerArmorSet(MythicArmorMaterials.TIDESINGER, List.of(
-        new ArmorSet.AttributeModifier(AdditionalEntityAttributes.WATER_VISIBILITY, 0.3, ADD_MULTIPLIED_TOTAL, HEAD),
-        new ArmorSet.AttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
-        new ArmorSet.AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
-        new ArmorSet.AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, LEGS),
-        new ArmorSet.AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_MULTIPLIED_TOTAL, FEET)
+        new AttributeModifier(AdditionalEntityAttributes.WATER_VISIBILITY, 0.3, ADD_MULTIPLIED_TOTAL, HEAD),
+        new AttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
+        new AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
+        new AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, LEGS),
+        new AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_MULTIPLIED_TOTAL, FEET)
     ));
 
     @Override

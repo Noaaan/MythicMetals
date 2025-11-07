@@ -1,5 +1,6 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.AttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
@@ -11,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.Map;
@@ -173,11 +173,11 @@ public class ArmorSet {
             );
         }
         extraModifiers.forEach(modifier -> {
-            if (modifier.requiredSlot.matches(equipmentType.getEquipmentSlot())) {
+            if (modifier.requiredSlot().matches(equipmentType.getEquipmentSlot())) {
                 var id = RegistryHelper.id(name + "_" + modifier.attribute().getKey().orElseThrow().getValue().getPath());
                 builder.add(
-                    modifier.attribute,
-                    new EntityAttributeModifier(id, modifier.value, modifier.operation),
+                    modifier.attribute(),
+                    new EntityAttributeModifier(id, modifier.value(), modifier.operation()),
                     equipmentSlot
                 );
             }
@@ -205,12 +205,4 @@ public class ArmorSet {
         return name;
     }
 
-    public record AttributeModifier(
-        RegistryEntry<EntityAttribute> attribute,
-        double value,
-        EntityAttributeModifier.Operation operation,
-        AttributeModifierSlot requiredSlot
-    ) {
-
-    }
 }
