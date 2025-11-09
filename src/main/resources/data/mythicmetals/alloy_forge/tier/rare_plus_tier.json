@@ -1,0 +1,6 @@
+{
+  "parent_tier": "alloy_forgery:rare_tier",
+  "fuel_capacity": 192000,
+  "speed_multiplier": 2.0,
+  "fuel_consumption_multiplier": 1.75
+}

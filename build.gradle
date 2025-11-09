@@ -31,8 +31,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    // FIXME - Update!
-    //modImplementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    modImplementation("io.wispforest:alloy_forgery-fabric:${project.alloyforgery_version}")
 
     // OwO
     annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
