@@ -82,11 +82,11 @@ public class RegistryHelper {
         Registry.register(Registries.BLOCK, id(path), block);
     }
 
-    public static void entityType(String path, EntityType<?> type) {
-        Registry.register(Registries.ENTITY_TYPE, id(path), type);
+    public static void entityType(RegistryKey<EntityType<?>> key, EntityType<?> type) {
+        Registry.register(Registries.ENTITY_TYPE, key, type);
     }
 
-    public static RegistryKey<EntityType<?>> entityType(String entityType) {
+    public static RegistryKey<EntityType<?>> entityTypeKey(String entityType) {
         return RegistryKey.of(RegistryKeys.ENTITY_TYPE, id(entityType));
     }
 

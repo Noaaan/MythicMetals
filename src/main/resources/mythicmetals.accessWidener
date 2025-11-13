@@ -9,3 +9,6 @@ accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmp
 accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmptyAdditionsSlotTextures ()Ljava/util/List;
 
 accessible method net/minecraft/block/RailPlacementHelper getNeighborCount ()I
+
+accessible method net/minecraft/client/render/entity/AbstractMinecartEntityRenderer transformExperimentalControllerMinecart (Lnet/minecraft/client/render/entity/state/MinecartEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;)V
+accessible method net/minecraft/client/render/entity/AbstractMinecartEntityRenderer transformDefaultControllerMinecart (Lnet/minecraft/client/render/entity/state/MinecartEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;)V

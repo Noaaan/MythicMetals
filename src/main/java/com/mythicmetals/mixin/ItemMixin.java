@@ -23,7 +23,9 @@ public abstract class ItemMixin {
     @Inject(method = "postProcessComponents", at = @At("HEAD"))
     private void mythicmetals$dynamicAttributeHandler(ItemStack stack, CallbackInfo ci) {
         if (!stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) return;
-        var prometheumComponent = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
+        if (!stack.contains(MythicDataComponents.PROMETHEUM)) return;
+        var prometheumComponent = stack.get(MythicDataComponents.PROMETHEUM);
+        assert prometheumComponent != null;
 
         // Handle Overgrown modifiers
         // Equippables get armor and toughness. Anything else gets extra damage

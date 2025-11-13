@@ -21,12 +21,12 @@ public class MythicEntities {
     public static final EntityType<PalladiumMinecartEntity> PALLADIUM_MINECART_ENTITY_TYPE;
 
     static {
-       BANGLUM_TNT_ENTITY_REGISTRY_KEY = RegistryHelper.entityType("banglum_tnt");
-       BANGLUM_NUKE_ENTITY_REGISTRY_KEY = RegistryHelper.entityType("banglum_nuke");
-       STAR_PLATINUM_ARROW_ENTITY_REGISTRY_KEY = RegistryHelper.entityType("star_platinum_arrow");
-       RUNITE_ARROW_REGISTRY_KEY = RegistryHelper.entityType("runite_arrow");
-       BANGLUM_TNT_MINECART_ENTITY_REGISTRY_KEY = RegistryHelper.entityType("banglum_tnt_minecart");
-       PALLADIUM_MINECART_ENTITY_REGISTRY_KEY = RegistryHelper.entityType("palladium_minecart");
+       BANGLUM_TNT_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("banglum_tnt");
+       BANGLUM_NUKE_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("banglum_nuke");
+       STAR_PLATINUM_ARROW_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("star_platinum_arrow");
+       RUNITE_ARROW_REGISTRY_KEY = RegistryHelper.entityTypeKey("runite_arrow");
+       BANGLUM_TNT_MINECART_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("banglum_tnt_minecart");
+       PALLADIUM_MINECART_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("palladium_minecart");
 
         BANGLUM_TNT_ENTITY_TYPE = EntityType.Builder.<BanglumTntEntity>create(
             BanglumTntEntity::new, SpawnGroup.MISC).dimensions(1f, 1f).build(BANGLUM_TNT_ENTITY_REGISTRY_KEY);
@@ -58,12 +58,11 @@ public class MythicEntities {
     }
 
     public static void init() {
-        RegistryHelper.entityType("banglum_tnt_minecart", BANGLUM_TNT_MINECART_ENTITY_TYPE);
-        RegistryHelper.entityType("palladium_minecart", PALLADIUM_MINECART_ENTITY_TYPE);
-        RegistryHelper.entityType("banglum_tnt", BANGLUM_TNT_ENTITY_TYPE);
-        RegistryHelper.entityType("banglum_nuke", BANGLUM_NUKE_ENTITY_TYPE);
-        RegistryHelper.entityType("star_platinum_arrow", STAR_PLATINUM_ARROW_ENTITY_TYPE);
-        RegistryHelper.entityType("runite_arrow", RUNITE_ARROW_ENTITY_TYPE);
-
+        RegistryHelper.entityType(BANGLUM_TNT_MINECART_ENTITY_REGISTRY_KEY, BANGLUM_TNT_MINECART_ENTITY_TYPE);
+        RegistryHelper.entityType(PALLADIUM_MINECART_ENTITY_REGISTRY_KEY, PALLADIUM_MINECART_ENTITY_TYPE);
+        RegistryHelper.entityType(BANGLUM_TNT_ENTITY_REGISTRY_KEY, BANGLUM_TNT_ENTITY_TYPE);
+        RegistryHelper.entityType(BANGLUM_NUKE_ENTITY_REGISTRY_KEY, BANGLUM_NUKE_ENTITY_TYPE);
+        RegistryHelper.entityType(STAR_PLATINUM_ARROW_ENTITY_REGISTRY_KEY, STAR_PLATINUM_ARROW_ENTITY_TYPE);
+        RegistryHelper.entityType(RUNITE_ARROW_REGISTRY_KEY, RUNITE_ARROW_ENTITY_TYPE);
     }
 }
