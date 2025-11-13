@@ -22,7 +22,6 @@ public class Abilities {
     public static final Ability BETTER_WATER_PROTECTION = new Ability("water_protection", 4);
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
-    public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4); // TODO - Move this tooltip to the RedAegisSword class
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
     public static final Ability UPGRADE_TOOLTIP = new Ability("upgrade_tooltip", 0, false);
@@ -41,8 +40,6 @@ public class Abilities {
                 UPGRADE_TOOLTIP.addItem(item, Style.EMPTY.withColor(MetalColors.MYTHRIL.rgb()));
             }
         });
-        // Aegis Sword abilities
-        FIRE_ASPECT.addItem(MythicTools.RED_AEGIS_SWORD, Style.EMPTY.withColor(MetalColors.RED_AEGIS.rgb()));
         // Material Tooltips
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.AQUARIUM_PEARL, MetalColors.AQUA_STYLE);
         MATERIAL_TOOLTIP.addItem(MythicItems.Mats.BANGLUM_CHUNK, MetalColors.GOLD_STYLE);
