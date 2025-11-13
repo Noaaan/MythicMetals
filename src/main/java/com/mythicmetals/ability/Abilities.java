@@ -26,7 +26,6 @@ public class Abilities {
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4); // TODO - Move this tooltip to the RedAegisSword class
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
     public static final Ability HOT = new Ability("hot", 0, false);
-    public static final Ability KNOCKBACK = new Ability("knockback", 3);
     public static final Ability UPGRADE_TOOLTIP = new Ability("upgrade_tooltip", 0, false);
     public static final Ability MATERIAL_TOOLTIP = new Ability("material_tooltip", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
@@ -40,9 +39,6 @@ public class Abilities {
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getSword(), MetalColors.GOLD_STYLE);
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getAxe(), MetalColors.GOLD_STYLE);
-        KNOCKBACK.addItem(MythicTools.LEGENDARY_BANGLUM.getHoe(), MetalColors.GOLD_STYLE);
         MythrilDrill.drillUpgrades.forEach((item, s) -> {
             if (item != Items.AIR) {
                 UPGRADE_TOOLTIP.addItem(item, Style.EMPTY.withColor(MetalColors.MYTHRIL.rgb()));
