@@ -2,10 +2,8 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.ability.Abilities;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -45,12 +43,4 @@ public class EnchantmentHelperMixin {
         if (change != 0)
             cir.setReturnValue(amount + change);
     }
-
-    @Inject(method = "modifyKnockback", at = @At("TAIL"), cancellable = true)
-    private static void mythicmetals$increaseKnockback(ServerWorld world, ItemStack stack, Entity target, DamageSource damageSource, float baseKnockback, CallbackInfoReturnable<Float> cir) {
-        var amount = cir.getReturnValue();
-        if (Abilities.KNOCKBACK.getItems().contains(stack.getItem()))
-            cir.setReturnValue(amount + Abilities.KNOCKBACK.getLevel());
-    }
-
 }

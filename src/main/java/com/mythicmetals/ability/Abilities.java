@@ -20,7 +20,6 @@ import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
  */
 public class Abilities {
     public static final Ability BETTER_WATER_PROTECTION = new Ability("water_protection", 4);
-    public static final Ability BLAST_MINING = new Ability("blast_mining", 0, false);
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability FIRE_ASPECT = new Ability("fire_aspect", 4); // TODO - Move this tooltip to the RedAegisSword class
@@ -33,8 +32,6 @@ public class Abilities {
 
     public static void init() {
         BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
-        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getPickaxe(), MetalColors.GOLD_STYLE);
-        BLAST_MINING.addItem(MythicTools.LEGENDARY_BANGLUM.getShovel(), MetalColors.GOLD_STYLE);
         BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), MetalColors.GOLD_STYLE);
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);

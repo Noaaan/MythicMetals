@@ -43,6 +43,11 @@ public class MythicDataComponents {
             .codec(CodecUtils.toCodec(PrometheumComponent.ENDEC))
             .packetCodec(CodecUtils.toPacketCodec(PrometheumComponent.ENDEC))
     );
+    public static final ComponentType<BlastMiningComponent> BLAST_MINING = RegistryHelper.dataComponentType(
+        "blast_mining", builder -> builder
+            .codec(CodecUtils.toCodec(BlastMiningComponent.ENDEC))
+            .packetCodec(CodecUtils.toPacketCodec(BlastMiningComponent.ENDEC))
+    );
 
     public static void init() {
     }

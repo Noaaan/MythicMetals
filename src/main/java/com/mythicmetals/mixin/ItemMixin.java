@@ -39,8 +39,7 @@ public abstract class ItemMixin {
                     .with(EntityAttributes.ARMOR, createOvergrownModifier(stack, 1, equippableComponent.slot()), AttributeModifierSlot.forEquipmentSlot(equippableComponent.slot()))
                     .with(EntityAttributes.ARMOR_TOUGHNESS, createOvergrownToughnessModifier(stack, 0), AttributeModifierSlot.forEquipmentSlot(equippableComponent.slot()));
                 stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, changedComponent);
-            }
-            else if (stack.contains(DataComponentTypes.TOOL)) {
+            } else if (stack.contains(DataComponentTypes.TOOL)) {
                 var attributeComponent = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
                 assert attributeComponent != null;
                 var modifier = createOvergrownModifier(stack, 0);
