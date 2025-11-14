@@ -2,6 +2,7 @@ package com.mythicmetals.client.rendering;
 
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.BlockRenderManager;
@@ -21,8 +22,10 @@ public class EnchantedMidasBlockEntityRenderer implements BlockEntityRenderer<En
     @Override
     public void render(EnchantedMidasGoldBlockEntity midasBlockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         matrices.push();
+        matrices.translate(-0.001, -0.001, -0.001);
+        matrices.scale(1.002f, 1.002f, 1.002f);
         blockRenderManager.renderBlock(
-            MythicBlocks.MIDAS_GOLD.getStorageBlock().getDefaultState(),
+            MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.getDefaultState(),
             midasBlockEntity.getPos(),
             midasBlockEntity.getWorld(),
             matrices,
