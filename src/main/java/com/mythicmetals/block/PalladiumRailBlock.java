@@ -231,7 +231,6 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
         return blockState.with(this.getShapeProperty(), bl2 ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH).with(LAVALOGGED, bl);
     }
 
-    // TODO - Move this somewhere nicer
     public static boolean isLavaLogged(BlockState state) {
         return state.get(LAVALOGGED);
     }

@@ -20,7 +20,6 @@ public class StarriteOreBlock extends ExperienceDroppingBlock {
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        // TODO - Review if ARGB or RGB
         ClientParticles.spawnCenteredOnBlock(new DustParticleEffect(UsefulSingletonForColorUtil.MetalColors.STARRITE.argb(), 1F), world, pos, 2.0D);
     }
 }
