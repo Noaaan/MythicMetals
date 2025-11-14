@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mythicmetals:item/royal_midas_smithing_template"
-  }
-}

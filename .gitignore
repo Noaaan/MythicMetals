@@ -31,5 +31,6 @@ run/
 /remappedSrc/
 /libs/
 /src/main/generated/.cache/
+/src/main/generated/
 changelog.md
 *.patch
