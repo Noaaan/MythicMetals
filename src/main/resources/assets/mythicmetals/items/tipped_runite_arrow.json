@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mythicmetals:item/tipped_runite_arrow",
+    "tints": [
+      {
+        "type": "minecraft:potion",
+        "default": -13083194
+      }
+    ]
+  }
+}
