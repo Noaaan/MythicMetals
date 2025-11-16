@@ -1,3 +1,44 @@
+# 0.25.0
+
+Initial port to 1.21.4. This version will likely not be supported for long, as I plan on skipping straight to 1.21.10/11.
+
+## New Textures
+
+Thanks thyreo for more new textures!
+
+This batch is relatively small, although we are working on having Spear textures ready for Mounts of Mayhem.
+The following items have new sprites:
+
+- Mythril Armor Items
+- Bronze Armor Items
+- Adamantite Armor Model (new!)
+- Palladium Armor Model (new!)
+- Sponge Nuke Core
+
+The Adamantite and Palladium models were made by Icedmi, who is the author of the [Reincarnation](https://modrinth.com/resourcepack/reincarnation) resource pack.
+Be sure to check it out!
+
+## New Data Components
+
+As a part of this port more abilities have been replaced by attributes or made into Data Components.
+This includes the following:
+
+- Natural Feather Falling -> Vanilla attribute (`minecraft:safe_fall_distance`)
+  - This change is meant as a small rework since reducing fall damage with Protection and Feather Falling makes this ability moot anyway.
+  - If you receive any fall damage *outside* of falling (E.G. commands or modded shenanigans), you will now technically take more damage
+- Natural Smite -> new attribute (`mythicmetals:undead_bonus_damage`)
+  - Works exactly the same as before: simply adding more damage onto mobs who are undead
+  - Still stacks with the Smite enchantment!
+- Bonus Knockback -> Vanilla attribute (`minecraft:attack_knockback`)
+- Blast Mining -> new data component (`mythicmetals:blast_mining`)
+  - When applied to any item stack, will dig a 3*3*X tunnel, where X is the `depth` parameter
+  - Existing Legendary Banglum tools are unchanged
+
+## Other Changes
+
+- Natural Fire Aspect is now hardcoded onto the Sword of the Aegis
+  - No longer uses an Ability
+
 # 0.24.4
 
 ## New Textures
@@ -5,17 +46,11 @@
 - Carmot Armor Items
 - Osmium Armor Items (new!)
 - Osmium Chainmail Armor Items (new!)
-- Adamantite Armor Model (new!)
-- Palladium Armor Model (new!)
 - Prometheum Armor Model
 
 ### Credits
 
 Big thank you to thyreo for these awesome new armor items!
-
-The Adamantite and Palladium models were made by Icedmi, who is the author of the [Reincarnation](https://modrinth.com/resourcepack/reincarnation) resource pack. 
-Be sure to check it out!
-
 Thank you and shoutout to Kingame for the new Prometheum Helmet model.
 
 ## Changes
