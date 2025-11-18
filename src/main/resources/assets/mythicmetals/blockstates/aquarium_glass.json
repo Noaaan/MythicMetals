@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
-      "model": "minecraft:block/blue_stained_glass"
+    "popped=false": {
+      "model": "mythicmetals:block/aquarium_glass"
+    },
+    "popped=true": {
+      "model": "mythicmetals:block/aquarium_glass_popped"
     }
   }
 }

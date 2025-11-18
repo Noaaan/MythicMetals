@@ -37,7 +37,7 @@ public class MythicBlocks {
         .createDefaultSet(4F, IRON_MINING_LEVEL, 4.5F, IRON_MINING_LEVEL)
         .createAnvil(IRON_MINING_LEVEL)
         .finish();
-    public static final Block AQUARIUM_GLASS = new TransparentBlock(AbstractBlock.Settings.copy(Blocks.BLUE_STAINED_GLASS).registryKey(blockKey("aquarium_glass")));
+    public static final Block AQUARIUM_GLASS = new AquariumGlassBlock(AbstractBlock.Settings.copy(Blocks.BLUE_STAINED_GLASS).registryKey(blockKey("aquarium_glass")));
     public static final AquariumResonatorBlock AQUARIUM_RESONATOR = new AquariumResonatorBlock(AbstractBlock.Settings.copy(Blocks.CONDUIT).registryKey(blockKey("aquarium_resonator")));
 
     public static final BlockSet BANGLUM = BlockSet.Builder.begin("banglum", false)
