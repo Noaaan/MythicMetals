@@ -685,7 +685,7 @@
   "abilities.mythicmetals.bonus_looting": "Bonus Plünderung",
   "attribute.name.mythicmetals.carmot_shield": "Carmotschild",
   "abilities.mythicmetals.depth_strider": "Natürlicher Wasserläufer",
-  "abilities.mythicmetals.hot": "Eingebrannt",
+  "tooltip.mythicmetals.branding": "Eingebrannt",
   "abilities.mythicmetals.feather_falling": "Natürlicher Federfall",
   "abilities.mythicmetals.firework_boost": "Feuerwerksboost",
   "abilities.mythicmetals.fire_aspect": "Natürlicher Feuer Aspekt",

@@ -23,7 +23,6 @@ public class Abilities {
     public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
     public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
-    public static final Ability HOT = new Ability("hot", 0, false);
     public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 2);
 
@@ -32,7 +31,6 @@ public class Abilities {
         BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), MetalColors.GOLD_STYLE);
         PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), MetalColors.GOLD_STYLE);
         FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
-        HOT.addToolSet(MythicTools.PALLADIUM, MetalColors.PALLADIUM_STYLE);
         // Material Tooltips
         // Mod compat specific abilities
         if (FabricLoader.getInstance().isModLoaded("origins")) {

@@ -838,7 +838,7 @@
     "abilities.mythicmetals.bonus_looting": "Saccheggio bonus",
     "attribute.name.mythicmetals.carmot_shield": "Scudo di carmot",
     "abilities.mythicmetals.depth_strider": "Passo anfibio naturale",
-    "abilities.mythicmetals.hot": "Marchiatura a fuoco",
+    "tooltip.mythicmetals.branding": "Marchiatura a fuoco",
     "abilities.mythicmetals.feather_falling": "Caduta lenta naturale",
     "abilities.mythicmetals.firework_boost": "Potenziamento fuochi d'artificio",
     "abilities.mythicmetals.fire_aspect": "Aspetto di fuoco naturale",

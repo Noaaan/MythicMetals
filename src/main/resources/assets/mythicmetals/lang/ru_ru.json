@@ -713,7 +713,7 @@
  "abilities.mythicmetals.bonus_looting": "Дополнительная добыча",
  "abilities.mythicmetals.carmot_shield": "+5 кармотовый щит",
  "abilities.mythicmetals.depth_strider": "Естественная подводная ходьба",
- "abilities.mythicmetals.hot": "Клеймо",
+ "tooltip.mythicmetals.branding": "Клеймо",
  "abilities.mythicmetals.feather_falling": "Естественная невесомость",
  "abilities.mythicmetals.firework_boost": "Ускорение фейерверком",
  "abilities.mythicmetals.fire_aspect": "Естественный огненный аспект",

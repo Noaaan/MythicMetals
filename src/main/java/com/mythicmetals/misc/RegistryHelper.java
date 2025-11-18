@@ -2,7 +2,9 @@ package com.mythicmetals.misc;
 
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;
+import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
+import io.wispforest.owo.serialization.CodecUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.component.ComponentType;
@@ -124,6 +126,14 @@ public class RegistryHelper {
 
     public static RegistryEntry<Potion> getEntry(Potion potion) {
         return Registries.POTION.getEntry(potion);
+    }
+
+    public static <T> ComponentType<T> dataComponentType(String path, StructEndec<T> endec) {
+        return Registry.register(Registries.DATA_COMPONENT_TYPE, id(path), ComponentType.<T>builder()
+                .codec(CodecUtils.toCodec(endec))
+                .packetCodec(CodecUtils.toPacketCodec(endec))
+            .build()
+        );
     }
 
     public static <T> ComponentType<T> dataComponentType(String path, UnaryOperator<ComponentType.Builder<T>> builderOperator) {

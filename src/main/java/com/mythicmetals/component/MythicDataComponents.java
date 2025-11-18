@@ -48,6 +48,7 @@ public class MythicDataComponents {
             .codec(CodecUtils.toCodec(BlastMiningComponent.ENDEC))
             .packetCodec(CodecUtils.toPacketCodec(BlastMiningComponent.ENDEC))
     );
+    public static final ComponentType<BrandingComponent> BRANDING = RegistryHelper.dataComponentType("branding", BrandingComponent.ENDEC);
 
     public static void init() {
     }

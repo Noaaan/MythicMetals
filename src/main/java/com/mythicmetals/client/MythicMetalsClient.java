@@ -9,8 +9,7 @@ import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.properties.*;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.PrometheumComponent;
+import com.mythicmetals.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.MythicItems;
@@ -40,6 +39,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -232,6 +232,14 @@ public class MythicMetalsClient implements ClientModInitializer {
             }
             if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
                 lines.add(index, Text.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
+            }
+
+            if (stack.contains(MythicDataComponents.BRANDING)) {
+                var component = stack.getOrDefault(MythicDataComponents.BRANDING, new BrandingComponent(0));
+                int finalIndex = index;
+                component.appendTooltip(context, text -> {
+                    lines.add(finalIndex, text);
+                }, TooltipType.BASIC);
             }
 
             if (lines.size() > 2) {

@@ -129,7 +129,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         new AttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
         new AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
         new AttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, LEGS),
-        new AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_MULTIPLIED_TOTAL, FEET)
+        new AttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_VALUE, FEET)
     ));
 
     @Override

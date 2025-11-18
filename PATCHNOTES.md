@@ -33,6 +33,11 @@ This includes the following:
 - Blast Mining -> new data component (`mythicmetals:blast_mining`)
   - When applied to any item stack, will dig a 3*3*X tunnel, where X is the `depth` parameter
   - Existing Legendary Banglum tools are unchanged
+- Branding -> new data component (`mythicmetals:branding`)
+  - When applied to any item stack it will apply the Heat status effect when hitting an entity
+  - As before, the level increases by 1 50% of the time on hit.
+  - Always increases on a critical hit
+  - Caps out at the level the data component, determined by the `maxHeat` parameter
 
 ## Other Changes
 

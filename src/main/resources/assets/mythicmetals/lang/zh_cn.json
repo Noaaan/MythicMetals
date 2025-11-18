@@ -11,7 +11,7 @@
     "abilities.mythicmetals.fire_aspect": "提供火焰附加",
     "abilities.mythicmetals.fire_protection": "提供火焰保护",
     "abilities.mythicmetals.firework_boost": "烟花增强",
-    "abilities.mythicmetals.hot": "烙印",
+    "tooltip.mythicmetals.branding": "烙印",
     "abilities.mythicmetals.knockback": "提供击退",
     "tooltip.mythicmetals.rare_crafting_material_tooltip": "稀有合成材料",
     "abilities.mythicmetals.projectile_protection": "提供弹射物保护",

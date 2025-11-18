@@ -824,7 +824,7 @@
   "abilities.mythicmetals.bonus_looting": "Bonus Looting",
   "attribute.name.mythicmetals.carmot_shield": "Carmot Shield",
   "abilities.mythicmetals.depth_strider": "Natural Depth Strider",
-  "abilities.mythicmetals.hot": "Branding",
+  "tooltip.mythicmetals.branding": "Branding",
   "abilities.mythicmetals.feather_falling": "Natural Feather Falling",
   "abilities.mythicmetals.firework_boost": "Firework Boost",
   "abilities.mythicmetals.fire_aspect": "Natural Fire Aspect",

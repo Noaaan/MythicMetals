@@ -713,7 +713,7 @@
   "abilities.mythicmetals.bonus_looting": "Додатковий здобуток",
   "abilities.mythicmetals.carmot_shield": "+5 кармотовий щит",
   "abilities.mythicmetals.depth_strider": "Природний глибинний бігун",
-  "abilities.mythicmetals.hot": "Печатка",
+  "tooltip.mythicmetals.branding": "Печатка",
   "abilities.mythicmetals.feather_falling": "Природна невагомість",
   "abilities.mythicmetals.firework_boost": "Прискорення феєрверком",
   "abilities.mythicmetals.fire_aspect": "Природна сила вогню",
