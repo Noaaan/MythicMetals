@@ -844,7 +844,7 @@
     "abilities.mythicmetals.fire_aspect": "Aspetto di fuoco naturale",
     "abilities.mythicmetals.fire_protection": "Protezione naturale dal fuoco",
     "abilities.mythicmetals.knockback": "Contraccolpo naturale",
-    "abilities.mythicmetals.material_tooltip": "Materiale raro",
+    "tooltip.mythicmetals.rare_crafting_material_tooltip": "Materiale raro",
     "tooltip.prometheum.regrowth": "Ricrescita",
     "tooltip.prometheum.repaired": "Durabilità riparata: %s",
     "abilities.mythicmetals.projectile_protection": "Protezione naturale dai proiettili",
@@ -852,7 +852,7 @@
     "abilities.mythicmetals.riptide": "Risacca",
     "abilities.mythicmetals.smite": "Anatema",
     "abilities.mythicmetals.spiked_helm": "Elmo chiodato",
-    "abilities.mythicmetals.upgrade_tooltip": "Potenziamento per trivella di mythril",
+    "tooltip.mythril_drill.upgrade": "Potenziamento per trivella di mythril",
     "abilities.mythicmetals.water_protection": "Protezione naturale dall'acqua",
 
     "tooltip.midas_gold.is_royal": "Tocco d'oro",

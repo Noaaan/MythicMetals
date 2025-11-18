@@ -786,7 +786,7 @@
   "abilities.mythicmetals.feather_falling": "가벼운 착지",
   "abilities.mythicmetals.fire_aspect": "발화",
   "abilities.mythicmetals.knockback": "밀치기",
-  "abilities.mythicmetals.material_tooltip": "희귀한 제작 재료",
+  "tooltip.mythicmetals.rare_crafting_material_tooltip": "희귀한 제작 재료",
   "tooltip.prometheum.regrowth": "자가수리",
   "abilities.mythicmetals.projectile_protection": "발사체로부터 보호",
   "abilities.mythicmetals.respiration": "호흡",

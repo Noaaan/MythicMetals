@@ -719,7 +719,7 @@
   "abilities.mythicmetals.depth_strider": "Natural Depth Strider",
   "abilities.mythicmetals.feather_falling": "Natural Feather Falling",
   "abilities.mythicmetals.fire_aspect": "Natural Fire Aspect",
-  "abilities.mythicmetals.material_tooltip": "Rare Crafting Material",
+  "tooltip.mythicmetals.rare_crafting_material_tooltip": "Rare Crafting Material",
   "tooltip.prometheum.regrowth": "Regrowth",
   "abilities.mythicmetals.projectile_protection": "Natural Projectile Protection",
   "abilities.mythicmetals.respiration": "Natural Respiration",

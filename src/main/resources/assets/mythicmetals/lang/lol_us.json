@@ -723,7 +723,7 @@
   "abilities.mythicmetals.depth_strider": "Fast Swimmy",
   "abilities.mythicmetals.feather_falling": "Land on Legz",
   "abilities.mythicmetals.fire_aspect": "burn deez nerdz",
-  "abilities.mythicmetals.material_tooltip": "Rarez Matteariael",
+  "tooltip.mythicmetals.rare_crafting_material_tooltip": "Rarez Matteariael",
   "tooltip.prometheum.regrowth": "free mndin",
   "abilities.mythicmetals.projectile_protection": "DODGE THIS, NEO!!",
   "abilities.mythicmetals.respiration": "fish mode ACTIVATE",

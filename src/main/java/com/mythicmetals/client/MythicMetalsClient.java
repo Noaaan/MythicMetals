@@ -13,7 +13,9 @@ import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
+import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.HammerBase;
+import com.mythicmetals.item.tools.MythrilDrill;
 import com.mythicmetals.misc.*;
 import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.api.ClientModInitializer;
@@ -37,8 +39,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -202,6 +207,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     public void registerTooltipCallbacks() {
         ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
+            var item = stack.getItem();
             int index = 1;
 
             if (stack.isIn(MythicTags.BONUS_FORTUNE)) {
@@ -210,6 +216,22 @@ public class MythicMetalsClient implements ClientModInitializer {
 
             if (stack.isIn(MythicTags.BONUS_LOOTING)) {
                 lines.add(index, Text.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
+            }
+
+            if (item.equals(MythicItems.Mats.BANGLUM_CHUNK) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
+                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
+            }
+            if (item.equals(MythicItems.Mats.AQUARIUM_PEARL)) {
+                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
+            }
+            if (item.equals(MythicItems.Mats.CARMOT_STONE)) {
+                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
+            }
+            if (item.equals(MythicItems.Mats.STORMYX_SHELL)) {
+                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").formatted(Formatting.LIGHT_PURPLE));
+            }
+            if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
+                lines.add(index, Text.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
             }
 
             if (lines.size() > 2) {

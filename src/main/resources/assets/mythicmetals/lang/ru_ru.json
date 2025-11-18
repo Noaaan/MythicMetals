@@ -719,7 +719,7 @@
  "abilities.mythicmetals.fire_aspect": "Естественный огненный аспект",
  "abilities.mythicmetals.fire_protection": "Естественная защита от огня",
  "abilities.mythicmetals.knockback": "Естественное отбрасывание",
- "abilities.mythicmetals.material_tooltip": "Редкий материал для крафта",
+ "tooltip.mythicmetals.rare_crafting_material_tooltip": "Редкий материал для крафта",
  "tooltip.prometheum.regrowth": "Восстановление",
  "tooltip.midas_gold.is_royal": "Прикосновение Мидаса",
  "abilities.mythicmetals.projectile_protection": "Естественная защита от снарядов",
@@ -727,7 +727,7 @@
  "abilities.mythicmetals.riptide": "Тягун",
  "abilities.mythicmetals.smite": "Святой",
  "abilities.mythicmetals.spiked_helm": "Шипастый шлем",
- "abilities.mythicmetals.upgrade_tooltip": "Улучшение мифрильного бура",
+ "tooltip.mythril_drill.upgrade": "Улучшение мифрильного бура",
  "abilities.mythicmetals.water_protection": "Естественная водоупорность",
 
  "tooltip.midas_gold.level.0": "Может быть позолочен на кузнечном столе, используя блоки Мидаса",

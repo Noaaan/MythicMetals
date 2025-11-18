@@ -719,7 +719,7 @@
   "abilities.mythicmetals.fire_aspect": "Природна сила вогню",
   "abilities.mythicmetals.fire_protection": "Природний захист від вогню",
   "abilities.mythicmetals.knockback": "Природне відкидання",
-  "abilities.mythicmetals.material_tooltip": "Рідкісний матеріал для крафту",
+  "tooltip.mythicmetals.rare_crafting_material_tooltip": "Рідкісний матеріал для крафту",
   "tooltip.prometheum.regrowth": "Відновлення",
   "tooltip.midas_gold.is_royal": "Торкання Мідаса",
   "abilities.mythicmetals.projectile_protection": "Природний захист від снарядів",
@@ -727,7 +727,7 @@
   "abilities.mythicmetals.riptide": "Тягун",
   "abilities.mythicmetals.smite": "Святий",
   "abilities.mythicmetals.spiked_helm": "Шипастий шолом",
-  "abilities.mythicmetals.upgrade_tooltip": "Покращення мітрильного бура",
+  "tooltip.mythril_drill.upgrade": "Покращення мітрильного бура",
   "abilities.mythicmetals.water_protection": "Природний захист від води",
 
   "tooltip.midas_gold.level.0": "Може бути позолочено на ковальському столі, використовуючи блоки Мідаса",
