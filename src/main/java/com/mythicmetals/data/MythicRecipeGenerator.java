@@ -369,7 +369,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 Optional.of(Ingredient.ofItem(template)),
                 Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getChestplate())),
                 Optional.of(addition),
-                helmetOutput
+                chestplateOutput
             );
             // leggings
             var leggingsOutput = new ItemStack(MythicArmor.TIDESINGER.getLeggings(), 1);
@@ -378,7 +378,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 Optional.of(Ingredient.ofItem(template)),
                 Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getLeggings())),
                 Optional.of(addition),
-                helmetOutput
+                leggingsOutput
             );
             // boots
             var bootsOutput = new ItemStack(MythicArmor.TIDESINGER.getBoots(), 1);
@@ -387,7 +387,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 Optional.of(Ingredient.ofItem(template)),
                 Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getBoots())),
                 Optional.of(addition),
-                helmetOutput
+                bootsOutput
             );
             exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
             exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
