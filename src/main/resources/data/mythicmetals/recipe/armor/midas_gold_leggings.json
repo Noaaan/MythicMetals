@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:midas_gold_ingot"
-    }
+    "#": "mythicmetals:midas_gold_ingot"
   },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:midas_gold_leggings",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:midas_gold_leggings"
   }
 }

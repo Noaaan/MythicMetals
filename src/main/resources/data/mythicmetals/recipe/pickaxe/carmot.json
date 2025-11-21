@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:carmot_ingot",
+  "base": "mythicmetals:kyber_pickaxe",
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:carmot_pickaxe"
+  },
+  "template": "mythicmetals:carmot_smithing_template"
+}

@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:adamantite_ingot"
-    }
+    "#": "mythicmetals:adamantite_ingot"
   },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:adamantite_leggings",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:adamantite_leggings"
   }
 }

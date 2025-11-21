@@ -106,7 +106,7 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    duplicatesStrategy = DuplicatesStrategy.FAIL
 }
 
 tasks.withType(JavaCompile).configureEach {

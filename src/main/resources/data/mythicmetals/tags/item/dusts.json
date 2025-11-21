@@ -1,0 +1,104 @@
+{
+  "values": [
+    {
+      "id": "#mythicmetals:adamantite_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:aquarium_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:banglum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:bronze_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:carmot_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:celestium_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:durasteel_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:hallowed_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:kyber_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:manganese_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:metallurgium_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:midas_gold_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:mythril_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:orichalcum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:osmium_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:palladium_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:platinum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:prometheum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:quadrillum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:runite_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:silver_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:star_platinum_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:steel_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:stormyx_dust",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:tin_dust",
+      "required": false
+    }
+  ]
+}

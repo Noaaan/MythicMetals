@@ -1,0 +1,104 @@
+{
+  "values": [
+    {
+      "id": "#mythicmetals:dusts/adamantite",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/aquarium",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/banglum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/bronze",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/carmot",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/celestium",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/durasteel",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/hallowed",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/kyber",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/manganese",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/metallurgium",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/midas_gold",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/mythril",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/orichalcum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/osmium",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/palladium",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/platinum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/prometheum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/quadrillum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/runite",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/silver",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/star_platinum",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/steel",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/stormyx",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:dusts/tin",
+      "required": false
+    }
+  ]
+}

@@ -13,7 +13,7 @@
       "item": "minecraft:redstone_torch"
     },
     "e": {
-      "tag": "c:wood_sticks"
+      "tag": "c:rods/wooden"
     }
   },
   "result": {

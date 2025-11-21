@@ -1,15 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicmetals:banglum_chunk"
-  },
-  "base": {
-    "item": "mythicmetals:banglum_chestplate"
-  },
+  "addition": "mythicmetals:banglum_ingot",
+  "base": "mythicmetals:banglum_chestplate",
   "result": {
+    "count": 1,
     "id": "mythicmetals:legendary_banglum_chestplate"
   },
-  "template": {
-    "item": "mythicmetals:legendary_banglum_smithing_template"
-  }
+  "template": "mythicmetals:legendary_banglum_smithing_template"
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:carmot_ingot",
+  "base": "mythicmetals:kyber_sword",
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:carmot_sword"
+  },
+  "template": "mythicmetals:carmot_smithing_template"
+}

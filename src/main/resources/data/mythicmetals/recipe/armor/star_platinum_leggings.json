@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:star_platinum"
-    }
+    "#": "mythicmetals:star_platinum_ingot"
   },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:star_platinum_leggings",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:star_platinum_leggings"
   }
 }

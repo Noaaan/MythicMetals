@@ -1,15 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicmetals:celestium_ingot"
-  },
-  "base": {
-    "item": "minecraft:diamond_helmet"
-  },
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:diamond_helmet",
   "result": {
+    "count": 1,
     "id": "mythicmetals:celestium_helmet"
   },
-  "template": {
-    "item": "mythicmetals:unobtainium_smithing_template"
-  }
+  "template": "mythicmetals:unobtainium_smithing_template"
 }

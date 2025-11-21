@@ -1,15 +1,15 @@
 {
-  "type": "mythicmetals:tidesinger_smithing_transform",
-  "template": {
-    "item": "mythicmetals:tidesinger_smithing_template"
-  },
-  "base": {
-    "item": "mythicmetals:aquarium_helmet"
-  },
-  "addition": {
-    "item": "minecraft:tube_coral"
-  },
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:tube_coral",
+  "base": "mythicmetals:aquarium_helmet",
   "result": {
+    "components": {
+      "mythicmetals:tidesinger": {
+        "pattern": "tube"
+      }
+    },
+    "count": 1,
     "id": "mythicmetals:tidesinger_helmet"
-  }
+  },
+  "template": "mythicmetals:tidesinger_smithing_template"
 }

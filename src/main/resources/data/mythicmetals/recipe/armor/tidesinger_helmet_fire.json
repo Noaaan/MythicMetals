@@ -1,15 +1,15 @@
 {
-  "type": "mythicmetals:tidesinger_smithing_transform",
-  "template": {
-    "item": "mythicmetals:tidesinger_smithing_template"
-  },
-  "base": {
-    "item": "mythicmetals:aquarium_helmet"
-  },
-  "addition": {
-    "item": "minecraft:fire_coral"
-  },
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:fire_coral",
+  "base": "mythicmetals:aquarium_helmet",
   "result": {
+    "components": {
+      "mythicmetals:tidesinger": {
+        "pattern": "fire"
+      }
+    },
+    "count": 1,
     "id": "mythicmetals:tidesinger_helmet"
-  }
+  },
+  "template": "mythicmetals:tidesinger_smithing_template"
 }

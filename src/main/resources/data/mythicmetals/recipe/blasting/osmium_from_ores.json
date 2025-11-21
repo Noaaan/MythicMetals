@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.8,
+  "ingredient": "mythicmetals:osmium_ore",
+  "result": {
+    "id": "mythicmetals:osmium_ingot"
+  }
+}

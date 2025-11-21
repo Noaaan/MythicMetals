@@ -1,16 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "tag": "c:ingots/osmium"
-    }
+    "#": "mythicmetals:osmium_ingot"
   },
+  "pattern": [
+    "###",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:osmium_helmet",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:osmium_helmet"
   }
 }

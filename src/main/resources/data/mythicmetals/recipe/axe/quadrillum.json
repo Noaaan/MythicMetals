@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:quadrillum_ingot",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    "## ",
+    "#S ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:quadrillum_axe"
+  }
+}

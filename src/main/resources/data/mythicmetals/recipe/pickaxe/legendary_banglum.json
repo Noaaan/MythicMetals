@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:banglum_chunk",
+  "base": "mythicmetals:banglum_pickaxe",
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:legendary_banglum_pickaxe"
+  },
+  "template": "mythicmetals:legendary_banglum_smithing_template"
+}

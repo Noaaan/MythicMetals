@@ -1,15 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicmetals:metallurgium_ingot"
-  },
-  "base": {
-    "item": "minecraft:netherite_chestplate"
-  },
+  "addition": "mythicmetals:metallurgium_ingot",
+  "base": "minecraft:netherite_chestplate",
   "result": {
+    "count": 1,
     "id": "mythicmetals:metallurgium_chestplate"
   },
-  "template": {
-    "item": "mythicmetals:unobtainium_smithing_template"
-  }
+  "template": "mythicmetals:unobtainium_smithing_template"
 }

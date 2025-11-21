@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:hallowed_ingot"
-    }
+    "#": "mythicmetals:hallowed_ingot"
   },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:hallowed_leggings",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:hallowed_leggings"
   }
 }

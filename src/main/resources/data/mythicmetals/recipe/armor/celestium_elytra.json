@@ -1,15 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicmetals:celestium_ingot"
-  },
-  "base": {
-    "item": "minecraft:elytra"
-  },
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:elytra",
   "result": {
+    "count": 1,
     "id": "mythicmetals:celestium_elytra"
   },
-  "template": {
-    "item": "mythicmetals:unobtainium_smithing_template"
-  }
+  "template": "mythicmetals:unobtainium_smithing_template"
 }

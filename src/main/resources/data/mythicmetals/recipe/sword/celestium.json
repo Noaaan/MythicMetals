@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:diamond_sword",
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:celestium_sword"
+  },
+  "template": "mythicmetals:unobtainium_smithing_template"
+}

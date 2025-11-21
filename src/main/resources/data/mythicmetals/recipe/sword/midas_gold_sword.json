@@ -10,7 +10,7 @@
       "item": "mythicmetals:midas_gold_ingot"
     },
     "/": {
-      "tag": "c:wood_sticks"
+      "tag": "c:rods/wooden"
     }
   },
   "result": {

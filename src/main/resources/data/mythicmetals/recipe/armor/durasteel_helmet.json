@@ -1,16 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:durasteel_ingot"
-    }
+    "#": "mythicmetals:durasteel_ingot"
   },
+  "pattern": [
+    "###",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:durasteel_helmet",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:durasteel_helmet"
   }
 }

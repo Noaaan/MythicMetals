@@ -1,16 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:kyber_ingot"
-    }
+    "#": "mythicmetals:kyber_ingot"
   },
+  "pattern": [
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:kyber_boots",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:kyber_boots"
   }
 }

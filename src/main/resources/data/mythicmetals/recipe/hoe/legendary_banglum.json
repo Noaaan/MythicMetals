@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:banglum_chunk",
+  "base": "mythicmetals:banglum_hoe",
+  "result": {
+    "components": {
+      "minecraft:attribute_modifiers": {
+        "modifiers": [
+          {
+            "type": "minecraft:attack_damage",
+            "amount": 4.0,
+            "id": "minecraft:base_attack_damage",
+            "operation": "add_value",
+            "slot": "mainhand"
+          },
+          {
+            "type": "minecraft:attack_speed",
+            "amount": -3.0999999046325684,
+            "id": "minecraft:base_attack_speed",
+            "operation": "add_value",
+            "slot": "mainhand"
+          },
+          {
+            "type": "minecraft:attack_knockback",
+            "amount": 6.0,
+            "id": "mythicmetals:sword_attack_knockback",
+            "operation": "add_value",
+            "slot": "mainhand"
+          }
+        ]
+      }
+    },
+    "count": 1,
+    "id": "mythicmetals:legendary_banglum_hoe"
+  },
+  "template": "mythicmetals:legendary_banglum_smithing_template"
+}

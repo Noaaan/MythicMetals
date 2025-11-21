@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredient": "mythicmetals:raw_midas_gold",
+  "result": {
+    "id": "mythicmetals:midas_gold_ingot"
+  }
+}

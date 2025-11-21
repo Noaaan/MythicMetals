@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "m m",
-    "mmm",
-    "mmm"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:stormyx_ingot"
-    }
+    "#": "mythicmetals:stormyx_ingot"
   },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
   "result": {
-    "id": "mythicmetals:stormyx_chestplate",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:stormyx_chestplate"
   }
 }

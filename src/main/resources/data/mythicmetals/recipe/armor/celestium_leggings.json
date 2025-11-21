@@ -1,15 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": {
-    "item": "mythicmetals:celestium_ingot"
-  },
-  "base": {
-    "item": "minecraft:diamond_leggings"
-  },
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:diamond_leggings",
   "result": {
+    "count": 1,
     "id": "mythicmetals:celestium_leggings"
   },
-  "template": {
-    "item": "mythicmetals:unobtainium_smithing_template"
-  }
+  "template": "mythicmetals:unobtainium_smithing_template"
 }

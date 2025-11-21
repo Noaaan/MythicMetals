@@ -1,17 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "item": "mythicmetals:banglum_ingot"
-    }
+    "#": "mythicmetals:banglum_ingot"
   },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:banglum_leggings",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:banglum_leggings"
   }
 }

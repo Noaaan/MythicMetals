@@ -1,16 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "mmm",
-    "m m"
-  ],
+  "category": "equipment",
   "key": {
-    "m": {
-      "tag": "c:ingots/copper"
-    }
+    "#": "minecraft:copper_ingot"
   },
+  "pattern": [
+    "###",
+    "# #"
+  ],
   "result": {
-    "id": "mythicmetals:copper_helmet",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:copper_helmet"
   }
 }
