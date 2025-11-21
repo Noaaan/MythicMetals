@@ -6,18 +6,21 @@ import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.minecraft.block.Block;
 import net.minecraft.data.recipe.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.*;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.TagKey;
 import java.util.*;
+
+import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
 public class MythicRecipeGenerator extends RecipeGenerator {
     protected MythicRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter) {
@@ -116,5 +119,157 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     .offerTo(dustExporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_dust"));
             }
         });
+
+        createToolRecipes();
+    }
+
+    private void createToolRecipes() {
+        // Tool recipes
+        createToolCraftingRecipes(MythicTools.ADAMANTITE, MythicItems.ADAMANTITE.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.AQUARIUM, MythicItems.AQUARIUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.BANGLUM, MythicItems.BANGLUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.BRONZE, MythicItems.BRONZE.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
+        createToolCraftingRecipes(MythicTools.DURASTEEL, MythicItems.DURASTEEL.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.KYBER, MythicItems.KYBER.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.MYTHRIL, MythicItems.MYTHRIL.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.HALLOWED, MythicItems.HALLOWED.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.ORICHALCUM, MythicItems.ORICHALCUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.OSMIUM, MythicItems.OSMIUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.PALLADIUM, MythicItems.PALLADIUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.PROMETHEUM, MythicItems.PROMETHEUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.QUADRILLUM, MythicItems.QUADRILLUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.RUNITE, MythicItems.RUNITE.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STAR_PLATINUM, MythicItems.STAR_PLATINUM.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STEEL, MythicItems.STEEL.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STORMYX, MythicItems.STORMYX.getIngot(), itemLookup);
+        createToolSmithingRecipes(
+            MythicItems.Templates.CARMOT_SMITHING_TEMPLATE,
+            MythicTools.KYBER,
+            Ingredient.ofItem(MythicItems.CARMOT.getIngot()),
+            MythicTools.CARMOT
+        );
+        createToolSmithingRecipes(
+            MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE,
+            MythicTools.BANGLUM,
+            Ingredient.ofItem(MythicItems.Mats.BANGLUM_CHUNK),
+            MythicTools.LEGENDARY_BANGLUM
+        );
+        createToolSmithingRecipes(
+            MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE,
+            MythicTools.AQUARIUM,
+            Ingredient.fromTag(itemLookup.getOrThrow(MythicTags.TIDESINGER_CORAL)),
+            MythicTools.TIDESINGER
+        );
+        createToolSmithingRecipes(
+            MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE,
+            Items.DIAMOND_SWORD,
+            Items.DIAMOND_AXE,
+            Items.DIAMOND_PICKAXE,
+            Items.DIAMOND_SHOVEL,
+            Items.DIAMOND_HOE,
+            Ingredient.ofItem(MythicItems.CELESTIUM.getIngot()),
+            MythicTools.CELESTIUM
+        );
+        createToolSmithingRecipes(
+            MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE,
+            Items.NETHERITE_SWORD,
+            Items.NETHERITE_AXE,
+            Items.NETHERITE_PICKAXE,
+            Items.NETHERITE_SHOVEL,
+            Items.NETHERITE_HOE,
+            Ingredient.ofItem(MythicItems.METALLURGIUM.getIngot()),
+            MythicTools.METALLURGIUM
+        );
+    }
+
+    public void createToolCraftingRecipes(ToolSet toolSet, Item material, RegistryEntryLookup<Item> lookup) {
+        // sword
+        ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getSword())
+            .input('#', material)
+            .input('S', WOODEN_RODS)
+            .pattern("#")
+            .pattern("#")
+            .pattern("S")
+            .criterion("has_sword", conditionsFromItem(toolSet.getSword()))
+            .offerTo(exporter, RegistryHelper.recipeKey("sword/" + toolSet.getName()));
+        // axe
+        ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getAxe())
+            .input('#', material)
+            .input('S', WOODEN_RODS)
+            .pattern("## ")
+            .pattern("#S ")
+            .pattern(" S ")
+            .criterion("has_axe", conditionsFromItem(toolSet.getAxe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("axe/" + toolSet.getName()));
+        // pickaxe
+        ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getPickaxe())
+            .input('#', material)
+            .input('S', WOODEN_RODS)
+            .pattern("###")
+            .pattern(" S ")
+            .pattern(" S ")
+            .criterion("has_pickaxe", conditionsFromItem(toolSet.getPickaxe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("pickaxe/" + toolSet.getName()));
+        // shovel
+        ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getShovel())
+            .input('#', material)
+            .input('S', WOODEN_RODS)
+            .pattern("#")
+            .pattern("#")
+            .pattern("S")
+            .criterion("has_shovel", conditionsFromItem(toolSet.getShovel()))
+            .offerTo(exporter, RegistryHelper.recipeKey("shovel/" + toolSet.getName()));
+        // hoe
+        ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getHoe())
+            .input('#', material)
+            .input('S', WOODEN_RODS)
+            .pattern("## ")
+            .pattern(" S ")
+            .pattern(" S ")
+            .criterion("has_hoe", conditionsFromItem(toolSet.getHoe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("hoe/" + toolSet.getName()));
+    }
+
+    public void createToolSmithingRecipes(
+        Item template,
+        Item baseSword,
+        Item baseAxe,
+        Item basePickaxe,
+        Item baseShovel,
+        Item baseHoe,
+        Ingredient addition,
+        ToolSet resultToolset
+    ) {
+        var templateIngredient = Ingredient.ofItem(template);
+        SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseSword), addition, RecipeCategory.TOOLS, resultToolset.getSword())
+            .criterion("has_template", conditionsFromItem(template))
+            .criterion("has_component_tool", conditionsFromItem(baseSword))
+            .criterion("has_sword", conditionsFromItem(resultToolset.getSword()))
+            .offerTo(exporter, RegistryHelper.recipeKey("sword/" + resultToolset.getName()));
+        SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseAxe), addition, RecipeCategory.TOOLS, resultToolset.getAxe())
+            .criterion("has_template", conditionsFromItem(template))
+            .criterion("has_component_tool", conditionsFromItem(baseAxe))
+            .criterion("has_axe", conditionsFromItem(resultToolset.getAxe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("axe/" + resultToolset.getName()));
+        SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(basePickaxe), addition, RecipeCategory.TOOLS, resultToolset.getPickaxe())
+            .criterion("has_template", conditionsFromItem(template))
+            .criterion("has_component_tool", conditionsFromItem(basePickaxe))
+            .criterion("has_pickaxe", conditionsFromItem(resultToolset.getPickaxe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("pickaxe/" + resultToolset.getName()));
+        SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseShovel), addition, RecipeCategory.TOOLS, resultToolset.getShovel())
+            .criterion("has_template", conditionsFromItem(template))
+            .criterion("has_component_tool", conditionsFromItem(baseShovel))
+            .criterion("has_shovel", conditionsFromItem(resultToolset.getShovel()))
+            .offerTo(exporter, RegistryHelper.recipeKey("shovel/" + resultToolset.getName()));
+        SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseHoe), addition, RecipeCategory.TOOLS, resultToolset.getHoe())
+            .criterion("has_template", conditionsFromItem(template))
+            .criterion("has_component_tool", conditionsFromItem(baseHoe))
+            .criterion("has_hoe", conditionsFromItem(resultToolset.getHoe()))
+            .offerTo(exporter, RegistryHelper.recipeKey("hoe/" + resultToolset.getName()));
+    }
+
+    public void createToolSmithingRecipes(Item template, ToolSet baseToolset, Ingredient addition, ToolSet resultToolset) {
+        createToolSmithingRecipes(template, baseToolset.getSword(), baseToolset.getAxe(), baseToolset.getPickaxe(), baseToolset.getShovel(), baseToolset.getHoe(), addition, resultToolset);
     }
 }
