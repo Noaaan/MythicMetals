@@ -4,6 +4,8 @@ import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.TidesingerPatternComponent;
 import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.MythicTools;
@@ -13,12 +15,21 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.minecraft.block.Block;
 import net.minecraft.data.recipe.*;
 import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.SmithingTransformRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.*;
+import net.minecraft.registry.RegistryEntryLookup;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Optional;
 
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
@@ -120,6 +131,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             }
         });
 
+        createArmorRecipes();
         createToolRecipes();
     }
 
@@ -271,5 +283,208 @@ public class MythicRecipeGenerator extends RecipeGenerator {
 
     public void createToolSmithingRecipes(Item template, ToolSet baseToolset, Ingredient addition, ToolSet resultToolset) {
         createToolSmithingRecipes(template, baseToolset.getSword(), baseToolset.getAxe(), baseToolset.getPickaxe(), baseToolset.getShovel(), baseToolset.getHoe(), addition, resultToolset);
+    }
+
+    public void createArmorRecipes() {
+        createArmorCraftingRecipes(MythicArmor.ADAMANTITE, MythicItems.ADAMANTITE.getIngot());
+        createArmorCraftingRecipes(MythicArmor.AQUARIUM, MythicItems.AQUARIUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.BANGLUM, MythicItems.BANGLUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.BRONZE, MythicItems.BRONZE.getIngot());
+        createArmorCraftingRecipes(MythicArmor.COPPER, Items.COPPER_INGOT);
+        createArmorCraftingRecipes(MythicArmor.DURASTEEL, MythicItems.DURASTEEL.getIngot());
+        createArmorCraftingRecipes(MythicArmor.HALLOWED, MythicItems.HALLOWED.getIngot());
+        createArmorCraftingRecipes(MythicArmor.KYBER, MythicItems.KYBER.getIngot());
+        createArmorCraftingRecipes(MythicArmor.MIDAS_GOLD, MythicItems.MIDAS_GOLD.getIngot());
+        createArmorCraftingRecipes(MythicArmor.MYTHRIL, MythicItems.MYTHRIL.getIngot());
+        createArmorCraftingRecipes(MythicArmor.ORICHALCUM, MythicItems.ORICHALCUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.OSMIUM, MythicItems.OSMIUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.PALLADIUM, MythicItems.PALLADIUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.PROMETHEUM, MythicItems.PROMETHEUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.RUNITE, MythicItems.RUNITE.getIngot());
+        createArmorCraftingRecipes(MythicArmor.SILVER, MythicItems.SILVER.getIngot());
+        createArmorCraftingRecipes(MythicArmor.STAR_PLATINUM, MythicItems.STAR_PLATINUM.getIngot());
+        createArmorCraftingRecipes(MythicArmor.STEEL, MythicItems.STEEL.getIngot());
+        createArmorCraftingRecipes(MythicArmor.STORMYX, MythicItems.STORMYX.getIngot());
+
+        createArmorSmithingRecipes(
+            MythicItems.Templates.CARMOT_SMITHING_TEMPLATE,
+            MythicArmor.KYBER,
+            Ingredient.ofItem(MythicItems.CARMOT.getIngot()),
+            MythicArmor.CARMOT
+        );
+        createArmorSmithingRecipes(
+            MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE,
+            Items.NETHERITE_HELMET,
+            Items.NETHERITE_CHESTPLATE,
+            Items.NETHERITE_LEGGINGS,
+            Items.NETHERITE_BOOTS,
+            Ingredient.ofItem(MythicItems.METALLURGIUM.getIngot()),
+            MythicArmor.METALLURGIUM
+        );
+        createArmorSmithingRecipes(
+            MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE,
+            Items.DIAMOND_HELMET,
+            Items.DIAMOND_CHESTPLATE,
+            Items.DIAMOND_LEGGINGS,
+            Items.DIAMOND_BOOTS,
+            Ingredient.ofItem(MythicItems.CELESTIUM.getIngot()),
+            MythicArmor.CELESTIUM
+        );
+        createArmorSmithingRecipes(
+            MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE,
+            MythicArmor.BANGLUM,
+            Ingredient.ofItem(MythicItems.BANGLUM.getIngot()),
+            MythicArmor.LEGENDARY_BANGLUM
+        );
+        createArmorSmithingRecipes(
+            MythicItems.Templates.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE,
+            Items.DIAMOND_HELMET,
+            Items.DIAMOND_CHESTPLATE,
+            Items.DIAMOND_LEGGINGS,
+            Items.DIAMOND_BOOTS,
+            Ingredient.ofItem(MythicItems.OSMIUM.getIngot()),
+            MythicArmor.OSMIUM_CHAINMAIL
+        );
+        createTidesingerArmorRecipes();
+    }
+
+    private void createTidesingerArmorRecipes() {
+        var template = MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE;
+        for (var coral : TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet()) {
+            var addition = Ingredient.ofItem(coral);
+            var name = TidesingerPatternComponent.TIDESINGER_VARIANTS.get(coral);
+            // helmet
+            var helmetOutput = new ItemStack(MythicArmor.TIDESINGER.getHelmet(), 1);
+            helmetOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
+            var helmetRecipe = new SmithingTransformRecipe(
+                Optional.of(Ingredient.ofItem(template)),
+                Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getHelmet())),
+                Optional.of(addition),
+                helmetOutput
+            );
+            // chestplate
+            var chestplateOutput = new ItemStack(MythicArmor.TIDESINGER.getChestplate(), 1);
+            chestplateOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
+            var chestplateRecipe = new SmithingTransformRecipe(
+                Optional.of(Ingredient.ofItem(template)),
+                Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getChestplate())),
+                Optional.of(addition),
+                helmetOutput
+            );
+            // leggings
+            var leggingsOutput = new ItemStack(MythicArmor.TIDESINGER.getLeggings(), 1);
+            leggingsOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
+            var leggingsRecipe = new SmithingTransformRecipe(
+                Optional.of(Ingredient.ofItem(template)),
+                Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getLeggings())),
+                Optional.of(addition),
+                helmetOutput
+            );
+            // boots
+            var bootsOutput = new ItemStack(MythicArmor.TIDESINGER.getBoots(), 1);
+            bootsOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
+            var bootsRecipe = new SmithingTransformRecipe(
+                Optional.of(Ingredient.ofItem(template)),
+                Optional.of(Ingredient.ofItem(MythicArmor.AQUARIUM.getBoots())),
+                Optional.of(addition),
+                helmetOutput
+            );
+            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
+            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
+            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
+            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
+        }
+    }
+
+    public void createArmorCraftingRecipes(ArmorSet output, Item material) {
+        createArmorCraftingRecipes(output, Ingredient.ofItem(material));
+    }
+
+    public void createArmorCraftingRecipes(ArmorSet output, Ingredient material) {
+        // helmet
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getHelmet())
+            .input('#', material)
+            .pattern("###")
+            .pattern("# #")
+            .criterion("has_helmet", conditionsFromItem(output.getHelmet()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_helmet"));
+        // chestplate
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getChestplate())
+            .input('#', material)
+            .pattern("# #")
+            .pattern("###")
+            .pattern("###")
+            .criterion("has_chestplate", conditionsFromItem(output.getChestplate()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_chestplate"));
+        // leggings
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getLeggings())
+            .input('#', material)
+            .pattern("###")
+            .pattern("# #")
+            .pattern("# #")
+            .criterion("has_leggings", conditionsFromItem(output.getLeggings()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_leggings"));
+        // boots
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getBoots())
+            .input('#', material)
+            .pattern("# #")
+            .pattern("# #")
+            .criterion("has_boots", conditionsFromItem(output.getBoots()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_boots"));
+    }
+
+    public void createArmorSmithingRecipes(Item template, Item baseHelmet, Item baseChestplate, Item baseLeggings, Item baseBoots, Ingredient addition, ArmorSet outputArmorSet) {
+        // helmet
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(template),
+                Ingredient.ofItem(baseHelmet),
+                addition,
+                RecipeCategory.COMBAT,
+                outputArmorSet.getHelmet()
+            )
+            .criterion("has_helmet", conditionsFromItem(outputArmorSet.getHelmet()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_helmet"));
+        // chestplate
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(template),
+                Ingredient.ofItem(baseChestplate),
+                addition,
+                RecipeCategory.COMBAT,
+                outputArmorSet.getChestplate()
+            )
+            .criterion("has_chestplate", conditionsFromItem(outputArmorSet.getChestplate()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_chestplate"));
+        // leggings
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(template),
+                Ingredient.ofItem(baseLeggings),
+                addition,
+                RecipeCategory.COMBAT,
+                outputArmorSet.getLeggings()
+            )
+            .criterion("has_leggings", conditionsFromItem(outputArmorSet.getLeggings()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_leggings"));
+        // boots
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(template),
+                Ingredient.ofItem(baseBoots),
+                addition,
+                RecipeCategory.COMBAT,
+                outputArmorSet.getBoots()
+            )
+            .criterion("has_boots", conditionsFromItem(outputArmorSet.getBoots()))
+            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_boots"));
+    }
+
+    public void createArmorSmithingRecipes(Item template, ArmorSet baseArmorSet, Ingredient addition, ArmorSet outputArmorSet) {
+        createArmorSmithingRecipes(
+            template,
+            baseArmorSet.getHelmet(),
+            baseArmorSet.getChestplate(),
+            baseArmorSet.getLeggings(),
+            baseArmorSet.getBoots(),
+            addition,
+            outputArmorSet
+        );
     }
 }
