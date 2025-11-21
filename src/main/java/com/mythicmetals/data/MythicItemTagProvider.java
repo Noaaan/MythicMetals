@@ -73,7 +73,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
             var commonIngotTag = ConventionalItemTags.INGOTS;
             if (itemSet.getIngot() != null) {
                 // Star Platinum is explicitly named, so this is for handling that edge case
-                var string = itemSet.equals(MythicItems.STAR_PLATINUM) ? name : ConventionalItemTags.INGOTS.id().getPath() + "/" + name;
+                var string = ConventionalItemTags.INGOTS.id().getPath() + "/" + name;
                 var modTag = MythicMetalsData.createModItemTag(string);
                 var commonTag = MythicMetalsData.createCommonItemTag(string);
                 getOrCreateTagBuilder(modTag).add(itemSet.getIngot());
