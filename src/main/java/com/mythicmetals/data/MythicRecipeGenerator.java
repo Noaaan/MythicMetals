@@ -333,7 +333,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
         createArmorSmithingRecipes(
             MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE,
             MythicArmor.BANGLUM,
-            Ingredient.ofItem(MythicItems.BANGLUM.getIngot()),
+            Ingredient.ofItem(MythicItems.Mats.BANGLUM_CHUNK),
             MythicArmor.LEGENDARY_BANGLUM
         );
         createArmorSmithingRecipes(

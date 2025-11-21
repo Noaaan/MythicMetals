@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "mythicmetals:banglum_ingot",
+  "addition": "mythicmetals:banglum_chunk",
   "base": "mythicmetals:banglum_chestplate",
   "result": {
     "count": 1,
