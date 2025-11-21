@@ -114,7 +114,7 @@ public class MythicArmorMaterials {
         EquipmentType.HELMET, 2,
         EquipmentType.CHESTPLATE, 5,
         EquipmentType.LEGGINGS, 4,
-        EquipmentType.BOOTS, 1), 15, sound(RegisterSounds.EQUIP_OSMIUM_CHAINMAIL), 2.0f, 0.2f, repairTag("osmium_chainmail"), layer("osmium_chainmail"));
+        EquipmentType.BOOTS, 1), 15, sound(RegisterSounds.EQUIP_OSMIUM_CHAINMAIL), 2.0f, 0.2f, repairTag("osmium"), layer("osmium_chainmail"));
 
     public static final ArmorMaterial PALLADIUM = new ArmorMaterial(28, Map.of(
         EquipmentType.HELMET, 3,
