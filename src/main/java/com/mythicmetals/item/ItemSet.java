@@ -15,7 +15,6 @@ public class ItemSet {
     private final Item ingotItem;
     private Item rawOreItem = null;
     private Item nuggetItem = null;
-    private Item dustItem = null;
     private boolean requiresBlasting = false;
     // Used for smelting recipes during datagen
     private final float xp;
@@ -68,9 +67,6 @@ public class ItemSet {
         if (MythicMetals.CONFIG.enableNuggets()) {
             this.nuggetItem = makeItem(createSettings(itemKey(name + "_nugget"), settingsConsumer));
         }
-        if (MythicMetals.CONFIG.enableDusts()) {
-            this.dustItem = makeItem(createSettings(itemKey(name + "_dust"), settingsConsumer));
-        }
         this.xp = xp;
         this.requiresBlasting = requiresBlasting;
     }
@@ -84,9 +80,6 @@ public class ItemSet {
             Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
             // Conditionally add nuggets to nuggets tag
             TagInjector.inject(Registries.ITEM, Identifier.of("c", "nuggets"), nuggetItem);
-        }
-        if (dustItem != null) {
-            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_dust"), dustItem);
         }
     }
 
@@ -113,11 +106,6 @@ public class ItemSet {
     @Nullable
     public Item getNugget() {
         return nuggetItem;
-    }
-
-    @Nullable
-    public Item getDust() {
-        return dustItem;
     }
 
     public String getName() {

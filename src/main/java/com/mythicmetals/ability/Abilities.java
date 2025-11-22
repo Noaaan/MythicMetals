@@ -1,14 +1,7 @@
 package com.mythicmetals.ability;
 
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.item.tools.MythrilDrill;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.Items;
-import net.minecraft.text.Style;
-import net.minecraft.util.Formatting;
 
 import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
 

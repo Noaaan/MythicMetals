@@ -118,17 +118,6 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     .criterion("has_material", conditionsFromItem(itemSet.getRawOre()))
                     .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
             }
-            // Smelting dusts into ingots
-            if (itemSet.getDust() != null) {
-                if (!itemSet.requiresBlasting()) {
-                    CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(itemSet.getDust()), RecipeCategory.MISC, itemSet.getIngot(), itemSet.getXp(), 200)
-                        .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("dusts/" + name))))
-                        .offerTo(dustExporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_dust"));
-                }
-                CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(itemSet.getDust()), RecipeCategory.MISC, itemSet.getIngot(), itemSet.getXp(), 100)
-                    .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("dusts/" + name))))
-                    .offerTo(dustExporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_dust"));
-            }
         });
 
         createArmorRecipes();

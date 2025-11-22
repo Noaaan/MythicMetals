@@ -43,6 +43,9 @@ This includes the following:
 
 - Natural Fire Aspect is now hardcoded onto the Sword of the Aegis
   - No longer uses an Ability
+- Removed Dusts and their config option
+  - These are becoming increasingly annoying to maintain, while not serving any function in the base mod.
+  - Might be moved to an addon or something similar if they are actually useful to someone
 
 # 0.24.4
 

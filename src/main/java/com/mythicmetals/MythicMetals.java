@@ -43,7 +43,7 @@ import org.ladysnake.cca.api.v3.entity.*;
 public class MythicMetals implements ModInitializer, EntityComponentInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 13;
+    public static final int CONFIG_VERSION = 14;
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 

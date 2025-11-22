@@ -34,9 +34,6 @@ public class MythicItemModelProvider extends FabricModelProvider {
             if (itemSet.getNugget() != null) {
                 itemModelGenerator.register(itemSet.getNugget(), Models.GENERATED);
             }
-            if (itemSet.getDust() != null) {
-                itemModelGenerator.register(itemSet.getDust(), Models.GENERATED);
-            }
         });
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
             itemModelGenerator.register(value, Models.GENERATED);

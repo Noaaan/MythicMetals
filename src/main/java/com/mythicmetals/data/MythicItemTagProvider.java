@@ -128,27 +128,6 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 getOrCreateTagBuilder(commonTag)
                     .addOptionalTag(modTag);
             }
-
-            /*
-             * Create nugget tags. Example:
-             * Adamantite Nugget is added to the following:
-             * #mythicmetals:nuggets/adamantite
-             * #c:nuggets/adamantite
-             * #mythicmetals:nuggets
-             */
-            if (itemSet.getDust() != null) {
-                var string = "dusts/" + name;
-                var modRawOreTag = MythicMetalsData.createModItemTag("dusts");
-
-                var modTag = MythicMetalsData.createModItemTag(string);
-                var commonTag = ConventionalItemTags.DUSTS;
-                getOrCreateTagBuilder(modTag)
-                    .addOptional(Registries.ITEM.getId(itemSet.getDust()));
-                getOrCreateTagBuilder(modRawOreTag)
-                    .addOptionalTag(Registries.ITEM.getId(itemSet.getDust()));
-                getOrCreateTagBuilder(commonTag)
-                    .addOptionalTag(modTag);
-            }
         });
 
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (item, name, field) -> {

@@ -60,8 +60,6 @@ public class MythicConfigModel {
     @RestartRequired
     public boolean tin = true;
     @RestartRequired
-    public boolean enableDusts = false;
-    @RestartRequired
     public boolean enableNuggets = true;
     @RestartRequired
     public boolean enableAnvils = true;
