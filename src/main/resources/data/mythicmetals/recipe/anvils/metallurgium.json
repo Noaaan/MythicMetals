@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:metallurgium_block",
+    "I": "mythicmetals:metallurgium_ingot"
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:metallurgium_anvil"
+  }
+}

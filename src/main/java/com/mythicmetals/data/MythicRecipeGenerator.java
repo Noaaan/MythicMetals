@@ -111,6 +111,17 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                         .input(blockSet.getStorageBlock().asItem())
                         .offerTo(exporter, RegistryHelper.recipeKey("ingots/" + name + "_from_block"));
                 }
+                if (blockSet.getStorageBlock() != null && blockSet.getAnvil() != null) {
+                    ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getAnvil())
+                        .pattern("###")
+                        .pattern(" I ")
+                        .pattern("III")
+                        .input('#', blockSet.getStorageBlock())
+                        .input('I', itemSet.getIngot())
+                        .criterion("has_block", conditionsFromItem(blockSet.getStorageBlock()))
+                        .criterion("has_ingot", conditionsFromItem(itemSet.getIngot()))
+                        .offerTo(exporter, RegistryHelper.recipeKey("anvils/" + name));
+                }
             }
         });
 

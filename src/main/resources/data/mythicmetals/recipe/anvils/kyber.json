@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:kyber_block",
+    "I": "mythicmetals:kyber_ingot"
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:kyber_anvil"
+  }
+}

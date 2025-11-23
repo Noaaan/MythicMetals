@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:palladium_block",
+    "I": "mythicmetals:palladium_ingot"
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:palladium_anvil"
+  }
+}

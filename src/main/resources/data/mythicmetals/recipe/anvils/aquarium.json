@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:aquarium_block",
+    "I": "mythicmetals:aquarium_ingot"
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:aquarium_anvil"
+  }
+}

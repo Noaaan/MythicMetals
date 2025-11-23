@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:platinum_block",
+    "I": "mythicmetals:platinum_ingot"
+  },
+  "pattern": [
+    "###",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:platinum_anvil"
+  }
+}
