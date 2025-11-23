@@ -15,31 +15,26 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.minecraft.block.Block;
 import net.minecraft.data.recipe.*;
 import net.minecraft.item.*;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.predicate.item.ItemPredicate;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.SmithingTransformRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryEntryLookup;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.*;
 import net.minecraft.registry.tag.TagKey;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
 public class MythicRecipeGenerator extends RecipeGenerator {
-    protected MythicRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter) {
+
+    public MythicRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter, RecipeExporter nuggetExporter) {
         super(registries, exporter);
         itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
+        this.nuggetExporter = nuggetExporter;
     }
 
-    private RegistryEntryLookup<Item> itemLookup;
+    private final RegistryEntryLookup<Item> itemLookup;
+    private final RecipeExporter nuggetExporter;
 
     @SuppressWarnings("UnstableApiUsage")
     @Override
@@ -47,12 +42,6 @@ public class MythicRecipeGenerator extends RecipeGenerator {
 
         var itemSets = new HashMap<String, ItemSet>();
         var blockSets = new HashMap<String, BlockSet>();
-
-        // TODO - Is it still possible to use resource conditions here?
-        //var dustExporter = withConditions(exporter, new DustLoadedCondition());
-        //var nuggetExporter = withConditions(exporter, new NuggetsLoadedCondition());
-        var dustExporter = this.exporter;
-        var nuggetExporter = this.exporter;
 
         // Handle items first, as they store whether the items need blasting to be smelted
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.class, ItemSet.class, (itemSet, name, field) -> {
@@ -476,4 +465,5 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             outputArmorSet
         );
     }
+
 }

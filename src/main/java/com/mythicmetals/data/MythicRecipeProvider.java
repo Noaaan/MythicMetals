@@ -1,5 +1,6 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.conditions.NuggetsLoadedCondition;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.recipe.RecipeExporter;
@@ -15,7 +16,7 @@ public class MythicRecipeProvider extends FabricRecipeProvider {
 
     @Override
     protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registryLookup, RecipeExporter exporter) {
-        return new MythicRecipeGenerator(registryLookup, exporter);
+        return new MythicRecipeGenerator(registryLookup, exporter, withConditions(exporter, new NuggetsLoadedCondition()));
     }
 
 

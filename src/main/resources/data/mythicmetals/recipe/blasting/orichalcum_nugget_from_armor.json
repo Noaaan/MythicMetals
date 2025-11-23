@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:orichalcum_helmet",
+    "mythicmetals:orichalcum_chestplate",
+    "mythicmetals:orichalcum_leggings",
+    "mythicmetals:orichalcum_boots"
+  ],
+  "result": {
+    "id": "mythicmetals:orichalcum_nugget"
+  }
+}

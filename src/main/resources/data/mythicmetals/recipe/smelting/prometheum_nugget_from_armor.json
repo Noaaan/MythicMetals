@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:prometheum_helmet",
+    "mythicmetals:prometheum_chestplate",
+    "mythicmetals:prometheum_leggings",
+    "mythicmetals:prometheum_boots"
+  ],
+  "result": {
+    "id": "mythicmetals:prometheum_nugget"
+  }
+}

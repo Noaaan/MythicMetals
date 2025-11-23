@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:midas_gold_helmet",
+    "mythicmetals:midas_gold_chestplate",
+    "mythicmetals:midas_gold_leggings",
+    "mythicmetals:midas_gold_boots"
+  ],
+  "result": {
+    "id": "mythicmetals:midas_gold_nugget"
+  }
+}
