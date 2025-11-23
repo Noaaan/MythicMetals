@@ -1,12 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "mythicmetals:raw_platinum_block"
-    }
+    "mythicmetals:raw_platinum_block"
   ],
   "result": {
-    "id": "mythicmetals:raw_platinum",
-    "count": 9
+    "count": 9,
+    "id": "mythicmetals:raw_platinum"
   }
 }

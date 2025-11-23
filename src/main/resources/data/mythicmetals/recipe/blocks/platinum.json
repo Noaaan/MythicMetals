@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot",
+    "mythicmetals:platinum_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:platinum_block"
+  }
+}

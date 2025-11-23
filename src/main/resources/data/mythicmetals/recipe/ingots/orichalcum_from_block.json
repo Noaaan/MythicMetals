@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:orichalcum_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:orichalcum_ingot"
+  }
+}

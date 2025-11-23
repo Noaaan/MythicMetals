@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot",
+    "mythicmetals:carmot_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:carmot_block"
+  }
+}

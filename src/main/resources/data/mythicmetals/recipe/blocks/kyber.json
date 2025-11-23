@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot",
+    "mythicmetals:kyber_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:kyber_block"
+  }
+}

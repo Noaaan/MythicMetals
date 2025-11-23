@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot",
+    "mythicmetals:quadrillum_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:quadrillum_block"
+  }
+}

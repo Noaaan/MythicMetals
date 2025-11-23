@@ -1,12 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "mythicmetals:raw_midas_gold_block"
-    }
+    "mythicmetals:raw_midas_gold_block"
   ],
   "result": {
-    "id": "mythicmetals:raw_midas_gold",
-    "count": 9
+    "count": 9,
+    "id": "mythicmetals:raw_midas_gold"
   }
 }

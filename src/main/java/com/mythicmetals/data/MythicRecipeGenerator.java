@@ -52,31 +52,72 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             blockSets.put(name, blockSet);
         });
 
+        createItemRecipes(itemSets);
+        createBlockRecipes(itemSets, blockSets);
+        createNuggetRecipes(itemSets);
+        createArmorRecipes();
+        createToolRecipes();
+    }
+
+    private void createBlockRecipes(HashMap<String, ItemSet> itemSets, HashMap<String, BlockSet> blockSets) {
         // Smelting ore blocks into ingots
         itemSets.forEach((name, itemSet) -> {
-            // Smelting Ore Blocks into ingots
-            if (blockSets.containsKey(name) && blockSets.get(name).getOre() != null) {
+            if (!blockSets.containsKey(name)) {
+                // no-op
+            } else {
                 var blockSet = blockSets.get(name);
-                var oreList = new ArrayList<>(blockSet.getOreVariants());
-                oreList.add(blockSet.getOre());
-                var items = oreList.stream().map(Block::asItem).toList().toArray(new Item[0]);
+                // Smelting Ore Blocks into ingots
+                if (blockSet.getOre() != null) {
+                    var oreList = new ArrayList<>(blockSet.getOreVariants());
+                    oreList.add(blockSet.getOre());
+                    var items = oreList.stream().map(Block::asItem).toList().toArray(new Item[0]);
 
-                var ingot = itemSet.getIngot();
-                var xp = itemSet.getXp();
-                boolean requiresBlasting = itemSet.requiresBlasting();
-                var critera = conditionsFromItemPredicates(ItemPredicate.Builder.create().items(this.itemLookup, items).build());
+                    var ingot = itemSet.getIngot();
+                    var xp = itemSet.getXp();
+                    boolean requiresBlasting = itemSet.requiresBlasting();
+                    var critera = conditionsFromItemPredicates(ItemPredicate.Builder.create().items(this.itemLookup, items).build());
 
-                if (!requiresBlasting) {
-                    CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 200)
+                    // ingot from ores
+                    if (!requiresBlasting) {
+                        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 200)
+                            .criterion("has_material", critera)
+                            .offerTo(exporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
+                    }
+                    CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 100)
                         .criterion("has_material", critera)
-                        .offerTo(exporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
+                        .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
                 }
-                CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 100)
-                    .criterion("has_material", critera)
-                    .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
+                if (itemSet.getRawOre() != null && blockSet.getOreStorageBlock() != null) {
+                    // Raw Ores to Raw Ore Block
+                    ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getOreStorageBlock().asItem())
+                        .criterion("has_material", conditionsFromItem(blockSet.getOreStorageBlock().asItem()))
+                        .input(itemSet.getRawOre(), 9)
+                        .offerTo(exporter, RegistryHelper.recipeKey("blocks/raw_" + name));
+                    // Raw Ores from Raw Ore Block
+                    ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, itemSet.getRawOre(), 9)
+                        .criterion("has_material", conditionsFromItem(itemSet.getRawOre()))
+                        .input(blockSet.getOreStorageBlock().asItem())
+                        .offerTo(exporter, RegistryHelper.recipeKey("crafting/raw_" + name + "_from_block"));
+                }
+                if (blockSet.getStorageBlock() != null) {
+                    // Ingots to Storage Block
+                    ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock().asItem())
+                        .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock().asItem()))
+                        .input(itemSet.getIngot(), 9)
+                        .offerTo(exporter, RegistryHelper.recipeKey("blocks/" + name));
+                    // Ingots from Storage Block
+                    ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, itemSet.getIngot(), 9)
+                        .criterion("has_material", conditionsFromItem(itemSet.getIngot()))
+                        .input(blockSet.getStorageBlock().asItem())
+                        .offerTo(exporter, RegistryHelper.recipeKey("ingots/" + name + "_from_block"));
+                }
             }
+        });
+    }
 
-            // Smelting Raw Ores into ingots
+    private void createItemRecipes(HashMap<String, ItemSet> itemSets) {
+        itemSets.forEach((name, itemSet) -> {
+            // Blasting/Smelting Raw Ores into ingots
             if (itemSet.getRawOre() != null) {
                 if (!itemSet.requiresBlasting()) {
                     CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(itemSet.getRawOre()), RecipeCategory.MISC, itemSet.getIngot(), itemSet.getXp(), 200)
@@ -88,10 +129,6 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
             }
         });
-
-        createNuggetRecipes(itemSets);
-        createArmorRecipes();
-        createToolRecipes();
     }
 
     private void createNuggetRecipes(HashMap<String, ItemSet> itemSets) {

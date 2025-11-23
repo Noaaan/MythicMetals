@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot",
+    "mythicmetals:manganese_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:manganese_block"
+  }
+}

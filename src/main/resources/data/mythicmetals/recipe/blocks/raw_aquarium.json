@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium",
+    "mythicmetals:raw_aquarium"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_aquarium_block"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot",
+    "mythicmetals:midas_gold_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:midas_gold_block"
+  }
+}

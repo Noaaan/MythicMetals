@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:prometheum_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:prometheum_ingot"
+  }
+}

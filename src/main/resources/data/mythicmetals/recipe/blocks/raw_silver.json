@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver",
+    "mythicmetals:raw_silver"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_silver_block"
+  }
+}

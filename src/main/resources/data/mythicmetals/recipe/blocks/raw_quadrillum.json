@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum",
+    "mythicmetals:raw_quadrillum"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_quadrillum_block"
+  }
+}

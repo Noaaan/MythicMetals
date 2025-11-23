@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot",
+    "mythicmetals:tin_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:tin_block"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum",
+    "mythicmetals:raw_orichalcum"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_orichalcum_block"
+  }
+}

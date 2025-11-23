@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril",
+    "mythicmetals:raw_mythril"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_mythril_block"
+  }
+}

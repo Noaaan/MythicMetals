@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot",
+    "mythicmetals:celestium_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:celestium_block"
+  }
+}

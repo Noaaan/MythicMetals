@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot",
+    "mythicmetals:bronze_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:bronze_block"
+  }
+}

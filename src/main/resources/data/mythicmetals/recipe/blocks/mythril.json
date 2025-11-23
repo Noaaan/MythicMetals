@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot",
+    "mythicmetals:mythril_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:mythril_block"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot",
+    "mythicmetals:durasteel_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:durasteel_block"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium",
+    "mythicmetals:raw_osmium"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_osmium_block"
+  }
+}

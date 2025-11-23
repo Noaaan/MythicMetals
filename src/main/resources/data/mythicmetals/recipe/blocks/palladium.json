@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot",
+    "mythicmetals:palladium_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:palladium_block"
+  }
+}

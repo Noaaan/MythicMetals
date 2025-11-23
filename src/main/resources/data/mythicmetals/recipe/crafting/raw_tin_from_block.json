@@ -1,12 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "mythicmetals:raw_tin_block"
-    }
+    "mythicmetals:raw_tin_block"
   ],
   "result": {
-    "id": "mythicmetals:raw_tin",
-    "count": 9
+    "count": 9,
+    "id": "mythicmetals:raw_tin"
   }
 }

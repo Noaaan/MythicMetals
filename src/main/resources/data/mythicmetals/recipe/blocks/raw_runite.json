@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite",
+    "mythicmetals:raw_runite"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:raw_runite_block"
+  }
+}
