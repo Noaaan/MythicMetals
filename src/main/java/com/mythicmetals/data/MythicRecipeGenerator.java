@@ -113,6 +113,23 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 }
             }
         });
+
+        // special case for materials
+        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
+            if (blockSets.containsKey(name)) {
+                var blockSet = blockSets.get(name);
+                // Ingots to Storage Block
+                ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock().asItem())
+                    .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock().asItem()))
+                    .input(value, 9)
+                    .offerTo(exporter, RegistryHelper.recipeKey("blocks/" + name));
+                // Ingots from Storage Block
+                ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, value, 9)
+                    .criterion("has_material", conditionsFromItem(value))
+                    .input(blockSet.getStorageBlock().asItem())
+                    .offerTo(exporter, RegistryHelper.recipeKey("crafting/" + name));
+            }
+        });
     }
 
     private void createItemRecipes(HashMap<String, ItemSet> itemSets) {
