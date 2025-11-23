@@ -1364,5 +1364,12 @@
   "tag.item.mythicmetals.tools.shield": "Mythic Metals Shields",
   "tag.item.mythicmetals.tools.mining_tool": "Mythic Metals Mining Tools",
   "tag.item.mythicmetals.abilities.bonus_fortune": "Tools with Bonus Fortune",
-  "tag.item.mythicmetals.abilities.bonus_looting": "Tools with Bonus Looting"
+  "tag.item.mythicmetals.abilities.bonus_looting": "Tools with Bonus Looting",
+
+  "alloy_forgery.tier.advanced_name.mythicmetals.rare_plus_tier": [
+    {"text": "Rare+ ", "color": "yellow"},
+    { "text": "[", "color": "gray" },
+    { "index": 0, "color": "white" },
+    { "text": "]", "color": "gray" }
+  ]
 }
