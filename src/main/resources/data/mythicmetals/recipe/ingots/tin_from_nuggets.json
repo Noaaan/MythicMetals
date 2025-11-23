@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mm_tin",
+  "ingredients": [
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget",
+    "mythicmetals:tin_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:tin_ingot"
+  }
+}

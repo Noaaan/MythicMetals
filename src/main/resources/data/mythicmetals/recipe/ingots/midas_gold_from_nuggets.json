@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mm_midas_gold",
+  "ingredients": [
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:midas_gold_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:midas_gold_ingot"
+  }
+}

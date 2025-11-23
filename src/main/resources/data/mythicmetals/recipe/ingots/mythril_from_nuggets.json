@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mm_mythril",
+  "ingredients": [
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:mythril_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:mythril_ingot"
+  }
+}

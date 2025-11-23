@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mm_prometheum",
+  "ingredients": [
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:prometheum_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:prometheum_ingot"
+  }
+}

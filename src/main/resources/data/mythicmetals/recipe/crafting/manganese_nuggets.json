@@ -1,0 +1,16 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mythicmetals:manganese_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:manganese_nugget"
+  }
+}

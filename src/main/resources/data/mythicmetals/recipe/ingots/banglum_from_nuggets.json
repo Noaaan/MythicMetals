@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "mm_banglum",
+  "ingredients": [
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:banglum_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:banglum_ingot"
+  }
+}
