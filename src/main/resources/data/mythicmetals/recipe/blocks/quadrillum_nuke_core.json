@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:raw_quadrillum",
+    "C": "mythicmetals:banglum_nuke_core"
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:quadrillum_nuke_core"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:raw_banglum_block",
+    "C": "mythicmetals:banglum_chunk",
+    "S": "mythicmetals:morkite_block"
+  },
+  "pattern": [
+    "#S#",
+    "SCS",
+    "#S#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:banglum_nuke_core"
+  }
+}

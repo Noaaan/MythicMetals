@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:raw_banglum",
+    "S": "mythicmetals:morkite"
+  },
+  "pattern": [
+    "#S#",
+    "S#S",
+    "#S#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:banglum_tnt"
+  }
+}

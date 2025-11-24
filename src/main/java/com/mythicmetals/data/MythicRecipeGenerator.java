@@ -130,17 +130,86 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             if (blockSets.containsKey(name)) {
                 var blockSet = blockSets.get(name);
                 // Ingots to Storage Block
-                ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock().asItem())
-                    .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock().asItem()))
+                ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock())
+                    .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock()))
                     .input(value, 9)
                     .offerTo(exporter, RegistryHelper.recipeKey("blocks/" + name));
                 // Ingots from Storage Block
                 ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, value, 9)
                     .criterion("has_material", conditionsFromItem(value))
-                    .input(blockSet.getStorageBlock().asItem())
+                    .input(blockSet.getStorageBlock())
                     .offerTo(exporter, RegistryHelper.recipeKey("crafting/" + name));
             }
         });
+
+        // misc blocks
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, MythicBlocks.AQUARIUM_GLASS)
+            .input('#', MythicItems.AQUARIUM.getRawOre())
+            .input('S', Items.GLASS)
+            .pattern(" # ")
+            .pattern("#S#")
+            .pattern(" # ")
+            .criterion("has_material", conditionsFromItem(MythicItems.AQUARIUM.getRawOre()))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/aquarium_glass"));
+        // TODO - Make Aquarium Resonator craftable once ready
+//        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.AQUARIUM_RESONATOR)
+//            .input('#', ABC123)
+//            .pattern("###")
+//            .pattern("###")
+//            .pattern("###")
+//            .criterion("has_pearl", conditionsFromItem(MythicItems.Mats.AQUARIUM_PEARL))
+//            .offerTo(exporter, RegistryHelper.recipeKey("blocks/aquarium_resonator"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.BANGLUM_TNT_BLOCK)
+            .input('#', MythicItems.BANGLUM.getRawOre())
+            .input('S', MythicItems.Mats.MORKITE)
+            .pattern("#S#")
+            .pattern("S#S")
+            .pattern("#S#")
+            .criterion("has_big_material", conditionsFromItem(MythicItems.BANGLUM.getRawOre()))
+            .criterion("has_big_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/banglum_tnt"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.BANGLUM_NUKE_CORE)
+            .input('#', MythicBlocks.BANGLUM.getOreStorageBlock())
+            .input('S', MythicBlocks.MORKITE.getStorageBlock())
+            .input('C', MythicItems.Mats.BANGLUM_CHUNK)
+            .pattern("#S#")
+            .pattern("SCS")
+            .pattern("#S#")
+            .criterion("has_big_material", conditionsFromItem(MythicBlocks.BANGLUM.getOreStorageBlock()))
+            .criterion("has_big_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
+            .criterion("has_chunk", conditionsFromItem(MythicItems.Mats.BANGLUM_CHUNK))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/banglum_nuke_core"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.CARMOT_NUKE_CORE)
+            .input('#', MythicItems.CARMOT.getIngot())
+            .input('C', MythicBlocks.BANGLUM_NUKE_CORE)
+            .pattern("###")
+            .pattern("#C#")
+            .pattern("###")
+            .criterion("has_nuke_core", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
+            .criterion("has_material", conditionsFromItem(MythicItems.CARMOT.getIngot()))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/carmot_nuke_core"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.PALLADIUM_RAIL_ITEM, 16)
+            .input('#', MythicItems.PALLADIUM.getIngot())
+            .input('S', Items.IRON_INGOT)
+            .pattern("# #")
+            .pattern("#S#")
+            .pattern("# #")
+            .criterion("has_material", conditionsFromItem(MythicItems.PALLADIUM.getIngot()))
+            .offerTo(exporter, RegistryHelper.recipeKey("crafting/palladium_rail"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.QUADRILLUM_NUKE_CORE)
+            .input('#', MythicItems.QUADRILLUM.getRawOre())
+            .input('C', MythicBlocks.BANGLUM_NUKE_CORE)
+            .pattern("###")
+            .pattern("#C#")
+            .pattern("###")
+            .criterion("has_nuke_core", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
+            .criterion("has_material", conditionsFromItem(MythicItems.QUADRILLUM.getRawOre()))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/quadrillum_nuke_core"));
+        ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.SPONGE_NUKE_CORE)
+            .input(MythicBlocks.BANGLUM_NUKE_CORE)
+            .input(Items.SPONGE)
+            .criterion("has_block", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
+            .offerTo(exporter, RegistryHelper.recipeKey("blocks/sponge_nuke_core"));
     }
 
     private void createItemRecipes(HashMap<String, ItemSet> itemSets) {

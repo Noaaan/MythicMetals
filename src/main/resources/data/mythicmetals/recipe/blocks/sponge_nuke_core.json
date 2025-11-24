@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "mythicmetals:banglum_nuke_core",
+    "minecraft:sponge"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:sponge_nuke_core"
+  }
+}

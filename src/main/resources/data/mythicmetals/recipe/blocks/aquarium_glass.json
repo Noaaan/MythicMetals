@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "mythicmetals:raw_aquarium",
+    "S": "minecraft:glass"
+  },
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:aquarium_glass"
+  }
+}
