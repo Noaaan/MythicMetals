@@ -23,6 +23,7 @@ import net.minecraft.registry.*;
 import net.minecraft.registry.tag.TagKey;
 import java.util.*;
 
+import static com.mythicmetals.misc.RegistryHelper.recipeKey;
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
 @SuppressWarnings("UnstableApiUsage")
@@ -81,35 +82,35 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     if (!requiresBlasting) {
                         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 200)
                             .criterion("has_material", critera)
-                            .offerTo(exporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
+                            .offerTo(exporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
                     }
                     CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(items), RecipeCategory.MISC, ingot, xp, 100)
                         .criterion("has_material", critera)
-                        .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
+                        .offerTo(exporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_ores"));
                 }
                 if (itemSet.getRawOre() != null && blockSet.getOreStorageBlock() != null) {
                     // Raw Ores to Raw Ore Block
                     ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getOreStorageBlock().asItem())
                         .criterion("has_material", conditionsFromItem(blockSet.getOreStorageBlock().asItem()))
                         .input(itemSet.getRawOre(), 9)
-                        .offerTo(exporter, RegistryHelper.recipeKey("blocks/raw_" + name));
+                        .offerTo(exporter, recipeKey("blocks/raw_" + name));
                     // Raw Ores from Raw Ore Block
                     ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, itemSet.getRawOre(), 9)
                         .criterion("has_material", conditionsFromItem(itemSet.getRawOre()))
                         .input(blockSet.getOreStorageBlock().asItem())
-                        .offerTo(exporter, RegistryHelper.recipeKey("crafting/raw_" + name + "_from_block"));
+                        .offerTo(exporter, recipeKey("crafting/raw_" + name + "_from_block"));
                 }
                 if (blockSet.getStorageBlock() != null) {
                     // Ingots to Storage Block
                     ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock().asItem())
                         .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock().asItem()))
                         .input(itemSet.getIngot(), 9)
-                        .offerTo(exporter, RegistryHelper.recipeKey("blocks/" + name));
+                        .offerTo(exporter, recipeKey("blocks/" + name));
                     // Ingots from Storage Block
                     ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, itemSet.getIngot(), 9)
                         .criterion("has_material", conditionsFromItem(itemSet.getIngot()))
                         .input(blockSet.getStorageBlock().asItem())
-                        .offerTo(exporter, RegistryHelper.recipeKey("ingots/" + name + "_from_block"));
+                        .offerTo(exporter, recipeKey("ingots/" + name + "_from_block"));
                 }
                 if (blockSet.getStorageBlock() != null && blockSet.getAnvil() != null) {
                     ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getAnvil())
@@ -120,7 +121,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                         .input('I', itemSet.getIngot())
                         .criterion("has_block", conditionsFromItem(blockSet.getStorageBlock()))
                         .criterion("has_ingot", conditionsFromItem(itemSet.getIngot()))
-                        .offerTo(exporter, RegistryHelper.recipeKey("anvils/" + name));
+                        .offerTo(exporter, recipeKey("anvils/" + name));
                 }
             }
         });
@@ -133,12 +134,12 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.getStorageBlock())
                     .criterion("has_material", conditionsFromItem(blockSet.getStorageBlock()))
                     .input(value, 9)
-                    .offerTo(exporter, RegistryHelper.recipeKey("blocks/" + name));
+                    .offerTo(exporter, recipeKey("blocks/" + name));
                 // Ingots from Storage Block
                 ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.BUILDING_BLOCKS, value, 9)
                     .criterion("has_material", conditionsFromItem(value))
                     .input(blockSet.getStorageBlock())
-                    .offerTo(exporter, RegistryHelper.recipeKey("crafting/" + name));
+                    .offerTo(exporter, recipeKey("crafting/" + name));
             }
         });
 
@@ -150,7 +151,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#S#")
             .pattern(" # ")
             .criterion("has_material", conditionsFromItem(MythicItems.AQUARIUM.getRawOre()))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/aquarium_glass"));
+            .offerTo(exporter, recipeKey("blocks/aquarium_glass"));
         // TODO - Make Aquarium Resonator craftable once ready
 //        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.AQUARIUM_RESONATOR)
 //            .input('#', ABC123)
@@ -167,7 +168,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#S#")
             .criterion("has_big_material", conditionsFromItem(MythicItems.BANGLUM.getRawOre()))
             .criterion("has_big_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/banglum_tnt"));
+            .offerTo(exporter, recipeKey("blocks/banglum_tnt"));
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.BANGLUM_NUKE_CORE)
             .input('#', MythicBlocks.BANGLUM.getOreStorageBlock())
             .input('S', MythicBlocks.MORKITE.getStorageBlock())
@@ -178,7 +179,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .criterion("has_big_material", conditionsFromItem(MythicBlocks.BANGLUM.getOreStorageBlock()))
             .criterion("has_big_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
             .criterion("has_chunk", conditionsFromItem(MythicItems.Mats.BANGLUM_CHUNK))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/banglum_nuke_core"));
+            .offerTo(exporter, recipeKey("blocks/banglum_nuke_core"));
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.CARMOT_NUKE_CORE)
             .input('#', MythicItems.CARMOT.getIngot())
             .input('C', MythicBlocks.BANGLUM_NUKE_CORE)
@@ -187,7 +188,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("###")
             .criterion("has_nuke_core", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
             .criterion("has_material", conditionsFromItem(MythicItems.CARMOT.getIngot()))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/carmot_nuke_core"));
+            .offerTo(exporter, recipeKey("blocks/carmot_nuke_core"));
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.PALLADIUM_RAIL_ITEM, 16)
             .input('#', MythicItems.PALLADIUM.getIngot())
             .input('S', Items.IRON_INGOT)
@@ -195,7 +196,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#S#")
             .pattern("# #")
             .criterion("has_material", conditionsFromItem(MythicItems.PALLADIUM.getIngot()))
-            .offerTo(exporter, RegistryHelper.recipeKey("crafting/palladium_rail"));
+            .offerTo(exporter, recipeKey("crafting/palladium_rail"));
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.QUADRILLUM_NUKE_CORE)
             .input('#', MythicItems.QUADRILLUM.getRawOre())
             .input('C', MythicBlocks.BANGLUM_NUKE_CORE)
@@ -204,12 +205,12 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("###")
             .criterion("has_nuke_core", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
             .criterion("has_material", conditionsFromItem(MythicItems.QUADRILLUM.getRawOre()))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/quadrillum_nuke_core"));
+            .offerTo(exporter, recipeKey("blocks/quadrillum_nuke_core"));
         ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.SPONGE_NUKE_CORE)
             .input(MythicBlocks.BANGLUM_NUKE_CORE)
             .input(Items.SPONGE)
             .criterion("has_block", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
-            .offerTo(exporter, RegistryHelper.recipeKey("blocks/sponge_nuke_core"));
+            .offerTo(exporter, recipeKey("blocks/sponge_nuke_core"));
     }
 
     private void createItemRecipes(HashMap<String, ItemSet> itemSets) {
@@ -219,11 +220,11 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 if (!itemSet.requiresBlasting()) {
                     CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(itemSet.getRawOre()), RecipeCategory.MISC, itemSet.getIngot(), itemSet.getXp(), 200)
                         .criterion("has_material", conditionsFromItem(itemSet.getRawOre()))
-                        .offerTo(exporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
+                        .offerTo(exporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
                 }
                 CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(itemSet.getRawOre()), RecipeCategory.MISC, itemSet.getIngot(), itemSet.getXp(), 100)
                     .criterion("has_material", conditionsFromItem(itemSet.getRawOre()))
-                    .offerTo(exporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
+                    .offerTo(exporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
             }
         });
     }
@@ -242,12 +243,12 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 if (!requiresBlasting) {
                     CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(armorItems), RecipeCategory.MISC, nugget, 0.1f, 200)
                         .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + name))))
-                        .offerTo(nuggetExporter, RegistryHelper.recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_armor"));
+                        .offerTo(nuggetExporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_armor"));
                 }
                 // blast armor into nuggets
                 CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(armorItems), RecipeCategory.MISC, nugget, 0.1f, 100)
                     .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + name))))
-                    .offerTo(nuggetExporter, RegistryHelper.recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_armor"));
+                    .offerTo(nuggetExporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_armor"));
             }
         });
 
@@ -259,12 +260,12 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + itemSet.getName()))))
                     .input(itemSet.getNugget(), 9)
                     .group("mm_" + name)
-                    .offerTo(nuggetExporter, RegistryHelper.recipeKey("ingots/" + name + "_from_nuggets"));
+                    .offerTo(nuggetExporter, recipeKey("ingots/" + name + "_from_nuggets"));
                 // craft ingots into nuggets
                 ShapelessRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, itemSet.getNugget(), 9)
                     .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id(itemSet.getName() + "_ingot"))))
                     .input(itemSet.getIngot())
-                    .offerTo(nuggetExporter, RegistryHelper.recipeKey("crafting/" + name + "_nuggets"));
+                    .offerTo(nuggetExporter, recipeKey("crafting/" + name + "_nuggets"));
             }
         });
     }
@@ -338,7 +339,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#")
             .pattern("S")
             .criterion("has_sword", conditionsFromItem(toolSet.getSword()))
-            .offerTo(exporter, RegistryHelper.recipeKey("sword/" + toolSet.getName()));
+            .offerTo(exporter, recipeKey("sword/" + toolSet.getName()));
         // axe
         ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getAxe())
             .input('#', material)
@@ -347,7 +348,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#S ")
             .pattern(" S ")
             .criterion("has_axe", conditionsFromItem(toolSet.getAxe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("axe/" + toolSet.getName()));
+            .offerTo(exporter, recipeKey("axe/" + toolSet.getName()));
         // pickaxe
         ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getPickaxe())
             .input('#', material)
@@ -356,7 +357,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern(" S ")
             .pattern(" S ")
             .criterion("has_pickaxe", conditionsFromItem(toolSet.getPickaxe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("pickaxe/" + toolSet.getName()));
+            .offerTo(exporter, recipeKey("pickaxe/" + toolSet.getName()));
         // shovel
         ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getShovel())
             .input('#', material)
@@ -365,7 +366,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("#")
             .pattern("S")
             .criterion("has_shovel", conditionsFromItem(toolSet.getShovel()))
-            .offerTo(exporter, RegistryHelper.recipeKey("shovel/" + toolSet.getName()));
+            .offerTo(exporter, recipeKey("shovel/" + toolSet.getName()));
         // hoe
         ShapedRecipeJsonBuilder.create(lookup, RecipeCategory.TOOLS, toolSet.getHoe())
             .input('#', material)
@@ -374,7 +375,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern(" S ")
             .pattern(" S ")
             .criterion("has_hoe", conditionsFromItem(toolSet.getHoe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("hoe/" + toolSet.getName()));
+            .offerTo(exporter, recipeKey("hoe/" + toolSet.getName()));
     }
 
     public void createToolSmithingRecipes(
@@ -392,27 +393,27 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .criterion("has_template", conditionsFromItem(template))
             .criterion("has_component_tool", conditionsFromItem(baseSword))
             .criterion("has_sword", conditionsFromItem(resultToolset.getSword()))
-            .offerTo(exporter, RegistryHelper.recipeKey("sword/" + resultToolset.getName()));
+            .offerTo(exporter, recipeKey("sword/" + resultToolset.getName()));
         SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseAxe), addition, RecipeCategory.TOOLS, resultToolset.getAxe())
             .criterion("has_template", conditionsFromItem(template))
             .criterion("has_component_tool", conditionsFromItem(baseAxe))
             .criterion("has_axe", conditionsFromItem(resultToolset.getAxe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("axe/" + resultToolset.getName()));
+            .offerTo(exporter, recipeKey("axe/" + resultToolset.getName()));
         SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(basePickaxe), addition, RecipeCategory.TOOLS, resultToolset.getPickaxe())
             .criterion("has_template", conditionsFromItem(template))
             .criterion("has_component_tool", conditionsFromItem(basePickaxe))
             .criterion("has_pickaxe", conditionsFromItem(resultToolset.getPickaxe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("pickaxe/" + resultToolset.getName()));
+            .offerTo(exporter, recipeKey("pickaxe/" + resultToolset.getName()));
         SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseShovel), addition, RecipeCategory.TOOLS, resultToolset.getShovel())
             .criterion("has_template", conditionsFromItem(template))
             .criterion("has_component_tool", conditionsFromItem(baseShovel))
             .criterion("has_shovel", conditionsFromItem(resultToolset.getShovel()))
-            .offerTo(exporter, RegistryHelper.recipeKey("shovel/" + resultToolset.getName()));
+            .offerTo(exporter, recipeKey("shovel/" + resultToolset.getName()));
         SmithingTransformRecipeJsonBuilder.create(templateIngredient, Ingredient.ofItem(baseHoe), addition, RecipeCategory.TOOLS, resultToolset.getHoe())
             .criterion("has_template", conditionsFromItem(template))
             .criterion("has_component_tool", conditionsFromItem(baseHoe))
             .criterion("has_hoe", conditionsFromItem(resultToolset.getHoe()))
-            .offerTo(exporter, RegistryHelper.recipeKey("hoe/" + resultToolset.getName()));
+            .offerTo(exporter, recipeKey("hoe/" + resultToolset.getName()));
     }
 
     public void createToolSmithingRecipes(Item template, ToolSet baseToolset, Ingredient addition, ToolSet resultToolset) {
@@ -523,10 +524,10 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 Optional.of(addition),
                 bootsOutput
             );
-            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
-            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
-            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
-            exporter.accept(RegistryHelper.recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
+            exporter.accept(recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
+            exporter.accept(recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
+            exporter.accept(recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
+            exporter.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
         }
     }
 
@@ -541,7 +542,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("###")
             .pattern("# #")
             .criterion("has_helmet", conditionsFromItem(output.getHelmet()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_helmet"));
+            .offerTo(exporter, recipeKey("armor/" + output.getName() + "_helmet"));
         // chestplate
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getChestplate())
             .input('#', material)
@@ -549,7 +550,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("###")
             .pattern("###")
             .criterion("has_chestplate", conditionsFromItem(output.getChestplate()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_chestplate"));
+            .offerTo(exporter, recipeKey("armor/" + output.getName() + "_chestplate"));
         // leggings
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getLeggings())
             .input('#', material)
@@ -557,14 +558,14 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .pattern("# #")
             .pattern("# #")
             .criterion("has_leggings", conditionsFromItem(output.getLeggings()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_leggings"));
+            .offerTo(exporter, recipeKey("armor/" + output.getName() + "_leggings"));
         // boots
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.COMBAT, output.getBoots())
             .input('#', material)
             .pattern("# #")
             .pattern("# #")
             .criterion("has_boots", conditionsFromItem(output.getBoots()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + output.getName() + "_boots"));
+            .offerTo(exporter, recipeKey("armor/" + output.getName() + "_boots"));
     }
 
     public void createArmorSmithingRecipes(Item template, Item baseHelmet, Item baseChestplate, Item baseLeggings, Item baseBoots, Ingredient addition, ArmorSet outputArmorSet) {
@@ -577,7 +578,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 outputArmorSet.getHelmet()
             )
             .criterion("has_helmet", conditionsFromItem(outputArmorSet.getHelmet()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_helmet"));
+            .offerTo(exporter, recipeKey("armor/" + outputArmorSet.getName() + "_helmet"));
         // chestplate
         SmithingTransformRecipeJsonBuilder.create(
                 Ingredient.ofItem(template),
@@ -587,7 +588,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 outputArmorSet.getChestplate()
             )
             .criterion("has_chestplate", conditionsFromItem(outputArmorSet.getChestplate()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_chestplate"));
+            .offerTo(exporter, recipeKey("armor/" + outputArmorSet.getName() + "_chestplate"));
         // leggings
         SmithingTransformRecipeJsonBuilder.create(
                 Ingredient.ofItem(template),
@@ -597,7 +598,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 outputArmorSet.getLeggings()
             )
             .criterion("has_leggings", conditionsFromItem(outputArmorSet.getLeggings()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_leggings"));
+            .offerTo(exporter, recipeKey("armor/" + outputArmorSet.getName() + "_leggings"));
         // boots
         SmithingTransformRecipeJsonBuilder.create(
                 Ingredient.ofItem(template),
@@ -607,7 +608,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                 outputArmorSet.getBoots()
             )
             .criterion("has_boots", conditionsFromItem(outputArmorSet.getBoots()))
-            .offerTo(exporter, RegistryHelper.recipeKey("armor/" + outputArmorSet.getName() + "_boots"));
+            .offerTo(exporter, recipeKey("armor/" + outputArmorSet.getName() + "_boots"));
     }
 
     public void createArmorSmithingRecipes(Item template, ArmorSet baseArmorSet, Ingredient addition, ArmorSet outputArmorSet) {
