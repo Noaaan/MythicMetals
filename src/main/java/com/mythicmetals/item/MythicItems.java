@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mythicmetals.misc.RegistryHelper.id;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
 @SuppressWarnings("unused")
@@ -59,7 +60,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         public static final Item AQUARIUM_PEARL = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("aquarium_pearl")));
         public static final Item BANGLUM_CHUNK = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("banglum_chunk")));
         public static final Item CARMOT_STONE = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("carmot_stone")));
-        public static final Item PROMETHEUM_BOUQUET = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("prometheum_bouquet")));
+        public static final Item PROMETHEUM_ROSE = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("prometheum_rose")));
         public static final Item DURASTEEL_ENGINE = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("durasteel_engine")));
         public static final Item MORKITE = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).registryKey(itemKey("morkite")));
         public static final Item STARRITE = new Item(new Item.Settings().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).registryKey(itemKey("starrite")));
@@ -69,6 +70,9 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         @Override
         public void processField(Item value, String identifier, Field field) {
             RegistryHelper.item(identifier, value);
+            if (value.equals(PROMETHEUM_ROSE)) {
+                Registries.ITEM.addAlias(id("prometheum_bouquet"), id("prometheum_rose"));
+            }
         }
 
         @Override

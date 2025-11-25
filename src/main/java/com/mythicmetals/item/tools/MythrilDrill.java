@@ -42,7 +42,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
         map.put(MythicItems.Mats.AQUARIUM_PEARL, "aquarium");
         map.put(MythicItems.Mats.CARMOT_STONE, "carmot");
         map.put(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM, "midas_gold");
-        map.put(MythicItems.Mats.PROMETHEUM_BOUQUET, "prometheum");
+        map.put(MythicItems.Mats.PROMETHEUM_ROSE, "prometheum");
         map.put(MythicItems.Mats.STORMYX_SHELL, "stormyx");
         map.put(Items.AIR, "empty");
     });
@@ -154,7 +154,7 @@ public class MythrilDrill extends MiningToolItem implements AutoRepairable {
             if (stack.get(MythicDataComponents.UPGRADES) == null) return;
             var drillComponent = stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
             var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-            if (upgradeComponent.hasUpgrade(MythicItems.Mats.PROMETHEUM_BOUQUET)) {
+            if (upgradeComponent.hasUpgrade(MythicItems.Mats.PROMETHEUM_ROSE)) {
                 // Initialize auto repair upgrades
                 if (!stack.contains(MythicDataComponents.PROMETHEUM)) {
                     stack.set(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);

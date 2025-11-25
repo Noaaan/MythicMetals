@@ -2,13 +2,13 @@
   "parent": "mythicmetals:prometheum",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.prometheum_bouquet.title"
+      "translate": "advancement.mythicmetals.prometheum_rose.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.prometheum_bouquet.description"
+      "translate": "advancement.mythicmetals.prometheum_rose.description"
     },
     "icon": {
-      "id": "mythicmetals:prometheum_bouquet"
+      "id": "mythicmetals:prometheum_rose"
     },
     "frame": "goal",
     "show_toast": true,
@@ -22,7 +22,7 @@
         "items": [
           {
             "items": [
-              "mythicmetals:prometheum_bouquet"
+              "mythicmetals:prometheum_rose"
             ]
           }
         ]

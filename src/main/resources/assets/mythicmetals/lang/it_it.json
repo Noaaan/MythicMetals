@@ -187,7 +187,7 @@
 
     "item.mythicmetals.carmot_stone": "Gemma di carmot",
 
-    "item.mythicmetals.prometheum_bouquet": "Bouquet di prometeo",
+    "item.mythicmetals.prometheum_rose": "Bouquet di prometeo",
 
     "item.mythicmetals.banglum_helmet": "Elmo di banglum",
     "item.mythicmetals.banglum_hoe": "Zappa di banglum",
@@ -761,8 +761,8 @@
 
     "advancement.mythicmetals.prometheum.description": "Trova il prometeo, un curioso minerale disperso nella giungla profonda e nelle caverne rigogliose",
     "advancement.mythicmetals.prometheum.title": "Verde profondo",
-    "advancement.mythicmetals.prometheum_bouquet.description": "Crea un bouquet di prometeo usando un lingotto di prometeo, quattro fiori, e quattro di prometeo grezzo",
-    "advancement.mythicmetals.prometheum_bouquet.title": "Shroomy Rhizanthella",
+    "advancement.mythicmetals.prometheum_rose.description": "Crea un rose di prometeo usando un lingotto di prometeo, quattro fiori, e quattro di prometeo grezzo",
+    "advancement.mythicmetals.prometheum_rose.title": "Shroomy Rhizanthella",
 
     "advancement.mythicmetals.runite.description": "Trova il minerale di runite, nascosta nelle pareti sotto la superficie",
     "advancement.mythicmetals.runite.title": "Nato giusto in tempo...",

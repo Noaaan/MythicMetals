@@ -48,7 +48,7 @@ public class TranslationStorageMixin {
         builder.put("item.mythicmetals.raw_osmium", "Two Stones");
         builder.put("item.mythicmetals.banglum_chunk", "Muddy Potato");
         builder.put("item.mythicmetals.carmot_stone", "Vampire's Delight");
-        builder.put("item.mythicmetals.prometheum_bouquet", "Trumpet Rose");
+        builder.put("item.mythicmetals.prometheum_rose", "Trumpet Rose");
         builder.put("item.mythicmetals.durasteel_engine", "Music Disc Fragment");
         builder.put("item.mythicmetals.stormyx_shell", "Primogem");
         builder.put("item.mythicmetals.palladium_minecart", "Infernal Minecart");
