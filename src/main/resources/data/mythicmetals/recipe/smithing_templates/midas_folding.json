@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_midas_folding_template",
+  "key": {
+    "C": "mythicmetals:midas_gold_ingot",
+    "M": "minecraft:netherrack"
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:midas_folding_template"
+  }
+}

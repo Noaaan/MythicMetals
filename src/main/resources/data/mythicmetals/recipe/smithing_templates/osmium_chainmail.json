@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_osmium_template",
+  "key": {
+    "C": "mythicmetals:osmium_nugget",
+    "M": "minecraft:andesite",
+    "T": "mythicmetals:osmium_ingot"
+  },
+  "pattern": [
+    "CTC",
+    "CMC",
+    "CTC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:osmium_chainmail_smithing_template"
+  }
+}

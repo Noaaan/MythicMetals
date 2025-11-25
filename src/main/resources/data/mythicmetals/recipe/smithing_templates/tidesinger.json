@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_tidesinger_template",
+  "key": {
+    "B": "minecraft:fire_coral",
+    "E": "minecraft:tube_coral",
+    "G": "mythicmetals:aquarium_ingot",
+    "L": "mythicmetals:aquarium_pearl",
+    "M": "minecraft:bubble_coral",
+    "N": "minecraft:horn_coral",
+    "O": "minecraft:prismarine",
+    "R": "minecraft:brain_coral"
+  },
+  "pattern": [
+    "RGB",
+    "LOL",
+    "MEN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:tidesinger_smithing_template"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_banglum_template",
+  "key": {
+    "C": "mythicmetals:banglum_ingot",
+    "M": "minecraft:tuff"
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:legendary_banglum_smithing_template"
+  }
+}

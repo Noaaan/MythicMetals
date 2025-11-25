@@ -1,0 +1,25 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_carmot_template",
+  "key": {
+    "C": "mythicmetals:carmot_nugget",
+    "M": "minecraft:smooth_basalt",
+    "P": "minecraft:diamond",
+    "T": "mythicmetals:carmot_smithing_template"
+  },
+  "pattern": [
+    "CTC",
+    "CMC",
+    "CPC"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mythicmetals:carmot_smithing_template"
+  }
+}

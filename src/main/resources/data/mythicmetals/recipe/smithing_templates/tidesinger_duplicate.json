@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_tidesinger_template",
+  "key": {
+    "C": "mythicmetals:aquarium_ingot",
+    "M": "minecraft:prismarine",
+    "P": "mythicmetals:aquarium_pearl",
+    "T": "mythicmetals:tidesinger_smithing_template"
+  },
+  "pattern": [
+    "CTC",
+    "CMC",
+    "CPC"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mythicmetals:tidesinger_smithing_template"
+  }
+}

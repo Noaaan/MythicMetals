@@ -58,6 +58,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
         createNuggetRecipes(itemSets);
         createArmorRecipes();
         createToolRecipes();
+        createSmithingTemplateRecipes();
     }
 
     private void createBlockRecipes(HashMap<String, ItemSet> itemSets, HashMap<String, BlockSet> blockSets) {
@@ -328,6 +329,153 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             Ingredient.ofItem(MythicItems.METALLURGIUM.getIngot()),
             MythicTools.METALLURGIUM
         );
+    }
+
+    public void createSmithingTemplateRecipes() {
+        // Crafted Smithing Templates
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.CARMOT_SMITHING_TEMPLATE)
+            .input('M', Items.SMOOTH_BASALT)
+            .input('C', MythicItems.CARMOT.getIngot())
+            .input('D', Items.DIAMOND)
+            .pattern("DCD")
+            .pattern("CMC")
+            .pattern("DCD")
+            .criterion("has_material", conditionsFromItem(MythicItems.CARMOT.getIngot()))
+            .group("mm_carmot_template")
+            .offerTo(exporter, recipeKey("smithing_templates/carmot"));
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE)
+            .input('M', Items.TUFF)
+            .input('C', MythicItems.BANGLUM.getIngot())
+            .pattern("MMM")
+            .pattern("MCM")
+            .pattern("MMM")
+            .criterion("has_material", conditionsFromItem(MythicItems.BANGLUM.getIngot()))
+            .group("mm_banglum_template")
+            .offerTo(exporter, recipeKey("smithing_templates/legendary_banglum"));
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)
+            .input('M', Items.NETHERRACK)
+            .input('C', MythicBlocks.MIDAS_GOLD.getStorageBlock())
+            .input('T', MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CCC")
+            .criterion("has_material", conditionsFromItem(MythicBlocks.MIDAS_GOLD.getStorageBlock()))
+            .criterion("has_enchanted_material", conditionsFromItem(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM))
+            .group("mm_royal_midas_template")
+            .offerTo(exporter, recipeKey("smithing_templates/royal_midas"));
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE)
+            .input('M', Items.ANDESITE)
+            .input('C', MythicItems.OSMIUM.getNugget())
+            .input('T', MythicItems.OSMIUM.getIngot())
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CTC")
+            .criterion("has_material", conditionsFromItem(MythicItems.OSMIUM.getIngot()))
+            .group("mm_osmium_template")
+            .offerTo(exporter, recipeKey("smithing_templates/osmium_chainmail"));
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.MIDAS_FOLDING_TEMPLATE)
+            .input('M', Items.NETHERRACK)
+            .input('C', MythicItems.MIDAS_GOLD.getIngot())
+            .pattern("MMM")
+            .pattern("MCM")
+            .pattern("MMM")
+            .criterion("has_material", conditionsFromItem(MythicItems.MIDAS_GOLD.getIngot()))
+            .group("mm_midas_folding_template")
+            .offerTo(exporter, recipeKey("smithing_templates/midas_folding"));
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE)
+            .input('O', Items.PRISMARINE)
+            .input('L', MythicItems.Mats.AQUARIUM_PEARL)
+            .input('R', Items.BRAIN_CORAL)
+            .input('G', MythicItems.AQUARIUM.getIngot())
+            .input('B', Items.FIRE_CORAL)
+            .input('M', Items.BUBBLE_CORAL)
+            .input('E', Items.TUBE_CORAL)
+            .input('N', Items.HORN_CORAL)
+            .pattern("RGB")
+            .pattern("LOL")
+            .pattern("MEN")
+            .criterion("has_material", conditionsFromItem(MythicItems.Mats.AQUARIUM_PEARL))
+            .criterion("has_coral", conditionsFromTag(MythicTags.TIDESINGER_CORAL))
+            .group("mm_tidesinger_template")
+            .offerTo(exporter, recipeKey("smithing_templates/tidesinger"));
+
+        // Smithing Template Duplication recipes
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 2)
+            .input('C', Items.EMERALD)
+            .input('T', MythicItems.Templates.AEGIS_SMITHING_TEMPLATE)
+            .input('M', Items.DEEPSLATE)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CCC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE))
+            .group("mm_aegis_template")
+            .offerTo(exporter, recipeKey("smithing_templates/aegis_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.CARMOT_SMITHING_TEMPLATE, 2)
+            .input('C', MythicItems.CARMOT.getNugget())
+            .input('P', Items.DIAMOND)
+            .input('T', MythicItems.Templates.CARMOT_SMITHING_TEMPLATE)
+            .input('M', Items.SMOOTH_BASALT)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CPC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.CARMOT_SMITHING_TEMPLATE))
+            .group("mm_carmot_template")
+            .offerTo(nuggetExporter, recipeKey("smithing_templates/carmot_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE, 2)
+            .input('C', Items.DIAMOND)
+            .input('T', MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE)
+            .input('M', Items.DEEPSLATE)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CCC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE))
+            .group("mm_mythril_drill_template")
+            .offerTo(exporter, recipeKey("smithing_templates/mythril_drill_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.MIDAS_FOLDING_TEMPLATE, 2)
+            .input('M', MythicItems.MIDAS_GOLD.getNugget())
+            .input('C', MythicItems.Templates.MIDAS_FOLDING_TEMPLATE)
+            .pattern("MMM")
+            .pattern("MCM")
+            .pattern("MMM")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.MIDAS_FOLDING_TEMPLATE))
+            .group("mm_midas_folding_template")
+            .offerTo(nuggetExporter, recipeKey("smithing_templates/midas_folding_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE, 2)
+            .input('C', MythicItems.AQUARIUM.getIngot())
+            .input('P', MythicItems.Mats.AQUARIUM_PEARL)
+            .input('T', MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE)
+            .input('M', Items.PRISMARINE)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CPC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE))
+            .group("mm_tidesinger_template")
+            .offerTo(exporter, recipeKey("smithing_templates/tidesinger_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE, 2)
+            .input('C', MythicBlocks.MIDAS_GOLD.getStorageBlock())
+            .input('T', MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)
+            .input('M', Items.NETHERRACK)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CCC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE))
+            .group("mm_royal_midas_template")
+            .offerTo(exporter, recipeKey("smithing_templates/royal_midas_duplicate"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE, 2)
+            .input('C', Items.DIAMOND)
+            .input('T', MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE)
+            .input('M', Items.DEEPSLATE)
+            .pattern("CTC")
+            .pattern("CMC")
+            .pattern("CCC")
+            .criterion("has_material", conditionsFromItem(MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE))
+            .group("mm_unobtainium_template")
+            .offerTo(exporter, recipeKey("smithing_templates/unobtainium_alloy"));
     }
 
     public void createToolCraftingRecipes(ToolSet toolSet, Item material, RegistryEntryLookup<Item> lookup) {

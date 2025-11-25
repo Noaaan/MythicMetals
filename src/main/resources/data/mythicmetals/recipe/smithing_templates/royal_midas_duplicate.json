@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_royal_midas_template",
+  "key": {
+    "C": "mythicmetals:midas_gold_block",
+    "M": "minecraft:netherrack",
+    "T": "mythicmetals:royal_midas_smithing_template"
+  },
+  "pattern": [
+    "CTC",
+    "CMC",
+    "CCC"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mythicmetals:royal_midas_smithing_template"
+  }
+}

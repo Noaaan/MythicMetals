@@ -1,0 +1,23 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "mythicmetals:nuggets_enabled"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_midas_folding_template",
+  "key": {
+    "C": "mythicmetals:midas_folding_template",
+    "M": "mythicmetals:midas_gold_nugget"
+  },
+  "pattern": [
+    "MMM",
+    "MCM",
+    "MMM"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mythicmetals:midas_folding_template"
+  }
+}

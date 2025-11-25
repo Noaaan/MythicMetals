@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mm_carmot_template",
+  "key": {
+    "C": "mythicmetals:carmot_ingot",
+    "D": "minecraft:diamond",
+    "M": "minecraft:smooth_basalt"
+  },
+  "pattern": [
+    "DCD",
+    "CMC",
+    "DCD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:carmot_smithing_template"
+  }
+}
