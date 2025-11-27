@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:orichalcum_block",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    " # ",
+    " S#",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:orichalcum_hammer"
+  }
+}

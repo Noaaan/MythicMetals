@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:minecart",
+    "S": "mythicmetals:banglum_tnt"
+  },
+  "pattern": [
+    "S",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:banglum_tnt_minecart"
+  }
+}

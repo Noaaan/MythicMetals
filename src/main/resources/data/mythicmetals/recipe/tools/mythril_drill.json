@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:durasteel_engine",
+  "base": "mythicmetals:mythril_pickaxe",
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:mythril_drill"
+  },
+  "template": "mythicmetals:mythril_drill_smithing_template"
+}

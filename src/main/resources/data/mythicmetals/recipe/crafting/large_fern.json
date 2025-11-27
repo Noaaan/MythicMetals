@@ -5,9 +5,7 @@
     "f"
   ],
   "key": {
-    "f": {
-      "item": "minecraft:fern"
-    }
+    "f": "minecraft:fern"
   },
   "result": {
     "id": "minecraft:large_fern",

@@ -20,6 +20,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.SmithingTransformRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.*;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import java.util.*;
 
@@ -170,6 +171,15 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .criterion("has_big_material", conditionsFromItem(MythicItems.BANGLUM.getRawOre()))
             .criterion("has_big_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
             .offerTo(exporter, recipeKey("blocks/banglum_tnt"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.BANGLUM_TNT_BLOCK)
+            .input('#', MythicItems.BANGLUM.getRawOre())
+            .input('S', Items.GUNPOWDER)
+            .pattern("#S#")
+            .pattern("S#S")
+            .pattern("#S#")
+            .criterion("has_big_material", conditionsFromItem(MythicItems.BANGLUM.getRawOre()))
+            .criterion("has_big_real_material", conditionsFromItem(Items.GUNPOWDER))
+            .offerTo(exporter, recipeKey("blocks/banglum_tnt_from_gunpowder"));
         ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.BANGLUM_NUKE_CORE)
             .input('#', MythicBlocks.BANGLUM.getOreStorageBlock())
             .input('S', MythicBlocks.MORKITE.getStorageBlock())
@@ -212,6 +222,14 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .input(Items.SPONGE)
             .criterion("has_block", conditionsFromItem(MythicBlocks.BANGLUM_NUKE_CORE))
             .offerTo(exporter, recipeKey("blocks/sponge_nuke_core"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, Items.TNT)
+            .input('#', Items.SAND)
+            .input('S', MythicItems.Mats.MORKITE)
+            .pattern("#S#")
+            .pattern("S#S")
+            .pattern("#S#")
+            .criterion("has_real_material", conditionsFromItem(MythicItems.Mats.MORKITE))
+            .offerTo(exporter, recipeKey("blocks/tnt_from_morkite"));
     }
 
     private void createItemRecipes(HashMap<String, ItemSet> itemSets) {
@@ -228,6 +246,36 @@ public class MythicRecipeGenerator extends RecipeGenerator {
                     .offerTo(exporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_from_raw_ore"));
             }
         });
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, MythicItems.Mats.DURASTEEL_ENGINE)
+            .input('#', MythicItems.DURASTEEL.getIngot())
+            .input('B', MythicBlocks.DURASTEEL.getStorageBlock())
+            .input('M', MythicItems.Mats.MORKITE)
+            .input('H', Items.HOPPER)
+            .pattern("#H#")
+            .pattern("MBM")
+            .pattern("###")
+            .criterion("has_material", conditionsFromItem(MythicItems.DURASTEEL.getIngot()))
+            .criterion("has_fuel", conditionsFromItem(MythicItems.Mats.MORKITE))
+            .offerTo(exporter, recipeKey("crafting/durasteel_engine"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, MythicItems.Mats.PROMETHEUM_ROSE)
+            .input('#', MythicItems.PROMETHEUM.getRawOre())
+            .input('I', MythicItems.PROMETHEUM.getIngot())
+            .input('F', ItemTags.SMALL_FLOWERS)
+            .pattern("#F#")
+            .pattern("FIF")
+            .pattern("#F#")
+            .criterion("has_material", conditionsFromItem(MythicItems.PROMETHEUM.getRawOre()))
+            .offerTo(exporter, recipeKey("crafting/prometheum_rose"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.MISC, MythicItems.Mats.PROMETHEUM_ROSE)
+            .input('#', MythicItems.PROMETHEUM.getRawOre())
+            .input('I', MythicItems.PROMETHEUM.getIngot())
+            .input('F', ItemTags.SMALL_FLOWERS)
+            .pattern("F#F")
+            .pattern("#I#")
+            .pattern("F#F")
+            .criterion("has_material", conditionsFromItem(MythicItems.PROMETHEUM.getRawOre()))
+            .offerTo(exporter, recipeKey("crafting/prometheum_rose_alt"));
     }
 
     private void createNuggetRecipes(HashMap<String, ItemSet> itemSets) {
@@ -329,6 +377,99 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             Ingredient.ofItem(MythicItems.METALLURGIUM.getIngot()),
             MythicTools.METALLURGIUM
         );
+
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.BANGLUM_TNT_MINECART)
+            .input('#', Items.MINECART)
+            .input('S', MythicBlocks.BANGLUM_TNT_BLOCK.asItem())
+            .pattern("S")
+            .pattern("#")
+            .criterion("has_material", conditionsFromItem(MythicBlocks.BANGLUM_TNT_BLOCK))
+            .offerTo(exporter, recipeKey("tools/banglum_tnt_minecart"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.CARMOT_BELL)
+            .input('#', MythicItems.CARMOT.getIngot())
+            .input('S', MythicItems.Mats.CARMOT_STONE)
+            .pattern(" # ")
+            .pattern("#S#")
+            .pattern("# #")
+            .criterion("has_material", conditionsFromItem(MythicItems.CARMOT.getIngot()))
+            .criterion("has_secret_stone", conditionsFromItem(MythicItems.Mats.CARMOT_STONE))
+            .offerTo(exporter, recipeKey("tools/carmot_bell"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.PALLADIUM_MINECART)
+            .input('#', MythicItems.PALLADIUM.getIngot())
+            .pattern("# #")
+            .pattern("###")
+            .criterion("has_material", conditionsFromItem(MythicItems.PALLADIUM.getIngot()))
+            .offerTo(exporter, recipeKey("tools/palladium_minecart"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.ORICHALCUM_HAMMER)
+            .input('#', MythicBlocks.ORICHALCUM.getStorageBlock())
+            .input('S', Items.STICK)
+            .pattern(" # ")
+            .pattern(" S#")
+            .pattern("S  ")
+            .criterion("has_material", conditionsFromItem(MythicItems.ORICHALCUM.getIngot()))
+            .offerTo(exporter, recipeKey("tools/orichalcum_hammer"));
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE),
+                Ingredient.ofItem(MythicTools.MYTHRIL.getPickaxe()),
+                Ingredient.ofItem(MythicItems.Mats.DURASTEEL_ENGINE),
+                RecipeCategory.TOOLS,
+                MythicTools.MYTHRIL_DRILL
+            )
+            .criterion("has_material_for_pick", conditionsFromItem(MythicItems.MYTHRIL.getIngot()))
+            .criterion("has_engine", conditionsFromItem(MythicItems.Mats.DURASTEEL_ENGINE))
+            .offerTo(exporter, recipeKey("tools/mythril_drill"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.STAR_PLATINUM_ARROW, 2)
+            .input('#', MythicItems.STAR_PLATINUM.getNugget())
+            .input('S', Items.STICK)
+            .input('F', Items.FEATHER)
+            .pattern("  #")
+            .pattern(" S ")
+            .pattern("F  ")
+            .criterion("has_material", conditionsFromItem(MythicItems.STAR_PLATINUM.getIngot()))
+            .offerTo(nuggetExporter, recipeKey("weapons/star_platinum_arrow"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.RUNITE_ARROW, 4)
+            .input('#', MythicItems.RUNITE.getNugget())
+            .input('S', Items.STICK)
+            .input('F', Items.FEATHER)
+            .pattern("  #")
+            .pattern(" S ")
+            .pattern("F  ")
+            .criterion("has_material", conditionsFromItem(MythicItems.RUNITE.getIngot()))
+            .offerTo(nuggetExporter, recipeKey("weapons/runite_arrow"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.STORMYX_SHIELD)
+            .input('#', MythicItems.STORMYX.getIngot())
+            .input('S', MythicItems.Mats.STORMYX_SHELL)
+            .pattern("#S#")
+            .pattern("###")
+            .pattern(" # ")
+            .criterion("has_shell", conditionsFromItem(MythicItems.Mats.STORMYX_SHELL))
+            .offerTo(exporter, recipeKey("tools/stormyx_shield"));
+        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicTools.PLATINUM_WATCH)
+            .input('#', MythicItems.PLATINUM.getIngot())
+            .input('R', Items.REDSTONE)
+            .pattern(" # ")
+            .pattern("#R#")
+            .pattern(" # ")
+            .criterion("has_material", conditionsFromItem(MythicItems.PLATINUM.getIngot()))
+            .offerTo(exporter, recipeKey("tools/platinum_watch"));
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE),
+                Ingredient.ofItem(MythicTools.ADAMANTITE.getSword()),
+                Ingredient.ofItem(MythicBlocks.PALLADIUM.getStorageBlock()),
+                RecipeCategory.COMBAT,
+                MythicTools.RED_AEGIS_SWORD
+            )
+            .criterion("has_template", conditionsFromItem(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE))
+            .offerTo(exporter, recipeKey("weapons/red_aegis_sword"));
+        SmithingTransformRecipeJsonBuilder.create(
+                Ingredient.ofItem(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE),
+                Ingredient.ofItem(MythicTools.HALLOWED.getSword()),
+                Ingredient.ofItem(MythicBlocks.HALLOWED.getStorageBlock()),
+                RecipeCategory.COMBAT,
+                MythicTools.WHITE_AEGIS_SWORD
+            )
+            .criterion("has_template", conditionsFromItem(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE))
+            .offerTo(exporter, recipeKey("weapons/white_aegis_sword"));
     }
 
     public void createSmithingTemplateRecipes() {

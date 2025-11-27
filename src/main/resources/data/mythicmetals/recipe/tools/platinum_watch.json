@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:platinum_ingot",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    " # ",
+    "#R#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:platinum_watch"
+  }
+}

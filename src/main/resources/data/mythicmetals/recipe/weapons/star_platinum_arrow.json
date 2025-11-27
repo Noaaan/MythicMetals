@@ -1,28 +1,23 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "n",
-    "s",
-    "f"
-  ],
-  "key": {
-    "n": {
-      "item": "mythicmetals:star_platinum_nugget"
-    },
-    "s": {
-      "tag": "c:rods/wooden"
-    },
-    "f": {
-      "item": "minecraft:feather"
-    }
-  },
-  "result": {
-    "id": "mythicmetals:star_platinum_arrow",
-    "count": 2
-  },
   "fabric:load_conditions": [
     {
       "condition": "mythicmetals:nuggets_enabled"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:star_platinum_nugget",
+    "F": "minecraft:feather",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "  #",
+    " S ",
+    "F  "
+  ],
+  "result": {
+    "count": 2,
+    "id": "mythicmetals:star_platinum_arrow"
+  }
 }

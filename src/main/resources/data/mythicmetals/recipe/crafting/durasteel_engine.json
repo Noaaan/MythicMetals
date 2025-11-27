@@ -1,26 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "lal",
-    "mom",
-    "lll"
-  ],
+  "category": "misc",
   "key": {
-    "l": {
-      "tag": "c:ingots/durasteel"
-    },
-    "m": {
-      "item": "mythicmetals:morkite"
-    },
-    "a": {
-      "item": "minecraft:hopper"
-    },
-    "o": {
-      "tag": "c:storage_blocks/durasteel"
-    }
+    "#": "mythicmetals:durasteel_ingot",
+    "B": "mythicmetals:durasteel_block",
+    "H": "minecraft:hopper",
+    "M": "mythicmetals:morkite"
   },
+  "pattern": [
+    "#H#",
+    "MBM",
+    "###"
+  ],
   "result": {
-    "id": "mythicmetals:durasteel_engine",
-    "count": 1
+    "count": 1,
+    "id": "mythicmetals:durasteel_engine"
   }
 }

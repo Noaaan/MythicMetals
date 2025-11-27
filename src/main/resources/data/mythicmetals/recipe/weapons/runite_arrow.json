@@ -1,28 +1,23 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "n",
-    "s",
-    "f"
-  ],
-  "key": {
-    "n": {
-      "item": "mythicmetals:runite_nugget"
-    },
-    "s": {
-      "tag": "c:rods/wooden"
-    },
-    "f": {
-      "item": "minecraft:feather"
-    }
-  },
-  "result": {
-    "id": "mythicmetals:runite_arrow",
-    "count": 4
-  },
   "fabric:load_conditions": [
     {
       "condition": "mythicmetals:nuggets_enabled"
     }
-  ]
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:runite_nugget",
+    "F": "minecraft:feather",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "  #",
+    " S ",
+    "F  "
+  ],
+  "result": {
+    "count": 4,
+    "id": "mythicmetals:runite_arrow"
+  }
 }
