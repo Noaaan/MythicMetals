@@ -6,12 +6,8 @@
     " / "
   ],
   "key": {
-    "m": {
-      "item": "mythicmetals:midas_gold_ingot"
-    },
-    "/": {
-      "tag": "c:rods/wooden"
-    }
+    "m": "mythicmetals:midas_gold_ingot",
+    "/":  "#c:rods/wooden"
   },
   "result": {
     "id": "mythicmetals:midas_gold_sword",

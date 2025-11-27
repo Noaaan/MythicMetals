@@ -37,8 +37,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
     @Override
     public boolean matches(SmithingRecipeInput input, World world) {
-
-
+        if (!SmithingRecipe.super.matches(input, world)) {
+            return false;
+        }
         var stack = input.base();
 
         if (!stack.contains(GOLD_FOLDED)) return false;
@@ -123,9 +124,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
     public static class Serializer extends EndecRecipeSerializer<MidasFoldingRecipe> {
         public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::template),
             CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", MidasFoldingRecipe::base),
             CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::addition),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::template),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             MidasFoldingRecipe::new
         );
