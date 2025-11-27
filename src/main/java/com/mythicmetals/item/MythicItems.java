@@ -97,7 +97,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
     public static class Templates {
         public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures()),
-            identifiers -> identifiers.add(RegistryHelper.id("item/template/empty_slot_elytra")));
+            identifiers -> identifiers.add(RegistryHelper.id("empty_slot_elytra")));
 
         public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(),
             identifiers -> {
@@ -122,8 +122,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.mythril_drill.ingredients").formatted(Formatting.BLUE),
             Text.translatable("smithing_template.mythicmetals.mythril_drill.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.mythril_drill.additions_slot_description"),
-            List.of(RegistryHelper.id("item/template/empty_slot_mythril_pick")),
-            List.of(RegistryHelper.id("item/template/empty_slot_engine")),
+            List.of(RegistryHelper.id("empty_slot_mythril_pick")),
+            List.of(RegistryHelper.id("empty_slot_engine")),
             "mythril_drill_smithing_template"
         );
 
@@ -133,12 +133,12 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.midas_folding.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.midas_folding.additions_slot_description"),
             List.of(
-                RegistryHelper.id("item/template/empty_slot_midas_dagger"),
-                RegistryHelper.id("item/template/empty_slot_midas"),
-                RegistryHelper.id("item/template/empty_slot_gilded_midas"),
-                RegistryHelper.id("item/template/empty_slot_royal_midas")
+                RegistryHelper.id("empty_slot_midas_dagger"),
+                RegistryHelper.id("empty_slot_midas"),
+                RegistryHelper.id("empty_slot_gilded_midas"),
+                RegistryHelper.id("empty_slot_royal_midas")
             ),
-            List.of(RegistryHelper.id("item/template/empty_slot_block")),
+            List.of(RegistryHelper.id("empty_slot_block")),
             "midas_folding_template"
         );
 
@@ -147,8 +147,8 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.royal_midas.ingredients").formatted(Formatting.GOLD),
             Text.translatable("smithing_template.mythicmetals.royal_midas.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.royal_midas.additions_slot_description"),
-            List.of(RegistryHelper.id("item/template/empty_slot_gilded_midas")),
-            List.of(RegistryHelper.id("item/template/empty_slot_block")),
+            List.of(RegistryHelper.id("empty_slot_gilded_midas")),
+            List.of(RegistryHelper.id("empty_slot_block")),
             "royal_midas_smithing_template"
         );
 
@@ -157,7 +157,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.aegis.ingredients").formatted(Formatting.BLUE),
             Text.translatable("smithing_template.mythicmetals.aegis.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.aegis.additions_slot_description"),
-            List.of(RegistryHelper.id("item/template/empty_slot_hallowed_sword"), RegistryHelper.id("item/template/empty_slot_palladium_sword")),
+            List.of(RegistryHelper.id("empty_slot_hallowed_sword"), RegistryHelper.id("empty_slot_palladium_sword")),
             SmithingTemplateItem.getNetheriteUpgradeEmptyAdditionsSlotTextures(),
             "aegis_smithing_template"
         );
@@ -189,11 +189,11 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.tidesinger.additions_slot_description"),
             SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
             List.of(
-                RegistryHelper.id("item/template/empty_slot_brain"),
-                RegistryHelper.id("item/template/empty_slot_bubble"),
-                RegistryHelper.id("item/template/empty_slot_fire"),
-                RegistryHelper.id("item/template/empty_slot_horn"),
-                RegistryHelper.id("item/template/empty_slot_tube")
+                RegistryHelper.id("empty_slot_brain"),
+                RegistryHelper.id("empty_slot_bubble"),
+                RegistryHelper.id("empty_slot_fire"),
+                RegistryHelper.id("empty_slot_horn"),
+                RegistryHelper.id("empty_slot_tube")
             ),
             "tidesinger_smithing_template"
         );
@@ -204,7 +204,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
             Text.translatable("smithing_template.mythicmetals.legendary_banglum.base_slot_description"),
             Text.translatable("smithing_template.mythicmetals.legendary_banglum.additions_slot_description"),
             SmithingTemplateItem.getNetheriteUpgradeEmptyBaseSlotTextures(),
-            List.of(RegistryHelper.id("item/template/empty_slot_chunk")),
+            List.of(RegistryHelper.id("empty_slot_chunk")),
             "legendary_banglum_smithing_template"
         );
 
