@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:quadrillum_ingot"
+      "ingredient": "mythicmetals:quadrillum_ingot"
     },
 	{
-      "tag": "c:ingots/manganese"
+      "ingredient": "#c:ingots/manganese"
     }
   ],
   "output": {

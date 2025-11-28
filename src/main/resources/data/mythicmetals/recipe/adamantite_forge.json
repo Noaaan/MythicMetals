@@ -6,12 +6,8 @@
     "aaa"
   ],
   "key": {
-    "a": {
-      "item": "mythicmetals:adamantite_ingot"
-    },
-    "f": {
-      "item": "minecraft:blast_furnace"
-    }
+    "a": "mythicmetals:adamantite_ingot",
+    "f": "minecraft:blast_furnace"
   },
   "result": {
     "id": "alloy_forgery:adamantite_block_forge_controller",

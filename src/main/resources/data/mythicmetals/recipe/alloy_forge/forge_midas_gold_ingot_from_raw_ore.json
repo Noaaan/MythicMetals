@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_midas_gold",
+      "ingredient": "mythicmetals:raw_midas_gold",
       "count": 2
     }
   ],

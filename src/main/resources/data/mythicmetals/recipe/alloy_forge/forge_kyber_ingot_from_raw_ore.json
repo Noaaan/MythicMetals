@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_kyber",
+      "ingredient": "mythicmetals:raw_kyber",
       "count": 2
     }
   ],

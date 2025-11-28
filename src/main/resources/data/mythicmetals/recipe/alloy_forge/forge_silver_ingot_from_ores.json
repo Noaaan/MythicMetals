@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "tag": "mythicmetals:ores/silver"
+      "ingredient": "#mythicmetals:ores/silver"
     }
   ],
   "output": {

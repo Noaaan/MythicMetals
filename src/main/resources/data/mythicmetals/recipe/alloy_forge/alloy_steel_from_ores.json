@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "tag": "c:ores/iron"
+      "ingredient": "#c:ores/iron"
     },
 	{
-      "tag": "mythicmetals:ores/manganese"
+      "ingredient": "#mythicmetals:ores/manganese"
     }
   ],
   "output": {

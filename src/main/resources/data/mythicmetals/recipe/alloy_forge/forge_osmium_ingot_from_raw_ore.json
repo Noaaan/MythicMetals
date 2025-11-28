@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_osmium",
+      "ingredient": "mythicmetals:raw_osmium",
       "count": 2
     }
   ],

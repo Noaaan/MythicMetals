@@ -11,6 +11,7 @@ import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.RegistryHelper;
+import io.wispforest.alloyforgery.data.providers.AlloyForgeryBaseRecipeProvider;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.minecraft.block.Block;
 import net.minecraft.data.recipe.*;

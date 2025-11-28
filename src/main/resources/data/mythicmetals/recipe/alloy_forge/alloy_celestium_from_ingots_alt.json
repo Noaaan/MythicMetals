@@ -2,16 +2,16 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:star_platinum"
+      "ingredient": "mythicmetals:star_platinum"
     },
 	{
-      "item": "mythicmetals:kyber_ingot"
+      "ingredient": "mythicmetals:kyber_ingot"
     },
     {
-      "item": "mythicmetals:carmot_ingot"
+      "ingredient": "mythicmetals:carmot_ingot"
     },
     {
-      "item": "mythicmetals:unobtainium"
+      "ingredient": "mythicmetals:unobtainium"
     }
   ],
   "output": {

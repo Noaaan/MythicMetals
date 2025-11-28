@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_stormyx",
+      "ingredient": "mythicmetals:raw_stormyx",
       "count": 2
     }
   ],

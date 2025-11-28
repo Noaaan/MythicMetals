@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_adamantite",
+      "ingredient": "mythicmetals:raw_adamantite",
       "count": 2
     }
   ],

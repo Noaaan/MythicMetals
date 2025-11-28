@@ -1,12 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {
-      "item": "mythicmetals:steel_ingot"
-    },
-	{
-      "item": "minecraft:flint"
-    }
+    "mythicmetals:steel_ingot",
+    "minecraft:flint"
   ],
   "result": {
     "id": "minecraft:flint_and_steel",

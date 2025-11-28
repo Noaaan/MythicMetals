@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:starrite"
+      "ingredient": "mythicmetals:starrite"
     },
 	{
-      "tag": "mythicmetals:raw_materials/platinum"
+      "ingredient": "#mythicmetals:raw_materials/platinum"
     }
   ],
   "output": {

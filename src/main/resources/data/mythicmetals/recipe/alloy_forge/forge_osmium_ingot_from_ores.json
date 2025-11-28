@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "tag": "mythicmetals:ores/osmium"
+      "ingredient": "#mythicmetals:ores/osmium"
     }
   ],
   "output": {

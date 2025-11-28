@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_platinum",
+      "ingredient": "mythicmetals:raw_platinum",
       "count": 2
     }
   ],

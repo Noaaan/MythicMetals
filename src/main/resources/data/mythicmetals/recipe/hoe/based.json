@@ -2,34 +2,34 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "minecraft:emerald_block"
+      "ingredient": "minecraft:emerald_block"
     },
     {
-      "item": "minecraft:beacon"
+      "ingredient": "minecraft:beacon"
     },
     {
-      "item": "minecraft:totem_of_undying"
+      "ingredient": "minecraft:totem_of_undying"
     },
     {
-      "item": "minecraft:netherite_block"
+      "ingredient": "minecraft:netherite_block"
     },
     {
-      "item": "minecraft:dragon_egg"
+      "ingredient": "minecraft:dragon_egg"
     },
     {
-      "item": "mythicmetals:unobtainium_block"
+      "ingredient": "mythicmetals:unobtainium_block"
     },
     {
-      "item": "mythicmetals:metallurgium_block"
+      "ingredient": "mythicmetals:metallurgium_block"
     },
     {
-      "item": "mythicmetals:celestium_block"
+      "ingredient": "mythicmetals:celestium_block"
     },
 	{
-      "item": "minecraft:enchanted_golden_apple"
+      "ingredient": "minecraft:enchanted_golden_apple"
     },
     {
-      "item": "minecraft:ochre_froglight"
+      "ingredient": "minecraft:ochre_froglight"
     }
   ],
   "output": {
@@ -37,5 +37,5 @@
     "count": 1
   },
   "min_forge_tier": 3,
-  "fuel_per_tick": 3700
+  "fuel_per_tick": 3000
 }

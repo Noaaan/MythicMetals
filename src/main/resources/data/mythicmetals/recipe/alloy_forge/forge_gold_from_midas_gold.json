@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_midas_gold"
+      "ingredient": "mythicmetals:raw_midas_gold"
     },
     {
-      "tag": "mythicmetals:midas_raw_ores"
+      "ingredient": "#mythicmetals:midas_raw_ores"
     }
   ],
   "output": {

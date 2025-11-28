@@ -2,19 +2,19 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:starrite"
+      "ingredient": "mythicmetals:starrite"
     },
     {
-      "tag": "c:ingots/platinum"
+      "ingredient": "#c:ingots/platinum"
     },
     {
-      "item": "mythicmetals:carmot_ingot"
+      "ingredient": "mythicmetals:carmot_ingot"
     },
 	{
-      "item": "mythicmetals:kyber_ingot"
+      "ingredient": "mythicmetals:kyber_ingot"
     },
     {
-      "item": "mythicmetals:unobtainium"
+      "ingredient": "mythicmetals:unobtainium"
     }
   ],
   "output": {

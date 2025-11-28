@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
 	{
-      "item": "mythicmetals:raw_tin",
+      "ingredient": "mythicmetals:raw_tin",
       "count": 2
     }
   ],

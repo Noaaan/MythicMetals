@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_quadrillum",
+      "ingredient": "mythicmetals:raw_quadrillum",
       "count": 2
     }
   ],

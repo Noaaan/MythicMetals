@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_manganese",
+      "ingredient": "mythicmetals:raw_manganese",
       "count": 2
     }
   ],

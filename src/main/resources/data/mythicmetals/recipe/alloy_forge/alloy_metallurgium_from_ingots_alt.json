@@ -2,13 +2,13 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "tag": "mythicmetals:ingots/hallowed"
+      "ingredient": "#mythicmetals:ingots/hallowed"
     },
 	{
-      "tag": "c:ingots/palladium"
+      "ingredient": "#c:ingots/palladium"
     },
 	{
-	  "item": "mythicmetals:unobtainium"
+	  "ingredient": "mythicmetals:unobtainium"
 	}
   ],
   "output": {

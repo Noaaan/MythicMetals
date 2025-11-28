@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:iron_ingot"
+    "minecraft:iron_ingot",
+    "mythicmetals:quadrillum_ingot"
   ]
 }

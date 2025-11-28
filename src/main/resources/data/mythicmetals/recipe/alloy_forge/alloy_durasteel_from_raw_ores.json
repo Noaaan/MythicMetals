@@ -2,10 +2,10 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_quadrillum"
+      "ingredient": "mythicmetals:raw_quadrillum"
     },
 	{
-      "tag": "mythicmetals:raw_materials/manganese"
+      "ingredient": "#mythicmetals:raw_materials/manganese"
     }
   ],
   "output": {

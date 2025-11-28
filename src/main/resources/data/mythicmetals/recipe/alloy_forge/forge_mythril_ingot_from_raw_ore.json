@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_mythril",
+      "ingredient": "mythicmetals:raw_mythril",
       "count": 2
     }
   ],

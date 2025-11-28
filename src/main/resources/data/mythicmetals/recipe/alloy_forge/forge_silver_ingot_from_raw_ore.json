@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_silver",
+      "ingredient": "mythicmetals:raw_silver",
       "count": 2
     }
   ],

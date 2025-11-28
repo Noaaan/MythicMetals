@@ -2,13 +2,13 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_adamantite"
+      "ingredient": "mythicmetals:raw_adamantite"
     },
 	{
-      "tag": "mythicmetals:raw_materials/mythril"
+      "ingredient": "#mythicmetals:raw_materials/mythril"
     },
 	{
-      "item": "mythicmetals:raw_orichalcum"
+      "ingredient": "mythicmetals:raw_orichalcum"
     }
   ],
   "output": {

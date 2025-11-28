@@ -2,11 +2,11 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "minecraft:raw_copper",
+      "ingredient": "minecraft:raw_copper",
       "count": 2
     },
 	{
-      "item": "mythicmetals:raw_tin"
+      "ingredient": "mythicmetals:raw_tin"
     }
   ],
   "output": {

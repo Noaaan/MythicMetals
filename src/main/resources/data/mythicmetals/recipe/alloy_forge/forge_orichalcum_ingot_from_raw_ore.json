@@ -2,7 +2,7 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:raw_orichalcum",
+      "ingredient": "mythicmetals:raw_orichalcum",
       "count": 2
     }
   ],

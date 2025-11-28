@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "mythicmetals_unobtainium",
-  "ingredient": {
-    "tag": "mythicmetals:ores/unobtainium"
-  },
+  "ingredient": "#mythicmetals:ores/unobtainium",
   "result": {
     "id": "mythicmetals:unobtainium"
   }

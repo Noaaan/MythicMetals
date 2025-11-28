@@ -10,7 +10,7 @@
     "icon": {
       "id": "mythicmetals:gilded_midas_gold_sword",
       "nbt": "{GoldFolded: 640}"
-    },|
+    },
     "frame": "challenge",
     "show_toast": true,
     "announce_to_chat": true,

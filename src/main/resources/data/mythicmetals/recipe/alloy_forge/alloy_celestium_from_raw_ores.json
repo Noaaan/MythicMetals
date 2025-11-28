@@ -2,19 +2,19 @@
   "type": "alloy_forgery:forging",
   "inputs": [
     {
-      "item": "mythicmetals:starrite"
+      "ingredient": "mythicmetals:starrite"
     },
 	{
-      "tag": "mythicmetals:raw_materials/platinum"
+      "ingredient": "#mythicmetals:raw_materials/platinum"
     },
     {
-      "item": "mythicmetals:raw_carmot"
+      "ingredient": "mythicmetals:raw_carmot"
     },
 	{
-      "item": "mythicmetals:raw_kyber"
+      "ingredient": "mythicmetals:raw_kyber"
     },
     {
-      "item": "mythicmetals:unobtainium"
+      "ingredient": "mythicmetals:unobtainium"
     }
   ],
   "output": {
