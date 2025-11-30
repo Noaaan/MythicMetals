@@ -498,8 +498,6 @@
   "text.config.mythicmetals-config.option.unobtainiumTemplateChance.tooltip": "Spawnt in Kisten in Antike Stätten",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance": "Wahrscheinlichkeit der Mythrilbohrervorlagen",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance.tooltip": "Spawnt in Kisten in Minenschächten",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance": "Wahrscheinlichkeit der Carmotstab-Vorlagen",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance.tooltip": "Spawnt in Wüstendorf Tempelkisten",
 
   "text.config.mythicmetals-config.option.shieldPosition": "Carmotschild HUD Position",
   "text.config.mythicmetals-config.enum.shieldPosition": "Carmotschild HUD Position",

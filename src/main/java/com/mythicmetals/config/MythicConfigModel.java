@@ -67,7 +67,6 @@ public class MythicConfigModel {
     public int configVersion = MythicMetals.CONFIG_VERSION;
     public float unobtainiumTemplateChance = 0.25f;
     public float mythrilDrillTemplateChance = 0.65f;
-    public float carmotStaffTemplateChance = 1.0f;
     @RestartRequired
     public boolean disableFunny = false;
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)

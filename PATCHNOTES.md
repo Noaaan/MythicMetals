@@ -41,6 +41,7 @@ This includes the following:
 
 ## Other Changes
 
+- Carmot Staff and associated components is now fully removed
 - Natural Fire Aspect is now hardcoded onto the Sword of the Aegis
   - No longer uses an Ability
 - Removed Dusts and their config option

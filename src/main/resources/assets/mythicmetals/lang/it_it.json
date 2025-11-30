@@ -600,8 +600,6 @@
     "text.config.mythicmetals-config.option.unobtainiumTemplateChance.tooltip": "Si trova nei forzieri delle città antiche",
     "text.config.mythicmetals-config.option.mythrilDrillTemplateChance": "Probabilità di generazione degli schemi di forgiatura della trivella di mythril",
     "text.config.mythicmetals-config.option.mythrilDrillTemplateChance.tooltip": "Si trova nei forzieri delle miniere abbandonate",
-    "text.config.mythicmetals-config.option.carmotStaffTemplateChance": "Probabilità di generazione dello schema di forgiatura dello scettro di carmot",
-    "text.config.mythicmetals-config.option.carmotStaffTemplateChance.tooltip": "Si trova nei forzieri dei templi nei villaggi del deserto",
 
     "text.config.mythicmetals-config.option.shieldPosition": "Posizione HUD dello scudo di carmot",
     "text.config.mythicmetals-config.enum.shieldPosition": "Posizione HUD dello scudo di carmot",

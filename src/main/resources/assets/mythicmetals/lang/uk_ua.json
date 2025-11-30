@@ -514,8 +514,6 @@
   "text.config.mythicmetals-config.option.unobtainiumTemplateChance.tooltip": "З'являється в скринях Стародавнього міста",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance": "Шанс отримання шаблонів мітрильного бура",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance.tooltip": "З'являється в скринях шахт",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance": "Шанс отримання шаблона кармотового посоху",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance.tooltip": "З'являється в скринях храму пустельного села",
 
   "text.config.mythicmetals-config.option.shieldPosition": "Позиція кармотового щита в HUD",
   "text.config.mythicmetals-config.enum.shieldPosition": "Позиція кармотового щита в HUD",

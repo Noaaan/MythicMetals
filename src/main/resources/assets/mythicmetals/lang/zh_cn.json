@@ -1099,8 +1099,6 @@
     "text.config.mythicmetals-config.option.banglumNukeCoreRadius": "基础聚爆石核弹半径范围",
     "text.config.mythicmetals-config.option.calciteKyber": "生成方解凯伯矿石",
     "text.config.mythicmetals-config.option.carmot": "生成点金石矿石",
-    "text.config.mythicmetals-config.option.carmotStaffTemplateChance": "点金石权杖模板概率",
-    "text.config.mythicmetals-config.option.carmotStaffTemplateChance.tooltip": "生成于沙漠村庄的教堂中",
     "text.config.mythicmetals-config.option.deepslateRunite": "生成深层符石矿石",
     "text.config.mythicmetals-config.option.disableCommandBlockInStaff": "禁止在点金石权杖中使用命令方块",
     "text.config.mythicmetals-config.option.disableFunny": "禁用相对有趣事件特性",

@@ -623,8 +623,6 @@
   "text.config.mythicmetals-config.option.unobtainiumTemplateChance.tooltip": "Spawns in Ancient City chests",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance": "Chance of the Mythril Drill Templates",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance.tooltip": "Spawns in Mineshaft chests",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance": "Chance of the Carmot Staff Template",
-  "text.config.mythicmetals-config.option.carmotStaffTemplateChance.tooltip": "Spawns in Desert Village Temple chests",
 
   "text.config.mythicmetals-config.option.shieldPosition": "Carmot Shield HUD Position",
   "text.config.mythicmetals-config.enum.shieldPosition": "Carmot Shield HUD Position",

@@ -12,12 +12,6 @@ public class MythicDataComponents {
             .codec(CodecUtils.toCodec(GoldFoldedComponent.ENDEC))
             .packetCodec(CodecUtils.toPacketCodec(GoldFoldedComponent.ENDEC))
     );
-    @Deprecated(forRemoval = true, since = "0.23.0")
-    public static final ComponentType<Boolean> LOCKED = RegistryHelper.dataComponentType(
-        "locked", builder -> builder
-            .codec(Codec.BOOL)
-            .packetCodec(PacketCodecs.BOOLEAN)
-    );
     public static final ComponentType<Boolean> WAS_USED = RegistryHelper.dataComponentType(
         "was_used", builder ->
             builder.codec(Codec.BOOL)
