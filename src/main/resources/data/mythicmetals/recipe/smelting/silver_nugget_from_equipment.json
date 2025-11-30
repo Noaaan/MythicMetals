@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:carmot_helmet",
-    "mythicmetals:carmot_chestplate",
-    "mythicmetals:carmot_leggings",
-    "mythicmetals:carmot_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/silver",
   "result": {
-    "id": "mythicmetals:carmot_nugget"
+    "id": "mythicmetals:silver_nugget"
   }
 }

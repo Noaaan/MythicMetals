@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:mythril_helmet",
-    "mythicmetals:mythril_chestplate",
-    "mythicmetals:mythril_leggings",
-    "mythicmetals:mythril_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/steel",
   "result": {
-    "id": "mythicmetals:mythril_nugget"
+    "id": "mythicmetals:steel_nugget"
   }
 }

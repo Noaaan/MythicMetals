@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:aquarium_helmet",
-    "mythicmetals:aquarium_chestplate",
-    "mythicmetals:aquarium_leggings",
-    "mythicmetals:aquarium_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/kyber",
   "result": {
-    "id": "mythicmetals:aquarium_nugget"
+    "id": "mythicmetals:kyber_nugget"
   }
 }

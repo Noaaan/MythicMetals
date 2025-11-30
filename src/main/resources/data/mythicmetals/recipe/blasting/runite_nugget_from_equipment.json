@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:silver_helmet",
-    "mythicmetals:silver_chestplate",
-    "mythicmetals:silver_leggings",
-    "mythicmetals:silver_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/runite",
   "result": {
-    "id": "mythicmetals:silver_nugget"
+    "id": "mythicmetals:runite_nugget"
   }
 }

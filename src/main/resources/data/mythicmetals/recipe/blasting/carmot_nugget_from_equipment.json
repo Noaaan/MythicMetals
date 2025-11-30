@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:runite_helmet",
-    "mythicmetals:runite_chestplate",
-    "mythicmetals:runite_leggings",
-    "mythicmetals:runite_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/carmot",
   "result": {
-    "id": "mythicmetals:runite_nugget"
+    "id": "mythicmetals:carmot_nugget"
   }
 }

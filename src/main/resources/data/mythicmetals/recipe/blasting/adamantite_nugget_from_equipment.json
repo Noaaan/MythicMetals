@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:adamantite_helmet",
-    "mythicmetals:adamantite_chestplate",
-    "mythicmetals:adamantite_leggings",
-    "mythicmetals:adamantite_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/adamantite",
   "result": {
     "id": "mythicmetals:adamantite_nugget"
   }

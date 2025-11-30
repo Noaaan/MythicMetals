@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:banglum_helmet",
-    "mythicmetals:banglum_chestplate",
-    "mythicmetals:banglum_leggings",
-    "mythicmetals:banglum_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/aquarium",
   "result": {
-    "id": "mythicmetals:banglum_nugget"
+    "id": "mythicmetals:aquarium_nugget"
   }
 }

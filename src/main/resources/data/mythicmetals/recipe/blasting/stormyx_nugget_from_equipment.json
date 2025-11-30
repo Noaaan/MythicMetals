@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:kyber_helmet",
-    "mythicmetals:kyber_chestplate",
-    "mythicmetals:kyber_leggings",
-    "mythicmetals:kyber_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/stormyx",
   "result": {
-    "id": "mythicmetals:kyber_nugget"
+    "id": "mythicmetals:stormyx_nugget"
   }
 }

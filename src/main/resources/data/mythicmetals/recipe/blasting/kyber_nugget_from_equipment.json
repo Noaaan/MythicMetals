@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:osmium_helmet",
-    "mythicmetals:osmium_chestplate",
-    "mythicmetals:osmium_leggings",
-    "mythicmetals:osmium_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/kyber",
   "result": {
-    "id": "mythicmetals:osmium_nugget"
+    "id": "mythicmetals:kyber_nugget"
   }
 }

@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:bronze_helmet",
-    "mythicmetals:bronze_chestplate",
-    "mythicmetals:bronze_leggings",
-    "mythicmetals:bronze_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/silver",
   "result": {
-    "id": "mythicmetals:bronze_nugget"
+    "id": "mythicmetals:silver_nugget"
   }
 }

@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:orichalcum_helmet",
-    "mythicmetals:orichalcum_chestplate",
-    "mythicmetals:orichalcum_leggings",
-    "mythicmetals:orichalcum_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/orichalcum",
   "result": {
     "id": "mythicmetals:orichalcum_nugget"
   }

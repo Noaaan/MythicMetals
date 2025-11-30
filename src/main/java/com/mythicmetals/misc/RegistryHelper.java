@@ -22,6 +22,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -150,5 +151,9 @@ public class RegistryHelper {
 
     public static RegistryKey<Block> blockKey(String name) {
         return RegistryKey.of(RegistryKeys.BLOCK, id(name));
+    }
+
+    public static TagKey<Item> itemTag(String path) {
+        return TagKey.of(RegistryKeys.ITEM, id(path));
     }
 }

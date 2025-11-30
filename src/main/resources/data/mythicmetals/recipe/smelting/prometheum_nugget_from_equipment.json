@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:prometheum_helmet",
-    "mythicmetals:prometheum_chestplate",
-    "mythicmetals:prometheum_leggings",
-    "mythicmetals:prometheum_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/prometheum",
   "result": {
     "id": "mythicmetals:prometheum_nugget"
   }

@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:celestium_helmet",
-    "mythicmetals:celestium_chestplate",
-    "mythicmetals:celestium_leggings",
-    "mythicmetals:celestium_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/celestium",
   "result": {
     "id": "mythicmetals:celestium_nugget"
   }

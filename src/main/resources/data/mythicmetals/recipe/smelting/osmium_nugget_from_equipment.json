@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:osmium_helmet",
-    "mythicmetals:osmium_chestplate",
-    "mythicmetals:osmium_leggings",
-    "mythicmetals:osmium_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/osmium",
   "result": {
     "id": "mythicmetals:osmium_nugget"
   }

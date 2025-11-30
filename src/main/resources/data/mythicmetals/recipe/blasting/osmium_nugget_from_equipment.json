@@ -8,13 +8,8 @@
   "category": "misc",
   "cookingtime": 100,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:hallowed_helmet",
-    "mythicmetals:hallowed_chestplate",
-    "mythicmetals:hallowed_leggings",
-    "mythicmetals:hallowed_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/osmium",
   "result": {
-    "id": "mythicmetals:hallowed_nugget"
+    "id": "mythicmetals:osmium_nugget"
   }
 }

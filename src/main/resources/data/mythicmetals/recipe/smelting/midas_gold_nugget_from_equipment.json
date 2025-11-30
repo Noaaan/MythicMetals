@@ -8,12 +8,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": [
-    "mythicmetals:midas_gold_helmet",
-    "mythicmetals:midas_gold_chestplate",
-    "mythicmetals:midas_gold_leggings",
-    "mythicmetals:midas_gold_boots"
-  ],
+  "ingredient": "#mythicmetals:equipment/midas_gold",
   "result": {
     "id": "mythicmetals:midas_gold_nugget"
   }
