@@ -37,7 +37,7 @@ This includes the following:
   - When applied to any item stack it will apply the Heat status effect when hitting an entity
   - As before, the level increases by 1 50% of the time on hit.
   - Always increases on a critical hit
-  - Caps out at the level the data component, determined by the `maxHeat` parameter
+  - Caps out at the level the data component, determined by the `max_heat` parameter
 
 ## Other Changes
 

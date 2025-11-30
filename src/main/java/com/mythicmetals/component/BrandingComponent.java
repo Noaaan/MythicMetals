@@ -18,7 +18,7 @@ import java.util.function.Consumer;
 public record BrandingComponent(int maxHeat) implements TooltipAppender {
 
     public static final StructEndec<BrandingComponent> ENDEC = StructEndecBuilder.of(
-        StructEndec.INT.fieldOf("maxHeat", BrandingComponent::maxHeat),
+        StructEndec.INT.fieldOf("max_heat", BrandingComponent::maxHeat),
         BrandingComponent::new
     );
 
