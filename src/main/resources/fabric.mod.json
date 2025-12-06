@@ -46,7 +46,7 @@
     "alloy-forgery": "*"
   },
   "depends": {
-    "alloy-forgery": ">=3.0.5",
+    "alloy-forgery": ">=3.0.6",
     "fabricloader": ">=0.16.0",
     "fabric": ">=0.115.0",
     "minecraft": "1.21.x",
