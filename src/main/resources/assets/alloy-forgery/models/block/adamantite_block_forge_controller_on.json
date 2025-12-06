@@ -1,0 +1,6 @@
+{
+  "parent": "alloy-forgery:block/adamantite_block_forge_controller",
+  "textures": {
+    "front": "alloy-forgery:block/adamantite_block_forge_controller_front_on"
+  }
+}

@@ -10,7 +10,7 @@
     "f": "minecraft:blast_furnace"
   },
   "result": {
-    "id": "alloy_forgery:adamantite_block_forge_controller",
+    "id": "alloy-forgery:adamantite_block_forge_controller",
     "count": 1
   }
 }

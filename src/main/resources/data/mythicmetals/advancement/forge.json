@@ -8,7 +8,7 @@
       "translate": "advancement.mythicmetals.forge.description"
     },
     "icon": {
-      "id": "alloy_forgery:bricks_forge_controller"
+      "id": "alloy-forgery:bricks_forge_controller"
     },
     "frame": "task",
     "show_toast": true,
@@ -22,9 +22,9 @@
         "items": [
           {
             "items": [
-              "alloy_forgery:bricks_forge_controller",
-			  "alloy_forgery:stone_bricks_forge_controller",
-			  "alloy_forgery:deepslate_bricks_forge_controller"
+              "alloy-forgery:bricks_forge_controller",
+			  "alloy-forgery:stone_bricks_forge_controller",
+			  "alloy-forgery:deepslate_bricks_forge_controller"
             ]
           }
         ]

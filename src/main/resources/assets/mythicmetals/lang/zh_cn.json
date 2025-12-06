@@ -126,7 +126,7 @@
     "attribute.name.mythicmetals.carmot_shield": "点金石防护",
     "attribute.name.mythicmetals.elytra_rocket_speed": "烟花火箭速度",
     "attribute.name.mythicmetals.fire_vulnerability": "易燃性",
-    "block.alloy_forgery.adamantite_block_forge_controller": "精金锻造控制器",
+    "block.alloy-forgery.adamantite_block_forge_controller": "精金锻造控制器",
     "block.mythicmetals.adamantite_anvil": "精金砧",
     "block.mythicmetals.adamantite_block": "精金块",
     "block.mythicmetals.adamantite_ore": "精金矿石",

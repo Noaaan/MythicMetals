@@ -4,7 +4,7 @@
   "item.minecraft.splash_potion.effect.strong_luck": "Splash Potion of Greater Luck",
   "item.minecraft.lingering_potion.effect.strong_luck": "Lingering Potion of Greater Luck",
 
-  "block.alloy_forgery.adamantite_block_forge_controller": "Adamantite Block Forge Controller",
+  "block.alloy-forgery.adamantite_block_forge_controller": "Adamantite Block Forge Controller",
   "block.mythicmetals.adamantite_anvil": "Adamantite Anvil",
   "block.mythicmetals.adamantite_block": "Block of Adamantite",
   "block.mythicmetals.adamantite_ore": "Adamantite Ore",
@@ -121,7 +121,7 @@
   "block.mythicmetals.tuff_orichalcum_ore": "Tuff Orichalcum Ore",
   "block.mythicmetals.unobtainium_block": "Block of Unobtainium",
   "block.mythicmetals.unobtainium_ore": "Unobtainium Ore",
-  "item.alloy_forgery.adamantite_block_forge_controller": "Adamantite Block Forge Controller",
+  "item.alloy-forgery.adamantite_block_forge_controller": "Adamantite Block Forge Controller",
   "item.mythicmetals.adamantite_block": "Block of Adamantite",
   "item.mythicmetals.adamantite_ore": "Adamantite Ore",
   "item.mythicmetals.aquarium_block": "Block of Aquarium",
@@ -1364,7 +1364,7 @@
   "tag.item.mythicmetals.abilities.bonus_fortune": "Tools with Bonus Fortune",
   "tag.item.mythicmetals.abilities.bonus_looting": "Tools with Bonus Looting",
 
-  "alloy_forgery.tier.advanced_name.mythicmetals.rare_plus_tier": [
+  "alloy-forgery.tier.advanced_name.mythicmetals.rare_plus_tier": [
     {"text": "Rare+ ", "color": "yellow"},
     { "text": "[", "color": "gray" },
     { "index": 0, "color": "white" },

@@ -1,5 +1,5 @@
 {
-  "type": "alloy_forgery:forging",
+  "type": "alloy-forgery:forging",
   "inputs": [
     {
       "ingredient": "#mythicmetals:ores/platinum"
