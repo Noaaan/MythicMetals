@@ -21,10 +21,6 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        //registry.beginFiller(MidasFoldingDisplay.class).fill(Display::provideInternalDisplay);
-        //registry.beginFiller(TidesingerCoralRecipe.class).fill(Display::provideInternalDisplay);
-        //registry.registerRecipeFiller(TidesingerCoralRecipe.class, RecipeType.SMITHING, TidesingerSmithingDisplay::new);
-
         // Tipped Runite Arrow handling
         EntryIngredient arrowStack = EntryIngredient.of(EntryStacks.of(MythicTools.RUNITE_ARROW));
         ReferenceSet<Potion> registeredPotions = new ReferenceOpenHashSet<>();

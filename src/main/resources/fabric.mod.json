@@ -25,6 +25,9 @@
     "fabric-datagen": [
       "com.mythicmetals.data.MythicMetalsData"
     ],
+    "rei_common": [
+      "com.mythicmetals.compat.MythicMetalsREICommonPlugin"
+    ],
     "rei_client": [
       "com.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
