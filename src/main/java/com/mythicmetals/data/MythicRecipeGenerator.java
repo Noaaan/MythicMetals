@@ -65,9 +65,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
     private void createBlockRecipes(HashMap<String, ItemSet> itemSets, HashMap<String, BlockSet> blockSets) {
         // Smelting ore blocks into ingots
         itemSets.forEach((name, itemSet) -> {
-            if (!blockSets.containsKey(name)) {
-                // no-op
-            } else {
+            if (blockSets.containsKey(name)) {
                 var blockSet = blockSets.get(name);
                 // Smelting Ore Blocks into ingots
                 if (blockSet.getOre() != null) {
