@@ -1,3 +1,7 @@
+# 0.19.11
+
+- Backported a camera fix which could cause a crash (#252)
+
 # 0.19.10
 
 Very minor bonus release
