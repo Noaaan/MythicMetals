@@ -268,6 +268,8 @@ public abstract class LivingEntityMixin extends Entity {
         }
         var stack = this.getStackInHand(hand);
         var camera = MinecraftClient.getInstance().getEntityRenderDispatcher().camera;
+        // This can be null, according to #252
+        if (camera == null) return;
         if (camera.isThirdPerson() && stack.getItem() instanceof MythrilDrill drill && drill.isActive(stack)) {
             ci.cancel();
         }
