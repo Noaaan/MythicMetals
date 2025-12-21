@@ -195,6 +195,9 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);
         RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
         RegistryHelper.item("platinum_watch", PLATINUM_WATCH);
+
+        Registries.ITEM.addAlias(Identifier.of("mythicaddons", "red_aegis_sword"), RegistryHelper.id("red_aegis_sword"));
+        Registries.ITEM.addAlias(Identifier.of("mythicaddons", "white_aegis_sword"), RegistryHelper.id("white_aegis_sword"));
     }
 
     public static class Frogery {

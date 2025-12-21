@@ -1,10 +1,12 @@
 package com.mythicmetals.misc;
 
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import java.util.HashMap;
 
 public class LegacyIds {
-    private static final HashMap<Identifier, Identifier> LEGACY_IDS = new HashMap<>();
+    private static final HashMap<Identifier, Identifier> LEGACY_ITEM_IDS = new HashMap<>();
+    private static final HashMap<Identifier, Identifier> LEGACY_BLOCK_IDS = new HashMap<>();
 
     // All the identifiers of removed stuff
     private static final Identifier OLD_COPPER_ORE = RegistryHelper.id("copper_ore");
@@ -24,6 +26,7 @@ public class LegacyIds {
     private static final Identifier OLD_UNOBTAINIUM_DUST = RegistryHelper.id("unobtainium_dust");
     private static final Identifier OLD_VERMICULITE = RegistryHelper.id("vermiculite_ore");
 
+    // Identifiers of stuff that replaces them
     private static final Identifier VANILLA_COPPER_ORE = Identifier.of("copper_ore");
     private static final Identifier VANILLA_COPPER_INGOT = Identifier.of("copper_ingot");
     private static final Identifier VANILLA_NETHERRACK = Identifier.of("netherrack");
@@ -40,28 +43,51 @@ public class LegacyIds {
 
 
     private static void createMap() {
-        LEGACY_IDS.put(OLD_COPPER_ORE, VANILLA_COPPER_ORE);
-        LEGACY_IDS.put(OLD_COPPER_INGOT, VANILLA_COPPER_INGOT);
-        LEGACY_IDS.put(OLD_TANTALITE_ORE, VANILLA_STONE);
-        LEGACY_IDS.put(OLD_TRUESILVER_ORE, NEW_PALLADIUM_ORE);
-        LEGACY_IDS.put(OLD_TRUESILVER_INGOT, NEW_PALLADIUM_INGOT);
-        LEGACY_IDS.put(OLD_TRUESILVER_BLOCK, NEW_PALLADIUM_BLOCK);
-        LEGACY_IDS.put(OLD_AETHERIUM_ORE, NEW_MYTHRIL_ORE);
-        LEGACY_IDS.put(OLD_AETHERIUM_INGOT, NEW_MYTHRIL_INGOT);
-        LEGACY_IDS.put(OLD_AETHERIUM_BLOCK, NEW_MYTHRIL_BLOCK);
-        LEGACY_IDS.put(OLD_RAW_AETHERIUM, NEW_MYTHRIL_RAW);
-        LEGACY_IDS.put(OLD_UR, VANILLA_NETHERRACK);
-        LEGACY_IDS.put(OLD_ZINC, VANILLA_STONE);
-        LEGACY_IDS.put(OLD_RAW_STARRITE, NEW_STARRITE);
-        LEGACY_IDS.put(OLD_STARRITE_INGOT, NEW_STARRITE);
-        LEGACY_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
-        LEGACY_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
+        LEGACY_ITEM_IDS.put(OLD_COPPER_ORE, VANILLA_COPPER_ORE);
+        LEGACY_ITEM_IDS.put(OLD_TANTALITE_ORE, VANILLA_STONE);
+        LEGACY_ITEM_IDS.put(OLD_TRUESILVER_ORE, NEW_PALLADIUM_ORE);
+        LEGACY_ITEM_IDS.put(OLD_TRUESILVER_BLOCK, NEW_PALLADIUM_BLOCK);
+        LEGACY_ITEM_IDS.put(OLD_AETHERIUM_ORE, NEW_MYTHRIL_ORE);
+        LEGACY_ITEM_IDS.put(OLD_AETHERIUM_BLOCK, NEW_MYTHRIL_BLOCK);
+        LEGACY_ITEM_IDS.put(OLD_UR, VANILLA_NETHERRACK);
+        LEGACY_ITEM_IDS.put(OLD_ZINC, VANILLA_STONE);
+        LEGACY_ITEM_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
+
+        LEGACY_BLOCK_IDS.put(OLD_COPPER_ORE, VANILLA_COPPER_ORE);
+        LEGACY_BLOCK_IDS.put(OLD_TANTALITE_ORE, VANILLA_STONE);
+        LEGACY_BLOCK_IDS.put(OLD_TRUESILVER_ORE, NEW_PALLADIUM_ORE);
+        LEGACY_BLOCK_IDS.put(OLD_TRUESILVER_BLOCK, NEW_PALLADIUM_BLOCK);
+        LEGACY_BLOCK_IDS.put(OLD_AETHERIUM_ORE, NEW_MYTHRIL_ORE);
+        LEGACY_BLOCK_IDS.put(OLD_AETHERIUM_BLOCK, NEW_MYTHRIL_BLOCK);
+        LEGACY_BLOCK_IDS.put(OLD_UR, VANILLA_NETHERRACK);
+        LEGACY_BLOCK_IDS.put(OLD_ZINC, VANILLA_STONE);
+        LEGACY_BLOCK_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
+
+        LEGACY_ITEM_IDS.put(OLD_COPPER_INGOT, VANILLA_COPPER_INGOT);
+        LEGACY_ITEM_IDS.put(OLD_TRUESILVER_INGOT, NEW_PALLADIUM_INGOT);
+        LEGACY_ITEM_IDS.put(OLD_AETHERIUM_INGOT, NEW_MYTHRIL_INGOT);
+        LEGACY_ITEM_IDS.put(OLD_RAW_AETHERIUM, NEW_MYTHRIL_RAW);
+        LEGACY_ITEM_IDS.put(OLD_RAW_STARRITE, NEW_STARRITE);
+        LEGACY_ITEM_IDS.put(OLD_STARRITE_INGOT, NEW_STARRITE);
+        LEGACY_ITEM_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
     }
 
-    public static HashMap<Identifier, Identifier> getLegacyIds() {
-        if (LEGACY_IDS.isEmpty()) {
+    public static HashMap<Identifier, Identifier> getLegacyBlockIds() {
+        if (LEGACY_BLOCK_IDS.isEmpty()) {
             createMap();
         }
-        return LEGACY_IDS;
+        return LEGACY_BLOCK_IDS;
+    }
+
+    public static HashMap<Identifier, Identifier> getLegacyItemIds() {
+        if (LEGACY_ITEM_IDS.isEmpty()) {
+            createMap();
+        }
+        return LEGACY_ITEM_IDS;
+    }
+
+    public static void registerAliases() {
+        getLegacyItemIds().forEach(Registries.ITEM::addAlias);
+        getLegacyBlockIds().forEach(Registries.BLOCK::addAlias);
     }
 }

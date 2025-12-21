@@ -101,6 +101,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
         });
         registerDispenserBehaviour();
+        LegacyIds.registerAliases();
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {
             for (int i = 0; i < 5; i++) {

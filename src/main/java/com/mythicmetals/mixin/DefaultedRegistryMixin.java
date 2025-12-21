@@ -1,6 +1,5 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.LegacyIds;
 import net.minecraft.registry.SimpleDefaultedRegistry;
 import net.minecraft.util.Identifier;
@@ -15,19 +14,15 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(SimpleDefaultedRegistry.class)
 public class DefaultedRegistryMixin {
 
-    // TODO - Migrate this to use registry aliases
     @ModifyVariable(at = @At("HEAD"), method = "get(Lnet/minecraft/util/Identifier;)Ljava/lang/Object;", ordinal = 0, argsOnly = true)
     Identifier fixMissingFromRegistry(@Nullable Identifier id) {
         if (id != null) {
+            // TODO - Migrate these to registry aliases within Mythic Metals Decorations
             // Various MOD_ID renames across mod versions, including Mythic Metals Decorations
             if (id.getNamespace().equals("mm_decorations"))
                 return Identifier.of("mythicmetals_decorations", id.getPath());
             if (id.getNamespace().equals("mythicaddons") && !id.getPath().contains("aegis"))
                 return Identifier.of("mythicmetals_decorations", id.getPath());
-            if (id.getNamespace().equals("mythicaddons") && id.getPath().contains("aegis"))
-                return Identifier.of(MythicMetals.MOD_ID, id.getPath());
-            if (LegacyIds.getLegacyIds().containsKey(id)) return LegacyIds.getLegacyIds().get(id);
-
         }
         return id;
     }
