@@ -36,9 +36,6 @@ public abstract class BucketItemMixin {
     private void mythicmetals$fillLavalog(PlayerEntity player, World world, BlockPos pos, BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
         var state = world.getBlockState(pos);
         if (this.fluid.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
-            // TODO - Vanilla behavior here is to eat the fluid if you log the same block twice
-            // Try and explore whether you can prevent placing lava in the same block twice
-            // Lava is mildly more inconvenient to source, after all
             lavaloggable.tryFillWithFluid(world, pos, state, Fluids.LAVA.getStill(false));
             this.playEmptyingSound(player, world, pos);
             cir.setReturnValue(true);

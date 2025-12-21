@@ -64,7 +64,6 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
         return MythicRecipeSerializers.UPGRADE_SMITHING_RECIPE_SERIALIZER;
     }
 
-    // TODO - Verify this does not break with a missing slot
     @Override
     public IngredientPlacement getIngredientPlacement() {
         if (this.ingredientPlacement == null) {

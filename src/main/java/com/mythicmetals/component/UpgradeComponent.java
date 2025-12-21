@@ -37,7 +37,6 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipApp
         return new UpgradeComponent(size);
     }
 
-    // TODO - Consider refactoring to use a builder or some nicer pattern
     public static UpgradeComponent addItem(UpgradeComponent oldComponent, Item item) {
         var newList = new ArrayList<>(oldComponent.items);
         newList.remove(Items.AIR);
