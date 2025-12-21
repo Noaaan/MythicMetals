@@ -198,8 +198,6 @@ public final class MythicCommands {
         return 0;
     }
 
-    // TODO - Definitely the most lazy approach.
-    //  At least make it overwrite the files instead of forcing you to delete the folder every time
     private static int exportAllTools(CommandContext<ServerCommandSource> context) {
         var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
         try {
@@ -212,9 +210,8 @@ public final class MythicCommands {
         ReflectionUtils.iterateAccessibleStaticFields(MythicTools.class, ToolSet.class, (value, name, field) -> {
             var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + "-tools.md");
             try {
+                Files.deleteIfExists(file);
                 Files.createFile(file);
-            } catch (FileAlreadyExistsException ignored) {
-                // no-op
             } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
                 context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);

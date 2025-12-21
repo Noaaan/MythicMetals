@@ -34,7 +34,6 @@
     "TableBonusLootConditionMixin"
   ],
   "client": [
-    "client.ElytraFeatureRendererMixin",
     "client.EntityModelLayersAccessor",
     "client.PlayerEntityRendererMixin",
     "client.PlayerEntityRenderStateMixin",

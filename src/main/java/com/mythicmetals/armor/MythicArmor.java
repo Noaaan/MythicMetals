@@ -66,6 +66,7 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         .rarity(Rarity.EPIC)
         .component(DataComponentTypes.GLIDER, Unit.INSTANCE)
         .component(DataComponentTypes.EQUIPPABLE, EquippableComponent.builder(EquipmentSlot.CHEST)
+            .model(RegistryHelper.equipmentAsset("celestium_elytra"))
             .equipSound(RegistryHelper.getEntry(RegisterSounds.EQUIP_CELESTIUM_ELYTRA))
             .build())
         .group(MythicMetals.TABBED_GROUP).tab(3)

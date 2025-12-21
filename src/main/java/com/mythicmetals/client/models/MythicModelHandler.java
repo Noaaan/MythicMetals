@@ -12,6 +12,8 @@ public class MythicModelHandler {
     public static final EntityModelLayer ADAMANTITE = model("adamantite_armor");
     public static final EntityModelLayer BANGLUM = model("banglum_armor");
     public static final EntityModelLayer CARMOT_SWIRL = model("carmot_swirl");
+    public static final EntityModelLayer CELESTIUM_ELYTRA = model("celestium_elytra");
+    public static final EntityModelLayer BABY_CELESTIUM_ELYTRA = model("baby_celestium_elytra");
     public static final EntityModelLayer HALLOWED_ARMOR = model("hallowed_armor");
     public static final EntityModelLayer METALLURGIUM = model("metallurgium_armor");
     public static final EntityModelLayer RUNITE = model("runite_armor");
@@ -23,11 +25,14 @@ public class MythicModelHandler {
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
     public static final Identifier STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
     public static final Identifier PALLADIUM_MINECART_TEXTURE = RegistryHelper.id("textures/models/palladium_minecart.png");
+    public static final Identifier CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
 
     public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
         consumer.accept(ADAMANTITE, TexturedModelData.of(AdamantiteArmorModel.getModelData(), 64, 32));
         consumer.accept(BANGLUM_TNT_MINECART, MinecartEntityModel.getTexturedModelData());
         consumer.accept(PALLADIUM_MINECART, MinecartEntityModel.getTexturedModelData());
+        consumer.accept(CELESTIUM_ELYTRA, ElytraEntityModel.getTexturedModelData());
+        consumer.accept(BABY_CELESTIUM_ELYTRA, ElytraEntityModel.getTexturedModelData().transform(ElytraEntityModel.BABY_TRANSFORMER));
         consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
         consumer.accept(PALLADIUM, TexturedModelData.of(PalladiumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));

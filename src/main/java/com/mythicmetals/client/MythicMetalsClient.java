@@ -62,7 +62,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer instanceof PlayerEntityRenderer playerRenderer) {
-                registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getEntityModels()));
+                registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getEntityModels(), context.getEquipmentRenderer()));
             }
         });
         EntityRendererRegistry.register(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, PalladiumMinecartRenderer::new);
