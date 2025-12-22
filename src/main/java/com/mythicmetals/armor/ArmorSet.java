@@ -22,10 +22,10 @@ import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.A
 public class ArmorSet {
 
     private final String name;
-    private final Item helmet;
-    private final Item chestplate;
-    private final Item leggings;
-    private final Item boots;
+    protected final Item helmet;
+    protected final Item chestplate;
+    protected final Item leggings;
+    protected final Item boots;
 
     private final List<Item> armorItems;
 
@@ -48,7 +48,7 @@ public class ArmorSet {
         return this.makeItem(material, equipmentType, settings);
     }
 
-    public static Item.Settings baseArmorSettings(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
+    public Item.Settings baseArmorSettings(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
         return new Item.Settings()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
@@ -190,7 +190,7 @@ public class ArmorSet {
         return material;
     }
 
-    private static RegistryKey<Item> keyFromType(String name, EquipmentType type) {
+    protected RegistryKey<Item> keyFromType(String name, EquipmentType type) {
         var typeName = switch (type) {
             case HELMET -> "helmet";
             case CHESTPLATE -> "chestplate";
