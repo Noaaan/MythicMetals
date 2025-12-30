@@ -1,3 +1,12 @@
+# 0.24.5
+
+## Changes
+
+- Fix an issue where the Royal Midas Gold Sword tooltip would break when crafting
+- Added a debug command for giving yourself a Midas Gold Sword
+  - Syntax: `/mythicmetals give-midas <folds>`
+  - Gives you a Royal Midas Gold Sword at 640 folds, a Gilded one at 320, and a normal Midas Gold Sword otherwise
+
 # 0.24.4
 
 ## New Textures
