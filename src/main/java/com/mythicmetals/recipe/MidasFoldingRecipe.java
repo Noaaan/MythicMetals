@@ -80,8 +80,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     public ItemStack craft(SmithingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         var swordInputStack = input.base().copy();
 
-        int goldCount = swordInputStack.get(GOLD_FOLDED).goldFolded();
-        swordInputStack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1));
+        var goldComponent = swordInputStack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0));
+        int goldCount = goldComponent.goldFolded();
+        swordInputStack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1, goldComponent.isRoyal()));
 
         // Gilded Midas Gold Sword handler
         if (swordInputStack.getItem().equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
