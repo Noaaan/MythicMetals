@@ -15,8 +15,7 @@ import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
 import com.mythicmetals.config.OreConfig;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.item.tools.ToolSet;
+import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
 import io.wispforest.owo.util.ReflectionUtils;
@@ -28,9 +27,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.component.DataComponentTypes;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.entity.decoration.DisplayEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.equipment.trim.ArmorTrim;
@@ -81,6 +78,7 @@ public final class MythicCommands {
             var allArmor = CommandManager.literal("armor-all").executes(MythicCommands::exportAllArmor).build();
             var ores = CommandManager.literal("ores").build();
             var armor = CommandManager.literal("armor").build();
+            var midas = CommandManager.literal("give-midas").build();
             var wiki = CommandManager.literal("wiki").build();
             var armorStand = CommandManager.literal("armor-stand").build();
             var loot = CommandManager.literal("test-loot-table").build();
@@ -97,6 +95,10 @@ public final class MythicCommands {
 
             var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
                 .executes(MythicCommands::exportOreData)
+                .build();
+
+            var giveMidas = CommandManager.argument("folds", IntegerArgumentType.integer(0, 10000))
+                .executes(MythicCommands::giveMidasSword)
                 .build();
 
             var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
@@ -150,6 +152,7 @@ public final class MythicCommands {
             loot.addChild(lootTables);
             armorStand.addChild(summonTrims);
             display.addChild(placeDisplay);
+            midas.addChild(giveMidas);
 
             // Add commands to root
             mythicRoot.addChild(range);
@@ -158,9 +161,23 @@ public final class MythicCommands {
             mythicRoot.addChild(loot);
             mythicRoot.addChild(placeBlocks);
             mythicRoot.addChild(display);
+            mythicRoot.addChild(midas);
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
+    }
+
+    private static int giveMidasSword(CommandContext<ServerCommandSource> context) {
+        int goldCount = IntegerArgumentType.getInteger(context, "folds");
+        var player = context.getSource().getPlayer();
+        if (player == null) {
+            context.getSource().sendError(Text.literal("player required"));
+            return -1;
+        }
+
+        player.getInventory().offerOrDrop(MidasGoldSword.createSwordFromGold(goldCount));
+        context.getSource().sendFeedback(() -> Text.literal("Gave sword with %d folds".formatted(goldCount)), true);
+        return 0;
     }
 
     private static int exportAllArmor(CommandContext<ServerCommandSource> context) {
@@ -293,36 +310,36 @@ public final class MythicCommands {
 
         if (MythicTools.TOOL_MAP.containsKey(material)) {
             // TODO - I like item frames more, unfortunately...
-            var toolSet = MythicTools.TOOL_MAP.get(material);
-            var displayEntitySword = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-            var displayEntityPickaxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-            var displayEntityAxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-            var displayEntityShovel = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-            var displayEntityHoe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-
-            displayEntitySword.setItemStack(toolSet.getSword().getDefaultStack());
-            displayEntityPickaxe.setItemStack(toolSet.getPickaxe().getDefaultStack());
-            displayEntityAxe.setItemStack(toolSet.getAxe().getDefaultStack());
-            displayEntityShovel.setItemStack(toolSet.getShovel().getDefaultStack());
-            displayEntityHoe.setItemStack(toolSet.getHoe().getDefaultStack());
-
-            displayEntitySword.setPos(startPos.getX() + 1.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-            displayEntityPickaxe.setPos(startPos.getX() + 2.5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-            displayEntityAxe.setPos(startPos.getX() + 3.75, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-            displayEntityShovel.setPos(startPos.getX() + 5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-            displayEntityHoe.setPos(startPos.getX() + 6.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-
-            displayEntitySword.setYaw(180);
-            displayEntityPickaxe.setYaw(180);
-            displayEntityAxe.setYaw(180);
-            displayEntityShovel.setYaw(180);
-            displayEntityHoe.setYaw(180);
-
-            world.spawnEntity(displayEntitySword);
-            world.spawnEntity(displayEntityPickaxe);
-            world.spawnEntity(displayEntityAxe);
-            world.spawnEntity(displayEntityShovel);
-            world.spawnEntity(displayEntityHoe);
+//            var toolSet = MythicTools.TOOL_MAP.get(material);
+//            var displayEntitySword = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+//            var displayEntityPickaxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+//            var displayEntityAxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+//            var displayEntityShovel = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+//            var displayEntityHoe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
+//
+//            displayEntitySword.setItemStack(toolSet.getSword().getDefaultStack());
+//            displayEntityPickaxe.setItemStack(toolSet.getPickaxe().getDefaultStack());
+//            displayEntityAxe.setItemStack(toolSet.getAxe().getDefaultStack());
+//            displayEntityShovel.setItemStack(toolSet.getShovel().getDefaultStack());
+//            displayEntityHoe.setItemStack(toolSet.getHoe().getDefaultStack());
+//
+//            displayEntitySword.setPos(startPos.getX() + 1.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+//            displayEntityPickaxe.setPos(startPos.getX() + 2.5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+//            displayEntityAxe.setPos(startPos.getX() + 3.75, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+//            displayEntityShovel.setPos(startPos.getX() + 5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+//            displayEntityHoe.setPos(startPos.getX() + 6.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
+//
+//            displayEntitySword.setYaw(180);
+//            displayEntityPickaxe.setYaw(180);
+//            displayEntityAxe.setYaw(180);
+//            displayEntityShovel.setYaw(180);
+//            displayEntityHoe.setYaw(180);
+//
+//            world.spawnEntity(displayEntitySword);
+//            world.spawnEntity(displayEntityPickaxe);
+//            world.spawnEntity(displayEntityAxe);
+//            world.spawnEntity(displayEntityShovel);
+//            world.spawnEntity(displayEntityHoe);
         }
 
         if (MythicArmor.ARMOR_MAP.containsKey(material)) {

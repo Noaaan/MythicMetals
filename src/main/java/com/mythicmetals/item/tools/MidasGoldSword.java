@@ -1,7 +1,6 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.component.GoldFoldedComponent;
-import com.mythicmetals.component.MythicDataComponents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
@@ -15,6 +14,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
+
 public class MidasGoldSword extends SwordItem {
     public MidasGoldSword(ToolMaterial material, Settings settings) {
         super(material, 3.0f, -2.4f, settings);
@@ -27,7 +28,7 @@ public class MidasGoldSword extends SwordItem {
         if (!stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) return;
         var currentAttributes = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
         assert currentAttributes != null;
-        int goldCount = stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
         var originalDamage = new AtomicReference<>(0.0);
         stack.getDefaultComponents().get(DataComponentTypes.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
             if (entry.modifier().id().equals(BASE_ATTACK_DAMAGE_MODIFIER_ID)) {
@@ -66,8 +67,8 @@ public class MidasGoldSword extends SwordItem {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> lines, TooltipType type) {
-        if (stack.contains(MythicDataComponents.GOLD_FOLDED)) {
-            stack.get(MythicDataComponents.GOLD_FOLDED).appendTooltip(context, lines::add, type);
+        if (stack.contains(GOLD_FOLDED)) {
+            stack.get(GOLD_FOLDED).appendTooltip(context, lines::add, type);
         }
     }
 
@@ -122,6 +123,22 @@ public class MidasGoldSword extends SwordItem {
                 return comparedType.equals(type);
             }
             return false;
+        }
+    }
+
+    public static ItemStack createSwordFromGold(int goldCount) {
+        if (goldCount > 640) {
+            var stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount, true));
+            return stack;
+        } else if (goldCount > 319) {
+            var stack = new ItemStack(MythicTools.GILDED_MIDAS_GOLD_SWORD);
+            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
+            return stack;
+        } else {
+            var stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultStack();
+            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
+            return stack;
         }
     }
 }
