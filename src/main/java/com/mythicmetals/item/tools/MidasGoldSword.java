@@ -116,7 +116,7 @@ public class MidasGoldSword extends SwordItem {
             return null;
         }
 
-        public static boolean isOf(ItemStack stack, Type type) {
+        public static boolean isOfMidas(ItemStack stack, Type type) {
             var comparedType = getSwordType(stack);
             if (comparedType != null) {
                 return comparedType.equals(type);

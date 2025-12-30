@@ -30,9 +30,9 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
 //            var inputStack = Arrays.stream(this.base.getMatchingStacks()).findFirst().orElse(ItemStack.EMPTY).copy();
 //            // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
 //            if (outputStack.isOf(inputStack.getItem())) {
-//                if (MidasGoldSword.Type.isOf(inputStack, ROYAL)) {
+//                if (MidasGoldSword.Type.isOfMidas(inputStack, ROYAL)) {
 //                    inputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(640, true));
-//                } else if (MidasGoldSword.Type.isOf(inputStack, GILDED)) {
+//                } else if (MidasGoldSword.Type.isOfMidas(inputStack, GILDED)) {
 //                    inputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(320));
 //                } else {
 //                    inputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(16));
@@ -44,7 +44,7 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
 //                );
 //            }
 //            // Handles transformation from regular midas to gilded midas
-//            else if (MidasGoldSword.Type.isOf(inputStack, REGULAR) && MidasGoldSword.Type.isOf(outputStack, GILDED)) {
+//            else if (MidasGoldSword.Type.isOfMidas(inputStack, REGULAR) && MidasGoldSword.Type.isOfMidas(outputStack, GILDED)) {
 //                inputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(319));
 //                inputs = List.of(
 //                    EmiIngredient.of(this.template),
@@ -53,7 +53,7 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
 //                );
 //            }
 //            // Transformation of gilded to royal midas
-//            else if (MidasGoldSword.Type.isOf(inputStack, GILDED) && MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
+//            else if (MidasGoldSword.Type.isOfMidas(inputStack, GILDED) && MidasGoldSword.Type.isOfMidas(outputStack, ROYAL)) {
 //                inputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(319));
 //                inputs = List.of(
 //                    EmiIngredient.of(this.template),
@@ -64,9 +64,9 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
 //
 //            // Handle folding recipes, which usually follow the pattern of "input + gold block = output"
 //            if (outputStack.getItem().equals(inputStack.getItem())) {
-//                if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
+//                if (MidasGoldSword.Type.isOfMidas(outputStack, ROYAL)) {
 //                    outputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(641, true));
-//                } else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
+//                } else if (MidasGoldSword.Type.isOfMidas(outputStack, GILDED)) {
 //                    outputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(321));
 //                } else {
 //                    outputStack.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(17));
@@ -75,14 +75,14 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
 //                output = EmiStack.of(outputStack);
 //            }
 //            // Royal Midas Handler
-//            else if (MidasGoldSword.Type.isOf(outputStack, ROYAL)) {
+//            else if (MidasGoldSword.Type.isOfMidas(outputStack, ROYAL)) {
 //                var outputCopy = outputStack.copy();
 //                outputCopy.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(640, true));
 //                output = EmiStack.of(outputCopy);
 //
 //            }
 //            // Gilded Midas Handler
-//            else if (MidasGoldSword.Type.isOf(outputStack, GILDED)) {
+//            else if (MidasGoldSword.Type.isOfMidas(outputStack, GILDED)) {
 //                var outputCopy = outputStack.copy();
 //                outputCopy.set(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(320));
 //                output = EmiStack.of(outputCopy);
