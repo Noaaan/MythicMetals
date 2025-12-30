@@ -81,6 +81,15 @@ This includes the following:
 - Removed recipe blacklist for blasting Mythic Metals gear in the Alloy Forge
   - Should be incredibly minor, although you can now smelt two pieces of equipment into 2-3 nuggets each
 
+# 0.24.5
+
+## Changes
+
+- Fix an issue where the Royal Midas Gold Sword tooltip would break when crafting
+- Added a debug command for giving yourself a Midas Gold Sword
+  - Syntax: `/mythicmetals give-midas <folds>`
+  - Gives you a Royal Midas Gold Sword at 640 folds, a Gilded one at 320, and a normal Midas Gold Sword otherwise
+
 # 0.24.4
 
 ## New Textures
