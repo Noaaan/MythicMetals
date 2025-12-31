@@ -33,6 +33,7 @@ These people have helped translate the mod into different languages. Thank you t
 - gyular, for the korean translation.
 - Kurty00 and SNL Neshorn, for the german translation.
 - 0x07cf, for the italian translation.
+- Herobrot, for the spanish translation.
 
 Feel free to contribute a translation if you want to!
 
