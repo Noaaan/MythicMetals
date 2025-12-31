@@ -407,16 +407,16 @@ public class BlockSet {
         /**
          * Creates an ore variant.
          *
-         * @param name        The name/key for the variant.
+         * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the ore variant.
          * @see Builder
          */
-        public Builder createOreVariant(String name, Identifier miningLevel) {
+        public Builder createOreVariant(String variantName, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
             var variant = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
-            this.oreVariants.put(name, variant);
+            this.oreVariants.put(variantName, variant);
             miningLevels.put(variant, miningLevel);
             miningLevels.put(variant, PICKAXE);
             return this;
@@ -425,35 +425,35 @@ public class BlockSet {
         /**
          * Creates an ore variant, which drops experience.
          *
-         * @param name        The name/key for the variant.
+         * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the variant ore block.
          * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
-            miningLevels.put(oreVariants.get(name), miningLevel);
-            miningLevels.put(oreVariants.get(name), PICKAXE);
+            this.oreVariants.put(variantName, new ExperienceDroppingBlock(experience, settings));
+            miningLevels.put(oreVariants.get(variantName), miningLevel);
+            miningLevels.put(oreVariants.get(variantName), PICKAXE);
             return this;
         }
 
         /**
          * Creates an ore variant, which drops experience.
          *
-         * @param name        The name/key for the variant.
+         * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the variant ore block.
          * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createOreVariant(String name, Identifier miningLevel, UniformIntProvider experience, int luminance) {
+        public Builder createOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience, int luminance) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(blockState -> luminance);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new ExperienceDroppingBlock(experience, settings));
-            miningLevels.put(oreVariants.get(name), miningLevel);
-            miningLevels.put(oreVariants.get(name), PICKAXE);
-            Maldenhagen.injectCopium(this.oreVariants.get(name));
+            this.oreVariants.put(variantName, new ExperienceDroppingBlock(experience, settings));
+            miningLevels.put(oreVariants.get(variantName), miningLevel);
+            miningLevels.put(oreVariants.get(variantName), PICKAXE);
+            Maldenhagen.injectCopium(this.oreVariants.get(variantName));
             return this;
         }
 
@@ -491,17 +491,17 @@ public class BlockSet {
         /**
          * A special method for the creation of variants from {@link StarriteOreBlock}.
          *
-         * @param name        The name/key for the variant.
+         * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the block.
          * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
          */
-        public Builder createStarriteOreVariant(String name, Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createStarriteOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new StarriteOreBlock(settings, experience));
-            miningLevels.put(oreVariants.get(name), miningLevel);
-            miningLevels.put(oreVariants.get(name), PICKAXE);
+            this.oreVariants.put(variantName, new StarriteOreBlock(settings, experience));
+            miningLevels.put(oreVariants.get(variantName), miningLevel);
+            miningLevels.put(oreVariants.get(variantName), PICKAXE);
             return this;
         }
 
