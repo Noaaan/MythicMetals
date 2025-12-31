@@ -89,5 +89,6 @@ public class LegacyIds {
     public static void registerAliases() {
         getLegacyItemIds().forEach(Registries.ITEM::addAlias);
         getLegacyBlockIds().forEach(Registries.BLOCK::addAlias);
+        Registries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id("star_platinum_ingot"));
     }
 }

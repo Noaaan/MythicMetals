@@ -48,7 +48,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
     @Override
     public void processField(ItemSet value, String name, Field field) {
-        value.register(name, value.equals(STAR_PLATINUM));
+        value.register(name);
     }
 
     @Override

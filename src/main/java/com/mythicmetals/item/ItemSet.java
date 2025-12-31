@@ -83,13 +83,6 @@ public class ItemSet {
         }
     }
 
-    public void register(String name, boolean imStarPlatinum) {
-        if (imStarPlatinum) {
-            Registries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id(name + "_ingot"));
-        }
-        register(name);
-    }
-
     protected Item makeItem(Item.Settings settings) {
         return new Item(settings);
     }
