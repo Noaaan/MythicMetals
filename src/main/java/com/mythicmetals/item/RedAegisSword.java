@@ -1,13 +1,9 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
-
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.ToolMaterial;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import java.util.List;
 
 public class RedAegisSword extends SwordItem {

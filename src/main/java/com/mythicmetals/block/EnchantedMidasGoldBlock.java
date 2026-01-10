@@ -2,7 +2,6 @@ package com.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;

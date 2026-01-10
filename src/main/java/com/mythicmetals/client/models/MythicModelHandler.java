@@ -2,13 +2,10 @@ package com.mythicmetals.client.models;
 
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.mixin.client.EntityModelLayersAccessor;
-import net.minecraft.client.model.ElytraModel;
-import net.minecraft.client.model.MinecartModel;
-import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
-
 import net.minecraft.resources.ResourceLocation;
 import java.util.function.BiConsumer;
 

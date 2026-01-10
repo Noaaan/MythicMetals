@@ -4,8 +4,6 @@ import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
 import net.fabricmc.loader.api.FabricLoader;
 
-import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
-
 /**
  * Truly hardcode abilities onto items. These act as enchantments, but they stack with them.
  * FIXME - Move/make these into components, attributes, or move them to more appropriate places

@@ -1,15 +1,15 @@
 package com.mythicmetals.data;
 
-import static com.mythicmetals.misc.RegistryHelper.id;
-import static net.minecraft.core.registries.Registries.ENCHANTMENT;
-import static net.minecraft.core.registries.Registries.ENTITY_TYPE;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
+
+import static com.mythicmetals.misc.RegistryHelper.id;
+import static net.minecraft.core.registries.Registries.ENCHANTMENT;
+import static net.minecraft.core.registries.Registries.ENTITY_TYPE;
 
 public class MythicTags {
 

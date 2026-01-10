@@ -1,8 +1,8 @@
 package com.mythicmetals.misc;
 
-import java.util.HashMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import java.util.HashMap;
 
 public class LegacyIds {
     private static final HashMap<ResourceLocation, ResourceLocation> LEGACY_ITEM_IDS = new HashMap<>();

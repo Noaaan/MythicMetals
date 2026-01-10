@@ -3,7 +3,6 @@ package com.mythicmetals.component;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -11,6 +10,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipProvider;
+import java.util.function.Consumer;
 
 public record DrillComponent(int fuel) implements TooltipProvider {
     public static final Endec<DrillComponent> ENDEC = StructEndecBuilder.of(

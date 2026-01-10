@@ -1,9 +1,9 @@
 package com.mythicmetals.armor;
 
-import java.util.function.Consumer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
+import java.util.function.Consumer;
 
 public class MetallurgiumArmorSet extends ArmorSet {
 

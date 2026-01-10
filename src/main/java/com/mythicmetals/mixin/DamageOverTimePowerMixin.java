@@ -4,14 +4,13 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mythicmetals.ability.Abilities;
 import io.github.apace100.apoli.power.type.DamageOverTimePowerType;
 import io.github.apace100.apoli.power.type.PowerType;
-import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.At;
-import java.util.Optional;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.At;
+import java.util.Optional;
 
 @Pseudo
 @Mixin(value = DamageOverTimePowerType.class, remap = false)

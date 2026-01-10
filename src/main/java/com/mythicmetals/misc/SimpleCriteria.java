@@ -2,11 +2,9 @@ package com.mythicmetals.misc;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.advancements.critereon.ContextAwarePredicate;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.server.level.ServerPlayer;
+import java.util.Optional;
 
 public class SimpleCriteria extends SimpleCriterionTrigger<SimpleCriteria.Conditions> {
 

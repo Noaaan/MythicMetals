@@ -9,8 +9,8 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
-import java.util.concurrent.CompletableFuture;
 import net.minecraft.network.chat.Component;
+import java.util.concurrent.CompletableFuture;
 
 public class ArmorSetArgumentType implements ArgumentType<ArmorSet> {
 

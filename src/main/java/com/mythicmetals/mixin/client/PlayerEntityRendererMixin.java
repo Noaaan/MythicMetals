@@ -1,7 +1,6 @@
 package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.client.MythicMetalsPlayerRenderContext;
 import com.mythicmetals.client.MythicMetalsRenderState;
 import com.mythicmetals.component.DrillComponent;

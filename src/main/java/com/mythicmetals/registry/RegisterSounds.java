@@ -4,7 +4,6 @@ import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;

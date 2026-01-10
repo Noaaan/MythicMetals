@@ -3,7 +3,6 @@ package com.mythicmetals.client.rendering;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.entity.BanglumTntMinecartEntity;
-
 import net.minecraft.client.renderer.entity.AbstractMinecartRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.MinecartTntRenderState;

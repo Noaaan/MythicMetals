@@ -1,10 +1,10 @@
 package com.mythicmetals.armor;
 
 import com.mythicmetals.MythicAttributeModifier;
-import java.util.List;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
+import java.util.List;
 
 public class TidesingerArmorSet extends ArmorSet {
 

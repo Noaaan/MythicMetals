@@ -5,7 +5,6 @@ import com.mythicmetals.MythicMetals;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
 import net.minecraft.resources.RegistryOps;
-import org.jetbrains.annotations.Nullable;
 
 public class NuggetsLoadedCondition implements ResourceCondition {
     public static final MapCodec<NuggetsLoadedCondition> CODEC = MapCodec.unit(NuggetsLoadedCondition::new);

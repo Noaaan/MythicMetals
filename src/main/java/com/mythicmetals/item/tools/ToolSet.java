@@ -6,16 +6,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
-
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.ToolMaterial;
-
+import net.minecraft.world.item.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;

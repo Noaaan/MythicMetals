@@ -3,14 +3,7 @@ package com.mythicmetals.item.tools;
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
-
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import java.util.List;
 
 public class PrometheumToolSet extends ToolSet {

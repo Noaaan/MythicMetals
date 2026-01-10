@@ -9,8 +9,8 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
-import java.util.concurrent.CompletableFuture;
 import net.minecraft.network.chat.Component;
+import java.util.concurrent.CompletableFuture;
 
 public class BlockSetArgumentType implements ArgumentType<BlockSet> {
     private final SimpleCommandExceptionType EXCEPTION = new SimpleCommandExceptionType(

@@ -2,7 +2,6 @@ package com.mythicmetals.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.config.MythicConfigModel;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ui.component.TextureComponent;
@@ -10,7 +9,6 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 

@@ -4,9 +4,9 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.SimpleCriteria;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
-import java.lang.reflect.Field;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.CriterionTrigger;
+import java.lang.reflect.Field;
 
 public class RegisterCriteria implements SimpleFieldProcessingSubject<CriterionTrigger<?>> {
     public static final SimpleCriteria USED_BLAST_MINING = new SimpleCriteria();

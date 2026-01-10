@@ -1,8 +1,6 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.mythicmetals.component.BlastMiningComponent;
-import com.mythicmetals.component.BrandingComponent;
 import com.mythicmetals.component.MythicDataComponents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;

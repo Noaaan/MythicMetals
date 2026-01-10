@@ -5,11 +5,9 @@ import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.TagInjector;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.Properties;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 

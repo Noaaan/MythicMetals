@@ -6,7 +6,6 @@ import com.glisco.isometricrenders.screen.RenderScreen;
 import com.glisco.isometricrenders.screen.ScreenScheduler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.TidesingerPatternComponent;
@@ -15,8 +14,6 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.Equippable;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,19 +1,13 @@
 package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.StarPlatCloakModel;
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.client.model.ElytraModel;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.PlayerCapeModel;
-import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelLayers;
-
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -23,7 +17,6 @@ import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.world.item.Item;
 
 public class MythicMetalsCustomFeatureRenderer extends RenderLayer<PlayerRenderState, PlayerModel> {
 

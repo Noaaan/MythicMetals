@@ -2,15 +2,11 @@ package com.mythicmetals.armor;
 
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.component.ItemAttributeModifiers.Builder;
 
 public class CelestiumElytra extends Item {
     public CelestiumElytra(Properties settings) {

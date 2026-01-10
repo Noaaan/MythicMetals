@@ -8,8 +8,8 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.config.OreConfig;
-import java.util.concurrent.CompletableFuture;
 import net.minecraft.network.chat.Component;
+import java.util.concurrent.CompletableFuture;
 
 public class OreConfigArgumentType implements ArgumentType<OreConfig> {
     private final SimpleCommandExceptionType EXCEPTION = new SimpleCommandExceptionType(

@@ -1,5 +1,6 @@
 package com.mythicmetals.client.rendering;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.client.MythicMetalsRenderState;
 import com.mythicmetals.client.models.MythicModelHandler;
@@ -7,7 +8,6 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
@@ -17,9 +17,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors.SHIELD_BREAK_COLOR;
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 
 public class PlayerEnergySwirlFeatureRenderer<S extends PlayerRenderState, M extends PlayerModel> extends RenderLayer<S, M> {
 

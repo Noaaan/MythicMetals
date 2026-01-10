@@ -4,12 +4,12 @@ import com.mythicmetals.item.tools.MidasGoldSword;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import java.util.function.Consumer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipProvider;
+import java.util.function.Consumer;
 
 public record GoldFoldedComponent(int goldFolded, boolean isRoyal, boolean showTooltip) implements TooltipProvider {
 

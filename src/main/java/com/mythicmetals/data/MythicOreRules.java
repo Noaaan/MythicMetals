@@ -2,13 +2,10 @@ package com.mythicmetals.data;
 
 import com.google.common.collect.ImmutableList;
 import com.mythicmetals.block.MythicBlocks;
-
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.*;
 
 public class MythicOreRules {
     // Defines new RuleTest(s), which checks what blocks an ore can spawn in

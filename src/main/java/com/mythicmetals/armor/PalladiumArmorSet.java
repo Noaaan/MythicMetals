@@ -1,11 +1,11 @@
 package com.mythicmetals.armor;
 
 import com.mythicmetals.MythicAttributeModifier;
-import java.util.List;
-import java.util.function.Consumer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class PalladiumArmorSet extends ArmorSet {
 
