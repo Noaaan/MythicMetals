@@ -1,8 +1,8 @@
 package com.mythicmetals.mixin;
 
 import com.mojang.serialization.Dynamic;
-import net.minecraft.datafixer.fix.ItemStackComponentizationFix;
-import net.minecraft.util.Util;
+import net.minecraft.Util;
+import net.minecraft.util.datafix.fixes.ItemStackComponentizationFix;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -42,42 +42,42 @@ public abstract class ItemStackComponentizationFixin {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Inject(method = "fixStack", at = @At("TAIL"))
-    private static void mythicmetals$migrateToMythicDataComponents(ItemStackComponentizationFix.StackData data, Dynamic dynamic, CallbackInfo ci) {
-        if (data.itemMatches(MM_MIDAS)) {
+    private static void mythicmetals$migrateToMythicDataComponents(ItemStackComponentizationFix.ItemStackData data, Dynamic dynamic, CallbackInfo ci) {
+        if (data.is(MM_MIDAS)) {
             data.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
-                .setFieldIfPresent("gold_folded", data.getAndRemove("GoldFolded").result())
+                .setFieldIfPresent("gold_folded", data.removeTag("GoldFolded").result())
                 .set("is_royal", dynamic.createBoolean(false))
                 .set("show_tooltip", dynamic.createBoolean(true))
             );
-            data.getAndRemove("IsRoyal");
-            data.getAndRemove("IsGilded");
+            data.removeTag("IsRoyal");
+            data.removeTag("IsGilded");
         }
 
-        if (data.itemEquals("mythicmetals:royal_midas_gold_sword")) {
+        if (data.is("mythicmetals:royal_midas_gold_sword")) {
             data.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
-                .setFieldIfPresent("gold_folded", data.getAndRemove("GoldFolded").result())
+                .setFieldIfPresent("gold_folded", data.removeTag("GoldFolded").result())
                 .set("is_royal", dynamic.createBoolean(true))
                 .set("show_tooltip", dynamic.createBoolean(true))
             );
-            data.getAndRemove("IsRoyal");
-            data.getAndRemove("IsGilded");
+            data.removeTag("IsRoyal");
+            data.removeTag("IsGilded");
         }
 
-        if (data.itemMatches(MM_PROMETHEUM)) {
+        if (data.is(MM_PROMETHEUM)) {
             data.setComponent("mythicmetals:prometheum", dynamic.emptyMap()
-                .setFieldIfPresent("durability_repaired", data.getAndRemove("DurabilityRepaired").result())
+                .setFieldIfPresent("durability_repaired", data.removeTag("DurabilityRepaired").result())
             );
         }
 
-        if (data.itemEquals("mythicmetals:mythril_drill")) {
+        if (data.is("mythicmetals:mythril_drill")) {
 
             var list = Util.make(new ArrayList<Dynamic<?>>(), objects -> {
-                objects.add(data.getAndRemove("UpgradeSlot1").result().orElse(dynamic.emptyMap()));
-                objects.add(data.getAndRemove("UpgradeSlot2").result().orElse(dynamic.emptyMap()));
+                objects.add(data.removeTag("UpgradeSlot1").result().orElse(dynamic.emptyMap()));
+                objects.add(data.removeTag("UpgradeSlot2").result().orElse(dynamic.emptyMap()));
             });
 
             data.setComponent("mythicmetals:drill", dynamic.emptyMap()
-                .setFieldIfPresent("fuel", data.getAndRemove("Fuel").result())
+                .setFieldIfPresent("fuel", data.removeTag("Fuel").result())
             );
 
             data.setComponent("mythicmetals:upgrades", dynamic.emptyMap()
@@ -85,12 +85,12 @@ public abstract class ItemStackComponentizationFixin {
                 .set("items", dynamic.createList(list.stream()))
             );
 
-            data.getAndRemove("IsActive");
+            data.removeTag("IsActive");
         }
 
-        if (data.itemMatches(MM_TIDESINGER)) {
+        if (data.is(MM_TIDESINGER)) {
             data.setComponent("mythicmetals:tidesinger", dynamic.emptyMap()
-                .setFieldIfPresent("pattern", data.getAndRemove("mm_coral_type").result())
+                .setFieldIfPresent("pattern", data.removeTag("mm_coral_type").result())
             );
         }
     }

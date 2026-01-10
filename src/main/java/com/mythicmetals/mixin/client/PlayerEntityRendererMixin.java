@@ -1,28 +1,29 @@
 package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.client.MythicMetalsPlayerRenderContext;
 import com.mythicmetals.client.MythicMetalsRenderState;
 import com.mythicmetals.component.DrillComponent;
 import com.mythicmetals.component.MythicDataComponents;
-import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(PlayerEntityRenderer.class)
+@Mixin(PlayerRenderer.class)
 public class PlayerEntityRendererMixin {
 
     @Inject(method = "updateRenderState(Lnet/minecraft/client/network/AbstractClientPlayerEntity;Lnet/minecraft/client/render/entity/state/PlayerEntityRenderState;F)V", at = @At("TAIL"))
-    private void mythicmetals$updatePlayerRenderState(AbstractClientPlayerEntity abstractClientPlayerEntity, PlayerEntityRenderState playerEntityRenderState, float f, CallbackInfo ci) {
+    private void mythicmetals$updatePlayerRenderState(AbstractClientPlayer abstractClientPlayerEntity, PlayerRenderState playerEntityRenderState, float f, CallbackInfo ci) {
         var carmotShield = abstractClientPlayerEntity.getComponent(MythicMetals.CARMOT_SHIELD);
         ((MythicMetalsRenderState) playerEntityRenderState).mythicmetals$setPlayerRenderContext(new MythicMetalsPlayerRenderContext(carmotShield));
     }
@@ -62,9 +63,9 @@ public class PlayerEntityRendererMixin {
 //    }
 //
     @Inject(method = "getArmPose(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/util/Hand;)Lnet/minecraft/client/render/entity/model/BipedEntityModel$ArmPose;", at = @At("RETURN"), cancellable = true)
-    private static void mythicmetals$mythrilDrillPose(PlayerEntity player, ItemStack stack, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
+    private static void mythicmetals$mythrilDrillPose(Player player, ItemStack stack, InteractionHand hand, CallbackInfoReturnable<HumanoidModel.ArmPose> cir) {
         if (stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel()) {
-            cir.setReturnValue(BipedEntityModel.ArmPose.CROSSBOW_CHARGE);
+            cir.setReturnValue(HumanoidModel.ArmPose.CROSSBOW_CHARGE);
         }
     }
 }

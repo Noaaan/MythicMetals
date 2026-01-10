@@ -4,49 +4,56 @@ import blue.endless.jankson.annotation.Nullable;
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.AquariumResonatorBlockEntity;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.*;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-public class AquariumResonatorBlock extends BlockWithEntity {
 
-    public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
-    public static final MapCodec<AquariumResonatorBlock> CODEC = createCodec(AquariumResonatorBlock::new);
+public class AquariumResonatorBlock extends BaseEntityBlock {
 
-    protected AquariumResonatorBlock(Settings settings) {
+    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+
+    public static final MapCodec<AquariumResonatorBlock> CODEC = simpleCodec(AquariumResonatorBlock::new);
+
+    protected AquariumResonatorBlock(Properties settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(ACTIVE, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(ACTIVE);
-        super.appendProperties(builder);
+        super.createBlockStateDefinition(builder);
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new AquariumResonatorBlockEntity(RegisterBlockEntityTypes.AQUARIUM_RESONATOR, pos, state);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return validateTicker(type, RegisterBlockEntityTypes.AQUARIUM_RESONATOR, AquariumResonatorBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, RegisterBlockEntityTypes.AQUARIUM_RESONATOR, AquariumResonatorBlockEntity::tick);
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 }

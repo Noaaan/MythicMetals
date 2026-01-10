@@ -2,32 +2,35 @@ package com.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.BlockPos;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class EnchantedMidasGoldBlock extends BlockWithEntity {
+public class EnchantedMidasGoldBlock extends BaseEntityBlock {
 
-    public static final MapCodec<EnchantedMidasGoldBlock> CODEC = createCodec(EnchantedMidasGoldBlock::new);
+    public static final MapCodec<EnchantedMidasGoldBlock> CODEC = simpleCodec(EnchantedMidasGoldBlock::new);
 
-    public EnchantedMidasGoldBlock(Settings settings) {
+    public EnchantedMidasGoldBlock(Properties settings) {
         super(settings);
     }
 
     @Override
-    protected MapCodec<? extends BlockWithEntity> getCodec() {
+    protected MapCodec<? extends BaseEntityBlock> codec() {
         return CODEC;
     }
 
     @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new EnchantedMidasGoldBlockEntity(pos, state);
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 }

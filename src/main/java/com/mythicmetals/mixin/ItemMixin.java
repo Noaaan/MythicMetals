@@ -2,13 +2,16 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,38 +25,38 @@ public abstract class ItemMixin {
 
     @Inject(method = "postProcessComponents", at = @At("HEAD"))
     private void mythicmetals$dynamicAttributeHandler(ItemStack stack, CallbackInfo ci) {
-        if (!stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) return;
-        if (!stack.contains(MythicDataComponents.PROMETHEUM)) return;
+        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
+        if (!stack.has(MythicDataComponents.PROMETHEUM)) return;
         var prometheumComponent = stack.get(MythicDataComponents.PROMETHEUM);
         assert prometheumComponent != null;
 
         // Handle Overgrown modifiers
         // Equippables get armor and toughness. Anything else gets extra damage
         if (prometheumComponent.isOvergrown()) {
-            if (stack.contains(DataComponentTypes.EQUIPPABLE)) {
-                var attributeComponent = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
-                var equippableComponent = stack.get(DataComponentTypes.EQUIPPABLE);
+            if (stack.has(DataComponents.EQUIPPABLE)) {
+                var attributeComponent = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+                var equippableComponent = stack.get(DataComponents.EQUIPPABLE);
                 assert attributeComponent != null;
                 assert equippableComponent != null;
                 var changedComponent = attributeComponent
-                    .with(EntityAttributes.ARMOR, createOvergrownModifier(stack, 1, equippableComponent.slot()), AttributeModifierSlot.forEquipmentSlot(equippableComponent.slot()))
-                    .with(EntityAttributes.ARMOR_TOUGHNESS, createOvergrownToughnessModifier(stack, 0), AttributeModifierSlot.forEquipmentSlot(equippableComponent.slot()));
-                stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, changedComponent);
-            } else if (stack.contains(DataComponentTypes.TOOL)) {
-                var attributeComponent = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+                    .withModifierAdded(Attributes.ARMOR, createOvergrownModifier(stack, 1, equippableComponent.slot()), EquipmentSlotGroup.bySlot(equippableComponent.slot()))
+                    .withModifierAdded(Attributes.ARMOR_TOUGHNESS, createOvergrownToughnessModifier(stack, 0), EquipmentSlotGroup.bySlot(equippableComponent.slot()));
+                stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
+            } else if (stack.has(DataComponents.TOOL)) {
+                var attributeComponent = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
                 assert attributeComponent != null;
                 var modifier = createOvergrownModifier(stack, 0);
-                var changedComponent = attributeComponent.with(EntityAttributes.ATTACK_DAMAGE, modifier, AttributeModifierSlot.MAINHAND);
-                stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, changedComponent);
+                var changedComponent = attributeComponent.withModifierAdded(Attributes.ATTACK_DAMAGE, modifier, EquipmentSlotGroup.MAINHAND);
+                stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
             }
         }
     }
 
     @Inject(method = "inventoryTick", at = @At("TAIL"))
-    private void mythicmetals$inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
-        if (world.isClient()) return;
+    private void mythicmetals$inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected, CallbackInfo ci) {
+        if (world.isClientSide()) return;
 
-        if (stack.contains(MythicDataComponents.PROMETHEUM)) {
+        if (stack.has(MythicDataComponents.PROMETHEUM)) {
             PrometheumComponent.tickAutoRepair(stack, world);
         }
     }

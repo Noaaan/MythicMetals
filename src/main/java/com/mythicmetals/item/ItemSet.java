@@ -3,9 +3,13 @@ package com.mythicmetals.item;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.TagInjector;
-import net.minecraft.item.Item;
-import net.minecraft.registry.*;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
@@ -20,9 +24,9 @@ public class ItemSet {
     private final float xp;
     private final String name;
 
-    private static Item.Settings createSettings(RegistryKey<Item> registryKey, Consumer<Item.Settings> settingsProcessor) {
-        final var settings = new Item.Settings()
-            .registryKey(registryKey)
+    private static Item.Properties createSettings(ResourceKey<Item> registryKey, Consumer<Item.Properties> settingsProcessor) {
+        final var settings = new Item.Properties()
+            .setId(registryKey)
             .group(MythicMetals.TABBED_GROUP)
             .tab(0);
         settingsProcessor.accept(settings);
@@ -54,11 +58,11 @@ public class ItemSet {
         });
     }
 
-    public ItemSet(String name, boolean isAlloy, boolean requiresBlasting, Consumer<Item.Settings> settingsConsumer) {
+    public ItemSet(String name, boolean isAlloy, boolean requiresBlasting, Consumer<Item.Properties> settingsConsumer) {
         this(name, isAlloy, requiresBlasting, 0.1f, settingsConsumer);
     }
 
-    public ItemSet(String name, boolean isAlloy, boolean requiresBlasting, float xp, Consumer<Item.Settings> settingsConsumer) {
+    public ItemSet(String name, boolean isAlloy, boolean requiresBlasting, float xp, Consumer<Item.Properties> settingsConsumer) {
         this.ingotItem = makeItem(createSettings(itemKey(name + "_ingot"), settingsConsumer));
         this.name = name;
         if (!isAlloy) {
@@ -72,18 +76,18 @@ public class ItemSet {
     }
 
     public void register(String name) {
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_ingot"), ingotItem);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_ingot"), ingotItem);
         if (rawOreItem != null) {
-            Registry.register(Registries.ITEM, RegistryHelper.id("raw_" + name), rawOreItem);
+            Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id("raw_" + name), rawOreItem);
         }
         if (nuggetItem != null) {
-            Registry.register(Registries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
+            Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
             // Conditionally add nuggets to nuggets tag
-            TagInjector.inject(Registries.ITEM, Identifier.of("c", "nuggets"), nuggetItem);
+            TagInjector.inject(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "nuggets"), nuggetItem);
         }
     }
 
-    protected Item makeItem(Item.Settings settings) {
+    protected Item makeItem(Item.Properties settings) {
         return new Item(settings);
     }
 

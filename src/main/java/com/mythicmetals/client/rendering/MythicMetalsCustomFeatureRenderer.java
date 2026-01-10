@@ -1,44 +1,55 @@
 package com.mythicmetals.client.rendering;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.StarPlatCloakModel;
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.client.render.*;
-import net.minecraft.client.render.entity.equipment.EquipmentModel;
-import net.minecraft.client.render.entity.equipment.EquipmentRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.model.*;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.model.ElytraModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.PlayerCapeModel;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelLayers;
 
-public class MythicMetalsCustomFeatureRenderer extends FeatureRenderer<PlayerEntityRenderState, PlayerEntityModel> {
 
-    private final BipedEntityModel<PlayerEntityRenderState> starPlatCape;
-    private final PlayerCapeModel<PlayerEntityRenderState> hallowedCape;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
+import net.minecraft.world.item.Item;
+
+public class MythicMetalsCustomFeatureRenderer extends RenderLayer<PlayerRenderState, PlayerModel> {
+
+    private final HumanoidModel<PlayerRenderState> starPlatCape;
+    private final PlayerCapeModel<PlayerRenderState> hallowedCape;
     // TODO - Use custom model instead of vanilla Elytra
-    private final ElytraEntityModel celestiumElytra;
-    private final ElytraEntityModel babyCelestiumElytra;
-    private final EquipmentRenderer equipmentRenderer;
+    private final ElytraModel celestiumElytra;
+    private final ElytraModel babyCelestiumElytra;
+    private final EquipmentLayerRenderer equipmentRenderer;
 
-    public MythicMetalsCustomFeatureRenderer(FeatureRendererContext<PlayerEntityRenderState, PlayerEntityModel> context, LoadedEntityModels modelLoader, EquipmentRenderer equipmentRenderer) {
+    public MythicMetalsCustomFeatureRenderer(RenderLayerParent<PlayerRenderState, PlayerModel> context, EntityModelSet modelLoader, EquipmentLayerRenderer equipmentRenderer) {
         super(context);
 
-        this.starPlatCape = new StarPlatCloakModel<>(modelLoader.getModelPart(MythicModelHandler.STAR_PLATINUM_CLOAK));
-        this.hallowedCape = new PlayerCapeModel<>(modelLoader.getModelPart(EntityModelLayers.PLAYER_CAPE));
-        this.celestiumElytra = new ElytraEntityModel(modelLoader.getModelPart(MythicModelHandler.CELESTIUM_ELYTRA));
-        this.babyCelestiumElytra = new ElytraEntityModel(modelLoader.getModelPart(MythicModelHandler.BABY_CELESTIUM_ELYTRA));
+        this.starPlatCape = new StarPlatCloakModel<>(modelLoader.bakeLayer(MythicModelHandler.STAR_PLATINUM_CLOAK));
+        this.hallowedCape = new PlayerCapeModel<>(modelLoader.bakeLayer(ModelLayers.PLAYER_CAPE));
+        this.celestiumElytra = new ElytraModel(modelLoader.bakeLayer(MythicModelHandler.CELESTIUM_ELYTRA));
+        this.babyCelestiumElytra = new ElytraModel(modelLoader.bakeLayer(MythicModelHandler.BABY_CELESTIUM_ELYTRA));
         this.equipmentRenderer = equipmentRenderer;
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, PlayerEntityRenderState playerRenderState, float limbAngle, float limbDistance) {
-        if (!playerRenderState.invisible && playerRenderState.capeVisible) {
-            var chestItem = playerRenderState.equippedChestStack.getItem();
+    public void render(PoseStack matrices, MultiBufferSource vertexConsumers, int light, PlayerRenderState playerRenderState, float limbAngle, float limbDistance) {
+        if (!playerRenderState.isInvisible && playerRenderState.showCape) {
+            var chestItem = playerRenderState.chestEquipment.getItem();
             // Respect the players capes, if they have any
-            if (playerRenderState.skinTextures.capeTexture() == null) {
+            if (playerRenderState.skin.capeTexture() == null) {
                 if (chestItem == MythicArmor.STAR_PLATINUM.getChestplate()) {
                     renderStarPlatCape(matrices, vertexConsumers, light, playerRenderState);
                 }
@@ -52,40 +63,40 @@ public class MythicMetalsCustomFeatureRenderer extends FeatureRenderer<PlayerEnt
         }
     }
 
-    private void renderStarPlatCape(MatrixStack ms, VertexConsumerProvider vertices, int light, PlayerEntityRenderState playerEntityRenderState) {
-        ms.push();
-        this.getContextModel().copyTransforms(this.starPlatCape);
-        var vertexConsumer = vertices.getBuffer(RenderLayer.getEntitySolid(MythicModelHandler.STAR_PLATINUM_CLOAK_TEXTURE));
-        starPlatCape.setAngles(playerEntityRenderState);
-        starPlatCape.render(ms, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
-        ms.pop();
+    private void renderStarPlatCape(PoseStack ms, MultiBufferSource vertices, int light, PlayerRenderState playerEntityRenderState) {
+        ms.pushPose();
+        this.getParentModel().copyPropertiesTo(this.starPlatCape);
+        var vertexConsumer = vertices.getBuffer(RenderType.entitySolid(MythicModelHandler.STAR_PLATINUM_CLOAK_TEXTURE));
+        starPlatCape.setupAnim(playerEntityRenderState);
+        starPlatCape.renderToBuffer(ms, vertexConsumer, light, OverlayTexture.NO_OVERLAY);
+        ms.popPose();
     }
 
-    private void renderHallowedCape(MatrixStack ms, VertexConsumerProvider vertices, int light, PlayerEntityRenderState playerEntityRenderState) {
-        ms.push();
-        var vertexConsumer = vertices.getBuffer(RenderLayer.getEntitySolid(MythicModelHandler.HALLOWED_CAPE));
-        this.getContextModel().copyTransforms(this.hallowedCape);
-        this.hallowedCape.setAngles(playerEntityRenderState);
-        this.hallowedCape.render(ms, vertexConsumer, light, OverlayTexture.DEFAULT_UV);
-        ms.pop();
+    private void renderHallowedCape(PoseStack ms, MultiBufferSource vertices, int light, PlayerRenderState playerEntityRenderState) {
+        ms.pushPose();
+        var vertexConsumer = vertices.getBuffer(RenderType.entitySolid(MythicModelHandler.HALLOWED_CAPE));
+        this.getParentModel().copyPropertiesTo(this.hallowedCape);
+        this.hallowedCape.setupAnim(playerEntityRenderState);
+        this.hallowedCape.renderToBuffer(ms, vertexConsumer, light, OverlayTexture.NO_OVERLAY);
+        ms.popPose();
     }
 
-    private void renderCelestiumElytra(MatrixStack matrixStack, VertexConsumerProvider vpo, int light, BipedEntityRenderState renderState) {
-        ElytraEntityModel elytraEntityModel = renderState.baby ? this.babyCelestiumElytra : this.celestiumElytra;
-        matrixStack.push();
+    private void renderCelestiumElytra(PoseStack matrixStack, MultiBufferSource vpo, int light, HumanoidRenderState renderState) {
+        ElytraModel elytraEntityModel = renderState.isBaby ? this.babyCelestiumElytra : this.celestiumElytra;
+        matrixStack.pushPose();
         matrixStack.translate(0.0F, 0.0F, 0.125F);
-        elytraEntityModel.setAngles(renderState);
+        elytraEntityModel.setupAnim(renderState);
         this.equipmentRenderer
-            .render(
-                EquipmentModel.LayerType.WINGS,
+            .renderLayers(
+                EquipmentClientInfo.LayerType.WINGS,
                 RegistryHelper.equipmentAsset("celestium_elytra"),
                 elytraEntityModel,
-                renderState.equippedChestStack,
+                renderState.chestEquipment,
                 matrixStack,
                 vpo,
                 light,
                 MythicModelHandler.CELESTIUM_ELYTRA_TEXTURE
             );
-        matrixStack.pop();
+        matrixStack.popPose();
     }
 }

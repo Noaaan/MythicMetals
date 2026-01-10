@@ -4,66 +4,69 @@ import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.misc.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterSounds;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.registry.tag.EntityTypeTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.Box;
-import net.minecraft.world.World;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 public class CarmotBellItem extends BlockItem {
 
     public static final double RANGE = 6.0;
 
-    public CarmotBellItem(Settings settings) {
+    public CarmotBellItem(Properties settings) {
         super(MythicBlocks.CARMOT_BELL_BLOCK, settings);
     }
 
     @Override
-    public ActionResult use(World world, PlayerEntity user, Hand hand) {
-        var stack = user.getStackInHand(hand);
-        var entities = world.getOtherEntities(user, Box.of(user.getPos(), RANGE * 2, RANGE, RANGE * 2));
+    public InteractionResult use(Level world, Player user, InteractionHand hand) {
+        var stack = user.getItemInHand(hand);
+        var entities = world.getEntities(user, AABB.ofSize(user.position(), RANGE * 2, RANGE, RANGE * 2));
         entities.forEach(entity -> {
             if (entity instanceof LivingEntity livingEntity) {
-                if (livingEntity.getType().isIn(EntityTypeTags.UNDEAD)) {
+                if (livingEntity.getType().is(EntityTypeTags.UNDEAD)) {
                     var damageSource = CarmotBellDamageSource.of(world, user);
-                    entity.damage(((ServerWorld) world), damageSource, Math.max(10.0f, livingEntity.getHealth() * 0.1f));
-                    MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.getPos());
+                    entity.hurtServer(((ServerLevel) world), damageSource, Math.max(10.0f, livingEntity.getHealth() * 0.1f));
+                    MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.position());
                 } else {
                     livingEntity.heal(Math.max(10.0f, livingEntity.getMaxHealth() * 0.1f));
-                    MythicParticleSystem.HEALING_HEARTS.spawn(world, livingEntity.getPos());
+                    MythicParticleSystem.HEALING_HEARTS.spawn(world, livingEntity.position());
                 }
-                stack.damage(1, user, PlayerEntity.getSlotForHand(hand));
+                stack.hurtAndBreak(1, user, Player.getSlotForHand(hand));
             }
         });
         user.heal(Math.max(10.0f, user.getMaxHealth() * 0.1f));
-        stack.damage(1, user, PlayerEntity.getSlotForHand(hand));
-        MythicParticleSystem.HEALING_AREA.spawn(world, user.getPos(), RANGE);
-        MythicParticleSystem.HEALING_HEARTS.spawn(world, user.getPos());
-        user.getItemCooldownManager().set(stack, 480);
-        world.playSound(user, user.getBlockPos(), RegisterSounds.CARMOT_BELL_RING, SoundCategory.PLAYERS);
-        return ActionResult.SUCCESS;
+        stack.hurtAndBreak(1, user, Player.getSlotForHand(hand));
+        MythicParticleSystem.HEALING_AREA.spawn(world, user.position(), RANGE);
+        MythicParticleSystem.HEALING_HEARTS.spawn(world, user.position());
+        user.getCooldowns().addCooldown(stack, 480);
+        world.playSound(user, user.blockPosition(), RegisterSounds.CARMOT_BELL_RING, SoundSource.PLAYERS);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        if (context.getPlayer() != null && context.getPlayer().isSneaking()) {
-            return super.useOnBlock(context);
+    public InteractionResult useOn(UseOnContext context) {
+        if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
+            return super.useOn(context);
         }
-        return ActionResult.PASS;
+        return InteractionResult.PASS;
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
-        tooltip.add(Text.translatable("tooltip.carmot_bell.info1"));
-        tooltip.add(Text.translatable("tooltip.carmot_bell.info2"));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+        super.appendHoverText(stack, context, tooltip, type);
+        tooltip.add(Component.translatable("tooltip.carmot_bell.info1"));
+        tooltip.add(Component.translatable("tooltip.carmot_bell.info2"));
     }
 }

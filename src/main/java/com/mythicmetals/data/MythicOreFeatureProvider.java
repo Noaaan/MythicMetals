@@ -2,16 +2,17 @@ package com.mythicmetals.data;
 
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import static com.mythicmetals.data.MythicOreFeatures.*;
 import static com.mythicmetals.data.MythicOreRules.*;
 
 public class MythicOreFeatureProvider {
-    public static void initConfiguredFeatures(Registerable<ConfiguredFeature<?, ?>> registerable) {
+    public static void initConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> registerable) {
         // above 0
         OreFeatureHelper.configuredFeature(registerable, ORE_AQUARIUM, STONE_RULE, MythicBlocks.AQUARIUM.getOre(), MythicOreConfigs.AQUARIUM);
         OreFeatureHelper.configuredFeature(registerable, ORE_BANGLUM, STONE_RULE, MythicBlocks.BANGLUM.getOre(), MythicOreConfigs.BANGLUM);
@@ -43,33 +44,33 @@ public class MythicOreFeatureProvider {
         OreFeatureHelper.configuredFeature(registerable, ORE_END_STARRITE, END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), MythicOreConfigs.END_STARRITE);
     }
 
-    public static void initPlacedFeatures(Registerable<PlacedFeature> registerable) {
-        var featureLookup = registerable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_AQUARIUM).registryKey(), AQUARIUM, MythicOreConfigs.AQUARIUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_BANGLUM).registryKey(), BANGLUM, MythicOreConfigs.BANGLUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_KYBER).registryKey(), KYBER, MythicOreConfigs.KYBER);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MANGANESE).registryKey(), MANGANESE, MythicOreConfigs.MANGANESE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_OSMIUM).registryKey(), OSMIUM, MythicOreConfigs.OSMIUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PLATINUM).registryKey(), PLATINUM, MythicOreConfigs.PLATINUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_QUADRILLUM).registryKey(), QUADRILLUM, MythicOreConfigs.QUADRILLUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_RUNITE).registryKey(), RUNITE, MythicOreConfigs.RUNITE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_SILVER).registryKey(), SILVER, MythicOreConfigs.SILVER);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_TIN).registryKey(), TIN, MythicOreConfigs.TIN);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_ADAMANTITE).registryKey(), ADAMANTITE, MythicOreConfigs.ADAMANTITE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_CALCITE_KYBER).registryKey(), CALCITE_KYBER, MythicOreConfigs.CALCITE_KYBER);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_CARMOT).registryKey(), CARMOT, MythicOreConfigs.CARMOT);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_DEEPSLATE_RUNITE).registryKey(), DEEPSLATE_RUNITE, MythicOreConfigs.DEEPSLATE_RUNITE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MYTHRIL).registryKey(), MYTHRIL, MythicOreConfigs.MYTHRIL);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MORKITE).registryKey(), MORKITE, MythicOreConfigs.MORKITE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_ORICHALCUM).registryKey(), ORICHALCUM, MythicOreConfigs.ORICHALCUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PROMETHEUM).registryKey(), PROMETHEUM, MythicOreConfigs.PROMETHEUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_STARRITE).registryKey(), STARRITE, MythicOreConfigs.STARRITE);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_UNOBTAINIUM).registryKey(), UNOBTAINIUM, MythicOreConfigs.UNOBTAINIUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_NETHER_BANGLUM).registryKey(), NETHER_BANGLUM, MythicOreConfigs.NETHER_BANGLUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MIDAS_GOLD).registryKey(), MIDAS_GOLD, MythicOreConfigs.MIDAS_GOLD);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PALLADIUM).registryKey(), PALLADIUM, MythicOreConfigs.PALLADIUM);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_STORMYX).registryKey(), STORMYX, MythicOreConfigs.STORMYX);
-        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_END_STARRITE).registryKey(), END_STARRITE, MythicOreConfigs.END_STARRITE);
+    public static void initPlacedFeatures(BootstrapContext<PlacedFeature> registerable) {
+        var featureLookup = registerable.lookup(Registries.CONFIGURED_FEATURE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_AQUARIUM).key(), AQUARIUM, MythicOreConfigs.AQUARIUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_BANGLUM).key(), BANGLUM, MythicOreConfigs.BANGLUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_KYBER).key(), KYBER, MythicOreConfigs.KYBER);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MANGANESE).key(), MANGANESE, MythicOreConfigs.MANGANESE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_OSMIUM).key(), OSMIUM, MythicOreConfigs.OSMIUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PLATINUM).key(), PLATINUM, MythicOreConfigs.PLATINUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_QUADRILLUM).key(), QUADRILLUM, MythicOreConfigs.QUADRILLUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_RUNITE).key(), RUNITE, MythicOreConfigs.RUNITE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_SILVER).key(), SILVER, MythicOreConfigs.SILVER);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_TIN).key(), TIN, MythicOreConfigs.TIN);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_ADAMANTITE).key(), ADAMANTITE, MythicOreConfigs.ADAMANTITE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_CALCITE_KYBER).key(), CALCITE_KYBER, MythicOreConfigs.CALCITE_KYBER);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_CARMOT).key(), CARMOT, MythicOreConfigs.CARMOT);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_DEEPSLATE_RUNITE).key(), DEEPSLATE_RUNITE, MythicOreConfigs.DEEPSLATE_RUNITE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MYTHRIL).key(), MYTHRIL, MythicOreConfigs.MYTHRIL);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MORKITE).key(), MORKITE, MythicOreConfigs.MORKITE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_ORICHALCUM).key(), ORICHALCUM, MythicOreConfigs.ORICHALCUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PROMETHEUM).key(), PROMETHEUM, MythicOreConfigs.PROMETHEUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_STARRITE).key(), STARRITE, MythicOreConfigs.STARRITE);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_UNOBTAINIUM).key(), UNOBTAINIUM, MythicOreConfigs.UNOBTAINIUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_NETHER_BANGLUM).key(), NETHER_BANGLUM, MythicOreConfigs.NETHER_BANGLUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_MIDAS_GOLD).key(), MIDAS_GOLD, MythicOreConfigs.MIDAS_GOLD);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_PALLADIUM).key(), PALLADIUM, MythicOreConfigs.PALLADIUM);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_STORMYX).key(), STORMYX, MythicOreConfigs.STORMYX);
+        OreFeatureHelper.create(registerable, featureLookup.getOrThrow(ORE_END_STARRITE).key(), END_STARRITE, MythicOreConfigs.END_STARRITE);
 
     }
 }

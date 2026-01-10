@@ -1,59 +1,61 @@
 package com.mythicmetals.client.rendering;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.entity.BanglumTntEntity;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.entity.*;
-import net.minecraft.client.render.entity.state.TntEntityRenderState;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.TntEntity;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RotationAxis;
 
-public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, TntEntityRenderState> {
-    private final BlockRenderManager blockRenderManager;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.TntMinecartRenderer;
+import net.minecraft.client.renderer.entity.state.TntRenderState;
+import net.minecraft.util.Mth;
 
-    public BanglumTntEntityRenderer(EntityRendererFactory.Context context) {
+public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, TntRenderState> {
+    private final BlockRenderDispatcher blockRenderManager;
+
+    public BanglumTntEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.shadowRadius = 0.5F;
-        this.blockRenderManager = context.getBlockRenderManager();
+        this.blockRenderManager = context.getBlockRenderDispatcher();
     }
 
-    public void render(TntEntityRenderState tntEntityRenderState, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        matrixStack.push();
+    public void render(TntRenderState tntEntityRenderState, PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, int i) {
+        matrixStack.pushPose();
         matrixStack.translate(0.0F, 0.5F, 0.0F);
-        float f = tntEntityRenderState.fuse;
-        if (tntEntityRenderState.fuse < 10.0F) {
-            float g = 1.0F - tntEntityRenderState.fuse / 10.0F;
-            g = MathHelper.clamp(g, 0.0F, 1.0F);
+        float f = tntEntityRenderState.fuseRemainingInTicks;
+        if (tntEntityRenderState.fuseRemainingInTicks < 10.0F) {
+            float g = 1.0F - tntEntityRenderState.fuseRemainingInTicks / 10.0F;
+            g = Mth.clamp(g, 0.0F, 1.0F);
             g *= g;
             g *= g;
             float h = 1.0F + g * 0.3F;
             matrixStack.scale(h, h, h);
         }
 
-        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-90.0F));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
         matrixStack.translate(-0.5F, -0.5F, 0.5F);
-        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(90.0F));
+        matrixStack.mulPose(Axis.YP.rotationDegrees(90.0F));
         if (tntEntityRenderState.blockState != null) {
-            TntMinecartEntityRenderer.renderFlashingBlock(
+            TntMinecartRenderer.renderWhiteSolidBlock(
                 this.blockRenderManager, tntEntityRenderState.blockState, matrixStack, vertexConsumerProvider, i, (int)f / 5 % 2 == 0
             );
         }
 
-        matrixStack.pop();
+        matrixStack.popPose();
         super.render(tntEntityRenderState, matrixStack, vertexConsumerProvider, i);
     }
 
-    public TntEntityRenderState createRenderState() {
-        return new TntEntityRenderState();
+    public TntRenderState createRenderState() {
+        return new TntRenderState();
     }
 
-    public void updateRenderState(BanglumTntEntity tntEntity, TntEntityRenderState tntEntityRenderState, float f) {
-        super.updateRenderState(tntEntity, tntEntityRenderState, f);
-        tntEntityRenderState.fuse = tntEntity.getFuse() - f + 1.0F;
-        tntEntityRenderState.blockState = MythicBlocks.BANGLUM_TNT_BLOCK.getDefaultState();
+    public void extractRenderState(BanglumTntEntity tntEntity, TntRenderState tntEntityRenderState, float f) {
+        super.extractRenderState(tntEntity, tntEntityRenderState, f);
+        tntEntityRenderState.fuseRemainingInTicks = tntEntity.getFuse() - f + 1.0F;
+        tntEntityRenderState.blockState = MythicBlocks.BANGLUM_TNT_BLOCK.defaultBlockState();
     }
 
 }

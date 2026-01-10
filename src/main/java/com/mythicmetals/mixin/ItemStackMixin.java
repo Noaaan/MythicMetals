@@ -1,12 +1,13 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.mythicmetals.component.BlastMiningComponent;
 import com.mythicmetals.component.BrandingComponent;
 import com.mythicmetals.component.MythicDataComponents;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.util.ActionResult;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,9 +17,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ItemStackMixin {
 
     @ModifyReturnValue(method = "useOnBlock", at = @At("RETURN"))
-    private ActionResult mythicmetals$handleUseableComponents(ActionResult original, ItemUsageContext context) {
-        var stack = context.getStack();
-        if (stack.contains(MythicDataComponents.BLAST_MINING)) {
+    private InteractionResult mythicmetals$handleUseableComponents(InteractionResult original, UseOnContext context) {
+        var stack = context.getItemInHand();
+        if (stack.has(MythicDataComponents.BLAST_MINING)) {
             var component = stack.get(MythicDataComponents.BLAST_MINING);
             assert component != null;
             return component.trigger(context);
@@ -28,8 +29,8 @@ public class ItemStackMixin {
 
     @Inject(method = "postHit", at = @At("HEAD"), cancellable = false)
     private void mythicmetals$handleCustomOnHitComponents(LivingEntity target, LivingEntity user, CallbackInfoReturnable<Boolean> cir) {
-        if (user.getWeaponStack().contains(MythicDataComponents.BRANDING)) {
-            var component = user.getWeaponStack().get(MythicDataComponents.BRANDING);
+        if (user.getWeaponItem().has(MythicDataComponents.BRANDING)) {
+            var component = user.getWeaponItem().get(MythicDataComponents.BRANDING);
             assert component != null;
             component.applyHeatToTarget(target, user);
         }

@@ -3,12 +3,13 @@ package com.mythicmetals.data;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator.Pack;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 @SuppressWarnings("CodeBlock2Expr")
 public class MythicMetalsData implements DataGeneratorEntrypoint {
@@ -21,30 +22,30 @@ public class MythicMetalsData implements DataGeneratorEntrypoint {
         data.addProvider(MythicMetalsDynamicRegistryProvider::new);
         data.addProvider(MythicRecipeProvider::new);
         data.addProvider((output, registriesFuture) -> {
-            return new MythicBiomeTagProvider(output, RegistryKeys.BIOME, registriesFuture);
+            return new MythicBiomeTagProvider(output, Registries.BIOME, registriesFuture);
         });
         data.addProvider(MythicItemModelProvider::new);
     }
 
     @Override
-    public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, MythicOreFeatureProvider::initConfiguredFeatures);
-        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, MythicOreFeatureProvider::initPlacedFeatures);
+    public void buildRegistry(RegistrySetBuilder registryBuilder) {
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, MythicOreFeatureProvider::initConfiguredFeatures);
+        registryBuilder.add(Registries.PLACED_FEATURE, MythicOreFeatureProvider::initPlacedFeatures);
     }
 
     public static TagKey<Item> createCommonItemTag(String path) {
-        return TagKey.of(RegistryKeys.ITEM, Identifier.of("c", path));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
     public static TagKey<Item> createModItemTag(String path) {
-        return TagKey.of(RegistryKeys.ITEM, RegistryHelper.id(path));
+        return TagKey.create(Registries.ITEM, RegistryHelper.id(path));
     }
 
     public static TagKey<Block> createCommonBlockTag(String path) {
-        return TagKey.of(RegistryKeys.BLOCK, Identifier.of("c", path));
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", path));
     }
 
     public static TagKey<Block> createModBlockTag(String path) {
-        return TagKey.of(RegistryKeys.BLOCK, RegistryHelper.id(path));
+        return TagKey.create(Registries.BLOCK, RegistryHelper.id(path));
     }
 }

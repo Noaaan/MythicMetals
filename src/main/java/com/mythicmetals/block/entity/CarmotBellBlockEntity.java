@@ -1,10 +1,10 @@
 package com.mythicmetals.block.entity;
 
 import com.mythicmetals.block.CarmotBellBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class CarmotBellBlockEntity extends BlockEntity {
 
@@ -14,7 +14,7 @@ public class CarmotBellBlockEntity extends BlockEntity {
         super(RegisterBlockEntityTypes.CARMOT_BELL_BLOCK, pos, state);
     }
 
-    public static void tick(World world, BlockPos blockPos, BlockState blockState, CarmotBellBlockEntity be) {
+    public static void tick(Level world, BlockPos blockPos, BlockState blockState, CarmotBellBlockEntity be) {
         if (be.cooldown > 0) {
             be.cooldown--;
         }
@@ -26,6 +26,6 @@ public class CarmotBellBlockEntity extends BlockEntity {
 
     public void markUsed() {
         cooldown = CarmotBellBlock.COOLDOWN;
-        markDirty();
+        setChanged();
     }
 }

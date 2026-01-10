@@ -4,20 +4,20 @@ import com.mythicmetals.MythicMetals;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.registry.Registries;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
 
-public record UpgradeComponent(List<Item> items, int size) implements TooltipAppender {
+public record UpgradeComponent(List<Item> items, int size) implements TooltipProvider {
 
     public UpgradeComponent(int size) {
         this(Util.make(new ArrayList<>(), items1 -> {
@@ -28,7 +28,7 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipApp
     }
 
     public static final Endec<UpgradeComponent> ENDEC = StructEndecBuilder.of(
-        MinecraftEndecs.ofRegistry(Registries.ITEM).listOf().fieldOf("items", UpgradeComponent::items),
+        MinecraftEndecs.ofRegistry(BuiltInRegistries.ITEM).listOf().fieldOf("items", UpgradeComponent::items),
         Endec.INT.fieldOf("size", UpgradeComponent::size),
         UpgradeComponent::new
     );
@@ -65,9 +65,9 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipApp
     }
 
     @Override
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
         if (this.size > 0 && this.isEmpty()) {
-            tooltip.accept(Text.translatable("tooltip.upgrade_component.tooltip").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+            tooltip.accept(Component.translatable("tooltip.upgrade_component.tooltip").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
         }
 
         if (this.size > this.items.size()) {

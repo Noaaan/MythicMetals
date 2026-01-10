@@ -2,7 +2,7 @@ package com.mythicmetals.misc;
 
 /**
  * Interface used as a hook to check whether an attack was a critical hit.
- * This is interface-injected onto {@link net.minecraft.entity.player.PlayerEntity}
+ * This is interface-injected onto {@link net.minecraft.world.entity.player.Player}
  */
 public interface IsAttackCritical {
 

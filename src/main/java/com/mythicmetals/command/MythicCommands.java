@@ -4,10 +4,13 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
@@ -18,32 +21,36 @@ import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.command.argument.RegistryEntryArgumentType;
-import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.item.*;
-import net.minecraft.item.equipment.trim.ArmorTrim;
-import net.minecraft.item.equipment.trim.ArmorTrimPattern;
-import net.minecraft.loot.context.*;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.server.command.*;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.commands.arguments.ResourceOrIdArgument;
+import net.minecraft.commands.synchronization.SingletonArgumentInfo;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.commands.LootCommand;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.item.equipment.trim.ArmorTrim;
+import net.minecraft.world.item.equipment.trim.TrimPattern;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,65 +74,65 @@ public final class MythicCommands {
         ReflectionUtils.iterateAccessibleStaticFields(MythicOreConfigs.class, OreConfig.class, (value, name, field) -> {
             ORE_CONFIG.put(name, value);
         });
-        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("toolset"), ToolSetArgumentType.class, ConstantArgumentSerializer.of(ToolSetArgumentType::toolSet));
-        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("armorset"), ArmorSetArgumentType.class, ConstantArgumentSerializer.of(ArmorSetArgumentType::armorSet));
-        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("ore-config"), OreConfigArgumentType.class, ConstantArgumentSerializer.of(OreConfigArgumentType::oreConfig));
-        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("blockset"), BlockSetArgumentType.class, ConstantArgumentSerializer.of(BlockSetArgumentType::blockSet));
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("toolset"), ToolSetArgumentType.class, SingletonArgumentInfo.contextFree(ToolSetArgumentType::toolSet));
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("armorset"), ArmorSetArgumentType.class, SingletonArgumentInfo.contextFree(ArmorSetArgumentType::armorSet));
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("ore-config"), OreConfigArgumentType.class, SingletonArgumentInfo.contextFree(OreConfigArgumentType::oreConfig));
+        ArgumentTypeRegistry.registerArgumentType(RegistryHelper.id("blockset"), BlockSetArgumentType.class, SingletonArgumentInfo.contextFree(BlockSetArgumentType::blockSet));
     }
 
     // TODO - Add new command for grabbing the data-generated ore features, and create a datapack skeleton
     public static void registerCommands() {
         CommandRegistrationCallback.EVENT.register((dispatcher, access, env) -> {
-            var mythicRoot = CommandManager.literal("mythicmetals").requires(src -> src.hasPermissionLevel(2)).build();
-            var range = CommandManager.literal("range").build();
-            var tools = CommandManager.literal("tools").build();
-            var allTools = CommandManager.literal("tools-all").executes(MythicCommands::exportAllTools).build();
-            var allArmor = CommandManager.literal("armor-all").executes(MythicCommands::exportAllArmor).build();
-            var ores = CommandManager.literal("ores").build();
-            var armor = CommandManager.literal("armor").build();
-            var midas = CommandManager.literal("give-midas").build();
-            var wiki = CommandManager.literal("wiki").build();
-            var armorStand = CommandManager.literal("armor-stand").build();
-            var loot = CommandManager.literal("test-loot-table").build();
-            var display = CommandManager.literal("place-display").build();
-            var placeBlocks = CommandManager.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
+            var mythicRoot = Commands.literal("mythicmetals").requires(src -> src.hasPermission(2)).build();
+            var range = Commands.literal("range").build();
+            var tools = Commands.literal("tools").build();
+            var allTools = Commands.literal("tools-all").executes(MythicCommands::exportAllTools).build();
+            var allArmor = Commands.literal("armor-all").executes(MythicCommands::exportAllArmor).build();
+            var ores = Commands.literal("ores").build();
+            var armor = Commands.literal("armor").build();
+            var midas = Commands.literal("give-midas").build();
+            var wiki = Commands.literal("wiki").build();
+            var armorStand = Commands.literal("armor-stand").build();
+            var loot = Commands.literal("test-loot-table").build();
+            var display = Commands.literal("place-display").build();
+            var placeBlocks = Commands.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
                 .build();
 
             // TODO - Make this useful command more useful for current use-cases:
             // TODO -- Allow dumping output in a spreadsheet friendly format
-            var rangeType = CommandManager.argument("type", StringArgumentType.word())
+            var rangeType = Commands.argument("type", StringArgumentType.word())
                 .suggests(MythicCommands::dumpType)
                 .executes(MythicCommands::dumpAllOreConfigs)
                 .build();
 
-            var exportOres = CommandManager.argument("ore-config", OreConfigArgumentType.oreConfig())
+            var exportOres = Commands.argument("ore-config", OreConfigArgumentType.oreConfig())
                 .executes(MythicCommands::exportOreData)
                 .build();
 
-            var giveMidas = CommandManager.argument("folds", IntegerArgumentType.integer(0, 10000))
+            var giveMidas = Commands.argument("folds", IntegerArgumentType.integer(0, 10000))
                 .executes(MythicCommands::giveMidasSword)
                 .build();
 
-            var exportTools = CommandManager.argument("toolset", ToolSetArgumentType.toolSet())
+            var exportTools = Commands.argument("toolset", ToolSetArgumentType.toolSet())
                 .executes(MythicCommands::exportTools)
                 .build();
 
-            var exportArmor = CommandManager.argument("armorset", ArmorSetArgumentType.armorSet())
+            var exportArmor = Commands.argument("armorset", ArmorSetArgumentType.armorSet())
                 .executes(MythicCommands::exportArmor)
                 .build();
 
-            var placeDisplay = CommandManager.argument("material", StringArgumentType.word())
+            var placeDisplay = Commands.argument("material", StringArgumentType.word())
                 .suggests(MythicCommands::material)
                 .executes(MythicCommands::placeMythicDisplay)
                 .build();
 
-            var lootTables = CommandManager.argument("loot_table", RegistryEntryArgumentType.LootTableArgumentType.lootTable(access))
-                .suggests(LootCommand.SUGGESTION_PROVIDER)
-                .then(CommandManager.argument("rolls", IntegerArgumentType.integer())
+            var lootTables = Commands.argument("loot_table", ResourceOrIdArgument.LootTableArgument.lootTable(access))
+                .suggests(LootCommand.SUGGEST_LOOT_TABLE)
+                .then(Commands.argument("rolls", IntegerArgumentType.integer())
                     .executes(MythicCommands::testLootTable))
                 .build();
 
-            var trimPattern = CommandManager.argument("trim_pattern", StringArgumentType.word())
+            var trimPattern = Commands.argument("trim_pattern", StringArgumentType.word())
                 .suggests(MythicCommands::trimTypes)
                 .executes(context -> {
                     String matQuery = StringArgumentType.getString(context, "material");
@@ -133,17 +140,13 @@ public final class MythicCommands {
                     return armorStandCommand(context, matQuery, trimQuery);
                 });
 
-            var summonTrims = CommandManager.argument("material", StringArgumentType.word())
+            var summonTrims = Commands.argument("material", StringArgumentType.word())
                 .suggests(MythicCommands::armorMaterial)
                 .executes(context -> {
                     String mat = StringArgumentType.getString(context, "material");
                     return armorStandCommand(context, mat, null);
                 })
                 .then(trimPattern)
-                .build();
-
-            var debugAttributes = CommandManager.literal("give-test-item")
-                .executes(MythicCommands::giveTestHelm)
                 .build();
 
             // Wiki nodes
@@ -171,45 +174,25 @@ public final class MythicCommands {
             mythicRoot.addChild(placeBlocks);
             mythicRoot.addChild(display);
             mythicRoot.addChild(midas);
-            mythicRoot.addChild(debugAttributes);
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
     }
 
-    private static int giveTestHelm(CommandContext<ServerCommandSource> context) {
-        if (context.getSource().getPlayer() != null) {
-            var stack = new ItemStack(Items.GOLDEN_HELMET);
-            var attributeBuilder = AttributeModifiersComponent.builder();
-            ReflectionUtils.iterateAccessibleStaticFields(AdditionalEntityAttributes.class, RegistryEntry.class, (value, name, field) -> {
-                var attribute = (RegistryEntry<EntityAttribute>) value;
-                attributeBuilder.add(
-                    attribute,
-                    new EntityAttributeModifier(RegistryHelper.id(name), 1.0, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
-                    AttributeModifierSlot.HEAD
-                );
-            });
-            var attributes = attributeBuilder.build();
-            stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, attributes);
-            context.getSource().getPlayer().getInventory().offerOrDrop(stack);
-        }
-        return 0;
-    }
-
-    private static int giveMidasSword(CommandContext<ServerCommandSource> context) {
+    private static int giveMidasSword(CommandContext<CommandSourceStack> context) {
         int goldCount = IntegerArgumentType.getInteger(context, "folds");
         var player = context.getSource().getPlayer();
         if (player == null) {
-            context.getSource().sendError(Text.literal("player required"));
+            context.getSource().sendFailure(Component.literal("player required"));
             return -1;
         }
 
-        player.getInventory().offerOrDrop(MidasGoldSword.createSwordFromGold(goldCount));
-        context.getSource().sendFeedback(() -> Text.literal("Gave sword with %d folds".formatted(goldCount)), true);
+        player.getInventory().placeItemBackInInventory(MidasGoldSword.createSwordFromGold(goldCount));
+        context.getSource().sendSuccess(() -> Component.literal("Gave sword with %d folds".formatted(goldCount)), true);
         return 0;
     }
 
-    private static int exportAllArmor(CommandContext<ServerCommandSource> context) {
+    private static int exportAllArmor(CommandContext<CommandSourceStack> context) {
         var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
         try {
             Files.createDirectory(folder);
@@ -224,9 +207,10 @@ public final class MythicCommands {
                 Files.createFile(file);
             } catch (FileAlreadyExistsException ignored) {
                 // no-op
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
-                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
                 return;
             }
             try {
@@ -235,15 +219,15 @@ public final class MythicCommands {
                 MythicMetals.LOGGER.info(logString);
             } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
-                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
             }
         });
 
-        context.getSource().sendFeedback(() -> Text.literal("Exported all the armor to wiki format into the config folder"), false);
+        context.getSource().sendSuccess(() -> Component.literal("Exported all the armor to wiki format into the config folder"), false);
         return 0;
     }
 
-    private static int exportAllTools(CommandContext<ServerCommandSource> context) {
+    private static int exportAllTools(CommandContext<CommandSourceStack> context) {
         var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
         try {
             Files.createDirectory(folder);
@@ -259,7 +243,7 @@ public final class MythicCommands {
                 Files.createFile(file);
             } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
-                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
                 return;
             }
             try {
@@ -268,11 +252,11 @@ public final class MythicCommands {
                 MythicMetals.LOGGER.info(logString);
             } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
-                context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
+                context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
             }
         });
 
-        context.getSource().sendFeedback(() -> Text.literal("Exported all the tools (in the shed) to wiki format into the config folder"), false);
+        context.getSource().sendSuccess(() -> Component.literal("Exported all the tools (in the shed) to wiki format into the config folder"), false);
         return 0;
     }
 
@@ -282,53 +266,53 @@ public final class MythicCommands {
      * @param context     ServerCommandSource Command Context
      * @param extraBlocks Map which can be used to insert extra blocks for a specific block set
      */
-    public static int placeAllBlocksets(CommandContext<ServerCommandSource> context, Map<String, ArrayList<Block>> extraBlocks) {
+    public static int placeAllBlocksets(CommandContext<CommandSourceStack> context, Map<String, ArrayList<Block>> extraBlocks) {
         var source = context.getSource();
-        var world = source.getWorld();
+        var world = source.getLevel();
         AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
         AtomicInteger y = new AtomicInteger(((int) source.getPosition().y));
         int z = ((int) source.getPosition().z);
         ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
             y.set(((int) source.getPosition().y));
             if (blockSet.getOre() != null) {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getOre().getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOre().defaultBlockState());
             }
             blockSet.getOreVariants().forEach(block -> {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), block.getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), block.defaultBlockState());
             });
             if (blockSet.getOreStorageBlock() != null) {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().defaultBlockState());
             }
             if (blockSet.getStorageBlock() != null) {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().defaultBlockState());
             }
             if (blockSet.getAnvil() != null) {
-                world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().defaultBlockState());
             }
             if (extraBlocks.containsKey(name)) {
                 extraBlocks.get(name).forEach(extraBlock -> {
-                    world.setBlockState(BlockPos.ofFloored(x.get(), y.getAndIncrement(), z), extraBlock.getDefaultState());
+                    world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), extraBlock.defaultBlockState());
                 });
             }
             x.incrementAndGet();
         });
-        source.sendFeedback(() -> Text.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
+        source.sendSuccess(() -> Component.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
         return 0;
     }
 
-    public static int placeMythicDisplay(CommandContext<ServerCommandSource> context) {
+    public static int placeMythicDisplay(CommandContext<CommandSourceStack> context) {
         int placements = -1;
         var material = StringArgumentType.getString(context, "material");
 
         if (!MythicTools.TOOL_MAP.containsKey(material) && !MythicArmor.ARMOR_MAP.containsKey(material) && MythicBlocks.BLOCKSET_MAP.containsKey(material)) {
             MythicMetals.LOGGER.error("Failed to find material: {}", material);
-            context.getSource().sendFeedback(() -> Text.literal("Could not find any items for the material %s".formatted(material)), false);
+            context.getSource().sendSuccess(() -> Component.literal("Could not find any items for the material %s".formatted(material)), false);
             return -1;
         }
 
         // place the base structure
-        var world = context.getSource().getWorld();
-        var startPos = context.getSource().getEntity().getBlockPos();
+        var world = context.getSource().getLevel();
+        var startPos = context.getSource().getEntity().blockPosition();
 
         placeStructure(world, startPos);
 
@@ -381,15 +365,15 @@ public final class MythicCommands {
         return placements;
     }
 
-    private static void placeStructure(World world, BlockPos start) {
+    private static void placeStructure(Level world, BlockPos start) {
         // floor
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 5; j++) {
-                world.setBlockState(BlockPos.ofFloored(start.getX() + i, start.getY(), start.getZ() + j), Blocks.WHITE_CONCRETE.getDefaultState());
+                world.setBlockAndUpdate(BlockPos.containing(start.getX() + i, start.getY(), start.getZ() + j), Blocks.WHITE_CONCRETE.defaultBlockState());
 
                 if (j == 0) {
                     for (int y = 0; y < 6; y++) {
-                        world.setBlockState(BlockPos.ofFloored(start.getX() + i, start.getY() + y, start.getZ() + j), Blocks.WHITE_CONCRETE.getDefaultState());
+                        world.setBlockAndUpdate(BlockPos.containing(start.getX() + i, start.getY() + y, start.getZ() + j), Blocks.WHITE_CONCRETE.defaultBlockState());
                     }
                 }
             }
@@ -399,22 +383,22 @@ public final class MythicCommands {
     /**
      * Command which generates loot from a loot table X amount of times, and prints the output to the console
      */
-    private static int testLootTable(CommandContext<ServerCommandSource> ctx) {
+    private static int testLootTable(CommandContext<CommandSourceStack> ctx) {
         var source = ctx.getSource();
         try {
-            var lootTable = RegistryEntryArgumentType.LootTableArgumentType.getLootTable(ctx, "loot_table");
+            var lootTable = ResourceOrIdArgument.LootTableArgument.getLootTable(ctx, "loot_table");
 
             int rolls = IntegerArgumentType.getInteger(ctx, "rolls");
 
-            LootWorldContext lootContextParameterSet = new LootWorldContext.Builder(ctx.getSource().getWorld())
-                .addOptional(LootContextParameters.THIS_ENTITY, source.getEntity())
-                .add(LootContextParameters.ORIGIN, source.getPosition())
-                .build(LootContextTypes.CHEST);
+            LootParams lootContextParameterSet = new LootParams.Builder(ctx.getSource().getLevel())
+                .withOptionalParameter(LootContextParams.THIS_ENTITY, source.getEntity())
+                .withParameter(LootContextParams.ORIGIN, source.getPosition())
+                .create(LootContextParamSets.CHEST);
 
             HashMap<Item, Integer> map = new HashMap<>();
 
             for (int i = 0; i < rolls; i++) {
-                List<ItemStack> list = lootTable.value().generateLoot(lootContextParameterSet);
+                List<ItemStack> list = lootTable.value().getRandomItems(lootContextParameterSet);
                 list.forEach(itemStack -> {
                     int count = map.getOrDefault(itemStack.getItem(), 0);
                     map.put(itemStack.getItem(), itemStack.getCount() + count);
@@ -422,7 +406,7 @@ public final class MythicCommands {
             }
 
             map.forEach((item, integer) -> {
-                source.sendFeedback(() -> (Text.literal(item + ": " + integer.toString())), false);
+                source.sendSuccess(() -> (Component.literal(item + ": " + integer.toString())), false);
             });
         } catch (CommandSyntaxException e) {
             throw new RuntimeException(e);
@@ -436,20 +420,20 @@ public final class MythicCommands {
      * <br><br>
      * Note that it does not handle abilities or custom attributes, like Lava Swim Speed
      */
-    private static int exportArmor(CommandContext<ServerCommandSource> context) {
+    private static int exportArmor(CommandContext<CommandSourceStack> context) {
         var armorSet = ArmorSetArgumentType.getArmorSet(context, "armorset");
         var source = context.getSource();
         var output = WikiExporter.computeArmorSet(armorSet);
 
         MythicMetals.LOGGER.info(output);
-        source.sendFeedback(() -> Text.literal("Exported armor to wiki format in logs"), false);
+        source.sendSuccess(() -> Component.literal("Exported armor to wiki format in logs"), false);
         return 0;
     }
 
     /**
      * Ore/Material exporter for the Mythic Metals Wiki
      */
-    private static int exportOreData(CommandContext<ServerCommandSource> context) {
+    private static int exportOreData(CommandContext<CommandSourceStack> context) {
         var oreConfig = OreConfigArgumentType.getOreConfig(context, "ore-config");
         var source = context.getSource();
         var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
@@ -458,7 +442,7 @@ public final class MythicCommands {
 
         String template = WikiExporter.createOreTemplate(oreName, blockSet, oreConfig);
 
-        source.sendFeedback(() -> Text.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
+        source.sendSuccess(() -> Component.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
         MythicMetals.LOGGER.info(template);
 
         return 2;
@@ -467,19 +451,19 @@ public final class MythicCommands {
     /**
      * Tool exporter for the Mythic Metals Wiki
      */
-    private static int exportTools(CommandContext<ServerCommandSource> context) {
+    private static int exportTools(CommandContext<CommandSourceStack> context) {
         var toolset = ToolSetArgumentType.getToolSet(context, "toolset");
 
         var source = context.getSource();
         MythicMetals.LOGGER.info(WikiExporter.computeToolset(toolset.getName(), toolset));
-        source.sendFeedback(() -> Text.literal("Exported tools to wiki format"), false);
+        source.sendSuccess(() -> Component.literal("Exported tools to wiki format"), false);
         return 0;
     }
 
     /**
      * Summons an armor stand with a specific armor set and trim on top of the world <br>
-     * Create the {@link ArmorTrim} using a pattern from {@link net.minecraft.item.equipment.trim.ArmorTrimPatterns}
-     * and a material from {@link net.minecraft.item.equipment.trim.ArmorTrimMaterials}
+     * Create the {@link ArmorTrim} using a pattern from {@link net.minecraft.world.item.equipment.trim.TrimPatterns}
+     * and a material from {@link net.minecraft.world.item.equipment.trim.TrimMaterials}
      *
      * @param world    The world where you want to summon the armor stand, needs to be on the server
      * @param trim     {@link ArmorTrim} you wish to use on the armor.
@@ -491,27 +475,27 @@ public final class MythicCommands {
      * @see MythicArmor
      * @see ArmorSet
      */
-    public static boolean summonArmorStandWithTrim(World world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
-        if (world.isClient) return false;
+    public static boolean summonArmorStandWithTrim(Level world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
+        if (world.isClientSide) return false;
         if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
         AtomicBoolean success = new AtomicBoolean(true);
 
-        var armorStand = new ArmorStandEntity(world, x, world.getTopYInclusive() - 50, z);
-        armorStand.setHideBasePlate(true);
+        var armorStand = new ArmorStand(world, x, world.getMaxY() - 50, z);
+        armorStand.setNoBasePlate(true);
         armorSet.getArmorItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
-            if (!armorStack.isIn(ItemTags.TRIMMABLE_ARMOR)) {
-                MythicMetals.LOGGER.debug("Armor Item %s is not trimmable".formatted(armorStack.getName()));
+            if (!armorStack.is(ItemTags.TRIMMABLE_ARMOR)) {
+                MythicMetals.LOGGER.debug("Armor Item %s is not trimmable".formatted(armorStack.getHoverName()));
             }
             if (trim != null) {
-                armorStack.set(DataComponentTypes.TRIM, trim);
+                armorStack.set(DataComponents.TRIM, trim);
             }
             if (success.get()) {
-                var equippableComponent = armorStack.get(DataComponentTypes.EQUIPPABLE);
-                armorStand.equipStack(equippableComponent.slot(), armorStack);
+                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
             }
         });
-        world.spawnEntity(armorStand);
+        world.addFreshEntity(armorStand);
         return success.get();
     }
 
@@ -519,12 +503,12 @@ public final class MythicCommands {
      * @param world The world to get the DynamicRegistryManager from. This should only happen on the server
      * @return Returns all armor trims in a sorted ArrayList
      */
-    public static ArrayList<ArmorTrim> getAllArmorTrims(World world) {
-        if (world.isClient) return new ArrayList<>();
+    public static ArrayList<ArmorTrim> getAllArmorTrims(Level world) {
+        if (world.isClientSide) return new ArrayList<>();
 
         var list = new ArrayList<ArmorTrim>();
-        world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_MATERIAL).streamEntries().forEach(armorMaterialEntry -> {
-            world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> {
+        world.registryAccess().lookupOrThrow(Registries.TRIM_MATERIAL).listElements().forEach(armorMaterialEntry -> {
+            world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).listElements().forEach(armorTrimEntry -> {
                 list.add(new ArmorTrim(armorMaterialEntry, armorTrimEntry));
             });
         });
@@ -535,18 +519,18 @@ public final class MythicCommands {
      * @param world The world to get the DynamicRegistryManager from. This should only happen on the server
      * @return Returns all the trim patterns in the registry as a list of strings
      */
-    public static ArrayList<String> getAllTrimPatternStrs(World world) {
-        if (world.isClient) return new ArrayList<>();
+    public static ArrayList<String> getAllTrimPatternStrs(Level world) {
+        if (world.isClientSide) return new ArrayList<>();
 
         var list = new ArrayList<String>();
-        world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value().assetId().getPath()));
+        world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).listElements().forEach(armorTrimEntry -> list.add(armorTrimEntry.value().assetId().getPath()));
         return list;
     }
 
     /**
      * Suggest which format/location to use when dumping all the ore configs in {@link MythicOreConfigs}
      */
-    private static CompletableFuture<Suggestions> dumpType(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
+    private static CompletableFuture<Suggestions> dumpType(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         suggestion.suggest("console");
         return suggestion.buildFuture();
     }
@@ -555,13 +539,13 @@ public final class MythicCommands {
      * Suggests armor materials from all the armor sets defined in {@link MythicArmor}
      * Includes one extra suggestion for "all"
      */
-    private static CompletableFuture<Suggestions> armorMaterial(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
+    private static CompletableFuture<Suggestions> armorMaterial(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
         suggestion.suggest("all");
         return suggestion.buildFuture();
     }
 
-    private static CompletableFuture<Suggestions> material(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
+    private static CompletableFuture<Suggestions> material(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         var placeableMaterials = new HashSet<String>();
         placeableMaterials.addAll(MythicTools.TOOL_MAP.keySet());
         placeableMaterials.addAll(MythicArmor.ARMOR_MAP.keySet());
@@ -574,19 +558,19 @@ public final class MythicCommands {
      * Suggests all the armor trim types available in the dynamic registry
      * Includes two extra suggestions for "all" and "none"
      */
-    private static CompletableFuture<Suggestions> trimTypes(CommandContext<ServerCommandSource> ctx, SuggestionsBuilder suggestion) {
-        var list = new ArrayList<ArmorTrimPattern>();
-        ctx.getSource().getRegistryManager().getOrThrow(RegistryKeys.TRIM_PATTERN).streamEntries().forEach(armorTrimEntry -> list.add(armorTrimEntry.value()));
+    private static CompletableFuture<Suggestions> trimTypes(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
+        var list = new ArrayList<TrimPattern>();
+        ctx.getSource().registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).listElements().forEach(armorTrimEntry -> list.add(armorTrimEntry.value()));
         list.forEach(trimPattern -> suggestion.suggest(trimPattern.assetId().getPath()));
         suggestion.suggest("all").suggest("none");
         return suggestion.buildFuture();
     }
 
-    private static int dumpAllOreConfigs(CommandContext<ServerCommandSource> context) {
+    private static int dumpAllOreConfigs(CommandContext<CommandSourceStack> context) {
         if (StringArgumentType.getString(context, "type").equals("console")) {
             ReflectionUtils.iterateAccessibleStaticFields(MythicOreConfigs.class, OreConfig.class, (feature, name, field) -> {
                 if (!feature.offset && !feature.trapezoid) {
-                    context.getSource().sendFeedback(() -> Text.literal(
+                    context.getSource().sendSuccess(() -> Component.literal(
                         name.toUpperCase(Locale.ROOT)
                             + " has the range between "
                             + feature.bottom
@@ -596,7 +580,7 @@ public final class MythicCommands {
                             + feature.discardChance * 100 + "%"), false);
                 }
                 if (feature.offset) {
-                    context.getSource().sendFeedback(() -> Text.literal(
+                    context.getSource().sendSuccess(() -> Component.literal(
                         name.toUpperCase(Locale.ROOT)
                             + " has the range between "
                             + feature.bottom
@@ -606,7 +590,7 @@ public final class MythicCommands {
                             + feature.discardChance * 100 + "%"), false);
                 }
                 if (feature.trapezoid) {
-                    context.getSource().sendFeedback(() -> Text.literal(
+                    context.getSource().sendSuccess(() -> Component.literal(
                         name.toUpperCase(Locale.ROOT)
                             + " has a triangle range between "
                             + feature.bottom
@@ -624,9 +608,9 @@ public final class MythicCommands {
         return -1;
     }
 
-    private static int armorStandCommand(CommandContext<ServerCommandSource> context, @NotNull String material, @Nullable String rawTrim) {
+    private static int armorStandCommand(CommandContext<CommandSourceStack> context, @NotNull String material, @Nullable String rawTrim) {
         var armorTrims = new ArrayList<ArmorTrim>();
-        var world = context.getSource().getWorld();
+        var world = context.getSource().getLevel();
         var pos = context.getSource().getPosition();
         float x = (int) pos.x + 0.5f;
         float z = (int) pos.z + 0.5f;
@@ -646,14 +630,14 @@ public final class MythicCommands {
                     }
                 }
                 int finalCount = count;
-                context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands".formatted(finalCount)), true);
+                context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands".formatted(finalCount)), true);
                 return finalCount;
             } else {
                 if (summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), x, z)) {
-                    context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping one armorstand"), true);
+                    context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping one armorstand"), true);
                     return 1;
                 } else {
-                    context.getSource().sendFeedback(() -> Text.literal("Unable to summon the armor stand. It might be untrimmable"), false);
+                    context.getSource().sendSuccess(() -> Component.literal("Unable to summon the armor stand. It might be untrimmable"), false);
                 }
             }
             return -1;
@@ -661,7 +645,7 @@ public final class MythicCommands {
 
         if (material.equals("all")) {
             if (MythicArmor.ARMOR_MAP.isEmpty()) {
-                context.getSource().sendFeedback(() -> Text.literal("Unable to summon. Somehow the armor map is empty..."), false);
+                context.getSource().sendSuccess(() -> Component.literal("Unable to summon. Somehow the armor map is empty..."), false);
                 return -1; // "how did this happen?" "a long time ago, actually never..."
             }
 
@@ -689,7 +673,7 @@ public final class MythicCommands {
                 mutZ.add(2);
                 mutX.setValue(pos.x);
             }
-            context.getSource().sendFeedback(() -> Text.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
+            context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
 
             return count.getValue();
         } else if (MythicArmor.ARMOR_MAP.get(material) != null) {
@@ -701,7 +685,7 @@ public final class MythicCommands {
             }
 
             // Split the armor stands into groups using these offsets
-            int splitPoint = armorTrims.size() / world.getRegistryManager().getOrThrow(RegistryKeys.TRIM_MATERIAL).size();
+            int splitPoint = armorTrims.size() / world.registryAccess().lookupOrThrow(Registries.TRIM_MATERIAL).size();
 
             // flip-flop
             int xOffset = 0;
@@ -722,7 +706,7 @@ public final class MythicCommands {
                 }
             }
             String feedback = "Summoned and dropping %d armorstands".formatted(count);
-            context.getSource().sendFeedback(() -> Text.literal(feedback), true);
+            context.getSource().sendSuccess(() -> Component.literal(feedback), true);
             return count;
         }
         return -1;

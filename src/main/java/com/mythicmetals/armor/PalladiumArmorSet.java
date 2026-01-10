@@ -1,21 +1,21 @@
 package com.mythicmetals.armor;
 
-import com.mythicmetals.AttributeModifier;
-import net.minecraft.item.Item;
-import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentType;
+import com.mythicmetals.MythicAttributeModifier;
 import java.util.List;
 import java.util.function.Consumer;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 
 public class PalladiumArmorSet extends ArmorSet {
 
-    public PalladiumArmorSet(String name, ArmorMaterial material, List<AttributeModifier> extraAttributes, Consumer<Item.Settings> settingsConsumer) {
+    public PalladiumArmorSet(String name, ArmorMaterial material, List<MythicAttributeModifier> extraAttributes, Consumer<Item.Properties> settingsConsumer) {
         super(name, material, extraAttributes, settingsConsumer);
     }
 
     @Override
-    protected Item makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
-        if (slot != EquipmentType.HELMET) return super.makeItem(material, slot, settings);
+    protected Item makeItem(ArmorMaterial material, ArmorType slot, Item.Properties settings) {
+        if (slot != ArmorType.HELMET) return super.makeItem(material, slot, settings);
         return new PalladiumArmor(slot, settings);
     }
 }

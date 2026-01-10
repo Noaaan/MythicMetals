@@ -5,12 +5,19 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.Maldenhagen;
 import io.wispforest.owo.util.TagInjector;
-import net.minecraft.block.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
+
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.AmethystBlock;
+import net.minecraft.world.level.block.AnvilBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -24,7 +31,7 @@ import java.util.function.Consumer;
  */
 @SuppressWarnings({"unused"})
 public class BlockSet {
-    private final ExperienceDroppingBlock ore;
+    private final DropExperienceBlock ore;
     private final Block storageBlock;
     private final Block oreStorageBlock;
     private final AnvilBlock anvil;
@@ -32,9 +39,9 @@ public class BlockSet {
     private final String name;
     private final boolean fireproof;
 
-    private final Multimap<Block, Identifier> miningLevels;
-    private final Multimap<AnvilBlock, Identifier> anvilMap;
-    private final Map<String, ExperienceDroppingBlock> oreVariants;
+    private final Multimap<Block, ResourceLocation> miningLevels;
+    private final Multimap<AnvilBlock, ResourceLocation> anvilMap;
+    private final Map<String, DropExperienceBlock> oreVariants;
     private final boolean uncommon;
 
     /**
@@ -43,25 +50,25 @@ public class BlockSet {
      * and call {@link Builder#finish()} when you are done.
      *
      * @param name            Common name for the entire set of blocks, applies to every block created.
-     * @param ore             Contains a vanilla {@link ExperienceDroppingBlock}.
+     * @param ore             Contains a vanilla {@link DropExperienceBlock}.
      * @param storageBlock    Contains a {@link Block} which is used as a storage block.
      * @param oreStorageBlock Contains a {@link Block} which is used as a ore storage block.
      * @param anvil           Contains an {@link AnvilBlock}
-     * @param oreVariants     A map of a string and {@link ExperienceDroppingBlock} which is used for variant ores.
+     * @param oreVariants     A map of a string and {@link DropExperienceBlock} which is used for variant ores.
      * @param fireproof       Boolean for creating fireproof block sets.
      * @param miningLevels    A map containing all the blocks being registered with their corresponding mining levels.
      * @param anvilMap        A map containing all anvils and their levels, so that they can be disabled.
      * @param uncommon        Boolean for setting the block item to Uncommon Rarity, changing the color of the text
      */
     private BlockSet(String name,
-                     ExperienceDroppingBlock ore,
+                     DropExperienceBlock ore,
                      Block storageBlock,
                      Block oreStorageBlock,
                      AnvilBlock anvil,
-                     Map<String, ExperienceDroppingBlock> oreVariants,
+                     Map<String, DropExperienceBlock> oreVariants,
                      boolean fireproof,
-                     Multimap<Block, Identifier> miningLevels,
-                     Multimap<AnvilBlock, Identifier> anvilMap, boolean uncommon) {
+                     Multimap<Block, ResourceLocation> miningLevels,
+                     Multimap<AnvilBlock, ResourceLocation> anvilMap, boolean uncommon) {
 
         this.name = name;
         this.fireproof = fireproof;
@@ -97,22 +104,22 @@ public class BlockSet {
         // Inject all the mining levels into their tags.
         if (MythicMetals.CONFIG.enableAnvils()) {
             anvilMap.forEach(((anvilBlock, level) -> {
-                TagInjector.inject(Registries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
-                TagInjector.inject(Registries.BLOCK, level, anvilBlock);
-                TagInjector.inject(Registries.BLOCK, Identifier.of("anvil"), anvilBlock);
-                TagInjector.inject(Registries.ITEM, Identifier.of("anvil"), anvilBlock.asItem());
+                TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
+                TagInjector.inject(BuiltInRegistries.BLOCK, level, anvilBlock);
+                TagInjector.inject(BuiltInRegistries.BLOCK, ResourceLocation.parse("anvil"), anvilBlock);
+                TagInjector.inject(BuiltInRegistries.ITEM, ResourceLocation.parse("anvil"), anvilBlock.asItem());
             }));
         }
         miningLevels.forEach((block, level) -> {
-            TagInjector.inject(Registries.BLOCK, level, block);
-            TagInjector.inject(Registries.BLOCK, RegistryHelper.id("blocks"), block);
+            TagInjector.inject(BuiltInRegistries.BLOCK, level, block);
+            TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("blocks"), block);
         });
     }
 
     /**
      * @return Returns the ore block in the set
      */
-    public ExperienceDroppingBlock getOre() {
+    public DropExperienceBlock getOre() {
         return ore;
     }
 
@@ -134,7 +141,7 @@ public class BlockSet {
      * @param variant The string of the ore variants name
      * @return Returns the specified ore variant from the variant map in the blockset
      */
-    public ExperienceDroppingBlock getOreVariant(String variant) {
+    public DropExperienceBlock getOreVariant(String variant) {
         return oreVariants.get(variant);
     }
 
@@ -183,21 +190,21 @@ public class BlockSet {
 
         private final String name;
         private final boolean fireproof;
-        private final Map<String, ExperienceDroppingBlock> oreVariants = new LinkedHashMap<>();
-        private ExperienceDroppingBlock ore = null;
+        private final Map<String, DropExperienceBlock> oreVariants = new LinkedHashMap<>();
+        private DropExperienceBlock ore = null;
         private Block storageBlock = null;
         private Block oreStorageBlock = null;
         private AnvilBlock anvil = null;
-        private BlockSoundGroup currentSounds = BlockSoundGroup.STONE;
+        private SoundType currentSounds = SoundType.STONE;
         private float currentHardness = -1;
         private float currentResistance = -1;
-        private final Multimap<Block, Identifier> miningLevels = HashMultimap.create();
-        private final Multimap<AnvilBlock, Identifier> anvilMap = HashMultimap.create();
-        private final Consumer<AbstractBlock.Settings> settingsProcessor = settings -> {
+        private final Multimap<Block, ResourceLocation> miningLevels = HashMultimap.create();
+        private final Multimap<AnvilBlock, ResourceLocation> anvilMap = HashMultimap.create();
+        private final Consumer<BlockBehaviour.Properties> settingsProcessor = settings -> {
         };
 
-        private final Identifier SHOVEL = Identifier.of("mineable/shovel");
-        private final Identifier PICKAXE = Identifier.of("mineable/pickaxe");
+        private final ResourceLocation SHOVEL = ResourceLocation.parse("mineable/shovel");
+        private final ResourceLocation PICKAXE = ResourceLocation.parse("mineable/pickaxe");
         private boolean uncommon = false;
 
         /**
@@ -236,12 +243,12 @@ public class BlockSet {
          * @param resistance Determines blast resistance of a block.
          * @param sounds     Determines the sounds that blocks play when interacted with.
          */
-        public static AbstractBlock.Settings blockSettings(float hardness, float resistance, BlockSoundGroup sounds) {
-            return AbstractBlock.Settings.create()
+        public static BlockBehaviour.Properties blockSettings(float hardness, float resistance, SoundType sounds) {
+            return BlockBehaviour.Properties.of()
                 .strength(hardness, resistance)
-                .sounds(sounds)
-                .solid()
-                .requiresTool();
+                .sound(sounds)
+                .forceSolidOn()
+                .requiresCorrectToolForDrops();
         }
 
         /**
@@ -252,7 +259,7 @@ public class BlockSet {
          *                    while every other block recieves + 1 to their level.
          * @see #strength(float)    Strength
          */
-        public Builder createDefaultSet(float strength, Identifier miningLevel, Identifier higherMiningLevel) {
+        public Builder createDefaultSet(float strength, ResourceLocation miningLevel, ResourceLocation higherMiningLevel) {
             return strength(strength)
                 .createOre(miningLevel)
                 .strength(strength + 1.0F)
@@ -269,7 +276,7 @@ public class BlockSet {
          * @param storageMiningLevel The mining level of both storage blocks
          * @see #strength(float)
          */
-        public Builder createBlockSet(float strength, Identifier miningLevel, Identifier storageMiningLevel) {
+        public Builder createBlockSet(float strength, ResourceLocation miningLevel, ResourceLocation storageMiningLevel) {
             return strength(strength)
                 .createOre(miningLevel)
                 .strength(strength + 1.0F)
@@ -286,7 +293,7 @@ public class BlockSet {
          * @param storageMiningLevel The mining level of the storage block and ore storage block.
          * @see #strength(float)        oreStrength and storageStrength
          */
-        public Builder createDefaultSet(float oreStrength, Identifier oreMiningLevel, float storageStrength, Identifier storageMiningLevel) {
+        public Builder createDefaultSet(float oreStrength, ResourceLocation oreMiningLevel, float storageStrength, ResourceLocation storageMiningLevel) {
             return strength(oreStrength)
                 .createOre(oreMiningLevel)
                 .strength(storageStrength)
@@ -300,9 +307,9 @@ public class BlockSet {
          * @param miningLevel The mining level of the anvil and the storage block
          * @see #strength(float)
          */
-        public Builder createAnvilSet(float strength, Identifier miningLevel) {
+        public Builder createAnvilSet(float strength, ResourceLocation miningLevel) {
             return strength(strength)
-                .sounds(BlockSoundGroup.METAL)
+                .sounds(SoundType.METAL)
                 .createStorageBlock(miningLevel)
                 .createAnvil(miningLevel);
         }
@@ -313,9 +320,9 @@ public class BlockSet {
          * @param hardness    The hardness of the storage block.
          * @param resistance  The blast resistance of the storage block.
          * @param miningLevel The mining level of the anvil and the storage block.
-         * @see #createAnvil(Identifier)  createAnvil
+         * @see #createAnvil(ResourceLocation)  createAnvil
          */
-        public Builder createAnvilSet(float hardness, float resistance, Identifier miningLevel) {
+        public Builder createAnvilSet(float hardness, float resistance, ResourceLocation miningLevel) {
             return strength(hardness, resistance)
                 .createStorageBlock(this.currentSounds, miningLevel)
                 .createAnvil(miningLevel);
@@ -324,9 +331,9 @@ public class BlockSet {
         /**
          * Applies sounds to the block(s) in the set.
          *
-         * @param sounds The {@link BlockSoundGroup} which should be played.
+         * @param sounds The {@link SoundType} which should be played.
          */
-        public Builder sounds(BlockSoundGroup sounds) {
+        public Builder sounds(SoundType sounds) {
             this.currentSounds = sounds;
             return this;
         }
@@ -359,11 +366,11 @@ public class BlockSet {
          * @param miningLevel The mining level of the ore block.
          * @see Builder
          */
-        public Builder createOre(Identifier miningLevel) {
+        public Builder createOre(ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
+            this.ore = new DropExperienceBlock(ConstantInt.ZERO, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -373,14 +380,14 @@ public class BlockSet {
          * Creates an ore block, which drops experience.
          *
          * @param miningLevel The mining level of the ore block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          * @see Builder
          */
-        public Builder createOre(Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createOre(ResourceLocation miningLevel, UniformInt experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(experience, settings);
+            this.ore = new DropExperienceBlock(experience, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             return this;
@@ -390,14 +397,14 @@ public class BlockSet {
          * Creates an ore block, which drops experience.
          *
          * @param miningLevel The mining level of the ore block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          * @see Builder
          */
-        public Builder createLuminantOre(Identifier miningLevel, UniformIntProvider experience, int luminance) {
-            final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(blockState -> luminance);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+        public Builder createLuminantOre(ResourceLocation miningLevel, UniformInt experience, int luminance) {
+            final var settings = blockSettings(currentHardness, currentResistance, currentSounds).lightLevel(blockState -> luminance);
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
-            this.ore = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
+            this.ore = new DropExperienceBlock(ConstantInt.ZERO, settings);
             miningLevels.put(ore, miningLevel);
             miningLevels.put(ore, PICKAXE);
             Maldenhagen.injectCopium(this.ore);
@@ -411,11 +418,11 @@ public class BlockSet {
          * @param miningLevel The mining level of the ore variant.
          * @see Builder
          */
-        public Builder createOreVariant(String variantName, Identifier miningLevel) {
+        public Builder createOreVariant(String variantName, ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
+            settings.setId(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            var variant = new ExperienceDroppingBlock(ConstantIntProvider.ZERO, settings);
+            var variant = new DropExperienceBlock(ConstantInt.ZERO, settings);
             this.oreVariants.put(variantName, variant);
             miningLevels.put(variant, miningLevel);
             miningLevels.put(variant, PICKAXE);
@@ -427,13 +434,13 @@ public class BlockSet {
          *
          * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the variant ore block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          */
-        public Builder createOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createOreVariant(String variantName, ResourceLocation miningLevel, UniformInt experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
+            settings.setId(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(variantName, new ExperienceDroppingBlock(experience, settings));
+            this.oreVariants.put(variantName, new DropExperienceBlock(experience, settings));
             miningLevels.put(oreVariants.get(variantName), miningLevel);
             miningLevels.put(oreVariants.get(variantName), PICKAXE);
             return this;
@@ -444,13 +451,13 @@ public class BlockSet {
          *
          * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the variant ore block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          */
-        public Builder createOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience, int luminance) {
-            final var settings = blockSettings(currentHardness, currentResistance, currentSounds).luminance(blockState -> luminance);
-            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
+        public Builder createOreVariant(String variantName, ResourceLocation miningLevel, UniformInt experience, int luminance) {
+            final var settings = blockSettings(currentHardness, currentResistance, currentSounds).lightLevel(blockState -> luminance);
+            settings.setId(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(variantName, new ExperienceDroppingBlock(experience, settings));
+            this.oreVariants.put(variantName, new DropExperienceBlock(experience, settings));
             miningLevels.put(oreVariants.get(variantName), miningLevel);
             miningLevels.put(oreVariants.get(variantName), PICKAXE);
             Maldenhagen.injectCopium(this.oreVariants.get(variantName));
@@ -461,11 +468,11 @@ public class BlockSet {
          * A special ore creator for the creation of a {@link StarriteOreBlock}.
          *
          * @param miningLevel The mining level of the block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          */
-        public Builder createStarriteOre(Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createStarriteOre(ResourceLocation miningLevel, UniformInt experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new StarriteOreBlock(settings, experience);
             miningLevels.put(ore, miningLevel);
@@ -478,9 +485,9 @@ public class BlockSet {
          *
          * @param miningLevel The mining level of the block.
          */
-        public Builder createBanglumOre(Identifier miningLevel) {
+        public Builder createBanglumOre(ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.ore = new BanglumOreBlock(settings);
             miningLevels.put(ore, miningLevel);
@@ -493,11 +500,11 @@ public class BlockSet {
          *
          * @param variantName The name of the variant, which is used as a part of the registry key.
          * @param miningLevel The mining level of the block.
-         * @param experience  An {@link UniformIntProvider}, which holds the range of xp that can drop.
+         * @param experience  An {@link UniformInt}, which holds the range of xp that can drop.
          */
-        public Builder createStarriteOreVariant(String variantName, Identifier miningLevel, UniformIntProvider experience) {
+        public Builder createStarriteOreVariant(String variantName, ResourceLocation miningLevel, UniformInt experience) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
+            settings.setId(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
             this.oreVariants.put(variantName, new StarriteOreBlock(settings, experience));
             miningLevels.put(oreVariants.get(variantName), miningLevel);
@@ -511,9 +518,9 @@ public class BlockSet {
          * @param name        The name/key for the variant.
          * @param miningLevel The mining level of the block.
          */
-        public Builder createBanglumOreVariant(String name, Identifier miningLevel) {
+        public Builder createBanglumOreVariant(String name, ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.setId(RegistryHelper.blockKey(name + "_ore"));
             settingsProcessor.accept(settings);
             this.oreVariants.put(name, new BanglumOreBlock(settings));
             miningLevels.put(oreVariants.get(name), miningLevel);
@@ -528,9 +535,9 @@ public class BlockSet {
          * @see Blocks#AMETHYST_BLOCK
          * @see AmethystBlock
          */
-        public Builder createAmethystStorageBlock(Identifier miningLevel) {
-            final var settings = blockSettings(currentHardness, currentResistance, BlockSoundGroup.AMETHYST_BLOCK);
-            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
+        public Builder createAmethystStorageBlock(ResourceLocation miningLevel) {
+            final var settings = blockSettings(currentHardness, currentResistance, SoundType.AMETHYST);
+            settings.setId(RegistryHelper.blockKey(name + "_block"));
             this.storageBlock = new AmethystBlock(settings);
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);
@@ -542,9 +549,9 @@ public class BlockSet {
          *
          * @param miningLevel The mining level of the storage block.
          */
-        public Builder createStorageBlock(Identifier miningLevel) {
+        public Builder createStorageBlock(ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
+            settings.setId(RegistryHelper.blockKey(name + "_block"));
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
@@ -555,12 +562,12 @@ public class BlockSet {
         /**
          * Create a storage block, with a specific sound in mind.
          *
-         * @param sounds      A {@link BlockSoundGroup}, which determines block sounds.
+         * @param sounds      A {@link SoundType}, which determines block sounds.
          * @param miningLevel The mining level of the storage block.
          */
-        public Builder createStorageBlock(BlockSoundGroup sounds, Identifier miningLevel) {
+        public Builder createStorageBlock(SoundType sounds, ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, sounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
+            settings.setId(RegistryHelper.blockKey(name + "_block"));
             settingsProcessor.accept(settings);
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
@@ -573,9 +580,9 @@ public class BlockSet {
          *
          * @param miningLevel The mining level of the raw storage block.
          */
-        public Builder createOreStorageBlock(Identifier miningLevel) {
+        public Builder createOreStorageBlock(ResourceLocation miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey("raw_" + name + "_block"));
+            settings.setId(RegistryHelper.blockKey("raw_" + name + "_block"));
             settingsProcessor.accept(settings);
             this.oreStorageBlock = new Block(settings);
             miningLevels.put(oreStorageBlock, miningLevel);
@@ -589,10 +596,10 @@ public class BlockSet {
          *
          * @param miningLevel Mining level of the anvil.
          */
-        public Builder createAnvil(Identifier miningLevel) {
+        public Builder createAnvil(ResourceLocation miningLevel) {
             if (MythicMetals.CONFIG.enableAnvils()) {
-                final var settings = blockSettings(5.0f, 15000f, BlockSoundGroup.ANVIL);
-                settings.registryKey(RegistryHelper.blockKey(name + "_anvil"));
+                final var settings = blockSettings(5.0f, 15000f, SoundType.ANVIL);
+                settings.setId(RegistryHelper.blockKey(name + "_anvil"));
                 settingsProcessor.accept(settings);
                 this.anvil = new AnvilBlock(settings);
                 anvilMap.put(anvil, miningLevel);
@@ -604,16 +611,16 @@ public class BlockSet {
         /**
          * Kinda manual at this point ngl
          */
-        public <T extends Block> Builder createCustomStorageBlock(T block, Identifier miningLevel) {
+        public <T extends Block> Builder createCustomStorageBlock(T block, ResourceLocation miningLevel) {
             this.storageBlock = block;
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);
             return this;
         }
 
-        public Builder createCustomStorageBlock(Identifier miningLevel, AbstractBlock.Settings settings) {
+        public Builder createCustomStorageBlock(ResourceLocation miningLevel, BlockBehaviour.Properties settings) {
             settingsProcessor.accept(settings);
-            settings.registryKey(RegistryHelper.blockKey(name + "_block"));
+            settings.setId(RegistryHelper.blockKey(name + "_block"));
             this.storageBlock = new Block(settings);
             miningLevels.put(storageBlock, miningLevel);
             miningLevels.put(storageBlock, PICKAXE);

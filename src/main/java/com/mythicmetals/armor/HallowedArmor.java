@@ -5,51 +5,53 @@ import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 public class HallowedArmor extends ArmorItem implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
-    private BipedEntityModel<BipedEntityRenderState> model;
-    public final EquipmentType type;
+    private HumanoidModel<HumanoidRenderState> model;
+    public final ArmorType type;
 
-    public HallowedArmor(EquipmentType type, Settings settings) {
+    public HallowedArmor(ArmorType type, Properties settings) {
         this(MythicArmorMaterials.HALLOWED, type, settings);
     }
 
-    public HallowedArmor(ArmorMaterial material, EquipmentType type, Settings settings) {
+    public HallowedArmor(ArmorMaterial material, ArmorType type, Properties settings) {
         super(material, type, settings);
         this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public BipedEntityModel<BipedEntityRenderState> getArmorModel() {
+    public HumanoidModel<HumanoidRenderState> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(type.getEquipmentSlot());
+            model = provideArmorModelForSlot(type.getSlot());
         }
         return model;
     }
 
     @Environment(EnvType.CLIENT)
     @Override
-    public BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
-        var models = MinecraftClient.getInstance().getLoadedEntityModels();
-        var root = models.getModelPart(MythicModelHandler.HALLOWED_ARMOR);
+    public HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+        var models = Minecraft.getInstance().getEntityModels();
+        var root = models.bakeLayer(MythicModelHandler.HALLOWED_ARMOR);
         return new HelmetModel(root, slot);
     }
 
     @Override
-    public @NotNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public @NotNull ResourceLocation getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return RegistryHelper.id("textures/models/hallowed_model.png");
     }
 }

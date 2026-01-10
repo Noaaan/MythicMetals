@@ -1,21 +1,21 @@
 package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.client.resource.language.TranslationStorage;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.HashMap;
 import java.util.Map;
+import net.minecraft.client.resources.language.ClientLanguage;
 
-@Mixin(TranslationStorage.class)
+@Mixin(ClientLanguage.class)
 public class TranslationStorageMixin {
 
     @Mutable
     @Shadow
     @Final
-    private Map<String, String> translations;
+    private Map<String, String> storage;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void addTranslations(Map<String, String> translations, boolean rightToLeft, CallbackInfo ci) {
@@ -110,7 +110,7 @@ public class TranslationStorageMixin {
         builder.put("block.mythicmetals.midas_gold_ore", "Melted Cheese Wall");
         builder.put("block.mythicmetals.raw_midas_gold_block", "Block of Uncooked Melted Cheese?");
 
-        this.translations = builder;
+        this.storage = builder;
 
     }
 

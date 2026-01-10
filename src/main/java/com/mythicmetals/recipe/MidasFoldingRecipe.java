@@ -8,11 +8,15 @@ import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
 import io.wispforest.owo.serialization.EndecRecipeSerializer;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.*;
-import net.minecraft.recipe.input.SmithingRecipeInput;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.world.World;
+import net.minecraft.core.HolderLookup;
+
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SmithingRecipe;
+import net.minecraft.world.item.crafting.SmithingRecipeInput;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +30,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     private final Optional<Ingredient> addition;
     private final ItemStack result;
     @Nullable
-    private IngredientPlacement ingredientPlacement;
+    private PlacementInfo ingredientPlacement;
 
     public MidasFoldingRecipe(Optional<Ingredient> template, Optional<Ingredient> base, Optional<Ingredient> addition, ItemStack result) {
         this.template = template;
@@ -36,14 +40,14 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public boolean matches(SmithingRecipeInput input, World world) {
+    public boolean matches(SmithingRecipeInput input, Level world) {
         if (!SmithingRecipe.super.matches(input, world)) {
             return false;
         }
         var stack = input.base();
 
-        if (!stack.contains(GOLD_FOLDED)) return false;
-        int goldCount = stack.contains(GOLD_FOLDED) ? stack.get(GOLD_FOLDED).goldFolded() : 0;
+        if (!stack.has(GOLD_FOLDED)) return false;
+        int goldCount = stack.has(GOLD_FOLDED) ? stack.get(GOLD_FOLDED).goldFolded() : 0;
 
         if (input.template().getItem().equals(MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)) {
             return goldCount >= 640;
@@ -58,17 +62,17 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
 
     @Override
-    public Optional<Ingredient> template() {
+    public Optional<Ingredient> templateIngredient() {
         return template;
     }
 
     @Override
-    public Optional<Ingredient> base() {
+    public Optional<Ingredient> baseIngredient() {
         return base;
     }
 
     @Override
-    public Optional<Ingredient> addition() {
+    public Optional<Ingredient> additionIngredient() {
         return addition;
     }
 
@@ -77,7 +81,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public ItemStack craft(SmithingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider lookup) {
         var swordInputStack = input.base().copy();
 
         var goldComponent = swordInputStack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0));
@@ -89,7 +93,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
             // Transform into Royal Midas Gold Sword
             if (goldCount >= 640) {
-                var swordnite = swordInputStack.copyComponentsToNewStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD, 1);
+                var swordnite = swordInputStack.transmuteCopy(MythicTools.ROYAL_MIDAS_GOLD_SWORD, 1);
                 swordnite.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1, true));
                 return swordnite;
             }
@@ -100,7 +104,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
             // Transform Midas Gold Sword into Gilded Midas Gold Sword
             if (goldCount >= 319) {
-                var swordnite = swordInputStack.copyComponentsToNewStack(MythicTools.GILDED_MIDAS_GOLD_SWORD, 1);
+                var swordnite = swordInputStack.transmuteCopy(MythicTools.GILDED_MIDAS_GOLD_SWORD, 1);
                 swordnite.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1));
                 return swordnite;
             }
@@ -115,9 +119,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public IngredientPlacement getIngredientPlacement() {
+    public PlacementInfo placementInfo() {
         if (this.ingredientPlacement == null) {
-            this.ingredientPlacement = IngredientPlacement.forMultipleSlots(List.of(this.template, this.base, this.addition));
+            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(this.template, this.base, this.addition));
         }
 
         return this.ingredientPlacement;
@@ -125,9 +129,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
 
     public static class Serializer extends EndecRecipeSerializer<MidasFoldingRecipe> {
         public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::template),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", MidasFoldingRecipe::base),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::addition),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", MidasFoldingRecipe::baseIngredient),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             MidasFoldingRecipe::new
         );

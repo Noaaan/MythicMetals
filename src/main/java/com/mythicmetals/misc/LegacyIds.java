@@ -1,45 +1,45 @@
 package com.mythicmetals.misc;
 
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
 import java.util.HashMap;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 
 public class LegacyIds {
-    private static final HashMap<Identifier, Identifier> LEGACY_ITEM_IDS = new HashMap<>();
-    private static final HashMap<Identifier, Identifier> LEGACY_BLOCK_IDS = new HashMap<>();
+    private static final HashMap<ResourceLocation, ResourceLocation> LEGACY_ITEM_IDS = new HashMap<>();
+    private static final HashMap<ResourceLocation, ResourceLocation> LEGACY_BLOCK_IDS = new HashMap<>();
 
     // All the identifiers of removed stuff
-    private static final Identifier OLD_COPPER_ORE = RegistryHelper.id("copper_ore");
-    private static final Identifier OLD_COPPER_INGOT = RegistryHelper.id("copper_ingot");
-    private static final Identifier OLD_TANTALITE_ORE = RegistryHelper.id("tantalite_ore");
-    private static final Identifier OLD_TRUESILVER_ORE = RegistryHelper.id("truesilver_ore");
-    private static final Identifier OLD_TRUESILVER_INGOT = RegistryHelper.id("truesilver_ingot");
-    private static final Identifier OLD_TRUESILVER_BLOCK = RegistryHelper.id("truesilver_block");
-    private static final Identifier OLD_AETHERIUM_ORE = RegistryHelper.id("aetherium_ore");
-    private static final Identifier OLD_AETHERIUM_INGOT = RegistryHelper.id("aetherium_ingot");
-    private static final Identifier OLD_AETHERIUM_BLOCK = RegistryHelper.id("aetherium_block");
-    private static final Identifier OLD_RAW_AETHERIUM = RegistryHelper.id("raw_aetherium");
-    private static final Identifier OLD_UR = RegistryHelper.id("ur_ore");
-    private static final Identifier OLD_ZINC = RegistryHelper.id("zinc_ore");
-    private static final Identifier OLD_RAW_STARRITE = RegistryHelper.id("raw_starrite");
-    private static final Identifier OLD_STARRITE_INGOT = RegistryHelper.id("starrite_ingot");
-    private static final Identifier OLD_UNOBTAINIUM_DUST = RegistryHelper.id("unobtainium_dust");
-    private static final Identifier OLD_VERMICULITE = RegistryHelper.id("vermiculite_ore");
+    private static final ResourceLocation OLD_COPPER_ORE = RegistryHelper.id("copper_ore");
+    private static final ResourceLocation OLD_COPPER_INGOT = RegistryHelper.id("copper_ingot");
+    private static final ResourceLocation OLD_TANTALITE_ORE = RegistryHelper.id("tantalite_ore");
+    private static final ResourceLocation OLD_TRUESILVER_ORE = RegistryHelper.id("truesilver_ore");
+    private static final ResourceLocation OLD_TRUESILVER_INGOT = RegistryHelper.id("truesilver_ingot");
+    private static final ResourceLocation OLD_TRUESILVER_BLOCK = RegistryHelper.id("truesilver_block");
+    private static final ResourceLocation OLD_AETHERIUM_ORE = RegistryHelper.id("aetherium_ore");
+    private static final ResourceLocation OLD_AETHERIUM_INGOT = RegistryHelper.id("aetherium_ingot");
+    private static final ResourceLocation OLD_AETHERIUM_BLOCK = RegistryHelper.id("aetherium_block");
+    private static final ResourceLocation OLD_RAW_AETHERIUM = RegistryHelper.id("raw_aetherium");
+    private static final ResourceLocation OLD_UR = RegistryHelper.id("ur_ore");
+    private static final ResourceLocation OLD_ZINC = RegistryHelper.id("zinc_ore");
+    private static final ResourceLocation OLD_RAW_STARRITE = RegistryHelper.id("raw_starrite");
+    private static final ResourceLocation OLD_STARRITE_INGOT = RegistryHelper.id("starrite_ingot");
+    private static final ResourceLocation OLD_UNOBTAINIUM_DUST = RegistryHelper.id("unobtainium_dust");
+    private static final ResourceLocation OLD_VERMICULITE = RegistryHelper.id("vermiculite_ore");
 
     // Identifiers of stuff that replaces them
-    private static final Identifier VANILLA_COPPER_ORE = Identifier.of("copper_ore");
-    private static final Identifier VANILLA_COPPER_INGOT = Identifier.of("copper_ingot");
-    private static final Identifier VANILLA_NETHERRACK = Identifier.of("netherrack");
-    private static final Identifier VANILLA_STONE = Identifier.of("stone");
-    private static final Identifier NEW_UNOBTAINIUM = RegistryHelper.id("unobtainium");
-    private static final Identifier NEW_PALLADIUM_ORE = RegistryHelper.id("palladium_ore");
-    private static final Identifier NEW_PALLADIUM_INGOT = RegistryHelper.id("palladium_ingot");
-    private static final Identifier NEW_PALLADIUM_BLOCK = RegistryHelper.id("palladium_block");
-    private static final Identifier NEW_MYTHRIL_ORE = RegistryHelper.id("mythril_ore");
-    private static final Identifier NEW_MYTHRIL_INGOT = RegistryHelper.id("mythril_ingot");
-    private static final Identifier NEW_MYTHRIL_BLOCK = RegistryHelper.id("mythril_block");
-    private static final Identifier NEW_MYTHRIL_RAW = RegistryHelper.id("raw_mythril");
-    private static final Identifier NEW_STARRITE = RegistryHelper.id("starrite");
+    private static final ResourceLocation VANILLA_COPPER_ORE = ResourceLocation.parse("copper_ore");
+    private static final ResourceLocation VANILLA_COPPER_INGOT = ResourceLocation.parse("copper_ingot");
+    private static final ResourceLocation VANILLA_NETHERRACK = ResourceLocation.parse("netherrack");
+    private static final ResourceLocation VANILLA_STONE = ResourceLocation.parse("stone");
+    private static final ResourceLocation NEW_UNOBTAINIUM = RegistryHelper.id("unobtainium");
+    private static final ResourceLocation NEW_PALLADIUM_ORE = RegistryHelper.id("palladium_ore");
+    private static final ResourceLocation NEW_PALLADIUM_INGOT = RegistryHelper.id("palladium_ingot");
+    private static final ResourceLocation NEW_PALLADIUM_BLOCK = RegistryHelper.id("palladium_block");
+    private static final ResourceLocation NEW_MYTHRIL_ORE = RegistryHelper.id("mythril_ore");
+    private static final ResourceLocation NEW_MYTHRIL_INGOT = RegistryHelper.id("mythril_ingot");
+    private static final ResourceLocation NEW_MYTHRIL_BLOCK = RegistryHelper.id("mythril_block");
+    private static final ResourceLocation NEW_MYTHRIL_RAW = RegistryHelper.id("raw_mythril");
+    private static final ResourceLocation NEW_STARRITE = RegistryHelper.id("starrite");
 
 
     private static void createMap() {
@@ -72,14 +72,14 @@ public class LegacyIds {
         LEGACY_ITEM_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
     }
 
-    public static HashMap<Identifier, Identifier> getLegacyBlockIds() {
+    public static HashMap<ResourceLocation, ResourceLocation> getLegacyBlockIds() {
         if (LEGACY_BLOCK_IDS.isEmpty()) {
             createMap();
         }
         return LEGACY_BLOCK_IDS;
     }
 
-    public static HashMap<Identifier, Identifier> getLegacyItemIds() {
+    public static HashMap<ResourceLocation, ResourceLocation> getLegacyItemIds() {
         if (LEGACY_ITEM_IDS.isEmpty()) {
             createMap();
         }
@@ -87,8 +87,8 @@ public class LegacyIds {
     }
 
     public static void registerAliases() {
-        getLegacyItemIds().forEach(Registries.ITEM::addAlias);
-        getLegacyBlockIds().forEach(Registries.BLOCK::addAlias);
-        Registries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id("star_platinum_ingot"));
+        getLegacyItemIds().forEach(BuiltInRegistries.ITEM::addAlias);
+        getLegacyBlockIds().forEach(BuiltInRegistries.BLOCK::addAlias);
+        BuiltInRegistries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id("star_platinum_ingot"));
     }
 }

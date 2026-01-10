@@ -3,27 +3,33 @@ package com.mythicmetals.misc;
 import com.mojang.authlib.GameProfile;
 import com.mythicmetals.data.MythicTags;
 import eu.pb4.common.protection.api.CommonProtection;
-import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.explosion.Explosion;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockPos.MutableBlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BucketPickup;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
-import static net.minecraft.block.Block.dropStacks;
+import static net.minecraft.world.level.block.Block.dropResources;
 
 public final class EpicExplosion implements Explosion {
 
-    private final Explosion.DestructionType destructionType;
-    private final ServerWorld world;
-    private final Vec3d pos;
+    private final Explosion.BlockInteraction destructionType;
+    private final ServerLevel world;
+    private final Vec3 pos;
     @Nullable
     private final Entity entity;
     @Nullable
@@ -32,7 +38,7 @@ public final class EpicExplosion implements Explosion {
     private final DamageSource damageSource;
     private final Predicate<BlockState> statePredicate;
 
-    public EpicExplosion(DestructionType destructionType, ServerWorld world, Vec3d pos, @Nullable Entity entity, @Nullable LivingEntity cause, float radius, DamageSource damageSource, Predicate<BlockState> statePredicate) {
+    public EpicExplosion(BlockInteraction destructionType, ServerLevel world, Vec3 pos, @Nullable Entity entity, @Nullable LivingEntity cause, float radius, DamageSource damageSource, Predicate<BlockState> statePredicate) {
 
         this.destructionType = destructionType;
         this.world = world;
@@ -46,7 +52,7 @@ public final class EpicExplosion implements Explosion {
 
     public void explode() {
         int radiusSq = (int) (this.radius * this.radius);
-        var mutPos = new BlockPos.Mutable();
+        var mutPos = new BlockPos.MutableBlockPos();
 
         MythicParticleSystem.EXPLOSIVE_EXPLOSION.spawn(world, this.pos, radius);
 
@@ -58,17 +64,17 @@ public final class EpicExplosion implements Explosion {
                     mutPos.set(pos.x + ox, pos.y + oy, pos.z + oz);
                     var state = world.getBlockState(mutPos);
 
-                    if (state.isAir() || state.getBlock().getBlastResistance() > 10000) continue;
+                    if (state.isAir() || state.getBlock().getExplosionResistance() > 10000) continue;
 
                     if (!statePredicate.test(state)) continue;
 
-                    if (cause instanceof PlayerEntity player) {
+                    if (cause instanceof Player player) {
                         if (BlockBreaker.isProtected(world, mutPos, this, player.getGameProfile(), player)) continue;
                     } else {
                         if (BlockBreaker.isProtected(world, mutPos, CommonProtection.UNKNOWN, null)) continue;
                     }
 
-                    world.setBlockState(mutPos, Blocks.AIR.getDefaultState());
+                    world.setBlockAndUpdate(mutPos, Blocks.AIR.defaultBlockState());
                 }
             }
         }
@@ -85,9 +91,9 @@ public final class EpicExplosion implements Explosion {
      * @param radius Water absorption radius
      * @param cause  PlayerEntity which triggered this, used to check against claim protection
      */
-    public static void absorbWater(ServerWorld world, int x, int y, int z, int radius, @Nullable PlayerEntity cause) {
+    public static void absorbWater(ServerLevel world, int x, int y, int z, int radius, @Nullable Player cause) {
         int radiusSq = radius * radius;
-        var pos = new BlockPos.Mutable();
+        var pos = new BlockPos.MutableBlockPos();
 
         GameProfile playerId = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
 
@@ -103,13 +109,13 @@ public final class EpicExplosion implements Explosion {
                     var state = world.getBlockState(pos);
                     var fluidState = world.getFluidState(pos);
 
-                    if (fluidState.isIn(FluidTags.WATER)) {
-                        if (state.getBlock() instanceof FluidDrainable drainable && drainable.tryDrainFluid(cause, world, pos, state).isEmpty()) {
-                            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
-                        } else if (state.isIn(MythicTags.SPONGABLES)) {
+                    if (fluidState.is(FluidTags.WATER)) {
+                        if (state.getBlock() instanceof BucketPickup drainable && drainable.pickupBlock(cause, world, pos, state).isEmpty()) {
+                            world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+                        } else if (state.is(MythicTags.SPONGABLES)) {
                             BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
-                            dropStacks(state, world, pos, blockEntity);
-                            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
+                            dropResources(state, world, pos, blockEntity);
+                            world.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
                         }
                     }
                 }
@@ -119,32 +125,32 @@ public final class EpicExplosion implements Explosion {
     }
 
     @Override
-    public ServerWorld getWorld() {
+    public ServerLevel level() {
         return world;
     }
 
     @Override
-    public DestructionType getDestructionType() {
+    public BlockInteraction getBlockInteraction() {
         return destructionType;
     }
 
     @Override
-    public @Nullable LivingEntity getCausingEntity() {
+    public @Nullable LivingEntity getIndirectSourceEntity() {
         return cause;
     }
 
     @Override
-    public @Nullable Entity getEntity() {
+    public @Nullable Entity getDirectSourceEntity() {
         return entity;
     }
 
     @Override
-    public float getPower() {
+    public float radius() {
         return radius;
     }
 
     @Override
-    public Vec3d getPosition() {
+    public Vec3 center() {
         return pos;
     }
 
@@ -154,7 +160,7 @@ public final class EpicExplosion implements Explosion {
     }
 
     @Override
-    public boolean preservesDecorativeEntities() {
+    public boolean shouldAffectBlocklikeEntities() {
         return false;
     }
 

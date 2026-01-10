@@ -1,47 +1,51 @@
 package com.mythicmetals.effects;
 
 import io.wispforest.owo.ops.WorldOps;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.passive.FoxEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.*;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.server.level.ServerLevel;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Fox;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * Joke status effect meant to be integrated with Spectrums Titration barrel
  * Teleports you around
  */
-public final class WormholeSpecial extends StatusEffect {
+public final class WormholeSpecial extends MobEffect {
 
-    public WormholeSpecial(StatusEffectCategory statusEffectCategory, int color) {
+    public WormholeSpecial(MobEffectCategory statusEffectCategory, int color) {
         super(statusEffectCategory, color);
     }
 
     @Override
-    public void onApplied(LivingEntity user, int amplifier) {
-        var world = user.getWorld();
-        if (!user.getWorld().isClient) {
+    public void onEffectStarted(LivingEntity user, int amplifier) {
+        var world = user.level();
+        if (!user.level().isClientSide) {
             for (int i = 0; i < 20; i++) {
                 double x = user.getX() + (user.getRandom().nextDouble() - 0.5) * 24.0;
-                double y = MathHelper.clamp(
+                double y = Mth.clamp(
                     user.getY() + (double) (user.getRandom().nextInt(24) - 8),
-                    world.getBottomY(),
-                    world.getBottomY() + ((ServerWorld) world).getLogicalHeight() - 1
+                    world.getMinY(),
+                    world.getMinY() + ((ServerLevel) world).getLogicalHeight() - 1
                 );
                 double z = user.getZ() + (user.getRandom().nextDouble() - 0.5) * 24.0;
-                if (user.hasVehicle()) {
+                if (user.isPassenger()) {
                     user.stopRiding();
                 }
 
-                Vec3d vec3d = user.getPos();
-                if (user.teleport(x, y, z, true)) {
-                    world.emitGameEvent(GameEvent.TELEPORT, vec3d, GameEvent.Emitter.of(user));
-                    SoundEvent soundEvent = user instanceof FoxEntity ? SoundEvents.ENTITY_FOX_TELEPORT : SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
-                    WorldOps.playSound(world, user.getPos(), soundEvent, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                Vec3 vec3d = user.position();
+                if (user.randomTeleport(x, y, z, true)) {
+                    world.gameEvent(GameEvent.TELEPORT, vec3d, GameEvent.Context.of(user));
+                    SoundEvent soundEvent = user instanceof Fox ? SoundEvents.FOX_TELEPORT : SoundEvents.CHORUS_FRUIT_TELEPORT;
+                    WorldOps.playSound(world, user.position(), soundEvent, SoundSource.PLAYERS, 1.0F, 1.0F);
                     break;
                 }
             }
@@ -49,7 +53,7 @@ public final class WormholeSpecial extends StatusEffect {
     }
 
     @Override
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         int i = 60 >> amplifier;
         if (i > 0) {
             return duration % i == 0;

@@ -1,14 +1,13 @@
 accessWidener v2 named
 
-accessible class net/minecraft/datafixer/fix/ItemStackComponentizationFix$StackData
+accessible class net/minecraft/util/datafix/fixes/ItemStackComponentizationFix$ItemStackData
+accessible method net/minecraft/world/effect/MobEffect <init> (Lnet/minecraft/world/effect/MobEffectCategory;I)V
 
-accessible method net/minecraft/entity/effect/StatusEffect <init> (Lnet/minecraft/entity/effect/StatusEffectCategory;I)V
-accessible method net/minecraft/item/SmithingTemplateItem getArmorTrimEmptyBaseSlotTextures ()Ljava/util/List;
+accessible method net/minecraft/world/item/SmithingTemplateItem createTrimmableArmorIconList ()Ljava/util/List;
+accessible method net/minecraft/world/item/SmithingTemplateItem createNetheriteUpgradeIconList ()Ljava/util/List;
+accessible method net/minecraft/world/item/SmithingTemplateItem createNetheriteUpgradeMaterialList ()Ljava/util/List;
 
-accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmptyBaseSlotTextures ()Ljava/util/List;
-accessible method net/minecraft/item/SmithingTemplateItem getNetheriteUpgradeEmptyAdditionsSlotTextures ()Ljava/util/List;
+accessible method net/minecraft/world/level/block/RailState countPotentialConnections ()I
 
-accessible method net/minecraft/block/RailPlacementHelper getNeighborCount ()I
-
-accessible method net/minecraft/client/render/entity/AbstractMinecartEntityRenderer transformExperimentalControllerMinecart (Lnet/minecraft/client/render/entity/state/MinecartEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;)V
-accessible method net/minecraft/client/render/entity/AbstractMinecartEntityRenderer transformDefaultControllerMinecart (Lnet/minecraft/client/render/entity/state/MinecartEntityRenderState;Lnet/minecraft/client/util/math/MatrixStack;)V
+accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer newRender (Lnet/minecraft/client/renderer/entity/state/MinecartRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V
+accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer oldRender (Lnet/minecraft/client/renderer/entity/state/MinecartRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V

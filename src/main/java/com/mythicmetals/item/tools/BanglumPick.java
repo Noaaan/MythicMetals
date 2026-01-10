@@ -4,20 +4,26 @@ import com.mythicmetals.misc.BlockBreaker;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterCriteria;
 import io.wispforest.owo.ops.WorldOps;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 public class BanglumPick extends PickaxeItem {
 
-    public BanglumPick(ToolMaterial material, int damage, float speed, Settings settings) {
+    public BanglumPick(ToolMaterial material, int damage, float speed, Properties settings) {
         super(material, damage, speed, settings);
     }
 
@@ -26,22 +32,22 @@ public class BanglumPick extends PickaxeItem {
      * When the tool is used on a block, it breaks a bunch of blocks in a set radius.
      */
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
+    public InteractionResult useOn(UseOnContext context) {
         boolean shouldPass = false;
-        var world = context.getWorld();
+        var world = context.getLevel();
         var player = context.getPlayer();
-        var stack = context.getStack();
+        var stack = context.getItemInHand();
 
-        if (player != null && !isCoolingDown(player, stack) && !world.isClient()) {
+        if (player != null && !isCoolingDown(player, stack) && !world.isClientSide()) {
 
             var iterator = BlockBreaker.findBlocks(context, 5);
             for (BlockPos blockPos : iterator) {
                 if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
                     continue;
                 }
-                if (isCorrectForDrops(stack, world.getBlockState(blockPos))) {
+                if (isCorrectToolForDrops(stack, world.getBlockState(blockPos))) {
                     WorldOps.breakBlockWithItem(world, blockPos, stack, player);
-                    stack.damage(2, player, EquipmentSlot.MAINHAND);
+                    stack.hurtAndBreak(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }
             }
@@ -49,24 +55,24 @@ public class BanglumPick extends PickaxeItem {
         }
 
         if (shouldPass) {
-            var pos = context.getBlockPos();
-            var facing = context.getSide().getOpposite();
-            var pos2 = context.getBlockPos().offset(facing, 5);
+            var pos = context.getClickedPos();
+            var facing = context.getClickedFace().getOpposite();
+            var pos2 = context.getClickedPos().relative(facing, 5);
 
-            MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
-            WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.PLAYERS);
+            MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
+            WorldOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
-            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayerEntity) player);
-            player.getItemCooldownManager().set(stack, 100);
-            return ActionResult.SUCCESS;
+            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
+            player.getCooldowns().addCooldown(stack, 100);
+            return InteractionResult.SUCCESS;
         }
 
-        return ActionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
     public static boolean isCoolingDown(LivingEntity entity, ItemStack stack) {
-        if (entity != null && entity.isPlayer()) {
-            return ((PlayerEntity) entity).getItemCooldownManager().isCoolingDown(stack);
+        if (entity != null && entity.isAlwaysTicking()) {
+            return ((Player) entity).getCooldowns().isOnCooldown(stack);
         }
         return false;
     }

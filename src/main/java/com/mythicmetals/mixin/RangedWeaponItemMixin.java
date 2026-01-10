@@ -1,14 +1,14 @@
 package com.mythicmetals.mixin;
 
 import com.mythicmetals.entity.MythicEntities;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.RangedWeaponItem;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.ProjectileWeaponItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-@Mixin(RangedWeaponItem.class)
+@Mixin(ProjectileWeaponItem.class)
 public abstract class RangedWeaponItemMixin {
 
     // Increases the velocity of Runite Arrows when shot from Ranged Weapons
@@ -17,7 +17,7 @@ public abstract class RangedWeaponItemMixin {
     @ModifyArgs(method = "method_61659", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/RangedWeaponItem;shoot(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/projectile/ProjectileEntity;IFFFLnet/minecraft/entity/LivingEntity;)V"))
     private void mythicmetals$modifyArrowsForRunite(Args args) {
         boolean shouldModify = false;
-        ProjectileEntity projectile = args.get(1);
+        Projectile projectile = args.get(1);
         if (projectile.getType().equals(MythicEntities.RUNITE_ARROW_ENTITY_TYPE)) {
             shouldModify = true;
         }

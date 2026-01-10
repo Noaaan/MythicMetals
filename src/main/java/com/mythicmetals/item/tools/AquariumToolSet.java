@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.world.item.ToolMaterial;
 
 public class AquariumToolSet extends ToolSet {
     public AquariumToolSet(ToolMaterial material, int[] damage, float[] speed) {

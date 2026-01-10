@@ -7,12 +7,17 @@ import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
 import io.wispforest.owo.serialization.EndecRecipeSerializer;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.*;
-import net.minecraft.recipe.input.SmithingRecipeInput;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.world.World;
+import net.minecraft.core.HolderLookup;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.PlacementInfo;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SmithingRecipe;
+import net.minecraft.world.item.crafting.SmithingRecipeInput;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
@@ -28,12 +33,12 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     }
 
     @Nullable
-    private IngredientPlacement ingredientPlacement;
+    private PlacementInfo ingredientPlacement;
 
     @Override
-    public boolean matches(SmithingRecipeInput input, World world) {
-        boolean validRecipe = Ingredient.matches(this.base(), input.base())
-            && Ingredient.matches(this.addition(), input.addition());
+    public boolean matches(SmithingRecipeInput input, Level world) {
+        boolean validRecipe = Ingredient.testOptionalIngredient(this.baseIngredient(), input.base())
+            && Ingredient.testOptionalIngredient(this.additionIngredient(), input.addition());
 
         if (!validRecipe) return false;
 
@@ -46,12 +51,12 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public Optional<Ingredient> template() {
+    public Optional<Ingredient> templateIngredient() {
         return Optional.empty();
     }
 
     @Override
-    public ItemStack craft(SmithingRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+    public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider lookup) {
         var stack = input.base().copy();
 
         // Apply drill upgrade
@@ -65,21 +70,21 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public IngredientPlacement getIngredientPlacement() {
+    public PlacementInfo placementInfo() {
         if (this.ingredientPlacement == null) {
-            this.ingredientPlacement = IngredientPlacement.forMultipleSlots(List.of(this.base, this.addition));
+            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(this.base, this.addition));
         }
 
         return this.ingredientPlacement;
     }
 
     @Override
-    public Optional<Ingredient> base() {
+    public Optional<Ingredient> baseIngredient() {
         return base;
     }
 
     @Override
-    public Optional<Ingredient> addition() {
+    public Optional<Ingredient> additionIngredient() {
         return addition;
     }
 
@@ -114,8 +119,8 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     public static class Serializer extends EndecRecipeSerializer<UpgradeSmithingRecipe> {
 
         public static final StructEndec<UpgradeSmithingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", UpgradeSmithingRecipe::base),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::addition),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
+            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::additionIngredient),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             UpgradeSmithingRecipe::new
         );

@@ -6,18 +6,18 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.core.HolderLookup;
 import java.util.concurrent.CompletableFuture;
 
 public class MythicBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
-    public MythicBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public MythicBlockTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
     @SuppressWarnings("UnstableApiUsage")
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup arg) {
+    protected void addTags(HolderLookup.Provider arg) {
         ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
             var modOreTag = MythicMetalsData.createModBlockTag("ores");
             var commonOreTag = ConventionalBlockTags.ORES;
@@ -27,13 +27,13 @@ public class MythicBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 var modTag = MythicMetalsData.createModBlockTag(string);
                 var commonTag = MythicMetalsData.createCommonBlockTag(string);
                 var tagBuilder = getOrCreateTagBuilder(modTag).add(blockSet.getOre());
-                getOrCreateTagBuilder(commonTag).addTag(modTag);
+                tag(commonTag).addTag(modTag);
 
                 if (!blockSet.getOreVariants().isEmpty()) {
                     blockSet.getOreVariants().forEach(tagBuilder::add);
                 }
-                getOrCreateTagBuilder(modOreTag).addTag(modTag);
-                getOrCreateTagBuilder(commonOreTag).addTag(modTag);
+                tag(modOreTag).addTag(modTag);
+                tag(commonOreTag).addTag(modTag);
             }
 
             if (blockSet.getOreStorageBlock() != null) {
@@ -41,7 +41,7 @@ public class MythicBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 var modTag = MythicMetalsData.createModBlockTag(string);
                 var commonTag = MythicMetalsData.createCommonBlockTag(string);
                 getOrCreateTagBuilder(modTag).add(blockSet.getOreStorageBlock());
-                getOrCreateTagBuilder(commonTag).addTag(modTag);
+                tag(commonTag).addTag(modTag);
             }
 
             if (blockSet.getStorageBlock() != null) {
@@ -49,7 +49,7 @@ public class MythicBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 var modTag = MythicMetalsData.createModBlockTag(string);
                 var commonTag = MythicMetalsData.createCommonBlockTag(string);
                 getOrCreateTagBuilder(modTag).add(blockSet.getStorageBlock());
-                getOrCreateTagBuilder(commonTag).addTag(modTag);
+                tag(commonTag).addTag(modTag);
             }
         });
     }

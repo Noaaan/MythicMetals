@@ -1,20 +1,23 @@
 package com.mythicmetals.item.tools;
 
-import net.minecraft.item.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.level.BlockGetter;
 
 public class HammerBase extends PickaxeItem {
 
     private final int depth;
 
-    public HammerBase(ToolMaterial material, float damage, float speed, Settings settings, int depth) {
+    public HammerBase(ToolMaterial material, float damage, float speed, Properties settings, int depth) {
         super(material, damage, speed, settings);
         this.depth = depth;
     }
 
-    public boolean canBreak(ItemStack stack, BlockView view, BlockPos pos) {
-        return super.isCorrectForDrops(stack, view.getBlockState(pos));
+    public boolean canBreak(ItemStack stack, BlockGetter view, BlockPos pos) {
+        return super.isCorrectToolForDrops(stack, view.getBlockState(pos));
     }
 
     public int getDepth() {

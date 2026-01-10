@@ -1,14 +1,18 @@
 package com.mythicmetals.ability;
 
+
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.item.tools.ToolSet;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.*;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import java.util.*;
 
 /**
@@ -85,27 +89,27 @@ public class Ability {
     @Environment(EnvType.CLIENT)
     public void addTooltip(Item item, Style style) {
         ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
-            MutableText text = Text.literal("");
-            if (stack.isOf(item)) {
-                text.append(Text.translatable("abilities.mythicmetals." + tooltip));
+            MutableComponent text = Component.literal("");
+            if (stack.is(item)) {
+                text.append(Component.translatable("abilities.mythicmetals." + tooltip));
                 text.setStyle(style);
                 if (showLevel) {
-                    text.append(" ").append(Text.translatable("enchantment.level." + level));
+                    text.append(" ").append(Component.translatable("enchantment.level." + level));
                 }
                 if (lines.size() > 2) {
-                    var enchantCount = stack.getEnchantments().getSize();
+                    var enchantCount = stack.getEnchantments().size();
                     lines.add(enchantCount + 1, text);
                 } else lines.add(text);
             }
         });
     }
 
-    public static void addTooltipOnStack(ItemStack stack, List<Text> lines, Style style, String translationKey) {
-        MutableText text = Text.literal("");
-        text.append(Text.translatable(translationKey));
+    public static void addTooltipOnStack(ItemStack stack, List<Component> lines, Style style, String translationKey) {
+        MutableComponent text = Component.literal("");
+        text.append(Component.translatable(translationKey));
         text.setStyle(style);
         if (lines.size() > 2) {
-            var enchantCount = stack.getEnchantments().getSize();
+            var enchantCount = stack.getEnchantments().size();
             lines.add(enchantCount + 1, text);
         } else lines.add(text);
     }

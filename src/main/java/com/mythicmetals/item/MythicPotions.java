@@ -1,16 +1,16 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.potion.Potion;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.alchemy.Potion;
 
 public class MythicPotions {
 
     public static void init() {}
 
     static {
-        RegistryEntry<Potion> STRONG_LUCK = RegistryHelper.potion("strong_luck", new StatusEffectInstance(StatusEffects.LUCK, 6000, 1));
+        Holder<Potion> STRONG_LUCK = RegistryHelper.potion("strong_luck", new MobEffectInstance(MobEffects.LUCK, 6000, 1));
     }
 }

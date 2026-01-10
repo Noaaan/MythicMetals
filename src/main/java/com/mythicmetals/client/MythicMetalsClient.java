@@ -1,5 +1,7 @@
 package com.mythicmetals.client;
 
+
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.CustomArmorModelItem;
 import com.mythicmetals.block.MythicBlocks;
@@ -24,30 +26,44 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.*;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
-import net.minecraft.client.render.entity.PlayerEntityRenderer;
-import net.minecraft.client.render.entity.equipment.EquipmentModel;
-import net.minecraft.client.render.item.property.bool.BooleanProperties;
-import net.minecraft.client.render.item.property.numeric.NumericProperties;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.EnchantmentEffectComponentTypes;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.registry.Registries;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ShapeRenderer;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
+import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
+import net.minecraft.client.resources.model.EquipmentClientInfo.LayerType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.equipment.trim.ArmorTrim;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.function.Function;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
@@ -61,8 +77,8 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerSwirlRenderer();
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityRenderer instanceof PlayerEntityRenderer playerRenderer) {
-                registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getEntityModels(), context.getEquipmentRenderer()));
+            if (entityRenderer instanceof PlayerRenderer playerRenderer) {
+                registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getModelSet(), context.getEquipmentRenderer()));
             }
         });
         EntityRendererRegistry.register(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, PalladiumMinecartRenderer::new);
@@ -72,16 +88,16 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
-        BlockEntityRendererFactories.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
+        BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, RenderLayer.getCutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.PALLADIUM_RAIL, RenderLayer.getCutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.AQUARIUM_GLASS, RenderLayer.getTranslucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.PALLADIUM_RAIL, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.AQUARIUM_GLASS, RenderType.translucent());
 
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(), MythicBlocks.KYBER.getStorageBlock());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(), MythicBlocks.KYBER.getStorageBlock());
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -96,7 +112,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     private void registerSwirlRenderer() {
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType != EntityType.PLAYER) return;
-            registrationHelper.register(new PlayerEnergySwirlFeatureRenderer(entityRenderer, context.getEntityModels()));
+            registrationHelper.register(new PlayerEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));
         });
     }
 
@@ -105,19 +121,19 @@ public class MythicMetalsClient implements ClientModInitializer {
      */
     private void renderHammerOutline() {
         WorldRenderEvents.BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
-            if (!blockOutlineContext.entity().isPlayer()) return true;
-            var player = (PlayerEntity) blockOutlineContext.entity();
+            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
+            var player = (Player) blockOutlineContext.entity();
 
             // Only render the outline if you are hovering over something the hammer can break
-            var stack = player.getMainHandStack();
+            var stack = player.getMainHandItem();
             if (stack.getItem() instanceof HammerBase hammer
                 && !blockOutlineContext.blockState().isAir()
-                && hammer.isCorrectForDrops(stack, blockOutlineContext.blockState())) {
+                && hammer.isCorrectToolForDrops(stack, blockOutlineContext.blockState())) {
 
                 var reach = BlockBreaker.getReachDistance(player);
-                BlockHitResult blockHitResult = (BlockHitResult) player.raycast(reach, 1, false);
+                BlockHitResult blockHitResult = (BlockHitResult) player.pick(reach, 1, false);
 
-                var facing = blockHitResult.getSide().getOpposite();
+                var facing = blockHitResult.getDirection().getOpposite();
                 var blocks = BlockBreaker.findBlocks(facing, blockOutlineContext.blockPos(), hammer.getDepth());
                 var originalPos = blockOutlineContext.blockPos();
 
@@ -125,13 +141,13 @@ public class MythicMetalsClient implements ClientModInitializer {
                 var voxels = new ArrayList<VoxelShape>();
 
                 for (BlockPos blockPos : blocks) {
-                    var blockState = player.getWorld().getBlockState(blockPos);
-                    if (!blockState.isAir() && hammer.isCorrectForDrops(stack, blockState)) {
-                        voxels.add(blockState.getOutlineShape(
+                    var blockState = player.level().getBlockState(blockPos);
+                    if (!blockState.isAir() && hammer.isCorrectToolForDrops(stack, blockState)) {
+                        voxels.add(blockState.getShape(
                                 worldRenderContext.world(),
                                 blockPos,
-                                ShapeContext.of(blockOutlineContext.entity())
-                            ).offset(blockPos.getX() - originalPos.getX(),
+                                CollisionContext.of(blockOutlineContext.entity())
+                            ).move(blockPos.getX() - originalPos.getX(),
                                 blockPos.getY() - originalPos.getY(),
                                 blockPos.getZ() - originalPos.getZ())
                         );
@@ -139,14 +155,14 @@ public class MythicMetalsClient implements ClientModInitializer {
                 }
 
                 // Combine and render the full shape
-                var outlineOptional = voxels.stream().reduce(VoxelShapes::union);
+                var outlineOptional = voxels.stream().reduce(Shapes::or);
                 if (outlineOptional.isEmpty()) return true;
 
                 var outlineShape = outlineOptional.get();
 
-                VertexRendering.drawOutline(
+                ShapeRenderer.renderShape(
                     worldRenderContext.matrixStack(),
-                    worldRenderContext.consumers().getBuffer(RenderLayer.getLines()),
+                    worldRenderContext.consumers().getBuffer(RenderType.lines()),
                     outlineShape,
                     originalPos.getX() - blockOutlineContext.cameraX(),
                     originalPos.getY() - blockOutlineContext.cameraY(),
@@ -163,42 +179,42 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private void registerArmorRenderer() {
-        Item[] armors = Registries.ITEM.stream()
+        Item[] armors = BuiltInRegistries.ITEM.stream()
             .filter(i -> i instanceof CustomArmorModelItem
-                && Registries.ITEM.getKey(i).get().getValue().getNamespace().equals(MythicMetals.MOD_ID))
+                && BuiltInRegistries.ITEM.getResourceKey(i).get().location().getNamespace().equals(MythicMetals.MOD_ID))
             .toArray(Item[]::new);
 
         ArmorRenderer renderer = (matrices, vertexConsumerProvider, stack, bipedEntityRenderState, slot, light, contextModel) -> {
-            var trimAtlas = MinecraftClient.getInstance().getSpriteAtlas(TexturedRenderLayers.ARMOR_TRIMS_ATLAS_TEXTURE);
+            var trimAtlas = Minecraft.getInstance().getTextureAtlas(Sheets.ARMOR_TRIMS_SHEET);
             var armorItem = (CustomArmorModelItem) stack.getItem();
             var model = armorItem.getArmorModel();
             var customModelData = (CustomArmorModel) model;
             customModelData.setVisibility(slot);
             var texture = armorItem.getArmorTexture(stack, slot);
-            contextModel.copyTransforms(model);
+            contextModel.copyPropertiesTo(model);
             ArmorRenderer.renderPart(matrices, vertexConsumerProvider, light, stack, model, texture);
 
             // Armor trim handling for custom armor models
-            var armorTrim = stack.get(DataComponentTypes.TRIM);
+            var armorTrim = stack.get(DataComponents.TRIM);
             if (armorTrim != null) {
-                var layer = slot == EquipmentSlot.LEGS ? EquipmentModel.LayerType.HUMANOID_LEGGINGS : EquipmentModel.LayerType.HUMANOID;
+                var layer = slot == EquipmentSlot.LEGS ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS : EquipmentClientInfo.LayerType.HUMANOID;
                 var assetId = armorTrim.pattern().value().assetId();
                 var assetName = armorTrim.material().value().assetName();
-                var trimTexture = assetId.withPath(path -> "trims/entity/" + layer.asString() + "/" + path + "_" + assetName);
+                var trimTexture = assetId.withPath(path -> "trims/entity/" + layer.getSerializedName() + "/" + path + "_" + assetName);
                 var sprite = trimAtlas.apply(trimTexture);
-                var trimVertexConsumer = sprite.getTextureSpecificVertexConsumer(
-                    vertexConsumerProvider.getBuffer(TexturedRenderLayers.getArmorTrims(armorTrim.pattern().value().decal()))
+                var trimVertexConsumer = sprite.wrap(
+                    vertexConsumerProvider.getBuffer(Sheets.armorTrimsSheet(armorTrim.pattern().value().decal()))
                 );
-                model.render(matrices, trimVertexConsumer, light, OverlayTexture.DEFAULT_UV);
+                model.renderToBuffer(matrices, trimVertexConsumer, light, OverlayTexture.NO_OVERLAY);
             }
         };
         ArmorRenderer.register(renderer, armors);
     }
 
     private void registerModelPredicates() {
-        NumericProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
-        NumericProperties.ID_MAPPER.put(RegistryHelper.id("midas_gold"), MidasGoldProperty.CODEC);
-        BooleanProperties.ID_MAPPER.put(RegistryHelper.id("has_drill_fuel"), HasDrillFuelProperty.CODEC);
+        RangeSelectItemModelProperties.ID_MAPPER.put(RegistryHelper.id("time"), TrueTimeProperty.CODEC);
+        RangeSelectItemModelProperties.ID_MAPPER.put(RegistryHelper.id("midas_gold"), MidasGoldProperty.CODEC);
+        ConditionalItemModelProperties.ID_MAPPER.put(RegistryHelper.id("has_drill_fuel"), HasDrillFuelProperty.CODEC);
         // TODO
 //        ModelPredicateProviderRegistry.register(RegistryHelper.id("funny_day"), (stack, world, entity, seed) ->
 //            (StringUtilsAtHome.isFunnyDay()) ? 1 : 0);
@@ -211,56 +227,56 @@ public class MythicMetalsClient implements ClientModInitializer {
             var item = stack.getItem();
             int index = 1;
 
-            if (stack.isIn(MythicTags.BONUS_FORTUNE)) {
-                lines.add(index, Text.translatable("abilities.mythicmetals.bonus_fortune").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
+            if (stack.is(MythicTags.BONUS_FORTUNE)) {
+                lines.add(index, Component.translatable("abilities.mythicmetals.bonus_fortune").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
             }
 
-            if (stack.isIn(MythicTags.BONUS_LOOTING)) {
-                lines.add(index, Text.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
+            if (stack.is(MythicTags.BONUS_LOOTING)) {
+                lines.add(index, Component.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
             }
 
             if (item.equals(MythicItems.Mats.BANGLUM_CHUNK) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
-                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
+                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
             }
             if (item.equals(MythicItems.Mats.AQUARIUM_PEARL)) {
-                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
+                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
             }
             if (item.equals(MythicItems.Mats.CARMOT_STONE)) {
-                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
+                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
             }
             if (item.equals(MythicItems.Mats.STORMYX_SHELL)) {
-                lines.add(index, Text.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").formatted(Formatting.LIGHT_PURPLE));
+                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").withStyle(ChatFormatting.LIGHT_PURPLE));
             }
             if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
-                lines.add(index, Text.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
+                lines.add(index, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
             }
 
-            if (stack.contains(MythicDataComponents.BRANDING)) {
+            if (stack.has(MythicDataComponents.BRANDING)) {
                 var component = stack.getOrDefault(MythicDataComponents.BRANDING, new BrandingComponent(0));
                 int finalIndex = index;
-                component.appendTooltip(context, text -> {
+                component.addToTooltip(context, text -> {
                     lines.add(finalIndex, text);
-                }, TooltipType.BASIC);
+                }, TooltipFlag.NORMAL);
             }
 
             if (lines.size() > 2) {
-                index += stack.getEnchantments().getSize();
+                index += stack.getEnchantments().size();
             }
 
-            if (stack.contains(MythicDataComponents.PROMETHEUM)) {
+            if (stack.has(MythicDataComponents.PROMETHEUM)) {
                 var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
                 if (type.isAdvanced()) {
-                    lines.add(index, Text.translatable("tooltip.prometheum.repaired", component.durabilityRepaired())
+                    lines.add(index, Component.translatable("tooltip.prometheum.repaired", component.durabilityRepaired())
                         .withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb())
                     );
                 }
 
-                lines.add(index, Text.translatable("tooltip.prometheum.regrowth").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                lines.add(index, Component.translatable("tooltip.prometheum.regrowth").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 if (component.isOvergrown()) {
-                    lines.add(index, Text.translatable("tooltip.prometheum.overgrown").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                    lines.add(index, Component.translatable("tooltip.prometheum.overgrown").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 }
-                if (EnchantmentHelper.hasAnyEnchantmentsWith(stack, EnchantmentEffectComponentTypes.PREVENT_ARMOR_CHANGE)) {
-                    lines.add(index, Text.translatable("tooltip.prometheum.engrained").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                if (EnchantmentHelper.has(stack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
+                    lines.add(index, Component.translatable("tooltip.prometheum.engrained").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 }
             }
         });

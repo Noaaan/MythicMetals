@@ -1,13 +1,21 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.AttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.ToolMaterial;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -22,16 +30,16 @@ public class ToolSet {
     private final HoeItem hoe;
     private final ToolMaterial material;
     private final List<Float> attackSpeed = new ArrayList<>();
-    private List<AttributeModifier> extraModifiers = List.of();
+    private List<MythicAttributeModifier> extraModifiers = List.of();
 
-    private static Item.Settings createSettings(String name, Consumer<Item.Settings> settingsProcessor) {
+    private static Item.Properties createSettings(String name, Consumer<Item.Properties> settingsProcessor) {
         final var key = RegistryHelper.itemKey(name);
-        final var settings = new Item.Settings().registryKey(key).group(MythicMetals.TABBED_GROUP).tab(2);
+        final var settings = new Item.Properties().setId(key).group(MythicMetals.TABBED_GROUP).tab(2);
         settingsProcessor.accept(settings);
         return settings;
     }
 
-    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, List<AttributeModifier> extraModifiers) {
+    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, List<MythicAttributeModifier> extraModifiers) {
         this(name, material, damage, speed, settings -> {
         });
         this.extraModifiers = extraModifiers;
@@ -42,7 +50,7 @@ public class ToolSet {
         });
     }
 
-    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Settings> settingsProcessor) {
+    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, Consumer<Item.Properties> settingsProcessor) {
         this.name = name;
         this.material = material;
         this.sword = this.makeSword(material, damage[0], speed[0] - 4.0f, createSettings(name + "_sword", settingsProcessor), extraModifiers);
@@ -58,109 +66,109 @@ public class ToolSet {
     }
 
     public void register(String name) {
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_sword"), sword);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_axe"), axe);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_pickaxe"), pickaxe);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_shovel"), shovel);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_sword"), sword);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_axe"), axe);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_pickaxe"), pickaxe);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_shovel"), shovel);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
     }
 
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
+    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new SwordMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
+    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new AxeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
+    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new PickaxeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new ShovelMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Settings settings, List<AttributeModifier> extraModifiers) {
+    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new HoeMock(material, damage, speed, settings, extraModifiers);
     }
 
     static class SwordMock extends SwordItem {
 
-        final List<AttributeModifier> extraModifiers;
+        final List<MythicAttributeModifier> extraModifiers;
 
-        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings, List<AttributeModifier> extraModifiers) {
+        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void postProcessComponents(ItemStack stack) {
-            super.postProcessComponents(stack);
+        public void verifyComponentsAfterLoad(ItemStack stack) {
+            super.verifyComponentsAfterLoad(stack);
             applyChungusModifiers(stack, extraModifiers);
         }
     }
 
     static class PickaxeMock extends PickaxeItem {
 
-        final List<AttributeModifier> extraModifiers;
+        final List<MythicAttributeModifier> extraModifiers;
 
-        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings, List<AttributeModifier> extraModifiers) {
+        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void postProcessComponents(ItemStack stack) {
-            super.postProcessComponents(stack);
+        public void verifyComponentsAfterLoad(ItemStack stack) {
+            super.verifyComponentsAfterLoad(stack);
             applyChungusModifiers(stack, extraModifiers);
         }
     }
 
     static class ShovelMock extends ShovelItem {
 
-        final List<AttributeModifier> extraModifiers;
+        final List<MythicAttributeModifier> extraModifiers;
 
-        public ShovelMock(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings, List<AttributeModifier> extraModifiers) {
+        public ShovelMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void postProcessComponents(ItemStack stack) {
-            super.postProcessComponents(stack);
+        public void verifyComponentsAfterLoad(ItemStack stack) {
+            super.verifyComponentsAfterLoad(stack);
             applyChungusModifiers(stack, extraModifiers);
         }
     }
 
     static class AxeMock extends AxeItem {
 
-        final List<AttributeModifier> extraModifiers;
+        final List<MythicAttributeModifier> extraModifiers;
 
-        public AxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings, List<AttributeModifier> extraModifiers) {
+        public AxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void postProcessComponents(ItemStack stack) {
-            super.postProcessComponents(stack);
+        public void verifyComponentsAfterLoad(ItemStack stack) {
+            super.verifyComponentsAfterLoad(stack);
             applyChungusModifiers(stack, extraModifiers);
         }
     }
 
     static class HoeMock extends HoeItem {
 
-        final List<AttributeModifier> extraModifiers;
+        final List<MythicAttributeModifier> extraModifiers;
 
-        public HoeMock(ToolMaterial material, float attackDamage, float attackSpeed, Settings settings, List<AttributeModifier> extraModifiers) {
+        public HoeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void postProcessComponents(ItemStack stack) {
-            super.postProcessComponents(stack);
+        public void verifyComponentsAfterLoad(ItemStack stack) {
+            super.verifyComponentsAfterLoad(stack);
             applyChungusModifiers(stack, extraModifiers);
         }
     }
@@ -206,25 +214,25 @@ public class ToolSet {
         return name;
     }
 
-    public List<AttributeModifier> getExtraModifiers() {
+    public List<MythicAttributeModifier> getExtraModifiers() {
         return extraModifiers;
     }
 
     /**
      * TODO - I severely loathe this code and all of its associates. Replace it ASAP.
      */
-    protected static void applyChungusModifiers(ItemStack stack, List<AttributeModifier> extraModifiers) {
+    protected static void applyChungusModifiers(ItemStack stack, List<MythicAttributeModifier> extraModifiers) {
         if (extraModifiers.isEmpty()) {
             return;
         }
-        if (stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) {
-            var attributes = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        if (stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
+            var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
             assert attributes != null;
 
             extraModifiers.forEach(modifier -> {
-                var id = RegistryHelper.id("sword_" + modifier.attribute().getKey().orElseThrow().getValue().getPath());
-                var newAttributes = attributes.with(modifier.attribute(), new EntityAttributeModifier(id, modifier.value(), modifier.operation()), modifier.requiredSlot());
-                stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, newAttributes);
+                var id = RegistryHelper.id("sword_" + modifier.attribute().unwrapKey().orElseThrow().location().getPath());
+                var newAttributes = attributes.withModifierAdded(modifier.attribute(), new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()), modifier.requiredSlot());
+                stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newAttributes);
             });
         }
     }

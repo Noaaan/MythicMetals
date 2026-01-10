@@ -2,21 +2,23 @@ package com.mythicmetals.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.config.MythicConfigModel;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ui.component.TextureComponent;
 import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
 public class CarmotShieldHudHandler {
-    public static final Identifier COMPONENT_ID = RegistryHelper.id("shield_overlay");
+    public static final ResourceLocation COMPONENT_ID = RegistryHelper.id("shield_overlay");
     public static final String SHIELD_BACKGROUND_ID = "shield_background";
     public static final String SHIELD_COMPONENT_ID = "shield_overlay";
-    public static final Identifier TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
+    public static final ResourceLocation TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
 
     public static void init() {
         Hud.add(COMPONENT_ID, () ->
@@ -40,8 +42,8 @@ public class CarmotShieldHudHandler {
 
     @SuppressWarnings("DataFlowIssue")
     public static void tick() {
-        if (Hud.hasComponent(COMPONENT_ID) && MinecraftClient.getInstance().player != null) {
-            var player = MinecraftClient.getInstance().player;
+        if (Hud.hasComponent(COMPONENT_ID) && Minecraft.getInstance().player != null) {
+            var player = Minecraft.getInstance().player;
             var carmotShield = player.getComponent(MythicMetals.CARMOT_SHIELD);
             var shieldBar = (CarmotShieldComponent) ((ParentComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_COMPONENT_ID);
             var background = (CarmotShieldComponent) ((ParentComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
@@ -54,7 +56,7 @@ public class CarmotShieldHudHandler {
             }
 
             boolean isShieldBroken = carmotShield.shieldHealth == 0;
-            int shieldX = MathHelper.ceil(16 + 46 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
+            int shieldX = Mth.ceil(16 + 46 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
 
             CarmotShieldComponent.barShouldBeRed = player.hurtTime > 0 || isShieldBroken;
             // Hide bar if shield is broken
@@ -73,7 +75,7 @@ public class CarmotShieldHudHandler {
         public static final Color DAMAGED_COLOR = Color.ofRgb(0xE0343A);
         public static boolean barShouldBeRed = false;
 
-        protected CarmotShieldComponent(Identifier texture, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight) {
+        protected CarmotShieldComponent(ResourceLocation texture, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight) {
             super(texture, u, v, regionWidth, regionHeight, textureWidth, textureHeight);
         }
 
@@ -85,7 +87,7 @@ public class CarmotShieldHudHandler {
                 RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
             }
             super.draw(context, mouseX, mouseY, partialTicks, delta);
-            context.draw();
+            context.flush();
             RenderSystem.setShaderColor(1, 1, 1, 1);
         }
     }

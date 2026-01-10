@@ -4,30 +4,32 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.BanglumNukeEntity;
 import com.mythicmetals.registry.RegisterSounds;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPointer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class BanglumNukeHandler {
     public static void init() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-            var stack = player.getStackInHand(hand);
+            var stack = player.getItemInHand(hand);
 
-            if (!stack.isOf(Items.FLINT_AND_STEEL)) return ActionResult.PASS;
+            if (!stack.is(Items.FLINT_AND_STEEL)) return InteractionResult.PASS;
 
             var targetBlock = world.getBlockState(hitResult.getBlockPos());
 
-            if (!targetBlock.isOf(MythicBlocks.BANGLUM.getStorageBlock())
-                && !targetBlock.isOf(MythicBlocks.MORKITE.getStorageBlock()))
-                return ActionResult.PASS;
+            if (!targetBlock.is(MythicBlocks.BANGLUM.getStorageBlock())
+                && !targetBlock.is(MythicBlocks.MORKITE.getStorageBlock()))
+                return InteractionResult.PASS;
 
             var pos = hitResult.getBlockPos();
 
@@ -35,25 +37,25 @@ public class BanglumNukeHandler {
                 for (int y = 0; y < 3; y++) {
                     for (int z = 0; z < 3; z++) {
                         if (tryLightBigTntAt(world, player, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                            stack.damage(1, player, LivingEntity.getSlotForHand(hand));
+                            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
 
-                            return ActionResult.SUCCESS;
+                            return InteractionResult.SUCCESS;
                         }
                     }
                 }
             }
 
-            return ActionResult.PASS;
+            return InteractionResult.PASS;
         });
     }
 
-    public static boolean tryLightBigTntWithDispenser(BlockPointer dispenser) {
-        var world = dispenser.world();
-        BlockState state = world.getBlockState(dispenser.pos().offset(dispenser.state().get(DispenserBlock.FACING)));
-        var pos = dispenser.pos().offset(dispenser.state().get(DispenserBlock.FACING));
+    public static boolean tryLightBigTntWithDispenser(BlockSource dispenser) {
+        var world = dispenser.level();
+        BlockState state = world.getBlockState(dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING)));
+        var pos = dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING));
 
-        if (!state.isOf(MythicBlocks.BANGLUM.getStorageBlock())
-            && !state.isOf(MythicBlocks.MORKITE.getStorageBlock()))
+        if (!state.is(MythicBlocks.BANGLUM.getStorageBlock())
+            && !state.is(MythicBlocks.MORKITE.getStorageBlock()))
             return false;
 
         for (int x = 0; x < 3; x++) {
@@ -68,8 +70,8 @@ public class BanglumNukeHandler {
         return false;
     }
 
-    private static boolean tryLightBigTntAt(World world, PlayerEntity player, int x, int y, int z) {
-        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
+    private static boolean tryLightBigTntAt(Level world, Player player, int x, int y, int z) {
+        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
 
         for (int ox = 0; ox < 2; ox++) {
             for (int oy = 0; oy < 2; oy++) {
@@ -77,8 +79,8 @@ public class BanglumNukeHandler {
                     if (ox == 1 && oy == 1 && oz == 1) continue;
 
                     BlockState neededState = (ox + oy + oz) % 2 == 0
-                        ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
-                        : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
+                        ? MythicBlocks.BANGLUM.getStorageBlock().defaultBlockState()
+                        : MythicBlocks.MORKITE.getStorageBlock().defaultBlockState();
 
                     mutablePos.set(x + ox, y + oy, z + oz);
 
@@ -91,19 +93,19 @@ public class BanglumNukeHandler {
         mutablePos.set(x + 1, y + 1, z + 1);
         BlockState coreState = world.getBlockState(mutablePos);
 
-        if (!coreState.isIn(MythicTags.NUKE_CORES)) return false;
+        if (!coreState.is(MythicTags.NUKE_CORES)) return false;
 
-        for (var pos : BlockPos.iterate(x, y, z, x + 2, y + 2, z + 2)) {
+        for (var pos : BlockPos.betweenClosed(x, y, z, x + 2, y + 2, z + 2)) {
             world.removeBlock(pos, false);
         }
 
-        if (!world.isClient) {
+        if (!world.isClientSide) {
             BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
-            world.spawnEntity(nuke);
+            world.addFreshEntity(nuke);
             world.playSound(
-                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundCategory.BLOCKS, 1.0F, 1.0F
+                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundSource.BLOCKS, 1.0F, 1.0F
             );
-            world.emitGameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
+            world.gameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
         }
 
         return true;

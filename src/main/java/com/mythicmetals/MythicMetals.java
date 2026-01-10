@@ -27,13 +27,13 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.village.TradeOffers;
-import net.minecraft.village.VillagerProfession;
+import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.level.block.DispenserBlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
@@ -49,10 +49,10 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
 
     public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicItems.STORMYX.getIngot()))
         .initializer(group -> {
-            group.addTab(Icon.of(MythicItems.ADAMANTITE.getIngot()), "items", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("item_tab")), false);
-            group.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("blocks")), false);
-            group.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("tool_tab")), false);
-            group.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("armor_tab")), false);
+            group.addTab(Icon.of(MythicItems.ADAMANTITE.getIngot()), "items", TagKey.create(Registries.ITEM, RegistryHelper.id("item_tab")), false);
+            group.addTab(Icon.of(MythicBlocks.ADAMANTITE.getStorageBlock()), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
+            group.addTab(Icon.of(MythicTools.ADAMANTITE.getPickaxe()), "tools", TagKey.create(Registries.ITEM, RegistryHelper.id("tool_tab")), false);
+            group.addTab(Icon.of(MythicArmor.ADAMANTITE.getChestplate()), "armor", TagKey.create(Registries.ITEM, RegistryHelper.id("armor_tab")), false);
             group.addButton(ItemGroupButton.github(group, "https://github.com/Noaaan/MythicMetals/issues"));
             group.addButton(ItemGroupButton.curseforge(group, "https://www.curseforge.com/minecraft/mc-mods/mythicmetals"));
             group.addButton(ItemGroupButton.modrinth(group, "https://modrinth.com/mod/mythicmetals"));
@@ -98,7 +98,7 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
         TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
-            factories.add(new TradeOffers.SellItemFactory(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
+            factories.add(new VillagerTrades.ItemsForEmeralds(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
         });
         registerDispenserBehaviour();
         LegacyIds.registerAliases();
@@ -138,9 +138,9 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
     }
 
     private void registerDispenserBehaviour() {
-        DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenserBehavior(MythicTools.STAR_PLATINUM_ARROW));
-        DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenserBehavior(MythicTools.RUNITE_ARROW));
-        DispenserBlock.registerBehavior(() -> MythicTools.TIPPED_RUNITE_ARROW, new ProjectileDispenserBehavior(MythicTools.TIPPED_RUNITE_ARROW));
+        DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenseBehavior(MythicTools.STAR_PLATINUM_ARROW));
+        DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.RUNITE_ARROW));
+        DispenserBlock.registerBehavior(() -> MythicTools.TIPPED_RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.TIPPED_RUNITE_ARROW));
     }
 
 

@@ -6,13 +6,13 @@ import com.mythicmetals.component.MythicDataComponents;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.serialization.CodecUtils;
-import net.minecraft.client.render.item.property.numeric.NumericProperty;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class MidasGoldProperty implements NumericProperty {
+public class MidasGoldProperty implements RangeSelectItemModelProperty {
 
     public static final StructEndec<MidasGoldProperty> ENDEC = Endec.unit(MidasGoldProperty::new);
     public static final MapCodec<MidasGoldProperty> CODEC = CodecUtils.toMapCodec(ENDEC);
@@ -22,12 +22,12 @@ public class MidasGoldProperty implements NumericProperty {
     }
 
     @Override
-    public float getValue(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity holder, int seed) {
+    public float get(ItemStack stack, @Nullable ClientLevel world, @Nullable LivingEntity holder, int seed) {
         return stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
     }
 
     @Override
-    public MapCodec<? extends NumericProperty> getCodec() {
+    public MapCodec<? extends RangeSelectItemModelProperty> type() {
         return CODEC;
     }
 

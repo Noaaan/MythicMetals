@@ -4,7 +4,7 @@ import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceCondition;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
-import net.minecraft.registry.RegistryOps;
+import net.minecraft.resources.RegistryOps;
 import org.jetbrains.annotations.Nullable;
 
 public class NuggetsLoadedCondition implements ResourceCondition {
@@ -16,7 +16,7 @@ public class NuggetsLoadedCondition implements ResourceCondition {
     }
 
     @Override
-    public boolean test(RegistryOps.@Nullable RegistryInfoGetter registryInfo) {
+    public boolean test(RegistryOps.RegistryInfoLookup registryInfo) {
         return MythicMetals.CONFIG.enableNuggets();
     }
 }

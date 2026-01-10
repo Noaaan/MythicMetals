@@ -2,19 +2,19 @@ package com.mythicmetals.armor;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public interface CustomArmorModelItem {
     @Environment(EnvType.CLIENT)
-    BipedEntityModel<BipedEntityRenderState> getArmorModel();
+    HumanoidModel<HumanoidRenderState> getArmorModel();
 
     @Environment(EnvType.CLIENT)
-    BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot);
+    HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot);
 
-    @NotNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot);
+    @NotNull ResourceLocation getArmorTexture(ItemStack stack, EquipmentSlot slot);
 }

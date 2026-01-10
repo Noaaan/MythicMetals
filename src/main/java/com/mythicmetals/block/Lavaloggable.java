@@ -1,10 +1,10 @@
 package com.mythicmetals.block;
 
-import net.minecraft.block.FluidDrainable;
-import net.minecraft.block.FluidFillable;
+import net.minecraft.world.level.block.BucketPickup;
+import net.minecraft.world.level.block.LiquidBlockContainer;
 
 /**
  * Marker interface for something that is lavaloggable
  */
-public interface Lavaloggable extends FluidDrainable, FluidFillable {
+public interface Lavaloggable extends BucketPickup, LiquidBlockContainer {
 }

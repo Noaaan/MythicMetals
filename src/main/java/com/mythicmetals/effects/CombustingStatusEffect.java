@@ -1,25 +1,25 @@
 package com.mythicmetals.effects;
 
 import com.mythicmetals.MythicMetals;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
-public class CombustingStatusEffect extends StatusEffect {
-    public CombustingStatusEffect(StatusEffectCategory statusEffectCategory, int color) {
+public class CombustingStatusEffect extends MobEffect {
+    public CombustingStatusEffect(MobEffectCategory statusEffectCategory, int color) {
         super(statusEffectCategory, color);
     }
 
     @Override
-    public void onEntityRemoval(ServerWorld world, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
-        super.onEntityRemoval(world, entity, amplifier, reason);
+    public void onMobRemoved(ServerLevel world, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
+        super.onMobRemoved(world, entity, amplifier, reason);
         entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
     }
 
     @Override
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration % 20 == 0;
     }
 }

@@ -8,12 +8,12 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.config.OreConfig;
-import net.minecraft.text.Text;
 import java.util.concurrent.CompletableFuture;
+import net.minecraft.network.chat.Component;
 
 public class OreConfigArgumentType implements ArgumentType<OreConfig> {
     private final SimpleCommandExceptionType EXCEPTION = new SimpleCommandExceptionType(
-        Text.translatable("command.mythicmetals.argument.ore-config.error")
+        Component.translatable("command.mythicmetals.argument.ore-config.error")
     );
 
     public static <S> OreConfig getOreConfig(CommandContext<S> context, String name) {

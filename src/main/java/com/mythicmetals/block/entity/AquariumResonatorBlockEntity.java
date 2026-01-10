@@ -3,17 +3,20 @@ package com.mythicmetals.block.entity;
 import com.mythicmetals.block.AquariumResonatorBlock;
 import com.mythicmetals.block.ConduitPowered;
 import com.mythicmetals.misc.MythicParticleSystem;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.math.*;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
+
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 public class AquariumResonatorBlockEntity extends BlockEntity implements ConduitPowered {
@@ -29,40 +32,40 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
         super(RegisterBlockEntityTypes.AQUARIUM_RESONATOR, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
-        if (world.isClient()) return;
-        if (blockEntity.activated && world.getTime() % 40L == 0) {
-            if (!state.get(AquariumResonatorBlock.ACTIVE)) {
-                state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.TRUE);
-                world.setBlockState(pos, state, Block.NOTIFY_ALL);
-                markDirty(world, pos, state);
+    public static void tick(Level world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
+        if (world.isClientSide()) return;
+        if (blockEntity.activated && world.getGameTime() % 40L == 0) {
+            if (!state.getValue(AquariumResonatorBlock.ACTIVE)) {
+                state = state.setValue(AquariumResonatorBlock.ACTIVE, Boolean.TRUE);
+                world.setBlock(pos, state, Block.UPDATE_ALL);
+                setChanged(world, pos, state);
             }
-            MythicParticleSystem.RESONATOR_PARTICLES.spawn(world, pos.toCenterPos());
+            MythicParticleSystem.RESONATOR_PARTICLES.spawn(world, pos.getCenter());
             empowerNearbyEntities(world, pos, state, blockEntity);
         }
-        blockEntity.activeTime = MathHelper.clamp(blockEntity.activeTime - 1, 0, 150);
+        blockEntity.activeTime = Mth.clamp(blockEntity.activeTime - 1, 0, 150);
         if (blockEntity.activeTime == 0) {
             blockEntity.activated = false;
-            if (state.get(AquariumResonatorBlock.ACTIVE)) {
-                state = state.with(AquariumResonatorBlock.ACTIVE, Boolean.FALSE);
-                world.setBlockState(pos, state, Block.NOTIFY_ALL);
-                markDirty(world, pos, state);
+            if (state.getValue(AquariumResonatorBlock.ACTIVE)) {
+                state = state.setValue(AquariumResonatorBlock.ACTIVE, Boolean.FALSE);
+                world.setBlock(pos, state, Block.UPDATE_ALL);
+                setChanged(world, pos, state);
             }
         }
     }
 
-    private static Box getEffectZone(BlockPos pos) {
-        return new Box(pos).expand(MAX_RANGE);
+    private static AABB getEffectZone(BlockPos pos) {
+        return new AABB(pos).inflate(MAX_RANGE);
     }
 
-    private static void empowerNearbyEntities(World world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
-        List<LivingEntity> list = world.getEntitiesByClass(
-                LivingEntity.class, getEffectZone(pos), entity -> entity.isLiving() && entity.isTouchingWaterOrRain()
+    private static void empowerNearbyEntities(Level world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
+        List<LivingEntity> list = world.getEntitiesOfClass(
+                LivingEntity.class, getEffectZone(pos), entity -> entity.showVehicleHealth() && entity.isInWaterOrRain()
         );
 
         list.forEach(livingEntity -> {
-            MythicParticleSystem.RESONATOR_POWER_PARTICLES.spawn(world, livingEntity.getPos());
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 160, 1, true, false, true));
+            MythicParticleSystem.RESONATOR_POWER_PARTICLES.spawn(world, livingEntity.position());
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 160, 1, true, false, true));
         });
     }
 
@@ -73,16 +76,16 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
         this.activeTime = nbt.getInt("active_time");
         this.activated = nbt.getBoolean("activated");
-        super.readNbt(nbt, registryLookup);
+        super.loadAdditional(nbt, registryLookup);
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
         nbt.putInt("active_time", activeTime);
         nbt.putBoolean("activated", activated);
-        super.readNbt(nbt, registryLookup);
+        super.loadAdditional(nbt, registryLookup);
     }
 }

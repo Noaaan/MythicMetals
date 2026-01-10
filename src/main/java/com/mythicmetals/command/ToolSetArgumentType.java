@@ -9,14 +9,14 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
-import net.minecraft.command.CommandSource;
-import net.minecraft.text.Text;
 import java.util.concurrent.CompletableFuture;
+import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.network.chat.Component;
 
 public class ToolSetArgumentType implements ArgumentType<ToolSet> {
 
     private final SimpleCommandExceptionType EXCEPTION = new SimpleCommandExceptionType(
-        Text.translatable("command.mythicmetals.argument.toolset.error")
+        Component.translatable("command.mythicmetals.argument.toolset.error")
     );
 
     public static ToolSetArgumentType toolSet() {
@@ -38,6 +38,6 @@ public class ToolSetArgumentType implements ArgumentType<ToolSet> {
 
     @Override
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        return CommandSource.suggestMatching(MythicTools.TOOL_MAP.keySet(), builder);
+        return SharedSuggestionProvider.suggest(MythicTools.TOOL_MAP.keySet(), builder);
     }
 }

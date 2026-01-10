@@ -5,50 +5,52 @@ import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
 public class BanglumArmor extends ArmorItem implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
-    private BipedEntityModel<BipedEntityRenderState> model;
-    public final EquipmentType type;
+    private HumanoidModel<HumanoidRenderState> model;
+    public final ArmorType type;
 
-    public BanglumArmor(EquipmentType type, Settings settings) {
+    public BanglumArmor(ArmorType type, Properties settings) {
         this(MythicArmorMaterials.LEGENDARY_BANGLUM, type, settings);
     }
 
-    public BanglumArmor(ArmorMaterial material, EquipmentType type, Settings settings) {
+    public BanglumArmor(ArmorMaterial material, ArmorType type, Properties settings) {
         super(material, type, settings);
         this.type = type;
     }
 
     @Environment(EnvType.CLIENT)
-    public BipedEntityModel<BipedEntityRenderState> getArmorModel() {
+    public HumanoidModel<HumanoidRenderState> getArmorModel() {
         if (model == null) {
-            model = provideArmorModelForSlot(type.getEquipmentSlot());
+            model = provideArmorModelForSlot(type.getSlot());
         }
         return model;
     }
 
     @Environment(EnvType.CLIENT)
-    public BipedEntityModel<BipedEntityRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
-        var models = MinecraftClient.getInstance().getLoadedEntityModels();
-        var root = models.getModelPart(MythicModelHandler.BANGLUM);
+    public HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
+        var models = Minecraft.getInstance().getEntityModels();
+        var root = models.bakeLayer(MythicModelHandler.BANGLUM);
         return new HelmetModel(root, slot);
     }
 
     @NotNull
     @Override
-    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public ResourceLocation getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return RegistryHelper.id("textures/models/banglum_model.png");
     }
 }

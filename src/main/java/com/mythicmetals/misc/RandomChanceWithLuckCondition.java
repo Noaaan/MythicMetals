@@ -4,14 +4,14 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mythicmetals.registry.RegisterLootConditions;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.LootConditionType;
-import net.minecraft.loot.context.LootContext;
-import net.minecraft.loot.context.LootContextParameters;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public record RandomChanceWithLuckCondition(float chance) implements LootCondition {
+public record RandomChanceWithLuckCondition(float chance) implements LootItemCondition {
     public static final MapCodec<RandomChanceWithLuckCondition> CODEC = RecordCodecBuilder.mapCodec(
         instance -> instance
             .group(Codec.FLOAT.fieldOf("chance")
@@ -20,19 +20,19 @@ public record RandomChanceWithLuckCondition(float chance) implements LootConditi
     );
 
     @Override
-    public LootConditionType getType() {
+    public LootItemConditionType getType() {
         return RegisterLootConditions.RANDOM_CHANCE_WITH_LUCK;
     }
 
     public boolean test(LootContext lootContext) {
-        if (lootContext.get(LootContextParameters.THIS_ENTITY) instanceof LivingEntity entity && entity.getAttributes().hasAttribute(EntityAttributes.LUCK)) {
-            double luckModifier = chance * (entity.getAttributeValue(EntityAttributes.LUCK) / 10);
+        if (lootContext.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity && entity.getAttributes().hasAttribute(Attributes.LUCK)) {
+            double luckModifier = chance * (entity.getAttributeValue(Attributes.LUCK) / 10);
             return lootContext.getRandom().nextFloat() < this.chance + luckModifier;
         }
         return lootContext.getRandom().nextFloat() < this.chance;
     }
 
-    public static LootCondition.Builder builder(float chance) {
+    public static LootItemCondition.Builder builder(float chance) {
         return () -> new RandomChanceWithLuckCondition(chance);
     }
 

@@ -3,7 +3,7 @@ package com.mythicmetals.block.entity;
 import com.mythicmetals.block.MythicBlocks;
 import io.wispforest.owo.registration.reflect.BlockEntityRegistryContainer;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
-import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import java.lang.reflect.Field;
 
 public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {

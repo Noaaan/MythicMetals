@@ -1,44 +1,49 @@
 package com.mythicmetals.client.models;
 
 import net.minecraft.client.model.*;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public class BanglumArmorModel {
 
-    public static ModelData getModelData() {
+    public static MeshDefinition getModelData() {
 
-        ModelData data = new ModelData();
-        ModelPartData root = data.getRoot();
-        var dil = new Dilation(0.01F);
+        MeshDefinition data = new MeshDefinition();
+        PartDefinition root = data.getRoot();
+        var dil = new CubeDeformation(0.01F);
 
-        root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_leg", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_leg", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.ZERO);
 
-        var head = root.addChild(
+        var head = root.addOrReplaceChild(
             "head",
-            ModelPartBuilder.create()
-                .uv(0, 0)
-                .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)),
-            ModelTransform.NONE
+            CubeListBuilder.create()
+                .texOffs(0, 0)
+                .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(1.0F)),
+            PartPose.ZERO
         );
-        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
+        head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
 
-        head.addChild(
+        head.addOrReplaceChild(
             "right_horn",
-            ModelPartBuilder.create()
-                .uv(8, 16)
-                .cuboid(2.0F, -12.0F, 0.0F, 1.0F, 3.0F, 1.0F, dil),
-            ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0873F)
+            CubeListBuilder.create()
+                .texOffs(8, 16)
+                .addBox(2.0F, -12.0F, 0.0F, 1.0F, 3.0F, 1.0F, dil),
+            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0873F)
         );
 
-        head.addChild(
+        head.addOrReplaceChild(
             "left_horn",
-            ModelPartBuilder.create()
-                .uv(8, 16)
-                .cuboid(-3.0F, -12.0F, 0.0F, 1.0F, 3.0F, 1.0F, dil),
-            ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.0873F)
+            CubeListBuilder.create()
+                .texOffs(8, 16)
+                .addBox(-3.0F, -12.0F, 0.0F, 1.0F, 3.0F, 1.0F, dil),
+            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.0873F)
         );
 
         return data;

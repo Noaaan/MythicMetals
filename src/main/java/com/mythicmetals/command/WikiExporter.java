@@ -1,19 +1,23 @@
 package com.mythicmetals.command;
 
+
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.item.Item;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Language;
-import net.minecraft.util.Util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.Map.Entry;
+import net.minecraft.Util;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.locale.Language;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 
 /**
  * Helper class that contains all the page layouts for the Mythic Metals Wiki
@@ -150,9 +154,9 @@ public class WikiExporter {
         var atkSpd = new ArrayDeque<>(toolSet.getAttackSpeed());
         output.append(ADMONITION_HEADER);
         toolSet.get().forEach(tool -> {
-            String id = Registries.ITEM.getId(tool).getPath();
+            String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
             output.append(ADMONITION_TOOL_IMAGE.formatted(
-                translationStorage.get(tool.getTranslationKey()),
+                translationStorage.getOrDefault(tool.getDescriptionId()),
                 "(../../assets/mythicmetals/%s.png)".formatted(id) + RECIPE_SCALING
             ));
             output.append("""
@@ -161,7 +165,7 @@ public class WikiExporter {
                 """.formatted(
                 toolSet.getMaterial().attackDamageBonus() + damageDeque.pop() + 1,
                 BigDecimal.valueOf(atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString(),
-                tool.getDefaultStack().getMaxDamage()
+                tool.getDefaultInstance().getMaxDamage()
             ));
         });
 
@@ -171,7 +175,7 @@ public class WikiExporter {
     static String computeToolRecipes(ToolSet toolSet) {
         StringBuilder output = new StringBuilder();
         for (Item tool : toolSet.get()) {
-            String id = Registries.ITEM.getId(tool).getPath();
+            String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""
                     ![Image of the recipe for %s](../../assets/mythicmetals/recipes/tools/%s.png)%s
@@ -187,12 +191,12 @@ public class WikiExporter {
 
         output.append(ADMONITION_HEADER);
         output.append(ADMONIITION_TOP_IMAGE.formatted(
-            translationStorage.get(blockSet.getOre().getTranslationKey()),
+            translationStorage.getOrDefault(blockSet.getOre().getDescriptionId()),
             "../../assets/mythicmetals/%s.png".formatted(blockSet.getName() + "_ore")
         ));
 
         blockSet.getOreVariantsMap().forEach((variantName, block) -> {
-            String variantOreName = translationStorage.get(block.getTranslationKey());
+            String variantOreName = translationStorage.getOrDefault(block.getDescriptionId());
             output.append(ADMONIITION_TOP_IMAGE.formatted(
                 variantOreName,
                 "../../assets/mythicmetals/" + variantName + "_" + blockSet.getName() + "_ore.png"
@@ -227,15 +231,15 @@ public class WikiExporter {
         output.append(ADMONIITION_TOP_IMAGE.formatted(armorTitleName + " Armor", armorModelImage));
 
         var map = Util.make(new HashMap<Item, Integer>(), itemMap -> {
-            itemMap.put(armorSet.getHelmet(), armorSet.getMaterial().defense().get(EquipmentType.HELMET));
-            itemMap.put(armorSet.getChestplate(), armorSet.getMaterial().defense().get(EquipmentType.CHESTPLATE));
-            itemMap.put(armorSet.getLeggings(), armorSet.getMaterial().defense().get(EquipmentType.LEGGINGS));
-            itemMap.put(armorSet.getBoots(), armorSet.getMaterial().defense().get(EquipmentType.BOOTS));
+            itemMap.put(armorSet.getHelmet(), armorSet.getMaterial().defense().get(ArmorType.HELMET));
+            itemMap.put(armorSet.getChestplate(), armorSet.getMaterial().defense().get(ArmorType.CHESTPLATE));
+            itemMap.put(armorSet.getLeggings(), armorSet.getMaterial().defense().get(ArmorType.LEGGINGS));
+            itemMap.put(armorSet.getBoots(), armorSet.getMaterial().defense().get(ArmorType.BOOTS));
         });
 
         for (var armor : map.entrySet()) {
-            var itemId = Registries.ITEM.getId(armor.getKey());
-            String name = translationStorage.get(Util.createTranslationKey("item", itemId));
+            var itemId = BuiltInRegistries.ITEM.getKey(armor.getKey());
+            String name = translationStorage.getOrDefault(Util.makeDescriptionId("item", itemId));
             String id = itemId.getPath();
 
             var material = armorSet.getMaterial();
@@ -262,7 +266,7 @@ public class WikiExporter {
                 output.append("\t+%s Knockback Resistance".formatted(kbRes)).append("<br>\n");
             }
             // 350 Durability
-            output.append("\t%s Durability".formatted(armor.getKey().getDefaultStack().getMaxDamage())).append("<br>\n");
+            output.append("\t%s Durability".formatted(armor.getKey().getDefaultInstance().getMaxDamage())).append("<br>\n");
         }
         return output.toString();
     }
@@ -270,7 +274,7 @@ public class WikiExporter {
     static String computeArmorRecipes(ArmorSet armorSet) {
         StringBuilder output = new StringBuilder();
         for (Item armor : armorSet.getArmorItems()) {
-            String id = Registries.ITEM.getId(armor).getPath();
+            String id = BuiltInRegistries.ITEM.getKey(armor).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""
                     ![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)%s

@@ -2,44 +2,48 @@ package com.mythicmetals.client.models;
 
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.mixin.client.EntityModelLayersAccessor;
-import net.minecraft.client.model.Dilation;
-import net.minecraft.client.model.TexturedModelData;
-import net.minecraft.client.render.entity.model.*;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.model.ElytraModel;
+import net.minecraft.client.model.MinecartModel;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+
+import net.minecraft.resources.ResourceLocation;
 import java.util.function.BiConsumer;
 
 public class MythicModelHandler {
-    public static final EntityModelLayer ADAMANTITE = model("adamantite_armor");
-    public static final EntityModelLayer BANGLUM = model("banglum_armor");
-    public static final EntityModelLayer CARMOT_SWIRL = model("carmot_swirl");
-    public static final EntityModelLayer CELESTIUM_ELYTRA = model("celestium_elytra");
-    public static final EntityModelLayer BABY_CELESTIUM_ELYTRA = model("baby_celestium_elytra");
-    public static final EntityModelLayer HALLOWED_ARMOR = model("hallowed_armor");
-    public static final EntityModelLayer METALLURGIUM = model("metallurgium_armor");
-    public static final EntityModelLayer RUNITE = model("runite_armor");
-    public static final EntityModelLayer TIDESINGER = model("tidesinger");
-    public static final EntityModelLayer BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
-    public static final EntityModelLayer PALLADIUM_MINECART = model("palladium_minecart");
-    public static final EntityModelLayer PALLADIUM = model("palladium_armor");
-    public static final EntityModelLayer STAR_PLATINUM_CLOAK = model("star_platinum_cloak");
-    public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
-    public static final Identifier STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
-    public static final Identifier PALLADIUM_MINECART_TEXTURE = RegistryHelper.id("textures/models/palladium_minecart.png");
-    public static final Identifier CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
+    public static final ModelLayerLocation ADAMANTITE = model("adamantite_armor");
+    public static final ModelLayerLocation BANGLUM = model("banglum_armor");
+    public static final ModelLayerLocation CARMOT_SWIRL = model("carmot_swirl");
+    public static final ModelLayerLocation CELESTIUM_ELYTRA = model("celestium_elytra");
+    public static final ModelLayerLocation BABY_CELESTIUM_ELYTRA = model("baby_celestium_elytra");
+    public static final ModelLayerLocation HALLOWED_ARMOR = model("hallowed_armor");
+    public static final ModelLayerLocation METALLURGIUM = model("metallurgium_armor");
+    public static final ModelLayerLocation RUNITE = model("runite_armor");
+    public static final ModelLayerLocation TIDESINGER = model("tidesinger");
+    public static final ModelLayerLocation BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
+    public static final ModelLayerLocation PALLADIUM_MINECART = model("palladium_minecart");
+    public static final ModelLayerLocation PALLADIUM = model("palladium_armor");
+    public static final ModelLayerLocation STAR_PLATINUM_CLOAK = model("star_platinum_cloak");
+    public static final ResourceLocation HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
+    public static final ResourceLocation STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
+    public static final ResourceLocation PALLADIUM_MINECART_TEXTURE = RegistryHelper.id("textures/models/palladium_minecart.png");
+    public static final ResourceLocation CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
 
-    public static void init(BiConsumer<EntityModelLayer, TexturedModelData> consumer) {
-        consumer.accept(ADAMANTITE, TexturedModelData.of(AdamantiteArmorModel.getModelData(), 64, 32));
-        consumer.accept(BANGLUM_TNT_MINECART, MinecartEntityModel.getTexturedModelData());
-        consumer.accept(PALLADIUM_MINECART, MinecartEntityModel.getTexturedModelData());
-        consumer.accept(CELESTIUM_ELYTRA, ElytraEntityModel.getTexturedModelData());
-        consumer.accept(BABY_CELESTIUM_ELYTRA, ElytraEntityModel.getTexturedModelData().transform(ElytraEntityModel.BABY_TRANSFORMER));
-        consumer.accept(BANGLUM, TexturedModelData.of(BanglumArmorModel.getModelData(), 64, 32));
-        consumer.accept(PALLADIUM, TexturedModelData.of(PalladiumArmorModel.getModelData(), 64, 32));
-        consumer.accept(CARMOT_SWIRL, TexturedModelData.of(PlayerEntityModel.getTexturedModelData(new Dilation(1.15f), false), 64, 32));
-        consumer.accept(HALLOWED_ARMOR, TexturedModelData.of(HallowedArmorModel.getModelData(), 64, 32));
-        consumer.accept(METALLURGIUM, TexturedModelData.of(MetallurgiumArmorModel.getModelData(), 64, 32));
-        consumer.accept(RUNITE, TexturedModelData.of(RuniteArmorModel.getModelData(), 64, 32));
-        consumer.accept(TIDESINGER, TexturedModelData.of(TidesingerArmorModel.getModelData(), 128, 128));
+    public static void init(BiConsumer<ModelLayerLocation, LayerDefinition> consumer) {
+        consumer.accept(ADAMANTITE, LayerDefinition.create(AdamantiteArmorModel.getModelData(), 64, 32));
+        consumer.accept(BANGLUM_TNT_MINECART, MinecartModel.createBodyLayer());
+        consumer.accept(PALLADIUM_MINECART, MinecartModel.createBodyLayer());
+        consumer.accept(CELESTIUM_ELYTRA, ElytraModel.createLayer());
+        consumer.accept(BABY_CELESTIUM_ELYTRA, ElytraModel.createLayer().apply(ElytraModel.BABY_TRANSFORMER));
+        consumer.accept(BANGLUM, LayerDefinition.create(BanglumArmorModel.getModelData(), 64, 32));
+        consumer.accept(PALLADIUM, LayerDefinition.create(PalladiumArmorModel.getModelData(), 64, 32));
+        consumer.accept(CARMOT_SWIRL, LayerDefinition.create(PlayerModel.createMesh(new CubeDeformation(1.15f), false), 64, 32));
+        consumer.accept(HALLOWED_ARMOR, LayerDefinition.create(HallowedArmorModel.getModelData(), 64, 32));
+        consumer.accept(METALLURGIUM, LayerDefinition.create(MetallurgiumArmorModel.getModelData(), 64, 32));
+        consumer.accept(RUNITE, LayerDefinition.create(RuniteArmorModel.getModelData(), 64, 32));
+        consumer.accept(TIDESINGER, LayerDefinition.create(TidesingerArmorModel.getModelData(), 128, 128));
         consumer.accept(STAR_PLATINUM_CLOAK, StarPlatCloakModel.getTexturedModelData());
     }
 
@@ -48,15 +52,15 @@ public class MythicModelHandler {
      * Shoutouts to williewillus for this implementation:
      * <a href="https://github.com/VazkiiMods/Botania/blob/1.18.x-fabric/src/main/java/vazkii/botania/client/model/ModModelLayers.java">Source</a>
      *
-     * @see net.minecraft.client.render.entity.model.EntityModelLayers#LAYERS
+     * @see net.minecraft.client.model.geom.ModelLayers#ALL_MODELS
      */
-    public static EntityModelLayer model(String name, String layer) {
-        var result = new EntityModelLayer(RegistryHelper.id(name), layer);
-        EntityModelLayersAccessor.getLAYERS().add(result);
+    public static ModelLayerLocation model(String name, String layer) {
+        var result = new ModelLayerLocation(RegistryHelper.id(name), layer);
+        EntityModelLayersAccessor.getALL_MODELS().add(result);
         return result;
     }
 
-    public static EntityModelLayer model(String name) {
+    public static ModelLayerLocation model(String name) {
         return model(name, "main");
     }
 }

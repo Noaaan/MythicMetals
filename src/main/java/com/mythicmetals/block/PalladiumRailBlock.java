@@ -1,49 +1,64 @@
 package com.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.block.*;
-import net.minecraft.block.enums.RailShape;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.*;
-import net.minecraft.item.*;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BaseRailBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RailState;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
-public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggable {
+public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
 
-    public static final EnumProperty<RailShape> SHAPE = Properties.RAIL_SHAPE;
-    public static final MapCodec<PalladiumRailBlock> CODEC = createCodec(PalladiumRailBlock::new);
-    public static final BooleanProperty LAVALOGGED = BooleanProperty.of("lavalogged");
+    public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE;
+    public static final MapCodec<PalladiumRailBlock> CODEC = simpleCodec(PalladiumRailBlock::new);
+    public static final BooleanProperty LAVALOGGED = BooleanProperty.create("lavalogged");
 
     @Override
-    protected void updateBlockState(BlockState state, World world, BlockPos pos, Block neighbor) {
-        if (neighbor.getDefaultState().emitsRedstonePower() && new RailPlacementHelper(world, pos, state).getNeighborCount() == 3) {
-            this.updateBlockState(world, pos, state, false);
+    protected void updateState(BlockState state, Level world, BlockPos pos, Block neighbor) {
+        if (neighbor.defaultBlockState().isSignalSource() && new RailState(world, pos, state).countPotentialConnections() == 3) {
+            this.updateDir(world, pos, state, false);
         }
     }
 
-    public PalladiumRailBlock(Settings settings) {
+    public PalladiumRailBlock(Properties settings) {
         super(false, settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-            .with(SHAPE, RailShape.NORTH_SOUTH)
-            .with(LAVALOGGED, Boolean.FALSE)
-            .with(WATERLOGGED, Boolean.FALSE)
+        this.registerDefaultState(this.stateDefinition.any()
+            .setValue(SHAPE, RailShape.NORTH_SOUTH)
+            .setValue(LAVALOGGED, Boolean.FALSE)
+            .setValue(WATERLOGGED, Boolean.FALSE)
         );
     }
 
     @Override
-    protected BlockState rotate(BlockState state, BlockRotation rotation) {
-        RailShape railShape = state.get(SHAPE);
+    protected BlockState rotate(BlockState state, Rotation rotation) {
+        RailShape railShape = state.getValue(SHAPE);
 
-        return state.with(SHAPE, switch (rotation) {
+        return state.setValue(SHAPE, switch (rotation) {
             case CLOCKWISE_180 -> {
                 switch (railShape) {
                     case NORTH_SOUTH:
@@ -127,32 +142,32 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
     }
 
     @Override
-    protected BlockState mirror(BlockState state, BlockMirror mirror) {
-        RailShape railShape = state.get(SHAPE);
+    protected BlockState mirror(BlockState state, Mirror mirror) {
+        RailShape railShape = state.getValue(SHAPE);
         switch (mirror) {
             case LEFT_RIGHT:
                 return switch (railShape) {
-                    case ASCENDING_NORTH -> state.with(SHAPE, RailShape.ASCENDING_SOUTH);
-                    case ASCENDING_SOUTH -> state.with(SHAPE, RailShape.ASCENDING_NORTH);
-                    case SOUTH_EAST -> state.with(SHAPE, RailShape.NORTH_EAST);
-                    case SOUTH_WEST -> state.with(SHAPE, RailShape.NORTH_WEST);
-                    case NORTH_WEST -> state.with(SHAPE, RailShape.SOUTH_WEST);
-                    case NORTH_EAST -> state.with(SHAPE, RailShape.SOUTH_EAST);
+                    case ASCENDING_NORTH -> state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
+                    case ASCENDING_SOUTH -> state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
+                    case SOUTH_EAST -> state.setValue(SHAPE, RailShape.NORTH_EAST);
+                    case SOUTH_WEST -> state.setValue(SHAPE, RailShape.NORTH_WEST);
+                    case NORTH_WEST -> state.setValue(SHAPE, RailShape.SOUTH_WEST);
+                    case NORTH_EAST -> state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     default -> super.mirror(state, mirror);
                 };
             case FRONT_BACK:
                 switch (railShape) {
-                    case ASCENDING_EAST: return state.with(SHAPE, RailShape.ASCENDING_WEST);
+                    case ASCENDING_EAST: return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
                     case ASCENDING_WEST:
-                        return state.with(SHAPE, RailShape.ASCENDING_EAST);
+                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
                     case SOUTH_EAST:
-                        return state.with(SHAPE, RailShape.SOUTH_WEST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
                     case SOUTH_WEST:
-                        return state.with(SHAPE, RailShape.SOUTH_EAST);
+                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
                     case NORTH_WEST:
-                        return state.with(SHAPE, RailShape.NORTH_EAST);
+                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
                     case NORTH_EAST:
-                        return state.with(SHAPE, RailShape.NORTH_WEST);
+                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
                     case ASCENDING_NORTH:
                     case ASCENDING_SOUTH:
                     default:
@@ -164,21 +179,21 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SHAPE, LAVALOGGED, WATERLOGGED);
     }
 
     @Override
-    public boolean canFillWithFluid(@Nullable PlayerEntity player, BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
+    public boolean canPlaceLiquid(@Nullable Player player, BlockGetter world, BlockPos pos, BlockState state, Fluid fluid) {
         return fluid == Fluids.LAVA;
     }
 
     @Override
-    public boolean tryFillWithFluid(WorldAccess world, BlockPos pos, BlockState state, FluidState fluidState) {
-        if (!state.get(LAVALOGGED) && fluidState.getFluid() == Fluids.LAVA) {
-            if (!world.isClient()) {
-                world.setBlockState(pos, state.with(LAVALOGGED, Boolean.TRUE), Block.NOTIFY_ALL);
-                world.scheduleFluidTick(pos, fluidState.getFluid(), fluidState.getFluid().getTickRate(world));
+    public boolean placeLiquid(LevelAccessor world, BlockPos pos, BlockState state, FluidState fluidState) {
+        if (!state.getValue(LAVALOGGED) && fluidState.getType() == Fluids.LAVA) {
+            if (!world.isClientSide()) {
+                world.setBlock(pos, state.setValue(LAVALOGGED, Boolean.TRUE), Block.UPDATE_ALL);
+                world.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(world));
             }
 
             return true;
@@ -188,11 +203,11 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
     }
 
     @Override
-    public ItemStack tryDrainFluid(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, BlockState state) {
-        if (state.get(LAVALOGGED)) {
-            world.setBlockState(pos, state.with(LAVALOGGED, Boolean.FALSE), Block.NOTIFY_ALL);
-            if (!state.canPlaceAt(world, pos)) {
-                world.breakBlock(pos, true);
+    public ItemStack pickupBlock(@Nullable Player player, LevelAccessor world, BlockPos pos, BlockState state) {
+        if (state.getValue(LAVALOGGED)) {
+            world.setBlock(pos, state.setValue(LAVALOGGED, Boolean.FALSE), Block.UPDATE_ALL);
+            if (!state.canSurvive(world, pos)) {
+                world.destroyBlock(pos, true);
             }
 
             return new ItemStack(Items.LAVA_BUCKET);
@@ -202,12 +217,12 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
     }
 
     @Override
-    public Optional<SoundEvent> getBucketFillSound() {
-        return Fluids.LAVA.getBucketFillSound();
+    public Optional<SoundEvent> getPickupSound() {
+        return Fluids.LAVA.getPickupSound();
     }
 
     @Override
-    public MapCodec<PalladiumRailBlock> getCodec() {
+    public MapCodec<PalladiumRailBlock> codec() {
         return CODEC;
     }
 
@@ -218,20 +233,20 @@ public class PalladiumRailBlock extends AbstractRailBlock implements Lavaloggabl
 
     @Override
     protected FluidState getFluidState(BlockState state) {
-        return state.get(LAVALOGGED) ? Fluids.LAVA.getStill(false) : super.getFluidState(state);
+        return state.getValue(LAVALOGGED) ? Fluids.LAVA.getSource(false) : super.getFluidState(state);
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        boolean bl = fluidState.getFluid() == Fluids.LAVA;
-        BlockState blockState = super.getDefaultState();
-        Direction direction = ctx.getHorizontalPlayerFacing();
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        boolean bl = fluidState.getType() == Fluids.LAVA;
+        BlockState blockState = super.defaultBlockState();
+        Direction direction = ctx.getHorizontalDirection();
         boolean bl2 = direction == Direction.EAST || direction == Direction.WEST;
-        return blockState.with(this.getShapeProperty(), bl2 ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH).with(LAVALOGGED, bl);
+        return blockState.setValue(this.getShapeProperty(), bl2 ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH).setValue(LAVALOGGED, bl);
     }
 
     public static boolean isLavaLogged(BlockState state) {
-        return state.get(LAVALOGGED);
+        return state.getValue(LAVALOGGED);
     }
 }

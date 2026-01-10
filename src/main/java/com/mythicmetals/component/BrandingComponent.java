@@ -5,17 +5,20 @@ import com.mythicmetals.misc.*;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.ops.WorldOps;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.Item;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.*;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
 import java.util.function.Consumer;
 
-public record BrandingComponent(int maxHeat) implements TooltipAppender {
+public record BrandingComponent(int maxHeat) implements TooltipProvider {
 
     public static final StructEndec<BrandingComponent> ENDEC = StructEndecBuilder.of(
         StructEndec.INT.fieldOf("max_heat", BrandingComponent::maxHeat),
@@ -24,10 +27,10 @@ public record BrandingComponent(int maxHeat) implements TooltipAppender {
 
     public void applyHeatToTarget(LivingEntity target, LivingEntity attacker) {
         var effect = RegistryHelper.getEntry(MythicStatusEffects.HEAT);
-        if (!target.hasStatusEffect(effect)) {
-            target.addStatusEffect(new StatusEffectInstance(effect, 100), attacker);
+        if (!target.hasEffect(effect)) {
+            target.addEffect(new MobEffectInstance(effect, 100), attacker);
         } else {
-            var activeEffect = target.getStatusEffect(effect);
+            var activeEffect = target.getEffect(effect);
             int amplifier = activeEffect == null ? 0 : activeEffect.getAmplifier();
             if (((IsAttackCritical) attacker).mythicmetals$isCritical()) {
                 amplifier += 1;
@@ -36,17 +39,17 @@ public record BrandingComponent(int maxHeat) implements TooltipAppender {
             }
 
             if (amplifier >= maxHeat) {
-                WorldOps.playSound(target.getWorld(), target.getPos(), SoundEvents.ENTITY_GENERIC_BURN, SoundCategory.PLAYERS);
+                WorldOps.playSound(target.level(), target.position(), SoundEvents.GENERIC_BURN, SoundSource.PLAYERS);
             }
-            target.addStatusEffect(new StatusEffectInstance(effect, 100 + (20 * amplifier * amplifier), Math.min(amplifier, maxHeat)), attacker);
+            target.addEffect(new MobEffectInstance(effect, 100 + (20 * amplifier * amplifier), Math.min(amplifier, maxHeat)), attacker);
         }
     }
 
     @Override
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
-        MutableText text = Text.literal("");
-        text.append(Text.translatable("tooltip.mythicmetals.branding"));
-        text.append(" ").append(Text.translatable("enchantment.level." + maxHeat));
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+        MutableComponent text = Component.literal("");
+        text.append(Component.translatable("tooltip.mythicmetals.branding"));
+        text.append(" ").append(Component.translatable("enchantment.level." + maxHeat));
         tooltip.accept(text.setStyle(UsefulSingletonForColorUtil.MetalColors.PALLADIUM_STYLE));
     }
 }

@@ -3,12 +3,6 @@ package com.mythicmetals.mixin;
 import com.mythicmetals.block.ConduitPowered;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.registry.RegisterPointOfInterests;
-import net.minecraft.block.Block;
-import net.minecraft.block.entity.ConduitBlockEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.poi.PointOfInterestStorage;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,6 +10,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.ConduitBlockEntity;
 
 @Mixin(ConduitBlockEntity.class)
 public class ConduitBlockEntityMixin {
@@ -35,11 +36,11 @@ public class ConduitBlockEntityMixin {
     }
 
     @Inject(method = "givePlayersEffects", at = @At("TAIL"))
-    private static void mythicmetals$invokeNearbySentries(World world, BlockPos pos, List<BlockPos> activatingBlocks, CallbackInfo ci) {
-        if (world.isClient) return;
+    private static void mythicmetals$invokeNearbySentries(Level world, BlockPos pos, List<BlockPos> activatingBlocks, CallbackInfo ci) {
+        if (world.isClientSide) return;
         int radius = activatingBlocks.size() / 7 * 16;
-        ((ServerWorld)world).getPointOfInterestStorage()
-            .getInSquare(type -> type.value() == RegisterPointOfInterests.CONDUIT_POWERED_BLOCK, pos, radius, PointOfInterestStorage.OccupationStatus.ANY)
+        ((ServerLevel)world).getPoiManager()
+            .getInSquare(type -> type.value() == RegisterPointOfInterests.CONDUIT_POWERED_BLOCK, pos, radius, PoiManager.Occupancy.ANY)
             .forEach(pointOfInterest -> {
                 var blockEntity = world.getBlockEntity(pointOfInterest.getPos());
                 if (blockEntity instanceof ConduitPowered conduitPowered) {

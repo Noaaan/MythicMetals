@@ -1,23 +1,30 @@
 package com.mythicmetals.armor;
 
-import com.mythicmetals.AttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.*;
-import net.minecraft.entity.attribute.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.*;
-import net.minecraft.util.Identifier;
+
+import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+
+
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.Equippable;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import static net.minecraft.entity.attribute.EntityAttributeModifier.Operation.ADD_VALUE;
+import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE;
 
 public class ArmorSet {
 
@@ -31,37 +38,37 @@ public class ArmorSet {
 
     private final ArmorMaterial material;
 
-    private static final Map<EquipmentType, Integer> BASE_DURABILITY = Map.of(
-        EquipmentType.HELMET, 12,
-        EquipmentType.CHESTPLATE, 16,
-        EquipmentType.LEGGINGS, 15,
-        EquipmentType.BOOTS, 13
+    private static final Map<ArmorType, Integer> BASE_DURABILITY = Map.of(
+        ArmorType.HELMET, 12,
+        ArmorType.CHESTPLATE, 16,
+        ArmorType.LEGGINGS, 15,
+        ArmorType.BOOTS, 13
     );
 
-    public Item baseItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsProcessor) {
+    public Item baseItem(ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsProcessor) {
         return baseItem(material, equipmentType, settingsProcessor, List.of());
     }
 
-    public Item baseItem(ArmorMaterial material, EquipmentType equipmentType, Consumer<Item.Settings> settingsConsumer, List<AttributeModifier> extraModifiers) {
+    public Item baseItem(ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(name, material, equipmentType, extraModifiers);
         settingsConsumer.accept(settings);
         return this.makeItem(material, equipmentType, settings);
     }
 
-    public Item.Settings baseArmorSettings(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
-        return new Item.Settings()
+    public Item.Properties baseArmorSettings(String name, ArmorMaterial material, ArmorType equipmentType, List<MythicAttributeModifier> extraModifiers) {
+        return new Item.Properties()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
-            .registryKey(keyFromType(name, equipmentType))
-            .attributeModifiers(createAttributeModifiers(name, material, equipmentType, extraModifiers))
-            .component(DataComponentTypes.EQUIPPABLE, EquippableComponent
-                .builder(equipmentType.getEquipmentSlot())
-                .model(material.assetId())
-                .equipSound(material.equipSound())
+            .setId(keyFromType(name, equipmentType))
+            .attributes(createAttributeModifiers(name, material, equipmentType, extraModifiers))
+            .component(DataComponents.EQUIPPABLE, Equippable
+                .builder(equipmentType.getSlot())
+                .setAsset(material.assetId())
+                .setEquipSound(material.equipSound())
                 .build()
             )
             .repairable(material.repairIngredient())
-            .maxDamage(BASE_DURABILITY.get(equipmentType) * material.durability());
+            .durability(BASE_DURABILITY.get(equipmentType) * material.durability());
     }
 
     public ArmorSet(String name, ArmorMaterial material) {
@@ -69,46 +76,46 @@ public class ArmorSet {
         });
     }
 
-    public ArmorSet(String name, ArmorMaterial material, List<AttributeModifier> extraModifiers) {
+    public ArmorSet(String name, ArmorMaterial material, List<MythicAttributeModifier> extraModifiers) {
         this(name, material, extraModifiers, settings -> {
         });
     }
 
-    public ArmorSet(String name, ArmorMaterial material, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorSet(String name, ArmorMaterial material, Consumer<Item.Properties> settingsProcessor) {
         this.name = name;
         this.material = material;
-        this.helmet = baseItem(material, EquipmentType.HELMET, settingsProcessor);
-        this.chestplate = baseItem(material, EquipmentType.CHESTPLATE, settingsProcessor);
-        this.leggings = baseItem(material, EquipmentType.LEGGINGS, settingsProcessor);
-        this.boots = baseItem(material, EquipmentType.BOOTS, settingsProcessor);
+        this.helmet = baseItem(material, ArmorType.HELMET, settingsProcessor);
+        this.chestplate = baseItem(material, ArmorType.CHESTPLATE, settingsProcessor);
+        this.leggings = baseItem(material, ArmorType.LEGGINGS, settingsProcessor);
+        this.boots = baseItem(material, ArmorType.BOOTS, settingsProcessor);
         this.armorItems = List.of(helmet, chestplate, leggings, boots);
     }
 
-    public ArmorSet(String name, ArmorMaterial material, List<AttributeModifier> extraModifiers, Consumer<Item.Settings> settingsProcessor) {
+    public ArmorSet(String name, ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, Consumer<Item.Properties> settingsProcessor) {
         this.name = name;
         this.material = material;
-        this.helmet = baseItem(material, EquipmentType.HELMET, settingsProcessor, extraModifiers);
-        this.chestplate = baseItem(material, EquipmentType.CHESTPLATE, settingsProcessor, extraModifiers);
-        this.leggings = baseItem(material, EquipmentType.LEGGINGS, settingsProcessor, extraModifiers);
-        this.boots = baseItem(material, EquipmentType.BOOTS, settingsProcessor, extraModifiers);
+        this.helmet = baseItem(material, ArmorType.HELMET, settingsProcessor, extraModifiers);
+        this.chestplate = baseItem(material, ArmorType.CHESTPLATE, settingsProcessor, extraModifiers);
+        this.leggings = baseItem(material, ArmorType.LEGGINGS, settingsProcessor, extraModifiers);
+        this.boots = baseItem(material, ArmorType.BOOTS, settingsProcessor, extraModifiers);
         this.armorItems = List.of(helmet, chestplate, leggings, boots);
     }
 
     public void register(String name) {
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_helmet"), helmet);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_chestplate"), chestplate);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_leggings"), leggings);
-        Registry.register(Registries.ITEM, RegistryHelper.id(name + "_boots"), boots);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_helmet"), helmet);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_chestplate"), chestplate);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_leggings"), leggings);
+        Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_boots"), boots);
     }
 
     public void register(String modid, String name) {
-        Registry.register(Registries.ITEM, Identifier.of(modid, name + "_helmet"), helmet);
-        Registry.register(Registries.ITEM, Identifier.of(modid, name + "_chestplate"), chestplate);
-        Registry.register(Registries.ITEM, Identifier.of(modid, name + "_leggings"), leggings);
-        Registry.register(Registries.ITEM, Identifier.of(modid, name + "_boots"), boots);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_helmet"), helmet);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_chestplate"), chestplate);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_leggings"), leggings);
+        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_boots"), boots);
     }
 
-    protected Item makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
+    protected Item makeItem(ArmorMaterial material, ArmorType slot, Item.Properties settings) {
         return new Item(settings);
     }
 
@@ -128,7 +135,7 @@ public class ArmorSet {
         return boots;
     }
 
-    public static Map<EquipmentType, Integer> getBaseDurability() {
+    public static Map<ArmorType, Integer> getBaseDurability() {
         return BASE_DURABILITY;
     }
 
@@ -148,36 +155,36 @@ public class ArmorSet {
         return MythicArmor.ARMOR_MAP.inverse().get(this);
     }
 
-    private static AttributeModifiersComponent createAttributeModifiers(String name, ArmorMaterial material, EquipmentType equipmentType, List<AttributeModifier> extraModifiers) {
+    private static ItemAttributeModifiers createAttributeModifiers(String name, ArmorMaterial material, ArmorType equipmentType, List<MythicAttributeModifier> extraModifiers) {
         int armor = material.defense().getOrDefault(equipmentType, 0);
         double toughness = material.toughness();
         double knockbackResistance = material.knockbackResistance();
-        var builder = AttributeModifiersComponent.builder();
-        var equipmentSlot = AttributeModifierSlot.forEquipmentSlot(equipmentType.getEquipmentSlot());
-        var identifier = Identifier.ofVanilla("armor." + equipmentType.getName());
+        var builder = ItemAttributeModifiers.builder();
+        var equipmentSlot = EquipmentSlotGroup.bySlot(equipmentType.getSlot());
+        var identifier = ResourceLocation.withDefaultNamespace("armor." + equipmentType.getName());
         builder.add(
-            EntityAttributes.ARMOR,
-            new EntityAttributeModifier(identifier, armor, ADD_VALUE),
+            Attributes.ARMOR,
+            new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, armor, ADD_VALUE),
             equipmentSlot
         );
         builder.add(
-            EntityAttributes.ARMOR_TOUGHNESS,
-            new EntityAttributeModifier(identifier, toughness, ADD_VALUE),
+            Attributes.ARMOR_TOUGHNESS,
+            new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, toughness, ADD_VALUE),
             equipmentSlot
         );
         if (knockbackResistance > 0.0F) {
             builder.add(
-                EntityAttributes.KNOCKBACK_RESISTANCE,
-                new EntityAttributeModifier(identifier, knockbackResistance, ADD_VALUE),
+                Attributes.KNOCKBACK_RESISTANCE,
+                new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, knockbackResistance, ADD_VALUE),
                 equipmentSlot
             );
         }
         extraModifiers.forEach(modifier -> {
-            if (modifier.requiredSlot().matches(equipmentType.getEquipmentSlot())) {
-                var id = RegistryHelper.id(name + "_" + modifier.attribute().getKey().orElseThrow().getValue().getPath());
+            if (modifier.requiredSlot().test(equipmentType.getSlot())) {
+                var id = RegistryHelper.id(name + "_" + modifier.attribute().unwrapKey().orElseThrow().location().getPath());
                 builder.add(
                     modifier.attribute(),
-                    new EntityAttributeModifier(id, modifier.value(), modifier.operation()),
+                    new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()),
                     equipmentSlot
                 );
             }
@@ -190,7 +197,7 @@ public class ArmorSet {
         return material;
     }
 
-    protected RegistryKey<Item> keyFromType(String name, EquipmentType type) {
+    protected ResourceKey<Item> keyFromType(String name, ArmorType type) {
         var typeName = switch (type) {
             case HELMET -> "helmet";
             case CHESTPLATE -> "chestplate";

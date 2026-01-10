@@ -1,6 +1,7 @@
 package com.mythicmetals.ability;
 
 import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;
 import net.fabricmc.loader.api.FabricLoader;
 
 import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors;

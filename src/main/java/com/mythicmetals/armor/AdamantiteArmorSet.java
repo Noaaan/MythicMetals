@@ -1,8 +1,8 @@
 package com.mythicmetals.armor;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.equipment.ArmorMaterial;
-import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 
 public class AdamantiteArmorSet extends ArmorSet {
 
@@ -11,8 +11,8 @@ public class AdamantiteArmorSet extends ArmorSet {
     }
 
     @Override
-    protected Item makeItem(ArmorMaterial material, EquipmentType slot, Item.Settings settings) {
-        if (slot != EquipmentType.HELMET) return super.makeItem(material, slot, settings);
+    protected Item makeItem(ArmorMaterial material, ArmorType slot, Item.Properties settings) {
+        if (slot != ArmorType.HELMET) return super.makeItem(material, slot, settings);
         return new AdamantiteArmor(slot, settings);
     }
 }

@@ -1,37 +1,36 @@
 package com.mythicmetals.client.rendering;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.EnchantedMidasGoldBlockEntity;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.block.entity.BlockEntityRenderer;
-import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
-import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.util.RandomSource;
 
 public class EnchantedMidasBlockEntityRenderer implements BlockEntityRenderer<EnchantedMidasGoldBlockEntity> {
-    private final BlockRenderManager blockRenderManager;
+    private final BlockRenderDispatcher blockRenderManager;
 
-    public EnchantedMidasBlockEntityRenderer(BlockEntityRendererFactory.Context ctx) {
-        blockRenderManager = ctx.getRenderManager();
+    public EnchantedMidasBlockEntityRenderer(BlockEntityRendererProvider.Context ctx) {
+        blockRenderManager = ctx.getBlockRenderDispatcher();
     }
 
     @Override
-    public void render(EnchantedMidasGoldBlockEntity midasBlockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        matrices.push();
+    public void render(EnchantedMidasGoldBlockEntity midasBlockEntity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
+        matrices.pushPose();
         matrices.translate(-0.001, -0.001, -0.001);
         matrices.scale(1.002f, 1.002f, 1.002f);
-        blockRenderManager.renderBlock(
-            MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.getDefaultState(),
-            midasBlockEntity.getPos(),
-            midasBlockEntity.getWorld(),
+        blockRenderManager.renderBatched(
+            MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.defaultBlockState(),
+            midasBlockEntity.getBlockPos(),
+            midasBlockEntity.getLevel(),
             matrices,
-            ItemRenderer.getItemGlintConsumer(vertexConsumers, RenderLayer.getCutoutMipped(), true, true),
+            ItemRenderer.getFoilBuffer(vertexConsumers, RenderType.cutoutMipped(), true, true),
             true,
-            Random.create());
-        matrices.pop();
+            RandomSource.create());
+        matrices.popPose();
     }
 }

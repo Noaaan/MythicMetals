@@ -1,52 +1,57 @@
 package com.mythicmetals.client.models;
 
 import net.minecraft.client.model.*;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 
 public class HallowedArmorModel {
 
-    public static ModelData getModelData() {
-        ModelData data = new ModelData();
+    public static MeshDefinition getModelData() {
+        MeshDefinition data = new MeshDefinition();
         var root = data.getRoot();
 
-        root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_leg", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_leg", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.ZERO);
 
-        var head = root.addChild("head",
-            ModelPartBuilder.create()
-                .uv(0, 0)
-                .cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F)),
-            ModelTransform.of(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
+        var head = root.addOrReplaceChild("head",
+            CubeListBuilder.create()
+                .texOffs(0, 0)
+                .addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F)),
+            PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F)
         );
 
-        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
+        head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
 
-        head.addChild(
+        head.addOrReplaceChild(
             "wing_r",
-            ModelPartBuilder.create()
-                .uv(43, 2)
-                .cuboid(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new Dilation(0.0F)),
-            ModelTransform.of(-5.0F, -6.5F, 0.5F, 0.4363F, -0.2618F, 0.0F)
+            CubeListBuilder.create()
+                .texOffs(43, 2)
+                .addBox(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)),
+            PartPose.offsetAndRotation(-5.0F, -6.5F, 0.5F, 0.4363F, -0.2618F, 0.0F)
         );
 
-        head.addChild(
+        head.addOrReplaceChild(
             "wing_l",
-            ModelPartBuilder.create()
-                .uv(43, 2)
-                .cuboid(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new Dilation(0.0F)),
-            ModelTransform.of(5.0F, -6.5F, 0.5F, 0.4363F, 0.2618F, 0.0F)
+            CubeListBuilder.create()
+                .texOffs(43, 2)
+                .addBox(0.0F, -2.5F, -0.5F, 0.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)),
+            PartPose.offsetAndRotation(5.0F, -6.5F, 0.5F, 0.4363F, 0.2618F, 0.0F)
         );
 
-        head.addChild(
+        head.addOrReplaceChild(
             "faceguard",
-            ModelPartBuilder.create()
-                .uv(16, 21)
-                .cuboid(-5.0F, -3.0F, -6.0F, 10.0F, 4.0F, 7.0F, new Dilation(0.0F)),
-            ModelTransform.of(0.0F, -5.0F, 0.0F, -0.3491F, 0.0F, 0.0F)
+            CubeListBuilder.create()
+                .texOffs(16, 21)
+                .addBox(-5.0F, -3.0F, -6.0F, 10.0F, 4.0F, 7.0F, new CubeDeformation(0.0F)),
+            PartPose.offsetAndRotation(0.0F, -5.0F, 0.0F, -0.3491F, 0.0F, 0.0F)
         );
-        root.createPart(64, 32);
+        root.bake(64, 32);
         return data;
     }
 }

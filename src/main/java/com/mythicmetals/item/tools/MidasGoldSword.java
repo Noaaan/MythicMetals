@@ -1,15 +1,19 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.component.GoldFoldedComponent;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.*;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.core.component.DataComponents;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
@@ -17,22 +21,22 @@ import java.util.concurrent.atomic.AtomicReference;
 import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 
 public class MidasGoldSword extends SwordItem {
-    public MidasGoldSword(ToolMaterial material, Settings settings) {
+    public MidasGoldSword(ToolMaterial material, Properties settings) {
         super(material, 3.0f, -2.4f, settings);
     }
 
     @Override
-    public void postProcessComponents(ItemStack stack) {
+    public void verifyComponentsAfterLoad(ItemStack stack) {
         // TODO - Surely there is a better way to do dynamic attributes, right? Right??
         //  This is a lot of effort for the correct green tooltip... Thanks Mojang
-        if (!stack.contains(DataComponentTypes.ATTRIBUTE_MODIFIERS)) return;
-        var currentAttributes = stack.get(DataComponentTypes.ATTRIBUTE_MODIFIERS);
+        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
+        var currentAttributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
         assert currentAttributes != null;
         int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
         var originalDamage = new AtomicReference<>(0.0);
-        stack.getDefaultComponents().get(DataComponentTypes.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
-            if (entry.modifier().id().equals(BASE_ATTACK_DAMAGE_MODIFIER_ID)) {
-                originalDamage.set(entry.modifier().value());
+        stack.getPrototype().get(DataComponents.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
+            if (entry.modifier().id().equals(BASE_ATTACK_DAMAGE_ID)) {
+                originalDamage.set(entry.modifier().amount());
             }
         });
         double goldDmgBonus = computeBonusDamage(goldCount);
@@ -40,40 +44,40 @@ public class MidasGoldSword extends SwordItem {
         var speed = new AtomicReference<>(0.0);
         // Copy attack speed over. We want to re-build, not add anything
         currentAttributes.modifiers().forEach(entry -> {
-            if (entry.attribute().equals(EntityAttributes.ATTACK_SPEED)) {
-                speed.set(entry.modifier().value());
+            if (entry.attribute().equals(Attributes.ATTACK_SPEED)) {
+                speed.set(entry.modifier().amount());
             }
         });
 
         if (goldDmgBonus > 0) {
-            var changedComponent = AttributeModifiersComponent.builder()
+            var changedComponent = ItemAttributeModifiers.builder()
                 .add(
-                    EntityAttributes.ATTACK_DAMAGE,
-                    new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID,
+                    Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
                         originalDamage.get() + goldDmgBonus,
-                        EntityAttributeModifier.Operation.ADD_VALUE
+                        AttributeModifier.Operation.ADD_VALUE
                     ),
-                    AttributeModifierSlot.MAINHAND
+                    EquipmentSlotGroup.MAINHAND
                 )
                 .add(
-                    EntityAttributes.ATTACK_SPEED,
-                    new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, speed.get(), EntityAttributeModifier.Operation.ADD_VALUE),
-                    AttributeModifierSlot.MAINHAND
+                    Attributes.ATTACK_SPEED,
+                    new AttributeModifier(BASE_ATTACK_SPEED_ID, speed.get(), AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.MAINHAND
                 )
                 .build();
-            stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, changedComponent);
+            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
         }
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> lines, TooltipType type) {
-        if (stack.contains(GOLD_FOLDED)) {
-            stack.get(GOLD_FOLDED).appendTooltip(context, lines::add, type);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
+        if (stack.has(GOLD_FOLDED)) {
+            stack.get(GOLD_FOLDED).addToTooltip(context, lines::add, type);
         }
     }
 
     public int computeBonusDamage(int goldCount) {
-        int bonus = MathHelper.clamp(MathHelper.floor((float) goldCount / 64), 0, 6);
+        int bonus = Mth.clamp(Mth.floor((float) goldCount / 64), 0, 6);
         if (goldCount >= 1280) {
             bonus += 1;
         }
@@ -136,7 +140,7 @@ public class MidasGoldSword extends SwordItem {
             stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
             return stack;
         } else {
-            var stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultStack();
+            var stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultInstance();
             stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
             return stack;
         }

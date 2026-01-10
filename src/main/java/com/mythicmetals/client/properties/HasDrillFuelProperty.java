@@ -6,26 +6,26 @@ import com.mythicmetals.component.MythicDataComponents;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.serialization.CodecUtils;
-import net.minecraft.client.render.item.property.bool.BooleanProperty;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ModelTransformationMode;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public class HasDrillFuelProperty implements BooleanProperty {
+public class HasDrillFuelProperty implements ConditionalItemModelProperty {
 
     public static final StructEndec<HasDrillFuelProperty> ENDEC = Endec.unit(new HasDrillFuelProperty());
 
     public static final MapCodec<HasDrillFuelProperty> CODEC = CodecUtils.toMapCodec(ENDEC);
 
     @Override
-    public boolean getValue(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity user, int seed, ModelTransformationMode modelTransformationMode) {
+    public boolean get(ItemStack stack, @Nullable ClientLevel world, @Nullable LivingEntity user, int seed, ItemDisplayContext modelTransformationMode) {
         return stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel();
     }
 
     @Override
-    public MapCodec<? extends BooleanProperty> getCodec() {
+    public MapCodec<? extends ConditionalItemModelProperty> type() {
         return CODEC;
     }
 }

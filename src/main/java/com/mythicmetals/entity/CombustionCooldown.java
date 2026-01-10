@@ -1,9 +1,9 @@
 package com.mythicmetals.entity;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
 import org.ladysnake.cca.api.v3.component.Component;
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 
@@ -18,12 +18,12 @@ public class CombustionCooldown implements Component, AutoSyncedComponent {
     }
 
     @Override
-    public void readFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
+    public void readFromNbt(CompoundTag tag, HolderLookup.Provider registryLookup) {
         cooldown = tag.getInt("cooldown");
     }
 
     @Override
-    public void writeToNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
+    public void writeToNbt(CompoundTag tag, HolderLookup.Provider registryLookup) {
         tag.putInt("cooldown", cooldown);
     }
 
@@ -37,7 +37,7 @@ public class CombustionCooldown implements Component, AutoSyncedComponent {
 
     public void tickCooldown() {
         if (cooldown > 0) {
-            cooldown = MathHelper.clamp(cooldown - 1, 0, Integer.MAX_VALUE);
+            cooldown = Mth.clamp(cooldown - 1, 0, Integer.MAX_VALUE);
         }
     }
 }

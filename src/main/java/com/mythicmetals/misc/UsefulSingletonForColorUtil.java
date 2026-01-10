@@ -1,12 +1,12 @@
 package com.mythicmetals.misc;
 
 import io.wispforest.owo.ui.core.Color;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.PotionContentsComponent;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Style;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Style;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionContents;
 
 public class UsefulSingletonForColorUtil {
     public static float[] splitRGBToFloats(int rgb) {
@@ -29,7 +29,7 @@ public class UsefulSingletonForColorUtil {
      */
     public static int potionColor(ItemStack stack, int tintIndex) {
         if (tintIndex == 1) {
-            var component = stack.getOrDefault(DataComponentTypes.POTION_CONTENTS, PotionContentsComponent.DEFAULT);
+            var component = stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
             if (component == null) {
                 return -1;
             }
@@ -38,7 +38,7 @@ public class UsefulSingletonForColorUtil {
             }
 
             if (component.hasEffects()) {
-                return PotionContentsComponent.mixColors(component.getEffects()).orElseThrow();
+                return PotionContents.getColorOptional(component.getAllEffects()).orElseThrow();
             }
         }
         return -1;
@@ -51,14 +51,14 @@ public class UsefulSingletonForColorUtil {
         float saturation = 1;
         float constantValue = 1;
 
-        return MathHelper.hsvToArgb((float) (hue / 360), saturation, constantValue, 192);
+        return Mth.hsvToArgb((float) (hue / 360), saturation, constantValue, 192);
     }
 
     /**
      * Contains constants for all the colors used for various text and particles
      */
     public static class MetalColors {
-        public static final Color BANGLUM = Color.ofFormatting(Formatting.GOLD);
+        public static final Color BANGLUM = Color.ofFormatting(ChatFormatting.GOLD);
         public static final Color CARMOT = Color.ofRgb(0xE63E73);
         public static final Color OSMIUM = Color.ofRgb(0x4C63A5);
         public static final Style CARMOT_STYLE = Style.EMPTY.withColor(CARMOT.rgb());
@@ -69,12 +69,12 @@ public class UsefulSingletonForColorUtil {
         public static final Color PALLADIUM = Color.ofRgb(0xDF7323);
         public static final Color PROMETHEUM = Color.ofRgb(0x3A6A56);
         public static final Color KYBER = Color.ofRgb(0xDEA5FF);
-        public static final Style AQUA_STYLE = Style.EMPTY.withColor(Formatting.AQUA);
-        public static final Style GOLD_STYLE = Style.EMPTY.withColor(Formatting.GOLD);
+        public static final Style AQUA_STYLE = Style.EMPTY.withColor(ChatFormatting.AQUA);
+        public static final Style GOLD_STYLE = Style.EMPTY.withColor(ChatFormatting.GOLD);
         public static final Style PALLADIUM_STYLE = Style.EMPTY.withColor(MetalColors.PALLADIUM.rgb());
         public static final Style TIDESINGER_BLUE = Style.EMPTY.withColor(0x2F88FB);
 
-        public static final int SHIELD_BREAK_COLOR = MathHelper.hsvToArgb(0f, 1.0f, 1.0f, 128);
+        public static final int SHIELD_BREAK_COLOR = Mth.hsvToArgb(0f, 1.0f, 1.0f, 128);
 
         public static final CoralColor BRAIN = new CoralColor("brain", Style.EMPTY.withColor(0xE17DB7));
         public static final CoralColor BUBBLE = new CoralColor("bubble", Style.EMPTY.withColor(0xCB44BD));

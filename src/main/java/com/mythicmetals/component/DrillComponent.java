@@ -3,16 +3,16 @@ package com.mythicmetals.component;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.math.MathHelper;
 import java.util.function.Consumer;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
 
-public record DrillComponent(int fuel) implements TooltipAppender {
+public record DrillComponent(int fuel) implements TooltipProvider {
     public static final Endec<DrillComponent> ENDEC = StructEndecBuilder.of(
         Endec.INT.fieldOf("fuel", DrillComponent::fuel),
         DrillComponent::new
@@ -30,11 +30,11 @@ public record DrillComponent(int fuel) implements TooltipAppender {
 
 
     public DrillComponent reduce(int fuel) {
-        return new DrillComponent(MathHelper.clamp(fuel - 1, 0, MAX_FUEL));
+        return new DrillComponent(Mth.clamp(fuel - 1, 0, MAX_FUEL));
     }
 
     public DrillComponent increase(int fuel) {
-        return new DrillComponent(MathHelper.clamp(fuel + 1, 0, MAX_FUEL));
+        return new DrillComponent(Mth.clamp(fuel + 1, 0, MAX_FUEL));
     }
 
     public boolean hasFuel() {
@@ -42,18 +42,18 @@ public record DrillComponent(int fuel) implements TooltipAppender {
     }
 
     @Override
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
 
         // Activation Status
         if (this.hasFuel()) {
-            tooltip.accept(Text.translatable("tooltip.mythril_drill.activated").formatted(Formatting.AQUA));
+            tooltip.accept(Component.translatable("tooltip.mythril_drill.activated").withStyle(ChatFormatting.AQUA));
         }
         if (this.fuel == 0) {
-            tooltip.accept(Text.translatable("tooltip.mythril_drill.refuel").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+            tooltip.accept(Component.translatable("tooltip.mythril_drill.refuel").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
         }
         // Fuel Gauge
-        tooltip.accept(Text.translatable("tooltip.mythril_drill.fuel", this.fuel, MAX_FUEL)
-            .fillStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(this.fuel, MAX_FUEL))));
+        tooltip.accept(Component.translatable("tooltip.mythril_drill.fuel", this.fuel, MAX_FUEL)
+            .withStyle(Style.EMPTY.withColor(UsefulSingletonForColorUtil.getSlightlyDarkerOwoBlueToRedGradient(this.fuel, MAX_FUEL))));
 
     }
 }

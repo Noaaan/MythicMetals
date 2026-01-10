@@ -1,35 +1,40 @@
 package com.mythicmetals.client.models;
 
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.render.entity.state.BipedEntityRenderState;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 
-public class MetallurgiumArmorModel extends BipedEntityModel<BipedEntityRenderState> {
+public class MetallurgiumArmorModel extends HumanoidModel<HumanoidRenderState> {
 
     public MetallurgiumArmorModel(ModelPart modelPart) {
         super(modelPart);
     }
 
-    public static ModelData getModelData() {
-        ModelData modelData = new ModelData();
-        ModelPartData root = modelData.getRoot();
+    public static MeshDefinition getModelData() {
+        MeshDefinition modelData = new MeshDefinition();
+        PartDefinition root = modelData.getRoot();
 
-        root.addChild("body", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_arm", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("left_leg", ModelPartBuilder.create(), ModelTransform.NONE);
-        root.addChild("right_leg", ModelPartBuilder.create(), ModelTransform.NONE);
+        root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.ZERO);
 
-        var head = root.addChild("head", ModelPartBuilder.create(), ModelTransform.NONE);
-        head.addChild("hat", ModelPartBuilder.create(), ModelTransform.NONE);
-        head.addChild("head", ModelPartBuilder.create()
-                .uv(0, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.75F))
-                .uv(24, 0).cuboid(4.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, Dilation.NONE)
-                .uv(24, 0).mirrored().cuboid(-6.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, Dilation.NONE)
-                .mirrored(false),
-            ModelTransform.NONE
+        var head = root.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.ZERO);
+        head.addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
+        head.addOrReplaceChild("head", CubeListBuilder.create()
+                .texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F))
+                .texOffs(24, 0).addBox(4.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, CubeDeformation.NONE)
+                .texOffs(24, 0).mirror().addBox(-6.75F, -12.0F, -1.0F, 2.0F, 6.0F, 2.0F, CubeDeformation.NONE)
+                .mirror(false),
+            PartPose.ZERO
         );
-        head.addChild("details", ModelPartBuilder.create().uv(0, 16).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(1.0F)), ModelTransform.NONE);
+        head.addOrReplaceChild("details", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(1.0F)), PartPose.ZERO);
 
         return modelData;
     }

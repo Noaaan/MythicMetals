@@ -6,10 +6,10 @@ import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class MidasFoldingEMIRecipe implements EmiRecipe {
 
@@ -18,7 +18,7 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
     Ingredient addition;
     List<EmiIngredient> inputs;
     EmiStack output;
-    Identifier id;
+    ResourceLocation id;
 
     public MidasFoldingEMIRecipe(MidasFoldingRecipe recipe) {
 //        this.template = recipe.template();
@@ -97,7 +97,7 @@ public class MidasFoldingEMIRecipe implements EmiRecipe {
     }
 
     @Override
-    public @Nullable Identifier getId() {
+    public @Nullable ResourceLocation getId() {
         return this.id;
     }
 

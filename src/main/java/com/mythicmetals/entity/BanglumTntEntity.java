@@ -1,73 +1,81 @@
 package com.mythicmetals.entity;
 
-import net.minecraft.entity.*;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.data.*;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ParticleTypes;
+
+
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.TraceableEntity;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-public class BanglumTntEntity extends Entity implements Ownable {
-    private static final TrackedData<Integer> FUSE = DataTracker.registerData(BanglumTntEntity.class, TrackedDataHandlerRegistry.INTEGER);
+public class BanglumTntEntity extends Entity implements TraceableEntity {
+    private static final EntityDataAccessor<Integer> FUSE = SynchedEntityData.defineId(BanglumTntEntity.class, EntityDataSerializers.INT);
     private static final int DEFAULT_FUSE = 100;
 
     @Nullable
     protected LivingEntity causingEntity;
 
-    public BanglumTntEntity(EntityType<? extends BanglumTntEntity> entityType, World world) {
+    public BanglumTntEntity(EntityType<? extends BanglumTntEntity> entityType, Level world) {
         super(entityType, world);
-        this.intersectionChecked = true;
+        this.blocksBuilding = true;
     }
 
-    public BanglumTntEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {
+    public BanglumTntEntity(Level world, double x, double y, double z, @Nullable LivingEntity igniter) {
         this(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, world);
-        this.setPosition(x, y, z);
+        this.setPos(x, y, z);
         double d = world.random.nextDouble() * (float) (Math.PI * 2);
-        this.setVelocity(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);
+        this.setDeltaMovement(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);
         this.setFuse(DEFAULT_FUSE);
-        this.prevX = x;
-        this.prevY = y;
-        this.prevZ = z;
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
         this.causingEntity = igniter;
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        builder.add(FUSE, DEFAULT_FUSE);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        builder.define(FUSE, DEFAULT_FUSE);
     }
 
     @Override
     public void tick() {
-        if (!this.hasNoGravity()) {
-            this.setVelocity(this.getVelocity().add(0.0, -0.04, 0.0));
+        if (!this.isNoGravity()) {
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.04, 0.0));
         }
 
-        this.move(MovementType.SELF, this.getVelocity());
-        this.setVelocity(this.getVelocity().multiply(0.98));
-        if (this.isOnGround()) {
-            this.setVelocity(this.getVelocity().multiply(0.7, -0.5, 0.7));
+        this.move(MoverType.SELF, this.getDeltaMovement());
+        this.setDeltaMovement(this.getDeltaMovement().scale(0.98));
+        if (this.onGround()) {
+            this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
         }
 
         int i = this.getFuse() - 1;
         this.setFuse(i);
         if (i <= 0) {
             this.discard();
-            if (!this.getWorld().isClient) {
+            if (!this.level().isClientSide) {
                 this.explode();
             }
         } else {
-            this.updateWaterState();
-            if (this.getWorld().isClient) {
-                this.getWorld().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
+            this.updateInWaterStateAndDoFluidPushing();
+            if (this.level().isClientSide) {
+                this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
 
     }
 
     @Override
-    public boolean damage(ServerWorld world, DamageSource source, float amount) {
+    public boolean hurtServer(ServerLevel world, DamageSource source, float amount) {
         return false;
     }
 
@@ -76,25 +84,25 @@ public class BanglumTntEntity extends Entity implements Ownable {
     }
 
     @Override
-    protected void readCustomDataFromNbt(NbtCompound nbt) {
+    protected void readAdditionalSaveData(CompoundTag nbt) {
         this.setFuse(nbt.getShort("Fuse"));
     }
 
     @Override
-    protected void writeCustomDataToNbt(NbtCompound nbt) {
+    protected void addAdditionalSaveData(CompoundTag nbt) {
         nbt.putShort("Fuse", (short) this.getFuse());
     }
 
     protected void explode() {
-        this.getWorld().createExplosion(this, this.getX(), this.getY(), this.getZ(), 6.0F, World.ExplosionSourceType.TNT);
+        this.level().explode(this, this.getX(), this.getY(), this.getZ(), 6.0F, Level.ExplosionInteraction.TNT);
     }
 
     public int getFuse() {
-        return this.dataTracker.get(FUSE);
+        return this.entityData.get(FUSE);
     }
 
     public void setFuse(int fuse) {
-        this.dataTracker.set(FUSE, fuse);
+        this.entityData.set(FUSE, fuse);
     }
 
     @Nullable

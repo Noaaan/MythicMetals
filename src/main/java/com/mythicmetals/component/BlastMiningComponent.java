@@ -5,38 +5,43 @@ import com.mythicmetals.registry.RegisterCriteria;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.ops.WorldOps;
-import net.minecraft.block.BlockState;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ToolComponent;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.item.tooltip.TooltipAppender;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.Tool;
+import net.minecraft.world.item.component.TooltipProvider;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import java.util.function.Consumer;
 
-public record BlastMiningComponent(int depth) implements TooltipAppender {
+public record BlastMiningComponent(int depth) implements TooltipProvider {
 
     public static final StructEndec<BlastMiningComponent> ENDEC = StructEndecBuilder.of(
         StructEndec.INT.fieldOf("depth", BlastMiningComponent::depth),
         BlastMiningComponent::new
     );
 
-    public ActionResult trigger(ItemUsageContext context) {
+    public InteractionResult trigger(UseOnContext context) {
         boolean shouldPass = false;
-        var world = context.getWorld();
+        var world = context.getLevel();
         var player = context.getPlayer();
-        var stack = context.getStack();
+        var stack = context.getItemInHand();
 
-        if (player != null && !isCoolingDown(player, stack) && !world.isClient()) {
+        if (player != null && !isCoolingDown(player, stack) && !world.isClientSide()) {
 
             var iterator = BlockBreaker.findBlocks(context, depth);
             for (BlockPos blockPos : iterator) {
@@ -45,7 +50,7 @@ public record BlastMiningComponent(int depth) implements TooltipAppender {
                 }
                 if (isCorrectForDrops(stack, world.getBlockState(blockPos))) {
                     WorldOps.breakBlockWithItem(world, blockPos, stack, player);
-                    stack.damage(2, player, EquipmentSlot.MAINHAND);
+                    stack.hurtAndBreak(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }
             }
@@ -53,35 +58,35 @@ public record BlastMiningComponent(int depth) implements TooltipAppender {
         }
 
         if (shouldPass) {
-            var pos = context.getBlockPos();
-            var facing = context.getSide().getOpposite();
-            var pos2 = context.getBlockPos().offset(facing, depth);
+            var pos = context.getClickedPos();
+            var facing = context.getClickedFace().getOpposite();
+            var pos2 = context.getClickedPos().relative(facing, depth);
 
-            MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3d.of(pos), Vec3d.of(pos2));
-            WorldOps.playSound(world, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.PLAYERS);
+            MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
+            WorldOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
-            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayerEntity) player);
-            player.getItemCooldownManager().set(stack, 100);
-            return ActionResult.SUCCESS_SERVER;
+            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
+            player.getCooldowns().addCooldown(stack, 100);
+            return InteractionResult.SUCCESS_SERVER;
         }
 
-        return ActionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
     public static boolean isCoolingDown(LivingEntity entity, ItemStack stack) {
-        if (entity instanceof PlayerEntity player) {
-            return player.getItemCooldownManager().isCoolingDown(stack);
+        if (entity instanceof Player player) {
+            return player.getCooldowns().isOnCooldown(stack);
         }
         return false;
     }
 
     public static boolean isCorrectForDrops(ItemStack stack, BlockState state) {
-        ToolComponent toolComponent = stack.get(DataComponentTypes.TOOL);
+        Tool toolComponent = stack.get(DataComponents.TOOL);
         return toolComponent != null && toolComponent.isCorrectForDrops(state);
     }
 
     @Override
-    public void appendTooltip(Item.TooltipContext context, Consumer<Text> tooltip, TooltipType type) {
-        tooltip.accept(Text.translatable("abilities.mythicmetals.blast_mining").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
+    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+        tooltip.accept(Component.translatable("abilities.mythicmetals.blast_mining").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
     }
 }

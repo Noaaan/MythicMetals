@@ -1,31 +1,35 @@
 package com.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.block.*;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
+
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 
 // [VanillaCopy] GlazedTerracottaBlock
-public class BlockWithFacing extends HorizontalFacingBlock {
-    public static final MapCodec<BlockWithFacing> CODEC = createCodec(BlockWithFacing::new);
+public class BlockWithFacing extends HorizontalDirectionalBlock {
+    public static final MapCodec<BlockWithFacing> CODEC = simpleCodec(BlockWithFacing::new);
 
     @Override
-    public MapCodec<BlockWithFacing> getCodec() {
+    public MapCodec<BlockWithFacing> codec() {
         return CODEC;
     }
 
-    public BlockWithFacing(AbstractBlock.Settings settings) {
+    public BlockWithFacing(BlockBehaviour.Properties settings) {
         super(settings);
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 }
 

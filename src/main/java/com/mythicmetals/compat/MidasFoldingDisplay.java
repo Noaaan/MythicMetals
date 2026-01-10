@@ -7,8 +7,8 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.plugin.common.displays.DefaultSmithingDisplay;
-import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.RecipeEntry;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,17 +16,17 @@ import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 import static com.mythicmetals.item.tools.MidasGoldSword.Type.*;
 
 public class MidasFoldingDisplay extends DefaultSmithingDisplay {
-    public MidasFoldingDisplay(RecipeEntry<MidasFoldingRecipe> recipe) {
+    public MidasFoldingDisplay(RecipeHolder<MidasFoldingRecipe> recipe) {
         super(
             List.of(
-                EntryIngredients.ofIngredient(recipe.value().template().orElseThrow()),
-                EntryIngredients.ofIngredient(recipe.value().base().orElseThrow()),
-                EntryIngredients.ofIngredient(recipe.value().addition().orElseThrow())
+                EntryIngredients.ofIngredient(recipe.value().templateIngredient().orElseThrow()),
+                EntryIngredients.ofIngredient(recipe.value().baseIngredient().orElseThrow()),
+                EntryIngredients.ofIngredient(recipe.value().additionIngredient().orElseThrow())
             ),
             List.of(
                 EntryIngredients.of(recipe.value().result())
             ),
-            Optional.of(recipe.id().getValue())
+            Optional.of(recipe.id().location())
         );
     }
 
@@ -47,7 +47,7 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
 
         var inputStack = base.copy();
 
-        if (inputStack.isOf(result.getItem())) {
+        if (inputStack.is(result.getItem())) {
             if (MidasGoldSword.Type.isOfMidas(inputStack, ROYAL)) {
                 inputStack.set(GOLD_FOLDED, GoldFoldedComponent.of(640, true));
             } else if (MidasGoldSword.Type.isOfMidas(inputStack, GILDED)) {
