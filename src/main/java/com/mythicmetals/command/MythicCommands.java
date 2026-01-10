@@ -18,6 +18,7 @@ import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
+import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -27,13 +28,17 @@ import net.minecraft.block.Blocks;
 import net.minecraft.command.argument.RegistryEntryArgumentType;
 import net.minecraft.command.argument.serialize.ConstantArgumentSerializer;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.AttributeModifierSlot;
+import net.minecraft.component.type.AttributeModifiersComponent;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.equipment.trim.ArmorTrim;
 import net.minecraft.item.equipment.trim.ArmorTrimPattern;
 import net.minecraft.loot.context.*;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.command.*;
 import net.minecraft.text.Text;
@@ -137,6 +142,10 @@ public final class MythicCommands {
                 .then(trimPattern)
                 .build();
 
+            var debugAttributes = CommandManager.literal("give-test-item")
+                .executes(MythicCommands::giveTestHelm)
+                .build();
+
             // Wiki nodes
             ores.addChild(exportOres);
             tools.addChild(exportTools);
@@ -162,9 +171,29 @@ public final class MythicCommands {
             mythicRoot.addChild(placeBlocks);
             mythicRoot.addChild(display);
             mythicRoot.addChild(midas);
+            mythicRoot.addChild(debugAttributes);
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
+    }
+
+    private static int giveTestHelm(CommandContext<ServerCommandSource> context) {
+        if (context.getSource().getPlayer() != null) {
+            var stack = new ItemStack(Items.GOLDEN_HELMET);
+            var attributeBuilder = AttributeModifiersComponent.builder();
+            ReflectionUtils.iterateAccessibleStaticFields(AdditionalEntityAttributes.class, RegistryEntry.class, (value, name, field) -> {
+                var attribute = (RegistryEntry<EntityAttribute>) value;
+                attributeBuilder.add(
+                    attribute,
+                    new EntityAttributeModifier(RegistryHelper.id(name), 1.0, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL),
+                    AttributeModifierSlot.HEAD
+                );
+            });
+            var attributes = attributeBuilder.build();
+            stack.set(DataComponentTypes.ATTRIBUTE_MODIFIERS, attributes);
+            context.getSource().getPlayer().getInventory().offerOrDrop(stack);
+        }
+        return 0;
     }
 
     private static int giveMidasSword(CommandContext<ServerCommandSource> context) {
@@ -195,8 +224,7 @@ public final class MythicCommands {
                 Files.createFile(file);
             } catch (FileAlreadyExistsException ignored) {
                 // no-op
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
                 context.getSource().sendFeedback(() -> Text.literal("Failed to %s wiki data to disk!".formatted(name)), false);
                 return;
