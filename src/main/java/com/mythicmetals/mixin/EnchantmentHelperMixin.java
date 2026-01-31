@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
 
-    @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "getDamageProtection", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$damageReduction(ServerLevel world, LivingEntity user, DamageSource source, CallbackInfoReturnable<Float> cir) {
         // Make sure that there is any gear to check
         if (!user.getArmorSlots().iterator().hasNext()) return;

@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(AreaEffectCloud.class)
-public abstract class AreaEffectCloudEntityMixin implements WasSpawnedFromCreeper {
+public abstract class AreaEffectCloudMixin implements WasSpawnedFromCreeper {
 
     @Unique
     private boolean mythicmetals$ownerWasCreeper = false;

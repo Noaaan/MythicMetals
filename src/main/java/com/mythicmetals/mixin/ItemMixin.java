@@ -20,7 +20,7 @@ import static com.mythicmetals.component.PrometheumComponent.createOvergrownToug
 @Mixin(Item.class)
 public abstract class ItemMixin {
 
-    @Inject(method = "postProcessComponents", at = @At("HEAD"))
+    @Inject(method = "verifyComponentsAfterLoad", at = @At("HEAD"))
     private void mythicmetals$dynamicAttributeHandler(ItemStack stack, CallbackInfo ci) {
         if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
         if (!stack.has(MythicDataComponents.PROMETHEUM)) return;

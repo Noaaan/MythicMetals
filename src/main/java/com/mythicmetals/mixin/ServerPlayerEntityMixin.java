@@ -20,7 +20,7 @@ public abstract class ServerPlayerEntityMixin extends Player {
         super(world, pos, yaw, gameProfile);
     }
 
-    @ModifyReturnValue(method = "getDamageAgainst", at = @At("RETURN"))
+    @ModifyReturnValue(method = "getEnchantedDamage", at = @At("RETURN"))
     private float mythicmetals$applyBonusDamage(float original, Entity target, float baseDamage, DamageSource damageSource) {
         if (target.getType().is(EntityTypeTags.UNDEAD)) {
             return (float) (original + this.getAttributeValue(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE));

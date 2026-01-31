@@ -20,24 +20,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BucketItem.class)
 public abstract class BucketItemMixin {
 
-    @Shadow @Final private Fluid fluid;
+    @Shadow @Final private Fluid content;
 
-    @Shadow protected abstract void playEmptyingSound(@Nullable Player player, LevelAccessor world, BlockPos pos);
+    @Shadow protected abstract void playEmptySound(@Nullable Player player, LevelAccessor world, BlockPos pos);
 
-    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"), ordinal = 1)
+    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), ordinal = 1)
     private BlockPos mythicmetals$targetBlockOnLava(BlockPos original, Level world, Player user, InteractionHand hand, @Local BlockState blockState, @Local BlockHitResult blockHitResult) {
-        if (blockState.getBlock() instanceof Lavaloggable && this.fluid.equals(Fluids.LAVA)) {
+        if (blockState.getBlock() instanceof Lavaloggable && this.content.equals(Fluids.LAVA)) {
             return blockHitResult.getBlockPos();
         }
         return original;
     }
 
-    @Inject(method = "placeFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isLiquid()Z"), cancellable = true)
+    @Inject(method = "emptyContents", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;liquid()Z"), cancellable = true)
     private void mythicmetals$fillLavalog(Player player, Level world, BlockPos pos, BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
         var state = world.getBlockState(pos);
-        if (this.fluid.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
+        if (this.content.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
             lavaloggable.placeLiquid(world, pos, state, Fluids.LAVA.getSource(false));
-            this.playEmptyingSound(player, world, pos);
+            this.playEmptySound(player, world, pos);
             cir.setReturnValue(true);
         }
     }

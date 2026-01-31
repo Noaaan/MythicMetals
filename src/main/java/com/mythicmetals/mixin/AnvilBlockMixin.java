@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(AnvilBlock.class)
 public class AnvilBlockMixin {
 
-    @ModifyReturnValue(method = "getLandingState", at = @At("TAIL"))
+    @ModifyReturnValue(method = "damage", at = @At("TAIL"))
     private static BlockState mythicmetals$cancelAnvilDamage(BlockState original, BlockState initial) {
         if (initial.is(MythicTags.ANVILS)) {
             return initial;

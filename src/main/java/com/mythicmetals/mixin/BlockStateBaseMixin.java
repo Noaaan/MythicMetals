@@ -16,9 +16,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BlockBehaviour.BlockStateBase.class)
-public class AbstractBlockStateMixin {
+public class BlockStateBaseMixin {
 
-    @Inject(at = @At("RETURN"), method = "calcBlockBreakingDelta", cancellable = true)
+    @Inject(at = @At("RETURN"), method = "getDestroyProgress", cancellable = true)
     private void mythicmetals$slowBreaking(Player player, BlockGetter blockView, BlockPos originalBlockPos, CallbackInfoReturnable<Float> cir) {
         if (player.getMainHandItem().getItem() instanceof HammerBase hammer) {
             var oldDelta = cir.getReturnValue();

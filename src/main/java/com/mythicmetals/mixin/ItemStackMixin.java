@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
 
-    @ModifyReturnValue(method = "useOnBlock", at = @At("RETURN"))
+    @ModifyReturnValue(method = "useOn", at = @At("RETURN"))
     private InteractionResult mythicmetals$handleUseableComponents(InteractionResult original, UseOnContext context) {
         var stack = context.getItemInHand();
         if (stack.has(MythicDataComponents.BLAST_MINING)) {
@@ -25,7 +25,7 @@ public class ItemStackMixin {
         return original;
     }
 
-    @Inject(method = "postHit", at = @At("HEAD"), cancellable = false)
+    @Inject(method = "hurtEnemy", at = @At("HEAD"), cancellable = false)
     private void mythicmetals$handleCustomOnHitComponents(LivingEntity target, LivingEntity user, CallbackInfoReturnable<Boolean> cir) {
         if (user.getWeaponItem().has(MythicDataComponents.BRANDING)) {
             var component = user.getWeaponItem().get(MythicDataComponents.BRANDING);

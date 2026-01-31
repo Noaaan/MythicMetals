@@ -13,7 +13,7 @@ import static com.mythicmetals.item.tools.StormyxShield.STORMYX_SHIELD_DEFLECTOR
 @Mixin(Entity.class)
 public class EntityMixin {
 
-    @ModifyReturnValue(method = "getProjectileDeflection", at = @At("RETURN"))
+    @ModifyReturnValue(method = "deflection", at = @At("RETURN"))
     private ProjectileDeflection mythicmetals$reflectProjectilesWithStormyxShield(ProjectileDeflection original) {
         var entity = (Entity) (Object) this;
         if (!(entity instanceof LivingEntity living)) return original;

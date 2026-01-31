@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(OldMinecartBehavior.class)
-public abstract class AbstractMinecartEntityMixin extends MinecartBehavior {
+public abstract class OldMinecartBehaviorMixin extends MinecartBehavior {
 
-    protected AbstractMinecartEntityMixin(AbstractMinecart minecart) {
+    protected OldMinecartBehaviorMixin(AbstractMinecart minecart) {
         super(minecart);
     }
 
-    @ModifyVariable(method = "moveOnRail", at = @At(value = "STORE", ordinal = 0))
+    @ModifyVariable(method = "moveAlongTrack", at = @At(value = "STORE", ordinal = 0))
     private boolean mythicmetals$boostInLava(boolean original, ServerLevel value) {
         BlockPos blockPos = this.minecart.getCurrentBlockPosOrRailBelow();
         BlockState state = this.level().getBlockState(blockPos);

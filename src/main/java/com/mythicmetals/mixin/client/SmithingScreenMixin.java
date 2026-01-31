@@ -22,7 +22,7 @@ public abstract class SmithingScreenMixin extends ItemCombinerScreen<SmithingMen
     @Shadow
     @Final
     @Mutable
-    private static List<ResourceLocation> EMPTY_SLOT_TEXTURES;
+    private static List<ResourceLocation> EMPTY_SLOT_SMITHING_TEMPLATES;
 
     public SmithingScreenMixin(SmithingMenu handler, Inventory playerInventory, Component title, ResourceLocation texture) {
         super(handler, playerInventory, title, texture);
@@ -30,10 +30,10 @@ public abstract class SmithingScreenMixin extends ItemCombinerScreen<SmithingMen
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$attachMoreTextures(CallbackInfo ci) {
-        var list = new ArrayList<>(EMPTY_SLOT_TEXTURES);
+        var list = new ArrayList<>(EMPTY_SLOT_SMITHING_TEMPLATES);
         list.add(RegistryHelper.id("empty_slot_midas_template"));
         list.add(RegistryHelper.id("empty_slot_crafted_template"));
-        EMPTY_SLOT_TEXTURES = list;
+        EMPTY_SLOT_SMITHING_TEMPLATES = list;
     }
 
     /**
@@ -44,7 +44,7 @@ public abstract class SmithingScreenMixin extends ItemCombinerScreen<SmithingMen
      *
      * @param original the check on whether all three slots are filled
      */
-    @ModifyReturnValue(method = "hasInvalidRecipe", at = @At("RETURN"))
+    @ModifyReturnValue(method = "hasRecipeError", at = @At("RETURN"))
     private boolean mythicmetals$complainAboutShortUpgradeRecipes(boolean original) {
         if (this.menu.getSlot(1).getItem().getItem().equals(MythicTools.MYTHRIL_DRILL)) {
             return this.menu.getSlot(1).hasItem() && this.menu.getSlot(2).hasItem() && !this.menu.getSlot(3).hasItem();

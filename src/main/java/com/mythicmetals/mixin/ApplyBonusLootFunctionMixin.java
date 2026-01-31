@@ -22,10 +22,10 @@ public class ApplyBonusLootFunctionMixin {
     @Final
     private Holder<Enchantment> enchantment;
 
-    @ModifyVariable(method = "process",
+    @ModifyVariable(method = "run",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/loot/context/LootContext;getRandom()Lnet/minecraft/util/math/random/Random;",
+            target = "Lnet/minecraft/world/level/storage/loot/LootContext;getRandom()Lnet/minecraft/util/RandomSource;",
             shift = At.Shift.BEFORE),
         ordinal = 0
     )

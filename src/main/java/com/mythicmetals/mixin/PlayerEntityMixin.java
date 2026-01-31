@@ -35,13 +35,13 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     public abstract Iterable<ItemStack> getArmorSlots();
 
     @Shadow
-    public abstract void incrementStat(Stat<?> stat);
+    public abstract void awardStat(Stat<?> stat);
 
     @Shadow
     @Final
-    private ItemCooldowns itemCooldownManager;
+    private ItemCooldowns cooldowns;
 
-    @Inject(method = "getBlockBreakingSpeed", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
         var mainHandStack = getInventory().getSelected();
         float speedMod = 1.0f;
@@ -77,9 +77,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     }
 
     @ModifyVariable(
-        method = "applyDamage",
+        method = "actuallyHurt",
         at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/entity/player/PlayerEntity;applyArmorToDamage(Lnet/minecraft/entity/damage/DamageSource;F)F",
+            target = "Lnet/minecraft/world/entity/player/Player;getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F",
             shift = At.Shift.BY, by = -2),
         ordinal = 0,
         argsOnly = true)
@@ -100,7 +100,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
         mythicmetals$setCritical(false);
     }
 
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;addCritParticles(Lnet/minecraft/entity/Entity;)V"))
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;crit(Lnet/minecraft/world/entity/Entity;)V"))
     private void mythicmetals$captureCritical(CallbackInfo ci) {
         mythicmetals$setCritical(true);
     }

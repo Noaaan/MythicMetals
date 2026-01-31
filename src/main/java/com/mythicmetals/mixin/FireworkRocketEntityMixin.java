@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.*;
 public abstract class FireworkRocketEntityMixin extends Projectile {
 
     @Shadow
-    private @Nullable LivingEntity shooter;
+    private @Nullable LivingEntity attachedToEntity;
 
     /**
      * @author BasiqueEvangelist
@@ -28,17 +28,17 @@ public abstract class FireworkRocketEntityMixin extends Projectile {
 
     @ModifyVariable(method = "tick", at = @At("STORE"), ordinal = 1)
     private Vec3 mythicmetals$crabVec3D(Vec3 vec) {
-        if (this.shooter == null) return vec;
-        var speedModifier = this.shooter.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
+        if (this.attachedToEntity == null) return vec;
+        var speedModifier = this.attachedToEntity.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
 
         if (speedModifier == 0) return vec.scale(0);
         return vec.scale(1 / speedModifier);
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;add(DDD)Lnet/minecraft/util/math/Vec3d;", ordinal = 0))
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;add(DDD)Lnet/minecraft/world/phys/Vec3;", ordinal = 0))
     private Vec3 mythicmetals$increaseRocketSpeed(Vec3 velocity, double x, double y, double z) {
-        if (this.shooter == null) return velocity;
-        var speedModifier = this.shooter.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
+        if (this.attachedToEntity == null) return velocity;
+        var speedModifier = this.attachedToEntity.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
 
         return velocity.scale(speedModifier).add(x, y, z);
     }

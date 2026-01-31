@@ -21,22 +21,23 @@ public class PiglinBrainMixin {
     @Unique
     private static ItemStack mythicmetals$cachedBarterItem;
 
-    @Inject(method = "acceptsForBarter", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "isBarterCurrency", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.is(MythicItems.MIDAS_GOLD.getIngot())) {
             cir.setReturnValue(true);
         }
     }
 
-    @Inject(method = "consumeOffHandItem", at = @At("HEAD"))
+    @Inject(method = "stopHoldingOffHandItem", at = @At("HEAD"))
     private static void mythicmetals$grabBarteredItem(ServerLevel world, Piglin piglin, boolean barter, CallbackInfo ci) {
         mythicmetals$cachedBarterItem = piglin.getOffhandItem();
     }
 
-    @ModifyVariable(method = "getBarteredItem", at = @At(value = "LOAD"))
+    @ModifyVariable(method = "getBarterResponseItems", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, Piglin piglin) {
-        if (mythicmetals$cachedBarterItem.is(MythicItems.MIDAS_GOLD.getIngot()) && piglin.level().getServer() != null) {
-            return piglin.level().getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, MythicLootOps.BETTER_PIGLIN_BARTERING));
+        var level = piglin.level();
+        if (mythicmetals$cachedBarterItem.is(MythicItems.MIDAS_GOLD.getIngot()) && level.getServer() != null) {
+            return level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, MythicLootOps.BETTER_PIGLIN_BARTERING));
         }
         return table;
     }

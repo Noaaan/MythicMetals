@@ -23,18 +23,18 @@ public class ConduitBlockEntityMixin {
     @Mutable
     @Shadow
     @Final
-    private static Block[] ACTIVATING_BLOCKS;
+    private static Block[] VALID_BLOCKS;
 
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$extendConduitArray(CallbackInfo ci) {
-        List<Block> blocks = Arrays.stream(ACTIVATING_BLOCKS).collect(Collectors.toList());
+        List<Block> blocks = Arrays.stream(VALID_BLOCKS).collect(Collectors.toList());
         blocks.add(MythicBlocks.AQUARIUM_GLASS);
         blocks.add(MythicBlocks.AQUARIUM.getStorageBlock());
 
-        ACTIVATING_BLOCKS = blocks.toArray(ACTIVATING_BLOCKS);
+        VALID_BLOCKS = blocks.toArray(VALID_BLOCKS);
     }
 
-    @Inject(method = "givePlayersEffects", at = @At("TAIL"))
+    @Inject(method = "applyEffects", at = @At("TAIL"))
     private static void mythicmetals$invokeNearbySentries(Level world, BlockPos pos, List<BlockPos> activatingBlocks, CallbackInfo ci) {
         if (world.isClientSide) return;
         int radius = activatingBlocks.size() / 7 * 16;

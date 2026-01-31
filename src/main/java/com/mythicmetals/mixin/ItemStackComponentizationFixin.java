@@ -41,7 +41,7 @@ public abstract class ItemStackComponentizationFixin {
     );
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-    @Inject(method = "fixStack", at = @At("TAIL"))
+    @Inject(method = "fixItemStack", at = @At("TAIL"))
     private static void mythicmetals$migrateToMythicDataComponents(ItemStackComponentizationFix.ItemStackData data, Dynamic dynamic, CallbackInfo ci) {
         if (data.is(MM_MIDAS)) {
             data.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()

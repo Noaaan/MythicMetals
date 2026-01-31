@@ -22,7 +22,7 @@ public class TableBonusLootConditionMixin {
     private Holder<Enchantment> enchantment;
 
     @ModifyVariable(
-        method = "test(Lnet/minecraft/loot/context/LootContext;)Z",
+        method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z",
         at = @At(value = "LOAD")
     )
     private int mythicmetals$increaseFortune(int level, LootContext lootCtx) {

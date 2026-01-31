@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(EnchantedCountIncreaseFunction.class)
-public class EnchantedCountIncreaseLootFunctionMixin {
+public class EnchantedCountIncreaseFunctionMixin {
 
     @Shadow
     @Final
     private Holder<Enchantment> enchantment;
 
-    @ModifyVariable(method = "process", at = @At(
+    @ModifyVariable(method = "run", at = @At(
         value = "STORE",
         ordinal = 0
     ))
