@@ -165,7 +165,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     private void registerArmorRenderer() {
         Item[] armors = BuiltInRegistries.ITEM.stream()
             .filter(i -> i instanceof CustomArmorModelItem
-                && BuiltInRegistries.ITEM.getResourceKey(i).get().location().getNamespace().equals(MythicMetals.MOD_ID))
+                && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
             .toArray(Item[]::new);
 
         ArmorRenderer renderer = (matrices, vertexConsumerProvider, stack, bipedEntityRenderState, slot, light, contextModel) -> {

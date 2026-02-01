@@ -7,11 +7,11 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.joml.Vector3f;
 
 public class StormyxShieldRenderer {
-    private static final ResourceLocation WORLD_BORDER = ResourceLocation.parse("textures/misc/forcefield.png");
+    private static final Identifier WORLD_BORDER = Identifier.parse("textures/misc/forcefield.png");
 
     /**
      * Renders the model of the Stormyx Rainbow Shield, a fancy localized worldborder

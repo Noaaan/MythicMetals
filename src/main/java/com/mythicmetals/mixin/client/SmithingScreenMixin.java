@@ -6,7 +6,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.gui.screens.inventory.ItemCombinerScreen;
 import net.minecraft.client.gui.screens.inventory.SmithingScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.SmithingMenu;
 import org.spongepowered.asm.mixin.*;
@@ -22,9 +22,9 @@ public abstract class SmithingScreenMixin extends ItemCombinerScreen<SmithingMen
     @Shadow
     @Final
     @Mutable
-    private static List<ResourceLocation> EMPTY_SLOT_SMITHING_TEMPLATES;
+    private static List<Identifier> EMPTY_SLOT_SMITHING_TEMPLATES;
 
-    public SmithingScreenMixin(SmithingMenu handler, Inventory playerInventory, Component title, ResourceLocation texture) {
+    public SmithingScreenMixin(SmithingMenu handler, Inventory playerInventory, Component title, Identifier texture) {
         super(handler, playerInventory, title, texture);
     }
 

@@ -14,13 +14,13 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors.SHIELD_BREAK_COLOR;
 
 public class PlayerEnergySwirlFeatureRenderer<S extends PlayerRenderState, M extends PlayerModel> extends RenderLayer<S, M> {
 
-    public static final ResourceLocation SWIRL_TEXTURE = RegistryHelper.id("textures/models/carmot_shield.png");
+    public static final Identifier SWIRL_TEXTURE = RegistryHelper.id("textures/models/carmot_shield.png");
     private final PlayerModel swirlModel;
 
     public PlayerEnergySwirlFeatureRenderer(

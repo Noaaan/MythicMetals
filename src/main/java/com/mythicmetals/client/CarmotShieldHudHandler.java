@@ -9,14 +9,14 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 
 public class CarmotShieldHudHandler {
-    public static final ResourceLocation COMPONENT_ID = RegistryHelper.id("shield_overlay");
+    public static final Identifier COMPONENT_ID = RegistryHelper.id("shield_overlay");
     public static final String SHIELD_BACKGROUND_ID = "shield_background";
     public static final String SHIELD_COMPONENT_ID = "shield_overlay";
-    public static final ResourceLocation TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
+    public static final Identifier TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
 
     public static void init() {
         Hud.add(COMPONENT_ID, () ->
@@ -73,7 +73,7 @@ public class CarmotShieldHudHandler {
         public static final Color DAMAGED_COLOR = Color.ofRgb(0xE0343A);
         public static boolean barShouldBeRed = false;
 
-        protected CarmotShieldComponent(ResourceLocation texture, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight) {
+        protected CarmotShieldComponent(Identifier texture, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight) {
             super(texture, u, v, regionWidth, regionHeight, textureWidth, textureHeight);
         }
 

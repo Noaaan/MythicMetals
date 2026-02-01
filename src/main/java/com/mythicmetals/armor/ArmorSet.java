@@ -8,7 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
@@ -104,10 +104,10 @@ public class ArmorSet {
     }
 
     public void register(String modid, String name) {
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_helmet"), helmet);
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_chestplate"), chestplate);
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_leggings"), leggings);
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(modid, name + "_boots"), boots);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(modid, name + "_helmet"), helmet);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(modid, name + "_chestplate"), chestplate);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(modid, name + "_leggings"), leggings);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(modid, name + "_boots"), boots);
     }
 
     protected Item makeItem(ArmorMaterial material, ArmorType slot, Item.Properties settings) {
@@ -156,7 +156,7 @@ public class ArmorSet {
         double knockbackResistance = material.knockbackResistance();
         var builder = ItemAttributeModifiers.builder();
         var equipmentSlot = EquipmentSlotGroup.bySlot(equipmentType.getSlot());
-        var identifier = ResourceLocation.withDefaultNamespace("armor." + equipmentType.getName());
+        var identifier = Identifier.withDefaultNamespace("armor." + equipmentType.getName());
         builder.add(
             Attributes.ARMOR,
             new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, armor, ADD_VALUE),
@@ -176,7 +176,7 @@ public class ArmorSet {
         }
         extraModifiers.forEach(modifier -> {
             if (modifier.requiredSlot().test(equipmentType.getSlot())) {
-                var id = RegistryHelper.id(name + "_" + modifier.attribute().unwrapKey().orElseThrow().location().getPath());
+                var id = RegistryHelper.id(name + "_" + modifier.attribute().unwrapKey().orElseThrow().identifier().getPath());
                 builder.add(
                     modifier.attribute(),
                     new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()),

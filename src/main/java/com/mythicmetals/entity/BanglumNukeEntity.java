@@ -123,7 +123,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
                     y /= dist;
                     z /= dist;
                     var banglumNukeSource = new BanglumNukeSource(
-                        world.damageSources().damageTypes.get(MythicDamageTypes.BANGLUM_NUKE.location()).orElseThrow(),
+                        world.damageSources().damageTypes.get(MythicDamageTypes.BANGLUM_NUKE.identifier()).orElseThrow(),
                         this,
                         this.getCausingEntity());
                     entity.hurtServer(world, banglumNukeSource, Mth.floor((distanceModifier * distanceModifier + distanceModifier) * 7.0 * radius + 1.0));

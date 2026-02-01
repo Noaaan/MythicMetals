@@ -5,7 +5,7 @@ import com.mythicmetals.ability.Abilities;
 import io.github.apace100.apoli.power.type.DamageOverTimePowerType;
 import io.github.apace100.apoli.power.type.PowerType;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.enchantment.Enchantment;
 import org.spongepowered.asm.mixin.*;
@@ -23,7 +23,7 @@ public abstract class DamageOverTimePowerMixin extends PowerType {
         int change = original;
 
         LivingEntity entity = getHolder();
-        if (protectionEnchantmentKey.isEmpty() || !protectionEnchantmentKey.get().location().equals(ResourceLocation.fromNamespaceAndPath("origins", "water_protection"))) {
+        if (protectionEnchantmentKey.isEmpty() || !protectionEnchantmentKey.get().identifier().equals(Identifier.fromNamespaceAndPath("origins", "water_protection"))) {
             return original;
         }
 

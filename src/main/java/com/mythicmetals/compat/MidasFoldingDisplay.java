@@ -26,7 +26,7 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
             List.of(
                 EntryIngredients.of(recipe.value().result())
             ),
-            Optional.of(recipe.id().location())
+            Optional.of(recipe.id().identifier())
         );
     }
 

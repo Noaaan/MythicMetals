@@ -7,11 +7,11 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.ArrowRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class StarPlatinumArrowEntityRenderer extends ArrowRenderer<StarPlatinumArrowEntity, ArrowRenderState> {
-    public static final ResourceLocation TEXTURE = RegistryHelper.id("textures/models/star_platinum_arrow.png");
+    public static final Identifier TEXTURE = RegistryHelper.id("textures/models/star_platinum_arrow.png");
 
     public StarPlatinumArrowEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -23,7 +23,7 @@ public class StarPlatinumArrowEntityRenderer extends ArrowRenderer<StarPlatinumA
     }
 
     @Override
-    protected ResourceLocation getTextureLocation(ArrowRenderState state) {
+    protected Identifier getTextureLocation(ArrowRenderState state) {
         return TEXTURE;
     }
 }

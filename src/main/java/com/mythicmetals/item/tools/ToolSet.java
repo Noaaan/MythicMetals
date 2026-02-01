@@ -221,7 +221,7 @@ public class ToolSet {
             assert attributes != null;
 
             extraModifiers.forEach(modifier -> {
-                var id = RegistryHelper.id("sword_" + modifier.attribute().unwrapKey().orElseThrow().location().getPath());
+                var id = RegistryHelper.id("sword_" + modifier.attribute().unwrapKey().orElseThrow().identifier().getPath());
                 var newAttributes = attributes.withModifierAdded(modifier.attribute(), new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()), modifier.requiredSlot());
                 stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newAttributes);
             });

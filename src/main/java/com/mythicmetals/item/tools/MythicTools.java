@@ -16,7 +16,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -197,8 +197,8 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
         RegistryHelper.item("platinum_watch", PLATINUM_WATCH);
 
-        BuiltInRegistries.ITEM.addAlias(ResourceLocation.fromNamespaceAndPath("mythicaddons", "red_aegis_sword"), RegistryHelper.id("red_aegis_sword"));
-        BuiltInRegistries.ITEM.addAlias(ResourceLocation.fromNamespaceAndPath("mythicaddons", "white_aegis_sword"), RegistryHelper.id("white_aegis_sword"));
+        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "red_aegis_sword"), RegistryHelper.id("red_aegis_sword"));
+        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "white_aegis_sword"), RegistryHelper.id("white_aegis_sword"));
     }
 
     public static class Frogery {
@@ -212,7 +212,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             @Override
             public InteractionResult interactLivingEntity(ItemStack stack, Player user, LivingEntity entity, InteractionHand hand) {
                 if (entity.getType() == EntityType.FROG && FabricLoader.getInstance().isModLoaded("delightful-froge")) {
-                    ((Frog) entity).setVariant(BuiltInRegistries.FROG_VARIANT.get(ResourceLocation.fromNamespaceAndPath("delightful", "froge")).orElseThrow());
+                    ((Frog) entity).setVariant(BuiltInRegistries.FROG_VARIANT.get(Identifier.fromNamespaceAndPath("delightful", "froge")).orElseThrow());
                     return InteractionResult.SUCCESS;
                 }
                 return super.interactLivingEntity(stack, user, entity, hand);

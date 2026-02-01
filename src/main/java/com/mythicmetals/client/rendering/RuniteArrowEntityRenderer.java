@@ -7,12 +7,12 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.TippableArrowRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class RuniteArrowEntityRenderer extends ArrowRenderer<RuniteArrowEntity, TippableArrowRenderState> {
-    public static final ResourceLocation TEXTURE = RegistryHelper.id("textures/models/runite_arrow.png");
-    public static final ResourceLocation TIPPED_TEXTURE = RegistryHelper.id("textures/models/tipped_runite_arrow.png");
+    public static final Identifier TEXTURE = RegistryHelper.id("textures/models/runite_arrow.png");
+    public static final Identifier TIPPED_TEXTURE = RegistryHelper.id("textures/models/tipped_runite_arrow.png");
 
     public RuniteArrowEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -24,7 +24,7 @@ public class RuniteArrowEntityRenderer extends ArrowRenderer<RuniteArrowEntity, 
     }
 
     @Override
-    protected ResourceLocation getTextureLocation(TippableArrowRenderState state) {
+    protected Identifier getTextureLocation(TippableArrowRenderState state) {
         return state.isTipped ? TIPPED_TEXTURE : TEXTURE;
     }
 }

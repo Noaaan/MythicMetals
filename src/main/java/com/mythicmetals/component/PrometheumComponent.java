@@ -5,7 +5,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -31,9 +31,9 @@ public record PrometheumComponent(int durabilityRepaired) {
         StructEndec.INT.fieldOf("durability_repaired", PrometheumComponent::durabilityRepaired),
         PrometheumComponent::new
     );
-    public static final ResourceLocation ARMOR_BONUS_ID = RegistryHelper.id("prometheum_armor_bonus");
-    public static final ResourceLocation TOUGHNESS_BONUS_ID = RegistryHelper.id("prometheum_toughness_bonus");
-    public static final ResourceLocation DAMAGE_BONUS_ID = RegistryHelper.id("prometheum_damage_bonus");
+    public static final Identifier ARMOR_BONUS_ID = RegistryHelper.id("prometheum_armor_bonus");
+    public static final Identifier TOUGHNESS_BONUS_ID = RegistryHelper.id("prometheum_toughness_bonus");
+    public static final Identifier DAMAGE_BONUS_ID = RegistryHelper.id("prometheum_damage_bonus");
     public static final PrometheumComponent DEFAULT = new PrometheumComponent(0);
 
     /**

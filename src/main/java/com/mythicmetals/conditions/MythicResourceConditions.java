@@ -4,7 +4,7 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditionType;
 import net.fabricmc.fabric.api.resource.conditions.v1.ResourceConditions;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 /**
  * Simple resource conditions that check if the corresponding {@link MythicMetals#CONFIG} booleans are enabled.
@@ -13,8 +13,8 @@ import net.minecraft.resources.ResourceLocation;
  */
 public class MythicResourceConditions {
 
-    private static final ResourceLocation ANVILS_LOADED = RegistryHelper.id("anvils_enabled");
-    private static final ResourceLocation NUGGETS_LOADED = RegistryHelper.id("nuggets_enabled");
+    private static final Identifier ANVILS_LOADED = RegistryHelper.id("anvils_enabled");
+    private static final Identifier NUGGETS_LOADED = RegistryHelper.id("nuggets_enabled");
     public static final ResourceConditionType<AnvilsLoadedCondition> ANVILS = ResourceConditionType.create(ANVILS_LOADED, AnvilsLoadedCondition.CODEC);
     public static final ResourceConditionType<NuggetsLoadedCondition> NUGGETS = ResourceConditionType.create(NUGGETS_LOADED, NuggetsLoadedCondition.CODEC);
 

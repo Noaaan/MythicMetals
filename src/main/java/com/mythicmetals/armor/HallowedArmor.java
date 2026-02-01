@@ -8,7 +8,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -49,7 +49,7 @@ public class HallowedArmor extends ArmorItem implements CustomArmorModelItem {
     }
 
     @Override
-    public @NotNull ResourceLocation getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public @NotNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return RegistryHelper.id("textures/models/hallowed_model.png");
     }
 }

@@ -4,7 +4,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.ToolMaterial;
@@ -16,7 +16,7 @@ public class MythicToolMaterials {
     public static final ToolMaterial AEGIS_WHITE = new ToolMaterial(getInverseTag(4), 2070, 10.0F, 5.0F, 25, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/hallowed")));
     public static final ToolMaterial AQUARIUM = new ToolMaterial(getInverseTag(2), 455, 6.5F, 2.0F, 12, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/aquarium")));
     public static final ToolMaterial BANGLUM = new ToolMaterial(getInverseTag(2), 260, 11.0F, 2.0F, 1, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/banglum")));
-    public static final ToolMaterial BRONZE = new ToolMaterial(getInverseTag(2), 354, 5.5F, 2.5F, 14, TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/bronze")));
+    public static final ToolMaterial BRONZE = new ToolMaterial(getInverseTag(2), 354, 5.5F, 2.5F, 14, TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/bronze")));
     public static final ToolMaterial CARMOT = new ToolMaterial(getInverseTag(3), 1130, 11.5F, 3.0F, 42, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/carmot")));
     public static final ToolMaterial CELESTIUM = new ToolMaterial(getInverseTag(5), 2470, 25.0F, 6.0F, 26, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/celestium")));
     public static final ToolMaterial COPPER = new ToolMaterial(getInverseTag(1), 187, 5.0F, 1.5F, 8, ConventionalItemTags.COPPER_INGOTS);
@@ -30,14 +30,14 @@ public class MythicToolMaterials {
     public static final ToolMaterial MYTHRIL = new ToolMaterial(getInverseTag(4), 1564, 14.3F, 3.0F, 22, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/mythril")));
     public static final ToolMaterial MYTHRIL_DRILL = new ToolMaterial(getInverseTag(4), 1764, 27.4F, 3.0F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/mythril")));
     public static final ToolMaterial ORICHALCUM = new ToolMaterial(getInverseTag(4), 2048, 6.0F, 4.0F, 16, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/orichalcum")));
-    public static final ToolMaterial OSMIUM = new ToolMaterial(getInverseTag(3), 664, 7.0F, 3.0F, 13, TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/osmium")));
+    public static final ToolMaterial OSMIUM = new ToolMaterial(getInverseTag(3), 664, 7.0F, 3.0F, 13, TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/osmium")));
     public static final ToolMaterial PALLADIUM = new ToolMaterial(getInverseTag(4), 1234, 8.0F, 3.5F, 16, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/palladium")));
     public static final ToolMaterial PROMETHEUM = new ToolMaterial(getInverseTag(3), 1472, 6.0F, 4.0F, 15, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/prometheum")));
     public static final ToolMaterial QUADRILLUM = new ToolMaterial(getInverseTag(2), 321, 6.0F, 2.7F, 8, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/quadrillum")));
     public static final ToolMaterial RUNITE = new ToolMaterial(getInverseTag(3), 1337, 8.9F, 3.3F, 17, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/runite")));
     public static final ToolMaterial ROYAL_MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 2147, 21.0F, 5.0F, 35, TagKey.create(Registries.ITEM, RegistryHelper.id("storage_blocks/midas_gold")));
     public static final ToolMaterial STAR_PLATINUM = new ToolMaterial(getInverseTag(4), 1300, 9.0F, 4.0F, 18, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/star_platinum")));
-    public static final ToolMaterial STEEL = new ToolMaterial(getInverseTag(3), 700, 6.5F, 3.0F, 11, TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/steel")));
+    public static final ToolMaterial STEEL = new ToolMaterial(getInverseTag(3), 700, 6.5F, 3.0F, 11, TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/steel")));
     public static final ToolMaterial STORMYX = new ToolMaterial(getInverseTag(3), 1305, 8.5F, 3.5F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/stormyx")));
     public static final ToolMaterial TIDESINGER = new ToolMaterial(getInverseTag(3), 1233, 9.0F, 4.0F, 18, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/aquarium")));
 

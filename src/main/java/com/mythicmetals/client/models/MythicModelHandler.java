@@ -6,7 +6,7 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import java.util.function.BiConsumer;
 
 public class MythicModelHandler {
@@ -23,10 +23,10 @@ public class MythicModelHandler {
     public static final ModelLayerLocation PALLADIUM_MINECART = model("palladium_minecart");
     public static final ModelLayerLocation PALLADIUM = model("palladium_armor");
     public static final ModelLayerLocation STAR_PLATINUM_CLOAK = model("star_platinum_cloak");
-    public static final ResourceLocation HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
-    public static final ResourceLocation STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
-    public static final ResourceLocation PALLADIUM_MINECART_TEXTURE = RegistryHelper.id("textures/models/palladium_minecart.png");
-    public static final ResourceLocation CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
+    public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
+    public static final Identifier STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
+    public static final Identifier PALLADIUM_MINECART_TEXTURE = RegistryHelper.id("textures/models/palladium_minecart.png");
+    public static final Identifier CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
 
     public static void init(BiConsumer<ModelLayerLocation, LayerDefinition> consumer) {
         consumer.accept(ADAMANTITE, LayerDefinition.create(AdamantiteArmorModel.getModelData(), 64, 32));

@@ -11,7 +11,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
@@ -47,7 +47,7 @@ public class TidesingerArmor extends Item implements CustomArmorModelItem {
 
     @NotNull
     @Override
-    public ResourceLocation getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         var component = stack.getOrDefault(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty());
         String model = switch (component.pattern()) {
             case "brain" -> "textures/models/tidesinger_model_brain.png";

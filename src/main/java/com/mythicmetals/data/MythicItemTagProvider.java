@@ -70,11 +70,11 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
              * #mythicmetals:ingots
              * At the end #mythicmetals:ingots is nested into #c:ingots
              */
-            var modIngotTag = MythicMetalsData.createModItemTag(ConventionalItemTags.INGOTS.location().getPath());
+            var modIngotTag = MythicMetalsData.createModItemTag(ConventionalItemTags.INGOTS.identifier().getPath());
             var commonIngotTag = ConventionalItemTags.INGOTS;
             if (itemSet.getIngot() != null) {
                 // Star Platinum is explicitly named, so this is for handling that edge case
-                var string = ConventionalItemTags.INGOTS.location().getPath() + "/" + name;
+                var string = ConventionalItemTags.INGOTS.identifier().getPath() + "/" + name;
                 var modTag = MythicMetalsData.createModItemTag(string);
                 var commonTag = MythicMetalsData.createCommonItemTag(string);
                 getOrCreateTagBuilder(modTag).add(itemSet.getIngot());
@@ -92,7 +92,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
              */
             if (itemSet.getRawOre() != null) {
                 var string = "raw_materials/" + name;
-                var modRawOreTag = MythicMetalsData.createModItemTag(ConventionalItemTags.RAW_MATERIALS.location().getPath());
+                var modRawOreTag = MythicMetalsData.createModItemTag(ConventionalItemTags.RAW_MATERIALS.identifier().getPath());
 
                 // Edge case: Midas Gold can combine with any raw ore to make gold, except itself
                 var midasRawOreTag = MythicMetalsData.createModItemTag("midas_raw_ores");
@@ -164,7 +164,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .addTag(equipmentModTag);
 
             // Melee weapons
-            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.location().getPath()))
+            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.identifier().getPath()))
                 .add(toolSet.getSword())
                 .add(toolSet.getAxe());
             getOrCreateTagBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS)
@@ -178,7 +178,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(toolSet.getSword());
 
             // Mining tools
-            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.location().getPath()))
+            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.identifier().getPath()))
                 .add(toolSet.getPickaxe());
             getOrCreateTagBuilder(ConventionalItemTags.MINING_TOOL_TOOLS)
                 .add(toolSet.getPickaxe());
@@ -212,7 +212,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Edge cases from Mythic Tools
         // Swords
-        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.location().getPath()))
+        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.identifier().getPath()))
             .add(MythicTools.RED_AEGIS_SWORD)
             .add(MythicTools.WHITE_AEGIS_SWORD)
             .add(MythicTools.MIDAS_GOLD_SWORD)
@@ -243,7 +243,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(MythicMetalsData.createModItemTag("pickaxes"))
             .add(MythicTools.MYTHRIL_DRILL)
             .add(MythicTools.ORICHALCUM_HAMMER);
-        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.location().getPath()))
+        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.identifier().getPath()))
             .add(MythicTools.MYTHRIL_DRILL)
             .add(MythicTools.ORICHALCUM_HAMMER);
         getOrCreateTagBuilder(ConventionalItemTags.MINING_TOOL_TOOLS)
@@ -259,7 +259,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
             .add(MythicTools.TIPPED_RUNITE_ARROW)
             .add(MythicTools.STAR_PLATINUM_ARROW);
         // Shields
-        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.SHIELD_TOOLS.location().getPath()))
+        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.SHIELD_TOOLS.identifier().getPath()))
             .add(MythicTools.STORMYX_SHIELD);
         getOrCreateTagBuilder(ConventionalItemTags.SHIELD_TOOLS)
             .add(MythicTools.STORMYX_SHIELD);

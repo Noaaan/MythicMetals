@@ -4,7 +4,7 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
@@ -19,11 +19,11 @@ import static com.mythicmetals.misc.RegistryHelper.itemKey;
 public class MythicBlocks {
 
     public static final Map<String, BlockSet> BLOCKSET_MAP = new HashMap<>();
-    private static final ResourceLocation STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
-    private static final ResourceLocation IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
-    private static final ResourceLocation DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.location();
-    private static final ResourceLocation NETHERITE_MINING_LEVEL = ResourceLocation.parse("needs_netherite_tool");
-    private static final ResourceLocation MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
+    private static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.identifier();
+    private static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.identifier();
+    private static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.identifier();
+    private static final Identifier NETHERITE_MINING_LEVEL = Identifier.parse("needs_netherite_tool");
+    private static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
 
     public static final BlockSet ADAMANTITE = BlockSet.Builder.begin("adamantite", false)
         .createDefaultSet(4, DIAMOND_MINING_LEVEL, DIAMOND_MINING_LEVEL)

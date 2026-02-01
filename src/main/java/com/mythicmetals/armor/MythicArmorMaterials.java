@@ -6,7 +6,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -179,6 +179,6 @@ public class MythicArmorMaterials {
     }
 
     private static TagKey<Item> repairTagCommon(String material) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/" + material));
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/" + material));
     }
 }

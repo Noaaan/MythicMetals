@@ -12,7 +12,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -100,15 +100,15 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
     }
 
     public static class Templates {
-        public static final List<ResourceLocation> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.createNetheriteUpgradeIconList()),
+        public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.createNetheriteUpgradeIconList()),
             identifiers -> identifiers.add(RegistryHelper.id("empty_slot_elytra")));
 
-        public static final List<ResourceLocation> ARMOR_ITEMS = Util.make(new ArrayList<>(),
+        public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(),
             identifiers -> {
-                identifiers.add(ResourceLocation.parse("item/empty_armor_slot_helmet"));
-                identifiers.add(ResourceLocation.parse("item/empty_armor_slot_chestplate"));
-                identifiers.add(ResourceLocation.parse("item/empty_armor_slot_leggings"));
-                identifiers.add(ResourceLocation.parse("item/empty_armor_slot_boots"));
+                identifiers.add(Identifier.parse("item/empty_armor_slot_helmet"));
+                identifiers.add(Identifier.parse("item/empty_armor_slot_chestplate"));
+                identifiers.add(Identifier.parse("item/empty_armor_slot_leggings"));
+                identifiers.add(Identifier.parse("item/empty_armor_slot_boots"));
             });
 
         public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = createSmithingTemplate(
@@ -216,7 +216,7 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
         public static void init() {}
     }
 
-    private static SmithingTemplateItem createSmithingTemplate(Component appliesTo, Component ingredients, Component description, Component additionalDesc, List<ResourceLocation> baseSlotTextures, List<ResourceLocation> additionsTextures, String id) {
+    private static SmithingTemplateItem createSmithingTemplate(Component appliesTo, Component ingredients, Component description, Component additionalDesc, List<Identifier> baseSlotTextures, List<Identifier> additionsTextures, String id) {
         var key = ResourceKey.create(Registries.ITEM, RegistryHelper.id(id));
         var template = new SmithingTemplateItem(
             appliesTo,

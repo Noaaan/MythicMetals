@@ -51,7 +51,7 @@ public class StarPlatinumArrowEntity extends AbstractArrow {
     protected void doPostHurtEffects(LivingEntity target) {
         super.doPostHurtEffects(target);
         var source = new DamageSource(
-            this.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).get(MythicDamageTypes.STAR_PLATINUM_ARROW.location()).orElseThrow(),
+            this.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).get(MythicDamageTypes.STAR_PLATINUM_ARROW.identifier()).orElseThrow(),
             this,
             getOwner());
         if (target.getType().is(EntityTypeTags.UNDEAD)) {

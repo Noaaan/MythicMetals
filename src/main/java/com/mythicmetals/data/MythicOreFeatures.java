@@ -41,31 +41,31 @@ public class MythicOreFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> ORE_END_STARRITE = RegistryHelper.configuredFeatureKey("ore_end_starrite");
 
     // RegistryKeys for features
-    public static final ResourceKey<PlacedFeature> ADAMANTITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_ADAMANTITE.location());
-    public static final ResourceKey<PlacedFeature> AQUARIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_AQUARIUM.location());
-    public static final ResourceKey<PlacedFeature> BANGLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_BANGLUM.location());
-    public static final ResourceKey<PlacedFeature> NETHER_BANGLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_NETHER_BANGLUM.location());
-    public static final ResourceKey<PlacedFeature> CARMOT = ResourceKey.create(Registries.PLACED_FEATURE, ORE_CARMOT.location());
-    public static final ResourceKey<PlacedFeature> CALCITE_KYBER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_CALCITE_KYBER.location());
-    public static final ResourceKey<PlacedFeature> END_STARRITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_END_STARRITE.location());
-    public static final ResourceKey<PlacedFeature> KYBER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_KYBER.location());
-    public static final ResourceKey<PlacedFeature> MANGANESE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MANGANESE.location());
-    public static final ResourceKey<PlacedFeature> MIDAS_GOLD = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MIDAS_GOLD.location());
-    public static final ResourceKey<PlacedFeature> MORKITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MORKITE.location());
-    public static final ResourceKey<PlacedFeature> MYTHRIL = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MYTHRIL.location());
-    public static final ResourceKey<PlacedFeature> ORICHALCUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_ORICHALCUM.location());
-    public static final ResourceKey<PlacedFeature> OSMIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_OSMIUM.location());
-    public static final ResourceKey<PlacedFeature> PALLADIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PALLADIUM.location());
-    public static final ResourceKey<PlacedFeature> PLATINUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PLATINUM.location());
-    public static final ResourceKey<PlacedFeature> PROMETHEUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PROMETHEUM.location());
-    public static final ResourceKey<PlacedFeature> QUADRILLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_QUADRILLUM.location());
-    public static final ResourceKey<PlacedFeature> DEEPSLATE_RUNITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_DEEPSLATE_RUNITE.location());
-    public static final ResourceKey<PlacedFeature> RUNITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_RUNITE.location());
-    public static final ResourceKey<PlacedFeature> SILVER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_SILVER.location());
-    public static final ResourceKey<PlacedFeature> STARRITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_STARRITE.location());
-    public static final ResourceKey<PlacedFeature> STORMYX = ResourceKey.create(Registries.PLACED_FEATURE, ORE_STORMYX.location());
-    public static final ResourceKey<PlacedFeature> TIN = ResourceKey.create(Registries.PLACED_FEATURE, ORE_TIN.location());
-    public static final ResourceKey<PlacedFeature> UNOBTAINIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_UNOBTAINIUM.location());
+    public static final ResourceKey<PlacedFeature> ADAMANTITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_ADAMANTITE.identifier());
+    public static final ResourceKey<PlacedFeature> AQUARIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_AQUARIUM.identifier());
+    public static final ResourceKey<PlacedFeature> BANGLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_BANGLUM.identifier());
+    public static final ResourceKey<PlacedFeature> NETHER_BANGLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_NETHER_BANGLUM.identifier());
+    public static final ResourceKey<PlacedFeature> CARMOT = ResourceKey.create(Registries.PLACED_FEATURE, ORE_CARMOT.identifier());
+    public static final ResourceKey<PlacedFeature> CALCITE_KYBER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_CALCITE_KYBER.identifier());
+    public static final ResourceKey<PlacedFeature> END_STARRITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_END_STARRITE.identifier());
+    public static final ResourceKey<PlacedFeature> KYBER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_KYBER.identifier());
+    public static final ResourceKey<PlacedFeature> MANGANESE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MANGANESE.identifier());
+    public static final ResourceKey<PlacedFeature> MIDAS_GOLD = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MIDAS_GOLD.identifier());
+    public static final ResourceKey<PlacedFeature> MORKITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MORKITE.identifier());
+    public static final ResourceKey<PlacedFeature> MYTHRIL = ResourceKey.create(Registries.PLACED_FEATURE, ORE_MYTHRIL.identifier());
+    public static final ResourceKey<PlacedFeature> ORICHALCUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_ORICHALCUM.identifier());
+    public static final ResourceKey<PlacedFeature> OSMIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_OSMIUM.identifier());
+    public static final ResourceKey<PlacedFeature> PALLADIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PALLADIUM.identifier());
+    public static final ResourceKey<PlacedFeature> PLATINUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PLATINUM.identifier());
+    public static final ResourceKey<PlacedFeature> PROMETHEUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_PROMETHEUM.identifier());
+    public static final ResourceKey<PlacedFeature> QUADRILLUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_QUADRILLUM.identifier());
+    public static final ResourceKey<PlacedFeature> DEEPSLATE_RUNITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_DEEPSLATE_RUNITE.identifier());
+    public static final ResourceKey<PlacedFeature> RUNITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_RUNITE.identifier());
+    public static final ResourceKey<PlacedFeature> SILVER = ResourceKey.create(Registries.PLACED_FEATURE, ORE_SILVER.identifier());
+    public static final ResourceKey<PlacedFeature> STARRITE = ResourceKey.create(Registries.PLACED_FEATURE, ORE_STARRITE.identifier());
+    public static final ResourceKey<PlacedFeature> STORMYX = ResourceKey.create(Registries.PLACED_FEATURE, ORE_STORMYX.identifier());
+    public static final ResourceKey<PlacedFeature> TIN = ResourceKey.create(Registries.PLACED_FEATURE, ORE_TIN.identifier());
+    public static final ResourceKey<PlacedFeature> UNOBTAINIUM = ResourceKey.create(Registries.PLACED_FEATURE, ORE_UNOBTAINIUM.identifier());
 
     public static void init() {
 

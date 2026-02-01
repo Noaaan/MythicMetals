@@ -6,7 +6,7 @@ import io.wispforest.owo.util.TagInjector;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
@@ -81,7 +81,7 @@ public class ItemSet {
         if (nuggetItem != null) {
             Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_nugget"), nuggetItem);
             // Conditionally add nuggets to nuggets tag
-            TagInjector.inject(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "nuggets"), nuggetItem);
+            TagInjector.inject(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath("c", "nuggets"), nuggetItem);
         }
     }
 
