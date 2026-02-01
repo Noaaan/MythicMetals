@@ -1,6 +1,6 @@
 package com.mythicmetals.effects;
 
-import com.mythicmetals.MythicMetals;
+import com.mythicmetals.data.attachments.MythicDataAttachments;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -15,7 +15,9 @@ public class CombustingStatusEffect extends MobEffect {
     @Override
     public void onMobRemoved(ServerLevel world, LivingEntity entity, int amplifier, Entity.RemovalReason reason) {
         super.onMobRemoved(world, entity, amplifier, reason);
-        entity.getComponent(MythicMetals.COMBUSTION_COOLDOWN).setCooldown(500);
+        if (reason == Entity.RemovalReason.KILLED) {
+            entity.setAttached(MythicDataAttachments.COMBUSTION_COOLDOWN_ATTACHMENT, 400);
+        }
     }
 
     @Override

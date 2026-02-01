@@ -7,7 +7,6 @@ import com.mythicmetals.component.DrillComponent;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
-import com.mythicmetals.entity.CombustionCooldown;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.MythicParticleSystem;
@@ -41,9 +40,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static com.mythicmetals.data.attachments.MythicDataAttachments.COMBUSTION_COOLDOWN_ATTACHMENT;
 import static com.mythicmetals.entity.MythicEntityAttributes.FIRE_VULNERABILITY;
 import static com.mythicmetals.entity.MythicEntityAttributes.UNDEAD_BONUS_DAMAGE;
 
+@SuppressWarnings("UnstableApiUsage")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
     @Shadow
@@ -130,15 +131,21 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Unique
     private void mythicmetals$tickCombustion() {
-        var component = getComponent(MythicMetals.COMBUSTION_COOLDOWN);
-        component.tickCooldown();
-        mythicmetals$handleCombustion(component);
+        int combustionCooldown = this.getAttachedOrElse(COMBUSTION_COOLDOWN_ATTACHMENT, 0);
+        if (combustionCooldown > 0) {
+            combustionCooldown--;
+            this.setAttached(COMBUSTION_COOLDOWN_ATTACHMENT, combustionCooldown);
+        }
+        mythicmetals$handleCombustion(combustionCooldown);
     }
 
     @Unique
-    private void mythicmetals$handleCombustion(CombustionCooldown component) {
+    private void mythicmetals$handleCombustion(int cooldown) {
         var entry = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT);
-        if (this.isOnFire() && this.hasEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT)) && component.isCombustible()) {
+        if (this.isOnFire() && this.hasEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT))) {
+            if (cooldown != 0) {
+                return;
+            }
             var effect = this.getEffect(entry);
             if (effect != null) {
                 int level = effect.getAmplifier();
@@ -160,9 +167,8 @@ public abstract class LivingEntityMixin extends Entity {
                 this.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION), multiplier.get() + 40, Math.max(Mth.floor(level / 2.0f), 0), false, true));
 
                 this.igniteForTicks((duration * multiplier.get()) + 40);
-                component.setCooldown(1800);
+                this.setAttached(COMBUSTION_COOLDOWN_ATTACHMENT, 80 * (multiplier.get() + 1));
             }
-
         }
     }
 
