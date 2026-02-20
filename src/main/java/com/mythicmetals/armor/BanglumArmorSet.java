@@ -14,8 +14,8 @@ public class BanglumArmorSet extends ArmorSet {
     }
 
     @Override
-    protected Item makeItem(ArmorMaterial material, ArmorType slot, Item.Properties settings) {
-        if (slot != ArmorType.HELMET) return super.makeItem(material, slot, settings);
-        return new BanglumArmor(slot, settings);
+    protected Item makeItem(ArmorMaterial material, ArmorType type, Item.Properties settings) {
+        if (type != ArmorType.HELMET) return super.makeItem(material, type, settings);
+        return new BanglumArmor(type, settings);
     }
 }

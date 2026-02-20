@@ -27,7 +27,7 @@ public class TidesingerToolSet extends ToolSet {
     private static final List<MythicAttributeModifier> TIDESINGER_MODS = List.of(MINING_SPEED_BONUS);
 
     @Override
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraMods) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraMods) {
         return new TidesingerSword(material, damage, speed, settings);
     }
 
@@ -97,7 +97,7 @@ public class TidesingerToolSet extends ToolSet {
     }
 
     @Override
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return super.makePickaxe(material, damage, speed, settings, TIDESINGER_MODS);
     }
 

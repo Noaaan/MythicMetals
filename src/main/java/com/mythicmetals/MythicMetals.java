@@ -30,17 +30,13 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.level.block.DispenserBlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.ladysnake.cca.api.v3.component.ComponentKey;
-import org.ladysnake.cca.api.v3.component.ComponentRegistry;
-import org.ladysnake.cca.api.v3.entity.*;
 
-public class MythicMetals implements ModInitializer, EntityComponentInitializer {
+public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
     public static final int CONFIG_VERSION = 14;
@@ -59,8 +55,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
             group.addButton(ItemGroupButton.discord(group, "https://discord.gg/69cKvQWScC"));
         })
         .build();
-
-    public static final ComponentKey<CarmotShield> CARMOT_SHIELD = ComponentRegistry.getOrCreate(RegistryHelper.id("carmot_shield"), CarmotShield.class);
 
     @Override
     public void onInitialize() {
@@ -140,12 +134,6 @@ public class MythicMetals implements ModInitializer, EntityComponentInitializer 
         DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenseBehavior(MythicTools.STAR_PLATINUM_ARROW));
         DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.RUNITE_ARROW));
         DispenserBlock.registerBehavior(() -> MythicTools.TIPPED_RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.TIPPED_RUNITE_ARROW));
-    }
-
-
-    @Override
-    public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-        registry.registerForPlayers(CARMOT_SHIELD, CarmotShield::new, RespawnCopyStrategy.INVENTORY);
     }
 
 }

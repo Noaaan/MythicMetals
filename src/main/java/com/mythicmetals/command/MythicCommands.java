@@ -22,8 +22,7 @@ import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
+import net.minecraft.commands.*;
 import net.minecraft.commands.arguments.ResourceOrIdArgument;
 import net.minecraft.commands.synchronization.SingletonArgumentInfo;
 import net.minecraft.core.BlockPos;
@@ -31,6 +30,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.commands.LootCommand;
+import net.minecraft.server.permissions.PermissionSet;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.Item;
@@ -41,6 +41,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -52,6 +53,8 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static net.minecraft.server.permissions.Permissions.COMMANDS_ADMIN;
 
 @SuppressWarnings({"UnstableApiUsage", "CodeBlock2Expr"})
 public final class MythicCommands {
@@ -74,8 +77,8 @@ public final class MythicCommands {
 
     // TODO - Add new command for grabbing the data-generated ore features, and create a datapack skeleton
     public static void registerCommands() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, access, env) -> {
-            var mythicRoot = Commands.literal("mythicmetals").requires(src -> src.hasPermission(2)).build();
+        CommandRegistrationCallback.EVENT.register((dispatcher, buildContext, env) -> {
+            var mythicRoot = Commands.literal("mythicmetals").requires(src -> src.permissions().hasPermission(COMMANDS_ADMIN)).build();
             var range = Commands.literal("range").build();
             var tools = Commands.literal("tools").build();
             var allTools = Commands.literal("tools-all").executes(MythicCommands::exportAllTools).build();
@@ -118,8 +121,11 @@ public final class MythicCommands {
                 .executes(MythicCommands::placeMythicDisplay)
                 .build();
 
-            var lootTables = Commands.argument("loot_table", ResourceOrIdArgument.LootTableArgument.lootTable(access))
-                .suggests(LootCommand.SUGGEST_LOOT_TABLE)
+            var lootTables = Commands.argument("loot_table", ResourceOrIdArgument.LootTableArgument.lootTable(buildContext))
+                .suggests((context, builder) -> {
+                    var lootTableRegistry = context.getSource().getServer().registryAccess().get(Registries.LOOT_TABLE).orElseThrow();
+                    return SharedSuggestionProvider.suggestResource(lootTableRegistry.value().keySet(), builder);
+                })
                 .then(Commands.argument("rolls", IntegerArgumentType.integer())
                     .executes(MythicCommands::testLootTable))
                 .build();
@@ -468,7 +474,7 @@ public final class MythicCommands {
      * @see ArmorSet
      */
     public static boolean summonArmorStandWithTrim(Level world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
-        if (world.isClientSide) return false;
+        if (world.isClientSide()) return false;
         if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
         AtomicBoolean success = new AtomicBoolean(true);
 
@@ -496,7 +502,7 @@ public final class MythicCommands {
      * @return Returns all armor trims in a sorted ArrayList
      */
     public static ArrayList<ArmorTrim> getAllArmorTrims(Level world) {
-        if (world.isClientSide) return new ArrayList<>();
+        if (world.isClientSide()) return new ArrayList<>();
 
         var list = new ArrayList<ArmorTrim>();
         world.registryAccess().lookupOrThrow(Registries.TRIM_MATERIAL).listElements().forEach(armorMaterialEntry -> {
@@ -512,7 +518,7 @@ public final class MythicCommands {
      * @return Returns all the trim patterns in the registry as a list of strings
      */
     public static ArrayList<String> getAllTrimPatternStrs(Level world) {
-        if (world.isClientSide) return new ArrayList<>();
+        if (world.isClientSide()) return new ArrayList<>();
 
         var list = new ArrayList<String>();
         world.registryAccess().lookupOrThrow(Registries.TRIM_PATTERN).listElements().forEach(armorTrimEntry -> list.add(armorTrimEntry.value().assetId().getPath()));

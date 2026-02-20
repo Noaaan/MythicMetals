@@ -8,9 +8,9 @@ import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.serialization.CodecUtils;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperty;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class MidasGoldProperty implements RangeSelectItemModelProperty {
 
@@ -22,7 +22,7 @@ public class MidasGoldProperty implements RangeSelectItemModelProperty {
     }
 
     @Override
-    public float get(ItemStack stack, @Nullable ClientLevel world, @Nullable LivingEntity holder, int seed) {
+    public float get(ItemStack stack, @Nullable ClientLevel world, @Nullable ItemOwner holder, int seed) {
         return stack.getOrDefault(MythicDataComponents.GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
     }
 

@@ -10,24 +10,19 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
 
-public class MetallurgiumArmor extends ArmorItem implements CustomArmorModelItem {
+public class MetallurgiumArmor extends Item implements CustomArmorModelItem {
 
     @Environment(EnvType.CLIENT)
     private HumanoidModel<HumanoidRenderState> model;
     public final ArmorType type;
 
     public MetallurgiumArmor(ArmorType type, Properties settings) {
-        this(MythicArmorMaterials.METALLURGIUM, type, settings);
-    }
-
-    public MetallurgiumArmor(ArmorMaterial material, ArmorType type, Properties settings) {
-        super(material, type, settings);
+        super(settings);
         this.type = type;
     }
 

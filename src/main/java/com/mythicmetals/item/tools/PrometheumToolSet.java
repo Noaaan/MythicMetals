@@ -13,14 +13,14 @@ public class PrometheumToolSet extends ToolSet {
     }
 
     @Override
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new PrometheumPick(material, damage, speed, settings
             .component(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT)
         );
     }
 
     @Override
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new PrometheumSword(material, damage, speed, settings
             .component(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT)
         );
@@ -61,9 +61,9 @@ public class PrometheumToolSet extends ToolSet {
 
     }
 
-    public static class PrometheumPick extends PickaxeItem implements AutoRepairable {
+    public static class PrometheumPick extends PickaxeMock implements AutoRepairable {
         public PrometheumPick(ToolMaterial material, int damage, float speed, Item.Properties settings) {
-            super(material, damage, speed, settings);
+            super(material, damage, speed, settings, List.of());
         }
 
     }
@@ -75,9 +75,9 @@ public class PrometheumToolSet extends ToolSet {
 
     }
 
-    public static class PrometheumSword extends SwordItem implements AutoRepairable {
+    public static class PrometheumSword extends SwordMock implements AutoRepairable {
         public PrometheumSword(ToolMaterial material, int damage, float speed, Item.Properties settings) {
-            super(material, damage, speed, settings);
+            super(material, damage, speed, settings, List.of());
         }
 
     }

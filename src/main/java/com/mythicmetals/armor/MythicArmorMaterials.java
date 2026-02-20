@@ -51,13 +51,6 @@ public class MythicArmorMaterials {
         ArmorType.LEGGINGS, 7,
         ArmorType.BOOTS, 4), 30, sound(RegisterSounds.EQUIP_CELESTIUM), 3.0f, 0.0f, repairTag("celestium"), layer("celestium"));
 
-    @Deprecated(forRemoval = true, since = "0.25.0")
-    public static final ArmorMaterial COPPER = new ArmorMaterial(9, Map.of(
-        ArmorType.HELMET, 2,
-        ArmorType.CHESTPLATE, 4,
-        ArmorType.LEGGINGS, 3,
-        ArmorType.BOOTS, 1), 8, sound(RegisterSounds.EQUIP_COPPER), 0.0f, 0.0f, repairTagCommon("copper"),  layer("copper"));
-
     public static final ArmorMaterial DURASTEEL = new ArmorMaterial(25, Map.of(
         ArmorType.HELMET, 3,
         ArmorType.CHESTPLATE, 8,

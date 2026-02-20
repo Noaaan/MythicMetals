@@ -72,7 +72,6 @@ public class MythicArmor implements SimpleFieldProcessingSubject<ArmorSet> {
         .group(MythicMetals.TABBED_GROUP).tab(3)
         .attributes(CelestiumElytra.createDefaultAttributes())
     );
-    public static final ArmorSet COPPER = new ArmorSet("copper", MythicArmorMaterials.COPPER);
     public static final ArmorSet DURASTEEL = new ArmorSet("durasteel", MythicArmorMaterials.DURASTEEL);
     public static final ArmorSet HALLOWED = new HallowedArmorSet(MythicArmorMaterials.HALLOWED, settings -> settings.rarity(Rarity.UNCOMMON));
     public static final ArmorSet KYBER = new ArmorSet("kyber", MythicArmorMaterials.KYBER);

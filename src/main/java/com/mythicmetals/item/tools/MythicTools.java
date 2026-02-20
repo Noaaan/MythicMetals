@@ -10,6 +10,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.core.ClientAsset;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -21,7 +22,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.animal.frog.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
@@ -50,11 +51,12 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet BANGLUM = new ToolSet("banglum", MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final Item BANGLUM_TNT_MINECART = new MinecartItem(MythicEntities.BANGLUM_TNT_MINECART_ENTITY_TYPE, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(RegistryHelper.itemKey("banglum_tnt_minecart")));
     public static final Item PALLADIUM_MINECART = new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(RegistryHelper.itemKey("palladium_minecart"))) {
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-            super.appendHoverText(stack, context, tooltip, type);
-            tooltip.add(Component.translatable("item.mythicmetals.palladium_minecart.description").withColor(UsefulSingletonForColorUtil.MetalColors.PALLADIUM.rgb()));
-        }
+    // FIXME - Tooltip
+        //        @Override
+//        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+//            super.appendHoverText(stack, context, tooltip, type);
+//            tooltip.add(Component.translatable("item.mythicmetals.palladium_minecart.description").withColor(UsefulSingletonForColorUtil.MetalColors.PALLADIUM.rgb()));
+//        }
     };
     public static final ToolSet BRONZE = new ToolSet("bronze", MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CARMOT = new ToolSet("carmot", MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
@@ -212,7 +214,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
             @Override
             public InteractionResult interactLivingEntity(ItemStack stack, Player user, LivingEntity entity, InteractionHand hand) {
                 if (entity.getType() == EntityType.FROG && FabricLoader.getInstance().isModLoaded("delightful-froge")) {
-                    ((Frog) entity).setVariant(BuiltInRegistries.FROG_VARIANT.get(Identifier.fromNamespaceAndPath("delightful", "froge")).orElseThrow());
+                    entity.setComponent(DataComponents.FROG_VARIANT, entity.level().registryAccess().getOrThrow(RegistryHelper.frogKey("delightful", "froge")));
                     return InteractionResult.SUCCESS;
                 }
                 return super.interactLivingEntity(stack, user, entity, hand);

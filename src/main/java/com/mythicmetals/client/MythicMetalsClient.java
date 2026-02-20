@@ -19,22 +19,26 @@ import com.mythicmetals.item.tools.MythrilDrill;
 import com.mythicmetals.misc.*;
 import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -61,7 +65,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerSwirlRenderer();
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityRenderer instanceof PlayerRenderer playerRenderer) {
+            if (entityRenderer instanceof AvatarRenderer<?> playerRenderer) {
                 registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getModelSet(), context.getEquipmentRenderer()));
             }
         });
@@ -77,11 +81,10 @@ public class MythicMetalsClient implements ClientModInitializer {
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, RenderType.cutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.PALLADIUM_RAIL, RenderType.cutoutMipped());
-        BlockRenderLayerMap.INSTANCE.putBlock(MythicBlocks.AQUARIUM_GLASS, RenderType.translucent());
-
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(), MythicBlocks.KYBER.getStorageBlock());
+        BlockRenderLayerMap.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(MythicBlocks.PALLADIUM_RAIL, ChunkSectionLayer.SOLID);
+        BlockRenderLayerMap.putBlock(MythicBlocks.AQUARIUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MythicBlocks.KYBER.getStorageBlock(), ChunkSectionLayer.TRANSLUCENT);
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -104,62 +107,62 @@ public class MythicMetalsClient implements ClientModInitializer {
      * Renders the outline of a {@link HammerBase hammer item.}
      */
     private void renderHammerOutline() {
-        WorldRenderEvents.BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
-            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
-            var player = (Player) blockOutlineContext.entity();
-
-            // Only render the outline if you are hovering over something the hammer can break
-            var stack = player.getMainHandItem();
-            if (stack.getItem() instanceof HammerBase hammer
-                && !blockOutlineContext.blockState().isAir()
-                && hammer.isCorrectToolForDrops(stack, blockOutlineContext.blockState())) {
-
-                var reach = BlockBreaker.getReachDistance(player);
-                BlockHitResult blockHitResult = (BlockHitResult) player.pick(reach, 1, false);
-
-                var facing = blockHitResult.getDirection().getOpposite();
-                var blocks = BlockBreaker.findBlocks(facing, blockOutlineContext.blockPos(), hammer.getDepth());
-                var originalPos = blockOutlineContext.blockPos();
-
-                // Create VoxelShapes out of the block positions and put them in a list
-                var voxels = new ArrayList<VoxelShape>();
-
-                for (BlockPos blockPos : blocks) {
-                    var blockState = player.level().getBlockState(blockPos);
-                    if (!blockState.isAir() && hammer.isCorrectToolForDrops(stack, blockState)) {
-                        voxels.add(blockState.getShape(
-                                worldRenderContext.world(),
-                                blockPos,
-                                CollisionContext.of(blockOutlineContext.entity())
-                            ).move(blockPos.getX() - originalPos.getX(),
-                                blockPos.getY() - originalPos.getY(),
-                                blockPos.getZ() - originalPos.getZ())
-                        );
-                    }
-                }
-
-                // Combine and render the full shape
-                var outlineOptional = voxels.stream().reduce(Shapes::or);
-                if (outlineOptional.isEmpty()) return true;
-
-                var outlineShape = outlineOptional.get();
-
-                ShapeRenderer.renderShape(
-                    worldRenderContext.matrixStack(),
-                    worldRenderContext.consumers().getBuffer(RenderType.lines()),
-                    outlineShape,
-                    originalPos.getX() - blockOutlineContext.cameraX(),
-                    originalPos.getY() - blockOutlineContext.cameraY(),
-                    originalPos.getZ() - blockOutlineContext.cameraZ(),
-                    Color.ofHsv(0, 0, 0, 0.4f).argb()
-                );
-                // Cancel the event to prevent the middle outline from rendering
-                return false;
-            }
-
-            // Keep moving along if we reach this point
-            return true;
-        });
+        // FIXME - Use FabricRenderState to attach some hammer-specific params for rendering this.
+//        WorldRenderEvents.BEFORE_BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
+////            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
+//            var player = (Player) blockOutlineContext.entity();
+//            // Only render the outline if you are hovering over something the hammer can break
+//            var stack = player.getMainHandItem();
+//            if (stack.getItem() instanceof HammerBase hammer
+//                && !blockOutlineContext.blockState().isAir()
+//                && hammer.isCorrectToolForDrops(stack, blockOutlineContext.blockState())) {
+//
+//                var reach = BlockBreaker.getReachDistance(player);
+//                BlockHitResult blockHitResult = (BlockHitResult) player.pick(reach, 1, false);
+//
+//                var facing = blockHitResult.getDirection().getOpposite();
+//                var blocks = BlockBreaker.findBlocks(facing, blockOutlineContext.blockPos(), hammer.getDepth());
+//                var originalPos = blockOutlineContext.blockPos();
+//
+//                // Create VoxelShapes out of the block positions and put them in a list
+//                var voxels = new ArrayList<VoxelShape>();
+//
+//                for (BlockPos blockPos : blocks) {
+//                    var blockState = player.level().getBlockState(blockPos);
+//                    if (!blockState.isAir() && hammer.isCorrectToolForDrops(stack, blockState)) {
+//                        voxels.add(blockState.getShape(
+//                                worldRenderContext.world(),
+//                                blockPos,
+//                                CollisionContext.of(blockOutlineContext.entity())
+//                            ).move(blockPos.getX() - originalPos.getX(),
+//                                blockPos.getY() - originalPos.getY(),
+//                                blockPos.getZ() - originalPos.getZ())
+//                        );
+//                    }
+//                }
+//
+//                // Combine and render the full shape
+//                var outlineOptional = voxels.stream().reduce(Shapes::or);
+//                if (outlineOptional.isEmpty()) return true;
+//
+//                var outlineShape = outlineOptional.get();
+//
+//                ShapeRenderer.renderShape(
+//                    worldRenderContext.matrixStack(),
+//                    worldRenderContext.consumers().getBuffer(RenderType.lines()),
+//                    outlineShape,
+//                    originalPos.getX() - blockOutlineContext.cameraX(),
+//                    originalPos.getY() - blockOutlineContext.cameraY(),
+//                    originalPos.getZ() - blockOutlineContext.cameraZ(),
+//                    Color.ofHsv(0, 0, 0, 0.4f).argb()
+//                );
+//                // Cancel the event to prevent the middle outline from rendering
+//                return false;
+//            }
+//
+//            // Keep moving along if we reach this point
+//            return true;
+//        });
     }
 
     private void registerArmorRenderer() {
@@ -168,28 +171,59 @@ public class MythicMetalsClient implements ClientModInitializer {
                 && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
             .toArray(Item[]::new);
 
-        ArmorRenderer renderer = (matrices, vertexConsumerProvider, stack, bipedEntityRenderState, slot, light, contextModel) -> {
-            var trimAtlas = Minecraft.getInstance().getTextureAtlas(Sheets.ARMOR_TRIMS_SHEET);
+        // TODO - Review
+        ArmorRenderer renderer = (poseStack, submitNodeCollector, stack, bipedEntityRenderState, slot, light, contextModel) -> {
+            var trimAtlas = Minecraft.getInstance().getAtlasManager().getAtlasOrThrow(Sheets.ARMOR_TRIMS_SHEET);
             var armorItem = (CustomArmorModelItem) stack.getItem();
             var model = armorItem.getArmorModel();
             var customModelData = (CustomArmorModel) model;
             customModelData.setVisibility(slot);
             var texture = armorItem.getArmorTexture(stack, slot);
-            contextModel.copyPropertiesTo(model);
-            ArmorRenderer.renderPart(matrices, vertexConsumerProvider, light, stack, model, texture);
+            ArmorRenderer.submitTransformCopyingModel(
+                contextModel,
+                bipedEntityRenderState,
+                model,
+                bipedEntityRenderState,
+                true,
+                submitNodeCollector,
+                poseStack,
+                RenderTypes.armorCutoutNoCull(texture),
+                light,
+                bipedEntityRenderState.lightCoords,
+                bipedEntityRenderState.outlineColor,
+                null
+            );
 
             // Armor trim handling for custom armor models
             var armorTrim = stack.get(DataComponents.TRIM);
             if (armorTrim != null) {
                 var layer = slot == EquipmentSlot.LEGS ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS : EquipmentClientInfo.LayerType.HUMANOID;
+                var sheet = Sheets.armorTrimsSheet(armorTrim.pattern().value().decal());
+                // FIXME - Accessor into EquipmentLayerRenderer to get the memoized trim sprites
                 var assetId = armorTrim.pattern().value().assetId();
-                var assetName = armorTrim.material().value().assetName();
+                var assetName = armorTrim.material().value().assets();
                 var trimTexture = assetId.withPath(path -> "trims/entity/" + layer.getSerializedName() + "/" + path + "_" + assetName);
-                var sprite = trimAtlas.apply(trimTexture);
-                var trimVertexConsumer = sprite.wrap(
-                    vertexConsumerProvider.getBuffer(Sheets.armorTrimsSheet(armorTrim.pattern().value().decal()))
+                var sprite = trimAtlas.getSprite(trimTexture);
+                ArmorRenderer.submitTransformCopyingModel(
+                    contextModel,
+                    bipedEntityRenderState,
+                    model,
+                    bipedEntityRenderState,
+                    true,
+                    submitNodeCollector,
+                    poseStack,
+                    sheet,
+                    light,
+                    bipedEntityRenderState.lightCoords,
+                    0,
+                    sprite,
+                    bipedEntityRenderState.outlineColor,
+                    null
                 );
-                model.renderToBuffer(matrices, trimVertexConsumer, light, OverlayTexture.NO_OVERLAY);
+//                var trimVertexConsumer = sprite.wrap(
+//                    submitNodeCollector.getBuffer(Sheets.armorTrimsSheet(armorTrim.pattern().value().decal()))
+//                );
+//                model.renderToBuffer(matrices, trimVertexConsumer, light, OverlayTexture.NO_OVERLAY);
             }
         };
         ArmorRenderer.register(renderer, armors);
@@ -240,7 +274,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 int finalIndex = index;
                 component.addToTooltip(context, text -> {
                     lines.add(finalIndex, text);
-                }, TooltipFlag.NORMAL);
+                }, TooltipFlag.NORMAL, stack.getComponents());
             }
 
             if (lines.size() > 2) {

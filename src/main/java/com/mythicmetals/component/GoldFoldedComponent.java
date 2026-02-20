@@ -5,6 +5,7 @@ import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
@@ -29,7 +30,7 @@ public record GoldFoldedComponent(int goldFolded, boolean isRoyal, boolean showT
     }
 
     @Override
-    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         if (!showTooltip) return;
 
         int level = MidasGoldSword.calculateSwordLevel(this.goldFolded);

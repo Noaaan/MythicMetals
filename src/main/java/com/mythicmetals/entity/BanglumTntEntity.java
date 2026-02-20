@@ -1,12 +1,13 @@
 package com.mythicmetals.entity;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.jetbrains.annotations.Nullable;
 
 public class BanglumTntEntity extends Entity implements TraceableEntity {
@@ -54,12 +55,12 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
         this.setFuse(i);
         if (i <= 0) {
             this.discard();
-            if (!this.level().isClientSide) {
+            if (!this.level().isClientSide()) {
                 this.explode();
             }
         } else {
             this.updateInWaterStateAndDoFluidPushing();
-            if (this.level().isClientSide) {
+            if (this.level().isClientSide()) {
                 this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
@@ -75,14 +76,12 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
         return 0.5;
     }
 
-    @Override
-    protected void readAdditionalSaveData(CompoundTag nbt) {
-        this.setFuse(nbt.getShort("Fuse"));
+    protected void readAdditionalSaveData(ValueInput valueInput) {
+        this.setFuse(valueInput.getIntOr("fuse", DEFAULT_FUSE));
     }
 
-    @Override
-    protected void addAdditionalSaveData(CompoundTag nbt) {
-        nbt.putShort("Fuse", (short) this.getFuse());
+    protected void addAdditionalSaveData(ValueOutput nbt) {
+        nbt.putInt("fuse", this.getFuse());
     }
 
     protected void explode() {

@@ -4,7 +4,7 @@ import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
-import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -18,6 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.Nullable;
 
 import static com.mythicmetals.component.MythicDataComponents.WAS_USED;
 
@@ -26,7 +27,7 @@ public class StormyxShield extends ShieldItem {
     public static final int MAGIC_DAMAGE_REDUCTION = 2;
     public static final ProjectileDeflection STORMYX_SHIELD_DEFLECTOR = (projectile, hitEntity, random) -> {
         // Shulker bullet handling
-        if (projectile instanceof ShulkerBullet bullet && !bullet.level().isClientSide) {
+        if (projectile instanceof ShulkerBullet bullet && !bullet.level().isClientSide()) {
             bullet.hurtServer((ServerLevel) bullet.level(), bullet.level().damageSources().generic(), 1.0F);
             return;
         }
@@ -37,7 +38,8 @@ public class StormyxShield extends ShieldItem {
             projectile.setDeltaMovement(projectile.getDeltaMovement().scale(-0.5));
             projectile.setYRot(projectile.getYRot() + f);
             projectile.yRotO += f;
-            projectile.hasImpulse = true;
+            // TODO - Review
+            projectile.needsSync = true;
         }
     };
 
@@ -56,8 +58,8 @@ public class StormyxShield extends ShieldItem {
         super.onUseTick(world, user, stack, remainingUseTicks);
 
         if (remainingUseTicks % 40 == 1) {
-            WorldOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundSource.AMBIENT, 1.0F, 1.5F);
-            stack.hurtAndBreak(1, user, LivingEntity.getSlotForHand(user.getUsedItemHand()));
+            LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundSource.AMBIENT, 1.0F, 1.5F);
+            stack.hurtAndBreak(1, user, user.getUsedItemHand());
         }
     }
 
@@ -66,20 +68,20 @@ public class StormyxShield extends ShieldItem {
         var stack = user.getItemInHand(hand);
         user.startUsingItem(hand);
         stack.set(WAS_USED, true);
-        WorldOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundSource.AMBIENT, 1.0F, 1.5F);
+        LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundSource.AMBIENT, 1.0F, 1.5F);
         return InteractionResult.CONSUME;
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, ServerLevel serverLevel, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
         if (entity instanceof Player player && stack.has(WAS_USED)) {
             if (!player.getMainHandItem().equals(stack) && !player.getOffhandItem().equals(stack)) {
                 stack.remove(WAS_USED);
-                finishUsingItem(stack, world, player);
+                finishUsingItem(stack, serverLevel, player);
             }
         }
 
-        super.inventoryTick(stack, world, entity, slot, selected);
+        super.inventoryTick(stack, serverLevel, entity, equipmentSlot);
     }
 
     @Override
@@ -88,11 +90,11 @@ public class StormyxShield extends ShieldItem {
     }
 
     private ItemStack disableShield(ItemStack stack, Level world, LivingEntity user) {
-        if (!world.isClientSide && user instanceof Player player) {
+        if (!world.isClientSide() && user instanceof Player player) {
             stack.remove(WAS_USED);
             player.getCooldowns().addCooldown(stack, 160);
         }
-        WorldOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_END, SoundSource.AMBIENT, 0.9F, 1.5F);
+        LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_END, SoundSource.AMBIENT, 0.9F, 1.5F);
         return stack;
     }
 

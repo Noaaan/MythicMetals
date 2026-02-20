@@ -1,6 +1,5 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.MythicMetals;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.tools.HammerBase;
 import com.mythicmetals.misc.IsAttackCritical;
@@ -32,9 +31,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     public abstract Inventory getInventory();
 
     @Shadow
-    public abstract Iterable<ItemStack> getArmorSlots();
-
-    @Shadow
     public abstract void awardStat(Stat<?> stat);
 
     @Shadow
@@ -43,7 +39,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
 
     @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
-        var mainHandStack = getInventory().getSelected();
+        var mainHandStack = getInventory().getSelectedItem();
         float speedMod = 1.0f;
 
         // Don't do any special handling if you are not holding a tool
@@ -73,7 +69,8 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void tickCarmotShield(CallbackInfo ci) {
-        getComponent(MythicMetals.CARMOT_SHIELD).tickShield();
+        // FIXME - Reimplement
+//        getComponent(MythicMetals.CARMOT_SHIELD).tickShield();
     }
 
     @ModifyVariable(
@@ -84,13 +81,14 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
         ordinal = 0,
         argsOnly = true)
     public float carmotShieldCancel(float amount) {
-        var shield = getComponent(MythicMetals.CARMOT_SHIELD);
-        if (shield.getMaxHealth() > 0) {
-            float health = shield.shieldHealth;
-            shield.damageShield(amount);
-            return amount > health ? amount - health : 0;
-
-        }
+        // FIXME - Reimplement
+//        var shield = getComponent(MythicMetals.CARMOT_SHIELD);
+//        if (shield.getMaxHealth() > 0) {
+//            float health = shield.shieldHealth;
+//            shield.damageShield(amount);
+//            return amount > health ? amount - health : 0;
+//
+//        }
 
         return amount;
     }
@@ -100,7 +98,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
         mythicmetals$setCritical(false);
     }
 
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;crit(Lnet/minecraft/world/entity/Entity;)V"))
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;canCriticalAttack(Lnet/minecraft/world/entity/Entity;)Z"))
     private void mythicmetals$captureCritical(CallbackInfo ci) {
         mythicmetals$setCritical(true);
     }

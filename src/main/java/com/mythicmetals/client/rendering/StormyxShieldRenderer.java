@@ -5,7 +5,7 @@ import com.mythicmetals.client.models.RainbowShieldModel;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 import org.joml.Vector3f;
@@ -26,7 +26,7 @@ public class StormyxShieldRenderer {
         part.offsetScale(new Vector3f(player.getScale() - 1, player.getScale() - 1, player.getScale() - 1));
         part.render(
             matrices,
-            vcp.getBuffer(RenderType.energySwirl(WORLD_BORDER, (float) ((delta * .005f) % 1f), (float) (delta * .005f % 1f))),
+            vcp.getBuffer(RenderTypes.energySwirl(WORLD_BORDER, (float) ((delta * .005f) % 1f), (float) (delta * .005f % 1f))),
             light,
             OverlayTexture.NO_OVERLAY,
             UsefulSingletonForColorUtil.rainbow());

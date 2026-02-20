@@ -88,7 +88,7 @@ public record PrometheumComponent(int durabilityRepaired) {
     public static AttributeModifier createOvergrownModifier(ItemStack stack, int base, EquipmentSlot slot) {
         var id = switch (slot.getType()) {
             case HAND -> DAMAGE_BONUS_ID;
-            case HUMANOID_ARMOR, ANIMAL_ARMOR -> ARMOR_BONUS_ID;
+            case HUMANOID_ARMOR, ANIMAL_ARMOR, SADDLE -> ARMOR_BONUS_ID;
         };
         var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
         int bonus = base;

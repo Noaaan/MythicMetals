@@ -18,6 +18,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.animal.frog.FrogVariant;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.Recipe;
@@ -156,5 +157,9 @@ public class RegistryHelper {
 
     public static TagKey<Item> itemTag(String path) {
         return TagKey.create(Registries.ITEM, id(path));
+    }
+
+    public static ResourceKey<FrogVariant> frogKey(String delightful, String froge) {
+        return ResourceKey.create(Registries.FROG_VARIANT, Identifier.fromNamespaceAndPath(delightful, froge));
     }
 }

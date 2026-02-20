@@ -23,6 +23,8 @@ import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
@@ -50,18 +52,14 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         this.coreBlock = coreBlock;
     }
 
-    @Override
-    protected void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-
-        this.coreBlock = nbt.get(CORE_BLOCK_KEY);
+    protected void readAdditionalSaveData(ValueInput valueInput) {
+        super.readAdditionalSaveData(valueInput);
+        this.coreBlock = valueInput.get(CORE_BLOCK_KEY);
     }
 
-    @Override
-    protected void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-
-        nbt.put(CORE_BLOCK_KEY, coreBlock);
+    protected void addAdditionalSaveData(ValueOutput valueOutput) {
+        super.addAdditionalSaveData(valueOutput);
+        valueOutput.put(CORE_BLOCK_KEY, coreBlock);
     }
 
     @Override

@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
 import java.util.List;
 
@@ -59,7 +61,7 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
 
     private static void empowerNearbyEntities(Level world, BlockPos pos, BlockState state, AquariumResonatorBlockEntity blockEntity) {
         List<LivingEntity> list = world.getEntitiesOfClass(
-                LivingEntity.class, getEffectZone(pos), entity -> entity.showVehicleHealth() && entity.isInWaterOrRain()
+            LivingEntity.class, getEffectZone(pos), entity -> entity.showVehicleHealth() && entity.isInWaterOrRain()
         );
 
         list.forEach(livingEntity -> {
@@ -75,16 +77,16 @@ public class AquariumResonatorBlockEntity extends BlockEntity implements Conduit
     }
 
     @Override
-    protected void loadAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        this.activeTime = nbt.getInt("active_time");
-        this.activated = nbt.getBoolean("activated");
-        super.loadAdditional(nbt, registryLookup);
+    protected void loadAdditional(ValueInput valueInput) {
+        this.activeTime = valueInput.getInt("active_time").orElse(0);
+        this.activated = valueInput.getBooleanOr("activated", false);
+        super.loadAdditional(valueInput);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag nbt, HolderLookup.Provider registryLookup) {
-        nbt.putInt("active_time", activeTime);
-        nbt.putBoolean("activated", activated);
-        super.loadAdditional(nbt, registryLookup);
+    protected void saveAdditional(ValueOutput valueOutput) {
+        valueOutput.putInt("active_time", activeTime);
+        valueOutput.putBoolean("activated", activated);
+        super.saveAdditional(valueOutput);
     }
 }

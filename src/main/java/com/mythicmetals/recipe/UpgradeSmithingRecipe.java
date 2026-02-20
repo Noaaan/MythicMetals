@@ -16,11 +16,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public final class UpgradeSmithingRecipe implements SmithingRecipe {
-    private final Optional<Ingredient> base;
+    private final Ingredient base;
     private final Optional<Ingredient> addition;
     private final ItemStack result;
 
-    public UpgradeSmithingRecipe(Optional<Ingredient> base, Optional<Ingredient> addition, ItemStack result) {
+    public UpgradeSmithingRecipe(Ingredient base, Optional<Ingredient> addition, ItemStack result) {
         this.base = base;
         this.addition = addition;
         this.result = result;
@@ -30,8 +30,8 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     private PlacementInfo ingredientPlacement;
 
     @Override
-    public boolean matches(SmithingRecipeInput input, Level world) {
-        boolean validRecipe = Ingredient.testOptionalIngredient(this.baseIngredient(), input.base())
+    public boolean matches(SmithingRecipeInput input, Level level) {
+        boolean validRecipe = this.baseIngredient().test(input.base())
             && Ingredient.testOptionalIngredient(this.additionIngredient(), input.addition());
 
         if (!validRecipe) return false;
@@ -66,14 +66,14 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     @Override
     public PlacementInfo placementInfo() {
         if (this.ingredientPlacement == null) {
-            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(this.base, this.addition));
+            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(Optional.of(this.base), this.addition));
         }
 
         return this.ingredientPlacement;
     }
 
     @Override
-    public Optional<Ingredient> baseIngredient() {
+    public Ingredient baseIngredient() {
         return base;
     }
 
@@ -113,7 +113,7 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     public static class Serializer extends EndecRecipeSerializer<UpgradeSmithingRecipe> {
 
         public static final StructEndec<UpgradeSmithingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
+            CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
             CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::additionIngredient),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             UpgradeSmithingRecipe::new

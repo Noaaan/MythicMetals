@@ -1,11 +1,13 @@
 package com.mythicmetals.client.models;
 
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.mixin.client.EntityModelLayersAccessor;
-import net.minecraft.client.model.*;
+import com.mythicmetals.mixin.client.ModelLayersAccessor;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.object.cart.MinecartModel;
+import net.minecraft.client.model.object.equipment.ElytraModel;
+import net.minecraft.client.model.player.PlayerModel;
 import net.minecraft.resources.Identifier;
 import java.util.function.BiConsumer;
 
@@ -49,11 +51,11 @@ public class MythicModelHandler {
      * Shoutouts to williewillus for this implementation:
      * <a href="https://github.com/VazkiiMods/Botania/blob/1.18.x-fabric/src/main/java/vazkii/botania/client/model/ModModelLayers.java">Source</a>
      *
-     * @see net.minecraft.client.model.geom.ModelLayers#ALL_MODELS
+     * @see ModelLayersAccessor#getALL_MODELS()
      */
     public static ModelLayerLocation model(String name, String layer) {
         var result = new ModelLayerLocation(RegistryHelper.id(name), layer);
-        EntityModelLayersAccessor.getALL_MODELS().add(result);
+        ModelLayersAccessor.getALL_MODELS().add(result);
         return result;
     }
 

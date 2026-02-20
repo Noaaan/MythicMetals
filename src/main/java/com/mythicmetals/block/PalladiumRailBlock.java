@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,7 +15,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.*;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
+
 import java.util.Optional;
 
 public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
@@ -169,7 +171,7 @@ public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nullable Player player, BlockGetter world, BlockPos pos, BlockState state, Fluid fluid) {
+    public boolean canPlaceLiquid(@Nullable LivingEntity livingEntity, BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
         return fluid == Fluids.LAVA;
     }
 
@@ -188,11 +190,11 @@ public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
     }
 
     @Override
-    public ItemStack pickupBlock(@Nullable Player player, LevelAccessor world, BlockPos pos, BlockState state) {
+    public ItemStack pickupBlock(@Nullable LivingEntity livingEntity, LevelAccessor levelAccessor, BlockPos pos, BlockState state) {
         if (state.getValue(LAVALOGGED)) {
-            world.setBlock(pos, state.setValue(LAVALOGGED, Boolean.FALSE), Block.UPDATE_ALL);
-            if (!state.canSurvive(world, pos)) {
-                world.destroyBlock(pos, true);
+            levelAccessor.setBlock(pos, state.setValue(LAVALOGGED, Boolean.FALSE), Block.UPDATE_ALL);
+            if (!state.canSurvive(levelAccessor, pos)) {
+                levelAccessor.destroyBlock(pos, true);
             }
 
             return new ItemStack(Items.LAVA_BUCKET);

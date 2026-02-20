@@ -17,7 +17,7 @@ public class MythicMetalsData implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         var data = fabricDataGenerator.createPack();
         data.addProvider(MythicBlockTagProvider::new);
-        data.addProvider(MythicItemTagProvider::new);
+//        data.addProvider(MythicItemTagProvider::new);
         data.addProvider(MythicMetalsDynamicRegistryProvider::new);
         data.addProvider(MythicRecipeProvider::new);
         data.addProvider((output, registriesFuture) -> {

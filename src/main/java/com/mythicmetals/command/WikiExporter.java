@@ -7,7 +7,7 @@ import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.locale.Language;
 import net.minecraft.world.item.Item;

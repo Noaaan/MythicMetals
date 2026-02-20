@@ -1,6 +1,8 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.component.GoldFoldedComponent;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -15,61 +17,69 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 
-public class MidasGoldSword extends SwordItem {
-    public MidasGoldSword(ToolMaterial material, Properties settings) {
-        super(material, 3.0f, -2.4f, settings);
+public class MidasGoldSword extends Item {
+    public MidasGoldSword(ToolMaterial material, Item.Properties settings) {
+        super(material.applySwordProperties(settings, 3.0f, -2.4f));
     }
 
     @Override
-    public void verifyComponentsAfterLoad(ItemStack stack) {
-        // TODO - Surely there is a better way to do dynamic attributes, right? Right??
-        //  This is a lot of effort for the correct green tooltip... Thanks Mojang
-        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
-        var currentAttributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
-        assert currentAttributes != null;
-        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
-        var originalDamage = new AtomicReference<>(0.0);
-        stack.getPrototype().get(DataComponents.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
-            if (entry.modifier().id().equals(BASE_ATTACK_DAMAGE_ID)) {
-                originalDamage.set(entry.modifier().amount());
-            }
-        });
-        double goldDmgBonus = computeBonusDamage(goldCount);
+    public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+        super.deriveStackComponents(source, target);
 
-        var speed = new AtomicReference<>(0.0);
-        // Copy attack speed over. We want to re-build, not add anything
-        currentAttributes.modifiers().forEach(entry -> {
-            if (entry.attribute().equals(Attributes.ATTACK_SPEED)) {
-                speed.set(entry.modifier().amount());
-            }
-        });
-
-        if (goldDmgBonus > 0) {
-            var changedComponent = ItemAttributeModifiers.builder()
-                .add(
-                    Attributes.ATTACK_DAMAGE,
-                    new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
-                        originalDamage.get() + goldDmgBonus,
-                        AttributeModifier.Operation.ADD_VALUE
-                    ),
-                    EquipmentSlotGroup.MAINHAND
-                )
-                .add(
-                    Attributes.ATTACK_SPEED,
-                    new AttributeModifier(BASE_ATTACK_SPEED_ID, speed.get(), AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.MAINHAND
-                )
-                .build();
-            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
-        }
+        // FIXME - Dynamic Attributes
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-        if (stack.has(GOLD_FOLDED)) {
-            stack.get(GOLD_FOLDED).addToTooltip(context, lines::add, type);
-        }
-    }
+//    @Override
+//    public void verifyComponentsAfterLoad(ItemStack stack) {
+//        // TODO - Surely there is a better way to do dynamic attributes, right? Right??
+//        //  This is a lot of effort for the correct green tooltip... Thanks Mojang
+//        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
+//        var currentAttributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+//        assert currentAttributes != null;
+//        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+//        var originalDamage = new AtomicReference<>(0.0);
+//        stack.getPrototype().get(DataComponents.ATTRIBUTE_MODIFIERS).modifiers().forEach(entry -> {
+//            if (entry.modifier().id().equals(BASE_ATTACK_DAMAGE_ID)) {
+//                originalDamage.set(entry.modifier().amount());
+//            }
+//        });
+//        double goldDmgBonus = computeBonusDamage(goldCount);
+//
+//        var speed = new AtomicReference<>(0.0);
+//        // Copy attack speed over. We want to re-build, not add anything
+//        currentAttributes.modifiers().forEach(entry -> {
+//            if (entry.attribute().equals(Attributes.ATTACK_SPEED)) {
+//                speed.set(entry.modifier().amount());
+//            }
+//        });
+//
+//        if (goldDmgBonus > 0) {
+//            var changedComponent = ItemAttributeModifiers.builder()
+//                .add(
+//                    Attributes.ATTACK_DAMAGE,
+//                    new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
+//                        originalDamage.get() + goldDmgBonus,
+//                        AttributeModifier.Operation.ADD_VALUE
+//                    ),
+//                    EquipmentSlotGroup.MAINHAND
+//                )
+//                .add(
+//                    Attributes.ATTACK_SPEED,
+//                    new AttributeModifier(BASE_ATTACK_SPEED_ID, speed.get(), AttributeModifier.Operation.ADD_VALUE),
+//                    EquipmentSlotGroup.MAINHAND
+//                )
+//                .build();
+//            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
+//        }
+//    }
+
+    // FIXME - Tooltips
+//    @Override
+//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
+//        if (stack.has(GOLD_FOLDED)) {
+//            stack.get(GOLD_FOLDED).addToTooltip(context, lines::add, type);
+//        }
+//    }
 
     public int computeBonusDamage(int goldCount) {
         int bonus = Mth.clamp(Mth.floor((float) goldCount / 64), 0, 6);

@@ -4,7 +4,8 @@ import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.misc.*;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.ops.LevelOps;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvents;
@@ -37,14 +38,14 @@ public record BrandingComponent(int maxHeat) implements TooltipProvider {
             }
 
             if (amplifier >= maxHeat) {
-                WorldOps.playSound(target.level(), target.position(), SoundEvents.GENERIC_BURN, SoundSource.PLAYERS);
+                LevelOps.playSound(target.level(), target.position(), SoundEvents.GENERIC_BURN, SoundSource.PLAYERS);
             }
             target.addEffect(new MobEffectInstance(effect, 100 + (20 * amplifier * amplifier), Math.min(amplifier, maxHeat)), attacker);
         }
     }
 
     @Override
-    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         MutableComponent text = Component.literal("");
         text.append(Component.translatable("tooltip.mythicmetals.branding"));
         text.append(" ").append(Component.translatable("enchantment.level." + maxHeat));

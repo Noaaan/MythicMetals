@@ -8,7 +8,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -35,7 +34,7 @@ public class BanglumNukeHandler {
                 for (int y = 0; y < 3; y++) {
                     for (int z = 0; z < 3; z++) {
                         if (tryLightBigTntAt(world, player, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                            stack.hurtAndBreak(1, player, hand);
 
                             return InteractionResult.SUCCESS;
                         }
@@ -97,7 +96,7 @@ public class BanglumNukeHandler {
             world.removeBlock(pos, false);
         }
 
-        if (!world.isClientSide) {
+        if (!world.isClientSide()) {
             BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
             world.addFreshEntity(nuke);
             world.playSound(

@@ -2,11 +2,12 @@ package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.client.MythicMetalsPlayerRenderContext;
 import com.mythicmetals.client.MythicMetalsRenderState;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(PlayerRenderState.class)
+// FIXME - Consider migrating to FabricRenderState
+@Mixin(AvatarRenderState.class)
 public class PlayerEntityRenderStateMixin implements MythicMetalsRenderState {
 
     @Unique

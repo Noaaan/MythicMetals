@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.Set;
 
 @Mixin(ModelLayers.class)
-public interface EntityModelLayersAccessor {
+public interface ModelLayersAccessor {
 
     @Accessor
     static Set<ModelLayerLocation> getALL_MODELS() {

@@ -3,7 +3,6 @@ package com.mythicmetals.entity;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.MythicDamageTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -11,7 +10,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
@@ -55,19 +54,9 @@ public class StarPlatinumArrowEntity extends AbstractArrow {
             this,
             getOwner());
         if (target.getType().is(EntityTypeTags.UNDEAD)) {
-            target.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 3));
+            target.addEffect(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1, 3));
         } else {
             target.hurtServer(((ServerLevel) level()), source, 24);
         }
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
     }
 }

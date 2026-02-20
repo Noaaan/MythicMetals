@@ -47,8 +47,6 @@ import static com.mythicmetals.entity.MythicEntityAttributes.UNDEAD_BONUS_DAMAGE
 @SuppressWarnings("UnstableApiUsage")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    @Shadow
-    public abstract Iterable<ItemStack> getArmorSlots();
 
     @Shadow
     public abstract boolean canFreeze();
@@ -57,7 +55,7 @@ public abstract class LivingEntityMixin extends Entity {
     public abstract boolean addEffect(MobEffectInstance effect);
 
     @Shadow
-    private @Nullable LivingEntity lastHurtByMob;
+    private @Nullable EntityReference<LivingEntity> lastHurtByMob;
 
     @Shadow
     public abstract boolean canBeAffected(MobEffectInstance effect);
@@ -82,6 +80,9 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract AttributeMap getAttributes();
+
+    @Shadow
+    public abstract ItemStack getItemBySlot(EquipmentSlot equipmentSlot);
 
     public LivingEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
@@ -155,8 +156,9 @@ public abstract class LivingEntityMixin extends Entity {
 
                 MythicParticleSystem.COMBUSTION_EXPLOSION.spawn(level(), this.position());
 
-                if (this.lastHurtByMob != null && this.lastHurtByMob.getMainHandItem() != null) {
-                    var stack = this.lastHurtByMob.getMainHandItem();
+                var enemyMob = this.lastHurtByMob.getEntity(this.level(), LivingEntity.class);
+                if (enemyMob != null && !enemyMob.getMainHandItem().isEmpty()) {
+                    var stack = enemyMob.getMainHandItem();
                     stack.getEnchantments().keySet().forEach(enchantmentRegistryEntry -> {
                         if (enchantmentRegistryEntry.is(EnchantmentTags.SMELTS_LOOT)) {
                             multiplier.addAndGet(1);
@@ -174,39 +176,21 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Unique
     private void mythicmetals$addArmorEffects() {
-        for (ItemStack armorStack : getArmorSlots()) {
+        for (var slot : EquipmentSlot.VALUES) {
+            var armorStack = this.getItemBySlot(slot);
             // Turns out, this bug was in Minecraft itself
             // It only took a couple of years to find, and it was re-producible in vanilla context
+            // Should be fixed in this version. If not I will cry
             if (armorStack.isEmpty()) continue; // Don't get the item for an empty stack
-            if (armorStack.getItem() == null) {
-                MythicMetals.LOGGER.error("An ItemStack was somehow marked as not empty, but it doesn't contain an item.");
-                MythicMetals.LOGGER.error("This is not caused by Mythic Metals, and it could potentially crash!");
-                MythicMetals.LOGGER.error("Skipping the Armor Item query");
-                continue;
-            }
+//            if (armorStack.getItem() == null) {
+//                MythicMetals.LOGGER.error("An ItemStack was somehow marked as not empty, but it doesn't contain an item.");
+//                MythicMetals.LOGGER.error("This is not caused by Mythic Metals, and it could potentially crash!");
+//                MythicMetals.LOGGER.error("Skipping the Armor Item query");
+//                continue;
+//            }
 
             if (MythicArmor.CARMOT.isInArmorSet(armorStack)) {
                 mythicmetals$carmotParticle();
-            }
-
-            if (MythicArmor.COPPER.isInArmorSet(armorStack) && level().isThundering()) {
-                Vec3 playerPos = this.position();
-                boolean isConductive = playerPos.y == level().getHeight(Heightmap.Types.WORLD_SURFACE, (int) playerPos.x, (int) playerPos.z);
-                int rng = r.nextInt(60000);
-
-                // Display particles on client
-                mythicmetals$copperParticle();
-
-                // Randomly strike the player with lightning when conductive
-                if (!level().isClientSide() && rng == 666 & isConductive) {
-                    var world = ((ServerLevel) level());
-                    LightningBolt lightningEntity = EntityType.LIGHTNING_BOLT.create(level(), EntitySpawnReason.NATURAL);
-                    if (lightningEntity != null) {
-                        lightningEntity.copyPosition(this);
-                        world.addFreshEntity(lightningEntity);
-                        this.hurtServer(world, world.damageSources().lightningBolt(), 10);
-                    }
-                }
             }
         }
     }
@@ -216,9 +200,10 @@ public abstract class LivingEntityMixin extends Entity {
         if (!this.level().isClientSide()) return;
         Vec3 velocity = this.getDeltaMovement();
 
-        if (this.isAlwaysTicking() && this.getComponent(MythicMetals.CARMOT_SHIELD).shieldHealth == 0) {
-            return; // If you are a player, and your shield ran out, do not display particles
-        }
+        // FIXME
+//        if (this.isAlwaysTicking() && this.getComponent(MythicMetals.CARMOT_SHIELD).shieldHealth == 0) {
+//            return; // If you are a player, and your shield ran out, do not display particles
+//        }
 
         // Particle trail if the entity is moving
         if (velocity.length() >= 0.1 && r.nextInt(10) < 1) {

@@ -21,13 +21,13 @@ import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
 public class MidasFoldingRecipe implements SmithingRecipe {
 
     private final Optional<Ingredient> template;
-    private final Optional<Ingredient> base;
+    private final Ingredient base;
     private final Optional<Ingredient> addition;
     private final ItemStack result;
     @Nullable
     private PlacementInfo ingredientPlacement;
 
-    public MidasFoldingRecipe(Optional<Ingredient> template, Optional<Ingredient> base, Optional<Ingredient> addition, ItemStack result) {
+    public MidasFoldingRecipe(Optional<Ingredient> template, Ingredient base, Optional<Ingredient> addition, ItemStack result) {
         this.template = template;
         this.base = base;
         this.addition = addition;
@@ -62,7 +62,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public Optional<Ingredient> baseIngredient() {
+    public Ingredient baseIngredient() {
         return base;
     }
 
@@ -116,7 +116,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     @Override
     public PlacementInfo placementInfo() {
         if (this.ingredientPlacement == null) {
-            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(this.template, this.base, this.addition));
+            this.ingredientPlacement = PlacementInfo.createFromOptionals(List.of(this.template, Optional.of(this.base), this.addition));
         }
 
         return this.ingredientPlacement;
@@ -125,7 +125,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     public static class Serializer extends EndecRecipeSerializer<MidasFoldingRecipe> {
         public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
             CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("base", MidasFoldingRecipe::baseIngredient),
+            CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", MidasFoldingRecipe::baseIngredient),
             CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
             MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
             MidasFoldingRecipe::new

@@ -4,9 +4,13 @@ import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -14,9 +18,9 @@ import java.util.function.Consumer;
 public class ToolSet {
 
     private final String name;
-    private final SwordItem sword;
+    private final Item sword;
     private final AxeItem axe;
-    private final PickaxeItem pickaxe;
+    private final Item pickaxe;
     private final ShovelItem shovel;
     private final HoeItem hoe;
     private final ToolMaterial material;
@@ -64,7 +68,7 @@ public class ToolSet {
         Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
     }
 
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new SwordMock(material, damage, speed, settings, extraModifiers);
     }
 
@@ -72,7 +76,7 @@ public class ToolSet {
         return new AxeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new PickaxeMock(material, damage, speed, settings, extraModifiers);
     }
 
@@ -84,35 +88,35 @@ public class ToolSet {
         return new HoeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    static class SwordMock extends SwordItem {
+    static class SwordMock extends Item {
 
         final List<MythicAttributeModifier> extraModifiers;
 
-        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
-            super(material, attackDamage, attackSpeed, settings);
+        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+            // FIXME
+            super(settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void verifyComponentsAfterLoad(ItemStack stack) {
-            super.verifyComponentsAfterLoad(stack);
-            applyChungusModifiers(stack, extraModifiers);
+        public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+            applyExtraModifiers(source, target, extraModifiers);
         }
     }
 
-    static class PickaxeMock extends PickaxeItem {
+    static class PickaxeMock extends Item {
 
         final List<MythicAttributeModifier> extraModifiers;
 
-        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
-            super(material, attackDamage, attackSpeed, settings);
+        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+            // FIXME
+            super(settings);
             this.extraModifiers = extraModifiers;
         }
 
         @Override
-        public void verifyComponentsAfterLoad(ItemStack stack) {
-            super.verifyComponentsAfterLoad(stack);
-            applyChungusModifiers(stack, extraModifiers);
+        public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+            applyExtraModifiers(source, target, extraModifiers);
         }
     }
 
@@ -126,9 +130,8 @@ public class ToolSet {
         }
 
         @Override
-        public void verifyComponentsAfterLoad(ItemStack stack) {
-            super.verifyComponentsAfterLoad(stack);
-            applyChungusModifiers(stack, extraModifiers);
+        public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+            applyExtraModifiers(source, target, extraModifiers);
         }
     }
 
@@ -142,9 +145,8 @@ public class ToolSet {
         }
 
         @Override
-        public void verifyComponentsAfterLoad(ItemStack stack) {
-            super.verifyComponentsAfterLoad(stack);
-            applyChungusModifiers(stack, extraModifiers);
+        public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+            applyExtraModifiers(source, target, extraModifiers);
         }
     }
 
@@ -158,9 +160,8 @@ public class ToolSet {
         }
 
         @Override
-        public void verifyComponentsAfterLoad(ItemStack stack) {
-            super.verifyComponentsAfterLoad(stack);
-            applyChungusModifiers(stack, extraModifiers);
+        public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+            applyExtraModifiers(source, target, extraModifiers);
         }
     }
 
@@ -173,7 +174,7 @@ public class ToolSet {
         return List.of(sword, axe, pickaxe, shovel, hoe);
     }
 
-    public SwordItem getSword() {
+    public Item getSword() {
         return sword;
     }
 
@@ -181,7 +182,7 @@ public class ToolSet {
         return axe;
     }
 
-    public PickaxeItem getPickaxe() {
+    public Item getPickaxe() {
         return pickaxe;
     }
 
@@ -209,21 +210,26 @@ public class ToolSet {
         return extraModifiers;
     }
 
-    /**
-     * TODO - I severely loathe this code and all of its associates. Replace it ASAP.
-     */
-    protected static void applyChungusModifiers(ItemStack stack, List<MythicAttributeModifier> extraModifiers) {
+    protected static void applyExtraModifiers(DataComponentMap components, DataComponentPatch.Builder builder, List<MythicAttributeModifier> extraModifiers) {
         if (extraModifiers.isEmpty()) {
             return;
         }
-        if (stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
-            var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+        if (components.has(DataComponents.ATTRIBUTE_MODIFIERS)) {
+            var attributes = components.get(DataComponents.ATTRIBUTE_MODIFIERS);
             assert attributes != null;
 
             extraModifiers.forEach(modifier -> {
-                var id = RegistryHelper.id("sword_" + modifier.attribute().unwrapKey().orElseThrow().identifier().getPath());
-                var newAttributes = attributes.withModifierAdded(modifier.attribute(), new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()), modifier.requiredSlot());
-                stack.set(DataComponents.ATTRIBUTE_MODIFIERS, newAttributes);
+                var key = modifier.attribute().unwrapKey();
+                var id = key
+                    .map(
+                        attributeResourceKey -> RegistryHelper.id(attributeResourceKey.identifier().getPath())
+                    )
+                    .orElseGet(
+                        () -> RegistryHelper.id("unknown_modifier")
+                    );
+                var newAttributes = attributes.withModifierAdded(modifier.attribute(), new AttributeModifier(id, modifier.value(), modifier.operation()), modifier.requiredSlot());
+
+                builder.set(DataComponents.ATTRIBUTE_MODIFIERS, newAttributes);
             });
         }
     }

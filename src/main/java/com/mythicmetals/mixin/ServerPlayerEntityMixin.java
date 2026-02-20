@@ -3,7 +3,6 @@ package com.mythicmetals.mixin;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mojang.authlib.GameProfile;
 import com.mythicmetals.entity.MythicEntityAttributes;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -16,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(ServerPlayer.class)
 public abstract class ServerPlayerEntityMixin extends Player {
 
-    public ServerPlayerEntityMixin(Level world, BlockPos pos, float yaw, GameProfile gameProfile) {
-        super(world, pos, yaw, gameProfile);
+    public ServerPlayerEntityMixin(Level world, GameProfile gameProfile) {
+        super(world, gameProfile);
     }
 
     @ModifyReturnValue(method = "getEnchantedDamage", at = @At("RETURN"))

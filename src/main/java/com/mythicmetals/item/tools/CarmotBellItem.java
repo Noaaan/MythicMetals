@@ -40,11 +40,11 @@ public class CarmotBellItem extends BlockItem {
                     livingEntity.heal(Math.max(10.0f, livingEntity.getMaxHealth() * 0.1f));
                     MythicParticleSystem.HEALING_HEARTS.spawn(world, livingEntity.position());
                 }
-                stack.hurtAndBreak(1, user, Player.getSlotForHand(hand));
+                stack.hurtAndBreak(1, user, hand);
             }
         });
         user.heal(Math.max(10.0f, user.getMaxHealth() * 0.1f));
-        stack.hurtAndBreak(1, user, Player.getSlotForHand(hand));
+        stack.hurtAndBreak(1, user, hand);
         MythicParticleSystem.HEALING_AREA.spawn(world, user.position(), RANGE);
         MythicParticleSystem.HEALING_HEARTS.spawn(world, user.position());
         user.getCooldowns().addCooldown(stack, 480);
@@ -54,16 +54,17 @@ public class CarmotBellItem extends BlockItem {
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        if (context.getPlayer() != null && context.getPlayer().isShiftKeyDown()) {
+        var player = context.getPlayer();
+        if (player != null && player.isShiftKeyDown()) {
             return super.useOn(context);
         }
         return InteractionResult.PASS;
     }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-        super.appendHoverText(stack, context, tooltip, type);
-        tooltip.add(Component.translatable("tooltip.carmot_bell.info1"));
-        tooltip.add(Component.translatable("tooltip.carmot_bell.info2"));
-    }
+// FIXME - Tooltips
+//    @Override
+//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+//        super.appendHoverText(stack, context, tooltip, type);
+//        tooltip.add(Component.translatable("tooltip.carmot_bell.info1"));
+//        tooltip.add(Component.translatable("tooltip.carmot_bell.info2"));
+//    }
 }

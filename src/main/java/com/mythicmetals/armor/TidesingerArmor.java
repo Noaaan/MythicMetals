@@ -60,10 +60,11 @@ public class TidesingerArmor extends Item implements CustomArmorModelItem {
         return RegistryHelper.id(model);
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-        if (stack.has(MythicDataComponents.TIDESINGER)) {
-            stack.get(MythicDataComponents.TIDESINGER).addToTooltip(context, lines::add, type);
-        }
-    }
+    // FIXME - tooltips
+//    @Override
+//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
+//        if (stack.has(MythicDataComponents.TIDESINGER)) {
+//            stack.get(MythicDataComponents.TIDESINGER).addToTooltip(context, lines::add, type);
+//        }
+//    }
 }

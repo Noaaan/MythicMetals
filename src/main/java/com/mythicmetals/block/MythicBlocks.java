@@ -19,9 +19,9 @@ import static com.mythicmetals.misc.RegistryHelper.itemKey;
 public class MythicBlocks {
 
     public static final Map<String, BlockSet> BLOCKSET_MAP = new HashMap<>();
-    private static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.identifier();
-    private static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.identifier();
-    private static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.identifier();
+    private static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
+    private static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
+    private static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.location();
     private static final Identifier NETHERITE_MINING_LEVEL = Identifier.parse("needs_netherite_tool");
     private static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
 
@@ -151,7 +151,7 @@ public class MythicBlocks {
         .finish();
 
     public static final Block PALLADIUM_RAIL = new PalladiumRailBlock(BlockBehaviour.Properties.of()
-        .noCollission()
+        .noCollision()
         .setId(blockKey("palladium_rail"))
         .lightLevel(blockState -> blockState.getValue(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
         .strength(2.5f, 7.0f)
@@ -159,11 +159,12 @@ public class MythicBlocks {
     );
 
     public static final Item PALLADIUM_RAIL_ITEM = new BlockItem(PALLADIUM_RAIL, new Item.Properties().group(MythicMetals.TABBED_GROUP).tab(1).fireResistant().setId(itemKey("palladium_rail"))) {
-        @Override
-        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-            super.appendHoverText(stack, context, tooltip, type);
-            tooltip.add(Component.translatable("tooltip.palladium_rail.info"));
-        }
+        // FIXME - tooltip
+        //        @Override
+//        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
+//            super.appendHoverText(stack, context, tooltip, type);
+//            tooltip.add(Component.translatable("tooltip.palladium_rail.info"));
+//        }
     };
 
     public static final BlockSet PLATINUM = BlockSet.Builder.begin("platinum", false)

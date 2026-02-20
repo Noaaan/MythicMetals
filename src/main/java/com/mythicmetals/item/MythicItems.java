@@ -5,7 +5,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;

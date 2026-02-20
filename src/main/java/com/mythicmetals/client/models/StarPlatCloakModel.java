@@ -4,10 +4,10 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.client.renderer.entity.state.PlayerRenderState;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
 import org.joml.Quaternionf;
 
-public class StarPlatCloakModel<T extends PlayerRenderState> extends HumanoidModel<T> {
+public class StarPlatCloakModel<T extends AvatarRenderState> extends HumanoidModel<T> {
 
     private final ModelPart starPlatCloak = this.body.getChild("star_plat_cloak");
 

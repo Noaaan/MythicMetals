@@ -3,11 +3,12 @@ package com.mythicmetals.item.tools;
 import com.mythicmetals.misc.BlockBreaker;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterCriteria;
-import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,10 +17,10 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.phys.Vec3;
 
-public class BanglumPick extends PickaxeItem {
+public class BanglumPick extends Item {
 
     public BanglumPick(ToolMaterial material, int damage, float speed, Properties settings) {
-        super(material, damage, speed, settings);
+        super(material.applyToolProperties(settings, BlockTags.MINEABLE_WITH_PICKAXE, damage, speed, 0));
     }
 
     /**
@@ -41,7 +42,7 @@ public class BanglumPick extends PickaxeItem {
                     continue;
                 }
                 if (isCorrectToolForDrops(stack, world.getBlockState(blockPos))) {
-                    WorldOps.breakBlockWithItem(world, blockPos, stack, player);
+                    LevelOps.breakBlockWithItem(world, blockPos, stack, player);
                     stack.hurtAndBreak(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }
@@ -55,7 +56,7 @@ public class BanglumPick extends PickaxeItem {
             var pos2 = context.getClickedPos().relative(facing, 5);
 
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
-            WorldOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
+            LevelOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
             RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
             player.getCooldowns().addCooldown(stack, 100);

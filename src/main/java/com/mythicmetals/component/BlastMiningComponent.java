@@ -4,8 +4,9 @@ import com.mythicmetals.misc.*;
 import com.mythicmetals.registry.RegisterCriteria;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
-import io.wispforest.owo.ops.WorldOps;
+import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,7 +45,7 @@ public record BlastMiningComponent(int depth) implements TooltipProvider {
                     continue;
                 }
                 if (isCorrectForDrops(stack, world.getBlockState(blockPos))) {
-                    WorldOps.breakBlockWithItem(world, blockPos, stack, player);
+                    LevelOps.breakBlockWithItem(world, blockPos, stack, player);
                     stack.hurtAndBreak(2, player, EquipmentSlot.MAINHAND);
                     shouldPass = true;
                 }
@@ -58,7 +59,7 @@ public record BlastMiningComponent(int depth) implements TooltipProvider {
             var pos2 = context.getClickedPos().relative(facing, depth);
 
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
-            WorldOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
+            LevelOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
             RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
             player.getCooldowns().addCooldown(stack, 100);
@@ -81,7 +82,7 @@ public record BlastMiningComponent(int depth) implements TooltipProvider {
     }
 
     @Override
-    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         tooltip.accept(Component.translatable("abilities.mythicmetals.blast_mining").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
     }
 }

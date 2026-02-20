@@ -30,12 +30,9 @@ public class BanglumTntBlock extends TntBlock {
 
     @Override
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
-        if (!oldState.is(state.getBlock())) {
-            if (world.hasNeighborSignal(pos)) {
-                primeBangTnt(world, pos);
-                world.removeBlock(pos, false);
-            }
-
+        if (!oldState.is(state.getBlock()) && world.hasNeighborSignal(pos)) {
+            primeBangTnt(world, pos);
+            world.removeBlock(pos, false);
         }
     }
 
@@ -58,8 +55,8 @@ public class BanglumTntBlock extends TntBlock {
 
     @Override
     public void wasExploded(ServerLevel world, BlockPos pos, Explosion explosion) {
-        if (!world.isClientSide) {
-            BanglumTntEntity banglumTnt = new BanglumTntEntity(world, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
+        if (!world.isClientSide()) {
+            BanglumTntEntity banglumTnt = new BanglumTntEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
             int i = banglumTnt.getFuse();
             banglumTnt.setFuse((short) (world.random.nextInt(i / 4) + i / 8));
             world.addFreshEntity(banglumTnt);
@@ -77,7 +74,7 @@ public class BanglumTntBlock extends TntBlock {
             Item item = itemStack.getItem();
             if (!player.isCreative()) {
                 if (itemStack.is(Items.FLINT_AND_STEEL)) {
-                    itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                    itemStack.hurtAndBreak(1, player, hand);
                 } else {
                     itemStack.shrink(1);
                 }
@@ -94,7 +91,7 @@ public class BanglumTntBlock extends TntBlock {
     }
 
     private static void primeBangTnt(Level world, BlockPos pos, @Nullable LivingEntity igniter) {
-        if (!world.isClientSide) {
+        if (!world.isClientSide()) {
             BanglumTntEntity banglumTnt = new BanglumTntEntity(world, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, igniter);
             world.addFreshEntity(banglumTnt);
             world.playSound(
@@ -106,7 +103,7 @@ public class BanglumTntBlock extends TntBlock {
 
     @Override
     public void onProjectileHit(Level world, BlockState state, BlockHitResult hit, Projectile projectile) {
-        if (!world.isClientSide) {
+        if (!world.isClientSide()) {
             BlockPos blockPos = hit.getBlockPos();
             Entity entity = projectile.getOwner();
             if (projectile.isOnFire() && projectile.mayInteract((ServerLevel) world, blockPos)) {

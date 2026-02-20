@@ -20,7 +20,7 @@ public class MidasFoldingDisplay extends DefaultSmithingDisplay {
         super(
             List.of(
                 EntryIngredients.ofIngredient(recipe.value().templateIngredient().orElseThrow()),
-                EntryIngredients.ofIngredient(recipe.value().baseIngredient().orElseThrow()),
+                EntryIngredients.ofIngredient(recipe.value().baseIngredient()),
                 EntryIngredients.ofIngredient(recipe.value().additionIngredient().orElseThrow())
             ),
             List.of(

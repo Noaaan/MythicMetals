@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.mojang.serialization.Dynamic;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.util.datafix.fixes.ItemStackComponentizationFix;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;

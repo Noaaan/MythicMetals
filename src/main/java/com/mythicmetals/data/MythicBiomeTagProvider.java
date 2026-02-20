@@ -34,28 +34,28 @@ public class MythicBiomeTagProvider extends FabricTagProvider<Biome> {
         ReflectionUtils.iterateAccessibleStaticFields(MythicOreBiomeTags.class, TagKey.class, (value, name, field) -> {
             var tag = (TagKey<Biome>) value;
             if (tag.equals(END_STARRITE_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(ConventionalBiomeTags.IS_END);
+                getOrCreateRawBuilder(tag)
+                    .addTag(ConventionalBiomeTags.IS_END.location());
             } else if (tag.equals(STORMYX_BIOMES) || tag.equals(NETHER_BANGLUM_BIOMES) || tag.equals(PALLADIUM_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(ConventionalBiomeTags.IS_NETHER);
+                getOrCreateRawBuilder(tag)
+                    .addTag(ConventionalBiomeTags.IS_NETHER.location());
             } else if (tag.equals(OSMIUM_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(ConventionalBiomeTags.IS_MOUNTAIN)
-                    .forceAddTag(ConventionalBiomeTags.IS_HILL);
+                getOrCreateRawBuilder(tag)
+                    .addTag(ConventionalBiomeTags.IS_MOUNTAIN.location())
+                    .addTag(ConventionalBiomeTags.IS_HILL.location());
             } else if (tag.equals(PROMETHEUM_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(ConventionalBiomeTags.IS_JUNGLE)
-                    .add(Biomes.LUSH_CAVES);
+                getOrCreateRawBuilder(tag)
+                    .addTag(ConventionalBiomeTags.IS_JUNGLE.location())
+                    .addElement(Biomes.LUSH_CAVES.identifier());
             } else if (tag.equals(AQUARIUM_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(ConventionalBiomeTags.IS_AQUATIC);
+                getOrCreateRawBuilder(tag)
+                    .addTag(ConventionalBiomeTags.IS_AQUATIC.location());
             } else if (!tag.equals(MYTHIC_ORE_BIOMES)) {
-                getOrCreateTagBuilder(tag)
-                    .forceAddTag(MYTHIC_ORE_BIOMES);
+                getOrCreateRawBuilder(tag)
+                    .addTag(MYTHIC_ORE_BIOMES.location());
             }
         });
-        getOrCreateTagBuilder(MYTHIC_ORE_BIOMES)
-            .forceAddTag(ConventionalBiomeTags.IS_OVERWORLD);
+        getOrCreateRawBuilder(MYTHIC_ORE_BIOMES)
+            .addTag(ConventionalBiomeTags.IS_OVERWORLD.location());
     }
 }

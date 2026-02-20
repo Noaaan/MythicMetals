@@ -34,8 +34,8 @@
     "TableBonusLootConditionMixin"
   ],
   "client": [
-    "client.EntityModelLayersAccessor",
-    "client.PlayerEntityRendererMixin",
+    "client.ModelLayersAccessor",
+    "client.AvatarRendererMixin",
     "client.PlayerEntityRenderStateMixin",
     "client.SmithingScreenMixin",
     "client.TranslationStorageMixin"

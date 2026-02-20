@@ -2,9 +2,7 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.armor.MythicArmor;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,12 +15,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class CampfireBlockMixin {
 
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
-    private void stompMarshmellows(BlockState state, Level world, BlockPos pos, Entity entity, CallbackInfo ci) {
+    private void stompMarshmellows(BlockState blockState, Level level, BlockPos blockPos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl, CallbackInfo ci) {
         if (!entity.showVehicleHealth()) return;
-        for (ItemStack armorItems : ((LivingEntity) entity).getArmorSlots()) {
-            if (armorItems.getItem().equals(MythicArmor.PALLADIUM.getBoots())) {
+        if (entity instanceof LivingEntity livingEntity) {
+            var slot = SlotAccess.forEquipmentSlot(livingEntity, EquipmentSlot.FEET);
+            if (slot.get().getItem().equals(MythicArmor.PALLADIUM.getBoots())) {
                 ci.cancel();
-                return;
             }
         }
     }

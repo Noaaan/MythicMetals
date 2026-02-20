@@ -17,7 +17,7 @@ public class BanglumToolSet extends ToolSet {
     ));
 
     @Override
-    protected SwordItem makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return super.makeSword(material, damage, speed, settings, LEGENDARY_BANGLUM_MODIFIERS);
     }
 
@@ -32,30 +32,30 @@ public class BanglumToolSet extends ToolSet {
     }
 
     @Override
-    protected PickaxeItem makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new PickaxeMock(material, damage, speed, settings.component(BLAST_MINING, new BlastMiningComponent(5)), extraModifiers) {
-            @Override
-            public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-                super.appendHoverText(stack, context, lines, type);
-                if (stack.has(BLAST_MINING)) {
-                    //noinspection DataFlowIssue
-                    stack.get(BLAST_MINING).addToTooltip(context, lines::add, type);
-                }
-            }
+//            @Override
+//            public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> lines, TooltipFlag type) {
+//                super.appendHoverText(stack, context, lines, type);
+//                if (stack.has(BLAST_MINING)) {
+//                    //noinspection DataFlowIssue
+//                    stack.get(BLAST_MINING).addToTooltip(context, lines::add, type);
+//                }
+//            }
         };
     }
 
     @Override
     protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
         return new ShovelMock(material, damage, speed, settings.component(BLAST_MINING, new BlastMiningComponent(5)), extraModifiers) {
-            @Override
-            public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-                super.appendHoverText(stack, context, lines, type);
-                if (stack.has(BLAST_MINING)) {
-                    //noinspection DataFlowIssue
-                    stack.get(BLAST_MINING).addToTooltip(context, lines::add, type);
-                }
-            }
+//            @Override
+//            public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
+//                super.appendHoverText(stack, context, lines, type);
+//                if (stack.has(BLAST_MINING)) {
+//                    //noinspection DataFlowIssue
+//                    stack.get(BLAST_MINING).addToTooltip(context, lines::add, type);
+//                }
+//            }
         };
     }
 

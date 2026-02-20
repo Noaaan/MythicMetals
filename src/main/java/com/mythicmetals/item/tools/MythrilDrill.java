@@ -6,7 +6,9 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.minecraft.Util;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -21,15 +23,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Math;
+import org.jspecify.annotations.Nullable;
+
 import java.util.*;
+import java.util.function.Consumer;
 
 import static com.mythicmetals.component.DrillComponent.*;
 
-public class MythrilDrill extends DiggerItem implements AutoRepairable {
+public class MythrilDrill extends Item implements AutoRepairable {
 
     /**
      * Map used to store the different types of drill upgrades
@@ -45,7 +51,7 @@ public class MythrilDrill extends DiggerItem implements AutoRepairable {
     });
 
     public MythrilDrill(ToolMaterial material, float damage, float atkSpeed, Item.Properties settings) {
-        super(material, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, settings);
+        super(material.applyToolProperties(settings, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, 0));
     }
 
     @Override
@@ -105,7 +111,7 @@ public class MythrilDrill extends DiggerItem implements AutoRepairable {
             player.playSound(SoundEvents.NOTE_BLOCK_BASS.value(), 0.8f, 0.5f);
         }
 
-        if (!world.isClientSide && state.getDestroySpeed(world, pos) != 0.0F) {
+        if (!world.isClientSide() && state.getDestroySpeed(world, pos) != 0.0F) {
             var serverWorld = ((ServerLevel) world);
             // Randomly cancel damage while active
             var random = serverWorld.getRandom();
@@ -145,40 +151,38 @@ public class MythrilDrill extends DiggerItem implements AutoRepairable {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
-        if (!world.isClientSide()) {
-            if (stack.get(MythicDataComponents.DRILL) == null) return;
-            if (stack.get(MythicDataComponents.UPGRADES) == null) return;
-            var drillComponent = stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
-            var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-            if (upgradeComponent.hasUpgrade(MythicItems.Mats.PROMETHEUM_ROSE)) {
-                // Initialize auto repair upgrades
-                if (!stack.has(MythicDataComponents.PROMETHEUM)) {
-                    stack.set(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
-                }
-                if (Math.floor(world.getGameTime() % 20) == 0.0) {
-                    stack.set(MythicDataComponents.DRILL, drillComponent.increase(drillComponent.fuel()));
-                }
-                PrometheumComponent.tickAutoRepair(stack, world);
+    public void inventoryTick(ItemStack stack, ServerLevel serverLevel, Entity entity, @Nullable EquipmentSlot equipmentSlot) {
+        if (stack.get(MythicDataComponents.DRILL) == null) return;
+        if (stack.get(MythicDataComponents.UPGRADES) == null) return;
+        var drillComponent = stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
+        var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
+        if (upgradeComponent.hasUpgrade(MythicItems.Mats.PROMETHEUM_ROSE)) {
+            // Initialize auto repair upgrades
+            if (!stack.has(MythicDataComponents.PROMETHEUM)) {
+                stack.set(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
             }
-        }
-        super.inventoryTick(stack, world, entity, slot, selected);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-        if (stack.has(MythicDataComponents.DRILL)) {
-            stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT).addToTooltip(context, lines::add, type);
-        }
-        if (stack.has(MythicDataComponents.UPGRADES)) {
-            var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-            upgrades.addToTooltip(context, lines::add, type);
-            for (int i = 0; i < upgrades.size(); i++) {
-                var item = upgrades.items().get(i);
-                lines.add(Component.translatable("tooltip.mythril_drill.upgrade_slot", i + 1, Component.translatable("tooltip.mythril_drill.upgrade." + drillUpgrades.get(item))));
+            if (Math.floor(serverLevel.getGameTime() % 20) == 0.0) {
+                stack.set(MythicDataComponents.DRILL, drillComponent.increase(drillComponent.fuel()));
             }
+            PrometheumComponent.tickAutoRepair(stack, serverLevel);
         }
+        super.inventoryTick(stack, serverLevel, entity, equipmentSlot);
     }
+//   FIXME - Figure out new tooltips
+//    @Override
+//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
+//        if (stack.has(MythicDataComponents.DRILL)) {
+//            stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT).addToTooltip(context, lines::add, type);
+//        }
+//        if (stack.has(MythicDataComponents.UPGRADES)) {
+//            var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
+//            upgrades.addToTooltip(context, lines::add, type);
+//            for (int i = 0; i < upgrades.size(); i++) {
+//                var item = upgrades.items().get(i);
+//                lines.add(Component.translatable("tooltip.mythril_drill.upgrade_slot", i + 1, Component.translatable("tooltip.mythril_drill.upgrade." + drillUpgrades.get(item))));
+//            }
+//        }
+//    }
 
     @Override
     public boolean allowContinuingBlockBreaking(Player player, ItemStack oldStack, ItemStack newStack) {
@@ -195,47 +199,53 @@ public class MythrilDrill extends DiggerItem implements AutoRepairable {
     }
 
     @Override
-    public void verifyComponentsAfterLoad(ItemStack stack) {
-        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
-
-        boolean changes = false;
-        var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
-        assert attributes != null;
-        var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-        if (upgrades.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM)) {
-            var modifier = new AttributeModifier(
-                RegistryHelper.id("mythril_drill_luck_bonus"),
-                2.0,
-                AttributeModifier.Operation.ADD_VALUE
-            );
-            attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
-            changes = true;
-        }
-        if (upgrades.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
-            var modifier = new AttributeModifier(
-                RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
-                3.0,
-                AttributeModifier.Operation.ADD_VALUE
-            );
-            attributes = attributes.withModifierAdded(Attributes.SUBMERGED_MINING_SPEED, modifier, EquipmentSlotGroup.MAINHAND);
-
-            changes = true;
-        }
-        // Gives +1 level of efficiency
-        for (var entry : stack.getEnchantments().entrySet()) {
-            if (entry.getKey().is(key -> key.equals(Enchantments.EFFICIENCY))) {
-                int level = EnchantmentHelper.getItemEnchantmentLevel(entry.getKey(), stack);
-                var modifier = new AttributeModifier(
-                    RegistryHelper.id("mythril_drill_speed_bonus"),
-                    1 + (level * 2),
-                    AttributeModifier.Operation.ADD_VALUE
-                );
-                attributes = attributes.withModifierAdded(Attributes.MINING_EFFICIENCY, modifier, EquipmentSlotGroup.MAINHAND);
-                changes = true;
-            }
-        }
-        if (changes) {
-            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, attributes);
-        }
+    public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
+        super.deriveStackComponents(source, target);
     }
+
+    // FIXME - Migrate to derive stack components
+//    @Override
+//    public void verifyComponentsAfterLoad(ItemStack stack) {
+//        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
+//
+//        boolean changes = false;
+//        var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+//        assert attributes != null;
+//        var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
+//        if (upgrades.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM)) {
+//            var modifier = new AttributeModifier(
+//                RegistryHelper.id("mythril_drill_luck_bonus"),
+//                2.0,
+//                AttributeModifier.Operation.ADD_VALUE
+//            );
+//            attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
+//            changes = true;
+//        }
+//        if (upgrades.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
+//            var modifier = new AttributeModifier(
+//                RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
+//                3.0,
+//                AttributeModifier.Operation.ADD_VALUE
+//            );
+//            attributes = attributes.withModifierAdded(Attributes.SUBMERGED_MINING_SPEED, modifier, EquipmentSlotGroup.MAINHAND);
+//
+//            changes = true;
+//        }
+//        // Gives +1 level of efficiency
+//        for (var entry : stack.getEnchantments().entrySet()) {
+//            if (entry.getKey().is(key -> key.equals(Enchantments.EFFICIENCY))) {
+//                int level = EnchantmentHelper.getItemEnchantmentLevel(entry.getKey(), stack);
+//                var modifier = new AttributeModifier(
+//                    RegistryHelper.id("mythril_drill_speed_bonus"),
+//                    1 + (level * 2),
+//                    AttributeModifier.Operation.ADD_VALUE
+//                );
+//                attributes = attributes.withModifierAdded(Attributes.MINING_EFFICIENCY, modifier, EquipmentSlotGroup.MAINHAND);
+//                changes = true;
+//            }
+//        }
+//        if (changes) {
+//            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, attributes);
+//        }
+//    }
 }

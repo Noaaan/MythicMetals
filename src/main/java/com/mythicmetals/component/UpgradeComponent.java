@@ -5,7 +5,8 @@ import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
+import net.minecraft.core.component.DataComponentGetter;
+import net.minecraft.util.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
@@ -63,7 +64,7 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipPro
     }
 
     @Override
-    public void addToTooltip(Item.TooltipContext context, Consumer<Component> tooltip, TooltipFlag type) {
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         if (this.size > 0 && this.isEmpty()) {
             tooltip.accept(Component.translatable("tooltip.upgrade_component.tooltip").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
         }

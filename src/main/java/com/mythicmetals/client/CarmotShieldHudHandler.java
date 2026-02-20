@@ -5,7 +5,8 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.config.MythicConfigModel;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ui.component.TextureComponent;
-import io.wispforest.owo.ui.container.Containers;
+import io.wispforest.owo.ui.component.UIComponents;
+import io.wispforest.owo.ui.container.UIContainers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
 import net.minecraft.client.Minecraft;
@@ -20,8 +21,8 @@ public class CarmotShieldHudHandler {
 
     public static void init() {
         Hud.add(COMPONENT_ID, () ->
-            Containers.draggable(Sizing.content(), Sizing.content(),
-                    Containers.verticalFlow(Sizing.content(), Sizing.content())
+            UIContainers.draggable(Sizing.content(), Sizing.content(),
+                    UIContainers.verticalFlow(Sizing.content(), Sizing.content())
                         .child(new CarmotShieldComponent(TEXTURE, 0, 16, 64, 16, 64, 32)
                             .id(SHIELD_BACKGROUND_ID))
                         .child(new CarmotShieldComponent(TEXTURE, 0, 0, 64, 16, 64, 32)
@@ -40,31 +41,32 @@ public class CarmotShieldHudHandler {
 
     @SuppressWarnings("DataFlowIssue")
     public static void tick() {
-        if (Hud.hasComponent(COMPONENT_ID) && Minecraft.getInstance().player != null) {
-            var player = Minecraft.getInstance().player;
-            var carmotShield = player.getComponent(MythicMetals.CARMOT_SHIELD);
-            var shieldBar = (CarmotShieldComponent) ((ParentComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_COMPONENT_ID);
-            var background = (CarmotShieldComponent) ((ParentComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
-
-            // Hide Shield if it's not needed
-            if (carmotShield.getMaxHealth() == 0 || MythicMetals.CONFIG.shieldPosition().equals(MythicConfigModel.ShieldPosition.DISABLED)) {
-                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-                background.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-                return;
-            }
-
-            boolean isShieldBroken = carmotShield.shieldHealth == 0;
-            int shieldX = Mth.ceil(16 + 46 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
-
-            CarmotShieldComponent.barShouldBeRed = player.hurtTime > 0 || isShieldBroken;
-            // Hide bar if shield is broken
-            if (isShieldBroken) {
-                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-            } else {
-                shieldBar.visibleArea(PositionedRectangle.of(0, 0, Size.of(shieldX, 16)));
-            }
-            background.visibleArea(PositionedRectangle.of(0, 0, Size.of(64, 16)));
-        }
+//        if (Hud.hasComponent(COMPONENT_ID) && Minecraft.getInstance().player != null) {
+//            var player = Minecraft.getInstance().player;
+//            // FIXME - Migrate to data attachment
+//            var carmotShield = player.get(MythicMetals.CARMOT_SHIELD);
+//            var shieldBar = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_COMPONENT_ID);
+//            var background = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
+//
+//            // Hide Shield if it's not needed
+//            if (carmotShield.getMaxHealth() == 0 || MythicMetals.CONFIG.shieldPosition().equals(MythicConfigModel.ShieldPosition.DISABLED)) {
+//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
+//                background.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
+//                return;
+//            }
+//
+//            boolean isShieldBroken = carmotShield.shieldHealth == 0;
+//            int shieldX = Mth.ceil(16 + 46 * (carmotShield.shieldHealth / carmotShield.getMaxHealth()));
+//
+//            CarmotShieldComponent.barShouldBeRed = player.hurtTime > 0 || isShieldBroken;
+//            // Hide bar if shield is broken
+//            if (isShieldBroken) {
+//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
+//            } else {
+//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, Size.of(shieldX, 16)));
+//            }
+//            background.visibleArea(PositionedRectangle.of(0, 0, Size.of(64, 16)));
+//        }
     }
 
     public static class CarmotShieldComponent extends TextureComponent {
@@ -77,16 +79,17 @@ public class CarmotShieldHudHandler {
             super(texture, u, v, regionWidth, regionHeight, textureWidth, textureHeight);
         }
 
+        // FIXME
         @Override
-        public void draw(OwoUIDrawContext context, int mouseX, int mouseY, float partialTicks, float delta) {
-            if (barShouldBeRed) {
-                RenderSystem.setShaderColor(DAMAGED_COLOR.red(), DAMAGED_COLOR.green(), DAMAGED_COLOR.blue(), 1.0f);
-            } else {
-                RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
-            }
-            super.draw(context, mouseX, mouseY, partialTicks, delta);
-            context.flush();
-            RenderSystem.setShaderColor(1, 1, 1, 1);
+        public void draw(OwoUIGraphics graphics, int mouseX, int mouseY, float partialTicks, float delta) {
+//            if (barShouldBeRed) {
+//                RenderSystem.setShaderColor(DAMAGED_COLOR.red(), DAMAGED_COLOR.green(), DAMAGED_COLOR.blue(), 1.0f);
+//            } else {
+//                RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
+//            }
+//            graphics.guiRenderState.reset();
+//            RenderSystem.setShaderColor(1, 1, 1, 1);
+            super.draw(graphics, mouseX, mouseY, partialTicks, delta);
         }
     }
 }

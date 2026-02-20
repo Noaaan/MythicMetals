@@ -2,6 +2,7 @@ package com.mythicmetals.armor;
 
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.core.Registry;
@@ -55,7 +56,7 @@ public class ArmorSet {
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
             .setId(keyFromType(name, equipmentType))
-            .attributes(createAttributeModifiers(name, material, equipmentType, extraModifiers))
+            .attributes(MythicItemAttributes.createArmorModifier(name, material, equipmentType, extraModifiers))
             .component(DataComponents.EQUIPPABLE, Equippable
                 .builder(equipmentType.getSlot())
                 .setAsset(material.assetId())
@@ -148,44 +149,6 @@ public class ArmorSet {
 
     public String getMaterialId() {
         return MythicArmor.ARMOR_MAP.inverse().get(this);
-    }
-
-    private static ItemAttributeModifiers createAttributeModifiers(String name, ArmorMaterial material, ArmorType equipmentType, List<MythicAttributeModifier> extraModifiers) {
-        int armor = material.defense().getOrDefault(equipmentType, 0);
-        double toughness = material.toughness();
-        double knockbackResistance = material.knockbackResistance();
-        var builder = ItemAttributeModifiers.builder();
-        var equipmentSlot = EquipmentSlotGroup.bySlot(equipmentType.getSlot());
-        var identifier = Identifier.withDefaultNamespace("armor." + equipmentType.getName());
-        builder.add(
-            Attributes.ARMOR,
-            new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, armor, ADD_VALUE),
-            equipmentSlot
-        );
-        builder.add(
-            Attributes.ARMOR_TOUGHNESS,
-            new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, toughness, ADD_VALUE),
-            equipmentSlot
-        );
-        if (knockbackResistance > 0.0F) {
-            builder.add(
-                Attributes.KNOCKBACK_RESISTANCE,
-                new net.minecraft.world.entity.ai.attributes.AttributeModifier(identifier, knockbackResistance, ADD_VALUE),
-                equipmentSlot
-            );
-        }
-        extraModifiers.forEach(modifier -> {
-            if (modifier.requiredSlot().test(equipmentType.getSlot())) {
-                var id = RegistryHelper.id(name + "_" + modifier.attribute().unwrapKey().orElseThrow().identifier().getPath());
-                builder.add(
-                    modifier.attribute(),
-                    new net.minecraft.world.entity.ai.attributes.AttributeModifier(id, modifier.value(), modifier.operation()),
-                    equipmentSlot
-                );
-            }
-        });
-
-        return builder.build();
     }
 
     public ArmorMaterial getMaterial() {
