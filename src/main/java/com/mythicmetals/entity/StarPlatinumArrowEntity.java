@@ -2,6 +2,7 @@ package com.mythicmetals.entity;
 
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.MythicDamageTypes;
+import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -9,6 +10,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.EntityTypeTags;
@@ -18,7 +20,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
-    public static final ItemStack STAR_PLAT_STACK = new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
 
     public StarPlatinumArrowEntity(LivingEntity owner, World world, ItemStack stack, @Nullable ItemStack weapon) {
         super(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, owner, world, stack, weapon);
@@ -34,18 +35,27 @@ public class StarPlatinumArrowEntity extends PersistentProjectileEntity {
 
     @Override
     protected ItemStack asItemStack() {
-        return STAR_PLAT_STACK;
+        return new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
     }
 
     @Override
     protected ItemStack getDefaultItemStack() {
-        return STAR_PLAT_STACK;
+        return new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
     }
+
+//    @Override
+//    public void tick() {
+//        super.tick();
+//        if (this.isInGround() && this.inGroundTime != 0) {
+//            this.getWorld().sendEntityStatus(this, (byte) 0);
+//            this.setStack(getDefaultItemStack());
+//        }
+//    }
 
     @Override
     protected void onHit(LivingEntity target) {
