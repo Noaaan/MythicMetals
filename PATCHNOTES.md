@@ -1,3 +1,16 @@
+# 0.25.1
+
+- Fixed and updated Runite Arrow textures
+- Fixed and updated Star Platinum Arrow textures
+- Fixed Star Platinum arrows not being able to be picked up (#312)
+- Added Mythic Metals tools to vanilla tags
+  - Swords to `#minecraft:swords`
+  - Axes to `#minecraft:axes`
+  - Pickaxes to `#minecraft:pickaxes`
+  - Shovels to `#minecraft:shovels`
+  - Hoes to `#minecraft:hoes`
+  - This should fix an issue related to enchanting tools
+
 # 0.25.0
 
 Initial port to 1.21.4. This version will likely not be supported for long, as I plan on skipping straight to 1.21.10/11.
