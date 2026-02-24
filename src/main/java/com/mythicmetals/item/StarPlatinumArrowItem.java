@@ -1,6 +1,7 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.entity.StarPlatinumArrowEntity;
+import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +15,11 @@ public class StarPlatinumArrowItem extends ArrowItem {
 
     public StarPlatinumArrowItem(Item.Properties settings) {
         super(settings);
+    }
+
+    @Override
+    public ItemStack getDefaultInstance() {
+        return new ItemStack(MythicTools.STAR_PLATINUM_ARROW);
     }
 
     @Override
