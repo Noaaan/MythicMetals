@@ -277,21 +277,24 @@ public class MythicRecipeGenerator extends RecipeGenerator {
     }
 
     private void createNuggetRecipes(HashMap<String, ItemSet> itemSets) {
+        var invalidRecipes = Set.of(MythicItems.MANGANESE, MythicItems.TIN, MythicItems.PLATINUM);
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.class, ItemSet.class, (itemSet, name, field) -> {
-            boolean requiresBlasting = itemSet.requiresBlasting();
-            var nugget = itemSet.getNugget();
-            assert nugget != null;
+            if (!invalidRecipes.contains(itemSet)) {
+                boolean requiresBlasting = itemSet.requiresBlasting();
+                var nugget = itemSet.getNugget();
+                assert nugget != null;
 
-            // smelt equipment into nuggets
-            if (!requiresBlasting) {
-                CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 200)
+                // smelt equipment into nuggets
+                if (!requiresBlasting) {
+                    CookingRecipeJsonBuilder.createSmelting(Ingredient.fromTag(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 200)
+                        .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + name))))
+                        .offerTo(nuggetExporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
+                }
+                // blast equipment into nuggets
+                CookingRecipeJsonBuilder.createBlasting(Ingredient.fromTag(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 100)
                     .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + name))))
-                    .offerTo(nuggetExporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
+                    .offerTo(nuggetExporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
             }
-            // blast equipment into nuggets
-            CookingRecipeJsonBuilder.createBlasting(Ingredient.fromTag(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 100)
-                .criterion("has_material", conditionsFromTag(TagKey.of(RegistryKeys.ITEM, RegistryHelper.id("nuggets/" + name))))
-                .offerTo(nuggetExporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
         });
 
         itemSets.values().forEach(itemSet -> {
@@ -645,7 +648,7 @@ public class MythicRecipeGenerator extends RecipeGenerator {
             .input('#', material)
             .input('S', WOODEN_RODS)
             .pattern("#")
-            .pattern("#")
+            .pattern("S")
             .pattern("S")
             .criterion("has_shovel", conditionsFromItem(toolSet.getShovel()))
             .offerTo(exporter, recipeKey("shovel/" + toolSet.getName()));
