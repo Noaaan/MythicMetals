@@ -10,6 +10,7 @@
   - Shovels to `#minecraft:shovels`
   - Hoes to `#minecraft:hoes`
   - This should fix an issue related to enchanting tools
+- Fixed Shovel recipes being the same as Swords (#313)
 
 # 0.25.0
 
