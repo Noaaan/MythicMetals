@@ -34,7 +34,7 @@ public class MythicBiomeTagProvider extends FabricTagProvider<Biome> {
             if (tag.equals(END_STARRITE_BIOMES)) {
                 getOrCreateTagBuilder(tag)
                     .forceAddTag(ConventionalBiomeTags.IS_END);
-            } else if (tag.equals(STORMYX_BIOMES) || tag.equals(NETHER_BANGLUM_BIOMES) || tag.equals(PALLADIUM_BIOMES)) {
+            } else if (tag.equals(MIDAS_GOLD_BIOMES) || tag.equals(STORMYX_BIOMES) || tag.equals(NETHER_BANGLUM_BIOMES) || tag.equals(PALLADIUM_BIOMES)) {
                 getOrCreateTagBuilder(tag)
                     .forceAddTag(ConventionalBiomeTags.IS_NETHER);
             } else if (tag.equals(OSMIUM_BIOMES)) {
