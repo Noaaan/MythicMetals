@@ -53,6 +53,7 @@ public class ArmorSet {
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
             .registryKey(keyFromType(name, equipmentType))
+            .enchantable(material.enchantmentValue())
             .attributeModifiers(createAttributeModifiers(name, material, equipmentType, extraModifiers))
             .component(DataComponentTypes.EQUIPPABLE, EquippableComponent
                 .builder(equipmentType.getEquipmentSlot())
