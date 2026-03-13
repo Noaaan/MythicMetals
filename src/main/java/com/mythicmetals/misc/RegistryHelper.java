@@ -42,6 +42,10 @@ public class RegistryHelper {
         return Identifier.fromNamespaceAndPath(MythicMetals.MOD_ID, path);
     }
 
+    public static Item item(ResourceKey<Item> key, Item item) {
+        return Registry.register(BuiltInRegistries.ITEM, key, item);
+    }
+
     public static void item(String path, Item item) {
         Registry.register(BuiltInRegistries.ITEM, id(path), item);
     }
