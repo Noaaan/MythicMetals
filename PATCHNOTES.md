@@ -1,3 +1,8 @@
+# 0.25.2
+
+- Fix Armor not being enchantable in enchanting tables (#314)
+- Fix Midas Gold not spawning in The Nether (thanks ARoyalPain)
+
 # 0.25.1
 
 - Fixed and updated Runite Arrow textures
