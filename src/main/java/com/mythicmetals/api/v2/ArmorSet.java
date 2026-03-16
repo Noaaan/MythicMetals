@@ -1,4 +1,4 @@
-package com.mythicmetals.api;
+package com.mythicmetals.api.v2;
 
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.resources.ResourceKey;
@@ -8,7 +8,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
-public class Armor {
+public class ArmorSet {
     public final ResourceKey<Item> helmetKey;
     public final ResourceKey<Item> chestplateKey;
     public final ResourceKey<Item> leggingsKey;
@@ -22,7 +22,7 @@ public class Armor {
     protected Item boots;
     protected Item horse;
 
-    public Armor(String name, ArmorMaterial armorMaterial) {
+    public ArmorSet(String name, ArmorMaterial armorMaterial) {
         this.helmetKey = itemKey(name + "_helmet");
         this.chestplateKey = itemKey(name + "_chestplate");
         this.leggingsKey = itemKey(name + "_leggings");
@@ -31,7 +31,7 @@ public class Armor {
         this.armorMaterial = armorMaterial;
     }
 
-    public void create() {
+    public ArmorSet createDefault() {
         this.helmet = RegistryHelper.item(helmetKey, new Item(
            new Item.Properties().humanoidArmor(armorMaterial, ArmorType.HELMET).setId(helmetKey)
         ));
@@ -44,5 +44,9 @@ public class Armor {
         this.boots = RegistryHelper.item(bootsKey, new Item(
             new Item.Properties().humanoidArmor(armorMaterial, ArmorType.BOOTS).setId(bootsKey)
         ));
+        this.horse = RegistryHelper.item(bodyKey, new Item(
+            new Item.Properties().horseArmor(armorMaterial).setId(bodyKey)
+        ));
+        return this;
     }
 }

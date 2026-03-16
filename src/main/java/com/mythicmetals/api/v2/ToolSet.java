@@ -1,4 +1,4 @@
-package com.mythicmetals.api;
+package com.mythicmetals.api.v2;
 
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.component.DataComponents;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
-public class Tools {
+public class ToolSet {
 
     public final ResourceKey<Item> swordKey;
     public final ResourceKey<Item> axeKey;
@@ -33,9 +33,9 @@ public class Tools {
     protected Item hoe;
     protected Item spear;
 
-    public Tools(String name, ToolMaterial toolMaterial) {
+    public ToolSet(String name, ToolMaterial toolMaterial) {
         this.swordKey = itemKey(name + "_sword");
-        this.axeKey = itemKey(name + "_sword");
+        this.axeKey = itemKey(name + "_axe");
         this.pickaxeKey = itemKey(name + "_pickaxe");
         this.shovelKey = itemKey(name + "_shovel");
         this.hoeKey = itemKey(name + "_hoe");
@@ -50,26 +50,37 @@ public class Tools {
      */
 
     // TODO - Is something more extendible than enum required? Maybe config?
-    public void create(AttackSpeeds attackSpeeds) {
+    public ToolSet createDefault(AttackSpeeds attackSpeeds) {
         this.sword = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties().sword(toolMaterial, 3.0f, attackSpeeds.sword - 4.0f).setId(swordKey)
+            new Item.Properties()
+                .sword(toolMaterial, 3.0f, attackSpeeds.sword - 4.0f)
+                .setId(swordKey)
         ));
-        this.axe = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties().axe(toolMaterial, 5.0f, attackSpeeds.axe - 4.0f).setId(swordKey)
+        this.axe = RegistryHelper.item(axeKey, new Item(
+            new Item.Properties()
+                .axe(toolMaterial, 5.0f, attackSpeeds.axe - 4.0f)
+                .setId(axeKey)
         ));
-        this.pickaxe = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties().pickaxe(toolMaterial, 2.0f, attackSpeeds.pickaxe - 4.0f).setId(swordKey)
+        this.pickaxe = RegistryHelper.item(pickaxeKey, new Item(
+            new Item.Properties()
+                .pickaxe(toolMaterial, 2.0f, attackSpeeds.pickaxe - 4.0f)
+                .setId(pickaxeKey)
         ));
-        this.shovel = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties().shovel(toolMaterial, 1.0f, attackSpeeds.shovel - 4.0f).setId(swordKey)
+        this.shovel = RegistryHelper.item(shovelKey, new Item(
+            new Item.Properties()
+                .shovel(toolMaterial, 1.0f, attackSpeeds.shovel - 4.0f)
+                .setId(shovelKey)
         ));
-        this.hoe = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties().hoe(toolMaterial, 0.0f, attackSpeeds.hoe - 4.0f).setId(swordKey)
+        this.hoe = RegistryHelper.item(hoeKey, new Item(
+            new Item.Properties()
+                .hoe(toolMaterial, 0.0f, attackSpeeds.hoe - 4.0f)
+                .setId(hoeKey)
         ));
         // TODO - Spear item settings are complex. Requires more stats
         this.spear = RegistryHelper.item(spearKey, new Item(
             new Item.Properties().setId(spearKey)
         ));
+        return this;
     }
 
     public enum AttackSpeeds {
@@ -173,26 +184,6 @@ public class Tools {
 
     public Item getHoe() {
         return hoe;
-    }
-
-    public ResourceKey<Item> getSwordKey() {
-        return swordKey;
-    }
-
-    public ResourceKey<Item> getAxeKey() {
-        return axeKey;
-    }
-
-    public ResourceKey<Item> getPickaxeKey() {
-        return pickaxeKey;
-    }
-
-    public ResourceKey<Item> getShovelKey() {
-        return shovelKey;
-    }
-
-    public ResourceKey<Item> getHoeKey() {
-        return hoeKey;
     }
 
     public Identifier getSwordId() {
