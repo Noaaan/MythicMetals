@@ -8,7 +8,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import java.util.function.Consumer;
+import java.util.function.*;
 
 public class Material {
 
@@ -21,7 +21,7 @@ public class Material {
     public final BiMap<ResourceKey<Item>, Item> extraItems;
     public final BiMap<ResourceKey<Block>, Block> extraBlocks;
 
-    public Material(@NonNull Item material, @Nullable ToolSet toolSet, @Nullable ArmorSet armorSet, BiMap<ResourceKey<Item>, Item> extraItems, BiMap<ResourceKey<Block>, Block> extraBlocks) {
+    public Material(@NonNull Item material, BlockSet blockSet, @Nullable ToolSet toolSet, @Nullable ArmorSet armorSet, BiMap<ResourceKey<Item>, Item> extraItems, BiMap<ResourceKey<Block>, Block> extraBlocks) {
         this.material = material;
         this.toolSet = toolSet;
         this.armorSet = armorSet;
@@ -32,6 +32,7 @@ public class Material {
     static class Builder {
         private final String name;
         private @NonNull Item material;
+        private BlockSet blockSet = null;
         private ToolSet toolSet = null;
         private ArmorSet armorSet = null;
         private final BiMap<ResourceKey<Item>, Item> extraItems = HashBiMap.create();
@@ -49,6 +50,16 @@ public class Material {
             var props = new Item.Properties();
             propsConsumer.accept(props);
             this.material = new Item(props);
+            return this;
+        }
+
+        public Builder createDefaultBlocks() {
+            // TODO
+            return this;
+        }
+
+        public Builder createBlockSetFromBuilder(Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
+            this.blockSet = blockSetBuilder.apply(BlockSet.Builder.begin(this.name));
             return this;
         }
 
@@ -72,7 +83,7 @@ public class Material {
          */
         public Material finish() {
             // TODO - Register stuff
-            return new Material(material, toolSet, armorSet, extraItems, extraBlocks);
+            return new Material(material, blockSet, toolSet, armorSet, extraItems, extraBlocks);
         }
     }
 }

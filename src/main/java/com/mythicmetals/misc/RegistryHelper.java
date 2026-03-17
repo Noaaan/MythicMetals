@@ -64,12 +64,17 @@ public class RegistryHelper {
         }
     }
 
-    public static void block(String path, Block block, boolean fireproof, boolean uncommon) {
-        if (uncommon) {
+    public static void block(String path, Block block, Rarity rarity) {
+        Registry.register(BuiltInRegistries.BLOCK, id(path), block);
+        Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey(path)).tab(1).rarity(rarity)));
+    }
+
+    public static void block(String path, Block block, boolean fireproof, Rarity rarity) {
+        if (fireproof) {
             Registry.register(BuiltInRegistries.BLOCK, id(path), block);
-            Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey(path)).tab(1).rarity(Rarity.UNCOMMON)));
+            Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey(path)).tab(1).rarity(rarity)));
         } else {
-            block(path, block, fireproof);
+            block(path, block, rarity);
         }
     }
 
