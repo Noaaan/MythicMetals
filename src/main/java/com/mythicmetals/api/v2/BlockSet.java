@@ -1,20 +1,23 @@
 package com.mythicmetals.api.v2;
 
-import com.google.common.collect.*;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Multimap;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.block.BanglumOreBlock;
 import com.mythicmetals.block.StarriteOreBlock;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.Maldenhagen;
-import io.wispforest.owo.util.TagInjector;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import java.util.*;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -25,7 +28,6 @@ import java.util.function.Consumer;
  * @author glisco
  * @author Noaaan
  */
-@SuppressWarnings({"unused"})
 public class BlockSet {
     private final DropExperienceBlock ore;
     private final Block storageBlock;
@@ -78,38 +80,6 @@ public class BlockSet {
         this.miningLevels = miningLevels;
         this.anvilMap = anvilMap;
         this.rarity = rarity;
-    }
-
-    private void register() {
-
-        if (ore != null) {
-            RegistryHelper.block(name + "_ore", ore, fireproof, rarity);
-        }
-
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof, rarity));
-
-        if (oreStorageBlock != null) {
-            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof, rarity);
-        }
-        if (storageBlock != null) {
-            RegistryHelper.block(name + "_block", storageBlock, fireproof, rarity);
-        }
-        if (anvil != null) {
-            RegistryHelper.block(name + "_anvil", anvil, fireproof, rarity);
-        }
-        // Inject all the mining levels into their tags.
-        if (MythicMetals.CONFIG.enableAnvils()) {
-            anvilMap.forEach(((anvilBlock, level) -> {
-                TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
-                TagInjector.inject(BuiltInRegistries.BLOCK, level, anvilBlock);
-                TagInjector.inject(BuiltInRegistries.BLOCK, Identifier.parse("anvil"), anvilBlock);
-                TagInjector.inject(BuiltInRegistries.ITEM, Identifier.parse("anvil"), anvilBlock.asItem());
-            }));
-        }
-        miningLevels.forEach((block, level) -> {
-            TagInjector.inject(BuiltInRegistries.BLOCK, level, block);
-            TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("blocks"), block);
-        });
     }
 
     /**
@@ -239,83 +209,6 @@ public class BlockSet {
         }
 
         /**
-         * Puts an ore, a storage block, an ore storage block, and an anvil in the blockset.
-         *
-         * @param strength    Sets the strength of the blocks in the set.
-         * @param miningLevel Mining level of the blocks. The ore sets the raw value,
-         *                    while every other block recieves + 1 to their level.
-         * @see #strength(float)    Strength
-         */
-        public Builder createDefaultSet(float strength, Identifier miningLevel, Identifier higherMiningLevel) {
-            return strength(strength)
-                .createOre(miningLevel)
-                .strength(strength + 1.0F)
-                .createOreStorageBlock(miningLevel)
-                .createStorageBlock(higherMiningLevel)
-                .createAnvil(miningLevel);
-        }
-
-        /**
-         * Puts an ore, a storage block, and an ore storage block in the blockset.
-         *
-         * @param strength           Sets the strength of the blocks in the set.
-         * @param miningLevel        The mining level of the ore block
-         * @param storageMiningLevel The mining level of both storage blocks
-         * @see #strength(float)
-         */
-        public Builder createBlockSet(float strength, Identifier miningLevel, Identifier storageMiningLevel) {
-            return strength(strength)
-                .createOre(miningLevel)
-                .strength(strength + 1.0F)
-                .createStorageBlock(storageMiningLevel)
-                .createOreStorageBlock(storageMiningLevel);
-        }
-
-        /**
-         * Puts an ore, a storage block and an ore storage block in the set, with slightly more configurable settings.
-         *
-         * @param oreStrength        The strength of the ore block.
-         * @param oreMiningLevel     The mining level of the ore block.
-         * @param storageStrength    The strength of the storage block and ore storage block.
-         * @param storageMiningLevel The mining level of the storage block and ore storage block.
-         * @see #strength(float)        oreStrength and storageStrength
-         */
-        public Builder createDefaultSet(float oreStrength, Identifier oreMiningLevel, float storageStrength, Identifier storageMiningLevel) {
-            return strength(oreStrength)
-                .createOre(oreMiningLevel)
-                .strength(storageStrength)
-                .createStorageBlock(storageMiningLevel)
-                .createOreStorageBlock(storageMiningLevel);
-        }
-
-        /**
-         * Puts a storage block and an anvil in the blockset.
-         *
-         * @param miningLevel The mining level of the anvil and the storage block
-         * @see #strength(float)
-         */
-        public Builder createAnvilSet(float strength, Identifier miningLevel) {
-            return strength(strength)
-                .sounds(SoundType.METAL)
-                .createStorageBlock(miningLevel)
-                .createAnvil(miningLevel);
-        }
-
-        /**
-         * Puts a storage block and an anvil in the blockset, where the storage block is configurable.
-         *
-         * @param hardness    The hardness of the storage block.
-         * @param resistance  The blast resistance of the storage block.
-         * @param miningLevel The mining level of the anvil and the storage block.
-         * @see #createAnvil(Identifier)  createAnvil
-         */
-        public Builder createAnvilSet(float hardness, float resistance, Identifier miningLevel) {
-            return strength(hardness, resistance)
-                .createStorageBlock(this.currentSounds, miningLevel)
-                .createAnvil(miningLevel);
-        }
-
-        /**
          * Applies sounds to the block(s) in the set.
          *
          * @param sounds The {@link SoundType} which should be played.
@@ -344,6 +237,11 @@ public class BlockSet {
         public Builder strength(float hardness, float resistance) {
             this.currentHardness = hardness;
             this.currentResistance = resistance;
+            return this;
+        }
+
+        public Builder rarity(Rarity rarity) {
+            this.rarity = rarity;
             return this;
         }
 
@@ -614,21 +512,24 @@ public class BlockSet {
             return this;
         }
 
-        public Builder rarity(Rarity rarity) {
-            this.rarity = rarity;
-            return this;
-        }
-
         /**
          * Finishes the creation of the block set, and returns the entire set using the settings declared.
-         * For registering the blocks call {@link Builder#register() Builder.register} during mod initialization.
          *
          * @return BlockSet
          */
         public BlockSet finish() {
-            return new BlockSet(this.name, this.ore,
-                this.storageBlock, this.oreStorageBlock, this.anvil,
-                this.oreVariants, this.fireproof, this.miningLevels, this.anvilMap, this.rarity);
+            return new BlockSet(
+                this.name,
+                this.ore,
+                this.storageBlock,
+                this.oreStorageBlock,
+                this.anvil,
+                this.oreVariants,
+                this.fireproof,
+                this.miningLevels,
+                this.anvilMap,
+                this.rarity
+            );
         }
     }
 }
