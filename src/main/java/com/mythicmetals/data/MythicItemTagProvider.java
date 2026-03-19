@@ -35,7 +35,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateRawBuilder()
+//        getOrCreateRawBuilder()
     }
 
     // FIXME - Adding tags via registry entries is considered deprecated

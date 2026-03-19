@@ -79,34 +79,34 @@ public class BlockSet {
 
     private void register() {
 
-        if (ore != null) {
-            RegistryHelper.block(name + "_ore", ore, fireproof, uncommon);
-        }
-
-        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof, uncommon));
-
-        if (oreStorageBlock != null) {
-            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof, uncommon);
-        }
-        if (storageBlock != null) {
-            RegistryHelper.block(name + "_block", storageBlock, fireproof, uncommon);
-        }
-        if (anvil != null) {
-            RegistryHelper.block(name + "_anvil", anvil, fireproof, uncommon);
-        }
-        // Inject all the mining levels into their tags.
-        if (MythicMetals.CONFIG.enableAnvils()) {
-            anvilMap.forEach(((anvilBlock, level) -> {
-                TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
-                TagInjector.inject(BuiltInRegistries.BLOCK, level, anvilBlock);
-                TagInjector.inject(BuiltInRegistries.BLOCK, Identifier.parse("anvil"), anvilBlock);
-                TagInjector.inject(BuiltInRegistries.ITEM, Identifier.parse("anvil"), anvilBlock.asItem());
-            }));
-        }
-        miningLevels.forEach((block, level) -> {
-            TagInjector.inject(BuiltInRegistries.BLOCK, level, block);
-            TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("blocks"), block);
-        });
+//        if (ore != null) {
+//            RegistryHelper.block(name + "_ore", ore, fireproof, uncommon);
+//        }
+//
+//        oreVariants.forEach((s, block) -> RegistryHelper.block(s + "_" + name + "_ore", block, fireproof, uncommon));
+//
+//        if (oreStorageBlock != null) {
+//            RegistryHelper.block("raw_" + name + "_block", oreStorageBlock, fireproof, uncommon);
+//        }
+//        if (storageBlock != null) {
+//            RegistryHelper.block(name + "_block", storageBlock, fireproof, uncommon);
+//        }
+//        if (anvil != null) {
+//            RegistryHelper.block(name + "_anvil", anvil, fireproof, uncommon);
+//        }
+//        // Inject all the mining levels into their tags.
+//        if (MythicMetals.CONFIG.enableAnvils()) {
+//            anvilMap.forEach(((anvilBlock, level) -> {
+//                TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("anvils"), anvilBlock);
+//                TagInjector.inject(BuiltInRegistries.BLOCK, level, anvilBlock);
+//                TagInjector.inject(BuiltInRegistries.BLOCK, Identifier.parse("anvil"), anvilBlock);
+//                TagInjector.inject(BuiltInRegistries.ITEM, Identifier.parse("anvil"), anvilBlock.asItem());
+//            }));
+//        }
+//        miningLevels.forEach((block, level) -> {
+//            TagInjector.inject(BuiltInRegistries.BLOCK, level, block);
+//            TagInjector.inject(BuiltInRegistries.BLOCK, RegistryHelper.id("blocks"), block);
+//        });
     }
 
     /**
