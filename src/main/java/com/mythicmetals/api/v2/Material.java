@@ -2,18 +2,19 @@ package com.mythicmetals.api.v2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import java.util.function.Consumer;
+
 import java.util.function.Function;
 
 public class Material {
@@ -51,14 +52,17 @@ public class Material {
         this.extraBlocks = extraBlocks;
     }
 
-    static class Builder {
+    public static class Builder {
         private final String name;
         private Item baseMaterial;
+        private ResourceKey<Item> baseMaterialKey;
         private BlockSet blockSet = null;
         private ToolSet toolSet = null;
         private ArmorSet armorSet = null;
         private final BiMap<ResourceKey<Item>, Item> extraItems = HashBiMap.create();
         private final BiMap<ResourceKey<Block>, Block> extraBlocks = HashBiMap.create();
+
+        private static final String INGOT_POSTFIX = "_ingot";
 
         public Builder(String materialName) {
             this.name = materialName;
@@ -68,37 +72,29 @@ public class Material {
             return new Builder(materialName);
         }
 
-        public Builder createBaseMaterial(Consumer<Item.Properties> propsConsumer) {
-            var props = new Item.Properties();
-            propsConsumer.accept(props);
-            this.baseMaterial = new Item(props);
+        public Builder createBaseMaterial(MaterialType type) {
+            Item.Properties props;
+            switch (type) {
+                case RARE_ALLOY -> {
+                    baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
+                    props = baseProperties(baseMaterialKey, 0, Rarity.RARE);
+                }
+                case ALLOY -> {
+                    baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
+                    props = baseProperties(baseMaterialKey, 0, Rarity.UNCOMMON);
+                }
+                case INGOT -> {
+                    baseMaterialKey = RegistryHelper.itemKey(name);
+                    props = baseProperties(baseMaterialKey, 0, Rarity.COMMON);
+                }
+                default -> props = baseProperties(RegistryHelper.itemKey(name), 0, Rarity.COMMON);
+            }
+            this.baseMaterial = RegistryHelper.item(baseMaterialKey, new Item(props));
             return this;
         }
 
-        public Builder createDefaultBlocks(float strength, Identifier oreMiningLevel, Identifier storageMiningLevel) {
-            this.blockSet = BlockSet.Builder.begin(name)
-                .strength(strength)
-                .createOre(oreMiningLevel)
-                .strength(strength + 1.0f)
-                .createOreStorageBlock(storageMiningLevel)
-                .createStorageBlock(storageMiningLevel)
-                .createAnvil(storageMiningLevel)
-                .finish();
-            return this;
-        }
-
-        public Builder createAlloyBlockSet(float strength, float resistance, Identifier miningLevel) {
-            this.blockSet = BlockSet.Builder.begin(name)
-                .strength(strength, resistance)
-                .sounds(SoundType.METAL)
-                .createStorageBlock(miningLevel)
-                .createAnvil(miningLevel)
-                .finish();
-            return this;
-        }
-
-        public Builder createBlockSetFromBuilder(Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
-            this.blockSet = blockSetBuilder.apply(BlockSet.Builder.begin(this.name));
+        public Builder createBlockSetFromBuilder(Identifier miningLevel, Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
+            this.blockSet = blockSetBuilder.apply(BlockSet.Builder.begin(this.name, miningLevel));
             return this;
         }
 
@@ -122,15 +118,27 @@ public class Material {
             return this;
         }
 
+        protected Item.Properties baseProperties(ResourceKey<Item> idKey, int tab, Rarity rarity) {
+            return new Item.Properties()
+                .setId(idKey)
+                .group(MythicMetals.TABBED_GROUP)
+                .rarity(rarity)
+                .tab(tab);
+        }
+
         /**
          * Registers and returns the finished Material
          */
         public Material finish() {
-            // TODO - Register stuff
             if (baseMaterial == null) {
-                throw new IllegalStateException("Base material must be registered!");
+                throw new IllegalStateException("Base material must be registered! Call 'Material#createBaseMaterial()' on the Material builder.");
             }
+            registerExtras();
             return new Material(baseMaterial, blockSet, toolSet, armorSet, extraItems, extraBlocks);
+        }
+
+        private void registerExtras() {
+            // TODO - Register both extra items and blocks
         }
     }
 }
