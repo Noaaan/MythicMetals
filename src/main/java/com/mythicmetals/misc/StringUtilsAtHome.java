@@ -4,13 +4,15 @@ import com.mythicmetals.MythicMetals;
 import java.util.Calendar;
 
 public class StringUtilsAtHome {
+    private StringUtilsAtHome() {
+    }
 
     /**
      * Source: <a href="https://www.baeldung.com/java-string-title-case">Baeldung Link</a>
      *
      * @return Example:
-     * cAt -> Cat
-     * super title -> Super Title
+     * cAt -> Cat <br>
+     * super title -> Super Title <br>
      * Modified to also remove underscores
      */
     public static String toTitleCase(String input) {
@@ -18,7 +20,7 @@ public class StringUtilsAtHome {
             return input;
         }
 
-        input = input.replaceAll("_", " ");
+        input = input.replace("_", " ");
 
         StringBuilder converted = new StringBuilder();
 

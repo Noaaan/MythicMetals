@@ -15,12 +15,28 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.tags.TagAppender;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class MythicItemTagProvider /*extends FabricTagProvider.ItemTagProvider*/ {
+public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
+
+    public MythicItemTagProvider(
+        FabricDataOutput output,
+        CompletableFuture<HolderLookup.Provider> registriesFuture,
+        @Nullable BlockTagProvider blockTagProvider
+    ) {
+        super(output, registriesFuture, blockTagProvider);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.Provider provider) {
+        getOrCreateRawBuilder()
+    }
 
     // FIXME - Adding tags via registry entries is considered deprecated
 //    public MythicItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {

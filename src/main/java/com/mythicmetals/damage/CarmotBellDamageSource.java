@@ -1,4 +1,4 @@
-package com.mythicmetals.misc;
+package com.mythicmetals.damage;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;

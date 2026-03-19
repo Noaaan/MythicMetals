@@ -3,15 +3,14 @@ package com.mythicmetals.misc;
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;
 import io.wispforest.endec.StructEndec;
-import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.serialization.CodecUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +18,9 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.animal.frog.FrogVariant;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.equipment.EquipmentAsset;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
+
 import java.util.function.UnaryOperator;
 
 /**
@@ -48,6 +50,56 @@ public class RegistryHelper {
 
     public static void item(String path, Item item) {
         Registry.register(BuiltInRegistries.ITEM, id(path), item);
+    }
+
+    public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block) {
+        var registeredBlock = block(blockKey, block);
+        item(itemKey, new BlockItem(registeredBlock, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey).tab(1)));
+        return registeredBlock;
+    }
+
+    public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, boolean fireproof, Rarity rarity) {
+        if (fireproof) {
+            var registeredBlock = block(blockKey, block);
+            item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
+                .group(MythicMetals.TABBED_GROUP)
+                .setId(itemKey)
+                .tab(1)
+                .rarity(rarity)
+                .fireResistant()
+            ));
+            return registeredBlock;
+        }
+        return block(blockKey, itemKey, block, rarity);
+    }
+
+    public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, Rarity rarity) {
+        var registeredBlock = block(blockKey, block);
+        item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
+            .group(MythicMetals.TABBED_GROUP)
+            .setId(itemKey)
+            .tab(1)
+            .rarity(rarity)
+        ));
+        return registeredBlock;
+    }
+
+    public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, boolean fireproof) {
+        if (fireproof) {
+            var registeredBlock = block(blockKey, block);
+            item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
+                .group(MythicMetals.TABBED_GROUP)
+                .setId(itemKey)
+                .tab(1)
+                .fireResistant()
+            ));
+            return registeredBlock;
+        }
+        return block(blockKey, itemKey, block);
+    }
+
+    public static Block block(ResourceKey<Block> key, Block block) {
+        return Registry.register(BuiltInRegistries.BLOCK, key, block);
     }
 
     public static void block(String path, Block block) {
@@ -72,23 +124,9 @@ public class RegistryHelper {
     public static void block(String path, Block block, boolean fireproof, Rarity rarity) {
         if (fireproof) {
             Registry.register(BuiltInRegistries.BLOCK, id(path), block);
-            Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey(path)).tab(1).rarity(rarity)));
+            Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey(path)).tab(1).rarity(rarity).fireResistant()));
         } else {
             block(path, block, rarity);
-        }
-    }
-
-    public static void block(String path, Block block, OwoItemGroup group) {
-        Registry.register(BuiltInRegistries.BLOCK, id(path), block);
-        Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().setId(itemKey(path)).group(group)));
-    }
-
-    public static void block(String path, Block block, OwoItemGroup group, boolean fireproof) {
-        if (fireproof) {
-            Registry.register(BuiltInRegistries.BLOCK, id(path), block);
-            Registry.register(BuiltInRegistries.ITEM, id(path), new BlockItem(block, new Item.Properties().setId(itemKey(path)).group(group).fireResistant()));
-        } else {
-            block(path, block, group);
         }
     }
 
@@ -142,8 +180,8 @@ public class RegistryHelper {
 
     public static <T> DataComponentType<T> dataComponentType(String path, StructEndec<T> endec) {
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, id(path), DataComponentType.<T>builder()
-                .persistent(CodecUtils.toCodec(endec))
-                .networkSynchronized(CodecUtils.toPacketCodec(endec))
+            .persistent(CodecUtils.toCodec(endec))
+            .networkSynchronized(CodecUtils.toPacketCodec(endec))
             .build()
         );
     }

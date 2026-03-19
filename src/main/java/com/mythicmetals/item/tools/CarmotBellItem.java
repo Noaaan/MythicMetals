@@ -1,10 +1,9 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.misc.CarmotBellDamageSource;
+import com.mythicmetals.damage.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterSounds;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.EntityTypeTags;
@@ -16,7 +15,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import java.util.List;
 
 public class CarmotBellItem extends BlockItem {
 

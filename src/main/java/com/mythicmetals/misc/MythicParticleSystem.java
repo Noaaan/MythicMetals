@@ -12,6 +12,10 @@ import net.minecraft.world.phys.Vec3;
 import java.util.Random;
 
 public class MythicParticleSystem {
+    private MythicParticleSystem() {
+    }
+
+    private static final Random random = new Random();
     public static final ParticleSystemController CONTROLLER = new ParticleSystemController(RegistryHelper.id("particles"));
 
     public static final ParticleSystem<Vec3> EXPLOSION_TRAIL = CONTROLLER.register(Vec3.class, (world, pos, pos2) -> {
@@ -36,9 +40,8 @@ public class MythicParticleSystem {
 
     public static final ParticleSystem<Void> SMOKING_PALLADIUM_PARTICLE = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(1);
-        Random r = new Random();
         var velocity = VectorRandomUtils.getRandomOffset(world,
-            Vec3.ZERO.add(r.nextDouble(-1, 1), 0.75D, r.nextDouble(-1, 1)), 1.25D);
+            Vec3.ZERO.add(random.nextDouble(-1, 1), 0.75D, random.nextDouble(-1, 1)), 1.25D);
         ClientParticles.setVelocity(velocity);
 
         ClientParticles.spawn(ParticleTypes.SMOKE, world, pos, 0.0D);
@@ -46,9 +49,8 @@ public class MythicParticleSystem {
 
     public static final ParticleSystem<Void> OVERENGINEERED_PALLADIUM_PARTICLE = CONTROLLER.register(Void.class, (world, pos, data) -> {
         ClientParticles.setParticleCount(1);
-        Random r = new Random();
         var velocity = VectorRandomUtils.getRandomOffset(world,
-            Vec3.ZERO.add(r.nextDouble(-1, 1), 0.75D, r.nextDouble(-1, 1)), 1.25D);
+            Vec3.ZERO.add(random.nextDouble(-1, 1), 0.75D, random.nextDouble(-1, 1)), 1.25D);
         ClientParticles.setVelocity(velocity);
 
         ClientParticles.spawn(ParticleTypes.LAVA, world, pos, 0.0D);
@@ -95,26 +97,24 @@ public class MythicParticleSystem {
     });
 
     public static final ParticleSystem<Void> COLORED_NOTE = CONTROLLER.register(Void.class, (world, pos, data) -> {
-        Random r = new Random();
         ClientParticles.reset();
         ClientParticles.persist();
         ClientParticles.setParticleCount(1);
-        ClientParticles.setVelocity(new Vec3(r.nextInt(32) / 16.0f, 0, 0));
+        ClientParticles.setVelocity(new Vec3(random.nextInt(32) / 16.0f, 0, 0));
         ClientParticles.spawn(ParticleTypes.NOTE, world, pos, 0);
         ClientParticles.reset();
     });
 
     public static final ParticleSystem<Void> NOTE_EXPLOSION = CONTROLLER.register(Void.class, (world, pos, data) -> {
         final int COUNT = 8;
-        Random r = new Random();
         ClientParticles.reset();
         ClientParticles.persist();
         ClientParticles.setParticleCount(1);
         for (int i = 0; i < COUNT; i++) {
-            ClientParticles.setVelocity(new Vec3(r.nextInt(32) / 16.0f, 0, 0));
-            double xOffset = r.nextDouble(-1.0, 1.0);
-            double yOffset = r.nextDouble(-0.5, 2.0);
-            double zOffset = r.nextDouble(-1.0, 1.0);
+            ClientParticles.setVelocity(new Vec3(random.nextInt(32) / 16.0f, 0, 0));
+            double xOffset = random.nextDouble(-1.0, 1.0);
+            double yOffset = random.nextDouble(-0.5, 2.0);
+            double zOffset = random.nextDouble(-1.0, 1.0);
             ClientParticles.spawn(ParticleTypes.NOTE, world, pos.add(xOffset, yOffset, zOffset), 0.25f);
         }
     });

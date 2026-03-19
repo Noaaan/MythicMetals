@@ -1,7 +1,9 @@
-package com.mythicmetals.misc;
+package com.mythicmetals.damage;
 
 import com.mojang.authlib.GameProfile;
 import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.misc.BlockBreaker;
+import com.mythicmetals.misc.MythicParticleSystem;
 import eu.pb4.common.protection.api.CommonProtection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

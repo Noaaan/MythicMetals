@@ -2,6 +2,7 @@ package com.mythicmetals.component;
 
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.misc.*;
+import com.mythicmetals.misc.duck.IsAttackCritical;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.ops.LevelOps;

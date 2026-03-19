@@ -19,7 +19,6 @@ public class MythicRecipeProvider extends FabricRecipeProvider {
         return new MythicRecipeGenerator(registryLookup, exporter, withConditions(exporter, new NuggetsLoadedCondition()));
     }
 
-
     @Override
     public String getName() {
         return "mythicmetals";

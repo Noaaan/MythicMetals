@@ -8,6 +8,9 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
 public class MythicLootOps {
+    private MythicLootOps() {
+    }
+
     public static final Identifier BETTER_PIGLIN_BARTERING = RegistryHelper.id("gameplay/better_piglin_bartering");
     public static final Identifier CUSTOM_PIGLIN_BARTERING = Identifier.fromNamespaceAndPath("custom_piglin_bartering", "mythicmetals/midas_gold_ingot");
 

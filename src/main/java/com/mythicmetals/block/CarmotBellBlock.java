@@ -3,7 +3,7 @@ package com.mythicmetals.block;
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.CarmotBellBlockEntity;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.misc.CarmotBellDamageSource;
+import com.mythicmetals.damage.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterSounds;
 import net.minecraft.core.BlockPos;

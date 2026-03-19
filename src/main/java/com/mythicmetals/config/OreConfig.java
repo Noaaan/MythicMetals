@@ -1,7 +1,7 @@
 package com.mythicmetals.config;
 
 
-import com.mythicmetals.data.MythicOreFeatures;
+import com.mythicmetals.data.worldgen.MythicOreFeatures;
 
 /**
  * A config constructor that lets you quickly create all the settings used

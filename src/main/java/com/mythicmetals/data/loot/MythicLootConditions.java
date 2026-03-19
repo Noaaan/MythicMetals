@@ -1,12 +1,11 @@
-package com.mythicmetals.registry;
+package com.mythicmetals.data.loot;
 
-import com.mythicmetals.misc.RandomChanceWithLuckCondition;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
-public class RegisterLootConditions {
+public class MythicLootConditions {
 
-    private RegisterLootConditions() {
+    private MythicLootConditions() {
     }
 
     public static final LootItemConditionType RANDOM_CHANCE_WITH_LUCK = RegistryHelper.lootConditionType("random_chance_with_luck", RandomChanceWithLuckCondition.CODEC);

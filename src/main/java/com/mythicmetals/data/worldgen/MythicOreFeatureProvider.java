@@ -1,4 +1,4 @@
-package com.mythicmetals.data;
+package com.mythicmetals.data.worldgen;
 
 import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
@@ -7,8 +7,8 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-import static com.mythicmetals.data.MythicOreFeatures.*;
-import static com.mythicmetals.data.MythicOreRules.*;
+import static com.mythicmetals.data.worldgen.MythicOreFeatures.*;
+import static com.mythicmetals.data.worldgen.MythicOreRules.*;
 
 public class MythicOreFeatureProvider {
     public static void initConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> registerable) {

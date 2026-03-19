@@ -1,4 +1,4 @@
-package com.mythicmetals.data;
+package com.mythicmetals.data.worldgen;
 
 import com.google.common.collect.ImmutableList;
 import com.mythicmetals.block.MythicBlocks;

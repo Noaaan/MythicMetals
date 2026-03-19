@@ -4,8 +4,6 @@ import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.TidesingerPatternComponent;
 import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.MythicTools;
@@ -19,19 +17,19 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SmithingTransformRecipe;
-import net.minecraft.world.item.crafting.TransmuteResult;
 import net.minecraft.world.level.block.Block;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
 
 import static com.mythicmetals.misc.RegistryHelper.recipeKey;
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
-
-
-
+// FIXME - Guess we're redoing datagen
 @SuppressWarnings("UnstableApiUsage")
 public class MythicRecipeGenerator extends RecipeProvider {
 
@@ -323,7 +321,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createToolCraftingRecipes(MythicTools.AQUARIUM, MythicItems.AQUARIUM.getIngot(), itemLookup);
         createToolCraftingRecipes(MythicTools.BANGLUM, MythicItems.BANGLUM.getIngot(), itemLookup);
         createToolCraftingRecipes(MythicTools.BRONZE, MythicItems.BRONZE.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
+//        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
         createToolCraftingRecipes(MythicTools.DURASTEEL, MythicItems.DURASTEEL.getIngot(), itemLookup);
         createToolCraftingRecipes(MythicTools.KYBER, MythicItems.KYBER.getIngot(), itemLookup);
         createToolCraftingRecipes(MythicTools.MYTHRIL, MythicItems.MYTHRIL.getIngot(), itemLookup);

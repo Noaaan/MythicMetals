@@ -2,13 +2,12 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.tools.HammerBase;
-import com.mythicmetals.misc.IsAttackCritical;
+import com.mythicmetals.misc.duck.IsAttackCritical;
 import net.minecraft.stats.Stat;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemCooldowns;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;

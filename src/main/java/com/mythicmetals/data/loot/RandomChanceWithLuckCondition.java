@@ -1,9 +1,8 @@
-package com.mythicmetals.misc;
+package com.mythicmetals.data.loot;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mythicmetals.registry.RegisterLootConditions;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -21,7 +20,7 @@ public record RandomChanceWithLuckCondition(float chance) implements LootItemCon
 
     @Override
     public LootItemConditionType getType() {
-        return RegisterLootConditions.RANDOM_CHANCE_WITH_LUCK;
+        return MythicLootConditions.RANDOM_CHANCE_WITH_LUCK;
     }
 
     public boolean test(LootContext lootContext) {

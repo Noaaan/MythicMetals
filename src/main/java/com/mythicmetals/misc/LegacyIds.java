@@ -3,8 +3,12 @@ package com.mythicmetals.misc;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LegacyIds {
+    private LegacyIds() {
+    }
+
     private static final HashMap<Identifier, Identifier> LEGACY_ITEM_IDS = new HashMap<>();
     private static final HashMap<Identifier, Identifier> LEGACY_BLOCK_IDS = new HashMap<>();
 
@@ -72,14 +76,14 @@ public class LegacyIds {
         LEGACY_ITEM_IDS.put(OLD_UNOBTAINIUM_DUST, NEW_UNOBTAINIUM);
     }
 
-    public static HashMap<Identifier, Identifier> getLegacyBlockIds() {
+    public static Map<Identifier, Identifier> getLegacyBlockIds() {
         if (LEGACY_BLOCK_IDS.isEmpty()) {
             createMap();
         }
         return LEGACY_BLOCK_IDS;
     }
 
-    public static HashMap<Identifier, Identifier> getLegacyItemIds() {
+    public static Map<Identifier, Identifier> getLegacyItemIds() {
         if (LEGACY_ITEM_IDS.isEmpty()) {
             createMap();
         }

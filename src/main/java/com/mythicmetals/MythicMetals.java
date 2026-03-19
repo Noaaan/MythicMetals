@@ -1,7 +1,6 @@
 package com.mythicmetals;
 
 import com.mythicmetals.ability.Abilities;
-import com.mythicmetals.armor.CarmotShield;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.MythicBlocks;
@@ -10,7 +9,8 @@ import com.mythicmetals.command.MythicCommands;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.conditions.MythicResourceConditions;
 import com.mythicmetals.config.MythicMetalsConfig;
-import com.mythicmetals.data.MythicOreFeatures;
+import com.mythicmetals.data.loot.MythicLootConditions;
+import com.mythicmetals.data.worldgen.MythicOreFeatures;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.*;
 import com.mythicmetals.item.MythicItems;
@@ -84,7 +84,7 @@ public class MythicMetals implements ModInitializer {
             builder.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
         });
         MythicResourceConditions.init();
-        RegisterLootConditions.init();
+        MythicLootConditions.init();
         MythicStatusEffects.init();
         MythicRecipeSerializers.init();
         FieldRegistrationHandler.processSimple(RegisterCriteria.class, false);

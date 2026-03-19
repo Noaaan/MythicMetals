@@ -1,5 +1,6 @@
-package com.mythicmetals.data;
+package com.mythicmetals.data.worldgen;
 
+import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -71,81 +72,81 @@ public class MythicOreFeatures {
 
         //Overworld Ores
         if (CONFIG.adamantite()) {
-            OreFeatureHelper.ore(ADAMANTITE, MythicOreBiomeTags.ADAMANTITE_BIOMES);
+            OreFeatureHelper.ore(ADAMANTITE, MythicTags.ADAMANTITE_BIOMES);
         }
         if (CONFIG.banglum()) {
-            OreFeatureHelper.ore(BANGLUM, MythicOreBiomeTags.BANGLUM_BIOMES);
+            OreFeatureHelper.ore(BANGLUM, MythicTags.BANGLUM_BIOMES);
         }
         if (CONFIG.carmot()) {
-            OreFeatureHelper.ore(CARMOT, MythicOreBiomeTags.CARMOT_BIOMES);
+            OreFeatureHelper.ore(CARMOT, MythicTags.CARMOT_BIOMES);
         }
         if (CONFIG.kyber()) {
-            OreFeatureHelper.ore(KYBER, MythicOreBiomeTags.KYBER_BIOMES);
-            OreFeatureHelper.ore(CALCITE_KYBER, MythicOreBiomeTags.CALCITE_KYBER_BIOMES);
+            OreFeatureHelper.ore(KYBER, MythicTags.KYBER_BIOMES);
+            OreFeatureHelper.ore(CALCITE_KYBER, MythicTags.CALCITE_KYBER_BIOMES);
         }
         if (CONFIG.mythril()) {
-            OreFeatureHelper.ore(MYTHRIL, MythicOreBiomeTags.MYTHRIL_BIOMES);
+            OreFeatureHelper.ore(MYTHRIL, MythicTags.MYTHRIL_BIOMES);
         }
         if (CONFIG.orichalcum()) {
-            OreFeatureHelper.ore(ORICHALCUM, MythicOreBiomeTags.ORICHALCUM_BIOMES);
+            OreFeatureHelper.ore(ORICHALCUM, MythicTags.ORICHALCUM_BIOMES);
         }
         if (CONFIG.manganese()) {
-            OreFeatureHelper.ore(MANGANESE, MythicOreBiomeTags.MANGANESE_BIOMES);
+            OreFeatureHelper.ore(MANGANESE, MythicTags.MANGANESE_BIOMES);
         }
         if (CONFIG.platinum()) {
-            OreFeatureHelper.ore(PLATINUM, MythicOreBiomeTags.PLATINUM_BIOMES);
+            OreFeatureHelper.ore(PLATINUM, MythicTags.PLATINUM_BIOMES);
         }
         if (CONFIG.quadrillum()) {
-            OreFeatureHelper.ore(QUADRILLUM, MythicOreBiomeTags.QUADRILLUM_BIOMES);
+            OreFeatureHelper.ore(QUADRILLUM, MythicTags.QUADRILLUM_BIOMES);
         }
         if (CONFIG.runite()) {
-            OreFeatureHelper.ore(RUNITE, MythicOreBiomeTags.RUNITE_BIOMES);
-            OreFeatureHelper.ore(DEEPSLATE_RUNITE, MythicOreBiomeTags.DEEPSLATE_RUNITE_BIOMES);
+            OreFeatureHelper.ore(RUNITE, MythicTags.RUNITE_BIOMES);
+            OreFeatureHelper.ore(DEEPSLATE_RUNITE, MythicTags.DEEPSLATE_RUNITE_BIOMES);
         }
         if (CONFIG.silver()) {
-            OreFeatureHelper.ore(SILVER, MythicOreBiomeTags.SILVER_BIOMES);
+            OreFeatureHelper.ore(SILVER, MythicTags.SILVER_BIOMES);
         }
         if (CONFIG.starrite()) {
-            OreFeatureHelper.ore(STARRITE, MythicOreBiomeTags.STARRITE_BIOMES);
+            OreFeatureHelper.ore(STARRITE, MythicTags.STARRITE_BIOMES);
         }
         if (CONFIG.endStarrite()) {
-            OreFeatureHelper.ore(END_STARRITE, MythicOreBiomeTags.END_STARRITE_BIOMES);
+            OreFeatureHelper.ore(END_STARRITE, MythicTags.END_STARRITE_BIOMES);
         }
         if (CONFIG.tin()) {
-            OreFeatureHelper.ore(TIN, MythicOreBiomeTags.TIN_BIOMES);
+            OreFeatureHelper.ore(TIN, MythicTags.TIN_BIOMES);
         }
         if (CONFIG.unobtainium()) {
-            OreFeatureHelper.ore(UNOBTAINIUM, MythicOreBiomeTags.UNOBTAINIUM_BIOMES);
+            OreFeatureHelper.ore(UNOBTAINIUM, MythicTags.UNOBTAINIUM_BIOMES);
         }
         if (CONFIG.morkite()) {
-            OreFeatureHelper.ore(MORKITE, MythicOreBiomeTags.MORKITE_BIOMES);
+            OreFeatureHelper.ore(MORKITE, MythicTags.MORKITE_BIOMES);
         }
 
         //Nether Ores
         if (CONFIG.banglum()) {
-            OreFeatureHelper.ore(NETHER_BANGLUM, MythicOreBiomeTags.NETHER_BANGLUM_BIOMES);
+            OreFeatureHelper.ore(NETHER_BANGLUM, MythicTags.NETHER_BANGLUM_BIOMES);
         }
         if (CONFIG.midasGold()) {
-            OreFeatureHelper.ore(MIDAS_GOLD, MythicOreBiomeTags.MIDAS_GOLD_BIOMES);
+            OreFeatureHelper.ore(MIDAS_GOLD, MythicTags.MIDAS_GOLD_BIOMES);
         }
         if (CONFIG.stormyx()) {
-            OreFeatureHelper.ore(STORMYX, MythicOreBiomeTags.STORMYX_BIOMES);
+            OreFeatureHelper.ore(STORMYX, MythicTags.STORMYX_BIOMES);
         }
         if (CONFIG.palladium()) {
-            OreFeatureHelper.ore(PALLADIUM, MythicOreBiomeTags.PALLADIUM_BIOMES);
+            OreFeatureHelper.ore(PALLADIUM, MythicTags.PALLADIUM_BIOMES);
         }
 
         // Add Aquarium to Aquatic Biomes
         if (CONFIG.aquarium()) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(MythicOreBiomeTags.AQUARIUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, AQUARIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.AQUARIUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, AQUARIUM);
         }
         // Add Prometheum to hot biomes
         if (CONFIG.prometheum()) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(MythicOreBiomeTags.PROMETHEUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, PROMETHEUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.PROMETHEUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, PROMETHEUM);
         }
         // Add Osmium to mountainous biomes
         if (CONFIG.osmium()) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(MythicOreBiomeTags.OSMIUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, OSMIUM);
+            BiomeModifications.addFeature(BiomeSelectors.tag(MythicTags.OSMIUM_BIOMES), GenerationStep.Decoration.UNDERGROUND_ORES, OSMIUM);
         }
     }
 

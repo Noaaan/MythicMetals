@@ -30,11 +30,9 @@ public class UsefulSingletonForColorUtil {
     public static int potionColor(ItemStack stack, int tintIndex) {
         if (tintIndex == 1) {
             var component = stack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
-            if (component == null) {
-                return -1;
-            }
-            if (component.customColor().isPresent()) {
-                return component.customColor().get();
+            var color = component.customColor();
+            if (color.isPresent()) {
+                return color.get();
             }
 
             if (component.hasEffects()) {

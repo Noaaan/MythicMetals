@@ -1,5 +1,6 @@
-package com.mythicmetals.misc;
+package com.mythicmetals.damage;
 
+import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageType;
