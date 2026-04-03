@@ -13,7 +13,6 @@ import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.misc.RegistryHelper.blockKey;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
-@SuppressWarnings("unused")
 public class MythicBlocks {
 
     public static final Map<String, BlockSet> BLOCKSET_MAP = new HashMap<>();

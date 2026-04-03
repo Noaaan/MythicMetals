@@ -3,6 +3,7 @@ package com.mythicmetals.api.v2;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Tuple;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -30,7 +31,8 @@ public record BlockSet(
     Block storage,
     Block ore,
     Block rawStorage,
-    Block anvil
+    Block anvil,
+    Map<String, Tuple<ResourceKey<Block>, Block>> oreVariants
 ) {
 
     public static class Builder {
@@ -60,10 +62,10 @@ public record BlockSet(
         protected Block anvil;
 
         private final String name;
-        private final Map<String, Block> oreVariants;
-        private final Identifier miningLevel;
+        public final Identifier miningLevel;
         private boolean fireproof = false;
         private Rarity rarity = Rarity.COMMON;
+        private final Map<String, Tuple<ResourceKey<Block>, Block>> oreVariants;
 
         private Builder(String name, Identifier requiredMiningLevel) {
             this.name = name;
@@ -107,7 +109,8 @@ public record BlockSet(
                 this.storage,
                 this.ore,
                 this.rawStorage,
-                this.anvil
+                this.anvil,
+                this.oreVariants
             );
         }
 
@@ -153,6 +156,15 @@ public record BlockSet(
         public Builder createAlloyBlockSet(float strength, float resistance) {
             return createStorageBlock(strength, resistance)
                 .createAnvil(strength, resistance);
+        }
+
+        public Builder createOreVariant(String variant, float strength, float resistance) {
+            var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
+            var block = RegistryHelper.block(
+                variantKey, new DropExperienceBlock(UniformInt.of(0, 0), baseBlockSettings(variantKey, strength, resistance)
+            ));
+            oreVariants.put(variant, new Tuple<>(variantKey, block));
+            return this;
         }
 
         public Builder createCustomStorageBlock(Function<BlockBehaviour.Properties, Block> settings) {
