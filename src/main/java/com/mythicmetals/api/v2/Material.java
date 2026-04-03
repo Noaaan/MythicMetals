@@ -70,16 +70,17 @@ public class Material {
         private static final String INGOT_POSTFIX = "_ingot";
         private MaterialType type;
 
-        public Builder(String materialName) {
+        private Builder(String materialName, MaterialType type) {
             this.name = materialName;
-        }
-
-        public Builder create(String materialName, MaterialType type) {
             this.type = type;
-            return new Builder(materialName);
         }
 
-        public Builder createBaseMaterial() {
+        public static Builder create(String materialName, MaterialType type) {
+            return new Builder(materialName, type)
+                .createBaseMaterial();
+        }
+
+        protected Builder createBaseMaterial() {
             Item.Properties props;
             switch (type) {
                 case RARE_ALLOY -> {
@@ -97,6 +98,7 @@ public class Material {
                     props = baseProperties(baseMaterialKey, 0, Rarity.COMMON);
                     createNugget(Rarity.COMMON);
                 }
+                case SPECIAL -> props = baseProperties(RegistryHelper.itemKey(name), 0, Rarity.UNCOMMON);
                 default -> props = baseProperties(RegistryHelper.itemKey(name), 0, Rarity.COMMON);
             }
             this.baseMaterial = RegistryHelper.item(baseMaterialKey, new Item(props));
