@@ -22,6 +22,8 @@ public class Material {
     @NonNull
     public final Item baseMaterial;
     @Nullable
+    public final Item nugget;
+    @Nullable
     public final ToolSet toolSet;
     @Nullable
     public final BlockSet blockSet;
@@ -38,6 +40,7 @@ public class Material {
 
     public Material(
         @NonNull Item baseMaterial,
+        @Nullable Item nugget,
         @Nullable BlockSet blockSet,
         @Nullable ToolSet toolSet,
         @Nullable ArmorSet armorSet,
@@ -45,6 +48,7 @@ public class Material {
         BiMap<ResourceKey<Block>, Block> extraBlocks
     ) {
         this.baseMaterial = baseMaterial;
+        this.nugget = nugget;
         this.blockSet = blockSet;
         this.toolSet = toolSet;
         this.armorSet = armorSet;
@@ -55,6 +59,7 @@ public class Material {
     public static class Builder {
         private final String name;
         private Item baseMaterial;
+        private Item nugget;
         private ResourceKey<Item> baseMaterialKey;
         private BlockSet blockSet = null;
         private ToolSet toolSet = null;
@@ -63,34 +68,44 @@ public class Material {
         private final BiMap<ResourceKey<Block>, Block> extraBlocks = HashBiMap.create();
 
         private static final String INGOT_POSTFIX = "_ingot";
+        private MaterialType type;
 
         public Builder(String materialName) {
             this.name = materialName;
         }
 
-        public Builder create(String materialName) {
+        public Builder create(String materialName, MaterialType type) {
+            this.type = type;
             return new Builder(materialName);
         }
 
-        public Builder createBaseMaterial(MaterialType type) {
+        public Builder createBaseMaterial() {
             Item.Properties props;
             switch (type) {
                 case RARE_ALLOY -> {
                     baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
                     props = baseProperties(baseMaterialKey, 0, Rarity.RARE);
+                    createNugget(Rarity.RARE);
                 }
                 case ALLOY -> {
                     baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
                     props = baseProperties(baseMaterialKey, 0, Rarity.UNCOMMON);
+                    createNugget(Rarity.UNCOMMON);
                 }
                 case INGOT -> {
                     baseMaterialKey = RegistryHelper.itemKey(name);
                     props = baseProperties(baseMaterialKey, 0, Rarity.COMMON);
+                    createNugget(Rarity.COMMON);
                 }
                 default -> props = baseProperties(RegistryHelper.itemKey(name), 0, Rarity.COMMON);
             }
             this.baseMaterial = RegistryHelper.item(baseMaterialKey, new Item(props));
             return this;
+        }
+
+        protected void createNugget(Rarity rarity) {
+            var key = RegistryHelper.itemKey(name + "_nugget");
+            this.nugget = RegistryHelper.item(key, new Item(baseProperties(key, 0, rarity)));
         }
 
         public Builder createBlockSetFromBuilder(Identifier miningLevel, Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
@@ -134,10 +149,10 @@ public class Material {
                 throw new IllegalStateException("Base material must be registered! Call 'Material#createBaseMaterial()' on the Material builder.");
             }
             registerExtras();
-            return new Material(baseMaterial, blockSet, toolSet, armorSet, extraItems, extraBlocks);
+            return new Material(baseMaterial, nugget, blockSet, toolSet, armorSet, extraItems, extraBlocks);
         }
 
-        private void registerExtras() {
+        protected void registerExtras() {
             // TODO - Register both extra items and blocks
         }
     }
