@@ -2,8 +2,8 @@ package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.entity.BanglumNukeEntity;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.entity.*;
@@ -53,8 +53,8 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
                     poseStack.translate(x, y, z);
 
                     BlockState neededState = (x + y + z) % 2 == 0
-                        ? MythicBlocks.BANGLUM.getStorageBlock().defaultBlockState()
-                        : MythicBlocks.MORKITE.getStorageBlock().defaultBlockState();
+                        ? MythicMaterials.BANGLUM.blockSet.storage().defaultBlockState()
+                        : MythicMaterials.MORKITE.blockSet.storage().defaultBlockState();
                     TntMinecartRenderer.submitWhiteSolidBlock(
                         neededState, poseStack, submitNodeCollector, nukeRenderState.lightCoords, fuse / 5 % 2 == 0, nukeRenderState.outlineColor
                     );

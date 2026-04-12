@@ -1,11 +1,7 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.block.BlockSet;
-import com.mythicmetals.block.MythicBlocks;
-import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.HolderLookup;
 import java.util.concurrent.CompletableFuture;
 

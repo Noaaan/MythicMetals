@@ -1,25 +1,9 @@
 package com.mythicmetals.data;
 
 
-import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.block.BlockSet;
-import com.mythicmetals.block.MythicBlocks;
-import com.mythicmetals.item.ItemSet;
-import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.item.tools.ToolSet;
-import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.tags.TagAppender;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 

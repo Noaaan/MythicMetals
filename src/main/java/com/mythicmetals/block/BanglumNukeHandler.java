@@ -2,6 +2,7 @@ package com.mythicmetals.block;
 
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.BanglumNukeEntity;
+import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.registry.RegisterSounds;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
@@ -24,8 +25,8 @@ public class BanglumNukeHandler {
 
             var targetBlock = world.getBlockState(hitResult.getBlockPos());
 
-            if (!targetBlock.is(MythicBlocks.BANGLUM.getStorageBlock())
-                && !targetBlock.is(MythicBlocks.MORKITE.getStorageBlock()))
+            if (!targetBlock.is(MythicMaterials.BANGLUM.blockSet.storage())
+                && !targetBlock.is(MythicMaterials.MORKITE.blockSet.storage()))
                 return InteractionResult.PASS;
 
             var pos = hitResult.getBlockPos();
@@ -51,8 +52,8 @@ public class BanglumNukeHandler {
         BlockState state = world.getBlockState(dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING)));
         var pos = dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING));
 
-        if (!state.is(MythicBlocks.BANGLUM.getStorageBlock())
-            && !state.is(MythicBlocks.MORKITE.getStorageBlock()))
+        if (!state.is(MythicMaterials.BANGLUM.blockSet.storage())
+            && !state.is(MythicMaterials.MORKITE.blockSet.storage()))
             return false;
 
         for (int x = 0; x < 3; x++) {
@@ -76,8 +77,8 @@ public class BanglumNukeHandler {
                     if (ox == 1 && oy == 1 && oz == 1) continue;
 
                     BlockState neededState = (ox + oy + oz) % 2 == 0
-                        ? MythicBlocks.BANGLUM.getStorageBlock().defaultBlockState()
-                        : MythicBlocks.MORKITE.getStorageBlock().defaultBlockState();
+                        ? MythicMaterials.BANGLUM.blockSet.storage().defaultBlockState()
+                        : MythicMaterials.MORKITE.blockSet.storage().defaultBlockState();
 
                     mutablePos.set(x + ox, y + oy, z + oz);
 

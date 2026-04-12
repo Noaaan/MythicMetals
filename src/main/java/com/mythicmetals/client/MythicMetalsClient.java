@@ -3,7 +3,6 @@ package com.mythicmetals.client;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.CustomArmorModelItem;
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.CustomArmorModel;
 import com.mythicmetals.client.models.MythicModelHandler;
@@ -17,14 +16,12 @@ import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.tools.HammerBase;
 import com.mythicmetals.item.tools.MythrilDrill;
 import com.mythicmetals.misc.*;
-import io.wispforest.owo.ui.core.Color;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
-import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -35,23 +32,16 @@ import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.*;
-import java.util.ArrayList;
 
 public class MythicMetalsClient implements ClientModInitializer {
 
@@ -81,10 +71,11 @@ public class MythicMetalsClient implements ClientModInitializer {
         CarmotShieldHudHandler.init();
         ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
-        BlockRenderLayerMap.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, ChunkSectionLayer.CUTOUT);
-        BlockRenderLayerMap.putBlock(MythicBlocks.PALLADIUM_RAIL, ChunkSectionLayer.SOLID);
-        BlockRenderLayerMap.putBlock(MythicBlocks.AQUARIUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(MythicBlocks.KYBER.getStorageBlock(), ChunkSectionLayer.TRANSLUCENT);
+        // FIXME - Translucent blocks
+        //BlockRenderLayerMap.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, ChunkSectionLayer.CUTOUT);
+        //BlockRenderLayerMap.putBlock(MythicBlocks.PALLADIUM_RAIL, ChunkSectionLayer.SOLID);
+        //BlockRenderLayerMap.putBlock(MythicBlocks.AQUARIUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        //BlockRenderLayerMap.putBlock(MythicBlocks.KYBER.getStorageBlock(), ChunkSectionLayer.TRANSLUCENT);
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -253,21 +244,22 @@ public class MythicMetalsClient implements ClientModInitializer {
                 lines.add(index, Component.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
             }
 
-            if (item.equals(MythicItems.Mats.BANGLUM_CHUNK) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
-                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
-            }
-            if (item.equals(MythicItems.Mats.AQUARIUM_PEARL)) {
-                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
-            }
-            if (item.equals(MythicItems.Mats.CARMOT_STONE)) {
-                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
-            }
-            if (item.equals(MythicItems.Mats.STORMYX_SHELL)) {
-                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").withStyle(ChatFormatting.LIGHT_PURPLE));
-            }
-            if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
-                lines.add(index, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
-            }
+            // FIXME - Migrate to tags + rich translations
+//            if (item.equals(MythicItems.Mats.BANGLUM_CHUNK) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
+//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
+//            }
+//            if (item.equals(MythicItems.Mats.AQUARIUM_PEARL)) {
+//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
+//            }
+//            if (item.equals(MythicItems.Mats.CARMOT_STONE)) {
+//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
+//            }
+//            if (item.equals(MythicItems.Mats.STORMYX_SHELL)) {
+//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").withStyle(ChatFormatting.LIGHT_PURPLE));
+//            }
+//            if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
+//                lines.add(index, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
+//            }
 
             if (stack.has(MythicDataComponents.BRANDING)) {
                 var component = stack.getOrDefault(MythicDataComponents.BRANDING, new BrandingComponent(0));

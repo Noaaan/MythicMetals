@@ -1,7 +1,7 @@
 package com.mythicmetals.data.worldgen;
 
 import com.google.common.collect.ImmutableList;
-import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
@@ -21,36 +21,36 @@ public class MythicOreRules {
 
     // Defines a list of targets, which can check for multiple blocks and dynamically replace them when generating ore
     public static final ImmutableList<OreConfiguration.TargetBlockState> ADAMANTITE_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.ADAMANTITE.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.ADAMANTITE.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.ADAMANTITE.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.ADAMANTITE.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> CARMOT_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.CARMOT.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.CARMOT.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.CARMOT.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.CARMOT.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> MYTHRIL_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.MYTHRIL.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.MYTHRIL.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.MYTHRIL.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.MYTHRIL.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> MORKITE_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.MORKITE.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.MORKITE.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.MORKITE.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.MORKITE.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> ORICHALCUM_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.ORICHALCUM.getOre().defaultBlockState()),
-        OreConfiguration.target(TUFF_RULE, MythicBlocks.ORICHALCUM.getOreVariant("tuff").defaultBlockState()),
-        OreConfiguration.target(SMOOTH_BASALT_RULE, MythicBlocks.ORICHALCUM.getOreVariant("smooth_basalt").defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.ORICHALCUM.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.ORICHALCUM.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(TUFF_RULE, MythicMaterials.ORICHALCUM.blockSet.oreVariants().get("tuff").getB().defaultBlockState()),
+        OreConfiguration.target(SMOOTH_BASALT_RULE, MythicMaterials.ORICHALCUM.blockSet.oreVariants().get("smooth_basalt").getB().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.ORICHALCUM.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> PROMETHEUM_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.PROMETHEUM.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.PROMETHEUM.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.PROMETHEUM.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.PROMETHEUM.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> RUNITE_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.RUNITE.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.RUNITE.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.RUNITE.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.RUNITE.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> STARRITE_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.STARRITE.getOre().defaultBlockState()),
-        OreConfiguration.target(CALCITE_RULE, MythicBlocks.STARRITE.getOreVariant("calcite").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.STARRITE.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(CALCITE_RULE, MythicMaterials.STARRITE.blockSet.oreVariants().get("calcite").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> STORMYX_TARGETS = ImmutableList.of(
-        OreConfiguration.target(NETHERRACK_RULE, MythicBlocks.STORMYX.getOre().defaultBlockState()),
-        OreConfiguration.target(BLACKSTONE_RULE, MythicBlocks.STORMYX.getOreVariant("blackstone").defaultBlockState()));
+        OreConfiguration.target(NETHERRACK_RULE, MythicMaterials.STORMYX.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(BLACKSTONE_RULE, MythicMaterials.STORMYX.blockSet.oreVariants().get("blackstone").getB().defaultBlockState()));
     public static final ImmutableList<OreConfiguration.TargetBlockState> UNOBTAINIUM_TARGETS = ImmutableList.of(
-        OreConfiguration.target(STONE_RULE, MythicBlocks.UNOBTAINIUM.getOre().defaultBlockState()),
-        OreConfiguration.target(DEEPSLATE_RULE, MythicBlocks.UNOBTAINIUM.getOreVariant("deepslate").defaultBlockState()));
+        OreConfiguration.target(STONE_RULE, MythicMaterials.UNOBTAINIUM.blockSet.ore().defaultBlockState()),
+        OreConfiguration.target(DEEPSLATE_RULE, MythicMaterials.UNOBTAINIUM.blockSet.oreVariants().get("deepslate").getB().defaultBlockState()));
 
 }

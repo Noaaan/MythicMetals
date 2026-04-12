@@ -11,13 +11,10 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.block.BlockSet;
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.StringUtilsAtHome;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -29,8 +26,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.commands.LootCommand;
-import net.minecraft.server.permissions.PermissionSet;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.Item;
@@ -41,7 +36,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -116,11 +110,6 @@ public final class MythicCommands {
                 .executes(MythicCommands::exportArmor)
                 .build();
 
-            var placeDisplay = Commands.argument("material", StringArgumentType.word())
-                .suggests(MythicCommands::material)
-                .executes(MythicCommands::placeMythicDisplay)
-                .build();
-
             var lootTables = Commands.argument("loot_table", ResourceOrIdArgument.LootTableArgument.lootTable(buildContext))
                 .suggests((context, builder) -> {
                     var lootTableRegistry = context.getSource().getServer().registryAccess().get(Registries.LOOT_TABLE).orElseThrow();
@@ -161,7 +150,6 @@ public final class MythicCommands {
             range.addChild(rangeType);
             loot.addChild(lootTables);
             armorStand.addChild(summonTrims);
-            display.addChild(placeDisplay);
             midas.addChild(giveMidas);
 
             // Add commands to root
@@ -259,7 +247,7 @@ public final class MythicCommands {
     }
 
     /**
-     * Place every block set from {@link MythicBlocks} across the YZ axis
+     * Place every block set across the YZ axis
      *
      * @param context     ServerCommandSource Command Context
      * @param extraBlocks Map which can be used to insert extra blocks for a specific block set
@@ -270,97 +258,33 @@ public final class MythicCommands {
         AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
         AtomicInteger y = new AtomicInteger(((int) source.getPosition().y));
         int z = ((int) source.getPosition().z);
-        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-            y.set(((int) source.getPosition().y));
-            if (blockSet.getOre() != null) {
-                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOre().defaultBlockState());
-            }
-            blockSet.getOreVariants().forEach(block -> {
-                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), block.defaultBlockState());
-            });
-            if (blockSet.getOreStorageBlock() != null) {
-                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().defaultBlockState());
-            }
-            if (blockSet.getStorageBlock() != null) {
-                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().defaultBlockState());
-            }
-            if (blockSet.getAnvil() != null) {
-                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().defaultBlockState());
-            }
-            if (extraBlocks.containsKey(name)) {
-                extraBlocks.get(name).forEach(extraBlock -> {
-                    world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), extraBlock.defaultBlockState());
-                });
-            }
-            x.incrementAndGet();
-        });
+        // FIXME
+//        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
+//            y.set(((int) source.getPosition().y));
+//            if (blockSet.getOre() != null) {
+//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOre().defaultBlockState());
+//            }
+//            blockSet.getOreVariants().forEach(block -> {
+//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), block.defaultBlockState());
+//            });
+//            if (blockSet.getOreStorageBlock() != null) {
+//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().defaultBlockState());
+//            }
+//            if (blockSet.getStorageBlock() != null) {
+//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().defaultBlockState());
+//            }
+//            if (blockSet.getAnvil() != null) {
+//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().defaultBlockState());
+//            }
+//            if (extraBlocks.containsKey(name)) {
+//                extraBlocks.get(name).forEach(extraBlock -> {
+//                    world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), extraBlock.defaultBlockState());
+//                });
+//            }
+//            x.incrementAndGet();
+//        });
         source.sendSuccess(() -> Component.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
         return 0;
-    }
-
-    public static int placeMythicDisplay(CommandContext<CommandSourceStack> context) {
-        int placements = -1;
-        var material = StringArgumentType.getString(context, "material");
-
-        if (!MythicTools.TOOL_MAP.containsKey(material) && !MythicArmor.ARMOR_MAP.containsKey(material) && MythicBlocks.BLOCKSET_MAP.containsKey(material)) {
-            MythicMetals.LOGGER.error("Failed to find material: {}", material);
-            context.getSource().sendSuccess(() -> Component.literal("Could not find any items for the material %s".formatted(material)), false);
-            return -1;
-        }
-
-        // place the base structure
-        var world = context.getSource().getLevel();
-        var startPos = context.getSource().getEntity().blockPosition();
-
-        placeStructure(world, startPos);
-
-        if (material.equals("all")) {
-            // oh dear god
-        }
-
-        if (MythicTools.TOOL_MAP.containsKey(material)) {
-            // TODO - I like item frames more, unfortunately...
-//            var toolSet = MythicTools.TOOL_MAP.get(material);
-//            var displayEntitySword = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-//            var displayEntityPickaxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-//            var displayEntityAxe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-//            var displayEntityShovel = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-//            var displayEntityHoe = new DisplayEntity.ItemDisplayEntity(EntityType.ITEM_DISPLAY, world);
-//
-//            displayEntitySword.setItemStack(toolSet.getSword().getDefaultStack());
-//            displayEntityPickaxe.setItemStack(toolSet.getPickaxe().getDefaultStack());
-//            displayEntityAxe.setItemStack(toolSet.getAxe().getDefaultStack());
-//            displayEntityShovel.setItemStack(toolSet.getShovel().getDefaultStack());
-//            displayEntityHoe.setItemStack(toolSet.getHoe().getDefaultStack());
-//
-//            displayEntitySword.setPos(startPos.getX() + 1.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-//            displayEntityPickaxe.setPos(startPos.getX() + 2.5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-//            displayEntityAxe.setPos(startPos.getX() + 3.75, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-//            displayEntityShovel.setPos(startPos.getX() + 5, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-//            displayEntityHoe.setPos(startPos.getX() + 6.25, startPos.getY() + 3.5, startPos.getZ() + 1.2);
-//
-//            displayEntitySword.setYaw(180);
-//            displayEntityPickaxe.setYaw(180);
-//            displayEntityAxe.setYaw(180);
-//            displayEntityShovel.setYaw(180);
-//            displayEntityHoe.setYaw(180);
-//
-//            world.spawnEntity(displayEntitySword);
-//            world.spawnEntity(displayEntityPickaxe);
-//            world.spawnEntity(displayEntityAxe);
-//            world.spawnEntity(displayEntityShovel);
-//            world.spawnEntity(displayEntityHoe);
-        }
-
-        if (MythicArmor.ARMOR_MAP.containsKey(material)) {
-
-        }
-
-        if (MythicBlocks.BLOCKSET_MAP.containsKey(material)) {
-
-        }
-
-        return placements;
     }
 
     private static void placeStructure(Level world, BlockPos start) {
@@ -434,16 +358,17 @@ public final class MythicCommands {
     private static int exportOreData(CommandContext<CommandSourceStack> context) {
         var oreConfig = OreConfigArgumentType.getOreConfig(context, "ore-config");
         var source = context.getSource();
-        var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
+        // FIXME
+        //var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
 
-        String oreName = StringUtilsAtHome.toTitleCase(blockSet.getName() + " Ores");
+//        String oreName = StringUtilsAtHome.toTitleCase(blockSet.getName() + " Ores");
+//
+//        String template = WikiExporter.createOreTemplate(oreName, blockSet, oreConfig);
 
-        String template = WikiExporter.createOreTemplate(oreName, blockSet, oreConfig);
+//        source.sendSuccess(() -> Component.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
+//        MythicMetals.LOGGER.info(template);
 
-        source.sendSuccess(() -> Component.literal("Exported ore stats for %s to wiki format".formatted(oreName)), false);
-        MythicMetals.LOGGER.info(template);
-
-        return 2;
+        return 1;
     }
 
     /**

@@ -64,7 +64,7 @@ public class MythicItemModelProvider extends FabricModelProvider {
         });
         itemModelGenerator.generateFlatItem(MythicTools.BANGLUM_TNT_MINECART, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.PALLADIUM_MINECART, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MythicTools.CARMOT_BELL, ModelTemplates.FLAT_ITEM);
+//        itemModelGenerator.generateFlatItem(MythicTools.CARMOT_BELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.STAR_PLATINUM_ARROW, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.RUNITE_ARROW, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.RED_AEGIS_SWORD, ModelTemplates.FLAT_HANDHELD_ITEM);

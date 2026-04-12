@@ -1,7 +1,9 @@
 package com.mythicmetals.mixin;
 
+import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.block.ConduitPowered;
-import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterPointOfInterests;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -28,8 +30,8 @@ public class ConduitBlockEntityMixin {
     @Inject(method = "<clinit>", at = @At("TAIL"))
     private static void mythicmetals$extendConduitArray(CallbackInfo ci) {
         List<Block> blocks = Arrays.stream(VALID_BLOCKS).collect(Collectors.toList());
-        blocks.add(MythicBlocks.AQUARIUM_GLASS);
-        blocks.add(MythicBlocks.AQUARIUM.getStorageBlock());
+        blocks.add(MythicMaterials.AQUARIUM.blockSet.storage());
+        blocks.add(MythicMaterials.AQUARIUM.getExtraBlocks().get(RegistryHelper.blockKey("aquarium_glass")));
 
         VALID_BLOCKS = blocks.toArray(VALID_BLOCKS);
     }

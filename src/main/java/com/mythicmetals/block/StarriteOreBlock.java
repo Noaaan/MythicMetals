@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class StarriteOreBlock extends DropExperienceBlock {
-    public StarriteOreBlock(Properties settings, UniformInt uniformIntProvider) {
-        super(uniformIntProvider, settings);
+    public StarriteOreBlock(Properties properties, UniformInt uniformIntProvider) {
+        super(uniformIntProvider, properties);
     }
 
     @Override

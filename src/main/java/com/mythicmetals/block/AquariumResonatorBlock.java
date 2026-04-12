@@ -18,7 +18,7 @@ public class AquariumResonatorBlock extends BaseEntityBlock {
 
     public static final MapCodec<AquariumResonatorBlock> CODEC = simpleCodec(AquariumResonatorBlock::new);
 
-    protected AquariumResonatorBlock(Properties settings) {
+    public AquariumResonatorBlock(Properties settings) {
         super(settings);
         this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
     }

@@ -1,8 +1,8 @@
 package com.mythicmetals.command;
 
 
+import com.mythicmetals.api.v2.BlockSet;
 import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.block.BlockSet;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
@@ -188,15 +188,15 @@ public class WikiExporter {
 
         output.append(ADMONITION_HEADER);
         output.append(ADMONIITION_TOP_IMAGE.formatted(
-            translationStorage.getOrDefault(blockSet.getOre().getDescriptionId()),
-            "../../assets/mythicmetals/%s.png".formatted(blockSet.getName() + "_ore")
+            translationStorage.getOrDefault(blockSet.ore().getDescriptionId()),
+            "../../assets/mythicmetals/%s.png".formatted(blockSet.name() + "_ore")
         ));
 
-        blockSet.getOreVariantsMap().forEach((variantName, block) -> {
-            String variantOreName = translationStorage.getOrDefault(block.getDescriptionId());
+        blockSet.oreVariants().forEach((variantName, block) -> {
+            String variantOreName = translationStorage.getOrDefault(block.getB().getDescriptionId());
             output.append(ADMONIITION_TOP_IMAGE.formatted(
                 variantOreName,
-                "../../assets/mythicmetals/" + variantName + "_" + blockSet.getName() + "_ore.png"
+                "../../assets/mythicmetals/" + variantName + "_" + blockSet.name() + "_ore.png"
             ));
         });
 

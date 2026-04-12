@@ -1,11 +1,11 @@
 package com.mythicmetals.entity;
 
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BanglumTntMinecartEntity extends MinecartTNT {
@@ -24,7 +24,9 @@ public class BanglumTntMinecartEntity extends MinecartTNT {
 
     @Override
     public BlockState getDefaultDisplayBlockState() {
-        return MythicBlocks.BANGLUM_TNT_BLOCK.defaultBlockState();
+        // FIXME
+        return Blocks.BRAIN_CORAL_BLOCK.defaultBlockState();
+//        return MythicBlocks.BANGLUM_TNT_BLOCK.defaultBlockState();
     }
 
     @Override

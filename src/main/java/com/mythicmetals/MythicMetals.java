@@ -3,7 +3,6 @@ package com.mythicmetals;
 import com.mythicmetals.ability.Abilities;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BanglumNukeHandler;
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
 import com.mythicmetals.component.MythicDataComponents;
@@ -70,7 +69,6 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
-        MythicBlocks.init();
         MythicMaterials.init();
         MythicDataComponents.init();
         MythicPotions.init();
@@ -85,7 +83,7 @@ public class MythicMetals implements ModInitializer {
         TABBED_GROUP.initialize();
         FuelRegistryEvents.BUILD.register((builder, context) -> {
             builder.add(MythicItems.Mats.MORKITE, 1200);
-            builder.add(MythicBlocks.MORKITE.getStorageBlock(), 12800);
+            builder.add(MythicMaterials.MORKITE.blockSet.storage(), 12000);
         });
         MythicResourceConditions.init();
         MythicLootConditions.init();

@@ -1,0 +1,21 @@
+package com.mythicmetals.item;
+
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+
+import static com.mythicmetals.misc.RegistryHelper.blockKey;
+import static com.mythicmetals.misc.RegistryHelper.itemKey;
+
+public class MythicResourceKeys {
+    public static final ResourceKey<Block> AQUARIUM_GLASS = blockKey("aquarium_glass");
+    public static final ResourceKey<Block> AQUARIUM_RESONATOR = blockKey("aquarium_resonator");
+    public static final ResourceKey<Block> BANGLUM_NUKE_CORE = blockKey("banglum_nuke_core");
+    public static final ResourceKey<Block> BANGLUM_TNT = blockKey("banglum_tnt");
+    public static final ResourceKey<Block> CARMOT_BELL = blockKey("carmot_bell");
+    public static final ResourceKey<Block> CARMOT_NUKE_CORE = blockKey("carmot_nuke_core");
+    public static final ResourceKey<Block> ENCHANTED_MIDAS_GOLD_BLOCK = blockKey("enchanted_midas_gold_block");
+    public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
+    public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
+    public static final ResourceKey<Block> SPONGE_NUKE_CORE = blockKey("sponge_nuke_core");
+}

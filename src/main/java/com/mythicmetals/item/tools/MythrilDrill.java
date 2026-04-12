@@ -1,29 +1,23 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
-import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,20 +25,16 @@ import org.joml.Math;
 import org.jspecify.annotations.Nullable;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 import static com.mythicmetals.component.DrillComponent.*;
 
 public class MythrilDrill extends Item implements AutoRepairable {
 
-    /**
-     * Map used to store the different types of drill upgrades
-     * Used for handling tooltips
-     */
+    // TODO - Refactor this to allow any item, and handle tooltips more explicitly
     public static Map<Item, String> drillUpgrades = Util.make(new HashMap<>(), map -> {
         map.put(MythicItems.Mats.AQUARIUM_PEARL, "aquarium");
         map.put(MythicItems.Mats.CARMOT_STONE, "carmot");
-        map.put(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM, "midas_gold");
+//        map.put(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM, "midas_gold");
         map.put(MythicItems.Mats.PROMETHEUM_ROSE, "prometheum");
         map.put(MythicItems.Mats.STORMYX_SHELL, "stormyx");
         map.put(Items.AIR, "empty");
@@ -140,10 +130,11 @@ public class MythrilDrill extends Item implements AutoRepairable {
                 if (upgradeComponent.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
                     miner.setAirSupply(Math.min(miner.getAirSupply() + 60, miner.getMaxAirSupply()));
                 }
+                // FIXME - Handle upgrades
                 // Randomly drop gold from midas gold
-                if (upgradeComponent.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem()) && random.nextInt(30) == 27) {
-                    miner.spawnAtLocation(serverWorld, Items.RAW_GOLD);
-                }
+//                if (upgradeComponent.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem()) && random.nextInt(30) == 27) {
+//                    miner.spawnAtLocation(serverWorld, Items.RAW_GOLD);
+//                }
             }
         }
 

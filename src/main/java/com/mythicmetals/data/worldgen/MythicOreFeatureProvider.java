@@ -1,7 +1,7 @@
 package com.mythicmetals.data.worldgen;
 
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.config.MythicOreConfigs;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -13,19 +13,19 @@ import static com.mythicmetals.data.worldgen.MythicOreRules.*;
 public class MythicOreFeatureProvider {
     public static void initConfiguredFeatures(BootstrapContext<ConfiguredFeature<?, ?>> registerable) {
         // above 0
-        OreFeatureHelper.configuredFeature(registerable, ORE_AQUARIUM, STONE_RULE, MythicBlocks.AQUARIUM.getOre(), MythicOreConfigs.AQUARIUM);
-        OreFeatureHelper.configuredFeature(registerable, ORE_BANGLUM, STONE_RULE, MythicBlocks.BANGLUM.getOre(), MythicOreConfigs.BANGLUM);
-        OreFeatureHelper.configuredFeature(registerable, ORE_KYBER, STONE_RULE, MythicBlocks.KYBER.getOre(), MythicOreConfigs.KYBER);
-        OreFeatureHelper.configuredFeature(registerable, ORE_MANGANESE, STONE_RULE, MythicBlocks.MANGANESE.getOre(), MythicOreConfigs.MANGANESE);
-        OreFeatureHelper.configuredFeature(registerable, ORE_OSMIUM, STONE_RULE, MythicBlocks.OSMIUM.getOre(), MythicOreConfigs.OSMIUM);
-        OreFeatureHelper.configuredFeature(registerable, ORE_PLATINUM, STONE_RULE, MythicBlocks.PLATINUM.getOre(), MythicOreConfigs.PLATINUM);
-        OreFeatureHelper.configuredFeature(registerable, ORE_QUADRILLUM, STONE_RULE, MythicBlocks.QUADRILLUM.getOre(), MythicOreConfigs.QUADRILLUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_AQUARIUM, STONE_RULE, MythicMaterials.AQUARIUM.blockSet.ore(), MythicOreConfigs.AQUARIUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_BANGLUM, STONE_RULE, MythicMaterials.BANGLUM.blockSet.ore(), MythicOreConfigs.BANGLUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_KYBER, STONE_RULE, MythicMaterials.KYBER.blockSet.ore(), MythicOreConfigs.KYBER);
+        OreFeatureHelper.configuredFeature(registerable, ORE_MANGANESE, STONE_RULE, MythicMaterials.MANGANESE.blockSet.ore(), MythicOreConfigs.MANGANESE);
+        OreFeatureHelper.configuredFeature(registerable, ORE_OSMIUM, STONE_RULE, MythicMaterials.OSMIUM.blockSet.ore(), MythicOreConfigs.OSMIUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_PLATINUM, STONE_RULE, MythicMaterials.PLATINUM.blockSet.ore(), MythicOreConfigs.PLATINUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_QUADRILLUM, STONE_RULE, MythicMaterials.QUADRILLUM.blockSet.ore(), MythicOreConfigs.QUADRILLUM);
         OreFeatureHelper.configuredFeature(registerable, ORE_RUNITE, RUNITE_TARGETS, MythicOreConfigs.RUNITE);
-        OreFeatureHelper.configuredFeature(registerable, ORE_SILVER, STONE_RULE, MythicBlocks.SILVER.getOre(), MythicOreConfigs.SILVER);
-        OreFeatureHelper.configuredFeature(registerable, ORE_TIN, STONE_RULE, MythicBlocks.TIN.getOre(), MythicOreConfigs.TIN);
+        OreFeatureHelper.configuredFeature(registerable, ORE_SILVER, STONE_RULE, MythicMaterials.SILVER.blockSet.ore(), MythicOreConfigs.SILVER);
+        OreFeatureHelper.configuredFeature(registerable, ORE_TIN, STONE_RULE, MythicMaterials.TIN.blockSet.ore(), MythicOreConfigs.TIN);
         // usually below 0
         OreFeatureHelper.configuredFeature(registerable, ORE_ADAMANTITE, ADAMANTITE_TARGETS, MythicOreConfigs.ADAMANTITE);
-        OreFeatureHelper.configuredFeature(registerable, ORE_CALCITE_KYBER, CALCITE_RULE, MythicBlocks.KYBER.getOreVariant("calcite"), MythicOreConfigs.CALCITE_KYBER);
+        OreFeatureHelper.configuredFeature(registerable, ORE_CALCITE_KYBER, CALCITE_RULE, MythicMaterials.KYBER.blockSet.oreVariants().get("calcite").getB(), MythicOreConfigs.CALCITE_KYBER);
         OreFeatureHelper.configuredFeature(registerable, ORE_CARMOT, CARMOT_TARGETS, MythicOreConfigs.CARMOT);
         OreFeatureHelper.configuredFeature(registerable, ORE_DEEPSLATE_RUNITE, RUNITE_TARGETS, MythicOreConfigs.DEEPSLATE_RUNITE);
         OreFeatureHelper.configuredFeature(registerable, ORE_MYTHRIL, MYTHRIL_TARGETS, MythicOreConfigs.MYTHRIL);
@@ -35,12 +35,12 @@ public class MythicOreFeatureProvider {
         OreFeatureHelper.configuredFeature(registerable, ORE_STARRITE, STARRITE_TARGETS, MythicOreConfigs.STARRITE);
         OreFeatureHelper.configuredFeature(registerable, ORE_UNOBTAINIUM, UNOBTAINIUM_TARGETS, MythicOreConfigs.UNOBTAINIUM);
         // nether
-        OreFeatureHelper.configuredFeature(registerable, ORE_NETHER_BANGLUM, NETHERRACK_RULE, MythicBlocks.BANGLUM.getOreVariant("nether"), MythicOreConfigs.NETHER_BANGLUM);
-        OreFeatureHelper.configuredFeature(registerable, ORE_MIDAS_GOLD, NETHERRACK_RULE, MythicBlocks.MIDAS_GOLD.getOre(), MythicOreConfigs.MIDAS_GOLD);
-        OreFeatureHelper.configuredFeature(registerable, ORE_PALLADIUM, NETHERRACK_RULE, MythicBlocks.PALLADIUM.getOre(), MythicOreConfigs.PALLADIUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_NETHER_BANGLUM, NETHERRACK_RULE, MythicMaterials.BANGLUM.blockSet.oreVariants().get("nether").getB(), MythicOreConfigs.NETHER_BANGLUM);
+        OreFeatureHelper.configuredFeature(registerable, ORE_MIDAS_GOLD, NETHERRACK_RULE, MythicMaterials.MIDAS_GOLD.blockSet.ore(), MythicOreConfigs.MIDAS_GOLD);
+        OreFeatureHelper.configuredFeature(registerable, ORE_PALLADIUM, NETHERRACK_RULE, MythicMaterials.PALLADIUM.blockSet.ore(), MythicOreConfigs.PALLADIUM);
         OreFeatureHelper.configuredFeature(registerable, ORE_STORMYX, STORMYX_TARGETS, MythicOreConfigs.STORMYX);
         // end ore
-        OreFeatureHelper.configuredFeature(registerable, ORE_END_STARRITE, END_STONE_RULE, MythicBlocks.STARRITE.getOreVariant("end_stone"), MythicOreConfigs.END_STARRITE);
+        OreFeatureHelper.configuredFeature(registerable, ORE_END_STARRITE, END_STONE_RULE, MythicMaterials.STARRITE.blockSet.oreVariants().get("end_stone").getB(), MythicOreConfigs.END_STARRITE);
     }
 
     public static void initPlacedFeatures(BootstrapContext<PlacedFeature> registerable) {

@@ -4,6 +4,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Tuple;
+import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
@@ -34,7 +35,8 @@ public record BlockSet(
     Block anvil,
     Map<String, Tuple<ResourceKey<Block>, Block>> oreVariants
 ) {
-
+    // FIXME - Sounds
+    // TODO - Map Colors and Instruments
     public static class Builder {
         @NonNull
         private ResourceKey<Block> storageKey;
@@ -158,11 +160,33 @@ public record BlockSet(
                 .createAnvil(strength, resistance);
         }
 
+        public Builder createCustomOre(float strength, Function<BlockBehaviour.Properties, Block> func) {
+            return createCustomOre(strength, strength + 1.0f, func);
+        }
+
+        public Builder createCustomOre(float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
+            this.ore = func.apply(baseBlockSettings(oreKey, strength, resistance));
+            return this;
+        }
+
+        public Builder createCustomOreVariant(String variant, float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
+            var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
+            var oreBlock = RegistryHelper.block(
+                variantKey, func.apply(baseBlockSettings(variantKey, strength, resistance))
+            );
+            oreVariants.put(variant, new Tuple<>(variantKey, oreBlock));
+            return this;
+        }
+
         public Builder createOreVariant(String variant, float strength, float resistance) {
+            return createOreVariant(variant, strength, resistance, UniformInt.of(0, 0));
+        }
+
+        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
             var block = RegistryHelper.block(
-                variantKey, new DropExperienceBlock(UniformInt.of(0, 0), baseBlockSettings(variantKey, strength, resistance)
-            ));
+                variantKey, new DropExperienceBlock(xp, baseBlockSettings(variantKey, strength, resistance)
+                ));
             oreVariants.put(variant, new Tuple<>(variantKey, block));
             return this;
         }
@@ -180,5 +204,24 @@ public record BlockSet(
                 .requiresCorrectToolForDrops()
                 .forceSolidOn();
         }
+    }
+
+    public static BlockBehaviour.Properties createBlockSettings(ResourceKey<Block> key, float strength) {
+        return BlockBehaviour.Properties.of()
+            .setId(key)
+            .strength(strength, strength + 0.5f)
+            .requiresCorrectToolForDrops()
+            .forceSolidOn();
+    }
+
+    /**
+     * @apiNote This particular method does NOT call {@link net.minecraft.world.level.block.state.BlockBehaviour.Properties#strength(float)}.
+     * You will need to do that yourself.
+     */
+    public static BlockBehaviour.Properties createBlockSettings(ResourceKey<Block> key) {
+        return BlockBehaviour.Properties.of()
+            .setId(key)
+            .requiresCorrectToolForDrops()
+            .forceSolidOn();
     }
 }

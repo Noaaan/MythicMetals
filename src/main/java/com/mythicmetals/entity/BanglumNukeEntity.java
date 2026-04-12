@@ -2,7 +2,7 @@ package com.mythicmetals.entity;
 
 import com.mojang.authlib.GameProfile;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.block.MythicBlocks;
+import com.mythicmetals.block.NukeCore;
 import com.mythicmetals.damage.BanglumNukeSource;
 import com.mythicmetals.damage.EpicExplosion;
 import com.mythicmetals.damage.MythicDamageTypes;
@@ -23,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -32,9 +33,9 @@ import java.util.function.Predicate;
 
 public class BanglumNukeEntity extends BanglumTntEntity {
     private static final int DEFAULT_FUSE = 200;
-    private static final KeyedEndec<Block> CORE_BLOCK_KEY = MinecraftEndecs.ofRegistry(BuiltInRegistries.BLOCK).keyed("core_block", MythicBlocks.BANGLUM_NUKE_CORE);
+    private static final KeyedEndec<Block> CORE_BLOCK_KEY = MinecraftEndecs.ofRegistry(BuiltInRegistries.BLOCK).keyed("core_block", Blocks.AIR);
 
-    private Block coreBlock = MythicBlocks.BANGLUM_NUKE_CORE;
+    private Block coreBlock = Blocks.AIR;
 
     public BanglumNukeEntity(EntityType<? extends BanglumNukeEntity> entityType, Level world) {
         super(entityType, world);
@@ -75,22 +76,17 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         var world = ((ServerLevel) level());
 
         // Decides what blocks are ignored by the nuke
-        Predicate<BlockState> statePredicate;
+        Predicate<BlockState> statePredicate = state -> true;
 
-        if (coreBlock == MythicBlocks.CARMOT_NUKE_CORE) {
-            // Carmot core - Do not destroy ores
-            statePredicate = state -> !state.is(MythicTags.CARMOT_NUKE_IGNORED);
-        } else if (coreBlock == MythicBlocks.SPONGE_NUKE_CORE) {
-            statePredicate = state -> !state.getFluidState().isEmpty();
-        } else {
-            statePredicate = ignored -> true;
+        if (coreBlock instanceof NukeCore core) {
+            statePredicate = core.getPredicate();
+            baseDamage = (int) (baseDamage * core.damageModifier());
+            radius = (int) (radius * core.radiusModifier());
         }
-
-        // Quadrillum core - Double damage, half range
-        if (coreBlock == MythicBlocks.QUADRILLUM_NUKE_CORE) {
-            radius = (radius * 2) / 3;
-            baseDamage = 2;
-        }
+//        if (coreBlock == MythicBlocks.QUADRILLUM_NUKE_CORE) {
+//            radius = (radius * 2) / 3;
+//            baseDamage = 2;
+//        }
 
         ServerPlayer playerCause = causingEntity instanceof ServerPlayer player ? player : null;
         GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();

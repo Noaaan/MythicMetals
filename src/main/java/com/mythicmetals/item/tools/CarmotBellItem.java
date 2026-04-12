@@ -1,6 +1,5 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.damage.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.registry.RegisterSounds;
@@ -14,14 +13,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 
 public class CarmotBellItem extends BlockItem {
 
     public static final double RANGE = 6.0;
 
-    public CarmotBellItem(Properties settings) {
-        super(MythicBlocks.CARMOT_BELL_BLOCK, settings);
+    public CarmotBellItem(Block block, Properties settings) {
+        super(block, settings);
     }
 
     @Override

@@ -91,13 +91,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         List.of(new MythicAttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE, EquipmentSlotGroup.MAINHAND))
     );
 
-    public static final Item CARMOT_BELL = new CarmotBellItem(new Item.Properties()
-        .setId(RegistryHelper.itemKey("carmot_bell"))
-        .group(MythicMetals.TABBED_GROUP).tab(2)
-        .rarity(Rarity.UNCOMMON)
-        .durability(400)
-    );
-
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2f, new Item.Properties()
         .group(MythicMetals.TABBED_GROUP).tab(2)
         .setId(RegistryHelper.itemKey("orichalcum_hammer")),
@@ -176,7 +169,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     @Override
     public void afterFieldProcessing() {
         RegistryHelper.item("banglum_tnt_minecart", BANGLUM_TNT_MINECART);
-        RegistryHelper.item("carmot_bell", CARMOT_BELL);
         RegistryHelper.item("palladium_minecart", PALLADIUM_MINECART);
         RegistryHelper.item("doge", Frogery.DOGE);
         RegistryHelper.item("froge", Frogery.FROGE);

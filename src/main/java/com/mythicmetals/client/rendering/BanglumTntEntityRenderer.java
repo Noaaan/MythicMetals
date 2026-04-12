@@ -2,13 +2,13 @@ package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.mythicmetals.block.MythicBlocks;
 import com.mythicmetals.entity.BanglumTntEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.TntRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.Blocks;
 
 public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, TntRenderState> {
 
@@ -51,7 +51,9 @@ public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, T
     public void extractRenderState(BanglumTntEntity tntEntity, TntRenderState tntEntityRenderState, float f) {
         super.extractRenderState(tntEntity, tntEntityRenderState, f);
         tntEntityRenderState.fuseRemainingInTicks = tntEntity.getFuse() - f + 1.0F;
-        tntEntityRenderState.blockState = MythicBlocks.BANGLUM_TNT_BLOCK.defaultBlockState();
+        // FIXME
+        tntEntityRenderState.blockState = Blocks.BRAIN_CORAL.defaultBlockState();
+//        tntEntityRenderState.blockState = MythicBlocks.BANGLUM_TNT_BLOCK.defaultBlockState();
     }
 
 }
