@@ -16,55 +16,23 @@ import org.jspecify.annotations.Nullable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-public class Material {
-    public final String name;
-    @NonNull
-    public final Item baseMaterial;
-    @Nullable
-    public final Item nugget;
-    @Nullable
-    public final ToolSet toolSet;
-    @Nullable
-    public final BlockSet blockSet;
-    @Nullable
-    public final ArmorSet armorSet;
-
-    private final BiMap<ResourceKey<Item>, Item> extraItems;
-
-    private final BiMap<ResourceKey<Block>, Block> extraBlocks;
+public record Material(
+    String name,
+    @NonNull Item baseMaterial,
+    @Nullable Item nugget,
+    @Nullable Item rawOre,
+    @Nullable BlockSet blockSet,
+    @Nullable ToolSet toolSet,
+    @Nullable ArmorSet armorSet,
+    BiMap<ResourceKey<Item>, Item> extraItems,
+    BiMap<ResourceKey<Block>, Block> extraBlocks
+) {
 
     public static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
-
     public static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
     public static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.location();
     public static final Identifier NETHERITE_MINING_LEVEL = RegistryHelper.id("needs_netherite_tool");
     public static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
-    public Material(
-        String name, @NonNull Item baseMaterial,
-        @Nullable Item nugget,
-        @Nullable BlockSet blockSet,
-        @Nullable ToolSet toolSet,
-        @Nullable ArmorSet armorSet,
-        BiMap<ResourceKey<Item>, Item> extraItems,
-        BiMap<ResourceKey<Block>, Block> extraBlocks
-    ) {
-        this.name = name;
-        this.baseMaterial = baseMaterial;
-        this.nugget = nugget;
-        this.blockSet = blockSet;
-        this.toolSet = toolSet;
-        this.armorSet = armorSet;
-        this.extraItems = extraItems;
-        this.extraBlocks = extraBlocks;
-    }
-
-    public BiMap<ResourceKey<Block>, Block> getExtraBlocks() {
-        return extraBlocks;
-    }
-
-    public BiMap<ResourceKey<Item>, Item> getExtraItems() {
-        return extraItems;
-    }
 
     ///
     /// Builder for the [Material] class
@@ -73,6 +41,7 @@ public class Material {
         private final String name;
         private Item baseMaterial;
         private Item nugget;
+        private Item rawOre;
         private ResourceKey<Item> baseMaterialKey;
         private BlockSet blockSet = null;
         private ToolSet toolSet = null;
@@ -105,8 +74,12 @@ public class Material {
                     baseMaterialKey = RegistryHelper.itemKey(name);
                     props = baseProperties(baseMaterialKey, 0, computeRarity(type));
                     createNugget(computeRarity(type));
+                    createRawOre(computeRarity(type));
                 }
-                default -> props = baseProperties(RegistryHelper.itemKey(name), 0, computeRarity(type));
+                default -> {
+                    baseMaterialKey = RegistryHelper.itemKey(name);
+                    props = baseProperties(RegistryHelper.itemKey(name), 0, computeRarity(type));
+                }
             }
             this.baseMaterial = RegistryHelper.item(baseMaterialKey, new Item(props));
             return this;
@@ -123,6 +96,11 @@ public class Material {
         protected void createNugget(Rarity rarity) {
             var key = RegistryHelper.itemKey(name + "_nugget");
             this.nugget = RegistryHelper.item(key, new Item(baseProperties(key, 0, rarity)));
+        }
+
+        private void createRawOre(Rarity rarity) {
+            var key = RegistryHelper.itemKey("raw_" + name);
+            this.rawOre = RegistryHelper.item(key, new Item(baseProperties(key, 0, rarity)));
         }
 
         public Builder createDefaultBlockSet(Identifier miningLevel, float strength) {
@@ -150,8 +128,13 @@ public class Material {
             return this;
         }
 
+        public Builder addExtraItem(ResourceKey<Item> itemKey, Rarity rarity, Function<Item.Properties, Item> function) {
+            extraItems.put(itemKey, RegistryHelper.item(itemKey, function.apply(baseProperties(itemKey, 0, rarity))));
+            return this;
+        }
+
         public Builder addExtraItem(ResourceKey<Item> itemKey, Item item) {
-            extraItems.put(itemKey, item);
+            extraItems.put(itemKey, RegistryHelper.item(itemKey, item));
             return this;
         }
 
@@ -167,23 +150,18 @@ public class Material {
             return addExtraBlock(key, function.apply(BlockSet.createBlockSettings(key)), rarity);
         }
 
-        public Builder addExtraBlock(ResourceKey<Block> key, Block block) {
-            return addExtraBlock(key, block, Rarity.COMMON);
-        }
-
         public Builder addExtraBlock(ResourceKey<Block> key, Block block, Rarity rarity) {
-            extraBlocks.put(key, block);
+            extraBlocks.put(key, RegistryHelper.block(key, block));
             var itemKey = RegistryHelper.itemKey(key.identifier().getPath());
-            extraItems.put(itemKey, new BlockItem(block, baseProperties(itemKey, 0, rarity)));
+            extraItems.put(itemKey, RegistryHelper.item(itemKey, new BlockItem(block, baseProperties(itemKey, 0, rarity))));
             return this;
         }
 
         public Builder addExtraBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BiFunction<Block, Item.Properties, Item> itemFunction) {
             var itemKey = RegistryHelper.itemKey(name);
             var blockKey = RegistryHelper.blockKey(name);
-            var block = blockFunction.apply(BlockSet.createBlockSettings(blockKey));
-            extraBlocks.put(blockKey, block);
-            extraItems.put(itemKey, itemFunction.apply(block, baseProperties(itemKey, 0, computeRarity(type))));
+            var block = RegistryHelper.block(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
+            addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, 0, computeRarity(type))));
             return this;
         }
 
@@ -200,14 +178,9 @@ public class Material {
          */
         public Material finish() {
             if (baseMaterial == null) {
-                throw new IllegalStateException("Base material must be registered! Call 'Material#createBaseMaterial()' on the Material builder.");
+                throw new IllegalStateException("Base material must be registered!");
             }
-            registerExtras();
-            return new Material(name, baseMaterial, nugget, blockSet, toolSet, armorSet, extraItems, extraBlocks);
-        }
-
-        protected void registerExtras() {
-            // TODO - Register both extra items and blocks
+            return new Material(name, baseMaterial, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
         }
     }
 }

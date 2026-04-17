@@ -1,17 +1,20 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.api.v2.*;
-import com.mythicmetals.api.v2.BlockSet;
-import com.mythicmetals.armor.MythicArmorMaterials;
+import com.mythicmetals.api.v2.Material;
+import com.mythicmetals.api.v2.MaterialType;
 import com.mythicmetals.block.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.tools.CarmotBellItem;
-import com.mythicmetals.item.tools.MythicToolMaterials;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.MinecartItem;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -19,8 +22,6 @@ import java.util.function.Predicate;
 
 import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.item.MythicResourceKeys.*;
-import static com.mythicmetals.misc.RegistryHelper.blockKey;
-import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
 public class MythicMaterials {
     private MythicMaterials() {
@@ -28,18 +29,19 @@ public class MythicMaterials {
 
     public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
-            .createDefaultBlocks(4.0f)
-            .createOreVariant("deepslate", 5.0f, 6.5f)
+            .createDefaultBlocks(5.0f)
+            .createOreVariant("deepslate", 6.0f, 7.0f)
             .finish()
         )
-        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE)
-        .createDefaultArmor(MythicArmorMaterials.ADAMANTITE)
+//        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE)
+//        .createDefaultArmor(MythicArmorMaterials.ADAMANTITE)
         .finish();
 
     public static final Material AQUARIUM = Material.Builder.create("aquarium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
-        .createDefaultTools(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT)
-        .createDefaultArmor(MythicArmorMaterials.AQUARIUM)
+//        .createDefaultTools(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT)
+//        .createDefaultArmor(MythicArmorMaterials.AQUARIUM)
+        .addExtraItem(AQUARIUM_PEARL, Rarity.UNCOMMON, Item::new)
         .addExtraBlock(
             AQUARIUM_GLASS,
             properties ->
@@ -72,14 +74,15 @@ public class MythicMaterials {
             }
         })
         .addExtraItem(
-            itemKey("banglum_tnt_minecart"),
+            BANGLUM_TNT_MINECART,
             new MinecartItem(
                 MythicEntities.BANGLUM_TNT_MINECART_ENTITY_TYPE,
                 new Item.Properties()
                     .group(MythicMetals.TABBED_GROUP)
-                    .setId(itemKey("banglum_tnt_minecart"))
+                    .setId(BANGLUM_TNT_MINECART)
             )
         )
+        .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
@@ -98,12 +101,13 @@ public class MythicMaterials {
                     .strength(0.5f, 4.0f)
             ), CarmotBellItem::new
         )
-        .addExtraBlock(blockKey("carmot_nuke_core"), new BanglumNukeCore(BlockSet.createBlockSettings(blockKey("carmot_nuke_core"))) {
+        .addExtraBlock(CARMOT_NUKE_CORE, properties -> new BanglumNukeCore(properties) {
             @Override
             public Predicate<BlockState> getPredicate() {
                 return state -> !state.is(MythicTags.CARMOT_NUKE_IGNORED);
             }
         })
+        .addExtraItem(CARMOT_STONE, Rarity.UNCOMMON, Item::new)
         .finish();
 
     public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY)
@@ -112,6 +116,7 @@ public class MythicMaterials {
 
     public static final Material DURASTEEL = Material.Builder.create("durasteel", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
+        .addExtraItem(DURASTEEL_ENGINE, Rarity.UNCOMMON, Item::new)
         .finish();
 
     public static final Material HALLOWED = Material.Builder.create("hallowed", MaterialType.ALLOY)
@@ -152,7 +157,11 @@ public class MythicMaterials {
         .finish();
 
     public static final Material MYTHRIL = Material.Builder.create("mythril", MaterialType.INGOT)
-        .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
+        .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
+            .createDefaultBlocks(5.0f)
+            .createOreVariant("deepslate", 5.5f, 6.5f)
+            .finish()
+        )
         .finish();
 
     public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT)
@@ -174,7 +183,7 @@ public class MythicMaterials {
         .addExtraBlockAndItem("palladium_rail", properties -> new PalladiumRailBlock(
             properties
                 .noCollision()
-                .lightLevel((blockState) -> blockState.hasProperty(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
+                .lightLevel(blockState -> blockState.hasProperty(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
                 .strength(2.5f, 7.0f)
                 .sound(SoundType.METAL)
         ), (block, properties) -> new MinecartItem(
@@ -194,6 +203,7 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 5.0f, 6.5f)
             .finish()
         )
+        .addExtraItem(PROMETHEUM_ROSE, Rarity.UNCOMMON, Item::new)
         .finish();
 
     public static final Material QUADRILLUM = Material.Builder.create("quadrillum", MaterialType.INGOT)
@@ -201,7 +211,11 @@ public class MythicMaterials {
         .finish();
 
     public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT)
-        .createDefaultBlockSet(IRON_MINING_LEVEL, 8.0f)
+        .createBlockSetFromBuilder(IRON_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
+            .createDefaultBlocks(8.0f)
+            .createOreVariant("deepslate", 8.8f, 9f)
+            .finish()
+        )
         .finish();
 
     public static final Material SILVER = Material.Builder.create("silver", MaterialType.INGOT)
@@ -239,6 +253,7 @@ public class MythicMaterials {
             .createOreVariant("blackstone", 5.5f, 6.0f)
             .finish()
         )
+        .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
         .finish();
 
     public static final Material TIN = Material.Builder.create("tin", MaterialType.INGOT)

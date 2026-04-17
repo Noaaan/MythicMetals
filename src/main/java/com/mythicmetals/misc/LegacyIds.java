@@ -5,6 +5,8 @@ import net.minecraft.resources.Identifier;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.mythicmetals.misc.RegistryHelper.id;
+
 public class LegacyIds {
     private LegacyIds() {
     }
@@ -15,6 +17,7 @@ public class LegacyIds {
     // All the identifiers of removed stuff
     private static final Identifier OLD_COPPER_ORE = RegistryHelper.id("copper_ore");
     private static final Identifier OLD_COPPER_INGOT = RegistryHelper.id("copper_ingot");
+    private static final Identifier OLD_COPPER_NUGGET = id("copper_nugget");
     private static final Identifier OLD_TANTALITE_ORE = RegistryHelper.id("tantalite_ore");
     private static final Identifier OLD_TRUESILVER_ORE = RegistryHelper.id("truesilver_ore");
     private static final Identifier OLD_TRUESILVER_INGOT = RegistryHelper.id("truesilver_ingot");
@@ -33,6 +36,7 @@ public class LegacyIds {
     // Identifiers of stuff that replaces them
     private static final Identifier VANILLA_COPPER_ORE = Identifier.parse("copper_ore");
     private static final Identifier VANILLA_COPPER_INGOT = Identifier.parse("copper_ingot");
+    private static final Identifier VANILLA_COPPER_NUGGET = Identifier.parse("copper_nugget");
     private static final Identifier VANILLA_NETHERRACK = Identifier.parse("netherrack");
     private static final Identifier VANILLA_STONE = Identifier.parse("stone");
     private static final Identifier NEW_UNOBTAINIUM = RegistryHelper.id("unobtainium");
@@ -68,6 +72,7 @@ public class LegacyIds {
         LEGACY_BLOCK_IDS.put(OLD_VERMICULITE, VANILLA_STONE);
 
         LEGACY_ITEM_IDS.put(OLD_COPPER_INGOT, VANILLA_COPPER_INGOT);
+        LEGACY_ITEM_IDS.put(OLD_COPPER_NUGGET, VANILLA_COPPER_NUGGET);
         LEGACY_ITEM_IDS.put(OLD_TRUESILVER_INGOT, NEW_PALLADIUM_INGOT);
         LEGACY_ITEM_IDS.put(OLD_AETHERIUM_INGOT, NEW_MYTHRIL_INGOT);
         LEGACY_ITEM_IDS.put(OLD_RAW_AETHERIUM, NEW_MYTHRIL_RAW);
@@ -94,5 +99,6 @@ public class LegacyIds {
         getLegacyItemIds().forEach(BuiltInRegistries.ITEM::addAlias);
         getLegacyBlockIds().forEach(BuiltInRegistries.BLOCK::addAlias);
         BuiltInRegistries.ITEM.addAlias(RegistryHelper.id("star_platinum"), RegistryHelper.id("star_platinum_ingot"));
+        BuiltInRegistries.ITEM.addAlias(id("prometheum_bouquet"), id("prometheum_rose"));
     }
 }

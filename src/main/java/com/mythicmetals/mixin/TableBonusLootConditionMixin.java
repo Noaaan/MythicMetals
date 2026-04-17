@@ -4,6 +4,8 @@ import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.UpgradeComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -39,7 +41,7 @@ public class TableBonusLootConditionMixin {
             return level + 1;
         }
 
-        if (toolCtxStack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2)).hasUpgrade(MythicItems.Mats.CARMOT_STONE)) {
+        if (toolCtxStack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2)).hasUpgrade(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))) {
             return level + 1;
         }
         return level;

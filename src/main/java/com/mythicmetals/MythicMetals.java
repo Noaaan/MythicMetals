@@ -45,7 +45,7 @@ public class MythicMetals implements ModInitializer {
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 
-    public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicItems.STORMYX.getIngot()))
+    public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicMaterials.STORMYX.baseMaterial()))
         .initializer(group -> {
             group.addTab(Icon.of(Items.BRICK), "items", TagKey.create(Registries.ITEM, RegistryHelper.id("item_tab")), false);
             group.addTab(Icon.of(Blocks.BRICKS), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
@@ -60,16 +60,13 @@ public class MythicMetals implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        MythicMaterials.init();
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
-        FieldRegistrationHandler.processSimple(MythicItems.class, false);
-        FieldRegistrationHandler.processSimple(MythicItems.Mats.class, false);
         MythicItems.Templates.init();
-        FieldRegistrationHandler.processSimple(MythicItems.Copper.class, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
-        MythicMaterials.init();
         MythicDataComponents.init();
         MythicPotions.init();
         BanglumNukeHandler.init();
@@ -82,8 +79,8 @@ public class MythicMetals implements ModInitializer {
         MythicEntities.init();
         TABBED_GROUP.initialize();
         FuelRegistryEvents.BUILD.register((builder, context) -> {
-            builder.add(MythicItems.Mats.MORKITE, 1200);
-            builder.add(MythicMaterials.MORKITE.blockSet.storage(), 12000);
+            builder.add(MythicMaterials.MORKITE.baseMaterial(), 1200);
+            builder.add(MythicMaterials.MORKITE.blockSet().storage(), 12000);
         });
         MythicResourceConditions.init();
         MythicLootConditions.init();

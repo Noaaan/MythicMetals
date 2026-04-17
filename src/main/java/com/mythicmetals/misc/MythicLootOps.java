@@ -2,6 +2,7 @@ package com.mythicmetals.misc;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
 import io.wispforest.owo.ops.LootOps;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
@@ -16,10 +17,10 @@ public class MythicLootOps {
 
     public static void init() {
         if (MythicMetals.CONFIG.unobtainium()) {
-            LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.01F, BuiltInLootTables.ANCIENT_CITY.identifier());
-            LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.00042F, BETTER_PIGLIN_BARTERING);
+            LootOps.injectItem(MythicMaterials.UNOBTAINIUM.baseMaterial(), 0.01F, BuiltInLootTables.ANCIENT_CITY.identifier());
+            LootOps.injectItem(MythicMaterials.UNOBTAINIUM.baseMaterial(), 0.00042F, BETTER_PIGLIN_BARTERING);
             if (FabricLoader.getInstance().isModLoaded("custom_piglin_bartering")) {
-                LootOps.injectItem(MythicItems.Mats.UNOBTAINIUM, 0.00042F, CUSTOM_PIGLIN_BARTERING);
+                LootOps.injectItem(MythicMaterials.UNOBTAINIUM.baseMaterial(), 0.00042F, CUSTOM_PIGLIN_BARTERING);
             }
         }
         LootOps.injectItem(MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE, MythicMetals.CONFIG.unobtainiumTemplateChance(), BuiltInLootTables.ANCIENT_CITY.identifier());

@@ -1,6 +1,7 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
@@ -44,7 +45,7 @@ public class StormyxShield extends ShieldItem {
     };
 
     public StormyxShield(Properties settings) {
-        super(settings.repairable(MythicItems.STORMYX.getIngot()));
+        super(settings.repairable(MythicMaterials.STORMYX.baseMaterial()));
     }
 
     @Override

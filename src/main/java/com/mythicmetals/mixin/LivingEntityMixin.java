@@ -9,6 +9,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.duck.WasSpawnedFromCreeper;
 import com.mythicmetals.registry.RegisterCriteria;
@@ -272,7 +273,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (source.getEntity() == null) return;
         if (source.getEntity() instanceof Player attacker1) {
             if (MythicMetals.CONFIG.midasGold() && attacker1.getMainHandItem().is(MythicTags.MIDAS_TOUCH)) {
-                this.spawnAtLocation(world, new ItemStack(MythicItems.MIDAS_GOLD.getRawOre()));
+                this.spawnAtLocation(world, new ItemStack(MythicMaterials.MIDAS_GOLD.rawOre()));
             }
         }
     }

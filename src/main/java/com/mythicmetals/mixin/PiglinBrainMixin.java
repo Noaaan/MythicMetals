@@ -1,6 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.MythicLootOps;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -23,7 +24,7 @@ public class PiglinBrainMixin {
 
     @Inject(method = "isBarterCurrency", at = @At("HEAD"), cancellable = true)
     private static void acceptMidasGold(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (stack.is(MythicItems.MIDAS_GOLD.getIngot())) {
+        if (stack.is(MythicMaterials.MIDAS_GOLD.baseMaterial())) {
             cir.setReturnValue(true);
         }
     }
@@ -36,7 +37,7 @@ public class PiglinBrainMixin {
     @ModifyVariable(method = "getBarterResponseItems", at = @At(value = "LOAD"))
     private static LootTable giveLootForMidasGold(LootTable table, Piglin piglin) {
         var level = piglin.level();
-        if (mythicmetals$cachedBarterItem.is(MythicItems.MIDAS_GOLD.getIngot()) && level.getServer() != null) {
+        if (mythicmetals$cachedBarterItem.is(MythicMaterials.MIDAS_GOLD.baseMaterial()) && level.getServer() != null) {
             return level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, MythicLootOps.BETTER_PIGLIN_BARTERING));
         }
         return table;

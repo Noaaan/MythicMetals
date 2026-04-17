@@ -10,13 +10,13 @@ import java.lang.reflect.Field;
 public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {
 
     public static final BlockEntityType<AquariumResonatorBlockEntity> AQUARIUM_RESONATOR = FabricBlockEntityTypeBuilder
-        .create(AquariumResonatorBlockEntity::new, MythicMaterials.AQUARIUM.getExtraBlocks().get(MythicResourceKeys.AQUARIUM_RESONATOR)).build();
+        .create(AquariumResonatorBlockEntity::new, MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_RESONATOR)).build();
 
     public static final BlockEntityType<EnchantedMidasGoldBlockEntity> ENCHANTED_MIDAS_GOLD_BLOCK =
-        FabricBlockEntityTypeBuilder.create(EnchantedMidasGoldBlockEntity::new, MythicMaterials.MIDAS_GOLD.getExtraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK)).build();
+        FabricBlockEntityTypeBuilder.create(EnchantedMidasGoldBlockEntity::new, MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK)).build();
 
     public static final BlockEntityType<CarmotBellBlockEntity> CARMOT_BELL_BLOCK =
-        FabricBlockEntityTypeBuilder.create(CarmotBellBlockEntity::new, MythicMaterials.CARMOT.getExtraBlocks().get(MythicResourceKeys.CARMOT_BELL)).build();
+        FabricBlockEntityTypeBuilder.create(CarmotBellBlockEntity::new, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL)).build();
 
     @Override
     public boolean shouldProcessField(BlockEntityType<?> value, String identifier, Field field) {

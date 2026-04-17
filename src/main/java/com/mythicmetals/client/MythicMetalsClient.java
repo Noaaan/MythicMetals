@@ -245,16 +245,16 @@ public class MythicMetalsClient implements ClientModInitializer {
             }
 
             // FIXME - Migrate to tags + rich translations
-//            if (item.equals(MythicItems.Mats.BANGLUM_CHUNK) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
+//            if (item.equals(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
 //                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
 //            }
-//            if (item.equals(MythicItems.Mats.AQUARIUM_PEARL)) {
+//            if (item.equals(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
 //                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
 //            }
-//            if (item.equals(MythicItems.Mats.CARMOT_STONE)) {
+//            if (item.equals(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))) {
 //                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
 //            }
-//            if (item.equals(MythicItems.Mats.STORMYX_SHELL)) {
+//            if (item.equals(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))) {
 //                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").withStyle(ChatFormatting.LIGHT_PURPLE));
 //            }
 //            if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {

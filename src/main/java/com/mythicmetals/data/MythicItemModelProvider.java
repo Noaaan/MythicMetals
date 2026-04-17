@@ -1,8 +1,10 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.item.ItemSet;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
@@ -28,18 +30,18 @@ public class MythicItemModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         // Items
-        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.class, ItemSet.class, (itemSet, name, field) -> {
-            itemModelGenerator.generateFlatItem(itemSet.getIngot(), ModelTemplates.FLAT_ITEM);
-            if (itemSet.getRawOre() != null) {
-                itemModelGenerator.generateFlatItem(itemSet.getRawOre(), ModelTemplates.FLAT_ITEM);
+        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
+            itemModelGenerator.generateFlatItem(material.baseMaterial(), ModelTemplates.FLAT_ITEM);
+            if (material.rawOre() != null) {
+                itemModelGenerator.generateFlatItem(material.rawOre(), ModelTemplates.FLAT_ITEM);
             }
-            if (itemSet.getNugget() != null) {
-                itemModelGenerator.generateFlatItem(itemSet.getNugget(), ModelTemplates.FLAT_ITEM);
+            if (material.nugget() != null) {
+                itemModelGenerator.generateFlatItem(material.nugget(), ModelTemplates.FLAT_ITEM);
             }
         });
-        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
-            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
-        });
+//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
+//            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
+//        });
         ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Templates.class, Item.class, (value, name, field) -> {
             itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
         });
@@ -62,8 +64,8 @@ public class MythicItemModelProvider extends FabricModelProvider {
                 itemModelGenerator.generateFlatItem(toolSet.getHoe(), ModelTemplates.FLAT_HANDHELD_ITEM);
             }
         });
-        itemModelGenerator.generateFlatItem(MythicTools.BANGLUM_TNT_MINECART, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(MythicTools.PALLADIUM_MINECART, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_TNT_MINECART), ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(MythicMaterials.PALLADIUM.extraItems().get(MythicResourceKeys.PALLADIUM_MINECART), ModelTemplates.FLAT_ITEM);
 //        itemModelGenerator.generateFlatItem(MythicTools.CARMOT_BELL, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.STAR_PLATINUM_ARROW, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(MythicTools.RUNITE_ARROW, ModelTemplates.FLAT_ITEM);

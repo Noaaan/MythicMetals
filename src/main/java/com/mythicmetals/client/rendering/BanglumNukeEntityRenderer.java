@@ -53,8 +53,8 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
                     poseStack.translate(x, y, z);
 
                     BlockState neededState = (x + y + z) % 2 == 0
-                        ? MythicMaterials.BANGLUM.blockSet.storage().defaultBlockState()
-                        : MythicMaterials.MORKITE.blockSet.storage().defaultBlockState();
+                        ? MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState()
+                        : MythicMaterials.MORKITE.blockSet().storage().defaultBlockState();
                     TntMinecartRenderer.submitWhiteSolidBlock(
                         neededState, poseStack, submitNodeCollector, nukeRenderState.lightCoords, fuse / 5 % 2 == 0, nukeRenderState.outlineColor
                     );

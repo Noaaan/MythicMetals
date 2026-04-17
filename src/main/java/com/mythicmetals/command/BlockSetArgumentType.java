@@ -23,8 +23,8 @@ public class BlockSetArgumentType implements ArgumentType<BlockSet> {
     public static Map<String, BlockSet> BLOCKSET_MAP = Util.make(() -> {
         var map = new HashMap<String, BlockSet>();
         ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
-            if (material.blockSet != null) {
-                map.put(material.name, material.blockSet);
+            if (material.blockSet() != null) {
+                map.put(material.name(), material.blockSet());
             }
         });
         return map;

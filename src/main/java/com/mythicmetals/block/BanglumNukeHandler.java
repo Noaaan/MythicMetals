@@ -25,8 +25,8 @@ public class BanglumNukeHandler {
 
             var targetBlock = world.getBlockState(hitResult.getBlockPos());
 
-            if (!targetBlock.is(MythicMaterials.BANGLUM.blockSet.storage())
-                && !targetBlock.is(MythicMaterials.MORKITE.blockSet.storage()))
+            if (!targetBlock.is(MythicMaterials.BANGLUM.blockSet().storage())
+                && !targetBlock.is(MythicMaterials.MORKITE.blockSet().storage()))
                 return InteractionResult.PASS;
 
             var pos = hitResult.getBlockPos();
@@ -52,8 +52,8 @@ public class BanglumNukeHandler {
         BlockState state = world.getBlockState(dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING)));
         var pos = dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING));
 
-        if (!state.is(MythicMaterials.BANGLUM.blockSet.storage())
-            && !state.is(MythicMaterials.MORKITE.blockSet.storage()))
+        if (!state.is(MythicMaterials.BANGLUM.blockSet().storage())
+            && !state.is(MythicMaterials.MORKITE.blockSet().storage()))
             return false;
 
         for (int x = 0; x < 3; x++) {
@@ -77,8 +77,8 @@ public class BanglumNukeHandler {
                     if (ox == 1 && oy == 1 && oz == 1) continue;
 
                     BlockState neededState = (ox + oy + oz) % 2 == 0
-                        ? MythicMaterials.BANGLUM.blockSet.storage().defaultBlockState()
-                        : MythicMaterials.MORKITE.blockSet.storage().defaultBlockState();
+                        ? MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState()
+                        : MythicMaterials.MORKITE.blockSet().storage().defaultBlockState();
 
                     mutablePos.set(x + ox, y + oy, z + oz);
 

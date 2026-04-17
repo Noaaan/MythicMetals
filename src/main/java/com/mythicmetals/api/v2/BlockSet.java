@@ -38,30 +38,18 @@ public record BlockSet(
     // FIXME - Sounds
     // TODO - Map Colors and Instruments
     public static class Builder {
-        @NonNull
-        private ResourceKey<Block> storageKey;
-        @NonNull
-        private ResourceKey<Item> storageItemKey;
-        @Nullable
-        private ResourceKey<Block> oreKey;
-        @Nullable
-        private ResourceKey<Item> oreItemKey;
-        @Nullable
-        private ResourceKey<Block> rawStorageKey;
-        @Nullable
-        private ResourceKey<Item> rawStorageItemKey;
-        @Nullable
-        private ResourceKey<Block> anvilKey;
-        @Nullable
-        private ResourceKey<Item> anvilItemKey;
-
+        private final @NonNull ResourceKey<Block> storageKey;
+        private final @NonNull ResourceKey<Item> storageItemKey;
+        private final @Nullable ResourceKey<Block> oreKey;
+        private final @Nullable ResourceKey<Item> oreItemKey;
+        private final @Nullable ResourceKey<Block> rawStorageKey;
+        private final @Nullable ResourceKey<Item> rawStorageItemKey;
+        private final @Nullable ResourceKey<Block> anvilKey;
+        private final @Nullable ResourceKey<Item> anvilItemKey;
         protected Block storage;
-        @Nullable
-        protected Block ore;
-        @Nullable
-        protected Block rawStorage;
-        @Nullable
-        protected Block anvil;
+        protected @Nullable Block ore;
+        protected @Nullable Block rawStorage;
+        protected @Nullable Block anvil;
 
         private final String name;
         public final Identifier miningLevel;
@@ -165,7 +153,7 @@ public record BlockSet(
         }
 
         public Builder createCustomOre(float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
-            this.ore = func.apply(baseBlockSettings(oreKey, strength, resistance));
+            this.ore = RegistryHelper.block(oreKey, func.apply(baseBlockSettings(oreKey, strength, resistance)));
             return this;
         }
 
@@ -193,7 +181,7 @@ public record BlockSet(
 
         public Builder createCustomStorageBlock(Function<BlockBehaviour.Properties, Block> settings) {
             var props = BlockBehaviour.Properties.of().setId(storageKey);
-            this.storage = settings.apply(props);
+            this.storage = RegistryHelper.block(storageKey, settings.apply(props));
             return this;
         }
 

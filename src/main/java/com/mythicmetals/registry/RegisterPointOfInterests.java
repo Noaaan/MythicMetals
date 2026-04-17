@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 public class RegisterPointOfInterests {
     public static final PoiType CONDUIT_POWERED_BLOCK = PointOfInterestHelper.register(
         RegistryHelper.id("conduit_powered_block"), 0, 1,
-        MythicMaterials.AQUARIUM.getExtraBlocks().get(MythicResourceKeys.AQUARIUM_RESONATOR)
+        MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_RESONATOR)
     );
 
     public static void init() {

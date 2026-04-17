@@ -3,6 +3,8 @@ package com.mythicmetals.item.tools;
 import com.mythicmetals.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
@@ -32,11 +34,11 @@ public class MythrilDrill extends Item implements AutoRepairable {
 
     // TODO - Refactor this to allow any item, and handle tooltips more explicitly
     public static Map<Item, String> drillUpgrades = Util.make(new HashMap<>(), map -> {
-        map.put(MythicItems.Mats.AQUARIUM_PEARL, "aquarium");
-        map.put(MythicItems.Mats.CARMOT_STONE, "carmot");
+        map.put(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL), "aquarium");
+        map.put(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE), "carmot");
 //        map.put(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM, "midas_gold");
-        map.put(MythicItems.Mats.PROMETHEUM_ROSE, "prometheum");
-        map.put(MythicItems.Mats.STORMYX_SHELL, "stormyx");
+        map.put(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE), "prometheum");
+        map.put(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL), "stormyx");
         map.put(Items.AIR, "empty");
     });
 
@@ -49,7 +51,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
         if (clickType == ClickAction.SECONDARY) {
             var drillComponent = drill.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
             // If right-clicking Drill onto Morkite, try to fuel it
-            if (slot.getItem().getItem().equals(MythicItems.Mats.MORKITE)) {
+            if (slot.getItem().getItem().equals(MythicMaterials.MORKITE.baseMaterial())) {
                 int morkiteCount = slot.getItem().getCount();
                 if (slot.tryRemove((MAX_FUEL - drillComponent.fuel()) / FUEL_CONSTANT, morkiteCount, player).isPresent()) {
                     int fuel = Mth.clamp(drillComponent.fuel() + (morkiteCount * FUEL_CONSTANT), 0, MAX_FUEL);
@@ -67,7 +69,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
         if (clickType == ClickAction.SECONDARY) {
             var cursorItem = cursorStack.getItem();
             // If right-clicking with Morkite on Drill, try to fuel it
-            if (cursorItem.equals(MythicItems.Mats.MORKITE)) {
+            if (cursorItem.equals(MythicMaterials.MORKITE.baseMaterial())) {
                 var drillComponent = drill.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
 
                 // Don't bother interacting if the Drills fuel is full
@@ -127,7 +129,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
                 }
 
                 // Restore air when mining ores underwater
-                if (upgradeComponent.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
+                if (upgradeComponent.hasUpgrade(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
                     miner.setAirSupply(Math.min(miner.getAirSupply() + 60, miner.getMaxAirSupply()));
                 }
                 // FIXME - Handle upgrades
@@ -147,7 +149,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
         if (stack.get(MythicDataComponents.UPGRADES) == null) return;
         var drillComponent = stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT);
         var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-        if (upgradeComponent.hasUpgrade(MythicItems.Mats.PROMETHEUM_ROSE)) {
+        if (upgradeComponent.hasUpgrade(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE))) {
             // Initialize auto repair upgrades
             if (!stack.has(MythicDataComponents.PROMETHEUM)) {
                 stack.set(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
@@ -212,7 +214,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
 //            attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
 //            changes = true;
 //        }
-//        if (upgrades.hasUpgrade(MythicItems.Mats.AQUARIUM_PEARL)) {
+//        if (upgrades.hasUpgrade(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
 //            var modifier = new AttributeModifier(
 //                RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
 //                3.0,

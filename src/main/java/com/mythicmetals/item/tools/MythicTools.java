@@ -45,15 +45,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final ToolSet ADAMANTITE = new ToolSet("adamantite", MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
     public static final ToolSet AQUARIUM = new AquariumToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet BANGLUM = new ToolSet("banglum", MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final Item BANGLUM_TNT_MINECART = new MinecartItem(MythicEntities.BANGLUM_TNT_MINECART_ENTITY_TYPE, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(RegistryHelper.itemKey("banglum_tnt_minecart")));
-    public static final Item PALLADIUM_MINECART = new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(RegistryHelper.itemKey("palladium_minecart"))) {
-    // FIXME - Tooltip
-        //        @Override
-//        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-//            super.appendHoverText(stack, context, tooltip, type);
-//            tooltip.add(Component.translatable("item.mythicmetals.palladium_minecart.description").withColor(UsefulSingletonForColorUtil.MetalColors.PALLADIUM.rgb()));
-//        }
-    };
     public static final ToolSet BRONZE = new ToolSet("bronze", MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CARMOT = new ToolSet("carmot", MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
     public static final ToolSet CELESTIUM = new ToolSet("celestium", MythicToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
@@ -168,8 +159,6 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
 
     @Override
     public void afterFieldProcessing() {
-        RegistryHelper.item("banglum_tnt_minecart", BANGLUM_TNT_MINECART);
-        RegistryHelper.item("palladium_minecart", PALLADIUM_MINECART);
         RegistryHelper.item("doge", Frogery.DOGE);
         RegistryHelper.item("froge", Frogery.FROGE);
         Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, RegistryHelper.id("music_disc.dog4"), SoundEvent.createVariableRangeEvent(RegistryHelper.id("music_disc.dog4")));

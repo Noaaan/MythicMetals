@@ -4,6 +4,8 @@ import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.UpgradeComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import io.wispforest.owo.particles.ClientParticles;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalEnchantmentTags;
 import net.minecraft.core.BlockPos;
@@ -64,12 +66,12 @@ public class BanglumOreBlock extends DropExperienceBlock {
         }
 
         // Extra fortune = more allergic
-        if (upgrades.hasUpgrade(MythicItems.Mats.CARMOT_STONE)) {
+        if (upgrades.hasUpgrade(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))) {
             chance += 10;
         }
 
         // Banglum Defuser really living up to its name
-        if (upgrades.hasUpgrade(MythicItems.Mats.STORMYX_SHELL)) {
+        if (upgrades.hasUpgrade(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))) {
             chance -= 92;
         }
 

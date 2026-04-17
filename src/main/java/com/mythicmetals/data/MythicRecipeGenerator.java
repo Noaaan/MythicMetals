@@ -129,31 +129,32 @@ public class MythicRecipeGenerator extends RecipeProvider {
         });
 
         // special case for materials
-        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
-            if (blockSets.containsKey(name)) {
-                var blockSet = blockSets.get(name);
-                // Ingots to Storage Block
-                ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.storage())
-                    .unlockedBy("has_material", has(blockSet.storage()))
-                    .requires(value, 9)
-                    .save(output, recipeKey("blocks/" + name));
-                // Ingots from Storage Block
-                ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, value, 9)
-                    .unlockedBy("has_material", has(value))
-                    .requires(blockSet.storage())
-                    .save(output, recipeKey("crafting/" + name));
-            }
-        });
+        // FIXME
+//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
+//            if (blockSets.containsKey(name)) {
+//                var blockSet = blockSets.get(name);
+//                // Ingots to Storage Block
+//                ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.storage())
+//                    .unlockedBy("has_material", has(blockSet.storage()))
+//                    .requires(value, 9)
+//                    .save(output, recipeKey("blocks/" + name));
+//                // Ingots from Storage Block
+//                ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, value, 9)
+//                    .unlockedBy("has_material", has(value))
+//                    .requires(blockSet.storage())
+//                    .save(output, recipeKey("crafting/" + name));
+//            }
+//        });
 
         // misc blocks
-        var bangNukeCore = MythicMaterials.BANGLUM.getExtraBlocks().get(MythicResourceKeys.BANGLUM_NUKE_CORE);
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.BUILDING_BLOCKS, MythicMaterials.AQUARIUM.getExtraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS))
-            .define('#', MythicItems.AQUARIUM.getRawOre())
+        var bangNukeCore = MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_NUKE_CORE);
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.BUILDING_BLOCKS, MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS))
+            .define('#', MythicMaterials.AQUARIUM.rawOre())
             .define('S', Items.GLASS)
             .pattern(" # ")
             .pattern("#S#")
             .pattern(" # ")
-            .unlockedBy("has_material", has(MythicItems.AQUARIUM.getRawOre()))
+            .unlockedBy("has_material", has(MythicMaterials.AQUARIUM.rawOre()))
             .save(output, recipeKey("blocks/aquarium_glass"));
         // TODO - Make Aquarium Resonator craftable once ready
 //        ShapedRecipeJsonBuilder.create(itemLookup, RecipeCategory.TOOLS, MythicBlocks.AQUARIUM_RESONATOR)
@@ -161,76 +162,76 @@ public class MythicRecipeGenerator extends RecipeProvider {
 //            .pattern("###")
 //            .pattern("###")
 //            .pattern("###")
-//            .criterion("has_pearl", conditionsFromItem(MythicItems.Mats.AQUARIUM_PEARL))
+//            .criterion("has_pearl", conditionsFromItem(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL)))
 //            .offerTo(exporter, RegistryHelper.recipeKey("blocks/aquarium_resonator"));
-        var tnt = MythicMaterials.BANGLUM.getExtraBlocks().get(MythicResourceKeys.BANGLUM_TNT);
+        var tnt = MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT);
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, tnt)
-            .define('#', MythicItems.BANGLUM.getRawOre())
-            .define('S', MythicItems.Mats.MORKITE)
+            .define('#', MythicMaterials.BANGLUM.rawOre())
+            .define('S', MythicMaterials.MORKITE.baseMaterial())
             .pattern("#S#")
             .pattern("S#S")
             .pattern("#S#")
-            .unlockedBy("has_big_material", has(MythicItems.BANGLUM.getRawOre()))
-            .unlockedBy("has_big_real_material", has(MythicItems.Mats.MORKITE))
+            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.rawOre()))
+            .unlockedBy("has_big_real_material", has(MythicMaterials.MORKITE.baseMaterial()))
             .save(output, recipeKey("blocks/banglum_tnt"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, tnt)
-            .define('#', MythicItems.BANGLUM.getRawOre())
+            .define('#', MythicMaterials.BANGLUM.rawOre())
             .define('S', Items.GUNPOWDER)
             .pattern("#S#")
             .pattern("S#S")
             .pattern("#S#")
-            .unlockedBy("has_big_material", has(MythicItems.BANGLUM.getRawOre()))
+            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.rawOre()))
             .unlockedBy("has_big_real_material", has(Items.GUNPOWDER))
             .save(output, recipeKey("blocks/banglum_tnt_from_gunpowder"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, bangNukeCore)
-            .define('#', MythicMaterials.BANGLUM.blockSet.rawStorage())
-            .define('S', MythicMaterials.MORKITE.blockSet.storage())
-            .define('C', MythicItems.Mats.BANGLUM_CHUNK)
+            .define('#', MythicMaterials.BANGLUM.blockSet().rawStorage())
+            .define('S', MythicMaterials.MORKITE.blockSet().storage())
+            .define('C', MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK))
             .pattern("#S#")
             .pattern("SCS")
             .pattern("#S#")
-            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.blockSet.rawStorage()))
-            .unlockedBy("has_big_real_material", has(MythicItems.Mats.MORKITE))
-            .unlockedBy("has_chunk", has(MythicItems.Mats.BANGLUM_CHUNK))
+            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.blockSet().rawStorage()))
+            .unlockedBy("has_big_real_material", has(MythicMaterials.MORKITE.baseMaterial()))
+            .unlockedBy("has_chunk", has(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)))
             .save(output, recipeKey("blocks/banglum_nuke_core"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.getExtraBlocks().get(MythicResourceKeys.CARMOT_NUKE_CORE))
-            .define('#', MythicItems.CARMOT.getIngot())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_NUKE_CORE))
+            .define('#', MythicMaterials.CARMOT.baseMaterial())
             .define('C', bangNukeCore)
             .pattern("###")
             .pattern("#C#")
             .pattern("###")
             .unlockedBy("has_nuke_core", has(bangNukeCore))
-            .unlockedBy("has_material", has(MythicItems.CARMOT.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.CARMOT.baseMaterial()))
             .save(output, recipeKey("blocks/carmot_nuke_core"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.PALLADIUM.getExtraItems().get(MythicResourceKeys.PALLADIUM_RAIL_ITEM), 16)
-            .define('#', MythicItems.PALLADIUM.getIngot())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.PALLADIUM.extraItems().get(MythicResourceKeys.PALLADIUM_RAIL_ITEM), 16)
+            .define('#', MythicMaterials.PALLADIUM.baseMaterial())
             .define('S', Items.IRON_INGOT)
             .pattern("# #")
             .pattern("#S#")
             .pattern("# #")
-            .unlockedBy("has_material", has(MythicItems.PALLADIUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.PALLADIUM.baseMaterial()))
             .save(output, recipeKey("crafting/palladium_rail"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.QUADRILLUM.getExtraBlocks().get(MythicResourceKeys.QUADRILLUM_NUKE_CORE))
-            .define('#', MythicItems.QUADRILLUM.getRawOre())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.QUADRILLUM.extraBlocks().get(MythicResourceKeys.QUADRILLUM_NUKE_CORE))
+            .define('#', MythicMaterials.QUADRILLUM.rawOre())
             .define('C', bangNukeCore)
             .pattern("###")
             .pattern("#C#")
             .pattern("###")
             .unlockedBy("has_nuke_core", has(bangNukeCore))
-            .unlockedBy("has_material", has(MythicItems.QUADRILLUM.getRawOre()))
+            .unlockedBy("has_material", has(MythicMaterials.QUADRILLUM.rawOre()))
             .save(output, recipeKey("blocks/quadrillum_nuke_core"));
-        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.getExtraBlocks().get(MythicResourceKeys.SPONGE_NUKE_CORE))
+        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.SPONGE_NUKE_CORE))
             .requires(bangNukeCore)
             .requires(Items.SPONGE)
             .unlockedBy("has_block", has(bangNukeCore))
             .save(output, recipeKey("blocks/sponge_nuke_core"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, Items.TNT)
             .define('#', Items.SAND)
-            .define('S', MythicItems.Mats.MORKITE)
+            .define('S', MythicMaterials.MORKITE.baseMaterial())
             .pattern("#S#")
             .pattern("S#S")
             .pattern("#S#")
-            .unlockedBy("has_real_material", has(MythicItems.Mats.MORKITE))
+            .unlockedBy("has_real_material", has(MythicMaterials.MORKITE.baseMaterial()))
             .save(output, recipeKey("blocks/tnt_from_morkite"));
     }
 
@@ -249,34 +250,34 @@ public class MythicRecipeGenerator extends RecipeProvider {
             }
         });
 
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicItems.Mats.DURASTEEL_ENGINE)
-            .define('#', MythicItems.DURASTEEL.getIngot())
-            .define('B', MythicMaterials.DURASTEEL.blockSet.storage())
-            .define('M', MythicItems.Mats.MORKITE)
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE))
+            .define('#', MythicMaterials.DURASTEEL.baseMaterial())
+            .define('B', MythicMaterials.DURASTEEL.blockSet().storage())
+            .define('M', MythicMaterials.MORKITE.baseMaterial())
             .define('H', Items.HOPPER)
             .pattern("#H#")
             .pattern("MBM")
             .pattern("###")
-            .unlockedBy("has_material", has(MythicItems.DURASTEEL.getIngot()))
-            .unlockedBy("has_fuel", has(MythicItems.Mats.MORKITE))
+            .unlockedBy("has_material", has(MythicMaterials.DURASTEEL.baseMaterial()))
+            .unlockedBy("has_fuel", has(MythicMaterials.MORKITE.baseMaterial()))
             .save(output, recipeKey("crafting/durasteel_engine"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicItems.Mats.PROMETHEUM_ROSE)
-            .define('#', MythicItems.PROMETHEUM.getRawOre())
-            .define('I', MythicItems.PROMETHEUM.getIngot())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE))
+            .define('#', MythicMaterials.PROMETHEUM.rawOre())
+            .define('I', MythicMaterials.PROMETHEUM.baseMaterial())
             .define('F', ItemTags.SMALL_FLOWERS)
             .pattern("#F#")
             .pattern("FIF")
             .pattern("#F#")
-            .unlockedBy("has_material", has(MythicItems.PROMETHEUM.getRawOre()))
+            .unlockedBy("has_material", has(MythicMaterials.PROMETHEUM.rawOre()))
             .save(output, recipeKey("crafting/prometheum_rose"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicItems.Mats.PROMETHEUM_ROSE)
-            .define('#', MythicItems.PROMETHEUM.getRawOre())
-            .define('I', MythicItems.PROMETHEUM.getIngot())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE))
+            .define('#', MythicMaterials.PROMETHEUM.rawOre())
+            .define('I', MythicMaterials.PROMETHEUM.baseMaterial())
             .define('F', ItemTags.SMALL_FLOWERS)
             .pattern("F#F")
             .pattern("#I#")
             .pattern("F#F")
-            .unlockedBy("has_material", has(MythicItems.PROMETHEUM.getRawOre()))
+            .unlockedBy("has_material", has(MythicMaterials.PROMETHEUM.rawOre()))
             .save(output, recipeKey("crafting/prometheum_rose_alt"));
     }
 
@@ -318,34 +319,34 @@ public class MythicRecipeGenerator extends RecipeProvider {
 
     private void createToolRecipes() {
         // Tool recipes
-        createToolCraftingRecipes(MythicTools.ADAMANTITE, MythicItems.ADAMANTITE.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.AQUARIUM, MythicItems.AQUARIUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.BANGLUM, MythicItems.BANGLUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.BRONZE, MythicItems.BRONZE.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.ADAMANTITE, MythicMaterials.ADAMANTITE.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.AQUARIUM, MythicMaterials.AQUARIUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.BANGLUM, MythicMaterials.BANGLUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.BRONZE, MythicMaterials.BRONZE.baseMaterial(), itemLookup);
 //        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
-        createToolCraftingRecipes(MythicTools.DURASTEEL, MythicItems.DURASTEEL.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.KYBER, MythicItems.KYBER.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.MYTHRIL, MythicItems.MYTHRIL.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.HALLOWED, MythicItems.HALLOWED.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.ORICHALCUM, MythicItems.ORICHALCUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.OSMIUM, MythicItems.OSMIUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.PALLADIUM, MythicItems.PALLADIUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.PROMETHEUM, MythicItems.PROMETHEUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.QUADRILLUM, MythicItems.QUADRILLUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.RUNITE, MythicItems.RUNITE.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STAR_PLATINUM, MythicItems.STAR_PLATINUM.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STEEL, MythicItems.STEEL.getIngot(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STORMYX, MythicItems.STORMYX.getIngot(), itemLookup);
+        createToolCraftingRecipes(MythicTools.DURASTEEL, MythicMaterials.DURASTEEL.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.KYBER, MythicMaterials.KYBER.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.MYTHRIL, MythicMaterials.MYTHRIL.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.HALLOWED, MythicMaterials.HALLOWED.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.ORICHALCUM, MythicMaterials.ORICHALCUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.OSMIUM, MythicMaterials.OSMIUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.PALLADIUM, MythicMaterials.PALLADIUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.PROMETHEUM, MythicMaterials.PROMETHEUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.QUADRILLUM, MythicMaterials.QUADRILLUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.RUNITE, MythicMaterials.RUNITE.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STAR_PLATINUM, MythicMaterials.STAR_PLATINUM.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STEEL, MythicMaterials.STEEL.baseMaterial(), itemLookup);
+        createToolCraftingRecipes(MythicTools.STORMYX, MythicMaterials.STORMYX.baseMaterial(), itemLookup);
         createToolSmithingRecipes(
             MythicItems.Templates.CARMOT_SMITHING_TEMPLATE,
             MythicTools.KYBER,
-            Ingredient.of(MythicItems.CARMOT.getIngot()),
+            Ingredient.of(MythicMaterials.CARMOT.baseMaterial()),
             MythicTools.CARMOT
         );
         createToolSmithingRecipes(
             MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE,
             MythicTools.BANGLUM,
-            Ingredient.of(MythicItems.Mats.BANGLUM_CHUNK),
+            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
             MythicTools.LEGENDARY_BANGLUM
         );
         createToolSmithingRecipes(
@@ -361,7 +362,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_PICKAXE,
             Items.DIAMOND_SHOVEL,
             Items.DIAMOND_HOE,
-            Ingredient.of(MythicItems.CELESTIUM.getIngot()),
+            Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
             MythicTools.CELESTIUM
         );
         createToolSmithingRecipes(
@@ -371,88 +372,88 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.NETHERITE_PICKAXE,
             Items.NETHERITE_SHOVEL,
             Items.NETHERITE_HOE,
-            Ingredient.of(MythicItems.METALLURGIUM.getIngot()),
+            Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
             MythicTools.METALLURGIUM
         );
 
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.BANGLUM_TNT_MINECART)
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_TNT_MINECART))
             .define('#', Items.MINECART)
-            .define('S', MythicMaterials.BANGLUM.getExtraBlocks().get(MythicResourceKeys.BANGLUM_TNT).asItem())
+            .define('S', MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT).asItem())
             .pattern("S")
             .pattern("#")
-            .unlockedBy("has_material", has(MythicMaterials.BANGLUM.getExtraBlocks().get(MythicResourceKeys.BANGLUM_TNT)))
+            .unlockedBy("has_material", has(MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT)))
             .save(output, recipeKey("tools/banglum_tnt_minecart"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.getExtraBlocks().get(MythicResourceKeys.CARMOT_BELL))
-            .define('#', MythicItems.CARMOT.getIngot())
-            .define('S', MythicItems.Mats.CARMOT_STONE)
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL))
+            .define('#', MythicMaterials.CARMOT.baseMaterial())
+            .define('S', MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))
             .pattern(" # ")
             .pattern("#S#")
             .pattern("# #")
-            .unlockedBy("has_material", has(MythicItems.CARMOT.getIngot()))
-            .unlockedBy("has_secret_stone", has(MythicItems.Mats.CARMOT_STONE))
+            .unlockedBy("has_material", has(MythicMaterials.CARMOT.baseMaterial()))
+            .unlockedBy("has_secret_stone", has(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE)))
             .save(output, recipeKey("tools/carmot_bell"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.PALLADIUM_MINECART)
-            .define('#', MythicItems.PALLADIUM.getIngot())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.PALLADIUM.extraItems().get(MythicResourceKeys.PALLADIUM_MINECART))
+            .define('#', MythicMaterials.PALLADIUM.baseMaterial())
             .pattern("# #")
             .pattern("###")
-            .unlockedBy("has_material", has(MythicItems.PALLADIUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.PALLADIUM.baseMaterial()))
             .save(output, recipeKey("tools/palladium_minecart"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.ORICHALCUM_HAMMER)
-            .define('#', MythicMaterials.ORICHALCUM.blockSet.storage())
+            .define('#', MythicMaterials.ORICHALCUM.blockSet().storage())
             .define('S', Items.STICK)
             .pattern(" # ")
             .pattern(" S#")
             .pattern("S  ")
-            .unlockedBy("has_material", has(MythicItems.ORICHALCUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.ORICHALCUM.baseMaterial()))
             .save(output, recipeKey("tools/orichalcum_hammer"));
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE),
                 Ingredient.of(MythicTools.MYTHRIL.getPickaxe()),
-                Ingredient.of(MythicItems.Mats.DURASTEEL_ENGINE),
+                Ingredient.of(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)),
                 RecipeCategory.TOOLS,
                 MythicTools.MYTHRIL_DRILL
             )
-            .unlocks("has_material_for_pick", has(MythicItems.MYTHRIL.getIngot()))
-            .unlocks("has_engine", has(MythicItems.Mats.DURASTEEL_ENGINE))
+            .unlocks("has_material_for_pick", has(MythicMaterials.MYTHRIL.baseMaterial()))
+            .unlocks("has_engine", has(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)))
             .save(output, recipeKey("tools/mythril_drill"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STAR_PLATINUM_ARROW, 2)
-            .define('#', MythicItems.STAR_PLATINUM.getNugget())
+            .define('#', MythicMaterials.STAR_PLATINUM.nugget())
             .define('S', Items.STICK)
             .define('F', Items.FEATHER)
             .pattern("  #")
             .pattern(" S ")
             .pattern("F  ")
-            .unlockedBy("has_material", has(MythicItems.STAR_PLATINUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.STAR_PLATINUM.baseMaterial()))
             .save(nuggetExporter, recipeKey("weapons/star_platinum_arrow"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.RUNITE_ARROW, 4)
-            .define('#', MythicItems.RUNITE.getNugget())
+            .define('#', MythicMaterials.RUNITE.nugget())
             .define('S', Items.STICK)
             .define('F', Items.FEATHER)
             .pattern("  #")
             .pattern(" S ")
             .pattern("F  ")
-            .unlockedBy("has_material", has(MythicItems.RUNITE.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.RUNITE.baseMaterial()))
             .save(nuggetExporter, recipeKey("weapons/runite_arrow"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STORMYX_SHIELD)
-            .define('#', MythicItems.STORMYX.getIngot())
-            .define('S', MythicItems.Mats.STORMYX_SHELL)
+            .define('#', MythicMaterials.STORMYX.baseMaterial())
+            .define('S', MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))
             .pattern("#S#")
             .pattern("###")
             .pattern(" # ")
-            .unlockedBy("has_shell", has(MythicItems.Mats.STORMYX_SHELL))
+            .unlockedBy("has_shell", has(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL)))
             .save(output, recipeKey("tools/stormyx_shield"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.PLATINUM_WATCH)
-            .define('#', MythicItems.PLATINUM.getIngot())
+            .define('#', MythicMaterials.PLATINUM.baseMaterial())
             .define('R', Items.REDSTONE)
             .pattern(" # ")
             .pattern("#R#")
             .pattern(" # ")
-            .unlockedBy("has_material", has(MythicItems.PLATINUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.PLATINUM.baseMaterial()))
             .save(output, recipeKey("tools/platinum_watch"));
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE),
                 Ingredient.of(MythicTools.ADAMANTITE.getSword()),
-                Ingredient.of(MythicMaterials.PALLADIUM.blockSet.storage()),
+                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage()),
                 RecipeCategory.COMBAT,
                 MythicTools.RED_AEGIS_SWORD
             )
@@ -461,7 +462,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE),
                 Ingredient.of(MythicTools.HALLOWED.getSword()),
-                Ingredient.of(MythicMaterials.HALLOWED.blockSet.storage()),
+                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage()),
                 RecipeCategory.COMBAT,
                 MythicTools.WHITE_AEGIS_SWORD
             )
@@ -473,64 +474,64 @@ public class MythicRecipeGenerator extends RecipeProvider {
         // Crafted Smithing Templates
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.CARMOT_SMITHING_TEMPLATE)
             .define('M', Items.SMOOTH_BASALT)
-            .define('C', MythicItems.CARMOT.getIngot())
+            .define('C', MythicMaterials.CARMOT.baseMaterial())
             .define('D', Items.DIAMOND)
             .pattern("DCD")
             .pattern("CMC")
             .pattern("DCD")
-            .unlockedBy("has_material", has(MythicItems.CARMOT.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.CARMOT.baseMaterial()))
             .group("mm_carmot_template")
             .save(output, recipeKey("smithing_templates/carmot"));
 
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE)
             .define('M', Items.TUFF)
-            .define('C', MythicItems.BANGLUM.getIngot())
+            .define('C', MythicMaterials.BANGLUM.baseMaterial())
             .pattern("MMM")
             .pattern("MCM")
             .pattern("MMM")
-            .unlockedBy("has_material", has(MythicItems.BANGLUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.BANGLUM.baseMaterial()))
             .group("mm_banglum_template")
             .save(output, recipeKey("smithing_templates/legendary_banglum"));
 
-        var enchantedMidas = MythicMaterials.MIDAS_GOLD.getExtraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK);
+        var enchantedMidas = MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK);
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)
             .define('M', Items.NETHERRACK)
-            .define('C', MythicMaterials.MIDAS_GOLD.blockSet.storage())
+            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage())
             .define('T', enchantedMidas)
             .pattern("CTC")
             .pattern("CMC")
             .pattern("CCC")
-            .unlockedBy("has_material", has(MythicMaterials.MIDAS_GOLD.blockSet.storage()))
+            .unlockedBy("has_material", has(MythicMaterials.MIDAS_GOLD.blockSet().storage()))
             .unlockedBy("has_enchanted_material", has(enchantedMidas))
             .group("mm_royal_midas_template")
             .save(output, recipeKey("smithing_templates/royal_midas"));
 
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE)
             .define('M', Items.ANDESITE)
-            .define('C', MythicItems.OSMIUM.getNugget())
-            .define('T', MythicItems.OSMIUM.getIngot())
+            .define('C', MythicMaterials.OSMIUM.nugget())
+            .define('T', MythicMaterials.OSMIUM.baseMaterial())
             .pattern("CTC")
             .pattern("CMC")
             .pattern("CTC")
-            .unlockedBy("has_material", has(MythicItems.OSMIUM.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.OSMIUM.baseMaterial()))
             .group("mm_osmium_template")
             .save(output, recipeKey("smithing_templates/osmium_chainmail"));
 
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.MIDAS_FOLDING_TEMPLATE)
             .define('M', Items.NETHERRACK)
-            .define('C', MythicItems.MIDAS_GOLD.getIngot())
+            .define('C', MythicMaterials.MIDAS_GOLD.baseMaterial())
             .pattern("MMM")
             .pattern("MCM")
             .pattern("MMM")
-            .unlockedBy("has_material", has(MythicItems.MIDAS_GOLD.getIngot()))
+            .unlockedBy("has_material", has(MythicMaterials.MIDAS_GOLD.baseMaterial()))
             .group("mm_midas_folding_template")
             .save(output, recipeKey("smithing_templates/midas_folding"));
 
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE)
             .define('O', Items.PRISMARINE)
-            .define('L', MythicItems.Mats.AQUARIUM_PEARL)
+            .define('L', MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))
             .define('R', Items.BRAIN_CORAL)
-            .define('G', MythicItems.AQUARIUM.getIngot())
+            .define('G', MythicMaterials.AQUARIUM.baseMaterial())
             .define('B', Items.FIRE_CORAL)
             .define('M', Items.BUBBLE_CORAL)
             .define('E', Items.TUBE_CORAL)
@@ -538,7 +539,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("RGB")
             .pattern("LOL")
             .pattern("MEN")
-            .unlockedBy("has_material", has(MythicItems.Mats.AQUARIUM_PEARL))
+            .unlockedBy("has_material", has(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL)))
             .unlockedBy("has_coral", has(MythicTags.TIDESINGER_CORAL))
             .group("mm_tidesinger_template")
             .save(output, recipeKey("smithing_templates/tidesinger"));
@@ -555,7 +556,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_aegis_template")
             .save(output, recipeKey("smithing_templates/aegis_duplicate"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.CARMOT_SMITHING_TEMPLATE, 2)
-            .define('C', MythicItems.CARMOT.getNugget())
+            .define('C', MythicMaterials.CARMOT.nugget())
             .define('P', Items.DIAMOND)
             .define('T', MythicItems.Templates.CARMOT_SMITHING_TEMPLATE)
             .define('M', Items.SMOOTH_BASALT)
@@ -576,7 +577,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_mythril_drill_template")
             .save(output, recipeKey("smithing_templates/mythril_drill_duplicate"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.MIDAS_FOLDING_TEMPLATE, 2)
-            .define('M', MythicItems.MIDAS_GOLD.getNugget())
+            .define('M', MythicMaterials.MIDAS_GOLD.nugget())
             .define('C', MythicItems.Templates.MIDAS_FOLDING_TEMPLATE)
             .pattern("MMM")
             .pattern("MCM")
@@ -585,8 +586,8 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_midas_folding_template")
             .save(nuggetExporter, recipeKey("smithing_templates/midas_folding_duplicate"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE, 2)
-            .define('C', MythicItems.AQUARIUM.getIngot())
-            .define('P', MythicItems.Mats.AQUARIUM_PEARL)
+            .define('C', MythicMaterials.AQUARIUM.baseMaterial())
+            .define('P', MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))
             .define('T', MythicItems.Templates.TIDESINGER_SMITHING_TEMPLATE)
             .define('M', Items.PRISMARINE)
             .pattern("CTC")
@@ -596,7 +597,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_tidesinger_template")
             .save(output, recipeKey("smithing_templates/tidesinger_duplicate"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE, 2)
-            .define('C', MythicMaterials.MIDAS_GOLD.blockSet.storage())
+            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage())
             .define('T', MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)
             .define('M', Items.NETHERRACK)
             .pattern("CTC")
@@ -708,29 +709,29 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     public void createArmorRecipes() {
-        createArmorCraftingRecipes(MythicArmor.ADAMANTITE, MythicItems.ADAMANTITE.getIngot());
-        createArmorCraftingRecipes(MythicArmor.AQUARIUM, MythicItems.AQUARIUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.BANGLUM, MythicItems.BANGLUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.BRONZE, MythicItems.BRONZE.getIngot());
-        createArmorCraftingRecipes(MythicArmor.DURASTEEL, MythicItems.DURASTEEL.getIngot());
-        createArmorCraftingRecipes(MythicArmor.HALLOWED, MythicItems.HALLOWED.getIngot());
-        createArmorCraftingRecipes(MythicArmor.KYBER, MythicItems.KYBER.getIngot());
-        createArmorCraftingRecipes(MythicArmor.MIDAS_GOLD, MythicItems.MIDAS_GOLD.getIngot());
-        createArmorCraftingRecipes(MythicArmor.MYTHRIL, MythicItems.MYTHRIL.getIngot());
-        createArmorCraftingRecipes(MythicArmor.ORICHALCUM, MythicItems.ORICHALCUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.OSMIUM, MythicItems.OSMIUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.PALLADIUM, MythicItems.PALLADIUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.PROMETHEUM, MythicItems.PROMETHEUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.RUNITE, MythicItems.RUNITE.getIngot());
-        createArmorCraftingRecipes(MythicArmor.SILVER, MythicItems.SILVER.getIngot());
-        createArmorCraftingRecipes(MythicArmor.STAR_PLATINUM, MythicItems.STAR_PLATINUM.getIngot());
-        createArmorCraftingRecipes(MythicArmor.STEEL, MythicItems.STEEL.getIngot());
-        createArmorCraftingRecipes(MythicArmor.STORMYX, MythicItems.STORMYX.getIngot());
+        createArmorCraftingRecipes(MythicArmor.ADAMANTITE, MythicMaterials.ADAMANTITE.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.AQUARIUM, MythicMaterials.AQUARIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.BANGLUM, MythicMaterials.BANGLUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.BRONZE, MythicMaterials.BRONZE.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.DURASTEEL, MythicMaterials.DURASTEEL.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.HALLOWED, MythicMaterials.HALLOWED.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.KYBER, MythicMaterials.KYBER.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.MIDAS_GOLD, MythicMaterials.MIDAS_GOLD.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.MYTHRIL, MythicMaterials.MYTHRIL.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.ORICHALCUM, MythicMaterials.ORICHALCUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.OSMIUM, MythicMaterials.OSMIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.PALLADIUM, MythicMaterials.PALLADIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.PROMETHEUM, MythicMaterials.PROMETHEUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.RUNITE, MythicMaterials.RUNITE.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.SILVER, MythicMaterials.SILVER.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.STAR_PLATINUM, MythicMaterials.STAR_PLATINUM.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.STEEL, MythicMaterials.STEEL.baseMaterial());
+        createArmorCraftingRecipes(MythicArmor.STORMYX, MythicMaterials.STORMYX.baseMaterial());
 
         createArmorSmithingRecipes(
             MythicItems.Templates.CARMOT_SMITHING_TEMPLATE,
             MythicArmor.KYBER,
-            Ingredient.of(MythicItems.CARMOT.getIngot()),
+            Ingredient.of(MythicMaterials.CARMOT.baseMaterial()),
             MythicArmor.CARMOT
         );
         createArmorSmithingRecipes(
@@ -739,7 +740,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.NETHERITE_CHESTPLATE,
             Items.NETHERITE_LEGGINGS,
             Items.NETHERITE_BOOTS,
-            Ingredient.of(MythicItems.METALLURGIUM.getIngot()),
+            Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
             MythicArmor.METALLURGIUM
         );
         createArmorSmithingRecipes(
@@ -748,13 +749,13 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_CHESTPLATE,
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
-            Ingredient.of(MythicItems.CELESTIUM.getIngot()),
+            Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
             MythicArmor.CELESTIUM
         );
         createArmorSmithingRecipes(
             MythicItems.Templates.LEGENDARY_BANGLUM_SMITHING_TEMPLATE,
             MythicArmor.BANGLUM,
-            Ingredient.of(MythicItems.Mats.BANGLUM_CHUNK),
+            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
             MythicArmor.LEGENDARY_BANGLUM
         );
         createArmorSmithingRecipes(
@@ -763,7 +764,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_CHESTPLATE,
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
-            Ingredient.of(MythicItems.OSMIUM.getIngot()),
+            Ingredient.of(MythicMaterials.OSMIUM.baseMaterial()),
             MythicArmor.OSMIUM_CHAINMAIL
         );
         createTidesingerArmorRecipes();

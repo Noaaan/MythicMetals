@@ -1,5 +1,7 @@
 package com.mythicmetals.entity;
 
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.minecart.MinecartTNT;
@@ -31,7 +33,7 @@ public class BanglumTntMinecartEntity extends MinecartTNT {
 
     @Override
     protected Item getDropItem() {
-        return MythicTools.BANGLUM_TNT_MINECART;
+        return MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_TNT_MINECART);
     }
 
     @Override

@@ -12,10 +12,20 @@ public class MythicResourceKeys {
     public static final ResourceKey<Block> AQUARIUM_RESONATOR = blockKey("aquarium_resonator");
     public static final ResourceKey<Block> BANGLUM_NUKE_CORE = blockKey("banglum_nuke_core");
     public static final ResourceKey<Block> BANGLUM_TNT = blockKey("banglum_tnt");
+    public static final ResourceKey<Item> BANGLUM_TNT_MINECART = itemKey("banglum_tnt_minecart");
     public static final ResourceKey<Block> CARMOT_BELL = blockKey("carmot_bell");
     public static final ResourceKey<Block> CARMOT_NUKE_CORE = blockKey("carmot_nuke_core");
     public static final ResourceKey<Block> ENCHANTED_MIDAS_GOLD_BLOCK = blockKey("enchanted_midas_gold_block");
-    public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
     public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
+    public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");
+    public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
     public static final ResourceKey<Block> SPONGE_NUKE_CORE = blockKey("sponge_nuke_core");
+
+    // rare material drops
+    public static final ResourceKey<Item> AQUARIUM_PEARL = itemKey("aquarium_pearl");
+    public static final ResourceKey<Item> BANGLUM_CHUNK = itemKey("banglum_chunk");
+    public static final ResourceKey<Item> CARMOT_STONE = itemKey("carmot_stone");
+    public static final ResourceKey<Item> DURASTEEL_ENGINE = itemKey("durasteel_engine");
+    public static final ResourceKey<Item> PROMETHEUM_ROSE = itemKey("prometheum_rose");
+    public static final ResourceKey<Item> STORMYX_SHELL = itemKey("stormyx_shell");
 }

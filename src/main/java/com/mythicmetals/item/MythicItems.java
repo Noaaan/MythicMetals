@@ -1,103 +1,23 @@
 package com.mythicmetals.item;
 
-import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
-import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.ChatFormatting;
-import net.minecraft.util.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.*;
-import java.lang.reflect.Field;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.Util;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SmithingTemplateItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mythicmetals.misc.RegistryHelper.id;
-import static com.mythicmetals.misc.RegistryHelper.itemKey;
-
-@SuppressWarnings("unused")
-public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
-
-    public static final ItemSet ADAMANTITE = new ItemSet("adamantite", 1.5f, true);
-    public static final ItemSet AQUARIUM = new ItemSet("aquarium", 0.7f);
-    public static final ItemSet BANGLUM = new ItemSet("banglum", 0.7f);
-    public static final ItemSet BRONZE = new ItemSet("bronze", true);
-    public static final ItemSet CARMOT = new ItemSet("carmot", 1.2f);
-    public static final ItemSet CELESTIUM = new ItemSet("celestium", true, true, settings -> settings.fireResistant().rarity(Rarity.RARE));
-    public static final ItemSet DURASTEEL = new ItemSet("durasteel", true);
-    public static final ItemSet HALLOWED = new ItemSet("hallowed", true, true, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ItemSet KYBER = new ItemSet("kyber", 0.7f);
-    public static final ItemSet MANGANESE = new ItemSet("manganese", 0.2f);
-    public static final ItemSet METALLURGIUM = new ItemSet("metallurgium", true, true, settings -> settings.fireResistant().rarity(Rarity.RARE));
-    public static final ItemSet MIDAS_GOLD = new ItemSet("midas_gold", 1.0f);
-    public static final ItemSet MYTHRIL = new ItemSet("mythril", 1.5f, true);
-    public static final ItemSet ORICHALCUM = new ItemSet("orichalcum", 1.5f, true);
-    public static final ItemSet OSMIUM = new ItemSet("osmium", 0.8f);
-    public static final ItemSet PALLADIUM = new ItemSet("palladium", false, true, 1.5f, Item.Properties::fireResistant);
-    public static final ItemSet PLATINUM = new ItemSet("platinum", 0.7f);
-    public static final ItemSet PROMETHEUM = new ItemSet("prometheum", 0.7f);
-    public static final ItemSet QUADRILLUM = new ItemSet("quadrillum", 0.7f);
-    public static final ItemSet RUNITE = new ItemSet("runite", 1.0f, true);
-    public static final ItemSet SILVER = new ItemSet("silver", 0.7f);
-    public static final ItemSet STAR_PLATINUM = new ItemSet("star_platinum", true);
-    public static final ItemSet STEEL = new ItemSet("steel", true);
-    public static final ItemSet STORMYX = new ItemSet("stormyx", 1.0f, true);
-    public static final ItemSet TIN = new ItemSet("tin", 0.2f);
-
-    @Override
-    public void processField(ItemSet value, String name, Field field) {
-        value.register(name);
-    }
-
-    @Override
-    public Class<ItemSet> getTargetFieldType() {
-        return ItemSet.class;
-    }
-
-    public static class Mats implements SimpleFieldProcessingSubject<Item> {
-        public static final Item AQUARIUM_PEARL = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("aquarium_pearl")));
-        public static final Item BANGLUM_CHUNK = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("banglum_chunk")));
-        public static final Item CARMOT_STONE = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("carmot_stone")));
-        public static final Item PROMETHEUM_ROSE = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("prometheum_rose")));
-        public static final Item DURASTEEL_ENGINE = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("durasteel_engine")));
-        public static final Item MORKITE = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey("morkite")));
-        public static final Item STARRITE = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("starrite")));
-        public static final Item STORMYX_SHELL = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).setId(itemKey("stormyx_shell")));
-        public static final Item UNOBTAINIUM = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).rarity(Rarity.UNCOMMON).fireResistant().setId(itemKey("unobtainium")));
-
-        @Override
-        public void processField(Item value, String identifier, Field field) {
-            RegistryHelper.item(identifier, value);
-            if (value.equals(PROMETHEUM_ROSE)) {
-                BuiltInRegistries.ITEM.addAlias(id("prometheum_bouquet"), id("prometheum_rose"));
-            }
-        }
-
-        @Override
-        public Class<Item> getTargetFieldType() {
-            return Item.class;
-        }
-    }
-
-    public static class Copper implements SimpleFieldProcessingSubject<CopperSet> {
-        public static final CopperSet COPPER = new CopperSet();
-
-        @Override
-        public void processField(CopperSet value, String name, Field field) {
-            value.register(name);
-        }
-
-        @Override
-        public Class<CopperSet> getTargetFieldType() {
-            return CopperSet.class;
-        }
-    }
+public class MythicItems {
 
     public static class Templates {
         public static final List<Identifier> UNOBTAINIUM_ALLOY_ITEMS = Util.make(new ArrayList<>(SmithingTemplateItem.createNetheriteUpgradeIconList()),
