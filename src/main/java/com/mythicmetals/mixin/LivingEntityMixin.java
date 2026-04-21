@@ -8,7 +8,6 @@ import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.MythicEntityAttributes;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.duck.WasSpawnedFromCreeper;

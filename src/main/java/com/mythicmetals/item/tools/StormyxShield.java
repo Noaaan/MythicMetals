@@ -1,6 +1,5 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;

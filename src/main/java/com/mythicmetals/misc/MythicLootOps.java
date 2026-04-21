@@ -1,8 +1,8 @@
 package com.mythicmetals.misc;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import io.wispforest.owo.ops.LootOps;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.Identifier;
@@ -23,7 +23,7 @@ public class MythicLootOps {
                 LootOps.injectItem(MythicMaterials.UNOBTAINIUM.baseMaterial(), 0.00042F, CUSTOM_PIGLIN_BARTERING);
             }
         }
-        LootOps.injectItem(MythicItems.Templates.UNOBTAINIUM_SMITHING_TEMPLATE, MythicMetals.CONFIG.unobtainiumTemplateChance(), BuiltInLootTables.ANCIENT_CITY.identifier());
-        LootOps.injectItem(MythicItems.Templates.MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicMetals.CONFIG.mythrilDrillTemplateChance(), BuiltInLootTables.ABANDONED_MINESHAFT.identifier());
+        LootOps.injectItem(MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE), MythicMetals.CONFIG.unobtainiumTemplateChance(), BuiltInLootTables.ANCIENT_CITY.identifier());
+        LootOps.injectItem(MythicMaterials.MYTHRIL.extraItems().get(MythicResourceKeys.MYTHRIL_DRILL_SMITHING_TEMPLATE), MythicMetals.CONFIG.mythrilDrillTemplateChance(), BuiltInLootTables.ABANDONED_MINESHAFT.identifier());
     }
 }

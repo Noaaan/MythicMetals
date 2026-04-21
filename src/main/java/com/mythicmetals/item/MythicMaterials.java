@@ -1,8 +1,7 @@
 package com.mythicmetals.item;
 
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.api.v2.Material;
-import com.mythicmetals.api.v2.MaterialType;
+import com.mythicmetals.api.v2.*;
 import com.mythicmetals.block.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
@@ -24,8 +23,10 @@ import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.item.MythicResourceKeys.*;
 
 public class MythicMaterials {
-    private MythicMaterials() {
-    }
+    public static final Material AEGIS = Material.Builder.createRawBuilder("aegis", MaterialType.SPECIAL)
+        .createBaseMaterial(MythicResourceKeys.EMERALD_CRYSTAL, Rarity.UNCOMMON, Item::new)
+        .addSmithingTemplate(AEGIS_SMITHING_TEMPLATE, MythicSmithingTemplates.AEGIS)
+        .finish();
 
     public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
@@ -41,7 +42,6 @@ public class MythicMaterials {
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
 //        .createDefaultTools(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT)
 //        .createDefaultArmor(MythicArmorMaterials.AQUARIUM)
-        .addExtraItem(AQUARIUM_PEARL, Rarity.UNCOMMON, Item::new)
         .addExtraBlock(
             AQUARIUM_GLASS,
             properties ->
@@ -83,6 +83,7 @@ public class MythicMaterials {
             )
         )
         .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
+        .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
@@ -108,6 +109,7 @@ public class MythicMaterials {
             }
         })
         .addExtraItem(CARMOT_STONE, Rarity.UNCOMMON, Item::new)
+        .addSmithingTemplate(CARMOT_SMITHING_TEMPLATE, MythicSmithingTemplates.CARMOT)
         .finish();
 
     public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY)
@@ -146,6 +148,8 @@ public class MythicMaterials {
     public static final Material MIDAS_GOLD = Material.Builder.create("midas_gold", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
+        .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
+        .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
         .finish();
 
     public static final Material MORKITE = Material.Builder.create("morkite", MaterialType.BASIC)
@@ -162,6 +166,7 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 5.5f, 6.5f)
             .finish()
         )
+        .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL)
         .finish();
 
     public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT)
@@ -176,6 +181,7 @@ public class MythicMaterials {
 
     public static final Material OSMIUM = Material.Builder.create("osmium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
+        .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
         .finish();
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)
@@ -256,6 +262,11 @@ public class MythicMaterials {
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
         .finish();
 
+    public static final Material TIDESINGER = Material.Builder.createRawBuilder("tidesinger", MaterialType.SPECIAL)
+        .createBaseMaterial(AQUARIUM_PEARL, Rarity.UNCOMMON, Item::new)
+        .addSmithingTemplate(TIDESINGER_SMITHING_TEMPLATE, MythicSmithingTemplates.TIDESINGER)
+        .finish();
+
     public static final Material TIN = Material.Builder.create("tin", MaterialType.INGOT)
         .createBlockSetFromBuilder(STONE_MINING_LEVEL, builder -> builder
             .createOre(2.0f, UniformInt.of(0, 0))
@@ -282,6 +293,7 @@ public class MythicMaterials {
             .createStorageBlock(25f, 15000f)
             .finish()
         )
+        .addSmithingTemplate(UNOBTAINIUM_SMITHING_TEMPLATE, MythicSmithingTemplates.UNOBTAINIUM)
         .finish();
 
     public static void init() {

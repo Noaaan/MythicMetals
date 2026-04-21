@@ -2,7 +2,6 @@ package com.mythicmetals.item.tools;
 
 import com.mythicmetals.component.*;
 import com.mythicmetals.data.MythicTags;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;

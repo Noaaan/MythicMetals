@@ -2,7 +2,6 @@ package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
@@ -42,9 +41,9 @@ public class MythicItemModelProvider extends FabricModelProvider {
 //        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (value, name, field) -> {
 //            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
 //        });
-        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Templates.class, Item.class, (value, name, field) -> {
-            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
-        });
+//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Templates.class, Item.class, (value, name, field) -> {
+//            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
+//        });
         // Armor
         MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> {
             itemModelGenerator.generateFlatItem(armorSet.getHelmet(), ModelTemplates.FLAT_ITEM);

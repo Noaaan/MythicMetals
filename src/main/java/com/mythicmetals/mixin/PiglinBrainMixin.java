@@ -1,6 +1,5 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.MythicLootOps;
 import net.minecraft.core.registries.Registries;

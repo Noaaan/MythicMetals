@@ -28,4 +28,16 @@ public class MythicResourceKeys {
     public static final ResourceKey<Item> DURASTEEL_ENGINE = itemKey("durasteel_engine");
     public static final ResourceKey<Item> PROMETHEUM_ROSE = itemKey("prometheum_rose");
     public static final ResourceKey<Item> STORMYX_SHELL = itemKey("stormyx_shell");
+
+    // smithing templates
+    public static final ResourceKey<Item> AEGIS_SMITHING_TEMPLATE = itemKey("aegis_smithing_template");
+    public static final ResourceKey<Item> CARMOT_SMITHING_TEMPLATE = itemKey("carmot_smithing_template");
+    public static final ResourceKey<Item> LEGENDARY_BANGLUM_SMITHING_TEMPLATE = itemKey("legendary_banglum_smithing_template");
+    public static final ResourceKey<Item> MIDAS_FOLDING_TEMPLATE = itemKey("midas_folding_template");
+    public static final ResourceKey<Item> MYTHRIL_DRILL_SMITHING_TEMPLATE = itemKey("mythril_drill_smithing_template");
+    public static final ResourceKey<Item> OSMIUM_CHAINMAIL_SMITHING_TEMPLATE = itemKey("osmium_chainmail_smithing_template");
+    public static final ResourceKey<Item> ROYAL_MIDAS_SMITHING_TEMPLATE = itemKey("royal_midas_smithing_template");
+    public static final ResourceKey<Item> TIDESINGER_SMITHING_TEMPLATE = itemKey("tidesinger_smithing_template");
+    public static final ResourceKey<Item> UNOBTAINIUM_SMITHING_TEMPLATE = itemKey("unobtainium_smithing_template");
+    public static final ResourceKey<Item> EMERALD_CRYSTAL = itemKey("emerald_crystal");
 }

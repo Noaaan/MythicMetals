@@ -1,7 +1,8 @@
 package com.mythicmetals.recipe;
 
 import com.mythicmetals.component.GoldFoldedComponent;
-import com.mythicmetals.item.MythicItems;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
@@ -44,7 +45,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
         if (!stack.has(GOLD_FOLDED)) return false;
         int goldCount = stack.has(GOLD_FOLDED) ? stack.get(GOLD_FOLDED).goldFolded() : 0;
 
-        if (input.template().getItem().equals(MythicItems.Templates.ROYAL_MIDAS_SMITHING_TEMPLATE)) {
+        if (input.template().getItem().equals(MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.ROYAL_MIDAS_SMITHING_TEMPLATE))) {
             return goldCount >= 640;
         }
 

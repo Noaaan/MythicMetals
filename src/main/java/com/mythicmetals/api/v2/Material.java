@@ -57,9 +57,18 @@ public record Material(
             this.type = type;
         }
 
+        public static Builder createRawBuilder(String materialName, MaterialType type) {
+            return new Builder(materialName, type);
+        }
+
         public static Builder create(String materialName, MaterialType type) {
             return new Builder(materialName, type)
                 .createBaseMaterial();
+        }
+
+        public Builder createBaseMaterial(ResourceKey<Item> key, Rarity rarity, Function<Item.Properties, Item> function) {
+            this.baseMaterial = RegistryHelper.item(key, function.apply(baseProperties(key, 0, rarity)));
+            return this;
         }
 
         protected Builder createBaseMaterial() {
@@ -129,12 +138,12 @@ public record Material(
         }
 
         public Builder addExtraItem(ResourceKey<Item> itemKey, Rarity rarity, Function<Item.Properties, Item> function) {
-            extraItems.put(itemKey, RegistryHelper.item(itemKey, function.apply(baseProperties(itemKey, 0, rarity))));
+            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, function.apply(baseProperties(itemKey, 0, rarity))));
             return this;
         }
 
         public Builder addExtraItem(ResourceKey<Item> itemKey, Item item) {
-            extraItems.put(itemKey, RegistryHelper.item(itemKey, item));
+            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, item));
             return this;
         }
 
@@ -151,9 +160,9 @@ public record Material(
         }
 
         public Builder addExtraBlock(ResourceKey<Block> key, Block block, Rarity rarity) {
-            extraBlocks.put(key, RegistryHelper.block(key, block));
+            extraBlocks.putIfAbsent(key, RegistryHelper.block(key, block));
             var itemKey = RegistryHelper.itemKey(key.identifier().getPath());
-            extraItems.put(itemKey, RegistryHelper.item(itemKey, new BlockItem(block, baseProperties(itemKey, 0, rarity))));
+            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, new BlockItem(block, baseProperties(itemKey, 0, rarity))));
             return this;
         }
 
@@ -171,6 +180,10 @@ public record Material(
                 .group(MythicMetals.TABBED_GROUP)
                 .rarity(rarity)
                 .tab(tab);
+        }
+
+        public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents) {
+            return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
         }
 
         /**

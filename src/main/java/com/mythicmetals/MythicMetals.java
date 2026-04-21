@@ -12,7 +12,6 @@ import com.mythicmetals.data.loot.MythicLootConditions;
 import com.mythicmetals.data.worldgen.MythicOreFeatures;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.*;
-import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicPotions;
 import com.mythicmetals.item.tools.MythicTools;
@@ -31,7 +30,6 @@ import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.npc.villager.VillagerProfession;
-import net.minecraft.world.entity.npc.villager.VillagerTrades;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -62,7 +60,6 @@ public class MythicMetals implements ModInitializer {
     public void onInitialize() {
         MythicMaterials.init();
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
-        MythicItems.Templates.init();
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
@@ -89,9 +86,6 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(RegisterCriteria.class, false);
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.CLERIC, 5, factories -> {
-            factories.add(new VillagerTrades.ItemsForEmeralds(MythicItems.Templates.AEGIS_SMITHING_TEMPLATE, 48, 1, 2, 30));
-        });
         registerDispenserBehaviour();
         LegacyIds.registerAliases();
 
