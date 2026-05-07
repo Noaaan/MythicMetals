@@ -4,11 +4,10 @@
   "package": "com.mythicmetals.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "BlockStateBaseMixin",
-    "OldMinecartBehaviorMixin",
     "AnvilBlockMixin",
     "ApplyBonusLootFunctionMixin",
     "AreaEffectCloudMixin",
+    "BlockStateBaseMixin",
     "BucketItemMixin",
     "CampfireBlockMixin",
     "ConduitBlockEntityMixin",
@@ -26,6 +25,7 @@
     "ItemStackMixin",
     "LivingEntityMixin",
     "MagmaBlockMixin",
+    "OldMinecartBehaviorMixin",
     "PiglinBrainMixin",
     "PlayerEntityMixin",
     "PowderSnowBlockMixin",
@@ -34,8 +34,9 @@
     "TableBonusLootConditionMixin"
   ],
   "client": [
-    "client.ModelLayersAccessor",
     "client.AvatarRendererMixin",
+    "client.EquipmentLayerRendererAccessor",
+    "client.ModelLayersAccessor",
     "client.PlayerEntityRenderStateMixin",
     "client.SmithingScreenMixin",
     "client.TranslationStorageMixin"

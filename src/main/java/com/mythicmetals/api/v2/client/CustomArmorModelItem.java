@@ -1,4 +1,4 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.api.v2.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

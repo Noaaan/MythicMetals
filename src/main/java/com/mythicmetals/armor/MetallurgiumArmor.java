@@ -1,5 +1,6 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.client.models.HelmetModel;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.misc.RegistryHelper;

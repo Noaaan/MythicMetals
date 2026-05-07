@@ -1,4 +1,4 @@
-package com.mythicmetals.client.models;
+package com.mythicmetals.api.v2.client;
 
 import net.minecraft.world.entity.EquipmentSlot;
 

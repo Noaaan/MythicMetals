@@ -11,3 +11,5 @@ accessible method net/minecraft/world/level/block/RailState countPotentialConnec
 
 accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer newRender (Lnet/minecraft/client/renderer/entity/state/MinecartRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V
 accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer oldRender (Lnet/minecraft/client/renderer/entity/state/MinecartRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V
+
+accessible class net/minecraft/client/renderer/entity/layers/EquipmentLayerRenderer$TrimSpriteKey

@@ -1,5 +1,6 @@
 package com.mythicmetals.armor;
 
+import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.TidesingerBipedModel;
 import com.mythicmetals.component.MythicDataComponents;
@@ -10,13 +11,11 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
 
 public class TidesingerArmor extends Item implements CustomArmorModelItem {
 

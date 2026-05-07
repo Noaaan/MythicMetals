@@ -34,9 +34,6 @@
     "emi": [
       "com.mythicmetals.compat.MythicMetalsEMIPlugin"
     ],
-    "cardinal-components-entity": [
-      "com.mythicmetals.MythicMetals"
-    ],
     "cicada": [
       "com.mythicmetals.compat.CicadaInit"
     ]

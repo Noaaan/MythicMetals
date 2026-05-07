@@ -80,7 +80,7 @@ public record Material(
                     createNugget(computeRarity(type));
                 }
                 case INGOT -> {
-                    baseMaterialKey = RegistryHelper.itemKey(name);
+                    baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
                     props = baseProperties(baseMaterialKey, 0, computeRarity(type));
                     createNugget(computeRarity(type));
                     createRawOre(computeRarity(type));
