@@ -1,5 +1,6 @@
 package com.mythicmetals.client.models;
 
+import com.mythicmetals.api.v2.client.CustomArmorModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;

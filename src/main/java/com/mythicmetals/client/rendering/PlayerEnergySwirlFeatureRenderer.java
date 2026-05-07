@@ -33,38 +33,44 @@ public class PlayerEnergySwirlFeatureRenderer<S extends AvatarRenderState, M ext
 
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, S entityRenderState, float f, float g) {
-        if (entityRenderState instanceof MythicMetalsRenderState mmstate && mmstate.mythicmetals$getPlayerRenderContext().carmotShield().shouldRenderShield()) {
+        if (entityRenderState instanceof MythicMetalsRenderState mmstate) {
+            var state = mmstate.mythicmetals$getPlayerRenderContext();
+            if (state == null) return;
             var shield = mmstate.mythicmetals$getPlayerRenderContext().carmotShield();
-            this.swirlModel.copyTransforms(this.getParentModel());
-            this.swirlModel.setupAnim(entityRenderState);
-            // Break animation
-            if (shield.cooldown() > CarmotShield.MAX_COOLDOWN - 30) {
-                poseStack.scale(1.125f, 1.0625f, 1.125f);
-                submitNodeCollector.submitModel(
-                    swirlModel,
-                    entityRenderState,
-                    poseStack,
-                    RenderTypes.energySwirl(SWIRL_TEXTURE, (entityRenderState.ageInTicks * .005f) % 1f, entityRenderState.ageInTicks * .005f % 1f),
-                    i,
-                    OverlayTexture.NO_OVERLAY,
-                    SHIELD_BREAK_COLOR,
-                    null,
-                    entityRenderState.outlineColor,
-                    null
+            if (shield.shouldRenderShield()) {
+                this.swirlModel.copyTransforms(this.getParentModel());
+                this.swirlModel.setupAnim(entityRenderState);
+                // Break animation
+                if (shield.cooldown() > CarmotShield.MAX_COOLDOWN - 30) {
+                    poseStack.scale(1.125f, 1.0625f, 1.125f);
+                    //noinspection DataFlowIssue
+                    submitNodeCollector.submitModel(
+                        swirlModel,
+                        entityRenderState,
+                        poseStack,
+                        RenderTypes.energySwirl(SWIRL_TEXTURE, (entityRenderState.ageInTicks * .005f) % 1f, entityRenderState.ageInTicks * .005f % 1f),
+                        i,
+                        OverlayTexture.NO_OVERLAY,
+                        SHIELD_BREAK_COLOR,
+                        null,
+                        entityRenderState.outlineColor,
+                        null
                     );
-            } else // Regular animation
-                submitNodeCollector.submitModel(
-                    swirlModel,
-                    entityRenderState,
-                    poseStack,
-                    RenderTypes.energySwirl(SWIRL_TEXTURE, (entityRenderState.ageInTicks * .005f) % 1f, entityRenderState.ageInTicks * .005f % 1f),
-                    i,
-                    OverlayTexture.NO_OVERLAY,
-                    UsefulSingletonForColorUtil.rainbow(),
-                    null,
-                    entityRenderState.outlineColor,
-                    null
-                );
+                } else // Regular animation
+                    //noinspection DataFlowIssue
+                    submitNodeCollector.submitModel(
+                        swirlModel,
+                        entityRenderState,
+                        poseStack,
+                        RenderTypes.energySwirl(SWIRL_TEXTURE, (entityRenderState.ageInTicks * .005f) % 1f, entityRenderState.ageInTicks * .005f % 1f),
+                        i,
+                        OverlayTexture.NO_OVERLAY,
+                        UsefulSingletonForColorUtil.rainbow(),
+                        null,
+                        entityRenderState.outlineColor,
+                        null
+                    );
+            }
         }
     }
 }

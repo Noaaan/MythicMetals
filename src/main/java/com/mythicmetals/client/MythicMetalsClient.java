@@ -1,10 +1,9 @@
 package com.mythicmetals.client;
 
-
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CustomArmorModelItem;
+import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.client.models.CustomArmorModel;
+import com.mythicmetals.api.v2.client.CustomArmorModel;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.properties.*;
 import com.mythicmetals.client.rendering.*;
@@ -14,15 +13,17 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.tools.HammerBase;
 import com.mythicmetals.misc.*;
+import com.mythicmetals.mixin.client.EquipmentLayerRendererAccessor;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
 import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemModelProperties;
@@ -37,21 +38,33 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.equipment.trim.ArmorTrim;
 
 public class MythicMetalsClient implements ClientModInitializer {
+
+    private boolean hasRegistered = false;
 
     @Override
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
 
         renderHammerOutline();
-        registerArmorRenderer();
         registerModelPredicates();
         registerSwirlRenderer();
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer instanceof AvatarRenderer<?> playerRenderer) {
                 registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getModelSet(), context.getEquipmentRenderer()));
+            }
+            if (!hasRegistered) {
+                var renderer = createCustomArmorRenderer(context);
+                Item[] armors = BuiltInRegistries.ITEM.stream()
+                    .filter(i -> i instanceof CustomArmorModelItem
+                        && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
+                    .toArray(Item[]::new);
+
+                ArmorRenderer.register(renderer, armors);
+                hasRegistered = true;
             }
         });
         EntityRendererRegistry.register(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, PalladiumMinecartRenderer::new);
@@ -151,15 +164,8 @@ public class MythicMetalsClient implements ClientModInitializer {
 //        });
     }
 
-    private void registerArmorRenderer() {
-        Item[] armors = BuiltInRegistries.ITEM.stream()
-            .filter(i -> i instanceof CustomArmorModelItem
-                && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
-            .toArray(Item[]::new);
-
-        // TODO - Review
-        ArmorRenderer renderer = (poseStack, submitNodeCollector, stack, bipedEntityRenderState, slot, light, contextModel) -> {
-            var trimAtlas = Minecraft.getInstance().getAtlasManager().getAtlasOrThrow(Sheets.ARMOR_TRIMS_SHEET);
+    private ArmorRenderer createCustomArmorRenderer(EntityRendererProvider.Context context) {
+         return (poseStack, submitNodeCollector, stack, bipedEntityRenderState, slot, light, contextModel) -> {
             var armorItem = (CustomArmorModelItem) stack.getItem();
             var model = armorItem.getArmorModel();
             var customModelData = (CustomArmorModel) model;
@@ -170,7 +176,7 @@ public class MythicMetalsClient implements ClientModInitializer {
                 bipedEntityRenderState,
                 model,
                 bipedEntityRenderState,
-                true,
+                false,
                 submitNodeCollector,
                 poseStack,
                 RenderTypes.armorCutoutNoCull(texture),
@@ -181,38 +187,33 @@ public class MythicMetalsClient implements ClientModInitializer {
             );
 
             // Armor trim handling for custom armor models
-            var armorTrim = stack.get(DataComponents.TRIM);
+            ArmorTrim armorTrim = stack.get(DataComponents.TRIM);
             if (armorTrim != null) {
                 var layer = slot == EquipmentSlot.LEGS ? EquipmentClientInfo.LayerType.HUMANOID_LEGGINGS : EquipmentClientInfo.LayerType.HUMANOID;
                 var sheet = Sheets.armorTrimsSheet(armorTrim.pattern().value().decal());
-                // FIXME - Accessor into EquipmentLayerRenderer to get the memoized trim sprites
-                var assetId = armorTrim.pattern().value().assetId();
-                var assetName = armorTrim.material().value().assets();
-                var trimTexture = assetId.withPath(path -> "trims/entity/" + layer.getSerializedName() + "/" + path + "_" + assetName);
-                var sprite = trimAtlas.getSprite(trimTexture);
+                var equipmentLayerRenderer = context.getEquipmentRenderer();
+                var trimKey = stack.get(DataComponents.EQUIPPABLE).assetId().get();
+                var sprites = ((EquipmentLayerRendererAccessor) equipmentLayerRenderer).mythicmetals$getTrimSprites().apply(
+                    new EquipmentLayerRenderer.TrimSpriteKey(armorTrim, layer, trimKey)
+                );
                 ArmorRenderer.submitTransformCopyingModel(
                     contextModel,
                     bipedEntityRenderState,
                     model,
                     bipedEntityRenderState,
-                    true,
+                    false,
                     submitNodeCollector,
                     poseStack,
                     sheet,
                     light,
                     bipedEntityRenderState.lightCoords,
-                    0,
-                    sprite,
+                    -1,
+                    sprites,
                     bipedEntityRenderState.outlineColor,
                     null
                 );
-//                var trimVertexConsumer = sprite.wrap(
-//                    submitNodeCollector.getBuffer(Sheets.armorTrimsSheet(armorTrim.pattern().value().decal()))
-//                );
-//                model.renderToBuffer(matrices, trimVertexConsumer, light, OverlayTexture.NO_OVERLAY);
             }
         };
-        ArmorRenderer.register(renderer, armors);
     }
 
     private void registerModelPredicates() {
