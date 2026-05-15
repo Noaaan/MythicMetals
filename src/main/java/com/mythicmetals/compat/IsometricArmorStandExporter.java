@@ -35,35 +35,35 @@ public class IsometricArmorStandExporter {
 
         List<EntityRenderable> renderables = new ArrayList<>();
 
-        MythicArmor.ARMOR_MAP.values().forEach(armorSet -> {
-            if (!armorSet.equals(MythicArmor.TIDESINGER)) {
-            // Configure the armor stand to our liking
-            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
-            armorSet.getArmorItems().forEach(armorItem -> {
-                var armorStack = armorItem.getDefaultInstance();
-                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
-                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
-            });
-            armorStand.setNoBasePlate(true);
-            armorStand.setInvisible(true);
-            renderables.add(new EntityRenderable(armorStand));
-            }
-        });
-
-        // Handle Tidesinger specifically, since it has five distinct variants
-        TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().forEach(patternItem -> {
-            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
-            var armorSet = MythicArmor.TIDESINGER;
-            armorSet.getArmorItems().forEach(armorItem -> {
-                var armorStack = armorItem.getDefaultInstance();
-                armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem));
-                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
-                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
-            });
-            armorStand.setNoBasePlate(true);
-            armorStand.setInvisible(true);
-            renderables.add(new EntityRenderable(armorStand));
-        });
+//        MythicArmor.ARMOR_MAP.values().forEach(armorSet -> {
+//            if (!armorSet.equals(MythicArmor.TIDESINGER)) {
+//            // Configure the armor stand to our liking
+//            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+//            armorSet.getArmorItems().forEach(armorItem -> {
+//                var armorStack = armorItem.getDefaultInstance();
+//                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+//                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+//            });
+//            armorStand.setNoBasePlate(true);
+//            armorStand.setInvisible(true);
+//            renderables.add(new EntityRenderable(armorStand));
+//            }
+//        });
+//
+//        // Handle Tidesinger specifically, since it has five distinct variants
+//        TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().forEach(patternItem -> {
+//            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+//            var armorSet = MythicArmor.TIDESINGER;
+//            armorSet.getArmorItems().forEach(armorItem -> {
+//                var armorStack = armorItem.getDefaultInstance();
+//                armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem));
+//                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+//                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+//            });
+//            armorStand.setNoBasePlate(true);
+//            armorStand.setInvisible(true);
+//            renderables.add(new EntityRenderable(armorStand));
+//        });
 
         var batchRender = BatchRenderable.of("mythicmetals", renderables);
         var renderScreen = new RenderScreen(batchRender);

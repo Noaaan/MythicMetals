@@ -7,6 +7,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.Equippable;
@@ -22,7 +23,8 @@ public class ArmorSet {
     public final ResourceKey<Item> chestplateKey;
     public final ResourceKey<Item> leggingsKey;
     public final ResourceKey<Item> bootsKey;
-    public final ResourceKey<Item> bodyKey;
+    public final ResourceKey<Item> horseKey;
+    public final ResourceKey<Item> nautilusKey;
     private final ArmorMaterial armorMaterial;
     private final String name;
 
@@ -31,6 +33,7 @@ public class ArmorSet {
     protected Item leggings;
     protected Item boots;
     protected Item horse;
+    protected Item nautilus;
 
     public ArmorSet(String name, ArmorMaterial armorMaterial) {
         this.name = name;
@@ -38,7 +41,8 @@ public class ArmorSet {
         this.chestplateKey = itemKey(name + "_chestplate");
         this.leggingsKey = itemKey(name + "_leggings");
         this.bootsKey = itemKey(name + "_boots");
-        this.bodyKey = itemKey(name + "_body");
+        this.horseKey = itemKey(name + "_horse_armor");
+        this.nautilusKey = itemKey(name + "_nautilus_armor");
         this.armorMaterial = armorMaterial;
     }
 
@@ -48,9 +52,15 @@ public class ArmorSet {
         this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, settings -> {}));
         this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, settings -> {}));
         this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, settings -> {}));
-        this.horse = RegistryHelper.item(bodyKey, baseItem(bodyKey, armorMaterial, ArmorType.BODY, settings -> {}));
-        this.horse = RegistryHelper.item(bodyKey, new Item(
-            new Item.Properties().horseArmor(armorMaterial).setId(bodyKey)
+        this.horse = RegistryHelper.item(horseKey, new Item(
+            new Item.Properties()
+                .horseArmor(armorMaterial)
+                .setId(horseKey)
+        ));
+        this.nautilus = RegistryHelper.item(nautilusKey, new Item(
+            new Item.Properties()
+                .nautilusArmor(armorMaterial)
+                .setId(nautilusKey)
         ));
         return this;
     }
@@ -101,4 +111,54 @@ public class ArmorSet {
         ArmorType.LEGGINGS, 15,
         ArmorType.BOOTS, 13
     );
+
+
+    public Item getHelmet() {
+        return helmet;
+    }
+
+    public Item getChestplate() {
+        return chestplate;
+    }
+
+    public Item getLeggings() {
+        return leggings;
+    }
+
+    public Item getBoots() {
+        return boots;
+    }
+
+    public Item getHorse() {
+        return horse;
+    }
+
+    public Item getNautilus() {
+        return nautilus;
+    }
+
+    public ArmorMaterial getArmorMaterial() {
+        return armorMaterial;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isInArmorSet(Item armorItem) {
+        return
+            armorItem.equals(helmet) ||
+                armorItem.equals(chestplate) ||
+                armorItem.equals(leggings) ||
+                armorItem.equals(boots);
+    }
+
+    public boolean isInArmorSet(ItemStack armorStack) {
+        var item = armorStack.getItem();
+        return
+            item.equals(helmet) ||
+            item.equals(chestplate) ||
+            item.equals(leggings) ||
+            item.equals(boots);
+    }
 }

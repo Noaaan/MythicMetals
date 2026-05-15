@@ -400,7 +400,7 @@ public final class MythicCommands {
      */
     public static boolean summonArmorStandWithTrim(Level world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
         if (world.isClientSide()) return false;
-        if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
+//        if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
         AtomicBoolean success = new AtomicBoolean(true);
 
         var armorStand = new ArmorStand(world, x, world.getMaxY() - 50, z);

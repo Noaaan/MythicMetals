@@ -1,7 +1,7 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
-import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.item.*;
 import com.mythicmetals.item.tools.MythicTools;
@@ -338,7 +338,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             MythicTools.CARMOT
         );
         createToolSmithingRecipes(
-            MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
+            MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
             MythicTools.BANGLUM,
             Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
             MythicTools.LEGENDARY_BANGLUM
@@ -477,7 +477,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_carmot_template")
             .save(output, recipeKey("smithing_templates/carmot"));
 
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE))
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE))
             .define('M', Items.TUFF)
             .define('C', MythicMaterials.BANGLUM.baseMaterial())
             .pattern("MMM")
@@ -703,31 +703,31 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     public void createArmorRecipes() {
-        createArmorCraftingRecipes(MythicArmor.ADAMANTITE, MythicMaterials.ADAMANTITE.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.AQUARIUM, MythicMaterials.AQUARIUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.BANGLUM, MythicMaterials.BANGLUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.BRONZE, MythicMaterials.BRONZE.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.DURASTEEL, MythicMaterials.DURASTEEL.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.HALLOWED, MythicMaterials.HALLOWED.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.KYBER, MythicMaterials.KYBER.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.MIDAS_GOLD, MythicMaterials.MIDAS_GOLD.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.MYTHRIL, MythicMaterials.MYTHRIL.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.ORICHALCUM, MythicMaterials.ORICHALCUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.OSMIUM, MythicMaterials.OSMIUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.PALLADIUM, MythicMaterials.PALLADIUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.PROMETHEUM, MythicMaterials.PROMETHEUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.RUNITE, MythicMaterials.RUNITE.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.SILVER, MythicMaterials.SILVER.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.STAR_PLATINUM, MythicMaterials.STAR_PLATINUM.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.STEEL, MythicMaterials.STEEL.baseMaterial());
-        createArmorCraftingRecipes(MythicArmor.STORMYX, MythicMaterials.STORMYX.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.ADAMANTITE.armorSet(), MythicMaterials.ADAMANTITE.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.AQUARIUM.armorSet(), MythicMaterials.AQUARIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.BANGLUM.armorSet(), MythicMaterials.BANGLUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.BRONZE.armorSet(), MythicMaterials.BRONZE.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.DURASTEEL.armorSet(), MythicMaterials.DURASTEEL.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.HALLOWED.armorSet(), MythicMaterials.HALLOWED.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.KYBER.armorSet(), MythicMaterials.KYBER.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.MIDAS_GOLD.armorSet(), MythicMaterials.MIDAS_GOLD.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.MYTHRIL.armorSet(), MythicMaterials.MYTHRIL.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.ORICHALCUM.armorSet(), MythicMaterials.ORICHALCUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.OSMIUM.armorSet(), MythicMaterials.OSMIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.PALLADIUM.armorSet(), MythicMaterials.PALLADIUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.PROMETHEUM.armorSet(), MythicMaterials.PROMETHEUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.RUNITE.armorSet(), MythicMaterials.RUNITE.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.SILVER.armorSet(), MythicMaterials.SILVER.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.STAR_PLATINUM.armorSet(), MythicMaterials.STAR_PLATINUM.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.STEEL.armorSet(), MythicMaterials.STEEL.baseMaterial());
+        createArmorCraftingRecipes(MythicMaterials.STORMYX.armorSet(), MythicMaterials.STORMYX.baseMaterial());
 
         createArmorSmithingRecipes(
             MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_SMITHING_TEMPLATE),
-            MythicArmor.KYBER,
+            MythicMaterials.KYBER.armorSet(),
             Ingredient.of(MythicMaterials.CARMOT.baseMaterial()),
-            MythicArmor.CARMOT
-        );
+            MythicMaterials.CARMOT.armorSet()
+            );
         createArmorSmithingRecipes(
             MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
             Items.NETHERITE_HELMET,
@@ -735,7 +735,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.NETHERITE_LEGGINGS,
             Items.NETHERITE_BOOTS,
             Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
-            MythicArmor.METALLURGIUM
+            MythicMaterials.METALLURGIUM.armorSet()
         );
         createArmorSmithingRecipes(
             MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
@@ -744,13 +744,13 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
             Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
-            MythicArmor.CELESTIUM
+            MythicMaterials.CELESTIUM.armorSet()
         );
         createArmorSmithingRecipes(
-            MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
-            MythicArmor.BANGLUM,
+            MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
+            MythicMaterials.BANGLUM.armorSet(),
             Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
-            MythicArmor.LEGENDARY_BANGLUM
+            MythicMaterials.LEGENDARY_BANGLUM.armorSet()
         );
         createArmorSmithingRecipes(
             MythicMaterials.OSMIUM.extraItems().get(MythicResourceKeys.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE),
@@ -759,7 +759,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
             Ingredient.of(MythicMaterials.OSMIUM.baseMaterial()),
-            MythicArmor.OSMIUM_CHAINMAIL
+            MythicMaterials.OSMIUM_CHAINMAIL.armorSet()
         );
         createTidesingerArmorRecipes();
     }
@@ -814,11 +814,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
 //        }
     }
 
-    public void createArmorCraftingRecipes(ArmorSet output, Item material) {
-        createArmorCraftingRecipes(output, Ingredient.of(material));
+    public void createArmorCraftingRecipes (ArmorSet output, Item item) {
+        createArmorCraftingRecipes(output, Ingredient.of(item));
     }
 
     public void createArmorCraftingRecipes(ArmorSet output, Ingredient material) {
+        if (output == null) return;
         // helmet
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getHelmet())
             .define('#', material)
@@ -852,6 +853,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     public void createArmorSmithingRecipes(Item template, Item baseHelmet, Item baseChestplate, Item baseLeggings, Item baseBoots, Ingredient addition, ArmorSet outputArmorSet) {
+        if (outputArmorSet == null) return;
         // helmet
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(template),
@@ -895,6 +897,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     public void createArmorSmithingRecipes(Item template, ArmorSet baseArmorSet, Ingredient addition, ArmorSet outputArmorSet) {
+        if (baseArmorSet == null) return;
         createArmorSmithingRecipes(
             template,
             baseArmorSet.getHelmet(),

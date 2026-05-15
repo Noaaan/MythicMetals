@@ -1,6 +1,7 @@
 package com.mythicmetals.data;
 
 import com.mythicmetals.misc.RegistryHelper;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
@@ -39,13 +40,14 @@ public class MythicTags {
     public static final TagKey<Biome> UNOBTAINIUM_BIOMES = TagKey.create(Registries.BIOME, RegistryHelper.id("unobtainium_ore_biomes"));
     public static final TagKey<Biome> TIN_BIOMES = TagKey.create(Registries.BIOME, RegistryHelper.id("tin_ore_biomes"));
     public static final TagKey<Biome> MYTHIC_ORE_BIOMES = TagKey.create(BIOME, id("mythic_ore_biomes"));
-
     private MythicTags() {
     }
+
 
     public static final TagKey<Item> AUTO_REPAIR = TagKey.create(Registries.ITEM, id("abilities/auto_repair"));
     public static final TagKey<Item> BONUS_FORTUNE = TagKey.create(Registries.ITEM, id("abilities/bonus_fortune"));
     public static final TagKey<Item> BONUS_LOOTING = TagKey.create(Registries.ITEM, id("abilities/bonus_looting"));
+    public static final TagKey<Item> CARMOT_ARMOR = TagKey.create(ITEM, id("armor/carmot"));
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.create(Registries.ITEM, id("abilities/midas_touch"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.create(Registries.ITEM, id("tidesinger_coral"));
     public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.create(Registries.ITEM, id("mythril_drill_upgrades"));

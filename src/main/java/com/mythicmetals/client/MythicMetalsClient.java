@@ -56,12 +56,14 @@ public class MythicMetalsClient implements ClientModInitializer {
             if (entityRenderer instanceof AvatarRenderer<?> playerRenderer) {
                 registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getModelSet(), context.getEquipmentRenderer()));
             }
-            if (!hasRegistered) {
+            if (entityType.equals(EntityType.PLAYER) && !hasRegistered) {
                 var renderer = createCustomArmorRenderer(context);
                 Item[] armors = BuiltInRegistries.ITEM.stream()
                     .filter(i -> i instanceof CustomArmorModelItem
                         && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
                     .toArray(Item[]::new);
+
+                if (armors.length == 0) return;
 
                 ArmorRenderer.register(renderer, armors);
                 hasRegistered = true;

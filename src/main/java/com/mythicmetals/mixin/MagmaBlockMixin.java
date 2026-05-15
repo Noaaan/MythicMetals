@@ -1,6 +1,6 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
@@ -17,7 +17,8 @@ public class MagmaBlockMixin {
     @Inject(method = "stepOn", at = @At("HEAD"), cancellable = true)
     private void cancelBurnWithPalladiumBoots(Level world, BlockPos pos, BlockState state, Entity entity, CallbackInfo ci) {
         if (!entity.showVehicleHealth()) return;
-        if (entity instanceof LivingEntity living && living.getItemBySlot(EquipmentSlot.FEET).getItem().equals(MythicArmor.PALLADIUM.getBoots())) {
+        if (MythicMaterials.PALLADIUM.armorSet() == null) return;
+        if (entity instanceof LivingEntity living && living.getItemBySlot(EquipmentSlot.FEET).getItem().equals(MythicMaterials.PALLADIUM.armorSet().getBoots())) {
             ci.cancel();
         }
     }

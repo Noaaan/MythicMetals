@@ -1,6 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
@@ -19,7 +20,7 @@ public class CampfireBlockMixin {
         if (!entity.showVehicleHealth()) return;
         if (entity instanceof LivingEntity livingEntity) {
             var slot = SlotAccess.forEquipmentSlot(livingEntity, EquipmentSlot.FEET);
-            if (slot.get().getItem().equals(MythicArmor.PALLADIUM.getBoots())) {
+            if (slot.get().getItem().equals(MythicMaterials.PALLADIUM.armorSet().getBoots())) {
                 ci.cancel();
             }
         }

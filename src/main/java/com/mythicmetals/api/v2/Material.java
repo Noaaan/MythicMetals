@@ -11,14 +11,12 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.*;
 
 public record Material(
     String name,
-    @NonNull Item baseMaterial,
+    Item baseMaterial,
     @Nullable Item nugget,
     @Nullable Item rawOre,
     @Nullable BlockSet blockSet,
@@ -97,7 +95,7 @@ public record Material(
         private Rarity computeRarity(MaterialType type) {
             return switch (type) {
                 case RARE_ALLOY -> Rarity.RARE;
-                case ALLOY, SPECIAL -> Rarity.UNCOMMON;
+                case ALLOY, ARMOR, SPECIAL -> Rarity.UNCOMMON;
                 case INGOT, BASIC -> Rarity.COMMON;
             };
         }
@@ -186,11 +184,17 @@ public record Material(
             return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
         }
 
+        public Builder createCustomArmorSet(ArmorSet armorSet, Consumer<ArmorSet> executor) {
+            this.armorSet = armorSet;
+            executor.accept(this.armorSet);
+            return this;
+        }
+
         /**
          * Registers and returns the finished Material
          */
         public Material finish() {
-            if (baseMaterial == null) {
+            if (baseMaterial == null && type != MaterialType.ARMOR) {
                 throw new IllegalStateException("Base material must be registered!");
             }
             return new Material(name, baseMaterial, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);

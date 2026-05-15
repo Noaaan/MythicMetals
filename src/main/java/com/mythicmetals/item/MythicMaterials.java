@@ -2,6 +2,8 @@ package com.mythicmetals.item;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
+import com.mythicmetals.armor.AdamantiteArmorSet;
+import com.mythicmetals.armor.MythicArmorMaterials;
 import com.mythicmetals.block.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
@@ -34,6 +36,7 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 6.0f, 7.0f)
             .finish()
         )
+        .createCustomArmorSet(new AdamantiteArmorSet(MythicArmorMaterials.ADAMANTITE), ArmorSet::createDefault)
 //        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE)
 //        .createDefaultArmor(MythicArmorMaterials.ADAMANTITE)
         .finish();
@@ -83,7 +86,6 @@ public class MythicMaterials {
             )
         )
         .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
-        .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
@@ -137,6 +139,10 @@ public class MythicMaterials {
         )
         .finish();
 
+    public static final Material LEGENDARY_BANGLUM = Material.Builder.createRawBuilder("legendary_banglum", MaterialType.ARMOR)
+        .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
+        .finish();
+
     public static final Material MANGANESE = Material.Builder.create("manganese", MaterialType.INGOT)
         .createDefaultBlockSet(STONE_MINING_LEVEL, 3.0f)
         .finish();
@@ -182,6 +188,9 @@ public class MythicMaterials {
     public static final Material OSMIUM = Material.Builder.create("osmium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
+        .finish();
+
+    public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
         .finish();
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)

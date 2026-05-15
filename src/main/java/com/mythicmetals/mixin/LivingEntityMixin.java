@@ -2,7 +2,6 @@ package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.component.DrillComponent;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.data.MythicTags;
@@ -177,18 +176,9 @@ public abstract class LivingEntityMixin extends Entity {
     private void mythicmetals$addArmorEffects() {
         for (var slot : EquipmentSlot.VALUES) {
             var armorStack = this.getItemBySlot(slot);
-            // Turns out, this bug was in Minecraft itself
-            // It only took a couple of years to find, and it was re-producible in vanilla context
-            // Should be fixed in this version. If not I will cry
             if (armorStack.isEmpty()) continue; // Don't get the item for an empty stack
-//            if (armorStack.getItem() == null) {
-//                MythicMetals.LOGGER.error("An ItemStack was somehow marked as not empty, but it doesn't contain an item.");
-//                MythicMetals.LOGGER.error("This is not caused by Mythic Metals, and it could potentially crash!");
-//                MythicMetals.LOGGER.error("Skipping the Armor Item query");
-//                continue;
-//            }
 
-            if (MythicArmor.CARMOT.isInArmorSet(armorStack)) {
+            if (armorStack.is(MythicTags.CARMOT_ARMOR)) {
                 mythicmetals$carmotParticle();
             }
         }
