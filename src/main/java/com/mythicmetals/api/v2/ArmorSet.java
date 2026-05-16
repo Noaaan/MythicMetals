@@ -4,6 +4,7 @@ import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.StringUtilsAtHome;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -47,11 +48,18 @@ public class ArmorSet {
     }
 
     public ArmorSet createDefault() {
-        this.helmet = RegistryHelper.item(helmetKey, baseItem(helmetKey, armorMaterial, ArmorType.HELMET, settings -> {
-        }));
-        this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, settings -> {}));
-        this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, settings -> {}));
-        this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, settings -> {}));
+        return createDefault(List.of());
+    }
+
+    public ArmorSet createDefault(List<MythicAttributeModifier> extraModifiers) {
+        this.helmet = RegistryHelper.item(
+            helmetKey,
+            baseItem(helmetKey, armorMaterial, ArmorType.HELMET, settings -> {}, extraModifiers)
+        );
+        this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, settings -> {}, extraModifiers));
+        this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, settings -> {}, extraModifiers));
+        this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, settings -> {}, extraModifiers));
+        // TODO - Apply extra modifiers to both horse and naut armor
         this.horse = RegistryHelper.item(horseKey, new Item(
             new Item.Properties()
                 .horseArmor(armorMaterial)
@@ -63,6 +71,16 @@ public class ArmorSet {
                 .setId(nautilusKey)
         ));
         return this;
+    }
+
+    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsProcessor) {
+        return baseItem(key, material, equipmentType, settingsProcessor, List.of());
+    }
+
+    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+        var settings = baseArmorSettings(key, material, equipmentType, extraModifiers);
+        settingsConsumer.accept(settings);
+        return this.makeItem(equipmentType, settings);
     }
 
     ///
@@ -90,16 +108,9 @@ public class ArmorSet {
             .repairable(material.repairIngredient());
     }
 
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsProcessor) {
-        return baseItem(key, material, equipmentType, settingsProcessor, List.of());
-    }
-
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
-        var settings = baseArmorSettings(key, material, equipmentType, extraModifiers);
-        settingsConsumer.accept(settings);
-        return this.makeItem(equipmentType, settings);
-    }
-
+    ///
+    /// Override this if needed, for example for custom armor sets to implement different item classes
+    ///
     protected Item makeItem(ArmorType armorType, Item.Properties settings) {
         return new Item(settings);
     }
@@ -160,5 +171,20 @@ public class ArmorSet {
             item.equals(chestplate) ||
             item.equals(leggings) ||
             item.equals(boots);
+    }
+
+    ///
+    /// Get items usually equipped by a player, which is the Helmet, Chestplate, Leggings, and Boots, in that order.
+    ///
+    public List<Item> getPlayerItems() {
+        return List.of(helmet, chestplate, leggings, boots);
+    }
+
+    public String getTitlecaseName() {
+        return StringUtilsAtHome.toTitleCase(this.name);
+    }
+
+    public List<Item> getItems() {
+        return List.of(helmet, chestplate, leggings, boots, horse, nautilus);
     }
 }

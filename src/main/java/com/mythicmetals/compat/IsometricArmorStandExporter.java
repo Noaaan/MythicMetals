@@ -6,12 +6,13 @@ import com.glisco.isometricrenders.screen.RenderScreen;
 import com.glisco.isometricrenders.screen.ScreenScheduler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.TidesingerPatternComponent;
+import com.mythicmetals.item.MythicMaterials;
+import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import java.util.ArrayList;
@@ -28,42 +29,39 @@ public class IsometricArmorStandExporter {
     }
 
     public static int batchRenderArmor(CommandContext<FabricClientCommandSource> context) {
-        if (MythicArmor.ARMOR_MAP.isEmpty()) {
-            context.getSource().sendFeedback(Component.literal("Unable to summon. Somehow the armor map is empty..."));
-            return 0; // "how could this happen to me? I made my mistakes..."
-        }
-
         List<EntityRenderable> renderables = new ArrayList<>();
 
-//        MythicArmor.ARMOR_MAP.values().forEach(armorSet -> {
-//            if (!armorSet.equals(MythicArmor.TIDESINGER)) {
-//            // Configure the armor stand to our liking
-//            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
-//            armorSet.getArmorItems().forEach(armorItem -> {
-//                var armorStack = armorItem.getDefaultInstance();
-//                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
-//                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
-//            });
-//            armorStand.setNoBasePlate(true);
-//            armorStand.setInvisible(true);
-//            renderables.add(new EntityRenderable(armorStand));
-//            }
-//        });
-//
-//        // Handle Tidesinger specifically, since it has five distinct variants
-//        TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().forEach(patternItem -> {
-//            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
-//            var armorSet = MythicArmor.TIDESINGER;
-//            armorSet.getArmorItems().forEach(armorItem -> {
-//                var armorStack = armorItem.getDefaultInstance();
-//                armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem));
-//                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
-//                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
-//            });
-//            armorStand.setNoBasePlate(true);
-//            armorStand.setInvisible(true);
-//            renderables.add(new EntityRenderable(armorStand));
-//        });
+        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
+            // TODO - Handle Tidesinger explicitly, since I want to summon the five variants
+            if (material != MythicMaterials.TIDESINGER && material.armorSet() != null) {
+                var armorSet = material.armorSet();
+                var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+                armorSet.getPlayerItems().forEach(armorItem -> {
+                    var armorStack = armorItem.getDefaultInstance();
+                    var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+                    armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+                });
+                armorStand.setNoBasePlate(true);
+                armorStand.setInvisible(true);
+                renderables.add(new EntityRenderable(armorStand));
+            }
+        });
+
+        // Handle Tidesinger specifically, since it has five distinct variants
+        if (MythicMaterials.TIDESINGER.armorSet() == null) return 1;
+        TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().forEach(patternItem -> {
+            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+            var armorSet = MythicMaterials.TIDESINGER.armorSet();
+            armorSet.getPlayerItems().forEach(armorItem -> {
+                var armorStack = armorItem.getDefaultInstance();
+                armorStack.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(patternItem));
+                var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+                armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+            });
+            armorStand.setNoBasePlate(true);
+            armorStand.setInvisible(true);
+            renderables.add(new EntityRenderable(armorStand));
+        });
 
         var batchRender = BatchRenderable.of("mythicmetals", renderables);
         var renderScreen = new RenderScreen(batchRender);

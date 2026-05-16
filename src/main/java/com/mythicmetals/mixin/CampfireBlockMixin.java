@@ -1,6 +1,5 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.*;

@@ -1,7 +1,6 @@
 package com.mythicmetals;
 
 import com.mythicmetals.ability.Abilities;
-import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
@@ -23,13 +22,11 @@ import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -61,13 +58,15 @@ public class MythicMetals implements ModInitializer {
         MythicMaterials.init();
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
         FieldRegistrationHandler.processSimple(MythicTools.class, true);
-        FieldRegistrationHandler.processSimple(MythicArmor.class, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
         MythicDataComponents.init();
         MythicPotions.init();
         BanglumNukeHandler.init();
         MythicOreFeatures.init();
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            DebugHelper.init();
+        }
         MythicCommands.init();
         MythicCommands.registerCommands();
         Abilities.init();

@@ -147,10 +147,6 @@ public class ArmorSet {
         return StringUtilsAtHome.toTitleCase(name);
     }
 
-    public String getMaterialId() {
-        return MythicArmor.ARMOR_MAP.inverse().get(this);
-    }
-
     public ArmorMaterial getMaterial() {
         return material;
     }

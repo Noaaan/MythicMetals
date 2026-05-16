@@ -2,7 +2,6 @@ package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
-import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.item.*;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;

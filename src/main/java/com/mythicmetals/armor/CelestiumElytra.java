@@ -14,8 +14,7 @@ public class CelestiumElytra extends Item {
     }
 
     public static boolean isWearing(LivingEntity entity) {
-        var stack = entity.getItemBySlot(EquipmentSlot.CHEST);
-        return stack.is(MythicArmor.CELESTIUM_ELYTRA);
+        return entity.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof CelestiumElytra;
     }
 
     public static ItemAttributeModifiers createDefaultAttributes() {

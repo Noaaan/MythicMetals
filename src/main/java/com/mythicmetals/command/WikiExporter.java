@@ -1,8 +1,7 @@
 package com.mythicmetals.command;
 
-
+import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
-import com.mythicmetals.armor.ArmorSet;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
@@ -222,16 +221,17 @@ public class WikiExporter {
     static String computeArmorAdmonition(ArmorSet armorSet) {
         var translationStorage = Language.getInstance();
         var output = new StringBuilder();
+        var armorMaterial = armorSet.getArmorMaterial();
         output.append(ADMONITION_HEADER);
         final String armorTitleName = armorSet.getTitlecaseName();
-        var armorModelImage = "../../assets/armor-models/256/%s".formatted(armorSet.getMaterialId() + "_256.png");
+        var armorModelImage = "../../assets/armor-models/256/%s".formatted(armorSet.getName() + "_256.png");
         output.append(ADMONIITION_TOP_IMAGE.formatted(armorTitleName + " Armor", armorModelImage));
 
         var map = Util.make(new HashMap<Item, Integer>(), itemMap -> {
-            itemMap.put(armorSet.getHelmet(), armorSet.getMaterial().defense().get(ArmorType.HELMET));
-            itemMap.put(armorSet.getChestplate(), armorSet.getMaterial().defense().get(ArmorType.CHESTPLATE));
-            itemMap.put(armorSet.getLeggings(), armorSet.getMaterial().defense().get(ArmorType.LEGGINGS));
-            itemMap.put(armorSet.getBoots(), armorSet.getMaterial().defense().get(ArmorType.BOOTS));
+            itemMap.put(armorSet.getHelmet(), armorMaterial.defense().get(ArmorType.HELMET));
+            itemMap.put(armorSet.getChestplate(), armorMaterial.defense().get(ArmorType.CHESTPLATE));
+            itemMap.put(armorSet.getLeggings(), armorMaterial.defense().get(ArmorType.LEGGINGS));
+            itemMap.put(armorSet.getBoots(), armorMaterial.defense().get(ArmorType.BOOTS));
         });
 
         for (var armor : map.entrySet()) {
@@ -239,7 +239,6 @@ public class WikiExporter {
             String name = translationStorage.getOrDefault(Util.makeDescriptionId("item", itemId));
             String id = itemId.getPath();
 
-            var material = armorSet.getMaterial();
             int protection = armor.getValue();
 
             output.append("\n");
@@ -254,11 +253,11 @@ public class WikiExporter {
             output.append("\t<br>\n");
             // +5 Armor, +2 Toughness
             output.append("\t+%s Armor".formatted(protection));
-            if (material.toughness() > 0) {
-                output.append(", +%s Toughness".formatted(material.toughness()));
+            if (armorMaterial.toughness() > 0) {
+                output.append(", +%s Toughness".formatted(armorMaterial.toughness()));
             }
             output.append("<br>\n");
-            var kbRes = material.knockbackResistance();
+            var kbRes = armorMaterial.knockbackResistance();
             if (kbRes > 0) {
                 output.append("\t+%s Knockback Resistance".formatted(kbRes)).append("<br>\n");
             }
@@ -270,7 +269,7 @@ public class WikiExporter {
 
     static String computeArmorRecipes(ArmorSet armorSet) {
         StringBuilder output = new StringBuilder();
-        for (Item armor : armorSet.getArmorItems()) {
+        for (Item armor : armorSet.getItems()) {
             String id = BuiltInRegistries.ITEM.getKey(armor).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""

@@ -1,17 +1,26 @@
 package com.mythicmetals.item;
 
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
-import com.mythicmetals.armor.AdamantiteArmorSet;
-import com.mythicmetals.armor.MythicArmorMaterials;
+import com.mythicmetals.api.v2.ArmorSet;
+import com.mythicmetals.armor.*;
 import com.mythicmetals.block.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.tools.CarmotBellItem;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.registry.RegisterSounds;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.Unit;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.MinecartItem;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
@@ -19,10 +28,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.item.MythicResourceKeys.*;
+import static net.minecraft.world.entity.EquipmentSlotGroup.*;
+import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.*;
+import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 public class MythicMaterials {
     public static final Material AEGIS = Material.Builder.createRawBuilder("aegis", MaterialType.SPECIAL)
@@ -38,13 +51,11 @@ public class MythicMaterials {
         )
         .createCustomArmorSet(new AdamantiteArmorSet(MythicArmorMaterials.ADAMANTITE), ArmorSet::createDefault)
 //        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE)
-//        .createDefaultArmor(MythicArmorMaterials.ADAMANTITE)
         .finish();
 
     public static final Material AQUARIUM = Material.Builder.create("aquarium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
 //        .createDefaultTools(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT)
-//        .createDefaultArmor(MythicArmorMaterials.AQUARIUM)
         .addExtraBlock(
             AQUARIUM_GLASS,
             properties ->
@@ -53,6 +64,12 @@ public class MythicMaterials {
                         .setId(AQUARIUM_GLASS)
                 )
         )
+        .createDefaultArmor(MythicArmorMaterials.AQUARIUM, List.of(
+            new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 1.0, ADD_MULTIPLIED_TOTAL, HEAD),
+            new MythicAttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_MULTIPLIED_TOTAL, FEET)
+        ))
         .addExtraBlock(AQUARIUM_RESONATOR, 4.0f, AquariumResonatorBlock::new)
         .finish();
 
@@ -117,6 +134,20 @@ public class MythicMaterials {
     public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 13.0f)
         .finish();
+
+    // TODO
+//    public static final Item CELESTIUM_ELYTRA = new CelestiumElytra(new Item.Properties()
+//        .durability(832)
+//        .setId(RegistryHelper.itemKey("celestium_elytra"))
+//        .rarity(Rarity.EPIC)
+//        .component(DataComponents.GLIDER, Unit.INSTANCE)
+//        .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST)
+//            .setAsset(RegistryHelper.equipmentAsset("celestium_elytra"))
+//            .setEquipSound(RegistryHelper.getEntry(RegisterSounds.EQUIP_CELESTIUM_ELYTRA))
+//            .build())
+//        .group(MythicMetals.TABBED_GROUP).tab(3)
+//        .attributes(CelestiumElytra.createDefaultAttributes())
+//    );
 
     public static final Material DURASTEEL = Material.Builder.create("durasteel", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)

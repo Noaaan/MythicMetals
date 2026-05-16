@@ -1,7 +1,7 @@
 package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.armor.CelestiumElytra;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.StarPlatCloakModel;
 import com.mythicmetals.misc.RegistryHelper;
@@ -55,7 +55,7 @@ public class MythicMetalsCustomFeatureRenderer extends RenderLayer<AvatarRenderS
 //                }
 //            }
 
-        } else if (chestItem == MythicArmor.CELESTIUM_ELYTRA) {
+        } else if (chestItem instanceof CelestiumElytra) {
             renderCelestiumElytra(poseStack, submitNodeCollector, light, avatarRenderState);
         }
     }

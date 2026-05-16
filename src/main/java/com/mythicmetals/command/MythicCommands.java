@@ -9,11 +9,12 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.ArmorSet;
-import com.mythicmetals.armor.MythicArmor;
+import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.config.MythicOreConfigs;
 import com.mythicmetals.config.OreConfig;
+import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.tools.*;
+import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
@@ -187,7 +188,7 @@ public final class MythicCommands {
         } catch (IOException e) {
             MythicMetals.LOGGER.error("Failed to create folder", e);
         }
-        MythicArmor.ARMOR_MAP.forEach((name, armorSet) -> {
+        DebugHelper.ARMOR_MAP.forEach((name, armorSet) -> {
             var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + ".md");
             try {
                 Files.createFile(file);
@@ -395,17 +396,16 @@ public final class MythicCommands {
      * @param z        z-coordinate where the armor stand should spawn
      * @return Returns whether the armor set was successfully created and summoned
      * @see ArmorTrim
-     * @see MythicArmor
      * @see ArmorSet
      */
     public static boolean summonArmorStandWithTrim(Level world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
         if (world.isClientSide()) return false;
-//        if (armorSet.equals(MythicArmor.TIDESINGER)) return false; // This has custom "trims", ignore it
+        if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
         AtomicBoolean success = new AtomicBoolean(true);
 
         var armorStand = new ArmorStand(world, x, world.getMaxY() - 50, z);
         armorStand.setNoBasePlate(true);
-        armorSet.getArmorItems().forEach(armorItem -> {
+        armorSet.getPlayerItems().forEach(armorItem -> {
             var armorStack = new ItemStack(armorItem);
             if (!armorStack.is(ItemTags.TRIMMABLE_ARMOR)) {
                 MythicMetals.LOGGER.debug("Armor Item %s is not trimmable".formatted(armorStack.getHoverName()));
@@ -459,11 +459,11 @@ public final class MythicCommands {
     }
 
     /**
-     * Suggests armor materials from all the armor sets defined in {@link MythicArmor}
+     * Suggests armor materials from all the armor sets defined in {@link MythicMaterials}
      * Includes one extra suggestion for "all"
      */
     private static CompletableFuture<Suggestions> armorMaterial(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
-        MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
+        DebugHelper.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
         suggestion.suggest("all");
         return suggestion.buildFuture();
     }
@@ -471,7 +471,7 @@ public final class MythicCommands {
     private static CompletableFuture<Suggestions> material(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         var placeableMaterials = new HashSet<String>();
         placeableMaterials.addAll(MythicTools.TOOL_MAP.keySet());
-        placeableMaterials.addAll(MythicArmor.ARMOR_MAP.keySet());
+        placeableMaterials.addAll(DebugHelper.ARMOR_MAP.keySet());
         placeableMaterials.add("all");
         placeableMaterials.forEach(suggestion::suggest);
         return suggestion.buildFuture();
@@ -545,9 +545,9 @@ public final class MythicCommands {
             if (material.equals("all")) {
 
                 int count = 0;
-                var armorSetStrings = new TreeSet<>(MythicArmor.ARMOR_MAP.keySet());
+                var armorSetStrings = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
                 for (var armorSetName : armorSetStrings) {
-                    if (summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(armorSetName), x, z)) {
+                    if (summonArmorStandWithTrim(world, null, DebugHelper.ARMOR_MAP.get(armorSetName), x, z)) {
                         x++;
                         count++;
                     }
@@ -556,7 +556,7 @@ public final class MythicCommands {
                 context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands".formatted(finalCount)), true);
                 return finalCount;
             } else {
-                if (summonArmorStandWithTrim(world, null, MythicArmor.ARMOR_MAP.get(material), x, z)) {
+                if (summonArmorStandWithTrim(world, null, DebugHelper.ARMOR_MAP.get(material), x, z)) {
                     context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping one armorstand"), true);
                     return 1;
                 } else {
@@ -567,7 +567,7 @@ public final class MythicCommands {
         }
 
         if (material.equals("all")) {
-            if (MythicArmor.ARMOR_MAP.isEmpty()) {
+            if (DebugHelper.ARMOR_MAP.isEmpty()) {
                 context.getSource().sendSuccess(() -> Component.literal("Unable to summon. Somehow the armor map is empty..."), false);
                 return -1; // "how did this happen?" "a long time ago, actually never..."
             }
@@ -585,10 +585,10 @@ public final class MythicCommands {
             MutableInt mutZ = new MutableInt(pos.z);
             MutableInt count = new MutableInt(0);
 
-            var armorSetStrings = new TreeSet<>(MythicArmor.ARMOR_MAP.keySet());
+            var armorSetStrings = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
             for (var armorSetName : armorSetStrings) {
                 armorTrims.forEach(armorTrim -> {
-                    if (summonArmorStandWithTrim(world, armorTrim, MythicArmor.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
+                    if (summonArmorStandWithTrim(world, armorTrim, DebugHelper.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
                         mutX.add(2);
                         count.increment();
                     }
@@ -599,7 +599,7 @@ public final class MythicCommands {
             context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
 
             return count.getValue();
-        } else if (MythicArmor.ARMOR_MAP.get(material) != null) {
+        } else if (DebugHelper.ARMOR_MAP.get(material) != null) {
             if (trimQuery.equals("all")) {
                 armorTrims = getAllArmorTrims(world);
             } else {
@@ -620,7 +620,7 @@ public final class MythicCommands {
                     xOffset += 2;
                     zOffset = 0;
                 }
-                var armorSet = MythicArmor.ARMOR_MAP.get(material);
+                var armorSet = DebugHelper.ARMOR_MAP.get(material);
                 if (summonArmorStandWithTrim(world, armorTrims.get(i), armorSet, (int) pos.x + xOffset, (int) pos.z + zOffset)) {
                     count++;
                     zOffset += 2;

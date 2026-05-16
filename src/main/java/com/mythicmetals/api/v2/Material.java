@@ -2,6 +2,7 @@ package com.mythicmetals.api.v2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.resources.Identifier;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jspecify.annotations.Nullable;
+import java.util.List;
 import java.util.function.*;
 
 public record Material(
@@ -182,6 +184,12 @@ public record Material(
 
         public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents) {
             return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
+        }
+
+        public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicAttributeModifier> extraModifiers) {
+            var set = new ArmorSet(this.name, armorMaterial);
+            this.armorSet = set.createDefault(extraModifiers);
+            return this;
         }
 
         public Builder createCustomArmorSet(ArmorSet armorSet, Consumer<ArmorSet> executor) {

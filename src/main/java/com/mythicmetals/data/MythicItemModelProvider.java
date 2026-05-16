@@ -1,10 +1,10 @@
 package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.Material;
-import com.mythicmetals.armor.MythicArmor;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
+import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -12,7 +12,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
-import net.minecraft.world.item.Item;
 
 public class MythicItemModelProvider extends FabricModelProvider {
 
@@ -45,13 +44,13 @@ public class MythicItemModelProvider extends FabricModelProvider {
 //            itemModelGenerator.generateFlatItem(value, ModelTemplates.FLAT_ITEM);
 //        });
         // Armor
-        MythicArmor.ARMOR_MAP.forEach((s, armorSet) -> {
+        DebugHelper.ARMOR_MAP.forEach((s, armorSet) -> {
             itemModelGenerator.generateFlatItem(armorSet.getHelmet(), ModelTemplates.FLAT_ITEM);
             itemModelGenerator.generateFlatItem(armorSet.getChestplate(), ModelTemplates.FLAT_ITEM);
             itemModelGenerator.generateFlatItem(armorSet.getLeggings(), ModelTemplates.FLAT_ITEM);
             itemModelGenerator.generateFlatItem(armorSet.getBoots(), ModelTemplates.FLAT_ITEM);
         });
-        itemModelGenerator.generateFlatItem(MythicArmor.CELESTIUM_ELYTRA, ModelTemplates.FLAT_ITEM);
+//        itemModelGenerator.generateFlatItem(MythicArmor.CELESTIUM_ELYTRA, ModelTemplates.FLAT_ITEM);
 
         // Tools
         MythicTools.TOOL_MAP.forEach((s, toolSet) -> {
