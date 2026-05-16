@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/armor/kyber_helmet"
+    "layer0": "mythicmetals:item/kyber_helmet"
   }
 }

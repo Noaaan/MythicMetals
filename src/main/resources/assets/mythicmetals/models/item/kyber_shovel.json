@@ -1,7 +1,7 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/kyber_shovel"
+    "layer0": "mythicmetals:item/kyber_shovel"
   },
   "display": {
     "thirdperson_righthand": {

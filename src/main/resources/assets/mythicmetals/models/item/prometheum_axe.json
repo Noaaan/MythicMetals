@@ -1,8 +1,7 @@
 {
-	"credit": "Made with Blockbench, thanks Iffy!",
-	"parent": "item/handheld",
+	"parent": "minecraft:item/handheld",
 	"textures": {
-		"layer0": "mythicmetals:item/tools/prometheum_axe"
+		"layer0": "mythicmetals:item/prometheum_axe"
 	},
 	"display": {
 		"thirdperson_righthand": {

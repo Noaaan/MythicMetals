@@ -1,6 +1,5 @@
 package com.mythicmetals.client;
 
-import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.api.v2.client.CustomArmorModel;
@@ -59,8 +58,7 @@ public class MythicMetalsClient implements ClientModInitializer {
             if (entityType.equals(EntityType.PLAYER) && !hasRegistered) {
                 var renderer = createCustomArmorRenderer(context);
                 Item[] armors = BuiltInRegistries.ITEM.stream()
-                    .filter(i -> i instanceof CustomArmorModelItem
-                        && BuiltInRegistries.ITEM.getResourceKey(i).get().identifier().getNamespace().equals(MythicMetals.MOD_ID))
+                    .filter(i -> i instanceof CustomArmorModelItem)
                     .toArray(Item[]::new);
 
                 if (armors.length == 0) return;
@@ -110,7 +108,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     private void renderHammerOutline() {
         // FIXME - Use FabricRenderState to attach some hammer-specific params for rendering this.
 //        WorldRenderEvents.BEFORE_BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
-////            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
+//            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
 //            var player = (Player) blockOutlineContext.entity();
 //            // Only render the outline if you are hovering over something the hammer can break
 //            var stack = player.getMainHandItem();

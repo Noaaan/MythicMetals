@@ -23,7 +23,7 @@
       "com.mythicmetals.client.MythicMetalsClient"
     ],
     "fabric-datagen": [
-      "com.mythicmetals.data.MythicMetalsData"
+      "com.mythicmetals.data.MythicMetalsDatagen"
     ],
     "rei_common": [
       "com.mythicmetals.compat.MythicMetalsREICommonPlugin"

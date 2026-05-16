@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/runite_sword"
+    "layer0": "mythicmetals:item/runite_sword"
   }
 }

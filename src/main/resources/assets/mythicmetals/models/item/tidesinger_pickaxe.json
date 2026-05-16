@@ -1,7 +1,7 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/tidesinger_pickaxe"
+    "layer0": "mythicmetals:item/tidesinger_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

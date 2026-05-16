@@ -81,16 +81,15 @@ public record PrometheumComponent(int durabilityRepaired) {
         return stack.getOrDefault(MythicDataComponents.PROMETHEUM, DEFAULT).durabilityRepaired > OVERGROWN_THRESHOLD;
     }
 
-    public static AttributeModifier createOvergrownModifier(ItemStack stack, int base) {
-        return createOvergrownModifier(stack, base, EquipmentSlot.MAINHAND);
+    public static AttributeModifier createOvergrownModifier(PrometheumComponent component, ItemStack stack, int base) {
+        return createOvergrownModifier(component, stack, base, EquipmentSlot.MAINHAND);
     }
 
-    public static AttributeModifier createOvergrownModifier(ItemStack stack, int base, EquipmentSlot slot) {
+    public static AttributeModifier createOvergrownModifier(PrometheumComponent component, ItemStack stack, int base, EquipmentSlot slot) {
         var id = switch (slot.getType()) {
             case HAND -> DAMAGE_BONUS_ID;
             case HUMANOID_ARMOR, ANIMAL_ARMOR, SADDLE -> ARMOR_BONUS_ID;
         };
-        var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
         int bonus = base;
         bonus += component.durabilityRepaired() > (OVERGROWN_THRESHOLD * 2) ? 2 : 1;
         return new AttributeModifier(
@@ -100,8 +99,7 @@ public record PrometheumComponent(int durabilityRepaired) {
         );
     }
 
-    public static AttributeModifier createOvergrownToughnessModifier(ItemStack stack, int base) {
-        var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
+    public static AttributeModifier createOvergrownToughnessModifier(PrometheumComponent component, ItemStack stack, int base) {
         int bonus = base;
         bonus += component.durabilityRepaired() > (OVERGROWN_THRESHOLD * 2) ? 2 : 1;
         bonus += EnchantmentHelper.has(stack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE) ? 1 : 0;

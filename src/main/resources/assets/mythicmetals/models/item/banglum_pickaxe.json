@@ -1,7 +1,7 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/banglum_pickaxe"
+    "layer0": "mythicmetals:item/banglum_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {

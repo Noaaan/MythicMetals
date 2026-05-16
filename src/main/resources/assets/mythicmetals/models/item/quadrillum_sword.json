@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/quadrillum_sword"
+    "layer0": "mythicmetals:item/quadrillum_sword"
   }
 }

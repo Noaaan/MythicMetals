@@ -9,10 +9,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.ArmorMaterial;
-import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.Equippable;
-
+import net.minecraft.world.item.equipment.*;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -52,7 +49,8 @@ public class ArmorSet {
     }
 
     public ArmorSet initialize() {
-        return initialize(settings -> {}, List.of());
+        return initialize(settings -> {
+        }, List.of());
     }
 
     public ArmorSet initialize(Consumer<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers) {
@@ -160,21 +158,18 @@ public class ArmorSet {
         return name;
     }
 
-    public boolean isInArmorSet(Item armorItem) {
+    public boolean isInArmorSet(Item item) {
         return
-            armorItem.equals(helmet) ||
-                armorItem.equals(chestplate) ||
-                armorItem.equals(leggings) ||
-                armorItem.equals(boots);
+            item.equals(helmet) ||
+                item.equals(chestplate) ||
+                item.equals(leggings) ||
+                item.equals(boots) ||
+                item.equals(horse) ||
+                item.equals(nautilus);
     }
 
     public boolean isInArmorSet(ItemStack armorStack) {
-        var item = armorStack.getItem();
-        return
-            item.equals(helmet) ||
-            item.equals(chestplate) ||
-            item.equals(leggings) ||
-            item.equals(boots);
+       return isInArmorSet(armorStack.getItem());
     }
 
     ///

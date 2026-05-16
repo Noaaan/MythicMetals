@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/armor/celestium_elytra"
+    "layer0": "mythicmetals:item/celestium_elytra"
   }
 }

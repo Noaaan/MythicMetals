@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/armor/osmium_chainmail_chestplate"
+    "layer0": "mythicmetals:item/osmium_chainmail_chestplate"
   }
 }

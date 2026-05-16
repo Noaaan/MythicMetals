@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/template/tidesinger_smithing_template"
+    "layer0": "mythicmetals:item/tidesinger_smithing_template"
   }
 }

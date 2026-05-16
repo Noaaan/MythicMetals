@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/tools/carmot_bell"
+    "layer0": "mythicmetals:item/carmot_bell"
   },
   "display": {
     "thirdperson_righthand": {

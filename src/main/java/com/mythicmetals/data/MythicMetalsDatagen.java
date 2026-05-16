@@ -18,13 +18,13 @@ public class MythicMetalsDatagen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         var data = fabricDataGenerator.createPack();
-        data.addProvider(MythicBlockTagProvider::new);
+//        data.addProvider(MythicBlockTagProvider::new);
 //        data.addProvider(MythicItemTagProvider::new);
         data.addProvider(MythicDynamicRegistryProvider::new);
-        data.addProvider(MythicRecipeProvider::new);
-        data.addProvider((output, registriesFuture) -> {
-            return new MythicBiomeTagProvider(output, Registries.BIOME, registriesFuture);
-        });
+//        data.addProvider(MythicRecipeProvider::new);
+//        data.addProvider((output, registriesFuture) -> {
+//            return new MythicBiomeTagProvider(output, Registries.BIOME, registriesFuture);
+//        });
         data.addProvider(MythicItemModelProvider::new);
     }
 

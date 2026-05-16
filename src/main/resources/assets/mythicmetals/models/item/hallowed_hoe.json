@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/hallowed_hoe"
+    "layer0": "mythicmetals:item/hallowed_hoe"
   }
 }

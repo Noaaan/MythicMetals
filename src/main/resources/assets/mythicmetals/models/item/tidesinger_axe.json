@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/tidesinger_axe"
+    "layer0": "mythicmetals:item/tidesinger_axe"
   }
 }

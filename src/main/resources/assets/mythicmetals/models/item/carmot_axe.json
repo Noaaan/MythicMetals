@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/carmot_axe"
+    "layer0": "mythicmetals:item/carmot_axe"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "parent": "item/generated",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mythicmetals:item/nuggets/osmium_nugget"
+    "layer0": "mythicmetals:item/osmium_nugget"
   }
 }

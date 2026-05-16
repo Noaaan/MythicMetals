@@ -1,7 +1,7 @@
 {
-  "parent": "item/handheld",
+  "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "mythicmetals:item/tools/star_platinum_pickaxe"
+    "layer0": "mythicmetals:item/star_platinum_pickaxe"
   },
   "display": {
     "thirdperson_righthand": {
