@@ -1,7 +1,7 @@
 package com.mythicmetals.ability;
 
 
-import com.mythicmetals.armor.ArmorSet;
+import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.item.tools.ToolSet;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

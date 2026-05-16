@@ -47,18 +47,22 @@ public class ArmorSet {
         this.armorMaterial = armorMaterial;
     }
 
-    public ArmorSet createDefault() {
-        return createDefault(List.of());
+    public ArmorSet initialize(Consumer<Item.Properties> customProperties) {
+        return initialize(customProperties, List.of());
     }
 
-    public ArmorSet createDefault(List<MythicAttributeModifier> extraModifiers) {
+    public ArmorSet initialize() {
+        return initialize(settings -> {}, List.of());
+    }
+
+    public ArmorSet initialize(Consumer<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers) {
         this.helmet = RegistryHelper.item(
             helmetKey,
-            baseItem(helmetKey, armorMaterial, ArmorType.HELMET, settings -> {}, extraModifiers)
+            baseItem(helmetKey, armorMaterial, ArmorType.HELMET, customProperties, extraModifiers)
         );
-        this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, settings -> {}, extraModifiers));
-        this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, settings -> {}, extraModifiers));
-        this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, settings -> {}, extraModifiers));
+        this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, customProperties, extraModifiers));
+        this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, customProperties, extraModifiers));
+        this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, customProperties, extraModifiers));
         // TODO - Apply extra modifiers to both horse and naut armor
         this.horse = RegistryHelper.item(horseKey, new Item(
             new Item.Properties()

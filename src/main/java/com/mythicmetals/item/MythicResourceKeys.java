@@ -40,4 +40,5 @@ public class MythicResourceKeys {
     public static final ResourceKey<Item> TIDESINGER_SMITHING_TEMPLATE = itemKey("tidesinger_smithing_template");
     public static final ResourceKey<Item> UNOBTAINIUM_SMITHING_TEMPLATE = itemKey("unobtainium_smithing_template");
     public static final ResourceKey<Item> EMERALD_CRYSTAL = itemKey("emerald_crystal");
+    public static final ResourceKey<Item> CELESTIUM_ELYTRA = itemKey("celestium_elytra");
 }

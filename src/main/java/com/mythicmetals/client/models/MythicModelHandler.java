@@ -12,18 +12,19 @@ import net.minecraft.resources.Identifier;
 import java.util.function.BiConsumer;
 
 public class MythicModelHandler {
-    public static final ModelLayerLocation ADAMANTITE = model("adamantite_armor");
-    public static final ModelLayerLocation BANGLUM = model("banglum_armor");
+    // FIXME - Rename and move armor
+    public static final ModelLayerLocation ADAMANTITE_ARMOR = model("adamantite_armor");
+    public static final ModelLayerLocation LEGENDARY_BANGLUM_ARMOR = model("banglum_armor");
     public static final ModelLayerLocation CARMOT_SWIRL = model("carmot_swirl");
     public static final ModelLayerLocation CELESTIUM_ELYTRA = model("celestium_elytra");
     public static final ModelLayerLocation BABY_CELESTIUM_ELYTRA = model("baby_celestium_elytra");
     public static final ModelLayerLocation HALLOWED_ARMOR = model("hallowed_armor");
     public static final ModelLayerLocation METALLURGIUM = model("metallurgium_armor");
-    public static final ModelLayerLocation RUNITE = model("runite_armor");
-    public static final ModelLayerLocation TIDESINGER = model("tidesinger");
+    public static final ModelLayerLocation RUNITE_ARMOR = model("runite_armor");
+    public static final ModelLayerLocation TIDESINGER_ARMOR = model("tidesinger");
     public static final ModelLayerLocation BANGLUM_TNT_MINECART = model("banglum_tnt_minecart");
     public static final ModelLayerLocation PALLADIUM_MINECART = model("palladium_minecart");
-    public static final ModelLayerLocation PALLADIUM = model("palladium_armor");
+    public static final ModelLayerLocation PALLADIUM_ARMOR = model("palladium_armor");
     public static final ModelLayerLocation STAR_PLATINUM_CLOAK = model("star_platinum_cloak");
     public static final Identifier HALLOWED_CAPE = RegistryHelper.id("textures/models/hallowed_cape.png");
     public static final Identifier STAR_PLATINUM_CLOAK_TEXTURE = RegistryHelper.id("textures/models/star_platinum_cloak.png");
@@ -31,18 +32,18 @@ public class MythicModelHandler {
     public static final Identifier CELESTIUM_ELYTRA_TEXTURE = RegistryHelper.id("textures/models/celestium_elytra.png");
 
     public static void init(BiConsumer<ModelLayerLocation, LayerDefinition> consumer) {
-        consumer.accept(ADAMANTITE, LayerDefinition.create(AdamantiteArmorModel.getModelData(), 64, 32));
+        consumer.accept(ADAMANTITE_ARMOR, LayerDefinition.create(AdamantiteArmorModel.getModelData(), 64, 32));
         consumer.accept(BANGLUM_TNT_MINECART, MinecartModel.createBodyLayer());
         consumer.accept(PALLADIUM_MINECART, MinecartModel.createBodyLayer());
         consumer.accept(CELESTIUM_ELYTRA, ElytraModel.createLayer());
         consumer.accept(BABY_CELESTIUM_ELYTRA, ElytraModel.createLayer().apply(ElytraModel.BABY_TRANSFORMER));
-        consumer.accept(BANGLUM, LayerDefinition.create(BanglumArmorModel.getModelData(), 64, 32));
-        consumer.accept(PALLADIUM, LayerDefinition.create(PalladiumArmorModel.getModelData(), 64, 32));
+        consumer.accept(LEGENDARY_BANGLUM_ARMOR, LayerDefinition.create(BanglumArmorModel.getModelData(), 64, 32));
+        consumer.accept(PALLADIUM_ARMOR, LayerDefinition.create(PalladiumArmorModel.getModelData(), 64, 32));
         consumer.accept(CARMOT_SWIRL, LayerDefinition.create(PlayerModel.createMesh(new CubeDeformation(1.15f), false), 64, 32));
         consumer.accept(HALLOWED_ARMOR, LayerDefinition.create(HallowedArmorModel.getModelData(), 64, 32));
         consumer.accept(METALLURGIUM, LayerDefinition.create(MetallurgiumArmorModel.getModelData(), 64, 32));
-        consumer.accept(RUNITE, LayerDefinition.create(RuniteArmorModel.getModelData(), 64, 32));
-        consumer.accept(TIDESINGER, LayerDefinition.create(TidesingerArmorModel.getModelData(), 128, 128));
+        consumer.accept(RUNITE_ARMOR, LayerDefinition.create(RuniteArmorModel.getModelData(), 64, 32));
+        consumer.accept(TIDESINGER_ARMOR, LayerDefinition.create(TidesingerArmorModel.getModelData(), 128, 128));
         consumer.accept(STAR_PLATINUM_CLOAK, StarPlatCloakModel.getTexturedModelData());
     }
 

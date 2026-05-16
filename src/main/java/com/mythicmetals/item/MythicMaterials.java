@@ -3,38 +3,36 @@ package com.mythicmetals.item;
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
-import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.armor.*;
 import com.mythicmetals.block.*;
+import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.PrometheumComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
+import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.tools.CarmotBellItem;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;
+import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Unit;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.MinecartItem;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.Equippable;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-
 import java.util.List;
 import java.util.function.Predicate;
 
 import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.item.MythicResourceKeys.*;
 import static net.minecraft.world.entity.EquipmentSlotGroup.*;
-import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.*;
+import static net.minecraft.world.entity.EquipmentSlotGroup.ARMOR;
+import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
+import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE;
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 public class MythicMaterials {
@@ -49,7 +47,11 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 6.0f, 7.0f)
             .finish()
         )
-        .createCustomArmorSet(new AdamantiteArmorSet(MythicArmorMaterials.ADAMANTITE), ArmorSet::createDefault)
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.ADAMANTITE,
+            MythicModelHandler.ADAMANTITE_ARMOR,
+            RegistryHelper.id("textures/models/adamantite_model.png")
+        )
 //        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE)
         .finish();
 
@@ -88,6 +90,7 @@ public class MythicMaterials {
             public float damageModifier() {
                 return 0.5f;
             }
+
             @Override
             public Predicate<BlockState> getPredicate() {
                 return state -> !state.getFluidState().isEmpty();
@@ -103,10 +106,13 @@ public class MythicMaterials {
             )
         )
         .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
+        // TODO - Blast Padding replacement
+        .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of())
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 5.5f)
+        .createDefaultArmor(MythicArmorMaterials.BRONZE)
         .finish();
 
     public static final Material CARMOT = Material.Builder.create("carmot", MaterialType.INGOT)
@@ -129,33 +135,46 @@ public class MythicMaterials {
         })
         .addExtraItem(CARMOT_STONE, Rarity.UNCOMMON, Item::new)
         .addSmithingTemplate(CARMOT_SMITHING_TEMPLATE, MythicSmithingTemplates.CARMOT)
+        .createDefaultArmor(MythicArmorMaterials.CARMOT, List.of(
+            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, ARMOR),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, ARMOR)
+        ))
         .finish();
 
     public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 13.0f)
+        .createDefaultArmor(MythicArmorMaterials.CELESTIUM, List.of(
+            new MythicAttributeModifier(MOVEMENT_SPEED, 0.1, ADD_MULTIPLIED_TOTAL, ARMOR),
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
+        ))
+        .addExtraItem(MythicResourceKeys.CELESTIUM_ELYTRA, new CelestiumElytra(
+            new Item.Properties()
+                .durability(832)
+                .setId(RegistryHelper.itemKey("celestium_elytra"))
+                .rarity(Rarity.EPIC)
+                .component(DataComponents.GLIDER, Unit.INSTANCE)
+                .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST)
+                    .setAsset(RegistryHelper.equipmentAsset("celestium_elytra"))
+                    .setEquipSound(RegistryHelper.getEntry(RegisterSounds.EQUIP_CELESTIUM_ELYTRA))
+                    .build())
+                .group(MythicMetals.TABBED_GROUP).tab(3)
+                .attributes(CelestiumElytra.createDefaultAttributes())
+        ))
         .finish();
-
-    // TODO
-//    public static final Item CELESTIUM_ELYTRA = new CelestiumElytra(new Item.Properties()
-//        .durability(832)
-//        .setId(RegistryHelper.itemKey("celestium_elytra"))
-//        .rarity(Rarity.EPIC)
-//        .component(DataComponents.GLIDER, Unit.INSTANCE)
-//        .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST)
-//            .setAsset(RegistryHelper.equipmentAsset("celestium_elytra"))
-//            .setEquipSound(RegistryHelper.getEntry(RegisterSounds.EQUIP_CELESTIUM_ELYTRA))
-//            .build())
-//        .group(MythicMetals.TABBED_GROUP).tab(3)
-//        .attributes(CelestiumElytra.createDefaultAttributes())
-//    );
 
     public static final Material DURASTEEL = Material.Builder.create("durasteel", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
         .addExtraItem(DURASTEEL_ENGINE, Rarity.UNCOMMON, Item::new)
+        .createDefaultArmor(MythicArmorMaterials.DURASTEEL)
         .finish();
 
     public static final Material HALLOWED = Material.Builder.create("hallowed", MaterialType.ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 5.0f)
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.HALLOWED,
+            MythicModelHandler.HALLOWED_ARMOR,
+            RegistryHelper.id("textures/models/hallowed_model.png")
+        )
         .finish();
 
     public static final Material KYBER = Material.Builder.create("kyber", MaterialType.INGOT)
@@ -168,10 +187,16 @@ public class MythicMaterials {
                 .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
                 .finish()
         )
+        .createDefaultArmor(MythicArmorMaterials.KYBER)
         .finish();
 
     public static final Material LEGENDARY_BANGLUM = Material.Builder.createRawBuilder("legendary_banglum", MaterialType.ARMOR)
         .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.LEGENDARY_BANGLUM,
+            MythicModelHandler.LEGENDARY_BANGLUM_ARMOR,
+            RegistryHelper.id("textures/models/banglum_model.png")
+        )
         .finish();
 
     public static final Material MANGANESE = Material.Builder.create("manganese", MaterialType.INGOT)
@@ -180,6 +205,11 @@ public class MythicMaterials {
 
     public static final Material METALLURGIUM = Material.Builder.create("metallurgium", MaterialType.RARE_ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 60.0f)
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.METALLURGIUM,
+            MythicModelHandler.METALLURGIUM,
+            RegistryHelper.id("textures/models/metallurgium_model.png")
+        )
         .finish();
 
     public static final Material MIDAS_GOLD = Material.Builder.create("midas_gold", MaterialType.INGOT)
@@ -187,6 +217,7 @@ public class MythicMaterials {
         .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
         .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
         .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
+        .createDefaultArmor(MythicArmorMaterials.MIDAS_GOLD)
         .finish();
 
     public static final Material MORKITE = Material.Builder.create("morkite", MaterialType.BASIC)
@@ -204,6 +235,7 @@ public class MythicMaterials {
             .finish()
         )
         .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL)
+        .createDefaultArmor(MythicArmorMaterials.MYTHRIL)
         .finish();
 
     public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT)
@@ -214,14 +246,17 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 6.0f, 7.0f)
             .finish()
         )
+        .createDefaultArmor(MythicArmorMaterials.ORICHALCUM)
         .finish();
 
     public static final Material OSMIUM = Material.Builder.create("osmium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
+        .createDefaultArmor(MythicArmorMaterials.OSMIUM)
         .finish();
 
     public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
+        .createDefaultArmor(MythicArmorMaterials.OSMIUM_CHAINMAIL)
         .finish();
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)
@@ -237,6 +272,14 @@ public class MythicMaterials {
         ) {
             // FIXME - Tooltip
         })
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.PALLADIUM,
+            List.of(
+
+            ),
+            MythicModelHandler.PALLADIUM_ARMOR,
+            RegistryHelper.id("textures/models/palladium_model.png")
+        )
         .finish();
 
     public static final Material PLATINUM = Material.Builder.create("platinum", MaterialType.INGOT)
@@ -250,6 +293,12 @@ public class MythicMaterials {
             .finish()
         )
         .addExtraItem(PROMETHEUM_ROSE, Rarity.UNCOMMON, Item::new)
+        .createCustomArmorSet(
+            new ArmorSet("prometheum", MythicArmorMaterials.PROMETHEUM),
+            armorSet -> armorSet.initialize(
+                properties -> properties.component(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT)
+            )
+        )
         .finish();
 
     public static final Material QUADRILLUM = Material.Builder.create("quadrillum", MaterialType.INGOT)
@@ -262,14 +311,23 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 8.8f, 9f)
             .finish()
         )
+        .createCustomHelmetArmorSet(
+            MythicArmorMaterials.RUNITE,
+            MythicModelHandler.RUNITE_ARMOR,
+            RegistryHelper.id("textures/models/runite_model.png")
+        )
         .finish();
 
     public static final Material SILVER = Material.Builder.create("silver", MaterialType.INGOT)
         .createDefaultBlockSet(STONE_MINING_LEVEL, 2.5f)
+        .createDefaultArmor(MythicArmorMaterials.SILVER)
         .finish();
 
     public static final Material STAR_PLATINUM = Material.Builder.create("star_platinum", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.5f)
+        .createDefaultArmor(MythicArmorMaterials.STAR_PLATINUM, List.of(
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
+        ))
         .finish();
 
     public static final Material STARRITE = Material.Builder.create("starrite", MaterialType.BASIC)
@@ -291,6 +349,7 @@ public class MythicMaterials {
 
     public static final Material STEEL = Material.Builder.create("steel", MaterialType.ALLOY)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 5.0f)
+        .createDefaultArmor(MythicArmorMaterials.STEEL)
         .finish();
 
     public static final Material STORMYX = Material.Builder.create("stormyx", MaterialType.INGOT)
@@ -300,11 +359,25 @@ public class MythicMaterials {
             .finish()
         )
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
+        .createDefaultArmor(MythicArmorMaterials.STORMYX, List.of(
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, ARMOR)
+        ))
         .finish();
 
     public static final Material TIDESINGER = Material.Builder.createRawBuilder("tidesinger", MaterialType.SPECIAL)
         .createBaseMaterial(AQUARIUM_PEARL, Rarity.UNCOMMON, Item::new)
         .addSmithingTemplate(TIDESINGER_SMITHING_TEMPLATE, MythicSmithingTemplates.TIDESINGER)
+        .createCustomArmorSet(
+            new TidesingerArmorSet(MythicArmorMaterials.TIDESINGER),
+            armorSet -> armorSet.initialize(settings -> {
+            }, List.of(
+                new MythicAttributeModifier(AdditionalEntityAttributes.WATER_VISIBILITY, 0.3, ADD_MULTIPLIED_TOTAL, HEAD),
+                new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
+                new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
+                new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, LEGS),
+                new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_VALUE, FEET)
+            ))
+        )
         .finish();
 
     public static final Material TIN = Material.Builder.create("tin", MaterialType.INGOT)

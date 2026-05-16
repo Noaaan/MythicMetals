@@ -40,7 +40,7 @@ public class TidesingerArmor extends Item implements CustomArmorModelItem {
     @Override
     public HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = Minecraft.getInstance().getEntityModels();
-        var root = models.bakeLayer(MythicModelHandler.TIDESINGER);
+        var root = models.bakeLayer(MythicModelHandler.TIDESINGER_ARMOR);
         return new TidesingerBipedModel(root, slot);
     }
 

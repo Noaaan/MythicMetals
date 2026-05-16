@@ -4,7 +4,9 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.armor.CustomHelmetArmorSet;
 import com.mythicmetals.misc.RegistryHelper;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -50,7 +52,8 @@ public record Material(
         private final BiMap<ResourceKey<Block>, Block> extraBlocks = HashBiMap.create();
 
         private static final String INGOT_POSTFIX = "_ingot";
-        private MaterialType type;
+        // TODO - Handle fireproofing
+        private final MaterialType type;
 
         private Builder(String materialName, MaterialType type) {
             this.name = materialName;
@@ -133,7 +136,7 @@ public record Material(
         }
 
         public Builder createDefaultArmor(ArmorMaterial material) {
-            this.armorSet = new ArmorSet(name, material).createDefault();
+            this.armorSet = new ArmorSet(name, material).initialize();
             return this;
         }
 
@@ -188,7 +191,17 @@ public record Material(
 
         public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicAttributeModifier> extraModifiers) {
             var set = new ArmorSet(this.name, armorMaterial);
-            this.armorSet = set.createDefault(extraModifiers);
+            this.armorSet = set.initialize(settings -> {}, extraModifiers);
+            return this;
+        }
+
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture) {
+            return createCustomHelmetArmorSet(material, List.of(), model, texture);
+        }
+
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture) {
+            var armorSet = new CustomHelmetArmorSet(this.name, material, model, texture);
+            this.armorSet = armorSet.initialize(settings -> {}, extraModifiers);
             return this;
         }
 
