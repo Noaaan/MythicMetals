@@ -27,7 +27,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -83,6 +86,7 @@ public final class MythicCommands {
             var midas = Commands.literal("give-midas").build();
             var wiki = Commands.literal("wiki").build();
             var armorStand = Commands.literal("armor-stand").build();
+            var horse = Commands.literal("summon-armored-mobs").build();
             var loot = Commands.literal("test-loot-table").build();
             var display = Commands.literal("place-display").build();
             var placeBlocks = Commands.literal("place-all-blocks").executes(context -> placeAllBlocksets(context, Map.of()))
@@ -137,6 +141,19 @@ public final class MythicCommands {
                 .then(trimPattern)
                 .build();
 
+            var mobArmor = Commands
+                .argument("mob_type", StringArgumentType.word())
+                .suggests(MythicCommands::armoredMobType)
+                .then(Commands.argument("material", StringArgumentType.word())
+                    .suggests(MythicCommands::armorMaterial)
+                    .executes(context -> {
+                        String type = StringArgumentType.getString(context, "mob_type");
+                        String mat = StringArgumentType.getString(context, "material");
+                        return armorMobCommand(context, mat, type.equals("horse"));
+                    })
+                )
+                .build();
+
             // Wiki nodes
             ores.addChild(exportOres);
             tools.addChild(exportTools);
@@ -152,11 +169,13 @@ public final class MythicCommands {
             loot.addChild(lootTables);
             armorStand.addChild(summonTrims);
             midas.addChild(giveMidas);
+            horse.addChild(mobArmor);
 
             // Add commands to root
             mythicRoot.addChild(range);
             mythicRoot.addChild(wiki);
             mythicRoot.addChild(armorStand);
+            mythicRoot.addChild(horse);
             mythicRoot.addChild(loot);
             mythicRoot.addChild(placeBlocks);
             mythicRoot.addChild(display);
@@ -164,6 +183,13 @@ public final class MythicCommands {
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
+    }
+
+    private static CompletableFuture<Suggestions> armoredMobType(CommandContext<CommandSourceStack> commandSourceStackCommandContext, SuggestionsBuilder suggestionsBuilder) {
+        suggestionsBuilder
+            .suggest("horse")
+            .suggest("nautilus");
+        return suggestionsBuilder.buildFuture();
     }
 
     private static int giveMidasSword(CommandContext<CommandSourceStack> context) {
@@ -194,8 +220,7 @@ public final class MythicCommands {
                 Files.createFile(file);
             } catch (FileAlreadyExistsException ignored) {
                 // no-op
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 MythicMetals.LOGGER.error("Failed to write wiki data");
                 context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
                 return;
@@ -529,6 +554,77 @@ public final class MythicCommands {
             return 1;
         }
         return -1;
+    }
+
+
+    private static int armorMobCommand(CommandContext<CommandSourceStack> context, String material, boolean horse) {
+        var serverLevel = context.getSource().getLevel();
+        var pos = context.getSource().getPosition();
+        float x = (int) pos.x + 0.5f;
+        float y = (int) pos.y + 0.5f;
+        float z = (int) pos.z + 0.5f;
+        int count = 0;
+
+        if (material.equals("all")) {
+            var sortedSet = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
+            for (var setName : sortedSet) {
+                if (horse) {
+                    if (summonHorseWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
+                        x++;
+                        count++;
+                    }
+                } else {
+                    if (summonNautilusWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
+                        x++;
+                        count++;
+                    }
+                }
+            }
+            int finalCount = count;
+            context.getSource().sendSuccess(() -> Component.literal("Summoned %d %s with armor sets".formatted(finalCount, horse ? "horse" : "nautilus")), false);
+            return count;
+        } else {
+            var armorSet = DebugHelper.ARMOR_MAP.get(material);
+            if (armorSet == null) return -1;
+            if (horse) {
+                if (summonHorseWithArmor(serverLevel, armorSet, x, y, z)) {
+                    context.getSource().sendSuccess(() -> Component.literal("Summoned horse with armor set"), false);
+                }
+            } else {
+                if (summonNautilusWithArmor(serverLevel, armorSet, x, y, z)) {
+                    context.getSource().sendSuccess(() -> Component.literal("Summoned nautilus with armor set"), false);
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    private static boolean summonHorseWithArmor(ServerLevel level, ArmorSet armorSet, float x, float y, float z) {
+        if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
+
+        var horse = EntityType.HORSE.create(level, EntitySpawnReason.COMMAND);
+        if (horse == null) return false;
+        horse.setNoAi(true);
+        horse.setPos(x, y, z);
+        horse.setTamed(true);
+        horse.equipBodyArmor(null, armorSet.getHorse().getDefaultInstance());
+        level.addFreshEntity(horse);
+        return true;
+    }
+
+    private static boolean summonNautilusWithArmor(ServerLevel level, ArmorSet armorSet, float x, float y, float z) {
+        if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
+
+        var nautilus = EntityType.NAUTILUS.create(level, EntitySpawnReason.COMMAND);
+        if (nautilus == null) return false;
+        nautilus.setInvulnerable(true);
+        nautilus.setNoAi(true);
+        nautilus.setPos(x, y, z);
+        nautilus.setTame(true, false);
+        nautilus.equipItemIfPossible(level, armorSet.getNautilus().getDefaultInstance());
+        level.addFreshEntity(nautilus);
+        return true;
     }
 
     private static int armorStandCommand(CommandContext<CommandSourceStack> context, @NotNull String material, @Nullable String rawTrim) {
