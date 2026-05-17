@@ -10,6 +10,11 @@
         "texture": "mythicmetals:aquarium"
       }
     ],
+    "nautilus_body": [
+      {
+        "texture": "mythicmetals:aquarium"
+      }
+    ],
     "horse_body": [
       {
         "texture": "mythicmetals:aquarium"

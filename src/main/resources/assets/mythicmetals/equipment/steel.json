@@ -10,6 +10,11 @@
         "texture": "mythicmetals:steel"
       }
     ],
+    "nautilus_body": [
+      {
+        "texture": "mythicmetals:steel"
+      }
+    ],
     "horse_body": [
       {
         "texture": "mythicmetals:steel"

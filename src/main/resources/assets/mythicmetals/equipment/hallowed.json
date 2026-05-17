@@ -10,6 +10,11 @@
         "texture": "mythicmetals:hallowed"
       }
     ],
+    "nautilus_body": [
+      {
+        "texture": "mythicmetals:hallowed"
+      }
+    ],
     "horse_body": [
       {
         "texture": "mythicmetals:hallowed"

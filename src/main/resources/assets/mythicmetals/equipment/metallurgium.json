@@ -10,6 +10,11 @@
         "texture": "mythicmetals:metallurgium"
       }
     ],
+    "nautilus_body": [
+      {
+        "texture": "mythicmetals:metallurgium"
+      }
+    ],
     "horse_body": [
       {
         "texture": "mythicmetals:metallurgium"
