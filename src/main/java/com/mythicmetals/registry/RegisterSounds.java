@@ -18,7 +18,6 @@ public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
     public static final SoundEvent EQUIP_CARMOT = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_carmot"));
     public static final SoundEvent EQUIP_CELESTIUM = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_celestium"));
     public static final SoundEvent EQUIP_CELESTIUM_ELYTRA = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_celestium_elytra"));
-    public static final SoundEvent EQUIP_COPPER = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_copper"));
     public static final SoundEvent EQUIP_DURASTEEL = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_durasteel"));
     public static final SoundEvent EQUIP_HALLOWED = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_hallowed"));
     public static final SoundEvent EQUIP_KYBER = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_kyber"));

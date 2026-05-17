@@ -493,17 +493,6 @@
       "item/armor/equip_iron6"
     ]
   },
-  "equip_copper": {
-    "subtitle": "subtitles.mythicmetals.equip_copper",
-    "sounds": [
-      "item/armor/equip_iron1",
-      "item/armor/equip_iron2",
-      "item/armor/equip_iron3",
-      "item/armor/equip_iron4",
-      "item/armor/equip_iron5",
-      "item/armor/equip_iron6"
-    ]
-  },
   "equip_kyber":{
     "subtitle": "subtitles.mythicmetals.equip_kyber",
     "sounds": [
