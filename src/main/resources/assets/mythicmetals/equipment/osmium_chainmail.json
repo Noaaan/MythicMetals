@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:osmium_chainmail"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:osmium_chainmail"
+      }
     ]
   }
 }

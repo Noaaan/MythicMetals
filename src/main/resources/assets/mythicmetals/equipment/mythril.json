@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:mythril"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:mythril"
+      }
     ]
   }
 }

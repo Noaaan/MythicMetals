@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:durasteel"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:durasteel"
+      }
     ]
   }
 }

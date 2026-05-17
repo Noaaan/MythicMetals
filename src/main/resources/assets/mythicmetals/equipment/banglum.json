@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:banglum"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:banglum"
+      }
     ]
   }
 }

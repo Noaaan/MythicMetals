@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:metallurgium"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:metallurgium"
+      }
     ]
   }
 }

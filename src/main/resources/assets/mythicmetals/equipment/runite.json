@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:runite"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:runite"
+      }
     ]
   }
 }

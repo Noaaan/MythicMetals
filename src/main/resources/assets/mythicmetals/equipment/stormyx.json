@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:stormyx"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:stormyx"
+      }
     ]
   }
 }

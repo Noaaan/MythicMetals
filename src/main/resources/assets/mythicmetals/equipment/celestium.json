@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:celestium"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:celestium"
+      }
     ]
   }
 }

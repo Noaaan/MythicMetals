@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:orichalcum"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:orichalcum"
+      }
     ]
   }
 }

@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:adamantite"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:adamantite"
+      }
     ]
   }
 }

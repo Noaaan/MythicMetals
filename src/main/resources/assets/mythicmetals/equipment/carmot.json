@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:carmot"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:carmot"
+      }
     ]
   }
 }

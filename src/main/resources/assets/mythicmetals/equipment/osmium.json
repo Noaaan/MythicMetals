@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:osmium"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:osmium"
+      }
     ]
   }
 }

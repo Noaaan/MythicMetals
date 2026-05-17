@@ -9,6 +9,11 @@
       {
         "texture": "mythicmetals:aquarium"
       }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:aquarium"
+      }
     ]
   }
 }
