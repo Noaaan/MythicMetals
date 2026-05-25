@@ -5,7 +5,6 @@ import com.mythicmetals.item.MythicResourceKeys;
 import io.wispforest.owo.registration.reflect.BlockEntityRegistryContainer;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import java.lang.reflect.Field;
 
 public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {
 
@@ -17,9 +16,4 @@ public class RegisterBlockEntityTypes implements BlockEntityRegistryContainer {
 
     public static final BlockEntityType<CarmotBellBlockEntity> CARMOT_BELL_BLOCK =
         FabricBlockEntityTypeBuilder.create(CarmotBellBlockEntity::new, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL)).build();
-
-    @Override
-    public boolean shouldProcessField(BlockEntityType<?> value, String identifier, Field field) {
-        return BlockEntityRegistryContainer.super.shouldProcessField(value, identifier, field);
-    }
 }

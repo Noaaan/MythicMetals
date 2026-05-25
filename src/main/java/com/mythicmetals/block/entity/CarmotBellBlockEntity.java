@@ -5,6 +5,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import org.jspecify.annotations.NonNull;
 
 public class CarmotBellBlockEntity extends BlockEntity {
 
@@ -21,11 +24,23 @@ public class CarmotBellBlockEntity extends BlockEntity {
     }
 
     public boolean canBeUsed() {
-        return cooldown == 0;
+        return cooldown <= 0;
     }
 
     public void markUsed() {
         cooldown = CarmotBellBlock.COOLDOWN;
         setChanged();
+    }
+
+    @Override
+    protected void saveAdditional(@NonNull ValueOutput valueOutput) {
+        super.saveAdditional(valueOutput);
+        valueOutput.putInt("cooldown", cooldown);
+    }
+
+    @Override
+    protected void loadAdditional(@NonNull ValueInput valueInput) {
+        super.loadAdditional(valueInput);
+        this.cooldown = valueInput.getIntOr("cooldown", 0);
     }
 }

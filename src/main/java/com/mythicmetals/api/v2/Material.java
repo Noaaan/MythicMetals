@@ -173,6 +173,7 @@ public record Material(
             var itemKey = RegistryHelper.itemKey(name);
             var blockKey = RegistryHelper.blockKey(name);
             var block = RegistryHelper.block(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
+            extraBlocks.putIfAbsent(blockKey, block);
             addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, 0, computeRarity(type))));
             return this;
         }
