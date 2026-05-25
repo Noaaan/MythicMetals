@@ -21,7 +21,7 @@ public class MythicArmorMaterials {
         ArmorType.LEGGINGS, 6,
         ArmorType.BOOTS, 3), 16, sound(RegisterSounds.EQUIP_ADAMANTITE), 2.0f, 0.0f, repairTag("adamantite"), layer("adamantite"));
 
-    public static final ArmorMaterial AQUARIUM = new ArmorMaterial(20, Map.of(
+    public static final ArmorMaterial AQUARIUM = new ArmorMaterial(19, Map.of(
         ArmorType.HELMET, 2,
         ArmorType.CHESTPLATE, 5,
         ArmorType.LEGGINGS, 4,
@@ -31,9 +31,9 @@ public class MythicArmorMaterials {
         ArmorType.HELMET, 3,
         ArmorType.CHESTPLATE, 6,
         ArmorType.LEGGINGS, 5,
-        ArmorType.BOOTS, 2), 1, sound(RegisterSounds.EQUIP_BANGLUM), 0.0f, 0.0f, repairTag("banglum"), layer("banglum"));
+        ArmorType.BOOTS, 2), 1, sound(RegisterSounds.EQUIP_BANGLUM), 0.0f, 0.05f, repairTag("banglum"), layer("banglum"));
 
-    public static final ArmorMaterial BRONZE = new ArmorMaterial(15, Map.of(
+    public static final ArmorMaterial BRONZE = new ArmorMaterial(17, Map.of(
         ArmorType.HELMET, 3,
         ArmorType.CHESTPLATE, 6,
         ArmorType.LEGGINGS, 5,
@@ -67,13 +67,13 @@ public class MythicArmorMaterials {
         ArmorType.HELMET, 3,
         ArmorType.CHESTPLATE, 8,
         ArmorType.LEGGINGS, 6,
-        ArmorType.BOOTS, 3), 20, sound(RegisterSounds.EQUIP_KYBER), 0.0f, 0.0f, repairTag("kyber"), layer("kyber"));
+        ArmorType.BOOTS, 3), 20, sound(RegisterSounds.EQUIP_KYBER), 0.0f, 1.0f, repairTag("kyber"), layer("kyber"));
 
     public static final ArmorMaterial LEGENDARY_BANGLUM = new ArmorMaterial(28, Map.of(
         ArmorType.HELMET, 3,
         ArmorType.CHESTPLATE, 8,
         ArmorType.LEGGINGS, 6,
-        ArmorType.BOOTS, 3), 2, sound(RegisterSounds.EQUIP_LEGENDARY_BANGLUM), 2.0f, 0.0f, repairTag("legendary_banglum"), layer("legendary_banglum"));
+        ArmorType.BOOTS, 3), 2, sound(RegisterSounds.EQUIP_LEGENDARY_BANGLUM), 2.0f, 0.05f, repairTag("legendary_banglum"), layer("legendary_banglum"));
 
     public static final ArmorMaterial METALLURGIUM = new ArmorMaterial(69, Map.of(
         ArmorType.HELMET, 5,
