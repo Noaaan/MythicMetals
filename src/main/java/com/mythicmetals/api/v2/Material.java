@@ -192,17 +192,21 @@ public record Material(
 
         public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicAttributeModifier> extraModifiers) {
             var set = new ArmorSet(this.name, armorMaterial);
-            this.armorSet = set.initialize(settings -> {}, extraModifiers);
+            this.armorSet = set.initialize(settings -> {}, extraModifiers, true);
             return this;
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture) {
-            return createCustomHelmetArmorSet(material, List.of(), model, texture);
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
+            return createCustomHelmetArmorSet(material, List.of(), model, texture, initMountArmor);
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture) {
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture) {
+            return createCustomHelmetArmorSet(material, List.of(), model, texture, true);
+        }
+
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
             var armorSet = new CustomHelmetArmorSet(this.name, material, model, texture);
-            this.armorSet = armorSet.initialize(settings -> {}, extraModifiers);
+            this.armorSet = armorSet.initialize(settings -> {}, extraModifiers, initMountArmor);
             return this;
         }
 

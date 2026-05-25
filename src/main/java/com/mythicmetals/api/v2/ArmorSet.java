@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.*;
+import org.jspecify.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -25,6 +26,7 @@ public class ArmorSet {
     public final ResourceKey<Item> nautilusKey;
     private final ArmorMaterial armorMaterial;
     private final String name;
+    private static final Consumer<Item.Properties> NONE = (a) -> {};
 
     protected Item helmet;
     protected Item chestplate;
@@ -45,15 +47,22 @@ public class ArmorSet {
     }
 
     public ArmorSet initialize(Consumer<Item.Properties> customProperties) {
-        return initialize(customProperties, List.of());
+        return initialize(customProperties, List.of(), true);
     }
 
     public ArmorSet initialize() {
-        return initialize(settings -> {
-        }, List.of());
+        return initialize(NONE, List.of(), true);
     }
 
-    public ArmorSet initialize(Consumer<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers) {
+    public ArmorSet initialize(List<MythicAttributeModifier> extraModifiers) {
+        return initialize(NONE, extraModifiers, true);
+    }
+
+    public ArmorSet initialize(boolean initializeMountArmor, List<MythicAttributeModifier> extraModifiers) {
+        return initialize(NONE, extraModifiers, initializeMountArmor);
+    }
+
+    public ArmorSet initialize(Consumer<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers, boolean initMountArmor) {
         this.helmet = RegistryHelper.item(
             helmetKey,
             baseItem(helmetKey, armorMaterial, ArmorType.HELMET, customProperties, extraModifiers)
@@ -61,17 +70,19 @@ public class ArmorSet {
         this.chestplate = RegistryHelper.item(chestplateKey, baseItem(chestplateKey, armorMaterial, ArmorType.CHESTPLATE, customProperties, extraModifiers));
         this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, customProperties, extraModifiers));
         this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, customProperties, extraModifiers));
-        // TODO - Apply extra modifiers to both horse and naut armor
-        this.horse = RegistryHelper.item(horseKey, new Item(
-            new Item.Properties()
-                .horseArmor(armorMaterial)
-                .setId(horseKey)
-        ));
-        this.nautilus = RegistryHelper.item(nautilusKey, new Item(
-            new Item.Properties()
-                .nautilusArmor(armorMaterial)
-                .setId(nautilusKey)
-        ));
+        if (initMountArmor) {
+            // TODO - Apply extra modifiers to both horse and naut armor
+            this.horse = RegistryHelper.item(horseKey, new Item(
+                new Item.Properties()
+                    .horseArmor(armorMaterial)
+                    .setId(horseKey)
+            ));
+            this.nautilus = RegistryHelper.item(nautilusKey, new Item(
+                new Item.Properties()
+                    .nautilusArmor(armorMaterial)
+                    .setId(nautilusKey)
+            ));
+        }
         return this;
     }
 
@@ -142,10 +153,12 @@ public class ArmorSet {
         return boots;
     }
 
+    @Nullable
     public Item getHorse() {
         return horse;
     }
 
+    @Nullable
     public Item getNautilus() {
         return nautilus;
     }
@@ -169,7 +182,7 @@ public class ArmorSet {
     }
 
     public boolean isInArmorSet(ItemStack armorStack) {
-       return isInArmorSet(armorStack.getItem());
+        return isInArmorSet(armorStack.getItem());
     }
 
     ///

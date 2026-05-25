@@ -31,8 +31,7 @@ import static com.mythicmetals.api.v2.Material.*;
 import static com.mythicmetals.item.MythicResourceKeys.*;
 import static net.minecraft.world.entity.EquipmentSlotGroup.*;
 import static net.minecraft.world.entity.EquipmentSlotGroup.ARMOR;
-import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL;
-import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE;
+import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.*;
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 public class MythicMaterials {
@@ -106,7 +105,6 @@ public class MythicMaterials {
             )
         )
         .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
-        // TODO - Blast Padding replacement
         .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of())
         .finish();
 
@@ -194,8 +192,12 @@ public class MythicMaterials {
         .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.LEGENDARY_BANGLUM,
+            List.of(
+                new MythicAttributeModifier(SAFE_FALL_DISTANCE, 15, ADD_VALUE, FEET)
+            ),
             MythicModelHandler.LEGENDARY_BANGLUM_ARMOR,
-            RegistryHelper.id("textures/models/banglum_model.png")
+            RegistryHelper.id("textures/models/banglum_model.png"),
+            true
         )
         .finish();
 
@@ -217,7 +219,12 @@ public class MythicMaterials {
         .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
         .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
         .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
-        .createDefaultArmor(MythicArmorMaterials.MIDAS_GOLD)
+        .createDefaultArmor(
+            MythicArmorMaterials.MIDAS_GOLD,
+            List.of(
+                new MythicAttributeModifier(LUCK, 1.0, ADD_VALUE, ARMOR)
+            )
+        )
         .finish();
 
     public static final Material MORKITE = Material.Builder.create("morkite", MaterialType.BASIC)
@@ -256,7 +263,7 @@ public class MythicMaterials {
         .finish();
 
     public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
-        .createDefaultArmor(MythicArmorMaterials.OSMIUM_CHAINMAIL)
+        .createCustomArmorSet(new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL), armorSet -> armorSet.initialize(false, List.of()))
         .finish();
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)
@@ -275,10 +282,15 @@ public class MythicMaterials {
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.PALLADIUM,
             List.of(
-
+                new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_VISIBILITY, 2.0, ADD_VALUE, HEAD),
+                new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, CHEST),
+                new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, LEGS),
+                new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, FEET),
+                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, ARMOR)
             ),
             MythicModelHandler.PALLADIUM_ARMOR,
-            RegistryHelper.id("textures/models/palladium_model.png")
+            RegistryHelper.id("textures/models/palladium_model.png"),
+            true
         )
         .finish();
 
@@ -314,7 +326,8 @@ public class MythicMaterials {
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.RUNITE,
             MythicModelHandler.RUNITE_ARMOR,
-            RegistryHelper.id("textures/models/runite_model.png")
+            RegistryHelper.id("textures/models/runite_model.png"),
+            false
         )
         .finish();
 
@@ -369,8 +382,7 @@ public class MythicMaterials {
         .addSmithingTemplate(TIDESINGER_SMITHING_TEMPLATE, MythicSmithingTemplates.TIDESINGER)
         .createCustomArmorSet(
             new TidesingerArmorSet(MythicArmorMaterials.TIDESINGER),
-            armorSet -> armorSet.initialize(settings -> {
-            }, List.of(
+            armorSet -> armorSet.initialize(List.of(
                 new MythicAttributeModifier(AdditionalEntityAttributes.WATER_VISIBILITY, 0.3, ADD_MULTIPLIED_TOTAL, HEAD),
                 new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
                 new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
