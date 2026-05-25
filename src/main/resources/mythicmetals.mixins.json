@@ -36,8 +36,8 @@
   "client": [
     "client.AvatarRendererMixin",
     "client.EquipmentLayerRendererAccessor",
+    "client.LivingEntityRendererMixin",
     "client.ModelLayersAccessor",
-    "client.PlayerEntityRenderStateMixin",
     "client.SmithingScreenMixin",
     "client.TranslationStorageMixin"
   ],

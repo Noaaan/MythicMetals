@@ -1,17 +1,12 @@
 package com.mythicmetals.client;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.config.MythicConfigModel;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.ui.component.TextureComponent;
-import io.wispforest.owo.ui.component.UIComponents;
 import io.wispforest.owo.ui.container.UIContainers;
 import io.wispforest.owo.ui.core.*;
 import io.wispforest.owo.ui.hud.Hud;
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
-import net.minecraft.util.Mth;
 
 public class CarmotShieldHudHandler {
     public static final Identifier COMPONENT_ID = RegistryHelper.id("shield_overlay");
@@ -43,8 +38,6 @@ public class CarmotShieldHudHandler {
     public static void tick() {
 //        if (Hud.hasComponent(COMPONENT_ID) && Minecraft.getInstance().player != null) {
 //            var player = Minecraft.getInstance().player;
-//            // FIXME - Migrate to data attachment
-//            var carmotShield = player.get(MythicMetals.CARMOT_SHIELD);
 //            var shieldBar = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_COMPONENT_ID);
 //            var background = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
 //

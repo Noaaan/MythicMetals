@@ -18,6 +18,7 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.client.rendering.v1.world.WorldRenderEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -77,7 +78,6 @@ public class MythicMetalsClient implements ClientModInitializer {
         BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
         CarmotShieldHudHandler.init();
-        ClientTickEvents.END_CLIENT_TICK.register(client -> CarmotShieldHudHandler.tick());
 
         // FIXME - Translucent blocks
         //BlockRenderLayerMap.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, ChunkSectionLayer.CUTOUT);
@@ -97,8 +97,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     @SuppressWarnings("unchecked")
     private void registerSwirlRenderer() {
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
-            if (entityType != EntityType.PLAYER) return;
-            registrationHelper.register(new PlayerEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));
+            registrationHelper.register(new LivingEntityEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));
         });
     }
 
