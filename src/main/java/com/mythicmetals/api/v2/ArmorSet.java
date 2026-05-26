@@ -5,8 +5,14 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.StringUtilsAtHome;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.*;
@@ -26,7 +32,8 @@ public class ArmorSet {
     public final ResourceKey<Item> nautilusKey;
     private final ArmorMaterial armorMaterial;
     private final String name;
-    private static final Consumer<Item.Properties> NONE = (a) -> {};
+    private static final Consumer<Item.Properties> NONE = (a) -> {
+    };
 
     protected Item helmet;
     protected Item chestplate;
@@ -71,29 +78,31 @@ public class ArmorSet {
         this.leggings = RegistryHelper.item(leggingsKey, baseItem(leggingsKey, armorMaterial, ArmorType.LEGGINGS, customProperties, extraModifiers));
         this.boots = RegistryHelper.item(bootsKey, baseItem(bootsKey, armorMaterial, ArmorType.BOOTS, customProperties, extraModifiers));
         if (initMountArmor) {
-            // TODO - Apply extra modifiers to both horse and naut armor
-            this.horse = RegistryHelper.item(horseKey, new Item(
-                new Item.Properties()
-                    .horseArmor(armorMaterial)
-                    .setId(horseKey)
-            ));
-            this.nautilus = RegistryHelper.item(nautilusKey, new Item(
-                new Item.Properties()
-                    .nautilusArmor(armorMaterial)
-                    .setId(nautilusKey)
-            ));
+            this.horse = RegistryHelper.item(horseKey, baseHorseItem(horseKey, armorMaterial, customProperties, extraModifiers));
+            this.nautilus = RegistryHelper.item(nautilusKey, baseNautilusItem(nautilusKey, armorMaterial, customProperties, extraModifiers));
         }
         return this;
     }
 
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsProcessor) {
-        return baseItem(key, material, equipmentType, settingsProcessor, List.of());
+    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+        var settings = baseArmorSettings(key, material, armorType, extraModifiers);
+        settings = armor(material, armorType, settings);
+        settingsConsumer.accept(settings);
+        return this.makeItem(armorType, settings);
     }
 
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
-        var settings = baseArmorSettings(key, material, equipmentType, extraModifiers);
+    public Item baseHorseItem(ResourceKey<Item> key, ArmorMaterial material, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+        var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
+        settings = horseArmor(material, settings);
         settingsConsumer.accept(settings);
-        return this.makeItem(equipmentType, settings);
+        return this.makeItem(ArmorType.BODY, settings);
+    }
+
+    public Item baseNautilusItem(ResourceKey<Item> key, ArmorMaterial material, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+        var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
+        settings = nautilusArmor(material, settings);
+        settingsConsumer.accept(settings);
+        return this.makeItem(ArmorType.BODY, settings);
     }
 
     ///
@@ -104,21 +113,60 @@ public class ArmorSet {
     ///
     /// The latter is important, since any armor item can have new attributes as defined by the list of [MythicAttributeModifier]s.
     ///
-    public Item.Properties baseArmorSettings(ResourceKey<Item> key, ArmorMaterial material, ArmorType equipmentType, List<MythicAttributeModifier> extraModifiers) {
+    public Item.Properties baseArmorSettings(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, List<MythicAttributeModifier> extraModifiers) {
         return new Item.Properties()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)
             .setId(key)
-            .durability(BASE_DURABILITY.get(equipmentType) * material.durability())
-            .attributes(MythicItemAttributes.createArmorModifier(this.name, material, equipmentType, extraModifiers))
-            .enchantable(material.enchantmentValue())
+            .attributes(MythicItemAttributes.createArmorModifier(this.name, material, armorType, extraModifiers))
+            .enchantable(material.enchantmentValue());
+    }
+
+    public Item.Properties armor(ArmorMaterial material, ArmorType armorType, Item.Properties props) {
+        return props
             .component(DataComponents.EQUIPPABLE, Equippable
-                .builder(equipmentType.getSlot())
+                .builder(armorType.getSlot())
                 .setAsset(material.assetId())
                 .setEquipSound(material.equipSound())
-                .build()
+                .build())
+            .durability(BASE_DURABILITY.get(armorType) * material.durability())
+            .repairable(material.repairIngredient()
+            );
+    }
+
+    public Item.Properties horseArmor(ArmorMaterial armorMaterial, Item.Properties props) {
+        HolderGetter<EntityType<?>> holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ENTITY_TYPE);
+        return props
+            .component(
+                DataComponents.EQUIPPABLE,
+                Equippable.builder(EquipmentSlot.BODY)
+                    .setEquipSound(SoundEvents.HORSE_ARMOR)
+                    .setAsset(armorMaterial.assetId())
+                    .setAllowedEntities(holderGetter.getOrThrow(EntityTypeTags.CAN_WEAR_HORSE_ARMOR))
+                    .setDamageOnHurt(false)
+                    .setCanBeSheared(true)
+                    .setShearingSound(SoundEvents.HORSE_ARMOR_UNEQUIP)
+                    .build()
             )
-            .repairable(material.repairIngredient());
+            .stacksTo(1);
+    }
+
+    public Item.Properties nautilusArmor(ArmorMaterial armorMaterial, Item.Properties props) {
+        HolderGetter<EntityType<?>> holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.ENTITY_TYPE);
+        return props
+            .component(
+                DataComponents.EQUIPPABLE,
+                Equippable.builder(EquipmentSlot.BODY)
+                    .setEquipSound(SoundEvents.ARMOR_EQUIP_NAUTILUS)
+                    .setAsset(armorMaterial.assetId())
+                    .setAllowedEntities(holderGetter.getOrThrow(EntityTypeTags.CAN_WEAR_NAUTILUS_ARMOR))
+                    .setDamageOnHurt(false)
+                    .setEquipOnInteract(true)
+                    .setCanBeSheared(true)
+                    .setShearingSound(SoundEvents.ARMOR_UNEQUIP_NAUTILUS)
+                    .build()
+            )
+            .stacksTo(1);
     }
 
     ///

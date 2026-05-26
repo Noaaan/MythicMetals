@@ -69,7 +69,9 @@ public class MythicMaterials {
             new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 1.0, ADD_MULTIPLIED_TOTAL, HEAD),
             new MythicAttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, CHEST),
             new MythicAttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, LEGS),
-            new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_MULTIPLIED_TOTAL, FEET)
+            new MythicAttributeModifier(OXYGEN_BONUS, 1.0, ADD_VALUE, BODY),
+            new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_VALUE, FEET),
+            new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 0.5, ADD_VALUE, BODY)
         ))
         .addExtraBlock(AQUARIUM_RESONATOR, 4.0f, AquariumResonatorBlock::new)
         .finish();
@@ -134,8 +136,16 @@ public class MythicMaterials {
         .addExtraItem(CARMOT_STONE, Rarity.UNCOMMON, Item::new)
         .addSmithingTemplate(CARMOT_SMITHING_TEMPLATE, MythicSmithingTemplates.CARMOT)
         .createDefaultArmor(MythicArmorMaterials.CARMOT, List.of(
-            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, ARMOR),
-            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, ARMOR)
+            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, HEAD),
+            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, FEET),
+            new MythicAttributeModifier(MAX_HEALTH, 5.0, ADD_VALUE, BODY),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, HEAD),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, FEET),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 10.0, ADD_VALUE, BODY)
         ))
         .finish();
 
@@ -286,7 +296,11 @@ public class MythicMaterials {
                 new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, CHEST),
                 new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, LEGS),
                 new MythicAttributeModifier(AdditionalEntityAttributes.LAVA_SPEED, 2.0, ADD_VALUE, FEET),
-                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, ARMOR)
+                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, HEAD),
+                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, CHEST),
+                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, LEGS),
+                new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, FEET),
+                new MythicAttributeModifier(BURNING_TIME, -0.80, ADD_MULTIPLIED_BASE, BODY)
             ),
             MythicModelHandler.PALLADIUM_ARMOR,
             RegistryHelper.id("textures/models/palladium_model.png"),
@@ -339,7 +353,11 @@ public class MythicMaterials {
     public static final Material STAR_PLATINUM = Material.Builder.create("star_platinum", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.5f)
         .createDefaultArmor(MythicArmorMaterials.STAR_PLATINUM, List.of(
-            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, HEAD),
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, FEET),
+            new MythicAttributeModifier(JUMP_STRENGTH, 0.30, ADD_MULTIPLIED_TOTAL, BODY)
         ))
         .finish();
 
@@ -373,7 +391,11 @@ public class MythicMaterials {
         )
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
         .createDefaultArmor(MythicArmorMaterials.STORMYX, List.of(
-            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, ARMOR)
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, HEAD),
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, FEET),
+            new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 3.0, ADD_VALUE, BODY)
         ))
         .finish();
 
@@ -387,7 +409,9 @@ public class MythicMaterials {
                 new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 3.0, ADD_MULTIPLIED_TOTAL, HEAD),
                 new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, CHEST),
                 new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, LEGS),
-                new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_VALUE, FEET)
+                new MythicAttributeModifier(OXYGEN_BONUS, 2.0, ADD_VALUE, BODY),
+                new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_VALUE, FEET),
+                new MythicAttributeModifier(WATER_MOVEMENT_EFFICIENCY, 1.0, ADD_VALUE, BODY)
             ))
         )
         .finish();
