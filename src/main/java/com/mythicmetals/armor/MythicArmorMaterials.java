@@ -76,7 +76,7 @@ public class MythicArmorMaterials {
         ArmorType.CHESTPLATE, 8,
         ArmorType.LEGGINGS, 6,
         ArmorType.BOOTS, 3,
-        ArmorType.BODY, 11), 20, sound(RegisterSounds.EQUIP_KYBER), 0.0f, 1.0f, repairTag("kyber"), layer("kyber"));
+        ArmorType.BODY, 11), 20, sound(RegisterSounds.EQUIP_KYBER), 1.0f, 0.0f, repairTag("kyber"), layer("kyber"));
 
     public static final ArmorMaterial LEGENDARY_BANGLUM = new ArmorMaterial(28, Map.of(
         ArmorType.HELMET, 3,
