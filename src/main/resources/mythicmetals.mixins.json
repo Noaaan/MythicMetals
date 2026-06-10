@@ -41,7 +41,8 @@
     "PlayerEntityRendererMixin",
     "SmithingScreenMixin",
     "TranslationStorageMixin",
-    "WorldRendererInvoker"
+    "WorldRendererInvoker",
+    "client.LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

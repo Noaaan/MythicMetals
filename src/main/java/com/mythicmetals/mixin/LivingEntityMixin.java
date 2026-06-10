@@ -3,8 +3,6 @@ package com.mythicmetals.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.MythicArmor;
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.CombustionCooldown;
@@ -13,9 +11,6 @@ import com.mythicmetals.item.MythicItems;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.WasSpawnedFromCreeper;
 import com.mythicmetals.registry.RegisterCriteria;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -28,7 +23,6 @@ import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
@@ -65,9 +59,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract boolean canHaveStatusEffect(StatusEffectInstance effect);
-
-    @Shadow
-    public abstract ItemStack getStackInHand(Hand hand);
 
     @Shadow
     public abstract void stopRiding();
@@ -262,21 +253,6 @@ public abstract class LivingEntityMixin extends Entity {
                 //noinspection ConstantConditions
                 RegisterCriteria.RECEIVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayerEntity) (Object) this));
             }
-        }
-    }
-
-    @Environment(EnvType.CLIENT)
-    @Inject(method = "swingHand(Lnet/minecraft/util/Hand;Z)V", at = @At("HEAD"), cancellable = true)
-    private void mythicmetals$cancelSwingOnActiveMythrilDrill(Hand hand, boolean fromServerPlayer, CallbackInfo ci) {
-        if (!this.getWorld().isClient()) {
-            return;
-        }
-        var stack = this.getStackInHand(hand);
-        var camera = MinecraftClient.getInstance().getEntityRenderDispatcher().camera;
-        // This can be null, according to #252
-        if (camera == null) return;
-        if (camera.isThirdPerson() && stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel()) {
-            ci.cancel();
         }
     }
 
