@@ -1,4 +1,4 @@
-package com.mythicmetals.mixin;
+package com.mythicmetals.mixin.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mythicmetals.armor.CelestiumElytra;
