@@ -101,10 +101,10 @@ public class MythicItems implements SimpleFieldProcessingSubject<ItemSet> {
 
         public static final List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(),
             identifiers -> {
-                identifiers.add(Identifier.of("item/empty_armor_slot_helmet"));
-                identifiers.add(Identifier.of("item/empty_armor_slot_chestplate"));
-                identifiers.add(Identifier.of("item/empty_armor_slot_leggings"));
-                identifiers.add(Identifier.of("item/empty_armor_slot_boots"));
+                identifiers.add(Identifier.of("container/slot/helmet"));
+                identifiers.add(Identifier.of("container/slot/chestplate"));
+                identifiers.add(Identifier.of("container/slot/leggings"));
+                identifiers.add(Identifier.of("container/slot/boots"));
             });
 
         public static final Item UNOBTAINIUM_SMITHING_TEMPLATE = createSmithingTemplate(
