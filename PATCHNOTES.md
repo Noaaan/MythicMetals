@@ -81,6 +81,13 @@ This includes the following:
 - Removed recipe blacklist for blasting Mythic Metals gear in the Alloy Forge
   - Should be incredibly minor, although you can now smelt two pieces of equipment into 2-3 nuggets each
 
+# 0.24.6
+
+## Changes
+
+- Add spanish translations (#308, thanks Herobroto!)
+- Fix some Mixin related crashes when starting with Sinytra Connector (#318, thanks unilock!)
+
 # 0.24.5
 
 ## Changes
