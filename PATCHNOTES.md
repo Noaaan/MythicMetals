@@ -1,3 +1,10 @@
+# 0.24.6
+
+## Changes
+
+- Add spanish translations (#308, thanks Herobroto!)
+- Fix some Mixin related crashes when starting with Sinytra Connector (#318, thanks unilock!)
+
 # 0.24.5
 
 ## Changes
