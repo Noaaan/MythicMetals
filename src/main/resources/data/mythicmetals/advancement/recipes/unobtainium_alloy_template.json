@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/unobtainium_alloy_smithing_template"
+        "recipe": "mythicmetals:smithing_templates/unobtainium_alloy"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/unobtainium_alloy_smithing_template"
+      "mythicmetals:smithing_templates/unobtainium_alloy"
     ]
   }
 }

@@ -19,7 +19,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/carmot_smithing_template_duplicate"
+        "recipe": "mythicmetals:smithing_templates/carmot_duplicate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -32,8 +32,8 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/carmot_smithing_template",
-      "mythicmetals:template/carmot_smithing_template_duplicate"
+      "mythicmetals:smithing_templates/carmot",
+      "mythicmetals:smithing_templates/carmot_duplicate"
     ]
   }
 }

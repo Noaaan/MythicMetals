@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/midas_folding_template"
+        "recipe": "mythicmetals:smithing_templates/midas_folding"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,8 +29,8 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/midas_folding_template",
-      "mythicmetals:template/midas_folding_template_duplicate"
+      "mythicmetals:smithing_templates/midas_folding",
+      "mythicmetals:smithing_templates/midas_folding_duplicate"
     ]
   }
 }

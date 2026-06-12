@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/mythril_drill_smithing_template_duplicate"
+        "recipe": "mythicmetals:smithing_templates/mythril_drill_duplicate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/mythril_drill_smithing_template_duplicate"
+      "mythicmetals:smithing_templates/mythril_drill_duplicate"
     ]
   }
 }
