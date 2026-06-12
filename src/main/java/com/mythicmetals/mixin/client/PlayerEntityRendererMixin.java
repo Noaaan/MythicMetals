@@ -1,4 +1,4 @@
-package com.mythicmetals.mixin;
+package com.mythicmetals.mixin.client;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.CarmotShield;

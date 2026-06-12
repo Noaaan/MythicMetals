@@ -12,7 +12,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.*;
-import com.mythicmetals.mixin.WorldRendererInvoker;
+import com.mythicmetals.mixin.client.WorldRendererInvoker;
 import io.wispforest.owo.ui.util.Delta;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;

@@ -34,14 +34,15 @@
     "TableBonusLootConditionMixin"
   ],
   "client": [
-    "CapeFeatureRendererMixin",
-    "ElytraFeatureRendererMixin",
-    "EntityModelLayersAccessor",
-    "ItemRendererMixin",
-    "PlayerEntityRendererMixin",
-    "SmithingScreenMixin",
-    "TranslationStorageMixin",
-    "WorldRendererInvoker"
+    "client.CapeFeatureRendererMixin",
+    "client.ElytraFeatureRendererMixin",
+    "client.EntityModelLayersAccessor",
+    "client.ItemRendererMixin",
+    "client.LivingEntityMixin",
+    "client.PlayerEntityRendererMixin",
+    "client.SmithingScreenMixin",
+    "client.TranslationStorageMixin",
+    "client.WorldRendererInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

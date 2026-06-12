@@ -1,4 +1,4 @@
-package com.mythicmetals.mixin;
+package com.mythicmetals.mixin.client;
 
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.WorldRenderer;
