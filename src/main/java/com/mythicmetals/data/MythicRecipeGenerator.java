@@ -758,10 +758,10 @@ public class MythicRecipeGenerator extends RecipeGenerator {
         );
         createArmorSmithingRecipes(
             MythicItems.Templates.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE,
-            Items.DIAMOND_HELMET,
-            Items.DIAMOND_CHESTPLATE,
-            Items.DIAMOND_LEGGINGS,
-            Items.DIAMOND_BOOTS,
+            Items.CHAINMAIL_HELMET,
+            Items.CHAINMAIL_CHESTPLATE,
+            Items.CHAINMAIL_LEGGINGS,
+            Items.CHAINMAIL_BOOTS,
             Ingredient.ofItem(MythicItems.OSMIUM.getIngot()),
             MythicArmor.OSMIUM_CHAINMAIL
         );
