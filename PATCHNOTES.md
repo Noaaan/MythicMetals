@@ -4,6 +4,7 @@
 - Fix Osmium Chainmail armor recipe (#319)
   - The recipe should be Chainmail + Osmium with a template, but required Diamond Armor due to an error
 - Fix Nether Banglum not dropping anything (#316)
+- Add Spanish Translations for 1.21.4 (#303, thanks Herobroto!)
 
 # 0.25.2
 
