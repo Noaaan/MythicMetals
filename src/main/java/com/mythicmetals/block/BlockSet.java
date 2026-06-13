@@ -508,16 +508,16 @@ public class BlockSet {
         /**
          * A special method for the creation of variants from {@link BanglumOreBlock}.
          *
-         * @param name        The name/key for the variant.
-         * @param miningLevel The mining level of the block.
+         * @param variantName       The name/key for the variant.
+         * @param miningLevel       The mining level of the block.
          */
-        public Builder createBanglumOreVariant(String name, Identifier miningLevel) {
+        public Builder createBanglumOreVariant(String variantName, Identifier miningLevel) {
             final var settings = blockSettings(currentHardness, currentResistance, currentSounds);
-            settings.registryKey(RegistryHelper.blockKey(name + "_ore"));
+            settings.registryKey(RegistryHelper.blockKey("%s_%s_ore".formatted(variantName, this.name)));
             settingsProcessor.accept(settings);
-            this.oreVariants.put(name, new BanglumOreBlock(settings));
-            miningLevels.put(oreVariants.get(name), miningLevel);
-            miningLevels.put(oreVariants.get(name), PICKAXE);
+            this.oreVariants.put(variantName, new BanglumOreBlock(settings));
+            miningLevels.put(oreVariants.get(variantName), miningLevel);
+            miningLevels.put(oreVariants.get(variantName), PICKAXE);
             return this;
         }
 
