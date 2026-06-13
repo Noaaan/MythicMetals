@@ -1,3 +1,10 @@
+# 0.25.3
+
+- Fix all Smithing Template related advancements not being granted correctly
+- Fix Osmium Chainmail armor recipe (#319)
+  - The recipe should be Chainmail + Osmium with a template, but required Diamond Armor due to an error
+- Fix Nether Banglum not dropping anything (#316)
+
 # 0.25.2
 
 - Fix Armor not being enchantable in enchanting tables (#314)
