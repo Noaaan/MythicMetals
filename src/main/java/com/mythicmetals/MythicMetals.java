@@ -13,6 +13,7 @@ import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.*;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicPotions;
+import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.*;
 import com.mythicmetals.recipe.MythicRecipeSerializers;
@@ -57,7 +58,7 @@ public class MythicMetals implements ModInitializer {
     public void onInitialize() {
         MythicMaterials.init();
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
-        FieldRegistrationHandler.processSimple(MythicTools.class, true);
+//        FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
         MythicDataComponents.init();
@@ -67,6 +68,7 @@ public class MythicMetals implements ModInitializer {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
             DebugHelper.init();
         }
+        Frogery.init();
         MythicCommands.init();
         MythicCommands.registerCommands();
         Abilities.init();
@@ -85,7 +87,7 @@ public class MythicMetals implements ModInitializer {
         FieldRegistrationHandler.processSimple(RegisterCriteria.class, false);
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
-        registerDispenserBehaviour();
+//        registerDispenserBehaviour();
         LegacyIds.registerAliases();
 
         if (CONFIG.configVersion() < CONFIG_VERSION) {

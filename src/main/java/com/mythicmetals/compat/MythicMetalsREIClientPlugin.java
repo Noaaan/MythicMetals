@@ -1,5 +1,6 @@
 package com.mythicmetals.compat;
 
+import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceSet;
@@ -48,7 +49,7 @@ public class MythicMetalsREIClientPlugin implements REIClientPlugin {
     public void registerEntries(EntryRegistry registry) {
         // There are many secrets in this game...
         // ... many of which that drive peeps insane
-        registry.removeEntry(EntryStacks.of(MythicTools.Frogery.FROGE));
-        registry.removeEntry(EntryStacks.of(MythicTools.Frogery.DOGE));
+        registry.removeEntry(EntryStacks.of(Frogery.FROGE));
+        registry.removeEntry(EntryStacks.of(Frogery.DOGE));
     }
 }
