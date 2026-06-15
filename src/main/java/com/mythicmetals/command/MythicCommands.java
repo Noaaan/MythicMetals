@@ -29,6 +29,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ArmorStand;
@@ -86,6 +87,7 @@ public final class MythicCommands {
             var midas = Commands.literal("give-midas").build();
             var wiki = Commands.literal("wiki").build();
             var armorStand = Commands.literal("armor-stand").build();
+            var spears = Commands.literal("spears").build();
             var horse = Commands.literal("summon-armored-mobs").build();
             var loot = Commands.literal("test-loot-table").build();
             var display = Commands.literal("place-display").build();
@@ -141,6 +143,14 @@ public final class MythicCommands {
                 .then(trimPattern)
                 .build();
 
+            var summonSpears = Commands.argument("material", StringArgumentType.word())
+                .suggests(MythicCommands::toolMaterial)
+                .executes(context -> {
+                    String mat = StringArgumentType.getString(context, "material");
+                    return spearStandCommand(context, mat);
+                })
+                .build();
+
             var mobArmor = Commands
                 .argument("mob_type", StringArgumentType.word())
                 .suggests(MythicCommands::armoredMobType)
@@ -170,6 +180,7 @@ public final class MythicCommands {
             armorStand.addChild(summonTrims);
             midas.addChild(giveMidas);
             horse.addChild(mobArmor);
+            spears.addChild(summonSpears);
 
             // Add commands to root
             mythicRoot.addChild(range);
@@ -180,6 +191,7 @@ public final class MythicCommands {
             mythicRoot.addChild(placeBlocks);
             mythicRoot.addChild(display);
             mythicRoot.addChild(midas);
+            mythicRoot.addChild(spears);
 
             dispatcher.getRoot().addChild(mythicRoot);
         });
@@ -493,6 +505,16 @@ public final class MythicCommands {
         return suggestion.buildFuture();
     }
 
+    /**
+     * Suggests armor materials from all the armor sets defined in {@link MythicMaterials}
+     * Includes one extra suggestion for "all"
+     */
+    private static CompletableFuture<Suggestions> toolMaterial(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
+        DebugHelper.TOOL_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
+        suggestion.suggest("all");
+        return suggestion.buildFuture();
+    }
+
     private static CompletableFuture<Suggestions> material(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         var placeableMaterials = new HashSet<String>();
         placeableMaterials.addAll(MythicTools.TOOL_MAP.keySet());
@@ -625,6 +647,33 @@ public final class MythicCommands {
         nautilus.equipItemIfPossible(level, armorSet.getNautilus().getDefaultInstance());
         level.addFreshEntity(nautilus);
         return true;
+    }
+
+
+    private static int spearStandCommand(CommandContext<CommandSourceStack> context, String materialQuery) {
+        var pos = context.getSource().getPosition();
+        double x = pos.x + 0.5f;
+        double z = pos.z + 0.5f;
+        if (materialQuery.equals("all")) {
+            var toolKeys = new TreeSet<>(DebugHelper.TOOL_MAP.keySet());
+            for (var toolMaterialString : toolKeys) {
+                var toolSet = DebugHelper.TOOL_MAP.get(toolMaterialString);
+                summonArmorStandWithSpear(context.getSource().getLevel(), x, z, toolSet.getSpear());
+                x++;
+            }
+        } else {
+            var spear = DebugHelper.TOOL_MAP.get(materialQuery).getSpear();
+            summonArmorStandWithSpear(context.getSource().getLevel(), x, z, spear);
+        }
+        return 0;
+    }
+
+    private static void summonArmorStandWithSpear(ServerLevel level, double x, double z, Item spear) {
+        var armorStand = new ArmorStand(level, x, level.getMaxY() - 50, z);
+        armorStand.setNoBasePlate(true);
+        armorStand.setShowArms(true);
+        armorStand.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(spear));
+        level.addFreshEntity(armorStand);
     }
 
     private static int armorStandCommand(CommandContext<CommandSourceStack> context, @NotNull String material, @Nullable String rawTrim) {

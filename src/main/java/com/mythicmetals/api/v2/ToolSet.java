@@ -89,6 +89,10 @@ public class ToolSet {
             .group(MythicMetals.TABBED_GROUP).tab(2);
     }
 
+    public Item getSpear() {
+        return this.spear;
+    }
+
     public enum AttackSpeeds {
         DEFAULT(1.6f, 0.9f, 1.2f, 1.1f, 1.0f, 1.0f),
         BETTER_AXE(1.6f, 1.0f, 1.2f, 1.1f, 1.0f, 1.0f), // +0.1 on axes
