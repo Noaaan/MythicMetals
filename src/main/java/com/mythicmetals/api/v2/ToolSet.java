@@ -1,5 +1,6 @@
 package com.mythicmetals.api.v2;
 
+import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -52,35 +53,40 @@ public class ToolSet {
     // TODO - Is something more extendible than enum required? Maybe config?
     public ToolSet createDefault(AttackSpeeds attackSpeeds) {
         this.sword = RegistryHelper.item(swordKey, new Item(
-            new Item.Properties()
+            defaultSettings()
                 .sword(toolMaterial, 3.0f, attackSpeeds.sword - 4.0f)
                 .setId(swordKey)
         ));
         this.axe = RegistryHelper.item(axeKey, new Item(
-            new Item.Properties()
+            defaultSettings()
                 .axe(toolMaterial, 5.0f, attackSpeeds.axe - 4.0f)
                 .setId(axeKey)
         ));
         this.pickaxe = RegistryHelper.item(pickaxeKey, new Item(
-            new Item.Properties()
+            defaultSettings()
                 .pickaxe(toolMaterial, 2.0f, attackSpeeds.pickaxe - 4.0f)
                 .setId(pickaxeKey)
         ));
         this.shovel = RegistryHelper.item(shovelKey, new Item(
-            new Item.Properties()
+            defaultSettings()
                 .shovel(toolMaterial, 1.0f, attackSpeeds.shovel - 4.0f)
                 .setId(shovelKey)
         ));
         this.hoe = RegistryHelper.item(hoeKey, new Item(
-            new Item.Properties()
+            defaultSettings()
                 .hoe(toolMaterial, 0.0f, attackSpeeds.hoe - 4.0f)
                 .setId(hoeKey)
         ));
         // TODO - Spear item settings are complex. Requires more stats
         this.spear = RegistryHelper.item(spearKey, new Item(
-            new Item.Properties().setId(spearKey)
+            defaultSettings().setId(spearKey)
         ));
         return this;
+    }
+
+    protected Item.Properties defaultSettings() {
+        return new Item.Properties()
+            .group(MythicMetals.TABBED_GROUP).tab(2);
     }
 
     public enum AttackSpeeds {
