@@ -58,7 +58,6 @@ public class MythicMetals implements ModInitializer {
     public void onInitialize() {
         MythicMaterials.init();
         FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
-//        FieldRegistrationHandler.processSimple(MythicTools.class, true);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
         MythicDataComponents.init();

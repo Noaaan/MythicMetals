@@ -1,6 +1,7 @@
 package com.mythicmetals.api.v2;
 
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
@@ -51,7 +52,7 @@ public class ToolSet {
      */
 
     // TODO - Is something more extendible than enum required? Maybe config?
-    public ToolSet createDefault(AttackSpeeds attackSpeeds) {
+    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
         this.sword = RegistryHelper.item(swordKey, new Item(
             defaultSettings()
                 .sword(toolMaterial, 3.0f, attackSpeeds.sword - 4.0f)
@@ -77,9 +78,9 @@ public class ToolSet {
                 .hoe(toolMaterial, 0.0f, attackSpeeds.hoe - 4.0f)
                 .setId(hoeKey)
         ));
-        // TODO - Spear item settings are complex. Requires more stats
         this.spear = RegistryHelper.item(spearKey, new Item(
-            defaultSettings().setId(spearKey)
+            spearSettings(toolMaterial, spearStats)
+                .setId(spearKey)
         ));
         return this;
     }
@@ -116,6 +117,21 @@ public class ToolSet {
         }
     }
 
+    private Item.Properties spearSettings(ToolMaterial material, MythicSpearStats.SpearStats stats) {
+        return spearVanilla(
+            material,
+            stats.swingDuration(),
+            stats.damageMultiplier(),
+            stats.activationDelay(),
+            stats.dismountTime(),
+            stats.dismountRequirement(),
+            stats.knockbackTime(),
+            5.1f,
+            stats.damageTime(),
+            4.6f
+        );
+    }
+
     private Item.Properties spearVanilla(
         ToolMaterial toolMaterial,
         float swingDuration,
@@ -128,7 +144,8 @@ public class ToolSet {
         float damageSeconds,
         float damageSpeedRequirement
     ) {
-        return new Item.Properties().durability(toolMaterial.durability())
+        return this.defaultSettings()
+            .durability(toolMaterial.durability())
             .repairable(toolMaterial.repairItems())
             .enchantable(toolMaterial.enchantmentValue())
             .component(DataComponents.DAMAGE_TYPE, new EitherHolder<>(DamageTypes.SPEAR))

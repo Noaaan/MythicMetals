@@ -5,6 +5,7 @@ import com.google.common.collect.HashBiMap;
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.armor.CustomHelmetArmorSet;
+import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
@@ -130,8 +131,8 @@ public record Material(
             return this;
         }
 
-        public Builder createDefaultTools(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds) {
-            this.toolSet = new ToolSet(name, material).createDefault(attackSpeeds);
+        public Builder createDefaultTools(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
+            this.toolSet = new ToolSet(name, material).createDefault(attackSpeeds, spearStats);
             return this;
         }
 
