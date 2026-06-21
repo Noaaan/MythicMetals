@@ -292,17 +292,14 @@ public class MythicMaterials {
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
-        .addExtraBlockAndItem("palladium_rail", properties -> new PalladiumRailBlock(
+        .addExtraBlock(PALLADIUM_RAIL, properties -> new PalladiumRailBlock(
             properties
                 .noCollision()
-                .lightLevel(blockState -> blockState.hasProperty(PalladiumRailBlock.LAVALOGGED) ? 15 : 0)
+                .lightLevel(blockState -> blockState.getValue(Lavaloggable.LAVALOGGED) ? 15 : 0)
                 .strength(2.5f, 7.0f)
                 .sound(SoundType.METAL)
-        ), (block, properties) -> new MinecartItem(
-            MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, properties
-        ) {
-            // FIXME - Tooltip
-        })
+        ))
+        .addExtraItem(PALLADIUM_MINECART, Rarity.UNCOMMON, properties -> new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, properties))
         .createDefaultTools(MythicToolMaterials.PALLADIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.PALLADIUM)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.PALLADIUM,

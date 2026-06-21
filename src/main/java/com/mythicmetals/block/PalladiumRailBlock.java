@@ -5,9 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
@@ -16,14 +14,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.*;
 import org.jspecify.annotations.Nullable;
-
 import java.util.Optional;
 
 public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
 
     public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE;
     public static final MapCodec<PalladiumRailBlock> CODEC = simpleCodec(PalladiumRailBlock::new);
-    public static final BooleanProperty LAVALOGGED = BooleanProperty.create("lavalogged");
 
     @Override
     protected void updateState(BlockState state, Level world, BlockPos pos, Block neighbor) {
@@ -42,170 +38,28 @@ public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
     }
 
     @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) {
-        RailShape railShape = state.getValue(SHAPE);
-
-        return state.setValue(SHAPE, switch (rotation) {
-            case CLOCKWISE_180 -> {
-                switch (railShape) {
-                    case NORTH_SOUTH:
-                        yield RailShape.NORTH_SOUTH;
-                    case EAST_WEST:
-                        yield RailShape.EAST_WEST;
-                    case ASCENDING_EAST:
-                        yield RailShape.ASCENDING_WEST;
-                    case ASCENDING_WEST:
-                        yield RailShape.ASCENDING_EAST;
-                    case ASCENDING_NORTH:
-                        yield RailShape.ASCENDING_SOUTH;
-                    case ASCENDING_SOUTH:
-                        yield RailShape.ASCENDING_NORTH;
-                    case SOUTH_EAST:
-                        yield RailShape.NORTH_WEST;
-                    case SOUTH_WEST:
-                        yield RailShape.NORTH_EAST;
-                    case NORTH_WEST:
-                        yield RailShape.SOUTH_EAST;
-                    case NORTH_EAST:
-                        yield RailShape.SOUTH_WEST;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            case COUNTERCLOCKWISE_90 -> {
-                switch (railShape) {
-                    case NORTH_SOUTH:
-                        yield RailShape.EAST_WEST;
-                    case EAST_WEST:
-                        yield RailShape.NORTH_SOUTH;
-                    case ASCENDING_EAST:
-                        yield RailShape.ASCENDING_NORTH;
-                    case ASCENDING_WEST:
-                        yield RailShape.ASCENDING_SOUTH;
-                    case ASCENDING_NORTH:
-                        yield RailShape.ASCENDING_WEST;
-                    case ASCENDING_SOUTH:
-                        yield RailShape.ASCENDING_EAST;
-                    case SOUTH_EAST:
-                        yield RailShape.NORTH_EAST;
-                    case SOUTH_WEST:
-                        yield RailShape.SOUTH_EAST;
-                    case NORTH_WEST:
-                        yield RailShape.SOUTH_WEST;
-                    case NORTH_EAST:
-                        yield RailShape.NORTH_WEST;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            case CLOCKWISE_90 -> {
-                switch (railShape) {
-                    case NORTH_SOUTH:
-                        yield RailShape.EAST_WEST;
-                    case EAST_WEST:
-                        yield RailShape.NORTH_SOUTH;
-                    case ASCENDING_EAST:
-                        yield RailShape.ASCENDING_SOUTH;
-                    case ASCENDING_WEST:
-                        yield RailShape.ASCENDING_NORTH;
-                    case ASCENDING_NORTH:
-                        yield RailShape.ASCENDING_EAST;
-                    case ASCENDING_SOUTH:
-                        yield RailShape.ASCENDING_WEST;
-                    case SOUTH_EAST:
-                        yield RailShape.SOUTH_WEST;
-                    case SOUTH_WEST:
-                        yield RailShape.NORTH_WEST;
-                    case NORTH_WEST:
-                        yield RailShape.NORTH_EAST;
-                    case NORTH_EAST:
-                        yield RailShape.SOUTH_EAST;
-                    default:
-                        throw new MatchException(null, null);
-                }
-            }
-            default -> railShape;
-        });
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) {
-        RailShape railShape = state.getValue(SHAPE);
-        switch (mirror) {
-            case LEFT_RIGHT:
-                return switch (railShape) {
-                    case ASCENDING_NORTH -> state.setValue(SHAPE, RailShape.ASCENDING_SOUTH);
-                    case ASCENDING_SOUTH -> state.setValue(SHAPE, RailShape.ASCENDING_NORTH);
-                    case SOUTH_EAST -> state.setValue(SHAPE, RailShape.NORTH_EAST);
-                    case SOUTH_WEST -> state.setValue(SHAPE, RailShape.NORTH_WEST);
-                    case NORTH_WEST -> state.setValue(SHAPE, RailShape.SOUTH_WEST);
-                    case NORTH_EAST -> state.setValue(SHAPE, RailShape.SOUTH_EAST);
-                    default -> super.mirror(state, mirror);
-                };
-            case FRONT_BACK:
-                switch (railShape) {
-                    case ASCENDING_EAST: return state.setValue(SHAPE, RailShape.ASCENDING_WEST);
-                    case ASCENDING_WEST:
-                        return state.setValue(SHAPE, RailShape.ASCENDING_EAST);
-                    case SOUTH_EAST:
-                        return state.setValue(SHAPE, RailShape.SOUTH_WEST);
-                    case SOUTH_WEST:
-                        return state.setValue(SHAPE, RailShape.SOUTH_EAST);
-                    case NORTH_WEST:
-                        return state.setValue(SHAPE, RailShape.NORTH_EAST);
-                    case NORTH_EAST:
-                        return state.setValue(SHAPE, RailShape.NORTH_WEST);
-                    case ASCENDING_NORTH:
-                    case ASCENDING_SOUTH:
-                    default:
-                        break;
-                }
-        }
-
-        return super.mirror(state, mirror);
-    }
-
-    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(SHAPE, LAVALOGGED, WATERLOGGED);
     }
 
     @Override
     public boolean canPlaceLiquid(@Nullable LivingEntity livingEntity, BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
-        return fluid == Fluids.LAVA;
+        return Lavaloggable.super.canPlaceLiquid(livingEntity, blockGetter, blockPos, blockState, fluid);
     }
 
     @Override
-    public boolean placeLiquid(LevelAccessor world, BlockPos pos, BlockState state, FluidState fluidState) {
-        if (!state.getValue(LAVALOGGED) && fluidState.getType() == Fluids.LAVA) {
-            if (!world.isClientSide()) {
-                world.setBlock(pos, state.setValue(LAVALOGGED, Boolean.TRUE), Block.UPDATE_ALL);
-                world.scheduleTick(pos, fluidState.getType(), fluidState.getType().getTickDelay(world));
-            }
-
-            return true;
-        } else {
-            return false;
-        }
+    public boolean placeLiquid(LevelAccessor level, BlockPos pos, BlockState state, FluidState fluidState) {
+        return Lavaloggable.super.placeLiquid(level, pos, state, fluidState);
     }
 
     @Override
     public ItemStack pickupBlock(@Nullable LivingEntity livingEntity, LevelAccessor levelAccessor, BlockPos pos, BlockState state) {
-        if (state.getValue(LAVALOGGED)) {
-            levelAccessor.setBlock(pos, state.setValue(LAVALOGGED, Boolean.FALSE), Block.UPDATE_ALL);
-            if (!state.canSurvive(levelAccessor, pos)) {
-                levelAccessor.destroyBlock(pos, true);
-            }
-
-            return new ItemStack(Items.LAVA_BUCKET);
-        } else {
-            return ItemStack.EMPTY;
-        }
+        return Lavaloggable.super.pickupBlock(livingEntity, levelAccessor, pos, state);
     }
 
     @Override
     public Optional<SoundEvent> getPickupSound() {
-        return Fluids.LAVA.getPickupSound();
+        return Lavaloggable.super.getPickupSound();
     }
 
     @Override
@@ -226,11 +80,32 @@ public class PalladiumRailBlock extends BaseRailBlock implements Lavaloggable {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
-        boolean bl = fluidState.getType() == Fluids.LAVA;
+        boolean isLavalogged = fluidState.getType() == Fluids.LAVA;
+        boolean isWaterLogged = fluidState.getType() == Fluids.WATER;
         BlockState blockState = super.defaultBlockState();
         Direction direction = ctx.getHorizontalDirection();
-        boolean bl2 = direction == Direction.EAST || direction == Direction.WEST;
-        return blockState.setValue(this.getShapeProperty(), bl2 ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH).setValue(LAVALOGGED, bl);
+        boolean isEastWest = direction == Direction.EAST || direction == Direction.WEST;
+        if (isLavalogged && isWaterLogged) {
+            return Blocks.OBSIDIAN.defaultBlockState();
+        }
+        return blockState
+            .setValue(this.getShapeProperty(), isEastWest ? RailShape.EAST_WEST : RailShape.NORTH_SOUTH)
+            .setValue(WATERLOGGED, isWaterLogged)
+            .setValue(LAVALOGGED, isLavalogged);
+    }
+
+    @Override
+    protected BlockState rotate(BlockState blockState, Rotation rotation) {
+        RailShape railShape = blockState.getValue(SHAPE);
+        RailShape railShape2 = this.rotate(railShape, rotation);
+        return blockState.setValue(SHAPE, railShape2);
+    }
+
+    @Override
+    protected BlockState mirror(BlockState blockState, Mirror mirror) {
+        RailShape railShape = blockState.getValue(SHAPE);
+        RailShape railShape2 = this.mirror(railShape, mirror);
+        return blockState.setValue(SHAPE, railShape2);
     }
 
     public static boolean isLavaLogged(BlockState state) {

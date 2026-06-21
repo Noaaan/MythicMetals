@@ -16,6 +16,7 @@ public class MythicResourceKeys {
     public static final ResourceKey<Block> CARMOT_BELL = blockKey("carmot_bell");
     public static final ResourceKey<Block> CARMOT_NUKE_CORE = blockKey("carmot_nuke_core");
     public static final ResourceKey<Block> ENCHANTED_MIDAS_GOLD_BLOCK = blockKey("enchanted_midas_gold_block");
+    public static final ResourceKey<Block> PALLADIUM_RAIL = blockKey("palladium_rail");
     public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
     public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");
     public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
