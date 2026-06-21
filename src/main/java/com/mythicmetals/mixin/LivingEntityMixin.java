@@ -126,6 +126,17 @@ public abstract class LivingEntityMixin extends Entity {
         }
         mythicmetals$palladiumParticles();
         mythicmetals$addArmorEffects();
+        mythicmetals$tickFireResWhileRiding();
+    }
+
+    @Unique
+    private void mythicmetals$tickFireResWhileRiding() {
+        if (!this.isPassenger()) return;
+        var vehicle = this.getVehicle();
+        if (vehicle == null) return;
+        if (this.level().getGameTime() % 40 == 1 && vehicle.getType().is(MythicTags.GRANTS_FIRE_RES_WHILE_RIDING)) {
+            this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 120));
+        }
     }
 
     @Unique
@@ -242,20 +253,6 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @Environment(EnvType.CLIENT)
-    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;)V", at = @At("HEAD"), cancellable = true)
-    private void mythicmetals$cancelSwingOnActiveMythrilDrill(InteractionHand interactionHand, CallbackInfo ci) {
-        if (!this.level().isClientSide()) {
-            return;
-        }
-        var stack = this.getItemInHand(interactionHand);
-        var camera = Minecraft.getInstance().getEntityRenderDispatcher().camera;
-        // This can be null, according to #252
-        if (camera == null) return;
-        if (camera.isDetached() && stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT).hasFuel()) {
-            ci.cancel();
-        }
-    }
 
     @Inject(method = "dropCustomDeathLoot", at = @At(value = "HEAD"))
     private void mythicmetals$dropMidasGold(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
@@ -267,10 +264,4 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @Inject(method = "tickRidden", at = @At("HEAD"))
-    private void mythicmetals$tickRiding(CallbackInfo ci) {
-        if (this.isPassenger() && this.level().getGameTime() % 40 == 1 && this.getVehicle().getType().is(MythicTags.GRANTS_FIRE_RES_WHILE_RIDING)) {
-            this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 120));
-        }
-    }
 }
