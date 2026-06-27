@@ -22,6 +22,7 @@ import java.util.function.*;
 public record Material(
     String name,
     Item baseMaterial,
+    MaterialType materialType,
     @Nullable Item nugget,
     @Nullable Item rawOre,
     @Nullable BlockSet blockSet,
@@ -224,7 +225,7 @@ public record Material(
             if (baseMaterial == null && type != MaterialType.ARMOR) {
                 throw new IllegalStateException("Base material must be registered!");
             }
-            return new Material(name, baseMaterial, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
+            return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
         }
     }
 }

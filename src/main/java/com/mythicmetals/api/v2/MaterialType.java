@@ -5,5 +5,6 @@ public enum MaterialType {
     ALLOY,
     INGOT,
     SPECIAL,
-    ARMOR, BASIC
+    ARMOR,
+    BASIC
 }

@@ -1,12 +1,17 @@
 package com.mythicmetals.data;
 
 
+import com.mythicmetals.api.v2.Material;
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.misc.DebugHelper;
+import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
+@SuppressWarnings("UnstableApiUsage")
 public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     public MythicItemTagProvider(
@@ -19,7 +24,45 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-//        getOrCreateRawBuilder()
+        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
+            // FIXME - Remove once MaterialType.ARMOR is gone
+            if (material.baseMaterial() != null) {
+                switch (material.materialType()) {
+                    case RARE_ALLOY, ALLOY, INGOT -> {
+                        // TODO - Ingot tag
+                    }
+                    case ARMOR -> {
+                        // TODO - REMOVE
+                    }
+                    case SPECIAL -> {
+                        // TODO - Rare material tag
+                    }
+                    default -> {
+                        // TODO - Add to generic material tag
+                    }
+                }
+            }
+            if (material.toolSet() != null) {
+                var toolSet = material.toolSet();
+                // TODO - Tool tags
+            }
+            if (material.armorSet() != null) {
+                var armorSet = material.armorSet();
+                // TODO - Armor tags
+            }
+            if (material.blockSet() != null) {
+                var blockSet = material.blockSet();
+                // TODO - Block tags
+            }
+            if (material.nugget() != null) {
+                // TODO - Nugget
+            }
+            if (material.rawOre() != null) {
+                // TODO - Raw ore
+            }
+        });
+
+        // TODO - Manually handle extra items
     }
 
     // FIXME - Adding tags via registry entries is considered deprecated

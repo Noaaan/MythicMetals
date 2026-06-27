@@ -36,10 +36,6 @@ import static net.minecraft.world.entity.ai.attributes.AttributeModifier.Operati
 import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 public class MythicMaterials {
-    public static final Material AEGIS = Material.Builder.createRawBuilder("aegis", MaterialType.SPECIAL)
-        .createBaseMaterial(MythicResourceKeys.EMERALD_CRYSTAL, Rarity.UNCOMMON, Item::new)
-        .addSmithingTemplate(AEGIS_SMITHING_TEMPLATE, MythicSmithingTemplates.AEGIS)
-        .finish();
 
     public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
@@ -286,6 +282,8 @@ public class MythicMaterials {
         .createDefaultArmor(MythicArmorMaterials.OSMIUM)
         .finish();
 
+    // TODO - This kind of material, together with Legendary Banglum, creates an anti-pattern of this API
+    // This should just stay an armor set, and should be registered somewhere else
     public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
         .createCustomArmorSet(new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL), armorSet -> armorSet.initialize(false, List.of()))
         .finish();
@@ -462,6 +460,11 @@ public class MythicMaterials {
             .finish()
         )
         .addSmithingTemplate(UNOBTAINIUM_SMITHING_TEMPLATE, MythicSmithingTemplates.UNOBTAINIUM)
+        .finish();
+
+    public static final Material AEGIS = Material.Builder.createRawBuilder("aegis", MaterialType.SPECIAL)
+        .createBaseMaterial(MythicResourceKeys.EMERALD_CRYSTAL, Rarity.UNCOMMON, Item::new)
+        .addSmithingTemplate(AEGIS_SMITHING_TEMPLATE, MythicSmithingTemplates.AEGIS)
         .finish();
 
     public static void init() {
