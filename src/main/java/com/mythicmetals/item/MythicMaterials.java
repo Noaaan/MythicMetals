@@ -178,13 +178,13 @@ public class MythicMaterials {
     public static final Material DURASTEEL = Material.Builder.create("durasteel", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
         .addExtraItem(DURASTEEL_ENGINE, Rarity.UNCOMMON, Item::new)
-        .createDefaultTools(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.CELESTIUM)
+        .createDefaultTools(MythicToolMaterials.DURASTEEL, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.DURASTEEL)
         .createDefaultArmor(MythicArmorMaterials.DURASTEEL)
         .finish();
 
     public static final Material HALLOWED = Material.Builder.create("hallowed", MaterialType.ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 5.0f)
-        .createDefaultTools(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.CELESTIUM)
+        .createDefaultTools(MythicToolMaterials.HALLOWED, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.HALLOWED)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.HALLOWED,
             MythicModelHandler.HALLOWED_ARMOR,
@@ -202,7 +202,7 @@ public class MythicMaterials {
                 .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
                 .finish()
         )
-        .createDefaultTools(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.CELESTIUM)
+        .createDefaultTools(MythicToolMaterials.KYBER, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.KYBER)
         .createDefaultArmor(MythicArmorMaterials.KYBER)
         .finish();
 
