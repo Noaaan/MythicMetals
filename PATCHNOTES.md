@@ -1,3 +1,11 @@
+# 0.19.12
+
+- Updated the licensing of Mythic Metals
+  - This is done to clarify the fact the assets are 'All rights reserved'
+  - This was done together with all contributing artists
+  - Any art that wasn't compatible has been updated
+- Added a config option to fully disable abilities
+
 # 0.19.11
 
 - Backported a camera fix which could cause a crash (#252)
