@@ -5,6 +5,7 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.loot.condition.TableBonusLootCondition;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.MythrilDrill;
@@ -22,6 +23,7 @@ public class TableBonusLootConditionMixin {
     @ModifyVariable(method = "test(Lnet/minecraft/loot/context/LootContext;)Z",
             at = @At(value = "LOAD"))
     private int mythicmetals$increaseFortune(int level, LootContext lootCtx) {
+        if (MythicMetals.CONFIG.disableAbilities()) return level;
         var toolCtxStack = lootCtx.get(LootContextParameters.TOOL);
         if (toolCtxStack == null) {
             return level;

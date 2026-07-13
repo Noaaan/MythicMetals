@@ -5,6 +5,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
+import nourl.mythicmetals.MythicMetals;
 import nourl.mythicmetals.abilities.Abilities;
 import nourl.mythicmetals.item.MythicItems;
 import nourl.mythicmetals.item.tools.*;
@@ -19,7 +20,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "onUserDamaged", at = @At("HEAD"))
     private static void mythicmetals$addSpikedHelm(LivingEntity user, Entity attacker, CallbackInfo ci) {
-
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         for (ItemStack armorItems : user.getArmorItems()) {
             if (Abilities.SPIKED_HELM.getItems().contains(armorItems.getItem())) {
                 if (armorItems.getItem() != null)
@@ -34,7 +35,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getDepthStrider", at = @At("HEAD"), cancellable = true)
     private static void mythicmetals$addDepthStrider(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
-
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         for (ItemStack armorItems : entity.getArmorItems()) {
             if (Abilities.DEPTH_STRIDER.getItems().contains(armorItems.getItem()))
                 cir.setReturnValue(Abilities.DEPTH_STRIDER.getLevel());
@@ -43,6 +44,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getRespiration", at = @At(value = "RETURN", target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEquipmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/entity/LivingEntity;)I"), cancellable = true)
     private static void mythicmetals$increaseRespiration(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         int level = cir.getReturnValue();
         int change = 0;
         for (ItemStack armorItems : entity.getArmorItems()) {
@@ -60,7 +62,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "hasAquaAffinity", at = @At("HEAD"), cancellable = true)
     private static void mythicmetals$addAquaAffinity(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
-
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         for (ItemStack armorItems : entity.getArmorItems()) {
             if (Abilities.AQUA_AFFINITY.getItems().contains(armorItems.getItem())) {
                 cir.setReturnValue(true);
@@ -78,7 +80,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getFireAspect", at = @At("HEAD"), cancellable = true)
     private static void mythicmetals$addFireAspect(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
-
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.FIRE_ASPECT.getItems().contains(mainHand.getItem()))
                 cir.setReturnValue(Abilities.FIRE_ASPECT.getLevel());
@@ -87,6 +89,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getLooting", at = @At("RETURN"), cancellable = true)
     private static void mythicmetals$increaseLooting(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         int level = cir.getReturnValue();
         int change = 0;
         for (ItemStack mainHand : entity.getHandItems()) {
@@ -101,6 +104,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getEfficiency", at = @At("RETURN"), cancellable = true)
     private static void mythicmetals$increaseEfficiency(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         int level = cir.getReturnValue();
         int change = 0;
         for (ItemStack mainHand : entity.getHandItems()) {
@@ -116,11 +120,13 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getProtectionAmount", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$damageReduction(Iterable<ItemStack> equipment, DamageSource source, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         // Make sure that there is any gear to check
         if (!equipment.iterator().hasNext()) return;
 
         var amount = cir.getReturnValue();
         int change = 0;
+
 
         for (var gear : equipment) {
             if (Abilities.BLAST_PROTECTION.getItems().contains(gear.getItem()) && source.isIn(DamageTypeTags.IS_EXPLOSION)) {
@@ -150,6 +156,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getAttackDamage", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$increaseDamage(ItemStack stack, EntityGroup group, CallbackInfoReturnable<Float> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         var amount = cir.getReturnValue();
         int change = 0;
         if (Abilities.SMITE.getItems().contains(stack.getItem()) && group == EntityGroup.UNDEAD) {
@@ -162,6 +169,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getRiptide", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$hasRiptide(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         if (stack.getItem() instanceof RiptideTool) {
             cir.setReturnValue(Abilities.RIPTIDE.getLevel());
         }
@@ -169,6 +177,7 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getKnockback", at = @At("TAIL"), cancellable = true)
     private static void mythicmetals$increaseKnockback(LivingEntity entity, CallbackInfoReturnable<Integer> cir) {
+        if (MythicMetals.CONFIG.disableAbilities()) return;
         var amount = cir.getReturnValue();
         for (ItemStack mainHand : entity.getHandItems()) {
             if (Abilities.KNOCKBACK.getItems().contains(mainHand.getItem()))

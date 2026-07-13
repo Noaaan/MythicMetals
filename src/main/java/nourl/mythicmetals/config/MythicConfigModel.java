@@ -77,6 +77,7 @@ public class MythicConfigModel {
     public int banglumNukeCoreRadius = 32;
     @Hook
     public ShieldPosition shieldPosition = ShieldPosition.TOP_LEFT;
+    public boolean disableAbilities = false;
 
     public enum ShieldPosition {
         TOP_LEFT(2, 2),
