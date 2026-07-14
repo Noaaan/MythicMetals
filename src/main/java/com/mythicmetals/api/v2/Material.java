@@ -16,6 +16,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jspecify.annotations.Nullable;
+
 import java.util.List;
 import java.util.function.*;
 
@@ -29,14 +30,32 @@ public record Material(
     @Nullable ToolSet toolSet,
     @Nullable ArmorSet armorSet,
     BiMap<ResourceKey<Item>, Item> extraItems,
-    BiMap<ResourceKey<Block>, Block> extraBlocks
+    BiMap<ResourceKey<Block>, Block> extraBlocks,
+    boolean fireproof
 ) {
+
+    public Material(
+        String name,
+        Item baseMaterial,
+        MaterialType materialType,
+        @Nullable Item nugget,
+        @Nullable Item rawOre,
+        @Nullable BlockSet blockSet,
+        @Nullable ToolSet toolSet,
+        @Nullable ArmorSet armorSet,
+        BiMap<ResourceKey<Item>, Item> extraItems,
+        BiMap<ResourceKey<Block>, Block> extraBlocks
+    ) {
+        this(name, baseMaterial, materialType, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks, false);
+    }
 
     public static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
     public static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
     public static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.location();
     public static final Identifier NETHERITE_MINING_LEVEL = RegistryHelper.id("needs_netherite_tool");
     public static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
+
+    // TODO - Utility functions for mod compat, E.G. being able to call on a Material, and get all the settings to create a custom item/armor set
 
     ///
     /// Builder for the [Material] class
@@ -46,20 +65,24 @@ public record Material(
         private Item baseMaterial;
         private Item nugget;
         private Item rawOre;
-        private ResourceKey<Item> baseMaterialKey;
         private BlockSet blockSet = null;
         private ToolSet toolSet = null;
         private ArmorSet armorSet = null;
         private final BiMap<ResourceKey<Item>, Item> extraItems = HashBiMap.create();
         private final BiMap<ResourceKey<Block>, Block> extraBlocks = HashBiMap.create();
+        private final boolean fireproof;
 
         private static final String INGOT_POSTFIX = "_ingot";
-        // TODO - Handle fireproofing
         private final MaterialType type;
 
-        private Builder(String materialName, MaterialType type) {
+        private Builder(String materialName, MaterialType type, boolean fireproof) {
             this.name = materialName;
             this.type = type;
+            this.fireproof = fireproof;
+        }
+
+        private Builder(String materialName, MaterialType type) {
+            this(materialName, type, false);
         }
 
         public static Builder createRawBuilder(String materialName, MaterialType type) {
@@ -71,12 +94,18 @@ public record Material(
                 .createBaseMaterial();
         }
 
+        public static Builder create(String materialName, MaterialType type, boolean fireproof) {
+            return new Builder(materialName, type, fireproof)
+                .createBaseMaterial();
+        }
+
         public Builder createBaseMaterial(ResourceKey<Item> key, Rarity rarity, Function<Item.Properties, Item> function) {
             this.baseMaterial = RegistryHelper.item(key, function.apply(baseProperties(key, 0, rarity)));
             return this;
         }
 
         protected Builder createBaseMaterial() {
+            ResourceKey<Item> baseMaterialKey;
             Item.Properties props;
             switch (type) {
                 case RARE_ALLOY, ALLOY -> {
@@ -181,7 +210,11 @@ public record Material(
         }
 
         protected Item.Properties baseProperties(ResourceKey<Item> idKey, int tab, Rarity rarity) {
-            return new Item.Properties()
+            var props = new Item.Properties();
+            if (fireproof) {
+                props = props.fireResistant();
+            }
+            return props
                 .setId(idKey)
                 .group(MythicMetals.TABBED_GROUP)
                 .rarity(rarity)
@@ -194,7 +227,12 @@ public record Material(
 
         public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicAttributeModifier> extraModifiers) {
             var set = new ArmorSet(this.name, armorMaterial);
-            this.armorSet = set.initialize(settings -> {}, extraModifiers, true);
+            this.armorSet = set.initialize(settings -> {
+                if (fireproof) {
+                    return settings.fireResistant();
+                }
+                return settings;
+            }, extraModifiers, true);
             return this;
         }
 
@@ -207,8 +245,13 @@ public record Material(
         }
 
         public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
-            var armorSet = new CustomHelmetArmorSet(this.name, material, model, texture);
-            this.armorSet = armorSet.initialize(settings -> {}, extraModifiers, initMountArmor);
+            var customSet = new CustomHelmetArmorSet(this.name, material, model, texture);
+            this.armorSet = customSet.initialize(settings -> {
+                if (fireproof) {
+                    return settings.fireResistant();
+                }
+                return settings;
+            }, extraModifiers, initMountArmor);
             return this;
         }
 

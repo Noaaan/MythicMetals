@@ -149,7 +149,7 @@ public class MythicMaterials {
         ))
         .finish();
 
-    public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY)
+    public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY, true)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 13.0f)
         .createDefaultTools(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.HIGHEST, MythicSpearStats.CELESTIUM)
         .createDefaultArmor(MythicArmorMaterials.CELESTIUM, List.of(
@@ -220,7 +220,7 @@ public class MythicMaterials {
         .createDefaultBlockSet(STONE_MINING_LEVEL, 3.0f)
         .finish();
 
-    public static final Material METALLURGIUM = Material.Builder.create("metallurgium", MaterialType.RARE_ALLOY)
+    public static final Material METALLURGIUM = Material.Builder.create("metallurgium", MaterialType.RARE_ALLOY, true)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 60.0f)
         .createDefaultTools(MythicToolMaterials.METALLURGIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.METALLURGIUM)
         .createCustomHelmetArmorSet(
@@ -288,7 +288,7 @@ public class MythicMaterials {
         .createCustomArmorSet(new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL), armorSet -> armorSet.initialize(false, List.of()))
         .finish();
 
-    public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT)
+    public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT, true)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
         .addExtraBlock(PALLADIUM_RAIL, properties -> new PalladiumRailBlock(
             properties

@@ -15,11 +15,14 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.*;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.Equippable;
 import org.jspecify.annotations.Nullable;
+
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
@@ -32,8 +35,7 @@ public class ArmorSet {
     public final ResourceKey<Item> nautilusKey;
     private final ArmorMaterial armorMaterial;
     private final String name;
-    private static final Consumer<Item.Properties> NONE = (a) -> {
-    };
+    private static final UnaryOperator<Item.Properties> NONE = UnaryOperator.identity();
 
     protected Item helmet;
     protected Item chestplate;
@@ -53,7 +55,7 @@ public class ArmorSet {
         this.armorMaterial = armorMaterial;
     }
 
-    public ArmorSet initialize(Consumer<Item.Properties> customProperties) {
+    public ArmorSet initialize(UnaryOperator<Item.Properties> customProperties) {
         return initialize(customProperties, List.of(), true);
     }
 
@@ -69,7 +71,7 @@ public class ArmorSet {
         return initialize(NONE, extraModifiers, initializeMountArmor);
     }
 
-    public ArmorSet initialize(Consumer<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers, boolean initMountArmor) {
+    public ArmorSet initialize(UnaryOperator<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers, boolean initMountArmor) {
         this.helmet = RegistryHelper.item(
             helmetKey,
             baseItem(helmetKey, armorMaterial, ArmorType.HELMET, customProperties, extraModifiers)
@@ -84,24 +86,24 @@ public class ArmorSet {
         return this;
     }
 
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, armorType, extraModifiers);
         settings = armor(material, armorType, settings);
-        settingsConsumer.accept(settings);
+        settings = settingsConsumer.apply(settings);
         return this.makeItem(armorType, settings);
     }
 
-    public Item baseHorseItem(ResourceKey<Item> key, ArmorMaterial material, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+    public Item baseHorseItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
         settings = horseArmor(material, settings);
-        settingsConsumer.accept(settings);
+        settings = settingsConsumer.apply(settings);
         return this.makeItem(ArmorType.BODY, settings);
     }
 
-    public Item baseNautilusItem(ResourceKey<Item> key, ArmorMaterial material, Consumer<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
+    public Item baseNautilusItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
         settings = nautilusArmor(material, settings);
-        settingsConsumer.accept(settings);
+        settings = settingsConsumer.apply(settings);
         return this.makeItem(ArmorType.BODY, settings);
     }
 
