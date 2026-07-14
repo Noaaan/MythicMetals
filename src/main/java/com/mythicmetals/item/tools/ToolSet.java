@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.MythicArmorAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.Registry;
@@ -25,7 +25,7 @@ public class ToolSet {
     private final HoeItem hoe;
     private final ToolMaterial material;
     private final List<Float> attackSpeed = new ArrayList<>();
-    private List<MythicAttributeModifier> extraModifiers = List.of();
+    private List<MythicArmorAttributeModifier> extraModifiers = List.of();
 
     private static Item.Properties createSettings(String name, Consumer<Item.Properties> settingsProcessor) {
         final var key = RegistryHelper.itemKey(name);
@@ -34,7 +34,7 @@ public class ToolSet {
         return settings;
     }
 
-    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, List<MythicAttributeModifier> extraModifiers) {
+    public ToolSet(String name, ToolMaterial material, int[] damage, float[] speed, List<MythicArmorAttributeModifier> extraModifiers) {
         this(name, material, damage, speed, settings -> {
         });
         this.extraModifiers = extraModifiers;
@@ -68,31 +68,31 @@ public class ToolSet {
         Registry.register(BuiltInRegistries.ITEM, RegistryHelper.id(name + "_hoe"), hoe);
     }
 
-    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new SwordMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new AxeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new PickaxeMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new ShovelMock(material, damage, speed, settings, extraModifiers);
     }
 
-    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new HoeMock(material, damage, speed, settings, extraModifiers);
     }
 
     static class SwordMock extends Item {
 
-        final List<MythicAttributeModifier> extraModifiers;
+        final List<MythicArmorAttributeModifier> extraModifiers;
 
-        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+        public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
             // FIXME
             super(settings);
             this.extraModifiers = extraModifiers;
@@ -106,9 +106,9 @@ public class ToolSet {
 
     static class PickaxeMock extends Item {
 
-        final List<MythicAttributeModifier> extraModifiers;
+        final List<MythicArmorAttributeModifier> extraModifiers;
 
-        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+        public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
             // FIXME
             super(settings);
             this.extraModifiers = extraModifiers;
@@ -122,9 +122,9 @@ public class ToolSet {
 
     static class ShovelMock extends ShovelItem {
 
-        final List<MythicAttributeModifier> extraModifiers;
+        final List<MythicArmorAttributeModifier> extraModifiers;
 
-        public ShovelMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
+        public ShovelMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
@@ -137,9 +137,9 @@ public class ToolSet {
 
     static class AxeMock extends AxeItem {
 
-        final List<MythicAttributeModifier> extraModifiers;
+        final List<MythicArmorAttributeModifier> extraModifiers;
 
-        public AxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
+        public AxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
@@ -152,9 +152,9 @@ public class ToolSet {
 
     static class HoeMock extends HoeItem {
 
-        final List<MythicAttributeModifier> extraModifiers;
+        final List<MythicArmorAttributeModifier> extraModifiers;
 
-        public HoeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicAttributeModifier> extraModifiers) {
+        public HoeMock(ToolMaterial material, float attackDamage, float attackSpeed, Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
             super(material, attackDamage, attackSpeed, settings);
             this.extraModifiers = extraModifiers;
         }
@@ -206,11 +206,11 @@ public class ToolSet {
         return name;
     }
 
-    public List<MythicAttributeModifier> getExtraModifiers() {
+    public List<MythicArmorAttributeModifier> getExtraModifiers() {
         return extraModifiers;
     }
 
-    protected static void applyExtraModifiers(DataComponentMap components, DataComponentPatch.Builder builder, List<MythicAttributeModifier> extraModifiers) {
+    protected static void applyExtraModifiers(DataComponentMap components, DataComponentPatch.Builder builder, List<MythicArmorAttributeModifier> extraModifiers) {
         if (extraModifiers.isEmpty()) {
             return;
         }

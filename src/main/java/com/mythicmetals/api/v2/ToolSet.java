@@ -1,20 +1,34 @@
 package com.mythicmetals.api.v2;
 
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.MythicToolAttributeModifier;
+import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.EitherHolder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwingAnimationType;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.UnaryOperator;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
@@ -27,6 +41,7 @@ public class ToolSet {
     public final ResourceKey<Item> hoeKey;
     public final ResourceKey<Item> spearKey;
     private final ToolMaterial toolMaterial;
+    private final String name;
 
     protected Item sword;
     protected Item axe;
@@ -36,6 +51,7 @@ public class ToolSet {
     protected Item spear;
 
     public ToolSet(String name, ToolMaterial toolMaterial) {
+        this.name = name;
         this.swordKey = itemKey(name + "_sword");
         this.axeKey = itemKey(name + "_axe");
         this.pickaxeKey = itemKey(name + "_pickaxe");
@@ -45,37 +61,31 @@ public class ToolSet {
         this.toolMaterial = toolMaterial;
     }
 
-    /* TODO - I have to permanently maintain attributes myself, since I don't constrain myself to the vanilla ones.
-     * I want tools with different attributes, dynamic attributes even.
-     * The latter being fairly difficult, since there is no vanilla way to do that at all.
-     * owo-lib derived stack components might work, but the idea is still sketchy
-     */
-
     // TODO - Is something more extendible than enum required? Maybe config?
-    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
+    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
         this.sword = RegistryHelper.item(swordKey, new Item(
-            defaultSettings()
-                .sword(toolMaterial, 3.0f, attackSpeeds.sword - 4.0f)
+            swordVanilla()
+                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SWORD, attackSpeeds, extraModifiers))
                 .setId(swordKey)
         ));
         this.axe = RegistryHelper.item(axeKey, new Item(
-            defaultSettings()
-                .axe(toolMaterial, 5.0f, attackSpeeds.axe - 4.0f)
+            axeVanilla()
+                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.AXE, attackSpeeds, extraModifiers))
                 .setId(axeKey)
         ));
         this.pickaxe = RegistryHelper.item(pickaxeKey, new Item(
-            defaultSettings()
-                .pickaxe(toolMaterial, 2.0f, attackSpeeds.pickaxe - 4.0f)
+            pickaxeVanilla()
+                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.PICKAXE, attackSpeeds, extraModifiers))
                 .setId(pickaxeKey)
         ));
         this.shovel = RegistryHelper.item(shovelKey, new Item(
-            defaultSettings()
-                .shovel(toolMaterial, 1.0f, attackSpeeds.shovel - 4.0f)
+            shovelVanilla()
+                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SHOVEL, attackSpeeds, extraModifiers))
                 .setId(shovelKey)
         ));
         this.hoe = RegistryHelper.item(hoeKey, new Item(
-            defaultSettings()
-                .hoe(toolMaterial, 0.0f, attackSpeeds.hoe - 4.0f)
+            hoeVanilla()
+                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.HOE, attackSpeeds, extraModifiers))
                 .setId(hoeKey)
         ));
         this.spear = RegistryHelper.item(spearKey, new Item(
@@ -85,9 +95,18 @@ public class ToolSet {
         return this;
     }
 
+    protected Item.Properties baseToolSettings(UnaryOperator<Item.Properties> unaryOperator) {
+        return unaryOperator.apply(defaultSettings());
+    }
+
     protected Item.Properties defaultSettings() {
         return new Item.Properties()
-            .group(MythicMetals.TABBED_GROUP).tab(2);
+            .durability(toolMaterial.durability())
+            .stacksTo(1)
+            .repairable(toolMaterial.repairItems())
+            .enchantable(toolMaterial.enchantmentValue())
+            .group(MythicMetals.TABBED_GROUP)
+            .tab(2);
     }
 
     public Item getSpear() {
@@ -132,6 +151,79 @@ public class ToolSet {
         );
     }
 
+    private Item.Properties swordVanilla() {
+        HolderGetter<Block> holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
+        return defaultSettings()
+            .component(
+                DataComponents.TOOL,
+                new Tool(
+                    List.of(
+                        Tool.Rule.minesAndDrops(HolderSet.direct(Blocks.COBWEB.builtInRegistryHolder()), 15.0F),
+                        Tool.Rule.overrideSpeed(holderGetter.getOrThrow(BlockTags.SWORD_INSTANTLY_MINES), Float.MAX_VALUE),
+                        Tool.Rule.overrideSpeed(holderGetter.getOrThrow(BlockTags.SWORD_EFFICIENT), 1.5F)
+                    ),
+                    1.0F,
+                    2,
+                    false
+                )
+            )
+            .component(DataComponents.WEAPON, new Weapon(1));
+    }
+
+    private Item.Properties pickaxeVanilla() {
+        return defaultSettings()
+            .component(
+                DataComponents.TOOL,
+                vanillaToolComponent(BlockTags.MINEABLE_WITH_PICKAXE)
+            )
+            .component(DataComponents.WEAPON, new Weapon(2));
+    }
+
+    private Item.Properties axeVanilla() {
+        return defaultSettings()
+            .component(
+                DataComponents.TOOL,
+                vanillaToolComponent(BlockTags.MINEABLE_WITH_AXE)
+            )
+            .component(DataComponents.WEAPON, new Weapon(2, 5.0f));
+    }
+
+    private Item.Properties shovelVanilla() {
+        return defaultSettings()
+            .component(
+                DataComponents.TOOL,
+                vanillaToolComponent(BlockTags.MINEABLE_WITH_SHOVEL)
+            )
+            .component(DataComponents.WEAPON, new Weapon(2));
+    }
+
+    private Item.Properties hoeVanilla() {
+        return defaultSettings()
+            .component(
+                DataComponents.TOOL,
+                vanillaToolComponent(BlockTags.MINEABLE_WITH_HOE)
+            )
+            .component(DataComponents.WEAPON, new Weapon(2));
+    }
+
+    private Tool vanillaToolComponent(TagKey<Block> tagKey) {
+        HolderGetter<Block> holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
+        return new Tool(
+            List.of(
+                Tool.Rule.deniesDrops(holderGetter.getOrThrow(toolMaterial.incorrectBlocksForDrops())),
+                Tool.Rule.minesAndDrops(holderGetter.getOrThrow(tagKey), toolMaterial.speed())
+            ),
+            1.0F,
+            1,
+            true
+        );
+    }
+
+    protected ItemAttributeModifiers mythicModifier(MythicItemAttributes.ToolType toolType, AttackSpeeds attackSpeeds, List<MythicToolAttributeModifier> extraAttributes) {
+        return MythicItemAttributes.createToolModifier(name, toolType, attackSpeeds, toolMaterial, extraAttributes);
+
+    }
+
     private Item.Properties spearVanilla(
         ToolMaterial toolMaterial,
         float swingDuration,
@@ -153,10 +245,10 @@ public class ToolSet {
                 DataComponents.KINETIC_WEAPON,
                 new KineticWeapon(
                     10,
-                    (int)(activationDelaySeconds * 20.0F),
-                    KineticWeapon.Condition.ofAttackerSpeed((int)(dismountSeconds * 20.0F), dismountSpeedRequirement),
-                    KineticWeapon.Condition.ofAttackerSpeed((int)(knockbackSeconds * 20.0F), knockbackSpeedRequirement),
-                    KineticWeapon.Condition.ofRelativeSpeed((int)(damageSeconds * 20.0F), damageSpeedRequirement),
+                    (int) (activationDelaySeconds * 20.0F),
+                    KineticWeapon.Condition.ofAttackerSpeed((int) (dismountSeconds * 20.0F), dismountSpeedRequirement),
+                    KineticWeapon.Condition.ofAttackerSpeed((int) (knockbackSeconds * 20.0F), knockbackSpeedRequirement),
+                    KineticWeapon.Condition.ofRelativeSpeed((int) (damageSeconds * 20.0F), damageSpeedRequirement),
                     0.38F,
                     damageMultiplier,
                     Optional.of(toolMaterial == ToolMaterial.WOOD ? SoundEvents.SPEAR_WOOD_USE : SoundEvents.SPEAR_USE),
@@ -174,7 +266,7 @@ public class ToolSet {
             )
             .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
             .component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
-            .component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int)(swingDuration * 20.0F)))
+            .component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int) (swingDuration * 20.0F)))
             .attributes(
                 ItemAttributeModifiers.builder()
                     .add(

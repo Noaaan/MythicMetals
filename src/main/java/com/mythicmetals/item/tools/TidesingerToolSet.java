@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.MythicArmorAttributeModifier;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
@@ -17,22 +17,22 @@ public class TidesingerToolSet extends ToolSet {
         super("tidesinger", material, damage, speed);
     }
 
-    private static final MythicAttributeModifier MINING_SPEED_BONUS = new MythicAttributeModifier(
+    private static final MythicArmorAttributeModifier MINING_SPEED_BONUS = new MythicArmorAttributeModifier(
         Attributes.SUBMERGED_MINING_SPEED,
         1.5f,
         ADD_MULTIPLIED_BASE,
         EquipmentSlotGroup.MAINHAND
     );
 
-    private static final List<MythicAttributeModifier> TIDESINGER_MODS = List.of(MINING_SPEED_BONUS);
+    private static final List<MythicArmorAttributeModifier> TIDESINGER_MODS = List.of(MINING_SPEED_BONUS);
 
     @Override
-    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraMods) {
+    protected Item makeSword(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraMods) {
         return new TidesingerSword(material, damage, speed, settings);
     }
 
     @Override
-    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected AxeItem makeAxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return new TidesingerAxe(material, damage, speed, settings);
     }
 
@@ -97,17 +97,17 @@ public class TidesingerToolSet extends ToolSet {
     }
 
     @Override
-    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected Item makePickaxe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return super.makePickaxe(material, damage, speed, settings, TIDESINGER_MODS);
     }
 
     @Override
-    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected ShovelItem makeShovel(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return super.makeShovel(material, damage, speed, settings, TIDESINGER_MODS);
     }
 
     @Override
-    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
+    protected HoeItem makeHoe(ToolMaterial material, int damage, float speed, Item.Properties settings, List<MythicArmorAttributeModifier> extraModifiers) {
         return super.makeHoe(material, damage, speed, settings, TIDESINGER_MODS);
     }
 }

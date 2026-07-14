@@ -1,6 +1,6 @@
 package com.mythicmetals.config;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.MythicArmorAttributeModifier;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public record MythicArmorConfig(
     int legsArmor,
     int bootsArmor,
     float knockbackResistance,
-    List<MythicAttributeModifier> extraModifiers
+    List<MythicArmorAttributeModifier> extraModifiers
 ) {
 
 }
