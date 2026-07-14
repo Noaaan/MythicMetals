@@ -162,13 +162,23 @@ public record Material(
             return this;
         }
 
-        public Builder createDefaultTools(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
-            this.toolSet = new ToolSet(name, material).createDefault(attackSpeeds, spearStats, List.of());
+        public Builder createToolSet(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
+            this.toolSet = new ToolSet(name, material).createDefault(properties -> {
+                if (fireproof) {
+                    return properties.fireResistant();
+                }
+                return properties;
+            }, attackSpeeds, spearStats, List.of());
             return this;
         }
 
-        public Builder createCustomTools(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
-            this.toolSet = new ToolSet(name, material).createDefault(attackSpeeds, spearStats, extraModifiers);
+        public Builder createToolSet(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
+            this.toolSet = new ToolSet(name, material).createDefault(properties -> {
+                if (fireproof) {
+                    return properties.fireResistant();
+                }
+                return properties;
+            }, attackSpeeds, spearStats, extraModifiers);
             return this;
         }
 

@@ -48,12 +48,12 @@ public class MythicMaterials {
             MythicModelHandler.ADAMANTITE_ARMOR,
             RegistryHelper.id("textures/models/adamantite_model.png")
         )
-        .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.ADAMANTITE)
+        .createToolSet(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.ADAMANTITE)
         .finish();
 
     public static final Material AQUARIUM = Material.Builder.create("aquarium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
-        .createDefaultTools(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.AQUARIUM)
+        .createToolSet(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.AQUARIUM)
         .addExtraBlock(
             AQUARIUM_GLASS,
             properties ->
@@ -104,13 +104,13 @@ public class MythicMaterials {
             )
         )
         .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
-        .createDefaultTools(MythicToolMaterials.BANGLUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BANGLUM)
+        .createToolSet(MythicToolMaterials.BANGLUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BANGLUM)
         .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of())
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 5.5f)
-        .createDefaultTools(MythicToolMaterials.BRONZE, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BRONZE)
+        .createToolSet(MythicToolMaterials.BRONZE, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BRONZE)
         .createDefaultArmor(MythicArmorMaterials.BRONZE)
         .finish();
 
@@ -134,7 +134,7 @@ public class MythicMaterials {
         })
         .addExtraItem(CARMOT_STONE, Rarity.UNCOMMON, Item::new)
         .addSmithingTemplate(CARMOT_SMITHING_TEMPLATE, MythicSmithingTemplates.CARMOT)
-        .createDefaultTools(MythicToolMaterials.CARMOT, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.CARMOT)
+        .createToolSet(MythicToolMaterials.CARMOT, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.CARMOT)
         .createDefaultArmor(MythicArmorMaterials.CARMOT, List.of(
             new MythicArmorAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, HEAD),
             new MythicArmorAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, CHEST),
@@ -151,7 +151,7 @@ public class MythicMaterials {
 
     public static final Material CELESTIUM = Material.Builder.create("celestium", MaterialType.RARE_ALLOY, true)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 13.0f)
-        .createDefaultTools(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.HIGHEST, MythicSpearStats.CELESTIUM)
+        .createToolSet(MythicToolMaterials.CELESTIUM, ToolSet.AttackSpeeds.HIGHEST, MythicSpearStats.CELESTIUM)
         .createDefaultArmor(MythicArmorMaterials.CELESTIUM, List.of(
             new MythicArmorAttributeModifier(MOVEMENT_SPEED, 0.1, ADD_MULTIPLIED_TOTAL, ARMOR),
             new MythicArmorAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
@@ -174,13 +174,13 @@ public class MythicMaterials {
     public static final Material DURASTEEL = Material.Builder.create("durasteel", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.0f)
         .addExtraItem(DURASTEEL_ENGINE, Rarity.UNCOMMON, Item::new)
-        .createDefaultTools(MythicToolMaterials.DURASTEEL, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.DURASTEEL)
+        .createToolSet(MythicToolMaterials.DURASTEEL, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.DURASTEEL)
         .createDefaultArmor(MythicArmorMaterials.DURASTEEL)
         .finish();
 
     public static final Material HALLOWED = Material.Builder.create("hallowed", MaterialType.ALLOY)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 5.0f)
-        .createDefaultTools(MythicToolMaterials.HALLOWED, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.HALLOWED)
+        .createToolSet(MythicToolMaterials.HALLOWED, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.HALLOWED)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.HALLOWED,
             MythicModelHandler.HALLOWED_ARMOR,
@@ -198,7 +198,7 @@ public class MythicMaterials {
                 .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
                 .finish()
         )
-        .createDefaultTools(MythicToolMaterials.KYBER, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.KYBER)
+        .createToolSet(MythicToolMaterials.KYBER, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.KYBER)
         .createDefaultArmor(MythicArmorMaterials.KYBER)
         .finish();
 
@@ -222,7 +222,7 @@ public class MythicMaterials {
 
     public static final Material METALLURGIUM = Material.Builder.create("metallurgium", MaterialType.RARE_ALLOY, true)
         .createDefaultBlockSet(NETHERITE_MINING_LEVEL, 60.0f)
-        .createDefaultTools(MythicToolMaterials.METALLURGIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.METALLURGIUM)
+        .createToolSet(MythicToolMaterials.METALLURGIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.METALLURGIUM)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.METALLURGIUM,
             MythicModelHandler.METALLURGIUM,
@@ -259,7 +259,7 @@ public class MythicMaterials {
             .finish()
         )
         .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL)
-        .createDefaultTools(MythicToolMaterials.MYTHRIL, ToolSet.AttackSpeeds.FASTER, MythicSpearStats.MYTHRIL)
+        .createToolSet(MythicToolMaterials.MYTHRIL, ToolSet.AttackSpeeds.FASTER, MythicSpearStats.MYTHRIL)
         .createDefaultArmor(MythicArmorMaterials.MYTHRIL)
         .finish();
 
@@ -271,14 +271,14 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 6.0f, 7.0f)
             .finish()
         )
-        .createDefaultTools(MythicToolMaterials.ORICHALCUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.ORICHALCUM)
+        .createToolSet(MythicToolMaterials.ORICHALCUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.ORICHALCUM)
         .createDefaultArmor(MythicArmorMaterials.ORICHALCUM)
         .finish();
 
     public static final Material OSMIUM = Material.Builder.create("osmium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
-        .createDefaultTools(MythicToolMaterials.OSMIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.OSMIUM)
+        .createToolSet(MythicToolMaterials.OSMIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.OSMIUM)
         .createDefaultArmor(MythicArmorMaterials.OSMIUM)
         .finish();
 
@@ -298,7 +298,7 @@ public class MythicMaterials {
                 .sound(SoundType.METAL)
         ))
         .addExtraItem(PALLADIUM_MINECART, Rarity.UNCOMMON, properties -> new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, properties))
-        .createDefaultTools(MythicToolMaterials.PALLADIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.PALLADIUM)
+        .createToolSet(MythicToolMaterials.PALLADIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.PALLADIUM)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.PALLADIUM,
             List.of(
@@ -329,7 +329,7 @@ public class MythicMaterials {
             .finish()
         )
         .addExtraItem(PROMETHEUM_ROSE, Rarity.UNCOMMON, Item::new)
-        .createDefaultTools(MythicToolMaterials.PROMETHEUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.PROMETHEUM)
+        .createToolSet(MythicToolMaterials.PROMETHEUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.PROMETHEUM)
         .createCustomArmorSet(
             new ArmorSet("prometheum", MythicArmorMaterials.PROMETHEUM),
             armorSet -> armorSet.initialize(
@@ -340,7 +340,7 @@ public class MythicMaterials {
 
     public static final Material QUADRILLUM = Material.Builder.create("quadrillum", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
-        .createDefaultTools(MythicToolMaterials.QUADRILLUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.QUADRILLUM)
+        .createToolSet(MythicToolMaterials.QUADRILLUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.QUADRILLUM)
         .finish();
 
     public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT)
@@ -349,7 +349,7 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 8.8f, 9f)
             .finish()
         )
-        .createDefaultTools(MythicToolMaterials.RUNITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.RUNITE)
+        .createToolSet(MythicToolMaterials.RUNITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.RUNITE)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.RUNITE,
             MythicModelHandler.RUNITE_ARMOR,
@@ -365,7 +365,7 @@ public class MythicMaterials {
 
     public static final Material STAR_PLATINUM = Material.Builder.create("star_platinum", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.5f)
-        .createDefaultTools(MythicToolMaterials.STAR_PLATINUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STAR_PLATINUM)
+        .createToolSet(MythicToolMaterials.STAR_PLATINUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STAR_PLATINUM)
         .createDefaultArmor(MythicArmorMaterials.STAR_PLATINUM, List.of(
             new MythicArmorAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, HEAD),
             new MythicArmorAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, CHEST),
@@ -395,7 +395,7 @@ public class MythicMaterials {
     public static final Material STEEL = Material.Builder.create("steel", MaterialType.ALLOY)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 5.0f)
         .createDefaultArmor(MythicArmorMaterials.STEEL)
-        .createDefaultTools(MythicToolMaterials.STEEL, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STEEL)
+        .createToolSet(MythicToolMaterials.STEEL, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STEEL)
         .finish();
 
     public static final Material STORMYX = Material.Builder.create("stormyx", MaterialType.INGOT)
@@ -405,7 +405,7 @@ public class MythicMaterials {
             .finish()
         )
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
-        .createDefaultTools(MythicToolMaterials.STORMYX, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STORMYX)
+        .createToolSet(MythicToolMaterials.STORMYX, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STORMYX)
         .createDefaultArmor(MythicArmorMaterials.STORMYX, List.of(
             new MythicArmorAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, HEAD),
             new MythicArmorAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, CHEST),
@@ -418,7 +418,7 @@ public class MythicMaterials {
     public static final Material TIDESINGER = Material.Builder.createRawBuilder("tidesinger", MaterialType.SPECIAL)
         .createBaseMaterial(AQUARIUM_PEARL, Rarity.UNCOMMON, Item::new)
         .addSmithingTemplate(TIDESINGER_SMITHING_TEMPLATE, MythicSmithingTemplates.TIDESINGER)
-        .createDefaultTools(MythicToolMaterials.TIDESINGER, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.TIDESINGER)
+        .createToolSet(MythicToolMaterials.TIDESINGER, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.TIDESINGER)
         .createCustomArmorSet(
             new TidesingerArmorSet(MythicArmorMaterials.TIDESINGER),
             armorSet -> armorSet.initialize(List.of(

@@ -42,6 +42,7 @@ public class ToolSet {
     public final ResourceKey<Item> spearKey;
     private final ToolMaterial toolMaterial;
     private final String name;
+    private static final UnaryOperator<Item.Properties> NONE = UnaryOperator.identity();
 
     protected Item sword;
     protected Item axe;
@@ -61,32 +62,46 @@ public class ToolSet {
         this.toolMaterial = toolMaterial;
     }
 
-    // TODO - Is something more extendible than enum required? Maybe config?
     public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
+        return createDefault(NONE, attackSpeeds, spearStats, extraModifiers);
+    }
+
+    // TODO - Is something more extendible than enum required? Maybe config?
+    public ToolSet createDefault(UnaryOperator<Item.Properties> settingsOperator, AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
         this.sword = RegistryHelper.item(swordKey, new Item(
-            swordVanilla()
-                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SWORD, attackSpeeds, extraModifiers))
-                .setId(swordKey)
+            settingsOperator.apply(
+                swordVanilla()
+                    .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SWORD, attackSpeeds, extraModifiers))
+                    .setId(swordKey)
+            )
         ));
         this.axe = RegistryHelper.item(axeKey, new Item(
-            axeVanilla()
-                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.AXE, attackSpeeds, extraModifiers))
-                .setId(axeKey)
+            settingsOperator.apply(
+                axeVanilla()
+                    .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.AXE, attackSpeeds, extraModifiers))
+                    .setId(axeKey)
+            )
         ));
         this.pickaxe = RegistryHelper.item(pickaxeKey, new Item(
-            pickaxeVanilla()
-                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.PICKAXE, attackSpeeds, extraModifiers))
-                .setId(pickaxeKey)
+            settingsOperator.apply(
+                pickaxeVanilla()
+                    .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.PICKAXE, attackSpeeds, extraModifiers))
+                    .setId(pickaxeKey)
+            )
         ));
         this.shovel = RegistryHelper.item(shovelKey, new Item(
-            shovelVanilla()
-                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SHOVEL, attackSpeeds, extraModifiers))
-                .setId(shovelKey)
+            settingsOperator.apply(
+                shovelVanilla()
+                    .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.SHOVEL, attackSpeeds, extraModifiers))
+                    .setId(shovelKey)
+            )
         ));
         this.hoe = RegistryHelper.item(hoeKey, new Item(
-            hoeVanilla()
-                .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.HOE, attackSpeeds, extraModifiers))
-                .setId(hoeKey)
+            settingsOperator.apply(
+                hoeVanilla()
+                    .component(DataComponents.ATTRIBUTE_MODIFIERS, mythicModifier(MythicItemAttributes.ToolType.HOE, attackSpeeds, extraModifiers))
+                    .setId(hoeKey)
+            )
         ));
         this.spear = RegistryHelper.item(spearKey, new Item(
             spearSettings(toolMaterial, spearStats)
