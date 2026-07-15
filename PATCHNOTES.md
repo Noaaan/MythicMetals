@@ -1,3 +1,7 @@
+# 0.24.7
+
+- Fix an issue with the Banglum Nuke multiblock (#323)
+
 # 0.24.6
 
 ## Changes
