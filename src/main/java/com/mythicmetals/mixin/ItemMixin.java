@@ -2,17 +2,22 @@ package com.mythicmetals.mixin;
 
 import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.component.PrometheumComponent;
+import com.mythicmetals.data.attachments.MythicDataAttachments;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static com.mythicmetals.component.PrometheumComponent.createOvergrownModifier;
 import static com.mythicmetals.component.PrometheumComponent.createOvergrownToughnessModifier;
@@ -50,6 +55,13 @@ public abstract class ItemMixin {
                     stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
                 }
             }
+        }
+    }
+
+    @Inject(method = "mineBlock", at = @At("HEAD"), cancellable = true)
+    private void mythicmetals$cancelDamageWhenDoingProperPhysicalLabor(ItemStack itemStack, Level level, BlockState blockState, BlockPos blockPos, LivingEntity livingEntity, CallbackInfoReturnable<Boolean> cir) {
+        if (itemStack.has(MythicDataComponents.SNOW_SHOVEL) && blockState.is(BlockTags.SNOW)) {
+            cir.setReturnValue(true);
         }
     }
 }

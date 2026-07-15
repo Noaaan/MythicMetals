@@ -3,7 +3,6 @@ package com.mythicmetals.data;
 import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
 import com.mythicmetals.item.*;
-import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
@@ -312,155 +311,156 @@ public class MythicRecipeGenerator extends RecipeProvider {
 
     private void createToolRecipes() {
         // Tool recipes
-        createToolCraftingRecipes(MythicTools.ADAMANTITE, MythicMaterials.ADAMANTITE.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.AQUARIUM, MythicMaterials.AQUARIUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.BANGLUM, MythicMaterials.BANGLUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.BRONZE, MythicMaterials.BRONZE.baseMaterial(), itemLookup);
-//        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
-        createToolCraftingRecipes(MythicTools.DURASTEEL, MythicMaterials.DURASTEEL.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.KYBER, MythicMaterials.KYBER.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.MYTHRIL, MythicMaterials.MYTHRIL.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.HALLOWED, MythicMaterials.HALLOWED.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.ORICHALCUM, MythicMaterials.ORICHALCUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.OSMIUM, MythicMaterials.OSMIUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.PALLADIUM, MythicMaterials.PALLADIUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.PROMETHEUM, MythicMaterials.PROMETHEUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.QUADRILLUM, MythicMaterials.QUADRILLUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.RUNITE, MythicMaterials.RUNITE.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STAR_PLATINUM, MythicMaterials.STAR_PLATINUM.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STEEL, MythicMaterials.STEEL.baseMaterial(), itemLookup);
-        createToolCraftingRecipes(MythicTools.STORMYX, MythicMaterials.STORMYX.baseMaterial(), itemLookup);
-        createToolSmithingRecipes(
-            MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_SMITHING_TEMPLATE),
-            MythicTools.KYBER,
-            Ingredient.of(MythicMaterials.CARMOT.baseMaterial()),
-            MythicTools.CARMOT
-        );
-        createToolSmithingRecipes(
-            MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
-            MythicTools.BANGLUM,
-            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
-            MythicTools.LEGENDARY_BANGLUM
-        );
-        createToolSmithingRecipes(
-            MythicMaterials.TIDESINGER.extraItems().get(MythicResourceKeys.TIDESINGER_SMITHING_TEMPLATE),
-            MythicTools.AQUARIUM,
-            Ingredient.of(itemLookup.getOrThrow(MythicTags.TIDESINGER_CORAL)),
-            MythicTools.TIDESINGER
-        );
-        createToolSmithingRecipes(
-            MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
-            Items.DIAMOND_SWORD,
-            Items.DIAMOND_AXE,
-            Items.DIAMOND_PICKAXE,
-            Items.DIAMOND_SHOVEL,
-            Items.DIAMOND_HOE,
-            Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
-            MythicTools.CELESTIUM
-        );
-        createToolSmithingRecipes(
-            MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
-            Items.NETHERITE_SWORD,
-            Items.NETHERITE_AXE,
-            Items.NETHERITE_PICKAXE,
-            Items.NETHERITE_SHOVEL,
-            Items.NETHERITE_HOE,
-            Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
-            MythicTools.METALLURGIUM
-        );
-
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_TNT_MINECART))
-            .define('#', Items.MINECART)
-            .define('S', MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT).asItem())
-            .pattern("S")
-            .pattern("#")
-            .unlockedBy("has_material", has(MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT)))
-            .save(output, recipeKey("tools/banglum_tnt_minecart"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL))
-            .define('#', MythicMaterials.CARMOT.baseMaterial())
-            .define('S', MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))
-            .pattern(" # ")
-            .pattern("#S#")
-            .pattern("# #")
-            .unlockedBy("has_material", has(MythicMaterials.CARMOT.baseMaterial()))
-            .unlockedBy("has_secret_stone", has(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE)))
-            .save(output, recipeKey("tools/carmot_bell"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.PALLADIUM.extraItems().get(MythicResourceKeys.PALLADIUM_MINECART))
-            .define('#', MythicMaterials.PALLADIUM.baseMaterial())
-            .pattern("# #")
-            .pattern("###")
-            .unlockedBy("has_material", has(MythicMaterials.PALLADIUM.baseMaterial()))
-            .save(output, recipeKey("tools/palladium_minecart"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.ORICHALCUM_HAMMER)
-            .define('#', MythicMaterials.ORICHALCUM.blockSet().storage())
-            .define('S', Items.STICK)
-            .pattern(" # ")
-            .pattern(" S#")
-            .pattern("S  ")
-            .unlockedBy("has_material", has(MythicMaterials.ORICHALCUM.baseMaterial()))
-            .save(output, recipeKey("tools/orichalcum_hammer"));
-        SmithingTransformRecipeBuilder.smithing(
-                Ingredient.of(MythicMaterials.MYTHRIL.extraItems().get(MythicResourceKeys.MYTHRIL_DRILL_SMITHING_TEMPLATE)),
-                Ingredient.of(MythicTools.MYTHRIL.getPickaxe()),
-                Ingredient.of(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)),
-                RecipeCategory.TOOLS,
-                MythicTools.MYTHRIL_DRILL
-            )
-            .unlocks("has_material_for_pick", has(MythicMaterials.MYTHRIL.baseMaterial()))
-            .unlocks("has_engine", has(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)))
-            .save(output, recipeKey("tools/mythril_drill"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STAR_PLATINUM_ARROW, 2)
-            .define('#', MythicMaterials.STAR_PLATINUM.nugget())
-            .define('S', Items.STICK)
-            .define('F', Items.FEATHER)
-            .pattern("  #")
-            .pattern(" S ")
-            .pattern("F  ")
-            .unlockedBy("has_material", has(MythicMaterials.STAR_PLATINUM.baseMaterial()))
-            .save(nuggetExporter, recipeKey("weapons/star_platinum_arrow"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.RUNITE_ARROW, 4)
-            .define('#', MythicMaterials.RUNITE.nugget())
-            .define('S', Items.STICK)
-            .define('F', Items.FEATHER)
-            .pattern("  #")
-            .pattern(" S ")
-            .pattern("F  ")
-            .unlockedBy("has_material", has(MythicMaterials.RUNITE.baseMaterial()))
-            .save(nuggetExporter, recipeKey("weapons/runite_arrow"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STORMYX_SHIELD)
-            .define('#', MythicMaterials.STORMYX.baseMaterial())
-            .define('S', MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))
-            .pattern("#S#")
-            .pattern("###")
-            .pattern(" # ")
-            .unlockedBy("has_shell", has(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL)))
-            .save(output, recipeKey("tools/stormyx_shield"));
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.PLATINUM_WATCH)
-            .define('#', MythicMaterials.PLATINUM.baseMaterial())
-            .define('R', Items.REDSTONE)
-            .pattern(" # ")
-            .pattern("#R#")
-            .pattern(" # ")
-            .unlockedBy("has_material", has(MythicMaterials.PLATINUM.baseMaterial()))
-            .save(output, recipeKey("tools/platinum_watch"));
-        SmithingTransformRecipeBuilder.smithing(
-                Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
-                Ingredient.of(MythicTools.ADAMANTITE.getSword()),
-                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage()),
-                RecipeCategory.COMBAT,
-                MythicTools.RED_AEGIS_SWORD
-            )
-            .unlocks("has_template", has(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)))
-            .save(output, recipeKey("weapons/red_aegis_sword"));
-        SmithingTransformRecipeBuilder.smithing(
-                Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
-                Ingredient.of(MythicTools.HALLOWED.getSword()),
-                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage()),
-                RecipeCategory.COMBAT,
-                MythicTools.WHITE_AEGIS_SWORD
-            )
-            .unlocks("has_template", has(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)))
-            .save(output, recipeKey("weapons/white_aegis_sword"));
+        // FIXME
+//        createToolCraftingRecipes(MythicTools.ADAMANTITE, MythicMaterials.ADAMANTITE.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.AQUARIUM, MythicMaterials.AQUARIUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.BANGLUM, MythicMaterials.BANGLUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.BRONZE, MythicMaterials.BRONZE.baseMaterial(), itemLookup);
+////        createToolCraftingRecipes(MythicTools.COPPER, Items.COPPER_INGOT, itemLookup);
+//        createToolCraftingRecipes(MythicTools.DURASTEEL, MythicMaterials.DURASTEEL.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.KYBER, MythicMaterials.KYBER.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.MYTHRIL, MythicMaterials.MYTHRIL.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.HALLOWED, MythicMaterials.HALLOWED.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.ORICHALCUM, MythicMaterials.ORICHALCUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.OSMIUM, MythicMaterials.OSMIUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.PALLADIUM, MythicMaterials.PALLADIUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.PROMETHEUM, MythicMaterials.PROMETHEUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.QUADRILLUM, MythicMaterials.QUADRILLUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.RUNITE, MythicMaterials.RUNITE.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.STAR_PLATINUM, MythicMaterials.STAR_PLATINUM.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.STEEL, MythicMaterials.STEEL.baseMaterial(), itemLookup);
+//        createToolCraftingRecipes(MythicTools.STORMYX, MythicMaterials.STORMYX.baseMaterial(), itemLookup);
+//        createToolSmithingRecipes(
+//            MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_SMITHING_TEMPLATE),
+//            MythicTools.KYBER,
+//            Ingredient.of(MythicMaterials.CARMOT.baseMaterial()),
+//            MythicTools.CARMOT
+//        );
+//        createToolSmithingRecipes(
+//            MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
+//            MythicTools.BANGLUM,
+//            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
+//            MythicTools.LEGENDARY_BANGLUM
+//        );
+//        createToolSmithingRecipes(
+//            MythicMaterials.TIDESINGER.extraItems().get(MythicResourceKeys.TIDESINGER_SMITHING_TEMPLATE),
+//            MythicTools.AQUARIUM,
+//            Ingredient.of(itemLookup.getOrThrow(MythicTags.TIDESINGER_CORAL)),
+//            MythicTools.TIDESINGER
+//        );
+//        createToolSmithingRecipes(
+//            MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
+//            Items.DIAMOND_SWORD,
+//            Items.DIAMOND_AXE,
+//            Items.DIAMOND_PICKAXE,
+//            Items.DIAMOND_SHOVEL,
+//            Items.DIAMOND_HOE,
+//            Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
+//            MythicTools.CELESTIUM
+//        );
+//        createToolSmithingRecipes(
+//            MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE),
+//            Items.NETHERITE_SWORD,
+//            Items.NETHERITE_AXE,
+//            Items.NETHERITE_PICKAXE,
+//            Items.NETHERITE_SHOVEL,
+//            Items.NETHERITE_HOE,
+//            Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
+//            MythicTools.METALLURGIUM
+//        );
+//
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_TNT_MINECART))
+//            .define('#', Items.MINECART)
+//            .define('S', MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT).asItem())
+//            .pattern("S")
+//            .pattern("#")
+//            .unlockedBy("has_material", has(MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT)))
+//            .save(output, recipeKey("tools/banglum_tnt_minecart"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL))
+//            .define('#', MythicMaterials.CARMOT.baseMaterial())
+//            .define('S', MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))
+//            .pattern(" # ")
+//            .pattern("#S#")
+//            .pattern("# #")
+//            .unlockedBy("has_material", has(MythicMaterials.CARMOT.baseMaterial()))
+//            .unlockedBy("has_secret_stone", has(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE)))
+//            .save(output, recipeKey("tools/carmot_bell"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.PALLADIUM.extraItems().get(MythicResourceKeys.PALLADIUM_MINECART))
+//            .define('#', MythicMaterials.PALLADIUM.baseMaterial())
+//            .pattern("# #")
+//            .pattern("###")
+//            .unlockedBy("has_material", has(MythicMaterials.PALLADIUM.baseMaterial()))
+//            .save(output, recipeKey("tools/palladium_minecart"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.ORICHALCUM_HAMMER)
+//            .define('#', MythicMaterials.ORICHALCUM.blockSet().storage())
+//            .define('S', Items.STICK)
+//            .pattern(" # ")
+//            .pattern(" S#")
+//            .pattern("S  ")
+//            .unlockedBy("has_material", has(MythicMaterials.ORICHALCUM.baseMaterial()))
+//            .save(output, recipeKey("tools/orichalcum_hammer"));
+//        SmithingTransformRecipeBuilder.smithing(
+//                Ingredient.of(MythicMaterials.MYTHRIL.extraItems().get(MythicResourceKeys.MYTHRIL_DRILL_SMITHING_TEMPLATE)),
+//                Ingredient.of(MythicTools.MYTHRIL.getPickaxe()),
+//                Ingredient.of(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)),
+//                RecipeCategory.TOOLS,
+//                MythicTools.MYTHRIL_DRILL
+//            )
+//            .unlocks("has_material_for_pick", has(MythicMaterials.MYTHRIL.baseMaterial()))
+//            .unlocks("has_engine", has(MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE)))
+//            .save(output, recipeKey("tools/mythril_drill"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STAR_PLATINUM_ARROW, 2)
+//            .define('#', MythicMaterials.STAR_PLATINUM.nugget())
+//            .define('S', Items.STICK)
+//            .define('F', Items.FEATHER)
+//            .pattern("  #")
+//            .pattern(" S ")
+//            .pattern("F  ")
+//            .unlockedBy("has_material", has(MythicMaterials.STAR_PLATINUM.baseMaterial()))
+//            .save(nuggetExporter, recipeKey("weapons/star_platinum_arrow"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.RUNITE_ARROW, 4)
+//            .define('#', MythicMaterials.RUNITE.nugget())
+//            .define('S', Items.STICK)
+//            .define('F', Items.FEATHER)
+//            .pattern("  #")
+//            .pattern(" S ")
+//            .pattern("F  ")
+//            .unlockedBy("has_material", has(MythicMaterials.RUNITE.baseMaterial()))
+//            .save(nuggetExporter, recipeKey("weapons/runite_arrow"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.STORMYX_SHIELD)
+//            .define('#', MythicMaterials.STORMYX.baseMaterial())
+//            .define('S', MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))
+//            .pattern("#S#")
+//            .pattern("###")
+//            .pattern(" # ")
+//            .unlockedBy("has_shell", has(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL)))
+//            .save(output, recipeKey("tools/stormyx_shield"));
+//        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.PLATINUM_WATCH)
+//            .define('#', MythicMaterials.PLATINUM.baseMaterial())
+//            .define('R', Items.REDSTONE)
+//            .pattern(" # ")
+//            .pattern("#R#")
+//            .pattern(" # ")
+//            .unlockedBy("has_material", has(MythicMaterials.PLATINUM.baseMaterial()))
+//            .save(output, recipeKey("tools/platinum_watch"));
+//        SmithingTransformRecipeBuilder.smithing(
+//                Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
+//                Ingredient.of(MythicTools.ADAMANTITE.getSword()),
+//                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage()),
+//                RecipeCategory.COMBAT,
+//                MythicTools.RED_AEGIS_SWORD
+//            )
+//            .unlocks("has_template", has(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)))
+//            .save(output, recipeKey("weapons/red_aegis_sword"));
+//        SmithingTransformRecipeBuilder.smithing(
+//                Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
+//                Ingredient.of(MythicTools.HALLOWED.getSword()),
+//                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage()),
+//                RecipeCategory.COMBAT,
+//                MythicTools.WHITE_AEGIS_SWORD
+//            )
+//            .unlocks("has_template", has(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)))
+//            .save(output, recipeKey("weapons/white_aegis_sword"));
     }
 
     public void createSmithingTemplateRecipes() {

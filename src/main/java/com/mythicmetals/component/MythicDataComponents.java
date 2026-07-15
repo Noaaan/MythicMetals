@@ -5,6 +5,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.serialization.CodecUtils;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.util.Unit;
 
 public class MythicDataComponents {
     public static final DataComponentType<GoldFoldedComponent> GOLD_FOLDED = RegistryHelper.dataComponentType(
@@ -41,6 +42,11 @@ public class MythicDataComponents {
         "blast_mining", builder -> builder
             .persistent(CodecUtils.toCodec(BlastMiningComponent.ENDEC))
             .networkSynchronized(CodecUtils.toPacketCodec(BlastMiningComponent.ENDEC))
+    );
+    public static final DataComponentType<Unit> SNOW_SHOVEL = RegistryHelper.dataComponentType(
+        "snow_shovel", builder -> builder
+            .persistent(Unit.CODEC)
+            .networkSynchronized(Unit.STREAM_CODEC)
     );
     public static final DataComponentType<BrandingComponent> BRANDING = RegistryHelper.dataComponentType("branding", BrandingComponent.ENDEC);
 
