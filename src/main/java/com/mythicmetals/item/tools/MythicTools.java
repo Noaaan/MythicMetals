@@ -32,29 +32,29 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     public static final float[] BETTER_AXE_ATTACK_SPEED = new float[]{1.6f, 1.0f, 1.2f, 1.1f, 1.0f}; // +0.1 on axes
     public static final float[] FASTER_ATTACK_SPEED = new float[]{1.8f, 1.1f, 1.3f, 1.2f, 1.2f}; // +0.1-0.2 to all
     public static final float[] HIGHEST_ATTACK_SPEED = new float[]{2.0f, 1.2f, 1.4f, 1.3f, 1.4f}; // + 0.3-0.4 to all
-
-    public static final ToolSet ADAMANTITE = new ToolSet("adamantite", MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet AQUARIUM = new AquariumToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet BANGLUM = new ToolSet("banglum", MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet BRONZE = new ToolSet("bronze", MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CARMOT = new ToolSet("carmot", MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet CELESTIUM = new ToolSet("celestium", MythicToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
-    public static final ToolSet DURASTEEL = new ToolSet("durasteel", MythicToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet HALLOWED = new ToolSet("hallowed", MythicToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ToolSet KYBER = new ToolSet("kyber", MythicToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
-    public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(MythicToolMaterials.LEGENDARY_BANGLUM, DEFAULT_DAMAGE, SLOWER_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
-    public static final ToolSet METALLURGIUM = new ToolSet("metallurgium", MythicToolMaterials.METALLURGIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireResistant().rarity(Rarity.RARE));
-    public static final ToolSet MYTHRIL = new ToolSet("mythril", MythicToolMaterials.MYTHRIL, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
-    public static final ToolSet ORICHALCUM = new ToolSet("orichalcum", MythicToolMaterials.ORICHALCUM, DEFAULT_DAMAGE, SLOWER_ATTACK_SPEED);
-    public static final ToolSet OSMIUM = new ToolSet("osmium", MythicToolMaterials.OSMIUM, DEFAULT_DAMAGE, SLOWEST_ATTACK_SPEED);
-    public static final ToolSet PALLADIUM = new ToolSet("palladium", MythicToolMaterials.PALLADIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireResistant().component(MythicDataComponents.BRANDING, new BrandingComponent(6)));
-    public static final ToolSet PROMETHEUM = new PrometheumToolSet(MythicToolMaterials.PROMETHEUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet QUADRILLUM = new ToolSet("quadrillum", MythicToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, SLOWEST_ATTACK_SPEED);
-    public static final ToolSet RUNITE = new ToolSet("runite", MythicToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet STAR_PLATINUM = new ToolSet("star_platinum", MythicToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
-    public static final ToolSet STEEL = new SteelToolSet(MythicToolMaterials.STEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet STORMYX = new ToolSet("stormyx", MythicToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
-    public static final ToolSet TIDESINGER = new TidesingerToolSet(MythicToolMaterials.TIDESINGER, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
+//
+//    public static final ToolSet ADAMANTITE = new ToolSet("adamantite", MythicToolMaterials.ADAMANTITE, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
+//    public static final ToolSet AQUARIUM = new AquariumToolSet(MythicToolMaterials.AQUARIUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet BANGLUM = new ToolSet("banglum", MythicToolMaterials.BANGLUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet BRONZE = new ToolSet("bronze", MythicToolMaterials.BRONZE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet CARMOT = new ToolSet("carmot", MythicToolMaterials.CARMOT, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet CELESTIUM = new ToolSet("celestium", MythicToolMaterials.CELESTIUM, DEFAULT_DAMAGE, HIGHEST_ATTACK_SPEED, settings -> settings.rarity(Rarity.RARE));
+//    public static final ToolSet DURASTEEL = new ToolSet("durasteel", MythicToolMaterials.DURASTEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet HALLOWED = new ToolSet("hallowed", MythicToolMaterials.HALLOWED, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+//    public static final ToolSet KYBER = new ToolSet("kyber", MythicToolMaterials.KYBER, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED);
+//    public static final ToolSet LEGENDARY_BANGLUM = new BanglumToolSet(MythicToolMaterials.LEGENDARY_BANGLUM, DEFAULT_DAMAGE, SLOWER_ATTACK_SPEED, settings -> settings.rarity(Rarity.UNCOMMON));
+//    public static final ToolSet METALLURGIUM = new ToolSet("metallurgium", MythicToolMaterials.METALLURGIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireResistant().rarity(Rarity.RARE));
+//    public static final ToolSet MYTHRIL = new ToolSet("mythril", MythicToolMaterials.MYTHRIL, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
+//    public static final ToolSet ORICHALCUM = new ToolSet("orichalcum", MythicToolMaterials.ORICHALCUM, DEFAULT_DAMAGE, SLOWER_ATTACK_SPEED);
+//    public static final ToolSet OSMIUM = new ToolSet("osmium", MythicToolMaterials.OSMIUM, DEFAULT_DAMAGE, SLOWEST_ATTACK_SPEED);
+//    public static final ToolSet PALLADIUM = new ToolSet("palladium", MythicToolMaterials.PALLADIUM, DEFAULT_DAMAGE, BETTER_AXE_ATTACK_SPEED, settings -> settings.fireResistant().component(MythicDataComponents.BRANDING, new BrandingComponent(6)));
+//    public static final ToolSet PROMETHEUM = new PrometheumToolSet(MythicToolMaterials.PROMETHEUM, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet QUADRILLUM = new ToolSet("quadrillum", MythicToolMaterials.QUADRILLUM, DEFAULT_DAMAGE, SLOWEST_ATTACK_SPEED);
+//    public static final ToolSet RUNITE = new ToolSet("runite", MythicToolMaterials.RUNITE, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet STAR_PLATINUM = new ToolSet("star_platinum", MythicToolMaterials.STAR_PLATINUM, DEFAULT_DAMAGE, FASTER_ATTACK_SPEED);
+//    public static final ToolSet STEEL = new SteelToolSet(MythicToolMaterials.STEEL, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet STORMYX = new ToolSet("stormyx", MythicToolMaterials.STORMYX, DEFAULT_DAMAGE, DEFAULT_ATTACK_SPEED);
+//    public static final ToolSet TIDESINGER = new TidesingerToolSet(MythicToolMaterials.TIDESINGER);
 
     public static final Item RED_AEGIS_SWORD = new RedAegisSword(MythicToolMaterials.AEGIS_RED, 5, -3.0f, new Item.Properties()
         .fireResistant()

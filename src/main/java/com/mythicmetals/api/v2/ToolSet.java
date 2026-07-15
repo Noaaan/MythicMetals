@@ -1,6 +1,7 @@
 package com.mythicmetals.api.v2;
 
-import com.mythicmetals.*;
+import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
@@ -17,14 +18,10 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.EitherHolder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.function.UnaryOperator;
@@ -41,7 +38,6 @@ public class ToolSet {
     public final ResourceKey<Item> spearKey;
     private final ToolMaterial toolMaterial;
     private final String name;
-    private static final UnaryOperator<Item.Properties> NONE = UnaryOperator.identity();
 
     protected Item sword;
     protected Item axe;
@@ -61,12 +57,13 @@ public class ToolSet {
         this.toolMaterial = toolMaterial;
     }
 
-    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicAttributeModifier> extraModifiers) {
-        return createDefault(NONE, attackSpeeds, spearStats, extraModifiers);
-    }
-
     // TODO - Is something more extendible than enum required? Maybe config?
-    public ToolSet createDefault(UnaryOperator<Item.Properties> settingsOperator, AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicAttributeModifier> extraModifiers) {
+    public ToolSet createDefault(
+        UnaryOperator<Item.Properties> settingsOperator,
+        AttackSpeeds attackSpeeds,
+        MythicSpearStats.SpearStats spearStats,
+        List<MythicAttributeModifier> extraModifiers
+    ) {
         this.sword = RegistryHelper.item(swordKey, new Item(
             settingsOperator.apply(
                 swordVanilla()
@@ -103,14 +100,12 @@ public class ToolSet {
             )
         ));
         this.spear = RegistryHelper.item(spearKey, new Item(
-            spearSettings(toolMaterial, spearStats)
-                .setId(spearKey)
+            settingsOperator.apply(
+                spearSettings(toolMaterial, spearStats)
+                    .setId(spearKey)
+            )
         ));
         return this;
-    }
-
-    protected Item.Properties baseToolSettings(UnaryOperator<Item.Properties> unaryOperator) {
-        return unaryOperator.apply(defaultSettings());
     }
 
     protected Item.Properties defaultSettings() {
@@ -150,7 +145,7 @@ public class ToolSet {
         }
     }
 
-    private Item.Properties spearSettings(ToolMaterial material, MythicSpearStats.SpearStats stats) {
+    protected Item.Properties spearSettings(ToolMaterial material, MythicSpearStats.SpearStats stats) {
         return spearVanilla(
             material,
             stats.swingDuration(),
@@ -165,7 +160,7 @@ public class ToolSet {
         );
     }
 
-    private Item.Properties swordVanilla() {
+    protected Item.Properties swordVanilla() {
         HolderGetter<Block> holderGetter = BuiltInRegistries.acquireBootstrapRegistrationLookup(BuiltInRegistries.BLOCK);
         return defaultSettings()
             .component(
@@ -184,7 +179,7 @@ public class ToolSet {
             .component(DataComponents.WEAPON, new Weapon(1));
     }
 
-    private Item.Properties pickaxeVanilla() {
+    protected Item.Properties pickaxeVanilla() {
         return defaultSettings()
             .component(
                 DataComponents.TOOL,
@@ -193,7 +188,7 @@ public class ToolSet {
             .component(DataComponents.WEAPON, new Weapon(2));
     }
 
-    private Item.Properties axeVanilla() {
+    protected Item.Properties axeVanilla() {
         return defaultSettings()
             .component(
                 DataComponents.TOOL,
@@ -202,7 +197,7 @@ public class ToolSet {
             .component(DataComponents.WEAPON, new Weapon(2, 5.0f));
     }
 
-    private Item.Properties shovelVanilla() {
+    protected Item.Properties shovelVanilla() {
         return defaultSettings()
             .component(
                 DataComponents.TOOL,
@@ -211,7 +206,7 @@ public class ToolSet {
             .component(DataComponents.WEAPON, new Weapon(2));
     }
 
-    private Item.Properties hoeVanilla() {
+    protected Item.Properties hoeVanilla() {
         return defaultSettings()
             .component(
                 DataComponents.TOOL,

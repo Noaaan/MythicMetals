@@ -161,7 +161,17 @@ public record Material(
             return this;
         }
 
-        public Builder createToolSet(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
+        public Builder createToolSet(UnaryOperator<Item.Properties> propertiesConsumer, ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
+            this.toolSet = new ToolSet(name, material).createDefault(properties -> {
+                if (fireproof) {
+                    return propertiesConsumer.apply(properties.fireResistant());
+                }
+                return propertiesConsumer.apply(properties);
+            }, attackSpeeds, spearStats, List.of());
+            return this;
+        }
+
+        public Builder createDefaultTools(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats) {
             this.toolSet = new ToolSet(name, material).createDefault(properties -> {
                 if (fireproof) {
                     return properties.fireResistant();
@@ -178,6 +188,12 @@ public record Material(
                 }
                 return properties;
             }, attackSpeeds, spearStats, extraModifiers);
+            return this;
+        }
+
+        public <T extends ToolSet> Builder createCustomToolset(T toolSet, Consumer<T> executor) {
+            executor.accept(toolSet);
+            this.toolSet = toolSet;
             return this;
         }
 
