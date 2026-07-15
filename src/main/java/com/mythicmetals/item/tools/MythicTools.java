@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicArmorAttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.component.*;
 import com.mythicmetals.entity.MythicEntityAttributes;
@@ -70,7 +70,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
         .group(MythicMetals.TABBED_GROUP)
         .tab(2)
         .setId(RegistryHelper.itemKey("white_aegis_sword")),
-        List.of(new MythicArmorAttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE, EquipmentSlotGroup.MAINHAND))
+        List.of(new MythicAttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE, EquipmentSlotGroup.MAINHAND))
     );
 
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2f, new Item.Properties()

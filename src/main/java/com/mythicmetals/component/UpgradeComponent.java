@@ -44,7 +44,7 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipPro
     }
 
     /**
-     * Check if any upgrade is installed in a specified slot
+     * Check if any upgrade is installed in a specified requiredSlot
      */
     public boolean hasUpgrade(Item upgradeItem) {
         return this.items.contains(upgradeItem);

@@ -1,6 +1,6 @@
 package com.mythicmetals.api.v2;
 
-import com.mythicmetals.MythicArmorAttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.RegistryHelper;
@@ -63,15 +63,15 @@ public class ArmorSet {
         return initialize(NONE, List.of(), true);
     }
 
-    public ArmorSet initialize(List<MythicArmorAttributeModifier> extraModifiers) {
+    public ArmorSet initialize(List<MythicAttributeModifier> extraModifiers) {
         return initialize(NONE, extraModifiers, true);
     }
 
-    public ArmorSet initialize(boolean initializeMountArmor, List<MythicArmorAttributeModifier> extraModifiers) {
+    public ArmorSet initialize(boolean initializeMountArmor, List<MythicAttributeModifier> extraModifiers) {
         return initialize(NONE, extraModifiers, initializeMountArmor);
     }
 
-    public ArmorSet initialize(UnaryOperator<Item.Properties> customProperties, List<MythicArmorAttributeModifier> extraModifiers, boolean initMountArmor) {
+    public ArmorSet initialize(UnaryOperator<Item.Properties> customProperties, List<MythicAttributeModifier> extraModifiers, boolean initMountArmor) {
         this.helmet = RegistryHelper.item(
             helmetKey,
             baseItem(helmetKey, armorMaterial, ArmorType.HELMET, customProperties, extraModifiers)
@@ -86,21 +86,21 @@ public class ArmorSet {
         return this;
     }
 
-    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, UnaryOperator<Item.Properties> settingsConsumer, List<MythicArmorAttributeModifier> extraModifiers) {
+    public Item baseItem(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, armorType, extraModifiers);
         settings = armor(material, armorType, settings);
         settings = settingsConsumer.apply(settings);
         return this.makeItem(armorType, settings);
     }
 
-    public Item baseHorseItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicArmorAttributeModifier> extraModifiers) {
+    public Item baseHorseItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
         settings = horseArmor(material, settings);
         settings = settingsConsumer.apply(settings);
         return this.makeItem(ArmorType.BODY, settings);
     }
 
-    public Item baseNautilusItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicArmorAttributeModifier> extraModifiers) {
+    public Item baseNautilusItem(ResourceKey<Item> key, ArmorMaterial material, UnaryOperator<Item.Properties> settingsConsumer, List<MythicAttributeModifier> extraModifiers) {
         var settings = baseArmorSettings(key, material, ArmorType.BODY, extraModifiers);
         settings = nautilusArmor(material, settings);
         settings = settingsConsumer.apply(settings);
@@ -113,9 +113,9 @@ public class ArmorSet {
     /// - To set the correct creative group and tab
     /// - To construct the attributes on my own
     ///
-    /// The latter is important, since any armor item can have new attributes as defined by the list of [MythicArmorAttributeModifier]s.
+    /// The latter is important, since any armor item can have new attributes as defined by the list of [MythicAttributeModifier]s.
     ///
-    public Item.Properties baseArmorSettings(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, List<MythicArmorAttributeModifier> extraModifiers) {
+    public Item.Properties baseArmorSettings(ResourceKey<Item> key, ArmorMaterial material, ArmorType armorType, List<MythicAttributeModifier> extraModifiers) {
         return new Item.Properties()
             .group(MythicMetals.TABBED_GROUP)
             .tab(3)

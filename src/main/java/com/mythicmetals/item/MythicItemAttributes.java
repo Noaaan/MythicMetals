@@ -1,7 +1,6 @@
 package com.mythicmetals.item;
 
-import com.mythicmetals.MythicArmorAttributeModifier;
-import com.mythicmetals.MythicToolAttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.api.v2.ToolSet;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -28,7 +27,7 @@ public class MythicItemAttributes {
     protected static final float SHOVEL_BASE_DAMAGE = 1.0f;
     protected static final float HOE_BASE_DAMAGE = 0.0f;
 
-    public static ItemAttributeModifiers createArmorModifier(String armorName, ArmorMaterial material, ArmorType type, List<MythicArmorAttributeModifier> extraAttributes) {
+    public static ItemAttributeModifiers createArmorModifier(String armorName, ArmorMaterial material, ArmorType type, List<MythicAttributeModifier> extraAttributes) {
         var baseAttributes = material.createAttributes(type);
         if (extraAttributes.isEmpty()) return baseAttributes;
         var attributeBuilder = ItemAttributeModifiers.builder();
@@ -57,7 +56,7 @@ public class MythicItemAttributes {
         return attributeBuilder.build();
     }
 
-    public static ItemAttributeModifiers createToolModifier(String materialName, ToolType type, ToolSet.AttackSpeeds attackSpeeds, ToolMaterial material, List<MythicToolAttributeModifier> extraAttributes) {
+    public static ItemAttributeModifiers createToolModifier(String materialName, ToolType type, ToolSet.AttackSpeeds attackSpeeds, ToolMaterial material, List<MythicAttributeModifier> extraAttributes) {
         var attributeBuilder = ItemAttributeModifiers.builder();
         float baseToolDamage = switch (type) {
             case SWORD -> SWORD_BASE_DAMAGE;
@@ -84,7 +83,7 @@ public class MythicItemAttributes {
         if (extraAttributes.isEmpty()) return attributeBuilder.build();
 
         for (var extraModifier : extraAttributes) {
-            if (extraModifier.requiredSlot().test(EquipmentSlot.MAINHAND) && type.equals(extraModifier.requiredToolType())) {
+            if (extraModifier.requiredSlot().test(EquipmentSlot.MAINHAND)) {
                 var attributeName = extraModifier
                     .attribute()
                     .unwrapKey()
@@ -102,7 +101,7 @@ public class MythicItemAttributes {
                 );
             }
 
-            if (extraModifier.requiredSlot().test(EquipmentSlot.OFFHAND) && type.equals(extraModifier.requiredToolType())) {
+            if (extraModifier.requiredSlot().test(EquipmentSlot.OFFHAND)) {
                 var attributeName = extraModifier
                     .attribute()
                     .unwrapKey()

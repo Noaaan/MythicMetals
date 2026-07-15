@@ -2,9 +2,8 @@ package com.mythicmetals.api.v2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.mythicmetals.MythicArmorAttributeModifier;
+import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.MythicToolAttributeModifier;
 import com.mythicmetals.armor.CustomHelmetArmorSet;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
@@ -172,7 +171,7 @@ public record Material(
             return this;
         }
 
-        public Builder createToolSet(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
+        public Builder createToolSet(ToolMaterial material, ToolSet.AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicAttributeModifier> extraModifiers) {
             this.toolSet = new ToolSet(name, material).createDefault(properties -> {
                 if (fireproof) {
                     return properties.fireResistant();
@@ -241,7 +240,7 @@ public record Material(
             return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
         }
 
-        public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicArmorAttributeModifier> extraModifiers) {
+        public Builder createDefaultArmor(ArmorMaterial armorMaterial, List<MythicAttributeModifier> extraModifiers) {
             var set = new ArmorSet(this.name, armorMaterial);
             this.armorSet = set.initialize(settings -> {
                 if (fireproof) {
@@ -260,7 +259,7 @@ public record Material(
             return createCustomHelmetArmorSet(material, List.of(), model, texture, true);
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicArmorAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
             var customSet = new CustomHelmetArmorSet(this.name, material, model, texture);
             this.armorSet = customSet.initialize(settings -> {
                 if (fireproof) {

@@ -1,7 +1,6 @@
 package com.mythicmetals.api.v2;
 
-import com.mythicmetals.MythicMetals;
-import com.mythicmetals.MythicToolAttributeModifier;
+import com.mythicmetals.*;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
@@ -62,12 +61,12 @@ public class ToolSet {
         this.toolMaterial = toolMaterial;
     }
 
-    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
+    public ToolSet createDefault(AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicAttributeModifier> extraModifiers) {
         return createDefault(NONE, attackSpeeds, spearStats, extraModifiers);
     }
 
     // TODO - Is something more extendible than enum required? Maybe config?
-    public ToolSet createDefault(UnaryOperator<Item.Properties> settingsOperator, AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicToolAttributeModifier> extraModifiers) {
+    public ToolSet createDefault(UnaryOperator<Item.Properties> settingsOperator, AttackSpeeds attackSpeeds, MythicSpearStats.SpearStats spearStats, List<MythicAttributeModifier> extraModifiers) {
         this.sword = RegistryHelper.item(swordKey, new Item(
             settingsOperator.apply(
                 swordVanilla()
@@ -234,7 +233,7 @@ public class ToolSet {
         );
     }
 
-    protected ItemAttributeModifiers mythicModifier(MythicItemAttributes.ToolType toolType, AttackSpeeds attackSpeeds, List<MythicToolAttributeModifier> extraAttributes) {
+    protected ItemAttributeModifiers mythicModifier(MythicItemAttributes.ToolType toolType, AttackSpeeds attackSpeeds, List<MythicAttributeModifier> extraAttributes) {
         return MythicItemAttributes.createToolModifier(name, toolType, attackSpeeds, toolMaterial, extraAttributes);
 
     }
