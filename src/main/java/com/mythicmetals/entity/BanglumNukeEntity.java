@@ -6,7 +6,6 @@ import com.mythicmetals.block.NukeCore;
 import com.mythicmetals.damage.BanglumNukeSource;
 import com.mythicmetals.damage.EpicExplosion;
 import com.mythicmetals.damage.MythicDamageTypes;
-import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.registry.RegisterSounds;
 import eu.pb4.common.protection.api.CommonProtection;
 import io.wispforest.endec.impl.KeyedEndec;

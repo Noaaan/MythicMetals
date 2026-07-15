@@ -12,8 +12,10 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.pattern.BlockPattern;
+import net.minecraft.world.level.block.state.pattern.BlockPatternBuilder;
 import net.minecraft.world.level.gameevent.GameEvent;
 
 public class BanglumNukeHandler {
@@ -31,16 +33,9 @@ public class BanglumNukeHandler {
 
             var pos = hitResult.getBlockPos();
 
-            for (int x = 0; x < 3; x++) {
-                for (int y = 0; y < 3; y++) {
-                    for (int z = 0; z < 3; z++) {
-                        if (tryLightBigTntAt(world, player, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                            stack.hurtAndBreak(1, player, hand);
-
-                            return InteractionResult.SUCCESS;
-                        }
-                    }
-                }
+            if (tryLightBigTntAt(world, player, pos.getX(), pos.getY(), pos.getZ())) {
+                stack.hurtAndBreak(1, player, hand);
+                return InteractionResult.SUCCESS;
             }
 
             return InteractionResult.PASS;
@@ -56,56 +51,49 @@ public class BanglumNukeHandler {
             && !state.is(MythicMaterials.MORKITE.blockSet().storage()))
             return false;
 
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    if (tryLightBigTntAt(world, null, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                        return true;
-                    }
-                }
-            }
+        return tryLightBigTntAt(world, null, pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    private static boolean tryLightBigTntAt(Level level, Player player, int x, int y, int z) {
+        if (level.isClientSide()) {
+            return false;
         }
+        var match = getBanglumNukePattern().find(level, new BlockPos(x, y, z));
+        if (match != null) {
+            var startPos = match.getBlock(0, 0, 0);
+            var endPos = match.getBlock(2, 2, 2);
+            for (BlockPos pos : BlockPos.betweenClosed(startPos.getPos(), endPos.getPos())) {
+                level.removeBlock(pos, false);
+                level.updateNeighborsAt(pos, Blocks.AIR);
+            }
+
+            BanglumNukeEntity nuke = new BanglumNukeEntity(level, x, y + 0.5f, z, player, match.getBlock(1, 1, 1).getState().getBlock());
+            level.addFreshEntity(nuke);
+            level.playSound(
+                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundSource.BLOCKS, 1.0F, 1.0F
+            );
+            CarvedPumpkinBlock.updatePatternBlocks(level, match);
+            level.gameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
+            return true;
+        }
+
         return false;
     }
 
-    private static boolean tryLightBigTntAt(Level world, Player player, int x, int y, int z) {
-        BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
-
-        for (int ox = 0; ox < 2; ox++) {
-            for (int oy = 0; oy < 2; oy++) {
-                for (int oz = 0; oz < 2; oz++) {
-                    if (ox == 1 && oy == 1 && oz == 1) continue;
-
-                    BlockState neededState = (ox + oy + oz) % 2 == 0
-                        ? MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState()
-                        : MythicMaterials.MORKITE.blockSet().storage().defaultBlockState();
-
-                    mutablePos.set(x + ox, y + oy, z + oz);
-
-                    if (world.getBlockState(mutablePos) != neededState)
-                        return false;
-                }
-            }
-        }
-
-        mutablePos.set(x + 1, y + 1, z + 1);
-        BlockState coreState = world.getBlockState(mutablePos);
-
-        if (!coreState.is(MythicTags.NUKE_CORES)) return false;
-
-        for (var pos : BlockPos.betweenClosed(x, y, z, x + 2, y + 2, z + 2)) {
-            world.removeBlock(pos, false);
-        }
-
-        if (!world.isClientSide()) {
-            BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
-            world.addFreshEntity(nuke);
-            world.playSound(
-                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundSource.BLOCKS, 1.0F, 1.0F
-            );
-            world.gameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
-        }
-
-        return true;
+    public static BlockPattern getBanglumNukePattern() {
+        assert MythicMaterials.BANGLUM.blockSet() != null;
+        assert MythicMaterials.MORKITE.blockSet() != null;
+        return BlockPatternBuilder.start()
+            .aisle("BMB", "MBM", "BMB")
+            .aisle("MBM", "BCB", "MBM")
+            .aisle("BMB", "MBM", "BMB")
+            .where('B', blockInWorld -> {
+                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState());
+            })
+            .where('M', blockInWorld -> {
+                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.MORKITE.blockSet().storage().defaultBlockState());
+            })
+            .where('C', blockInWorld -> blockInWorld != null && blockInWorld.getState().is(MythicTags.NUKE_CORES))
+            .build();
     }
 }
