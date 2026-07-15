@@ -4,8 +4,9 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.BanglumNukeEntity;
 import com.mythicmetals.registry.RegisterSounds;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.pattern.BlockPattern;
+import net.minecraft.block.pattern.BlockPatternBuilder;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
@@ -31,16 +32,10 @@ public class BanglumNukeHandler {
 
             var pos = hitResult.getBlockPos();
 
-            for (int x = 0; x < 3; x++) {
-                for (int y = 0; y < 3; y++) {
-                    for (int z = 0; z < 3; z++) {
-                        if (tryLightBigTntAt(world, player, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                            stack.damage(1, player, LivingEntity.getSlotForHand(hand));
+            if (tryLightBigTntAt(world, player, pos.getX(), pos.getY(), pos.getZ())) {
+                stack.damage(1, player, LivingEntity.getSlotForHand(hand));
 
-                            return ActionResult.SUCCESS;
-                        }
-                    }
-                }
+                return ActionResult.SUCCESS;
             }
 
             return ActionResult.PASS;
@@ -56,56 +51,46 @@ public class BanglumNukeHandler {
             && !state.isOf(MythicBlocks.MORKITE.getStorageBlock()))
             return false;
 
-        for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
-                for (int z = 0; z < 3; z++) {
-                    if (tryLightBigTntAt(world, null, pos.getX() - x, pos.getY() - y, pos.getZ() - z)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        return tryLightBigTntAt(world, null, pos.getX(), pos.getY(), pos.getZ());
     }
 
     private static boolean tryLightBigTntAt(World world, PlayerEntity player, int x, int y, int z) {
-        BlockPos.Mutable mutablePos = new BlockPos.Mutable();
-
-        for (int ox = 0; ox < 2; ox++) {
-            for (int oy = 0; oy < 2; oy++) {
-                for (int oz = 0; oz < 2; oz++) {
-                    if (ox == 1 && oy == 1 && oz == 1) continue;
-
-                    BlockState neededState = (ox + oy + oz) % 2 == 0
-                        ? MythicBlocks.BANGLUM.getStorageBlock().getDefaultState()
-                        : MythicBlocks.MORKITE.getStorageBlock().getDefaultState();
-
-                    mutablePos.set(x + ox, y + oy, z + oz);
-
-                    if (world.getBlockState(mutablePos) != neededState)
-                        return false;
-                }
+        if (world.isClient()) {
+            return false;
+        }
+        var match = getBanglumNukePattern().searchAround(world, new BlockPos(x, y, z));
+        if (match != null) {
+            var startPos = match.translate(0, 0, 0);
+            var endPos = match.translate(2, 2, 2);
+            for (BlockPos pos : BlockPos.iterate(startPos.getBlockPos(), endPos.getBlockPos())) {
+                world.removeBlock(pos, false);
+                world.updateNeighbors(pos, Blocks.AIR);
             }
-        }
 
-        mutablePos.set(x + 1, y + 1, z + 1);
-        BlockState coreState = world.getBlockState(mutablePos);
-
-        if (!coreState.isIn(MythicTags.NUKE_CORES)) return false;
-
-        for (var pos : BlockPos.iterate(x, y, z, x + 2, y + 2, z + 2)) {
-            world.removeBlock(pos, false);
-        }
-
-        if (!world.isClient) {
-            BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, coreState.getBlock());
+            BanglumNukeEntity nuke = new BanglumNukeEntity(world, x + 1.5, y, z + 1.5, player, match.translate(1, 1, 1).getBlockState().getBlock());
             world.spawnEntity(nuke);
             world.playSound(
                 null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundCategory.BLOCKS, 1.0F, 1.0F
             );
             world.emitGameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));
+            return true;
         }
 
-        return true;
+        return false;
+    }
+
+    public static BlockPattern getBanglumNukePattern() {
+        return BlockPatternBuilder.start()
+            .aisle("BMB", "MBM", "BMB")
+            .aisle("MBM", "BCB", "MBM")
+            .aisle("BMB", "MBM", "BMB")
+            .where('B', cachedBlockPos -> {
+                return cachedBlockPos != null && cachedBlockPos.getBlockState().equals(MythicBlocks.BANGLUM.getStorageBlock().getDefaultState());
+            })
+            .where('M', cachedBlockPos -> {
+                return cachedBlockPos != null && cachedBlockPos.getBlockState().equals(MythicBlocks.MORKITE.getStorageBlock().getDefaultState());
+            })
+            .where('C', cachedBlockPosition -> cachedBlockPosition != null && cachedBlockPosition.getBlockState().isIn(MythicTags.NUKE_CORES))
+            .build();
     }
 }
