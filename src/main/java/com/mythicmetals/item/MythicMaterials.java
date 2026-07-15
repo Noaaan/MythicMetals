@@ -342,6 +342,17 @@ public class MythicMaterials {
     public static final Material QUADRILLUM = Material.Builder.create("quadrillum", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .createToolSet(MythicToolMaterials.QUADRILLUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.QUADRILLUM)
+        .addExtraBlock(QUADRILLUM_NUKE_CORE, properties -> new BanglumNukeCore(properties) {
+            @Override
+            public float damageModifier() {
+                return 2.0f;
+            }
+
+            @Override
+            public float radiusModifier() {
+                return 2f / 3f;
+            }
+        })
         .finish();
 
     public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT)
