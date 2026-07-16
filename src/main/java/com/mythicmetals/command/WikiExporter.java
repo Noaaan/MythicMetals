@@ -2,6 +2,7 @@ package com.mythicmetals.command;
 
 import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
+import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.item.tools.ToolSet;
@@ -146,7 +147,7 @@ public class WikiExporter {
         var output = new StringBuilder();
         var translationStorage = Language.getInstance();
         // tool stats are really annoying to get
-        Deque<Integer> damageDeque = new ArrayDeque<>(Arrays.stream(MythicTools.DEFAULT_DAMAGE).boxed().toList());
+        Deque<Integer> damageDeque = new ArrayDeque<>(List.of(3, 5, 2, 1, 0));
         var atkSpd = new ArrayDeque<>(toolSet.getAttackSpeed());
         output.append(ADMONITION_HEADER);
         toolSet.get().forEach(tool -> {

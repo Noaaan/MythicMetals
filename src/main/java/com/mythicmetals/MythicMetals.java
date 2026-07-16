@@ -123,6 +123,10 @@ public class MythicMetals implements ModInitializer {
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }
 
+    private void registerUseActions() {
+
+    }
+
     private void registerDispenserBehaviour() {
         DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenseBehavior(MythicTools.STAR_PLATINUM_ARROW));
         DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.RUNITE_ARROW));

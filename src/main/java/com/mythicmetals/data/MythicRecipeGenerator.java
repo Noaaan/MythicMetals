@@ -178,13 +178,13 @@ public class MythicRecipeGenerator extends RecipeProvider {
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, bangNukeCore)
             .define('#', MythicMaterials.BANGLUM.blockSet().rawStorage())
             .define('S', MythicMaterials.MORKITE.blockSet().storage())
-            .define('C', MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK))
+            .define('C', MythicMaterials.LEGENDARY_BANGLUM.baseMaterial())
             .pattern("#S#")
             .pattern("SCS")
             .pattern("#S#")
             .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.blockSet().rawStorage()))
             .unlockedBy("has_big_real_material", has(MythicMaterials.MORKITE.baseMaterial()))
-            .unlockedBy("has_chunk", has(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)))
+            .unlockedBy("has_chunk", has(MythicMaterials.LEGENDARY_BANGLUM.baseMaterial()))
             .save(output, recipeKey("blocks/banglum_nuke_core"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_NUKE_CORE))
             .define('#', MythicMaterials.CARMOT.baseMaterial())
@@ -339,7 +339,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
 //        createToolSmithingRecipes(
 //            MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
 //            MythicTools.BANGLUM,
-//            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
+//            Ingredient.of(MythicMaterials.LEGENDARY_BANGLUM.baseMaterial()),
 //            MythicTools.LEGENDARY_BANGLUM
 //        );
 //        createToolSmithingRecipes(
@@ -748,7 +748,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createArmorSmithingRecipes(
             MythicMaterials.LEGENDARY_BANGLUM.extraItems().get(MythicResourceKeys.LEGENDARY_BANGLUM_SMITHING_TEMPLATE),
             MythicMaterials.BANGLUM.armorSet(),
-            Ingredient.of(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)),
+            Ingredient.of(MythicMaterials.LEGENDARY_BANGLUM.baseMaterial()),
             MythicMaterials.LEGENDARY_BANGLUM.armorSet()
         );
         createArmorSmithingRecipes(

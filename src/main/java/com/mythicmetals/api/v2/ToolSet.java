@@ -18,7 +18,10 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.EitherHolder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwingAnimationType;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -145,6 +148,44 @@ public class ToolSet {
         }
     }
 
+    protected Item.Properties spearSettings(ToolMaterial material, MythicSpearStats.SpearStats stats, List<MythicAttributeModifier> extraAttributes) {
+        var attributesBuilder = ItemAttributeModifiers.builder();
+        attributesBuilder
+            .add(
+                Attributes.ATTACK_DAMAGE,
+                new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 0.0F + toolMaterial.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND
+            )
+            .add(
+                Attributes.ATTACK_SPEED,
+                new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / stats.swingDuration() - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                EquipmentSlotGroup.MAINHAND
+            );
+        extraAttributes.forEach(mythicAttributeModifier -> {
+            if (mythicAttributeModifier.requiredSlot() == EquipmentSlotGroup.MAINHAND) {
+                attributesBuilder.add(
+                    mythicAttributeModifier.attribute(),
+                    new AttributeModifier(RegistryHelper.id("spear_bonus"), mythicAttributeModifier.value(), mythicAttributeModifier.operation()),
+                    mythicAttributeModifier.requiredSlot()
+                );
+            }
+        });
+
+        return spearVanilla(
+            material,
+            stats.swingDuration(),
+            stats.damageMultiplier(),
+            stats.activationDelay(),
+            stats.dismountTime(),
+            stats.dismountRequirement(),
+            stats.knockbackTime(),
+            5.1f,
+            stats.damageTime(),
+            4.6f
+        ).attributes(attributesBuilder.build()
+        );
+    }
+
     protected Item.Properties spearSettings(ToolMaterial material, MythicSpearStats.SpearStats stats) {
         return spearVanilla(
             material,
@@ -157,6 +198,19 @@ public class ToolSet {
             5.1f,
             stats.damageTime(),
             4.6f
+        ).attributes(
+            ItemAttributeModifiers.builder()
+                .add(
+                    Attributes.ATTACK_DAMAGE,
+                    new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 0.0F + toolMaterial.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.MAINHAND
+                )
+                .add(
+                    Attributes.ATTACK_SPEED,
+                    new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / stats.swingDuration() - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.MAINHAND
+                )
+                .build()
         );
     }
 
@@ -233,7 +287,7 @@ public class ToolSet {
 
     }
 
-    private Item.Properties spearVanilla(
+    protected Item.Properties spearVanilla(
         ToolMaterial toolMaterial,
         float swingDuration,
         float damageMultiplier,
@@ -276,20 +330,6 @@ public class ToolSet {
             .component(DataComponents.ATTACK_RANGE, new AttackRange(2.0F, 4.5F, 2.0F, 6.5F, 0.125F, 0.5F))
             .component(DataComponents.MINIMUM_ATTACK_CHARGE, 1.0F)
             .component(DataComponents.SWING_ANIMATION, new SwingAnimation(SwingAnimationType.STAB, (int) (swingDuration * 20.0F)))
-            .attributes(
-                ItemAttributeModifiers.builder()
-                    .add(
-                        Attributes.ATTACK_DAMAGE,
-                        new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, 0.0F + toolMaterial.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND
-                    )
-                    .add(
-                        Attributes.ATTACK_SPEED,
-                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, 1.0F / swingDuration - 4.0, AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND
-                    )
-                    .build()
-            )
             .component(DataComponents.USE_EFFECTS, new UseEffects(true, false, 1.0F))
             .component(DataComponents.WEAPON, new Weapon(1));
     }

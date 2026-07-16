@@ -104,7 +104,6 @@ public class MythicMaterials {
                     .setId(BANGLUM_TNT_MINECART)
             )
         )
-        .addExtraItem(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
         .createDefaultTools(MythicToolMaterials.BANGLUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BANGLUM)
         .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of())
         .finish();
@@ -203,9 +202,17 @@ public class MythicMaterials {
         .createDefaultArmor(MythicArmorMaterials.KYBER)
         .finish();
 
-    public static final Material LEGENDARY_BANGLUM = Material.Builder.createRawBuilder("legendary_banglum", MaterialType.ARMOR)
+    public static final Material LEGENDARY_BANGLUM = Material.Builder.createRawBuilder("legendary_banglum", MaterialType.SPECIAL)
+        .createBaseMaterial(BANGLUM_CHUNK, Rarity.UNCOMMON, Item::new)
+        .createCustomToolset(
+            new LegendaryBanglumToolSet(MythicToolMaterials.LEGENDARY_BANGLUM),
+            toolSet -> toolSet.createLegendaryBanglumTools(
+                MythicToolMaterials.LEGENDARY_BANGLUM,
+                ToolSet.AttackSpeeds.BETTER_AXE,
+                MythicSpearStats.LEGENDARY_BANGLUM
+            )
+        )
         .addSmithingTemplate(LEGENDARY_BANGLUM_SMITHING_TEMPLATE, MythicSmithingTemplates.LEGENDARY_BANGLUM)
-        // TODO - Custom Banglum Tool Set
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.LEGENDARY_BANGLUM,
             List.of(
@@ -283,7 +290,7 @@ public class MythicMaterials {
         .createDefaultArmor(MythicArmorMaterials.OSMIUM)
         .finish();
 
-    // TODO - This kind of material, together with Legendary Banglum, creates an anti-pattern of this API
+    // FIXME - This kind of material creates an anti-pattern of this API
     // This should just stay an armor set, and should be registered somewhere else
     public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
         .createCustomArmorSet(new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL), armorSet -> armorSet.initialize(false, List.of()))

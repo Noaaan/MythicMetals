@@ -260,6 +260,18 @@ public class MythicMetalsClient implements ClientModInitializer {
 //                lines.add(index, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
 //            }
 
+            if (stack.has(MythicDataComponents.DRILL)) {
+                var component = stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT);
+                int finalIndex = index;
+                component.addToTooltip(context, text -> lines.add(finalIndex, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
+
+            if (stack.has(MythicDataComponents.BLAST_MINING)) {
+                var component = stack.getOrDefault(MythicDataComponents.BLAST_MINING, new BlastMiningComponent(0));
+                int finalIndex = index;
+                component.addToTooltip(context, text -> lines.add(finalIndex, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
+
             if (stack.has(MythicDataComponents.BRANDING)) {
                 var component = stack.getOrDefault(MythicDataComponents.BRANDING, new BrandingComponent(0));
                 int finalIndex = index;
