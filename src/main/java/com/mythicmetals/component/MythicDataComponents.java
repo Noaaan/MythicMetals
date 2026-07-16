@@ -48,6 +48,11 @@ public class MythicDataComponents {
             .persistent(Unit.CODEC)
             .networkSynchronized(Unit.STREAM_CODEC)
     );
+
+    public static final DataComponentType<Integer> FIRE_ASPECT = RegistryHelper.dataComponentType(
+        "fire_aspect", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
+    );
+
     public static final DataComponentType<BrandingComponent> BRANDING = RegistryHelper.dataComponentType("branding", BrandingComponent.ENDEC);
 
     public static void init() {

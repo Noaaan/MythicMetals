@@ -2,41 +2,70 @@ package com.mythicmetals.item.tools;
 
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.component.*;
+import com.mythicmetals.api.v2.ToolSet.AttackSpeeds;
+import com.mythicmetals.component.DrillComponent;
+import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.component.UpgradeComponent;
 import com.mythicmetals.entity.MythicEntityAttributes;
-import com.mythicmetals.item.*;
+import com.mythicmetals.item.MythicItemAttributes;
+import com.mythicmetals.item.RuniteArrowItem;
+import com.mythicmetals.item.StarPlatinumArrowItem;
+import com.mythicmetals.item.TippedRuniteArrowItem;
 import com.mythicmetals.misc.RegistryHelper;
-import io.wispforest.owo.registration.reflect.SimpleFieldProcessingSubject;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.*;
-import net.minecraft.world.item.*;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
-import java.lang.reflect.Field;
-import java.util.*;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import static com.mythicmetals.api.v2.ToolSet.defaultSettings;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
-public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
+public class MythicTools {
+
+    private MythicTools() {
+    }
+
     public static final Map<String, ToolSet> TOOL_MAP = new HashMap<>();
 
-    public static final Item RED_AEGIS_SWORD = new RedAegisSword(MythicToolMaterials.AEGIS_RED, 5, -3.0f, new Item.Properties()
-        .fireResistant()
-        .rarity(Rarity.UNCOMMON)
-        .group(MythicMetals.TABBED_GROUP)
-        .tab(2)
-        .setId(RegistryHelper.itemKey("red_aegis_sword"))
+    public static final Item RED_AEGIS_SWORD = new Item(
+        defaultSettings(MythicToolMaterials.AEGIS_RED)
+            .attributes(
+                MythicItemAttributes.createToolModifier(
+                    "aegis",
+                    MythicItemAttributes.ToolType.SWORD,
+                    AttackSpeeds.SLOWER,
+                    MythicToolMaterials.AEGIS_RED,
+                    List.of()
+                )
+            )
+            .component(MythicDataComponents.FIRE_ASPECT, 320)
+            .fireResistant()
+            .rarity(Rarity.UNCOMMON)
+            .setId(RegistryHelper.itemKey("red_aegis_sword"))
     );
 
-    public static final Item WHITE_AEGIS_SWORD = new ToolSet.SwordMock(MythicToolMaterials.AEGIS_WHITE, 4, -2.6f, new Item.Properties()
-        .fireResistant()
-        .rarity(Rarity.UNCOMMON)
-        .group(MythicMetals.TABBED_GROUP)
-        .tab(2)
-        .setId(RegistryHelper.itemKey("white_aegis_sword")),
-        List.of(new MythicAttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE, EquipmentSlotGroup.MAINHAND))
+    public static final Item WHITE_AEGIS_SWORD = new Item(
+        defaultSettings(MythicToolMaterials.AEGIS_WHITE)
+            .attributes(
+                MythicItemAttributes.createToolModifier(
+                    "aegis",
+                    MythicItemAttributes.ToolType.SWORD,
+                    AttackSpeeds.SLOWER,
+                    MythicToolMaterials.AEGIS_RED,
+                    List.of(new MythicAttributeModifier(MythicEntityAttributes.UNDEAD_BONUS_DAMAGE, 8.0, Operation.ADD_VALUE, EquipmentSlotGroup.MAINHAND))
+                )
+            )
+            .fireResistant()
+            .rarity(Rarity.UNCOMMON)
+            .setId(RegistryHelper.itemKey("white_aegis_sword"))
     );
 
     public static final Item ORICHALCUM_HAMMER = new HammerBase(MythicToolMaterials.ORICHALCUM, 6, -3.2f, new Item.Properties()
@@ -103,18 +132,7 @@ public class MythicTools implements SimpleFieldProcessingSubject<ToolSet> {
     );
     public static final Item PLATINUM_WATCH = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).tab(2).setId(RegistryHelper.itemKey("platinum_watch")));
 
-    @Override
-    public void processField(ToolSet toolSet, String name, Field f) {
-        toolSet.register(name);
-    }
-
-    @Override
-    public Class<ToolSet> getTargetFieldType() {
-        return ToolSet.class;
-    }
-
-    @Override
-    public void afterFieldProcessing() {
+    public static void init() {
         RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
         RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
         RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);

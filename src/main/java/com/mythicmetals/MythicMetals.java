@@ -16,6 +16,7 @@ import com.mythicmetals.item.MythicPotions;
 import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.*;
+import com.mythicmetals.mixin.ServerPlayerEntityMixin;
 import com.mythicmetals.recipe.MythicRecipeSerializers;
 import com.mythicmetals.registry.*;
 import io.wispforest.owo.itemgroup.Icon;
@@ -23,11 +24,14 @@ import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -123,8 +127,15 @@ public class MythicMetals implements ModInitializer {
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
     }
 
-    private void registerUseActions() {
-
+    private void registerEvents() {
+        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+            var stack = player.getItemInHand(hand);
+            if (stack.has(MythicDataComponents.FIRE_ASPECT)) {
+                entity.igniteForTicks(stack.getOrDefault(MythicDataComponents.FIRE_ASPECT, 0));
+                return InteractionResult.SUCCESS;
+            }
+            return InteractionResult.PASS;
+        });
     }
 
     private void registerDispenserBehaviour() {

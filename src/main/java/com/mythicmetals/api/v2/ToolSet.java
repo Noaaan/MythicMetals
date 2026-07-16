@@ -111,7 +111,7 @@ public class ToolSet {
         return this;
     }
 
-    protected Item.Properties defaultSettings() {
+    public Item.Properties defaultSettings() {
         return new Item.Properties()
             .durability(toolMaterial.durability())
             .stacksTo(1)
@@ -121,30 +121,39 @@ public class ToolSet {
             .tab(2);
     }
 
+    public static Item.Properties defaultSettings(ToolMaterial material) {
+        return new Item.Properties()
+            .durability(material.durability())
+            .stacksTo(1)
+            .repairable(material.repairItems())
+            .enchantable(material.enchantmentValue())
+            .group(MythicMetals.TABBED_GROUP)
+            .tab(2);
+    }
+
     public Item getSpear() {
         return this.spear;
     }
 
     public enum AttackSpeeds {
-        DEFAULT(1.6f, 0.9f, 1.2f, 1.1f, 1.0f, 1.0f),
-        BETTER_AXE(1.6f, 1.0f, 1.2f, 1.1f, 1.0f, 1.0f), // +0.1 on axes
-        FASTER(1.8f, 1.1f, 1.3f, 1.2f, 1.2f, 1.0f), // +0.1-0.2 to all
-        HIGHEST(2.0f, 1.2f, 1.4f, 1.3f, 1.3f, 1.0f); // +0.2-0.4 to all
+        DEFAULT(1.6f, 0.9f, 1.2f, 1.1f, 1.0f),
+        BETTER_AXE(1.6f, 1.0f, 1.2f, 1.1f, 1.0f), // +0.1 on axes
+        FASTER(1.8f, 1.1f, 1.3f, 1.2f, 1.2f), // +0.1-0.2 to all
+        HIGHEST(2.0f, 1.2f, 1.4f, 1.3f, 1.3f), // +0.2-0.4 to all
+        SLOWER(1.4f, 0.8f, 1.1f, 1.0f, 0.9f);
 
         public final float sword;
         public final float axe;
         public final float pickaxe;
         public final float shovel;
         public final float hoe;
-        public final float spear;
 
-        AttackSpeeds(float sword, float axe, float pickaxe, float shovel, float hoe, float spear) {
+        AttackSpeeds(float sword, float axe, float pickaxe, float shovel, float hoe) {
             this.sword = sword;
             this.axe = axe;
             this.pickaxe = pickaxe;
             this.shovel = shovel;
             this.hoe = hoe;
-            this.spear = spear;
         }
     }
 
