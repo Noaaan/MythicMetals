@@ -1,6 +1,6 @@
 package com.mythicmetals.mixin.client;
 
-import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.client.MythicRenderStateKeys;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import net.minecraft.client.model.EntityModel;

@@ -1,4 +1,4 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.item.armor;
 
 // FIXME - Migrate to data attachment
 public record CarmotShield(

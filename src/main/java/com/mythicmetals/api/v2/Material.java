@@ -4,7 +4,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.armor.CustomHelmetArmorSet;
+import com.mythicmetals.item.armor.CustomHelmetArmorSet;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;

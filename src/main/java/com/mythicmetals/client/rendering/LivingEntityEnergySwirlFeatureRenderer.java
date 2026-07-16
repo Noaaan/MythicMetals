@@ -1,7 +1,7 @@
 package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.client.MythicRenderStateKeys;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;

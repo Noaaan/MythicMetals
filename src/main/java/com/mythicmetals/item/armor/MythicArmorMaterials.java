@@ -1,4 +1,4 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.item.armor;
 
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.registry.RegisterSounds;

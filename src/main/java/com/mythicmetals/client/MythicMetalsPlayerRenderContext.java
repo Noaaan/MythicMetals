@@ -1,7 +1,7 @@
 package com.mythicmetals.client;
 
 
-import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.item.armor.CarmotShield;
 
 public record MythicMetalsPlayerRenderContext(CarmotShield carmotShield) {
 

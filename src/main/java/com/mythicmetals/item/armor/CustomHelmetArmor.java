@@ -1,8 +1,7 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.item.armor;
 
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.client.models.HelmetModel;
-import com.mythicmetals.client.models.MythicModelHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;

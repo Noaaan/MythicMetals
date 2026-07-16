@@ -1,6 +1,6 @@
 package com.mythicmetals.client;
 
-import com.mythicmetals.armor.CarmotShield;
+import com.mythicmetals.item.armor.CarmotShield;
 import net.fabricmc.fabric.api.client.rendering.v1.RenderStateDataKey;
 
 public class MythicRenderStateKeys {

@@ -1,7 +1,7 @@
 package com.mythicmetals.client.rendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mythicmetals.armor.CelestiumElytra;
+import com.mythicmetals.item.armor.CelestiumElytra;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.StarPlatCloakModel;
 import com.mythicmetals.misc.RegistryHelper;

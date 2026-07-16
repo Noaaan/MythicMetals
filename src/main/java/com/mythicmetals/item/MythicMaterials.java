@@ -4,7 +4,7 @@ import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
 import com.mythicmetals.api.v2.ToolSet;
-import com.mythicmetals.armor.*;
+import com.mythicmetals.item.armor.*;
 import com.mythicmetals.block.*;
 import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.component.*;

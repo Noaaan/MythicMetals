@@ -1,4 +1,4 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.item.armor;
 
 import com.mythicmetals.api.v2.ArmorSet;
 import net.minecraft.client.model.geom.ModelLayerLocation;

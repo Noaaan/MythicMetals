@@ -1,4 +1,4 @@
-package com.mythicmetals.armor;
+package com.mythicmetals.item.armor;
 
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.client.models.MythicModelHandler;
