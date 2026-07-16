@@ -1,8 +1,7 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.PrometheumComponent;
-import com.mythicmetals.data.attachments.MythicDataAttachments;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.PrometheumComponent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerLevel;
@@ -19,8 +18,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.mythicmetals.component.PrometheumComponent.createOvergrownModifier;
-import static com.mythicmetals.component.PrometheumComponent.createOvergrownToughnessModifier;
+import static com.mythicmetals.item.component.PrometheumComponent.createOvergrownModifier;
+import static com.mythicmetals.item.component.PrometheumComponent.createOvergrownToughnessModifier;
 
 @Mixin(Item.class)
 public abstract class ItemMixin {

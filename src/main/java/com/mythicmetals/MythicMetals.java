@@ -4,8 +4,9 @@ import com.mythicmetals.ability.Abilities;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.conditions.MythicResourceConditions;
+import com.mythicmetals.data.MythicCriteriaTriggers;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.data.conditions.MythicResourceConditions;
 import com.mythicmetals.config.MythicMetalsConfig;
 import com.mythicmetals.data.loot.MythicLootConditions;
 import com.mythicmetals.data.worldgen.MythicOreFeatures;
@@ -16,15 +17,12 @@ import com.mythicmetals.item.MythicPotions;
 import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.*;
-import com.mythicmetals.mixin.ServerPlayerEntityMixin;
-import com.mythicmetals.recipe.MythicRecipeSerializers;
-import com.mythicmetals.registry.*;
+import com.mythicmetals.data.recipe.MythicRecipeSerializers;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.loader.api.FabricLoader;
@@ -61,7 +59,8 @@ public class MythicMetals implements ModInitializer {
     @Override
     public void onInitialize() {
         MythicMaterials.init();
-        FieldRegistrationHandler.register(RegisterSounds.class, MOD_ID, false);
+        MythicTools.init();
+        FieldRegistrationHandler.register(MythicSoundEvents.class, MOD_ID, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();
         MythicDataComponents.init();
@@ -75,7 +74,7 @@ public class MythicMetals implements ModInitializer {
         MythicCommands.init();
         MythicCommands.registerCommands();
         Abilities.init();
-        RegisterPointOfInterests.init();
+        MythicPOIs.init();
         MythicEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
@@ -87,18 +86,17 @@ public class MythicMetals implements ModInitializer {
         MythicLootConditions.init();
         MythicStatusEffects.init();
         MythicRecipeSerializers.init();
-        FieldRegistrationHandler.processSimple(RegisterCriteria.class, false);
+        MythicCriteriaTriggers.init();
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
-//        registerDispenserBehaviour();
         LegacyIds.registerAliases();
+        registerDispenserBehaviour();
+        registerEvents();
+        checkConfigVersion();
+        logInit();
+    }
 
-        if (CONFIG.configVersion() < CONFIG_VERSION) {
-            for (int i = 0; i < 5; i++) {
-                LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
-            }
-        }
-
+    private static void logInit() {
         if (FabricLoader.getInstance().isModLoaded("harvest_scythes")) {
             LOGGER.info("[Mythic Metals] I see HarvestScythes. I'll take care of DH so you don't have to");
         }
@@ -117,14 +115,21 @@ public class MythicMetals implements ModInitializer {
         if (FabricLoader.getInstance().isModLoaded("terralith")) {
             LOGGER.info("[Mythic Metals] Terralith detected. Many ores can spawn in unexpected ways due to the new overworld. Modpack devs, take note of this");
         }
-        if (FabricLoader.getInstance().isModLoaded("ftb-chunks-fabric") || FabricLoader.getInstance().isModLoaded("ftb-chunks-neoforge")) {
-            if (!FabricLoader.getInstance().isModLoaded("ftb-xmod-compat-fabric")) {
-                for (int i = 0; i < 3; i++) {
-                    LOGGER.error("[Mythic Metals] FTB Chunks is loaded but FTB XMod Compat Fabric addon is not. This means claim protection will not work for some items!");
-                }
+        if ((FabricLoader.getInstance().isModLoaded("ftb-chunks-fabric") || FabricLoader.getInstance().isModLoaded("ftb-chunks-neoforge")) && !FabricLoader.getInstance().isModLoaded("ftb-xmod-compat-fabric")) {
+            for (int i = 0; i < 3; i++) {
+                LOGGER.error("[Mythic Metals] FTB Chunks is loaded but FTB XMod Compat Fabric addon is not. This means claim protection will not work for some items!");
             }
         }
+
         LOGGER.info("[Mythic Metals] Mythic Metals is now initialized.");
+    }
+
+    private void checkConfigVersion() {
+        if (CONFIG.configVersion() < CONFIG_VERSION) {
+            for (int i = 0; i < 5; i++) {
+                LOGGER.warn("[Mythic Metals] Your config is outdated. Please update it manually in the file, or delete it so it can be re-generated.");
+            }
+        }
     }
 
     private void registerEvents() {

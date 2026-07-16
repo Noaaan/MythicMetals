@@ -1,4 +1,4 @@
-package com.mythicmetals.recipe;
+package com.mythicmetals.data.recipe;
 
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.Registry;

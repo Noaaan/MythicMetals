@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.core.Registry;

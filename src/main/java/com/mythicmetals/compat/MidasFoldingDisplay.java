@@ -1,8 +1,8 @@
 package com.mythicmetals.compat;
 
-import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.GoldFoldedComponent;
 import com.mythicmetals.item.tools.MidasGoldSword;
-import com.mythicmetals.recipe.MidasFoldingRecipe;
+import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
+import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
 import static com.mythicmetals.item.tools.MidasGoldSword.Type.*;
 
 public class MidasFoldingDisplay extends DefaultSmithingDisplay {

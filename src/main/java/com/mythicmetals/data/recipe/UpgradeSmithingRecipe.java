@@ -1,7 +1,7 @@
-package com.mythicmetals.recipe;
+package com.mythicmetals.data.recipe;
 
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.UpgradeComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.UpgradeComponent;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;

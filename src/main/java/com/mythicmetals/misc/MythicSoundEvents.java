@@ -1,6 +1,5 @@
-package com.mythicmetals.registry;
+package com.mythicmetals.misc;
 
-import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.registration.reflect.AutoRegistryContainer;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,7 +7,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.SoundType;
 
-public class RegisterSounds implements AutoRegistryContainer<SoundEvent> {
+public class MythicSoundEvents implements AutoRegistryContainer<SoundEvent> {
 
     public static final SoundEvent EQUIP_RUNITE = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_runite"));
     public static final SoundEvent EQUIP_ADAMANTITE = SoundEvent.createVariableRangeEvent(RegistryHelper.id("equip_adamantite"));

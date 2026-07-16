@@ -1,6 +1,6 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.conditions.NuggetsLoadedCondition;
+import com.mythicmetals.data.conditions.NuggetsLoadedCondition;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;

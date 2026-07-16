@@ -1,6 +1,6 @@
 package com.mythicmetals.api.v2;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.RegistryHelper;

@@ -3,9 +3,9 @@ package com.mythicmetals.block;
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.CarmotBellBlockEntity;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.damage.CarmotBellDamageSource;
+import com.mythicmetals.data.damage.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
-import com.mythicmetals.registry.RegisterSounds;
+import com.mythicmetals.misc.MythicSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -44,9 +44,9 @@ public class CarmotBellBlock extends BaseEntityBlock {
             if (bell.canBeUsed()) {
                 bell.markUsed();
                 heal(world, be.getBlockPos().getCenter(), player);
-                world.playLocalSound(pos, RegisterSounds.CARMOT_BELL_DING, SoundSource.BLOCKS, 1.0f, 1.0f, true);
+                world.playLocalSound(pos, MythicSoundEvents.CARMOT_BELL_DING, SoundSource.BLOCKS, 1.0f, 1.0f, true);
             } else {
-                world.playLocalSound(pos, RegisterSounds.CARMOT_BELL_DING_PLAIN, SoundSource.BLOCKS, 1.0f, 1.0f, true);
+                world.playLocalSound(pos, MythicSoundEvents.CARMOT_BELL_DING_PLAIN, SoundSource.BLOCKS, 1.0f, 1.0f, true);
             }
             return InteractionResult.SUCCESS;
         }

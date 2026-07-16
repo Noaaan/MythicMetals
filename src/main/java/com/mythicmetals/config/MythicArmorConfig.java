@@ -1,6 +1,6 @@
 package com.mythicmetals.config;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 
 import java.util.List;
 

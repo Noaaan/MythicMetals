@@ -1,7 +1,7 @@
-package com.mythicmetals.component;
+package com.mythicmetals.item.component;
 
 import com.mythicmetals.misc.*;
-import com.mythicmetals.registry.RegisterCriteria;
+import com.mythicmetals.data.MythicCriteriaTriggers;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.ops.LevelOps;
@@ -61,7 +61,7 @@ public record BlastMiningComponent(int depth) implements TooltipProvider {
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
             LevelOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
-            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
+            MythicCriteriaTriggers.USED_BLAST_MINING.trigger((ServerPlayer) player);
             player.getCooldowns().addCooldown(stack, 100);
             return InteractionResult.SUCCESS_SERVER;
         }

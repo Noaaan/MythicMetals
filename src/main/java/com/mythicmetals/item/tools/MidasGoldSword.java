@@ -1,21 +1,13 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.GoldFoldedComponent;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.jetbrains.annotations.Nullable;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
-import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
+import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
 
 public class MidasGoldSword extends Item {
     public MidasGoldSword(ToolMaterial material, Item.Properties settings) {

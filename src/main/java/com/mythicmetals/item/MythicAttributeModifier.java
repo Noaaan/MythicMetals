@@ -1,4 +1,4 @@
-package com.mythicmetals;
+package com.mythicmetals.item;
 
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EquipmentSlotGroup;

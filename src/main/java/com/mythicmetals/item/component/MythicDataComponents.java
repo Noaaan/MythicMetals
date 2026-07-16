@@ -1,4 +1,4 @@
-package com.mythicmetals.component;
+package com.mythicmetals.item.component;
 
 import com.mojang.serialization.Codec;
 import com.mythicmetals.misc.RegistryHelper;

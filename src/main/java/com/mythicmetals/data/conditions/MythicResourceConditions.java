@@ -1,4 +1,4 @@
-package com.mythicmetals.conditions;
+package com.mythicmetals.data.conditions;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.misc.RegistryHelper;

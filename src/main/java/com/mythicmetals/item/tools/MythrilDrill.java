@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.component.*;
+import com.mythicmetals.item.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
@@ -27,7 +27,7 @@ import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 
-import static com.mythicmetals.component.DrillComponent.*;
+import static com.mythicmetals.item.component.DrillComponent.*;
 
 public class MythrilDrill extends Item implements AutoRepairable {
 

@@ -1,4 +1,4 @@
-package com.mythicmetals.conditions;
+package com.mythicmetals.data.conditions;
 
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;

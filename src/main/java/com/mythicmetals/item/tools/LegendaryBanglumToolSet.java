@@ -1,9 +1,9 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.api.v2.ToolSet;
-import com.mythicmetals.component.BlastMiningComponent;
-import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.item.component.BlastMiningComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;

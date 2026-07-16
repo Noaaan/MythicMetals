@@ -2,7 +2,7 @@ package com.mythicmetals.item.tools;
 
 import com.mythicmetals.misc.BlockBreaker;
 import com.mythicmetals.misc.MythicParticleSystem;
-import com.mythicmetals.registry.RegisterCriteria;
+import com.mythicmetals.data.MythicCriteriaTriggers;
 import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -58,7 +58,7 @@ public class BanglumPick extends Item {
             MythicParticleSystem.EXPLOSION_TRAIL.spawn(world, Vec3.atLowerCornerOf(pos), Vec3.atLowerCornerOf(pos2));
             LevelOps.playSound(world, pos, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS);
 
-            RegisterCriteria.USED_BLAST_MINING.trigger((ServerPlayer) player);
+            MythicCriteriaTriggers.USED_BLAST_MINING.trigger((ServerPlayer) player);
             player.getCooldowns().addCooldown(stack, 100);
             return InteractionResult.SUCCESS;
         }

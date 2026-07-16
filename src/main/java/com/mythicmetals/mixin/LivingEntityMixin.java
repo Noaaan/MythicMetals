@@ -2,18 +2,13 @@ package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.MythicDataComponents;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.duck.WasSpawnedFromCreeper;
-import com.mythicmetals.registry.RegisterCriteria;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
+import com.mythicmetals.data.MythicCriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
@@ -248,7 +243,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (effect.getEffect().value().equals(MythicStatusEffects.COMBUSTION) && this.isAlwaysTicking()) {
             if (source instanceof AreaEffectCloud cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
                 //noinspection ConstantConditions
-                RegisterCriteria.RECEIVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayer) (Object) this));
+                MythicCriteriaTriggers.RECEIVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayer) (Object) this));
             }
         }
     }

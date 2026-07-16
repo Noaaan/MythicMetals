@@ -1,4 +1,4 @@
-package com.mythicmetals.recipe;
+package com.mythicmetals.data.recipe;
 
 import com.mythicmetals.item.tools.MythicTools;
 import net.minecraft.core.HolderLookup;

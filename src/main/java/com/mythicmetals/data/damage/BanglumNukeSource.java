@@ -1,4 +1,4 @@
-package com.mythicmetals.damage;
+package com.mythicmetals.data.damage;
 
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;

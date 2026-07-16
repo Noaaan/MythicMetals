@@ -1,4 +1,4 @@
-package com.mythicmetals.component;
+package com.mythicmetals.item.component;
 
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.misc.*;

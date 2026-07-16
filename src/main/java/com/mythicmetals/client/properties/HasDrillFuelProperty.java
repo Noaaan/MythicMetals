@@ -1,8 +1,8 @@
 package com.mythicmetals.client.properties;
 
 import com.mojang.serialization.MapCodec;
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.item.component.DrillComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.serialization.CodecUtils;

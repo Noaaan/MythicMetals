@@ -1,8 +1,8 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.damage.CarmotBellDamageSource;
+import com.mythicmetals.data.damage.CarmotBellDamageSource;
 import com.mythicmetals.misc.MythicParticleSystem;
-import com.mythicmetals.registry.RegisterSounds;
+import com.mythicmetals.misc.MythicSoundEvents;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.EntityTypeTags;
@@ -46,7 +46,7 @@ public class CarmotBellItem extends BlockItem {
         MythicParticleSystem.HEALING_AREA.spawn(world, user.position(), RANGE);
         MythicParticleSystem.HEALING_HEARTS.spawn(world, user.position());
         user.getCooldowns().addCooldown(stack, 480);
-        world.playSound(user, user.blockPosition(), RegisterSounds.CARMOT_BELL_RING, SoundSource.PLAYERS);
+        world.playSound(user, user.blockPosition(), MythicSoundEvents.CARMOT_BELL_RING, SoundSource.PLAYERS);
         return InteractionResult.SUCCESS;
     }
 

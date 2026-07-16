@@ -1,6 +1,6 @@
 package com.mythicmetals.compat;
 
-import com.mythicmetals.recipe.MidasFoldingRecipe;
+import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import me.shedaniel.rei.api.common.plugins.REICommonPlugin;
 import me.shedaniel.rei.api.common.registry.display.ServerDisplayRegistry;
 

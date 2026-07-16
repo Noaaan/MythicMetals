@@ -1,6 +1,6 @@
-package com.mythicmetals.recipe;
+package com.mythicmetals.data.recipe;
 
-import com.mythicmetals.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.GoldFoldedComponent;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mythicmetals.component.MythicDataComponents.GOLD_FOLDED;
+import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
 
 public class MidasFoldingRecipe implements SmithingRecipe {
 

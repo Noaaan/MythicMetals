@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.api.v2.ToolSet;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;

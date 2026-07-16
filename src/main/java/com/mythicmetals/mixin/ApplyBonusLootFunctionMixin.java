@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin;
 
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.UpgradeComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.UpgradeComponent;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;

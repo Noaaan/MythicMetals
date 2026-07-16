@@ -1,12 +1,12 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.ToolSet.AttackSpeeds;
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.GoldFoldedComponent;
-import com.mythicmetals.component.MythicDataComponents;
-import com.mythicmetals.component.UpgradeComponent;
+import com.mythicmetals.item.component.DrillComponent;
+import com.mythicmetals.item.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.UpgradeComponent;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.RuniteArrowItem;

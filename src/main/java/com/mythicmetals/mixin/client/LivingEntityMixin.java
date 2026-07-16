@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin.client;
 
-import com.mythicmetals.component.DrillComponent;
-import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.item.component.DrillComponent;
+import com.mythicmetals.item.component.MythicDataComponents;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;

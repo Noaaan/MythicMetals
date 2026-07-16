@@ -1,7 +1,7 @@
 package com.mythicmetals.entity;
 
 import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.damage.MythicDamageTypes;
+import com.mythicmetals.data.damage.MythicDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;

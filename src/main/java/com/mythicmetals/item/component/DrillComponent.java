@@ -1,4 +1,4 @@
-package com.mythicmetals.component;
+package com.mythicmetals.item.component;
 
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.endec.Endec;

@@ -2,7 +2,7 @@ package com.mythicmetals.api.v2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.mythicmetals.MythicAttributeModifier;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.armor.CustomHelmetArmorSet;
 import com.mythicmetals.item.MythicSpearStats;

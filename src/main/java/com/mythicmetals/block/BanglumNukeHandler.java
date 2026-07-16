@@ -3,7 +3,7 @@ package com.mythicmetals.block;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.BanglumNukeEntity;
 import com.mythicmetals.item.MythicMaterials;
-import com.mythicmetals.registry.RegisterSounds;
+import com.mythicmetals.misc.MythicSoundEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
@@ -70,7 +70,7 @@ public class BanglumNukeHandler {
             BanglumNukeEntity nuke = new BanglumNukeEntity(level, x, y + 0.5f, z, player, match.getBlock(1, 1, 1).getState().getBlock());
             level.addFreshEntity(nuke);
             level.playSound(
-                null, nuke.getX(), nuke.getY(), nuke.getZ(), RegisterSounds.BANGLUM_NUKE_IGNITE, SoundSource.BLOCKS, 1.0F, 1.0F
+                null, nuke.getX(), nuke.getY(), nuke.getZ(), MythicSoundEvents.BANGLUM_NUKE_IGNITE, SoundSource.BLOCKS, 1.0F, 1.0F
             );
             CarvedPumpkinBlock.updatePatternBlocks(level, match);
             level.gameEvent(player, GameEvent.PRIME_FUSE, new BlockPos(x, y, z));

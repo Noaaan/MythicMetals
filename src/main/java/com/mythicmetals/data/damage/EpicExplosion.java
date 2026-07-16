@@ -1,4 +1,4 @@
-package com.mythicmetals.damage;
+package com.mythicmetals.data.damage;
 
 import com.mojang.authlib.GameProfile;
 import com.mythicmetals.data.MythicTags;

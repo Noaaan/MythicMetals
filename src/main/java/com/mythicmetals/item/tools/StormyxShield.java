@@ -2,7 +2,7 @@ package com.mythicmetals.item.tools;
 
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.registry.RegisterSounds;
+import com.mythicmetals.misc.MythicSoundEvents;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.server.level.ServerLevel;
@@ -20,7 +20,7 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import org.jspecify.annotations.Nullable;
 
-import static com.mythicmetals.component.MythicDataComponents.WAS_USED;
+import static com.mythicmetals.item.component.MythicDataComponents.WAS_USED;
 
 public class StormyxShield extends ShieldItem {
 
@@ -58,7 +58,7 @@ public class StormyxShield extends ShieldItem {
         super.onUseTick(world, user, stack, remainingUseTicks);
 
         if (remainingUseTicks % 40 == 1) {
-            LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_MAINTAIN, SoundSource.AMBIENT, 1.0F, 1.5F);
+            LevelOps.playSound(world, user.blockPosition(), MythicSoundEvents.PROJECTILE_BARRIER_MAINTAIN, SoundSource.AMBIENT, 1.0F, 1.5F);
             stack.hurtAndBreak(1, user, user.getUsedItemHand());
         }
     }
@@ -68,7 +68,7 @@ public class StormyxShield extends ShieldItem {
         var stack = user.getItemInHand(hand);
         user.startUsingItem(hand);
         stack.set(WAS_USED, true);
-        LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_BEGIN, SoundSource.AMBIENT, 1.0F, 1.5F);
+        LevelOps.playSound(world, user.blockPosition(), MythicSoundEvents.PROJECTILE_BARRIER_BEGIN, SoundSource.AMBIENT, 1.0F, 1.5F);
         return InteractionResult.CONSUME;
     }
 
@@ -94,7 +94,7 @@ public class StormyxShield extends ShieldItem {
             stack.remove(WAS_USED);
             player.getCooldowns().addCooldown(stack, 160);
         }
-        LevelOps.playSound(world, user.blockPosition(), RegisterSounds.PROJECTILE_BARRIER_END, SoundSource.AMBIENT, 0.9F, 1.5F);
+        LevelOps.playSound(world, user.blockPosition(), MythicSoundEvents.PROJECTILE_BARRIER_END, SoundSource.AMBIENT, 0.9F, 1.5F);
         return stack;
     }
 

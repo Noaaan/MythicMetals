@@ -3,7 +3,7 @@ package com.mythicmetals.mixin;
 import com.mythicmetals.block.ConduitPowered;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.registry.RegisterPointOfInterests;
+import com.mythicmetals.misc.MythicPOIs;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
@@ -40,7 +40,7 @@ public class ConduitBlockEntityMixin {
         if (world.isClientSide()) return;
         int radius = activatingBlocks.size() / 7 * 16;
         ((ServerLevel)world).getPoiManager()
-            .getInSquare(type -> type.value() == RegisterPointOfInterests.CONDUIT_POWERED_BLOCK, pos, radius, PoiManager.Occupancy.ANY)
+            .getInSquare(type -> type.value() == MythicPOIs.CONDUIT_POWERED_BLOCK, pos, radius, PoiManager.Occupancy.ANY)
             .forEach(pointOfInterest -> {
                 var blockEntity = world.getBlockEntity(pointOfInterest.getPos());
                 if (blockEntity instanceof ConduitPowered conduitPowered) {

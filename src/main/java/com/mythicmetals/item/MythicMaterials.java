@@ -1,19 +1,18 @@
 package com.mythicmetals.item;
 
-import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
 import com.mythicmetals.api.v2.ToolSet;
 import com.mythicmetals.item.armor.*;
 import com.mythicmetals.block.*;
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.component.*;
+import com.mythicmetals.item.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.registry.RegisterSounds;
+import com.mythicmetals.misc.MythicSoundEvents;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Unit;
@@ -164,7 +163,7 @@ public class MythicMaterials {
                 .component(DataComponents.GLIDER, Unit.INSTANCE)
                 .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.CHEST)
                     .setAsset(RegistryHelper.equipmentAsset("celestium_elytra"))
-                    .setEquipSound(RegistryHelper.getEntry(RegisterSounds.EQUIP_CELESTIUM_ELYTRA))
+                    .setEquipSound(RegistryHelper.getEntry(MythicSoundEvents.EQUIP_CELESTIUM_ELYTRA))
                     .build())
                 .group(MythicMetals.TABBED_GROUP).tab(3)
                 .attributes(CelestiumElytra.createDefaultAttributes())

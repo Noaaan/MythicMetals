@@ -1,6 +1,5 @@
 package com.mythicmetals.item;
 
-import com.mythicmetals.MythicAttributeModifier;
 import com.mythicmetals.api.v2.ToolSet;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.world.entity.EquipmentSlot;

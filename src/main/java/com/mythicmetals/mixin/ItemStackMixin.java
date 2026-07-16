@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.mythicmetals.component.MythicDataComponents;
+import com.mythicmetals.item.component.MythicDataComponents;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;

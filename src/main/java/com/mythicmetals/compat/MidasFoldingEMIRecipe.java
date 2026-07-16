@@ -1,6 +1,6 @@
 package com.mythicmetals.compat;
 
-import com.mythicmetals.recipe.MidasFoldingRecipe;
+import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import dev.emi.emi.api.recipe.*;
 import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
