@@ -38,7 +38,7 @@ public class MythicItemAttributes {
                 var attributeName = extraModifier
                     .attribute()
                     .unwrapKey()
-                    .map(key -> key.identifier().getPath())
+                    .map(key -> key.identifier().getPath() + "_" + type.getSlot().getName())
                     .orElse(UNKNOWN)
                     .toLowerCase(Locale.ROOT);
                 attributeBuilder.add(

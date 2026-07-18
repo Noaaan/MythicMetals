@@ -140,10 +140,10 @@ public class MythicMaterials {
             new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, LEGS),
             new MythicAttributeModifier(MAX_HEALTH, 2.0, ADD_VALUE, FEET),
             new MythicAttributeModifier(MAX_HEALTH, 5.0, ADD_VALUE, BODY),
-            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, HEAD),
-            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, CHEST),
-            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, LEGS),
-            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 5.0, ADD_VALUE, FEET),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 4.0, ADD_VALUE, HEAD),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 6.0, ADD_VALUE, CHEST),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 6.0, ADD_VALUE, LEGS),
+            new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 4.0, ADD_VALUE, FEET),
             new MythicAttributeModifier(MythicEntityAttributes.CARMOT_SHIELD, 10.0, ADD_VALUE, BODY)
         ))
         .finish();
