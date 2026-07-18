@@ -1,129 +1,79 @@
 package com.mythicmetals.client;
 
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.config.ShieldPosition;
 import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.UsefulSingletonForColorUtil;
-import io.wispforest.owo.ui.component.TextureComponent;
-import io.wispforest.owo.ui.container.UIContainers;
-import io.wispforest.owo.ui.core.*;
-import io.wispforest.owo.ui.hud.Hud;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 
+@SuppressWarnings("UnstableApiUsage")
 public class CarmotShieldHudHandler {
-    public static final Identifier COMPONENT_ID = RegistryHelper.id("shield_overlay");
-    public static final String SHIELD_BACKGROUND_ID = "shield_background";
-    public static final String SHIELD_COMPONENT_ID = "shield_overlay";
+    private CarmotShieldHudHandler() {}
+
+    static final int LOGO_SIZE = 16;
+    static final int PIP_U = 16;
+    static final int START_PIP_U = 32;
+    static final int START_PIP_WIDTH = 11;
+    static final int START_PIP_HEIGHT = 16;
+    static final int END_PIP_U = 22;
+    static final int END_PIP_WIDTH = 6;
+    static final int PIPS_WIDTH = 5;
+    static final int PIPS_HEIGHT = 16;
+    static final int PIPS_V = 0;
+    static final int FILLED_PIPS_V = 16;
+
     public static final Identifier TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
 
-//    public static void init() {
-//        Hud.add(COMPONENT_ID, () ->
-//            UIContainers.draggable(Sizing.content(), Sizing.content(),
-//                    UIContainers.verticalFlow(Sizing.content(), Sizing.content())
-//                        .child(new CarmotShieldComponent(TEXTURE, 0, 16, 64, 16, 64, 32)
-//                            .id(SHIELD_BACKGROUND_ID))
-//                        .child(new CarmotShieldComponent(TEXTURE, 0, 0, 64, 16, 64, 32)
-//                            .id(SHIELD_COMPONENT_ID)
-//                            .positioning(Positioning.absolute(0, 0))
-//                        ))
-//                .positioning(MythicMetals.CONFIG.shieldPosition().asRelativePos())
-//        );
-//        MythicMetals.CONFIG.subscribeToShieldPosition(shieldPosition -> {
-//            var component = Hud.getComponent(COMPONENT_ID);
-//            if (component != null) {
-//                component.positioning(MythicMetals.CONFIG.shieldPosition().asRelativePos());
-//            }
-//        });
-//    }
-//
-//    @SuppressWarnings({"DataFlowIssue", "UnstableApiUsage"})
-//    public static void tick() {
-//        if (Hud.hasComponent(COMPONENT_ID) && Minecraft.getInstance().player != null) {
-//            var player = Minecraft.getInstance().player;
-//            var shieldBar = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_COMPONENT_ID);
-//            var background = (CarmotShieldComponent) ((ParentUIComponent) Hud.getComponent(COMPONENT_ID)).childById(TextureComponent.class, SHIELD_BACKGROUND_ID);
-//            var carmotShield = player.getAttached(MythicDataAttachments.CARMOT_SHIELD_ATTACHMENT);
-//
-//            double shieldhealth = carmotShield.shieldHealth();
-//            // Hide Shield if it's not needed
-//            if (shieldhealth == 0 || MythicMetals.CONFIG.shieldPosition().equals(ShieldPosition.DISABLED)) {
-//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-//                background.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-//                return;
-//            }
-//
-//            boolean isShieldBroken = shieldhealth <= 0.0;
-//            int shieldX = Mth.ceil(16 + 46 * (shieldhealth / carmotShield.getMaxHealth(player)));
-//
-//            CarmotShieldComponent.barShouldBeRed = player.hurtTime > 0 || isShieldBroken;
-//            // Hide bar if shield is broken
-//            if (isShieldBroken) {
-//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, 0, 0));
-//            } else {
-//                shieldBar.visibleArea(PositionedRectangle.of(0, 0, Size.of(shieldX, 16)));
-//            }
-//            background.visibleArea(PositionedRectangle.of(0, 0, Size.of(64, 16)));
-//        }
-//    }
-
-    public static void render(GuiGraphics guiGraphics, DeltaTracker tickCounter) {
+    public static void render(GuiGraphics guiGraphics) {
         var player = Minecraft.getInstance().player;
         if (player == null) return;
         if (MythicMetals.CONFIG.shieldPosition() == ShieldPosition.DISABLED) return;
-        if (CarmotShield.getMaxHealth(player) > 0.0) {
+        var maxShield = CarmotShield.getMaxHealth(player);
+        if (maxShield > 0.0) {
             var carmotShield = player.getAttached(MythicDataAttachments.CARMOT_SHIELD_ATTACHMENT);
+            if (carmotShield == null) return;
             var shieldPosition = MythicMetals.CONFIG.shieldPosition();
 
-            int u = 0;
-            int v = 16;
-            int width = 64;
-            int height = 16;
-            // background
-            guiGraphics.blit(
-                RenderPipelines.GUI_TEXTURED,
-                TEXTURE,
-                shieldPosition.calculateWidth(guiGraphics.guiWidth()),
-                shieldPosition.calculateHeight(guiGraphics.guiHeight()), u, v, width, height, 64, 32
-            );
-            // shield health
-            var shieldWidth = shieldPosition.calculateWidth(guiGraphics.guiWidth());
-            var shieldHeight = shieldPosition.calculateHeight(guiGraphics.guiHeight());
-            guiGraphics.fill(
-                shieldWidth, shieldHeight, shieldWidth / 2, shieldHeight, UsefulSingletonForColorUtil.rainbow()
-            );
+            var pips = Mth.floor(maxShield / 2);
+            var filledPips = Mth.ceil(carmotShield.shieldHealth() / 2);
+
+            int xStart = shieldPosition.calculateWidth(guiGraphics.guiWidth());
+            int yStart = shieldPosition.calculateHeight(guiGraphics.guiHeight());
+            renderOutline(guiGraphics, pips, xStart, yStart);
+            renderShieldHealth(guiGraphics, filledPips, xStart, yStart);
         }
     }
 
-    public static class CarmotShieldComponent extends TextureComponent {
-
-        public static final Color HEALTHY_COLOR = Color.ofRgb(0x52CBFF);
-        public static final Color DAMAGED_COLOR = Color.ofRgb(0xE0343A);
-        public static boolean barShouldBeRed = false;
-
-        protected CarmotShieldComponent(Identifier texture, int u, int v, int regionWidth, int regionHeight, int textureWidth, int textureHeight) {
-            super(texture, u, v, regionWidth, regionHeight, textureWidth, textureHeight);
+    public static void renderOutline(GuiGraphics guiGraphics, int pips, int xStart, int yStart) {
+        // logo
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, 0, LOGO_SIZE, LOGO_SIZE, 64, 32);
+        // outline
+        for (int i = 0; i < pips; i++) {
+            if (i == 0) {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32);
+            } else if (i == pips - 1) {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32);
+            } else {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32);
+            }
         }
+    }
 
-        // FIXME
-        @Override
-        public void draw(OwoUIGraphics graphics, int mouseX, int mouseY, float partialTicks, float delta) {
-//            if (barShouldBeRed) {
-//                RenderSystem.setShaderColor(DAMAGED_COLOR.red(), DAMAGED_COLOR.green(), DAMAGED_COLOR.blue(), 1.0f);
-//            } else {
-//                RenderSystem.setShaderColor(HEALTHY_COLOR.red(), HEALTHY_COLOR.green(), HEALTHY_COLOR.blue(), 1.0f);
-//            }
-//            graphics.guiRenderState.reset();
-//            RenderSystem.setShaderColor(1, 1, 1, 1);
-            super.draw(graphics, mouseX, mouseY, partialTicks, delta);
+    public static void renderShieldHealth(GuiGraphics guiGraphics, int pips, int xStart, int yStart) {
+        // logo
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, FILLED_PIPS_V, LOGO_SIZE, LOGO_SIZE, 64, 32);
+        // bar
+        for (int i = 0; i < pips; i++) {
+            if (i == 0) {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, FILLED_PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32);
+            } else {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, FILLED_PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32);
+            }
         }
     }
 }

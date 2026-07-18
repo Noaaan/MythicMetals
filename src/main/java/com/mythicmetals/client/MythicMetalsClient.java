@@ -95,7 +95,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         }
 
         HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, tickCounter) -> {
-            CarmotShieldHudHandler.render(guiGraphics, tickCounter);
+            CarmotShieldHudHandler.render(guiGraphics);
         });
 
         registerTooltipCallbacks();
