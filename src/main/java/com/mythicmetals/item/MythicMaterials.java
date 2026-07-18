@@ -242,7 +242,6 @@ public class MythicMaterials {
         .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
         .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
         .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
-        // TODO - Midas Gold Swords
         .createDefaultArmor(
             MythicArmorMaterials.MIDAS_GOLD,
             List.of(

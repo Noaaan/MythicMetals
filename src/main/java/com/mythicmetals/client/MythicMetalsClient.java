@@ -1,19 +1,23 @@
 package com.mythicmetals.client;
 
+import com.mythicmetals.api.v2.client.CustomArmorModel;
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.api.v2.client.CustomArmorModel;
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.properties.*;
+import com.mythicmetals.client.properties.HasDrillFuelProperty;
+import com.mythicmetals.client.properties.MidasGoldProperty;
+import com.mythicmetals.client.properties.TrueTimeProperty;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
-import com.mythicmetals.item.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
+import com.mythicmetals.item.component.*;
+import com.mythicmetals.item.tools.CarmotBellItem;
 import com.mythicmetals.item.tools.HammerBase;
-import com.mythicmetals.misc.*;
+import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import com.mythicmetals.mixin.client.EquipmentLayerRendererAccessor;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
@@ -21,7 +25,7 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -171,7 +175,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     }
 
     private ArmorRenderer createCustomArmorRenderer(EntityRendererProvider.Context context) {
-         return (poseStack, submitNodeCollector, stack, bipedEntityRenderState, slot, light, contextModel) -> {
+        return (poseStack, submitNodeCollector, stack, bipedEntityRenderState, slot, light, contextModel) -> {
             var armorItem = (CustomArmorModelItem) stack.getItem();
             var model = armorItem.getArmorModel();
             var customModelData = (CustomArmorModel) model;
@@ -235,75 +239,77 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     public void registerTooltipCallbacks() {
         ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
-            var item = stack.getItem();
-            int index = 1;
+            if (stack.getItem() instanceof CarmotBellItem) {
+                lines.add(1, Component.translatable("tooltip.carmot_bell.info2"));
+                lines.add(1, Component.translatable("tooltip.carmot_bell.info1"));
+                return;
+            }
 
             if (stack.is(MythicTags.BONUS_FORTUNE)) {
-                lines.add(index, Component.translatable("abilities.mythicmetals.bonus_fortune").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
+                lines.add(1, Component.translatable("abilities.mythicmetals.bonus_fortune").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
             }
 
             if (stack.is(MythicTags.BONUS_LOOTING)) {
-                lines.add(index, Component.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
+                lines.add(1, Component.translatable("abilities.mythicmetals.bonus_looting").withColor(UsefulSingletonForColorUtil.MetalColors.CARMOT.rgb()));
             }
 
-            // FIXME - Migrate to tags + rich translations
-//            if (item.equals(MythicMaterials.BANGLUM.extraItems().get(MythicResourceKeys.BANGLUM_CHUNK)) || item.equals(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem())) {
-//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
-//            }
-//            if (item.equals(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
-//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE));
-//            }
-//            if (item.equals(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE))) {
-//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE));
-//            }
-//            if (item.equals(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL))) {
-//                lines.add(index, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").withStyle(ChatFormatting.LIGHT_PURPLE));
-//            }
-//            if (MythrilDrill.drillUpgrades.containsKey(stack.getItem())) {
-//                lines.add(index, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
-//            }
+            if (stack.is(MythicTags.RARE_MATERIALS)) {
+                lines.add(1, Component.translatable("tooltip.mythicmetals.rare_crafting_material_tooltip").setStyle(UsefulSingletonForColorUtil.MetalColors.computeStyleFromStack(stack)));
+            }
+
+            if (stack.is(MythicTags.MYTHRIL_DRILL_UPGRADES)) {
+                lines.add(1, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
+            }
+
+            if (stack.has(MythicDataComponents.UPGRADES)) {
+                var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
+                upgradeComponent.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
 
             if (stack.has(MythicDataComponents.DRILL)) {
                 var component = stack.getOrDefault(MythicDataComponents.DRILL, DrillComponent.DEFAULT);
-                int finalIndex = index;
-                component.addToTooltip(context, text -> lines.add(finalIndex, text), TooltipFlag.NORMAL, stack.getComponents());
+                component.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
             }
 
             if (stack.has(MythicDataComponents.BLAST_MINING)) {
                 var component = stack.getOrDefault(MythicDataComponents.BLAST_MINING, new BlastMiningComponent(0));
-                int finalIndex = index;
-                component.addToTooltip(context, text -> lines.add(finalIndex, text), TooltipFlag.NORMAL, stack.getComponents());
+                component.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
             }
 
             if (stack.has(MythicDataComponents.BRANDING)) {
                 var component = stack.getOrDefault(MythicDataComponents.BRANDING, new BrandingComponent(0));
-                int finalIndex = index;
                 component.addToTooltip(context, text -> {
-                    lines.add(finalIndex, text);
+                    lines.add(1, text);
                 }, TooltipFlag.NORMAL, stack.getComponents());
-            }
-
-            if (lines.size() > 2) {
-                index += stack.getEnchantments().size();
             }
 
             if (stack.has(MythicDataComponents.PROMETHEUM)) {
                 var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
                 if (type.isAdvanced()) {
-                    lines.add(index, Component.translatable("tooltip.prometheum.repaired", component.durabilityRepaired())
+                    lines.add(1, Component.translatable("tooltip.prometheum.repaired", component.durabilityRepaired())
                         .withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb())
                     );
                 }
 
-                lines.add(index, Component.translatable("tooltip.prometheum.regrowth").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                lines.add(1, Component.translatable("tooltip.prometheum.regrowth").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 if (component.isOvergrown()) {
-                    lines.add(index, Component.translatable("tooltip.prometheum.overgrown").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                    lines.add(1, Component.translatable("tooltip.prometheum.overgrown").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 }
                 if (EnchantmentHelper.has(stack, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
-                    lines.add(index, Component.translatable("tooltip.prometheum.engrained").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
+                    lines.add(1, Component.translatable("tooltip.prometheum.engrained").withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb()));
                 }
             }
+
+            if (stack.has(MythicDataComponents.TIDESINGER)) {
+                var component = stack.get(MythicDataComponents.TIDESINGER);
+                component.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
         });
+
+        // TODO - Review if anything should go below enchantments, if so comment out this code
+        //if (lines.size() > 2) {
+        //    index += stack.getEnchantments().size();
+        //}
 
     }
 

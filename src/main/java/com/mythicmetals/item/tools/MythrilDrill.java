@@ -35,7 +35,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
     public static Map<Item, String> drillUpgrades = Util.make(new HashMap<>(), map -> {
         map.put(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL), "aquarium");
         map.put(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE), "carmot");
-//        map.put(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM, "midas_gold");
+        map.put(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem(), "midas_gold");
         map.put(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE), "prometheum");
         map.put(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL), "stormyx");
         map.put(Items.AIR, "empty");
@@ -160,21 +160,6 @@ public class MythrilDrill extends Item implements AutoRepairable {
         }
         super.inventoryTick(stack, serverLevel, entity, equipmentSlot);
     }
-//   FIXME - Figure out new tooltips
-//    @Override
-//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> lines, TooltipFlag type) {
-//        if (stack.has(MythicDataComponents.DRILL)) {
-//            stack.getOrDefault(MythicDataComponents.DRILL, DEFAULT).addToTooltip(context, lines::add, type);
-//        }
-//        if (stack.has(MythicDataComponents.UPGRADES)) {
-//            var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-//            upgrades.addToTooltip(context, lines::add, type);
-//            for (int i = 0; i < upgrades.size(); i++) {
-//                var item = upgrades.items().get(i);
-//                lines.add(Component.translatable("tooltip.mythril_drill.upgrade_slot", i + 1, Component.translatable("tooltip.mythril_drill.upgrade." + drillUpgrades.get(item))));
-//            }
-//        }
-//    }
 
     @Override
     public boolean allowContinuingBlockBreaking(Player player, ItemStack oldStack, ItemStack newStack) {

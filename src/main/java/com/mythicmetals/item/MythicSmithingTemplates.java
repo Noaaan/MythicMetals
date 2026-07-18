@@ -22,7 +22,6 @@ public class MythicSmithingTemplates {
             identifiers.add(Identifier.parse("item/empty_armor_slot_leggings"));
             identifiers.add(Identifier.parse("item/empty_armor_slot_boots"));
         });
-    // TODO - Where in the world do you belong?
     public static final SmithingTemplateComponents AEGIS = new SmithingTemplateComponents(
         Component.translatable("smithing_template.mythicmetals.aegis.applies_to").withStyle(ChatFormatting.BLUE),
         Component.translatable("smithing_template.mythicmetals.aegis.ingredients").withStyle(ChatFormatting.BLUE),

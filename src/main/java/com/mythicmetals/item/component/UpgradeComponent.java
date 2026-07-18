@@ -1,6 +1,7 @@
 package com.mythicmetals.item.component;
 
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.item.tools.MythrilDrill;
 import io.wispforest.endec.Endec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
@@ -67,6 +68,11 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipPro
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         if (this.size > 0 && this.isEmpty()) {
             tooltip.accept(Component.translatable("tooltip.upgrade_component.tooltip").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
+        }
+
+        for (int i = this.size - 1; i != -1; i--) {
+            var item = this.items().get(i);
+            tooltip.accept(Component.translatable("tooltip.mythril_drill.upgrade_slot", i + 1, Component.translatable("tooltip.mythril_drill.upgrade." + MythrilDrill.drillUpgrades.get(item))));
         }
 
         if (this.size > this.items.size()) {

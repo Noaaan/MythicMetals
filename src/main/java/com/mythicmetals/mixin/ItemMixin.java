@@ -31,7 +31,7 @@ public abstract class ItemMixin {
         if (stack.has(MythicDataComponents.PROMETHEUM)) {
             PrometheumComponent.tickAutoRepair(stack, serverLevel);
 
-            // FIXME - I don't like this code. Look into if this can be optimized
+            // TODO - I don't like this code. Look into if this can be optimized
             if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
             var prometheumComponent = stack.get(MythicDataComponents.PROMETHEUM);
             assert prometheumComponent != null;

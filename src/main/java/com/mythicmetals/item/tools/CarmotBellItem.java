@@ -58,11 +58,4 @@ public class CarmotBellItem extends BlockItem {
         }
         return InteractionResult.PASS;
     }
-// FIXME - Tooltips
-//    @Override
-//    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag type) {
-//        super.appendHoverText(stack, context, tooltip, type);
-//        tooltip.add(Component.translatable("tooltip.carmot_bell.info1"));
-//        tooltip.add(Component.translatable("tooltip.carmot_bell.info2"));
-//    }
 }

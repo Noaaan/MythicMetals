@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+// FIXME - Remove this
 public class ToolSet {
 
     private final String name;
@@ -93,7 +94,6 @@ public class ToolSet {
         final List<MythicAttributeModifier> extraModifiers;
 
         public SwordMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
-            // FIXME
             super(settings);
             this.extraModifiers = extraModifiers;
         }
@@ -109,7 +109,6 @@ public class ToolSet {
         final List<MythicAttributeModifier> extraModifiers;
 
         public PickaxeMock(ToolMaterial material, float attackDamage, float attackSpeed, Item.Properties settings, List<MythicAttributeModifier> extraModifiers) {
-            // FIXME
             super(settings);
             this.extraModifiers = extraModifiers;
         }

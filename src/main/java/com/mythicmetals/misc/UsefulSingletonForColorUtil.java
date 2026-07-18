@@ -8,6 +8,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionContents;
 
+import java.util.Locale;
+
 public class UsefulSingletonForColorUtil {
     public static float[] splitRGBToFloats(int rgb) {
         return new float[]{(rgb >> 16) / 255f, ((rgb >> 8) & 0xFF) / 255f, (rgb & 0xFF) / 255f};
@@ -79,6 +81,23 @@ public class UsefulSingletonForColorUtil {
         public static final CoralColor FIRE = new CoralColor("fire", Style.EMPTY.withColor(0xA2222E));
         public static final CoralColor HORN = new CoralColor("horn", Style.EMPTY.withColor(0xEAE94B));
         public static final CoralColor TUBE = new CoralColor("tube", Style.EMPTY.withColor(0x3F5BDF));
+
+        public static Style computeStyleFromStack(ItemStack stack) {
+            var stackName = stack.getItemName().getString().toLowerCase(Locale.ROOT);
+            if (stackName.contains("aquarium")) {
+                return UsefulSingletonForColorUtil.MetalColors.AQUA_STYLE;
+            } else if (stackName.contains("banglum")) {
+                return UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE;
+            } else if (stackName.contains("carmot")) {
+                return UsefulSingletonForColorUtil.MetalColors.CARMOT_STYLE;
+            } else if (stackName.contains("prometheum")) {
+                return Style.EMPTY.withColor(UsefulSingletonForColorUtil.MetalColors.PROMETHEUM.rgb());
+            } else if (stackName.contains("stormyx")) {
+                return Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE);
+            } else if (stackName.contains("midas")) {
+                return GOLD_STYLE;
+            } else return Style.EMPTY;
+        }
     }
 
     public record CoralColor(String name, Style style) {
