@@ -22,7 +22,7 @@ public class PalladiumMinecartRenderer extends MinecartRenderer {
     // [VanillaCopy] texture is hardcoded, so we need to rerender all of it
     @Override
     public void submit(MinecartRenderState minecartRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
-        super.submit(minecartRenderState, poseStack, submitNodeCollector, cameraRenderState);
+        //super.submit(minecartRenderState, poseStack, submitNodeCollector, cameraRenderState);
         poseStack.pushPose();
         long l = minecartRenderState.offsetSeed;
         float f = (((float)(l >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
