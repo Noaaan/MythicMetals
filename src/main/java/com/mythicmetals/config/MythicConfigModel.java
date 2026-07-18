@@ -3,7 +3,6 @@ package com.mythicmetals.config;
 import com.mythicmetals.MythicMetals;
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.config.annotation.*;
-import io.wispforest.owo.ui.core.Positioning;
 
 @SuppressWarnings("unused")
 @Modmenu(modId = MythicMetals.MOD_ID)
@@ -75,23 +74,4 @@ public class MythicConfigModel {
     @Hook
     public ShieldPosition shieldPosition = ShieldPosition.TOP_LEFT;
 
-    public enum ShieldPosition {
-        TOP_LEFT(2, 2),
-        TOP_RIGHT(97, 2),
-        BOTTOM_LEFT(2, 97),
-        BOTTOM_RIGHT(97, 97),
-        DISABLED(0, 0);
-
-        private final int x;
-        private final int y;
-
-        ShieldPosition(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public Positioning asRelativePos() {
-            return Positioning.relative(x, y);
-        }
-    }
 }

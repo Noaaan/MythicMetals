@@ -66,32 +66,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
 
     }
 
-    @Inject(method = "tick", at = @At("TAIL"))
-    private void tickCarmotShield(CallbackInfo ci) {
-        // FIXME - Reimplement
-//        getComponent(MythicMetals.CARMOT_SHIELD).tickShield();
-    }
-
-    @ModifyVariable(
-        method = "actuallyHurt",
-        at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/entity/player/Player;getDamageAfterArmorAbsorb(Lnet/minecraft/world/damagesource/DamageSource;F)F",
-            shift = At.Shift.BY, by = -2),
-        ordinal = 0,
-        argsOnly = true)
-    public float carmotShieldCancel(float amount) {
-        // FIXME - Reimplement
-//        var shield = getComponent(MythicMetals.CARMOT_SHIELD);
-//        if (shield.getMaxHealth() > 0) {
-//            float health = shield.shieldHealth;
-//            shield.damageShield(amount);
-//            return amount > health ? amount - health : 0;
-//
-//        }
-
-        return amount;
-    }
-
     @Inject(method = "attack", at = @At("HEAD"))
     private void setMythicmetals$resetCritical(Entity target, CallbackInfo ci) {
         mythicmetals$setCritical(false);

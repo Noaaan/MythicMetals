@@ -19,6 +19,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -78,7 +79,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-        CarmotShieldHudHandler.init();
+//        CarmotShieldHudHandler.init();
 
         // FIXME - Translucent blocks
         BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
@@ -92,6 +93,10 @@ public class MythicMetalsClient implements ClientModInitializer {
                 IsometricArmorStandExporter.register(dispatcher);
             });
         }
+
+        HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, tickCounter) -> {
+            CarmotShieldHudHandler.render(guiGraphics, tickCounter);
+        });
 
         registerTooltipCallbacks();
     }

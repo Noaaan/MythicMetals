@@ -1,6 +1,7 @@
 package com.mythicmetals.block;
 
 import com.mojang.serialization.MapCodec;
+import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;

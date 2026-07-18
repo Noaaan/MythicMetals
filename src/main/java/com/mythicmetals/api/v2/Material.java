@@ -55,7 +55,17 @@ public record Material(
     public static final Identifier NETHERITE_MINING_LEVEL = RegistryHelper.id("needs_netherite_tool");
     public static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
 
-    // TODO - Utility functions for mod compat, E.G. being able to call on a Material, and get all the settings to create a custom item/armor set
+    public void getMaterialProperties(BiConsumer<@Nullable ArmorMaterial, @Nullable ToolMaterial> executor) {
+        ArmorMaterial armorMat = null;
+        ToolMaterial toolMat = null;
+        if (this.toolSet != null) {
+            toolMat = this.toolSet.getToolMaterial();
+        }
+        if (this.armorSet != null) {
+            armorMat = this.armorSet.getArmorMaterial();
+        }
+        executor.accept(armorMat, toolMat);
+    }
 
     ///
     /// Builder for the [Material] class
@@ -300,6 +310,18 @@ public record Material(
                 throw new IllegalStateException("Base material must be registered!");
             }
             return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
+        }
+    }
+
+    private static class MaterialProperties {
+        @Nullable
+        private final ToolMaterial toolMaterial;
+        @Nullable
+        private final ArmorMaterial armorMaterial;
+
+        MaterialProperties(ToolMaterial toolMaterial, ArmorMaterial armorMaterial) {
+            this.toolMaterial = toolMaterial;
+            this.armorMaterial = armorMaterial;
         }
     }
 }
