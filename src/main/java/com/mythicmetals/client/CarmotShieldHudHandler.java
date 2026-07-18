@@ -32,18 +32,17 @@ public class CarmotShieldHudHandler {
     public static void render(GuiGraphics guiGraphics) {
         var player = Minecraft.getInstance().player;
         if (player == null) return;
-        if (MythicMetals.CONFIG.shieldPosition() == ShieldPosition.DISABLED) return;
+        if (!MythicMetals.CONFIG.shieldPosition.enabled()) return;
         var maxShield = CarmotShield.getMaxHealth(player);
         if (maxShield > 0.0) {
             var carmotShield = player.getAttached(MythicDataAttachments.CARMOT_SHIELD_ATTACHMENT);
             if (carmotShield == null) return;
-            var shieldPosition = MythicMetals.CONFIG.shieldPosition();
 
             var pips = Mth.floor(maxShield / 2);
             var filledPips = Mth.ceil(carmotShield.shieldHealth() / 2);
 
-            int xStart = shieldPosition.calculateWidth(guiGraphics.guiWidth());
-            int yStart = shieldPosition.calculateHeight(guiGraphics.guiHeight());
+            int xStart = ShieldPosition.calculateWidth(guiGraphics.guiWidth(), MythicMetals.CONFIG.shieldPosition.x());
+            int yStart = ShieldPosition.calculateHeight(guiGraphics.guiWidth(), MythicMetals.CONFIG.shieldPosition.y());
             renderOutline(guiGraphics, pips, xStart, yStart);
             renderShieldHealth(guiGraphics, filledPips, xStart, yStart);
         }

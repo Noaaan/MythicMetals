@@ -1,19 +1,9 @@
 package com.mythicmetals.config;
 
-public enum ShieldPosition {
-    TOP_LEFT(2, 2),
-    TOP_RIGHT(84, 2),
-    BOTTOM_LEFT(2, 80),
-    BOTTOM_RIGHT(84, 80),
-    DISABLED(0, 0);
-
-    private final int x;
-    private final int y;
-
-    ShieldPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+public class ShieldPosition {
+    public boolean enabled = true;
+    public int x = 2;
+    public int y = 2;
 
     public int x() {
         return x;
@@ -23,11 +13,15 @@ public enum ShieldPosition {
         return y;
     }
 
-    public int calculateWidth(float windowWidth) {
+    public static int calculateWidth(float windowWidth, int x) {
         return (int) (windowWidth / 100 * x);
     }
 
-    public int calculateHeight(float windowHeight) {
+    public static int calculateHeight(float windowHeight, int y) {
         return (int) (windowHeight / 100 * y);
+    }
+
+    public boolean isDisabled() {
+        return !enabled;
     }
 }

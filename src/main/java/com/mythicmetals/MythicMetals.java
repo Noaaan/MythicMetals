@@ -4,20 +4,21 @@ import com.mythicmetals.ability.Abilities;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
-import com.mythicmetals.data.MythicCriteriaTriggers;
-import com.mythicmetals.item.component.MythicDataComponents;
-import com.mythicmetals.data.conditions.MythicResourceConditions;
 import com.mythicmetals.config.MythicMetalsConfig;
+import com.mythicmetals.data.MythicCriteriaTriggers;
+import com.mythicmetals.data.conditions.MythicResourceConditions;
 import com.mythicmetals.data.loot.MythicLootConditions;
+import com.mythicmetals.data.recipe.MythicRecipeSerializers;
 import com.mythicmetals.data.worldgen.MythicOreFeatures;
 import com.mythicmetals.effects.MythicStatusEffects;
-import com.mythicmetals.entity.*;
+import com.mythicmetals.entity.MythicEntities;
+import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicPotions;
+import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.*;
-import com.mythicmetals.data.recipe.MythicRecipeSerializers;
 import io.wispforest.owo.itemgroup.Icon;
 import io.wispforest.owo.itemgroup.OwoItemGroup;
 import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
@@ -39,7 +40,7 @@ import org.apache.logging.log4j.Logger;
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "mythicmetals";
-    public static final int CONFIG_VERSION = 14;
+    public static final int CONFIG_VERSION = 15;
 
     public static MythicMetalsConfig CONFIG = MythicMetalsConfig.createAndLoad();
 

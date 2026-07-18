@@ -6,6 +6,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.duck.WasSpawnedFromCreeper;
 import com.mythicmetals.data.MythicCriteriaTriggers;
@@ -33,9 +34,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.mythicmetals.data.attachments.MythicDataAttachments.COMBUSTION_COOLDOWN_ATTACHMENT;
-import static com.mythicmetals.entity.MythicEntityAttributes.FIRE_VULNERABILITY;
-import static com.mythicmetals.entity.MythicEntityAttributes.UNDEAD_BONUS_DAMAGE;
+import static com.mythicmetals.data.attachments.MythicDataAttachments.*;
+import static com.mythicmetals.entity.MythicEntityAttributes.*;
 
 @SuppressWarnings("UnstableApiUsage")
 @Mixin(LivingEntity.class)
@@ -120,8 +120,26 @@ public abstract class LivingEntityMixin extends Entity {
             mythicmetals$tickCombustion();
         }
         mythicmetals$palladiumParticles();
-        mythicmetals$addArmorEffects();
         mythicmetals$tickFireResWhileRiding();
+        tickCarmotShield();
+    }
+
+    @Unique
+    private void tickCarmotShield() {
+        var maxShield = CarmotShield.getMaxHealth((LivingEntity) ((Object) this));
+        if (maxShield > 0) {
+            var carmotShield = this.getAttachedOrCreate(CARMOT_SHIELD_ATTACHMENT, () -> CarmotShield.NONE);
+            int cooldown = this.getAttachedOrCreate(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, () -> 0);
+            if (cooldown > 0) {
+                this.setAttached(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, cooldown - 1);
+            } else {
+                mythicmetals$carmotParticle();
+                this.setAttached(CARMOT_SHIELD_ATTACHMENT, carmotShield.tick(maxShield));
+            }
+        } else {
+            this.removeAttached(CARMOT_SHIELD_ATTACHMENT);
+            this.setAttached(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, 0);
+        }
     }
 
     @Unique
@@ -179,26 +197,9 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Unique
-    private void mythicmetals$addArmorEffects() {
-        for (var slot : EquipmentSlot.VALUES) {
-            var armorStack = this.getItemBySlot(slot);
-            if (armorStack.isEmpty()) continue; // Don't get the item for an empty stack
-
-            if (armorStack.is(MythicTags.CARMOT_ARMOR)) {
-                mythicmetals$carmotParticle();
-            }
-        }
-    }
-
-    @Unique
     private void mythicmetals$carmotParticle() {
         if (!this.level().isClientSide()) return;
         Vec3 velocity = this.getDeltaMovement();
-
-        // FIXME
-//        if (this.isAlwaysTicking() && this.getComponent(MythicMetals.CARMOT_SHIELD).shieldHealth == 0) {
-//            return; // If you are a player, and your shield ran out, do not display particles
-//        }
 
         // Particle trail if the entity is moving
         if (velocity.length() >= 0.1 && r.nextInt(10) < 1) {
