@@ -1,7 +1,7 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
-import com.mythicmetals.ability.Abilities;
+import com.mythicmetals.data.MythicTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,10 +25,9 @@ public class EnchantmentHelperMixin {
             if (gearStack.isEmpty()) {
                 continue;
             }
-            var gearItem = gearStack.getItem();
 
-            if (Abilities.FIRE_PROTECTION.getItems().contains(gearItem) && source.is(DamageTypeTags.IS_FIRE)) {
-                change += Abilities.FIRE_PROTECTION.getLevel() * 2;
+            if (source.is(DamageTypeTags.IS_FIRE) && gearStack.is(MythicTags.FIRE_RESISTANT_ARMOR)) {
+                change += 2;
             }
         }
 

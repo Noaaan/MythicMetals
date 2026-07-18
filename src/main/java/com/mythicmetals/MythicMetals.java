@@ -1,6 +1,5 @@
 package com.mythicmetals;
 
-import com.mythicmetals.ability.Abilities;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
@@ -74,7 +73,6 @@ public class MythicMetals implements ModInitializer {
         Frogery.init();
         MythicCommands.init();
         MythicCommands.registerCommands();
-        Abilities.init();
         MythicPOIs.init();
         MythicEntityAttributes.init();
         MythicEntities.init();

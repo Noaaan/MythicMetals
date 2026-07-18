@@ -261,6 +261,10 @@ public class MythicMetalsClient implements ClientModInitializer {
                 lines.add(1, Component.translatable("tooltip.mythril_drill.upgrade").withColor(UsefulSingletonForColorUtil.MetalColors.MYTHRIL.rgb()));
             }
 
+            if (stack.is(MythicTags.FIRE_RESISTANT_ARMOR)) {
+                lines.add(1, Component.translatable("tooltip.mythicmetals.fire_resistant_armor").withStyle(UsefulSingletonForColorUtil.MetalColors.PALLADIUM_STYLE));
+            }
+
             if (stack.has(MythicDataComponents.UPGRADES)) {
                 var upgradeComponent = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
                 upgradeComponent.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
