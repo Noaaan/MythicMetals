@@ -69,6 +69,11 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     }
 
     @Override
+    protected double getDefaultGravity() {
+        return 0.04 * 2;
+    }
+
+    @Override
     protected void explode() {
         int radius = MythicMetals.CONFIG.banglumNukeCoreRadius();
         int baseDamage = 1;

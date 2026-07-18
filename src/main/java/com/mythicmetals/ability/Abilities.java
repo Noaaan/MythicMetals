@@ -8,16 +8,10 @@ package com.mythicmetals.ability;
  */
 public class Abilities {
     public static final Ability BETTER_WATER_PROTECTION = new Ability("water_protection", 4);
-    public static final Ability BLAST_PADDING = new Ability("blast_padding", 1, false);
-    public static final Ability BLAST_PROTECTION = new Ability("blast_protection", 6);
     public static final Ability FIRE_PROTECTION = new Ability("fire_protection", 1, false);
-    public static final Ability PROJECTILE_PROTECTION = new Ability("projectile_protection", 5);
     public static final Ability WATER_PROTECTION = new Ability("water_protection", 2);
 
     public static void init() {
-//        BLAST_PADDING.addArmorSet(MythicArmor.BANGLUM, MetalColors.GOLD_STYLE);
-//        BLAST_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getChestplate(), MetalColors.GOLD_STYLE);
-//        PROJECTILE_PROTECTION.addItem(MythicArmor.LEGENDARY_BANGLUM.getLeggings(), MetalColors.GOLD_STYLE);
 //        FIRE_PROTECTION.addArmorSet(MythicArmor.PALLADIUM, MetalColors.PALLADIUM_STYLE);
 //        // Material Tooltips
 //        // Mod compat specific abilities

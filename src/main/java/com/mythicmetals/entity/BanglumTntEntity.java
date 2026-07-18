@@ -41,11 +41,10 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
 
     @Override
     public void tick() {
-        if (!this.isNoGravity()) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.04, 0.0));
-        }
-
+        this.handlePortal();
+        this.applyGravity();
         this.move(MoverType.SELF, this.getDeltaMovement());
+        this.applyEffectsFromBlocks();
         this.setDeltaMovement(this.getDeltaMovement().scale(0.98));
         if (this.onGround()) {
             this.setDeltaMovement(this.getDeltaMovement().multiply(0.7, -0.5, 0.7));
@@ -60,11 +59,11 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
             }
         } else {
             this.updateInWaterStateAndDoFluidPushing();
+            // TODO - Better particles
             if (this.level().isClientSide()) {
                 this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
-
     }
 
     @Override
@@ -74,6 +73,11 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
 
     public double getSmokeParticleHeight() {
         return 0.5;
+    }
+
+    @Override
+    protected double getDefaultGravity() {
+        return 0.04;
     }
 
     protected void readAdditionalSaveData(ValueInput valueInput) {

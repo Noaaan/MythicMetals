@@ -1,10 +1,10 @@
 package com.mythicmetals.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
-import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.MythicParticleSystem;
@@ -86,10 +86,27 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "createLivingAttributes", require = 1, allow = 1, at = @At("RETURN"))
     private static void mythicmetals$addAttributes(final CallbackInfoReturnable<AttributeSupplier.Builder> info) {
-        info.getReturnValue().add(MythicEntityAttributes.CARMOT_SHIELD);
-        info.getReturnValue().add(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
+        info.getReturnValue().add(EXPLOSION_RESISTANCE);
+        info.getReturnValue().add(CARMOT_SHIELD);
+        info.getReturnValue().add(ELYTRA_ROCKET_SPEED);
         info.getReturnValue().add(FIRE_VULNERABILITY);
         info.getReturnValue().add(UNDEAD_BONUS_DAMAGE);
+    }
+
+    @ModifyReturnValue(method = "getDamageAfterArmorAbsorb", at = @At("RETURN"))
+    private float mythicmetals$reduceDamage(float original, DamageSource damageSource, float f) {
+        boolean changes = false;
+        float newDamage = original;
+        if (damageSource.is(DamageTypeTags.IS_EXPLOSION) && this.getAttributes().hasAttribute(EXPLOSION_RESISTANCE)) {
+            changes = true;
+            newDamage = (float) (original * this.getAttributeValue(EXPLOSION_RESISTANCE));
+        }
+        if (damageSource.is(DamageTypeTags.IS_PROJECTILE) && this.getAttributes().hasAttribute(PROJECTILE_RESISTANCE)) {
+            changes = true;
+            newDamage = (float) (original * this.getAttributeValue(PROJECTILE_RESISTANCE));
+        }
+        if (changes) return newDamage;
+        return original;
     }
 
     @ModifyExpressionValue(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hasEffect(Lnet/minecraft/core/Holder;)Z"))

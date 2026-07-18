@@ -104,7 +104,11 @@ public class MythicMaterials {
             )
         )
         .createDefaultTools(MythicToolMaterials.BANGLUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.BANGLUM)
-        .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of())
+        .createDefaultArmor(MythicArmorMaterials.BANGLUM, List.of(
+            new MythicAttributeModifier(
+                EXPLOSION_KNOCKBACK_RESISTANCE, 0.05, ADD_VALUE, ARMOR
+            )
+        ))
         .finish();
 
     public static final Material BRONZE = Material.Builder.create("bronze", MaterialType.ALLOY)
@@ -215,7 +219,15 @@ public class MythicMaterials {
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.LEGENDARY_BANGLUM,
             List.of(
-                new MythicAttributeModifier(SAFE_FALL_DISTANCE, 15, ADD_VALUE, FEET)
+                new MythicAttributeModifier(MythicEntityAttributes.EXPLOSION_RESISTANCE, -0.5, ADD_MULTIPLIED_BASE, CHEST),
+                new MythicAttributeModifier(MythicEntityAttributes.PROJECTILE_RESISTANCE, -0.5, ADD_MULTIPLIED_BASE, LEGS),
+                new MythicAttributeModifier(EXPLOSION_KNOCKBACK_RESISTANCE, 0.2, ADD_VALUE, HEAD),
+                new MythicAttributeModifier(EXPLOSION_KNOCKBACK_RESISTANCE, 0.2, ADD_VALUE, CHEST),
+                new MythicAttributeModifier(EXPLOSION_KNOCKBACK_RESISTANCE, 0.2, ADD_VALUE, LEGS),
+                new MythicAttributeModifier(EXPLOSION_KNOCKBACK_RESISTANCE, 0.2, ADD_VALUE, FEET),
+                new MythicAttributeModifier(EXPLOSION_KNOCKBACK_RESISTANCE, 0.69, ADD_VALUE, BODY),
+                new MythicAttributeModifier(SAFE_FALL_DISTANCE, 15, ADD_VALUE, FEET),
+                new MythicAttributeModifier(SAFE_FALL_DISTANCE, 10, ADD_VALUE, BODY)
             ),
             MythicModelHandler.LEGENDARY_BANGLUM_ARMOR,
             RegistryHelper.id("textures/models/banglum_model.png"),

@@ -863,6 +863,8 @@
   "abilities.mythicmetals.projectile_protection": "Natural Projectile Protection",
   "abilities.mythicmetals.respiration": "Natural Respiration",
   "abilities.mythicmetals.riptide": "Riptide",
+  "attribute.name.mythicmetals.projectile_resistance": "Projectile Damage",
+  "attribute.name.mythicmetals.explosion_resistance": "Explosion Damage",
   "attribute.name.mythicmetals.undead_bonus_damage": "Damage Against Undead",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",
