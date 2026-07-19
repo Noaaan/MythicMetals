@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:unobtainium_ore",
+    "mythicmetals:deepslate_unobtainium_ore"
+  ],
+  "result": {
+    "id": "mythicmetals:unobtainium"
+  }
+}

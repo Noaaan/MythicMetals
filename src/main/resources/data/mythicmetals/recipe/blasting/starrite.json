@@ -2,9 +2,12 @@
   "type": "minecraft:blasting",
   "category": "misc",
   "cookingtime": 100,
-  "experience": 0.7,
-  "group": "mythicmetals_starrite",
-  "ingredient": "#mythicmetals:ores/starrite",
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:starrite_ore",
+    "mythicmetals:end_stone_starrite_ore",
+    "mythicmetals:calcite_starrite_ore"
+  ],
   "result": {
     "id": "mythicmetals:starrite"
   }

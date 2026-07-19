@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:starrite_ore",
+    "mythicmetals:end_stone_starrite_ore",
+    "mythicmetals:calcite_starrite_ore"
+  ],
+  "result": {
+    "id": "mythicmetals:starrite"
+  }
+}

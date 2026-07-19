@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:carmot_ore",
+    "mythicmetals:deepslate_carmot_ore",
+    "mythicmetals:raw_carmot"
+  ],
+  "result": {
+    "id": "mythicmetals:carmot_ingot"
+  }
+}

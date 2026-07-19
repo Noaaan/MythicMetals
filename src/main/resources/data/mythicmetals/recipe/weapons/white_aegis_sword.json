@@ -3,34 +3,6 @@
   "addition": "mythicmetals:hallowed_block",
   "base": "mythicmetals:hallowed_sword",
   "result": {
-    "components": {
-      "minecraft:attribute_modifiers": {
-        "modifiers": [
-          {
-            "type": "minecraft:attack_damage",
-            "amount": 9.0,
-            "id": "minecraft:base_attack_damage",
-            "operation": "add_value",
-            "slot": "mainhand"
-          },
-          {
-            "type": "minecraft:attack_speed",
-            "amount": -2.5999999046325684,
-            "id": "minecraft:base_attack_speed",
-            "operation": "add_value",
-            "slot": "mainhand"
-          },
-          {
-            "type": "mythicmetals:undead_bonus_damage",
-            "amount": 8.0,
-            "id": "mythicmetals:sword_undead_bonus_damage",
-            "operation": "add_value",
-            "slot": "mainhand"
-          }
-        ]
-      }
-    },
-    "count": 1,
     "id": "mythicmetals:white_aegis_sword"
   },
   "template": "mythicmetals:aegis_smithing_template"

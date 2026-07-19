@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:mythril_ore",
+    "mythicmetals:deepslate_mythril_ore",
+    "mythicmetals:raw_mythril"
+  ],
+  "result": {
+    "id": "mythicmetals:mythril_ingot"
+  }
+}

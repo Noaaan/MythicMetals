@@ -3,7 +3,6 @@
   "addition": "mythicmetals:carmot_ingot",
   "base": "mythicmetals:kyber_chestplate",
   "result": {
-    "count": 1,
     "id": "mythicmetals:carmot_chestplate"
   },
   "template": "mythicmetals:carmot_smithing_template"

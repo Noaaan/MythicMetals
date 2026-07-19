@@ -3,7 +3,6 @@
   "addition": "mythicmetals:palladium_block",
   "base": "mythicmetals:adamantite_sword",
   "result": {
-    "count": 1,
     "id": "mythicmetals:red_aegis_sword"
   },
   "template": "mythicmetals:aegis_smithing_template"

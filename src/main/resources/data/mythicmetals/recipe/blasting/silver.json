@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:silver_ore",
+    "mythicmetals:raw_silver"
+  ],
+  "result": {
+    "id": "mythicmetals:silver_ingot"
+  }
+}

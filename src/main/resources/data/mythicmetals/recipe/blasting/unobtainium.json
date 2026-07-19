@@ -2,9 +2,11 @@
   "type": "minecraft:blasting",
   "category": "misc",
   "cookingtime": 100,
-  "experience": 0.7,
-  "group": "mythicmetals_unobtainium",
-  "ingredient": "#mythicmetals:ores/unobtainium",
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:unobtainium_ore",
+    "mythicmetals:deepslate_unobtainium_ore"
+  ],
   "result": {
     "id": "mythicmetals:unobtainium"
   }

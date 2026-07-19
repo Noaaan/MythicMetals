@@ -109,7 +109,7 @@ public record Material(
                     props = baseProperties(baseMaterialKey, computeRarity(type));
                     createNugget(computeRarity(type));
                 }
-                case INGOT -> {
+                case INGOT, INGOT_BLASTING -> {
                     baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
                     props = baseProperties(baseMaterialKey, computeRarity(type));
                     createNugget(computeRarity(type));

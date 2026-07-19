@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:aquarium_ore",
+    "mythicmetals:raw_aquarium"
+  ],
+  "result": {
+    "id": "mythicmetals:aquarium_ingot"
+  }
+}

@@ -37,7 +37,7 @@ import static net.minecraft.world.entity.ai.attributes.Attributes.*;
 
 public class MythicMaterials {
 
-    public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT)
+    public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(5.0f)
             .createOreVariant("deepslate", 6.0f, 7.0f)
@@ -276,7 +276,7 @@ public class MythicMaterials {
             .finish())
         .finish();
 
-    public static final Material MYTHRIL = Material.Builder.create("mythril", MaterialType.INGOT)
+    public static final Material MYTHRIL = Material.Builder.create("mythril", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(5.0f)
             .createOreVariant("deepslate", 5.5f, 6.5f)
@@ -288,7 +288,7 @@ public class MythicMaterials {
         .createDefaultArmor(MythicArmorMaterials.MYTHRIL)
         .finish();
 
-    public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT)
+    public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, builder -> builder
             .createDefaultBlocks(5.5f)
             .createOreVariant("tuff", 4.5f, 5.0f)
@@ -384,7 +384,7 @@ public class MythicMaterials {
         })
         .finish();
 
-    public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT)
+    public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(8.0f)
             .createOreVariant("deepslate", 8.8f, 9f)

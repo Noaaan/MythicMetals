@@ -3,7 +3,6 @@
   "addition": "mythicmetals:carmot_ingot",
   "base": "mythicmetals:kyber_helmet",
   "result": {
-    "count": 1,
     "id": "mythicmetals:carmot_helmet"
   },
   "template": "mythicmetals:carmot_smithing_template"

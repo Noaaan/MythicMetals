@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:palladium_ore",
+    "mythicmetals:raw_palladium"
+  ],
+  "result": {
+    "id": "mythicmetals:palladium_ingot"
+  }
+}

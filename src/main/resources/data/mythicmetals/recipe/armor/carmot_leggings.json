@@ -3,7 +3,6 @@
   "addition": "mythicmetals:carmot_ingot",
   "base": "mythicmetals:kyber_leggings",
   "result": {
-    "count": 1,
     "id": "mythicmetals:carmot_leggings"
   },
   "template": "mythicmetals:carmot_smithing_template"

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:banglum_ore",
+    "mythicmetals:nether_banglum_ore",
+    "mythicmetals:raw_banglum"
+  ],
+  "result": {
+    "id": "mythicmetals:banglum_ingot"
+  }
+}

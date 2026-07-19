@@ -3,34 +3,6 @@
   "addition": "mythicmetals:banglum_chunk",
   "base": "mythicmetals:banglum_sword",
   "result": {
-    "components": {
-      "minecraft:attribute_modifiers": {
-        "modifiers": [
-          {
-            "type": "minecraft:attack_damage",
-            "amount": 7.0,
-            "id": "minecraft:base_attack_damage",
-            "operation": "add_value",
-            "slot": "mainhand"
-          },
-          {
-            "type": "minecraft:attack_speed",
-            "amount": -2.5,
-            "id": "minecraft:base_attack_speed",
-            "operation": "add_value",
-            "slot": "mainhand"
-          },
-          {
-            "type": "minecraft:attack_knockback",
-            "amount": 6.0,
-            "id": "mythicmetals:sword_attack_knockback",
-            "operation": "add_value",
-            "slot": "mainhand"
-          }
-        ]
-      }
-    },
-    "count": 1,
     "id": "mythicmetals:legendary_banglum_sword"
   },
   "template": "mythicmetals:legendary_banglum_smithing_template"

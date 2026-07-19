@@ -1,9 +1,8 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "mythicmetals:osmium_ingot",
-  "base": "minecraft:diamond_chestplate",
+  "base": "mythicmetals:osmium_chestplate",
   "result": {
-    "count": 1,
     "id": "mythicmetals:osmium_chainmail_chestplate"
   },
   "template": "mythicmetals:osmium_chainmail_smithing_template"

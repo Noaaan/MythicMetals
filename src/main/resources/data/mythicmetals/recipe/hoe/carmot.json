@@ -3,7 +3,6 @@
   "addition": "mythicmetals:carmot_ingot",
   "base": "mythicmetals:kyber_hoe",
   "result": {
-    "count": 1,
     "id": "mythicmetals:carmot_hoe"
   },
   "template": "mythicmetals:carmot_smithing_template"

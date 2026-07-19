@@ -86,6 +86,7 @@ public record BlockSet(
         }
 
         public BlockSet finish() {
+            if (storage == null) throw new IllegalStateException("Storage Block must not be null for a block set!");
             return new BlockSet(
                 this.name,
                 this.storageKey,
@@ -184,7 +185,7 @@ public record BlockSet(
 
         public Builder createCustomStorageBlock(Function<BlockBehaviour.Properties, Block> settings) {
             var props = BlockBehaviour.Properties.of().setId(storageKey);
-            this.storage = RegistryHelper.blockOnly(storageKey, settings.apply(props));
+            this.storage = RegistryHelper.block(storageKey, storageItemKey, settings.apply(props));
             return this;
         }
 

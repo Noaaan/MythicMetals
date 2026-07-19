@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    "mythicmetals:kyber_ore",
+    "mythicmetals:calcite_kyber_ore",
+    "mythicmetals:raw_kyber"
+  ],
+  "result": {
+    "id": "mythicmetals:kyber_ingot"
+  }
+}

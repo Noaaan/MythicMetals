@@ -3,7 +3,6 @@
   "addition": "mythicmetals:celestium_ingot",
   "base": "minecraft:diamond_pickaxe",
   "result": {
-    "count": 1,
     "id": "mythicmetals:celestium_pickaxe"
   },
   "template": "mythicmetals:unobtainium_smithing_template"

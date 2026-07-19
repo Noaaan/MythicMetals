@@ -3,7 +3,6 @@
   "addition": "mythicmetals:banglum_chunk",
   "base": "mythicmetals:banglum_chestplate",
   "result": {
-    "count": 1,
     "id": "mythicmetals:legendary_banglum_chestplate"
   },
   "template": "mythicmetals:legendary_banglum_smithing_template"

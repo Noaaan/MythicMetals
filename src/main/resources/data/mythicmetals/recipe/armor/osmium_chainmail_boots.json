@@ -1,9 +1,8 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "mythicmetals:osmium_ingot",
-  "base": "minecraft:diamond_boots",
+  "base": "mythicmetals:osmium_boots",
   "result": {
-    "count": 1,
     "id": "mythicmetals:osmium_chainmail_boots"
   },
   "template": "mythicmetals:osmium_chainmail_smithing_template"
