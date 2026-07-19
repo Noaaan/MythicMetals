@@ -78,7 +78,7 @@ public class MythicMaterials {
             .createStorageBlock(5.0f, 5.5f)
             .createCustomOre(5.0f, BanglumOreBlock::new)
             .createCustomOreVariant("nether", 5.0f, 5.5f, BanglumOreBlock::new)
-            .createAnvil(5.5f, 15000f)
+            .createAnvil(5.5f)
             .finish()
         )
         .addExtraBlock(BANGLUM_TNT, properties -> new BanglumTntBlock(properties.instabreak().ignitedByLava()))
@@ -197,7 +197,7 @@ public class MythicMaterials {
                 .createOre(3.0f, UniformInt.of(0, 0))
                 .createOreStorageBlock(3.0f, 4.0f)
                 .createCustomStorageBlock(properties -> new Block(properties.noOcclusion()))
-                .createAnvil(4.0f, 15000f)
+                .createAnvil(4.0f)
                 .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
                 .finish()
         )
@@ -298,12 +298,6 @@ public class MythicMaterials {
         .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
         .createDefaultTools(MythicToolMaterials.OSMIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.OSMIUM)
         .createDefaultArmor(MythicArmorMaterials.OSMIUM)
-        .finish();
-
-    // FIXME - This kind of material creates an anti-pattern of this API
-    // This should just stay an armor set, and should be registered somewhere else
-    public static final Material OSMIUM_CHAINMAIL = Material.Builder.createRawBuilder("osmium_chainmail", MaterialType.ARMOR)
-        .createCustomArmorSet(new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL), armorSet -> armorSet.initialize(false, List.of()))
         .finish();
 
     public static final Material PALLADIUM = Material.Builder.create("palladium", MaterialType.INGOT, true)

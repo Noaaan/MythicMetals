@@ -3,6 +3,7 @@ package com.mythicmetals.data;
 import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.BlockSet;
 import com.mythicmetals.item.*;
+import com.mythicmetals.item.armor.MythicArmorSets;
 import com.mythicmetals.item.tools.ToolSet;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
@@ -758,7 +759,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
             Ingredient.of(MythicMaterials.OSMIUM.baseMaterial()),
-            MythicMaterials.OSMIUM_CHAINMAIL.armorSet()
+            MythicArmorSets.OSMIUM_CHAINMAIL
         );
         createTidesingerArmorRecipes();
     }

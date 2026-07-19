@@ -2,10 +2,10 @@ package com.mythicmetals.api.v2;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.item.armor.CustomHelmetArmorSet;
+import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.item.MythicSpearStats;
+import com.mythicmetals.item.armor.CustomHelmetArmorSet;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
@@ -16,7 +16,6 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jspecify.annotations.Nullable;
-
 import java.util.List;
 import java.util.function.*;
 
@@ -110,7 +109,7 @@ public record Material(
         }
 
         public Builder createBaseMaterial(ResourceKey<Item> key, Rarity rarity, Function<Item.Properties, Item> function) {
-            this.baseMaterial = RegistryHelper.item(key, function.apply(baseProperties(key, 0, rarity)));
+            this.baseMaterial = RegistryHelper.item(key, function.apply(baseProperties(key, rarity)));
             return this;
         }
 
@@ -120,18 +119,18 @@ public record Material(
             switch (type) {
                 case RARE_ALLOY, ALLOY -> {
                     baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
-                    props = baseProperties(baseMaterialKey, 0, computeRarity(type));
+                    props = baseProperties(baseMaterialKey, computeRarity(type));
                     createNugget(computeRarity(type));
                 }
                 case INGOT -> {
                     baseMaterialKey = RegistryHelper.itemKey(name + INGOT_POSTFIX);
-                    props = baseProperties(baseMaterialKey, 0, computeRarity(type));
+                    props = baseProperties(baseMaterialKey, computeRarity(type));
                     createNugget(computeRarity(type));
                     createRawOre(computeRarity(type));
                 }
                 default -> {
                     baseMaterialKey = RegistryHelper.itemKey(name);
-                    props = baseProperties(RegistryHelper.itemKey(name), 0, computeRarity(type));
+                    props = baseProperties(RegistryHelper.itemKey(name), computeRarity(type));
                 }
             }
             this.baseMaterial = RegistryHelper.item(baseMaterialKey, new Item(props));
@@ -141,19 +140,19 @@ public record Material(
         private Rarity computeRarity(MaterialType type) {
             return switch (type) {
                 case RARE_ALLOY -> Rarity.RARE;
-                case ALLOY, ARMOR, SPECIAL -> Rarity.UNCOMMON;
+                case ALLOY, SPECIAL -> Rarity.UNCOMMON;
                 case INGOT, BASIC -> Rarity.COMMON;
             };
         }
 
         protected void createNugget(Rarity rarity) {
             var key = RegistryHelper.itemKey(name + "_nugget");
-            this.nugget = RegistryHelper.item(key, new Item(baseProperties(key, 0, rarity)));
+            this.nugget = RegistryHelper.item(key, new Item(baseProperties(key, rarity)));
         }
 
         private void createRawOre(Rarity rarity) {
             var key = RegistryHelper.itemKey("raw_" + name);
-            this.rawOre = RegistryHelper.item(key, new Item(baseProperties(key, 0, rarity)));
+            this.rawOre = RegistryHelper.item(key, new Item(baseProperties(key, rarity)));
         }
 
         public Builder createDefaultBlockSet(Identifier miningLevel, float strength) {
@@ -213,7 +212,7 @@ public record Material(
         }
 
         public Builder addExtraItem(ResourceKey<Item> itemKey, Rarity rarity, Function<Item.Properties, Item> function) {
-            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, function.apply(baseProperties(itemKey, 0, rarity))));
+            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, function.apply(baseProperties(itemKey, rarity))));
             return this;
         }
 
@@ -235,22 +234,22 @@ public record Material(
         }
 
         public Builder addExtraBlock(ResourceKey<Block> key, Block block, Rarity rarity) {
-            extraBlocks.putIfAbsent(key, RegistryHelper.block(key, block));
+            extraBlocks.putIfAbsent(key, RegistryHelper.blockOnly(key, block));
             var itemKey = RegistryHelper.itemKey(key.identifier().getPath());
-            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, new BlockItem(block, baseProperties(itemKey, 0, rarity))));
+            extraItems.putIfAbsent(itemKey, RegistryHelper.item(itemKey, new BlockItem(block, baseProperties(itemKey, rarity))));
             return this;
         }
 
         public Builder addExtraBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BiFunction<Block, Item.Properties, Item> itemFunction) {
             var itemKey = RegistryHelper.itemKey(name);
             var blockKey = RegistryHelper.blockKey(name);
-            var block = RegistryHelper.block(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
+            var block = RegistryHelper.blockOnly(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
             extraBlocks.putIfAbsent(blockKey, block);
-            addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, 0, computeRarity(type))));
+            addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, computeRarity(type))));
             return this;
         }
 
-        protected Item.Properties baseProperties(ResourceKey<Item> idKey, int tab, Rarity rarity) {
+        protected Item.Properties baseProperties(ResourceKey<Item> idKey, Rarity rarity) {
             var props = new Item.Properties();
             if (fireproof) {
                 props = props.fireResistant();
@@ -259,7 +258,7 @@ public record Material(
                 .setId(idKey)
                 .group(MythicMetals.TABBED_GROUP)
                 .rarity(rarity)
-                .tab(tab);
+                .tab(0);
         }
 
         public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents) {
@@ -306,22 +305,10 @@ public record Material(
          * Registers and returns the finished Material
          */
         public Material finish() {
-            if (baseMaterial == null && type != MaterialType.ARMOR) {
+            if (baseMaterial == null) {
                 throw new IllegalStateException("Base material must be registered!");
             }
             return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
-        }
-    }
-
-    private static class MaterialProperties {
-        @Nullable
-        private final ToolMaterial toolMaterial;
-        @Nullable
-        private final ArmorMaterial armorMaterial;
-
-        MaterialProperties(ToolMaterial toolMaterial, ArmorMaterial armorMaterial) {
-            this.toolMaterial = toolMaterial;
-            this.armorMaterial = armorMaterial;
         }
     }
 }

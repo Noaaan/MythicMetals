@@ -109,4 +109,10 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
     public @Nullable Entity getOwner() {
         return causingEntity;
     }
+
+    // TODO - Review changes in newer TNT code, and whether any of that is needed
+    // I would love to extend PrimedTNT, but the explosionPower is private.
+    // Maybe access widening it to properly extend it is the real solution,
+    // which needs to be looked at later as well - Noaaan
+    // TODO - Additionally, figure out why this + the nuke is not punchable/fishing rod-able
 }

@@ -129,9 +129,9 @@ public record BlockSet(
             return this;
         }
 
-        public Builder createAnvil(float strength, float resistance) {
+        public Builder createAnvil(float strength) {
             this.anvil = RegistryHelper.block(anvilKey, anvilItemKey, new AnvilBlock(
-                baseBlockSettings(anvilKey, strength, resistance)
+                baseBlockSettings(anvilKey, strength, 15000f)
             ), fireproof, rarity);
             return this;
         }
@@ -140,12 +140,12 @@ public record BlockSet(
             return createOre(strength, UniformInt.of(0, 0))
                 .createOreStorageBlock(strength, strength + 1.0f)
                 .createStorageBlock(strength + 1.0f, strength + 2.0f)
-                .createAnvil(strength + 1.0f, 15000f);
+                .createAnvil(strength + 1.0f);
         }
 
         public Builder createAlloyBlockSet(float strength, float resistance) {
             return createStorageBlock(strength, resistance)
-                .createAnvil(strength, resistance);
+                .createAnvil(strength);
         }
 
         public Builder createCustomOre(float strength, Function<BlockBehaviour.Properties, Block> func) {
@@ -153,14 +153,16 @@ public record BlockSet(
         }
 
         public Builder createCustomOre(float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
-            this.ore = RegistryHelper.block(oreKey, func.apply(baseBlockSettings(oreKey, strength, resistance)));
+            var oreItemKey = RegistryHelper.itemKey(oreKey.identifier().getPath());
+            this.ore = RegistryHelper.block(oreKey, oreItemKey, func.apply(baseBlockSettings(oreKey, strength, resistance)));
             return this;
         }
 
         public Builder createCustomOreVariant(String variant, float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
+            var variantItemKey = RegistryHelper.itemKey("%s_%s_ore".formatted(variant, name));
             var oreBlock = RegistryHelper.block(
-                variantKey, func.apply(baseBlockSettings(variantKey, strength, resistance))
+                variantKey, variantItemKey, func.apply(baseBlockSettings(variantKey, strength, resistance))
             );
             oreVariants.put(variant, new Tuple<>(variantKey, oreBlock));
             return this;
@@ -172,8 +174,9 @@ public record BlockSet(
 
         public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
+            var variantItemKey = RegistryHelper.itemKey("%s_%s_ore".formatted(variant, name));
             var block = RegistryHelper.block(
-                variantKey, new DropExperienceBlock(xp, baseBlockSettings(variantKey, strength, resistance)
+                variantKey, variantItemKey, new DropExperienceBlock(xp, baseBlockSettings(variantKey, strength, resistance)
                 ));
             oreVariants.put(variant, new Tuple<>(variantKey, block));
             return this;
@@ -181,7 +184,7 @@ public record BlockSet(
 
         public Builder createCustomStorageBlock(Function<BlockBehaviour.Properties, Block> settings) {
             var props = BlockBehaviour.Properties.of().setId(storageKey);
-            this.storage = RegistryHelper.block(storageKey, settings.apply(props));
+            this.storage = RegistryHelper.blockOnly(storageKey, settings.apply(props));
             return this;
         }
 

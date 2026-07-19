@@ -13,7 +13,7 @@
     "show_toast": false,
     "announce_to_chat": false,
     "hidden": false,
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+    "background": "minecraft:gui/advancements/backgrounds/stone"
   },
   "criteria": {
     "pick_up_mythic_metal": {

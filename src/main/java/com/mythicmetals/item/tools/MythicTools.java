@@ -28,6 +28,10 @@ import java.util.Map;
 import static com.mythicmetals.api.v2.ToolSet.defaultSettings;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
+///
+/// Class which contains any extra tool that does not really make sense
+/// to manually add in [com.mythicmetals.item.MythicMaterials]
+///
 public class MythicTools {
 
     private MythicTools() {

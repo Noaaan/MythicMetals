@@ -53,14 +53,14 @@ public class RegistryHelper {
     }
 
     public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block) {
-        var registeredBlock = block(blockKey, block);
+        var registeredBlock = blockOnly(blockKey, block);
         item(itemKey, new BlockItem(registeredBlock, new Item.Properties().group(MythicMetals.TABBED_GROUP).setId(itemKey).tab(1)));
         return registeredBlock;
     }
 
     public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, boolean fireproof, Rarity rarity) {
         if (fireproof) {
-            var registeredBlock = block(blockKey, block);
+            var registeredBlock = blockOnly(blockKey, block);
             item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
                 .group(MythicMetals.TABBED_GROUP)
                 .setId(itemKey)
@@ -74,7 +74,7 @@ public class RegistryHelper {
     }
 
     public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, Rarity rarity) {
-        var registeredBlock = block(blockKey, block);
+        var registeredBlock = blockOnly(blockKey, block);
         item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
             .group(MythicMetals.TABBED_GROUP)
             .setId(itemKey)
@@ -86,7 +86,7 @@ public class RegistryHelper {
 
     public static Block block(ResourceKey<Block> blockKey, ResourceKey<Item> itemKey, Block block, boolean fireproof) {
         if (fireproof) {
-            var registeredBlock = block(blockKey, block);
+            var registeredBlock = blockOnly(blockKey, block);
             item(itemKey, new BlockItem(registeredBlock, new Item.Properties()
                 .group(MythicMetals.TABBED_GROUP)
                 .setId(itemKey)
@@ -98,7 +98,7 @@ public class RegistryHelper {
         return block(blockKey, itemKey, block);
     }
 
-    public static Block block(ResourceKey<Block> key, Block block) {
+    public static Block blockOnly(ResourceKey<Block> key, Block block) {
         return Registry.register(BuiltInRegistries.BLOCK, key, block);
     }
 

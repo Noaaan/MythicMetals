@@ -14,6 +14,7 @@ import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.entity.MythicEntityAttributes;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicPotions;
+import com.mythicmetals.item.armor.MythicArmorSets;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.tools.Frogery;
 import com.mythicmetals.item.tools.MythicTools;
@@ -30,8 +31,6 @@ import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DispenserBlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,10 +44,10 @@ public class MythicMetals implements ModInitializer {
 
     public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicMaterials.STORMYX.baseMaterial()))
         .initializer(group -> {
-            group.addTab(Icon.of(Items.BRICK), "items", TagKey.create(Registries.ITEM, RegistryHelper.id("item_tab")), false);
-            group.addTab(Icon.of(Blocks.BRICKS), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
-            group.addTab(Icon.of(Items.BRUSH), "tools", TagKey.create(Registries.ITEM, RegistryHelper.id("tool_tab")), false);
-            group.addTab(Icon.of(Items.TURTLE_HELMET), "armor", TagKey.create(Registries.ITEM, RegistryHelper.id("armor_tab")), false);
+            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.baseMaterial()), "items", TagKey.create(Registries.ITEM, RegistryHelper.id("item_tab")), false);
+            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.blockSet().storage()), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
+            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.toolSet().getPickaxe()), "tools", TagKey.create(Registries.ITEM, RegistryHelper.id("tool_tab")), false);
+            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.armorSet().getChestplate()), "armor", TagKey.create(Registries.ITEM, RegistryHelper.id("armor_tab")), false);
             group.addButton(ItemGroupButton.github(group, "https://github.com/Noaaan/MythicMetals/issues"));
             group.addButton(ItemGroupButton.curseforge(group, "https://www.curseforge.com/minecraft/mc-mods/mythicmetals"));
             group.addButton(ItemGroupButton.modrinth(group, "https://modrinth.com/mod/mythicmetals"));
@@ -60,6 +59,7 @@ public class MythicMetals implements ModInitializer {
     public void onInitialize() {
         MythicMaterials.init();
         MythicTools.init();
+        MythicArmorSets.init();
         FieldRegistrationHandler.register(MythicSoundEvents.class, MOD_ID, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
         MythicParticleSystem.init();

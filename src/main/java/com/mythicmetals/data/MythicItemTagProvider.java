@@ -31,9 +31,6 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
                     case RARE_ALLOY, ALLOY, INGOT -> {
                         // TODO - Ingot tag
                     }
-                    case ARMOR -> {
-                        // TODO - REMOVE
-                    }
                     case SPECIAL -> {
                         // TODO - Rare material tag
                     }
