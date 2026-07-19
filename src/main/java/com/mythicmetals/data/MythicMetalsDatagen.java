@@ -1,6 +1,5 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.data.worldgen.MythicBiomeTagProvider;
 import com.mythicmetals.data.worldgen.MythicOreFeatureProvider;
 import com.mythicmetals.misc.RegistryHelper;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -21,7 +20,7 @@ public class MythicMetalsDatagen implements DataGeneratorEntrypoint {
 //        data.addProvider(MythicBlockTagProvider::new);
 //        data.addProvider(MythicItemTagProvider::new);
         data.addProvider(MythicDynamicRegistryProvider::new);
-//        data.addProvider(MythicRecipeProvider::new);
+        data.addProvider(MythicRecipeProvider::new);
 //        data.addProvider((output, registriesFuture) -> {
 //            return new MythicBiomeTagProvider(output, Registries.BIOME, registriesFuture);
 //        });

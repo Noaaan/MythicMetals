@@ -4,23 +4,34 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import static com.mythicmetals.misc.RegistryHelper.blockKey;
-import static com.mythicmetals.misc.RegistryHelper.itemKey;
+import static com.mythicmetals.misc.RegistryHelper.*;
 
 public class MythicResourceKeys {
     public static final ResourceKey<Block> AQUARIUM_GLASS = blockKey("aquarium_glass");
     public static final ResourceKey<Block> AQUARIUM_RESONATOR = blockKey("aquarium_resonator");
     public static final ResourceKey<Block> BANGLUM_NUKE_CORE = blockKey("banglum_nuke_core");
     public static final ResourceKey<Block> BANGLUM_TNT = blockKey("banglum_tnt");
-    public static final ResourceKey<Item> BANGLUM_TNT_MINECART = itemKey("banglum_tnt_minecart");
     public static final ResourceKey<Block> CARMOT_BELL = blockKey("carmot_bell");
     public static final ResourceKey<Block> CARMOT_NUKE_CORE = blockKey("carmot_nuke_core");
     public static final ResourceKey<Block> ENCHANTED_MIDAS_GOLD_BLOCK = blockKey("enchanted_midas_gold_block");
     public static final ResourceKey<Block> PALLADIUM_RAIL = blockKey("palladium_rail");
-    public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
-    public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");
     public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
     public static final ResourceKey<Block> SPONGE_NUKE_CORE = blockKey("sponge_nuke_core");
+    public static final ResourceKey<Item> BANGLUM_TNT_MINECART = itemKey("banglum_tnt_minecart");
+    public static final ResourceKey<Item> GILDED_MIDAS_GOLD_SWORD = itemKey("gilded_midas_gold_sword");
+    public static final ResourceKey<Item> MIDAS_GOLD_SWORD = itemKey("midas_gold_sword");
+    public static final ResourceKey<Item> MYTHRIL_DRILL = itemKey("mythril_drill");
+    public static final ResourceKey<Item> ORICHALCUM_HAMMER = itemKey("orichalcum_hammer");
+    public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");
+    public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
+    public static final ResourceKey<Item> PLATINUM_WATCH = itemKey("platinum_watch");
+    public static final ResourceKey<Item> RED_AEGIS_SWORD = itemKey("red_aegis_sword");
+    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_SWORD = itemKey("royal_midas_gold_sword");
+    public static final ResourceKey<Item> RUNITE_ARROW = itemKey("runite_arrow");
+    public static final ResourceKey<Item> STAR_PLATINUM_ARROW = itemKey("star_platinum_arrow");
+    public static final ResourceKey<Item> STORMYX_SHIELD = itemKey("stormyx_shield");
+    public static final ResourceKey<Item> TIPPED_RUNITE_ARROW = itemKey("tipped_runite_arrow");
+    public static final ResourceKey<Item> WHITE_AEGIS_SWORD = itemKey("white_aegis_sword");
 
     // rare material drops
     public static final ResourceKey<Item> AQUARIUM_PEARL = itemKey("aquarium_pearl");

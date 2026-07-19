@@ -7,7 +7,6 @@ import com.mythicmetals.item.MythicResourceKeys;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.util.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -25,21 +24,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Math;
 import org.jspecify.annotations.Nullable;
 
-import java.util.*;
-
 import static com.mythicmetals.item.component.DrillComponent.*;
 
 public class MythrilDrill extends Item implements AutoRepairable {
-
-    // TODO - Refactor this to allow any item, and handle tooltips more explicitly
-    public static Map<Item, String> drillUpgrades = Util.make(new HashMap<>(), map -> {
-        map.put(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL), "aquarium");
-        map.put(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE), "carmot");
-        map.put(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem(), "midas_gold");
-        map.put(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE), "prometheum");
-        map.put(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL), "stormyx");
-        map.put(Items.AIR, "empty");
-    });
 
     public MythrilDrill(ToolMaterial material, float damage, float atkSpeed, Item.Properties settings) {
         super(material.applyToolProperties(settings, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, 0));

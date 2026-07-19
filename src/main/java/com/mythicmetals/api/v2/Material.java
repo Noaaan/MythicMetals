@@ -30,23 +30,9 @@ public record Material(
     @Nullable ArmorSet armorSet,
     BiMap<ResourceKey<Item>, Item> extraItems,
     BiMap<ResourceKey<Block>, Block> extraBlocks,
-    boolean fireproof
+    boolean fireproof,
+    boolean requiresSmithing
 ) {
-
-    public Material(
-        String name,
-        Item baseMaterial,
-        MaterialType materialType,
-        @Nullable Item nugget,
-        @Nullable Item rawOre,
-        @Nullable BlockSet blockSet,
-        @Nullable ToolSet toolSet,
-        @Nullable ArmorSet armorSet,
-        BiMap<ResourceKey<Item>, Item> extraItems,
-        BiMap<ResourceKey<Block>, Block> extraBlocks
-    ) {
-        this(name, baseMaterial, materialType, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks, false);
-    }
 
     public static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
     public static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
@@ -80,6 +66,7 @@ public record Material(
         private final BiMap<ResourceKey<Item>, Item> extraItems = HashBiMap.create();
         private final BiMap<ResourceKey<Block>, Block> extraBlocks = HashBiMap.create();
         private final boolean fireproof;
+        private boolean requiresSmithing = false;
 
         private static final String INGOT_POSTFIX = "_ingot";
         private final MaterialType type;
@@ -141,7 +128,7 @@ public record Material(
             return switch (type) {
                 case RARE_ALLOY -> Rarity.RARE;
                 case ALLOY, SPECIAL -> Rarity.UNCOMMON;
-                case INGOT, BASIC -> Rarity.COMMON;
+                case INGOT, INGOT_BLASTING, SIMPLE -> Rarity.COMMON;
             };
         }
 
@@ -262,6 +249,7 @@ public record Material(
         }
 
         public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents) {
+            this.requiresSmithing = true;
             return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
         }
 
@@ -308,7 +296,10 @@ public record Material(
             if (baseMaterial == null) {
                 throw new IllegalStateException("Base material must be registered!");
             }
-            return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks);
+            if (type == MaterialType.RARE_ALLOY) {
+                requiresSmithing = true;
+            }
+            return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks, fireproof, requiresSmithing);
         }
     }
 }

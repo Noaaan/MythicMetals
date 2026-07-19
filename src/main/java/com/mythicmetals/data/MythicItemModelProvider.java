@@ -2,7 +2,6 @@ package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.MythicMaterials;
-import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
@@ -11,9 +10,7 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.*;
-import net.minecraft.resources.Identifier;
-import java.util.Optional;
+import net.minecraft.client.data.models.model.ModelTemplates;
 
 public class MythicItemModelProvider extends FabricModelProvider {
 
@@ -45,12 +42,16 @@ public class MythicItemModelProvider extends FabricModelProvider {
                 itemModelGenerator.generateFlatItem(material.armorSet().getChestplate(), ModelTemplates.FLAT_ITEM);
                 itemModelGenerator.generateFlatItem(material.armorSet().getLeggings(), ModelTemplates.FLAT_ITEM);
                 itemModelGenerator.generateFlatItem(material.armorSet().getBoots(), ModelTemplates.FLAT_ITEM);
-                itemModelGenerator.generateFlatItem(material.armorSet().getHorse(), ModelTemplates.FLAT_ITEM);
-                itemModelGenerator.generateFlatItem(material.armorSet().getNautilus(), ModelTemplates.FLAT_ITEM);
+                if (material.armorSet().getHorse() != null) {
+                    itemModelGenerator.generateFlatItem(material.armorSet().getHorse(), ModelTemplates.FLAT_ITEM);
+                }
+                if (material.armorSet().getNautilus() != null) {
+                    itemModelGenerator.generateFlatItem(material.armorSet().getNautilus(), ModelTemplates.FLAT_ITEM);
+                }
             }
         });
         // Tools
-        MythicTools.TOOL_MAP.forEach((s, toolSet) -> {
+        DebugHelper.TOOL_MAP.forEach((s, toolSet) -> {
             if (!s.equals("legendary_banglum")) {
                 itemModelGenerator.generateFlatItem(toolSet.getSword(), ModelTemplates.FLAT_HANDHELD_ITEM);
                 itemModelGenerator.generateFlatItem(toolSet.getAxe(), ModelTemplates.FLAT_HANDHELD_ITEM);

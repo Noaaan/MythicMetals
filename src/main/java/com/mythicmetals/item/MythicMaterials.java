@@ -15,6 +15,8 @@ import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.MythicSoundEvents;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Unit;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -75,6 +77,7 @@ public class MythicMaterials {
 
     public static final Material BANGLUM = Material.Builder.create("banglum", MaterialType.INGOT)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
+            .createOreStorageBlock(5.0f, 5.5f)
             .createStorageBlock(5.0f, 5.5f)
             .createCustomOre(5.0f, BanglumOreBlock::new)
             .createCustomOreVariant("nether", 5.0f, 5.5f, BanglumOreBlock::new)
@@ -159,7 +162,7 @@ public class MythicMaterials {
             new MythicAttributeModifier(MOVEMENT_SPEED, 0.1, ADD_MULTIPLIED_TOTAL, ARMOR),
             new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, ARMOR)
         ))
-        .addExtraItem(MythicResourceKeys.CELESTIUM_ELYTRA, new CelestiumElytra(
+        .addExtraItem(CELESTIUM_ELYTRA, new CelestiumElytra(
             new Item.Properties()
                 .durability(832)
                 .setId(RegistryHelper.itemKey("celestium_elytra"))
@@ -252,6 +255,9 @@ public class MythicMaterials {
     public static final Material MIDAS_GOLD = Material.Builder.create("midas_gold", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
         .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
+        .addExtraItem(MIDAS_GOLD_SWORD, MythicTools.MIDAS_GOLD_SWORD)
+        .addExtraItem(GILDED_MIDAS_GOLD_SWORD, MythicTools.GILDED_MIDAS_GOLD_SWORD)
+        .addExtraItem(ROYAL_MIDAS_GOLD_SWORD, MythicTools.ROYAL_MIDAS_GOLD_SWORD)
         .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
         .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
         .createDefaultArmor(
@@ -262,7 +268,7 @@ public class MythicMaterials {
         )
         .finish();
 
-    public static final Material MORKITE = Material.Builder.create("morkite", MaterialType.BASIC)
+    public static final Material MORKITE = Material.Builder.create("morkite", MaterialType.SIMPLE)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
             .createOre(3.0f, UniformInt.of(1, 3))
             .createStorageBlock(3.0f, 4.0f)
@@ -278,6 +284,7 @@ public class MythicMaterials {
         )
         .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL)
         .createDefaultTools(MythicToolMaterials.MYTHRIL, ToolSet.AttackSpeeds.FASTER, MythicSpearStats.MYTHRIL)
+        .addExtraItem(MYTHRIL_DRILL, MythicTools.MYTHRIL_DRILL)
         .createDefaultArmor(MythicArmorMaterials.MYTHRIL)
         .finish();
 
@@ -290,6 +297,7 @@ public class MythicMaterials {
             .finish()
         )
         .createDefaultTools(MythicToolMaterials.ORICHALCUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.ORICHALCUM)
+        .addExtraItem(ORICHALCUM_HAMMER, MythicTools.ORICHALCUM_HAMMER)
         .createDefaultArmor(MythicArmorMaterials.ORICHALCUM)
         .finish();
 
@@ -336,6 +344,7 @@ public class MythicMaterials {
 
     public static final Material PLATINUM = Material.Builder.create("platinum", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 3.5f)
+        .addExtraItem(PLATINUM_WATCH, MythicTools.PLATINUM_WATCH)
         .finish();
 
     public static final Material PROMETHEUM = Material.Builder.create("prometheum", MaterialType.INGOT)
@@ -382,6 +391,8 @@ public class MythicMaterials {
             .finish()
         )
         .createDefaultTools(MythicToolMaterials.RUNITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.RUNITE)
+        .addExtraItem(RUNITE_ARROW, MythicTools.RUNITE_ARROW)
+        .addExtraItem(TIPPED_RUNITE_ARROW, MythicTools.TIPPED_RUNITE_ARROW)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.RUNITE,
             MythicModelHandler.RUNITE_ARMOR,
@@ -398,6 +409,7 @@ public class MythicMaterials {
     public static final Material STAR_PLATINUM = Material.Builder.create("star_platinum", MaterialType.ALLOY)
         .createDefaultBlockSet(DIAMOND_MINING_LEVEL, 5.5f)
         .createDefaultTools(MythicToolMaterials.STAR_PLATINUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STAR_PLATINUM)
+        .addExtraItem(STAR_PLATINUM_ARROW, MythicTools.STAR_PLATINUM_ARROW)
         .createDefaultArmor(MythicArmorMaterials.STAR_PLATINUM, List.of(
             new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, HEAD),
             new MythicAttributeModifier(ATTACK_DAMAGE, 1.0, ADD_VALUE, CHEST),
@@ -407,7 +419,7 @@ public class MythicMaterials {
         ))
         .finish();
 
-    public static final Material STARRITE = Material.Builder.create("starrite", MaterialType.BASIC)
+    public static final Material STARRITE = Material.Builder.create("starrite", MaterialType.SIMPLE)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, builder -> builder
             .createCustomOre(5.0f, properties -> new StarriteOreBlock(properties, UniformInt.of(3, 6)))
             .createCustomOreVariant("calcite", 5.0f, 5.5f, properties ->
@@ -438,6 +450,7 @@ public class MythicMaterials {
         )
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)
         .createDefaultTools(MythicToolMaterials.STORMYX, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STORMYX)
+        .addExtraItem(STORMYX_SHIELD, MythicTools.STORMYX_SHIELD)
         .createDefaultArmor(MythicArmorMaterials.STORMYX, List.of(
             new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, HEAD),
             new MythicAttributeModifier(AdditionalEntityAttributes.MAGIC_PROTECTION, 1.0, ADD_VALUE, CHEST),
@@ -501,11 +514,14 @@ public class MythicMaterials {
         .finish();
 
     public static final Material AEGIS = Material.Builder.createRawBuilder("aegis", MaterialType.SPECIAL)
-        .createBaseMaterial(MythicResourceKeys.EMERALD_CRYSTAL, Rarity.UNCOMMON, Item::new)
+        .createBaseMaterial(EMERALD_CRYSTAL, Rarity.UNCOMMON, Item::new)
+        .addExtraItem(WHITE_AEGIS_SWORD, MythicTools.WHITE_AEGIS_SWORD)
+        .addExtraItem(RED_AEGIS_SWORD, MythicTools.RED_AEGIS_SWORD)
         .addSmithingTemplate(AEGIS_SMITHING_TEMPLATE, MythicSmithingTemplates.AEGIS)
         .finish();
 
     public static void init() {
-        // no-op
+        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "red_aegis_sword"), RED_AEGIS_SWORD.identifier());
+        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "white_aegis_sword"), WHITE_AEGIS_SWORD.identifier());
     }
 }

@@ -12,8 +12,7 @@ import com.mythicmetals.data.worldgen.MythicOreFeatures;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.entity.MythicEntityAttributes;
-import com.mythicmetals.item.MythicMaterials;
-import com.mythicmetals.item.MythicPotions;
+import com.mythicmetals.item.*;
 import com.mythicmetals.item.armor.MythicArmorSets;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.tools.Frogery;
@@ -31,9 +30,13 @@ import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.DispenserBlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
@@ -55,10 +58,13 @@ public class MythicMetals implements ModInitializer {
         })
         .build();
 
+    // TODO - Refactor this to allow any item, and handle tooltips more explicitly
+    public static Map<Item, String> drillUpgrades = new HashMap<>();
+
     @Override
     public void onInitialize() {
         MythicMaterials.init();
-        MythicTools.init();
+        initDrillItems();
         MythicArmorSets.init();
         FieldRegistrationHandler.register(MythicSoundEvents.class, MOD_ID, false);
         FieldRegistrationHandler.register(RegisterBlockEntityTypes.class, MOD_ID, false);
@@ -146,6 +152,15 @@ public class MythicMetals implements ModInitializer {
         DispenserBlock.registerBehavior(() -> MythicTools.STAR_PLATINUM_ARROW, new ProjectileDispenseBehavior(MythicTools.STAR_PLATINUM_ARROW));
         DispenserBlock.registerBehavior(() -> MythicTools.RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.RUNITE_ARROW));
         DispenserBlock.registerBehavior(() -> MythicTools.TIPPED_RUNITE_ARROW, new ProjectileDispenseBehavior(MythicTools.TIPPED_RUNITE_ARROW));
+    }
+
+    private void initDrillItems() {
+        drillUpgrades.put(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL), "aquarium");
+        drillUpgrades.put(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE), "carmot");
+        drillUpgrades.put(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem(), "midas_gold");
+        drillUpgrades.put(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE), "prometheum");
+        drillUpgrades.put(MythicMaterials.STORMYX.extraItems().get(MythicResourceKeys.STORMYX_SHELL), "stormyx");
+        drillUpgrades.put(Items.AIR, "empty");
     }
 
 }

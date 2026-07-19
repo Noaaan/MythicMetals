@@ -44,7 +44,7 @@ public class StormyxShield extends ShieldItem {
     };
 
     public StormyxShield(Properties settings) {
-        super(settings.repairable(MythicMaterials.STORMYX.baseMaterial()));
+        super(settings.repairable(MythicToolMaterials.STORMYX.repairItems()));
     }
 
     @Override

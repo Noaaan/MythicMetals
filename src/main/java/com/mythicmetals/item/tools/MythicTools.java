@@ -135,21 +135,6 @@ public class MythicTools {
     public static final Item PLATINUM_WATCH = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).tab(2).setId(RegistryHelper.itemKey("platinum_watch")));
 
     public static void init() {
-        RegistryHelper.item("red_aegis_sword", RED_AEGIS_SWORD);
-        RegistryHelper.item("white_aegis_sword", WHITE_AEGIS_SWORD);
-        RegistryHelper.item("orichalcum_hammer", ORICHALCUM_HAMMER);
-        RegistryHelper.item("midas_gold_sword", MIDAS_GOLD_SWORD);
-        RegistryHelper.item("gilded_midas_gold_sword", GILDED_MIDAS_GOLD_SWORD);
-        RegistryHelper.item("royal_midas_gold_sword", ROYAL_MIDAS_GOLD_SWORD);
-        RegistryHelper.item("mythril_drill", MYTHRIL_DRILL);
-        RegistryHelper.item("star_platinum_arrow", STAR_PLATINUM_ARROW);
-        RegistryHelper.item("runite_arrow", RUNITE_ARROW);
-        RegistryHelper.item("tipped_runite_arrow", TIPPED_RUNITE_ARROW);
-        RegistryHelper.item("stormyx_shield", STORMYX_SHIELD);
-        RegistryHelper.item("platinum_watch", PLATINUM_WATCH);
-
-        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "red_aegis_sword"), RegistryHelper.id("red_aegis_sword"));
-        BuiltInRegistries.ITEM.addAlias(Identifier.fromNamespaceAndPath("mythicaddons", "white_aegis_sword"), RegistryHelper.id("white_aegis_sword"));
     }
 
 }
