@@ -1,26 +1,22 @@
-package com.mythicmetals.command;
+package com.mythicmetals.misc.wiki;
 
-import com.mythicmetals.api.v2.ArmorSet;
-import com.mythicmetals.api.v2.BlockSet;
-import com.mythicmetals.api.v2.Material;
+import com.mythicmetals.api.v2.*;
 import com.mythicmetals.config.OreConfig;
-import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.item.tools.ToolSet;
+import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.misc.StringUtilsAtHome;
-import net.minecraft.util.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.locale.Language;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorType;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * Helper class that contains all the page layouts for the Mythic Metals Wiki
  */
 public class WikiExporter {
-    private WikiExporter() {}
+    private WikiExporter() {
+    }
 
     static final String ADMONITION_HEADER = """
         !!! info inline end ""
@@ -145,41 +141,53 @@ public class WikiExporter {
 
     static String computeToolAdmonition(ToolSet toolSet) {
         var output = new StringBuilder();
-        var translationStorage = Language.getInstance();
-        // tool stats are really annoying to get
-        Deque<Integer> damageDeque = new ArrayDeque<>(List.of(3, 5, 2, 1, 0));
-        var atkSpd = new ArrayDeque<>(toolSet.getAttackSpeed());
+        var stats = WikiHelper.TOOL_STAT_MAP.get(toolSet.getName());
+
         output.append(ADMONITION_HEADER);
-        toolSet.get().forEach(tool -> {
-            String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
-            output.append(ADMONITION_TOOL_IMAGE.formatted(
-                translationStorage.getOrDefault(tool.getDescriptionId()),
-                "(../../assets/mythicmetals/%s.png)".formatted(id) + RECIPE_SCALING
-            ));
-            output.append("""
-                    +%s Attack Damage, %s Attack Speed<br>
-                    %s Durability<br>
-                """.formatted(
-                toolSet.getMaterial().attackDamageBonus() + damageDeque.pop() + 1,
-                BigDecimal.valueOf(atkSpd.pop()).setScale(1, RoundingMode.HALF_UP).toPlainString(),
-                tool.getDefaultInstance().getMaxDamage()
-            ));
-        });
+        singleToolAdmonition(output, toolSet.getSword(), stats.getAttackDamage(MythicItemAttributes.ToolType.SWORD), stats.attackSpeeds().sword);
+        singleToolAdmonition(output, toolSet.getPickaxe(), stats.getAttackDamage(MythicItemAttributes.ToolType.PICKAXE), stats.attackSpeeds().pickaxe);
+        singleToolAdmonition(output, toolSet.getAxe(), stats.getAttackDamage(MythicItemAttributes.ToolType.AXE), stats.attackSpeeds().axe);
+        singleToolAdmonition(output, toolSet.getShovel(), stats.getAttackDamage(MythicItemAttributes.ToolType.SHOVEL), stats.attackSpeeds().shovel);
+        singleToolAdmonition(output, toolSet.getHoe(), stats.getAttackDamage(MythicItemAttributes.ToolType.HOE), stats.attackSpeeds().hoe);
 
         return output.toString();
     }
 
-    static String computeToolRecipes(ToolSet toolSet) {
-        StringBuilder output = new StringBuilder();
-        for (Item tool : toolSet.get()) {
-            String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
-            String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
-            output.append(("""
-                    ![Image of the recipe for %s](../../assets/mythicmetals/recipes/tools/%s.png)%s
-                    """
-                ).formatted(name, id, RECIPE_SCALING));
-        }
-        return output.toString();
+    static void singleToolAdmonition(StringBuilder output, Item tool, double damage, double attackSpeed) {
+        String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
+        // image
+        output.append(ADMONITION_TOOL_IMAGE.formatted(
+            Language.getInstance().getOrDefault(tool.getDescriptionId()),
+            "(../../assets/mythicmetals/%s.png)".formatted(id) + RECIPE_SCALING
+        ));
+        // stat block
+        output.append("""
+                +%s Attack Damage, %s Attack Speed<br>
+                %s Durability<br>
+            """.formatted(
+            damage + 1,
+            attackSpeed,
+            tool.getDefaultInstance().getMaxDamage()
+        ));
+    }
+
+    static String computeToolRecipes(ToolSet tools) {
+        var stringBuilder = new StringBuilder();
+        computeToolRecipe(stringBuilder, tools.getSword());
+        computeToolRecipe(stringBuilder, tools.getAxe());
+        computeToolRecipe(stringBuilder, tools.getPickaxe());
+        computeToolRecipe(stringBuilder, tools.getShovel());
+        computeToolRecipe(stringBuilder, tools.getHoe());
+        return stringBuilder.toString();
+    }
+
+    static void computeToolRecipe(StringBuilder sb, Item tool) {
+        String id = BuiltInRegistries.ITEM.getKey(tool).getPath();
+        String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
+        sb.append("""
+            ![Image of the recipe for %s](../../assets/mythicmetals/recipes/tools/%s.png)%s
+            """
+            .formatted(name, id, RECIPE_SCALING));
     }
 
     static String computeOreAdmonition(BlockSet blockSet, OreConfig oreConfig) {
@@ -274,9 +282,9 @@ public class WikiExporter {
             String id = BuiltInRegistries.ITEM.getKey(armor).getPath();
             String name = StringUtilsAtHome.toTitleCase(id.replace('_', ' '));
             output.append(("""
-                    ![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)%s
-                    """
-                ).formatted(name, id, RECIPE_SCALING));
+                ![Image of the recipe for %s](../../assets/mythicmetals/recipes/armor/%s.png)%s
+                """
+            ).formatted(name, id, RECIPE_SCALING));
         }
         return output.toString();
     }

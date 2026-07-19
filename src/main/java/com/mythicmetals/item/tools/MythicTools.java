@@ -37,8 +37,6 @@ public class MythicTools {
     private MythicTools() {
     }
 
-    public static final Map<String, ToolSet> TOOL_MAP = new HashMap<>();
-
     public static final Item RED_AEGIS_SWORD = new Item(
         defaultSettings(MythicToolMaterials.AEGIS_RED)
             .attributes(

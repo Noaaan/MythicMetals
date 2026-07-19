@@ -1,10 +1,8 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.api.v2.ArmorSet;
-import com.mythicmetals.api.v2.BlockSet;
+import com.mythicmetals.api.v2.*;
 import com.mythicmetals.item.*;
 import com.mythicmetals.item.armor.MythicArmorSets;
-import com.mythicmetals.item.tools.ToolSet;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;

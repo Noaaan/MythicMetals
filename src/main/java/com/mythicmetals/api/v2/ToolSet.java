@@ -5,6 +5,8 @@ import com.mythicmetals.MythicMetals;
 import com.mythicmetals.item.MythicItemAttributes;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.wiki.WikiHelper;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.component.DataComponents;
@@ -61,6 +63,7 @@ public class ToolSet {
     }
 
     // TODO - Is something more extendible than enum required? Maybe config?
+
     public ToolSet createDefault(
         UnaryOperator<Item.Properties> settingsOperator,
         AttackSpeeds attackSpeeds,
@@ -108,9 +111,11 @@ public class ToolSet {
                     .setId(spearKey)
             )
         ));
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            WikiHelper.TOOL_STAT_MAP.put(name, new WikiHelper.WikiToolStats(toolMaterial, attackSpeeds, spearStats));
+        }
         return this;
     }
-
     public Item.Properties defaultSettings() {
         return new Item.Properties()
             .durability(toolMaterial.durability())
@@ -129,6 +134,10 @@ public class ToolSet {
             .enchantable(material.enchantmentValue())
             .group(MythicMetals.TABBED_GROUP)
             .tab(2);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Item getSpear() {

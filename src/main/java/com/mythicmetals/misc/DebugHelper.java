@@ -1,7 +1,6 @@
 package com.mythicmetals.misc;
 
 import com.mythicmetals.api.v2.*;
-import com.mythicmetals.client.properties.HasDrillFuelProperty;
 import com.mythicmetals.item.MythicMaterials;
 import io.wispforest.owo.util.ReflectionUtils;
 import java.util.HashMap;

@@ -20,11 +20,11 @@ public class MythicItemAttributes {
     private MythicItemAttributes() {}
 
     private static final String UNKNOWN = "unknown";
-    protected static final float SWORD_BASE_DAMAGE = 3.0f;
-    protected static final float AXE_BASE_DAMAGE = 5.0f;
-    protected static final float PICKAXE_BASE_DAMAGE = 2.0f;
-    protected static final float SHOVEL_BASE_DAMAGE = 1.0f;
-    protected static final float HOE_BASE_DAMAGE = 0.0f;
+    public static final float SWORD_BASE_DAMAGE = 3.0f;
+    public static final float AXE_BASE_DAMAGE = 5.0f;
+    public static final float PICKAXE_BASE_DAMAGE = 2.0f;
+    public static final float SHOVEL_BASE_DAMAGE = 1.0f;
+    public static final float HOE_BASE_DAMAGE = 0.0f;
 
     public static ItemAttributeModifiers createArmorModifier(String armorName, ArmorMaterial material, ArmorType type, List<MythicAttributeModifier> extraAttributes) {
         var baseAttributes = material.createAttributes(type);

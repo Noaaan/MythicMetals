@@ -16,6 +16,7 @@ import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.wiki.WikiExporter;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.command.v2.ArgumentTypeRegistry;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -260,6 +261,8 @@ public final class MythicCommands {
         } catch (IOException e) {
             MythicMetals.LOGGER.error("Failed to create folder", e);
         }
+        // FIXME
+        /*
         ReflectionUtils.iterateAccessibleStaticFields(MythicTools.class, ToolSet.class, (value, name, field) -> {
             var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + "-tools.md");
             try {
@@ -279,6 +282,7 @@ public final class MythicCommands {
                 context.getSource().sendSuccess(() -> Component.literal("Failed to %s wiki data to disk!".formatted(name)), false);
             }
         });
+         */
 
         context.getSource().sendSuccess(() -> Component.literal("Exported all the tools (in the shed) to wiki format into the config folder"), false);
         return 0;
@@ -396,7 +400,7 @@ public final class MythicCommands {
     private static int exportOreData(CommandContext<CommandSourceStack> context) {
         var oreConfig = OreConfigArgumentType.getOreConfig(context, "ore-config");
         var source = context.getSource();
-        // FIXME
+        // FIXME?
         //var blockSet = MythicBlocks.BLOCKSET_MAP.get(ORE_CONFIG.inverse().get(oreConfig));
 
 //        String oreName = StringUtilsAtHome.toTitleCase(blockSet.getName() + " Ores");
@@ -517,7 +521,7 @@ public final class MythicCommands {
 
     private static CompletableFuture<Suggestions> material(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         var placeableMaterials = new HashSet<String>();
-        placeableMaterials.addAll(MythicTools.TOOL_MAP.keySet());
+        placeableMaterials.addAll(DebugHelper.TOOL_MAP.keySet());
         placeableMaterials.addAll(DebugHelper.ARMOR_MAP.keySet());
         placeableMaterials.add("all");
         placeableMaterials.forEach(suggestion::suggest);
