@@ -24,7 +24,6 @@ import java.util.*;
 import static com.mythicmetals.misc.RegistryHelper.recipeKey;
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
 
-// FIXME - Guess we're redoing datagen
 @SuppressWarnings("UnstableApiUsage")
 public class MythicRecipeGenerator extends RecipeProvider {
 

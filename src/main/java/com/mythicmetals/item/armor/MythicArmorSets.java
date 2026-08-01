@@ -5,7 +5,8 @@ import java.util.List;
 
 public class MythicArmorSets {
 
-    public static final ArmorSet OSMIUM_CHAINMAIL = new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL).initialize();
+    public static final ArmorSet OSMIUM_CHAINMAIL = new ArmorSet("osmium_chainmail", MythicArmorMaterials.OSMIUM_CHAINMAIL)
+        .initialize(false, List.of());
 
     public static void init() {
     }

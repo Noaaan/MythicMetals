@@ -83,14 +83,10 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-//        CarmotShieldHudHandler.init();
-
-        // FIXME - Translucent blocks
         BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
-        //BlockRenderLayerMap.putBlock(MythicBlocks.CARMOT_BELL_BLOCK, ChunkSectionLayer.CUTOUT);
-        //BlockRenderLayerMap.putBlock(MythicBlocks.PALLADIUM_RAIL, ChunkSectionLayer.SOLID);
-        //BlockRenderLayerMap.putBlock(MythicBlocks.AQUARIUM_GLASS, ChunkSectionLayer.TRANSLUCENT);
-        //BlockRenderLayerMap.putBlock(MythicBlocks.KYBER.getStorageBlock(), ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL), ChunkSectionLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
+        BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage(), ChunkSectionLayer.TRANSLUCENT);
 
         if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -309,12 +305,6 @@ public class MythicMetalsClient implements ClientModInitializer {
                 component.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
             }
         });
-
-        // TODO - Review if anything should go below enchantments, if so comment out this code
-        //if (lines.size() > 2) {
-        //    index += stack.getEnchantments().size();
-        //}
-
     }
 
 }

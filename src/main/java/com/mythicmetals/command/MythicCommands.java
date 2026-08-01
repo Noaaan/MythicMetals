@@ -81,8 +81,8 @@ public final class MythicCommands {
             var mythicRoot = Commands.literal("mythicmetals").requires(src -> src.permissions().hasPermission(COMMANDS_ADMIN)).build();
             var range = Commands.literal("range").build();
             var tools = Commands.literal("tools").build();
-            var allTools = Commands.literal("tools-all").executes(MythicCommands::exportAllTools).build();
-            var allArmor = Commands.literal("armor-all").executes(MythicCommands::exportAllArmor).build();
+            var allTools = Commands.literal("tools-all").executes(MythicCommands::exportAllToolsForWiki).build();
+            var allArmor = Commands.literal("armor-all").executes(MythicCommands::exportAllArmorForWiki).build();
             var ores = Commands.literal("ores").build();
             var armor = Commands.literal("armor").build();
             var midas = Commands.literal("give-midas").build();
@@ -218,7 +218,7 @@ public final class MythicCommands {
         return 0;
     }
 
-    private static int exportAllArmor(CommandContext<CommandSourceStack> context) {
+    private static int exportAllArmorForWiki(CommandContext<CommandSourceStack> context) {
         var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
         try {
             Files.createDirectory(folder);
@@ -252,7 +252,7 @@ public final class MythicCommands {
         return 0;
     }
 
-    private static int exportAllTools(CommandContext<CommandSourceStack> context) {
+    private static int exportAllToolsForWiki(CommandContext<CommandSourceStack> context) {
         var folder = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals");
         try {
             Files.createDirectory(folder);
