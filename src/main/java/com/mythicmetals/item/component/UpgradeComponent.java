@@ -63,6 +63,16 @@ public record UpgradeComponent(List<Item> items, int size) implements TooltipPro
         return this.items.contains(Items.AIR);
     }
 
+    public int countRealUpgrades() {
+        int i = 0;
+        for (Item item : this.items) {
+            if (item != Items.AIR) {
+                i++;
+            }
+        }
+        return i;
+    }
+
     @Override
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
         if (this.size > 0 && this.isEmpty()) {

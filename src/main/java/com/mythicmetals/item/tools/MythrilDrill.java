@@ -1,12 +1,10 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.item.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
+import com.mythicmetals.item.component.*;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -18,7 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Math;
@@ -28,8 +26,13 @@ import static com.mythicmetals.item.component.DrillComponent.*;
 
 public class MythrilDrill extends Item implements AutoRepairable {
 
+    public static final UpgradeComponent DEFAULT_DRILL_UPGRADES = UpgradeComponent.empty(2);
+
     public MythrilDrill(ToolMaterial material, float damage, float atkSpeed, Item.Properties settings) {
-        super(material.applyToolProperties(settings, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, 0));
+        super(material
+            .applyToolProperties(settings, MythicTags.MINEABLE_MYTHRIL_DRILL, damage, atkSpeed, 0)
+            .component(MythicDataComponents.UPGRADES, DEFAULT_DRILL_UPGRADES)
+        );
     }
 
     @Override
@@ -118,11 +121,10 @@ public class MythrilDrill extends Item implements AutoRepairable {
                 if (upgradeComponent.hasUpgrade(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
                     miner.setAirSupply(Math.min(miner.getAirSupply() + 60, miner.getMaxAirSupply()));
                 }
-                // FIXME - Handle upgrades
                 // Randomly drop gold from midas gold
-//                if (upgradeComponent.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK.asItem()) && random.nextInt(30) == 27) {
-//                    miner.spawnAtLocation(serverWorld, Items.RAW_GOLD);
-//                }
+                if (upgradeComponent.hasUpgrade(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem()) && random.nextInt(30) == 27) {
+                    miner.spawnAtLocation(serverWorld, Items.RAW_GOLD);
+                }
             }
         }
 
@@ -161,55 +163,4 @@ public class MythrilDrill extends Item implements AutoRepairable {
         }
         return 1.0f;
     }
-
-    @Override
-    public void deriveStackComponents(DataComponentMap source, DataComponentPatch.Builder target) {
-        super.deriveStackComponents(source, target);
-    }
-
-    // FIXME - Migrate to derive stack components
-//    @Override
-//    public void verifyComponentsAfterLoad(ItemStack stack) {
-//        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
-//
-//        boolean changes = false;
-//        var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
-//        assert attributes != null;
-//        var upgrades = stack.getOrDefault(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2));
-//        if (upgrades.hasUpgrade(MythicBlocks.ENCHANTED_MIDAS_GOLD_BLOCK_ITEM)) {
-//            var modifier = new AttributeModifier(
-//                RegistryHelper.id("mythril_drill_luck_bonus"),
-//                2.0,
-//                AttributeModifier.Operation.ADD_VALUE
-//            );
-//            attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
-//            changes = true;
-//        }
-//        if (upgrades.hasUpgrade(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
-//            var modifier = new AttributeModifier(
-//                RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
-//                3.0,
-//                AttributeModifier.Operation.ADD_VALUE
-//            );
-//            attributes = attributes.withModifierAdded(Attributes.SUBMERGED_MINING_SPEED, modifier, EquipmentSlotGroup.MAINHAND);
-//
-//            changes = true;
-//        }
-//        // Gives +1 level of efficiency
-//        for (var entry : stack.getEnchantments().entrySet()) {
-//            if (entry.getKey().is(key -> key.equals(Enchantments.EFFICIENCY))) {
-//                int level = EnchantmentHelper.getItemEnchantmentLevel(entry.getKey(), stack);
-//                var modifier = new AttributeModifier(
-//                    RegistryHelper.id("mythril_drill_speed_bonus"),
-//                    1 + (level * 2),
-//                    AttributeModifier.Operation.ADD_VALUE
-//                );
-//                attributes = attributes.withModifierAdded(Attributes.MINING_EFFICIENCY, modifier, EquipmentSlotGroup.MAINHAND);
-//                changes = true;
-//            }
-//        }
-//        if (changes) {
-//            stack.set(DataComponents.ATTRIBUTE_MODIFIERS, attributes);
-//        }
-//    }
 }

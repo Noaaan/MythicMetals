@@ -155,7 +155,7 @@ public class MythicMetals implements ModInitializer {
     }
 
     private void initDrillItems() {
-        drillUpgrades.put(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL), "aquarium");
+        drillUpgrades.put(MythicMaterials.TIDESINGER.baseMaterial(), "aquarium");
         drillUpgrades.put(MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_STONE), "carmot");
         drillUpgrades.put(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem(), "midas_gold");
         drillUpgrades.put(MythicMaterials.PROMETHEUM.extraItems().get(MythicResourceKeys.PROMETHEUM_ROSE), "prometheum");

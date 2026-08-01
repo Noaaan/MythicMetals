@@ -130,7 +130,6 @@ public class MythicTools {
         .group(MythicMetals.TABBED_GROUP).tab(2)
         .rarity(Rarity.UNCOMMON)
         .component(MythicDataComponents.DRILL, new DrillComponent(0))
-        .component(MythicDataComponents.UPGRADES, UpgradeComponent.empty(2))
     );
     public static final Item PLATINUM_WATCH = new Item(new Item.Properties().group(MythicMetals.TABBED_GROUP).tab(2).setId(RegistryHelper.itemKey("platinum_watch")));
 

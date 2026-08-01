@@ -1,13 +1,21 @@
 package com.mythicmetals.data.recipe;
 
+import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.component.UpgradeComponent;
+import com.mythicmetals.item.tools.MythrilDrill;
+import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
 import io.wispforest.owo.serialization.EndecRecipeSerializer;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
@@ -52,9 +60,42 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     @Override
     public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider lookup) {
         var stack = input.base().copy();
+        var addition = input.addition().getItem();
+        var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+        boolean changes = false;
 
         // Apply drill upgrade
-        stack.set(MythicDataComponents.UPGRADES, UpgradeComponent.addItem(stack.get(MythicDataComponents.UPGRADES), input.addition().getItem()));
+        stack.set(MythicDataComponents.UPGRADES, UpgradeComponent.addItem(stack.getOrDefault(MythicDataComponents.UPGRADES, MythrilDrill.DEFAULT_DRILL_UPGRADES), input.addition().getItem()));
+
+        if (addition.equals(MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK).asItem())) {
+            var modifier = new AttributeModifier(
+                RegistryHelper.id("mythril_drill_luck_bonus"),
+                2.0,
+                AttributeModifier.Operation.ADD_VALUE
+            );
+            attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
+        }
+        if (addition.equals(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
+            var modifier = new AttributeModifier(
+                RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
+                3.0,
+                AttributeModifier.Operation.ADD_VALUE
+            );
+            attributes = attributes.withModifierAdded(Attributes.SUBMERGED_MINING_SPEED, modifier, EquipmentSlotGroup.MAINHAND);
+        }
+        int upgrades = stack.get(MythicDataComponents.UPGRADES).countRealUpgrades();
+        if (upgrades > 0) {
+            attributes.withModifierAdded(
+                Attributes.MINING_EFFICIENCY,
+                new AttributeModifier(
+                    RegistryHelper.id("mythril_drill_upgrade_mining_speed_bonus"),
+                    0.1 * upgrades,
+                    AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                ),
+                EquipmentSlotGroup.MAINHAND
+            );
+        }
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, attributes);
         return stack;
     }
 
