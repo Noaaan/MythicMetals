@@ -84,6 +84,11 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
         this.setFuse(valueInput.getIntOr("fuse", DEFAULT_FUSE));
     }
 
+    @Override
+    public boolean isPickable() {
+        return !this.isRemoved();
+    }
+
     protected void addAdditionalSaveData(ValueOutput nbt) {
         nbt.putInt("fuse", this.getFuse());
     }

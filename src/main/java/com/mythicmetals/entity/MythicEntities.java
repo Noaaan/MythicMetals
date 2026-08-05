@@ -29,9 +29,17 @@ public class MythicEntities {
        PALLADIUM_MINECART_ENTITY_REGISTRY_KEY = RegistryHelper.entityTypeKey("palladium_minecart");
 
         BANGLUM_TNT_ENTITY_TYPE = EntityType.Builder.<BanglumTntEntity>of(
-            BanglumTntEntity::new, MobCategory.MISC).sized(1f, 1f).build(BANGLUM_TNT_ENTITY_REGISTRY_KEY);
+            BanglumTntEntity::new, MobCategory.MISC)
+            .sized(1f, 1f)
+            .noLootTable()
+            .fireImmune()
+            .build(BANGLUM_TNT_ENTITY_REGISTRY_KEY);
         BANGLUM_NUKE_ENTITY_TYPE = EntityType.Builder.<BanglumNukeEntity>of(
-            BanglumNukeEntity::new, MobCategory.MISC).sized(3f, 3f).build(BANGLUM_NUKE_ENTITY_REGISTRY_KEY);
+            BanglumNukeEntity::new, MobCategory.MISC)
+            .sized(3f, 3f)
+            .noLootTable()
+            .fireImmune()
+            .build(BANGLUM_NUKE_ENTITY_REGISTRY_KEY);
         STAR_PLATINUM_ARROW_ENTITY_TYPE = EntityType.Builder.<StarPlatinumArrowEntity>of(
                 StarPlatinumArrowEntity::new, MobCategory.MISC)
             .sized(.5f, .5f)
