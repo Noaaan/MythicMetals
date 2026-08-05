@@ -38,8 +38,7 @@ dependencies {
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 
     // Isometric Renders + Worldmesher
-    modCompileOnly("maven.modrinth:isometric-renders:${project.isorender_version}")
-//    modRuntimeOnly("io.wispforest:worldmesher:${project.worldmesher_version}")
+    modRuntimeOnly modCompileOnly("maven.modrinth:wikirenderer:${project.wikirender_version}")
 
     // REI + Arch
     modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"

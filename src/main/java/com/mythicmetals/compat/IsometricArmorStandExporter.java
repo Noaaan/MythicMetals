@@ -1,15 +1,15 @@
 package com.mythicmetals.compat;
 
-import com.glisco.isometricrenders.render.BatchRenderable;
-import com.glisco.isometricrenders.render.EntityRenderable;
-import com.glisco.isometricrenders.screen.RenderScreen;
-import com.glisco.isometricrenders.screen.ScreenScheduler;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.MythicMaterials;
+import com.pigicial.wikirenderer.render.batch.BatchRenderable;
+import com.pigicial.wikirenderer.render.entity.EntityRenderable;
+import com.pigicial.wikirenderer.screen.RenderScreen;
+import com.pigicial.wikirenderer.screen.ScreenSchedulerAndSaver;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.core.component.DataComponents;
@@ -32,18 +32,19 @@ public class IsometricArmorStandExporter {
         List<EntityRenderable> renderables = new ArrayList<>();
 
         ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
-            // TODO - Handle Tidesinger explicitly, since I want to summon the five variants
             if (material != MythicMaterials.TIDESINGER && material.armorSet() != null) {
                 var armorSet = material.armorSet();
                 var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
                 armorSet.getPlayerItems().forEach(armorItem -> {
                     var armorStack = armorItem.getDefaultInstance();
                     var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
-                    armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+                    if (equippableComponent != null) {
+                        armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+                    }
                 });
                 armorStand.setNoBasePlate(true);
                 armorStand.setInvisible(true);
-                renderables.add(new EntityRenderable(armorStand));
+                renderables.add(EntityRenderable.fromEntity(armorStand));
             }
         });
 
@@ -60,13 +61,13 @@ public class IsometricArmorStandExporter {
             });
             armorStand.setNoBasePlate(true);
             armorStand.setInvisible(true);
-            renderables.add(new EntityRenderable(armorStand));
+            renderables.add(EntityRenderable.fromEntity(armorStand));
         });
 
         var batchRender = BatchRenderable.of("mythicmetals", renderables);
         var renderScreen = new RenderScreen(batchRender);
 
-        ScreenScheduler.schedule(renderScreen);
+        ScreenSchedulerAndSaver.schedule(renderScreen);
 
         return 1;
     }

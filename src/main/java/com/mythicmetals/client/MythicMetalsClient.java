@@ -88,7 +88,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
         BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage(), ChunkSectionLayer.TRANSLUCENT);
 
-        if (FabricLoader.getInstance().isModLoaded("isometric-renders")) {
+        if (FabricLoader.getInstance().isModLoaded("wikirenderer")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
                 IsometricArmorStandExporter.register(dispatcher);
             });
