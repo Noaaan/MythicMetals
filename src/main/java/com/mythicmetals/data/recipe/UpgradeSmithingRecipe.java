@@ -85,7 +85,7 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
         }
         int upgrades = stack.get(MythicDataComponents.UPGRADES).countRealUpgrades();
         if (upgrades > 0) {
-            attributes.withModifierAdded(
+            attributes = attributes.withModifierAdded(
                 Attributes.MINING_EFFICIENCY,
                 new AttributeModifier(
                     RegistryHelper.id("mythril_drill_upgrade_mining_speed_bonus"),

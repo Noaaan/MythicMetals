@@ -46,9 +46,6 @@ public record DrillComponent(int fuel) implements TooltipProvider {
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> tooltip, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
 
         // Activation Status
-        if (this.hasFuel()) {
-            tooltip.accept(Component.translatable("tooltip.mythril_drill.activated").withStyle(ChatFormatting.AQUA));
-        }
         if (this.fuel == 0) {
             tooltip.accept(Component.translatable("tooltip.mythril_drill.refuel").setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY)));
         }
