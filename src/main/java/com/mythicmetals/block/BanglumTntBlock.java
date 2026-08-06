@@ -58,7 +58,7 @@ public class BanglumTntBlock extends TntBlock {
         if (!world.isClientSide()) {
             BanglumTntEntity banglumTnt = new BanglumTntEntity(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
             int i = banglumTnt.getFuse();
-            banglumTnt.setFuse((short) (world.random.nextInt(i / 4) + i / 8));
+            banglumTnt.setFuse((short) (world.getRandom().nextInt(i / 4) + i / 8));
             world.addFreshEntity(banglumTnt);
         }
     }

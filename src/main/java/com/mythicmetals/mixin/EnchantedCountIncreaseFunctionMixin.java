@@ -24,16 +24,16 @@ public class EnchantedCountIncreaseFunctionMixin {
     @ModifyVariable(method = "run", at = @At(
         value = "STORE",
         ordinal = 0
-    ))
-    private int mythicmetals$increaseLooting(int original, ItemStack stack, LootContext context) {
+    ), name = "level")
+    private int mythicmetals$increaseLooting(int level, ItemStack itemStack, LootContext context) {
         Entity entity = context.getOptionalParameter(LootContextParams.ATTACKING_ENTITY);
         if (entity instanceof LivingEntity livingEntity) {
             var mainHandStack = livingEntity.getMainHandItem();
-            if (!mainHandStack.is(MythicTags.BONUS_LOOTING)) return original;
+            if (!mainHandStack.is(MythicTags.BONUS_LOOTING)) return level;
             if (this.enchantment.is((enchantmentRegistryKey) -> enchantmentRegistryKey.equals(Enchantments.LOOTING))) {
-                return original + 1;
+                return level + 1;
             }
         }
-        return original;
+        return level;
     }
 }

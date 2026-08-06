@@ -8,20 +8,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 public record RandomChanceWithLuckCondition(float chance) implements LootItemCondition {
-    public static final MapCodec<RandomChanceWithLuckCondition> CODEC = RecordCodecBuilder.mapCodec(
+    public static final MapCodec<RandomChanceWithLuckCondition> MAP_CODEC = RecordCodecBuilder.mapCodec(
         instance -> instance
             .group(Codec.FLOAT.fieldOf("chance")
                 .forGetter(RandomChanceWithLuckCondition::chance))
             .apply(instance, RandomChanceWithLuckCondition::new)
     );
-
-    @Override
-    public LootItemConditionType getType() {
-        return MythicLootConditions.RANDOM_CHANCE_WITH_LUCK;
-    }
 
     public boolean test(LootContext lootContext) {
         if (lootContext.getOptionalParameter(LootContextParams.THIS_ENTITY) instanceof LivingEntity entity && entity.getAttributes().hasAttribute(Attributes.LUCK)) {
@@ -35,4 +29,8 @@ public record RandomChanceWithLuckCondition(float chance) implements LootItemCon
         return () -> new RandomChanceWithLuckCondition(chance);
     }
 
+    @Override
+    public MapCodec<? extends LootItemCondition> codec() {
+        return MAP_CODEC;
+    }
 }

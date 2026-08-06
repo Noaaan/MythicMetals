@@ -18,12 +18,12 @@ public abstract class OldMinecartBehaviorMixin extends MinecartBehavior {
     }
 
     @ModifyVariable(method = "moveAlongTrack", at = @At(value = "STORE", ordinal = 0))
-    private boolean mythicmetals$boostInLava(boolean original, ServerLevel value) {
+    private boolean mythicmetals$boostInLava(boolean powerTrack, ServerLevel level) {
         BlockPos blockPos = this.minecart.getCurrentBlockPosOrRailBelow();
         BlockState state = this.level().getBlockState(blockPos);
         if (state.getBlock() instanceof Lavaloggable && PalladiumRailBlock.isLavaLogged(state)) {
             return true;
         }
-        return original;
+        return powerTrack;
     }
 }

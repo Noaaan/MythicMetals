@@ -16,6 +16,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -98,12 +99,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
             if (!smeltables.isEmpty()) {
                 // smeltables into ingots
                 if (!requiresBlasting) {
-                    SimpleCookingRecipeBuilder.smelting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, outputItem, 0.1f, 200)
+                    SimpleCookingRecipeBuilder.smelting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, CookingBookCategory.MISC, outputItem, 0.1f, 200)
                         .unlockedBy("has_material", has(outputItem))
                         .save(output, recipeKey("smelting/" + material.name()));
                 }
                 // smeltables into ingots
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, outputItem, 0.1f, 100)
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, CookingBookCategory.MISC, outputItem, 0.1f, 100)
                     .unlockedBy("has_material", has(outputItem))
                     .save(output, recipeKey("blasting/" + material.name()));
             }
@@ -253,12 +254,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
         if (material.armorSet() != null || material.toolSet() != null) {
             // smelt equipment into nuggets
             if (!requiresBlasting) {
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 200)
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, CookingBookCategory.MISC, nugget, 0.1f, 200)
                     .unlockedBy("has_material", has(TagKey.create(Registries.ITEM, RegistryHelper.id("nuggets/" + name))))
                     .save(nuggetExporter, recipeKey("smelting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
             }
             // blast equipment into nuggets
-            SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, nugget, 0.1f, 100)
+            SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemLookup.getOrThrow(RegistryHelper.itemTag("equipment/" + name))), RecipeCategory.MISC, CookingBookCategory.MISC, nugget, 0.1f, 100)
                 .unlockedBy("has_material", has(TagKey.create(Registries.ITEM, RegistryHelper.id("nuggets/" + name))))
                 .save(nuggetExporter, recipeKey("blasting/" + name.toLowerCase(Locale.ROOT) + "_nugget_from_equipment"));
         }

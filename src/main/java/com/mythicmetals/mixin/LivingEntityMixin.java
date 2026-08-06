@@ -37,7 +37,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static com.mythicmetals.data.attachments.MythicDataAttachments.*;
 import static com.mythicmetals.entity.MythicEntityAttributes.*;
 
-@SuppressWarnings("UnstableApiUsage")
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
@@ -94,19 +93,19 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @ModifyReturnValue(method = "getDamageAfterArmorAbsorb", at = @At("RETURN"))
-    private float mythicmetals$reduceDamage(float original, DamageSource damageSource, float f) {
+    private float mythicmetals$reduceDamage(float damage, DamageSource damageSource) {
         boolean changes = false;
-        float newDamage = original;
+        float newDamage = damage;
         if (damageSource.is(DamageTypeTags.IS_EXPLOSION) && this.getAttributes().hasAttribute(EXPLOSION_RESISTANCE)) {
             changes = true;
-            newDamage = (float) (original * this.getAttributeValue(EXPLOSION_RESISTANCE));
+            newDamage = (float) (damage * this.getAttributeValue(EXPLOSION_RESISTANCE));
         }
         if (damageSource.is(DamageTypeTags.IS_PROJECTILE) && this.getAttributes().hasAttribute(PROJECTILE_RESISTANCE)) {
             changes = true;
-            newDamage = (float) (original * this.getAttributeValue(PROJECTILE_RESISTANCE));
+            newDamage = (float) (damage * this.getAttributeValue(PROJECTILE_RESISTANCE));
         }
         if (changes) return newDamage;
-        return original;
+        return damage;
     }
 
     @ModifyExpressionValue(method = "hurtServer", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hasEffect(Lnet/minecraft/core/Holder;)Z"))
@@ -164,7 +163,7 @@ public abstract class LivingEntityMixin extends Entity {
         if (!this.isPassenger()) return;
         var vehicle = this.getVehicle();
         if (vehicle == null) return;
-        if (this.level().getGameTime() % 40 == 1 && vehicle.getType().is(MythicTags.GRANTS_FIRE_RES_WHILE_RIDING)) {
+        if (this.level().getGameTime() % 40 == 1 && vehicle.is(MythicTags.GRANTS_FIRE_RES_WHILE_RIDING)) {
             this.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 120));
         }
     }
@@ -256,9 +255,9 @@ public abstract class LivingEntityMixin extends Entity {
      * Bonus advancement if you combust yourself via a creeper. Good job.
      */
     @Inject(method = "addEffect(Lnet/minecraft/world/effect/MobEffectInstance;Lnet/minecraft/world/entity/Entity;)Z", at = @At("HEAD"))
-    private void mythicmetals$grantAdvancementOnStatusEffectFromCreepers(MobEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
-        if (this.level().isClientSide() || source == null || !this.canBeAffected(effect)) return;
-        if (effect.getEffect().value().equals(MythicStatusEffects.COMBUSTION) && this.isAlwaysTicking()) {
+    private void mythicmetals$grantAdvancementOnStatusEffectFromCreepers(MobEffectInstance newEffect, Entity source, CallbackInfoReturnable<Boolean> cir) {
+        if (this.level().isClientSide() || source == null || !this.canBeAffected(newEffect)) return;
+        if (newEffect.getEffect().value().equals(MythicStatusEffects.COMBUSTION) && this.isAlwaysTicking()) {
             if (source instanceof AreaEffectCloud cloudEntity && ((WasSpawnedFromCreeper) cloudEntity).mythicmetals$isSpawnedFromCreeper()) {
                 //noinspection ConstantConditions
                 MythicCriteriaTriggers.RECEIVED_COMBUSTION_FROM_CREEPER.trigger(((ServerPlayer) (Object) this));
@@ -268,11 +267,11 @@ public abstract class LivingEntityMixin extends Entity {
 
 
     @Inject(method = "dropCustomDeathLoot", at = @At(value = "HEAD"))
-    private void mythicmetals$dropMidasGold(ServerLevel world, DamageSource source, boolean causedByPlayer, CallbackInfo ci) {
+    private void mythicmetals$dropMidasGold(ServerLevel level, DamageSource source, boolean killedByPlayer, CallbackInfo ci) {
         if (source.getEntity() == null) return;
         if (source.getEntity() instanceof Player attacker1) {
             if (MythicMetals.CONFIG.midasGold() && attacker1.getMainHandItem().is(MythicTags.MIDAS_TOUCH)) {
-                this.spawnAtLocation(world, new ItemStack(MythicMaterials.MIDAS_GOLD.rawOre()));
+                this.spawnAtLocation(level, new ItemStack(MythicMaterials.MIDAS_GOLD.rawOre()));
             }
         }
     }

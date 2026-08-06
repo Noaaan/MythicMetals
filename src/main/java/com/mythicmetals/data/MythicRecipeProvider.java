@@ -1,7 +1,7 @@
 package com.mythicmetals.data;
 
 import com.mythicmetals.data.conditions.NuggetsLoadedCondition;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -10,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class MythicRecipeProvider extends FabricRecipeProvider {
 
-    public MythicRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public MythicRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

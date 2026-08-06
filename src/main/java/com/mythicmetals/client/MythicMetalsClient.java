@@ -4,15 +4,11 @@ import com.mythicmetals.api.v2.client.CustomArmorModel;
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.properties.HasDrillFuelProperty;
-import com.mythicmetals.client.properties.MidasGoldProperty;
-import com.mythicmetals.client.properties.TrueTimeProperty;
+import com.mythicmetals.client.properties.*;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
-import com.mythicmetals.item.MythicMaterials;
-import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.component.*;
 import com.mythicmetals.item.tools.CarmotBellItem;
 import com.mythicmetals.item.tools.HammerBase;
@@ -27,7 +23,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
@@ -52,13 +47,13 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        MythicModelHandler.init((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
+        MythicModelHandler.init((loc, def) -> ModelLayerRegistry.registerModelLayer(loc, () -> def));
 
         renderHammerOutline();
         registerModelPredicates();
         registerSwirlRenderer();
 
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+        LivingEntityRenderLayerRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityRenderer instanceof AvatarRenderer<?> playerRenderer) {
                 registrationHelper.register(new MythicMetalsCustomFeatureRenderer(playerRenderer, context.getModelSet(), context.getEquipmentRenderer()));
             }
@@ -83,18 +78,18 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-        BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
-        BlockRenderLayerMap.putBlock(MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL), ChunkSectionLayer.CUTOUT);
-        BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
-        BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage(), ChunkSectionLayer.TRANSLUCENT);
+        //BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
+        //BlockRenderLayerMap.putBlock(MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL), ChunkSectionLayer.CUTOUT);
+        //BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
+        //BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage(), ChunkSectionLayer.TRANSLUCENT);
 
         if (FabricLoader.getInstance().isModLoaded("wikirenderer")) {
-            ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, _) -> {
                 IsometricArmorStandExporter.register(dispatcher);
             });
         }
 
-        HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, tickCounter) -> {
+        HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, _) -> {
             CarmotShieldHudHandler.render(guiGraphics);
         });
 
@@ -103,7 +98,7 @@ public class MythicMetalsClient implements ClientModInitializer {
 
     @SuppressWarnings("unchecked")
     private void registerSwirlRenderer() {
-        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+        LivingEntityRenderLayerRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             registrationHelper.register(new LivingEntityEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));
         });
     }

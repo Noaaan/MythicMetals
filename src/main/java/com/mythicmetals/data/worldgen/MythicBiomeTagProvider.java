@@ -3,8 +3,8 @@ package com.mythicmetals.data.worldgen;
 import com.mythicmetals.data.MythicOreBiomeTags;
 import com.mythicmetals.data.MythicTags;
 import io.wispforest.owo.util.ReflectionUtils;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
@@ -17,17 +17,9 @@ import net.minecraft.world.level.biome.Biomes;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class MythicBiomeTagProvider extends FabricTagProvider<Biome> {
+public class MythicBiomeTagProvider extends FabricTagsProvider<Biome> {
 
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registriesFuture the backing registry for the tag type
-     */
-    public MythicBiomeTagProvider(FabricDataOutput output, ResourceKey<? extends Registry<Biome>> registryKey, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public MythicBiomeTagProvider(FabricPackOutput output, ResourceKey<? extends Registry<Biome>> registryKey, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registryKey, registriesFuture);
     }
 

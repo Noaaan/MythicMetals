@@ -7,14 +7,14 @@ import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 
 public class MythicItemModelProvider extends FabricModelProvider {
 
-    public MythicItemModelProvider(FabricDataOutput output) {
+    public MythicItemModelProvider(FabricPackOutput output) {
         super(output);
     }
 
@@ -62,8 +62,8 @@ public class MythicItemModelProvider extends FabricModelProvider {
         });
         var tippedRuniteArrowLayers = itemModelGenerator.generateLayeredItem(
             MythicTools.TIPPED_RUNITE_ARROW,
-            RegistryHelper.id("item/weapons/tipped_runite_arrow_head"),
-            RegistryHelper.id("item/weapons/tipped_runite_arrow_base")
+            new net.minecraft.client.resources.model.sprite.Material(RegistryHelper.id("item/weapons/tipped_runite_arrow_head")),
+            new net.minecraft.client.resources.model.sprite.Material(RegistryHelper.id("item/weapons/tipped_runite_arrow_base"))
         );
         itemModelGenerator.addPotionTint(MythicTools.TIPPED_RUNITE_ARROW, tippedRuniteArrowLayers);
     }

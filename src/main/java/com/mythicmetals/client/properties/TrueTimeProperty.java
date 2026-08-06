@@ -32,7 +32,7 @@ public class TrueTimeProperty implements RangeSelectItemModelProperty {
     }
 
 
-    private float getTime(Level world) {
-        return world.getDayTime() / 24000.0f;
+    private float getTime(Level level) {
+        return level.getOverworldClockTime() / 24000.0f;
     }
 }

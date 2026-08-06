@@ -19,13 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockStateBaseMixin {
 
     @Inject(at = @At("RETURN"), method = "getDestroyProgress", cancellable = true)
-    private void mythicmetals$slowBreaking(Player player, BlockGetter blockView, BlockPos originalBlockPos, CallbackInfoReturnable<Float> cir) {
+    private void mythicmetals$slowBreaking(Player player, BlockGetter level, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         if (player.getMainHandItem().getItem() instanceof HammerBase hammer) {
             var oldDelta = cir.getReturnValue();
             // Raycast to get a block hit result, which contains the side of the targeted block
-            BlockHitResult blockHitResult = blockView.clip(
+            BlockHitResult blockHitResult = level.clip(
                 new ClipContext(player.position(),
-                    Vec3.atLowerCornerOf(originalBlockPos),
+                    Vec3.atLowerCornerOf(pos),
                     ClipContext.Block.OUTLINE,
                     ClipContext.Fluid.NONE,
                     player));

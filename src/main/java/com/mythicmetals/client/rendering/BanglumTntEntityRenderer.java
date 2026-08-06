@@ -6,17 +6,22 @@ import com.mythicmetals.entity.BanglumTntEntity;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import net.minecraft.client.renderer.SubmitNodeCollector;
+import net.minecraft.client.renderer.block.BlockModelResolver;
+import net.minecraft.client.renderer.block.model.BlockDisplayContext;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.client.renderer.entity.state.TntRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.Blocks;
 
 public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, TntRenderState> {
+
+    private final BlockModelResolver blockModelResolver;
+    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
 
     public BanglumTntEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.shadowRadius = 0.5F;
+        this.blockModelResolver = context.getBlockModelResolver();
     }
 
     @Override
@@ -53,7 +58,7 @@ public class BanglumTntEntityRenderer extends EntityRenderer<BanglumTntEntity, T
     public void extractRenderState(BanglumTntEntity tntEntity, TntRenderState tntEntityRenderState, float f) {
         super.extractRenderState(tntEntity, tntEntityRenderState, f);
         tntEntityRenderState.fuseRemainingInTicks = tntEntity.getFuse() - f + 1.0F;
-        tntEntityRenderState.blockState = MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT).defaultBlockState();
+        blockModelResolver.update(tntEntityRenderState.blockState, MythicMaterials.BANGLUM.extraBlocks().get(MythicResourceKeys.BANGLUM_TNT).defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
     }
 
 }

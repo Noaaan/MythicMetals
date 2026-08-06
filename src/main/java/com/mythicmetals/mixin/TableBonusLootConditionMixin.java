@@ -24,10 +24,10 @@ public class TableBonusLootConditionMixin {
 
     @ModifyVariable(
         method = "test(Lnet/minecraft/world/level/storage/loot/LootContext;)Z",
-        at = @At(value = "LOAD")
-    )
-    private int mythicmetals$increaseFortune(int level, LootContext lootCtx) {
-        var toolCtxStack = lootCtx.getOptionalParameter(LootContextParams.TOOL);
+        at = @At(value = "LOAD"),
+        name = "level")
+    private int mythicmetals$increaseFortune(int level, LootContext context) {
+        var toolCtxStack = context.getOptionalParameter(LootContextParams.TOOL);
         if (toolCtxStack == null) {
             return level;
         }

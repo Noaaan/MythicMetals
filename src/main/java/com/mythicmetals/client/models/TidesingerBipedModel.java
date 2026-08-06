@@ -58,5 +58,14 @@ public class TidesingerBipedModel extends HumanoidModel<HumanoidRenderState> imp
         }
     }
 
-
+    // TODO - Review whether this actually works, or if this just breaks in latest
+    public void setAllVisible(boolean bl) {
+        this.head.visible = bl;
+        this.hat.visible = bl;
+        this.body.visible = bl;
+        this.rightArm.visible = bl;
+        this.leftArm.visible = bl;
+        this.rightLeg.visible = bl;
+        this.leftLeg.visible = bl;
+    }
 }

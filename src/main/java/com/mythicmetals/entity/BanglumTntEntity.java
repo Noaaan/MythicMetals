@@ -25,7 +25,7 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
     public BanglumTntEntity(Level world, double x, double y, double z, @Nullable LivingEntity igniter) {
         this(MythicEntities.BANGLUM_TNT_ENTITY_TYPE, world);
         this.setPos(x, y, z);
-        double d = world.random.nextDouble() * (float) (Math.PI * 2);
+        double d = world.getRandom().nextDouble() * (float) (Math.PI * 2);
         this.setDeltaMovement(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);
         this.setFuse(DEFAULT_FUSE);
         this.xo = x;
@@ -58,7 +58,7 @@ public class BanglumTntEntity extends Entity implements TraceableEntity {
                 this.explode();
             }
         } else {
-            this.updateInWaterStateAndDoFluidPushing();
+            this.updateFluidInteraction();
             // TODO - Better particles
             if (this.level().isClientSide()) {
                 this.level().addParticle(ParticleTypes.LARGE_SMOKE, this.getX(), this.getY() + getSmokeParticleHeight(), this.getZ(), 0.0, 0.0, 0.0);

@@ -12,12 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class DispenserBehaviorMixin {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true)
-    private void pleaseDoNotCommitWarCrimes(BlockSource pointer, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
-        if (!BanglumNukeHandler.tryLightBigTntWithDispenser(pointer)) return;
+    private void pleaseDoNotCommitWarCrimes(BlockSource source, ItemStack dispensed, CallbackInfoReturnable<ItemStack> cir) {
+        if (!BanglumNukeHandler.tryLightBigTntWithDispenser(source)) return;
 
-        stack.hurtAndBreak(1, pointer.level(), null, null);
+        dispensed.hurtAndBreak(1, source.level(), null, null);
 
-        cir.setReturnValue(stack.getDamageValue() > stack.getMaxDamage() ? ItemStack.EMPTY : stack);
+        cir.setReturnValue(dispensed.getDamageValue() > dispensed.getMaxDamage() ? ItemStack.EMPTY : dispensed);
 
     }
 

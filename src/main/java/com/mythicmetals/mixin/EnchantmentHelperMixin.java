@@ -15,13 +15,13 @@ import org.spongepowered.asm.mixin.injection.At;
 public class EnchantmentHelperMixin {
 
     @ModifyReturnValue(method = "getDamageProtection", at = @At("TAIL"))
-    private static float mythicmetals$damageReduction(float original, ServerLevel world, LivingEntity user, DamageSource source) {
+    private static float mythicmetals$damageReduction(float original, ServerLevel serverLevel, LivingEntity victim, DamageSource source) {
         // Make sure that there is any gear to check
         int change = 0;
 
         for (var slot : EquipmentSlot.VALUES) {
             if (!slot.isArmor()) continue;
-            var gearStack = user.getItemBySlot(slot);
+            var gearStack = victim.getItemBySlot(slot);
             if (gearStack.isEmpty()) {
                 continue;
             }

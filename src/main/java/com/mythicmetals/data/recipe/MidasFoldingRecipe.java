@@ -7,9 +7,7 @@ import com.mythicmetals.item.tools.MythicTools;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
-import io.wispforest.owo.serialization.EndecRecipeSerializer;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
@@ -25,6 +23,13 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     private final Ingredient base;
     private final Optional<Ingredient> addition;
     private final ItemStack result;
+    public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
+        CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
+        CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", MidasFoldingRecipe::baseIngredient),
+        CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
+        MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
+        MidasFoldingRecipe::new
+    );
     @Nullable
     private PlacementInfo ingredientPlacement;
 
@@ -77,7 +82,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider lookup) {
+    public ItemStack assemble(SmithingRecipeInput input) {
         var swordInputStack = input.base().copy();
 
         var goldComponent = swordInputStack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0));
@@ -105,8 +110,17 @@ public class MidasFoldingRecipe implements SmithingRecipe {
                 return swordnite;
             }
         }
-
         return swordInputStack;
+    }
+
+    @Override
+    public boolean showNotification() {
+        return true;
+    }
+
+    @Override
+    public String group() {
+        return "";
     }
 
     @Override
@@ -123,17 +137,4 @@ public class MidasFoldingRecipe implements SmithingRecipe {
         return this.ingredientPlacement;
     }
 
-    public static class Serializer extends EndecRecipeSerializer<MidasFoldingRecipe> {
-        public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
-            CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", MidasFoldingRecipe::baseIngredient),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
-            MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
-            MidasFoldingRecipe::new
-        );
-
-        public Serializer() {
-            super(ENDEC);
-        }
-    }
 }

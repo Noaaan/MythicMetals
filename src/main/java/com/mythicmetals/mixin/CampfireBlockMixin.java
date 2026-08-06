@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class CampfireBlockMixin {
 
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
-    private void stompMarshmellows(BlockState blockState, Level level, BlockPos blockPos, Entity entity, InsideBlockEffectApplier insideBlockEffectApplier, boolean bl, CallbackInfo ci) {
+    private void stompMarshmellows(BlockState state, Level level, BlockPos pos, Entity entity, InsideBlockEffectApplier effectApplier, boolean isPrecise, CallbackInfo ci) {
         if (!entity.showVehicleHealth()) return;
         if (entity instanceof LivingEntity livingEntity) {
             var slot = SlotAccess.forEquipmentSlot(livingEntity, EquipmentSlot.FEET);

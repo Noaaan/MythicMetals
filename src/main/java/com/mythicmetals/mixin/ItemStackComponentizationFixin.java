@@ -42,55 +42,55 @@ public abstract class ItemStackComponentizationFixin {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Inject(method = "fixItemStack", at = @At("TAIL"))
-    private static void mythicmetals$migrateToMythicDataComponents(ItemStackComponentizationFix.ItemStackData data, Dynamic dynamic, CallbackInfo ci) {
-        if (data.is(MM_MIDAS)) {
-            data.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
-                .setFieldIfPresent("gold_folded", data.removeTag("GoldFolded").result())
+    private static void mythicmetals$migrateToMythicDataComponents(ItemStackComponentizationFix.ItemStackData itemStack, Dynamic dynamic, CallbackInfo ci) {
+        if (itemStack.is(MM_MIDAS)) {
+            itemStack.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
+                .setFieldIfPresent("gold_folded", itemStack.removeTag("GoldFolded").result())
                 .set("is_royal", dynamic.createBoolean(false))
                 .set("show_tooltip", dynamic.createBoolean(true))
             );
-            data.removeTag("IsRoyal");
-            data.removeTag("IsGilded");
+            itemStack.removeTag("IsRoyal");
+            itemStack.removeTag("IsGilded");
         }
 
-        if (data.is("mythicmetals:royal_midas_gold_sword")) {
-            data.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
-                .setFieldIfPresent("gold_folded", data.removeTag("GoldFolded").result())
+        if (itemStack.is("mythicmetals:royal_midas_gold_sword")) {
+            itemStack.setComponent("mythicmetals:gold_folded", dynamic.emptyMap()
+                .setFieldIfPresent("gold_folded", itemStack.removeTag("GoldFolded").result())
                 .set("is_royal", dynamic.createBoolean(true))
                 .set("show_tooltip", dynamic.createBoolean(true))
             );
-            data.removeTag("IsRoyal");
-            data.removeTag("IsGilded");
+            itemStack.removeTag("IsRoyal");
+            itemStack.removeTag("IsGilded");
         }
 
-        if (data.is(MM_PROMETHEUM)) {
-            data.setComponent("mythicmetals:prometheum", dynamic.emptyMap()
-                .setFieldIfPresent("durability_repaired", data.removeTag("DurabilityRepaired").result())
+        if (itemStack.is(MM_PROMETHEUM)) {
+            itemStack.setComponent("mythicmetals:prometheum", dynamic.emptyMap()
+                .setFieldIfPresent("durability_repaired", itemStack.removeTag("DurabilityRepaired").result())
             );
         }
 
-        if (data.is("mythicmetals:mythril_drill")) {
+        if (itemStack.is("mythicmetals:mythril_drill")) {
 
             var list = Util.make(new ArrayList<Dynamic<?>>(), objects -> {
-                objects.add(data.removeTag("UpgradeSlot1").result().orElse(dynamic.emptyMap()));
-                objects.add(data.removeTag("UpgradeSlot2").result().orElse(dynamic.emptyMap()));
+                objects.add(itemStack.removeTag("UpgradeSlot1").result().orElse(dynamic.emptyMap()));
+                objects.add(itemStack.removeTag("UpgradeSlot2").result().orElse(dynamic.emptyMap()));
             });
 
-            data.setComponent("mythicmetals:drill", dynamic.emptyMap()
-                .setFieldIfPresent("fuel", data.removeTag("Fuel").result())
+            itemStack.setComponent("mythicmetals:drill", dynamic.emptyMap()
+                .setFieldIfPresent("fuel", itemStack.removeTag("Fuel").result())
             );
 
-            data.setComponent("mythicmetals:upgrades", dynamic.emptyMap()
+            itemStack.setComponent("mythicmetals:upgrades", dynamic.emptyMap()
                 .set("size", dynamic.createInt(2))
                 .set("items", dynamic.createList(list.stream()))
             );
 
-            data.removeTag("IsActive");
+            itemStack.removeTag("IsActive");
         }
 
-        if (data.is(MM_TIDESINGER)) {
-            data.setComponent("mythicmetals:tidesinger", dynamic.emptyMap()
-                .setFieldIfPresent("pattern", data.removeTag("mm_coral_type").result())
+        if (itemStack.is(MM_TIDESINGER)) {
+            itemStack.setComponent("mythicmetals:tidesinger", dynamic.emptyMap()
+                .setFieldIfPresent("pattern", itemStack.removeTag("mm_coral_type").result())
             );
         }
     }

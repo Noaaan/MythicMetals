@@ -5,20 +5,21 @@ import com.mojang.math.Axis;
 import com.mythicmetals.entity.BanglumNukeEntity;
 import com.mythicmetals.item.MythicMaterials;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
+import net.minecraft.client.renderer.block.BlockModelResolver;
+import net.minecraft.client.renderer.block.model.BlockDisplayContext;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.util.Mth;
-import net.minecraft.world.level.block.state.BlockState;
 
 //VanillaCopy of the TntEntityRenderer
 public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity, BanglumNukeEntityRenderState> {
-    private final BlockRenderDispatcher blockRenderManager;
+    private final BlockModelResolver blockModelResolver;
+    public static final BlockDisplayContext BLOCK_DISPLAY_CONTEXT = BlockDisplayContext.create();
 
     public BanglumNukeEntityRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.shadowRadius = 0.5f;
-        blockRenderManager = context.getBlockRenderDispatcher();
+        blockModelResolver = context.getBlockModelResolver();
     }
 
     @Override
@@ -52,9 +53,9 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
                     poseStack.pushPose();
                     poseStack.translate(x, y, z);
 
-                    BlockState neededState = (x + y + z) % 2 == 0
-                        ? MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState()
-                        : MythicMaterials.MORKITE.blockSet().storage().defaultBlockState();
+                    var neededState = (x + y + z) % 2 == 0
+                        ? nukeRenderState.banglum
+                        : nukeRenderState.morkite;
                     TntMinecartRenderer.submitWhiteSolidBlock(
                         neededState, poseStack, submitNodeCollector, nukeRenderState.lightCoords, fuse / 5 % 2 == 0, nukeRenderState.outlineColor
                     );
@@ -72,5 +73,7 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
     public void extractRenderState(BanglumNukeEntity entity, BanglumNukeEntityRenderState state, float tickDelta) {
         super.extractRenderState(entity, state, tickDelta);
         state.fuse = entity.getFuse();
+        this.blockModelResolver.update(state.banglum, MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
+        this.blockModelResolver.update(state.morkite, MythicMaterials.MORKITE.blockSet().storage().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
     }
 }

@@ -26,11 +26,11 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Environment(EnvType.CLIENT)
     @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;)V", at = @At("HEAD"), cancellable = true)
-    private void mythicmetals$cancelSwingOnActiveMythrilDrill(InteractionHand interactionHand, CallbackInfo ci) {
+    private void mythicmetals$cancelSwingOnActiveMythrilDrill(InteractionHand hand, CallbackInfo ci) {
         if (!this.level().isClientSide()) {
             return;
         }
-        var stack = this.getItemInHand(interactionHand);
+        var stack = this.getItemInHand(hand);
         var camera = Minecraft.getInstance().getEntityRenderDispatcher().camera;
         // This can be null, according to #252
         if (camera == null) return;

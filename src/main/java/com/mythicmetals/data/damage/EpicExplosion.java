@@ -7,6 +7,7 @@ import com.mythicmetals.misc.MythicParticleSystem;
 import eu.pb4.common.protection.api.CommonProtection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -66,7 +67,7 @@ public final class EpicExplosion implements Explosion {
                     if (!statePredicate.test(state)) continue;
 
                     if (cause instanceof Player player) {
-                        if (BlockBreaker.isProtected(world, mutPos, this, player.getGameProfile(), player)) continue;
+                        if (BlockBreaker.isProtected(world, mutPos, this, new NameAndId(player.getGameProfile()), player)) continue;
                     } else {
                         if (BlockBreaker.isProtected(world, mutPos, CommonProtection.UNKNOWN, null)) continue;
                     }
@@ -92,7 +93,7 @@ public final class EpicExplosion implements Explosion {
         int radiusSq = radius * radius;
         var pos = new BlockPos.MutableBlockPos();
 
-        GameProfile playerId = cause != null ? cause.getGameProfile() : CommonProtection.UNKNOWN;
+        var playerId = cause != null ? new NameAndId(cause.getGameProfile()) : CommonProtection.UNKNOWN;
 
         for (int ox = -radius; ox < radius; ox++) {
             for (int oy = -radius; oy < radius; oy++) {

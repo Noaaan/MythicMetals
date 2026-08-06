@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.15-SNAPSHOT'
+    id 'net.fabricmc.fabric-loom' version '1.17-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -26,57 +26,56 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings loom.officialMojangMappings()
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    modCompileOnly("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    compileOnly("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
     // OwO
-    annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
+    annotationProcessor implementation("io.wispforest:owo-lib:${project.owo_version}")
     include "io.wispforest:owo-sentinel:${project.owo_version}"
 
     // Isometric Renders + Worldmesher
-    modRuntimeOnly modCompileOnly("maven.modrinth:wikirenderer:${project.wikirender_version}")
+    runtimeOnly compileOnly("maven.modrinth:wikirenderer:${project.wikirender_version}")
 
     // REI + Arch
-    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
-    modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-    modCompileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
+    compileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
+    compileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
+    runtimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    compileOnly "dev.architectury:architectury-fabric:${project.architectury_version}"
 
     // EMI
-    modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
+    compileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
 //    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
     // ModMenu
     //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
-    modImplementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
+    implementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
 
     // Origins compat via Apoli
     // Excludes Daf's libraries from it, as its out of date and produces duplicate transitive dependencies
-//    modCompileOnly("com.github.apace100:Apoli:${project.apoli_version}") {
+//    compileOnly("com.github.apace100:Apoli:${project.apoli_version}") {
 //        exclude(group: "io.github.apace100")
 //        exclude(group: "com.github.DaFuqs")
 //    }
-//    modCompileOnly("com.github.apace100:Calio:${project.calio_version}") {
+//    compileOnly("com.github.apace100:Calio:${project.calio_version}") {
 //        exclude(group: "org.quiltmc.parsers")
 //    }
 
     // Common Protection API
-    modImplementation include("eu.pb4:common-protection-api:${project.cpa_version}")
+    implementation include("eu.pb4:common-protection-api:${project.cpa_version}")
 
     // MM Decorations
-    //modRuntimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
+    //runtimeOnly("nourl:MythicMetalsDecorations:${project.mmdecorations_version}")
 
     // Explosive Enhancement
-    modApi("maven.modrinth:explosive-enhancement:${project.ee_version}")
+    api("maven.modrinth:explosive-enhancement:${project.ee_version}")
 
     // Cicada
-    modImplementation "nl.enjarai:cicada-lib:${project.cicada_version}"
+    implementation "nl.enjarai:cicada-lib:${project.cicada_version}"
 }
 
 fabricApi {
@@ -112,17 +111,11 @@ jar {
     from "LICENSE"
 }
 
-// configure the maven publication
+// add all the jars that should be included when publishing to maven
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            // add all the jars that should be included when publishing to maven
-            artifact(remapJar) {
-                builtBy remapJar
-            }
-            artifact(sourcesJar) {
-                builtBy remapSourcesJar
-            }
+            from components.java
         }
     }
 }

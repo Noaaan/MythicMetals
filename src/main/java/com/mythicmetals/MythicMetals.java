@@ -24,7 +24,7 @@ import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
-import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
+import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
@@ -83,9 +83,9 @@ public class MythicMetals implements ModInitializer {
         MythicEntityAttributes.init();
         MythicEntities.init();
         TABBED_GROUP.initialize();
-        FuelRegistryEvents.BUILD.register((builder, context) -> {
-            builder.add(MythicMaterials.MORKITE.baseMaterial(), 1200);
-            builder.add(MythicMaterials.MORKITE.blockSet().storage(), 12000);
+        FuelValueEvents.BUILD.register((builder, context) -> {
+            builder.add(MythicMaterials.MORKITE.baseMaterial(), context.baseSmeltTime() * 6);
+            builder.add(MythicMaterials.MORKITE.blockSet().storage(), context.baseSmeltTime() * 64);
         });
         MythicResourceConditions.init();
         MythicLootConditions.init();

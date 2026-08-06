@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -41,7 +42,7 @@ public record BlastMiningComponent(int depth) implements TooltipProvider {
 
             var iterator = BlockBreaker.findBlocks(context, depth);
             for (BlockPos blockPos : iterator) {
-                if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
+                if (BlockBreaker.isProtected(world, blockPos, new NameAndId(player.getGameProfile()), player)) {
                     continue;
                 }
                 if (isCorrectForDrops(stack, world.getBlockState(blockPos))) {

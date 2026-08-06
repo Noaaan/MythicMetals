@@ -1,3 +1,10 @@
 {
-  "type": "mythicmetals:runite_tipped_arrow_recipe"
+  "type": "minecraft:crafting_imbue",
+  "category": "misc",
+  "material": "mythicmetals:runite_arrow",
+  "result": {
+    "count": 8,
+    "id": "mythicmetals:tipped_runite_arrow"
+  },
+  "source": "minecraft:lingering_potion"
 }

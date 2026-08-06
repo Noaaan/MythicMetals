@@ -26,20 +26,20 @@ public abstract class BucketItemMixin {
     @Shadow
     protected abstract void playEmptySound(@Nullable LivingEntity livingEntity, LevelAccessor levelAccessor, BlockPos blockPos);
 
-    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), ordinal = 1)
-    private BlockPos mythicmetals$targetBlockOnLava(BlockPos original, Level world, Player user, InteractionHand hand, @Local BlockState blockState, @Local BlockHitResult blockHitResult) {
+    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getBlock()Lnet/minecraft/world/level/block/Block;"), name = "directionOffsetPos")
+    private BlockPos mythicmetals$targetBlockOnLava(BlockPos directionOffsetPos, Level level, Player player, InteractionHand hand, @Local BlockState blockState, @Local BlockHitResult hitResult) {
         if (blockState.getBlock() instanceof Lavaloggable && this.content.equals(Fluids.LAVA)) {
-            return blockHitResult.getBlockPos();
+            return hitResult.getBlockPos();
         }
-        return original;
+        return directionOffsetPos;
     }
 
     @Inject(method = "emptyContents", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;isClientSide()Z"), cancellable = true)
-    private void mythicmetals$fillLavalog(LivingEntity livingEntity, Level level, BlockPos pos, BlockHitResult blockHitResult, CallbackInfoReturnable<Boolean> cir) {
+    private void mythicmetals$fillLavalog(LivingEntity user, Level level, BlockPos pos, BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
         var state = level.getBlockState(pos);
         if (this.content.equals(Fluids.LAVA) && state.getBlock() instanceof Lavaloggable lavaloggable) {
             lavaloggable.placeLiquid(level, pos, state, Fluids.LAVA.getSource(false));
-            this.playEmptySound(livingEntity, level, pos);
+            this.playEmptySound(user, level, pos);
             cir.setReturnValue(true);
         }
     }

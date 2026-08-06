@@ -6,6 +6,7 @@ import com.mythicmetals.data.MythicCriteriaTriggers;
 import io.wispforest.owo.ops.LevelOps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -38,7 +39,7 @@ public class BanglumPick extends Item {
 
             var iterator = BlockBreaker.findBlocks(context, 5);
             for (BlockPos blockPos : iterator) {
-                if (BlockBreaker.isProtected(world, blockPos, player.getGameProfile(), player)) {
+                if (BlockBreaker.isProtected(world, blockPos, new NameAndId(player.getGameProfile()), player)) {
                     continue;
                 }
                 if (isCorrectToolForDrops(stack, world.getBlockState(blockPos))) {

@@ -31,9 +31,6 @@
     "rei_client": [
       "com.mythicmetals.compat.MythicMetalsREIClientPlugin"
     ],
-    "emi": [
-      "com.mythicmetals.compat.MythicMetalsEMIPlugin"
-    ],
     "cicada": [
       "com.mythicmetals.compat.CicadaInit"
     ]
@@ -47,9 +44,9 @@
   },
   "depends": {
     "fabricloader": ">=0.16.0",
-    "fabric": ">=0.115.0",
-    "minecraft": "1.21.11",
-    "java": ">=21",
+    "fabric-api": ">=0.155.0",
+    "minecraft": "26.1.2",
+    "java": ">=25",
     "owo": ">=0.13.0"
   },
   "custom": {

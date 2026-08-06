@@ -28,16 +28,15 @@ public class ApplyBonusLootFunctionMixin {
             value = "INVOKE",
             target = "Lnet/minecraft/world/level/storage/loot/LootContext;getRandom()Lnet/minecraft/util/RandomSource;",
             shift = At.Shift.BEFORE),
-        ordinal = 0
-    )
-    private int mythicmetals$increaseFortune(int level, ItemStack drop, LootContext lootCtx) {
+        name = "level")
+    private int mythicmetals$increaseFortune(int level, ItemStack itemStack, LootContext context) {
         // Only increase drops from Fortune
         if (!this.enchantment.is((enchantmentRegistryKey) -> enchantmentRegistryKey.equals(Enchantments.FORTUNE))) {
             return level;
         }
 
         // Return early if there is no item
-        var toolCtxStack = lootCtx.getOptionalParameter(LootContextParams.TOOL);
+        var toolCtxStack = context.getOptionalParameter(LootContextParams.TOOL);
         if (toolCtxStack == null) {
             return level;
         }

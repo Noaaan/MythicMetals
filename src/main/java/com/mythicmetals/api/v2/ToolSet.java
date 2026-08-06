@@ -1,9 +1,7 @@
 package com.mythicmetals.api.v2;
 
-import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.MythicMetals;
-import com.mythicmetals.item.MythicItemAttributes;
-import com.mythicmetals.item.MythicSpearStats;
+import com.mythicmetals.item.*;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.wiki.WikiHelper;
 import net.fabricmc.loader.api.FabricLoader;
@@ -20,10 +18,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.EitherHolder;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SwingAnimationType;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -325,7 +320,7 @@ public class ToolSet {
             .durability(toolMaterial.durability())
             .repairable(toolMaterial.repairItems())
             .enchantable(toolMaterial.enchantmentValue())
-            .component(DataComponents.DAMAGE_TYPE, new EitherHolder<>(DamageTypes.SPEAR))
+            .delayedHolderComponent(DataComponents.DAMAGE_TYPE, DamageTypes.SPEAR)
             .component(
                 DataComponents.KINETIC_WEAPON,
                 new KineticWeapon(

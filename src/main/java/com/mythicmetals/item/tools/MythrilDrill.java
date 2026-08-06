@@ -88,7 +88,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
     @Override
     public boolean mineBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity miner) {
         if (world.isClientSide() && miner instanceof Player player) {
-            player.displayClientMessage(Component.translatable("tooltip.mythril_drill.out_of_fuel"), true);
+            player.sendOverlayMessage(Component.translatable("tooltip.mythril_drill.out_of_fuel"));
             player.playSound(SoundEvents.NOTE_BLOCK_BASS.value(), 0.8f, 0.5f);
         }
 

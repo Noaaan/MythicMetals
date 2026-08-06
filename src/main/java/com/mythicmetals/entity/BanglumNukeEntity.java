@@ -13,6 +13,7 @@ import io.wispforest.owo.serialization.endec.MinecraftEndecs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -43,7 +44,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
     public BanglumNukeEntity(Level world, double x, double y, double z, @Nullable LivingEntity igniter, Block coreBlock) {
         this(MythicEntities.BANGLUM_NUKE_ENTITY_TYPE, world);
         this.setPos(x, y, z);
-        double d = world.random.nextDouble() * (float) (Math.PI * 2);
+        double d = world.getRandom().nextDouble() * (float) (Math.PI * 2);
         this.setDeltaMovement(-Math.sin(d) * 0.01, 0.2F, -Math.cos(d) * 0.01);
         this.setFuse(DEFAULT_FUSE);
         this.xo = x;
@@ -93,7 +94,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
 //        }
 
         ServerPlayer playerCause = causingEntity instanceof ServerPlayer player ? player : null;
-        GameProfile playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : playerCause.getGameProfile();
+        var playerCauseProfile = playerCause == null ? CommonProtection.UNKNOWN : new NameAndId(playerCause.getGameProfile());
         EpicExplosion explosion = new EpicExplosion(Explosion.BlockInteraction.DESTROY_WITH_DECAY, world, this.position(), this, playerCause, radius, world.damageSources().source(MythicDamageTypes.BANGLUM_NUKE), statePredicate);
         explosion.explode();
 
@@ -103,7 +104,7 @@ public class BanglumNukeEntity extends BanglumTntEntity {
         for (Player player : world.players()) {
             if (player.distanceToSqr(this) > soundRadius * soundRadius) continue;
 
-            world.playSound(this, this.blockPosition(), MythicSoundEvents.BANGLUM_NUKE_EXPLOSION, SoundSource.BLOCKS, 5.0F, (1.0F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F);
+            world.playSound(this, this.blockPosition(), MythicSoundEvents.BANGLUM_NUKE_EXPLOSION, SoundSource.BLOCKS, 5.0F, (1.0F + (this.level().getRandom().nextFloat() - this.level().getRandom().nextFloat()) * 0.2F) * 0.7F);
         }
 
         // Handle damaging entities near the nuke explosion

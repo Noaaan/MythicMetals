@@ -18,7 +18,7 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommands.literal;
 
 public class IsometricArmorStandExporter {
 
@@ -34,7 +34,7 @@ public class IsometricArmorStandExporter {
         ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
             if (material != MythicMaterials.TIDESINGER && material.armorSet() != null) {
                 var armorSet = material.armorSet();
-                var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+                var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getLevel());
                 armorSet.getPlayerItems().forEach(armorItem -> {
                     var armorStack = armorItem.getDefaultInstance();
                     var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
@@ -51,7 +51,7 @@ public class IsometricArmorStandExporter {
         // Handle Tidesinger specifically, since it has five distinct variants
         if (MythicMaterials.TIDESINGER.armorSet() == null) return 1;
         TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().forEach(patternItem -> {
-            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getWorld());
+            var armorStand = new ArmorStand(EntityType.ARMOR_STAND, context.getSource().getLevel());
             var armorSet = MythicMaterials.TIDESINGER.armorSet();
             armorSet.getPlayerItems().forEach(armorItem -> {
                 var armorStack = armorItem.getDefaultInstance();

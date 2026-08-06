@@ -37,7 +37,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     private ItemCooldowns cooldowns;
 
     @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
-    private void slowBreak(BlockState blockState, CallbackInfoReturnable<Float> cir) {
+    private void slowBreak(BlockState state, CallbackInfoReturnable<Float> cir) {
         var mainHandStack = getInventory().getSelectedItem();
         float speedMod = 1.0f;
 
@@ -45,7 +45,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
         if (mainHandStack.isEmpty()) return;
 
         // Slow down mining MM ores if you are using an item without a high enough mining level
-        if (blockState.is(MythicTags.MYTHIC_ORES) && !mainHandStack.isCorrectToolForDrops(blockState)) {
+        if (state.is(MythicTags.MYTHIC_ORES) && !mainHandStack.isCorrectToolForDrops(state)) {
             if (mainHandStack.isEnchanted() && mainHandStack.getEnchantments().keySet().iterator().next().equals(Enchantments.EFFICIENCY)) {
                 speedMod *= 0.01f;
             } else {
@@ -67,7 +67,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     }
 
     @Inject(method = "attack", at = @At("HEAD"))
-    private void setMythicmetals$resetCritical(Entity target, CallbackInfo ci) {
+    private void setMythicmetals$resetCritical(Entity entity, CallbackInfo ci) {
         mythicmetals$setCritical(false);
     }
 

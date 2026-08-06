@@ -20,12 +20,12 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, S extend
     }
 
     @Inject(method = "extractRenderState(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;F)V", at = @At("RETURN"))
-    private void mythicmetals$extractRenderState(T livingEntity, S livingEntityRenderState, float f, CallbackInfo ci) {
-        var attributes = livingEntity.getAttributes();
+    private void mythicmetals$extractRenderState(T entity, S state, float partialTicks, CallbackInfo ci) {
+        var attributes = entity.getAttributes();
         if (attributes.hasAttribute(MythicEntityAttributes.CARMOT_SHIELD)) {
-            livingEntityRenderState.setData(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY, new CarmotShield(
+            state.setData(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY, new CarmotShield(
                 attributes.getValue(MythicEntityAttributes.CARMOT_SHIELD),
-                livingEntity.hurtTime > 0
+                entity.hurtTime > 0
             ));
         }
     }

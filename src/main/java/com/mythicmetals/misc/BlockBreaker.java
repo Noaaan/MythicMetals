@@ -7,6 +7,7 @@ import eu.pb4.common.protection.api.CommonProtection;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.players.NameAndId;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -21,11 +22,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class BlockBreaker {
 
-    public static boolean isProtected(Level world, BlockPos blockPos, GameProfile profile, @Nullable Player player) {
+    public static boolean isProtected(Level world, BlockPos blockPos, NameAndId profile, @Nullable Player player) {
         return !CommonProtection.canBreakBlock(world, blockPos, profile, player);
     }
 
-    public static boolean isProtected(Level world, BlockPos blockPos, Explosion explosion, GameProfile profile, @Nullable Player player) {
+    public static boolean isProtected(Level world, BlockPos blockPos, Explosion explosion, NameAndId profile, @Nullable Player player) {
         return !CommonProtection.canExplodeBlock(world, blockPos, explosion, profile, player);
     }
 
@@ -88,7 +89,7 @@ public class BlockBreaker {
             if (!hammer.isCorrectToolForDrops(stack, state)) {
                 return true; // don't break anything extra if you are not mining rocks or stones
             }
-            if (isProtected(world, originalBlockPos, player.getGameProfile(), player)) {
+            if (isProtected(world, originalBlockPos, new NameAndId(player.getGameProfile()), player)) {
                 return false;
             }
             var reach = BlockBreaker.getReachDistance(player);
@@ -104,7 +105,7 @@ public class BlockBreaker {
                 if (pos.equals(originalBlockPos)) {
                     continue;
                 }
-                if (isProtected(world, pos, player.getGameProfile(), player)) continue;
+                if (isProtected(world, pos, new NameAndId(player.getGameProfile()), player)) continue;
                 if (hammer.canBreak(stack, world, pos) && !player.isCreative()) {
                     // Call Block.onBreak here, to allow interactions when a player breaks blocks
                     // Note that the center block still calls onBreak twice

@@ -18,9 +18,9 @@ public class TranslationStorageMixin {
     private Map<String, String> storage;
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    private void addTranslations(Map<String, String> translations, boolean rightToLeft, CallbackInfo ci) {
+    private void addTranslations(Map<String, String> storage, boolean defaultRightToLeft, CallbackInfo ci) {
         if (!StringUtilsAtHome.isFunnyDay()) return;
-        var builder = new HashMap<>(translations);
+        var builder = new HashMap<>(storage);
         // probably won't change
         builder.put("item.mythicmetals.durasteel_ingot", "Dura-Chan");
         builder.put("item.mythicmetals.carmot_ingot", "Jello");

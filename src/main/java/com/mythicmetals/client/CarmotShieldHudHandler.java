@@ -6,7 +6,7 @@ import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.RegistryHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
@@ -29,7 +29,7 @@ public class CarmotShieldHudHandler {
 
     public static final Identifier TEXTURE = RegistryHelper.id("textures/gui/shield_status.png");
 
-    public static void render(GuiGraphics guiGraphics) {
+    public static void render(GuiGraphicsExtractor guiGraphics) {
         var player = Minecraft.getInstance().player;
         if (player == null) return;
         if (!MythicMetals.CONFIG.shieldPosition.enabled()) return;
@@ -48,7 +48,7 @@ public class CarmotShieldHudHandler {
         }
     }
 
-    public static void renderOutline(GuiGraphics guiGraphics, int pips, int xStart, int yStart) {
+    public static void renderOutline(GuiGraphicsExtractor guiGraphics, int pips, int xStart, int yStart) {
         // logo
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, 0, LOGO_SIZE, LOGO_SIZE, 64, 32);
         // outline
@@ -63,7 +63,7 @@ public class CarmotShieldHudHandler {
         }
     }
 
-    public static void renderShieldHealth(GuiGraphics guiGraphics, int pips, int xStart, int yStart) {
+    public static void renderShieldHealth(GuiGraphicsExtractor guiGraphics, int pips, int xStart, int yStart) {
         // logo
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, FILLED_PIPS_V, LOGO_SIZE, LOGO_SIZE, 64, 32);
         // bar

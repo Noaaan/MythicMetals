@@ -26,11 +26,11 @@ public class ItemStackMixin {
     }
 
     @Inject(method = "hurtEnemy", at = @At("HEAD"), cancellable = false)
-    private void mythicmetals$handleCustomOnHitComponents(LivingEntity target, LivingEntity user, CallbackInfoReturnable<Boolean> cir) {
-        if (user.getWeaponItem().has(MythicDataComponents.BRANDING)) {
-            var component = user.getWeaponItem().get(MythicDataComponents.BRANDING);
+    private void mythicmetals$handleCustomOnHitComponents(LivingEntity mob, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir) {
+        if (attacker.getWeaponItem().has(MythicDataComponents.BRANDING)) {
+            var component = attacker.getWeaponItem().get(MythicDataComponents.BRANDING);
             assert component != null;
-            component.applyHeatToTarget(target, user);
+            component.applyHeatToTarget(mob, attacker);
         }
     }
 

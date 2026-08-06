@@ -1,6 +1,5 @@
 package com.mythicmetals.misc;
 
-import com.mojang.serialization.MapCodec;
 import com.mythicmetals.MythicMetals;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.owo.serialization.CodecUtils;
@@ -28,8 +27,6 @@ import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 
 import java.util.function.UnaryOperator;
 
@@ -146,10 +143,6 @@ public class RegistryHelper {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, RegistryHelper.id(path));
     }
 
-    public static LootItemConditionType lootConditionType(String path, MapCodec<? extends LootItemCondition> lootCodec) {
-        return Registry.register(BuiltInRegistries.LOOT_CONDITION_TYPE, RegistryHelper.id(path), new LootItemConditionType(lootCodec));
-    }
-
     public static void blockEntity(String path, BlockEntityType<?> type) {
         Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, RegistryHelper.id(path), type);
     }
@@ -170,8 +163,8 @@ public class RegistryHelper {
         return ResourceKey.create(Registries.ITEM, id(item));
     }
 
-    public static ResourceKey<EquipmentAsset> equipmentAsset(String equipmentasset) {
-        return ResourceKey.create(EquipmentAssets.ROOT_ID, id(equipmentasset));
+    public static ResourceKey<EquipmentAsset> equipmentAsset(String equipmentAsset) {
+        return ResourceKey.create(EquipmentAssets.ROOT_ID, id(equipmentAsset));
     }
 
     public static Holder<Potion> getEntry(Potion potion) {

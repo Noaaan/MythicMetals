@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public interface ExplosionMixin {
 
     @Inject(method = "getIndirectSourceEntity(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/entity/LivingEntity;", at = @At("HEAD"), cancellable = true)
-    private static void superBang(@Nullable Entity entity, CallbackInfoReturnable<LivingEntity> cir) {
-        if (entity instanceof BanglumTntEntity banglumTntEntity) {
+    private static void superBang(@Nullable Entity source, CallbackInfoReturnable<LivingEntity> cir) {
+        if (source instanceof BanglumTntEntity banglumTntEntity) {
             cir.setReturnValue(banglumTntEntity.getCausingEntity());
         }
     }

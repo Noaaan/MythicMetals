@@ -52,7 +52,7 @@ public class StarPlatinumArrowEntity extends AbstractArrow {
             this.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).get(MythicDamageTypes.STAR_PLATINUM_ARROW.identifier()).orElseThrow(),
             this,
             getOwner());
-        if (target.getType().is(EntityTypeTags.UNDEAD)) {
+        if (target.is(EntityTypeTags.UNDEAD)) {
             target.addEffect(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1, 3));
         } else {
             target.hurtServer(((ServerLevel) level()), source, 24);

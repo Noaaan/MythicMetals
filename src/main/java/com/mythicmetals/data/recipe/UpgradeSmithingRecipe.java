@@ -9,9 +9,7 @@ import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
-import io.wispforest.owo.serialization.EndecRecipeSerializer;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -27,6 +25,12 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     private final Ingredient base;
     private final Optional<Ingredient> addition;
     private final ItemStack result;
+    public static final StructEndec<UpgradeSmithingRecipe> ENDEC = StructEndecBuilder.of(
+        CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
+        CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::additionIngredient),
+        MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
+        UpgradeSmithingRecipe::new
+    );
 
     public UpgradeSmithingRecipe(Ingredient base, Optional<Ingredient> addition, ItemStack result) {
         this.base = base;
@@ -58,7 +62,7 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     }
 
     @Override
-    public ItemStack assemble(SmithingRecipeInput input, HolderLookup.Provider lookup) {
+    public ItemStack assemble(SmithingRecipeInput input) {
         var stack = input.base().copy();
         var addition = input.addition().getItem();
         var attributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
@@ -127,6 +131,17 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
         return result;
     }
 
+
+    @Override
+    public boolean showNotification() {
+        return true;
+    }
+
+    @Override
+    public String group() {
+        return "";
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -151,17 +166,4 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
     }
 
 
-    public static class Serializer extends EndecRecipeSerializer<UpgradeSmithingRecipe> {
-
-        public static final StructEndec<UpgradeSmithingRecipe> ENDEC = StructEndecBuilder.of(
-            CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
-            CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::additionIngredient),
-            MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
-            UpgradeSmithingRecipe::new
-        );
-
-        public Serializer(StructEndec<UpgradeSmithingRecipe> endec) {
-            super(endec);
-        }
-    }
 }

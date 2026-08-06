@@ -69,7 +69,7 @@ public class CarmotBellBlock extends BaseEntityBlock {
         var entities = world.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(pos, RANGE * 2, RANGE, RANGE * 2));
         entities.forEach(entity -> {
             if (entity instanceof LivingEntity livingEntity) {
-                if (livingEntity.getType().is(EntityTypeTags.UNDEAD)) {
+                if (livingEntity.is(EntityTypeTags.UNDEAD)) {
                     entity.hurtServer(((ServerLevel) world), CarmotBellDamageSource.of(world, user), Math.max(10.0f, livingEntity.getHealth() * 0.1f));
                     MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.position());
                 } else {

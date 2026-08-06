@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MagmaBlockMixin {
 
     @Inject(method = "stepOn", at = @At("HEAD"), cancellable = true)
-    private void cancelBurnWithPalladiumBoots(Level world, BlockPos pos, BlockState state, Entity entity, CallbackInfo ci) {
+    private void cancelBurnWithPalladiumBoots(Level level, BlockPos pos, BlockState onState, Entity entity, CallbackInfo ci) {
         if (!entity.showVehicleHealth()) return;
         if (MythicMaterials.PALLADIUM.armorSet() == null) return;
         if (entity instanceof LivingEntity living && living.getItemBySlot(EquipmentSlot.FEET).getItem().equals(MythicMaterials.PALLADIUM.armorSet().getBoots())) {

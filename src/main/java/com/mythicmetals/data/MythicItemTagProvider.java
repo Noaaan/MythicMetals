@@ -3,23 +3,22 @@ package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.MythicMaterials;
-import com.mythicmetals.misc.DebugHelper;
 import io.wispforest.owo.util.ReflectionUtils;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import org.jspecify.annotations.Nullable;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Item;
 import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("UnstableApiUsage")
-public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
+public class MythicItemTagProvider extends FabricTagsProvider<Item> {
 
     public MythicItemTagProvider(
-        FabricDataOutput output,
-        CompletableFuture<HolderLookup.Provider> registriesFuture,
-        @Nullable BlockTagProvider blockTagProvider
+        FabricPackOutput output,
+        CompletableFuture<HolderLookup.Provider> registriesFuture
     ) {
-        super(output, registriesFuture, blockTagProvider);
+        super(output, Registries.ITEM, registriesFuture);
     }
 
     @Override
@@ -63,7 +62,7 @@ public class MythicItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
 
     // FIXME - Adding tags via registry entries is considered deprecated
-//    public MythicItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
+//    public MythicItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
 //        super(output, completableFuture);
 //    }
 //

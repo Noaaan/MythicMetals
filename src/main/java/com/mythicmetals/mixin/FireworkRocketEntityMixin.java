@@ -27,12 +27,12 @@ public abstract class FireworkRocketEntityMixin extends Projectile {
     }
 
     @ModifyVariable(method = "tick", at = @At("STORE"), ordinal = 1)
-    private Vec3 mythicmetals$crabVec3D(Vec3 vec) {
-        if (this.attachedToEntity == null) return vec;
+    private Vec3 mythicmetals$crabVec3D(Vec3 movement) {
+        if (this.attachedToEntity == null) return movement;
         var speedModifier = this.attachedToEntity.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
 
-        if (speedModifier == 0) return vec.scale(0);
-        return vec.scale(1 / speedModifier);
+        if (speedModifier == 0) return movement.scale(0);
+        return movement.scale(1 / speedModifier);
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;add(DDD)Lnet/minecraft/world/phys/Vec3;", ordinal = 0))
