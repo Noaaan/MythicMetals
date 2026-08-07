@@ -24,18 +24,15 @@ public class MythicItemTagProvider extends FabricTagsProvider<Item> {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
-            // FIXME - Remove once MaterialType.ARMOR is gone
-            if (material.baseMaterial() != null) {
-                switch (material.materialType()) {
-                    case RARE_ALLOY, ALLOY, INGOT -> {
-                        // TODO - Ingot tag
-                    }
-                    case SPECIAL -> {
-                        // TODO - Rare material tag
-                    }
-                    default -> {
-                        // TODO - Add to generic material tag
-                    }
+            switch (material.materialType()) {
+                case RARE_ALLOY, ALLOY, INGOT -> {
+                    // TODO - Ingot tag
+                }
+                case SPECIAL -> {
+                    // TODO - Rare material tag
+                }
+                default -> {
+                    // TODO - Add to generic material tag
                 }
             }
             if (material.toolSet() != null) {
