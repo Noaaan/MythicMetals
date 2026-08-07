@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FireworkRocketEntity.class)
 public abstract class FireworkRocketEntityMixin extends Projectile {
@@ -26,7 +27,7 @@ public abstract class FireworkRocketEntityMixin extends Projectile {
         super(entityType, world);
     }
 
-    @ModifyVariable(method = "tick", at = @At("STORE"), ordinal = 1)
+    @ModifyVariable(method = "tick", at = @At(value = "STORE", ordinal = 1), name = "movement")
     private Vec3 mythicmetals$crabVec3D(Vec3 movement) {
         if (this.attachedToEntity == null) return movement;
         var speedModifier = this.attachedToEntity.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
@@ -35,11 +36,21 @@ public abstract class FireworkRocketEntityMixin extends Projectile {
         return movement.scale(1 / speedModifier);
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/Vec3;add(DDD)Lnet/minecraft/world/phys/Vec3;", ordinal = 0))
-    private Vec3 mythicmetals$increaseRocketSpeed(Vec3 velocity, double x, double y, double z) {
-        if (this.attachedToEntity == null) return velocity;
+    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/projectile/FireworkRocketEntity;setPos(DDD)V"))
+    private void mythicmetals$increaseRocketSpeed(CallbackInfo ci) {
+        if (this.attachedToEntity == null) return;
         var speedModifier = this.attachedToEntity.getAttributeValue(MythicEntityAttributes.ELYTRA_ROCKET_SPEED);
-
-        return velocity.scale(speedModifier).add(x, y, z);
+        if (speedModifier > 1 && this.attachedToEntity.isFallFlying()) {
+            Vec3 lookAngle = this.attachedToEntity.getLookAngle();
+            Vec3 movement = this.attachedToEntity.getDeltaMovement();
+            this.attachedToEntity
+                .setDeltaMovement(
+                    movement.add(
+                        lookAngle.x * 0.1 + (lookAngle.x * 1.5 - movement.x) * 0.5,
+                        lookAngle.y * 0.1 + (lookAngle.y * 1.5 - movement.y) * 0.5,
+                        lookAngle.z * 0.1 + (lookAngle.z * 1.5 - movement.z) * 0.5
+                    )
+                );
+        }
     }
 }
