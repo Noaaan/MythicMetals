@@ -30,11 +30,10 @@ dependencies {
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Alloy Forgery
-    compileOnly("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
+    implementation("maven.modrinth:alloy-forgery:${project.alloyforgery_version}")
 
     // OwO
     annotationProcessor implementation("io.wispforest:owo-lib:${project.owo_version}")
-    include "io.wispforest:owo-sentinel:${project.owo_version}"
 
     // Isometric Renders + Worldmesher
     runtimeOnly compileOnly("maven.modrinth:wikirenderer:${project.wikirender_version}")
@@ -50,7 +49,7 @@ dependencies {
 //    modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
     // ModMenu
-    //modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
+    api("com.terraformersmc:modmenu:${project.modmenu_version}")
 
     // Additional Entity Attributes
     implementation include("maven.modrinth:additionalentityattributes:${project.aea_versionite}")
