@@ -14,8 +14,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -24,15 +23,15 @@ import java.util.*;
 public final class UpgradeSmithingRecipe implements SmithingRecipe {
     private final Ingredient base;
     private final Optional<Ingredient> addition;
-    private final ItemStack result;
+    private final ItemStackTemplate result;
     public static final StructEndec<UpgradeSmithingRecipe> ENDEC = StructEndecBuilder.of(
         CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", UpgradeSmithingRecipe::baseIngredient),
         CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", UpgradeSmithingRecipe::additionIngredient),
-        MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
+        CodecUtils.toEndec(ItemStackTemplate.CODEC).fieldOf("result", recipe -> recipe.result),
         UpgradeSmithingRecipe::new
     );
 
-    public UpgradeSmithingRecipe(Ingredient base, Optional<Ingredient> addition, ItemStack result) {
+    public UpgradeSmithingRecipe(Ingredient base, Optional<Ingredient> addition, ItemStackTemplate result) {
         this.base = base;
         this.addition = addition;
         this.result = result;
@@ -127,7 +126,7 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
         return addition;
     }
 
-    public ItemStack result() {
+    public ItemStackTemplate result() {
         return result;
     }
 

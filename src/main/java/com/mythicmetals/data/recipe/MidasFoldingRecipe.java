@@ -9,6 +9,7 @@ import io.wispforest.endec.impl.StructEndecBuilder;
 import io.wispforest.owo.serialization.CodecUtils;
 import io.wispforest.owo.serialization.endec.MinecraftEndecs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -22,18 +23,18 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     private final Optional<Ingredient> template;
     private final Ingredient base;
     private final Optional<Ingredient> addition;
-    private final ItemStack result;
+    private final ItemStackTemplate result;
     public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
         CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
         CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", MidasFoldingRecipe::baseIngredient),
         CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
-        MinecraftEndecs.ITEM_STACK.fieldOf("result", recipe -> recipe.result),
+        CodecUtils.toEndec(ItemStackTemplate.CODEC).fieldOf("result", recipe -> recipe.result),
         MidasFoldingRecipe::new
     );
     @Nullable
     private PlacementInfo ingredientPlacement;
 
-    public MidasFoldingRecipe(Optional<Ingredient> template, Ingredient base, Optional<Ingredient> addition, ItemStack result) {
+    public MidasFoldingRecipe(Optional<Ingredient> template, Ingredient base, Optional<Ingredient> addition, ItemStackTemplate result) {
         this.template = template;
         this.base = base;
         this.addition = addition;
@@ -77,7 +78,7 @@ public class MidasFoldingRecipe implements SmithingRecipe {
         return addition;
     }
 
-    public ItemStack result() {
+    public ItemStackTemplate result() {
         return result;
     }
 
