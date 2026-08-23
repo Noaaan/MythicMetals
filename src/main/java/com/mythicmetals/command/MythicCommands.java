@@ -13,6 +13,8 @@ import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.config.MythicOreConfigs;
 import com.mythicmetals.config.OreConfig;
 import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.*;
 import com.mythicmetals.misc.DebugHelper;
 import com.mythicmetals.misc.RegistryHelper;
@@ -51,7 +53,6 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static net.minecraft.server.permissions.Permissions.COMMANDS_ADMIN;
@@ -442,7 +443,6 @@ public final class MythicCommands {
     public static boolean summonArmorStandWithTrim(Level world, @Nullable ArmorTrim trim, ArmorSet armorSet, float x, float z) {
         if (world.isClientSide()) return false;
         if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
-        AtomicBoolean success = new AtomicBoolean(true);
 
         var armorStand = new ArmorStand(world, x, world.getMaxY() - 50, z);
         armorStand.setNoBasePlate(true);
@@ -454,13 +454,28 @@ public final class MythicCommands {
             if (trim != null) {
                 armorStack.set(DataComponents.TRIM, trim);
             }
-            if (success.get()) {
                 var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
                 armorStand.setItemSlot(equippableComponent.slot(), armorStack);
-            }
         });
         world.addFreshEntity(armorStand);
-        return success.get();
+        return true;
+    }
+
+    public static void summonTidesingerWithVariants(Level level, float x, float z, TidesingerPatternComponent tidesingerPatternComponent) {
+        if (level.isClientSide()) return;
+        var armorSet = MythicMaterials.TIDESINGER.armorSet();
+
+        var armorStand = new ArmorStand(level, x, level.getMaxY() - 50, z);
+        armorStand.setNoBasePlate(true);
+
+        armorSet.getPlayerItems().forEach(armorItem -> {
+            var armorStack = new ItemStack(armorItem);
+            armorStack.set(MythicDataComponents.TIDESINGER, tidesingerPatternComponent);
+            var equippableComponent = armorStack.get(DataComponents.EQUIPPABLE);
+            armorStand.setItemSlot(equippableComponent.slot(), armorStack);
+        });
+
+        level.addFreshEntity(armorStand);
     }
 
     /**
@@ -699,6 +714,12 @@ public final class MythicCommands {
                     if (summonArmorStandWithTrim(world, null, DebugHelper.ARMOR_MAP.get(armorSetName), x, z)) {
                         x++;
                         count++;
+                    } else if (armorSetName.equals(MythicMaterials.TIDESINGER.armorSet().getName())) {
+                        for (var patternItem : TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet()) {
+                            summonTidesingerWithVariants(world, x, z, TidesingerPatternComponent.fromItem(patternItem));
+                            x++;
+                            count++;
+                        }
                     }
                 }
                 int finalCount = count;
