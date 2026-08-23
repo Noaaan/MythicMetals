@@ -1,6 +1,12 @@
 {
   "values": [
-    "#c:is_mountain",
-    "#c:is_hill"
+    {
+      "id": "#c:is_mountain",
+      "required": false
+    },
+    {
+      "id": "#c:is_hill",
+      "required": false
+    }
   ]
 }

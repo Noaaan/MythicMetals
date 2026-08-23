@@ -12,6 +12,11 @@ import static com.mythicmetals.misc.RegistryHelper.id;
 import static net.minecraft.core.registries.Registries.*;
 
 public class MythicTags {
+    private MythicTags() {
+    }
+
+
+    // Biome Tags
     public static final TagKey<Biome> ADAMANTITE_BIOMES = TagKey.create(BIOME, RegistryHelper.id("adamantite_ore_biomes"));
     public static final TagKey<Biome> AQUARIUM_BIOMES = TagKey.create(BIOME, RegistryHelper.id("aquarium_ore_biomes"));
     public static final TagKey<Biome> BANGLUM_BIOMES = TagKey.create(BIOME, RegistryHelper.id("banglum_ore_biomes"));
@@ -38,13 +43,11 @@ public class MythicTags {
     public static final TagKey<Biome> UNOBTAINIUM_BIOMES = TagKey.create(BIOME, RegistryHelper.id("unobtainium_ore_biomes"));
     public static final TagKey<Biome> TIN_BIOMES = TagKey.create(BIOME, RegistryHelper.id("tin_ore_biomes"));
     public static final TagKey<Biome> MYTHIC_ORE_BIOMES = TagKey.create(BIOME, id("mythic_ore_biomes"));
+
+    // Item Tags
+    public static final TagKey<Item> ARMOR = TagKey.create(ITEM, id("armor"));
     public static final TagKey<Item> RARE_MATERIALS = TagKey.create(ITEM, id("rare_materials"));
     public static final TagKey<Item> FIRE_RESISTANT_ARMOR = TagKey.create(ITEM, id("fire_resistant_armor"));
-
-    private MythicTags() {
-    }
-
-
     public static final TagKey<Item> AUTO_REPAIR = TagKey.create(ITEM, id("abilities/auto_repair"));
     public static final TagKey<Item> BONUS_FORTUNE = TagKey.create(ITEM, id("abilities/bonus_fortune"));
     public static final TagKey<Item> BONUS_LOOTING = TagKey.create(ITEM, id("abilities/bonus_looting"));

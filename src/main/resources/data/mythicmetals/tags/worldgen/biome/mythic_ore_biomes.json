@@ -1,5 +1,8 @@
 {
   "values": [
-    "#c:is_overworld"
+    {
+      "id": "#c:is_overworld",
+      "required": false
+    }
   ]
 }

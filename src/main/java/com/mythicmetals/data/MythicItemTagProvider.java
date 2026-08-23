@@ -1,24 +1,25 @@
 package com.mythicmetals.data;
 
-
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.MythicMaterials;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
+import net.minecraft.tags.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
+import static com.mythicmetals.data.MythicMetalsDatagen.*;
+
 @SuppressWarnings("UnstableApiUsage")
-public class MythicItemTagProvider extends FabricTagsProvider<Item> {
+public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
     public MythicItemTagProvider(
         FabricPackOutput output,
         CompletableFuture<HolderLookup.Provider> registriesFuture
     ) {
-        super(output, Registries.ITEM, registriesFuture);
+        super(output, registriesFuture);
     }
 
     @Override
@@ -26,10 +27,10 @@ public class MythicItemTagProvider extends FabricTagsProvider<Item> {
         ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
             switch (material.materialType()) {
                 case RARE_ALLOY, ALLOY, INGOT -> {
-                    // TODO - Ingot tag
+                    valueLookupBuilder(ConventionalItemTags.INGOTS).add(material.baseMaterial());
                 }
                 case SPECIAL -> {
-                    // TODO - Rare material tag
+                    valueLookupBuilder(MythicTags.RARE_MATERIALS).add(material.baseMaterial());
                 }
                 default -> {
                     // TODO - Add to generic material tag
@@ -37,11 +38,23 @@ public class MythicItemTagProvider extends FabricTagsProvider<Item> {
             }
             if (material.toolSet() != null) {
                 var toolSet = material.toolSet();
-                // TODO - Tool tags
+                valueLookupBuilder(ItemTags.SWORDS).add(toolSet.getSword());
+                valueLookupBuilder(ItemTags.PICKAXES).add(toolSet.getPickaxe());
+                valueLookupBuilder(ItemTags.AXES).add(toolSet.getAxe());
+                valueLookupBuilder(ItemTags.SHOVELS).add(toolSet.getShovel());
+                valueLookupBuilder(ItemTags.HOES).add(toolSet.getHoe());
+                valueLookupBuilder(ItemTags.SPEARS).add(toolSet.getSpear());
+                valueLookupBuilder(ConventionalItemTags.TOOLS).addAll(toolSet.getTools());
             }
             if (material.armorSet() != null) {
                 var armorSet = material.armorSet();
-                // TODO - Armor tags
+                valueLookupBuilder(ItemTags.HEAD_ARMOR).add(armorSet.getHelmet());
+                valueLookupBuilder(ItemTags.CHEST_ARMOR).add(armorSet.getChestplate());
+                valueLookupBuilder(ItemTags.LEG_ARMOR).add(armorSet.getLeggings());
+                valueLookupBuilder(ItemTags.FOOT_ARMOR).add(armorSet.getBoots());
+                var materialArmorTag = createModItemTag("armor/" + material.name());
+                valueLookupBuilder(materialArmorTag).addAll(armorSet.getPlayerItems());
+                valueLookupBuilder(MythicTags.ARMOR).addTag(materialArmorTag);
             }
             if (material.blockSet() != null) {
                 var blockSet = material.blockSet();

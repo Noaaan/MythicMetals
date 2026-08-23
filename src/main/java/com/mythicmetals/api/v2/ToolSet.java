@@ -22,8 +22,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.UnaryOperator;
 
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
@@ -141,6 +140,10 @@ public class ToolSet {
 
     public ToolMaterial getToolMaterial() {
         return this.toolMaterial;
+    }
+
+    public List<Item> getTools() {
+        return List.of(sword, axe, pickaxe, shovel, hoe, spear);
     }
 
     public enum AttackSpeeds {

@@ -1,5 +1,8 @@
 {
   "values": [
-    "#mythicmetals:mythic_ore_biomes"
+    {
+      "id": "#c:is_nether",
+      "required": false
+    }
   ]
 }
