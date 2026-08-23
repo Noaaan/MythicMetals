@@ -29,8 +29,9 @@ import static com.mythicmetals.api.v2.ToolSet.defaultSettings;
 import static com.mythicmetals.misc.RegistryHelper.itemKey;
 
 ///
-/// Class which contains any extra tool that does not really make sense
-/// to manually add in [com.mythicmetals.item.MythicMaterials]
+/// Class which contains any extra tools which are more complex than simpler items.
+/// Most are kept in here and manually added to [com.mythicmetals.item.MythicMaterials]
+/// afterward
 ///
 public class MythicTools {
 

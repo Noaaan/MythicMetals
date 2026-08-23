@@ -1,13 +1,16 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.api.v2.Material;
+import com.mythicmetals.api.v2.*;
 import com.mythicmetals.item.MythicMaterials;
+import com.mythicmetals.item.armor.MythicArmorSets;
+import com.mythicmetals.item.tools.MythicTools;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mythicmetals.data.MythicMetalsDatagen.*;
@@ -24,345 +27,121 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, field) -> {
+        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, _) -> {
             switch (material.materialType()) {
                 case RARE_ALLOY, ALLOY, INGOT -> {
+                    valueLookupBuilder(createModItemTag("ingots/" + material.name())).add(material.baseMaterial());
                     valueLookupBuilder(ConventionalItemTags.INGOTS).add(material.baseMaterial());
                 }
                 case SPECIAL -> {
                     valueLookupBuilder(MythicTags.RARE_MATERIALS).add(material.baseMaterial());
                 }
                 default -> {
-                    // TODO - Add to generic material tag
+                    valueLookupBuilder(MythicTags.MATERIALS).add(material.baseMaterial());
                 }
             }
             if (material.toolSet() != null) {
-                var toolSet = material.toolSet();
-                valueLookupBuilder(ItemTags.SWORDS).add(toolSet.getSword());
-                valueLookupBuilder(ItemTags.PICKAXES).add(toolSet.getPickaxe());
-                valueLookupBuilder(ItemTags.AXES).add(toolSet.getAxe());
-                valueLookupBuilder(ItemTags.SHOVELS).add(toolSet.getShovel());
-                valueLookupBuilder(ItemTags.HOES).add(toolSet.getHoe());
-                valueLookupBuilder(ItemTags.SPEARS).add(toolSet.getSpear());
-                valueLookupBuilder(ConventionalItemTags.TOOLS).addAll(toolSet.getTools());
+                buildToolTags(material.toolSet(), material.name());
             }
             if (material.armorSet() != null) {
-                var armorSet = material.armorSet();
-                valueLookupBuilder(ItemTags.HEAD_ARMOR).add(armorSet.getHelmet());
-                valueLookupBuilder(ItemTags.CHEST_ARMOR).add(armorSet.getChestplate());
-                valueLookupBuilder(ItemTags.LEG_ARMOR).add(armorSet.getLeggings());
-                valueLookupBuilder(ItemTags.FOOT_ARMOR).add(armorSet.getBoots());
-                var materialArmorTag = createModItemTag("armor/" + material.name());
-                valueLookupBuilder(materialArmorTag).addAll(armorSet.getPlayerItems());
-                valueLookupBuilder(MythicTags.ARMOR).addTag(materialArmorTag);
+                buildArmorTags(material.armorSet(), material.name());
             }
             if (material.blockSet() != null) {
-                var blockSet = material.blockSet();
-                // TODO - Block tags
+                buildBlockSetItemTags(material.blockSet(), material.name());
             }
             if (material.nugget() != null) {
-                // TODO - Nugget
+                valueLookupBuilder(MythicTags.NUGGETS).add(material.nugget());
+                valueLookupBuilder(createModItemTag("nuggets/" + material.name())).add(material.nugget());
+                valueLookupBuilder(ConventionalItemTags.NUGGETS).add(material.nugget());
             }
+
             if (material.rawOre() != null) {
-                // TODO - Raw ore
+                valueLookupBuilder(MythicTags.RAW_MATERIALS).add(material.rawOre());
+                valueLookupBuilder(createModItemTag("raw_materials/" + material.name())).add(material.rawOre());
+                valueLookupBuilder(ConventionalItemTags.RAW_MATERIALS).add(material.rawOre());
             }
         });
 
-        // TODO - Manually handle extra items
+        ReflectionUtils.iterateAccessibleStaticFields(MythicArmorSets.class, ArmorSet.class, (armorSet, name, _) -> {
+            buildArmorTags(armorSet, name);
+        });
+
+        // extra swords
+        var extraSwords = List.of(
+            MythicTools.MIDAS_GOLD_SWORD,
+            MythicTools.GILDED_MIDAS_GOLD_SWORD,
+            MythicTools.ROYAL_MIDAS_GOLD_SWORD,
+            MythicTools.RED_AEGIS_SWORD,
+            MythicTools.WHITE_AEGIS_SWORD
+        );
+        valueLookupBuilder(MythicTags.SWORDS).addAll(extraSwords);
     }
 
-    // FIXME - Adding tags via registry entries is considered deprecated
-//    public MythicItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
-//        super(output, completableFuture);
-//    }
-//
-//    @SuppressWarnings("UnstableApiUsage")
-//    @Override
-//    protected void addTags(HolderLookup.Provider arg) {
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-//            if (blockSet.getOre() != null) {
-//                var string = "ores/" + name;
-//                var modTag = MythicMetalsData.createModItemTag(string);
-//                var commonTag = ConventionalItemTags.ORES;
-//                var tagBuilder = getOrCreateTagBuilder(modTag).add(blockSet.getOre().asItem());
-//                getOrCreateTagBuilder(commonTag).addTag(modTag);
-//
-//                if (!blockSet.getOreVariants().isEmpty()) {
-//                    blockSet.getOreVariants().forEach(block -> tagBuilder.add(block.asItem()));
-//                }
-//            }
-//
-//            if (blockSet.getStorageBlock() != null) {
-//                var string = "storage_blocks/" + name;
-//                var modTag = MythicMetalsData.createModItemTag(string);
-//                var commonTag = MythicMetalsData.createCommonItemTag(string);
-//                var commonBlocksTag = ConventionalItemTags.STORAGE_BLOCKS;
-//                getOrCreateTagBuilder(modTag).add(blockSet.getStorageBlock().asItem());
-//                getOrCreateTagBuilder(commonTag).add(blockSet.getStorageBlock().asItem());
-//                getOrCreateTagBuilder(commonBlocksTag).addTag(modTag);
-//                if (blockSet.getOreStorageBlock() != null) {
-//                    string = "storage_blocks/raw_" + name;
-//                    modTag = MythicMetalsData.createModItemTag(string);
-//                    getOrCreateTagBuilder(modTag)
-//                        .add(blockSet.getOreStorageBlock().asItem());
-//                    getOrCreateTagBuilder(commonBlocksTag)
-//                        .addTag(modTag);
-//                }
-//            }
-//        });
-//
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.class, ItemSet.class, (itemSet, name, field) -> {
-//            /*
-//             * Create ingot tags. Example:
-//             * Adamantite Ingot is added to the following:
-//             * #mythicmetals:adamantite_ingots
-//             * #c:adamantite_ingots
-//             * #mythicmetals:ingots
-//             * At the end #mythicmetals:ingots is nested into #c:ingots
-//             */
-//            var modIngotTag = MythicMetalsData.createModItemTag(ConventionalItemTags.INGOTS.identifier().getPath());
-//            var commonIngotTag = ConventionalItemTags.INGOTS;
-//            if (itemSet.getIngot() != null) {
-//                // Star Platinum is explicitly named, so this is for handling that edge case
-//                var string = ConventionalItemTags.INGOTS.identifier().getPath() + "/" + name;
-//                var modTag = MythicMetalsData.createModItemTag(string);
-//                var commonTag = MythicMetalsData.createCommonItemTag(string);
-//                getOrCreateTagBuilder(modTag).add(itemSet.getIngot());
-//                getOrCreateTagBuilder(commonTag).addTag(modTag);
-//                getOrCreateTagBuilder(modIngotTag).add(itemSet.getIngot());
-//            }
-//            getOrCreateTagBuilder(commonIngotTag).addTag(modIngotTag);
-//
-//            /*
-//             * Create raw ore tags. Example:
-//             * Raw Adamantite is added to the following:
-//             * - #mythicmetals:raw_materials/adamantite
-//             * - #c:raw_materials/adamantite
-//             * - #mythicmetals:raw_materials
-//             */
-//            if (itemSet.getRawOre() != null) {
-//                var string = "raw_materials/" + name;
-//                var modRawOreTag = MythicMetalsData.createModItemTag(ConventionalItemTags.RAW_MATERIALS.identifier().getPath());
-//
-//                // Edge case: Midas Gold can combine with any raw ore to make gold, except itself
-//                var midasRawOreTag = MythicMetalsData.createModItemTag("midas_raw_ores");
-//                if (!itemSet.equals(MythicItems.MIDAS_GOLD)) {
-//                    getOrCreateTagBuilder(midasRawOreTag).add(itemSet.getRawOre());
-//                }
-//                var modTag = MythicMetalsData.createModItemTag(string);
-//                var commonTag = ConventionalItemTags.RAW_MATERIALS;
-//                getOrCreateTagBuilder(modTag)
-//                    .add(itemSet.getRawOre());
-//                getOrCreateTagBuilder(modRawOreTag)
-//                    .add(itemSet.getRawOre());
-//                getOrCreateTagBuilder(commonTag)
-//                    .addTag(modTag);
-//            }
-//
-//            /*
-//             * Create nugget tags. Example:
-//             * Adamantite Nugget is added to the following:
-//             * #mythicmetals:nuggets/adamantite
-//             * #c:nuggets/adamantite
-//             * #mythicmetals:nuggets
-//             */
-//            if (itemSet.getNugget() != null) {
-//                var string = "nuggets/" + name;
-//                var modRawOreTag = MythicMetalsData.createModItemTag("nuggets");
-//
-//                var modTag = MythicMetalsData.createModItemTag(string);
-//                var commonTag = ConventionalItemTags.NUGGETS;
-//                getOrCreateTagBuilder(modTag)
-//                    .addOptional(BuiltInRegistries.ITEM.getKey(itemSet.getNugget()));
-//                getOrCreateTagBuilder(modRawOreTag)
-//                    .addOptional(BuiltInRegistries.ITEM.getKey(itemSet.getNugget()));
-//                getOrCreateTagBuilder(commonTag)
-//                    .addOptionalTag(modTag);
-//            }
-//        });
-//
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Mats.class, Item.class, (item, name, field) -> {
-//            if (item.equals(MythicItems.Mats.STARRITE) || item.equals(MythicItems.Mats.UNOBTAINIUM)) {
-//                var modTag = MythicMetalsData.createModItemTag(name);
-//                var commonTag = MythicMetalsData.createCommonItemTag(name);
-//                getOrCreateTagBuilder(modTag).add(item);
-//                getOrCreateTagBuilder(commonTag).addTag(modTag);
-//            } else {
-//                var rareMaterials = MythicMetalsData.createModItemTag("rare_materials");
-//                getOrCreateTagBuilder(rareMaterials).add(item);
-//            }
-//        });
-//
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicTools.class, ToolSet.class, (toolSet, name, field) -> {
-//            var toolModTag = MythicMetalsData.createModItemTag("tools/" + name);
-//            var equipmentModTag = MythicMetalsData.createModItemTag("equipment/" + name);
-//            var toolsModTag = MythicMetalsData.createModItemTag("tools");
-//            var commonTag = ConventionalItemTags.TOOLS;
-//            var commonEquipmentTag = MythicMetalsData.createCommonItemTag("equipment");
-//
-//            // Add to tool tags
-//            var toolArray = toolSet.get().toArray(new Item[0]);
-//            getOrCreateTagBuilder(toolModTag)
-//                .add(toolArray);
-//            getOrCreateTagBuilder(toolsModTag)
-//                .add(toolArray);
-//            getOrCreateTagBuilder(equipmentModTag)
-//                .add(toolArray);
-//            getOrCreateTagBuilder(commonTag)
-//                .addTag(toolModTag);
-//            getOrCreateTagBuilder(commonEquipmentTag)
-//                .addTag(equipmentModTag);
-//
-//            // Melee weapons
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.identifier().getPath()))
-//                .add(toolSet.getSword())
-//                .add(toolSet.getAxe());
-//            getOrCreateTagBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS)
-//                .add(toolSet.getSword())
-//                .add(toolSet.getAxe());
-//
-//            // Swords
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag("swords"))
-//                .add(toolSet.getSword());
-//            getOrCreateTagBuilder(ItemTags.SWORDS)
-//                .add(toolSet.getSword());
-//
-//            // Mining tools
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.identifier().getPath()))
-//                .add(toolSet.getPickaxe());
-//            getOrCreateTagBuilder(ConventionalItemTags.MINING_TOOL_TOOLS)
-//                .add(toolSet.getPickaxe());
-//
-//            // Pickaxes
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag("pickaxes"))
-//                .add(toolSet.getPickaxe());
-//            getOrCreateTagBuilder(ItemTags.PICKAXES)
-//                .add(toolSet.getPickaxe());
-//
-//            // Axes
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag("axes"))
-//                .add(toolSet.getAxe());
-//            getOrCreateTagBuilder(ItemTags.AXES)
-//                .add(toolSet.getAxe());
-//
-//            // Shovels
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag("shovels"))
-//                .add(toolSet.getShovel());
-//            getOrCreateTagBuilder(ItemTags.SHOVELS)
-//                .add(toolSet.getShovel());
-//
-//            // Hoes
-//            getOrCreateTagBuilder(MythicMetalsData.createModItemTag("hoes"))
-//                .add(toolSet.getHoe());
-//            getOrCreateTagBuilder(ItemTags.HOES)
-//                .add(toolSet.getHoe());
-//
-//
-//        });
-//
-//        // Edge cases from Mythic Tools
-//        // Swords
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MELEE_WEAPON_TOOLS.identifier().getPath()))
-//            .add(MythicTools.RED_AEGIS_SWORD)
-//            .add(MythicTools.WHITE_AEGIS_SWORD)
-//            .add(MythicTools.MIDAS_GOLD_SWORD)
-//            .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
-//            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("swords"))
-//            .add(MythicTools.RED_AEGIS_SWORD)
-//            .add(MythicTools.WHITE_AEGIS_SWORD)
-//            .add(MythicTools.MIDAS_GOLD_SWORD)
-//            .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
-//            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-//        getOrCreateTagBuilder(ConventionalItemTags.MELEE_WEAPON_TOOLS)
-//            .add(MythicTools.RED_AEGIS_SWORD)
-//            .add(MythicTools.WHITE_AEGIS_SWORD)
-//            .add(MythicTools.MIDAS_GOLD_SWORD)
-//            .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
-//            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-//        getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
-//            .add(MythicTools.RED_AEGIS_SWORD)
-//            .add(MythicTools.WHITE_AEGIS_SWORD)
-//            .add(MythicTools.MIDAS_GOLD_SWORD)
-//            .add(MythicTools.GILDED_MIDAS_GOLD_SWORD)
-//            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-//        // Mining Tools + Pickaxe Tag
-//        getOrCreateTagBuilder(ItemTags.PICKAXES)
-//            .add(MythicTools.MYTHRIL_DRILL)
-//            .add(MythicTools.ORICHALCUM_HAMMER);
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("pickaxes"))
-//            .add(MythicTools.MYTHRIL_DRILL)
-//            .add(MythicTools.ORICHALCUM_HAMMER);
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.MINING_TOOL_TOOLS.identifier().getPath()))
-//            .add(MythicTools.MYTHRIL_DRILL)
-//            .add(MythicTools.ORICHALCUM_HAMMER);
-//        getOrCreateTagBuilder(ConventionalItemTags.MINING_TOOL_TOOLS)
-//            .add(MythicTools.MYTHRIL_DRILL)
-//            .add(MythicTools.ORICHALCUM_HAMMER);
-//        // Arrows
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("arrows"))
-//            .add(MythicTools.RUNITE_ARROW)
-//            .add(MythicTools.TIPPED_RUNITE_ARROW)
-//            .add(MythicTools.STAR_PLATINUM_ARROW);
-//        getOrCreateTagBuilder(MythicMetalsData.createCommonItemTag("arrows"))
-//            .add(MythicTools.RUNITE_ARROW)
-//            .add(MythicTools.TIPPED_RUNITE_ARROW)
-//            .add(MythicTools.STAR_PLATINUM_ARROW);
-//        // Shields
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag(ConventionalItemTags.SHIELD_TOOLS.identifier().getPath()))
-//            .add(MythicTools.STORMYX_SHIELD);
-//        getOrCreateTagBuilder(ConventionalItemTags.SHIELD_TOOLS)
-//            .add(MythicTools.STORMYX_SHIELD);
-//
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicArmor.class, ArmorSet.class, (armorSet, name, field) -> {
-//            var modTag = MythicMetalsData.createModItemTag("armor/" + name);
-//            var modArmorTag = MythicMetalsData.createModItemTag("armor");
-//            TagKey<Item> modEquipmentTag;
-//            var commonTag = ConventionalItemTags.ARMORS;
-//            var commonEquipmentTag = MythicMetalsData.createModItemTag("equipment");
-//            // Edge case - Osmium Chainmail is Osmium Equipment
-//            if (armorSet.equals(MythicArmor.OSMIUM_CHAINMAIL)) {
-//                modEquipmentTag = MythicMetalsData.createModItemTag("equipment/osmium");
-//                armorSet.getArmorItems().forEach(armorItem -> {
-//                    getOrCreateTagBuilder(modTag).add(armorItem);
-//                    getOrCreateTagBuilder(modEquipmentTag).add(armorItem);
-//                });
-//            } else {
-//                modEquipmentTag = MythicMetalsData.createModItemTag("equipment/" + name);
-//                getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(armorSet.getHelmet());
-//                getOrCreateTagBuilder(ItemTags.HEAD_ARMOR).add(armorSet.getHelmet());
-//                getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(armorSet.getChestplate());
-//                getOrCreateTagBuilder(ItemTags.CHEST_ARMOR).add(armorSet.getChestplate());
-//                getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(armorSet.getLeggings());
-//                getOrCreateTagBuilder(ItemTags.LEG_ARMOR).add(armorSet.getLeggings());
-//                getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(armorSet.getBoots());
-//                getOrCreateTagBuilder(ItemTags.FOOT_ARMOR).add(armorSet.getBoots());
-//                getOrCreateTagBuilder(modTag).add(armorSet.getHelmet(), armorSet.getChestplate(), armorSet.getLeggings(), armorSet.getBoots());
-//                getOrCreateTagBuilder(modEquipmentTag).add(armorSet.getHelmet(), armorSet.getChestplate(), armorSet.getLeggings(), armorSet.getBoots());
-//            }
-//            tag(modArmorTag).addTag(modTag);
-//            tag(commonTag).addTag(modTag);
-//            tag(commonEquipmentTag).addTag(modEquipmentTag);
-//        });
-//
-//        /*
-//         * Edge cases for Mythic Armor (The Celestium Elytra)
-//         */
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("equipment/celestium"))
-//            .add(MythicArmor.CELESTIUM_ELYTRA);
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("armor/celestium"))
-//            .add(MythicArmor.CELESTIUM_ELYTRA);
-//        getOrCreateTagBuilder(MythicMetalsData.createModItemTag("elytra"))
-//            .add(MythicArmor.CELESTIUM_ELYTRA);
-//        getOrCreateTagBuilder(MythicMetalsData.createCommonItemTag("elytra"))
-//            .add(MythicArmor.CELESTIUM_ELYTRA);
-//
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicItems.Templates.class, Item.class, (item, name, field) -> {
-//            var modTag = MythicMetalsData.createModItemTag("smithing_templates");
-//            var commonTag = MythicMetalsData.createCommonItemTag("smithing_templates");
-//            getOrCreateTagBuilder(modTag).add(item);
-//            getOrCreateTagBuilder(commonTag).add(item);
-//        });
-//    }
-//
+    private void buildToolTags(ToolSet toolSet, String name) {
+        valueLookupBuilder(ItemTags.SWORDS).add(toolSet.getSword());
+        valueLookupBuilder(ItemTags.PICKAXES).add(toolSet.getPickaxe());
+        valueLookupBuilder(ItemTags.AXES).add(toolSet.getAxe());
+        valueLookupBuilder(ItemTags.SHOVELS).add(toolSet.getShovel());
+        valueLookupBuilder(ItemTags.HOES).add(toolSet.getHoe());
+        valueLookupBuilder(ItemTags.SPEARS).add(toolSet.getSpear());
+
+        valueLookupBuilder(MythicTags.SWORDS).add(toolSet.getSword());
+        valueLookupBuilder(MythicTags.PICKAXES).add(toolSet.getPickaxe());
+        valueLookupBuilder(MythicTags.AXES).add(toolSet.getAxe());
+        valueLookupBuilder(MythicTags.SHOVELS).add(toolSet.getShovel());
+        valueLookupBuilder(MythicTags.HOES).add(toolSet.getHoe());
+        valueLookupBuilder(MythicTags.SPEARS).add(toolSet.getSpear());
+
+        var materialToolTag = createModItemTag("tools/" + name);
+        var materialEquipmentTag = createModItemTag("equipment/" + name);
+        valueLookupBuilder(materialToolTag).addAll(toolSet.getItems());
+        valueLookupBuilder(MythicTags.TOOLS).addTag(materialToolTag);
+        valueLookupBuilder(ConventionalItemTags.TOOLS).addTag(materialToolTag);
+
+        valueLookupBuilder(ConventionalItemTags.TOOLS).addAll(toolSet.getItems());
+        valueLookupBuilder(MythicTags.EQUIPMENT).addTag(materialToolTag);
+        valueLookupBuilder(materialEquipmentTag).addAll(toolSet.getItems());
+    }
+
+    private void buildArmorTags(ArmorSet armorSet, String name) {
+        valueLookupBuilder(ItemTags.HEAD_ARMOR).add(armorSet.getHelmet());
+        valueLookupBuilder(ItemTags.CHEST_ARMOR).add(armorSet.getChestplate());
+        valueLookupBuilder(ItemTags.LEG_ARMOR).add(armorSet.getLeggings());
+        valueLookupBuilder(ItemTags.FOOT_ARMOR).add(armorSet.getBoots());
+        var materialArmorTag = createModItemTag("armor/" + name);
+        valueLookupBuilder(materialArmorTag).addAll(armorSet.getPlayerItems());
+        valueLookupBuilder(MythicTags.ARMOR).addTag(materialArmorTag);
+        var materialEquipmentTag = createModItemTag("equipment/" + name);
+        var equipmentBuilder = valueLookupBuilder(materialEquipmentTag).addAll(armorSet.getPlayerItems());
+        valueLookupBuilder(ConventionalItemTags.HUMANOID_ARMORS).addTag(materialArmorTag);
+
+        if (armorSet.getHorse() != null) {
+            equipmentBuilder.add(armorSet.getHorse());
+            valueLookupBuilder(ConventionalItemTags.HORSE_ARMORS).add(armorSet.getHorse());
+        }
+        if (armorSet.getNautilus() != null) {
+            equipmentBuilder.add(armorSet.getNautilus());
+            valueLookupBuilder(ConventionalItemTags.NAUTILUS_ARMORS).add(armorSet.getNautilus());
+        }
+
+        valueLookupBuilder(MythicTags.EQUIPMENT).addTag(materialEquipmentTag);
+    }
+
+    private void buildBlockSetItemTags(BlockSet blockSet, String name) {
+        valueLookupBuilder(MythicTags.STORAGE_BLOCKS).add(blockSet.storage().asItem());
+        valueLookupBuilder(createModItemTag("storage_blocks/" + name)).add(blockSet.storage().asItem());
+
+        if (blockSet.ore() != null) {
+            valueLookupBuilder(ConventionalItemTags.ORES).add(blockSet.ore().asItem());
+            var materialOreTag = createModItemTag("ores/" + name);
+            valueLookupBuilder(materialOreTag).add(blockSet.ore().asItem());
+
+            if (!blockSet.oreVariants().isEmpty()) {
+                blockSet.oreVariants().forEach((s, resourceKeyBlockTuple) -> {
+                    valueLookupBuilder(ConventionalItemTags.ORES).add(resourceKeyBlockTuple.getB().asItem());
+                    valueLookupBuilder(materialOreTag).add(resourceKeyBlockTuple.getB().asItem());
+                });
+            }
+        }
+    }
 }

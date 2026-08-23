@@ -15,7 +15,6 @@ public class MythicTags {
     private MythicTags() {
     }
 
-
     // Biome Tags
     public static final TagKey<Biome> ADAMANTITE_BIOMES = TagKey.create(BIOME, RegistryHelper.id("adamantite_ore_biomes"));
     public static final TagKey<Biome> AQUARIUM_BIOMES = TagKey.create(BIOME, RegistryHelper.id("aquarium_ore_biomes"));
@@ -45,7 +44,19 @@ public class MythicTags {
     public static final TagKey<Biome> MYTHIC_ORE_BIOMES = TagKey.create(BIOME, id("mythic_ore_biomes"));
 
     // Item Tags
+    public static final TagKey<Item> SWORDS = TagKey.create(ITEM, id("sword"));
+    public static final TagKey<Item> AXES = TagKey.create(ITEM, id("axes"));
+    public static final TagKey<Item> PICKAXES = TagKey.create(ITEM, id("pickaxes"));
+    public static final TagKey<Item> SHOVELS = TagKey.create(ITEM, id("shovels"));
+    public static final TagKey<Item> HOES = TagKey.create(ITEM, id("hoes"));
+    public static final TagKey<Item> SPEARS = TagKey.create(ITEM, id("spears"));
     public static final TagKey<Item> ARMOR = TagKey.create(ITEM, id("armor"));
+    public static final TagKey<Item> TOOLS = TagKey.create(ITEM, id("tools"));
+    public static final TagKey<Item> NUGGETS = TagKey.create(ITEM, id("nuggets"));
+    public static final TagKey<Item> EQUIPMENT = TagKey.create(ITEM, id("equipment"));
+    public static final TagKey<Item> MATERIALS = TagKey.create(ITEM, id("material"));
+    public static final TagKey<Item> RAW_MATERIALS = TagKey.create(ITEM, id("raw_materials"));
+    public static final TagKey<Item> STORAGE_BLOCKS = TagKey.create(ITEM, id("storage_blocks"));
     public static final TagKey<Item> RARE_MATERIALS = TagKey.create(ITEM, id("rare_materials"));
     public static final TagKey<Item> FIRE_RESISTANT_ARMOR = TagKey.create(ITEM, id("fire_resistant_armor"));
     public static final TagKey<Item> AUTO_REPAIR = TagKey.create(ITEM, id("abilities/auto_repair"));

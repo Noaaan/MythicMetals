@@ -56,8 +56,6 @@ public class ToolSet {
         this.toolMaterial = toolMaterial;
     }
 
-    // TODO - Is something more extendible than enum required? Maybe config?
-
     public ToolSet createDefault(
         UnaryOperator<Item.Properties> settingsOperator,
         AttackSpeeds attackSpeeds,
@@ -142,10 +140,11 @@ public class ToolSet {
         return this.toolMaterial;
     }
 
-    public List<Item> getTools() {
+    public List<Item> getItems() {
         return List.of(sword, axe, pickaxe, shovel, hoe, spear);
     }
 
+    // TODO - Is something more extendible than enum required? Maybe config?
     public enum AttackSpeeds {
         DEFAULT(1.6f, 0.9f, 1.2f, 1.1f, 1.0f),
         BETTER_AXE(1.6f, 1.0f, 1.2f, 1.1f, 1.0f), // +0.1 on axes
