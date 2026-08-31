@@ -611,12 +611,12 @@ public final class MythicCommands {
             for (var setName : sortedSet) {
                 if (horse) {
                     if (summonHorseWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
-                        x++;
+                        x += 1;
                         count++;
                     }
                 } else {
                     if (summonNautilusWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
-                        x++;
+                        x += 1;
                         count++;
                     }
                 }
@@ -642,8 +642,7 @@ public final class MythicCommands {
     }
 
     private static boolean summonHorseWithArmor(ServerLevel level, ArmorSet armorSet, float x, float y, float z) {
-        if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
-
+        if (armorSet.getHorse() == null) return false;
         var horse = EntityType.HORSE.create(level, EntitySpawnReason.COMMAND);
         if (horse == null) return false;
         horse.setNoAi(true);
@@ -655,8 +654,7 @@ public final class MythicCommands {
     }
 
     private static boolean summonNautilusWithArmor(ServerLevel level, ArmorSet armorSet, float x, float y, float z) {
-        if (armorSet.equals(MythicMaterials.TIDESINGER.armorSet())) return false; // This has custom "trims", ignore it
-
+        if (armorSet.getNautilus() == null) return false;
         var nautilus = EntityType.NAUTILUS.create(level, EntitySpawnReason.COMMAND);
         if (nautilus == null) return false;
         nautilus.setInvulnerable(true);
