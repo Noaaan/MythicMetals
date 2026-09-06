@@ -70,6 +70,10 @@ public class MythicTags {
     public static final TagKey<Block> ANVILS = TagKey.create(BLOCK, id("anvils"));
     public static final TagKey<Block> BOOST_IN_LAVA = TagKey.create(BLOCK, id("boosts_in_lava"));
     public static final TagKey<Block> CARMOT_NUKE_IGNORED = TagKey.create(BLOCK, id("carmot_nuke_ignored"));
+    public static final TagKey<Block> NEEDS_COPPER_TOOLS = TagKey.create(BLOCK, id("needs_copper_tools"));
+    public static final TagKey<Block> NEEDS_NETHERITE_TOOLS = TagKey.create(BLOCK, id("needs_netherite_tool"));
+    public static final TagKey<Block> NEEDS_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("needs_unobtainium_alloy_tools"));
+    public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOLS = TagKey.create(BLOCK, id("incorrect_for_copper_tools"));
     public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("incorrect_for_unobtainium_alloy_tools"));
     public static final TagKey<Block> NUKE_CORES = TagKey.create(BLOCK, id("nuke_cores"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.create(BLOCK, id("ores"));

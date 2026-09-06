@@ -52,7 +52,7 @@ public class MythicMaterials {
         .finish();
 
     public static final Material AQUARIUM = Material.Builder.create("aquarium", MaterialType.INGOT)
-        .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
+        .createDefaultBlockSet(COPPER_MINING_LEVEL, 4.0f)
         .createToolSet(MythicToolMaterials.AQUARIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.AQUARIUM, List.of(
             new MythicAttributeModifier(SUBMERGED_MINING_SPEED, 1.0, ADD_MULTIPLIED_TOTAL, MAINHAND)
         ))
@@ -76,11 +76,11 @@ public class MythicMaterials {
         .finish();
 
     public static final Material BANGLUM = Material.Builder.create("banglum", MaterialType.INGOT)
-        .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
+        .createBlockSetFromBuilder(COPPER_MINING_LEVEL, builder -> builder
             .createOreStorageBlock(5.0f, 5.5f)
             .createStorageBlock(5.0f, 5.5f)
             .createCustomOre(5.0f, BanglumOreBlock::new)
-            .createCustomOreVariant("nether", 5.0f, 5.5f, BanglumOreBlock::new)
+            .createCustomOreVariant("nether", 5.0f, 5.5f, IRON_MINING_LEVEL, BanglumOreBlock::new)
             .createAnvil(5.5f)
             .finish()
         )
@@ -239,7 +239,7 @@ public class MythicMaterials {
         .finish();
 
     public static final Material MANGANESE = Material.Builder.create("manganese", MaterialType.INGOT)
-        .createDefaultBlockSet(STONE_MINING_LEVEL, 3.0f)
+        .createDefaultBlockSet(COPPER_MINING_LEVEL, 3.0f)
         .finish();
 
     public static final Material METALLURGIUM = Material.Builder.create("metallurgium", MaterialType.RARE_ALLOY, true)
@@ -343,7 +343,7 @@ public class MythicMaterials {
         .finish();
 
     public static final Material PLATINUM = Material.Builder.create("platinum", MaterialType.INGOT)
-        .createDefaultBlockSet(IRON_MINING_LEVEL, 3.5f)
+        .createDefaultBlockSet(COPPER_MINING_LEVEL, 3.5f)
         .addExtraItem(PLATINUM_WATCH, MythicTools.PLATINUM_WATCH)
         .finish();
 
@@ -402,7 +402,7 @@ public class MythicMaterials {
         .finish();
 
     public static final Material SILVER = Material.Builder.create("silver", MaterialType.INGOT)
-        .createDefaultBlockSet(STONE_MINING_LEVEL, 2.5f)
+        .createDefaultBlockSet(COPPER_MINING_LEVEL, 2.5f)
         .createDefaultArmor(MythicArmorMaterials.SILVER)
         .finish();
 
@@ -422,13 +422,13 @@ public class MythicMaterials {
     public static final Material STARRITE = Material.Builder.create("starrite", MaterialType.SIMPLE)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, builder -> builder
             .createCustomOre(5.0f, properties -> new StarriteOreBlock(properties, UniformInt.of(3, 6)))
-            .createCustomOreVariant("calcite", 5.0f, 5.5f, properties ->
+            .createCustomOreVariant("calcite", 5.0f, 5.5f, DIAMOND_MINING_LEVEL, properties ->
                 new StarriteOreBlock(
                     properties.sound(SoundType.CALCITE),
                     UniformInt.of(3, 6)
                 )
             )
-            .createCustomOreVariant("end_stone", 5.0f, 5.5f, properties ->
+            .createCustomOreVariant("end_stone", 5.0f, 5.5f, NETHERITE_MINING_LEVEL, properties ->
                 new StarriteOreBlock(properties, UniformInt.of(3, 6))
             )
             .createStorageBlock(5.0f, 6.0f)
@@ -501,7 +501,7 @@ public class MythicMaterials {
                     properties.lightLevel(blockState -> 1).sound(SoundType.LODESTONE)
                 )
             )
-            .createCustomOreVariant("deepslate", 21f, 14000f, properties ->
+            .createCustomOreVariant("deepslate", 21f, 14000f, NETHERITE_MINING_LEVEL, properties ->
                 new DropExperienceBlock(
                     UniformInt.of(4, 7),
                     properties.lightLevel(blockState -> 1).sound(SoundType.DEEPSLATE)

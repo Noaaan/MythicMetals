@@ -1,9 +1,8 @@
 package com.mythicmetals.api.v2;
 
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.Tuple;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
@@ -21,19 +20,11 @@ import java.util.function.Function;
 
 public record BlockSet(
     String name,
-    ResourceKey<Block> storageKey,
-    ResourceKey<Item> storageItemKey,
-    ResourceKey<Block> oreKey,
-    ResourceKey<Item> oreItemKey,
-    ResourceKey<Block> rawStorageKey,
-    ResourceKey<Item> rawStorageItemKey,
-    ResourceKey<Block> anvilKey,
-    ResourceKey<Item> anvilItemKey,
-    Block storage,
-    Block ore,
-    Block rawStorage,
-    Block anvil,
-    Map<String, Tuple<ResourceKey<Block>, Block>> oreVariants
+    BlockWithMiningLevel storage,
+    BlockWithMiningLevel ore,
+    BlockWithMiningLevel rawStorage,
+    BlockWithMiningLevel anvil,
+    Map<String, BlockWithMiningLevel> oreVariants
 ) {
     // FIXME - Sounds
     // TODO - Map Colors and Instruments
@@ -52,12 +43,12 @@ public record BlockSet(
         protected @Nullable Block anvil;
 
         private final String name;
-        public final Identifier miningLevel;
+        public final TagKey<Block> miningLevel;
         private boolean fireproof = false;
         private Rarity rarity = Rarity.COMMON;
-        private final Map<String, Tuple<ResourceKey<Block>, Block>> oreVariants;
+        private final Map<String, BlockWithMiningLevel> oreVariants;
 
-        private Builder(String name, Identifier requiredMiningLevel) {
+        private Builder(String name, TagKey<Block> requiredMiningLevel) {
             this.name = name;
             this.oreKey = RegistryHelper.blockKey(name + "_ore");
             this.oreItemKey = RegistryHelper.itemKey(name + "_ore");
@@ -71,7 +62,7 @@ public record BlockSet(
             this.miningLevel = requiredMiningLevel;
         }
 
-        public static Builder begin(String name, Identifier miningLevel) {
+        public static Builder begin(String name, TagKey<Block> miningLevel) {
             return new Builder(name, miningLevel);
         }
 
@@ -87,20 +78,25 @@ public record BlockSet(
 
         public BlockSet finish() {
             if (storage == null) throw new IllegalStateException("Storage Block must not be null for a block set!");
+            BlockWithMiningLevel storageRecord = BlockWithMiningLevel.create(storage, storageKey, storageItemKey, miningLevel);
+            BlockWithMiningLevel oreRecord = null;
+            BlockWithMiningLevel rawStorageRecord = null;
+            BlockWithMiningLevel anvilRecord = null;
+            if (ore != null) {
+                oreRecord = BlockWithMiningLevel.create(ore, oreKey, oreItemKey, miningLevel);
+            }
+            if (rawStorage != null) {
+                rawStorageRecord = BlockWithMiningLevel.create(rawStorage, rawStorageKey, rawStorageItemKey, miningLevel);
+            }
+            if (anvil != null) {
+                anvilRecord = BlockWithMiningLevel.create(anvil, anvilKey, anvilItemKey, miningLevel);
+            }
             return new BlockSet(
                 this.name,
-                this.storageKey,
-                this.storageItemKey,
-                this.oreKey,
-                this.oreItemKey,
-                this.rawStorageKey,
-                this.rawStorageItemKey,
-                this.anvilKey,
-                this.anvilItemKey,
-                this.storage,
-                this.ore,
-                this.rawStorage,
-                this.anvil,
+                storageRecord,
+                oreRecord,
+                rawStorageRecord,
+                anvilRecord,
                 this.oreVariants
             );
         }
@@ -159,13 +155,13 @@ public record BlockSet(
             return this;
         }
 
-        public Builder createCustomOreVariant(String variant, float strength, float resistance, Function<BlockBehaviour.Properties, Block> func) {
+        public Builder createCustomOreVariant(String variant, float strength, float resistance, TagKey<Block> customMiningLevel, Function<BlockBehaviour.Properties, Block> func) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
             var variantItemKey = RegistryHelper.itemKey("%s_%s_ore".formatted(variant, name));
             var oreBlock = RegistryHelper.block(
                 variantKey, variantItemKey, func.apply(baseBlockSettings(variantKey, strength, resistance))
             );
-            oreVariants.put(variant, new Tuple<>(variantKey, oreBlock));
+            oreVariants.put(variant, BlockWithMiningLevel.create(oreBlock, variantKey, variantItemKey, customMiningLevel));
             return this;
         }
 
@@ -174,12 +170,16 @@ public record BlockSet(
         }
 
         public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp) {
+            return createOreVariant(variant, strength, resistance, xp, miningLevel);
+        }
+
+        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp, TagKey<Block> customMiningLevel) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
             var variantItemKey = RegistryHelper.itemKey("%s_%s_ore".formatted(variant, name));
             var block = RegistryHelper.block(
                 variantKey, variantItemKey, new DropExperienceBlock(xp, baseBlockSettings(variantKey, strength, resistance)
                 ));
-            oreVariants.put(variant, new Tuple<>(variantKey, block));
+            oreVariants.put(variant, BlockWithMiningLevel.create(block, variantKey, variantItemKey, customMiningLevel));
             return this;
         }
 

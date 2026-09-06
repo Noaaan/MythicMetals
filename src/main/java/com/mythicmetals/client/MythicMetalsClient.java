@@ -81,7 +81,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         //BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
         //BlockRenderLayerMap.putBlock(MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL), ChunkSectionLayer.CUTOUT);
         //BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
-        //BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage(), ChunkSectionLayer.TRANSLUCENT);
+        //BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage().block(), ChunkSectionLayer.TRANSLUCENT);
 
         if (FabricLoader.getInstance().isModLoaded("wikirenderer")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, _) -> {

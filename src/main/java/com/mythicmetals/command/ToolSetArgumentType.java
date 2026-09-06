@@ -8,7 +8,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.api.v2.ToolSet;
-import com.mythicmetals.misc.DebugHelper;
+import com.mythicmetals.misc.MaterialHelper;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import java.util.concurrent.CompletableFuture;
@@ -30,14 +30,14 @@ public class ToolSetArgumentType implements ArgumentType<ToolSet> {
     @Override
     public ToolSet parse(StringReader reader) throws CommandSyntaxException {
         final String material = reader.readString();
-        if (DebugHelper.TOOL_MAP.containsKey(material)) {
-            return DebugHelper.TOOL_MAP.get(material);
+        if (MaterialHelper.TOOL_MAP.containsKey(material)) {
+            return MaterialHelper.TOOL_MAP.get(material);
         }
         throw EXCEPTION.create();
     }
 
     @Override
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        return SharedSuggestionProvider.suggest(DebugHelper.TOOL_MAP.keySet(), builder);
+        return SharedSuggestionProvider.suggest(MaterialHelper.TOOL_MAP.keySet(), builder);
     }
 }

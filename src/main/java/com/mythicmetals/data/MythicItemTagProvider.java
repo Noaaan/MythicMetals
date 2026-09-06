@@ -128,18 +128,18 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
     }
 
     private void buildBlockSetItemTags(BlockSet blockSet, String name) {
-        valueLookupBuilder(MythicTags.STORAGE_BLOCKS).add(blockSet.storage().asItem());
-        valueLookupBuilder(createModItemTag("storage_blocks/" + name)).add(blockSet.storage().asItem());
+        valueLookupBuilder(MythicTags.STORAGE_BLOCKS).add(blockSet.storage().block().asItem());
+        valueLookupBuilder(createModItemTag("storage_blocks/" + name)).add(blockSet.storage().block().asItem());
 
         if (blockSet.ore() != null) {
-            valueLookupBuilder(ConventionalItemTags.ORES).add(blockSet.ore().asItem());
+            valueLookupBuilder(ConventionalItemTags.ORES).add(blockSet.ore().block().asItem());
             var materialOreTag = createModItemTag("ores/" + name);
-            valueLookupBuilder(materialOreTag).add(blockSet.ore().asItem());
+            valueLookupBuilder(materialOreTag).add(blockSet.ore().block().asItem());
 
             if (!blockSet.oreVariants().isEmpty()) {
-                blockSet.oreVariants().forEach((s, resourceKeyBlockTuple) -> {
-                    valueLookupBuilder(ConventionalItemTags.ORES).add(resourceKeyBlockTuple.getB().asItem());
-                    valueLookupBuilder(materialOreTag).add(resourceKeyBlockTuple.getB().asItem());
+                blockSet.oreVariants().forEach((s, blockRecord) -> {
+                    valueLookupBuilder(ConventionalItemTags.ORES).add(blockRecord.block().asItem());
+                    valueLookupBuilder(materialOreTag).add(blockRecord.block().asItem());
                 });
             }
         }

@@ -73,7 +73,7 @@ public class BanglumNukeEntityRenderer extends EntityRenderer<BanglumNukeEntity,
     public void extractRenderState(BanglumNukeEntity entity, BanglumNukeEntityRenderState state, float tickDelta) {
         super.extractRenderState(entity, state, tickDelta);
         state.fuse = entity.getFuse();
-        this.blockModelResolver.update(state.banglum, MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
-        this.blockModelResolver.update(state.morkite, MythicMaterials.MORKITE.blockSet().storage().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
+        this.blockModelResolver.update(state.banglum, MythicMaterials.BANGLUM.blockSet().storage().block().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
+        this.blockModelResolver.update(state.morkite, MythicMaterials.MORKITE.blockSet().storage().block().defaultBlockState(), BLOCK_DISPLAY_CONTEXT);
     }
 }

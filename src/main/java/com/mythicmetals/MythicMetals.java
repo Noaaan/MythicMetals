@@ -48,7 +48,7 @@ public class MythicMetals implements ModInitializer {
     public static final OwoItemGroup TABBED_GROUP = OwoItemGroup.builder(RegistryHelper.id("main"), () -> Icon.of(MythicMaterials.STORMYX.baseMaterial()))
         .initializer(group -> {
             group.addTab(Icon.of(MythicMaterials.ADAMANTITE.baseMaterial()), "items", TagKey.create(Registries.ITEM, RegistryHelper.id("item_tab")), false);
-            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.blockSet().storage()), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
+            group.addTab(Icon.of(MythicMaterials.ADAMANTITE.blockSet().storage().block()), "blocks", TagKey.create(Registries.ITEM, RegistryHelper.id("blocks")), false);
             group.addTab(Icon.of(MythicMaterials.ADAMANTITE.toolSet().getPickaxe()), "tools", TagKey.create(Registries.ITEM, RegistryHelper.id("tool_tab")), false);
             group.addTab(Icon.of(MythicMaterials.ADAMANTITE.armorSet().getChestplate()), "armor", TagKey.create(Registries.ITEM, RegistryHelper.id("armor_tab")), false);
             group.addButton(ItemGroupButton.github(group, "https://github.com/Noaaan/MythicMetals/issues"));
@@ -73,9 +73,7 @@ public class MythicMetals implements ModInitializer {
         MythicPotions.init();
         BanglumNukeHandler.init();
         MythicOreFeatures.init();
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            DebugHelper.init();
-        }
+        MaterialHelper.init();
         Frogery.init();
         MythicCommands.init();
         MythicCommands.registerCommands();
@@ -85,7 +83,7 @@ public class MythicMetals implements ModInitializer {
         TABBED_GROUP.initialize();
         FuelValueEvents.BUILD.register((builder, context) -> {
             builder.add(MythicMaterials.MORKITE.baseMaterial(), context.baseSmeltTime() * 6);
-            builder.add(MythicMaterials.MORKITE.blockSet().storage(), context.baseSmeltTime() * 64);
+            builder.add(MythicMaterials.MORKITE.blockSet().storage().block(), context.baseSmeltTime() * 64);
         });
         MythicResourceConditions.init();
         MythicLootConditions.init();

@@ -196,12 +196,12 @@ public class WikiExporter {
 
         output.append(ADMONITION_HEADER);
         output.append(ADMONIITION_TOP_IMAGE.formatted(
-            translationStorage.getOrDefault(blockSet.ore().getDescriptionId()),
+            translationStorage.getOrDefault(blockSet.ore().block().getDescriptionId()),
             "../../assets/mythicmetals/%s.png".formatted(blockSet.name() + "_ore")
         ));
 
-        blockSet.oreVariants().forEach((variantName, block) -> {
-            String variantOreName = translationStorage.getOrDefault(block.getB().getDescriptionId());
+        blockSet.oreVariants().forEach((variantName, blockRecord) -> {
+            String variantOreName = translationStorage.getOrDefault(blockRecord.block().getDescriptionId());
             output.append(ADMONIITION_TOP_IMAGE.formatted(
                 variantOreName,
                 "../../assets/mythicmetals/" + variantName + "_" + blockSet.name() + "_ore.png"

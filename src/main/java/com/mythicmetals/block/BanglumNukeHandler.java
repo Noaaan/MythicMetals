@@ -27,8 +27,8 @@ public class BanglumNukeHandler {
 
             var targetBlock = world.getBlockState(hitResult.getBlockPos());
 
-            if (!targetBlock.is(MythicMaterials.BANGLUM.blockSet().storage())
-                && !targetBlock.is(MythicMaterials.MORKITE.blockSet().storage()))
+            if (!targetBlock.is(MythicMaterials.BANGLUM.blockSet().storage().block())
+                && !targetBlock.is(MythicMaterials.MORKITE.blockSet().storage().block()))
                 return InteractionResult.PASS;
 
             var pos = hitResult.getBlockPos();
@@ -47,8 +47,8 @@ public class BanglumNukeHandler {
         BlockState state = world.getBlockState(dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING)));
         var pos = dispenser.pos().relative(dispenser.state().getValue(DispenserBlock.FACING));
 
-        if (!state.is(MythicMaterials.BANGLUM.blockSet().storage())
-            && !state.is(MythicMaterials.MORKITE.blockSet().storage()))
+        if (!state.is(MythicMaterials.BANGLUM.blockSet().storage().block())
+            && !state.is(MythicMaterials.MORKITE.blockSet().storage().block()))
             return false;
 
         return tryLightBigTntAt(world, null, pos.getX(), pos.getY(), pos.getZ());
@@ -88,10 +88,10 @@ public class BanglumNukeHandler {
             .aisle("MBM", "BCB", "MBM")
             .aisle("BMB", "MBM", "BMB")
             .where('B', blockInWorld -> {
-                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.BANGLUM.blockSet().storage().defaultBlockState());
+                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.BANGLUM.blockSet().storage().block().defaultBlockState());
             })
             .where('M', blockInWorld -> {
-                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.MORKITE.blockSet().storage().defaultBlockState());
+                return blockInWorld != null && blockInWorld.getState().equals(MythicMaterials.MORKITE.blockSet().storage().block().defaultBlockState());
             })
             .where('C', blockInWorld -> blockInWorld != null && blockInWorld.getState().is(MythicTags.NUKE_CORES))
             .build();

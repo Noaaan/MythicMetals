@@ -27,7 +27,7 @@ public class EnchantedMidasBlockEntityRenderer implements BlockEntityRenderer<En
     @Override
     public void submit(BlockEntityRenderState blockEntityRenderState, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState) {
         // FIXME
-/*        var blockModel = blockRenderManager.getBlockModel(MythicMaterials.MIDAS_GOLD.blockSet().storage().defaultBlockState());
+/*        var blockModel = blockRenderManager.getBlockModel(MythicMaterials.MIDAS_GOLD.blockSet().storage().block().defaultBlockState());
         poseStack.pushPose();
         submitNodeCollector.submitBlockModel(
             poseStack,

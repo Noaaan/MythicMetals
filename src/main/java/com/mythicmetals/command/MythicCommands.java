@@ -16,7 +16,7 @@ import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.*;
-import com.mythicmetals.misc.DebugHelper;
+import com.mythicmetals.misc.MaterialHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.wiki.WikiExporter;
 import io.wispforest.owo.util.ReflectionUtils;
@@ -228,7 +228,7 @@ public final class MythicCommands {
         } catch (IOException e) {
             MythicMetals.LOGGER.error("Failed to create folder", e);
         }
-        DebugHelper.ARMOR_MAP.forEach((name, armorSet) -> {
+        MaterialHelper.ARMOR_MAP.forEach((name, armorSet) -> {
             var file = Path.of(FabricLoader.getInstance().getConfigDir() + "/mythicmetals/" + name.toLowerCase(Locale.ROOT) + ".md");
             try {
                 Files.createFile(file);
@@ -519,7 +519,7 @@ public final class MythicCommands {
      * Includes one extra suggestion for "all"
      */
     private static CompletableFuture<Suggestions> armorMaterial(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
-        DebugHelper.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
+        MaterialHelper.ARMOR_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
         suggestion.suggest("all");
         return suggestion.buildFuture();
     }
@@ -529,15 +529,15 @@ public final class MythicCommands {
      * Includes one extra suggestion for "all"
      */
     private static CompletableFuture<Suggestions> toolMaterial(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
-        DebugHelper.TOOL_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
+        MaterialHelper.TOOL_MAP.forEach((s, armorSet) -> suggestion.suggest(s));
         suggestion.suggest("all");
         return suggestion.buildFuture();
     }
 
     private static CompletableFuture<Suggestions> material(CommandContext<CommandSourceStack> ctx, SuggestionsBuilder suggestion) {
         var placeableMaterials = new HashSet<String>();
-        placeableMaterials.addAll(DebugHelper.TOOL_MAP.keySet());
-        placeableMaterials.addAll(DebugHelper.ARMOR_MAP.keySet());
+        placeableMaterials.addAll(MaterialHelper.TOOL_MAP.keySet());
+        placeableMaterials.addAll(MaterialHelper.ARMOR_MAP.keySet());
         placeableMaterials.add("all");
         placeableMaterials.forEach(suggestion::suggest);
         return suggestion.buildFuture();
@@ -607,15 +607,15 @@ public final class MythicCommands {
         int count = 0;
 
         if (material.equals("all")) {
-            var sortedSet = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
+            var sortedSet = new TreeSet<>(MaterialHelper.ARMOR_MAP.keySet());
             for (var setName : sortedSet) {
                 if (horse) {
-                    if (summonHorseWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
+                    if (summonHorseWithArmor(serverLevel, MaterialHelper.ARMOR_MAP.get(setName), x, y, z)) {
                         x += 1;
                         count++;
                     }
                 } else {
-                    if (summonNautilusWithArmor(serverLevel, DebugHelper.ARMOR_MAP.get(setName), x, y, z)) {
+                    if (summonNautilusWithArmor(serverLevel, MaterialHelper.ARMOR_MAP.get(setName), x, y, z)) {
                         x += 1;
                         count++;
                     }
@@ -625,7 +625,7 @@ public final class MythicCommands {
             context.getSource().sendSuccess(() -> Component.literal("Summoned %d %s with armor sets".formatted(finalCount, horse ? "horse" : "nautilus")), false);
             return count;
         } else {
-            var armorSet = DebugHelper.ARMOR_MAP.get(material);
+            var armorSet = MaterialHelper.ARMOR_MAP.get(material);
             if (armorSet == null) return -1;
             if (horse) {
                 if (summonHorseWithArmor(serverLevel, armorSet, x, y, z)) {
@@ -672,14 +672,14 @@ public final class MythicCommands {
         double x = pos.x + 0.5f;
         double z = pos.z + 0.5f;
         if (materialQuery.equals("all")) {
-            var toolKeys = new TreeSet<>(DebugHelper.TOOL_MAP.keySet());
+            var toolKeys = new TreeSet<>(MaterialHelper.TOOL_MAP.keySet());
             for (var toolMaterialString : toolKeys) {
-                var toolSet = DebugHelper.TOOL_MAP.get(toolMaterialString);
+                var toolSet = MaterialHelper.TOOL_MAP.get(toolMaterialString);
                 summonArmorStandWithSpear(context.getSource().getLevel(), x, z, toolSet.getSpear());
                 x++;
             }
         } else {
-            var spear = DebugHelper.TOOL_MAP.get(materialQuery).getSpear();
+            var spear = MaterialHelper.TOOL_MAP.get(materialQuery).getSpear();
             summonArmorStandWithSpear(context.getSource().getLevel(), x, z, spear);
         }
         return 0;
@@ -707,9 +707,9 @@ public final class MythicCommands {
             if (material.equals("all")) {
 
                 int count = 0;
-                var armorSetStrings = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
+                var armorSetStrings = new TreeSet<>(MaterialHelper.ARMOR_MAP.keySet());
                 for (var armorSetName : armorSetStrings) {
-                    if (summonArmorStandWithTrim(world, null, DebugHelper.ARMOR_MAP.get(armorSetName), x, z)) {
+                    if (summonArmorStandWithTrim(world, null, MaterialHelper.ARMOR_MAP.get(armorSetName), x, z)) {
                         x++;
                         count++;
                     } else if (armorSetName.equals(MythicMaterials.TIDESINGER.armorSet().getName())) {
@@ -724,7 +724,7 @@ public final class MythicCommands {
                 context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands".formatted(finalCount)), true);
                 return finalCount;
             } else {
-                if (summonArmorStandWithTrim(world, null, DebugHelper.ARMOR_MAP.get(material), x, z)) {
+                if (summonArmorStandWithTrim(world, null, MaterialHelper.ARMOR_MAP.get(material), x, z)) {
                     context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping one armorstand"), true);
                     return 1;
                 } else {
@@ -735,7 +735,7 @@ public final class MythicCommands {
         }
 
         if (material.equals("all")) {
-            if (DebugHelper.ARMOR_MAP.isEmpty()) {
+            if (MaterialHelper.ARMOR_MAP.isEmpty()) {
                 context.getSource().sendSuccess(() -> Component.literal("Unable to summon. Somehow the armor map is empty..."), false);
                 return -1; // "how did this happen?" "a long time ago, actually never..."
             }
@@ -753,10 +753,10 @@ public final class MythicCommands {
             MutableInt mutZ = new MutableInt(pos.z);
             MutableInt count = new MutableInt(0);
 
-            var armorSetStrings = new TreeSet<>(DebugHelper.ARMOR_MAP.keySet());
+            var armorSetStrings = new TreeSet<>(MaterialHelper.ARMOR_MAP.keySet());
             for (var armorSetName : armorSetStrings) {
                 armorTrims.forEach(armorTrim -> {
-                    if (summonArmorStandWithTrim(world, armorTrim, DebugHelper.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
+                    if (summonArmorStandWithTrim(world, armorTrim, MaterialHelper.ARMOR_MAP.get(armorSetName), mutX.getValue(), mutZ.getValue())) {
                         mutX.add(2);
                         count.increment();
                     }
@@ -767,7 +767,7 @@ public final class MythicCommands {
             context.getSource().sendSuccess(() -> Component.literal("Summoned and dropping %d armorstands with trims".formatted(count.getValue())), true);
 
             return count.getValue();
-        } else if (DebugHelper.ARMOR_MAP.get(material) != null) {
+        } else if (MaterialHelper.ARMOR_MAP.get(material) != null) {
             if (trimQuery.equals("all")) {
                 armorTrims = getAllArmorTrims(world);
             } else {
@@ -788,7 +788,7 @@ public final class MythicCommands {
                     xOffset += 2;
                     zOffset = 0;
                 }
-                var armorSet = DebugHelper.ARMOR_MAP.get(material);
+                var armorSet = MaterialHelper.ARMOR_MAP.get(material);
                 if (summonArmorStandWithTrim(world, armorTrims.get(i), armorSet, (int) pos.x + xOffset, (int) pos.z + zOffset)) {
                     count++;
                     zOffset += 2;

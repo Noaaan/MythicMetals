@@ -1,56 +1,51 @@
 package com.mythicmetals.data;
 
+import com.mythicmetals.api.v2.BlockWithMiningLevel;
+import com.mythicmetals.misc.MaterialHelper;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.tags.BlockTags;
+import org.jspecify.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class MythicBlockTagProvider extends FabricTagsProvider<Block> {
+public class MythicBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
     public MythicBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        super(output, Registries.BLOCK, registriesFuture);
+        super(output, registriesFuture);
     }
 
     @SuppressWarnings("UnstableApiUsage")
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        // FIXME - This is now considered deprecated. I now need lists of Identifiers for everything.
-        // Data Driven Mythic Metals by 2027
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-//            var modOreTag = MythicMetalsData.createModBlockTag("ores");
-//            var commonOreTag = ConventionalBlockTags.ORES;
-//
-//            if (blockSet.getOre() != null) {
-//                var string = "ores/" + name;
-//                var modTag = MythicMetalsData.createModBlockTag(string);
-//                var commonTag = MythicMetalsData.createCommonBlockTag(string);
-//                var tagBuilder = getOrCreateRawBuilder(modTag).addElement(blockSet.getOre());
-//                tag(commonTag).addTag(modTag);
-//
-//                if (!blockSet.getOreVariants().isEmpty()) {
-//                    blockSet.getOreVariants().forEach(tagBuilder::add);
-//                }
-//                tag(modOreTag).addTag(modTag);
-//                tag(commonOreTag).addTag(modTag);
-//            }
-//
-//            if (blockSet.getOreStorageBlock() != null) {
-//                var string = "storage_blocks/raw_" + name;
-//                var modTag = MythicMetalsData.createModBlockTag(string);
-//                var commonTag = MythicMetalsData.createCommonBlockTag(string);
-//                getOrCreateTagBuilder(modTag).add(blockSet.getOreStorageBlock());
-//                tag(commonTag).addTag(modTag);
-//            }
-//
-//            if (blockSet.getStorageBlock() != null) {
-//                var string = "storage_blocks/" + name;
-//                var modTag = MythicMetalsData.createModBlockTag(string);
-//                var commonTag = MythicMetalsData.createCommonBlockTag(string);
-//                getOrCreateTagBuilder(modTag).add(blockSet.getStorageBlock());
-//                tag(commonTag).addTag(modTag);
-//            }
-//        });
+        // mining level handling for custom MM progression
+        // currently shaped like:
+        // stone/gold -> copper -> iron -> diamond -> netherite -> unobtainium (unused, just like vanilla netherite)
+        builder(BlockTags.INCORRECT_FOR_STONE_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_COPPER_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+        builder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_COPPER_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+        builder(BlockTags.INCORRECT_FOR_IRON_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+        builder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+        builder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+
+        MaterialHelper.BLOCK_SET_MAP.values().forEach((blockSet) -> {
+            addMiningLevel(blockSet.storage());
+            addMiningLevel(blockSet.ore());
+            addMiningLevel(blockSet.rawStorage());
+            addMiningLevel(blockSet.anvil());
+
+            blockSet.oreVariants().values().forEach(this::addMiningLevel);
+        });
+    }
+
+    private void addMiningLevel(@Nullable BlockWithMiningLevel blockRecord) {
+        if (blockRecord == null) return;
+        builder(blockRecord.miningLevel()).add(blockRecord.blockKey());
     }
 }

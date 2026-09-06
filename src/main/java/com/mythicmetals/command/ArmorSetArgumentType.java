@@ -8,7 +8,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.api.v2.ArmorSet;
-import com.mythicmetals.misc.DebugHelper;
+import com.mythicmetals.misc.MaterialHelper;
 import net.minecraft.network.chat.Component;
 import java.util.concurrent.CompletableFuture;
 
@@ -25,15 +25,15 @@ public class ArmorSetArgumentType implements ArgumentType<ArmorSet> {
     @Override
     public ArmorSet parse(StringReader reader) throws CommandSyntaxException {
         final String material = reader.readString();
-        if (DebugHelper.ARMOR_MAP.containsKey(material)) {
-            return DebugHelper.ARMOR_MAP.get(material);
+        if (MaterialHelper.ARMOR_MAP.containsKey(material)) {
+            return MaterialHelper.ARMOR_MAP.get(material);
         }
         throw EXCEPTION.create();
     }
 
     @Override
     public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> context, SuggestionsBuilder builder) {
-        DebugHelper.ARMOR_MAP.keySet().forEach(builder::suggest);
+        MaterialHelper.ARMOR_MAP.keySet().forEach(builder::suggest);
         return builder.buildFuture();
     }
 

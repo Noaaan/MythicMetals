@@ -3,7 +3,7 @@ package com.mythicmetals.data;
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.DebugHelper;
+import com.mythicmetals.misc.MaterialHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
@@ -51,7 +51,7 @@ public class MythicItemModelProvider extends FabricModelProvider {
             }
         });
         // Tools
-        DebugHelper.TOOL_MAP.forEach((s, toolSet) -> {
+        MaterialHelper.TOOL_MAP.forEach((s, toolSet) -> {
             if (!s.equals("legendary_banglum")) {
                 itemModelGenerator.generateFlatItem(toolSet.getSword(), ModelTemplates.FLAT_HANDHELD_ITEM);
                 itemModelGenerator.generateFlatItem(toolSet.getAxe(), ModelTemplates.FLAT_HANDHELD_ITEM);

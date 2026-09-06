@@ -3,6 +3,7 @@ package com.mythicmetals.api.v2;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.item.armor.CustomHelmetArmorSet;
@@ -11,6 +12,7 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
@@ -33,24 +35,12 @@ public record Material(
     boolean fireproof,
     boolean requiresSmithing
 ) {
-
-    public static final Identifier STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL.location();
-    public static final Identifier IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL.location();
-    public static final Identifier DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL.location();
-    public static final Identifier NETHERITE_MINING_LEVEL = RegistryHelper.id("needs_netherite_tool");
-    public static final Identifier MYTHIC_MINING_LEVEL = RegistryHelper.id("needs_unobtainable_tool");
-
-    public void getMaterialProperties(BiConsumer<@Nullable ArmorMaterial, @Nullable ToolMaterial> executor) {
-        ArmorMaterial armorMat = null;
-        ToolMaterial toolMat = null;
-        if (this.toolSet != null) {
-            toolMat = this.toolSet.getToolMaterial();
-        }
-        if (this.armorSet != null) {
-            armorMat = this.armorSet.getArmorMaterial();
-        }
-        executor.accept(armorMat, toolMat);
-    }
+    public static final TagKey<Block> STONE_MINING_LEVEL = BlockTags.NEEDS_STONE_TOOL;
+    public static final TagKey<Block> COPPER_MINING_LEVEL = MythicTags.NEEDS_COPPER_TOOLS;
+    public static final TagKey<Block> IRON_MINING_LEVEL = BlockTags.NEEDS_IRON_TOOL;
+    public static final TagKey<Block> DIAMOND_MINING_LEVEL = BlockTags.NEEDS_DIAMOND_TOOL;
+    public static final TagKey<Block> NETHERITE_MINING_LEVEL = MythicTags.NEEDS_NETHERITE_TOOLS;
+    public static final TagKey<Block> MYTHIC_MINING_LEVEL = MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS;
 
     ///
     /// Builder for the [Material] class
@@ -142,7 +132,7 @@ public record Material(
             this.rawOre = RegistryHelper.item(key, new Item(baseProperties(key, rarity)));
         }
 
-        public Builder createDefaultBlockSet(Identifier miningLevel, float strength) {
+        public Builder createDefaultBlockSet(TagKey<Block> miningLevel, float strength) {
             var set = BlockSet.Builder.begin(name, miningLevel);
             switch (type) {
                 case ALLOY, RARE_ALLOY -> set = set.createAlloyBlockSet(strength, strength + 1.0f);
@@ -152,7 +142,7 @@ public record Material(
             return this;
         }
 
-        public Builder createBlockSetFromBuilder(Identifier miningLevel, Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
+        public Builder createBlockSetFromBuilder(TagKey<Block> miningLevel, Function<BlockSet.Builder, BlockSet> blockSetBuilder) {
             this.blockSet = blockSetBuilder.apply(BlockSet.Builder.begin(this.name, miningLevel));
             return this;
         }

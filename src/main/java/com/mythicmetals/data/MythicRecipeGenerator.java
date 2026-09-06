@@ -85,15 +85,15 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 // TODO - alloy forgery smeltin
             }
             if (blockSet.ore() != null) {
-                smeltables.add(blockSet.ore().asItem());
+                smeltables.add(blockSet.ore().block().asItem());
             }
             if (!blockSet.oreVariants().isEmpty()) {
-                blockSet.oreVariants().values().stream().map(Tuple::getB).forEach(block -> smeltables.add(block.asItem()));
+                blockSet.oreVariants().values().forEach(blockRecord -> smeltables.add(blockRecord.block().asItem()));
             }
             if (material.rawOre() != null) {
                 smeltables.add(material.rawOre());
                 if (blockSet.rawStorage() != null) {
-                    createRawToStorageAndBackRecipes(material.name(), blockSet.rawStorage(), material.rawOre());
+                    createRawToStorageAndBackRecipes(material.name(), blockSet.rawStorage().block(), material.rawOre());
                 }
             }
             if (!smeltables.isEmpty()) {
@@ -164,13 +164,13 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .unlockedBy("has_big_real_material", has(Items.GUNPOWDER))
             .save(output, recipeKey("blocks/banglum_tnt_from_gunpowder"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, bangNukeCore)
-            .define('#', MythicMaterials.BANGLUM.blockSet().rawStorage())
-            .define('S', MythicMaterials.MORKITE.blockSet().storage())
+            .define('#', MythicMaterials.BANGLUM.blockSet().rawStorage().block())
+            .define('S', MythicMaterials.MORKITE.blockSet().storage().block())
             .define('C', MythicMaterials.LEGENDARY_BANGLUM.baseMaterial())
             .pattern("#S#")
             .pattern("SCS")
             .pattern("#S#")
-            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.blockSet().rawStorage()))
+            .unlockedBy("has_big_material", has(MythicMaterials.BANGLUM.blockSet().rawStorage().block()))
             .unlockedBy("has_big_real_material", has(MythicMaterials.MORKITE.baseMaterial()))
             .unlockedBy("has_chunk", has(MythicMaterials.LEGENDARY_BANGLUM.baseMaterial()))
             .save(output, recipeKey("blocks/banglum_nuke_core"));
@@ -218,7 +218,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
     private void createItemRecipes() {
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.MISC, MythicMaterials.DURASTEEL.extraItems().get(MythicResourceKeys.DURASTEEL_ENGINE))
             .define('#', MythicMaterials.DURASTEEL.baseMaterial())
-            .define('B', MythicMaterials.DURASTEEL.blockSet().storage())
+            .define('B', MythicMaterials.DURASTEEL.blockSet().storage().block())
             .define('M', MythicMaterials.MORKITE.baseMaterial())
             .define('H', Items.HOPPER)
             .pattern("#H#")
@@ -342,7 +342,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .unlockedBy("has_material", has(MythicMaterials.PALLADIUM.baseMaterial()))
             .save(output, recipeKey("tools/palladium_minecart"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicTools.ORICHALCUM_HAMMER)
-            .define('#', MythicMaterials.ORICHALCUM.blockSet().storage())
+            .define('#', MythicMaterials.ORICHALCUM.blockSet().storage().block())
             .define('S', Items.STICK)
             .pattern(" # ")
             .pattern(" S#")
@@ -396,7 +396,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
                 Ingredient.of(MythicMaterials.ADAMANTITE.toolSet().getSword()),
-                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage()),
+                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage().block()),
                 RecipeCategory.COMBAT,
                 MythicTools.RED_AEGIS_SWORD
             )
@@ -405,7 +405,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
                 Ingredient.of(MythicMaterials.HALLOWED.toolSet().getSword()),
-                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage()),
+                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage().block()),
                 RecipeCategory.COMBAT,
                 MythicTools.WHITE_AEGIS_SWORD
             )
@@ -439,12 +439,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
         var enchantedMidas = MythicMaterials.MIDAS_GOLD.extraBlocks().get(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK);
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.ROYAL_MIDAS_SMITHING_TEMPLATE))
             .define('M', Items.NETHERRACK)
-            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage())
+            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage().block())
             .define('T', enchantedMidas)
             .pattern("CTC")
             .pattern("CMC")
             .pattern("CCC")
-            .unlockedBy("has_material", has(MythicMaterials.MIDAS_GOLD.blockSet().storage()))
+            .unlockedBy("has_material", has(MythicMaterials.MIDAS_GOLD.blockSet().storage().block()))
             .unlockedBy("has_enchanted_material", has(enchantedMidas))
             .group("mm_royal_midas_template")
             .save(output, recipeKey("smithing_templates/royal_midas"));
@@ -540,7 +540,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .group("mm_tidesinger_template")
             .save(output, recipeKey("smithing_templates/tidesinger_duplicate"));
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.ROYAL_MIDAS_SMITHING_TEMPLATE), 2)
-            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage())
+            .define('C', MythicMaterials.MIDAS_GOLD.blockSet().storage().block())
             .define('T', MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.ROYAL_MIDAS_SMITHING_TEMPLATE))
             .define('M', Items.NETHERRACK)
             .pattern("CTC")
