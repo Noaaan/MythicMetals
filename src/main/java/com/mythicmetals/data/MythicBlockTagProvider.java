@@ -1,8 +1,8 @@
 package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.BlockWithMiningLevel;
-import com.mythicmetals.misc.MaterialHelper;
 import com.mythicmetals.api.v2.MaterialHelper;
+import com.mythicmetals.item.MythicResourceKeys;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;

@@ -23,6 +23,10 @@ public class MythicLootOps {
                 LootOps.injectItem(MythicMaterials.UNOBTAINIUM.baseMaterial(), 0.00042F, CUSTOM_PIGLIN_BARTERING);
             }
         }
+        LootOps.injectItem(MythicMaterials.AEGIS.baseMaterial(), 0.02f,
+            Identifier.withDefaultNamespace("blocks/deepslate_emerald_ore"),
+            Identifier.withDefaultNamespace("blocks/emerald_ore")
+        );
         LootOps.injectItem(MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE), MythicMetals.CONFIG.unobtainiumTemplateChance(), BuiltInLootTables.ANCIENT_CITY.identifier());
         LootOps.injectItem(MythicMaterials.MYTHRIL.extraItems().get(MythicResourceKeys.MYTHRIL_DRILL_SMITHING_TEMPLATE), MythicMetals.CONFIG.mythrilDrillTemplateChance(), BuiltInLootTables.ABANDONED_MINESHAFT.identifier());
     }
