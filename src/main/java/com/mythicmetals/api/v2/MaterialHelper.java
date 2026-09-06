@@ -1,6 +1,5 @@
-package com.mythicmetals.misc;
+package com.mythicmetals.api.v2;
 
-import com.mythicmetals.api.v2.*;
 import com.mythicmetals.item.MythicMaterials;
 import io.wispforest.owo.util.ReflectionUtils;
 import java.util.*;
@@ -24,6 +23,9 @@ public class MaterialHelper {
             }
             if (material.blockSet() != null) {
                 BLOCK_SET_MAP.put(name, material.blockSet());
+            }
+            if (!material.extraBlocks().isEmpty()) {
+
             }
         });
     }

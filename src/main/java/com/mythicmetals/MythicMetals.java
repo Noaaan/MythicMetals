@@ -1,5 +1,6 @@
 package com.mythicmetals;
 
+import com.mythicmetals.api.v2.MaterialHelper;
 import com.mythicmetals.block.BanglumNukeHandler;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;

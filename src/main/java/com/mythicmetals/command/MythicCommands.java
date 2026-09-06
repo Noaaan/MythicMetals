@@ -16,7 +16,7 @@ import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.*;
-import com.mythicmetals.misc.MaterialHelper;
+import com.mythicmetals.api.v2.MaterialHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.wiki.WikiExporter;
 import io.wispforest.owo.util.ReflectionUtils;
@@ -301,31 +301,28 @@ public final class MythicCommands {
         AtomicInteger x = new AtomicInteger(((int) source.getPosition().x));
         AtomicInteger y = new AtomicInteger(((int) source.getPosition().y));
         int z = ((int) source.getPosition().z);
-        // FIXME
-//        ReflectionUtils.iterateAccessibleStaticFields(MythicBlocks.class, BlockSet.class, (blockSet, name, field) -> {
-//            y.set(((int) source.getPosition().y));
-//            if (blockSet.getOre() != null) {
-//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOre().defaultBlockState());
-//            }
-//            blockSet.getOreVariants().forEach(block -> {
-//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), block.defaultBlockState());
-//            });
-//            if (blockSet.getOreStorageBlock() != null) {
-//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getOreStorageBlock().defaultBlockState());
-//            }
-//            if (blockSet.getStorageBlock() != null) {
-//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getStorageBlock().defaultBlockState());
-//            }
-//            if (blockSet.getAnvil() != null) {
-//                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.getAnvil().defaultBlockState());
-//            }
-//            if (extraBlocks.containsKey(name)) {
-//                extraBlocks.get(name).forEach(extraBlock -> {
-//                    world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), extraBlock.defaultBlockState());
-//                });
-//            }
-//            x.incrementAndGet();
-//        });
+        MaterialHelper.BLOCK_SET_MAP.values().forEach(blockSet -> {
+                        y.set(((int) source.getPosition().y));
+            if (blockSet.ore() != null) {
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.ore().block().defaultBlockState());
+            }
+            blockSet.oreVariants().values().forEach(blockRecord -> {
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockRecord.block().defaultBlockState());
+            });
+            if (blockSet.rawStorage() != null) {
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.rawStorage().block().defaultBlockState());
+            }
+            world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.storage().block().defaultBlockState());
+            if (blockSet.anvil() != null) {
+                world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), blockSet.anvil().block().defaultBlockState());
+            }
+            if (extraBlocks.containsKey(blockSet.name())) {
+                extraBlocks.get(blockSet.name()).forEach(extraBlock -> {
+                    world.setBlockAndUpdate(BlockPos.containing(x.get(), y.getAndIncrement(), z), extraBlock.defaultBlockState());
+                });
+            }
+            x.incrementAndGet();
+        });
         source.sendSuccess(() -> Component.literal("Placed all blocksets starting at %s,%s,%s".formatted(source.getPosition().x, source.getPosition().y, source.getPosition().z)), true);
         return 0;
     }

@@ -3,7 +3,7 @@ package com.mythicmetals.data;
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.tools.MythicTools;
-import com.mythicmetals.misc.MaterialHelper;
+import com.mythicmetals.api.v2.MaterialHelper;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;

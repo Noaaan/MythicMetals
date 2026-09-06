@@ -75,6 +75,7 @@ public class MythicTags {
     public static final TagKey<Block> NEEDS_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("needs_unobtainium_alloy_tools"));
     public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOLS = TagKey.create(BLOCK, id("incorrect_for_copper_tools"));
     public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("incorrect_for_unobtainium_alloy_tools"));
+    public static final TagKey<Block> CONDUIT_BLOCKS = TagKey.create(BLOCK, id("conduit_blocks"));
     public static final TagKey<Block> NUKE_CORES = TagKey.create(BLOCK, id("nuke_cores"));
     public static final TagKey<Block> MYTHIC_ORES = TagKey.create(BLOCK, id("ores"));
     public static final TagKey<Block> SPONGABLES = TagKey.create(BLOCK, id("spongables"));

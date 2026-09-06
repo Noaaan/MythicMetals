@@ -8,7 +8,7 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import com.mythicmetals.api.v2.ToolSet;
-import com.mythicmetals.misc.MaterialHelper;
+import com.mythicmetals.api.v2.MaterialHelper;
 import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import java.util.concurrent.CompletableFuture;
