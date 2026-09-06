@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_enchanted_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:enchanted_midas_gold_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:midas_gold_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:smithing_templates/royal_midas"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_material",
+      "has_enchanted_material"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:smithing_templates/royal_midas"
+    ]
+  }
+}

@@ -5,7 +5,7 @@
     }
   ],
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "misc",
   "group": "mm_carmot_template",
   "key": {
     "C": "mythicmetals:carmot_nugget",

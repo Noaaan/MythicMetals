@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "misc",
   "group": "mm_osmium_template",
   "key": {
     "C": "mythicmetals:osmium_nugget",

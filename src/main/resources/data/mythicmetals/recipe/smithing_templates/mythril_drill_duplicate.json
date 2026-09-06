@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "misc",
   "group": "mm_mythril_drill_template",
   "key": {
     "C": "minecraft:diamond",

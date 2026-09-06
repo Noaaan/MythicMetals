@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
+  "category": "misc",
   "group": "mm_banglum_template",
   "key": {
     "C": "mythicmetals:banglum_ingot",
