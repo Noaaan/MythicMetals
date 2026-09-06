@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_big_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:raw_banglum"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_big_real_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:gunpowder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:blocks/banglum_tnt_from_gunpowder"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_big_material",
+      "has_big_real_material"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:blocks/banglum_tnt_from_gunpowder"
+    ]
+  }
+}

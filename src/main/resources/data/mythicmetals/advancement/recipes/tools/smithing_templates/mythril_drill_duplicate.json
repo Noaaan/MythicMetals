@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:mythril_drill_smithing_template"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:smithing_templates/mythril_drill_duplicate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_material"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:smithing_templates/mythril_drill_duplicate"
+    ]
+  }
+}

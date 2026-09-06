@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:aquarium_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:tidesinger_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:tidesinger_smithing_template"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:sword/tidesinger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_template",
+      "has_component_tool",
+      "has_sword"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:sword/tidesinger"
+    ]
+  }
+}

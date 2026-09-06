@@ -5,9 +5,12 @@
     "mythicmetals:banglum_pickaxe",
     "mythicmetals:banglum_shovel",
     "mythicmetals:banglum_hoe",
+    "mythicmetals:banglum_spear",
     "mythicmetals:banglum_helmet",
     "mythicmetals:banglum_chestplate",
     "mythicmetals:banglum_leggings",
-    "mythicmetals:banglum_boots"
+    "mythicmetals:banglum_boots",
+    "mythicmetals:banglum_horse_armor",
+    "mythicmetals:banglum_nautilus_armor"
   ]
 }

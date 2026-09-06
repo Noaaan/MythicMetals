@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_component_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:aquarium_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:tidesinger_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:tidesinger_smithing_template"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:shovel/tidesinger"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_template",
+      "has_component_tool",
+      "has_shovel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:shovel/tidesinger"
+    ]
+  }
+}

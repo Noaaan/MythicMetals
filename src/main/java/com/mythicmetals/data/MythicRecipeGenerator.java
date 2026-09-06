@@ -11,9 +11,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
@@ -556,7 +554,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("CTC")
             .pattern("CMC")
             .pattern("CCC")
-            .unlockedBy("has_material", has(MythicMaterials.UNOBTAINIUM.extraItems().get(MythicResourceKeys.UNOBTAINIUM_SMITHING_TEMPLATE)))
+            .unlockedBy("has_material", has(MythicMaterials.UNOBTAINIUM.baseMaterial()))
             .group("mm_unobtainium_template")
             .save(output, recipeKey("smithing_templates/unobtainium_alloy"));
     }
@@ -569,7 +567,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("#")
             .pattern("#")
             .pattern("S")
-            .unlockedBy("has_sword", has(toolSet.getSword()))
+            .unlockedBy("has_material", has(material))
             .save(output, recipeKey("sword/" + toolSet.getName()));
         // axe
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, toolSet.getAxe())
@@ -578,7 +576,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("## ")
             .pattern("#S ")
             .pattern(" S ")
-            .unlockedBy("has_axe", has(toolSet.getAxe()))
+            .unlockedBy("has_material", has(material))
             .save(output, recipeKey("axe/" + toolSet.getName()));
         // pickaxe
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, toolSet.getPickaxe())
@@ -587,7 +585,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("###")
             .pattern(" S ")
             .pattern(" S ")
-            .unlockedBy("has_pickaxe", has(toolSet.getPickaxe()))
+            .unlockedBy("has_material", has(material))
             .save(output, recipeKey("pickaxe/" + toolSet.getName()));
         // shovel
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, toolSet.getShovel())
@@ -596,7 +594,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("#")
             .pattern("#")
             .pattern("S")
-            .unlockedBy("has_shovel", has(toolSet.getShovel()))
+            .unlockedBy("has_material", has(material))
             .save(output, recipeKey("shovel/" + toolSet.getName()));
         // hoe
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, toolSet.getHoe())
@@ -605,7 +603,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern("## ")
             .pattern(" S ")
             .pattern(" S ")
-            .unlockedBy("has_hoe", has(toolSet.getHoe()))
+            .unlockedBy("has_material", has(material))
             .save(output, recipeKey("hoe/" + toolSet.getName()));
     }
 
@@ -740,42 +738,38 @@ public class MythicRecipeGenerator extends RecipeProvider {
 //            output.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
 //        }
     }
-
-    public void createArmorCraftingRecipes(ArmorSet output, Item item) {
-        createArmorCraftingRecipes(output, Ingredient.of(item));
-    }
-
-    public void createArmorCraftingRecipes(ArmorSet output, Ingredient material) {
+    public void createArmorCraftingRecipes(ArmorSet output, Item armorMaterial) {
         if (output == null) return;
         // helmet
+        var ingredient = Ingredient.of(armorMaterial);
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getHelmet())
-            .define('#', material)
+            .define('#', ingredient)
             .pattern("###")
             .pattern("# #")
-            .unlockedBy("has_helmet", has(output.getHelmet()))
+            .unlockedBy("has_material", has(armorMaterial))
             .save(this.output, recipeKey("armor/" + output.getName() + "_helmet"));
         // chestplate
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getChestplate())
-            .define('#', material)
+            .define('#', ingredient)
             .pattern("# #")
             .pattern("###")
             .pattern("###")
-            .unlockedBy("has_chestplate", has(output.getChestplate()))
+            .unlockedBy("has_material", has(armorMaterial))
             .save(this.output, recipeKey("armor/" + output.getName() + "_chestplate"));
         // leggings
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getLeggings())
-            .define('#', material)
+            .define('#', ingredient)
             .pattern("###")
             .pattern("# #")
             .pattern("# #")
-            .unlockedBy("has_leggings", has(output.getLeggings()))
+            .unlockedBy("has_material", has(armorMaterial))
             .save(this.output, recipeKey("armor/" + output.getName() + "_leggings"));
         // boots
         ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getBoots())
-            .define('#', material)
+            .define('#', ingredient)
             .pattern("# #")
             .pattern("# #")
-            .unlockedBy("has_boots", has(output.getBoots()))
+            .unlockedBy("has_material", has(armorMaterial))
             .save(this.output, recipeKey("armor/" + output.getName() + "_boots"));
     }
 
@@ -789,7 +783,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 RecipeCategory.COMBAT,
                 outputArmorSet.getHelmet()
             )
-            .unlocks("has_helmet", has(outputArmorSet.getHelmet()))
+            .unlocks("has_template", has(template))
             .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_helmet"));
         // chestplate
         SmithingTransformRecipeBuilder.smithing(
@@ -799,7 +793,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 RecipeCategory.COMBAT,
                 outputArmorSet.getChestplate()
             )
-            .unlocks("has_chestplate", has(outputArmorSet.getChestplate()))
+            .unlocks("has_template", has(template))
             .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_chestplate"));
         // leggings
         SmithingTransformRecipeBuilder.smithing(
@@ -809,7 +803,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 RecipeCategory.COMBAT,
                 outputArmorSet.getLeggings()
             )
-            .unlocks("has_leggings", has(outputArmorSet.getLeggings()))
+            .unlocks("has_template", has(template))
             .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_leggings"));
         // boots
         SmithingTransformRecipeBuilder.smithing(
@@ -819,7 +813,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 RecipeCategory.COMBAT,
                 outputArmorSet.getBoots()
             )
-            .unlocks("has_boots", has(outputArmorSet.getBoots()))
+            .unlocks("has_template", has(template))
             .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_boots"));
     }
 

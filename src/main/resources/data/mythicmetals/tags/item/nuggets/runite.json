@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "mythicmetals:runite_nugget",
-      "required": false
-    }
+    "mythicmetals:runite_nugget"
   ]
 }

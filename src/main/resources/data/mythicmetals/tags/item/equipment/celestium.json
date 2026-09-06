@@ -5,10 +5,12 @@
     "mythicmetals:celestium_pickaxe",
     "mythicmetals:celestium_shovel",
     "mythicmetals:celestium_hoe",
+    "mythicmetals:celestium_spear",
     "mythicmetals:celestium_helmet",
     "mythicmetals:celestium_chestplate",
     "mythicmetals:celestium_leggings",
     "mythicmetals:celestium_boots",
-    "mythicmetals:celestium_elytra"
+    "mythicmetals:celestium_horse_armor",
+    "mythicmetals:celestium_nautilus_armor"
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "values": [
+    "mythicmetals:starrite_block",
+    "mythicmetals:starrite_ore",
+    "mythicmetals:calcite_starrite_ore",
+    "mythicmetals:adamantite_block",
+    "mythicmetals:adamantite_ore",
+    "mythicmetals:raw_adamantite_block",
+    "mythicmetals:adamantite_anvil",
+    "mythicmetals:deepslate_adamantite_ore",
+    "mythicmetals:palladium_block",
+    "mythicmetals:palladium_ore",
+    "mythicmetals:raw_palladium_block",
+    "mythicmetals:palladium_anvil",
+    "mythicmetals:mythril_block",
+    "mythicmetals:mythril_ore",
+    "mythicmetals:raw_mythril_block",
+    "mythicmetals:mythril_anvil",
+    "mythicmetals:deepslate_mythril_ore",
+    "mythicmetals:star_platinum_block",
+    "mythicmetals:star_platinum_anvil",
+    "mythicmetals:orichalcum_block",
+    "mythicmetals:orichalcum_ore",
+    "mythicmetals:raw_orichalcum_block",
+    "mythicmetals:orichalcum_anvil",
+    "mythicmetals:deepslate_orichalcum_ore",
+    "mythicmetals:smooth_basalt_orichalcum_ore",
+    "mythicmetals:tuff_orichalcum_ore",
+    "mythicmetals:durasteel_block",
+    "mythicmetals:durasteel_anvil"
+  ]
+}

@@ -5,9 +5,12 @@
     "mythicmetals:steel_pickaxe",
     "mythicmetals:steel_shovel",
     "mythicmetals:steel_hoe",
+    "mythicmetals:steel_spear",
     "mythicmetals:steel_helmet",
     "mythicmetals:steel_chestplate",
     "mythicmetals:steel_leggings",
-    "mythicmetals:steel_boots"
+    "mythicmetals:steel_boots",
+    "mythicmetals:steel_horse_armor",
+    "mythicmetals:steel_nautilus_armor"
   ]
 }

@@ -5,13 +5,12 @@
     "mythicmetals:osmium_pickaxe",
     "mythicmetals:osmium_shovel",
     "mythicmetals:osmium_hoe",
+    "mythicmetals:osmium_spear",
     "mythicmetals:osmium_helmet",
     "mythicmetals:osmium_chestplate",
     "mythicmetals:osmium_leggings",
     "mythicmetals:osmium_boots",
-    "mythicmetals:osmium_chainmail_helmet",
-    "mythicmetals:osmium_chainmail_chestplate",
-    "mythicmetals:osmium_chainmail_leggings",
-    "mythicmetals:osmium_chainmail_boots"
+    "mythicmetals:osmium_horse_armor",
+    "mythicmetals:osmium_nautilus_armor"
   ]
 }

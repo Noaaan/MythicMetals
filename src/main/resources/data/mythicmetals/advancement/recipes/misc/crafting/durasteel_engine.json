@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fuel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:morkite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:durasteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:crafting/durasteel_engine"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_material",
+      "has_fuel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:crafting/durasteel_engine"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_big_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:raw_banglum_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_big_real_material": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:morkite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_chunk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:banglum_chunk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:blocks/banglum_nuke_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_big_material",
+      "has_big_real_material",
+      "has_chunk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:blocks/banglum_nuke_core"
+    ]
+  }
+}

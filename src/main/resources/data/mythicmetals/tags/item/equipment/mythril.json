@@ -5,9 +5,12 @@
     "mythicmetals:mythril_pickaxe",
     "mythicmetals:mythril_shovel",
     "mythicmetals:mythril_hoe",
+    "mythicmetals:mythril_spear",
     "mythicmetals:mythril_helmet",
     "mythicmetals:mythril_chestplate",
     "mythicmetals:mythril_leggings",
-    "mythicmetals:mythril_boots"
+    "mythicmetals:mythril_boots",
+    "mythicmetals:mythril_horse_armor",
+    "mythicmetals:mythril_nautilus_armor"
   ]
 }

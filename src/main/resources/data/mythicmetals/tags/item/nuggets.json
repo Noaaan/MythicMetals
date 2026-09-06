@@ -1,104 +1,29 @@
 {
   "values": [
-    {
-      "id": "mythicmetals:adamantite_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:aquarium_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:banglum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:bronze_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:carmot_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:celestium_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:durasteel_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:hallowed_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:kyber_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:manganese_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:metallurgium_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:midas_gold_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:mythril_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:orichalcum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:osmium_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:palladium_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:platinum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:prometheum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:quadrillum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:runite_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:silver_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:star_platinum_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:steel_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:stormyx_nugget",
-      "required": false
-    },
-    {
-      "id": "mythicmetals:tin_nugget",
-      "required": false
-    }
+    "mythicmetals:adamantite_nugget",
+    "mythicmetals:aquarium_nugget",
+    "mythicmetals:banglum_nugget",
+    "mythicmetals:bronze_nugget",
+    "mythicmetals:carmot_nugget",
+    "mythicmetals:celestium_nugget",
+    "mythicmetals:durasteel_nugget",
+    "mythicmetals:hallowed_nugget",
+    "mythicmetals:kyber_nugget",
+    "mythicmetals:manganese_nugget",
+    "mythicmetals:metallurgium_nugget",
+    "mythicmetals:midas_gold_nugget",
+    "mythicmetals:mythril_nugget",
+    "mythicmetals:orichalcum_nugget",
+    "mythicmetals:osmium_nugget",
+    "mythicmetals:palladium_nugget",
+    "mythicmetals:platinum_nugget",
+    "mythicmetals:prometheum_nugget",
+    "mythicmetals:quadrillum_nugget",
+    "mythicmetals:runite_nugget",
+    "mythicmetals:silver_nugget",
+    "mythicmetals:star_platinum_nugget",
+    "mythicmetals:steel_nugget",
+    "mythicmetals:stormyx_nugget",
+    "mythicmetals:tin_nugget"
   ]
 }

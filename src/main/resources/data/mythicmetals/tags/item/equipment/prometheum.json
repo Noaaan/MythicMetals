@@ -5,9 +5,12 @@
     "mythicmetals:prometheum_pickaxe",
     "mythicmetals:prometheum_shovel",
     "mythicmetals:prometheum_hoe",
+    "mythicmetals:prometheum_spear",
     "mythicmetals:prometheum_helmet",
     "mythicmetals:prometheum_chestplate",
     "mythicmetals:prometheum_leggings",
-    "mythicmetals:prometheum_boots"
+    "mythicmetals:prometheum_boots",
+    "mythicmetals:prometheum_horse_armor",
+    "mythicmetals:prometheum_nautilus_armor"
   ]
 }

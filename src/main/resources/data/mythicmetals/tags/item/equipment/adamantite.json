@@ -5,9 +5,12 @@
     "mythicmetals:adamantite_pickaxe",
     "mythicmetals:adamantite_shovel",
     "mythicmetals:adamantite_hoe",
+    "mythicmetals:adamantite_spear",
     "mythicmetals:adamantite_helmet",
     "mythicmetals:adamantite_chestplate",
     "mythicmetals:adamantite_leggings",
-    "mythicmetals:adamantite_boots"
+    "mythicmetals:adamantite_boots",
+    "mythicmetals:adamantite_horse_armor",
+    "mythicmetals:adamantite_nautilus_armor"
   ]
 }

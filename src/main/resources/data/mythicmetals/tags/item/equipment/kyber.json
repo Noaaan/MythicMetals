@@ -5,9 +5,12 @@
     "mythicmetals:kyber_pickaxe",
     "mythicmetals:kyber_shovel",
     "mythicmetals:kyber_hoe",
+    "mythicmetals:kyber_spear",
     "mythicmetals:kyber_helmet",
     "mythicmetals:kyber_chestplate",
     "mythicmetals:kyber_leggings",
-    "mythicmetals:kyber_boots"
+    "mythicmetals:kyber_boots",
+    "mythicmetals:kyber_horse_armor",
+    "mythicmetals:kyber_nautilus_armor"
   ]
 }

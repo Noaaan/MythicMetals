@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "mythicmetals:stormyx_nugget",
-      "required": false
-    }
+    "mythicmetals:stormyx_nugget"
   ]
 }

@@ -5,9 +5,12 @@
     "mythicmetals:aquarium_pickaxe",
     "mythicmetals:aquarium_shovel",
     "mythicmetals:aquarium_hoe",
+    "mythicmetals:aquarium_spear",
     "mythicmetals:aquarium_helmet",
     "mythicmetals:aquarium_chestplate",
     "mythicmetals:aquarium_leggings",
-    "mythicmetals:aquarium_boots"
+    "mythicmetals:aquarium_boots",
+    "mythicmetals:aquarium_horse_armor",
+    "mythicmetals:aquarium_nautilus_armor"
   ]
 }

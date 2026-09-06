@@ -2,17 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": "mythicmetals:raw_prometheum",
-    "F": "#minecraft:small_flowers",
-    "I": "mythicmetals:prometheum_ingot"
+    "G": "mythicmetals:prometheum_nugget",
+    "R": "minecraft:wither_rose"
   },
   "pattern": [
-    "F#F",
-    "#I#",
-    "F#F"
+    "GGG",
+    "GRG",
+    "GGG"
   ],
   "result": {
-    "count": 1,
     "id": "mythicmetals:prometheum_rose"
   }
 }

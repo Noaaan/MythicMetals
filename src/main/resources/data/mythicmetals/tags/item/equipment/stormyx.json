@@ -5,9 +5,12 @@
     "mythicmetals:stormyx_pickaxe",
     "mythicmetals:stormyx_shovel",
     "mythicmetals:stormyx_hoe",
+    "mythicmetals:stormyx_spear",
     "mythicmetals:stormyx_helmet",
     "mythicmetals:stormyx_chestplate",
     "mythicmetals:stormyx_leggings",
-    "mythicmetals:stormyx_boots"
+    "mythicmetals:stormyx_boots",
+    "mythicmetals:stormyx_horse_armor",
+    "mythicmetals:stormyx_nautilus_armor"
   ]
 }

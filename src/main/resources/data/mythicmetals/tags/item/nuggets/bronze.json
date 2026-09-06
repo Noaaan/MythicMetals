@@ -1,8 +1,5 @@
 {
   "values": [
-    {
-      "id": "mythicmetals:bronze_nugget",
-      "required": false
-    }
+    "mythicmetals:bronze_nugget"
   ]
 }

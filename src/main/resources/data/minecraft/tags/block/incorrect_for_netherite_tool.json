@@ -1,5 +1,8 @@
 {
   "values": [
-    "#mythicmetals:needs_unobtainable_tool"
+    {
+      "id": "#mythicmetals:needs_unobtainium_alloy_tools",
+      "required": false
+    }
   ]
 }

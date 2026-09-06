@@ -5,9 +5,12 @@
     "mythicmetals:palladium_pickaxe",
     "mythicmetals:palladium_shovel",
     "mythicmetals:palladium_hoe",
+    "mythicmetals:palladium_spear",
     "mythicmetals:palladium_helmet",
     "mythicmetals:palladium_chestplate",
     "mythicmetals:palladium_leggings",
-    "mythicmetals:palladium_boots"
+    "mythicmetals:palladium_boots",
+    "mythicmetals:palladium_horse_armor",
+    "mythicmetals:palladium_nautilus_armor"
   ]
 }

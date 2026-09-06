@@ -5,9 +5,12 @@
     "mythicmetals:tidesinger_pickaxe",
     "mythicmetals:tidesinger_shovel",
     "mythicmetals:tidesinger_hoe",
+    "mythicmetals:tidesinger_spear",
     "mythicmetals:tidesinger_helmet",
     "mythicmetals:tidesinger_chestplate",
     "mythicmetals:tidesinger_leggings",
-    "mythicmetals:tidesinger_boots"
+    "mythicmetals:tidesinger_boots",
+    "mythicmetals:tidesinger_horse_armor",
+    "mythicmetals:tidesinger_nautilus_armor"
   ]
 }
