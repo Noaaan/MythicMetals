@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "nautilus_body": [
+      {
+        "texture": "mythicmetals:tidesinger"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "mythicmetals:tidesinger"
+      }
+    ]
+  }
+}
