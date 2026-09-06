@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -20,9 +21,13 @@ import java.util.function.Function;
 
 public record BlockSet(
     String name,
+    @NotNull
     BlockWithMiningLevel storage,
+    @Nullable
     BlockWithMiningLevel ore,
+    @Nullable
     BlockWithMiningLevel rawStorage,
+    @Nullable
     BlockWithMiningLevel anvil,
     Map<String, BlockWithMiningLevel> oreVariants
 ) {
@@ -183,8 +188,8 @@ public record BlockSet(
             return this;
         }
 
-        public Builder createCustomStorageBlock(Function<BlockBehaviour.Properties, Block> settings) {
-            var props = BlockBehaviour.Properties.of().setId(storageKey);
+        public Builder createCustomStorageBlock(float strength, Function<BlockBehaviour.Properties, Block> settings) {
+            var props = baseBlockSettings(storageKey, strength, strength + 1f);
             this.storage = RegistryHelper.block(storageKey, storageItemKey, settings.apply(props));
             return this;
         }

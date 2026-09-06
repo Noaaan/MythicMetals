@@ -199,7 +199,7 @@ public class MythicMaterials {
             builder
                 .createOre(3.0f, UniformInt.of(0, 0))
                 .createOreStorageBlock(3.0f, 4.0f)
-                .createCustomStorageBlock(properties -> new Block(properties.noOcclusion()))
+                .createCustomStorageBlock(5.0f, properties -> new Block(properties.noOcclusion()))
                 .createAnvil(4.0f)
                 .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
                 .finish()
@@ -437,7 +437,11 @@ public class MythicMaterials {
         .finish();
 
     public static final Material STEEL = Material.Builder.create("steel", MaterialType.ALLOY)
-        .createDefaultBlockSet(IRON_MINING_LEVEL, 5.0f)
+        .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
+            .createCustomStorageBlock(5.0f, BlockWithFacing::new)
+            .createAnvil(5.0f)
+            .finish()
+        )
         .createDefaultArmor(MythicArmorMaterials.STEEL)
         .createDefaultTools(MythicToolMaterials.STEEL, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.STEEL)
         .finish();

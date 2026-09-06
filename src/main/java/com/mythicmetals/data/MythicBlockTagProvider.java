@@ -36,17 +36,26 @@ public class MythicBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
 
         MaterialHelper.BLOCK_SET_MAP.values().forEach((blockSet) -> {
-            addMiningLevel(blockSet.storage());
-            addMiningLevel(blockSet.ore());
-            addMiningLevel(blockSet.rawStorage());
-            addMiningLevel(blockSet.anvil());
+            addTags(blockSet.storage());
+            addTags(blockSet.ore());
+            addTags(blockSet.rawStorage());
+            addTags(blockSet.anvil());
 
-            blockSet.oreVariants().values().forEach(this::addMiningLevel);
+            blockSet.oreVariants().values().forEach(this::addTags);
         });
+
+        builder(BlockTags.MINEABLE_WITH_PICKAXE)
+            .add(MythicResourceKeys.CARMOT_BELL)
+            .add(MythicResourceKeys.ENCHANTED_MIDAS_GOLD_BLOCK)
+            .addOptionalTag(MythicTags.NUKE_CORES)
+            .addOptionalTag(MythicTags.CONDUIT_BLOCKS);
     }
 
-    private void addMiningLevel(@Nullable BlockWithMiningLevel blockRecord) {
+    private void addTags(@Nullable BlockWithMiningLevel blockRecord) {
         if (blockRecord == null) return;
+        // mining level
         builder(blockRecord.miningLevel()).add(blockRecord.blockKey());
+        // mineable tag
+        builder(BlockTags.MINEABLE_WITH_PICKAXE).add(blockRecord.blockKey());
     }
 }
