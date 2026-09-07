@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mm_aegis_template",
+  "key": {
+    "C": "minecraft:emerald",
+    "M": "minecraft:deepslate",
+    "T": "mythicmetals:emerald_crystal"
+  },
+  "pattern": [
+    "CTC",
+    "CMC",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mythicmetals:aegis_smithing_template"
+  }
+}
