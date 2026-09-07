@@ -75,6 +75,7 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
             MythicTools.WHITE_AEGIS_SWORD
         );
         valueLookupBuilder(MythicTags.SWORDS).addAll(extraSwords);
+        valueLookupBuilder(ItemTags.SWORDS).addAll(extraSwords);
     }
 
     private void buildToolTags(ToolSet toolSet, String name) {
