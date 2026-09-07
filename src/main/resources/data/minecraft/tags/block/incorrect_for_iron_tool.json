@@ -1,6 +1,10 @@
 {
   "values": [
     {
+      "id": "#mythicmetals:needs_netherite_tool",
+      "required": false
+    },
+    {
       "id": "#mythicmetals:needs_unobtainium_alloy_tools",
       "required": false
     }

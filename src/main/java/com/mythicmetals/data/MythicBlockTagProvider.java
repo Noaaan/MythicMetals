@@ -21,16 +21,27 @@ public class MythicBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
     protected void addTags(HolderLookup.Provider arg) {
         // mining level handling for custom MM progression
         // currently shaped like:
-        // stone/gold -> copper -> iron -> diamond -> netherite -> unobtainium (unused, just like vanilla netherite)
+        // wood -> stone/gold -> copper -> iron -> diamond -> netherite -> unobtainium (unused, just like vanilla netherite)
+        builder(BlockTags.INCORRECT_FOR_WOODEN_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_COPPER_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
         builder(BlockTags.INCORRECT_FOR_STONE_TOOL)
             .addOptionalTag(MythicTags.NEEDS_COPPER_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
         builder(BlockTags.INCORRECT_FOR_GOLD_TOOL)
             .addOptionalTag(MythicTags.NEEDS_COPPER_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
+            .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
+        builder(BlockTags.INCORRECT_FOR_COPPER_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
         builder(BlockTags.INCORRECT_FOR_IRON_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
         builder(BlockTags.INCORRECT_FOR_DIAMOND_TOOL)
+            .addOptionalTag(MythicTags.NEEDS_NETHERITE_TOOLS)
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);
         builder(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
             .addOptionalTag(MythicTags.NEEDS_UNOBTAINIUM_ALLOY_TOOLS);

@@ -1,6 +1,16 @@
 {
   "values": [
-    "#minecraft:needs_netherite_tool",
-    "#mythicmetals:needs_unobtainable_tool"
+    {
+      "id": "#mythicmetals:needs_copper_tools",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:needs_netherite_tool",
+      "required": false
+    },
+    {
+      "id": "#mythicmetals:needs_unobtainium_alloy_tools",
+      "required": false
+    }
   ]
 }
