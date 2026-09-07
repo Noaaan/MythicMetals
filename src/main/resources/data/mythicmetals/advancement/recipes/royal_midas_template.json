@@ -29,7 +29,8 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/royal_midas_smithing_template_duplicate"
+      "mythicmetals:smithing_templates/royal_midas",
+      "mythicmetals:smithing_templates/royal_midas_duplicate"
     ]
   }
 }

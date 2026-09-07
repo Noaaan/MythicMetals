@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mythicmetals:template/tidesinger_smithing_template_duplicate"
+        "recipe": "mythicmetals:smithing_templates/tidesinger"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "mythicmetals:template/tidesinger_smithing_template",
-      "mythicmetals:template/tidesinger_smithing_template_duplicate"
+      "mythicmetals:smithing_templates/tidesinger",
+      "mythicmetals:smithing_templates/tidesinger_duplicate"
     ]
   }
 }
