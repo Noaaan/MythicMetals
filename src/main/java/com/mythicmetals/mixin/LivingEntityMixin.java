@@ -3,13 +3,14 @@ package com.mythicmetals.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.mythicmetals.MythicMetals;
+import com.mythicmetals.data.MythicCriteriaTriggers;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.effects.MythicStatusEffects;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.armor.CarmotShield;
+import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.misc.MythicParticleSystem;
 import com.mythicmetals.misc.duck.WasSpawnedFromCreeper;
-import com.mythicmetals.data.MythicCriteriaTriggers;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
@@ -24,6 +25,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +34,6 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.mythicmetals.data.attachments.MythicDataAttachments.*;
 import static com.mythicmetals.entity.MythicEntityAttributes.*;
@@ -170,18 +171,18 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Unique
     private void mythicmetals$tickCombustion() {
-        int combustionCooldown = this.getAttachedOrElse(COMBUSTION_COOLDOWN_ATTACHMENT, 0);
-        if (combustionCooldown > 0) {
-            combustionCooldown--;
-            this.setAttached(COMBUSTION_COOLDOWN_ATTACHMENT, combustionCooldown);
+        int combustionCooldown = 0;
+        var cooldownEffect = this.getEffect(MythicStatusEffects.COMBUSTION_COOLDOWN_HOLDER);
+        if (cooldownEffect != null) {
+            combustionCooldown = cooldownEffect.getDuration();
         }
         mythicmetals$handleCombustion(combustionCooldown);
     }
 
     @Unique
     private void mythicmetals$handleCombustion(int cooldown) {
-        var entry = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT);
-        if (this.isOnFire() && this.hasEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT))) {
+        var entry = MythicStatusEffects.HEAT_HOLDER;
+        if (this.isOnFire() && this.hasEffect(MythicStatusEffects.HEAT_HOLDER)) {
             if (cooldown != 0) {
                 return;
             }
@@ -189,25 +190,44 @@ public abstract class LivingEntityMixin extends Entity {
             if (effect != null) {
                 int level = effect.getAmplifier();
                 int duration = effect.getDuration();
-                var multiplier = new AtomicInteger(effect.getDuration());
+                int multiplier = 1;
                 this.removeEffect(entry);
 
                 MythicParticleSystem.COMBUSTION_EXPLOSION.spawn(level(), this.position());
 
-                var enemyMob = this.lastHurtByMob.getEntity(this.level(), LivingEntity.class);
-                if (enemyMob != null && !enemyMob.getMainHandItem().isEmpty()) {
-                    var stack = enemyMob.getMainHandItem();
-                    stack.getEnchantments().keySet().forEach(enchantmentRegistryEntry -> {
-                        if (enchantmentRegistryEntry.is(EnchantmentTags.SMELTS_LOOT)) {
-                            multiplier.addAndGet(1);
+                if (this.lastHurtByMob != null && this.lastHurtByMob.getEntity(this.level(), LivingEntity.class) != null && !this.lastHurtByMob.getEntity(this.level(), LivingEntity.class).getMainHandItem().isEmpty()) {
+                    var enemyMob = this.lastHurtByMob.getEntity(this.level(), LivingEntity.class);
+                    if (enemyMob != null && !enemyMob.getMainHandItem().isEmpty()) {
+                        var stack = enemyMob.getMainHandItem();
+                        if (stack.has(MythicDataComponents.FIRE_ASPECT)) {
+                            multiplier += 1;
                         }
-                    });
+
+                        for (Holder<Enchantment> enchantmentRegistryEntry : stack.getEnchantments().keySet()) {
+                            if (enchantmentRegistryEntry.is(EnchantmentTags.SMELTS_LOOT)) {
+                                multiplier += 1;
+                            }
+                        }
+                    }
                 }
 
-                this.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION), multiplier.get() + 40, Math.max(Mth.floor(level / 2.0f), 0), false, true));
+                final int combustionDuration = 40 + (20 * multiplier) + (duration / 2);
 
-                this.igniteForTicks((duration * multiplier.get()) + 40);
-                this.setAttached(COMBUSTION_COOLDOWN_ATTACHMENT, 80 * (multiplier.get() + 1));
+                this.addEffect(new MobEffectInstance(
+                    BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION),
+                    combustionDuration,
+                    Math.max(Mth.floor(level / 2.0f), 0),
+                    false,
+                    true,
+                    true
+                ));
+
+                this.addEffect(new MobEffectInstance(
+                    BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION_COOLDOWN),
+                    combustionDuration + 20,0, false, false, true
+                ));
+
+                this.igniteForTicks(combustionDuration);
             }
         }
     }
@@ -224,15 +244,8 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Unique
-    private void mythicmetals$copperParticle() {
-        if (this.level().isClientSide() && r.nextInt(40) < 1) {
-            MythicParticleSystem.COPPER_SPARK.spawn(level(), this.position().add(0, 1, 0));
-        }
-    }
-
-    @Unique
     private void mythicmetals$palladiumParticles() {
-        var heatEntry = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.HEAT);
+        var heatEntry = MythicStatusEffects.HEAT_HOLDER;
         if (this.hasEffect(heatEntry)) {
             var status = this.getEffect(heatEntry);
             if (status == null || status.getAmplifier() < 3) return;
@@ -243,7 +256,7 @@ public abstract class LivingEntityMixin extends Entity {
             }
         }
 
-        if (this.hasEffect(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION))) {
+        if (this.hasEffect(MythicStatusEffects.COMBUSTION_HOLDER)) {
             Vec3 velocity = this.getDeltaMovement();
             if (velocity.length() >= 0.1 && r.nextInt(6) < 1) {
                 MythicParticleSystem.OVERENGINEERED_PALLADIUM_PARTICLE.spawn(level(), this.position().add(0, 0.25, 0));

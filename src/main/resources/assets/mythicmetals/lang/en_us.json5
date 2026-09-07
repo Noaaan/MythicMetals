@@ -1051,6 +1051,7 @@
   "effect.mythicmetals.wormhole_special": "Wormhole Special",
   "effect.mythicmetals.heat": "Heat",
   "effect.mythicmetals.combustion": "Combusting!",
+  "effect.mythicmetals.combustion_cooldown": "Combustion Cooldown",
 
   "command.mythicmetals.argument.armorset.error": "Could not find the Armor Set specified",
   "command.mythicmetals.argument.blockset.error": "Could not find the Block Set specified",

@@ -278,6 +278,11 @@ public class MythicMetalsClient implements ClientModInitializer {
                 }, TooltipFlag.NORMAL, stack.getComponents());
             }
 
+            if (stack.has(MythicDataComponents.FIRE_ASPECT)) {
+                var component = stack.getOrDefault(MythicDataComponents.FIRE_ASPECT, 0);
+                lines.add(1, Component.translatable("abilities.mythicmetals.fire_aspect").withColor(UsefulSingletonForColorUtil.MetalColors.RED_AEGIS.rgb()));
+            }
+
             if (stack.has(MythicDataComponents.PROMETHEUM)) {
                 var component = stack.getOrDefault(MythicDataComponents.PROMETHEUM, PrometheumComponent.DEFAULT);
                 if (type.isAdvanced()) {

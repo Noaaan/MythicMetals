@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.attachment.v1.AttachmentRegistry;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentSyncPredicate;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 
-@SuppressWarnings("UnstableApiUsage")
 public class MythicDataAttachments {
     private MythicDataAttachments() {
     }

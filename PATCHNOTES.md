@@ -60,6 +60,22 @@ Some are more experimental, and might be subject to change.
 - Updated Prometheum Rose recipe
   - Now uses a Rose Bush and eight Prometheum Nuggets
 
+### Combustion Rework
+
+Combustion has been reworked again. The damage/amplifier is unchanged, but the duration of the effect now scales based on these factors:
+
+- Level of heat on target before ignition (applied from branding)
+- Whether the attacker is using any enchantments in the `minecraft:smelts_loot` tag, E.G. fire aspect
+  - +1 multiplier per enchantment in this tag
+- Whether the attacker is using a weapon with Natural Fire Aspect (the `mythicmetals:fire_aspect` data component)
+  - The Blade of the Aegis this, and therefore gives a +1 multiplier to this. This is independent of its increased ignition time. 
+
+The internal combustion cooldown has been replaced with a status effect instead of a hidden timer.
+This allows you to see the cooldown in your inventory, giving you an estimate of how long you were ignited for.
+
+The initial duration of combustion and its ignition time has been changed to match, so they should be higher than before.
+This might still feel a bit vague in practice due to various enchantments and effects affecting burn time.
+
 # 0.25.2
 
 - Fix Armor not being enchantable in enchanting tables (#314)
