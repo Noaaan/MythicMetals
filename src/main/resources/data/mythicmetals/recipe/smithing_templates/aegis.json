@@ -3,14 +3,15 @@
   "category": "misc",
   "group": "mm_aegis_template",
   "key": {
-    "C": "minecraft:emerald",
+    "D": "minecraft:glowstone_dust",
+    "E": "minecraft:emerald_block",
     "M": "minecraft:deepslate",
     "T": "mythicmetals:emerald_crystal"
   },
   "pattern": [
-    "CTC",
-    "CMC",
-    "CCC"
+    "DTD",
+    "DMD",
+    "EEE"
   ],
   "result": {
     "count": 1,

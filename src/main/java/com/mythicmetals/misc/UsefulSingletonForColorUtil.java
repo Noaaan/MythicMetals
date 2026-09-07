@@ -96,7 +96,9 @@ public class UsefulSingletonForColorUtil {
                 return Style.EMPTY.withColor(ChatFormatting.LIGHT_PURPLE);
             } else if (stackName.contains("midas")) {
                 return GOLD_STYLE;
-            } else return Style.EMPTY;
+            } else if (stackName.contains("emerald")) {
+                return Style.EMPTY.withColor(ChatFormatting.GREEN);
+            } else return Style.EMPTY.withColor(MYTHRIL.rgb());
         }
     }
 
