@@ -1,3 +1,65 @@
+# 0.26.0
+
+## Mounts of Mayhem
+
+Building upon the additions of 1.21.11: Mythic Metals now has Spears, Horse Armor and Nautilus Armor for all its materials.
+For testing purposes they will be craftable for now, but obtaining them is subject to change.
+They have various stats, and will likely need a lot of adjustments to be both interesting and fun,
+so feel free to give any feedback you have. 
+
+A HUGE thank you to thyreo for the all the amazing Spear textures, and a small thanks to DH for the Legendary Banglum Spear.
+
+## Major internal changes
+
+For addon developers there have been major changes in the codebase. 
+The main change is that everything related to the mod is now bundled in a `Material`, which holds all blocks, tools, and armor associated with it.
+If you need to iterate through them, say to add your own custom items, then I recommend checking out the maps in `MaterialHelper`. 
+
+### Upcoming config update
+
+The new internals does mean that for modpack developers it will be easier for me to add support for configuration values for various aspects of the mod.
+Feel free to let me know ahead of time what options you need, and I will look into adding those first. 
+I can promise ahead of time that things like damage values, durability, and stats is what I am currently planning. 
+
+### Ability system removal
+
+As announced earlier, this system is now fully removed. 
+It has been replaced by different data components and tags instead.
+Specifically, the affected abilities between 1.21.4 and this version are the following:
+
+- Blast Padding -> Explosion Knockback Resistance (vanilla attribute)
+- Blast Protection -> new attribute `mythicmetals:explosion_resistance` 
+  - Acts similar to burn time reduction: If set to zero you take no blast damage. 
+- Fire Protection -> new tag `mythicmetals:fire_resistant_armor`
+  - Reduces fire damage by 8% per piece in tag when worn
+- Projectile Protection -> new attribute `mythicmetals:projectile_resistance`
+  - Acts similar to burn time reduction: If set to zero you take no projectile damage.
+- Water Protection (Origins compat) has been removed
+  - This might be re-added if Origins ever updates past 1.21.x
+- Red Aegis Sword fire aspect -> new component `mythicmetals:fire_aspect`
+  - Simple integer component, which ignites an entity hit for its amount in ticks
+
+## Changes
+
+There have been many different changes with this port, mostly to accommodate the changes in vanilla Minecraft (which have been *massive!*).
+Some are more experimental, and might be subject to change.
+
+- Reworked Carmot Shield
+  - Still acts as an extra buffer of health
+  - Different armor pieces now give different amounts
+  - Changed the UI to more accurately represent the shield amount
+  - UI can now be placed anywhere via the config
+- Carmot Shield can now be applied to any entity, instead of just players
+- Added Emerald Crystal
+  - Rare drop from Emerald Ores
+  - Used to craft the Aegis Sword Smithing Templates
+- Removed the Aegis Smithing Template trade from Master-level Clerics
+- Reworked Mythril Drill
+  - Removed +1 efficiency level when active.
+  - Now gives +10% mining efficiency for each upgrade in the drill
+- Updated Prometheum Rose recipe
+  - Now uses a Rose Bush and eight Prometheum Nuggets
+
 # 0.25.2
 
 - Fix Armor not being enchantable in enchanting tables (#314)

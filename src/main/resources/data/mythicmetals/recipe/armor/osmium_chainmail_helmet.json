@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "mythicmetals:osmium_ingot",
-  "base": "mythicmetals:osmium_helmet",
+  "base": "minecraft:chainmail_helmet",
   "result": {
     "id": "mythicmetals:osmium_chainmail_helmet"
   },

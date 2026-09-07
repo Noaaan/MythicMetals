@@ -682,7 +682,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         );
         createArmorSmithingRecipes(
             MythicMaterials.OSMIUM.extraItems().get(MythicResourceKeys.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE),
-            MythicMaterials.OSMIUM.armorSet(),
+            Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS,
             Ingredient.of(MythicMaterials.OSMIUM.baseMaterial()),
             MythicArmorSets.OSMIUM_CHAINMAIL
         );

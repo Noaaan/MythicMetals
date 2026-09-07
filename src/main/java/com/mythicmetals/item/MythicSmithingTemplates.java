@@ -17,10 +17,10 @@ public class MythicSmithingTemplates {
         identifiers -> identifiers.add(RegistryHelper.id("empty_slot_elytra")));
     public static List<Identifier> ARMOR_ITEMS = Util.make(new ArrayList<>(),
         identifiers -> {
-            identifiers.add(Identifier.parse("item/empty_armor_slot_helmet"));
-            identifiers.add(Identifier.parse("item/empty_armor_slot_chestplate"));
-            identifiers.add(Identifier.parse("item/empty_armor_slot_leggings"));
-            identifiers.add(Identifier.parse("item/empty_armor_slot_boots"));
+            identifiers.add(Identifier.withDefaultNamespace("container/slot/helmet"));
+            identifiers.add(Identifier.withDefaultNamespace("container/slot/chestplate"));
+            identifiers.add(Identifier.withDefaultNamespace("container/slot/leggings"));
+            identifiers.add(Identifier.withDefaultNamespace("container/slot/boots"));
         });
     public static final SmithingTemplateComponents AEGIS = new SmithingTemplateComponents(
         Component.translatable("smithing_template.mythicmetals.aegis.applies_to").withStyle(ChatFormatting.BLUE),
