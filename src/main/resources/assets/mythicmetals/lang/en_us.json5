@@ -869,6 +869,12 @@
   "attribute.name.mythicmetals.undead_bonus_damage": "Damage Against Undead",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",
+  "tooltip.midas_gold.damage": [
+    {"text":  "+", "color":  "gold"},
+    {"index":  0, "color":  "gold"},
+    {"text": " ", "color":  "gold"},
+    {"index": 1, "color":  "gold"}
+  ],
   "tooltip.midas_gold.is_royal": "Midas Touch",
   "tooltip.midas_gold.level.0": "Can be folded in a smithing table, using Midas Gold Blocks",
   "tooltip.midas_gold.level.1": "You need quite a bit in order to unlock its true power...",

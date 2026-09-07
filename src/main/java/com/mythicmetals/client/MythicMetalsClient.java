@@ -300,6 +300,10 @@ public class MythicMetalsClient implements ClientModInitializer {
                 }
             }
 
+            if (stack.has(MythicDataComponents.GOLD_FOLDED)) {
+                stack.get(MythicDataComponents.GOLD_FOLDED).addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
+
             if (stack.has(MythicDataComponents.TIDESINGER)) {
                 var component = stack.get(MythicDataComponents.TIDESINGER);
                 component.addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
