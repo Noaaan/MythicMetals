@@ -44,21 +44,24 @@ Specifically, the affected abilities between 1.21.4 and this version are the fol
 There have been many different changes with this port, mostly to accommodate the changes in vanilla Minecraft (which have been *massive!*).
 Some are more experimental, and might be subject to change.
 
-- Reworked Carmot Shield
-  - Still acts as an extra buffer of health
-  - Different armor pieces now give different amounts
-  - Changed the UI to more accurately represent the shield amount
-  - UI can now be placed anywhere via the config
-- Carmot Shield can now be applied to any entity, instead of just players
-- Added Emerald Crystal
-  - Rare drop from Emerald Ores
-  - Used to craft the Aegis Sword Smithing Templates
-- Removed the Aegis Smithing Template trade from Master-level Clerics
-- Reworked Mythril Drill
-  - Removed +1 efficiency level when active.
-  - Now gives +10% mining efficiency for each upgrade in the drill
-- Updated Prometheum Rose recipe
-  - Now uses a Rose Bush and eight Prometheum Nuggets
+### Mining Level changes
+
+Mining levels now follow the following graph: wood/gold -> stone -> copper -> iron -> diamond -> netherite -> unobtainium alloy.
+The last mining level is unused, but is handled correctly to allow for modpack/addon developers to fully utilize its branch.
+
+In preparation for some future changes, the following ores now require at least a pickaxe **made out of Copper** *instead* of Iron to be mined:
+  - Aquarium
+  - Banglum
+  - Manganese
+  - Platinum
+  - Silver
+
+### Aegis Smithing Template changes
+
+The Aegis Smithing Template is no longer aquired from master-level Clerics. You instead craft it using Glowstone Dust, Emerald Blocks, Deepslate, and an Emerald Crystal.
+
+The Emerald Crystal is a new rare drop from mining Emerald Ores, with roughly the same drop chances as other rare materials. 
+Likewise, it also scales with the Luck stat, so get mining with your favorite fishing set... it's probably Midas Gold, right?.
 
 ### Combustion Rework
 
@@ -75,6 +78,22 @@ This allows you to see the cooldown in your inventory, giving you an estimate of
 
 The initial duration of combustion and its ignition time has been changed to match, so they should be higher than before.
 This might still feel a bit vague in practice due to various enchantments and effects affecting burn time.
+
+### Other Changes
+
+- Reworked Carmot Shield
+  - Still acts as an extra buffer of health
+  - Different armor pieces now give different amounts
+  - Changed the UI to more accurately represent the shield amount
+  - UI can now be placed anywhere via the config
+- Carmot Shield can now be applied to any entity, instead of just players
+- Reworked Mythril Drill
+  - Removed +1 efficiency level when active.
+  - Now gives +10% mining efficiency for each upgrade in the drill
+- Updated Prometheum Rose recipe
+  - Now uses a Rose Bush and eight Prometheum Nuggets
+- Improved Palladium Rails handling
+- Fixed not being able to punch Banglum TNT
 
 # 0.25.2
 
