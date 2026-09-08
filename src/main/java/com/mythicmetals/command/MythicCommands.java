@@ -120,10 +120,8 @@ public final class MythicCommands {
                 .build();
 
             var lootTables = Commands.argument("loot_table", ResourceOrIdArgument.LootTableArgument.lootTable(buildContext))
-                .suggests((context, builder) -> {
-                    var lootTableRegistry = context.getSource().getServer().registryAccess().get(Registries.LOOT_TABLE).orElseThrow();
-                    return SharedSuggestionProvider.suggestResource(lootTableRegistry.value().keySet(), builder);
-                })
+                .suggests((context, builder) ->
+                    ResourceOrIdArgument.lootTable(buildContext).listSuggestions(context, builder))
                 .then(Commands.argument("rolls", IntegerArgumentType.integer())
                     .executes(MythicCommands::testLootTable))
                 .build();
