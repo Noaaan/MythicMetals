@@ -1,20 +1,54 @@
 package com.mythicmetals.item.tools;
 
 import com.mythicmetals.item.component.GoldFoldedComponent;
-import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.resources.Identifier;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.jetbrains.annotations.Nullable;
 
 import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
 
 public class MidasGoldSword extends Item {
 
-    public static final Identifier MIDAS_BONUS_DAMAGE_ID = RegistryHelper.id("midas_gold_sword_bonus_damage");
-
     public MidasGoldSword(ToolMaterial material, Item.Properties settings) {
         super(material.applySwordProperties(settings, 3.0f, -2.4f));
+    }
+
+    public static void recalculateSwordDamage(ItemStack stack) {
+        // TODO - This is a lot of effort for the correct green tooltip... Thanks Mojang
+        // Originally added for 1.20.4, this code is terrible.
+        if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
+        var currentAttributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
+        assert currentAttributes != null;
+        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+        double goldDmgBonus = computeBonusDamage(goldCount);
+        if (goldDmgBonus <= 0) return;
+
+        // rebuild the map with new attack damage + bonuses, since directly editing it is not allowed
+        double originalDamage = 0.0;
+        var builder = ItemAttributeModifiers.builder();
+        for (ItemAttributeModifiers.Entry entry : currentAttributes.modifiers()) {
+            if (entry.modifier().id().equals(Item.BASE_ATTACK_DAMAGE_ID)) {
+                originalDamage = entry.modifier().amount();
+            } else {
+                builder.add(entry.attribute(), entry.modifier(), entry.slot(), entry.display());
+            }
+        }
+        var changedComponent = builder
+            .add(
+                Attributes.ATTACK_DAMAGE,
+                new AttributeModifier(BASE_ATTACK_DAMAGE_ID,
+                    originalDamage + goldDmgBonus,
+                    AttributeModifier.Operation.ADD_VALUE
+                ),
+                EquipmentSlotGroup.MAINHAND
+            )
+            .build();
+        stack.set(DataComponents.ATTRIBUTE_MODIFIERS, changedComponent);
     }
 
     public static int computeBonusDamage(int goldCount) {
@@ -72,18 +106,18 @@ public class MidasGoldSword extends Item {
     }
 
     public static ItemStack createSwordFromGold(int goldCount) {
+        ItemStack stack;
         if (goldCount > 640) {
-            var stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
+            stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
             stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount, true));
-            return stack;
         } else if (goldCount > 319) {
-            var stack = new ItemStack(MythicTools.GILDED_MIDAS_GOLD_SWORD);
+            stack = new ItemStack(MythicTools.GILDED_MIDAS_GOLD_SWORD);
             stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
-            return stack;
         } else {
-            var stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultInstance();
+            stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultInstance();
             stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
-            return stack;
         }
+        recalculateSwordDamage(stack);
+        return stack;
     }
 }
