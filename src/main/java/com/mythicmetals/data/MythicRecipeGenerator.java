@@ -4,18 +4,24 @@ import com.mythicmetals.api.v2.*;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.armor.MythicArmorSets;
+import com.mythicmetals.item.component.MythicDataComponents;
+import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.SmithingTransformRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import java.util.*;
@@ -690,53 +696,54 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     private void createTidesingerArmorRecipes() {
-        // FIXME - Might be time to consider "configurable" attributes via recipes, if data generated
-        //  is going to include these anyways
-//        var template = MythicMaterials.TIDESINGER.extraItems().get(MythicResourceKeys.TIDESINGER_SMITHING_TEMPLATE);
-//        for (var coral : TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet()) {
-//            var addition = Ingredient.of(coral);
-//            var name = TidesingerPatternComponent.TIDESINGER_VARIANTS.get(coral);
-//            // helmet
-//            var helmetOutput = new ItemStack(MythicArmor.TIDESINGER.getHelmet(), 1);
-//            helmetOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
-//            var helmetRecipe = new SmithingTransformRecipe(
-//                Optional.of(Ingredient.of(template)),
-//                Ingredient.of(MythicArmor.AQUARIUM.getHelmet()),
-//                Optional.of(addition),
-//                helmetOutput
-//            );
-//            // chestplate
-//            var chestplateOutput = new ItemStack(MythicArmor.TIDESINGER.getChestplate(), 1);
-//            chestplateOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
-//            var chestplateRecipe = new SmithingTransformRecipe(
-//                Optional.of(Ingredient.of(template)),
-//                Ingredient.of(MythicArmor.AQUARIUM.getChestplate()),
-//                Optional.of(addition),
-//                chestplateOutput
-//            );
-//            // leggings
-//            var leggingsOutput = new ItemStack(MythicArmor.TIDESINGER.getLeggings(), 1);
-//            leggingsOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
-//            var leggingsRecipe = new SmithingTransformRecipe(
-//                Optional.of(Ingredient.of(template)),
-//                Optional.of(Ingredient.of(MythicArmor.AQUARIUM.getLeggings())),
-//                Optional.of(addition),
-//                leggingsOutput
-//            );
-//            // boots
-//            var bootsOutput = new ItemStack(MythicArmor.TIDESINGER.getBoots(), 1);
-//            bootsOutput.set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral));
-//            var bootsRecipe = new SmithingTransformRecipe(
-//                Optional.of(Ingredient.of(template)),
-//                Optional.of(Ingredient.of(MythicArmor.AQUARIUM.getBoots())),
-//                Optional.of(addition),
-//                bootsOutput
-//            );
-//            output.accept(recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
-//            output.accept(recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
-//            output.accept(recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
-//            output.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
-//        }
+        var template = MythicMaterials.TIDESINGER.extraItems().get(MythicResourceKeys.TIDESINGER_SMITHING_TEMPLATE);
+        for (var coral : TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet()) {
+            var patch = DataComponentPatch.builder().set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral)).build();
+            var addition = Ingredient.of(coral);
+            var name = TidesingerPatternComponent.TIDESINGER_VARIANTS.get(coral);
+            var aquariumArmor = MythicMaterials.AQUARIUM.armorSet();
+            var tidesingerArmor = MythicMaterials.TIDESINGER.armorSet();
+            // helmet
+            var helmetTemplate = new ItemStackTemplate(tidesingerArmor.getHelmet(), patch);
+            var helmetRecipe = new SmithingTransformRecipe(
+                new Recipe.CommonInfo(true),
+                Optional.of(Ingredient.of(template)),
+                Ingredient.of(aquariumArmor.getHelmet()),
+                Optional.of(addition),
+                helmetTemplate
+            );
+            // chestplate
+            var chestplateTemplate = new ItemStackTemplate(tidesingerArmor.getChestplate(), patch);
+            var chestplateRecipe = new SmithingTransformRecipe(
+                new Recipe.CommonInfo(true),
+                Optional.of(Ingredient.of(template)),
+                Ingredient.of(aquariumArmor.getChestplate()),
+                Optional.of(addition),
+                chestplateTemplate
+            );
+            // leggings
+            var leggingsTemplate = new ItemStackTemplate(tidesingerArmor.getLeggings(), patch);
+            var leggingsRecipe = new SmithingTransformRecipe(
+                new Recipe.CommonInfo(true),
+                Optional.of(Ingredient.of(template)),
+                Ingredient.of(aquariumArmor.getLeggings()),
+                Optional.of(addition),
+                leggingsTemplate
+            );
+            // boots
+            var bootsTemplate = new ItemStackTemplate(tidesingerArmor.getBoots(), patch);
+            var bootsRecipe = new SmithingTransformRecipe(
+                new Recipe.CommonInfo(true),
+                Optional.of(Ingredient.of(template)),
+                Ingredient.of(aquariumArmor.getBoots()),
+                Optional.of(addition),
+                bootsTemplate
+            );
+            output.accept(recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
+            output.accept(recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
+            output.accept(recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
+            output.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
+        }
     }
     public void createArmorCraftingRecipes(ArmorSet output, Item armorMaterial) {
         if (output == null) return;
