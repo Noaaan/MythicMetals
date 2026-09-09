@@ -9,21 +9,18 @@ import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStackTemplate;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CookingBookCategory;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.SmithingTransformRecipe;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import org.jspecify.annotations.NonNull;
 import java.util.*;
 
 import static com.mythicmetals.misc.RegistryHelper.recipeKey;
@@ -53,7 +50,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         materials.forEach(this::createRecipesFromMaterial);
         createBlockRecipes();
         createItemRecipes();
-        createArmorRecipes();
+        createArmorSmithingRecipes();
         createToolRecipes();
         createSmithingTemplateRecipes();
     }
@@ -66,11 +63,51 @@ public class MythicRecipeGenerator extends RecipeProvider {
             createArmorCraftingRecipes(material.armorSet(), material.baseMaterial());
         }
         if (material.blockSet() != null) {
-
+            createBlockRecipesForMaterial(material);
         }
         createSmeltingRecipes(material);
         if (material.nugget() != null) {
             createNuggetRecipes(material);
+        }
+    }
+
+    private void createBlockRecipesForMaterial(@NonNull Material material) {
+        if (material.blockSet() == null) return;
+        var blockSet = material.blockSet();
+
+        String materialRecipeName;
+        switch (material.materialType()) {
+            case INGOT, INGOT_BLASTING, ALLOY, RARE_ALLOY -> materialRecipeName = "_from_ingot";
+            default -> materialRecipeName = "";
+        }
+
+        // storage block from ingot
+        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, blockSet.storage().block())
+            .requires(Ingredient.of(material.baseMaterial()), 9)
+            .unlockedBy("has_material", has(material.baseMaterial()))
+            .save(output, recipeKey("crafting/" + material.name() + "_block" + materialRecipeName));
+        // storage block to ingot
+        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.MISC, material.baseMaterial(), 9)
+            .requires(Ingredient.of(blockSet.storage().block()))
+            .unlockedBy("has_material", has(blockSet.storage().block()))
+            .save(output, recipeKey("crafting/" + material.name() + "_from_block"));
+
+        if (blockSet.rawStorage() != null) {
+            if (material.rawOre() != null) {
+                createRawToStorageAndBackRecipes(material.name(), blockSet.rawStorage().block(), material.rawOre());
+            } else {
+                createRawToStorageAndBackRecipes(material.name(), blockSet.rawStorage().block(), material.baseMaterial());
+            }
+        }
+        if (blockSet.anvil() != null) {
+            ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.DECORATIONS, blockSet.anvil().block())
+                .define('T', material.baseMaterial())
+                .define('B', blockSet.storage().block())
+                .pattern("BBB")
+                .pattern(" T ")
+                .pattern("TTT")
+                .unlockedBy("has_material", has(material.baseMaterial()))
+                .save(output, recipeKey("crafting/" + material.name() + "_anvil"));
         }
     }
 
@@ -79,7 +116,6 @@ public class MythicRecipeGenerator extends RecipeProvider {
             case RARE_ALLOY, INGOT_BLASTING, ALLOY -> true;
             default -> false;
         };
-        // TODO - Better unlock criteria
         // TODO - XP
         if (material.blockSet() != null) {
             var blockSet = material.blockSet();
@@ -96,20 +132,21 @@ public class MythicRecipeGenerator extends RecipeProvider {
             }
             if (material.rawOre() != null) {
                 smeltables.add(material.rawOre());
-                if (blockSet.rawStorage() != null) {
-                    createRawToStorageAndBackRecipes(material.name(), blockSet.rawStorage().block(), material.rawOre());
-                }
             }
             if (!smeltables.isEmpty()) {
+                // TODO - can we get out of array shenanigans?
+                ItemLike[] smeltableA = new ItemLike[smeltables.size()];
+                smeltables.toArray(smeltableA);
                 // smeltables into ingots
+                var smeltCriteria = inventoryTrigger(ItemPredicate.Builder.item().of(itemLookup, smeltableA).build());
                 if (!requiresBlasting) {
                     SimpleCookingRecipeBuilder.smelting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, CookingBookCategory.MISC, outputItem, 0.1f, 200)
-                        .unlockedBy("has_material", has(outputItem))
+                        .unlockedBy("has_material", smeltCriteria)
                         .save(output, recipeKey("smelting/" + material.name()));
                 }
                 // smeltables into ingots
                 SimpleCookingRecipeBuilder.blasting(Ingredient.of(smeltables.stream()), RecipeCategory.MISC, CookingBookCategory.MISC, outputItem, 0.1f, 100)
-                    .unlockedBy("has_material", has(outputItem))
+                    .unlockedBy("has_material", smeltCriteria)
                     .save(output, recipeKey("blasting/" + material.name()));
             }
 
@@ -119,12 +156,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
     private void createRawToStorageAndBackRecipes(String name, Block rawStorageBlock, Item rawItem) {
         // Raw Ores to Raw Ore Block
         ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.BUILDING_BLOCKS, rawStorageBlock.asItem())
-            .unlockedBy("has_material", has(rawStorageBlock.asItem()))
+            .unlockedBy("has_material", has(rawItem))
             .requires(rawItem, 9)
             .save(output, recipeKey("blocks/raw_" + name));
         // Raw Ores from Raw Ore Block
         ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.MISC, rawItem, 9)
-            .unlockedBy("has_material", has(rawItem))
+            .unlockedBy("has_material", has(rawStorageBlock))
             .requires(rawStorageBlock.asItem())
             .save(output, recipeKey("crafting/raw_" + name + "_from_block"));
     }
@@ -273,7 +310,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .unlockedBy("has_material", has(TagKey.create(Registries.ITEM, RegistryHelper.id("nuggets/" + name))))
             .requires(nugget, 9)
             .group("mm_" + name)
-            .save(nuggetExporter, recipeKey("ingots/" + name + "_from_nuggets"));
+            .save(nuggetExporter, recipeKey("crafting/" + name + "_from_nuggets"));
 
         // craft ingots into nuggets
         ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.MISC, nugget, 9)
@@ -655,7 +692,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createToolSmithingRecipes(template, baseToolset.getSword(), baseToolset.getAxe(), baseToolset.getPickaxe(), baseToolset.getShovel(), baseToolset.getHoe(), addition, resultToolset);
     }
 
-    public void createArmorRecipes() {
+    public void createArmorSmithingRecipes() {
         createArmorSmithingRecipes(
             MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_SMITHING_TEMPLATE),
             MythicMaterials.KYBER.armorSet(),
@@ -745,6 +782,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             output.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
         }
     }
+
     public void createArmorCraftingRecipes(ArmorSet output, Item armorMaterial) {
         if (output == null) return;
         // helmet

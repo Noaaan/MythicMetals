@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "mythicmetals:platinum_block",
+    "T": "mythicmetals:platinum_ingot"
+  },
+  "pattern": [
+    "BBB",
+    " T ",
+    "TTT"
+  ],
+  "result": {
+    "id": "mythicmetals:platinum_anvil"
+  }
+}

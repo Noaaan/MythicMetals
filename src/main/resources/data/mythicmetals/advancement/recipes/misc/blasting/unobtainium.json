@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:unobtainium"
+            "items": [
+              "mythicmetals:unobtainium_ore",
+              "mythicmetals:deepslate_unobtainium_ore"
+            ]
           }
         ]
       },

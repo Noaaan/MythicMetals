@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot",
+    "mythicmetals:silver_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:silver_block"
+  }
+}

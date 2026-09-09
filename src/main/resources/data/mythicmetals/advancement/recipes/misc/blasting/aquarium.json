@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:aquarium_ingot"
+            "items": [
+              "mythicmetals:aquarium_ore",
+              "mythicmetals:raw_aquarium"
+            ]
           }
         ]
       },

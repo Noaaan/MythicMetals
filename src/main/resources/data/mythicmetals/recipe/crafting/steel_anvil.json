@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "mythicmetals:steel_block",
+    "T": "mythicmetals:steel_ingot"
+  },
+  "pattern": [
+    "BBB",
+    " T ",
+    "TTT"
+  ],
+  "result": {
+    "id": "mythicmetals:steel_anvil"
+  }
+}

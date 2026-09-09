@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite",
+    "mythicmetals:starrite"
+  ],
+  "result": {
+    "id": "mythicmetals:starrite_block"
+  }
+}

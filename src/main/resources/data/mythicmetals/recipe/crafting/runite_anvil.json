@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "mythicmetals:runite_block",
+    "T": "mythicmetals:runite_ingot"
+  },
+  "pattern": [
+    "BBB",
+    " T ",
+    "TTT"
+  ],
+  "result": {
+    "id": "mythicmetals:runite_anvil"
+  }
+}

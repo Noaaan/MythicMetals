@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot",
+    "mythicmetals:aquarium_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:aquarium_block"
+  }
+}

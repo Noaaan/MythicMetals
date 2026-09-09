@@ -5,7 +5,11 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:kyber_ingot"
+            "items": [
+              "mythicmetals:kyber_ore",
+              "mythicmetals:calcite_kyber_ore",
+              "mythicmetals:raw_kyber"
+            ]
           }
         ]
       },

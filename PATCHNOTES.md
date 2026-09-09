@@ -81,6 +81,8 @@ This might still feel a bit vague in practice due to various enchantments and ef
 
 ### Other Changes
 
+- Added recipe advancements
+  - Still work-in-progress, but you should now see most material-based recipes in the recipe book when picking up ores and ingots
 - Reworked Carmot Shield
   - Still acts as an extra buffer of health
   - Different armor pieces now give different amounts

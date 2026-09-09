@@ -5,7 +5,11 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:carmot_ingot"
+            "items": [
+              "mythicmetals:carmot_ore",
+              "mythicmetals:deepslate_carmot_ore",
+              "mythicmetals:raw_carmot"
+            ]
           }
         ]
       },

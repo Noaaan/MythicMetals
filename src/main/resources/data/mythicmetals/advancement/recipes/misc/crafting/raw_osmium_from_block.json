@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:raw_osmium"
+            "items": "mythicmetals:raw_osmium_block"
           }
         ]
       },

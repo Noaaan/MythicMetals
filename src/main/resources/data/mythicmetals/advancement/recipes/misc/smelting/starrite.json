@@ -5,7 +5,11 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:starrite"
+            "items": [
+              "mythicmetals:starrite_ore",
+              "mythicmetals:end_stone_starrite_ore",
+              "mythicmetals:calcite_starrite_ore"
+            ]
           }
         ]
       },

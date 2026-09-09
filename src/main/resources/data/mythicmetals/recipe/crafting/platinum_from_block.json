@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mythicmetals:platinum_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:platinum_ingot"
+  }
+}

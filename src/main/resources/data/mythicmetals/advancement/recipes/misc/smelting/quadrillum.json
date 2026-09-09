@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:quadrillum_ingot"
+            "items": [
+              "mythicmetals:quadrillum_ore",
+              "mythicmetals:raw_quadrillum"
+            ]
           }
         ]
       },

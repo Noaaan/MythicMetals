@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:osmium_ingot"
+            "items": [
+              "mythicmetals:osmium_ore",
+              "mythicmetals:raw_osmium"
+            ]
           }
         ]
       },

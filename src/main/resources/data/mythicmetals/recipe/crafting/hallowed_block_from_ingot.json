@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot",
+    "mythicmetals:hallowed_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:hallowed_block"
+  }
+}

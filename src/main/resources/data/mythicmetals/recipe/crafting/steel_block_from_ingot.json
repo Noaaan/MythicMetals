@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot",
+    "mythicmetals:steel_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:steel_block"
+  }
+}

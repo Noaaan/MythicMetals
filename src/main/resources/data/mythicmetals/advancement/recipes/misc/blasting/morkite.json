@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:morkite"
+            "items": [
+              "mythicmetals:morkite_ore",
+              "mythicmetals:deepslate_morkite_ore"
+            ]
           }
         ]
       },

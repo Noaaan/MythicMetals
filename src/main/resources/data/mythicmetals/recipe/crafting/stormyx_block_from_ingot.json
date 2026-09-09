@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot",
+    "mythicmetals:stormyx_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:stormyx_block"
+  }
+}

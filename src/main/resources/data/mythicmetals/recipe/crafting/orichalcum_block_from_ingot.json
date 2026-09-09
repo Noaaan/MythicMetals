@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot",
+    "mythicmetals:orichalcum_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:orichalcum_block"
+  }
+}

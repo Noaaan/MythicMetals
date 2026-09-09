@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:raw_orichalcum"
+            "items": "mythicmetals:raw_orichalcum_block"
           }
         ]
       },

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium",
+    "mythicmetals:unobtainium"
+  ],
+  "result": {
+    "id": "mythicmetals:unobtainium_block"
+  }
+}

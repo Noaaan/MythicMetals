@@ -16,7 +16,6 @@ public class MythicBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
         super(output, registriesFuture);
     }
 
-    @SuppressWarnings("UnstableApiUsage")
     @Override
     protected void addTags(HolderLookup.Provider arg) {
         // mining level handling for custom MM progression

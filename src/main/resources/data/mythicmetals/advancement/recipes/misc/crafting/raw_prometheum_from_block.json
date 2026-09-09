@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:raw_prometheum"
+            "items": "mythicmetals:raw_prometheum_block"
           }
         ]
       },

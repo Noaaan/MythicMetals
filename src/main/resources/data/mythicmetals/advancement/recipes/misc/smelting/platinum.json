@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:platinum_ingot"
+            "items": [
+              "mythicmetals:platinum_ore",
+              "mythicmetals:raw_platinum"
+            ]
           }
         ]
       },

@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:manganese_ingot"
+            "items": [
+              "mythicmetals:manganese_ore",
+              "mythicmetals:raw_manganese"
+            ]
           }
         ]
       },

@@ -5,7 +5,13 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:orichalcum_ingot"
+            "items": [
+              "mythicmetals:orichalcum_ore",
+              "mythicmetals:deepslate_orichalcum_ore",
+              "mythicmetals:smooth_basalt_orichalcum_ore",
+              "mythicmetals:tuff_orichalcum_ore",
+              "mythicmetals:raw_orichalcum"
+            ]
           }
         ]
       },

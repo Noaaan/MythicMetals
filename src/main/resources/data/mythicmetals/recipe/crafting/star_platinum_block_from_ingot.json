@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot",
+    "mythicmetals:star_platinum_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:star_platinum_block"
+  }
+}

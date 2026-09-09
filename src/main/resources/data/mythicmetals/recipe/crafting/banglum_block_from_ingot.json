@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot",
+    "mythicmetals:banglum_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:banglum_block"
+  }
+}

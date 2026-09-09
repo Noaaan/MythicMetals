@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot",
+    "mythicmetals:adamantite_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:adamantite_block"
+  }
+}

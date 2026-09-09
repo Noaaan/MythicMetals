@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot",
+    "mythicmetals:runite_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:runite_block"
+  }
+}

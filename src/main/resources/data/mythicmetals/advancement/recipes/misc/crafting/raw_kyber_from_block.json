@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:raw_kyber"
+            "items": "mythicmetals:raw_kyber_block"
           }
         ]
       },

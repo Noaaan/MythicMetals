@@ -5,7 +5,11 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:prometheum_ingot"
+            "items": [
+              "mythicmetals:prometheum_ore",
+              "mythicmetals:deepslate_prometheum_ore",
+              "mythicmetals:raw_prometheum"
+            ]
           }
         ]
       },

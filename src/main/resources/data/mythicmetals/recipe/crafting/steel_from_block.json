@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mythicmetals:steel_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:steel_ingot"
+  }
+}

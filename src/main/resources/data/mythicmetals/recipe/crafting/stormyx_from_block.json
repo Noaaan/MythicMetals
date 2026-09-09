@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mythicmetals:stormyx_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "mythicmetals:stormyx_ingot"
+  }
+}

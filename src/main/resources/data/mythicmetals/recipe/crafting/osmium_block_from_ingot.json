@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot",
+    "mythicmetals:osmium_ingot"
+  ],
+  "result": {
+    "id": "mythicmetals:osmium_block"
+  }
+}

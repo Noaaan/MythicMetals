@@ -5,7 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": "mythicmetals:tin_ingot"
+            "items": [
+              "mythicmetals:tin_ore",
+              "mythicmetals:raw_tin"
+            ]
           }
         ]
       },
