@@ -13,7 +13,7 @@ A HUGE thank you to thyreo for the all the amazing Spear textures, and a small t
 
 For addon developers there have been major changes in the codebase. 
 The main change is that everything related to the mod is now bundled in a `Material`, which holds all blocks, tools, and armor associated with it.
-If you need to iterate through them, say to add your own custom items, then I recommend checking out the maps in `MaterialHelper`. 
+If you need to iterate through them, say to add your own custom items, then I recommend check out the `MaterialRegistrationCallback` or the maps in `MaterialHelper`. 
 
 ### Upcoming config update
 

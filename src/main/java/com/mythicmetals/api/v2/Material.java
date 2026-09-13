@@ -289,7 +289,9 @@ public record Material(
             if (type == MaterialType.RARE_ALLOY) {
                 requiresSmithing = true;
             }
-            return new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks, fireproof, requiresSmithing);
+            var material = new Material(name, baseMaterial, type, nugget, rawOre, blockSet, toolSet, armorSet, extraItems, extraBlocks, fireproof, requiresSmithing);
+            MaterialRegistrationCallback.EVENT.invoker().onRegister(material);
+            return material;
         }
     }
 }
