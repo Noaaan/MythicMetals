@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.AnvilBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -21,7 +21,7 @@ import java.util.function.Function;
 
 public record BlockSet(
     String name,
-    @NotNull
+    @NonNull
     BlockWithMiningLevel storage,
     @Nullable
     BlockWithMiningLevel ore,

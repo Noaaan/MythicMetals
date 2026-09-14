@@ -6,7 +6,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class BanglumNukeSource extends DamageSource {
     public BanglumNukeSource(Holder<DamageType> type, @Nullable Entity source, @Nullable Entity attacker) {

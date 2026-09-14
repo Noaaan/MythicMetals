@@ -47,8 +47,8 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.apache.commons.lang3.mutable.MutableInt;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
@@ -688,7 +688,7 @@ public final class MythicCommands {
         level.addFreshEntity(armorStand);
     }
 
-    private static int armorStandCommand(CommandContext<CommandSourceStack> context, @NotNull String material, @Nullable String rawTrim) {
+    private static int armorStandCommand(CommandContext<CommandSourceStack> context, @NonNull String material, @Nullable String rawTrim) {
         var armorTrims = new ArrayList<ArmorTrim>();
         var world = context.getSource().getLevel();
         var pos = context.getSource().getPosition();

@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public interface CustomArmorModelItem {
     @Environment(EnvType.CLIENT)
@@ -16,5 +16,5 @@ public interface CustomArmorModelItem {
     @Environment(EnvType.CLIENT)
     HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot);
 
-    @NotNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot);
+    @NonNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot);
 }

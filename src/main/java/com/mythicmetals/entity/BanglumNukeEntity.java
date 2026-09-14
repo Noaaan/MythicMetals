@@ -1,6 +1,5 @@
 package com.mythicmetals.entity;
 
-import com.mojang.authlib.GameProfile;
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.block.NukeCore;
 import com.mythicmetals.data.damage.BanglumNukeSource;
@@ -28,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 import java.util.function.Predicate;
 
 public class BanglumNukeEntity extends BanglumTntEntity {

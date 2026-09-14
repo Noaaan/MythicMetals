@@ -13,7 +13,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.equipment.ArmorType;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class CustomHelmetArmor extends Item implements CustomArmorModelItem {
 
@@ -46,7 +46,7 @@ public class CustomHelmetArmor extends Item implements CustomArmorModelItem {
     }
 
     @Override
-    public @NotNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
+    public @NonNull Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return texture;
     }
 }

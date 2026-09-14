@@ -15,7 +15,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class TidesingerArmor extends Item implements CustomArmorModelItem {
 
@@ -44,7 +44,7 @@ public class TidesingerArmor extends Item implements CustomArmorModelItem {
         return new TidesingerBipedModel(root, slot);
     }
 
-    @NotNull
+    @NonNull
     @Override
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         var component = stack.getOrDefault(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty());

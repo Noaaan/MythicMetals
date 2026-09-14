@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
 
@@ -76,13 +76,11 @@ public class MidasGoldSword extends Item {
         GILDED,
         ROYAL;
 
-        @Nullable
         public static MidasGoldSword.Type getSwordType(ItemStack stack) {
             return getSwordType(stack.getItem());
         }
 
-        @Nullable
-        public static MidasGoldSword.Type getSwordType(Item item) {
+        public static MidasGoldSword.@Nullable Type getSwordType(Item item) {
 
             if (item.equals(MythicTools.MIDAS_GOLD_SWORD)) {
                 return REGULAR;

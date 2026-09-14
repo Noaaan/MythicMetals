@@ -29,13 +29,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
     @Shadow
     public abstract Inventory getInventory();
 
-    @Shadow
-    public abstract void awardStat(Stat<?> stat);
-
-    @Shadow
-    @Final
-    private ItemCooldowns cooldowns;
-
     @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
     private void slowBreak(BlockState state, CallbackInfoReturnable<Float> cir) {
         var mainHandStack = getInventory().getSelectedItem();

@@ -8,7 +8,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class BanglumTntEntity extends Entity implements TraceableEntity {
     private static final EntityDataAccessor<Integer> FUSE = SynchedEntityData.defineId(BanglumTntEntity.class, EntityDataSerializers.INT);
