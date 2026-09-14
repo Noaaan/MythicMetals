@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:stormyx_ingot"
+            "items": "#mythicmetals:ingots/stormyx"
           }
         ]
       },

@@ -18,7 +18,7 @@
 	}
   ],
   "output": {
-    "id": "mythicmetals:metallurgium_ingot",
+    "item": "mythicmetals:metallurgium_ingot",
     "count": 1
   },
   "overrides": {

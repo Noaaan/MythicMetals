@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:star_platinum_ingot"
+            "items": "#mythicmetals:ingots/star_platinum"
           }
         ]
       },

@@ -10,7 +10,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:bronze_ingot",
+    "item": "mythicmetals:bronze_ingot",
     "count": 4
   },
   "overrides": {

@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:stormyx_ingot",
+    "item": "mythicmetals:stormyx_ingot",
     "count": 2
   },
   "overrides": {

@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:manganese_ingot",
+    "item": "mythicmetals:manganese_ingot",
     "count": 3
   },
   "overrides": {

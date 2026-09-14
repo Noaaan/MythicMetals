@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:osmium_ingot",
+    "item": "mythicmetals:osmium_ingot",
     "count": 2
   },
   "overrides": {

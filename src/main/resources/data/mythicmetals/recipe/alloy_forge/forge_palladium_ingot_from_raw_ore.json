@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:palladium_ingot",
+    "item": "mythicmetals:palladium_ingot",
     "count": 2
   },
   "overrides": {

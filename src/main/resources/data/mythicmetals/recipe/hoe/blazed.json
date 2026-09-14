@@ -22,7 +22,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:doge",
+    "item": "mythicmetals:doge",
     "count": 1
   },
   "min_forge_tier": 3,

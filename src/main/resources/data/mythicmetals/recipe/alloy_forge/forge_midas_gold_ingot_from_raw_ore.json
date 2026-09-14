@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:midas_gold_ingot",
+    "item": "mythicmetals:midas_gold_ingot",
     "count": 3
   },
   "overrides": {

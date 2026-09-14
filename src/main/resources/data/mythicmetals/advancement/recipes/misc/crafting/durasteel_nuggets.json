@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:durasteel_ingot"
+            "items": "#mythicmetals:ingots/durasteel"
           }
         ]
       },

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:kyber_ingot",
+    "item": "mythicmetals:kyber_ingot",
     "count": 2
   },
   "overrides": {

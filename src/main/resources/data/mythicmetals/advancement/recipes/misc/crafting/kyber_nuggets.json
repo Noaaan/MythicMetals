@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:kyber_ingot"
+            "items": "#mythicmetals:ingots/kyber"
           }
         ]
       },

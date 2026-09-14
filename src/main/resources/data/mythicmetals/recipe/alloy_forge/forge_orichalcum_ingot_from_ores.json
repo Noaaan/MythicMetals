@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:orichalcum_ingot",
+    "item": "mythicmetals:orichalcum_ingot",
     "count": 2
   },
   "overrides": {

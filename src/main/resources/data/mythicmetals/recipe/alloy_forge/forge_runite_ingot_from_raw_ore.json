@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:runite_ingot",
+    "item": "mythicmetals:runite_ingot",
     "count": 2
   },
   "overrides": {

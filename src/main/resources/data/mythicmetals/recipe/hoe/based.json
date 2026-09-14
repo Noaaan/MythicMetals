@@ -33,7 +33,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:froge",
+    "item": "mythicmetals:froge",
     "count": 1
   },
   "min_forge_tier": 3,

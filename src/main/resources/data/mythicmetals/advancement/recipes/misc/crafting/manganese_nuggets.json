@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:manganese_ingot"
+            "items": "#mythicmetals:ingots/manganese"
           }
         ]
       },

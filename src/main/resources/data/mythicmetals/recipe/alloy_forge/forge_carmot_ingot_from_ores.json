@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:carmot_ingot",
+    "item": "mythicmetals:carmot_ingot",
     "count": 2
   },
   "overrides": {

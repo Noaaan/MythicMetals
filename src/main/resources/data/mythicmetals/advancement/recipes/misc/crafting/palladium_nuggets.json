@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:palladium_ingot"
+            "items": "#mythicmetals:ingots/palladium"
           }
         ]
       },

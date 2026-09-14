@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:carmot_ingot"
+            "items": "#mythicmetals:ingots/carmot"
           }
         ]
       },

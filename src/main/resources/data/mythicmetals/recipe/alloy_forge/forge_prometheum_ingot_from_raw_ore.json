@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:prometheum_ingot",
+    "item": "mythicmetals:prometheum_ingot",
     "count": 2
   },
   "overrides": {

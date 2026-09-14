@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:platinum_ingot",
+    "item": "mythicmetals:platinum_ingot",
     "count": 2
   },
   "overrides": {

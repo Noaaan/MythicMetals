@@ -9,7 +9,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:star_platinum",
+    "item": "mythicmetals:star_platinum",
     "count": 2
   },
   "overrides": {

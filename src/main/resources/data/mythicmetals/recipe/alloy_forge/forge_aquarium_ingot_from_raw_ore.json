@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:aquarium_ingot",
+    "item": "mythicmetals:aquarium_ingot",
     "count": 3
   },
   "overrides": {

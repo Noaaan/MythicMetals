@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:quadrillum_ingot"
+            "items": "#mythicmetals:ingots/quadrillum"
           }
         ]
       },

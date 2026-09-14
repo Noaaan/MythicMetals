@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:adamantite_ingot",
+    "item": "mythicmetals:adamantite_ingot",
     "count": 2
   },
   "overrides": {

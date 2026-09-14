@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:silver_ingot",
+    "item": "mythicmetals:silver_ingot",
     "count": 2
   },
   "overrides": {

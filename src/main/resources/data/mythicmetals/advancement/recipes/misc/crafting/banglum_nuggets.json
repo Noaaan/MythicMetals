@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:banglum_ingot"
+            "items": "#mythicmetals:ingots/banglum"
           }
         ]
       },

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:banglum_ingot",
+    "item": "mythicmetals:banglum_ingot",
     "count": 2
   },
   "overrides": {

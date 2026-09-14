@@ -9,7 +9,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:steel_ingot",
+    "item": "mythicmetals:steel_ingot",
     "count": 2
   },
   "min_forge_tier": 1,

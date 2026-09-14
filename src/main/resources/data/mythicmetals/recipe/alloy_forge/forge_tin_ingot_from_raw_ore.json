@@ -7,7 +7,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:tin_ingot",
+    "item": "mythicmetals:tin_ingot",
     "count": 3
   },
   "overrides": {

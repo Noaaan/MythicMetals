@@ -12,7 +12,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:hallowed_ingot",
+    "item": "mythicmetals:hallowed_ingot",
     "count": 1
   },
   "overrides": {

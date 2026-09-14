@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:steel_ingot"
+            "items": "#mythicmetals:ingots/steel"
           }
         ]
       },

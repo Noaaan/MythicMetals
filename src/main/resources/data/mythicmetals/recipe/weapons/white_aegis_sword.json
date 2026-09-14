@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "mythicmetals:hallowed_block",
+  "addition": "mythicmetals:hallowed_ingot",
   "base": "mythicmetals:hallowed_sword",
   "result": {
     "id": "mythicmetals:white_aegis_sword"

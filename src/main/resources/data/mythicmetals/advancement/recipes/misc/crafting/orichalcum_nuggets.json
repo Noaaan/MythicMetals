@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:orichalcum_ingot"
+            "items": "#mythicmetals:ingots/orichalcum"
           }
         ]
       },

@@ -10,7 +10,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mythicmetals:runite_ingot"
+            "items": "#mythicmetals:ingots/runite"
           }
         ]
       },

@@ -314,7 +314,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
 
         // craft ingots into nuggets
         ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.MISC, nugget, 9)
-            .unlockedBy("has_material", has(TagKey.create(Registries.ITEM, RegistryHelper.id(name + "_ingot"))))
+            .unlockedBy("has_material", has(TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/" + name))))
             .requires(material.baseMaterial())
             .save(nuggetExporter, recipeKey("crafting/" + name + "_nuggets"));
     }
@@ -437,7 +437,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
                 Ingredient.of(MythicMaterials.ADAMANTITE.toolSet().getSword()),
-                Ingredient.of(MythicMaterials.PALLADIUM.blockSet().storage().block()),
+                Ingredient.of(MythicMaterials.PALLADIUM.baseMaterial()),
                 RecipeCategory.COMBAT,
                 MythicTools.RED_AEGIS_SWORD
             )
@@ -446,7 +446,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(MythicMaterials.AEGIS.extraItems().get(MythicResourceKeys.AEGIS_SMITHING_TEMPLATE)),
                 Ingredient.of(MythicMaterials.HALLOWED.toolSet().getSword()),
-                Ingredient.of(MythicMaterials.HALLOWED.blockSet().storage().block()),
+                Ingredient.of(MythicMaterials.HALLOWED.baseMaterial()),
                 RecipeCategory.COMBAT,
                 MythicTools.WHITE_AEGIS_SWORD
             )

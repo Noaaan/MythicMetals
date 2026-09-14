@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "id": "mythicmetals:quadrillum_ingot",
+    "item": "mythicmetals:quadrillum_ingot",
     "count": 2
   },
   "overrides": {
