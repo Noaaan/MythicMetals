@@ -1,14 +1,14 @@
 {
-  "parent": "mythicmetals:emerald_crystal",
+  "parent": "mythicmetals:forgery",
   "display": {
     "title": {
-      "translate": "advancement.mythicmetals.aegis_template.title"
+      "translate": "advancement.mythicmetals.emerald_crystal.title"
     },
     "description": {
-      "translate": "advancement.mythicmetals.aegis_template.description"
+      "translate": "advancement.mythicmetals.emerald_crystal.description"
     },
     "icon": {
-      "id": "mythicmetals:aegis_smithing_template"
+      "id": "mythicmetals:emerald_crystal"
     },
     "frame": "task",
     "show_toast": true,
@@ -16,13 +16,13 @@
     "hidden": false
   },
   "criteria": {
-    "coffee_and_milk": {
+    "villagers_salivating_over_this": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "items": [
-              "mythicmetals:aegis_smithing_template"
+              "mythicmetals:emerald_crystal"
             ]
           }
         ]

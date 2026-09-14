@@ -743,7 +743,7 @@
 
   "advancement.mythicmetals.root.title": "Mythic Metals",
   "advancement.mythicmetals.root.description": "Discover all the ores deep underground",
-  "advancement.mythicmetals.aegis_template.description": "Obtain an Aegis Upgrade Template, sometimes sold by master level Clerics",
+  "advancement.mythicmetals.aegis_template.description": "Craft an Aegis Upgrade Template from an Emerald Crystal, Deepslate, and Blocks of Emerald",
   "advancement.mythicmetals.aegis_template.title": "From the Land of Morytha",
   "advancement.mythicmetals.adamantite.description": "Find Adamantite in the deepest part of the deepslate caves",
   "advancement.mythicmetals.adamantite.title": "Forged From Aether",
@@ -767,6 +767,8 @@
   "advancement.mythicmetals.celestium.title": "Unstoppable Force",
   "advancement.mythicmetals.durasteel.description": "Forge Durasteel, a better steel made from Quadrillum and Manganese",
   "advancement.mythicmetals.durasteel.title": "From a Galaxy, Far Far Away...",
+  "advancement.mythicmetals.emerald_crystal.description": "Find an Emerald Crystal, a rare drop from mining Emerald ores",
+  "advancement.mythicmetals.emerald_crystal.title": "Glimmering Smaragd",
   "advancement.mythicmetals.forge.description": "Craft a tier one Forge Controller, which lets you smelt multiple raw ores into more ingots",
   "advancement.mythicmetals.forge.title": "Glorified Alloy Smelter",
   "advancement.mythicmetals.forgery.description": "Craft a tier two Forge Controller, which can be used for forging mighty alloys",
