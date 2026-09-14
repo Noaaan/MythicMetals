@@ -56,12 +56,15 @@ In preparation for some future changes, the following ores now require at least 
   - Platinum
   - Silver
 
-### Aegis Smithing Template changes
+### Aegis Sword and Smithing Template
 
 The Aegis Smithing Template is no longer aquired from master-level Clerics. You instead craft it using Glowstone Dust, Emerald Blocks, Deepslate, and an Emerald Crystal.
 
 The Emerald Crystal is a new rare drop from mining Emerald Ores, with roughly the same drop chances as other rare materials. 
 Likewise, it also scales with the Luck stat, so get mining with your favorite fishing set... it's probably Midas Gold, right?.
+
+The Red Aegis Sword and White Aegis Sword have also been made cheaper. 
+They now only need an ingot of their respective materials to be crafted, as originally mentioned in the Smithing Template
 
 ### Combustion Rework
 
