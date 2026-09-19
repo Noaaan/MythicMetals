@@ -1,7 +1,6 @@
 package com.mythicmetals.item.armor;
 
 import com.mythicmetals.api.v2.ArmorSet;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -9,12 +8,10 @@ import net.minecraft.world.item.equipment.ArmorType;
 
 public class CustomHelmetArmorSet extends ArmorSet {
 
-    private final ModelLayerLocation modelLocation;
     private final Identifier texture;
 
-    public CustomHelmetArmorSet(String name, ArmorMaterial armorMaterial, ModelLayerLocation modelLocation, Identifier texture) {
+    public CustomHelmetArmorSet(String name, ArmorMaterial armorMaterial, Identifier texture) {
         super(name, armorMaterial);
-        this.modelLocation = modelLocation;
         this.texture = texture;
     }
 
@@ -26,7 +23,6 @@ public class CustomHelmetArmorSet extends ArmorSet {
         return new CustomHelmetArmor(
             armorType,
             settings,
-            modelLocation,
             texture
         );
     }

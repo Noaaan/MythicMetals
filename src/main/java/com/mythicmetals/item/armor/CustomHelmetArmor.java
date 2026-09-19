@@ -2,11 +2,11 @@ package com.mythicmetals.item.armor;
 
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.client.models.HelmetModel;
+import com.mythicmetals.client.models.MythicModelHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,16 +17,14 @@ import org.jspecify.annotations.NonNull;
 
 public class CustomHelmetArmor extends Item implements CustomArmorModelItem {
 
-    private final ModelLayerLocation modelLocation;
     private final Identifier texture;
     @Environment(EnvType.CLIENT)
     private HumanoidModel<HumanoidRenderState> model;
     public final ArmorType type;
 
-    public CustomHelmetArmor(ArmorType type, Properties properties, ModelLayerLocation modelLocation, Identifier texture) {
+    public CustomHelmetArmor(ArmorType type, Properties properties, Identifier texture) {
         super(properties);
         this.type = type;
-        this.modelLocation = modelLocation;
         this.texture = texture;
     }
 
@@ -41,7 +39,7 @@ public class CustomHelmetArmor extends Item implements CustomArmorModelItem {
     @Environment(EnvType.CLIENT)
     public HumanoidModel<HumanoidRenderState> provideArmorModelForSlot(EquipmentSlot slot) {
         var models = Minecraft.getInstance().getEntityModels();
-        var root = models.bakeLayer(modelLocation);
+        var root = models.bakeLayer(MythicModelHandler.getModel(texture));
         return new HelmetModel(root, slot);
     }
 

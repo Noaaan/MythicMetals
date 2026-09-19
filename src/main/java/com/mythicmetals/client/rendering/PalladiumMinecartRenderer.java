@@ -3,6 +3,7 @@ package com.mythicmetals.client.rendering;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.mythicmetals.client.models.MythicModelHandler;
+import com.mythicmetals.misc.MythicModelIdentifiers;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MinecartRenderer;
@@ -53,7 +54,7 @@ public class PalladiumMinecartRenderer extends MinecartRenderer {
             this.model,
             minecartRenderState,
             poseStack,
-            this.model.renderType(MythicModelHandler.PALLADIUM_MINECART_TEXTURE),
+            this.model.renderType(MythicModelIdentifiers.PALLADIUM_MINECART),
             minecartRenderState.lightCoords,
             OverlayTexture.NO_OVERLAY,
             minecartRenderState.outlineColor,

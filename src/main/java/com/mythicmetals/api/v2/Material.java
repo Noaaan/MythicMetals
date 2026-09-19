@@ -8,7 +8,6 @@ import com.mythicmetals.item.MythicAttributeModifier;
 import com.mythicmetals.item.MythicSpearStats;
 import com.mythicmetals.item.armor.CustomHelmetArmorSet;
 import com.mythicmetals.misc.RegistryHelper;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
@@ -254,16 +253,16 @@ public record Material(
             return this;
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
-            return createCustomHelmetArmorSet(material, List.of(), model, texture, initMountArmor);
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, Identifier texture, Boolean initMountArmor) {
+            return createCustomHelmetArmorSet(material, List.of(), texture, initMountArmor);
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, ModelLayerLocation model, Identifier texture) {
-            return createCustomHelmetArmorSet(material, List.of(), model, texture, true);
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, Identifier texture) {
+            return createCustomHelmetArmorSet(material, List.of(), texture, true);
         }
 
-        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, ModelLayerLocation model, Identifier texture, Boolean initMountArmor) {
-            var customSet = new CustomHelmetArmorSet(this.name, material, model, texture);
+        public Builder createCustomHelmetArmorSet(ArmorMaterial material, List<MythicAttributeModifier> extraModifiers, Identifier texture, Boolean initMountArmor) {
+            var customSet = new CustomHelmetArmorSet(this.name, material, texture);
             this.armorSet = customSet.initialize(settings -> {
                 if (fireproof) {
                     return settings.fireResistant();

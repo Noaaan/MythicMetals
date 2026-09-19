@@ -2,17 +2,14 @@ package com.mythicmetals.item;
 
 import com.mythicmetals.MythicMetals;
 import com.mythicmetals.api.v2.*;
-import com.mythicmetals.api.v2.ToolSet;
-import com.mythicmetals.item.armor.*;
 import com.mythicmetals.block.*;
-import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.item.component.*;
 import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.entity.MythicEntityAttributes;
+import com.mythicmetals.item.armor.*;
+import com.mythicmetals.item.component.*;
 import com.mythicmetals.item.tools.*;
-import com.mythicmetals.misc.RegistryHelper;
-import com.mythicmetals.misc.MythicSoundEvents;
+import com.mythicmetals.misc.*;
 import de.dafuqs.additionalentityattributes.AdditionalEntityAttributes;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -45,8 +42,7 @@ public class MythicMaterials {
         )
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.ADAMANTITE,
-            MythicModelHandler.ADAMANTITE_ARMOR,
-            RegistryHelper.id("textures/models/adamantite_model.png")
+            MythicModelIdentifiers.ADAMANTITE_ARMOR
         )
         .createDefaultTools(MythicToolMaterials.ADAMANTITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.ADAMANTITE)
         .finish();
@@ -189,8 +185,7 @@ public class MythicMaterials {
         .createDefaultTools(MythicToolMaterials.HALLOWED, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.HALLOWED)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.HALLOWED,
-            MythicModelHandler.HALLOWED_ARMOR,
-            RegistryHelper.id("textures/models/hallowed_model.png")
+            MythicModelIdentifiers.HALLOWED_ARMOR
         )
         .finish();
 
@@ -232,8 +227,7 @@ public class MythicMaterials {
                 new MythicAttributeModifier(SAFE_FALL_DISTANCE, 15, ADD_VALUE, FEET),
                 new MythicAttributeModifier(SAFE_FALL_DISTANCE, 10, ADD_VALUE, BODY)
             ),
-            MythicModelHandler.LEGENDARY_BANGLUM_ARMOR,
-            RegistryHelper.id("textures/models/banglum_model.png"),
+            MythicModelIdentifiers.LEGENDARY_BANGLUM_ARMOR,
             true
         )
         .finish();
@@ -247,8 +241,7 @@ public class MythicMaterials {
         .createDefaultTools(MythicToolMaterials.METALLURGIUM, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.METALLURGIUM)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.METALLURGIUM,
-            MythicModelHandler.METALLURGIUM,
-            RegistryHelper.id("textures/models/metallurgium_model.png")
+            MythicModelIdentifiers.METALLURGIUM_ARMOR
         )
         .finish();
 
@@ -336,8 +329,7 @@ public class MythicMaterials {
                 new MythicAttributeModifier(BURNING_TIME, -0.25, ADD_MULTIPLIED_BASE, FEET),
                 new MythicAttributeModifier(BURNING_TIME, -0.80, ADD_MULTIPLIED_BASE, BODY)
             ),
-            MythicModelHandler.PALLADIUM_ARMOR,
-            RegistryHelper.id("textures/models/palladium_model.png"),
+            MythicModelIdentifiers.PALLADIUM_ARMOR,
             true
         )
         .finish();
@@ -395,8 +387,7 @@ public class MythicMaterials {
         .addExtraItem(TIPPED_RUNITE_ARROW, MythicTools.TIPPED_RUNITE_ARROW)
         .createCustomHelmetArmorSet(
             MythicArmorMaterials.RUNITE,
-            MythicModelHandler.RUNITE_ARMOR,
-            RegistryHelper.id("textures/models/runite_model.png"),
+            MythicModelIdentifiers.RUNITE_ARMOR,
             false
         )
         .finish();
