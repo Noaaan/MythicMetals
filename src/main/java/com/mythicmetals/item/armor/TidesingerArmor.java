@@ -5,7 +5,7 @@ import com.mythicmetals.client.models.MythicModelHandler;
 import com.mythicmetals.client.models.TidesingerBipedModel;
 import com.mythicmetals.item.component.MythicDataComponents;
 import com.mythicmetals.item.component.TidesingerPatternComponent;
-import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.MythicModelIdentifiers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -48,14 +48,13 @@ public class TidesingerArmor extends Item implements CustomArmorModelItem {
     @Override
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         var component = stack.getOrDefault(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.empty());
-        String model = switch (component.pattern()) {
-            case "brain" -> "textures/models/tidesinger_model_brain.png";
-            case "bubble" -> "textures/models/tidesinger_model_bubble.png";
-            case "fire" -> "textures/models/tidesinger_model_fire.png";
-            case "horn" -> "textures/models/tidesinger_model_horn.png";
-            case "tube" -> "textures/models/tidesinger_model_tube.png";
-            default -> "textures/models/tidesinger_model.png";
+        return switch (component.pattern()) {
+            case "brain" -> MythicModelIdentifiers.TIDESINGER_BRAIN;
+            case "bubble" -> MythicModelIdentifiers.TIDESINGER_BUBBLE;
+            case "fire" -> MythicModelIdentifiers.TIDESINGER_FIRE;
+            case "horn" -> MythicModelIdentifiers.TIDESINGER_HORN;
+            case "tube" -> MythicModelIdentifiers.TIDESINGER_TUBE;
+            default -> MythicModelIdentifiers.TIDESINGER;
         };
-        return RegistryHelper.id(model);
     }
 }
