@@ -86,9 +86,11 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     @Override
     public ItemStack assemble(SmithingRecipeInput input) {
         var swordInputStack = input.base().copy();
-        var goldComponent = swordInputStack.getOrDefault(MIDAS_GOLD, MidasGoldComponent.of(0));
+        var goldComponent = swordInputStack.get(MIDAS_GOLD);
         int goldCount = goldComponent.folds();
-        return swordInputStack.transmuteCopy(MidasGoldSword.createSwordFromGold(goldCount + 1).getItem(), 1);
+        var swordnite = swordInputStack.transmuteCopy(MidasGoldSword.createSwordFromGold(goldCount + 1).getItem(), 1);
+        swordnite.set(MIDAS_GOLD, MidasGoldComponent.of(goldCount + 1));
+        return swordnite;
     }
 
     @Override

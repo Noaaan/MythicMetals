@@ -1,6 +1,7 @@
 package com.mythicmetals.data;
 
 import com.mythicmetals.api.v2.*;
+import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.armor.MythicArmorSets;
@@ -53,6 +54,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createArmorSmithingRecipes();
         createToolRecipes();
         createSmithingTemplateRecipes();
+        createMidasFoldingRecipes();
     }
 
     private void createRecipesFromMaterial(Material material) {
@@ -873,6 +875,45 @@ public class MythicRecipeGenerator extends RecipeProvider {
             addition,
             outputArmorSet
         );
+    }
+
+    public void createMidasFoldingRecipes() {
+        createMidasFoldingRecipe("fold_midas_gold_dagger", MythicTools.MIDAS_GOLD_DAGGER, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_midas_gold_shortsword", MythicTools.MIDAS_GOLD_SHORTSWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_midas_gold_sword", MythicTools.MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_socketed_midas_gold_sword", MythicTools.SOCKETED_MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_gilded_midas_gold_sword", MythicTools.GILDED_MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_royal_midas_gold_sword", MythicTools.ROYAL_MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_royal_midas_gold_broadsword", MythicTools.ROYAL_MIDAS_GOLD_BROADSWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_royal_midas_gold_longsword", MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+        createMidasFoldingRecipe("fold_true_royal_midas_gold_sword", MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
+		
+		createMidasFoldingRecipe("fold_midas_gold_dagger_compat", MythicTools.MIDAS_GOLD_DAGGER, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_midas_gold_shortsword_compat", MythicTools.MIDAS_GOLD_SHORTSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_midas_gold_sword_compat", MythicTools.MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_socketed_midas_gold_sword_compat", MythicTools.SOCKETED_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_gilded_midas_gold_sword_compat", MythicTools.GILDED_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_royal_midas_gold_sword_compat", MythicTools.ROYAL_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_royal_midas_gold_broadsword_compat", MythicTools.ROYAL_MIDAS_GOLD_BROADSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_royal_midas_gold_longsword_compat", MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+        createMidasFoldingRecipe("fold_true_royal_midas_gold_sword_compat", MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+    }
+
+    public void createMidasFoldingRecipe(String recipeName, Item input, TagKey<Item> addition) { createMidasFoldingRecipe(recipeName, input, Ingredient.of(itemLookup.getOrThrow(addition))); }
+
+    public void createMidasFoldingRecipe(String recipeName, Item input, Item addition) { createMidasFoldingRecipe(recipeName, input, Ingredient.of(addition)); }
+
+    public void createMidasFoldingRecipe(String recipeName, Item input, Ingredient addition) {
+        var advancementBuilder = new RecipeUnlockAdvancementBuilder();
+        var recipe = new MidasFoldingRecipe(
+            Optional.of(Ingredient.of(MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.MIDAS_FOLDING_TEMPLATE))),
+            Ingredient.of(input),
+            Optional.of(addition),
+            new ItemStackTemplate(input)
+        );
+        advancementBuilder.unlockedBy("has_sword", has(input));
+        var recipeId = recipeKey("weapons/" + recipeName);
+        output.accept(recipeId, recipe, advancementBuilder.build(output, recipeId, RecipeCategory.MISC));
     }
 
 }

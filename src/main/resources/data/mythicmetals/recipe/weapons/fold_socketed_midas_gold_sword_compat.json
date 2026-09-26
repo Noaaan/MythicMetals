@@ -1,0 +1,9 @@
+{
+  "type": "mythicmetals:fold_midas_sword",
+  "addition": "#mythicmetals:adds_fold_to_midas_gold_sword",
+  "base": "mythicmetals:socketed_midas_gold_sword",
+  "result": {
+    "id": "mythicmetals:socketed_midas_gold_sword"
+  },
+  "template": "mythicmetals:midas_folding_template"
+}

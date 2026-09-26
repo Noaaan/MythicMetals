@@ -81,6 +81,7 @@ fabricApi {
     configureDataGeneration {
         // Set the mod ID so that I won't lose the 50/50 to Alloy Frogery, which throws all the data into the bin
         modId = project.archives_base_name
+        client = true
     }
 }
 

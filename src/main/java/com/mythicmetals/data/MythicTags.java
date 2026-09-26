@@ -66,6 +66,7 @@ public class MythicTags {
     public static final TagKey<Item> MIDAS_TOUCH = TagKey.create(ITEM, id("abilities/midas_touch"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.create(ITEM, id("tidesinger_coral"));
     public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.create(ITEM, id("mythril_drill_upgrades"));
+    public static final TagKey<Item> ADDS_FOLD_TO_MIDAS_GOLD_SWORD = TagKey.create(ITEM, id("adds_fold_to_midas_gold_sword"));
 
     public static final TagKey<Block> ANVILS = TagKey.create(BLOCK, id("anvils"));
     public static final TagKey<Block> BOOST_IN_LAVA = TagKey.create(BLOCK, id("boosts_in_lava"));
