@@ -91,6 +91,9 @@ This also means the tooltip should always be correct, *yay!...*
 As a reminder, the Royal Midas Gold Sword ability is now simply powered by the item being in the `#mythicmetals:abilities/midas_touch` tag.
 The rest of the sword stats are driven by their respective tool materials.
 
+There is also a new tag for mod compat to add materials which you can use to fold onto the Midas Gold Sword.
+Add your items to `#mythicmetals:adds_fold_to_midas_gold_sword`. 
+
 ### Other Changes
 
 - Added recipe advancements
