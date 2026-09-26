@@ -5,7 +5,7 @@
       {
         "model": {
           "type": "minecraft:model",
-          "model": "mythicmetals:item/midas/royal_midas_gold_sword_small"
+          "model": "mythicmetals:item/midas/royal_midas_gold_greatsword_small"
         },
         "when": [
           "gui"
@@ -14,7 +14,7 @@
     ],
     "fallback": {
       "type": "minecraft:model",
-      "model": "mythicmetals:item/midas/royal_midas_gold_sword"
+      "model": "mythicmetals:item/midas/royal_midas_gold_greatsword"
     },
     "property": "minecraft:display_context"
   }

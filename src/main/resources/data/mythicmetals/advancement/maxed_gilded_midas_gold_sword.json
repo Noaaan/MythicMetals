@@ -26,9 +26,8 @@
               "mythicmetals:gilded_midas_gold_sword"
             ],
             "components": {
-              "mythicmetals:gold_folded": {
-                "gold_folded": 640,
-                "is_royal": false,
+              "mythicmetals:midas_gold": {
+                "folds": 640,
                 "show_tooltip": true
               }
             }

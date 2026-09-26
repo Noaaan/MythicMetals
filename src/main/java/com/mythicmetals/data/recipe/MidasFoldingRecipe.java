@@ -2,7 +2,7 @@ package com.mythicmetals.data.recipe;
 
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
-import com.mythicmetals.item.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.MidasGoldComponent;
 import com.mythicmetals.item.tools.MidasGoldSword;
 import com.mythicmetals.item.tools.MythicTools;
 import io.wispforest.endec.StructEndec;
@@ -17,7 +17,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
+import static com.mythicmetals.item.component.MythicDataComponents.MIDAS_GOLD;
 
 public class MidasFoldingRecipe implements SmithingRecipe {
 
@@ -49,18 +49,18 @@ public class MidasFoldingRecipe implements SmithingRecipe {
         }
         var stack = input.base();
 
-        if (!stack.has(GOLD_FOLDED)) return false;
-        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+        if (!stack.has(MIDAS_GOLD)) return false;
+        int goldCount = stack.getOrDefault(MIDAS_GOLD, MidasGoldComponent.of(0)).folds();
 
         if (input.template().getItem().equals(MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.ROYAL_MIDAS_SMITHING_TEMPLATE))) {
             return goldCount >= 640;
         }
 
-        if (stack.getItem().equals(MythicTools.ROYAL_MIDAS_GOLD_SWORD)) {
-            return goldCount >= 640 && goldCount < 10000;
+        if (input.base().getItem().equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
+            return goldCount < 640;
         }
 
-        return goldCount < 640;
+        return goldCount < 10000;
     }
 
 
@@ -86,30 +86,9 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     @Override
     public ItemStack assemble(SmithingRecipeInput input) {
         var swordInputStack = input.base().copy();
-        var goldComponent = swordInputStack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0));
-        int goldCount = goldComponent.goldFolded();
-        swordInputStack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1, goldComponent.isRoyal()));
-
-        MidasGoldSword.recalculateSwordDamage(swordInputStack);
-
-        // Gilded Midas Gold Sword handler
-        if (swordInputStack.getItem().equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
-            // Transform into Royal Midas Gold Sword
-            if (goldCount >= 640) {
-                var swordnite = swordInputStack.transmuteCopy(MythicTools.ROYAL_MIDAS_GOLD_SWORD, 1);
-                swordnite.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1, true));
-                return swordnite;
-            }
-        }
-
-        // Handle Midas Gold Sword, transform if you fold and it at least has 320 gold on it
-        if (swordInputStack.getItem().equals(MythicTools.MIDAS_GOLD_SWORD) && goldCount >= 319) {
-            var swordnite = swordInputStack.transmuteCopy(MythicTools.GILDED_MIDAS_GOLD_SWORD, 1);
-            swordnite.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount + 1));
-            return swordnite;
-        }
-
-        return swordInputStack;
+        var goldComponent = swordInputStack.getOrDefault(MIDAS_GOLD, MidasGoldComponent.of(0));
+        int goldCount = goldComponent.folds();
+        return swordInputStack.transmuteCopy(MidasGoldSword.createSwordFromGold(goldCount + 1).getItem(), 1);
     }
 
     @Override

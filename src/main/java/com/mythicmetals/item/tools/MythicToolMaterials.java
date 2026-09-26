@@ -19,12 +19,16 @@ public class MythicToolMaterials {
     public static final ToolMaterial CARMOT = new ToolMaterial(getInverseTag(3), 1130, 11.5F, 3.0F, 42, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/carmot")));
     public static final ToolMaterial CELESTIUM = new ToolMaterial(getInverseTag(5), 2470, 25.0F, 6.0F, 26, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/celestium")));
     public static final ToolMaterial DURASTEEL = new ToolMaterial(getInverseTag(3), 820, 7.1F, 3.5F, 12, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/durasteel")));
-    public static final ToolMaterial GILDED_MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 999, 13.0F, 4.0F, 30, TagKey.create(Registries.ITEM, RegistryHelper.id("storage_blocks/midas_gold")));
+    public static final ToolMaterial GILDED_MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 999, 13.0F, 6.0f, 30, TagKey.create(Registries.ITEM, RegistryHelper.id("storage_blocks/midas_gold")));
+    public static final ToolMaterial MAXED_GILDED_MIDAS_GOLD = copyWithMoreDamage(GILDED_MIDAS_GOLD, 1);
     public static final ToolMaterial HALLOWED = new ToolMaterial(getInverseTag(4), 1984, 12.0F, 5.0F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/hallowed")));
     public static final ToolMaterial KYBER = new ToolMaterial(getInverseTag(3), 889, 7.0F, 2.5F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/kyber")));
     public static final ToolMaterial LEGENDARY_BANGLUM = new ToolMaterial(getInverseTag(3), 1040, 12.0F, 4.0F, 2, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/banglum")));
     public static final ToolMaterial METALLURGIUM = new ToolMaterial(getInverseTag(5), 3000, 15.0F, 8.0F, 30, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/metallurgium")));
-    public static final ToolMaterial MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 300, 13.0F, 3.0F, 30, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/midas_gold")));
+    public static final ToolMaterial MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 300, 13.0F, 2.0F, 30, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/midas_gold")));
+    public static final ToolMaterial MIDAS_GOLD_PLUS_ONE = copyWithMoreDamage(MIDAS_GOLD, 1);
+    public static final ToolMaterial MIDAS_GOLD_PLUS_TWO = copyWithMoreDamage(MIDAS_GOLD, 2);
+    public static final ToolMaterial MIDAS_GOLD_PLUS_THREE = copyWithMoreDamage(MIDAS_GOLD, 3);
     public static final ToolMaterial MYTHRIL = new ToolMaterial(getInverseTag(4), 1564, 14.3F, 3.0F, 22, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/mythril")));
     public static final ToolMaterial MYTHRIL_DRILL = new ToolMaterial(getInverseTag(4), 1764, 27.4F, 3.0F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/mythril")));
     public static final ToolMaterial ORICHALCUM = new ToolMaterial(getInverseTag(4), 2048, 6.0F, 4.0F, 16, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/orichalcum")));
@@ -33,7 +37,11 @@ public class MythicToolMaterials {
     public static final ToolMaterial PROMETHEUM = new ToolMaterial(getInverseTag(3), 1472, 6.0F, 4.0F, 15, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/prometheum")));
     public static final ToolMaterial QUADRILLUM = new ToolMaterial(getInverseTag(2), 321, 6.0F, 2.7F, 8, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/quadrillum")));
     public static final ToolMaterial RUNITE = new ToolMaterial(getInverseTag(3), 1337, 8.9F, 3.3F, 17, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/runite")));
-    public static final ToolMaterial ROYAL_MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 2147, 21.0F, 5.0F, 35, TagKey.create(Registries.ITEM, RegistryHelper.id("storage_blocks/midas_gold")));
+    public static final ToolMaterial ROYAL_MIDAS_GOLD = new ToolMaterial(getInverseTag(3), 2147, 21.0F, 8.0F, 35, TagKey.create(Registries.ITEM, RegistryHelper.id("storage_blocks/midas_gold")));
+    public static final ToolMaterial ROYAL_MIDAS_GOLD_PLUS_ONE = copyWithMoreDamage(ROYAL_MIDAS_GOLD, 1);
+    public static final ToolMaterial ROYAL_MIDAS_GOLD_PLUS_TWO = copyWithMoreDamage(ROYAL_MIDAS_GOLD, 2);
+    public static final ToolMaterial ROYAL_MIDAS_GOLD_PLUS_THREE = copyWithMoreDamage(ROYAL_MIDAS_GOLD, 3);
+    public static final ToolMaterial ROYAL_MIDAS_GOLD_PLUS_FOUR = copyWithMoreDamage(ROYAL_MIDAS_GOLD, 4);
     public static final ToolMaterial STAR_PLATINUM = new ToolMaterial(getInverseTag(4), 1300, 9.0F, 4.0F, 18, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/star_platinum")));
     public static final ToolMaterial STEEL = new ToolMaterial(getInverseTag(3), 700, 6.5F, 3.0F, 11, TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath("c", "ingots/steel")));
     public static final ToolMaterial STORMYX = new ToolMaterial(getInverseTag(3), 1305, 8.5F, 3.5F, 20, TagKey.create(Registries.ITEM, RegistryHelper.id("ingots/stormyx")));
@@ -48,5 +56,16 @@ public class MythicToolMaterials {
             case 5 -> MythicTags.INCORRECT_FOR_UNOBTAINIUM_ALLOY_TOOLS;
             default -> throw new IllegalStateException("Unexpected value: " + level);
         };
+    }
+
+    private static ToolMaterial copyWithMoreDamage(ToolMaterial original, float bonusDamage) {
+        return new ToolMaterial(
+            original.incorrectBlocksForDrops(),
+            original.durability(),
+            original.speed(),
+            original.attackDamageBonus() + bonusDamage,
+            original.enchantmentValue(),
+            original.repairItems()
+        );
     }
 }

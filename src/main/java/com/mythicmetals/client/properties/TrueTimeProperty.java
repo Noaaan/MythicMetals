@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.item.properties.numeric.RangeSelectItemMode
 import net.minecraft.world.entity.ItemOwner;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class TrueTimeProperty implements RangeSelectItemModelProperty {
@@ -21,7 +22,7 @@ public class TrueTimeProperty implements RangeSelectItemModelProperty {
     }
 
     @Override
-    public float get(ItemStack stack, @Nullable ClientLevel world, @Nullable ItemOwner holder, int seed) {
+    public float get(@NonNull ItemStack stack, @Nullable ClientLevel world, @Nullable ItemOwner holder, int seed) {
         if (world == null) return 0;
         return getTime(world);
     }

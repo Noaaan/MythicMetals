@@ -18,20 +18,30 @@ public class MythicResourceKeys {
     public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
     public static final ResourceKey<Block> SPONGE_NUKE_CORE = blockKey("sponge_nuke_core");
     public static final ResourceKey<Item> BANGLUM_TNT_MINECART = itemKey("banglum_tnt_minecart");
-    public static final ResourceKey<Item> GILDED_MIDAS_GOLD_SWORD = itemKey("gilded_midas_gold_sword");
-    public static final ResourceKey<Item> MIDAS_GOLD_SWORD = itemKey("midas_gold_sword");
     public static final ResourceKey<Item> MYTHRIL_DRILL = itemKey("mythril_drill");
     public static final ResourceKey<Item> ORICHALCUM_HAMMER = itemKey("orichalcum_hammer");
     public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");
     public static final ResourceKey<Item> PALLADIUM_RAIL_ITEM = itemKey("palladium_rail");
     public static final ResourceKey<Item> PLATINUM_WATCH = itemKey("platinum_watch");
     public static final ResourceKey<Item> RED_AEGIS_SWORD = itemKey("red_aegis_sword");
-    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_SWORD = itemKey("royal_midas_gold_sword");
     public static final ResourceKey<Item> RUNITE_ARROW = itemKey("runite_arrow");
     public static final ResourceKey<Item> STAR_PLATINUM_ARROW = itemKey("star_platinum_arrow");
     public static final ResourceKey<Item> STORMYX_SHIELD = itemKey("stormyx_shield");
     public static final ResourceKey<Item> TIPPED_RUNITE_ARROW = itemKey("tipped_runite_arrow");
     public static final ResourceKey<Item> WHITE_AEGIS_SWORD = itemKey("white_aegis_sword");
+
+    // midas gold swords
+    public static final ResourceKey<Item> MIDAS_GOLD_DAGGER = itemKey("midas_gold_dagger");
+    public static final ResourceKey<Item> MIDAS_GOLD_SHORTSWORD = itemKey("midas_gold_shortsword");
+    public static final ResourceKey<Item> MIDAS_GOLD_SWORD = itemKey("midas_gold_sword");
+    public static final ResourceKey<Item> SOCKETED_MIDAS_GOLD_SWORD = itemKey("socketed_midas_gold_sword");
+    public static final ResourceKey<Item> GILDED_MIDAS_GOLD_SWORD = itemKey("gilded_midas_gold_sword");
+    public static final ResourceKey<Item> MAXED_GILDED_MIDAS_GOLD_SWORD = itemKey("maxed_gilded_midas_gold_sword");
+    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_SWORD = itemKey("royal_midas_gold_sword");
+    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_BROADSWORD = itemKey("royal_midas_gold_broadsword");
+    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_LONGSWORD = itemKey("royal_midas_gold_longsword");
+    public static final ResourceKey<Item> ROYAL_MIDAS_GOLD_GREATSWORD = itemKey("royal_midas_gold_greatsword");
+    public static final ResourceKey<Item> TRUE_ROYAL_MIDAS_GOLD_SWORD = itemKey("true_royal_midas_gold_sword");
 
     // rare material drops
     public static final ResourceKey<Item> AQUARIUM_PEARL = itemKey("aquarium_pearl");

@@ -8,10 +8,10 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.util.Unit;
 
 public class MythicDataComponents {
-    public static final DataComponentType<GoldFoldedComponent> GOLD_FOLDED = RegistryHelper.dataComponentType(
-        "gold_folded", builder -> builder
-            .persistent(CodecUtils.toCodec(GoldFoldedComponent.ENDEC))
-            .networkSynchronized(CodecUtils.toPacketCodec(GoldFoldedComponent.ENDEC))
+    public static final DataComponentType<MidasGoldComponent> MIDAS_GOLD = RegistryHelper.dataComponentType(
+        "midas_gold", builder -> builder
+            .persistent(CodecUtils.toCodec(MidasGoldComponent.ENDEC))
+            .networkSynchronized(CodecUtils.toPacketCodec(MidasGoldComponent.ENDEC))
     );
     public static final DataComponentType<Boolean> WAS_USED = RegistryHelper.dataComponentType(
         "was_used", builder ->

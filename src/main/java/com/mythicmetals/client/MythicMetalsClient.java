@@ -4,7 +4,9 @@ import com.mythicmetals.api.v2.client.CustomArmorModel;
 import com.mythicmetals.api.v2.client.CustomArmorModelItem;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.client.models.MythicModelHandler;
-import com.mythicmetals.client.properties.*;
+import com.mythicmetals.client.properties.HasDrillFuelProperty;
+import com.mythicmetals.client.properties.MidasGoldProperty;
+import com.mythicmetals.client.properties.TrueTimeProperty;
 import com.mythicmetals.client.rendering.*;
 import com.mythicmetals.compat.IsometricArmorStandExporter;
 import com.mythicmetals.data.MythicTags;
@@ -18,7 +20,10 @@ import com.mythicmetals.mixin.client.EquipmentLayerRendererAccessor;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityRenderLayerRegistrationCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.Sheets;
@@ -300,8 +305,12 @@ public class MythicMetalsClient implements ClientModInitializer {
                 }
             }
 
-            if (stack.has(MythicDataComponents.GOLD_FOLDED)) {
-                stack.get(MythicDataComponents.GOLD_FOLDED).addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
+            if (stack.has(MythicDataComponents.MIDAS_GOLD)) {
+                stack.get(MythicDataComponents.MIDAS_GOLD).addToTooltip(context, text -> lines.add(1, text), TooltipFlag.NORMAL, stack.getComponents());
+            }
+
+            if (stack.is(MythicTags.MIDAS_TOUCH)) {
+                lines.add(1, Component.translatable("tooltip.midas_gold.is_royal").withStyle(UsefulSingletonForColorUtil.MetalColors.GOLD_STYLE));
             }
 
             if (stack.has(MythicDataComponents.TIDESINGER)) {

@@ -1,6 +1,6 @@
 package com.mythicmetals.item.tools;
 
-import com.mythicmetals.item.component.GoldFoldedComponent;
+import com.mythicmetals.item.component.MidasGoldComponent;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -8,9 +8,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import org.jspecify.annotations.Nullable;
 
-import static com.mythicmetals.item.component.MythicDataComponents.GOLD_FOLDED;
+import static com.mythicmetals.item.component.MythicDataComponents.MIDAS_GOLD;
 
 public class MidasGoldSword extends Item {
 
@@ -24,7 +23,7 @@ public class MidasGoldSword extends Item {
         if (!stack.has(DataComponents.ATTRIBUTE_MODIFIERS)) return;
         var currentAttributes = stack.get(DataComponents.ATTRIBUTE_MODIFIERS);
         assert currentAttributes != null;
-        int goldCount = stack.getOrDefault(GOLD_FOLDED, GoldFoldedComponent.of(0)).goldFolded();
+        int goldCount = stack.getOrDefault(MIDAS_GOLD, MidasGoldComponent.of(0)).folds();
         double goldDmgBonus = computeBonusDamage(goldCount);
         if (goldDmgBonus <= 0) return;
 
@@ -59,63 +58,32 @@ public class MidasGoldSword extends Item {
         return bonus;
     }
 
-    /**
-     * Calculates a level from intervals of 64.
-     * Used for appending specific text to a Midas Gold Sword tooltip
-     *
-     * @param goldCount The amount of gold that is currently applied on this stack
-     * @return amount of gold divided by 64, or 0 if less than 64 gold
-     */
-    public static int calculateSwordLevel(int goldCount) {
-        if (goldCount < 64) return 0;
-        return (goldCount / 64);
-    }
-
-    public enum Type {
-        REGULAR,
-        GILDED,
-        ROYAL;
-
-        public static MidasGoldSword.Type getSwordType(ItemStack stack) {
-            return getSwordType(stack.getItem());
-        }
-
-        public static MidasGoldSword.@Nullable Type getSwordType(Item item) {
-
-            if (item.equals(MythicTools.MIDAS_GOLD_SWORD)) {
-                return REGULAR;
-            }
-            if (item.equals(MythicTools.GILDED_MIDAS_GOLD_SWORD)) {
-                return GILDED;
-            }
-            if (item.equals(MythicTools.ROYAL_MIDAS_GOLD_SWORD)) {
-                return ROYAL;
-            }
-            return null;
-        }
-
-        public static boolean isOfMidas(ItemStack stack, Type type) {
-            var comparedType = getSwordType(stack);
-            if (comparedType != null) {
-                return comparedType.equals(type);
-            }
-            return false;
-        }
-    }
-
     public static ItemStack createSwordFromGold(int goldCount) {
         ItemStack stack;
-        if (goldCount > 640) {
+        if (goldCount > 1280) {
+            stack = new ItemStack(MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD);
+        } else if (goldCount > 1023) {
+            stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD);
+        } else if (goldCount > 895) {
+            stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD);
+        } else if (goldCount > 767) {
+            stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_BROADSWORD);
+        } else if (goldCount > 640) {
             stack = new ItemStack(MythicTools.ROYAL_MIDAS_GOLD_SWORD);
-            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount, true));
+        } else if (goldCount == 640) {
+          stack = new ItemStack(MythicTools.MAXED_GILDED_MIDAS_GOLD_SWORD);
         } else if (goldCount > 319) {
             stack = new ItemStack(MythicTools.GILDED_MIDAS_GOLD_SWORD);
-            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
+        } else if (goldCount > 255) {
+            stack = new ItemStack(MythicTools.SOCKETED_MIDAS_GOLD_SWORD);
+        } else if (goldCount > 127) {
+            stack = new ItemStack(MythicTools.MIDAS_GOLD_SWORD);
+        } else if (goldCount > 63) {
+            stack = new ItemStack(MythicTools.MIDAS_GOLD_SHORTSWORD);
         } else {
-            stack = MythicTools.MIDAS_GOLD_SWORD.getDefaultInstance();
-            stack.set(GOLD_FOLDED, GoldFoldedComponent.of(goldCount));
+            stack = MythicTools.MIDAS_GOLD_DAGGER.getDefaultInstance();
         }
-        recalculateSwordDamage(stack);
+        stack.set(MIDAS_GOLD, MidasGoldComponent.of(goldCount));
         return stack;
     }
 }
