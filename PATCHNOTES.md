@@ -41,8 +41,8 @@ Specifically, the affected abilities between 1.21.4 and this version are the fol
 
 ## Changes
 
-There have been many different changes with this port, mostly to accommodate the changes in vanilla Minecraft (which have been *massive!*).
-Some are more experimental, and might be subject to change.
+There have been many different changes with this port. A lot specifically due to vanilla changes,
+but most of the changes come from the rework of the Mythic Metals codebase itself.
 
 ### Mining Level changes
 
@@ -77,10 +77,19 @@ Combustion has been reworked again. The damage/amplifier is unchanged, but the d
   - The Blade of the Aegis this, and therefore gives a +1 multiplier to this. This is independent of its increased ignition time. 
 
 The internal combustion cooldown has been replaced with a status effect instead of a hidden timer.
-This allows you to see the cooldown in your inventory, giving you an estimate of how long you were ignited for.
+This allows you to see the cooldown in your inventory.
 
 The initial duration of combustion and its ignition time has been changed to match, so they should be higher than before.
 This might still feel a bit vague in practice due to various enchantments and effects affecting burn time.
+The cooldown has also been buffed slightly, so you won't immediately be re-combusted once it wears off. 
+
+### Midas Gold Sword changes
+
+To solve a long-standing issue with Midas Gold Swords not applying their attack damage correctly all its forms have now split into 11 different items.
+This also means the tooltip should always be correct, *yay!...*
+
+As a reminder, the Royal Midas Gold Sword ability is now simply powered by the item being in the `#mythicmetals:abilities/midas_touch` tag.
+The rest of the sword stats are driven by their respective tool materials.
 
 ### Other Changes
 
