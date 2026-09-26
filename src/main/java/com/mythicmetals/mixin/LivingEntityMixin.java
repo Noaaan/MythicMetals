@@ -211,7 +211,7 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
 
-                final int combustionDuration = 40 + (20 * multiplier) + (duration / 2);
+                final int combustionDuration = 100 + (20 * multiplier) + (duration / 2);
 
                 this.addEffect(new MobEffectInstance(
                     BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MythicStatusEffects.COMBUSTION),

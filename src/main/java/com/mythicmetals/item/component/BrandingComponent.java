@@ -26,7 +26,7 @@ public record BrandingComponent(int maxHeat) implements TooltipProvider {
     );
 
     public void applyHeatToTarget(LivingEntity target, LivingEntity attacker) {
-        var effect = MythicStatusEffects.COMBUSTION_COOLDOWN_HOLDER;
+        var effect = MythicStatusEffects.HEAT_HOLDER;
         if (!target.hasEffect(effect)) {
             target.addEffect(new MobEffectInstance(effect, 100), attacker);
         } else {
