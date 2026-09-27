@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:hallowed_ingot",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "# #",
+    "#L#",
+    "# #"
+  ],
+  "result": {
+    "id": "mythicmetals:hallowed_horse_armor"
+  }
+}

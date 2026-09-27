@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:midas_gold_ingot",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "# #",
+    "#L#",
+    "# #"
+  ],
+  "result": {
+    "id": "mythicmetals:midas_gold_horse_armor"
+  }
+}

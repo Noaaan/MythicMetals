@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:diamond_horse_armor",
+  "result": {
+    "id": "mythicmetals:celestium_horse_armor"
+  },
+  "template": "mythicmetals:unobtainium_smithing_template"
+}

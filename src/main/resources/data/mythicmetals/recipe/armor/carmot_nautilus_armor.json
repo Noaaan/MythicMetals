@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:carmot_ingot",
+  "base": "mythicmetals:kyber_nautilus_armor",
+  "result": {
+    "id": "mythicmetals:carmot_nautilus_armor"
+  },
+  "template": "mythicmetals:carmot_smithing_template"
+}

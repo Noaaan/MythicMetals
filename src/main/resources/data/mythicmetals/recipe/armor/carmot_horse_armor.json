@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:carmot_ingot",
+  "base": "mythicmetals:kyber_horse_armor",
+  "result": {
+    "id": "mythicmetals:carmot_horse_armor"
+  },
+  "template": "mythicmetals:carmot_smithing_template"
+}

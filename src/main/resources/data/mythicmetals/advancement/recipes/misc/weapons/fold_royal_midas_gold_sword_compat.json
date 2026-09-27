@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mythicmetals:royal_midas_gold_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythicmetals:weapons/fold_royal_midas_gold_sword_compat"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sword"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythicmetals:weapons/fold_royal_midas_gold_sword_compat"
+    ]
+  }
+}

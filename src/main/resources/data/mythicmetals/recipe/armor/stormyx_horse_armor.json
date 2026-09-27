@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:stormyx_ingot",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "# #",
+    "#L#",
+    "# #"
+  ],
+  "result": {
+    "id": "mythicmetals:stormyx_horse_armor"
+  }
+}

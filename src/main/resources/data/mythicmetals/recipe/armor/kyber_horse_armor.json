@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:kyber_ingot",
+    "L": "minecraft:leather"
+  },
+  "pattern": [
+    "# #",
+    "#L#",
+    "# #"
+  ],
+  "result": {
+    "id": "mythicmetals:kyber_horse_armor"
+  }
+}

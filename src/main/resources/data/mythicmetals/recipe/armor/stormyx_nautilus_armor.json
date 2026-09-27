@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:stormyx_ingot",
+    "N": "minecraft:nautilus_shell"
+  },
+  "pattern": [
+    " # ",
+    "#N#",
+    " # "
+  ],
+  "result": {
+    "id": "mythicmetals:stormyx_nautilus_armor"
+  }
+}
