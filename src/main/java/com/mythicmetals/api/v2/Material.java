@@ -237,6 +237,12 @@ public record Material(
                 .tab(0);
         }
 
+        public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents, boolean requiresSmithing) {
+            this.requiresSmithing = requiresSmithing;
+            return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);
+        }
+
+        // FIXME - Make this boolean more obvious in API, this implicit setter is not good
         public Builder addSmithingTemplate(ResourceKey<Item> key, SmithingTemplateComponents templateComponents) {
             this.requiresSmithing = true;
             return addExtraItem(key, computeRarity(this.type), templateComponents::toItem);

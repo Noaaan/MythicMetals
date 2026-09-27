@@ -259,8 +259,8 @@ public class MythicMaterials {
         .addExtraItem(ROYAL_MIDAS_GOLD_LONGSWORD, MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD)
         .addExtraItem(ROYAL_MIDAS_GOLD_GREATSWORD, MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD)
         .addExtraItem(TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD)
-        .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING)
-        .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS)
+        .addSmithingTemplate(MIDAS_FOLDING_TEMPLATE, MythicSmithingTemplates.MIDAS_FOLDING, false)
+        .addSmithingTemplate(ROYAL_MIDAS_SMITHING_TEMPLATE, MythicSmithingTemplates.ROYAL_MIDAS, false)
         .createDefaultArmor(
             MythicArmorMaterials.MIDAS_GOLD,
             List.of(
@@ -283,7 +283,7 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 5.5f, 6.5f)
             .finish()
         )
-        .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL)
+        .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL, false)
         .createDefaultTools(MythicToolMaterials.MYTHRIL, ToolSet.AttackSpeeds.FASTER, MythicSpearStats.MYTHRIL)
         .addExtraItem(MYTHRIL_DRILL, MythicTools.MYTHRIL_DRILL)
         .createDefaultArmor(MythicArmorMaterials.MYTHRIL)
@@ -304,7 +304,7 @@ public class MythicMaterials {
 
     public static final Material OSMIUM = Material.Builder.create("osmium", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
-        .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL)
+        .addSmithingTemplate(OSMIUM_CHAINMAIL_SMITHING_TEMPLATE, MythicSmithingTemplates.OSMIUM_CHAINMAIL, false)
         .createDefaultTools(MythicToolMaterials.OSMIUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.OSMIUM)
         .createDefaultArmor(MythicArmorMaterials.OSMIUM)
         .finish();
@@ -501,13 +501,13 @@ public class MythicMaterials {
             .createCustomOre(16.0f, 14000f, properties ->
                 new DropExperienceBlock(
                     UniformInt.of(4, 7),
-                    properties.lightLevel(blockState -> 1).sound(SoundType.LODESTONE)
+                    properties.lightLevel(_ -> 1).sound(SoundType.LODESTONE)
                 )
             )
             .createCustomOreVariant("deepslate", 21f, 14000f, NETHERITE_MINING_LEVEL, properties ->
                 new DropExperienceBlock(
                     UniformInt.of(4, 7),
-                    properties.lightLevel(blockState -> 1).sound(SoundType.DEEPSLATE)
+                    properties.lightLevel(_ -> 1).sound(SoundType.DEEPSLATE)
                 )
             )
             .createStorageBlock(25f, 15000f)
