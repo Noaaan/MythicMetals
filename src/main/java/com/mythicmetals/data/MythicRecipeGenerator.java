@@ -10,6 +10,8 @@ import com.mythicmetals.item.component.TidesingerPatternComponent;
 import com.mythicmetals.item.tools.MythicTools;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.owo.util.ReflectionUtils;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
@@ -63,6 +65,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         }
         if (material.armorSet() != null && !material.requiresSmithing()) {
             createArmorCraftingRecipes(material.armorSet(), material.baseMaterial());
+            createMountArmor(material.armorSet(), material.baseMaterial(), has(material.baseMaterial()));
         }
         if (material.blockSet() != null) {
             createBlockRecipesForMaterial(material);
@@ -694,6 +697,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createToolSmithingRecipes(template, baseToolset.getSword(), baseToolset.getAxe(), baseToolset.getPickaxe(), baseToolset.getShovel(), baseToolset.getHoe(), addition, resultToolset);
     }
 
+    // TODO - Can be made cleaner, but this is fine for now
     public void createArmorSmithingRecipes() {
         createArmorSmithingRecipes(
             MythicMaterials.CARMOT.extraItems().get(MythicResourceKeys.CARMOT_SMITHING_TEMPLATE),
@@ -707,6 +711,8 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.NETHERITE_CHESTPLATE,
             Items.NETHERITE_LEGGINGS,
             Items.NETHERITE_BOOTS,
+            Items.NETHERITE_HORSE_ARMOR,
+            Items.NETHERITE_NAUTILUS_ARMOR,
             Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
             MythicMaterials.METALLURGIUM.armorSet()
         );
@@ -716,6 +722,8 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_CHESTPLATE,
             Items.DIAMOND_LEGGINGS,
             Items.DIAMOND_BOOTS,
+            Items.DIAMOND_HORSE_ARMOR,
+            Items.DIAMOND_NAUTILUS_ARMOR,
             Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
             MythicMaterials.CELESTIUM.armorSet()
         );
@@ -727,7 +735,12 @@ public class MythicRecipeGenerator extends RecipeProvider {
         );
         createArmorSmithingRecipes(
             MythicMaterials.OSMIUM.extraItems().get(MythicResourceKeys.OSMIUM_CHAINMAIL_SMITHING_TEMPLATE),
-            Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS,
+            Items.CHAINMAIL_HELMET,
+            Items.CHAINMAIL_CHESTPLATE,
+            Items.CHAINMAIL_LEGGINGS,
+            Items.CHAINMAIL_BOOTS,
+            null,
+            null,
             Ingredient.of(MythicMaterials.OSMIUM.baseMaterial()),
             MythicArmorSets.OSMIUM_CHAINMAIL
         );
@@ -785,42 +798,76 @@ public class MythicRecipeGenerator extends RecipeProvider {
         }
     }
 
-    public void createArmorCraftingRecipes(ArmorSet output, Item armorMaterial) {
-        if (output == null) return;
+    public void createArmorCraftingRecipes(ArmorSet armorSet, Item armorMaterial) {
+        if (armorSet == null) return;
         // helmet
         var ingredient = Ingredient.of(armorMaterial);
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getHelmet())
+        var criterion = has(armorMaterial);
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getHelmet())
             .define('#', ingredient)
             .pattern("###")
             .pattern("# #")
-            .unlockedBy("has_material", has(armorMaterial))
-            .save(this.output, recipeKey("armor/" + output.getName() + "_helmet"));
+            .unlockedBy("has_material", criterion)
+            .save(this.output, recipeKey("armor/" + armorSet.getName() + "_helmet"));
         // chestplate
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getChestplate())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getChestplate())
             .define('#', ingredient)
             .pattern("# #")
             .pattern("###")
             .pattern("###")
-            .unlockedBy("has_material", has(armorMaterial))
-            .save(this.output, recipeKey("armor/" + output.getName() + "_chestplate"));
+            .unlockedBy("has_material", criterion)
+            .save(this.output, recipeKey("armor/" + armorSet.getName() + "_chestplate"));
         // leggings
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getLeggings())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getLeggings())
             .define('#', ingredient)
             .pattern("###")
             .pattern("# #")
             .pattern("# #")
-            .unlockedBy("has_material", has(armorMaterial))
-            .save(this.output, recipeKey("armor/" + output.getName() + "_leggings"));
+            .unlockedBy("has_material", criterion)
+            .save(this.output, recipeKey("armor/" + armorSet.getName() + "_leggings"));
         // boots
-        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, output.getBoots())
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getBoots())
             .define('#', ingredient)
             .pattern("# #")
             .pattern("# #")
-            .unlockedBy("has_material", has(armorMaterial))
-            .save(this.output, recipeKey("armor/" + output.getName() + "_boots"));
+            .unlockedBy("has_material", criterion)
+            .save(this.output, recipeKey("armor/" + armorSet.getName() + "_boots"));
     }
 
-    public void createArmorSmithingRecipes(Item template, Item baseHelmet, Item baseChestplate, Item baseLeggings, Item baseBoots, Ingredient addition, ArmorSet outputArmorSet) {
+    public void createMountArmor(ArmorSet armorSet, Item baseMaterial, Criterion<InventoryChangeTrigger.TriggerInstance> criterion) {
+        if (armorSet.getHorse() != null) {
+            ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getHorse())
+                .define('#', baseMaterial)
+                .define('L', Items.LEATHER)
+                .pattern("# #")
+                .pattern("#L#")
+                .pattern("# #")
+                .unlockedBy("has_material", criterion)
+                .save(this.output, recipeKey("armor/" + armorSet.getName() + "_horse_armor"));
+        }
+        if (armorSet.getNautilus() != null) {
+            ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.COMBAT, armorSet.getNautilus())
+                .define('#', baseMaterial)
+                .define('N', Items.NAUTILUS_SHELL)
+                .pattern(" # ")
+                .pattern("#N#")
+                .pattern(" # ")
+                .unlockedBy("has_material", criterion)
+                .save(this.output, recipeKey("armor/" + armorSet.getName() + "_nautilus_armor"));
+        }
+    }
+
+    public void createArmorSmithingRecipes(
+        Item template,
+        Item baseHelmet,
+        Item baseChestplate,
+        Item baseLeggings,
+        Item baseBoots,
+        Item baseHorse,
+        Item baseNautilus,
+        Ingredient addition,
+        ArmorSet outputArmorSet
+    ) {
         if (outputArmorSet == null) return;
         // helmet
         SmithingTransformRecipeBuilder.smithing(
@@ -862,6 +909,32 @@ public class MythicRecipeGenerator extends RecipeProvider {
             )
             .unlocks("has_template", has(template))
             .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_boots"));
+
+        // horse
+        if (baseHorse != null && outputArmorSet.getHorse() != null) {
+            SmithingTransformRecipeBuilder.smithing(
+                    Ingredient.of(template),
+                    Ingredient.of(baseHorse),
+                    addition,
+                    RecipeCategory.COMBAT,
+                    outputArmorSet.getHorse()
+                )
+                .unlocks("has_template", has(template))
+                .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_horse_armor"));
+        }
+
+        // nautilus
+        if (baseNautilus != null && outputArmorSet.getNautilus() != null) {
+            SmithingTransformRecipeBuilder.smithing(
+                    Ingredient.of(template),
+                    Ingredient.of(baseNautilus),
+                    addition,
+                    RecipeCategory.COMBAT,
+                    outputArmorSet.getNautilus()
+                )
+                .unlocks("has_template", has(template))
+                .save(output, recipeKey("armor/" + outputArmorSet.getName() + "_nautilus_armor"));
+        }
     }
 
     public void createArmorSmithingRecipes(Item template, ArmorSet baseArmorSet, Ingredient addition, ArmorSet outputArmorSet) {
@@ -872,6 +945,8 @@ public class MythicRecipeGenerator extends RecipeProvider {
             baseArmorSet.getChestplate(),
             baseArmorSet.getLeggings(),
             baseArmorSet.getBoots(),
+            baseArmorSet.getHorse(),
+            baseArmorSet.getNautilus(),
             addition,
             outputArmorSet
         );
