@@ -18,6 +18,7 @@ public class MythicResourceKeys {
     public static final ResourceKey<Block> QUADRILLUM_NUKE_CORE = blockKey("quadrillum_nuke_core");
     public static final ResourceKey<Block> SPONGE_NUKE_CORE = blockKey("sponge_nuke_core");
     public static final ResourceKey<Item> BANGLUM_TNT_MINECART = itemKey("banglum_tnt_minecart");
+    public static final ResourceKey<Item> CARMOT_BELL_ITEM = itemKey("carmot_bell");
     public static final ResourceKey<Item> MYTHRIL_DRILL = itemKey("mythril_drill");
     public static final ResourceKey<Item> ORICHALCUM_HAMMER = itemKey("orichalcum_hammer");
     public static final ResourceKey<Item> PALLADIUM_MINECART = itemKey("palladium_minecart");

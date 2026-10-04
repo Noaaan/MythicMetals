@@ -1,6 +1,6 @@
 package com.mythicmetals.block.entity;
 
-import com.mythicmetals.block.CarmotBellBlock;
+import com.mythicmetals.misc.CarmotBellHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -28,7 +28,7 @@ public class CarmotBellBlockEntity extends BlockEntity {
     }
 
     public void markUsed() {
-        cooldown = CarmotBellBlock.COOLDOWN;
+        cooldown = CarmotBellHandler.COOLDOWN_TICKS;
         setChanged();
     }
 

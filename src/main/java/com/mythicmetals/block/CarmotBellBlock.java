@@ -3,15 +3,10 @@ package com.mythicmetals.block;
 import com.mojang.serialization.MapCodec;
 import com.mythicmetals.block.entity.CarmotBellBlockEntity;
 import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
-import com.mythicmetals.data.damage.CarmotBellDamageSource;
-import com.mythicmetals.misc.MythicParticleSystem;
-import com.mythicmetals.misc.MythicSoundEvents;
+import com.mythicmetals.misc.*;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -25,8 +20,6 @@ import org.jspecify.annotations.Nullable;
 
 public class CarmotBellBlock extends BaseEntityBlock {
 
-    public static final double RANGE = 8.0;
-    public static final int COOLDOWN = 10 * 20;
     public static final VoxelShape BELL_SHAPE = Block.box(3.0f, 0.0f, 3.0f, 13.0f, 9.0f, 13.0f);
 
     public static final MapCodec<CarmotBellBlock> CODEC = simpleCodec(CarmotBellBlock::new);
@@ -41,10 +34,11 @@ public class CarmotBellBlock extends BaseEntityBlock {
         if (be == null) return InteractionResult.FAIL;
 
         if (be instanceof CarmotBellBlockEntity bell) {
-            if (bell.canBeUsed()) {
+            if (bell.canBeUsed() && !CarmotBellHandler.isCoolingDown(player)) {
                 bell.markUsed();
-                heal(world, be.getBlockPos().getCenter(), player);
+                CarmotBellHandler.heal(world, be.getBlockPos().getCenter(), player);
                 world.playLocalSound(pos, MythicSoundEvents.CARMOT_BELL_DING, SoundSource.BLOCKS, 1.0f, 1.0f, true);
+                player.getCooldowns().addCooldown(CarmotBellHandler.COOLDOWN_GROUP, CarmotBellHandler.COOLDOWN_TICKS);
             } else {
                 world.playLocalSound(pos, MythicSoundEvents.CARMOT_BELL_DING_PLAIN, SoundSource.BLOCKS, 1.0f, 1.0f, true);
             }
@@ -62,24 +56,6 @@ public class CarmotBellBlock extends BaseEntityBlock {
     @Override
     protected VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return BELL_SHAPE;
-    }
-
-    private void heal(Level world, Vec3 pos, LivingEntity user) {
-        if (world.isClientSide()) return;
-        var entities = world.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(pos, RANGE * 2, RANGE, RANGE * 2));
-        entities.forEach(entity -> {
-            if (entity instanceof LivingEntity livingEntity) {
-                if (livingEntity.is(EntityTypeTags.UNDEAD)) {
-                    entity.hurtServer(((ServerLevel) world), CarmotBellDamageSource.of(world, user), Math.max(10.0f, livingEntity.getHealth() * 0.1f));
-                    MythicParticleSystem.HEALING_DAMAGE.spawn(world, livingEntity.position());
-                } else {
-                    livingEntity.heal(Math.max(10.0f, livingEntity.getMaxHealth() * 0.1f));
-                    MythicParticleSystem.HEALING_HEARTS.spawn(world, livingEntity.position());
-                }
-            }
-        });
-        MythicParticleSystem.HEALING_AREA.spawn(world, pos, RANGE);
-        MythicParticleSystem.HEALING_HEARTS.spawn(world, pos);
     }
 
     @Override
