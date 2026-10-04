@@ -118,7 +118,7 @@ public class MythrilDrill extends Item implements AutoRepairable {
                 }
 
                 // Restore air when mining ores underwater
-                if (upgradeComponent.hasUpgrade(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
+                if (upgradeComponent.hasUpgrade(MythicMaterials.TIDESINGER.baseMaterial())) {
                     miner.setAirSupply(Math.min(miner.getAirSupply() + 60, miner.getMaxAirSupply()));
                 }
                 // Randomly drop gold from midas gold

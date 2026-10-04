@@ -78,11 +78,11 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
             );
             attributes = attributes.withModifierAdded(Attributes.LUCK, modifier, EquipmentSlotGroup.MAINHAND);
         }
-        if (addition.equals(MythicMaterials.AQUARIUM.extraItems().get(MythicResourceKeys.AQUARIUM_PEARL))) {
+        if (addition.equals(MythicMaterials.TIDESINGER.baseMaterial())) {
             var modifier = new AttributeModifier(
                 RegistryHelper.id("mythril_drill_underwater_mining_bonus"),
                 3.0,
-                AttributeModifier.Operation.ADD_VALUE
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             );
             attributes = attributes.withModifierAdded(Attributes.SUBMERGED_MINING_SPEED, modifier, EquipmentSlotGroup.MAINHAND);
         }
