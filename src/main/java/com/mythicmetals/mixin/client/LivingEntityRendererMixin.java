@@ -1,5 +1,7 @@
 package com.mythicmetals.mixin.client;
 
+import com.mythicmetals.client.CarmotShieldRenderState;
+import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.client.MythicRenderStateKeys;
 import com.mythicmetals.entity.MythicEntityAttributes;
@@ -23,9 +25,13 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, S extend
     private void mythicmetals$extractRenderState(T entity, S state, float partialTicks, CallbackInfo ci) {
         var attributes = entity.getAttributes();
         if (attributes.hasAttribute(MythicEntityAttributes.CARMOT_SHIELD)) {
-            state.setData(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY, new CarmotShield(
-                attributes.getValue(MythicEntityAttributes.CARMOT_SHIELD),
-                entity.hurtTime > 0
+            var shield = entity.getAttached(MythicDataAttachments.CARMOT_SHIELD_ATTACHMENT);
+            if (shield == null) return;
+            state.setData(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY,
+                new CarmotShieldRenderState(
+                ((int) attributes.getValue(MythicEntityAttributes.CARMOT_SHIELD)),
+                entity.hurtTime > 0 || shield.isHurt(),
+                    shield.isBroken()
             ));
         }
     }

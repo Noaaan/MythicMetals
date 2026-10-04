@@ -1,13 +1,14 @@
 package com.mythicmetals.mixin;
 
 import com.mythicmetals.data.MythicTags;
+import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.item.tools.HammerBase;
 import com.mythicmetals.misc.duck.IsAttackCritical;
-import net.minecraft.stats.Stat;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,10 +17,12 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(Player.class)
-public abstract class PlayerEntityMixin extends LivingEntity implements IsAttackCritical {
+import static com.mythicmetals.entity.MythicEntityAttributes.CARMOT_SHIELD;
 
-    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, Level world) {
+@Mixin(Player.class)
+public abstract class PlayerMixin extends LivingEntity implements IsAttackCritical {
+
+    protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level world) {
         super(entityType, world);
     }
 
@@ -57,6 +60,14 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IsAttack
             cir.setReturnValue(speed * speedMod);
         }
 
+    }
+
+    @ModifyVariable(method = "actuallyHurt", at = @At(value = "HEAD"), argsOnly = true)
+    private float mythicmetals$carmotShieldCancel(float dmg, ServerLevel level, DamageSource source) {
+        if (!this.getAttributes().hasAttribute(CARMOT_SHIELD)) {
+            return dmg;
+        }
+        return CarmotShield.handleCarmotShield((Player) (Object) this, dmg);
     }
 
     @Inject(method = "attack", at = @At("HEAD"))

@@ -116,6 +116,14 @@ public abstract class LivingEntityMixin extends Entity {
         return original && !(this.getAttributeValue(FIRE_VULNERABILITY) > 0);
     }
 
+    @ModifyVariable(method = "actuallyHurt", at = @At(value = "HEAD"), argsOnly = true)
+    private float mythicmetals$carmotShieldCancel(float dmg, ServerLevel level, DamageSource source) {
+        if (!this.getAttributes().hasAttribute(CARMOT_SHIELD)) {
+            return dmg;
+        }
+        return CarmotShield.handleCarmotShield((LivingEntity) (Object) this, dmg);
+    }
+
     /**
      * Increase fire damage taken by 1 for each point of Fire Vulnerability
      * Fire Resistance halves this, although you will still take fire damage this way
@@ -135,20 +143,20 @@ public abstract class LivingEntityMixin extends Entity {
     private void mythicmetals$tick(CallbackInfo ci) {
         if (!level().isClientSide()) {
             mythicmetals$tickCombustion();
+            tickCarmotShield();
         }
         mythicmetals$palladiumParticles();
         mythicmetals$tickFireResWhileRiding();
-        tickCarmotShield();
     }
 
     @Unique
     private void tickCarmotShield() {
         var maxShield = CarmotShield.getMaxHealth((LivingEntity) ((Object) this));
         if (maxShield > 0) {
-            var carmotShield = this.getAttachedOrCreate(CARMOT_SHIELD_ATTACHMENT, () -> CarmotShield.NONE);
-            int cooldown = this.getAttachedOrCreate(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, () -> 0);
+            var carmotShield = this.getAttachedOrCreate(CARMOT_SHIELD_ATTACHMENT);
+            int cooldown = this.getAttachedOrCreate(CARMOT_SHIELD_COOLDOWN_ATTACHMENT);
             if (cooldown > 0) {
-                this.setAttached(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, cooldown - 1);
+                this.setAttached(CARMOT_SHIELD_COOLDOWN_ATTACHMENT, CarmotShield.tickCooldown(cooldown));
             } else {
                 mythicmetals$carmotParticle();
                 this.setAttached(CARMOT_SHIELD_ATTACHMENT, carmotShield.tick(maxShield));

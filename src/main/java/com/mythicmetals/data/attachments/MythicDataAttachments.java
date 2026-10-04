@@ -16,11 +16,13 @@ public class MythicDataAttachments {
             builder -> builder
                 .persistent(CodecUtils.toCodec(CarmotShield.ENDEC))
                 .syncWith(CodecUtils.toPacketCodec(CarmotShield.ENDEC), AttachmentSyncPredicate.all())
+                .initializer(() -> CarmotShield.NONE)
         );
 
     public static final AttachmentType<Integer> CARMOT_SHIELD_COOLDOWN_ATTACHMENT = AttachmentRegistry
         .createDefaulted(RegistryHelper.id("carmot_shield_cooldown"), () -> 0);
 
-    public static final AttachmentType<Integer> COMBUSTION_COOLDOWN_ATTACHMENT = AttachmentRegistry
-        .createDefaulted(RegistryHelper.id("combustion_cooldown"), () -> 0);
+    public static void init() {
+
+    }
 }

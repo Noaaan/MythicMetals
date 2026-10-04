@@ -5,13 +5,14 @@ import com.mythicmetals.config.ShieldPosition;
 import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.RegistryHelper;
+import io.wispforest.owo.Owo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
+import java.awt.*;
 
-@SuppressWarnings("UnstableApiUsage")
 public class CarmotShieldHudHandler {
     private CarmotShieldHudHandler() {}
 
@@ -45,6 +46,9 @@ public class CarmotShieldHudHandler {
             int yStart = ShieldPosition.calculateHeight(guiGraphics.guiWidth(), MythicMetals.CONFIG.shieldPosition.y());
             renderOutline(guiGraphics, pips, xStart, yStart);
             renderShieldHealth(guiGraphics, filledPips, xStart, yStart);
+            if (Owo.DEBUG) {
+                guiGraphics.text(Minecraft.getInstance().font, carmotShield.toString(), xStart, yStart + 15, -1);
+            }
         }
     }
 

@@ -6,6 +6,7 @@ import com.mythicmetals.block.entity.RegisterBlockEntityTypes;
 import com.mythicmetals.command.MythicCommands;
 import com.mythicmetals.config.MythicMetalsConfig;
 import com.mythicmetals.data.MythicCriteriaTriggers;
+import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.data.conditions.MythicResourceConditions;
 import com.mythicmetals.data.loot.MythicLootConditions;
 import com.mythicmetals.data.recipe.MythicRecipeSerializers;
@@ -93,6 +94,7 @@ public class MythicMetals implements ModInitializer {
         MythicCriteriaTriggers.init();
         BlockBreaker.initHammerTime();
         MythicLootOps.init();
+        MythicDataAttachments.init();
         LegacyIds.registerAliases();
         registerDispenserBehaviour();
         registerEvents();

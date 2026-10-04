@@ -83,11 +83,6 @@ public class MythicMetalsClient implements ClientModInitializer {
 
         BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
 
-        //BlockRenderLayerMap.putBlock(MythicMaterials.PALLADIUM.extraBlocks().get(MythicResourceKeys.PALLADIUM_RAIL), ChunkSectionLayer.CUTOUT);
-        //BlockRenderLayerMap.putBlock(MythicMaterials.CARMOT.extraBlocks().get(MythicResourceKeys.CARMOT_BELL), ChunkSectionLayer.CUTOUT);
-        //BlockRenderLayerMap.putBlock(MythicMaterials.AQUARIUM.extraBlocks().get(MythicResourceKeys.AQUARIUM_GLASS), ChunkSectionLayer.TRANSLUCENT);
-        //BlockRenderLayerMap.putBlock(MythicMaterials.KYBER.blockSet().storage().block(), ChunkSectionLayer.TRANSLUCENT);
-
         if (FabricLoader.getInstance().isModLoaded("wikirenderer")) {
             ClientCommandRegistrationCallback.EVENT.register((dispatcher, _) -> {
                 IsometricArmorStandExporter.register(dispatcher);
@@ -101,7 +96,7 @@ public class MythicMetalsClient implements ClientModInitializer {
         registerTooltipCallbacks();
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"rawtypes", "unchecked"})
     private void registerSwirlRenderer() {
         LivingEntityRenderLayerRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             registrationHelper.register(new LivingEntityEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));

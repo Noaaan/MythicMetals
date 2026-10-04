@@ -30,13 +30,13 @@ public class LivingEntityEnergySwirlFeatureRenderer<S extends EntityRenderState,
     @Override
     public void submit(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int i, S entityRenderState, float f, float g) {
         // TODO - Improve Carmot Shield animations
-        var shield = entityRenderState.getDataOrDefault(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY, CarmotShield.NONE);
-        if (shield.shieldHealth() <= 0.0) return;
-        if (shield.isHurt()) {
+        var shield = entityRenderState.getData(MythicRenderStateKeys.CARMOT_SHIELD_STATE_KEY);
+        if (shield == null) return;
+        if (shield.isBroken()) return;
+        if (shield.isDamaged()) {
             this.swirlModel.copyTransforms(this.getParentModel());
             this.swirlModel.setupAnim(entityRenderState);
             poseStack.scale(1.125f, 1.0625f, 1.125f);
-            //noinspection DataFlowIssue
             submitNodeCollector.submitModel(
                 swirlModel,
                 entityRenderState,
