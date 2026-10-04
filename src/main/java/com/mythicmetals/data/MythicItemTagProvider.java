@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import org.jspecify.annotations.NonNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,19 +27,15 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
-        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, name, _) -> {
+    protected void addTags(HolderLookup.@NonNull Provider provider) {
+        ReflectionUtils.iterateAccessibleStaticFields(MythicMaterials.class, Material.class, (material, _, _) -> {
             switch (material.materialType()) {
                 case RARE_ALLOY, ALLOY, INGOT -> {
                     valueLookupBuilder(createModItemTag("ingots/" + material.name())).add(material.baseMaterial());
                     valueLookupBuilder(ConventionalItemTags.INGOTS).add(material.baseMaterial());
                 }
-                case SPECIAL -> {
-                    valueLookupBuilder(MythicTags.RARE_MATERIALS).add(material.baseMaterial());
-                }
-                default -> {
-                    valueLookupBuilder(MythicTags.MATERIALS).add(material.baseMaterial());
-                }
+                case SPECIAL -> valueLookupBuilder(MythicTags.RARE_MATERIALS).add(material.baseMaterial());
+                default -> valueLookupBuilder(MythicTags.MATERIALS).add(material.baseMaterial());
             }
             if (material.toolSet() != null) {
                 buildToolTags(material.toolSet(), material.name());
@@ -68,14 +65,43 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
         // extra swords
         var extraSwords = List.of(
+            MythicTools.MIDAS_GOLD_DAGGER,
+            MythicTools.MIDAS_GOLD_SHORTSWORD,
             MythicTools.MIDAS_GOLD_SWORD,
+            MythicTools.SOCKETED_MIDAS_GOLD_SWORD,
             MythicTools.GILDED_MIDAS_GOLD_SWORD,
+            MythicTools.MAXED_GILDED_MIDAS_GOLD_SWORD,
             MythicTools.ROYAL_MIDAS_GOLD_SWORD,
+            MythicTools.ROYAL_MIDAS_GOLD_BROADSWORD,
+            MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD,
+            MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD,
+            MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD,
             MythicTools.RED_AEGIS_SWORD,
             MythicTools.WHITE_AEGIS_SWORD
         );
         valueLookupBuilder(MythicTags.SWORDS).addAll(extraSwords);
         valueLookupBuilder(ItemTags.SWORDS).addAll(extraSwords);
+
+        // abilities
+        if (MythicMaterials.CARMOT.toolSet() == null) throw new IllegalStateException("no carmot tools during datagen");
+        valueLookupBuilder(MythicTags.BONUS_FORTUNE)
+            .add(MythicMaterials.CARMOT.toolSet().getPickaxe())
+            .add(MythicMaterials.CARMOT.toolSet().getAxe())
+            .add(MythicMaterials.CARMOT.toolSet().getShovel())
+            .add(MythicMaterials.CARMOT.toolSet().getHoe());
+        valueLookupBuilder(MythicTags.BONUS_LOOTING)
+            .add(MythicMaterials.CARMOT.toolSet().getSword())
+            .add(MythicMaterials.CARMOT.toolSet().getSpear());
+
+        valueLookupBuilder(MythicTags.MIDAS_TOUCH)
+            .add(MythicTools.ROYAL_MIDAS_GOLD_SWORD)
+            .add(MythicTools.ROYAL_MIDAS_GOLD_BROADSWORD)
+            .add(MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD)
+            .add(MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD)
+            .add(MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD);
+
+        valueLookupBuilder(MythicTags.AUTO_REPAIR)
+            .addOptionalTag(createModItemTag("equipment/prometheum"));
     }
 
     private void buildToolTags(ToolSet toolSet, String name) {
@@ -138,7 +164,7 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
             valueLookupBuilder(materialOreTag).add(blockSet.ore().block().asItem());
 
             if (!blockSet.oreVariants().isEmpty()) {
-                blockSet.oreVariants().forEach((s, blockRecord) -> {
+                blockSet.oreVariants().forEach((_, blockRecord) -> {
                     valueLookupBuilder(ConventionalItemTags.ORES).add(blockRecord.block().asItem());
                     valueLookupBuilder(materialOreTag).add(blockRecord.block().asItem());
                 });

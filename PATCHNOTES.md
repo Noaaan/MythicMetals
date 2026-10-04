@@ -30,10 +30,14 @@ Specifically, the affected abilities between 1.21.4 and this version are the fol
 - Blast Padding -> Explosion Knockback Resistance (vanilla attribute)
 - Blast Protection -> new attribute `mythicmetals:explosion_resistance` 
   - Acts similar to burn time reduction: If set to zero you take no blast damage. 
-- Fire Protection -> new tag `mythicmetals:fire_resistant_armor`
+- Carmot Bonus Fortune -> tag changed to `#mythicmetals:bonus_fortune`
+- Carmot Bonus Looting -> tag changed to `#mythicmetals:bonus_looting`
+- Royal Midas Gold Sword Midas Touch -> tag changed to `#mythicmetals:midas_touch`
+- Fire Protection -> new tag `#mythicmetals:fire_resistant_armor`
   - Reduces fire damage by 8% per piece in tag when worn
 - Projectile Protection -> new attribute `mythicmetals:projectile_resistance`
   - Acts similar to burn time reduction: If set to zero you take no projectile damage.
+- Prometheum Auto Repair -> tag changed to `#mythicmetals:auto_repair`
 - Water Protection (Origins compat) has been removed
   - This might be re-added if Origins ever updates past 1.21.x
 - Red Aegis Sword fire aspect -> new component `mythicmetals:fire_aspect`
@@ -111,6 +115,8 @@ Add your items to `#mythicmetals:adds_fold_to_midas_gold_sword`.
   - Now uses a Rose Bush and eight Prometheum Nuggets
 - Improved Palladium Rails handling
 - Fixed not being able to punch Banglum TNT
+- Carmot Bell can now be broken with only your hand (no pickaxe required)
+- The Carmot Bell cooldown now applies per-player as well as per-block
 
 # 0.25.2
 

@@ -5,6 +5,7 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.misc.RegistryHelper;
 import io.wispforest.endec.StructEndec;
 import io.wispforest.endec.impl.StructEndecBuilder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -18,10 +19,9 @@ import net.minecraft.world.level.Level;
  * A data carrier which holds and tracks the Prometheum Auto Repair ability.
  * Only applies to items within the {@link MythicTags#AUTO_REPAIR} tag.
  * <br>
- * If the Item is an {@link net.minecraft.world.item.ArmorItem} it gains bonus armor, and/or armor toughness.
- * Otherwise, if the Item has {@link net.minecraft.core.component.DataComponents#ATTRIBUTE_MODIFIERS} it will gain bonus damage.
- * <br>
- * Append this component on your {@link net.minecraft.world.item.Item.Properties} to use it.
+ * The bonus depends on the Items {@link EquipmentSlot} inherited from the {@link DataComponents#EQUIPPABLE} component.
+ * For armor, it gains bonus armor and/or armor toughness.
+ * Otherwise, it will gain bonus damage.
  *
  * @see com.mythicmetals.mixin.ItemMixin
  */

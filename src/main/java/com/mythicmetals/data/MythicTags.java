@@ -59,22 +59,20 @@ public class MythicTags {
     public static final TagKey<Item> STORAGE_BLOCKS = TagKey.create(ITEM, id("storage_blocks"));
     public static final TagKey<Item> RARE_MATERIALS = TagKey.create(ITEM, id("rare_materials"));
     public static final TagKey<Item> FIRE_RESISTANT_ARMOR = TagKey.create(ITEM, id("fire_resistant_armor"));
-    public static final TagKey<Item> AUTO_REPAIR = TagKey.create(ITEM, id("abilities/auto_repair"));
-    public static final TagKey<Item> BONUS_FORTUNE = TagKey.create(ITEM, id("abilities/bonus_fortune"));
-    public static final TagKey<Item> BONUS_LOOTING = TagKey.create(ITEM, id("abilities/bonus_looting"));
+    public static final TagKey<Item> AUTO_REPAIR = TagKey.create(ITEM, id("auto_repair"));
+    public static final TagKey<Item> BONUS_FORTUNE = TagKey.create(ITEM, id("bonus_fortune"));
+    public static final TagKey<Item> BONUS_LOOTING = TagKey.create(ITEM, id("bonus_looting"));
     public static final TagKey<Item> CARMOT_ARMOR = TagKey.create(ITEM, id("armor/carmot"));
-    public static final TagKey<Item> MIDAS_TOUCH = TagKey.create(ITEM, id("abilities/midas_touch"));
+    public static final TagKey<Item> MIDAS_TOUCH = TagKey.create(ITEM, id("midas_touch"));
     public static final TagKey<Item> TIDESINGER_CORAL = TagKey.create(ITEM, id("tidesinger_coral"));
     public static final TagKey<Item> MYTHRIL_DRILL_UPGRADES = TagKey.create(ITEM, id("mythril_drill_upgrades"));
     public static final TagKey<Item> ADDS_FOLD_TO_MIDAS_GOLD_SWORD = TagKey.create(ITEM, id("adds_fold_to_midas_gold_sword"));
 
     public static final TagKey<Block> ANVILS = TagKey.create(BLOCK, id("anvils"));
-    public static final TagKey<Block> BOOST_IN_LAVA = TagKey.create(BLOCK, id("boosts_in_lava"));
     public static final TagKey<Block> CARMOT_NUKE_IGNORED = TagKey.create(BLOCK, id("carmot_nuke_ignored"));
     public static final TagKey<Block> NEEDS_COPPER_TOOLS = TagKey.create(BLOCK, id("needs_copper_tools"));
     public static final TagKey<Block> NEEDS_NETHERITE_TOOLS = TagKey.create(BLOCK, id("needs_netherite_tool"));
     public static final TagKey<Block> NEEDS_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("needs_unobtainium_alloy_tools"));
-    public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOLS = TagKey.create(BLOCK, id("incorrect_for_copper_tools"));
     public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_ALLOY_TOOLS = TagKey.create(BLOCK, id("incorrect_for_unobtainium_alloy_tools"));
     public static final TagKey<Block> CONDUIT_BLOCKS = TagKey.create(BLOCK, id("conduit_blocks"));
     public static final TagKey<Block> NUKE_CORES = TagKey.create(BLOCK, id("nuke_cores"));
