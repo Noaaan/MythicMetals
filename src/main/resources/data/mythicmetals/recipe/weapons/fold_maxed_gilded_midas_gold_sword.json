@@ -1,0 +1,9 @@
+{
+  "type": "mythicmetals:fold_midas_sword",
+  "addition": "mythicmetals:midas_gold_block",
+  "base": "mythicmetals:maxed_gilded_midas_gold_sword",
+  "result": {
+    "id": "mythicmetals:royal_midas_gold_sword"
+  },
+  "template": "mythicmetals:royal_midas_smithing_template"
+}
