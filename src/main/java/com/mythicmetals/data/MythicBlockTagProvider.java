@@ -51,6 +51,11 @@ public class MythicBlockTagProvider extends FabricTagsProvider.BlockTagsProvider
             addTags(blockSet.rawStorage());
             addTags(blockSet.anvil());
 
+            if (blockSet.anvil() != null) {
+                builder(BlockTags.ANVIL).add(blockSet.anvil().blockKey());
+                builder(MythicTags.ANVILS).add(blockSet.anvil().blockKey());
+            }
+
             blockSet.oreVariants().values().forEach(this::addTags);
         });
 
