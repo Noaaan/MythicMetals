@@ -122,11 +122,13 @@ public class MythicMaterials {
             .createOreVariant("deepslate", 6.5f, 7.5f)
             .finish()
         )
-        .addExtraBlockAndItem("carmot_bell", properties -> new CarmotBellBlock(
-                properties
-                    .noOcclusion()
-                    .strength(0.5f, 4.0f)
-            ), CarmotBellItem::new
+        .addExtraBlockAndItem("carmot_bell",
+            BlockBehaviour.Properties
+                .of()
+                .noOcclusion()
+                .strength(0.5f, 4.0f),
+            CarmotBellBlock::new,
+            CarmotBellItem::new
         )
         .addExtraBlock(CARMOT_NUKE_CORE, properties -> new BanglumNukeCore(properties) {
             @Override
