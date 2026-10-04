@@ -1,5 +1,6 @@
 package com.mythicmetals.config;
 
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.ui.core.Color;
 
 public class ShieldPosition {
@@ -23,5 +24,5 @@ public class ShieldPosition {
         return (int) (windowHeight / 100 * y);
     }
 
-    public Color color = Color.BLUE;
+    public Color color = UsefulSingletonForColorUtil.MetalColors.CARMOT;
 }
