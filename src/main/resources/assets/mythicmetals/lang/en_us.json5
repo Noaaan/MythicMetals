@@ -692,13 +692,11 @@
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance": "Chance of the Mythril Drill Templates",
   "text.config.mythicmetals-config.option.mythrilDrillTemplateChance.tooltip": "Spawns in Mineshaft chests",
 
-  "text.config.mythicmetals-config.option.shieldPosition": "Carmot Shield HUD Position",
-  "text.config.mythicmetals-config.enum.shieldPosition": "Carmot Shield HUD Position",
-  "text.config.mythicmetals-config.enum.shieldPosition.bottom_right": "Bottom Right",
-  "text.config.mythicmetals-config.enum.shieldPosition.top_right": "Top Right",
-  "text.config.mythicmetals-config.enum.shieldPosition.bottom_left": "Bottom Left",
-  "text.config.mythicmetals-config.enum.shieldPosition.top_left": "Top Left",
-  "text.config.mythicmetals-config.enum.shieldPosition.disabled": "Disabled",
+  "text.config.mythicmetals-config.category.shieldPosition": "Carmot Shield HUD",
+  "text.config.mythicmetals-config.option.shieldPosition,enabled": "Enable Carmot Shield HUD element",
+  "text.config.mythicmetals-config.option.shieldPosition.x": "Shield Position X",
+  "text.config.mythicmetals-config.option.shieldPosition.y": "Shield Position Y",
+  "text.config.mythicmetals-config.option.shieldPosition.color": "Shield Color",
 
   "text.config.mythicmetals-config.title": "Mythic Metals Configuration",
 

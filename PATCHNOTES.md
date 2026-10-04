@@ -1285,6 +1285,7 @@ Reduced the levels of the following abilities:
 - Improved the rendering of the shield  
 - The shield now goes on a 2.5 second (50 tick) cooldown whenever you take damage
 - The Particle trail will no longer show on players if the shield has 0 health
+- Added better config options for position and color
 
 ### Fixes  
 Fixed an issue where Natural Armor Enchants would not apply correctly.  

@@ -1,5 +1,7 @@
 package com.mythicmetals.config;
 
+import io.wispforest.owo.ui.core.Color;
+
 public class ShieldPosition {
     public boolean enabled = true;
     public int x = 2;
@@ -21,7 +23,5 @@ public class ShieldPosition {
         return (int) (windowHeight / 100 * y);
     }
 
-    public boolean isDisabled() {
-        return !enabled;
-    }
+    public Color color = Color.BLUE;
 }

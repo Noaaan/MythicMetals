@@ -45,13 +45,17 @@ public class UsefulSingletonForColorUtil {
     }
 
     public static int rainbow() {
-        double delta = System.currentTimeMillis() / 45.0;
+        return rainbow(192, 1.0f);
+    }
+
+    public static int rainbow(int alpha, float speedMod) {
+        double delta = (System.currentTimeMillis() / 45.0) * speedMod;
 
         double hue = delta % 360.0;
         float saturation = 1;
         float constantValue = 1;
 
-        return Mth.hsvToArgb((float) (hue / 360), saturation, constantValue, 192);
+        return Mth.hsvToArgb((float) (hue / 360), saturation, constantValue, alpha);
     }
 
     /**
@@ -74,7 +78,7 @@ public class UsefulSingletonForColorUtil {
         public static final Style PALLADIUM_STYLE = Style.EMPTY.withColor(MetalColors.PALLADIUM.rgb());
         public static final Style TIDESINGER_BLUE = Style.EMPTY.withColor(0x2F88FB);
 
-        public static final int SHIELD_BREAK_COLOR = Mth.hsvToArgb(0f, 1.0f, 1.0f, 128);
+        public static final int CARMOT_SHIELD_BROKEN_BAR_COLOR = Mth.hsvToArgb(0f, .9f, .9f, 255);
 
         public static final CoralColor BRAIN = new CoralColor("brain", Style.EMPTY.withColor(0xE17DB7));
         public static final CoralColor BUBBLE = new CoralColor("bubble", Style.EMPTY.withColor(0xCB44BD));

@@ -5,13 +5,15 @@ import com.mythicmetals.config.ShieldPosition;
 import com.mythicmetals.data.attachments.MythicDataAttachments;
 import com.mythicmetals.item.armor.CarmotShield;
 import com.mythicmetals.misc.RegistryHelper;
+import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import io.wispforest.owo.Owo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
-import java.awt.*;
+
+import static com.mythicmetals.misc.UsefulSingletonForColorUtil.MetalColors.CARMOT_SHIELD_BROKEN_BAR_COLOR;
 
 public class CarmotShieldHudHandler {
     private CarmotShieldHudHandler() {}
@@ -45,7 +47,7 @@ public class CarmotShieldHudHandler {
             int xStart = ShieldPosition.calculateWidth(guiGraphics.guiWidth(), MythicMetals.CONFIG.shieldPosition.x());
             int yStart = ShieldPosition.calculateHeight(guiGraphics.guiWidth(), MythicMetals.CONFIG.shieldPosition.y());
             renderOutline(guiGraphics, pips, xStart, yStart);
-            renderShieldHealth(guiGraphics, filledPips, xStart, yStart);
+            renderShieldHealth(guiGraphics, filledPips, xStart, yStart, pips);
             if (Owo.DEBUG) {
                 guiGraphics.text(Minecraft.getInstance().font, carmotShield.toString(), xStart, yStart + 15, -1);
             }
@@ -54,28 +56,29 @@ public class CarmotShieldHudHandler {
 
     public static void renderOutline(GuiGraphicsExtractor guiGraphics, int pips, int xStart, int yStart) {
         // logo
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, 0, LOGO_SIZE, LOGO_SIZE, 64, 32);
-        // outline
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, 0, LOGO_SIZE, LOGO_SIZE, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
         for (int i = 0; i < pips; i++) {
             if (i == 0) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32);
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
             } else if (i == pips - 1) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32);
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
             } else {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32);
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
             }
         }
     }
 
-    public static void renderShieldHealth(GuiGraphicsExtractor guiGraphics, int pips, int xStart, int yStart) {
-        // logo
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, FILLED_PIPS_V, LOGO_SIZE, LOGO_SIZE, 64, 32);
-        // bar
+    public static void renderShieldHealth(GuiGraphicsExtractor guiGraphics, int pips, int xStart, int yStart, int maxPips) {
+        var colorConfig = MythicMetals.CONFIG.shieldPosition.color();
+        var color = colorConfig.asHexString(false).equals("#AE4000") ? UsefulSingletonForColorUtil.rainbow(240, 0.75f) : colorConfig.argb();
         for (int i = 0; i < pips; i++) {
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, FILLED_PIPS_V, LOGO_SIZE, LOGO_SIZE, 64, 32, color);
             if (i == 0) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, FILLED_PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32);
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, FILLED_PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32,  color);
+            } else if (i == maxPips - 1) {
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, FILLED_PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32,  color);
             } else {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, FILLED_PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32);
+                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, FILLED_PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32,  color);
             }
         }
     }
