@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
+        "mythicmetals:midas_gold_block",
         {
             "id": "numismatic-overhaul:gold_coin",
             "required": false
