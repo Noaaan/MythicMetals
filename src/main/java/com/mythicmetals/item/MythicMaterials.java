@@ -123,14 +123,14 @@ public class MythicMaterials {
             .finish()
         )
         .addExtraBlockAndItem("carmot_bell",
-            BlockBehaviour.Properties
-                .of()
-                .noOcclusion()
-                .strength(0.5f, 4.0f),
-            CarmotBellBlock::new,
+            properties -> new CarmotBellBlock(
+                properties
+                    .noOcclusion()
+                    .strength(0.5f, 4.0f)
+            ),
             CarmotBellItem::new
         )
-        .addExtraBlock(CARMOT_NUKE_CORE, properties -> new BanglumNukeCore(properties) {
+        .addExtraBlock(CARMOT_NUKE_CORE, properties -> new BanglumNukeCore(properties.requiresCorrectToolForDrops()) {
             @Override
             public Predicate<BlockState> getPredicate() {
                 return state -> !state.is(MythicTags.CARMOT_NUKE_IGNORED);

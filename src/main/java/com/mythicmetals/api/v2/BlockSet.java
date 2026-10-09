@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
@@ -218,7 +217,6 @@ public record BlockSet(
     public static BlockBehaviour.Properties createBlockSettings(ResourceKey<Block> key) {
         return BlockBehaviour.Properties.of()
             .setId(key)
-            .requiresCorrectToolForDrops()
             .forceSolidOn();
     }
 }

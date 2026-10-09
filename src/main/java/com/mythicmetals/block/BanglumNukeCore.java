@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class BanglumNukeCore extends Block implements NukeCore {
 
     public BanglumNukeCore(Properties properties) {
-        super(properties);
+        super(properties.requiresCorrectToolForDrops());
     }
 
     @Override

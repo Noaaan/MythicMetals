@@ -14,7 +14,7 @@ public class EnchantedMidasGoldBlock extends BaseEntityBlock {
     public static final MapCodec<EnchantedMidasGoldBlock> CODEC = simpleCodec(EnchantedMidasGoldBlock::new);
 
     public EnchantedMidasGoldBlock(Properties settings) {
-        super(settings);
+        super(settings.requiresCorrectToolForDrops());
     }
 
     @Override

@@ -216,10 +216,10 @@ public record Material(
             return this;
         }
 
-        public Builder addExtraBlockAndItem(String name, BlockBehaviour.Properties propertyOverride, Function<BlockBehaviour.Properties, Block> blockFunction, BiFunction<Block, Item.Properties, Item> itemFunction) {
+        public Builder addExtraBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BiFunction<Block, Item.Properties, Item> itemFunction) {
             var itemKey = RegistryHelper.itemKey(name);
             var blockKey = RegistryHelper.blockKey(name);
-            var block = RegistryHelper.blockOnly(blockKey, blockFunction.apply(propertyOverride.setId(blockKey)));
+            var block = RegistryHelper.blockOnly(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
             extraBlocks.putIfAbsent(blockKey, block);
             addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, computeRarity(type))));
             return this;
