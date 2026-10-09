@@ -139,11 +139,10 @@ public class MythicMetals implements ModInitializer {
     }
 
     private void registerEvents() {
-        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
+        AttackEntityCallback.EVENT.register((player, _, hand, entity, _) -> {
             var stack = player.getItemInHand(hand);
             if (stack.has(MythicDataComponents.FIRE_ASPECT)) {
                 entity.igniteForTicks(stack.getOrDefault(MythicDataComponents.FIRE_ASPECT, 0));
-                return InteractionResult.SUCCESS;
             }
             return InteractionResult.PASS;
         });
