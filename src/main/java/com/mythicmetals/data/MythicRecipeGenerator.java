@@ -351,6 +351,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.DIAMOND_PICKAXE,
             Items.DIAMOND_SHOVEL,
             Items.DIAMOND_HOE,
+            Items.DIAMOND_SPEAR,
             Ingredient.of(MythicMaterials.CELESTIUM.baseMaterial()),
             MythicMaterials.CELESTIUM.toolSet()
         );
@@ -361,6 +362,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Items.NETHERITE_PICKAXE,
             Items.NETHERITE_SHOVEL,
             Items.NETHERITE_HOE,
+            Items.NETHERITE_SPEAR,
             Ingredient.of(MythicMaterials.METALLURGIUM.baseMaterial()),
             MythicMaterials.METALLURGIUM.toolSet()
         );
@@ -640,7 +642,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .define('#', material)
             .define('S', WOODEN_RODS)
             .pattern("#")
-            .pattern("#")
+            .pattern("S")
             .pattern("S")
             .unlockedBy("has_material", has(material))
             .save(output, recipeKey("shovel/" + toolSet.getName()));
@@ -653,6 +655,15 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .pattern(" S ")
             .unlockedBy("has_material", has(material))
             .save(output, recipeKey("hoe/" + toolSet.getName()));
+        // spear
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.TOOLS, toolSet.getSpear())
+            .define('#', material)
+            .define('S', WOODEN_RODS)
+            .pattern("#  ")
+            .pattern(" S ")
+            .pattern("  S")
+            .unlockedBy("has_material", has(material))
+            .save(output, recipeKey("spear/" + toolSet.getName()));
     }
 
     public void createToolSmithingRecipes(
@@ -662,6 +673,7 @@ public class MythicRecipeGenerator extends RecipeProvider {
         Item basePickaxe,
         Item baseShovel,
         Item baseHoe,
+        Item baseSpear,
         Ingredient addition,
         ToolSet resultToolset
     ) {
@@ -691,10 +703,25 @@ public class MythicRecipeGenerator extends RecipeProvider {
             .unlocks("has_component_tool", has(baseHoe))
             .unlocks("has_hoe", has(resultToolset.getHoe()))
             .save(output, recipeKey("hoe/" + resultToolset.getName()));
+        SmithingTransformRecipeBuilder.smithing(templateIngredient, Ingredient.of(baseSpear), addition, RecipeCategory.TOOLS, resultToolset.getSpear())
+            .unlocks("has_template", has(template))
+            .unlocks("has_component_tool", has(baseSpear))
+            .unlocks("has_sword", has(resultToolset.getSpear()))
+            .save(output, recipeKey("spear/" + resultToolset.getName()));
     }
 
     public void createToolSmithingRecipes(Item template, ToolSet baseToolset, Ingredient addition, ToolSet resultToolset) {
-        createToolSmithingRecipes(template, baseToolset.getSword(), baseToolset.getAxe(), baseToolset.getPickaxe(), baseToolset.getShovel(), baseToolset.getHoe(), addition, resultToolset);
+        createToolSmithingRecipes(
+            template,
+            baseToolset.getSword(),
+            baseToolset.getAxe(),
+            baseToolset.getPickaxe(),
+            baseToolset.getShovel(),
+            baseToolset.getHoe(),
+            baseToolset.getSpear(),
+            addition,
+            resultToolset
+        );
     }
 
     // TODO - Can be made cleaner, but this is fine for now
@@ -964,8 +991,8 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createMidasFoldingRecipe("fold_royal_midas_gold_longsword", MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
         createMidasFoldingRecipe("fold_royal_midas_gold_greatsword", MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
         createMidasFoldingRecipe("fold_true_royal_midas_gold_sword", MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicMaterials.MIDAS_GOLD.blockSet().storage().block().asItem());
-		
-		createMidasFoldingRecipe("fold_midas_gold_dagger_compat", MythicTools.MIDAS_GOLD_DAGGER, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+
+        createMidasFoldingRecipe("fold_midas_gold_dagger_compat", MythicTools.MIDAS_GOLD_DAGGER, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
         createMidasFoldingRecipe("fold_midas_gold_shortsword_compat", MythicTools.MIDAS_GOLD_SHORTSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
         createMidasFoldingRecipe("fold_midas_gold_sword_compat", MythicTools.MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
         createMidasFoldingRecipe("fold_socketed_midas_gold_sword_compat", MythicTools.SOCKETED_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
@@ -978,9 +1005,13 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createMidasFoldingRecipe("fold_true_royal_midas_gold_sword_compat", MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
     }
 
-    public void createMidasFoldingRecipe(String recipeName, Item input, TagKey<Item> addition) { createMidasFoldingRecipe(recipeName, input, Ingredient.of(itemLookup.getOrThrow(addition))); }
+    public void createMidasFoldingRecipe(String recipeName, Item input, TagKey<Item> addition) {
+        createMidasFoldingRecipe(recipeName, input, Ingredient.of(itemLookup.getOrThrow(addition)));
+    }
 
-    public void createMidasFoldingRecipe(String recipeName, Item input, Item addition) { createMidasFoldingRecipe(recipeName, input, Ingredient.of(addition)); }
+    public void createMidasFoldingRecipe(String recipeName, Item input, Item addition) {
+        createMidasFoldingRecipe(recipeName, input, Ingredient.of(addition));
+    }
 
     public void createMidasFoldingRecipe(String recipeName, Item input, Ingredient addition) {
         var advancementBuilder = new RecipeUnlockAdvancementBuilder();

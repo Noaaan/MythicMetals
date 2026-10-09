@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:banglum_chunk",
+  "base": "mythicmetals:banglum_spear",
+  "result": {
+    "id": "mythicmetals:legendary_banglum_spear"
+  },
+  "template": "mythicmetals:legendary_banglum_smithing_template"
+}

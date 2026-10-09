@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:bronze_ingot",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    "#  ",
+    " S ",
+    "  S"
+  ],
+  "result": {
+    "id": "mythicmetals:bronze_spear"
+  }
+}

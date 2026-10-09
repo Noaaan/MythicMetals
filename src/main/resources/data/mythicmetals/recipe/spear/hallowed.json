@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mythicmetals:hallowed_ingot",
+    "S": "#c:rods/wooden"
+  },
+  "pattern": [
+    "#  ",
+    " S ",
+    "  S"
+  ],
+  "result": {
+    "id": "mythicmetals:hallowed_spear"
+  }
+}

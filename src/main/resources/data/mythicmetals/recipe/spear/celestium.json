@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:celestium_ingot",
+  "base": "minecraft:diamond_spear",
+  "result": {
+    "id": "mythicmetals:celestium_spear"
+  },
+  "template": "mythicmetals:unobtainium_smithing_template"
+}

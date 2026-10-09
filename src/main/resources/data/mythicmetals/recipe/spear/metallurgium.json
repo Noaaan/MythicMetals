@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:metallurgium_ingot",
+  "base": "minecraft:netherite_spear",
+  "result": {
+    "id": "mythicmetals:metallurgium_spear"
+  },
+  "template": "mythicmetals:unobtainium_smithing_template"
+}

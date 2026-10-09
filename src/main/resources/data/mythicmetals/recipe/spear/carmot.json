@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "mythicmetals:carmot_ingot",
+  "base": "mythicmetals:kyber_spear",
+  "result": {
+    "id": "mythicmetals:carmot_spear"
+  },
+  "template": "mythicmetals:carmot_smithing_template"
+}
