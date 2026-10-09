@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "mythicmetals:adamantite_pickaxe",
     "mythicmetals:aquarium_pickaxe",
@@ -20,7 +19,9 @@
     "mythicmetals:quadrillum_pickaxe",
     "mythicmetals:runite_pickaxe",
     "mythicmetals:star_platinum_pickaxe",
+    "mythicmetals:steel_pickaxe",
     "mythicmetals:stormyx_pickaxe",
+    "mythicmetals:tidesinger_pickaxe",
     "mythicmetals:mythril_drill",
     "mythicmetals:orichalcum_hammer"
   ]
