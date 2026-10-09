@@ -79,8 +79,26 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
             MythicTools.RED_AEGIS_SWORD,
             MythicTools.WHITE_AEGIS_SWORD
         );
+
+
         valueLookupBuilder(MythicTags.SWORDS).addAll(extraSwords);
         valueLookupBuilder(ItemTags.SWORDS).addAll(extraSwords);
+
+        valueLookupBuilder(ItemTags.SWEEPING_ENCHANTABLE).addAll(extraSwords);
+        valueLookupBuilder(ItemTags.MELEE_WEAPON_ENCHANTABLE).addAll(extraSwords);
+        valueLookupBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE).addAll(extraSwords);
+        valueLookupBuilder(ItemTags.WEAPON_ENCHANTABLE).addAll(extraSwords);
+
+        var extraPicks = List.of(
+            MythicTools.MYTHRIL_DRILL,
+            MythicTools.ORICHALCUM_HAMMER
+        );
+
+        valueLookupBuilder(MythicTags.PICKAXES).addAll(extraPicks);
+
+        valueLookupBuilder(ItemTags.MINING_ENCHANTABLE).addAll(extraPicks);
+        valueLookupBuilder(ItemTags.MINING_LOOT_ENCHANTABLE).addAll(extraPicks);
+        valueLookupBuilder(ItemTags.CLUSTER_MAX_HARVESTABLES).addAll(extraPicks);
 
         // abilities
         if (MythicMaterials.CARMOT.toolSet() == null) throw new IllegalStateException("no carmot tools during datagen");
@@ -118,6 +136,16 @@ public class MythicItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
         valueLookupBuilder(MythicTags.SHOVELS).add(toolSet.getShovel());
         valueLookupBuilder(MythicTags.HOES).add(toolSet.getHoe());
         valueLookupBuilder(MythicTags.SPEARS).add(toolSet.getSpear());
+
+        valueLookupBuilder(ItemTags.SWEEPING_ENCHANTABLE).add(toolSet.getSword());
+        valueLookupBuilder(ItemTags.MELEE_WEAPON_ENCHANTABLE).add(toolSet.getSword(), toolSet.getSpear());
+        valueLookupBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE).add(toolSet.getSword(), toolSet.getSpear(), toolSet.getAxe());
+        valueLookupBuilder(ItemTags.WEAPON_ENCHANTABLE).add(toolSet.getSword(), toolSet.getSpear(), toolSet.getAxe());
+
+        valueLookupBuilder(ItemTags.MINING_ENCHANTABLE).add(toolSet.getPickaxe(), toolSet.getAxe(), toolSet.getShovel());
+        valueLookupBuilder(ItemTags.MINING_LOOT_ENCHANTABLE).add(toolSet.getPickaxe(), toolSet.getAxe(), toolSet.getShovel());
+
+        valueLookupBuilder(ItemTags.CLUSTER_MAX_HARVESTABLES).add(toolSet.getPickaxe());
 
         var materialToolTag = createModItemTag("tools/" + name);
         var materialEquipmentTag = createModItemTag("equipment/" + name);
