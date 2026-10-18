@@ -52,6 +52,7 @@ public class MythicSoundEvents implements AutoRegistryContainer<SoundEvent> {
         SoundEvents.DRIPSTONE_BLOCK_PLACE,
         SoundEvents.DRIPSTONE_BLOCK_HIT,
         SoundEvents.DRIPSTONE_BLOCK_FALL);
+
     public static final SoundType DEEPSLATE_MORKITE_ORE = new SoundType(1.0F, 1.0F,
         DEEPSLATE_MORKITE_ORE_BREAK,
         SoundEvents.DEEPSLATE_STEP,

@@ -37,7 +37,7 @@ public class MythicMaterials {
     public static final Material ADAMANTITE = Material.Builder.create("adamantite", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(5.0f)
-            .createOreVariant("deepslate", 6.0f, 7.0f)
+            .createOreVariant("deepslate", 6.0f, 7.0f, SoundType.DEEPSLATE)
             .finish()
         )
         .createCustomHelmetArmorSet(
@@ -119,7 +119,7 @@ public class MythicMaterials {
     public static final Material CARMOT = Material.Builder.create("carmot", MaterialType.INGOT)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
             .createDefaultBlocks(5.5f)
-            .createOreVariant("deepslate", 6.5f, 7.5f)
+            .createOreVariant("deepslate", 6.5f, 7.5f, SoundType.DEEPSLATE)
             .finish()
         )
         .addExtraBlockAndItem("carmot_bell",
@@ -198,7 +198,7 @@ public class MythicMaterials {
                 .createOreStorageBlock(3.0f, 4.0f)
                 .createCustomStorageBlock(5.0f, properties -> new Block(properties.noOcclusion()))
                 .createAnvil(4.0f)
-                .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0))
+                .createOreVariant("calcite", 3.0f, 3.0f, UniformInt.of(0, 0), SoundType.CALCITE)
                 .finish()
         )
         .createDefaultTools(MythicToolMaterials.KYBER, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.KYBER)
@@ -275,14 +275,14 @@ public class MythicMaterials {
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
             .createOre(3.0f, UniformInt.of(1, 3))
             .createStorageBlock(3.0f, 4.0f)
-            .createOreVariant("deepslate", 3.5f, 4.5f, UniformInt.of(1, 4))
+            .createOreVariant("deepslate", 3.5f, 4.5f, UniformInt.of(1, 4), SoundType.DEEPSLATE)
             .finish())
         .finish();
 
     public static final Material MYTHRIL = Material.Builder.create("mythril", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(5.0f)
-            .createOreVariant("deepslate", 5.5f, 6.5f)
+            .createOreVariant("deepslate", 5.5f, 6.5f, SoundType.DEEPSLATE)
             .finish()
         )
         .addSmithingTemplate(MYTHRIL_DRILL_SMITHING_TEMPLATE, MythicSmithingTemplates.MYTHRIL_DRILL, false)
@@ -294,9 +294,9 @@ public class MythicMaterials {
     public static final Material ORICHALCUM = Material.Builder.create("orichalcum", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(DIAMOND_MINING_LEVEL, builder -> builder
             .createDefaultBlocks(5.5f)
-            .createOreVariant("tuff", 4.5f, 5.0f)
-            .createOreVariant("smooth_basalt", 4.5f, 5.0f)
-            .createOreVariant("deepslate", 6.0f, 7.0f)
+            .createOreVariant("tuff", 4.5f, 5.0f, SoundType.TUFF)
+            .createOreVariant("smooth_basalt", 4.5f, 5.0f, SoundType.BASALT)
+            .createOreVariant("deepslate", 6.0f, 7.0f, SoundType.DEEPSLATE)
             .finish()
         )
         .createDefaultTools(MythicToolMaterials.ORICHALCUM, ToolSet.AttackSpeeds.DEFAULT, MythicSpearStats.ORICHALCUM)
@@ -352,7 +352,7 @@ public class MythicMaterials {
     public static final Material PROMETHEUM = Material.Builder.create("prometheum", MaterialType.INGOT)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
             .createDefaultBlocks(5.0f)
-            .createOreVariant("deepslate", 5.0f, 6.5f)
+            .createOreVariant("deepslate", 5.0f, 6.5f, SoundType.DEEPSLATE)
             .finish()
         )
         .addExtraItem(PROMETHEUM_ROSE, Rarity.UNCOMMON, Item::new)
@@ -389,7 +389,7 @@ public class MythicMaterials {
     public static final Material RUNITE = Material.Builder.create("runite", MaterialType.INGOT_BLASTING)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, blockSetBuilder -> blockSetBuilder
             .createDefaultBlocks(8.0f)
-            .createOreVariant("deepslate", 8.8f, 9f)
+            .createOreVariant("deepslate", 8.8f, 9f, SoundType.DEEPSLATE)
             .finish()
         )
         .createDefaultTools(MythicToolMaterials.RUNITE, ToolSet.AttackSpeeds.BETTER_AXE, MythicSpearStats.RUNITE)
@@ -450,7 +450,7 @@ public class MythicMaterials {
     public static final Material STORMYX = Material.Builder.create("stormyx", MaterialType.INGOT)
         .createBlockSetFromBuilder(IRON_MINING_LEVEL, builder -> builder
             .createDefaultBlocks(5.5f)
-            .createOreVariant("blackstone", 5.5f, 6.0f)
+            .createOreVariant("blackstone", 5.5f, 6.0f, SoundType.STONE)
             .finish()
         )
         .addExtraItem(STORMYX_SHELL, Rarity.UNCOMMON, Item::new)

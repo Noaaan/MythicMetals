@@ -202,11 +202,11 @@ public record Material(
         }
 
         public Builder addExtraBlock(ResourceKey<Block> key, Function<BlockBehaviour.Properties, Block> function) {
-            return addExtraBlock(key, function.apply(BlockSet.createBlockSettings(key)), Rarity.COMMON);
+            return addExtraBlock(key, function.apply(BlockSet.createSimpleBlockSettings(key)), Rarity.COMMON);
         }
 
         public Builder addExtraBlock(ResourceKey<Block> key, Rarity rarity, Function<BlockBehaviour.Properties, Block> function) {
-            return addExtraBlock(key, function.apply(BlockSet.createBlockSettings(key)), rarity);
+            return addExtraBlock(key, function.apply(BlockSet.createSimpleBlockSettings(key)), rarity);
         }
 
         public Builder addExtraBlock(ResourceKey<Block> key, Block block, Rarity rarity) {
@@ -219,7 +219,7 @@ public record Material(
         public Builder addExtraBlockAndItem(String name, Function<BlockBehaviour.Properties, Block> blockFunction, BiFunction<Block, Item.Properties, Item> itemFunction) {
             var itemKey = RegistryHelper.itemKey(name);
             var blockKey = RegistryHelper.blockKey(name);
-            var block = RegistryHelper.blockOnly(blockKey, blockFunction.apply(BlockSet.createBlockSettings(blockKey)));
+            var block = RegistryHelper.blockOnly(blockKey, blockFunction.apply(BlockSet.createSimpleBlockSettings(blockKey)));
             extraBlocks.putIfAbsent(blockKey, block);
             addExtraItem(itemKey, itemFunction.apply(block, baseProperties(itemKey, computeRarity(type))));
             return this;

@@ -7,9 +7,7 @@ import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.block.AnvilBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -109,6 +107,7 @@ public record BlockSet(
             this.storage = RegistryHelper.block(storageKey, storageItemKey, new Block(
                 BlockBehaviour.Properties.of()
                     .setId(storageKey)
+                    .sound(SoundType.METAL)
                     .strength(strength, resistance)
                     .requiresCorrectToolForDrops()
                     .forceSolidOn()
@@ -119,6 +118,7 @@ public record BlockSet(
         public Builder createOre(float strength, UniformInt exp) {
             this.ore = RegistryHelper.block(oreKey, oreItemKey, new DropExperienceBlock(exp,
                 baseBlockSettings(oreKey, strength, strength + 1.0f)
+                    .sound(SoundType.STONE)
             ), fireproof, rarity);
             return this;
         }
@@ -126,6 +126,7 @@ public record BlockSet(
         public Builder createOreStorageBlock(float strength, float resistance) {
             this.rawStorage = RegistryHelper.block(rawStorageKey, rawStorageItemKey, new Block(
                 baseBlockSettings(rawStorageKey, strength, resistance)
+                    .sound(SoundType.STONE)
             ), fireproof, rarity);
             return this;
         }
@@ -133,6 +134,7 @@ public record BlockSet(
         public Builder createAnvil(float strength) {
             this.anvil = RegistryHelper.block(anvilKey, anvilItemKey, new AnvilBlock(
                 baseBlockSettings(anvilKey, strength, 15000f)
+                    .sound(SoundType.ANVIL)
             ), fireproof, rarity);
             return this;
         }
@@ -169,20 +171,24 @@ public record BlockSet(
             return this;
         }
 
-        public Builder createOreVariant(String variant, float strength, float resistance) {
-            return createOreVariant(variant, strength, resistance, UniformInt.of(0, 0));
+        public Builder createOreVariant(String variant, float strength, float resistance, SoundType soundType) {
+            return createOreVariant(variant, strength, resistance, UniformInt.of(0, 0), soundType);
         }
 
-        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp) {
-            return createOreVariant(variant, strength, resistance, xp, miningLevel);
+        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp, SoundType soundType) {
+            return createOreVariant(variant, strength, resistance, xp, miningLevel, soundType);
         }
 
-        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp, TagKey<Block> customMiningLevel) {
+        public Builder createOreVariant(String variant, float strength, float resistance, IntProvider xp, TagKey<Block> customMiningLevel, SoundType soundType) {
             var variantKey = RegistryHelper.blockKey("%s_%s_ore".formatted(variant, name));
             var variantItemKey = RegistryHelper.itemKey("%s_%s_ore".formatted(variant, name));
             var block = RegistryHelper.block(
-                variantKey, variantItemKey, new DropExperienceBlock(xp, baseBlockSettings(variantKey, strength, resistance)
-                ));
+                variantKey, variantItemKey, new DropExperienceBlock(
+                    xp,
+                    baseBlockSettings(variantKey, strength, resistance)
+                        .sound(soundType)
+                )
+            );
             oreVariants.put(variant, BlockWithMiningLevel.create(block, variantKey, variantItemKey, customMiningLevel));
             return this;
         }
@@ -202,6 +208,9 @@ public record BlockSet(
         }
     }
 
+    /**
+     * Public method for creating simple blocks that require a tool.
+     */
     public static BlockBehaviour.Properties createBlockSettings(ResourceKey<Block> key, float strength) {
         return BlockBehaviour.Properties.of()
             .setId(key)
@@ -211,10 +220,12 @@ public record BlockSet(
     }
 
     /**
-     * @apiNote This particular method does NOT call {@link net.minecraft.world.level.block.state.BlockBehaviour.Properties#strength(float)}.
+     * @apiNote This particular method does NOT call {@link BlockBehaviour.Properties#strength(float)},
+     * and it does NOT call {@link BlockBehaviour.Properties#requiresCorrectToolForDrops()},
      * You will need to do that yourself.
+     * @see createBlockSettings(ResourceKey, float)
      */
-    public static BlockBehaviour.Properties createBlockSettings(ResourceKey<Block> key) {
+    public static BlockBehaviour.Properties createSimpleBlockSettings(ResourceKey<Block> key) {
         return BlockBehaviour.Properties.of()
             .setId(key)
             .forceSolidOn();
