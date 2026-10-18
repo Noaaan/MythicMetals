@@ -1,6 +1,9 @@
 package com.mythicmetals.data;
 
-import com.mythicmetals.api.v2.*;
+import com.mythicmetals.api.v2.ArmorSet;
+import com.mythicmetals.api.v2.Material;
+import com.mythicmetals.api.v2.MaterialType;
+import com.mythicmetals.api.v2.ToolSet;
 import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
@@ -19,12 +22,21 @@ import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.SmithingTransformRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Optional;
 
 import static com.mythicmetals.misc.RegistryHelper.recipeKey;
 import static net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags.WOODEN_RODS;
@@ -775,13 +787,15 @@ public class MythicRecipeGenerator extends RecipeProvider {
     }
 
     private void createTidesingerArmorRecipes() {
+        var aquariumArmor = MythicMaterials.AQUARIUM.armorSet();
+        var tidesingerArmor = MythicMaterials.TIDESINGER.armorSet();
         var template = MythicMaterials.TIDESINGER.extraItems().get(MythicResourceKeys.TIDESINGER_SMITHING_TEMPLATE);
+        var advancementBuilder = new RecipeUnlockAdvancementBuilder();
+        advancementBuilder.unlockedBy("has_template", has(template));
         for (var coral : TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet()) {
             var patch = DataComponentPatch.builder().set(MythicDataComponents.TIDESINGER, TidesingerPatternComponent.fromItem(coral)).build();
             var addition = Ingredient.of(coral);
             var name = TidesingerPatternComponent.TIDESINGER_VARIANTS.get(coral);
-            var aquariumArmor = MythicMaterials.AQUARIUM.armorSet();
-            var tidesingerArmor = MythicMaterials.TIDESINGER.armorSet();
             // helmet
             var helmetTemplate = new ItemStackTemplate(tidesingerArmor.getHelmet(), patch);
             var helmetRecipe = new SmithingTransformRecipe(
@@ -818,11 +832,38 @@ public class MythicRecipeGenerator extends RecipeProvider {
                 Optional.of(addition),
                 bootsTemplate
             );
-            output.accept(recipeKey("armor/tidesinger_helmet_" + name), helmetRecipe, null);
-            output.accept(recipeKey("armor/tidesinger_chestplate_" + name), chestplateRecipe, null);
-            output.accept(recipeKey("armor/tidesinger_leggings_" + name), leggingsRecipe, null);
-            output.accept(recipeKey("armor/tidesinger_boots_" + name), bootsRecipe, null);
+            var helmetKey = recipeKey("armor/tidesinger_helmet_" + name);
+            output.accept(helmetKey, helmetRecipe, advancementBuilder.build(output, helmetKey, RecipeCategory.MISC));
+            var chestKey = recipeKey("armor/tidesinger_chestplate_" + name);
+            output.accept(chestKey, chestplateRecipe, advancementBuilder.build(output, chestKey, RecipeCategory.MISC));
+            var legsKey = recipeKey("armor/tidesinger_leggings_" + name);
+            output.accept(legsKey, leggingsRecipe, advancementBuilder.build(output, legsKey, RecipeCategory.MISC));
+            var bootsKey = recipeKey("armor/tidesinger_boots_" + name);
+            output.accept(bootsKey, bootsRecipe, advancementBuilder.build(output, bootsKey, RecipeCategory.MISC));
         }
+        // horse
+        var horseStackTemplate = new ItemStackTemplate(tidesingerArmor.getHorse(), 1);
+        var horseRecipe = new SmithingTransformRecipe(
+            new Recipe.CommonInfo(true),
+            Optional.of(Ingredient.of(template)),
+            Ingredient.of(aquariumArmor.getHorse()),
+            Optional.of(Ingredient.of(TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().stream())),
+            horseStackTemplate
+        );
+        // nautilus
+        var nautStackTemplate = new ItemStackTemplate(tidesingerArmor.getNautilus(), 1);
+        var nautilusRecipe = new SmithingTransformRecipe(
+            new Recipe.CommonInfo(true),
+            Optional.of(Ingredient.of(template)),
+            Ingredient.of(aquariumArmor.getNautilus()),
+            Optional.of(Ingredient.of(TidesingerPatternComponent.TIDESINGER_VARIANTS.keySet().stream())),
+            nautStackTemplate
+        );
+        // TODO - Tidesinger variants for Horse and Nautilus?
+        var horseKey = recipeKey("armor/tidesinger_horse_armor");
+        output.accept(horseKey, horseRecipe, advancementBuilder.build(output, horseKey, RecipeCategory.MISC));
+        var nautKey = recipeKey("armor/tidesinger_nautilus_armor");
+        output.accept(nautKey, nautilusRecipe, advancementBuilder.build(output, nautKey, RecipeCategory.MISC));
     }
 
     public void createArmorCraftingRecipes(ArmorSet armorSet, Item armorMaterial) {
