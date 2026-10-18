@@ -320,7 +320,7 @@ public class MythicMaterials {
                 .strength(2.5f, 7.0f)
                 .sound(SoundType.METAL)
         ))
-        .addExtraItem(PALLADIUM_MINECART, Rarity.UNCOMMON, properties -> new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, properties))
+        .addExtraItem(PALLADIUM_MINECART, Rarity.UNCOMMON, properties -> new MinecartItem(MythicEntities.PALLADIUM_MINECART_ENTITY_TYPE, properties.stacksTo(4)))
         .createToolSet(
             properties -> properties.component(MythicDataComponents.BRANDING, new BrandingComponent(6)),
             MythicToolMaterials.PALLADIUM,
