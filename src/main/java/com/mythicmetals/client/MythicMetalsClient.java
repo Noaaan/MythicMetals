@@ -13,7 +13,6 @@ import com.mythicmetals.data.MythicTags;
 import com.mythicmetals.entity.MythicEntities;
 import com.mythicmetals.item.component.*;
 import com.mythicmetals.item.tools.CarmotBellItem;
-import com.mythicmetals.item.tools.HammerBase;
 import com.mythicmetals.misc.RegistryHelper;
 import com.mythicmetals.misc.UsefulSingletonForColorUtil;
 import com.mythicmetals.mixin.client.EquipmentLayerRendererAccessor;
@@ -54,7 +53,7 @@ public class MythicMetalsClient implements ClientModInitializer {
     public void onInitializeClient() {
         MythicModelHandler.init((loc, def) -> ModelLayerRegistry.registerModelLayer(loc, () -> def));
 
-        renderHammerOutline();
+        OutlineHandler.renderHammerOutline();
         registerModelPredicates();
         registerSwirlRenderer();
 
@@ -101,68 +100,6 @@ public class MythicMetalsClient implements ClientModInitializer {
         LivingEntityRenderLayerRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             registrationHelper.register(new LivingEntityEnergySwirlFeatureRenderer(entityRenderer, context.getModelSet()));
         });
-    }
-
-    /**
-     * Renders the outline of a {@link HammerBase hammer item.}
-     */
-    private void renderHammerOutline() {
-        // FIXME - Use FabricRenderState to attach some hammer-specific params for rendering this.
-//        WorldRenderEvents.BEFORE_BLOCK_OUTLINE.register((worldRenderContext, blockOutlineContext) -> {
-//            if (!blockOutlineContext.entity().isAlwaysTicking()) return true;
-//            var player = (Player) blockOutlineContext.entity();
-//            // Only render the outline if you are hovering over something the hammer can break
-//            var stack = player.getMainHandItem();
-//            if (stack.getItem() instanceof HammerBase hammer
-//                && !blockOutlineContext.blockState().isAir()
-//                && hammer.isCorrectToolForDrops(stack, blockOutlineContext.blockState())) {
-//
-//                var reach = BlockBreaker.getReachDistance(player);
-//                BlockHitResult blockHitResult = (BlockHitResult) player.pick(reach, 1, false);
-//
-//                var facing = blockHitResult.getDirection().getOpposite();
-//                var blocks = BlockBreaker.findBlocks(facing, blockOutlineContext.blockPos(), hammer.getDepth());
-//                var originalPos = blockOutlineContext.blockPos();
-//
-//                // Create VoxelShapes out of the block positions and put them in a list
-//                var voxels = new ArrayList<VoxelShape>();
-//
-//                for (BlockPos blockPos : blocks) {
-//                    var blockState = player.level().getBlockState(blockPos);
-//                    if (!blockState.isAir() && hammer.isCorrectToolForDrops(stack, blockState)) {
-//                        voxels.add(blockState.getShape(
-//                                worldRenderContext.world(),
-//                                blockPos,
-//                                CollisionContext.of(blockOutlineContext.entity())
-//                            ).move(blockPos.getX() - originalPos.getX(),
-//                                blockPos.getY() - originalPos.getY(),
-//                                blockPos.getZ() - originalPos.getZ())
-//                        );
-//                    }
-//                }
-//
-//                // Combine and render the full shape
-//                var outlineOptional = voxels.stream().reduce(Shapes::or);
-//                if (outlineOptional.isEmpty()) return true;
-//
-//                var outlineShape = outlineOptional.get();
-//
-//                ShapeRenderer.renderShape(
-//                    worldRenderContext.matrixStack(),
-//                    worldRenderContext.consumers().getBuffer(RenderType.lines()),
-//                    outlineShape,
-//                    originalPos.getX() - blockOutlineContext.cameraX(),
-//                    originalPos.getY() - blockOutlineContext.cameraY(),
-//                    originalPos.getZ() - blockOutlineContext.cameraZ(),
-//                    Color.ofHsv(0, 0, 0, 0.4f).argb()
-//                );
-//                // Cancel the event to prevent the middle outline from rendering
-//                return false;
-//            }
-//
-//            // Keep moving along if we reach this point
-//            return true;
-//        });
     }
 
     private ArmorRenderer createCustomArmorRenderer(EntityRendererProvider.Context context) {

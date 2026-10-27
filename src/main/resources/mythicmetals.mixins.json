@@ -35,6 +35,7 @@
   "client": [
     "client.AvatarRendererMixin",
     "client.EquipmentLayerRendererAccessor",
+    "client.GameRendererMixin",
     "client.LivingEntityMixin",
     "client.LivingEntityRendererMixin",
     "client.ModelLayersAccessor",

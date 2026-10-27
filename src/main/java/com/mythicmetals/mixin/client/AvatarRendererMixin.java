@@ -1,17 +1,22 @@
 package com.mythicmetals.mixin.client;
 
+import net.minecraft.client.entity.ClientAvatarEntity;
+import net.minecraft.client.model.player.PlayerModel;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
+import net.minecraft.client.renderer.entity.state.AvatarRenderState;
+import net.minecraft.world.entity.Avatar;
+import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.Mixin;
 
-// FIXME
 @Mixin(AvatarRenderer.class)
-public class AvatarRendererMixin {
+public abstract class AvatarRendererMixin<T extends Avatar & ClientAvatarEntity> extends LivingEntityRenderer<@NonNull T, AvatarRenderState, PlayerModel> {
 
-//    @Inject(method = "extractRenderState(Lnet/minecraft/client/player/AbstractClientPlayer;Lnet/minecraft/client/renderer/entity/state/PlayerRenderState;F)V", at = @At("TAIL"))
-//    private void mythicmetals$updatePlayerRenderState(AbstractClientPlayer abstractClientPlayerEntity, AvatarRenderState playerEntityRenderState, float f, CallbackInfo ci) {
-//        var carmotShield = abstractClientPlayerEntity.getComponent(MythicMetals.CARMOT_SHIELD);
-//        ((MythicMetalsRenderState) playerEntityRenderState).mythicmetals$setPlayerRenderContext(new MythicMetalsPlayerRenderContext(carmotShield));
-//    }
+    public AvatarRendererMixin(EntityRendererProvider.Context context, PlayerModel model, float shadow) {
+        super(context, model, shadow);
+    }
+
 //    /**
 //     * Renders the Carmot Shield on the players arm
 //     */
