@@ -9,14 +9,10 @@ group = project.maven_group
 
 repositories {
     mavenLocal()
-    maven { url = "https://www.cursemaven.com" }
     maven { url = "https://maven.shedaniel.me/" }
     maven { url = "https://maven.terraformersmc.com/" }
     maven { url = "https://maven.wispforest.io/" }
     maven { url = "https://jitpack.io" }
-    maven { url = "https://maven.ladysnake.org/releases" }
-    maven { url = "https://maven.cafeteria.dev" }
-    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
     maven { url = "https://api.modrinth.com/maven/" }
     maven { url = "https://maven.nucleoid.xyz/" }
     maven { url = "https://maven.enjarai.dev/releases" }
