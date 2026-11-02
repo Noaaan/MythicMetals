@@ -58,13 +58,7 @@ public class CarmotShieldHudHandler {
         // logo
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, 0, LOGO_SIZE, LOGO_SIZE, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
         for (int i = 0; i < pips; i++) {
-            if (i == 0) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
-            } else if (i == pips - 1) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
-            } else {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32, CARMOT_SHIELD_BROKEN_BAR_COLOR);
-            }
+            drawPips(guiGraphics, xStart, yStart, pips, UsefulSingletonForColorUtil.MetalColors.CARMOT_SHIELD_BROKEN_BAR_COLOR, i, PIPS_V);
         }
     }
 
@@ -73,13 +67,17 @@ public class CarmotShieldHudHandler {
         var color = colorConfig.asHexString(false).equals("#AE4000") ? UsefulSingletonForColorUtil.rainbow(240, 0.75f) : colorConfig.argb();
         for (int i = 0; i < pips; i++) {
             guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart, yStart, 0, FILLED_PIPS_V, LOGO_SIZE, LOGO_SIZE, 64, 32, color);
-            if (i == 0) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, FILLED_PIPS_V, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32,  color);
-            } else if (i == maxPips - 1) {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, FILLED_PIPS_V, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32,  color);
-            } else {
-                guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, FILLED_PIPS_V, PIPS_WIDTH, PIPS_HEIGHT, 64, 32,  color);
-            }
+            drawPips(guiGraphics, xStart, yStart, maxPips, color, i, FILLED_PIPS_V);
+        }
+    }
+
+    private static void drawPips(GuiGraphicsExtractor guiGraphics, int xStart, int yStart, int maxPips, int color, int i, int filledPipsV) {
+        if (i == 0) {
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE, yStart, START_PIP_U, filledPipsV, START_PIP_WIDTH, START_PIP_HEIGHT, 64, 32,  color);
+        } else if (i == maxPips - 1) {
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, END_PIP_U, filledPipsV, END_PIP_WIDTH, PIPS_HEIGHT, 64, 32,  color);
+        } else {
+            guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, xStart + LOGO_SIZE + PIPS_WIDTH * (i - 1) + START_PIP_WIDTH, yStart, PIP_U, filledPipsV, PIPS_WIDTH, PIPS_HEIGHT, 64, 32,  color);
         }
     }
 }

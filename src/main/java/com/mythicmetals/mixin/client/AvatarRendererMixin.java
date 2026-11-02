@@ -18,26 +18,6 @@ public abstract class AvatarRendererMixin<T extends Avatar & ClientAvatarEntity>
     }
 
 //    /**
-//     * Renders the Carmot Shield on the players arm
-//     */
-//    @Inject(method = "renderArm", at = @At("TAIL"))
-//    private void mythicmetals$renderShieldArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, ModelPart arm, ModelPart sleeve, CallbackInfo ci) {
-//        if (player.getComponent(MythicMetals.CARMOT_SHIELD).shouldRenderShield()) {
-//            final var client = MinecraftClient.getInstance();
-//            float f = player.age + (client.isPaused() ? 0 : client.getRenderTickCounter().getTickDelta(true));
-//
-//            var shield = player.getComponent(MythicMetals.CARMOT_SHIELD);
-//
-//            var consumer = vertexConsumers.getBuffer(RenderLayer.getEnergySwirl(SWIRL_TEXTURE, (f * .005f) % 1f, f * .005f % 1f));
-//            matrices.scale(1.0625f, 1.0625f, 1.0625f);
-//            if (shield.cooldown > CarmotShield.MAX_COOLDOWN - 30) {
-//                sleeve.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, SHIELD_BREAK_COLOR);
-//            } else // Regular animation
-//                sleeve.render(matrices, consumer, light, OverlayTexture.DEFAULT_UV, UsefulSingletonForColorUtil.rainbow());
-//        }
-//    }
-//
-//    /**
 //     * Renders the Stormyx Shield around the player
 //     */
 //    @Inject(method = "render(Lnet/minecraft/client/network/AbstractClientPlayerEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V",

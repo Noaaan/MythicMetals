@@ -36,6 +36,7 @@
     "client.AvatarRendererMixin",
     "client.EquipmentLayerRendererAccessor",
     "client.GameRendererMixin",
+    "client.ItemInHandRendererMixin",
     "client.LivingEntityMixin",
     "client.LivingEntityRendererMixin",
     "client.ModelLayersAccessor",

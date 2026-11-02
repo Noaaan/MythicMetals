@@ -20,7 +20,8 @@ public abstract class GameRendererMixin {
     private void mythicmetals$captureHandRenderer(CameraRenderState cameraState, float deltaPartialTick, Matrix4fc modelViewMatrix, CallbackInfo ci) {
         var client = Minecraft.getInstance();
         if (client.player == null) return;
-        var itemStack = client.player.getMainHandItem();
+        var player = client.player;
+        var itemStack = player.getMainHandItem();
         if (itemStack.getItem() instanceof HammerBase hammer && itemStack.has(DataComponents.TOOL)) {
             var toolComponent = itemStack.get(DataComponents.TOOL);
             client.gameRenderer.getGameRenderState().levelRenderState.setData(
