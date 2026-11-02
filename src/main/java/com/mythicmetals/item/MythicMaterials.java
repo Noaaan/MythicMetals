@@ -22,6 +22,8 @@ import net.minecraft.world.item.equipment.Equippable;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jspecify.annotations.NonNull;
+
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -249,7 +251,12 @@ public class MythicMaterials {
 
     public static final Material MIDAS_GOLD = Material.Builder.create("midas_gold", MaterialType.INGOT)
         .createDefaultBlockSet(IRON_MINING_LEVEL, 4.0f)
-        .addExtraBlock(ENCHANTED_MIDAS_GOLD_BLOCK, Rarity.UNCOMMON, EnchantedMidasGoldBlock::new)
+        .addExtraBlockAndItem("enchanted_midas_gold_block", EnchantedMidasGoldBlock::new, (block, properties) -> new BlockItem(block, properties.rarity(Rarity.UNCOMMON)) {
+            @Override
+            public boolean isFoil(@NonNull ItemStack itemStack) {
+                return true;
+            }
+        })
         .addExtraItem(MIDAS_GOLD_DAGGER, MythicTools.MIDAS_GOLD_DAGGER)
         .addExtraItem(MIDAS_GOLD_SHORTSWORD, MythicTools.MIDAS_GOLD_SHORTSWORD)
         .addExtraItem(MIDAS_GOLD_SWORD, MythicTools.MIDAS_GOLD_SWORD)
