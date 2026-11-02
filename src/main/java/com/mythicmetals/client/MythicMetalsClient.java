@@ -80,17 +80,14 @@ public class MythicMetalsClient implements ClientModInitializer {
         EntityRendererRegistry.register(MythicEntities.STAR_PLATINUM_ARROW_ENTITY_TYPE, StarPlatinumArrowEntityRenderer::new);
         EntityRendererRegistry.register(MythicEntities.RUNITE_ARROW_ENTITY_TYPE, RuniteArrowEntityRenderer::new);
 
-        BlockEntityRenderers.register(RegisterBlockEntityTypes.ENCHANTED_MIDAS_GOLD_BLOCK, EnchantedMidasBlockEntityRenderer::new);
-
         if (FabricLoader.getInstance().isModLoaded("wikirenderer")) {
-            ClientCommandRegistrationCallback.EVENT.register((dispatcher, _) -> {
-                IsometricArmorStandExporter.register(dispatcher);
-            });
+            ClientCommandRegistrationCallback.EVENT.register((dispatcher, _) -> IsometricArmorStandExporter.register(dispatcher));
         }
 
-        HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, _) -> {
-            CarmotShieldHudHandler.render(guiGraphics);
-        });
+        // TODO - Enchanted Block renderer for Enchanted Midas Gold Block
+        //net.fabricmc.fabric.api.client.renderer.v1.Renderer.register(TODO());
+
+        HudElementRegistry.addFirst(RegistryHelper.id("carmot_shield_hud"), (guiGraphics, _) -> CarmotShieldHudHandler.render(guiGraphics));
 
         registerTooltipCallbacks();
     }
