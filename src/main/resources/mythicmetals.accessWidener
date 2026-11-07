@@ -13,3 +13,5 @@ accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer 
 accessible method net/minecraft/client/renderer/entity/AbstractMinecartRenderer oldRender (Lnet/minecraft/client/renderer/entity/state/MinecartRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;)V
 
 accessible class net/minecraft/client/renderer/entity/layers/EquipmentLayerRenderer$TrimSpriteKey
+
+accessible field net/minecraft/util/datafix/fixes/ItemStackComponentizationFix$ItemStackData components Lcom/mojang/serialization/Dynamic;

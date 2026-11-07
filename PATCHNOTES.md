@@ -19,7 +19,8 @@ If you need to iterate through them, say to add your own custom items, then I re
 
 The new internals does mean that for modpack developers it will be easier for me to add support for configuration values for various aspects of the mod.
 Feel free to let me know ahead of time what options you need, and I will look into adding those first. 
-I can promise ahead of time that things like damage values, durability, and stats is what I am currently planning. 
+I can promise ahead of time that stats for tools and armor is what I am currently planning.
+For world generation/ores I have something different in mind. 
 
 ### Ability system removal
 
@@ -51,7 +52,7 @@ but most of the changes come from the rework of the Mythic Metals codebase itsel
 ### Mining Level changes
 
 Mining levels now follow the following graph: wood/gold -> stone -> copper -> iron -> diamond -> netherite -> unobtainium alloy.
-The last mining level is unused, but is handled correctly to allow for modpack/addon developers to fully utilize its branch.
+The last mining level is unused, but is handled correctly to allow for modpack/addon developers to fully utilize it if needed.
 
 In preparation for some future changes, the following ores now require at least a pickaxe **made out of Copper** *instead* of Iron to be mined:
   - Aquarium
@@ -68,7 +69,7 @@ The Emerald Crystal is a new rare drop from mining Emerald Ores, with roughly th
 Likewise, it also scales with the Luck stat, so get mining with your favorite fishing set... it's probably Midas Gold, right?.
 
 The Red Aegis Sword and White Aegis Sword have also been made cheaper. 
-They now only need an ingot of their respective materials to be crafted, as originally mentioned in the Smithing Template
+They now only need an ingot of their respective materials to be crafted, as originally mentioned in the Smithing Template.
 
 ### Combustion Rework
 
@@ -117,6 +118,11 @@ Add your items to `#mythicmetals:adds_fold_to_midas_gold_sword`.
 - Fixed not being able to punch Banglum TNT
 - Carmot Bell can now be broken with only your hand (no pickaxe required)
 - The Carmot Bell cooldown now applies per-player as well as per-block
+
+### Known Issues
+
+- Enchanted Midas Gold Block is not enchanted when placed. 
+  - This requires a completely new system for a single block. I will probably revisit this, but not in the near future
 
 # 0.25.2
 

@@ -1,5 +1,6 @@
 package com.mythicmetals.item.tools;
 
+import com.mythicmetals.item.MythicResourceKeys;
 import com.mythicmetals.item.component.MidasGoldComponent;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Mth;
@@ -85,5 +86,31 @@ public class MidasGoldSword extends Item {
         }
         stack.set(MIDAS_GOLD, MidasGoldComponent.of(goldCount));
         return stack;
+    }
+
+    public static String getSwordIdFromGold(int goldCount) {
+        if (goldCount > 1280) {
+            return MythicResourceKeys.TRUE_ROYAL_MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount > 1023) {
+            return MythicResourceKeys.ROYAL_MIDAS_GOLD_GREATSWORD.identifier().toString();
+        } else if (goldCount > 895) {
+            return MythicResourceKeys.ROYAL_MIDAS_GOLD_LONGSWORD.identifier().toString();
+        } else if (goldCount > 767) {
+            return MythicResourceKeys.ROYAL_MIDAS_GOLD_BROADSWORD.identifier().toString();
+        } else if (goldCount > 640) {
+            return MythicResourceKeys.ROYAL_MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount == 640) {
+            return MythicResourceKeys.MAXED_GILDED_MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount > 319) {
+            return MythicResourceKeys.GILDED_MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount > 255) {
+            return MythicResourceKeys.SOCKETED_MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount > 127) {
+            return MythicResourceKeys.MIDAS_GOLD_SWORD.identifier().toString();
+        } else if (goldCount > 63) {
+            return MythicResourceKeys.MIDAS_GOLD_SHORTSWORD.identifier().toString();
+        } else {
+            return MythicResourceKeys.MIDAS_GOLD_DAGGER.identifier().toString();
+        }
     }
 }

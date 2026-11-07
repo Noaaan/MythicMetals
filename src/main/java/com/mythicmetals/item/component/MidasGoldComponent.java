@@ -12,16 +12,17 @@ import net.minecraft.world.item.component.TooltipProvider;
 
 import java.util.function.Consumer;
 
-public record MidasGoldComponent(int folds, boolean showTooltip) implements TooltipProvider {
+public record MidasGoldComponent(int folds, boolean showTooltip, boolean legacy) implements TooltipProvider {
 
     public static final StructEndec<MidasGoldComponent> ENDEC = StructEndecBuilder.of(
         Endec.INT.fieldOf("folds", MidasGoldComponent::folds),
         Endec.BOOLEAN.fieldOf("show_tooltip", MidasGoldComponent::showTooltip),
+        Endec.BOOLEAN.optionalFieldOf("legacy", MidasGoldComponent::legacy, false),
         MidasGoldComponent::new
     );
 
     public static MidasGoldComponent of(int folds) {
-        return new MidasGoldComponent(folds, true);
+        return new MidasGoldComponent(folds, true, false);
     }
 
     @Override

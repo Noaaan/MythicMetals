@@ -13,6 +13,7 @@
     "ConduitBlockEntityMixin",
     "CreeperMixin",
     "DamageOverTimePowerMixin",
+    "DataFixersMixin",
     "DispenserBehaviorMixin",
     "EnchantedCountIncreaseFunctionMixin",
     "EnchantmentHelperMixin",

@@ -11,6 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.ArrayList;
 import java.util.Set;
 
+// Datafixer specifically for converting NBT tags into data components.
+// Intended for upgrading from 1.20.x to versions above 1.21
 @Mixin(ItemStackComponentizationFix.class)
 public abstract class ItemStackComponentizationFixin {
 
