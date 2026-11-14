@@ -877,6 +877,8 @@
   "attribute.name.mythicmetals.undead_bonus_damage": "Damage Against Undead",
   "abilities.mythicmetals.spiked_helm": "Spiked Helmet",
   "abilities.mythicmetals.water_protection": "Natural Water Protection",
+  "tooltip.midas_gold.legacy1": "This is a legacy Midas Gold Sword from an older version.",
+  "tooltip.midas_gold.legacy2": "Put it in a Smithing Table to update it.",
   "tooltip.midas_gold.damage": [
     {"text":  "+", "color":  "gold"},
     {"index":  0, "color":  "gold"},

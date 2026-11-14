@@ -4,6 +4,7 @@ import com.mythicmetals.api.v2.ArmorSet;
 import com.mythicmetals.api.v2.Material;
 import com.mythicmetals.api.v2.MaterialType;
 import com.mythicmetals.api.v2.ToolSet;
+import com.mythicmetals.data.recipe.LegacyMidasRecipe;
 import com.mythicmetals.data.recipe.MidasFoldingRecipe;
 import com.mythicmetals.item.MythicMaterials;
 import com.mythicmetals.item.MythicResourceKeys;
@@ -1044,6 +1045,10 @@ public class MythicRecipeGenerator extends RecipeProvider {
         createMidasFoldingRecipe("fold_royal_midas_gold_longsword_compat", MythicTools.ROYAL_MIDAS_GOLD_LONGSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
         createMidasFoldingRecipe("fold_royal_midas_gold_greatsword_compat", MythicTools.ROYAL_MIDAS_GOLD_GREATSWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
         createMidasFoldingRecipe("fold_true_royal_midas_gold_sword_compat", MythicTools.TRUE_ROYAL_MIDAS_GOLD_SWORD, MythicTags.ADDS_FOLD_TO_MIDAS_GOLD_SWORD);
+
+        createLegacyMidasGoldRecipe("legacy_midas_gold_sword", MythicTools.MIDAS_GOLD_SWORD);
+        createLegacyMidasGoldRecipe("legacy_gilded_midas_gold_sword", MythicTools.GILDED_MIDAS_GOLD_SWORD);
+        createLegacyMidasGoldRecipe("legacy_royal_midas_gold_sword", MythicTools.ROYAL_MIDAS_GOLD_SWORD);
     }
 
     public void createMidasFoldingRecipe(String recipeName, Item input, TagKey<Item> addition) {
@@ -1060,6 +1065,19 @@ public class MythicRecipeGenerator extends RecipeProvider {
             Optional.of(Ingredient.of(MythicMaterials.MIDAS_GOLD.extraItems().get(MythicResourceKeys.MIDAS_FOLDING_TEMPLATE))),
             Ingredient.of(input),
             Optional.of(addition),
+            new ItemStackTemplate(input)
+        );
+        advancementBuilder.unlockedBy("has_sword", has(input));
+        var recipeId = recipeKey("weapons/" + recipeName);
+        output.accept(recipeId, recipe, advancementBuilder.build(output, recipeId, RecipeCategory.MISC));
+    }
+
+    public void createLegacyMidasGoldRecipe(String recipeName, Item input) {
+        var advancementBuilder = new RecipeUnlockAdvancementBuilder();
+        var recipe = new LegacyMidasRecipe(
+            Optional.empty(),
+            Ingredient.of(input),
+            Optional.empty(),
             new ItemStackTemplate(input)
         );
         advancementBuilder.unlockedBy("has_sword", has(input));

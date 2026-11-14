@@ -1,0 +1,7 @@
+{
+  "type": "mythicmetals:legacy_midas_sword",
+  "base": "mythicmetals:midas_gold_sword",
+  "result": {
+    "id": "mythicmetals:midas_gold_sword"
+  }
+}

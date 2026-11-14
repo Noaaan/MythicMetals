@@ -25,13 +25,15 @@ public class MidasFoldingRecipe implements SmithingRecipe {
     private final Ingredient base;
     private final Optional<Ingredient> addition;
     private final ItemStackTemplate result;
+
     public static final StructEndec<MidasFoldingRecipe> ENDEC = StructEndecBuilder.of(
         CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("template", MidasFoldingRecipe::templateIngredient),
         CodecUtils.toEndec(Ingredient.CODEC).fieldOf("base", MidasFoldingRecipe::baseIngredient),
         CodecUtils.toEndec(Ingredient.CODEC).optionalOf().fieldOf("addition", MidasFoldingRecipe::additionIngredient),
-        CodecUtils.toEndec(ItemStackTemplate.CODEC).fieldOf("result", recipe -> recipe.result),
+        CodecUtils.toEndec(ItemStackTemplate.CODEC).fieldOf("result", MidasFoldingRecipe::result),
         MidasFoldingRecipe::new
     );
+
     @Nullable
     private PlacementInfo ingredientPlacement;
 

@@ -39,6 +39,11 @@ public record MidasGoldComponent(int folds, boolean showTooltip, boolean legacy)
             level = 11;
         }
 
+        if (this.legacy) {
+            tooltip.accept(Component.translatable("tooltip.midas_gold.legacy2").withStyle(ChatFormatting.RED));
+            tooltip.accept(Component.translatable("tooltip.midas_gold.legacy1").withStyle(ChatFormatting.RED, ChatFormatting.BOLD));
+        }
+
         // Spout fun facts and lore while leveling up the sword
         tooltip.accept(Component.translatable("tooltip.midas_gold.level." + level).withStyle(ChatFormatting.GOLD));
         if (this.folds == 0) {

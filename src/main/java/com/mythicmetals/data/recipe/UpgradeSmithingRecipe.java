@@ -163,6 +163,4 @@ public final class UpgradeSmithingRecipe implements SmithingRecipe {
             "addition=" + addition + ", " +
             "result=" + result + ']';
     }
-
-
 }

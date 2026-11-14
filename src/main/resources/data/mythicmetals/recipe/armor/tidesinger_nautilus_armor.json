@@ -1,11 +1,11 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": [
-    "minecraft:fire_coral",
+    "minecraft:bubble_coral",
     "minecraft:tube_coral",
     "minecraft:brain_coral",
-    "minecraft:horn_coral",
-    "minecraft:bubble_coral"
+    "minecraft:fire_coral",
+    "minecraft:horn_coral"
   ],
   "base": "mythicmetals:aquarium_nautilus_armor",
   "result": {
