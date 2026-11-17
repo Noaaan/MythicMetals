@@ -18,7 +18,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
@@ -35,7 +34,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Random;
 
-import static com.mythicmetals.data.attachments.MythicDataAttachments.*;
+import static com.mythicmetals.data.attachments.MythicDataAttachments.CARMOT_SHIELD_ATTACHMENT;
+import static com.mythicmetals.data.attachments.MythicDataAttachments.CARMOT_SHIELD_COOLDOWN_ATTACHMENT;
 import static com.mythicmetals.entity.MythicEntityAttributes.*;
 
 @Mixin(LivingEntity.class)
@@ -52,9 +52,6 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow
     public abstract boolean canBeAffected(MobEffectInstance effect);
-
-    @Shadow
-    public abstract ItemStack getItemInHand(InteractionHand hand);
 
     @Shadow
     public abstract void stopRiding();
@@ -74,24 +71,12 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow
     public abstract AttributeMap getAttributes();
 
-    @Shadow
-    public abstract ItemStack getItemBySlot(EquipmentSlot equipmentSlot);
-
     public LivingEntityMixin(EntityType<?> type, Level world) {
         super(type, world);
     }
 
     @Unique
     Random r = new Random();
-
-    @Inject(method = "createLivingAttributes", require = 1, allow = 1, at = @At("RETURN"))
-    private static void mythicmetals$addAttributes(final CallbackInfoReturnable<AttributeSupplier.Builder> info) {
-        info.getReturnValue().add(EXPLOSION_RESISTANCE);
-        info.getReturnValue().add(CARMOT_SHIELD);
-        info.getReturnValue().add(ELYTRA_ROCKET_SPEED);
-        info.getReturnValue().add(FIRE_VULNERABILITY);
-        info.getReturnValue().add(UNDEAD_BONUS_DAMAGE);
-    }
 
     @ModifyReturnValue(method = "getDamageAfterArmorAbsorb", at = @At("RETURN"))
     private float mythicmetals$reduceDamage(float damage, DamageSource damageSource) {

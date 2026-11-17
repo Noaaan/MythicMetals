@@ -26,6 +26,7 @@ import io.wispforest.owo.itemgroup.gui.ItemGroupButton;
 import io.wispforest.owo.registration.reflect.FieldRegistrationHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelValueEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
@@ -39,6 +40,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.mythicmetals.entity.MythicEntityAttributes.*;
 
 public class MythicMetals implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
@@ -145,6 +148,16 @@ public class MythicMetals implements ModInitializer {
                 entity.igniteForTicks(stack.getOrDefault(MythicDataComponents.FIRE_ASPECT, 0));
             }
             return InteractionResult.PASS;
+        });
+
+        FabricDefaultAttributeRegistry.MODIFY.register(context -> {
+            context.modifyAll((_, builder) -> {
+                builder.add(EXPLOSION_RESISTANCE);
+                builder.add(CARMOT_SHIELD);
+                builder.add(ELYTRA_ROCKET_SPEED);
+                builder.add(FIRE_VULNERABILITY);
+                builder.add(UNDEAD_BONUS_DAMAGE);
+            });
         });
     }
 
